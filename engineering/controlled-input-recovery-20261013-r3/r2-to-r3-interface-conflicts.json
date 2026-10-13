@@ -1,0 +1,91 @@
+{
+  "schema": "razr-slide-r2-r3-interface-comparison-v1",
+  "r2_baseline_file": "engineering/controlled-input-recovery-20261013-r2/motorola-derived-interface-facts.json",
+  "r2_baseline_sha256": "d27edc2fb9e934d7bb9587169d203d90b55c1229ea36b120e2b523ceec7dac4d",
+  "R3_donor_identity_selected": false,
+  "battery_map_comparison": {
+    "r2_NA_service_BOM_flip": "SB18E50881",
+    "r2_NA_service_BOM_base": "SB18E50882",
+    "R3_software_literal_ID_maps": {
+      "main-ids-map": [
+        [
+          "107000",
+          "SB18E07971"
+        ]
+      ],
+      "flip-ids-map": [
+        [
+          "38000",
+          "SB18D58447"
+        ]
+      ]
+    },
+    "mapping_to_same_actual_pack_or_firmware": null,
+    "declared_OEM_software_defect": false
+  },
+  "static_connector_equivalence": {
+    "R2_SCA8D57591_24pin_H0p6": true,
+    "R3_DSI_lanes": 4,
+    "OEM_connector_physical_terminal_map_received": false,
+    "approved_BM28_equivalence": null
+  },
+  "module_interface_boundary": {
+    "R3_OEM_main_software": "CSOT NT37707/NT37707A + GT9916P SPI + 1224x2992 DSC",
+    "R2_DFRobot_or_DisplayModule_is_drop_in": false,
+    "actual_factory_module_approved": null
+  },
+  "mechanical_boundary": {
+    "R3_software_dimensions_integer": [
+      67,
+      164
+    ],
+    "controlled_module_outline_tolerance_COF_no_bend_datum": null,
+    "software_dimensions_used_as_production_MCAD": false
+  },
+  "power_boundary": {
+    "R3_regulator_votes": [
+      {
+        "name": "vddio",
+        "min_microvolt_vote": [
+          1800000
+        ],
+        "max_microvolt_vote": [
+          1800000
+        ],
+        "enable_load_vote_raw": [
+          300000
+        ],
+        "measured_module_current_or_rating": null
+      },
+      {
+        "name": "vdd",
+        "min_microvolt_vote": [
+          1200000
+        ],
+        "max_microvolt_vote": [
+          1250000
+        ],
+        "enable_load_vote_raw": [
+          300000
+        ],
+        "measured_module_current_or_rating": null
+      },
+      {
+        "name": "vci",
+        "min_microvolt_vote": [
+          3000000
+        ],
+        "max_microvolt_vote": [
+          3000000
+        ],
+        "enable_load_vote_raw": [
+          300000
+        ],
+        "measured_module_current_or_rating": null
+      }
+    ],
+    "actual_module_max_current_inrush_and_rail_ratings": null,
+    "regulator_load_vote_used_as_current_qualification": false
+  },
+  "manufacturing_go": false
+}
