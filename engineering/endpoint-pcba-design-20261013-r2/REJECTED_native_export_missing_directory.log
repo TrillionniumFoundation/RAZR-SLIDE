@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/qian-qi/Documents/Codex/RAZR_SLIDE_WORK_20261013/endpoint_pcba_r2_v3/engineering/endpoint-pcba-design-20261013-r2/verify_native_pcba.py", line 65, in <module>
+    command(['pcb','export','gerbers','--output',f'research_exports/{kind}/','--layers','F.Cu,B.Cu,F.Paste,F.Mask,B.Mask,F.SilkS,Edge.Cuts',title+'.kicad_pcb'])
+  File "/home/qian-qi/Documents/Codex/RAZR_SLIDE_WORK_20261013/endpoint_pcba_r2_v3/engineering/endpoint-pcba-design-20261013-r2/verify_native_pcba.py", line 20, in command
+    assert p.returncode==0,LOG[-1]
+           ^^^^^^^^^^^^^^^
+AssertionError: {'argv': ['/home/qian-qi/Documents/Codex/RAZR_SLIDE_WORK_20261013/native_endpoint_kicad_verify/extracted/usr/bin/kicad-cli', 'pcb', 'export', 'gerbers', '--output', 'research_exports/DP/', '--layers', 'F.Cu,B.Cu,F.Paste,F.Mask,B.Mask,F.SilkS,Edge.Cuts', 'endpoint_DP.kicad_pcb'], 'exit_code': 4, 'stdout': '加载电路板\n', 'stderr': "无法绘制到 'research_exports/DP/endpoint_DP-F_Cu.gtl'。\n无法绘制到 'research_exports/DP/endpoint_DP-B_Cu.gbl'。\n无法绘制到 'research_exports/DP/endpoint_DP-F_Paste.gtp'。\n无法绘制到 'research_exports/DP/endpoint_DP-F_Silkscreen.gto'。\n无法绘制到 'research_exports/DP/endpoint_DP-F_Mask.gts'。\n无法绘制到 'research_exports/DP/endpoint_DP-B_Mask.gbs'。\n无法绘制到 'research_exports/DP/endpoint_DP-Edge_Cuts.gm1'。\n"}

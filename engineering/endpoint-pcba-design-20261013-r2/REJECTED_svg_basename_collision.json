@@ -1,0 +1,9 @@
+{
+  "actual_observation": "Native pcb SVG and sch SVG exports default to the identical endpoint_DP.svg / endpoint_DS.svg basename in the same output folder. Later schematic export overwrote the board preview.",
+  "evidence": "v5 command_log records both commands with the same directory; retrieved SVG has Eeschema-SVG descriptor despite being listed under board output folder.",
+  "electrical_and_Gerber_drill_checks_changed": false,
+  "repair": "Separate schematic SVG into each board's schematic subdirectory, retain the native board SVG in the parent output folder; repeat native export verification.",
+  "old_export_file_count": 28,
+  "old_result_archive_sha256": "effdc163a073e133cfe2d56e72fa174fa35ddab199298591052d8adf592277ef",
+  "manufacturing_go": false
+}

@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/qian-qi/Documents/Codex/RAZR_SLIDE_WORK_20261013/endpoint_pcba_r2_v3/engineering/endpoint-pcba-design-20261013-r2/verify_native_pcba_v4.py", line 97, in <module>
+    else:assert counts['DRC violations']>0 and '[shorting_items]' in report.read_text()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+KiCad7 actually rejected the cross-net bridge with four fatal errors: zero copper clearance, solder-mask bridge and hole clearance. The initial verifier wrongly required a different engine version's [shorting_items] label; no engine violation was waived.
