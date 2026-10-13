@@ -1,0 +1,17 @@
+{
+  "failures": [
+    {
+      "action": "single write of 998536-byte guideline after base64 stdout relay",
+      "result": "Only base64 data is allowed",
+      "destination_created": false,
+      "recovery": "Four binary_upload chunks; native_verified.json proves matching complete SHA256"
+    },
+    {
+      "action": "encode source script with functions.exec btoa",
+      "result": "ReferenceError: btoa is not defined",
+      "destination_created": false,
+      "recovery": "shell base64 source read, then atomic binary_write"
+    }
+  ],
+  "manufacturing_go": false
+}
