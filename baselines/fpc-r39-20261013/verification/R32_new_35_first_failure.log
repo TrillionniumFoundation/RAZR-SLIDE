@@ -1,0 +1,18 @@
+======================================================================
+FAIL: test_04_A_unchanged_brep (test_r32.R32Tests.test_04_A_unchanged_brep)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/RAZR_SLIDE_R32_work/test_r32.py", line 23, in test_04_A_unchanged_brep
+    self.assertEqual(hashlib.sha256((ROOT/'cad'/'R32_A_R31_UNMODIFIED.brep').read_bytes()).hexdigest(),
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     hashlib.sha256((ROOT/'cad'/'R31_A_POSITIVE_OPEN_SHELVES.brep').read_bytes()).hexdigest())
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '47985e1f87b935a41c318a30c7d72672ad32d8445ffee64ef79c70c05a12e758' != '500fd5446d63d0ea8291b2edf4c86abcae4f917f65d8716b2b0ac12f29082cf0'
+- 47985e1f87b935a41c318a30c7d72672ad32d8445ffee64ef79c70c05a12e758
++ 500fd5446d63d0ea8291b2edf4c86abcae4f917f65d8716b2b0ac12f29082cf0
+
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.472s
+
+FAILED (failures=1)

@@ -1,0 +1,142 @@
+{
+  "revision": "R22 electrical partition and fail-closed reference model only",
+  "sources": {
+    "te_signal": {
+      "part": "TE 2199001-1",
+      "rated_current_A": 1.5,
+      "application": "Signal",
+      "working_height_mm": [
+        0.7,
+        1.0
+      ],
+      "free_height_mm": 1.2,
+      "lifecycle_cycles_certified_for_slide_application": null,
+      "differential_impedance_or_usb_eye_test_available": false,
+      "approved_for_power": false,
+      "approved_for_usb_high_speed": false,
+      "original_manufacturer_source": "https://www.te.com/en/product-2199001-1.html"
+    },
+    "power_vendor_RFI_only": [
+      {
+        "part": "Harwin S1961-46R",
+        "rated_current_A": 14.0,
+        "body_xyz_mm": [
+          4.63,
+          3.7,
+          3.55
+        ],
+        "manufacturer_durability_min_cycles": 3000,
+        "proposed_slide_lifecycle_cycles": 300000,
+        "demonstrated_slide_qualification": false,
+        "engineering_screen_lifetime_shortfall_ratio": 100,
+        "source": "https://www.harwin.com/products/S1961-46R",
+        "durability_source": "https://cdn.harwin.com/pdfs/Harwin_SMT_Spring_Contacts_Comparison_Chart.pdf"
+      },
+      {
+        "part": "Mill-Max 0985 family",
+        "maximum_current_A_30C_rise": 8.0,
+        "derated_current_A": 6.4,
+        "manufacturer_mechanical_life_cycles": 100000,
+        "slide_target_cycles": 300000,
+        "qualified_as_installed": false,
+        "source": "https://www.mill-max.com/products/discrete-spring-loaded-pins/spring-loaded-pin-with-standard-tail/0985"
+      },
+      {
+        "part": "Mill-Max 0900-0-15-20-76-14-11-0",
+        "manufacturer_family_durability_cycles_range": [
+          100000,
+          1000000
+        ],
+        "nominal_max_continuous_A_from_family_brochure": 2.0,
+        "nominal_peak_A_from_family_brochure": 3.0,
+        "initial_height_mm": 3.48,
+        "stroke_mm": 0.991,
+        "important": "Promising long-life RFQ only: exact 300k approval, current, 3.48mm packaged clearances and contact force NOT verified",
+        "fits_R21_TE_recess_directly": false,
+        "qualifying_300k_power_connector_approved": false,
+        "source": "https://www.mill-max.com/sites/default/files/external/assets/2017-12/SMT%20Spring-Loaded%20Connectors.pdf",
+        "dimension_source": "https://www.westfloridacomponents.com/mm5/graphics/U10/0900-0-15-20-76-14-11-0.pdf"
+      }
+    ]
+  },
+  "architecture": {
+    "B_cabin": [
+      "SoC",
+      "USB-C_PHY",
+      "USB-C_receptacle_unplaced",
+      "B_local_battery_BMS",
+      "system_power_rail",
+      "USB_and_display_on_B_only"
+    ],
+    "A_cabin": [
+      "larger_A_battery_target_NOT_FITTED",
+      "A_local_BMS",
+      "fuse",
+      "back_to_back_BAT_FETs",
+      "precharge_limiter",
+      "temperature_sense"
+    ],
+    "cross_cabin_signal": "ONLY slow control / wake or sensor signals as an exploratory lane; no qualified TE electrical implementation",
+    "cross_cabin_usb": "NOT ROUTED: USB-C placed in B by architectural decision; no claim on actual B mechanical fit",
+    "cross_cabin_power": "DEDICATED qualified-power connector class REQUIRED, specific supplier NOT SELECTED",
+    "two_end_stations": "STOW and OPEN each have independent keyed sets; never both selected",
+    "raw_battery_positive_direct_parallel": false,
+    "intended_mechanical_life_cycles": 300000,
+    "target_total_capacity_mAh": 4700,
+    "target_total_capacity_proven": false,
+    "battery_thermal_mechanical_safety_qualified": false
+  },
+  "logic": {
+    "logic_states_checked": 8192,
+    "logic_false_energization_failures": 0,
+    "all_logic_guards_pass": true,
+    "faults": [],
+    "active_precharge_states": 8,
+    "active_main_states": 2,
+    "mutation_bad_controller_rejected": true,
+    "hardware_PCB_BMS_FET_power_contact_fuse_and_usb_qualification": false
+  },
+  "trial_power_current_sensitivity": [
+    {
+      "trial_load_W": 3,
+      "assumed_pack_bus_min_V": 3.0,
+      "assumed_DCDC_efficiency": 0.9,
+      "constant_power_current_A": 1.111,
+      "rating_is_sufficient_to_approve_connector": false
+    },
+    {
+      "trial_load_W": 5,
+      "assumed_pack_bus_min_V": 3.0,
+      "assumed_DCDC_efficiency": 0.9,
+      "constant_power_current_A": 1.852,
+      "rating_is_sufficient_to_approve_connector": false
+    },
+    {
+      "trial_load_W": 8,
+      "assumed_pack_bus_min_V": 3.0,
+      "assumed_DCDC_efficiency": 0.9,
+      "constant_power_current_A": 2.963,
+      "rating_is_sufficient_to_approve_connector": false
+    },
+    {
+      "trial_load_W": 12,
+      "assumed_pack_bus_min_V": 3.0,
+      "assumed_DCDC_efficiency": 0.9,
+      "constant_power_current_A": 4.444,
+      "rating_is_sufficient_to_approve_connector": false
+    }
+  ],
+  "physical_blockers": [
+    "Power connector approved in vertical/horizontal mating orientation and 300k full-assembly cycles MISSING; examine Mill-Max 0900 but its 3.48mm height cannot drop into 1.2mm TE pocket",
+    "Dedicated power and return physical pinout, make/break ordering, creepage and blindmate protection MISSING",
+    "Actual design-current envelope and load dump/short/welded contacts MISSING",
+    "Board-level FET/protection/precharge and actual mated voltage/thermal transients MISSING",
+    "Active-current derating, fretting corrosion, salt-dust-temperature-wear contact resistance MISSING",
+    "USB-C physical location and electrical compliance in B MISSING",
+    "Sensor and sideband TE 2199001-1 real STEP, SI/ESD and lifetime NOT QUALIFIED"
+  ],
+  "qualified_power": false,
+  "qualified_usb": false,
+  "qualified_signal": false,
+  "manufacture_go": false
+}

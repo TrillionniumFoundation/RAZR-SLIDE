@@ -1,0 +1,4938 @@
+{
+  "revision": "R39 CONTINUOUS 3D CENTERLINE / FINITE SECTION OCC PENETRATION SCREEN, NOT OEM FPC",
+  "original_R38_geometry_reference": "R38_A_R37_BYTE_IDENTICAL + R38_B_PROVISIONAL_STATIC_HEADER_CLEARANCE",
+  "product_travel_y_mm": 79.75,
+  "product_final_dock_z_mm": 8.2,
+  "scenes": 22,
+  "scenario_count": 88,
+  "geometric_sample_spacing_parameter": 0.0125,
+  "section_samples_per_location": 5,
+  "tested_physical_footprint_thickness_mm": 0.15,
+  "tested_physical_footprint_width_mm": 1.2,
+  "materials_and_fatigue_lifetime_not_qualified": true,
+  "strictly_finite_sampling_not_entire_swept_continuum": true,
+  "no_OEM_FPC_stackup_clamp_harness_or_tail_step": true,
+  "no_live_electrical_connection_implemented": true,
+  "constraints_summary": {
+    "INBOARD_SERPENTINE_125": {
+      "poses": 22,
+      "target_length_mm": 125.0,
+      "max_length_error_mm": 0.0,
+      "worst_minimum_bend_radius_mm": 0.064104,
+      "poses_with_observed_any_solid_penetration": 22,
+      "total_sampled_solid_penetrations": 1610,
+      "poses_exceeding_chassis_width": 0,
+      "poses_exceeding_assembled_proxy_z": 1,
+      "poses_passing_assumed_R2p5": 0,
+      "poses_passing_assumed_R7p5": 0,
+      "poses_passing_assumed_R15": 0,
+      "poses_passing_all_design_screens": 0
+    },
+    "INNER_SIDE_SERPENTINE_125": {
+      "poses": 22,
+      "target_length_mm": 125.0,
+      "max_length_error_mm": 0.0,
+      "worst_minimum_bend_radius_mm": 0.029077,
+      "poses_with_observed_any_solid_penetration": 22,
+      "total_sampled_solid_penetrations": 1725,
+      "poses_exceeding_chassis_width": 0,
+      "poses_exceeding_assembled_proxy_z": 1,
+      "poses_passing_assumed_R2p5": 0,
+      "poses_passing_assumed_R7p5": 0,
+      "poses_passing_assumed_R15": 0,
+      "poses_passing_all_design_screens": 0
+    },
+    "OUTBOARD_SINGLE_BOW_125": {
+      "poses": 22,
+      "target_length_mm": 125.0,
+      "max_length_error_mm": 0.0,
+      "worst_minimum_bend_radius_mm": 1.182111,
+      "poses_with_observed_any_solid_penetration": 22,
+      "total_sampled_solid_penetrations": 1027,
+      "poses_exceeding_chassis_width": 22,
+      "poses_exceeding_assembled_proxy_z": 22,
+      "poses_passing_assumed_R2p5": 0,
+      "poses_passing_assumed_R7p5": 0,
+      "poses_passing_assumed_R15": 0,
+      "poses_passing_all_design_screens": 0
+    },
+    "GENTLE_INBOARD_SINGLE_BOW_150": {
+      "poses": 22,
+      "target_length_mm": 150.0,
+      "max_length_error_mm": 0.0,
+      "worst_minimum_bend_radius_mm": 6.462946,
+      "poses_with_observed_any_solid_penetration": 22,
+      "total_sampled_solid_penetrations": 935,
+      "poses_exceeding_chassis_width": 0,
+      "poses_exceeding_assembled_proxy_z": 22,
+      "poses_passing_assumed_R2p5": 22,
+      "poses_passing_assumed_R7p5": 20,
+      "poses_passing_assumed_R15": 0,
+      "poses_passing_all_design_screens": 0
+    }
+  },
+  "rows": [
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_00",
+      "slide_mm": 0.0,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9988425,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.12108,
+      "approx_outer_fiber_strain": 0.619424,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 96,
+        "B_chassis": 5,
+        "OLED_hypothesis": 3,
+        "old_display_FPC_not_cross_chamber": 2
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.325,
+          "x": 29.2894,
+          "y": 78.4906,
+          "z": 4.7608
+        },
+        "B_chassis": {
+          "path_fraction": 0.5875,
+          "x": 28.656,
+          "y": 22.2771,
+          "z": -1.1173
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.2875,
+          "x": 29.5587,
+          "y": 82.9607,
+          "z": 5.2779
+        },
+        "old_display_FPC_not_cross_chamber": {
+          "path_fraction": 0.6375,
+          "x": 29.0674,
+          "y": 12.4365,
+          "z": -1.4952
+        }
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          -2.14513,
+          87.14513
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_00",
+      "slide_mm": 0.0,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9988351,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.065087,
+      "approx_outer_fiber_strain": 1.152298,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 112,
+        "B_chassis": 12,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0625,
+          "x": 33.7865,
+          "y": 77.8933,
+          "z": 6.1497
+        },
+        "B_chassis": {
+          "path_fraction": 0.5875,
+          "x": 35.0101,
+          "y": 22.2222,
+          "z": -1.1411
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          -2.25693,
+          87.25693
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_00",
+      "slide_mm": 0.0,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996808,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.130265,
+      "approx_outer_fiber_strain": 0.035207,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 22,
+        "B_chassis": 31,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9168,
+          "y": 71.2173,
+          "z": 6.1713
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.9614,
+          "y": 34.7074,
+          "z": -5.1508
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          15.0,
+          99.99529
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_00",
+      "slide_mm": 0.0,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994621,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 6.462946,
+      "approx_outer_fiber_strain": 0.011605,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 17,
+        "OLED_hypothesis": 3,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.95,
+          "x": 30.8228,
+          "y": 27.628,
+          "z": -6.6357
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.331,
+          "y": 73.7612,
+          "z": 7.6224
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 279,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          15.0,
+          108.08767
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_01",
+      "slide_mm": 4.984375,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9988227,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.121227,
+      "approx_outer_fiber_strain": 0.618674,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 91,
+        "B_chassis": 4,
+        "OLED_hypothesis": 3,
+        "old_display_FPC_not_cross_chamber": 3
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.3375,
+          "x": 29.21,
+          "y": 78.5514,
+          "z": 4.5659
+        },
+        "B_chassis": {
+          "path_fraction": 0.5875,
+          "x": 28.6946,
+          "y": 25.0847,
+          "z": -1.1287
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.1,
+          "x": 31.4639,
+          "y": 82.5303,
+          "z": 6.2806
+        },
+        "old_display_FPC_not_cross_chamber": {
+          "path_fraction": 0.6,
+          "x": 28.7402,
+          "y": 22.5124,
+          "z": -1.3774
+        }
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          1.59284,
+          88.39154
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_01",
+      "slide_mm": 4.984375,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9988157,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.067384,
+      "approx_outer_fiber_strain": 1.113031,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 103,
+        "B_chassis": 11,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0625,
+          "x": 33.7866,
+          "y": 78.2953,
+          "z": 6.1497
+        },
+        "B_chassis": {
+          "path_fraction": 0.5875,
+          "x": 34.9683,
+          "y": 25.0302,
+          "z": -1.1328
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          1.48454,
+          88.49983
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_01",
+      "slide_mm": 4.984375,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996742,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.099014,
+      "approx_outer_fiber_strain": 0.035731,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 22,
+        "B_chassis": 30,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9216,
+          "y": 71.3144,
+          "z": 6.1712
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.91,
+          "y": 39.4336,
+          "z": -5.1069
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          19.98438,
+          102.56787
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_01",
+      "slide_mm": 4.984375,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994579,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 7.011463,
+      "approx_outer_fiber_strain": 0.010697,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 17,
+        "OLED_hypothesis": 3,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.95,
+          "x": 30.8228,
+          "y": 32.4289,
+          "z": -6.6357
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.3332,
+          "y": 73.9118,
+          "z": 7.6219
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 279,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          19.98438,
+          110.56104
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_02",
+      "slide_mm": 9.96875,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9988052,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.122444,
+      "approx_outer_fiber_strain": 0.612524,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 86,
+        "B_chassis": 3,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 3
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.35,
+          "x": 29.136,
+          "y": 78.5388,
+          "z": 4.3605
+        },
+        "B_chassis": {
+          "path_fraction": 0.5875,
+          "x": 28.7321,
+          "y": 27.9061,
+          "z": -1.1373
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": {
+          "path_fraction": 0.6,
+          "x": 28.7776,
+          "y": 25.3827,
+          "z": -1.3859
+        }
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          5.33162,
+          89.63713
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_02",
+      "slide_mm": 9.96875,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987986,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.07058,
+      "approx_outer_fiber_strain": 1.06262,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 97,
+        "B_chassis": 5,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0625,
+          "x": 33.7867,
+          "y": 78.687,
+          "z": 6.1497
+        },
+        "B_chassis": {
+          "path_fraction": 0.5875,
+          "x": 34.9303,
+          "y": 27.8519,
+          "z": -1.1225
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          5.22657,
+          89.74218
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_02",
+      "slide_mm": 9.96875,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996685,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.075146,
+      "approx_outer_fiber_strain": 0.036142,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 22,
+        "B_chassis": 30,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9257,
+          "y": 71.4075,
+          "z": 6.1712
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.8661,
+          "y": 44.1388,
+          "z": -5.0597
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          24.96875,
+          105.12812
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_02",
+      "slide_mm": 9.96875,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994541,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 7.555608,
+      "approx_outer_fiber_strain": 0.009926,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 17,
+        "OLED_hypothesis": 3,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.95,
+          "x": 30.8228,
+          "y": 37.2223,
+          "z": -6.6357
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.335,
+          "y": 74.0594,
+          "z": 7.6215
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 279,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          24.96875,
+          113.03532
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_03",
+      "slide_mm": 14.953125,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987898,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.123144,
+      "approx_outer_fiber_strain": 0.609043,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 82,
+        "B_chassis": 2,
+        "OLED_hypothesis": 1,
+        "old_display_FPC_not_cross_chamber": 2
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.3625,
+          "x": 29.0674,
+          "y": 78.4624,
+          "z": 4.1452
+        },
+        "B_chassis": {
+          "path_fraction": 0.5875,
+          "x": 28.7684,
+          "y": 30.7408,
+          "z": -1.1432
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.0875,
+          "x": 32.2114,
+          "y": 82.3442,
+          "z": 6.3433
+        },
+        "old_display_FPC_not_cross_chamber": {
+          "path_fraction": 0.6,
+          "x": 28.814,
+          "y": 28.2678,
+          "z": -1.3918
+        }
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          9.07113,
+          90.882
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_03",
+      "slide_mm": 14.953125,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987836,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.073059,
+      "approx_outer_fiber_strain": 1.026569,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 92,
+        "B_chassis": 4,
+        "OLED_hypothesis": 1,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0625,
+          "x": 33.7868,
+          "y": 79.0688,
+          "z": 6.1497
+        },
+        "B_chassis": {
+          "path_fraction": 0.5875,
+          "x": 34.8957,
+          "y": 30.6865,
+          "z": -1.1107
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.0875,
+          "x": 32.7797,
+          "y": 82.3764,
+          "z": 6.3432
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          8.96929,
+          90.98384
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_03",
+      "slide_mm": 14.953125,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996635,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.056911,
+      "approx_outer_fiber_strain": 0.036462,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 22,
+        "B_chassis": 29,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9291,
+          "y": 71.4968,
+          "z": 6.1711
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.8293,
+          "y": 48.8248,
+          "z": -5.0102
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          29.95313,
+          107.67785
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_03",
+      "slide_mm": 14.953125,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994508,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 8.090193,
+      "approx_outer_fiber_strain": 0.00927,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 18,
+        "OLED_hypothesis": 9,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.95,
+          "x": 30.8228,
+          "y": 42.0089,
+          "z": -6.6357
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.3366,
+          "y": 74.204,
+          "z": 7.6212
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 279,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          29.95313,
+          115.51058
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_04",
+      "slide_mm": 19.9375,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987765,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.122525,
+      "approx_outer_fiber_strain": 0.612119,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 77,
+        "B_chassis": 0,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 2
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.375,
+          "x": 29.0045,
+          "y": 78.3329,
+          "z": 3.9205
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": {
+          "path_fraction": 0.6,
+          "x": 28.8491,
+          "y": 31.1672,
+          "z": -1.3953
+        }
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          12.81018,
+          92.12732
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_04",
+      "slide_mm": 19.9375,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987706,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.074064,
+      "approx_outer_fiber_strain": 1.012642,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 93,
+        "B_chassis": 1,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0625,
+          "x": 33.7869,
+          "y": 79.4414,
+          "z": 6.1497
+        },
+        "B_chassis": {
+          "path_fraction": 0.6125,
+          "x": 35.0455,
+          "y": 28.7291,
+          "z": -1.037
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          12.71124,
+          92.22626
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_04",
+      "slide_mm": 19.9375,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996591,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.043304,
+      "approx_outer_fiber_strain": 0.036705,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 22,
+        "B_chassis": 29,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9321,
+          "y": 71.5827,
+          "z": 6.1711
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.799,
+          "y": 53.4929,
+          "z": -4.959
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          34.9375,
+          110.21835
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_04",
+      "slide_mm": 19.9375,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994479,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 8.609902,
+      "approx_outer_fiber_strain": 0.008711,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 19,
+        "OLED_hypothesis": 7,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.6,
+          "x": 20.7365,
+          "y": 110.1694,
+          "z": -6.5069
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.338,
+          "y": 74.3457,
+          "z": 7.6209
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 278,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          34.9375,
+          117.98792
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_05",
+      "slide_mm": 24.921875,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987652,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.123584,
+      "approx_outer_fiber_strain": 0.606873,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 72,
+        "B_chassis": 0,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 3
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.3875,
+          "x": 28.9472,
+          "y": 78.1626,
+          "z": 3.687
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": {
+          "path_fraction": 0.6,
+          "x": 28.883,
+          "y": 34.0803,
+          "z": -1.3968
+        }
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          16.55016,
+          93.37171
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_05",
+      "slide_mm": 24.921875,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987596,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.076702,
+      "approx_outer_fiber_strain": 0.977808,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 73,
+        "B_chassis": 2,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.375,
+          "x": 34.739,
+          "y": 80.4215,
+          "z": 3.3825
+        },
+        "B_chassis": {
+          "path_fraction": 0.6125,
+          "x": 35.0455,
+          "y": 31.6959,
+          "z": -1.037
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          16.45382,
+          93.46805
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_05",
+      "slide_mm": 24.921875,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996555,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.03268,
+      "approx_outer_fiber_strain": 0.036897,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 22,
+        "B_chassis": 29,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9347,
+          "y": 71.6656,
+          "z": 6.1711
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.7749,
+          "y": 58.144,
+          "z": -4.9069
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          39.92188,
+          112.75049
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_05",
+      "slide_mm": 24.921875,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994454,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 9.109344,
+      "approx_outer_fiber_strain": 0.008233,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 28,
+        "OLED_hypothesis": 6,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.5875,
+          "x": 21.1505,
+          "y": 114.6934,
+          "z": -5.7719
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.3393,
+          "y": 74.4847,
+          "z": 7.6206
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 278,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          39.92188,
+          120.46666
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_06",
+      "slide_mm": 29.90625,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987558,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.126944,
+      "approx_outer_fiber_strain": 0.59081,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 67,
+        "B_chassis": 0,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 2
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.4,
+          "x": 28.8958,
+          "y": 77.9652,
+          "z": 3.4456
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": {
+          "path_fraction": 0.6,
+          "x": 28.9157,
+          "y": 37.0066,
+          "z": -1.3963
+        }
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          20.29125,
+          94.615
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_06",
+      "slide_mm": 29.90625,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987504,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.081619,
+      "approx_outer_fiber_strain": 0.918909,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 68,
+        "B_chassis": 1,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.3875,
+          "x": 34.7485,
+          "y": 80.2822,
+          "z": 3.163
+        },
+        "B_chassis": {
+          "path_fraction": 0.6125,
+          "x": 35.0455,
+          "y": 34.6773,
+          "z": -1.037
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          20.19738,
+          94.70887
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_06",
+      "slide_mm": 29.90625,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996524,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.023856,
+      "approx_outer_fiber_strain": 0.037058,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 20,
+        "B_chassis": 29,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9369,
+          "y": 71.7456,
+          "z": 6.171
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.7564,
+          "y": 62.7791,
+          "z": -4.8541
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          44.90625,
+          115.27596
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_06",
+      "slide_mm": 29.90625,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994433,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 9.579252,
+      "approx_outer_fiber_strain": 0.007829,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 38,
+        "OLED_hypothesis": 3,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.5625,
+          "x": 20.9306,
+          "y": 119.6385,
+          "z": -3.8578
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.3404,
+          "y": 74.621,
+          "z": 7.6203
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 279,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          44.90625,
+          122.94709
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_07",
+      "slide_mm": 34.890625,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987481,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.127614,
+      "approx_outer_fiber_strain": 0.587711,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 62,
+        "B_chassis": 0,
+        "OLED_hypothesis": 4,
+        "old_display_FPC_not_cross_chamber": 2
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.4125,
+          "x": 28.8502,
+          "y": 77.7555,
+          "z": 3.1969
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": {
+          "path_fraction": 0.075,
+          "x": 31.7662,
+          "y": 82.438,
+          "z": 6.2492
+        },
+        "old_display_FPC_not_cross_chamber": {
+          "path_fraction": 0.6,
+          "x": 28.9471,
+          "y": 39.9459,
+          "z": -1.3942
+        }
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          24.03251,
+          95.85811
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_07",
+      "slide_mm": 34.890625,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.998743,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.083267,
+      "approx_outer_fiber_strain": 0.900717,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 63,
+        "B_chassis": 1,
+        "OLED_hypothesis": 2,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.4,
+          "x": 34.7566,
+          "y": 80.1187,
+          "z": 2.9358
+        },
+        "B_chassis": {
+          "path_fraction": 0.6125,
+          "x": 35.0455,
+          "y": 37.6729,
+          "z": -1.037
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.075,
+          "x": 33.2836,
+          "y": 82.4797,
+          "z": 6.2492
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          23.94114,
+          95.94948
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_07",
+      "slide_mm": 34.890625,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996499,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.018306,
+      "approx_outer_fiber_strain": 0.03716,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 20,
+        "B_chassis": 29,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9389,
+          "y": 71.8229,
+          "z": 6.171
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.7434,
+          "y": 67.3988,
+          "z": -4.801
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          49.89063,
+          117.79433
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_07",
+      "slide_mm": 34.890625,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994416,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 10.009918,
+      "approx_outer_fiber_strain": 0.007493,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 48,
+        "OLED_hypothesis": 3,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.5375,
+          "x": 20.7832,
+          "y": 123.9094,
+          "z": -1.8307
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.3414,
+          "y": 74.7546,
+          "z": 7.6201
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 279,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          49.89063,
+          125.4294
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_08",
+      "slide_mm": 39.875,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987423,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.129129,
+      "approx_outer_fiber_strain": 0.580814,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 57,
+        "B_chassis": 0,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 2
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.425,
+          "x": 28.8105,
+          "y": 77.5495,
+          "z": 2.9417
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": {
+          "path_fraction": 0.6,
+          "x": 28.9773,
+          "y": 42.8979,
+          "z": -1.3906
+        }
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          27.77371,
+          97.10129
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_08",
+      "slide_mm": 39.875,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987374,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.086197,
+      "approx_outer_fiber_strain": 0.870095,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 59,
+        "B_chassis": 1,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.4125,
+          "x": 34.763,
+          "y": 79.9458,
+          "z": 2.7016
+        },
+        "B_chassis": {
+          "path_fraction": 1.0,
+          "x": 32.347,
+          "y": 54.8681,
+          "z": -3.8909
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          27.68455,
+          97.19045
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_08",
+      "slide_mm": 39.875,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.999648,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.013803,
+      "approx_outer_fiber_strain": 0.037243,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 20,
+        "B_chassis": 28,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9406,
+          "y": 71.8976,
+          "z": 6.171
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.7353,
+          "y": 72.0036,
+          "z": -4.7479
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          54.875,
+          120.30632
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_08",
+      "slide_mm": 39.875,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994403,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 10.385115,
+      "approx_outer_fiber_strain": 0.007222,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 48,
+        "OLED_hypothesis": 3,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.5375,
+          "x": 20.7832,
+          "y": 126.7171,
+          "z": -1.8307
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.3424,
+          "y": 74.8855,
+          "z": 7.6199
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 279,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          54.875,
+          127.91415
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_09",
+      "slide_mm": 44.859375,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987383,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.133837,
+      "approx_outer_fiber_strain": 0.560384,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 55,
+        "B_chassis": 0,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.425,
+          "x": 28.8105,
+          "y": 79.6897,
+          "z": 2.9417
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          31.51631,
+          98.34307
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_09",
+      "slide_mm": 44.859375,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987335,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.092335,
+      "approx_outer_fiber_strain": 0.812257,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 57,
+        "B_chassis": 1,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.425,
+          "x": 35.1309,
+          "y": 79.7292,
+          "z": 2.9417
+        },
+        "B_chassis": {
+          "path_fraction": 1.0,
+          "x": 32.3999,
+          "y": 59.8555,
+          "z": -3.9249
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          31.42926,
+          98.43011
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_09",
+      "slide_mm": 44.859375,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996467,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.010709,
+      "approx_outer_fiber_strain": 0.0373,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 20,
+        "B_chassis": 28,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9422,
+          "y": 71.9699,
+          "z": 6.171
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.7322,
+          "y": 76.5939,
+          "z": -4.695
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          59.85938,
+          122.81278
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_09",
+      "slide_mm": 44.859375,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994394,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 10.685269,
+      "approx_outer_fiber_strain": 0.007019,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 48,
+        "OLED_hypothesis": 3,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.5375,
+          "x": 20.7832,
+          "y": 129.488,
+          "z": -1.8307
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.3432,
+          "y": 75.0138,
+          "z": 7.6197
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 279,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          59.85938,
+          130.40101
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_10",
+      "slide_mm": 49.84375,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987359,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.134727,
+      "approx_outer_fiber_strain": 0.556682,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 52,
+        "B_chassis": 0,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.4375,
+          "x": 28.7769,
+          "y": 79.555,
+          "z": 2.681
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          35.25891,
+          99.58484
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_10",
+      "slide_mm": 49.84375,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987314,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.093813,
+      "approx_outer_fiber_strain": 0.799459,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 51,
+        "B_chassis": 2,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.4375,
+          "x": 35.152,
+          "y": 79.5876,
+          "z": 2.681
+        },
+        "B_chassis": {
+          "path_fraction": 1.0,
+          "x": 32.325,
+          "y": 64.836,
+          "z": -3.8743
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          35.17394,
+          99.66981
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_10",
+      "slide_mm": 49.84375,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996458,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.009462,
+      "approx_outer_fiber_strain": 0.037323,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 20,
+        "B_chassis": 28,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9436,
+          "y": 72.0399,
+          "z": 6.171
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.7337,
+          "y": 81.1698,
+          "z": -4.6423
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          64.84375,
+          125.31314
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_10",
+      "slide_mm": 49.84375,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994388,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 10.885313,
+      "approx_outer_fiber_strain": 0.00689,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 48,
+        "OLED_hypothesis": 3,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.5375,
+          "x": 20.7832,
+          "y": 132.2224,
+          "z": -1.8307
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.3439,
+          "y": 75.1394,
+          "z": 7.6195
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 279,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          64.84375,
+          132.88996
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_11",
+      "slide_mm": 54.828125,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987353,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.137905,
+      "approx_outer_fiber_strain": 0.543855,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 47,
+        "B_chassis": 0,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.45,
+          "x": 28.7492,
+          "y": 79.4618,
+          "z": 2.4155
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          39.00174,
+          100.82638
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_11",
+      "slide_mm": 54.828125,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.998731,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.098333,
+      "approx_outer_fiber_strain": 0.762711,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 46,
+        "B_chassis": 2,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.45,
+          "x": 35.1692,
+          "y": 79.4875,
+          "z": 2.4155
+        },
+        "B_chassis": {
+          "path_fraction": 1.0,
+          "x": 32.371,
+          "y": 69.823,
+          "z": -3.9073
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          38.9187,
+          100.90942
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_11",
+      "slide_mm": 54.828125,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996456,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.008346,
+      "approx_outer_fiber_strain": 0.037344,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 20,
+        "B_chassis": 27,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9448,
+          "y": 72.1075,
+          "z": 6.171
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.7399,
+          "y": 85.7316,
+          "z": -4.5901
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          69.82812,
+          127.80849
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_11",
+      "slide_mm": 54.828125,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994386,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 10.959486,
+      "approx_outer_fiber_strain": 0.006843,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 48,
+        "OLED_hypothesis": 4,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.5375,
+          "x": 20.7832,
+          "y": 134.9208,
+          "z": -1.8307
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.3446,
+          "y": 75.2624,
+          "z": 7.6194
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 280,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          69.82813,
+          135.38104
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_12",
+      "slide_mm": 59.8125,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987364,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.1432,
+      "approx_outer_fiber_strain": 0.523743,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 42,
+        "B_chassis": 0,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.4625,
+          "x": 28.7277,
+          "y": 79.4286,
+          "z": 2.1463
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          42.74611,
+          102.06639
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_12",
+      "slide_mm": 59.8125,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987322,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.103992,
+      "approx_outer_fiber_strain": 0.721209,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 41,
+        "B_chassis": 2,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.4625,
+          "x": 35.1827,
+          "y": 79.4476,
+          "z": 2.1463
+        },
+        "B_chassis": {
+          "path_fraction": 1.0,
+          "x": 32.4173,
+          "y": 74.8097,
+          "z": -3.9345
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          42.66494,
+          102.14756
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_12",
+      "slide_mm": 59.8125,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996458,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.009579,
+      "approx_outer_fiber_strain": 0.037321,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 20,
+        "B_chassis": 27,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9459,
+          "y": 72.1729,
+          "z": 6.171
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.7506,
+          "y": 90.2792,
+          "z": -4.5384
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          70.0,
+          130.29792
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_12",
+      "slide_mm": 59.8125,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994388,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 10.894874,
+      "approx_outer_fiber_strain": 0.006884,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 48,
+        "OLED_hypothesis": 3,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.5375,
+          "x": 20.7832,
+          "y": 137.5831,
+          "z": -1.8307
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.3452,
+          "y": 75.3828,
+          "z": 7.6192
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 279,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          70.0,
+          137.87426
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_13",
+      "slide_mm": 64.796875,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987393,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.144934,
+      "approx_outer_fiber_strain": 0.517475,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 37,
+        "B_chassis": 0,
+        "OLED_hypothesis": 4,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.475,
+          "x": 28.7123,
+          "y": 79.4746,
+          "z": 1.8741
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": {
+          "path_fraction": 0.0625,
+          "x": 31.9196,
+          "y": 82.406,
+          "z": 6.2247
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          46.48988,
+          103.30699
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_13",
+      "slide_mm": 64.796875,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987352,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.106998,
+      "approx_outer_fiber_strain": 0.700948,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 37,
+        "B_chassis": 2,
+        "OLED_hypothesis": 3,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.4625,
+          "x": 35.6132,
+          "y": 81.6952,
+          "z": 2.5681
+        },
+        "B_chassis": {
+          "path_fraction": 1.0,
+          "x": 32.4634,
+          "y": 79.7963,
+          "z": -3.9564
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.0625,
+          "x": 33.1877,
+          "y": 82.4365,
+          "z": 6.2247
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          46.41048,
+          103.3864
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_13",
+      "slide_mm": 64.796875,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996466,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.010408,
+      "approx_outer_fiber_strain": 0.037306,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 20,
+        "B_chassis": 27,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9469,
+          "y": 72.2361,
+          "z": 6.1709
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.7658,
+          "y": 94.8125,
+          "z": -4.4875
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          70.0,
+          132.78229
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_13",
+      "slide_mm": 64.796875,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994394,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 10.70249,
+      "approx_outer_fiber_strain": 0.007008,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 48,
+        "OLED_hypothesis": 3,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.5375,
+          "x": 20.7832,
+          "y": 140.2093,
+          "z": -1.8307
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.3458,
+          "y": 75.5005,
+          "z": 7.6191
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 279,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          70.0,
+          140.36962
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_14",
+      "slide_mm": 69.78125,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987439,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.150123,
+      "approx_outer_fiber_strain": 0.49959,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 32,
+        "B_chassis": 0,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.4875,
+          "x": 28.7031,
+          "y": 79.6194,
+          "z": 1.6
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          50.2346,
+          104.54665
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_14",
+      "slide_mm": 69.78125,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987399,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.113472,
+      "approx_outer_fiber_strain": 0.660957,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 35,
+        "B_chassis": 2,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.45,
+          "x": 35.6136,
+          "y": 86.1332,
+          "z": 2.8228
+        },
+        "B_chassis": {
+          "path_fraction": 1.0,
+          "x": 32.5086,
+          "y": 84.7826,
+          "z": -3.9736
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          50.15693,
+          104.62432
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_14",
+      "slide_mm": 69.78125,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996479,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.014405,
+      "approx_outer_fiber_strain": 0.037232,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 17,
+        "B_chassis": 27,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9478,
+          "y": 72.297,
+          "z": 6.1709
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.7857,
+          "y": 99.3313,
+          "z": -4.4375
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          70.0,
+          135.26055
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_14",
+      "slide_mm": 69.78125,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994403,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 10.407994,
+      "approx_outer_fiber_strain": 0.007206,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 48,
+        "OLED_hypothesis": 2,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.5375,
+          "x": 20.7832,
+          "y": 142.7992,
+          "z": -1.8307
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.3463,
+          "y": 75.6155,
+          "z": 7.619
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 279,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          70.0,
+          142.86708
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_15",
+      "slide_mm": 74.765625,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987502,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.155401,
+      "approx_outer_fiber_strain": 0.482621,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 21,
+        "B_chassis": 0,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.5125,
+          "x": 28.7031,
+          "y": 77.7225,
+          "z": 1.05
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          53.98081,
+          105.78482
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_15",
+      "slide_mm": 74.765625,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987464,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.118806,
+      "approx_outer_fiber_strain": 0.631283,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 28,
+        "B_chassis": 2,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.4375,
+          "x": 35.6092,
+          "y": 90.3708,
+          "z": 3.0738
+        },
+        "B_chassis": {
+          "path_fraction": 1.0,
+          "x": 32.5528,
+          "y": 89.7688,
+          "z": -3.9865
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          53.90483,
+          105.86079
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_15",
+      "slide_mm": 74.765625,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996498,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.01748,
+      "approx_outer_fiber_strain": 0.037175,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 17,
+        "B_chassis": 27,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9486,
+          "y": 72.3557,
+          "z": 6.1709
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.8102,
+          "y": 103.8352,
+          "z": -4.3885
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          70.0,
+          137.73347
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_15",
+      "slide_mm": 74.765625,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994415,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 10.037168,
+      "approx_outer_fiber_strain": 0.007472,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 48,
+        "OLED_hypothesis": 2,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.5375,
+          "x": 20.7832,
+          "y": 145.3523,
+          "z": -1.8307
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.3468,
+          "y": 75.7278,
+          "z": 7.6189
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 279,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          70.0,
+          145.36657
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "SLIDE_16",
+      "slide_mm": 79.75,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987584,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.159124,
+      "approx_outer_fiber_strain": 0.471332,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 16,
+        "B_chassis": 0,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.525,
+          "x": 28.7123,
+          "y": 78.2096,
+          "z": 0.7759
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          57.72632,
+          107.02368
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "SLIDE_16",
+      "slide_mm": 79.75,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987547,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.123724,
+      "approx_outer_fiber_strain": 0.606187,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 24,
+        "B_chassis": 2,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.4375,
+          "x": 35.6213,
+          "y": 92.5129,
+          "z": 3.0593
+        },
+        "B_chassis": {
+          "path_fraction": 1.0,
+          "x": 32.5956,
+          "y": 94.7548,
+          "z": -3.9956
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          57.65184,
+          107.09816
+        ],
+        "z": [
+          -3.63587,
+          6.28587
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "SLIDE_16",
+      "slide_mm": 79.75,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996522,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 2.023823,
+      "approx_outer_fiber_strain": 0.037059,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 17,
+        "B_chassis": 27,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9494,
+          "y": 72.4122,
+          "z": 6.1709
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.8396,
+          "y": 108.3235,
+          "z": -4.3408
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 51,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          70.0,
+          140.19958
+        ],
+        "z": [
+          -5.32364,
+          7.97364
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "SLIDE_16",
+      "slide_mm": 79.75,
+      "dock_mm": 0.0,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994432,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 9.611005,
+      "approx_outer_fiber_strain": 0.007804,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 48,
+        "OLED_hypothesis": 2,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.5375,
+          "x": 20.7832,
+          "y": 147.868,
+          "z": -1.8307
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.3472,
+          "y": 75.8373,
+          "z": 7.6188
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 279,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          70.0,
+          147.868
+        ],
+        "z": [
+          -13.13188,
+          15.78188
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "FINAL_DOCK_00",
+      "slide_mm": 79.75,
+      "dock_mm": 1.025,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987558,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.140988,
+      "approx_outer_fiber_strain": 0.53196,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 28,
+        "B_chassis": 0,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.525,
+          "x": 28.7123,
+          "y": 78.2041,
+          "z": 1.314
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          57.69105,
+          107.05895
+        ],
+        "z": [
+          -2.73795,
+          6.41295
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "FINAL_DOCK_00",
+      "slide_mm": 79.75,
+      "dock_mm": 1.025,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.998752,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.105663,
+      "approx_outer_fiber_strain": 0.709807,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 35,
+        "B_chassis": 2,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.45,
+          "x": 35.6121,
+          "y": 90.5734,
+          "z": 3.2856
+        },
+        "B_chassis": {
+          "path_fraction": 1.0,
+          "x": 32.503,
+          "y": 94.7538,
+          "z": -2.9467
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          57.61552,
+          107.13448
+        ],
+        "z": [
+          -2.73795,
+          6.41295
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "FINAL_DOCK_00",
+      "slide_mm": 79.75,
+      "dock_mm": 1.025,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996518,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 1.904945,
+      "approx_outer_fiber_strain": 0.039371,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 16,
+        "B_chassis": 27,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9495,
+          "y": 72.4169,
+          "z": 6.1838
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.8439,
+          "y": 108.3533,
+          "z": -3.3998
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 66,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          70.0,
+          140.305
+        ],
+        "z": [
+          -4.49565,
+          8.17065
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "FINAL_DOCK_00",
+      "slide_mm": 79.75,
+      "dock_mm": 1.025,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994425,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 9.382443,
+      "approx_outer_fiber_strain": 0.007994,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 48,
+        "OLED_hypothesis": 2,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.525,
+          "x": 20.737,
+          "y": 147.9193,
+          "z": -0.2503
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.3472,
+          "y": 75.8461,
+          "z": 7.6445
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 287,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          70.0,
+          147.97797
+        ],
+        "z": [
+          -12.34372,
+          16.01872
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "FINAL_DOCK_01",
+      "slide_mm": 79.75,
+      "dock_mm": 2.05,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987534,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.124658,
+      "approx_outer_fiber_strain": 0.601644,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 45,
+        "B_chassis": 0,
+        "OLED_hypothesis": 2,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.525,
+          "x": 28.7123,
+          "y": 78.199,
+          "z": 1.8521
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": {
+          "path_fraction": 0.4875,
+          "x": 28.884,
+          "y": 84.5382,
+          "z": 2.0264
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          57.6589,
+          107.0911
+        ],
+        "z": [
+          -1.85803,
+          6.55803
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "FINAL_DOCK_01",
+      "slide_mm": 79.75,
+      "dock_mm": 2.05,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987496,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.089399,
+      "approx_outer_fiber_strain": 0.838931,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 47,
+        "B_chassis": 2,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.475,
+          "x": 35.6016,
+          "y": 86.5118,
+          "z": 3.29
+        },
+        "B_chassis": {
+          "path_fraction": 1.0,
+          "x": 32.3966,
+          "y": 94.7515,
+          "z": -1.873
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          57.58226,
+          107.16774
+        ],
+        "z": [
+          -1.85803,
+          6.55803
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "FINAL_DOCK_01",
+      "slide_mm": 79.75,
+      "dock_mm": 2.05,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996514,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 1.790203,
+      "approx_outer_fiber_strain": 0.041895,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 15,
+        "B_chassis": 27,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9497,
+          "y": 72.4215,
+          "z": 6.1966
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.8485,
+          "y": 108.3818,
+          "z": -2.4585
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 79,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          70.0,
+          140.40592
+        ],
+        "z": [
+          -3.67467,
+          8.37467
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "FINAL_DOCK_01",
+      "slide_mm": 79.75,
+      "dock_mm": 2.05,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994419,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 9.156814,
+      "approx_outer_fiber_strain": 0.008191,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 48,
+        "OLED_hypothesis": 2,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.525,
+          "x": 20.737,
+          "y": 148.0267,
+          "z": 0.2878
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.025,
+          "x": 32.3472,
+          "y": 75.8547,
+          "z": 7.6702
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 292,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          70.0,
+          148.08503
+        ],
+        "z": [
+          -11.55774,
+          16.25774
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "FINAL_DOCK_02",
+      "slide_mm": 79.75,
+      "dock_mm": 4.1,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987493,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.097377,
+      "approx_outer_fiber_strain": 0.770201,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 112,
+        "B_chassis": 0,
+        "OLED_hypothesis": 2,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.525,
+          "x": 28.7123,
+          "y": 78.1904,
+          "z": 2.9284
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": {
+          "path_fraction": 0.4625,
+          "x": 28.7645,
+          "y": 88.6793,
+          "z": 3.4424
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          57.60431,
+          107.14569
+        ],
+        "z": [
+          -0.14665,
+          6.89665
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "FINAL_DOCK_02",
+      "slide_mm": 79.75,
+      "dock_mm": 4.1,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987453,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.062228,
+      "approx_outer_fiber_strain": 1.205245,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 117,
+        "B_chassis": 0,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.5125,
+          "x": 34.8875,
+          "y": 80.3245,
+          "z": 2.6354
+        },
+        "B_chassis": null,
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          57.52532,
+          107.22468
+        ],
+        "z": [
+          -0.14665,
+          6.89665
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "FINAL_DOCK_02",
+      "slide_mm": 79.75,
+      "dock_mm": 4.1,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996508,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 1.571778,
+      "approx_outer_fiber_strain": 0.047717,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 13,
+        "B_chassis": 27,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9499,
+          "y": 72.43,
+          "z": 6.2223
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.8588,
+          "y": 108.4351,
+          "z": -0.5749
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 99,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          70.0,
+          140.59433
+        ],
+        "z": [
+          -2.05342,
+          8.80342
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "FINAL_DOCK_02",
+      "slide_mm": 79.75,
+      "dock_mm": 4.1,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994408,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 8.711505,
+      "approx_outer_fiber_strain": 0.008609,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 48,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.5125,
+          "x": 20.7093,
+          "y": 148.0748,
+          "z": 2.3666
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 305,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          70.0,
+          148.2904
+        ],
+        "z": [
+          -9.99238,
+          16.74238
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "FINAL_DOCK_03",
+      "slide_mm": 79.75,
+      "dock_mm": 6.15,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987462,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.07721,
+      "approx_outer_fiber_strain": 0.971381,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 165,
+        "B_chassis": 2,
+        "OLED_hypothesis": 5,
+        "old_display_FPC_not_cross_chamber": 1
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.525,
+          "x": 28.7123,
+          "y": 78.1839,
+          "z": 4.0046
+        },
+        "B_chassis": {
+          "path_fraction": 0.425,
+          "x": 28.5154,
+          "y": 94.5349,
+          "z": 5.0309
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.3875,
+          "x": 28.7912,
+          "y": 99.6256,
+          "z": 5.4898
+        },
+        "old_display_FPC_not_cross_chamber": {
+          "path_fraction": 0.45,
+          "x": 28.4541,
+          "y": 90.6927,
+          "z": 4.6581
+        }
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          57.56331,
+          107.18669
+        ],
+        "z": [
+          1.50564,
+          7.29436
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "FINAL_DOCK_03",
+      "slide_mm": 79.75,
+      "dock_mm": 6.15,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987421,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.042138,
+      "approx_outer_fiber_strain": 1.779856,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 165,
+        "B_chassis": 7,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.525,
+          "x": 35.1923,
+          "y": 78.1711,
+          "z": 4.0046
+        },
+        "B_chassis": {
+          "path_fraction": 0.4125,
+          "x": 34.9653,
+          "y": 96.3736,
+          "z": 5.1484
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 0,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          57.48194,
+          107.26806
+        ],
+        "z": [
+          1.50564,
+          7.29436
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "FINAL_DOCK_03",
+      "slide_mm": 79.75,
+      "dock_mm": 6.15,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996505,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 1.369076,
+      "approx_outer_fiber_strain": 0.054781,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 12,
+        "B_chassis": 27,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9502,
+          "y": 72.4378,
+          "z": 6.248
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.871,
+          "y": 108.4833,
+          "z": 1.3103
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 119,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          70.0,
+          140.76434
+        ],
+        "z": [
+          -0.45946,
+          9.25946
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "FINAL_DOCK_03",
+      "slide_mm": 79.75,
+      "dock_mm": 6.15,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.9994398,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 8.275445,
+      "approx_outer_fiber_strain": 0.009063,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 46,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.5,
+          "x": 20.7,
+          "y": 148.0109,
+          "z": 4.4
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 295,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          70.0,
+          148.48409
+        ],
+        "z": [
+          -8.43643,
+          17.23643
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INBOARD_SERPENTINE_125",
+      "pose": "FINAL_DOCK_04",
+      "slide_mm": 79.75,
+      "dock_mm": 8.2,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9987442,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.064104,
+      "approx_outer_fiber_strain": 1.169967,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 165,
+        "B_chassis": 9,
+        "OLED_hypothesis": 27,
+        "old_display_FPC_not_cross_chamber": 5
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.525,
+          "x": 28.7123,
+          "y": 78.1797,
+          "z": 5.0809
+        },
+        "B_chassis": {
+          "path_fraction": 0.2875,
+          "x": 29.2093,
+          "y": 107.2624,
+          "z": 7.1955
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.15,
+          "x": 30.2862,
+          "y": 98.5571,
+          "z": 7.5548
+        },
+        "old_display_FPC_not_cross_chamber": {
+          "path_fraction": 0.35,
+          "x": 28.7537,
+          "y": 103.6283,
+          "z": 6.7672
+        }
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 36,
+      "curve_point_bounds": {
+        "x": [
+          28.7,
+          32.7
+        ],
+        "y": [
+          57.53675,
+          107.21325
+        ],
+        "z": [
+          3.10263,
+          7.74737
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "INNER_SIDE_SERPENTINE_125",
+      "pose": "FINAL_DOCK_04",
+      "slide_mm": 79.75,
+      "dock_mm": 8.2,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.99874,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 0.029077,
+      "approx_outer_fiber_strain": 2.579399,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 166,
+        "B_chassis": 40,
+        "OLED_hypothesis": 6,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.5125,
+          "x": 34.9082,
+          "y": 80.2206,
+          "z": 5.7814
+        },
+        "B_chassis": {
+          "path_fraction": 0.1,
+          "x": 34.0722,
+          "y": 90.5916,
+          "z": 7.0255
+        },
+        "OLED_hypothesis": {
+          "path_fraction": 0.15,
+          "x": 33.2356,
+          "y": 98.7037,
+          "z": 7.5559
+        },
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 38,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          35.2
+        ],
+        "y": [
+          57.45328,
+          107.29672
+        ],
+        "z": [
+          3.10263,
+          7.74737
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "OUTBOARD_SINGLE_BOW_125",
+      "pose": "FINAL_DOCK_04",
+      "slide_mm": 79.75,
+      "dock_mm": 8.2,
+      "assumed_length_mm": 125.0,
+      "numerical_arclength_mm": 125.0,
+      "sampled_polyline_length_mm": 124.9996505,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 1.182111,
+      "approx_outer_fiber_strain": 0.063446,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 11,
+        "B_chassis": 27,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": {
+          "path_fraction": 0.0125,
+          "x": 33.9505,
+          "y": 72.4448,
+          "z": 6.2737
+        },
+        "B_chassis": {
+          "path_fraction": 0.9125,
+          "x": 36.8855,
+          "y": 108.5263,
+          "z": 3.1973
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 335,
+      "outside_assembled_proxy_z_footprint_samples": 137,
+      "curve_point_bounds": {
+        "x": [
+          32.7,
+          49.7
+        ],
+        "y": [
+          70.0,
+          140.91559
+        ],
+        "z": [
+          1.10757,
+          9.74243
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    },
+    {
+      "candidate": "GENTLE_INBOARD_SINGLE_BOW_150",
+      "pose": "FINAL_DOCK_04",
+      "slide_mm": 79.75,
+      "dock_mm": 8.2,
+      "assumed_length_mm": 150.0,
+      "numerical_arclength_mm": 150.0,
+      "sampled_polyline_length_mm": 149.999439,
+      "length_absolute_error_mm": 0.0,
+      "minimum_bend_radius_mm": 7.849013,
+      "approx_outer_fiber_strain": 0.009555,
+      "band_width_mm": 1.2,
+      "band_thickness_mm": 0.15,
+      "full_width_ribbon_sample_count": 405,
+      "sample_inside_solid_counts": {
+        "A_chassis": 0,
+        "B_chassis": 45,
+        "OLED_hypothesis": 0,
+        "old_display_FPC_not_cross_chamber": 0
+      },
+      "first_hits": {
+        "A_chassis": null,
+        "B_chassis": {
+          "path_fraction": 0.4875,
+          "x": 20.7093,
+          "y": 147.834,
+          "z": 6.3821
+        },
+        "OLED_hypothesis": null,
+        "old_display_FPC_not_cross_chamber": null
+      },
+      "outside_current_chassis_width_footprint_samples": 0,
+      "outside_assembled_proxy_z_footprint_samples": 279,
+      "curve_point_bounds": {
+        "x": [
+          20.7,
+          32.7
+        ],
+        "y": [
+          70.0,
+          148.66604
+        ],
+        "z": [
+          -6.88914,
+          17.73914
+        ]
+      },
+      "passes_geometry_and_R7p5_screen": false,
+      "physical_OEM_permission": false
+    }
+  ],
+  "all_candidates_rejected": true,
+  "manufacturing_go": false
+}

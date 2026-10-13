@@ -1,0 +1,81 @@
+{
+  "revision": "BM28 public facts rechecked 2026-10-13; no product qualification",
+  "retrieved_utc": "2026-10-13T03:33:52.524968+00:00",
+  "primary_sources": {
+    "header_product": "https://www.hirose.com/en/product/p/CL0673-5024-0-53",
+    "receptacle_product": "https://www.hirose.com/en/product/p/CL0673-5025-0-53",
+    "catalog": "https://www.hirose.com/en/product/series/BM28/documents?path=%2Fapi%2Fv1%2Fseries%2FBM28%2Fdocuments%2Fproduct_series_catalog%2Fcontent%3Flang%3DEN",
+    "header_spec": "https://www.hirose.com/en/product/p/CL0673-5024-0-53/documents?path=%2Fapi%2Fv1%2Fproducts%2FCL0673-5024-0-53%2Fdocuments%2Fspec_sheet%2Fcontent%3Flang%3DEN",
+    "guideline": "https://www.hirose.com/en/product/p/CL0673-5024-0-53/documents?path=%2Fapi%2Fv1%2Fproducts%2FCL0673-5024-0-53%2Fdocuments%2Fitems%2F515c108a-21a6-4e26-a862-8e9a8efe52e8%2Fcontent%3Flang%3DEN",
+    "header_2d": "https://www.hirose.com/en/product/p/CL0673-5024-0-53/documents?path=%2Fapi%2Fv1%2Fproducts%2FCL0673-5024-0-53%2Fdocuments%2Fdrawing_2d%2Fcontent%3Flang%3DEN"
+  },
+  "exact_header": "BM28B0.6-24DP/2-0.35V(53)",
+  "exact_receptacle": "BM28B0.6-24DS/2-0.35V(53)",
+  "pairing_basis": "header specification sheet APPLICABLE CONNECTOR lists BM28B0.6-24DS/2-0.35V",
+  "signal_contacts": 24,
+  "power_contacts": 2,
+  "signal_rating_A_per_contact": 0.3,
+  "power_rating_A_per_contact": 5.0,
+  "catalog_total_current_max_all_pins_A": 10.0,
+  "catalog_voltage_AC_DC_V": 50,
+  "mated_board_gap_mm": 0.6,
+  "contact_pitch_mm": 0.35,
+  "mating_cycles_specified": 10,
+  "service_sliding_mate_allowed": false,
+  "static_service_only": true,
+  "connector_is_mechanically_polarized": false,
+  "system_keying_pin_mapping_verified": false,
+  "header_bbox_mm": [
+    6.12,
+    1.5,
+    0.465
+  ],
+  "receptacle_bbox_mm": [
+    6.8,
+    1.7,
+    0.6
+  ],
+  "header_no_material_keepout_min_length_width_mm": [
+    7.0,
+    1.9
+  ],
+  "FR4_stiffener_min_mm": 0.3,
+  "steel_stiffener_min_mm": 0.2,
+  "supplier_guideline_id": "ETAD-H1016-00; DIS-H-00011614 RevNo 1 20211108",
+  "guideline_required_concepts": [
+    "compliant buffer between cover and connector across mounting area",
+    "local FPC freedom; no positioning boss that transfers drop shock directly",
+    "backside stiffener; thinner needs manufacturer consultation",
+    "unobstructed mating access; alignment marking",
+    "appropriate pad/mask/reflow and fillet verification"
+  ],
+  "family_USB4_Gen2_20Gbps_claim_scope": "connector contacts only; installed end-to-end line requires independent SI/EMI/ESD qualification",
+  "catalog_vs_part_spec_conflicts": [
+    {
+      "field": "post-10-mating signal/power resistance mOhm",
+      "catalog": [
+        100,
+        30
+      ],
+      "part_spec": [
+        70,
+        15
+      ]
+    },
+    {
+      "field": "dry insulation resistance MOhm",
+      "catalog_min": 1000,
+      "part_spec_min": 50
+    },
+    {
+      "field": "shock m/s2",
+      "catalog": 450,
+      "part_spec": 490
+    }
+  ],
+  "conflict_disposition": "retain both source revisions; supplier confirmation required before procurement qualification, no silent choice of looser limit",
+  "FPC_dynamic_radius_supplier_mm": null,
+  "FPC_life_qualified_cycles": null,
+  "real_PCBA_footprint_solder_stiffener_buffer_assembly_verified": false,
+  "manufacturing_go": false
+}

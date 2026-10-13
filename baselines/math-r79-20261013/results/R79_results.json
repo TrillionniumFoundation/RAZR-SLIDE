@@ -1,0 +1,82 @@
+{
+  "CAD_modify_go": false,
+  "RFQ_sent": false,
+  "acceleration_start_rate_necessary": {
+    "R78_kstar_strictly_infeasible_for_finite_A_if_Fprime_start_zero": true,
+    "assumed_A": 0.3,
+    "minimum_k_pair_mm_per_mm": 0.9644012635024701,
+    "s_critical_mm": 41.82858384939876,
+    "scope": "necessary two-pose scalar condition; not a sufficient full-motion rate"
+  },
+  "acceleration_terminal_necessary": {
+    "critical_s_mm": 73.27230461949394,
+    "critical_u_mm": 22.598782617708192,
+    "minimal_A_necessary_mm_per_mm2": 0.18798387608105407,
+    "not_physical_time_acceleration": true,
+    "proof": "At t=T, Fdot_travel=0 and F(T)>=l(T). For any s<T, F(s)<=u(s), |Fddot_travel|<=A gives F(T)-F(s)<= A(T-s)^2/2; maximize ratio over s>Y. Unique root by strictly negative Hprime for s>Y.",
+    "stationarity_residual": -4.3520742565306136e-14,
+    "terminal_lower_mm": 26.542734853163047
+  },
+  "candidate_go": false,
+  "example_software_only": {
+    "LP_status": "feasible only, not minimal rate proof",
+    "continuum_slide_LOWER_min_certified_mm": 0.0034958903834406566,
+    "continuum_slide_UPPER_min_certified_mm": 0.0035113554199066666,
+    "dock_lower_margin_mm": 0.004000000000001336,
+    "dock_upper_margin_mm": 2.5267019754357882,
+    "grid_points": 50001,
+    "hypothetical_acceleration_A_mmF_per_mmTravel_squared": 0.3,
+    "hypothetical_rate_K_mmF_per_mmTravel": 0.98,
+    "largest_conservative_curvature_drop_mm": 0.04442220065429907,
+    "margin_requested_per_grid_node_mm": 0.004,
+    "max_abs_acc_segment": 0.3,
+    "max_abs_slope_grid": 0.98,
+    "max_linear_equality_residual": 3.4382219293860317e-14,
+    "maximum_abs_a": 0.3,
+    "maximum_abs_v": 0.98,
+    "method": "For twice-differentiable gap g, g(t)>=min(g_endpoints)-sup|g_second|*h²/8 on every segment; bound d_second<=1/Z and analytic upper_second via enclosing dmin,dmax; handle safe_mode discontinuity conservatively; dock monotonicity.",
+    "min_lower_margin_mm": 0.0036649649167213028,
+    "min_upper_margin_mm": 0.0035136033138343237,
+    "nodes": 806,
+    "nonoptimal_existence_witness_only": true,
+    "not_substitute_for_continuum_cert": true,
+    "segments": 805,
+    "worst_upper_interval": [
+      58.61625,
+      58.7159375,
+      0.0933703874884132,
+      0.0004886445800928929,
+      0.0039999999999995595
+    ]
+  },
+  "frozen_R78_kstar": 0.9277021685718772,
+  "frozen_R78_sminus": 42.647473683606755,
+  "manufacturing_go": false,
+  "new_protected_OEM_CAD_modified": false,
+  "new_real_FPC_USB_power_OLED_supplier_evidence": 0,
+  "parent_archives": {
+    "R76": {
+      "CRC": true,
+      "members": 19,
+      "role": "read-only historical mathematical ancestor",
+      "sha256": "d3205dbabc1c72adfbbac63948b9cb20285e0bf52e07dd184b45268f628e397e"
+    },
+    "R77": {
+      "CRC": true,
+      "members": 21,
+      "role": "read-only historical mathematical ancestor",
+      "sha256": "43a61e1afd43d075d35638dcb683eefe1682a3cdae65f916e1409c44ae3abee2"
+    },
+    "R78": {
+      "CRC": true,
+      "members": 25,
+      "role": "direct mathematical parent",
+      "sha256": "7f6cc2be3f0bd08879b39db48ef85b292a43b344947b932ea2aeb21512f7ea52"
+    }
+  },
+  "real_FPC_copper_3D_OCC_swaps": 0,
+  "real_time_domain_conversion": "If mechanical progress p(τ), reel free material F(p): F_time_dot=Fprime(p)*p_time_dot; F_time_ddot=Fsecond(p)*p_time_dot²+Fprime(p)*p_time_ddot. No motor/speed/tension qualification.",
+  "required_dock_Fprime_end": 0,
+  "required_standstill_Fprime_start": 0,
+  "version": "R79-conditional-standstill-acceleration"
+}

@@ -1,0 +1,60 @@
+{
+  "revision": "R27 conceptual 2-pack controlled exposure power fault tree, DO NOT fabricate from this",
+  "model_assumptions": [
+    "each pack has separate normally-open upstream isolator",
+    "main and precharge branches meet AFTER upstream isolator",
+    "hard PCB bypass shorts independent of switches",
+    "all pack-bus rails presumed live for worst-case analysis",
+    "no real FET, BMS, ESD, fuse, PCB layout or conducted test evidence"
+  ],
+  "enumerated_fault_states": 512,
+  "dangerous_states": 487,
+  "minimal_cut_sets": [
+    [
+      "A_direct_pad_short"
+    ],
+    [
+      "B_direct_pad_short"
+    ],
+    [
+      "shared_live_bus_to_pad_short"
+    ],
+    [
+      "A_iso_weld",
+      "A_main_weld"
+    ],
+    [
+      "A_iso_weld",
+      "A_precharge_weld"
+    ],
+    [
+      "B_iso_weld",
+      "B_main_weld"
+    ],
+    [
+      "B_iso_weld",
+      "B_precharge_weld"
+    ]
+  ],
+  "one_fault_dangerous_minimal_cuts": [
+    [
+      "A_direct_pad_short"
+    ],
+    [
+      "B_direct_pad_short"
+    ],
+    [
+      "shared_live_bus_to_pad_short"
+    ]
+  ],
+  "zero_fault_live_pad": false,
+  "selected_material": [
+    "TE 2199001-1 may be considered for rated signal only, not main power"
+  ],
+  "main_battery_connector_current_rating_not_verified": true,
+  "independent_USB2_USB3_CC_pinout_and_SI_not_verified": true,
+  "true_zero_volt_contact_measurement_missing": true,
+  "powered_contact_hot_swap_and_battery_reverse_current_unverified": true,
+  "no_real_hardware_qualifying_results": true,
+  "manufacturing_go": false
+}

@@ -1,0 +1,13 @@
+{
+  "revision":"R22", "overall":"MANUFACTURING_NO_GO", "theory_vs_reality":"CadQuery/OCC valid solids and logic truth tables only",
+  "product_constraints":{"both_cabins_same_shape":true,"single_primary_OLED_inches_approx":7,"B_upward_slide_mm_nominal":79.75,"B_terminal_forward_shift_mm_nominal":8.2,"A_battery_space_prioritized":true,"rear_independent_display":false,"total_battery_4700mAh_verified":false},
+  "gates":[
+   {"id":"M-LOCK","ideal_proxy_CAD":"PASS_LIMITED","physical_hardstop":"BLOCKED","A_captured_center_key":"MISSING","spring_default_closed":"MISSING","misrelease_both_legacy_dogs_blocked_only_in_proxy":true,"force_life_dust_drop_300k_tests":"MISSING","status":"NO_GO"},
+   {"id":"E-SIGNAL","TE2199001-1_nominal_current_A":1.5,"classification":"Signal","OEM_STEP_and_contact_aging":"MISSING","status":"NO_GO"},
+   {"id":"E-USB","candidate_architecture":"PHY+USB-C in B","actual_board_and_port_CAD":"MISSING","cross_cabin_highspeed":"NOT_ROUTED","eye_and_compliance":"MISSING","status":"NO_GO"},
+   {"id":"E-POWER","separate_power_contact":"NOT_SELECTED","battery_parallel_without_isolation":false,"8192_state_reference_logic":"PASS_LIMITED","PCB_FET_BMS_fuse_weld_short_thermal":"NOT_BUILT","300k_supplier_cycle_evidence":"MISSING","status":"NO_GO"},
+   {"id":"D-OLED","module_target_7inch_supplier_datasheet":"MISSING","R3p4_supported_for_full_stack":false,"dynamic_bend":"UNVERIFIED","static_stow_residual_strain":"UNVERIFIED","flattening_force":"UNVERIFIED","300k_cycles":"UNVERIFIED","status":"NO_GO"}
+  ],
+  "R22_deliverables":["5 re-imported STEP design-proxy assemblies","r22_mechanics.py source & OCC 5-pose JSON","320 proxy mechanical injection cases","8192 reference power-guard cases","OLED R/t/clearance sweep","offline HTML state viewer","OEM RFQ and acceptance matrix","R21 source and CAD baseline","37 local R22 tests"],
+  "manufacturing_go":false
+}

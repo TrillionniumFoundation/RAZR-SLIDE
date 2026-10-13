@@ -1,0 +1,123 @@
+{
+  "revision": "R22 OLED supply-data RFI; no released panel drawing",
+  "r21_assumed_screen_mm": {
+    "R": 3.4,
+    "t": 0.16,
+    "available": 7.3,
+    "target_clearance": 0.3,
+    "theoretical_max_R_if_t_assumption_and_target_clearance_hold_mm": 3.42
+  },
+  "candidate_public_technologies": [
+    {
+      "vendor": "Visionox",
+      "public_claim": "Min roll radius 5 mm for complete module; slidable demonstration R10, travel75",
+      "radii_mm": [
+        5.0,
+        10.0
+      ],
+      "url": "https://www.visionox.com/en/technology-product/multi-form.html",
+      "this_7inch_OLED_specific_DCAD_status": "UNAVAILABLE",
+      "OEM_permission_to_use_R3_4": false
+    },
+    {
+      "vendor": "Visionox",
+      "public_claim": "2017 older bendable prototype with R3, 207micron module",
+      "radius_mm": 3.0,
+      "prototype_only": true,
+      "url": "https://www.visionox.com/en/contents/190/338.html",
+      "this_7inch_OLED_specific_DCAD_status": "UNAVAILABLE",
+      "OEM_permission_to_use_R3_4": false
+    },
+    {
+      "vendor": "BOE",
+      "public_claim": "slidable/rollable f-OLED technology portfolio; no public target part datasheet",
+      "url": "https://www.boe.com/global/en/Products_OLED.html",
+      "this_7inch_OLED_specific_DCAD_status": "UNAVAILABLE",
+      "OEM_permission_to_use_R3_4": false
+    }
+  ],
+  "ideal_screening": [
+    {
+      "radius_mm": 3.0,
+      "module_stack_mm": 0.16,
+      "available_stack_mm": 7.3,
+      "path_2R_plus_t_mm": 6.16,
+      "nominal_residual_mm": 1.14,
+      "target_residual_mm": 0.3,
+      "ideal_geometry_screening_pass": true,
+      "model_is_ideal_and_does_not_include_adhesive_rails_flattening_force_or_aging": true
+    },
+    {
+      "radius_mm": 3.4,
+      "module_stack_mm": 0.16,
+      "available_stack_mm": 7.3,
+      "path_2R_plus_t_mm": 6.96,
+      "nominal_residual_mm": 0.34,
+      "target_residual_mm": 0.3,
+      "ideal_geometry_screening_pass": true,
+      "model_is_ideal_and_does_not_include_adhesive_rails_flattening_force_or_aging": true
+    },
+    {
+      "radius_mm": 3.42,
+      "module_stack_mm": 0.16,
+      "available_stack_mm": 7.3,
+      "path_2R_plus_t_mm": 7.0,
+      "nominal_residual_mm": 0.3,
+      "target_residual_mm": 0.3,
+      "ideal_geometry_screening_pass": true,
+      "model_is_ideal_and_does_not_include_adhesive_rails_flattening_force_or_aging": true
+    },
+    {
+      "radius_mm": 5.0,
+      "module_stack_mm": 0.16,
+      "available_stack_mm": 7.3,
+      "path_2R_plus_t_mm": 10.16,
+      "nominal_residual_mm": -2.86,
+      "target_residual_mm": 0.3,
+      "ideal_geometry_screening_pass": false,
+      "model_is_ideal_and_does_not_include_adhesive_rails_flattening_force_or_aging": true
+    },
+    {
+      "radius_mm": 10.0,
+      "module_stack_mm": 0.16,
+      "available_stack_mm": 7.3,
+      "path_2R_plus_t_mm": 20.16,
+      "nominal_residual_mm": -12.86,
+      "target_residual_mm": 0.3,
+      "ideal_geometry_screening_pass": false,
+      "model_is_ideal_and_does_not_include_adhesive_rails_flattening_force_or_aging": true
+    }
+  ],
+  "r21_screen_edge_mm": [
+    {
+      "extra_per_side_mm": 0,
+      "nearest_mm": 0.319619,
+      "meets_0_30": true
+    },
+    {
+      "extra_per_side_mm": 0.15,
+      "nearest_mm": 0.28954,
+      "meets_0_30": false
+    },
+    {
+      "extra_per_side_mm": 0.2,
+      "nearest_mm": 0.23954,
+      "meets_0_30": false
+    }
+  ],
+  "must_obtain_OEM": [
+    "Real complete 7-inch module active area, gross encapsulation outer XY envelope and COF/COG routing/cut shape STEP",
+    "Full layer stack after lamination including cover, OCA, OLED, backplate, liner, neutral axis and adhesives",
+    "Vendor-approved dynamic and long-stow static Rmin for this exact stack, both tension and compression orientations",
+    "Flattening force-vs-position, speed, temperature, prestorage time; IEC 62715-6-42:2026 methods",
+    "Post 24/168/1000-hour static R3.4 stow residual strain/crease, flatness, stress relaxation and irreversible curl",
+    "Dust/scratch/edge delamination, thermal-humidity lifetime and design target 300k full slide cycles",
+    "Cable tail strength, lamination sliding friction, tensioner spring envelope and transport/storage constraints"
+  ],
+  "IEC_62715_6_42_2026": "Flattening force MEASUREMENT method for rolled display devices, neither product qualification nor lifetime standard",
+  "IEC_source": "https://webstore.iec.ch/en/publication/78233",
+  "seven_inch_module_oem_specifications_received": false,
+  "engineering_geometric_candidate_passes_only_assumptions": true,
+  "module_lifetime_and_R3_4_qualified": false,
+  "manufacture_go": false
+}

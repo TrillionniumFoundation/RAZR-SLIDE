@@ -1,0 +1,154 @@
+{
+  "scope": "new conceptual release policy and path-specific FMEA; no implemented hardware",
+  "research_config": {
+    "two_equal_compartments": true,
+    "single_approx_7inch_flexible_OLED": true,
+    "B_upward_travel_mm": 79.75,
+    "terminal_normal_seating_mm": 8.2,
+    "A_larger_battery_priority": true
+  },
+  "candidate_paths": {
+    "signal": "static BM28 endpoint, independently strain-relieved signal FPC; pinout pending",
+    "USB": "separate static termination and controlled-impedance moving path; speed/pinout pending",
+    "power": "local pack/BMS in each compartment; separately protected controlled exchange path pending"
+  },
+  "direct_pack_parallel_connection_allowed": false,
+  "BM28_repeated_mating_during_slide_allowed": false,
+  "mechanical_force_carried_by_FPC_allowed": false,
+  "real_pinout_schematic_PCB_harness_frozen": false,
+  "default_force_bounds": {
+    "retract_resistance_max_N": null,
+    "actuator_limit_max_N": null,
+    "damage_threshold_min_N": null,
+    "capture_strength_min_N": null,
+    "calibrated_limit_max_N": null,
+    "available_retraction_force_min_N": null
+  },
+  "default_force_decision": {
+    "model_feasible": false,
+    "reason": "missing measured worst-case bounds",
+    "physical_qualification": false,
+    "manufacturing_go": false
+  },
+  "default_release_decision": {
+    "model_release_allowed": false,
+    "missing": [
+      "intentional_release",
+      "both_endpoint_retention_verified",
+      "both_sources_isolation_commanded",
+      "voltage_zero_measured_independently",
+      "residual_energy_bounded",
+      "harness_retraction_position_verified",
+      "finite_force_window_available",
+      "passive_fail_closed_retention_verified"
+    ],
+    "physical_qualification": false,
+    "manufacturing_go": false
+  },
+  "release_logic_states": 256,
+  "release_logic_permitted_state_count": 1,
+  "fault_witnesses": [
+    {
+      "fault": "signal_fpc_open",
+      "affected_paths": [
+        "signal"
+      ],
+      "hazard": "loss of sensing/control; mechanical retention must persist without software",
+      "required_evidence": "independent passive latch and force-limited safe-stop test"
+    },
+    {
+      "fault": "usb_fpc_open_or_pair_short",
+      "affected_paths": [
+        "USB"
+      ],
+      "hazard": "link loss, ESD/ground-current injection, possible backfeed",
+      "required_evidence": "frozen USB topology, protection/layout review, SI and fault tests"
+    },
+    {
+      "fault": "power_harness_open",
+      "affected_paths": [
+        "power"
+      ],
+      "hazard": "undervoltage, loss of actuator supply, local residual energy",
+      "required_evidence": "local BMS, safe actuator power-loss position, discharge waveform"
+    },
+    {
+      "fault": "power_harness_short_to_signal",
+      "affected_paths": [
+        "power",
+        "signal"
+      ],
+      "hazard": "control upset and battery-fed short despite separate net names",
+      "required_evidence": "physical separation, abrasion/insulation tests, fault current limiting"
+    },
+    {
+      "fault": "power_harness_short_to_usb_shield_or_ground",
+      "affected_paths": [
+        "power",
+        "USB"
+      ],
+      "hazard": "shield/ground becomes unintended battery return",
+      "required_evidence": "all return paths and chassis contacts in schematic/PCB/harness FMEA"
+    },
+    {
+      "fault": "A_direct_pad_short",
+      "affected_paths": [
+        "power"
+      ],
+      "hazard": "source A bypasses commanded isolation",
+      "required_evidence": "physical PCB bypass injection and independently measured zero voltage"
+    },
+    {
+      "fault": "B_direct_pad_short",
+      "affected_paths": [
+        "power"
+      ],
+      "hazard": "source B bypasses commanded isolation",
+      "required_evidence": "physical PCB bypass injection and independently measured zero voltage"
+    },
+    {
+      "fault": "shared_live_bus_to_pad_short",
+      "affected_paths": [
+        "power"
+      ],
+      "hazard": "shared bus bypasses commanded isolation",
+      "required_evidence": "shared rail elimination or tested independent interruption path"
+    },
+    {
+      "fault": "stale_zero_voltage_measurement",
+      "affected_paths": [
+        "power",
+        "signal"
+      ],
+      "hazard": "controller can release against energized metal if sensor falsely reports zero",
+      "required_evidence": "separate measurement/inhibit fault injection; software guard alone is insufficient"
+    },
+    {
+      "fault": "both_release_channels_common_cause",
+      "affected_paths": [
+        "mechanical"
+      ],
+      "hazard": "two side latches sharing an actuator/load path can both release",
+      "required_evidence": "real kinematics, separate load paths, common-cause physical fault test"
+    },
+    {
+      "fault": "fpc_anchor_slip",
+      "affected_paths": [
+        "signal",
+        "USB",
+        "power"
+      ],
+      "hazard": "connector sees peel/axial force or moving loom becomes structural restraint",
+      "required_evidence": "actual anchor/strain-relief CAD, measured force/strain at endpoints and every pose"
+    }
+  ],
+  "sequencing_requirement": [
+    "stop motion and keep both captures",
+    "isolate all energy sources and measure voltage/residual energy",
+    "verify retraction at bounded force; jam means stay captured",
+    "permit intentional latch release only after prior requirements"
+  ],
+  "important_scope_limit": "logical release_permission does not physically interrupt shorts, retract a jam, or create a latch",
+  "physical_qualification": false,
+  "manufacturing_go": false
+}

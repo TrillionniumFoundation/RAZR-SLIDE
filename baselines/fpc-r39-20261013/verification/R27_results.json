@@ -1,0 +1,125 @@
+{
+  "revision": "R27 OCC double-side captive OPEN shutter research; no hardware released",
+  "product_form_locked": {
+    "equal_A_B_external_nominal_mm": [
+      94.25,
+      73.99
+    ],
+    "B_upward_slide_mm": 79.75,
+    "B_Z_seat_mm": 8.2,
+    "OLED_main_screen_inch_approx": 7,
+    "separate_external_screen": false,
+    "A_battery_priority": true,
+    "4700mAh_target_not_verified": true
+  },
+  "test_suites": {
+    "R21": {
+      "tests": 28,
+      "log": "verification/R27_inherited_R21.log",
+      "sha256": "b6decbdc135e63c82b6987a1f4fc671eb9dfc52b50aec8ffeb36212d790dac60"
+    },
+    "R22": {
+      "tests": 37,
+      "log": "verification/R27_inherited_R22.log",
+      "sha256": "d5e42a98ddb94fc3b7ea92057e310003dd0ac035a3c48b07067193f28db94ba7"
+    },
+    "R22_adversarial": {
+      "tests": 11,
+      "log": "verification/R27_inherited_R22_adversarial.log",
+      "sha256": "a12e4030530bb59870107825ff67f8aace00972f91978fc616ab80c864d52bfa"
+    },
+    "R23": {
+      "tests": 22,
+      "log": "verification/R27_inherited_R23.log",
+      "sha256": "1368307402ce409658866223475247578970388c6246eed5a0814fb9ce95ad5d"
+    },
+    "R24": {
+      "tests": 25,
+      "log": "verification/R27_inherited_R24.log",
+      "sha256": "2cf1ceec3302c923a93754b88b2877ac3188384ad387d77345d47be7fb9b96dd"
+    },
+    "R25": {
+      "tests": 30,
+      "log": "verification/R27_inherited_R25.log",
+      "sha256": "063b29e70da3b7f9b89fc3cf684cb7df1ebd28f3e3324f95e53bdb51505a10ce"
+    },
+    "R26": {
+      "tests": 38,
+      "log": "verification/R27_inherited_R26.log",
+      "sha256": "47349bbb9001e6e9146e0cb8bb3a8bfce933b0b994e834106395d31e3d96e075"
+    },
+    "R27": {
+      "tests": 35,
+      "log": "verification/R27_new_35.log",
+      "sha256": "75487a999c3d8ff61dc985e9c1ada3acf33928222274e4fa1e20fffc025eac1a"
+    }
+  },
+  "total_unittest_cases": 226,
+  "unittest_passed": true,
+  "R27_new_unittest_cases": 35,
+  "R27_OPEN_mechanical_endpoint_defect_fixed_locally": true,
+  "first_sampled_ext_contact_mm": {
+    "L": 0.072,
+    "R": 0.072
+  },
+  "R26_old_full_0p8_carrier_gate_escapes_but_R27_intersects": true,
+  "R27_new_gate_open_lateral_free_at_ext_0p8": true,
+  "R27_closed_gate_cannot_auto_retract_preextended_contact": true,
+  "R27_workpiece_B_additional_cut_mm3": 0.0,
+  "R27_B_existing_cavity_reused_no_new_mounting_support": true,
+  "R27_10_nominal_poses_checked": 10,
+  "R27_10_pose_unexpected_selected_clashes": 0,
+  "R27_tolerance_hypothetical_XYZ_configurations": 108,
+  "R27_tolerance_OCP_contact_evaluations": 432,
+  "R27_tolerance_groups": [
+    {
+      "hypothetical_each_axis_perturbation_mm": 0.02,
+      "cases": 54,
+      "fully_retracted_false_jam_count": 0,
+      "fails_to_intercept_ext_0p15_count": 0,
+      "fails_to_intercept_ext_0p8_count": 0,
+      "fully_open_false_jam_0p8_count": 0
+    },
+    {
+      "hypothetical_each_axis_perturbation_mm": 0.05,
+      "cases": 54,
+      "fully_retracted_false_jam_count": 0,
+      "fails_to_intercept_ext_0p15_count": 0,
+      "fails_to_intercept_ext_0p8_count": 0,
+      "fully_open_false_jam_0p8_count": 0
+    }
+  ],
+  "mechanical_joint_fault_combinations": 64,
+  "mechanical_escapes_in_model": 36,
+  "conceptual_dual_battery_fault_states": 512,
+  "conceptual_electrical_dangerous_states": 487,
+  "conceptual_single_bypass_minimal_hazard_cuts": [
+    [
+      "A_direct_pad_short"
+    ],
+    [
+      "B_direct_pad_short"
+    ],
+    [
+      "shared_live_bus_to_pad_short"
+    ]
+  ],
+  "R27_STEP_scene_count": 12,
+  "R27_STEP_parts_per_scene": 18,
+  "OLED_nominal_edge_clearance_mm": 0.12954002,
+  "B_gate_top_clearance_mm": 0.11,
+  "original_R24_rail_web_mm": 0.22,
+  "real_OEM_full_OLED_width_and_Rdynamic_unknown": true,
+  "real_gates_pawls_springs_bearings_FEA_durability_unqualified": true,
+  "power_hardware_BMS_USB2_USB3_safety_unqualified": true,
+  "false_capture_without_A_not_excluded": true,
+  "real_manufacturing_and_life_qualifications": false,
+  "manufacturing_go": false,
+  "CAD_A_B_SHA256": {
+    "R27_A_KEYED_UNCHANGED.brep": "083faa291fa8574b183185340ec3cbc3de66d9cb27b1a6fb731fb283ea9632e6",
+    "R27_B_CAPTIVE_OPEN_GATE_CUT.brep": "d3362609a4f4d74dd537213ae7ab3c37180556af6f41ed0f4eea38e4a7dacc59"
+  },
+  "CAD_STEP_manifest_SHA256": "94865519ace78f518e428c5018c89ef8c1f5d5938797bfd6d0823aecdb0135d0",
+  "python": "3.13.5",
+  "cadquery": "2.8.0"
+}

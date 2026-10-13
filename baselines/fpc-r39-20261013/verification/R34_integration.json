@@ -1,0 +1,185 @@
+{
+  "revision": "R34 separate TRUE SIZE nominal TE *signal* AABB cradle - NO electrical or load qualification",
+  "R33_A_original_sha256": "500fd5446d63d0ea8291b2edf4c86abcae4f917f65d8716b2b0ac12f29082cf0",
+  "R32_B_original_sha256": "b37ab47d5ef31a1be29c1e236e4abba6526fcf6702b8c067a334869e9cec8310",
+  "B_rebased_on_R32_no_old_R33_unsupported_keeper_pins": true,
+  "A_unchanged_bytes": true,
+  "B_R32_volume_mm3": 31398.160177341,
+  "B_R34_volume_mm3": 31398.47128207,
+  "B_R34_net_volume_delta_mm3": 0.311104729,
+  "B_is_valid_single_solid": true,
+  "operations": [
+    {
+      "op": "frame_fuse",
+      "side": "L",
+      "frame_volume_mm3": 12.81,
+      "original_overlap_mm3": 5.295162036,
+      "actual_new_B_volume_mm3": 7.514837964,
+      "all_B_solids": 1
+    },
+    {
+      "op": "frame_fuse",
+      "side": "R",
+      "frame_volume_mm3": 12.81,
+      "original_overlap_mm3": 5.295162036,
+      "actual_new_B_volume_mm3": 7.514837964,
+      "all_B_solids": 1
+    },
+    {
+      "op": "pocket_cut",
+      "side": "L",
+      "actual_removed_mm3": 7.22028685,
+      "connected_solids_before_debris_removal": 2
+    },
+    {
+      "op": "pocket_cut",
+      "side": "R",
+      "actual_removed_mm3": 7.22028685,
+      "connected_solids_before_debris_removal": 3
+    },
+    {
+      "op": "front_throat_cut",
+      "side": "L",
+      "actual_removed_mm3": 0.13899875,
+      "resulting_connected_solids": 2
+    },
+    {
+      "op": "front_throat_cut",
+      "side": "R",
+      "actual_removed_mm3": 0.13899875,
+      "resulting_connected_solids": 1
+    }
+  ],
+  "orphan_R32_frame_chips_removed": [
+    {
+      "volume_mm3": 0.0664,
+      "bbox_native_mm": [
+        34.54,
+        35.34,
+        1.5,
+        1.58,
+        2.0,
+        3.3
+      ]
+    },
+    {
+      "volume_mm3": 0.0664,
+      "bbox_native_mm": [
+        -35.34,
+        -34.54,
+        1.5,
+        1.58,
+        2.0,
+        3.3
+      ]
+    }
+  ],
+  "interim_orphan_volume_removed_by_throat_mm3": 0.1328,
+  "final_orphan_solids": 0,
+  "front_throat_actual_added_cut_mm3": 0.2779975,
+  "frame_budget": {
+    "nominal_left_x_wall_mm": 0.25,
+    "nominal_right_x_wall_mm": 0.25,
+    "nominal_rear_y_wall_mm": 0.33,
+    "nominal_bottom_z_wall_mm": 0.3,
+    "top_open": true,
+    "front_open": true,
+    "machined_front_feed_throat_present": true,
+    "nominal_front_wall_mm": 0.0,
+    "nominal_roof_wall_mm": 0.0,
+    "not_finished_wall_thickness_or_structural_fea": true,
+    "nominal_TE_1p05_2p4_1p2_catalogue_box": true,
+    "open_pocket_bbox_mm": [
+      34.1,
+      35.35,
+      1.58,
+      4.32,
+      1.95,
+      4.12
+    ],
+    "TE_bbox_R_mm": [
+      34.2,
+      35.25,
+      1.7,
+      4.1,
+      2.05,
+      3.25
+    ],
+    "TE_to_pocket_clearances_mm": [
+      0.1,
+      0.1,
+      0.12,
+      0.22,
+      0.1
+    ],
+    "TE_native_STEP_not_available": true
+  },
+  "section_witnesses": [
+    {
+      "side": "L",
+      "name": "INBOARD_SIDE_WALL",
+      "actual_solid_occupancy_fraction": 1.0,
+      "not_a_minimum_continuous_wall_measurement": true
+    },
+    {
+      "side": "R",
+      "name": "INBOARD_SIDE_WALL",
+      "actual_solid_occupancy_fraction": 1.0,
+      "not_a_minimum_continuous_wall_measurement": true
+    },
+    {
+      "side": "L",
+      "name": "OUTBOARD_SIDE_WALL",
+      "actual_solid_occupancy_fraction": 1.0,
+      "not_a_minimum_continuous_wall_measurement": true
+    },
+    {
+      "side": "R",
+      "name": "OUTBOARD_SIDE_WALL",
+      "actual_solid_occupancy_fraction": 1.0,
+      "not_a_minimum_continuous_wall_measurement": true
+    },
+    {
+      "side": "L",
+      "name": "REAR_STOP",
+      "actual_solid_occupancy_fraction": 1.0,
+      "not_a_minimum_continuous_wall_measurement": true
+    },
+    {
+      "side": "R",
+      "name": "REAR_STOP",
+      "actual_solid_occupancy_fraction": 1.0,
+      "not_a_minimum_continuous_wall_measurement": true
+    },
+    {
+      "side": "L",
+      "name": "FLOOR",
+      "actual_solid_occupancy_fraction": 1.0,
+      "not_a_minimum_continuous_wall_measurement": true
+    },
+    {
+      "side": "R",
+      "name": "FLOOR",
+      "actual_solid_occupancy_fraction": 1.0,
+      "not_a_minimum_continuous_wall_measurement": true
+    }
+  ],
+  "TE_catalogue_box_fit_in_candidate_B": [
+    {
+      "side": "L",
+      "TE_nominal_AABB_to_new_B_intersection_mm3": 0.0,
+      "catalogue_box_is_not_OEM_STEP": true
+    },
+    {
+      "side": "R",
+      "TE_nominal_AABB_to_new_B_intersection_mm3": 0.0,
+      "catalogue_box_is_not_OEM_STEP": true
+    }
+  ],
+  "physical_retention_or_axial_capture_installed": false,
+  "A_side_mating_pad_and_controlled_contact_sequence": false,
+  "selected_qualified_power_connector": false,
+  "usb_signal_integrity_qualified": false,
+  "oled_vendor_module_geometry_or_lifetime_qualified": false,
+  "manufacturing_go": false
+}

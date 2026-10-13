@@ -1,0 +1,70 @@
+{
+  "revision": "2026-10-13 independent safety baseline reconstruction",
+  "execution_host": "bb50ac791cbc",
+  "python": "3.12.14",
+  "baseline_member_count": 1157,
+  "all_baseline_bytes_unchanged": true,
+  "mechanical_states": 64,
+  "mechanical_escapes": 36,
+  "mechanical_minimal_escape_cut_sets": [
+    [
+      "L_ear_broken",
+      "R_ear_broken"
+    ],
+    [
+      "L_ear_broken",
+      "R_gate_forced_open"
+    ],
+    [
+      "L_gate_forced_open",
+      "R_ear_broken"
+    ],
+    [
+      "L_gate_forced_open",
+      "R_gate_forced_open"
+    ]
+  ],
+  "mechanical_false_presence_axes_do_not_change_escape_predicate": true,
+  "electrical_states": 512,
+  "electrical_live_states": 487,
+  "electrical_minimal_live_cut_sets": [
+    [
+      "A_direct_pad_short"
+    ],
+    [
+      "B_direct_pad_short"
+    ],
+    [
+      "shared_live_bus_to_pad_short"
+    ],
+    [
+      "A_iso_weld",
+      "A_main_weld"
+    ],
+    [
+      "A_iso_weld",
+      "A_precharge_weld"
+    ],
+    [
+      "B_iso_weld",
+      "B_main_weld"
+    ],
+    [
+      "B_iso_weld",
+      "B_precharge_weld"
+    ]
+  ],
+  "electrical_single_fault_live_cut_count": 3,
+  "R37_fresh_OCC_fault_result_matches_baseline": true,
+  "R37_fresh_nominal_geometry_rows": 16,
+  "R37_single_integral_lip_fracture_exposes_side": true,
+  "R38_fresh_architecture_result_matches_baseline": true,
+  "R38_nonfunctional_axes_for_electrical_hazard": [
+    "flex_loom_continuous",
+    "mechanical_captured"
+  ],
+  "R38_continuity_or_capture_failure_requires_new_hazards_not_boolean_reuse": true,
+  "physical_qualification": false,
+  "manufacturing_go": false,
+  "elapsed_s": 1.671982765197754
+}

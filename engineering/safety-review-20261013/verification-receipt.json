@@ -1,0 +1,93 @@
+{
+  "revision": "safety-review-20261013",
+  "execution_host": "bb50ac791cbc",
+  "python": "3.12.14",
+  "cadquery": "2.7.0",
+  "shapely": "2.2.0",
+  "observed_processes": [
+    {
+      "command": "python -m unittest -v test_r37 test_r38",
+      "exit_code": 1,
+      "log": "baseline-unit-tests.log",
+      "classification": "initial environment import failure: shapely unavailable"
+    },
+    {
+      "command": "python audit_baseline.py",
+      "exit_code": 0,
+      "log": "independent-baseline-run.log"
+    },
+    {
+      "command": "python -m unittest -v test_r37 test_r38",
+      "exit_code": 0,
+      "log": "baseline-unit-tests-retry.log",
+      "tests": 84
+    },
+    {
+      "command": "python safety_model.py",
+      "exit_code": 0,
+      "log": "architecture-and-release-run.log"
+    },
+    {
+      "command": "python -m unittest -v test_safety_model",
+      "exit_code": 0,
+      "log": "safety-model-tests.log",
+      "tests": 13
+    }
+  ],
+  "file_manifest": {
+    "README.md": {
+      "sha256": "e0d256ee019af1093ee3173377bf46b6688f421271887b4f1b9098b6295f6e7d",
+      "bytes": 8267
+    },
+    "architecture-and-release-run.log": {
+      "sha256": "75d4f2ea4979655d27833034df7e8faedab54be29c3a98b71b31f95de52c6df3",
+      "bytes": 5576
+    },
+    "architecture-and-release-study.json": {
+      "sha256": "723991d01a296c65c823da2d1d5d3aaedad2310b4664a68f5eb806e60b9384eb",
+      "bytes": 205789
+    },
+    "audit_baseline.py": {
+      "sha256": "93a97544a51bac6309896b137db25fefa4073ec44fca29313e7f719f11520d99",
+      "bytes": 5734
+    },
+    "baseline-unit-tests-retry.log": {
+      "sha256": "c5d8d4514a594bcc53a952830e5f386d66b26faf7a3b1c8e2f3993117a10ddcd",
+      "bytes": 8593
+    },
+    "baseline-unit-tests.log": {
+      "sha256": "63d098154ad2acc4eaa982a729c09bb4c438e8e61a05eaf4cdc44ea170beabe4",
+      "bytes": 4140
+    },
+    "independent-baseline-receipt.json": {
+      "sha256": "17e778d68fca2387a49860859356fe47c2b734ea410ca9d41efc01ea72196bab",
+      "bytes": 135765
+    },
+    "independent-baseline-run.log": {
+      "sha256": "7056bd019e51f1f0e255fca939174a07ffa9592b6d9ef0d54f44360fc927437e",
+      "bytes": 1636
+    },
+    "legacy-electrical-witnesses.json": {
+      "sha256": "40ad2b439df3ead4a22a83614f4689bd98d414f781d5e2ce601409dcee24294e",
+      "bytes": 82968
+    },
+    "legacy-mechanical-witnesses.json": {
+      "sha256": "a1fe85069dfc078a28abcd4550a27cb83628394026e032d1ef2d7d683f431631",
+      "bytes": 13791
+    },
+    "safety-model-tests.log": {
+      "sha256": "259f8ec01d737b07fb626468d8adef26df9e86d2118079a065c8cbfffab44e70",
+      "bytes": 1998
+    },
+    "safety_model.py": {
+      "sha256": "bd35f7d2fc3d9213af5faf63e66c70bd314849725f5726e82c186c92ebecb1c9",
+      "bytes": 9068
+    },
+    "test_safety_model.py": {
+      "sha256": "7ff4548c3207700eba966ac25efec99803120dd19e25ecb4c9c843da9dd943c7",
+      "bytes": 4454
+    }
+  },
+  "physical_qualification": false,
+  "manufacturing_go": false
+}

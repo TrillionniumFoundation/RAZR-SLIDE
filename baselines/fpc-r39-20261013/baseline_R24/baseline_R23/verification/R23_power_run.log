@@ -1,0 +1,32 @@
+{
+  "modeled_weld_short_bypass_combinations": 16,
+  "unsafe_single_faults": [
+    {
+      "upstream_welded": false,
+      "main_pair_welded": false,
+      "precharge_welded": false,
+      "raw_bat_to_pad_bypass": true,
+      "exposed_contact_energized_despite_off_commands": true,
+      "fault_count": 1
+    }
+  ],
+  "dual_switch_faults_can_create_live_pad": [
+    {
+      "upstream_welded": true,
+      "main_pair_welded": false,
+      "precharge_welded": true,
+      "raw_bat_to_pad_bypass": false,
+      "exposed_contact_energized_despite_off_commands": true,
+      "fault_count": 2
+    },
+    {
+      "upstream_welded": true,
+      "main_pair_welded": true,
+      "precharge_welded": false,
+      "raw_bat_to_pad_bypass": false,
+      "exposed_contact_energized_despite_off_commands": true,
+      "fault_count": 2
+    }
+  ],
+  "number_unsafe_cases_excluding_bypass": 3
+}

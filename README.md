@@ -26,3 +26,4 @@ The 2026-10-13 intake inventories the project records, imports reproducible rese
 Raw third-party vendor CAD is excluded where its supplied Readme restricts redistribution. Record official sources and hashes; obtain the required rights before adding those bytes.
 
 No manufacturing release, physical assembly or electrical qualification is claimed.
+

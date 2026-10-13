@@ -1,0 +1,485 @@
+{
+  "project": "RAZR_SLIDE_R22",
+  "label": "independent hardgate adversarial audit supplement",
+  "reproduced_full_CAD_exit_code": 0,
+  "original_R22_unit_tests_passed": 37,
+  "supplementary_adversarial_tests_passed": 11,
+  "source_of_truth": "R21 source + original R22 CadQuery/OCC source and rebuilt STEP",
+  "physical_samples_in_hand": false,
+  "OEM_7inch_OLED_approved": false,
+  "power_connector_qualified": false,
+  "actual_center_cam_springs_qualified": false,
+  "manufacturing_go": false,
+  "files": [
+    {
+      "path": "README_先读_R22.md",
+      "size_bytes": 9699,
+      "sha256": "7b8823ec6cff2deb4ccaf02654e26d59496d5b4109c42e8db3a3dec69127b902"
+    },
+    {
+      "path": "audit/R22_critical_input_SHA256.json",
+      "size_bytes": 2292,
+      "sha256": "e926abb07cf0352ba817705526f8930e280edac4daa7a72e5a487d29452816fd"
+    },
+    {
+      "path": "audit/R22_hard_gates.csv",
+      "size_bytes": 891,
+      "sha256": "551f520a239e4668889367732a8a1837fff432dbbd14a2262b1dfdfb9e73dd50"
+    },
+    {
+      "path": "audit/R22_补充对抗审计与硬门槛.md",
+      "size_bytes": 8530,
+      "sha256": "f7d0627cebaa9fe3b6fc4393873271eeee6c94298129682d18061ec9306e5b81"
+    },
+    {
+      "path": "audit/verify_r22_hardgate.py",
+      "size_bytes": 788,
+      "sha256": "81476448d390a9a33a6da185819fd4424988d8d72e27fe8020489f8c122c76b1"
+    },
+    {
+      "path": "baselines/R21/R21_接点仓与屏幕装配工程审查.pdf",
+      "size_bytes": 571272,
+      "sha256": "424c6dfc2696e71ddf83526eb7406bb95b4d36a1bd541f998f6bdfc68d5f5de2"
+    },
+    {
+      "path": "baselines/R21/README_先读_R21.md",
+      "size_bytes": 5432,
+      "sha256": "9fb6e9dcf364b94a97529d05614b8d0d25e14ac8acd5a613842702ca33c36f81"
+    },
+    {
+      "path": "baselines/R21/baselines/R20/legacy_R17/legacy_R16/r16_cad.py",
+      "size_bytes": 5030,
+      "sha256": "c87a6703f8ca4897d894a6597c1c9e8326c234132b256e6dd50350487913d2df"
+    },
+    {
+      "path": "baselines/R21/baselines/R20/legacy_R17/legacy_R16/r16_model.py",
+      "size_bytes": 7130,
+      "sha256": "631570542c1a542c2efb62a64247d6a3e8620a5110d8f9b310674b3d1d014702"
+    },
+    {
+      "path": "baselines/R21/baselines/R20/legacy_R17/r17_cad.py",
+      "size_bytes": 7493,
+      "sha256": "bd8bbc75476b5d33c0c8fa006b6a8d7932ca6778f88ce5e63a8f66e9a80771e2"
+    },
+    {
+      "path": "baselines/R21/baselines/R20/legacy_R17/r17_model.py",
+      "size_bytes": 6311,
+      "sha256": "4a04a11e245cec18c8f9d975d112e8a280cca27e03ae24bbec4e6404e8338180"
+    },
+    {
+      "path": "baselines/R21/baselines/R20/legacy_R17/r17_verify.py",
+      "size_bytes": 8078,
+      "sha256": "7d100986cd338d72d5de38a488b83e87237c33fe06df59feacbf1673ad98c21d"
+    },
+    {
+      "path": "baselines/R21/baselines/R20/legacy_R17/test_r17.py",
+      "size_bytes": 3112,
+      "sha256": "2be560d72fd306b936e94af4a8862261a4bf2630d7b739d49a7c94ced5c92f8d"
+    },
+    {
+      "path": "baselines/R21/baselines/R20/legacy_R17/verification/R17_independent_results.json",
+      "size_bytes": 15372,
+      "sha256": "6ebc0bf9c0acaeb743b4712e1b5683b19cbfa3baa5dc32285055b5037dbeb651"
+    },
+    {
+      "path": "baselines/R21/baselines/R20/legacy_R19/r19_dock_model.py",
+      "size_bytes": 7789,
+      "sha256": "8cc09bd3baaaee8e9f77b13e2501ebcddcdd99681682534095a178def5eaecad"
+    },
+    {
+      "path": "baselines/R21/baselines/R20/legacy_R19/r19_verify.py",
+      "size_bytes": 9256,
+      "sha256": "f61b99a38ed2834e200a745b832850f89c83350a813a2734ffe484efcdaab09b"
+    },
+    {
+      "path": "baselines/R21/baselines/R20/legacy_R19/sources/r16_cad.py",
+      "size_bytes": 5030,
+      "sha256": "c87a6703f8ca4897d894a6597c1c9e8326c234132b256e6dd50350487913d2df"
+    },
+    {
+      "path": "baselines/R21/baselines/R20/legacy_R19/sources/r16_model.py",
+      "size_bytes": 7130,
+      "sha256": "631570542c1a542c2efb62a64247d6a3e8620a5110d8f9b310674b3d1d014702"
+    },
+    {
+      "path": "baselines/R21/baselines/R20/r20_cad.py",
+      "size_bytes": 6155,
+      "sha256": "c1bf2ab70c5669ec0d3be68ece4bc4c47c2f240951d4415b233b00302e66adce"
+    },
+    {
+      "path": "baselines/R21/baselines/R20/r20_model.py",
+      "size_bytes": 6369,
+      "sha256": "03e1d89d0f1a5fd9ee0f3fffc6aba30ba26669edbdc0b9b0eb9d89dd126da503"
+    },
+    {
+      "path": "baselines/R21/baselines/R20/r20_packaging.py",
+      "size_bytes": 2566,
+      "sha256": "9df4991836705b27a886bb5d73269e2c75966d964602105761fc6a5a5b047c3f"
+    },
+    {
+      "path": "baselines/R21/baselines/R20/r20_verify.py",
+      "size_bytes": 2072,
+      "sha256": "f04b964e5cbc2f4b1ebf290b89bfcc01cd63c8de50015e773eeeb999097aad6f"
+    },
+    {
+      "path": "baselines/R21/baselines/R20/test_r20.py",
+      "size_bytes": 3978,
+      "sha256": "b6c05d7e1a3c9e720ddc5c9b5f6fe8422027f32075ad339c5f12b0ee53654c0b"
+    },
+    {
+      "path": "baselines/R21/cad/01_STOWED_RETRACTED.dxf",
+      "size_bytes": 22289,
+      "sha256": "afcf51da9f2521130d56a9c8fa665d0cd293ad9b8e4e2e45a394b621d9c1c906"
+    },
+    {
+      "path": "baselines/R21/cad/01_STOWED_RETRACTED.step",
+      "size_bytes": 2058718,
+      "sha256": "d8700b4e1291b0ae97787e30639ad76180939d399b03541824d850facd4ecbe5"
+    },
+    {
+      "path": "baselines/R21/cad/02_50PCT_SLIDE.step",
+      "size_bytes": 2061775,
+      "sha256": "b31e806c757839d896d5e98d9a9e332ce1f8db2e095a786409fe8d2b9fe7e656"
+    },
+    {
+      "path": "baselines/R21/cad/03_Y_COMPLETE_NOT_DOCKED.dxf",
+      "size_bytes": 22328,
+      "sha256": "efee708e75db4a565501d555e5460e38b3884d9f9462654cb4791b8bfefa6a20"
+    },
+    {
+      "path": "baselines/R21/cad/03_Y_COMPLETE_NOT_DOCKED.step",
+      "size_bytes": 2060004,
+      "sha256": "534bca1af431339982d78f4d8e1886acf14edf7bc7a4cfcada55474bed3d811a"
+    },
+    {
+      "path": "baselines/R21/cad/04_Z_HALF_DOCKING.step",
+      "size_bytes": 2035164,
+      "sha256": "8fe94d6477d40dc1c3b93b9dee75b83565bc26972bee53e94eaf0553caa7e3b3"
+    },
+    {
+      "path": "baselines/R21/cad/05_DOCKED_BRIDGE_EXTENDED.dxf",
+      "size_bytes": 20042,
+      "sha256": "a19529d42af271e93ed4389a59b6054bf3fd5d62e59c2cbc33ed4e0e7975d204"
+    },
+    {
+      "path": "baselines/R21/cad/05_DOCKED_BRIDGE_EXTENDED.step",
+      "size_bytes": 1588468,
+      "sha256": "971f22bf9797dc72ad14ce92de3dc9640efd983547d95f7d023a6610dacee133"
+    },
+    {
+      "path": "baselines/R21/cad/06_STOW_CONTACT_FORCED_OPEN_UNQUALIFIED.step",
+      "size_bytes": 2058758,
+      "sha256": "03b9ccdca67623294ca00d536955b1e5eca67051580903665d8d66d60d733143"
+    },
+    {
+      "path": "baselines/R21/cad/07_OPEN_CONTACT_FORCED_OPEN_UNQUALIFIED.step",
+      "size_bytes": 1588551,
+      "sha256": "ecd1d2f312f4e59e39eb7869bb14a66ae30efa00b281df293245f9618292fa14"
+    },
+    {
+      "path": "baselines/R21/drawings/R21_01_five_pose.png",
+      "size_bytes": 132129,
+      "sha256": "9e0fbaf5e7ae4fa898a3534d5b8ae649a188a79a3eb6a8d4ade79c1e9e60cce1"
+    },
+    {
+      "path": "baselines/R21/drawings/R21_01_five_pose.svg",
+      "size_bytes": 149038,
+      "sha256": "4b7c4e251a55d958c4cf92c7c806f0fad3745d75f7ed0ef19b30855fdc9b92de"
+    },
+    {
+      "path": "baselines/R21/drawings/R21_02_contact_relief.png",
+      "size_bytes": 90219,
+      "sha256": "1f5345e5fb5002513ca2ea0d250f949009c4b3cb937747644a32d1654c0b0b8c"
+    },
+    {
+      "path": "baselines/R21/drawings/R21_02_contact_relief.svg",
+      "size_bytes": 94685,
+      "sha256": "1829b566711b5a42d23a11a73dfc5528c6537c043b76cd1962db5c2997db077e"
+    },
+    {
+      "path": "baselines/R21/drawings/R21_03_clearance_failures.png",
+      "size_bytes": 122388,
+      "sha256": "342bb384ef71dcd1e284604861b152a59f079c4b9922b93265f297a08878f7b7"
+    },
+    {
+      "path": "baselines/R21/drawings/R21_03_clearance_failures.svg",
+      "size_bytes": 113467,
+      "sha256": "a9dd7171051fd519294e9244855fde6d0b9ffa7a90e58327623e65b55b05bc9b"
+    },
+    {
+      "path": "baselines/R21/package_r21.py",
+      "size_bytes": 1312,
+      "sha256": "920203ea603db9f130981badfcec31366794c2ca95e6d7e01968409f07563768"
+    },
+    {
+      "path": "baselines/R21/r21_export.py",
+      "size_bytes": 7454,
+      "sha256": "b98d3255889b6a81d49514dbe42b5faf25ecd4513a54afb041f34be467afcf38"
+    },
+    {
+      "path": "baselines/R21/r21_geom.py",
+      "size_bytes": 9017,
+      "sha256": "744ff9f1dcc3552937829d926930a02e5b5324009228534d46c37f354bd77a12"
+    },
+    {
+      "path": "baselines/R21/r21_report.py",
+      "size_bytes": 13193,
+      "sha256": "a2ee1a74f1cd49b7e2f7d1fd2b4dcaab47620c2cb5cfecd9f24433a7511fd152"
+    },
+    {
+      "path": "baselines/R21/r21_verify.py",
+      "size_bytes": 6909,
+      "sha256": "cf9307b24b5f2360088e957f5170b15478ef260aed3b5b1f1e1bcee21edbfbec"
+    },
+    {
+      "path": "baselines/R21/run_checks.sh",
+      "size_bytes": 1237,
+      "sha256": "407f9b9a587754c9b7f3005436044e4bfb248b19b066579373af69757f3886d0"
+    },
+    {
+      "path": "baselines/R21/test_r21.py",
+      "size_bytes": 4166,
+      "sha256": "d1da605b5f5a89bfa26dda856348006cc712cfe27915be197d489192da6649a6"
+    },
+    {
+      "path": "baselines/R21/verification/R17_regression.txt",
+      "size_bytes": 1586,
+      "sha256": "9ac7579c29d4d5bc63c9e82ad6a6fb83b675c606fac971b2ecaea9021f451f75"
+    },
+    {
+      "path": "baselines/R21/verification/R19_regression.txt",
+      "size_bytes": 98,
+      "sha256": "f7d6ad4fd139594f8ccd888f3a2630f9c35c4a28b3d3a8111017586772cde203"
+    },
+    {
+      "path": "baselines/R21/verification/R20_regression.txt",
+      "size_bytes": 98,
+      "sha256": "25d2319dd363a25fd4e20c6443c0726bd3fa734434859a738af9c0f5fd509236"
+    },
+    {
+      "path": "baselines/R21/verification/R21_SHA256_MANIFEST.json",
+      "size_bytes": 8290,
+      "sha256": "1c8ff449aa36da31318e315b0788aacd95de0173181770d2b2ba6ad024d18e64"
+    },
+    {
+      "path": "baselines/R21/verification/R21_new_tests.txt",
+      "size_bytes": 98,
+      "sha256": "6551b134d9e81af097987675b16873fa543467da3ed1ddae30f94e4664687138"
+    },
+    {
+      "path": "baselines/R21/verification/R21_results.json",
+      "size_bytes": 5833,
+      "sha256": "67c314b6451d5e673943399703383f25849b4b6118c220aa51351bb6a92b0ddc"
+    },
+    {
+      "path": "baselines/R21/verification/R21_screen_edge_sensitivity.csv",
+      "size_bytes": 234,
+      "sha256": "6cfe264065795e821a3ddb2c449fc711f357387a592f94c2913fec564dfd02e1"
+    },
+    {
+      "path": "baselines/R21/verification/R21_step_manifest.json",
+      "size_bytes": 2036,
+      "sha256": "e958fcfeda344caddd93bf9bfaa1d6f4fa1b0bb87ba9a6b63f448baccf0b8951"
+    },
+    {
+      "path": "baselines/R21/viewer/R21_motion_offline.html",
+      "size_bytes": 281433,
+      "sha256": "869268eb6865170d91b4a16e7c314b53331c7e9918de9f96caa18e4c15bd087b"
+    },
+    {
+      "path": "cad/01_STOW_PARKED_RETRACTED.step",
+      "size_bytes": 2445316,
+      "sha256": "e089d1b50818be82072b1a9b7ba54c2acc4964e9e6da41e5a34cde7c436c983b"
+    },
+    {
+      "path": "cad/02_MID_SLIDE_DUAL_DOG_FALSE_OPEN_FORCE_GHOST_DIAGNOSTIC.step",
+      "size_bytes": 2449541,
+      "sha256": "96e30a95957bd1b3a36fe083a80623dcfb8ec7e68d7c6c160f1dabed83ed8646"
+    },
+    {
+      "path": "cad/03_OPEN_NEAR_0p20_UNSEATED_FORCE_GHOST_DIAGNOSTIC.step",
+      "size_bytes": 2421816,
+      "sha256": "b0fd39ea7eba0fd5af2fc3ab771baf108cd8586e604a53706424cf39bd35daf6"
+    },
+    {
+      "path": "cad/04_OPEN_SEATED_CONTACT_EXTENDED_FACE_KEY_UNPROVEN.step",
+      "size_bytes": 1974824,
+      "sha256": "ee4b97f1a727f443e897e15e47da1f75a09b1ea6e6d3f8998b05569c2f196df9"
+    },
+    {
+      "path": "cad/05_STOW_SEATED_CONTACT_EXTENDED_FACE_KEY_UNPROVEN.step",
+      "size_bytes": 2445374,
+      "sha256": "e860b3657bb31d70c1842ef86792b99335892604b6a527fce89843d9c0a46895"
+    },
+    {
+      "path": "r22_adversarial.py",
+      "size_bytes": 8768,
+      "sha256": "c2e2434358c29067699316cd24a45a62234d0eb2c2e056441ac12a9334799399"
+    },
+    {
+      "path": "r22_attest.py",
+      "size_bytes": 2812,
+      "sha256": "0f5f4ad83d2c02f327d3bcd0167cb14e1830059531f90da9a3e975c8b90ca0ce"
+    },
+    {
+      "path": "r22_electrical.py",
+      "size_bytes": 9315,
+      "sha256": "f7001e7386103b8183b90f4854b78ba651aea3eba8dd448b2c6bf54abfa43951"
+    },
+    {
+      "path": "r22_export.py",
+      "size_bytes": 3770,
+      "sha256": "48c895c7e8ca69d16f99537384a15c1aa5f58bd7d166d6147b47b05c7c3fbbf6"
+    },
+    {
+      "path": "r22_mechanics.py",
+      "size_bytes": 10200,
+      "sha256": "1efab3666a23374fa11b295114d6b73c5226812f4a1056387c384e4d4a25f785"
+    },
+    {
+      "path": "r22_oled.py",
+      "size_bytes": 3976,
+      "sha256": "97c60d8fa170bc2224acb6f1bfae3e5b4c6ed21f9ae0ed48cb4d5b706a6f08c3"
+    },
+    {
+      "path": "r22_supplier_review.py",
+      "size_bytes": 4688,
+      "sha256": "5c1fba5147eb98d85537dbe352c5601e65c8b520c072984b0220bda12db02ca6"
+    },
+    {
+      "path": "r22_verify.py",
+      "size_bytes": 6222,
+      "sha256": "9886e330b4ca1fdda33755608a0baf0c40805164a437d3def2436f2f1e40ac18"
+    },
+    {
+      "path": "r22_viewer.py",
+      "size_bytes": 5723,
+      "sha256": "c650eebbc556e981bdf60b66872dbd5d83bc9133232ec3c8e8620d5f85ee50a8"
+    },
+    {
+      "path": "run_checks.sh",
+      "size_bytes": 2199,
+      "sha256": "f78b4cf6cf1f3d0fd14fce76d4307bb40a4b326d939b42de3dfcf726d46ca8ee"
+    },
+    {
+      "path": "test_r22.py",
+      "size_bytes": 8990,
+      "sha256": "f2028d4a587468420863a0645c7481cb3a568274294bd44b84ae7da8f56257d2"
+    },
+    {
+      "path": "test_r22_adversarial.py",
+      "size_bytes": 4374,
+      "sha256": "5116e7ff616b14aa7c1ed84462981665d4e5af60f6702ed30dedf830e3a7fbfe"
+    },
+    {
+      "path": "vendor/R22_原厂数据及样机验证申请.md",
+      "size_bytes": 5924,
+      "sha256": "e69eab9e3ff693cca9ca08d1f632e1310db9f262c6bea5a9e911f4b1d1af3d7f"
+    },
+    {
+      "path": "vendor/R22_补充询证邮件要点.md",
+      "size_bytes": 2217,
+      "sha256": "794538a9e3526fa9b141aa5bb47c5a6d899da6b3cbea6e14267b1310d5d12cdf"
+    },
+    {
+      "path": "vendor/vendor_evidence_index.json",
+      "size_bytes": 1846,
+      "sha256": "faa0a69ca7a55ded80b20fd949b69bfd1453b7ccf0a8a1ba0c04a4d23500c6fa"
+    },
+    {
+      "path": "verification/R22_STEP_manifest.json",
+      "size_bytes": 2710,
+      "sha256": "e7fd7969adc326ef2b93eaed403bd6091d5618ff443e69fa775d864ee9547723"
+    },
+    {
+      "path": "verification/R22_adversarial_results.json",
+      "size_bytes": 4873,
+      "sha256": "479e1f25d396d6d5c62062f4cf8be491e2dfe7b38a19f2349f112a3830bf15a5"
+    },
+    {
+      "path": "verification/R22_adversarial_unittest.log",
+      "size_bytes": 1756,
+      "sha256": "7318e425701c6680960b30a8dc62210ede27b80cdc3a5f1dc1b98275bb10a3d7"
+    },
+    {
+      "path": "verification/R22_adversarial_unittest_latest.log",
+      "size_bytes": 98,
+      "sha256": "a1e15e9a2b4ae274f3b526526e6ebcc4bb99bbba1c8e0d30327731e730ab611d"
+    },
+    {
+      "path": "verification/R22_electrical_results.json",
+      "size_bytes": 5617,
+      "sha256": "77c45d0d883dd95876fda328f34af11b05ecbc08d5014f584aab7dbc800c99b1"
+    },
+    {
+      "path": "verification/R22_export.log",
+      "size_bytes": 311,
+      "sha256": "08b8927687da82d149e09a6b156d5636e0c01e8c804118f7e99f068a8c1537e4"
+    },
+    {
+      "path": "verification/R22_fault_results.json",
+      "size_bytes": 965,
+      "sha256": "7722b1b9f60a45a3c59d258ac9cff1d055f4b8de70afab22dd24438cf42ae89d"
+    },
+    {
+      "path": "verification/R22_full_verify.log",
+      "size_bytes": 1501,
+      "sha256": "b616cb742877893e683f940e50ba8751de156df15066094e564523148a197000"
+    },
+    {
+      "path": "verification/R22_gate_matrix.json",
+      "size_bytes": 1885,
+      "sha256": "a1fef0843793233c10df2939ebad015e3c84b8085ae007fd683f4adfb83f0fd8"
+    },
+    {
+      "path": "verification/R22_independent_full_exit.txt",
+      "size_bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "verification/R22_independent_full_run.log",
+      "size_bytes": 1390,
+      "sha256": "2badbae8359363df57763493cf88d1b783786ec32c29f63265f70db1386763b5"
+    },
+    {
+      "path": "verification/R22_mechanical_results.json",
+      "size_bytes": 5503,
+      "sha256": "a07307d2b6e5588ada3639ef9ae34b4d83ffe7c168ee500431204dca35c92a58"
+    },
+    {
+      "path": "verification/R22_oled_results.json",
+      "size_bytes": 4624,
+      "sha256": "7f07b28b023c823c09218539227e26bc56e7249f8f854f745820134ae12de24e"
+    },
+    {
+      "path": "verification/R22_provenance_manifest.json",
+      "size_bytes": 6644,
+      "sha256": "99e3747f3dd72852f5ed20d3352073a469e0175f741d5a1909e86ec5a7359c6b"
+    },
+    {
+      "path": "verification/R22_supplier_review.json",
+      "size_bytes": 6086,
+      "sha256": "74fe19b5fa54bb131d9f836984cb77190986b1b1e896b2072493dfe1b3e08309"
+    },
+    {
+      "path": "verification/R22_unittest.log",
+      "size_bytes": 99,
+      "sha256": "fbf9364b258635775d0f39ef5c2ce2e333eb3c5fb09dc6a6c47a0e7d4734ea41"
+    },
+    {
+      "path": "verification/R22_unittest_independent_retry.exit",
+      "size_bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "verification/R22_unittest_independent_retry.log",
+      "size_bytes": 99,
+      "sha256": "fbf9364b258635775d0f39ef5c2ce2e333eb3c5fb09dc6a6c47a0e7d4734ea41"
+    },
+    {
+      "path": "viewer/R22_三止挡离线动作及故障诊断.html",
+      "size_bytes": 307300,
+      "sha256": "9b4b2fff73def8b3e65f9ae0ce91d7290a9b9f321ceee2563fbb1f56e1feffcc"
+    }
+  ]
+}
