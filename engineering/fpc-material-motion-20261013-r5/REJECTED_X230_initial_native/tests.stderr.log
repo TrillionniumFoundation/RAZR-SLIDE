@@ -1,0 +1,19 @@
+test_material_motion (unittest.loader._FailedTest.test_material_motion) ... ERROR
+
+======================================================================
+ERROR: test_material_motion (unittest.loader._FailedTest.test_material_motion)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_material_motion
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian/RAZR-SLIDE-work-20261013/fpc-material-motion-r5/test_material_motion.py", line 2, in <module>
+    from scipy.spatial.transform import Rotation
+ModuleNotFoundError: No module named 'scipy'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)
