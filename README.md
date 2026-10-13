@@ -14,6 +14,10 @@ R44_FPC_20261013 is a separate, unterminated rear-loop research input. R79 is a 
 
 Read the branch comparisons and current review in `engineering/`; do not interchange same-numbered packages from different dates/hashes.
 
+The current R50 guard continuation is [`engineering/r50-topology-repair-20261013`](engineering/r50-topology-repair-20261013). It rejects loose or repeated Wire content hidden in apparently valid single-solid Compounds. All 42 runner tests pass, with two freshly rebuilt 108-cell poses still retaining their B collisions. Earlier repair code and receipts remain as preserved history.
+
+The 121-pose R44 side audit now uses strict participant and signed-common checks in [`engineering/strict-motion-audit-20261013`](engineering/strict-motion-audit-20261013). AABB shortcuts require validated complete participants and a positive axis gap. Its retained shallow-overlap counterexample demonstrates that a checked zero OCC result does not establish positive clearance or continuous-motion qualification. Existing exact distance measurements remain explicitly referenced prior evidence.
+
 ## Original records
 
 - `archive/`: reversible exact-byte originals, identities, independent verification, package lineage, historical failures and restoration tool.
@@ -35,4 +39,6 @@ Raw vendor CAD remains on its authorized source machine where the supplied Readm
 
 CAD and software checks can reject a proposal but do not supply actual FPC stackup/fatigue, OEM keep-out permission, BM28 PCB/clamp design, continuous USB SI, battery/BMS short/backfeed/isolation tests, mechanical load/jam/retraction tests, or OLED qualification. STEP exports labelled GHOST are research-only.
 
-No physical manufacturing, powered assembly or product qualification is authorized by this repository.
+The current production blockers and concrete required inputs are recorded in [`engineering/manufacturing-closure-20261013/PRODUCTION_STATUS.md`](engineering/manufacturing-closure-20261013/PRODUCTION_STATUS.md). This increment adds original static endpoint land patterns and STEP coupons, a guided dual capture fixture with retained escape counterexamples, explicit battery/USB terminal paths, and fixed-material FPC bend-axis analysis. Actual native engine verification and machine receipts are kept with each artifact.
+
+No complete controlled phone manufacturing package or matching physical qualification evidence exists in this repository. Its research drawings and software passes do not constitute manufacturing release.
