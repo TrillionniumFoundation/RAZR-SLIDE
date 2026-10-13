@@ -1,0 +1,121 @@
+{
+  "schema": "razr-slide-oled-public-search-boundaries-r5-v1",
+  "date": "2026-10-13",
+  "prior_frozen_inputs_read": [
+    "controlled-input-recovery-20261013-r2/oled-candidate-review.md",
+    "controlled-input-recovery-20261013-r3/README.md",
+    "oled-controlled-search-20261013-r4/README.md"
+  ],
+  "new_progress": [
+    "new actual 18-page TDO module bytes independently downloaded on cloud and main",
+    "new Hicenda complete-module PDF inspected through actual web PDF and rendered pages",
+    "manufacturer catalogue and actual order-channel revision/scope checks",
+    "new actual OEM EU right-to-repair link checked"
+  ],
+  "candidate_decisions": [
+    {
+      "part": "TA066FHV01-V2049A",
+      "decision": "preliminary complete-display candidate only; not selected",
+      "reason": [
+        "customer acceptance blank and final-spec box unchecked",
+        "no touch fitted, yet TP pads listed without unused-pad disposition",
+        "three current entries TBD",
+        "document and drawing revision/date distinct",
+        "drawing pin-assignment column blank",
+        "manufacturer 0.291 versus PDF 0.231 mm stack scope unresolved",
+        "no actual moving-bend radius/region/cycles/load or flat-storage qualification"
+      ],
+      "earlier_DM_equivalence": "not proven; corrected-looking pin table cannot be used as errata for DMKDO06501DNA"
+    },
+    {
+      "part": "HAM0667-T",
+      "decision": "non-released candidate; no production MCAD imported",
+      "reason": [
+        "unapproved customer page and controlled stamp requirement unresolved",
+        "manufacturer catalogue identity/interface prose conflicts",
+        "39-page document forbids bending/twisting during assembly",
+        "partial layer values do not give full composite neutral axis",
+        "public test conditions are not sample/lot dynamic qualification",
+        "raw source bytes/hash not obtained"
+      ]
+    },
+    {
+      "part": "Samsung Slidable Flex Vertical",
+      "decision": "commercial/customer-entry lookup did not obtain orderable technical package",
+      "actual_wall": "linked portal is Samsung Electronics DS supplier membership, not demonstrated OLED buyer portal"
+    },
+    {
+      "part": "EDO Edge R6.5",
+      "decision": "5.49-inch candidate outside approximately-7-inch scope"
+    }
+  ],
+  "failure_classification": [
+    {
+      "attempt": "HAM raw anonymous cloud GET",
+      "actual": "HTTP 403; not zero documents"
+    },
+    {
+      "attempt": "main multi-source batch",
+      "actual": "durable exit 124 and no completed stdout; not validated successful downloads"
+    },
+    {
+      "attempt": "USMicro raw main catalogue GET",
+      "actual": "durable exit 124; first 20 of reported 77 web-visible only"
+    },
+    {
+      "attempt": "SHTDO real manufacturer download link",
+      "actual": "TimeoutError; wrapper exit 0 due caught exception, no successful download implied"
+    },
+    {
+      "attempt": "EU repair entry explicitly linked by Motorola",
+      "actual": "405; no alternate EU L3 bytes obtained"
+    },
+    {
+      "attempt": "Visionox home",
+      "actual": "anti-bot JS; no readable catalogue and no bypass"
+    },
+    {
+      "attempt": "coordinate extraction on main using PyMuPDF",
+      "actual": "ModuleNotFoundError fitz, durable exit 1; preserved; portable Poppler extraction then actually succeeded"
+    }
+  ],
+  "rejected_parser_counterexamples": [
+    {
+      "file": "rejected-linewise-pin-parser.py",
+      "log": "rejected-linewise-pin-parser.log",
+      "failure": "37/40 rows: wrapped burn-in 9,11,13 lost"
+    },
+    {
+      "file": "rejected-multiline-pin-parser.py",
+      "log": "rejected-multiline-pin-parser.log",
+      "failure": "section heading and shifted label admitted; exact 40 unique assertion failed"
+    },
+    {
+      "file": "native-fitz-prototype.py",
+      "failure": "cloud parsing succeeded, main import failed; not a failed source-data test",
+      "replacement": "extract_tdo_module_inputs.py uses actual Poppler bbox text positions with Python standard library"
+    }
+  ],
+  "fixed_product": {
+    "equal_bays": true,
+    "single_approx_7_inch_flexible_OLED": true,
+    "B_slide_mm": 79.75,
+    "normal_seating_mm": 8.2,
+    "A_larger_battery_priority": true,
+    "total_battery_target_mAh": 4700
+  },
+  "actions_not_performed": [
+    "contact",
+    "email",
+    "NDA acceptance",
+    "registration",
+    "login",
+    "quote submission",
+    "order",
+    "anti-bot bypass"
+  ],
+  "physical_qualification_performed": false,
+  "global_absence_claim": false,
+  "manufacturing_go": false
+}
+
