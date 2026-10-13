@@ -1,0 +1,31 @@
+# Controlled component sources and first-cut reference PCB, R4
+
+`manufacturing_go=false`. `phone_complete_PCB=false`. This is an **unpowered single-cut bench reference**, not a released phone, pack protector, charging board, or complete safety circuit. No physical sample was energized or tested.
+
+Eight actual PDFs were obtained from TI and checked by size, PDF page count and SHA-256. `primary_source_facts.json` identifies exact revisions and official URLs. Raw vendor PDFs remain outside the repository. The attempted EU Motorola L3 mirror returned HTTP 405; no complete OEM schematic was obtained from it.
+
+The sources provide real reference schematics, BOMs, board layouts and package dimensions for TPS25947, BQ25620/BQ25622 and TUSB2E22. They do not establish equivalence to the OEM PMIH0104, OEM battery connectors, OLED or phone repeater. The BQ297xx threshold variants are different: BQ29700's nominal overvoltage threshold is 4.275 V and BQ29704's is 4.425 V. Neither can be chosen for an unknown cell chemistry. A low-side pack protector also requires every external reference to use protected PACK_N, never raw CELL_N.
+
+For USB, the controlled TUSB2E22 datasheet and eUSB2 design guide distinguish 1.2-V eUSB2 signaling from conventional USB2. The proposed eUSB2 side uses a TI-recommended 85-ohm differential channel and a continuous reference; USB2 specifies 90 ohms. This research does not downgrade or qualify the project's USB interface. Exact OEM repeater, SoC configuration, flex stackup, full-motion eye, skew and leakage remain missing. TUSB2E22's RESETB must respect its 1.8-V interface; it is not a direct 3.3-V GPIO connection.
+
+## Actual repair
+
+`cut_reference.kicad_sch` and `cut_reference.kicad_pcb` implement a real **TPS259470LRPW** first discharge cut. This exact variant is latch-off with adjustable OVLO and active current limit. TPS259470ARPW and TPS259474LRPW must not be substituted by name. AUXOFF pin 3 is an open-drain output; the owned R4 symbol corrects the R3 research symbol's input classification while retaining R3 unchanged.
+
+The editable board is 29 × 24 × 1.6 mm with 15 annotated items, 30 unique schematic-to-board physical pins, 34 copper pads and 47 routed segments. The nominal RPW0010A corner L lands are represented by overlapping same-number copper rectangles. Their nominal extents come from drawing 4225183/A; their square corners and full-area paste differ from TI's R0.05 and 82/93% example stencil. These deviations, passive 0805 lands and all actual component MPNs require assembly/DFM qualification.
+
+Bench hypotheses are explicit: 2.7–4.4 V input from an isolated laboratory source, external 3.3-V enable, 10-kohm default-off EN resistor, 1.69-kohm ILM resistor and 10-nF slew capacitor. The datasheet equation gives about 1.973 A nominal current limit, with the stated device tolerance; this is not a measured current rating or a phone selection. Input/output capacitors and current-carrying copper have not been thermally qualified. There is no actual phone control supply, pack protector, second cut, receiver, return diagnosis, charge path or USB path on this board. Schottky/TVS protection and source/load transient bounds remain unqualified. No cell node enters this board's net map.
+
+## Native evidence
+
+- Main/qian-qi: actual KiCad 7.0.11, one fresh `pcbnew` process per serialized board. Initial V1 reported **37 DRC violations**, including genuine VIN/GND and FLT/VIN copper conflicts, hole clearances and library/silkscreen defects. These source bytes and complete reports remain in the V1 archives. V2 physically relocates the capacitor, control traces and ground vias and corrects the library; DRC, unconnected pads and footprint errors are all **0** under unchanged 0.1-mm copper / 0.25-mm hole rules. No rule exclusions were added.
+- Removing the ILM route from the same V2 board gives one dangling-track warning and **one actual unconnected pad**. The helper's process exit 0 only means it produced the report; the report's counts govern acceptance.
+- Pocket4: actual KiCad 9.0.8 XML export and ERC exit 0, with **0 violations at all severities**. An independent reader matches all 30 unique board/schematic pins and all 10 exact-variant pin functions. TP1/TP2 explicitly represent external isolated laboratory power/reference, not implemented phone regulators.
+- Main: actual native Gerber, drill, placement, SVG, board-only STEP and schematic exports exit 0. The seven Gerber layers, PTH/NPTH drill files and seven SMD placement rows are preserved under `native_main/v2/exports`. Validated source bytes remain unchanged before/after export.
+- Cloud: the entire exported STEP root is independently checked using the existing strict payload validator. It has one valid positive solid, 29 × 24 × 1.6-mm bounds and 1107.1660182454489 mm³ volume, matching the board with eight 0.8-mm pad holes. KiCad7's STEP omits the seven via bores and every unselected component 3D model. It is **not a full assembly** or a fit/thermal/insulation certificate.
+
+`operator_process_receipts.json` retains native process results, child results and runtime failures. Pocket4's KiCad9 PCB plugin originally lacked OCC dependencies. Private dependency download attempts timed out; KiCad9 PCB DRC was not claimed. The actual board DRC/exports instead use the existing native KiCad7 engine on Main. A shell ending with `mkdir` and a Python report wrapper may exit 0 despite an earlier child failure; those failures remain visible. Full reports were recovered in version-pinned binary archives and checked by whole-file SHA-256.
+
+`copper_only_preview.png` was visually checked against the native SVG. `pcb_preview.png` preserves the dense native F.Fab overlay for inspection; it is not an assembly drawing. The native editable schematic remains the authoritative connection drawing. Inkscape's startup GtkRecentManager warning was observed with successful exit 0.
+
+The complete phone PCB, controlled OLED/FPC input, real assembly and physical capture/retraction/battery/USB/OLED qualifications remain open. No supplier message, NDA, order or production release was submitted. Fixed product constraints remain equal A/B external size, one approximately 7-inch OLED, 79.75-mm upward stroke and 8.2-mm normal seating, A battery priority and **4700-mAh total system target**.

@@ -1,0 +1,123 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "--version"
+      ],
+      "exit": 0,
+      "stdout": "7.0.11\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pcb",
+        "export",
+        "gerbers",
+        "--output",
+        "exports/",
+        "--layers",
+        "F.Cu,B.Cu,F.Paste,F.Mask,B.Mask,F.SilkS,Edge.Cuts",
+        "cut_reference.kicad_pcb"
+      ],
+      "exit": 0,
+      "stdout": "\u52a0\u8f7d\u7535\u8def\u677f\n\u7ed8\u5236\u5230 'exports/cut_reference-F_Cu.gtl'\u3002\n\u7ed8\u5236\u5230 'exports/cut_reference-B_Cu.gbl'\u3002\n\u7ed8\u5236\u5230 'exports/cut_reference-F_Paste.gtp'\u3002\n\u7ed8\u5236\u5230 'exports/cut_reference-F_Silkscreen.gto'\u3002\n\u7ed8\u5236\u5230 'exports/cut_reference-F_Mask.gts'\u3002\n\u7ed8\u5236\u5230 'exports/cut_reference-B_Mask.gbs'\u3002\n\u7ed8\u5236\u5230 'exports/cut_reference-Edge_Cuts.gm1'\u3002\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pcb",
+        "export",
+        "drill",
+        "--output",
+        "exports/",
+        "--excellon-separate-th",
+        "--generate-map",
+        "--map-format",
+        "svg",
+        "cut_reference.kicad_pcb"
+      ],
+      "exit": 0,
+      "stdout": "\u52a0\u8f7d\u7535\u8def\u677f\n\u5df2\u521b\u5efa\u6587\u4ef6 'exports/cut_reference-PTH.drl'\n\u5df2\u521b\u5efa\u6587\u4ef6 'exports/cut_reference-NPTH.drl'\n\u521b\u5efa\u6587\u4ef6 'exports/cut_reference-PTH-drl_map.svg'\u3002\n\u521b\u5efa\u6587\u4ef6 'exports/cut_reference-NPTH-drl_map.svg'\u3002\n\u5b8c\u6210\u3002\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pcb",
+        "export",
+        "pos",
+        "--output",
+        "exports/cut_reference_placement.csv",
+        "--format",
+        "csv",
+        "--units",
+        "mm",
+        "--smd-only",
+        "cut_reference.kicad_pcb"
+      ],
+      "exit": 0,
+      "stdout": "\u52a0\u8f7d\u7535\u8def\u677f\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pcb",
+        "export",
+        "svg",
+        "--output",
+        "exports/pcb_review.svg",
+        "--page-size-mode",
+        "2",
+        "--exclude-drawing-sheet",
+        "--layers",
+        "F.Cu,B.Cu,F.Paste,F.Mask,B.Mask,F.Fab,Edge.Cuts",
+        "cut_reference.kicad_pcb"
+      ],
+      "exit": 0,
+      "stdout": "\u52a0\u8f7d\u7535\u8def\u677f\n\u5df2\u6210\u529f\u521b\u5efa svg \u6587\u4ef6\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pcb",
+        "export",
+        "step",
+        "--output",
+        "exports/cut_reference_board_ONLY.step",
+        "--subst-models",
+        "cut_reference.kicad_pcb"
+      ],
+      "exit": 0,
+      "stdout": "\u52a0\u8f7d\u7535\u8def\u677f\n\u786e\u5b9a PCB \u6570\u636e\n\u7535\u8def\u677f\u53e0\u5c42\u539a\u5ea6: 1.600 mm\n\u6784\u5efa STEP \u6570\u636e\nCreate PCB solid model\nBoard outline: find 4 initial points\nBuild board main outline 1 with 4 points.\nBuild board cutouts and holes (8 hole(s)).\n\nGenerate board full shape.\n\u5199\u5165 STEP \u6587\u4ef6\n\n\u5df2\u521b\u5efa STEP \u6587\u4ef6 \"exports/cut_reference_board_ONLY.step\"\u3002\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "sch",
+        "export",
+        "svg",
+        "--output",
+        "exports/schematic/",
+        "cut_reference.kicad_sch"
+      ],
+      "exit": 0,
+      "stdout": "\u5df2\u7ed8\u5236\u5230 '/home/qian-qi/RAZR-SLIDE-pcb-source-r4/v2/exports/schematic/cut_reference.svg'\u3002\n\u5b8c\u6210\n",
+      "stderr": ""
+    }
+  ],
+  "validated_source_before_after": {
+    "build_reference_module.py": "25d32dfdabc37a5c75f281ec3ef7f7fb7f374ba877c53516e824e091d47c5fd1",
+    "OwnedCut.kicad_sym": "84d69b15d784d4bd86ba1764d4a0a604e52a2b3c770183ebb6a3463146a93bc0",
+    "REJECTED_missing_ILM_route.kicad_pro": "ccebe4da7846923f89130f4cd539e9312c8e0f7e0aa8da9f320b89f96dd91c35",
+    "verify_native_mapping.py": "2f4554d5b6be4ae53c17a1e0c7ae626dde4b556dc16de8df3a37d7e082717748",
+    "REJECTED_missing_ILM_route.kicad_pcb": "ca52ba77a2e1d8176028681d3bc9935d3d4fd53e47423d2bb1271bb992d46124",
+    "cut_reference.kicad_pro": "ccebe4da7846923f89130f4cd539e9312c8e0f7e0aa8da9f320b89f96dd91c35",
+    "cut_reference.kicad_sch": "c6bd0854ecbebbac2f30cb662a644ffe929d1f2bb44312092de04f6e268e35a2",
+    "cut_reference.kicad_pcb": "865cc642f0fdee847a41bc838dd2a65fb579d92004809559e44da6a8c33a6177",
+    "OwnedCut.pretty/Passive_0805_Vertical_BENCH.kicad_mod": "7aeb334280953dccb0fb9aaf2c3b22509f8b40e1e8bc7467a581240a768ee33a",
+    "OwnedCut.pretty/Passive_0805_BENCH.kicad_mod": "cf99365b201f7f9447e67f7277cfdd747f268030c21726a34a8bbc0cbdd90f7d",
+    "OwnedCut.pretty/RPW0010A_OWNED_NOMINAL.kicad_mod": "361704dd71a12a974753902e37e97c13707b985d05cad059fd634a384b2f0191",
+    "OwnedCut.pretty/Probe_1p8mm.kicad_mod": "03ea723758cbdbd292e843346811bd9e421b36ea56b689e5476519bff49bb76d"
+  },
+  "source_bytes_unchanged": true,
+  "manufacturing_go": false
+}
