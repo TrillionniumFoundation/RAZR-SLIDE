@@ -1,0 +1,70 @@
+{
+  "steps": [
+    {
+      "name": "tests",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_layer_stackup"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_common_modulus_scale_does_not_change_plane (test_layer_stackup.SectionTests.test_common_modulus_scale_does_not_change_plane) ... ok\ntest_coverlay_changes_copper_distance (test_layer_stackup.SectionTests.test_coverlay_changes_copper_distance) ... ok\ntest_equal_moduli_recover_geometric_midplane (test_layer_stackup.SectionTests.test_equal_moduli_recover_geometric_midplane) ... ok\ntest_invalid_physical_values_reject (test_layer_stackup.SectionTests.test_invalid_physical_values_reject) ... ok\ntest_single_copper_layer_has_true_midplane (test_layer_stackup.SectionTests.test_single_copper_layer_has_true_midplane) ... ok\ntest_swapped_stack_reverses_plane (test_layer_stackup.SectionTests.test_swapped_stack_reverses_plane) ... ok\ntest_symmetric_identical_skins_leave_copper_centered (test_layer_stackup.SectionTests.test_symmetric_identical_skins_leave_copper_centered) ... ok\ntest_true_nominal_56_is_not_bare_30 (test_layer_stackup.SectionTests.test_true_nominal_56_is_not_bare_30) ... ok\ntest_unknown_moduli_do_not_become_midplane (test_layer_stackup.SectionTests.test_unknown_moduli_do_not_become_midplane) ... ok\ntest_unknown_modulus_bound_contains_extreme_examples (test_layer_stackup.SectionTests.test_unknown_modulus_bound_contains_extreme_examples) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "name": "sections",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "layer_stackup.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"sections\": 4, \"manufacturer_qualified_neutral_axes\": 0, \"manufacturing_go\": false}\n",
+      "stderr": ""
+    }
+  ],
+  "source_sha256_before": {
+    "layer_stackup.py": "b3e1ec20142200b674814aa5c023536fe745837278af105242d670702bc8426c",
+    "test_layer_stackup.py": "1152a2acd04b50fb75d7d19291df0c440e073b5e5f137291ac998ef1d415140e",
+    "native_runner.py": "6d6792172042385c4a2e5263bbd18c1a9948eed55eb3f4caec712df0e3f004c1"
+  },
+  "source_sha256_after": {
+    "layer_stackup.py": "b3e1ec20142200b674814aa5c023536fe745837278af105242d670702bc8426c",
+    "test_layer_stackup.py": "1152a2acd04b50fb75d7d19291df0c440e073b5e5f137291ac998ef1d415140e",
+    "native_runner.py": "6d6792172042385c4a2e5263bbd18c1a9948eed55eb3f4caec712df0e3f004c1"
+  },
+  "unchanged": true,
+  "manufacturing_go": false,
+  "job_id": "1a134c70ea9-1f807d-adb",
+  "operator_status": {
+    "at_unix_ms": 1791886823874,
+    "cancelled": false,
+    "exit_code": 0,
+    "job_id": "1a134c70ea9-1f807d-adb",
+    "log_bytes": {
+      "stderr": {
+        "seen": 0,
+        "stored": 0
+      },
+      "stdout": {
+        "seen": 2394,
+        "stored": 2394
+      }
+    },
+    "log_errors": {
+      "stderr": null,
+      "stdout": null
+    },
+    "log_truncated": {
+      "stderr": false,
+      "stdout": false
+    },
+    "output_complete": true,
+    "state": "succeeded",
+    "timed_out": false
+  },
+  "native_inputs_sha256": "aaae74e36eb1b6a1617c3bcd08029e9ae907d32fa97ca39328cf38df1f00e1ba"
+}
