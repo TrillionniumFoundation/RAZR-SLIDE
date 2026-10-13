@@ -52,3 +52,5 @@ R3 捕获实体修复与独立导出检查：[passive-veto-repair-20261013-r3](e
 R4 原厂资料与实改：[OLED来源](engineering/oled-controlled-search-20261013-r4/README.md)、[FPC与RA材料](engineering/fpc-controlled-search-20261013-r4/README.md)、[自主干回路与WDI修复](engineering/proof-detector-design-20261013-r4/README.md)。厂家资料请求以[修正R4请求](engineering/production-inputs-20261013-r4/targeted-controlled-input-request.json)为准：4700mAh是整机目标，A优先大电池。
 
 R4 当前完整状态：[PRODUCTION_BLOCKERS_R4.md](engineering/PRODUCTION_BLOCKERS_R4.md)。
+
+R4 实际[单切断PCB与原生生产格式导出](engineering/pcb-source-repair-20261013-r4/README.md)、[盖紧固与撤钥干涉修复](engineering/mechanical-return-design-20261013-r4/README.md)。两者均是未获实物放行的研究台架。
