@@ -33,7 +33,12 @@ def main():
             assert len(a) == len(b), path
             for index, (aa, bb) in enumerate(zip(a, b)):
                 compare(aa, bb, path + "/" + str(index))
-        elif isinstance(a, (float, int)) and not isinstance(a, bool):
+        elif isinstance(a, bool):
+            assert isinstance(b, bool) and a is b, path
+        elif isinstance(a, int):
+            assert isinstance(b, int) and not isinstance(b, bool) and a == b, path
+            checked += 1
+        elif isinstance(a, float):
             assert isinstance(b, (float, int)) and not isinstance(b, bool), path
             assert math.isfinite(a) and math.isfinite(b), path
             error = abs(a-b)
@@ -41,7 +46,7 @@ def main():
             maximum_error = max(maximum_error, error)
             checked += 1
         else:
-            assert a == b, path
+            assert type(a) is type(b) and a == b, path
 
     keys = ["pose_count", "obstacles_per_pose", "strict_checks_count_including_easy_axis",
             "true_OCC_common_count", "validated_strict_AABB_separation_count",
@@ -51,12 +56,30 @@ def main():
             "constraints", "new_full_motion_rows", "easy_axis_negative_counterexamples",
             "actual_STEP_curve_and_terminal_frame_comparisons",
             "minimum_additional_obstacle_AABB_lower_bounds_mm", "maximum_length_error_mm",
-            "maximum_B_end_width_axis_tilt_deg"]
+            "maximum_B_end_width_axis_tilt_deg", "candidate_go", "manufacturing_go",
+            "continuous_motion_qualification", "no_protected_BRep_or_OLED_was_cut_or_modified",
+            "Frenet_director_is_geometric_hypothesis_not_material_or_clamp_qualification",
+            "pure_planar_zero_dock_kinematic_homogeneous_extreme_strain"]
     for key in keys:
         compare(root[key], peer[key], key)
     compare(root["source_reference"]["original_geometry_builder_source_sha256"],
             peer["source_reference"]["original_geometry_builder_source_sha256"], "original_geometry_builder_source_sha256")
+    # Only each machine's earlier serialization hashes and imported index labels
+    # are excluded. Volume/bounds/area/center matching errors remain compared.
+    def normalized_steps(report):
+        rows = []
+        for original in report["previous_STEP_exports_reimported_and_semantically_checked"]:
+            row = {key: value for key, value in original.items() if key != "sha256"}
+            row["semantic_matches"] = [{key: value for key, value in item.items() if key != "imported_part_index"}
+                                       for item in original["semantic_matches"]]
+            rows.append(row)
+        return rows
+    compare(normalized_steps(root), normalized_steps(peer), "old_STEP_semantic_matching")
     assert root_step["STEP_full_payload_validation_complete"] and peer_step["STEP_full_payload_validation_complete"]
+    assert root_step["manufacturing_go"] is False and peer_step["manufacturing_go"] is False
+    for key in ("source_sha256", "referenced_occ_guard_sha256", "manufacturing_go",
+                "full_payload_topology_check_does_not_prove_physical_or_topological_identity"):
+        compare(root_step[key], peer_step[key], "full_STEP_payload/" + key)
     assert len(root_step["rows"]) == len(peer_step["rows"]) == 6
     for index, (a, b) in enumerate(zip(root_step["rows"], peer_step["rows"])):
         for key in ("referenced_path", "transferred_root_count", "visited_shape_type_counts",
@@ -68,7 +91,8 @@ def main():
               "root_receipt_sha256": hashlib.sha256(args.root.read_bytes()).hexdigest(),
               "peer_receipt_sha256": hashlib.sha256(args.peer.read_bytes()).hexdigest(),
               "compared_source_fields": keys,
-              "excluded_fields": ["runtime environment", "elapsed time", "earlier receipt SHA because each machine refers to its own earlier run", "earlier STEP byte SHA", "existing STEP imported index ordering"],
+              "excluded_fields": ["runtime environment", "elapsed time", "earlier receipt SHA because each machine refers to its own earlier run", "earlier STEP byte SHA", "existing STEP imported_part_index labels only; solid leaf volume arrays still compared in transfer order"],
+              "comparison_source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               "OCC_numeric_zero_does_not_prove_subtolerance_no_contact": True,
               "manufacturing_go": False}
     args.out.write_text(json.dumps(report, indent=2) + "\n")
