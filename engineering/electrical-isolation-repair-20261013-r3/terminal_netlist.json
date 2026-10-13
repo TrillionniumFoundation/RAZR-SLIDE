@@ -1,0 +1,1372 @@
+{
+  "schema": "razr-slide-local-return-sensing-terminal-netlist-r2",
+  "manufacturing_go": false,
+  "phone_complete_PCB": false,
+  "fabrication_netlist": false,
+  "components": [
+    {
+      "ref": "U1",
+      "part_candidate": "INA240A1PW",
+      "value": "INA240A1PW",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "IN+",
+          "net": "A_CUT_OUT",
+          "type": "input"
+        },
+        "3": {
+          "name": "IN-",
+          "net": "A_TX_P",
+          "type": "input"
+        },
+        "4": {
+          "name": "GND",
+          "net": "A_PACK_N",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "VS",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "power_in"
+        },
+        "6": {
+          "name": "REF2",
+          "net": "VREF",
+          "type": "input"
+        },
+        "7": {
+          "name": "REF1",
+          "net": "VREF",
+          "type": "input"
+        },
+        "8": {
+          "name": "OUT",
+          "net": "VSENSE_P",
+          "type": "output"
+        }
+      },
+      "role": "Positive main branch only, Kelvin to R_P after U_A2 and before launch",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_P"
+    },
+    {
+      "ref": "U2",
+      "part_candidate": "INA240A1PW",
+      "value": "INA240A1PW",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "IN+",
+          "net": "A_RETURN_HARNESS",
+          "type": "input"
+        },
+        "3": {
+          "name": "IN-",
+          "net": "A_PACK_N",
+          "type": "input"
+        },
+        "4": {
+          "name": "GND",
+          "net": "A_PACK_N",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "VS",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "power_in"
+        },
+        "6": {
+          "name": "REF2",
+          "net": "VREF",
+          "type": "input"
+        },
+        "7": {
+          "name": "REF1",
+          "net": "VREF",
+          "type": "input"
+        },
+        "8": {
+          "name": "OUT",
+          "net": "VSENSE_N",
+          "type": "output"
+        }
+      },
+      "role": "Dedicated MAIN return only. ALL alternate ground bonds upstream on A_PACK_N",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_N"
+    },
+    {
+      "ref": "U3",
+      "part_candidate": "OPA333DBV",
+      "value": "OPA333DBV",
+      "pins": {
+        "1": {
+          "name": "OUT",
+          "net": "VDIFF",
+          "type": "output"
+        },
+        "2": {
+          "name": "V-",
+          "net": "A_PACK_N",
+          "type": "power_in"
+        },
+        "3": {
+          "name": "+IN",
+          "net": "DIFF_PLUS",
+          "type": "input"
+        },
+        "4": {
+          "name": "-IN",
+          "net": "DIFF_MINUS",
+          "type": "input"
+        },
+        "5": {
+          "name": "V+",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "Four equal ratio resistors: VDIFF=VREF+VSENSE_P-VSENSE_N",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_DIFF"
+    },
+    {
+      "ref": "U4",
+      "part_candidate": "OPA333DBV",
+      "value": "OPA333DBV",
+      "pins": {
+        "1": {
+          "name": "OUT",
+          "net": "VREF",
+          "type": "output"
+        },
+        "2": {
+          "name": "V-",
+          "net": "A_PACK_N",
+          "type": "power_in"
+        },
+        "3": {
+          "name": "+IN",
+          "net": "VREF_DIV",
+          "type": "input"
+        },
+        "4": {
+          "name": "-IN",
+          "net": "VREF",
+          "type": "input"
+        },
+        "5": {
+          "name": "V+",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "Local midpoint buffer; no externally powered reference may phantom feed unpowered analog rail",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_REF"
+    },
+    {
+      "ref": "U5",
+      "part_candidate": "TLV3202DGK",
+      "value": "TLV3202DGK",
+      "pins": {
+        "1": {
+          "name": "1OUT",
+          "net": "HI_OK",
+          "type": "output"
+        },
+        "2": {
+          "name": "1IN-",
+          "net": "VDIFF",
+          "type": "input"
+        },
+        "3": {
+          "name": "1IN+",
+          "net": "V_WIN_H",
+          "type": "input"
+        },
+        "4": {
+          "name": "GND",
+          "net": "A_PACK_N",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "2IN+",
+          "net": "VDIFF",
+          "type": "input"
+        },
+        "6": {
+          "name": "2IN-",
+          "net": "V_WIN_L",
+          "type": "input"
+        },
+        "7": {
+          "name": "2OUT",
+          "net": "LO_OK",
+          "type": "output"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "Both outputs HIGH only inside window, including upper and lower signed imbalance",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_WINDOW"
+    },
+    {
+      "ref": "U6",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "HI_OK",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "LO_OK",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "A_PACK_N",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "WINDOW_OK",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_WINDOW_AND"
+    },
+    {
+      "ref": "U7",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "WINDOW_OK",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "A_LOCAL_PGOOD",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "A_PACK_N",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "PRE_CLEARn",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_CLEAR_AND"
+    },
+    {
+      "ref": "U8",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "PRE_CLEARn",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "PROBE_FRESH_OK",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "A_PACK_N",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "CLEARn",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "Missing, expired or failed continuity proof asynchronously clears latch; external proof generation remains unimplemented",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_PROOF_CLEAR_AND"
+    },
+    {
+      "ref": "U9",
+      "part_candidate": "SN74LVC1G74DCU",
+      "value": "SN74LVC1G74DCU",
+      "pins": {
+        "1": {
+          "name": "CLK",
+          "net": "SERVICE_ARM_EDGE",
+          "type": "input"
+        },
+        "2": {
+          "name": "D",
+          "net": "PROBE_FRESH_OK",
+          "type": "input"
+        },
+        "3": {
+          "name": "Qn",
+          "net": null,
+          "type": "output"
+        },
+        "4": {
+          "name": "GND",
+          "net": "A_PACK_N",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "Q",
+          "net": "ARMED_Q",
+          "type": "output"
+        },
+        "6": {
+          "name": "CLRn",
+          "net": "CLEARn",
+          "type": "input"
+        },
+        "7": {
+          "name": "PREn",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "input"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "D is continuity proof, PREn HIGH. Manual ARM cannot create proof or override async clear",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_LATCH"
+    },
+    {
+      "ref": "U10",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "ARMED_Q",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "A_LOCAL_PGOOD",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "A_PACK_N",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "PRE_EN_DRV",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "Hardware driver only; no CPU GPIO OR bypass",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_ENABLE_AND"
+    },
+    {
+      "ref": "U11",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "PRE_EN_DRV",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "PROBE_FRESH_OK",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "A_PACK_N",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "EN_DRV",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "Proof additionally gates actual EN driver, including residual latch Q after proof loss",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_PROOF_ENABLE_AND"
+    },
+    {
+      "ref": "U12",
+      "part_candidate": "TLV803EA29DBZ",
+      "value": "TLV803EA29DBZ",
+      "pins": {
+        "1": {
+          "name": "GND",
+          "net": "A_PACK_N",
+          "type": "power_in"
+        },
+        "2": {
+          "name": "RESETn",
+          "net": "A_LOCAL_PGOOD",
+          "type": "open_collector"
+        },
+        "3": {
+          "name": "VDD",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "Standard DBZ pin 1 ground (no optional R/V pinout). A29 is 2.93V/200ms, conditional 3.3V bench rail only",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_PGOOD"
+    },
+    {
+      "ref": "U13",
+      "part_candidate": "TPS259470LRPW",
+      "value": "TPS259470LRPW",
+      "pins": {
+        "1": {
+          "name": "EN/UVLO",
+          "net": "U_A2_EN",
+          "type": "input"
+        },
+        "2": {
+          "name": "OVLO",
+          "net": "A_PACK_N",
+          "type": "input"
+        },
+        "3": {
+          "name": "AUXOFF",
+          "net": null,
+          "type": "input"
+        },
+        "4": {
+          "name": "FLTn",
+          "net": null,
+          "type": "open_collector"
+        },
+        "5": {
+          "name": "IN",
+          "net": "A_MID_P",
+          "type": "power_in"
+        },
+        "6": {
+          "name": "OUT",
+          "net": "A_CUT_OUT",
+          "type": "power_out"
+        },
+        "7": {
+          "name": "DVDT",
+          "net": "U_A2_DVDT",
+          "type": "passive"
+        },
+        "8": {
+          "name": "GND",
+          "net": "A_PACK_N",
+          "type": "power_in"
+        },
+        "9": {
+          "name": "ILM",
+          "net": "U_A2_ILM",
+          "type": "passive"
+        },
+        "10": {
+          "name": "ITIMER",
+          "net": null,
+          "type": "passive"
+        }
+      },
+      "role": "Final independent source cut BEFORE R_P and main cable launch; U_A1 not shared with this driver",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_A2"
+    },
+    {
+      "ref": "R1",
+      "part_candidate": "R",
+      "value": "PARAM_SHUNT_P",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "A_CUT_OUT",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_TX_P",
+          "type": "passive"
+        }
+      },
+      "role": "Four terminal shunt required; Kelvin nodes must not include connector/track drops",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_P"
+    },
+    {
+      "ref": "R2",
+      "part_candidate": "R",
+      "value": "PARAM_SHUNT_N",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "A_RETURN_HARNESS",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": "Dedicated main branch shunt; NOT aggregate ground shunt",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_N"
+    },
+    {
+      "ref": "R3",
+      "part_candidate": "R",
+      "value": "PARAM_MATCHED_RATIO_R",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "VSENSE_N",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "DIFF_MINUS",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_D1"
+    },
+    {
+      "ref": "R4",
+      "part_candidate": "R",
+      "value": "PARAM_MATCHED_RATIO_R",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "VDIFF",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "DIFF_MINUS",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_D2"
+    },
+    {
+      "ref": "R5",
+      "part_candidate": "R",
+      "value": "PARAM_MATCHED_RATIO_R",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "VSENSE_P",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "DIFF_PLUS",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_D3"
+    },
+    {
+      "ref": "R6",
+      "part_candidate": "R",
+      "value": "PARAM_MATCHED_RATIO_R",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "VREF",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "DIFF_PLUS",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_D4"
+    },
+    {
+      "ref": "R7",
+      "part_candidate": "R",
+      "value": "PARAM_REF_R",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "VREF_DIV",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_REF_TOP"
+    },
+    {
+      "ref": "R8",
+      "part_candidate": "R",
+      "value": "PARAM_REF_R",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "VREF_DIV",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_REF_BOT"
+    },
+    {
+      "ref": "R9",
+      "part_candidate": "R",
+      "value": "PARAM_WINDOW_OUTER_R",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "V_WIN_H",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_WIN_TOP"
+    },
+    {
+      "ref": "R10",
+      "part_candidate": "R",
+      "value": "PARAM_WINDOW_CENTER_R",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "V_WIN_H",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "V_WIN_L",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_WIN_MID"
+    },
+    {
+      "ref": "R11",
+      "part_candidate": "R",
+      "value": "PARAM_WINDOW_OUTER_R",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "V_WIN_L",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_WIN_BOT"
+    },
+    {
+      "ref": "R12",
+      "part_candidate": "R",
+      "value": "PARAM_DEFAULT_LOW_R",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "HI_OK",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_HIOK_PD"
+    },
+    {
+      "ref": "R13",
+      "part_candidate": "R",
+      "value": "PARAM_DEFAULT_LOW_R",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "LO_OK",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_LOOK_PD"
+    },
+    {
+      "ref": "R14",
+      "part_candidate": "R",
+      "value": "PARAM_DEFAULT_LOW_R",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "WINDOW_OK",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_WINDOW_PD"
+    },
+    {
+      "ref": "R15",
+      "part_candidate": "R",
+      "value": "PARAM_DEFAULT_LOW_R",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "CLEARn",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_CLEAR_PD"
+    },
+    {
+      "ref": "R16",
+      "part_candidate": "R",
+      "value": "PARAM_DEFAULT_LOW_R",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "SERVICE_ARM_EDGE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_ARM_PD"
+    },
+    {
+      "ref": "R17",
+      "part_candidate": "R",
+      "value": "PARAM_DEFAULT_LOW_R",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ARMED_Q",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_Q_PD"
+    },
+    {
+      "ref": "R18",
+      "part_candidate": "R",
+      "value": "PARAM_DEFAULT_LOW_R",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "A_LOCAL_PGOOD",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_PG_PD"
+    },
+    {
+      "ref": "R19",
+      "part_candidate": "R",
+      "value": "PARAM_PGOOD_PULLUP",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_LOCAL_PGOOD",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_PG_PU"
+    },
+    {
+      "ref": "R20",
+      "part_candidate": "R",
+      "value": "PARAM_ENABLE_SER",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "EN_DRV",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "U_A2_EN",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_ENABLE_SER"
+    },
+    {
+      "ref": "R21",
+      "part_candidate": "R",
+      "value": "PARAM_ENABLE_PD_LOCAL_AT_EFUSE",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "U_A2_EN",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_ENABLE_PD"
+    },
+    {
+      "ref": "R22",
+      "part_candidate": "R",
+      "value": "PARAM_ILM_NO_PRODUCT_VALUE",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "U_A2_ILM",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_ILM"
+    },
+    {
+      "ref": "C1",
+      "part_candidate": "C",
+      "value": "PARAM_DVDT_NO_PRODUCT_VALUE",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "U_A2_DVDT",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_DVDT"
+    },
+    {
+      "ref": "C2",
+      "part_candidate": "C",
+      "value": "PARAM_LOCAL_BYPASS",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_P"
+    },
+    {
+      "ref": "C3",
+      "part_candidate": "C",
+      "value": "PARAM_LOCAL_BYPASS",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_N"
+    },
+    {
+      "ref": "C4",
+      "part_candidate": "C",
+      "value": "PARAM_LOCAL_BYPASS",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_DIFF"
+    },
+    {
+      "ref": "C5",
+      "part_candidate": "C",
+      "value": "PARAM_LOCAL_BYPASS",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_REF"
+    },
+    {
+      "ref": "C6",
+      "part_candidate": "C",
+      "value": "PARAM_LOCAL_BYPASS",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_WINDOW"
+    },
+    {
+      "ref": "C7",
+      "part_candidate": "C",
+      "value": "PARAM_LOCAL_BYPASS",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_LOGIC"
+    },
+    {
+      "ref": "C8",
+      "part_candidate": "C",
+      "value": "PARAM_LOCAL_BYPASS",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_PGOOD"
+    },
+    {
+      "ref": "J1",
+      "part_candidate": "EXTERNAL_AFTER_U_A1_PORT2",
+      "value": "EXTERNAL_AFTER_U_A1_BOUNDARY_NOT_IMPLEMENTED_UPSTREAM_BOARD",
+      "pins": {
+        "1": {
+          "name": "AFTER_U_A1_POWER_OUT",
+          "net": "A_MID_P",
+          "type": "power_out"
+        },
+        "2": {
+          "name": "LOCAL_REFERENCE",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": "Explicit external power-output boundary from separately modeled U_A1; not an implemented supply or raw-cell connection",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_MID"
+    },
+    {
+      "ref": "J2",
+      "part_candidate": "PORT2",
+      "value": "MAIN_PAIR_UNSELECTED_STATIC_CONNECTOR",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "A_TX_P",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_RETURN_HARNESS",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_MAIN"
+    },
+    {
+      "ref": "J3",
+      "part_candidate": "PORT2",
+      "value": "CHARGE_USB_SIGNAL_REFERENCE_ALL_UPSTREAM_NOT_RAW_CELL",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "A_PACK_N",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_ALTERNATE_BOND"
+    },
+    {
+      "ref": "J4",
+      "part_candidate": "EXTERNAL_BENCH_SUPPLY2",
+      "value": "EXTERNAL_ISOLATED_BENCH_3V3_BOUNDARY_NOT_PHONE_REGULATOR",
+      "pins": {
+        "1": {
+          "name": "BENCH_3V3_OUT",
+          "net": "A_LOCAL_3V3_BENCH_ONLY",
+          "type": "power_out"
+        },
+        "2": {
+          "name": "BENCH_REFERENCE",
+          "net": "A_PACK_N",
+          "type": "power_out"
+        }
+      },
+      "role": "Explicit off-sheet bench source drives analog rail and reference; actual phone regulator and isolation remain unimplemented",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_SUPPLY"
+    },
+    {
+      "ref": "J5",
+      "part_candidate": "PORT2",
+      "value": "MANUAL_BENCH_REARM_NO_AUTORETRY",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "SERVICE_ARM_EDGE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_ARM"
+    },
+    {
+      "ref": "J6",
+      "part_candidate": "PORT2",
+      "value": "EXTERNAL_ISOLATED_PROBE_BENCH_INTERFACE_NOT_IMPLEMENTED_PHONE_MONITOR",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "PROBE_FRESH_OK",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_PROOF"
+    },
+    {
+      "ref": "R23",
+      "part_candidate": "R",
+      "value": "10k_BENCH_DEFAULT_LOW_NOT_PRODUCT_QUALIFIED",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "PROBE_FRESH_OK",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "A_PACK_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_PROOF_PD"
+    },
+    {
+      "ref": "J7",
+      "part_candidate": "PORT3",
+      "value": "HIGH_IMPEDANCE_ISOLATED_INSTRUMENTS_REQUIRED",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "VDIFF",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "VSENSE_P",
+          "type": "passive"
+        },
+        "3": {
+          "name": "3",
+          "net": "VSENSE_N",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_MONITOR"
+    }
+  ],
+  "all_component_values_are_parameters": true,
+  "research_bench_synthetic_values_file": "synthetic_fixture.json",
+  "local_measurement_reference": "protected A_PACK_N, never raw CELL_N",
+  "alternate_reference_or_USB_ground_disconnected_in_fault_free_motion": false,
+  "source_sense_isolation_cut": "U_A2 EN/UVLO pin1",
+  "other_source_independent_cut": "U_A1 remains separately driven outside this local circuit",
+  "B_receiver_reverse_block": "U_ARX unchanged outside this local circuit",
+  "unimplemented": [
+    "actual local regulator",
+    "pack/OEM exact interfaces",
+    "sense open diagnosis",
+    "physical isolated continuity probe and fresh-proof watchdog",
+    "whole-board segregation",
+    "VBUS and remote charger cuts",
+    "downstream voltage sensing/bleed"
+  ],
+  "continuity_proof_generation_implemented": false,
+  "new_physical_gate": "PROBE_FRESH_OK is latch D, asynchronous clear AND and independent final EN AND; manual ARM cannot override missing proof"
+}

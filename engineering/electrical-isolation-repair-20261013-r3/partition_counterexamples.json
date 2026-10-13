@@ -1,0 +1,38 @@
+{
+  "base_sha256": "cc9d3d937e39d2f93c18fd80ea4c8a2aff6aff9052e41bed2a87ee197de01f7c",
+  "rows": [
+    {
+      "fault": "raw_A_to_harness",
+      "bridge_endpoints": [
+        "A_CELL_P",
+        "A_TX_P"
+      ],
+      "eFuse_module_net_coexistence": [],
+      "bridge_still_possible_across_boards_or_shared_harness": true,
+      "physically_excluded_by_verified_layout": false
+    },
+    {
+      "fault": "raw_B_to_harness",
+      "bridge_endpoints": [
+        "B_CELL_P",
+        "A_RX_P"
+      ],
+      "eFuse_module_net_coexistence": [],
+      "bridge_still_possible_across_boards_or_shared_harness": true,
+      "physically_excluded_by_verified_layout": false
+    },
+    {
+      "fault": "system_bus_to_harness",
+      "bridge_endpoints": [
+        "SYS_B_P",
+        "A_RX_P"
+      ],
+      "eFuse_module_net_coexistence": [],
+      "bridge_still_possible_across_boards_or_shared_harness": true,
+      "physically_excluded_by_verified_layout": false
+    }
+  ],
+  "all_legacy_global_bridge_faults_retained": true,
+  "single_board_constraint_is_not_physical_evidence": true,
+  "manufacturing_go": false
+}
