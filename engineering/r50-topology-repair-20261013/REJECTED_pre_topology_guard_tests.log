@@ -1,0 +1,46 @@
+test_far_body_repeated_existing_wire_rejected_despite_identical_counts (test_topology.R50TopologyParticipants.test_far_body_repeated_existing_wire_rejected_despite_identical_counts) ... FAIL
+test_far_body_solid_plus_loose_wire_rejected_before_AABB (test_topology.R50TopologyParticipants.test_far_body_solid_plus_loose_wire_rejected_before_AABB) ... FAIL
+test_far_cell_repeated_existing_wire_rejected_before_AABB (test_topology.R50TopologyParticipants.test_far_cell_repeated_existing_wire_rejected_before_AABB) ... FAIL
+test_far_cell_solid_plus_loose_wire_rejected_before_AABB (test_topology.R50TopologyParticipants.test_far_cell_solid_plus_loose_wire_rejected_before_AABB) ... FAIL
+test_pure_nested_single_child_wrappers_preserve_disjoint_and_overlap (test_topology.R50TopologyParticipants.test_pure_nested_single_child_wrappers_preserve_disjoint_and_overlap) ... ok
+
+======================================================================
+FAIL: test_far_body_repeated_existing_wire_rejected_despite_identical_counts (test_topology.R50TopologyParticipants.test_far_body_repeated_existing_wire_rejected_despite_identical_counts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/522038b915ed/production-audit/engineering/r50-topology-repair-20261013/test_topology.py", line 36, in test_far_body_repeated_existing_wire_rejected_despite_identical_counts
+    with self.assertRaises(InconsistentGeometry):solid_intersection([self.near],aliased)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: InconsistentGeometry not raised
+
+======================================================================
+FAIL: test_far_body_solid_plus_loose_wire_rejected_before_AABB (test_topology.R50TopologyParticipants.test_far_body_solid_plus_loose_wire_rejected_before_AABB)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/522038b915ed/production-audit/engineering/r50-topology-repair-20261013/test_topology.py", line 24, in test_far_body_solid_plus_loose_wire_rejected_before_AABB
+    with self.assertRaises(InconsistentGeometry):solid_intersection([self.near],mixed)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: InconsistentGeometry not raised
+
+======================================================================
+FAIL: test_far_cell_repeated_existing_wire_rejected_before_AABB (test_topology.R50TopologyParticipants.test_far_cell_repeated_existing_wire_rejected_before_AABB)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/522038b915ed/production-audit/engineering/r50-topology-repair-20261013/test_topology.py", line 40, in test_far_cell_repeated_existing_wire_rejected_before_AABB
+    with self.assertRaises(InconsistentGeometry):solid_intersection([aliased],self.near)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: InconsistentGeometry not raised
+
+======================================================================
+FAIL: test_far_cell_solid_plus_loose_wire_rejected_before_AABB (test_topology.R50TopologyParticipants.test_far_cell_solid_plus_loose_wire_rejected_before_AABB)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/522038b915ed/production-audit/engineering/r50-topology-repair-20261013/test_topology.py", line 28, in test_far_cell_solid_plus_loose_wire_rejected_before_AABB
+    with self.assertRaises(InconsistentGeometry):solid_intersection([mixed],self.near)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: InconsistentGeometry not raised
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.056s
+
+FAILED (failures=4)
