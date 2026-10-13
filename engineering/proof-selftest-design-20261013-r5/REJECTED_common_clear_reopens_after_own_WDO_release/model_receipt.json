@@ -1,0 +1,143 @@
+{
+  "tests_run": 31,
+  "failures": 0,
+  "errors": 0,
+  "assertions_pass": true,
+  "healthy_trace": [
+    {
+      "t_ms": 10.0,
+      "state": 1,
+      "sense_V": 1.65,
+      "comparator_bits": [
+        1,
+        1,
+        0
+      ],
+      "sample_match": true,
+      "all_valid": false,
+      "tx_qualified": false,
+      "receiver_enabled": false,
+      "coupon_powered_ideal_forward": false
+    },
+    {
+      "t_ms": 30.0,
+      "state": 2,
+      "sense_V": 3.3,
+      "comparator_bits": [
+        1,
+        0,
+        0
+      ],
+      "sample_match": true,
+      "all_valid": false,
+      "tx_qualified": false,
+      "receiver_enabled": false,
+      "coupon_powered_ideal_forward": false
+    },
+    {
+      "t_ms": 50.0,
+      "state": 3,
+      "sense_V": 0.0,
+      "comparator_bits": [
+        0,
+        1,
+        1
+      ],
+      "sample_match": true,
+      "all_valid": false,
+      "tx_qualified": false,
+      "receiver_enabled": false,
+      "coupon_powered_ideal_forward": false
+    },
+    {
+      "t_ms": 70.0,
+      "state": 0,
+      "sense_V": 0.0,
+      "comparator_bits": [
+        0,
+        1,
+        1
+      ],
+      "sample_match": true,
+      "all_valid": true,
+      "tx_qualified": false,
+      "receiver_enabled": false,
+      "coupon_powered_ideal_forward": false
+    },
+    {
+      "t_ms": 90.0,
+      "state": 1,
+      "sense_V": 1.65,
+      "comparator_bits": [
+        1,
+        1,
+        0
+      ],
+      "sample_match": true,
+      "all_valid": true,
+      "tx_qualified": true,
+      "receiver_enabled": false,
+      "coupon_powered_ideal_forward": false
+    },
+    {
+      "t_ms": 110.0,
+      "state": 2,
+      "sense_V": 3.3,
+      "comparator_bits": [
+        1,
+        0,
+        0
+      ],
+      "sample_match": true,
+      "all_valid": true,
+      "tx_qualified": true,
+      "receiver_enabled": true,
+      "coupon_powered_ideal_forward": true
+    },
+    {
+      "t_ms": 130.0,
+      "state": 3,
+      "sense_V": 0.0,
+      "comparator_bits": [
+        0,
+        1,
+        1
+      ],
+      "sample_match": true,
+      "all_valid": true,
+      "tx_qualified": true,
+      "receiver_enabled": true,
+      "coupon_powered_ideal_forward": true
+    },
+    {
+      "t_ms": 150.0,
+      "state": 0,
+      "sense_V": 0.0,
+      "comparator_bits": [
+        0,
+        1,
+        1
+      ],
+      "sample_match": true,
+      "all_valid": true,
+      "tx_qualified": true,
+      "receiver_enabled": true,
+      "coupon_powered_ideal_forward": true
+    }
+  ],
+  "model_is_SPICE_or_physical_qualification": false,
+  "analog_settling_or_hold_proven": false,
+  "counterexamples_preserved": [
+    "two final ON nets forced high",
+    "physical bridge across both cuts",
+    "upper comparator plus test-valid latch simultaneous stuck-high",
+    "main return open or signature moved locally",
+    "fault immediately after sample",
+    "common source corruption"
+  ],
+  "manufacturing_go": false,
+  "source_sha256": {
+    "selftest_model.py": "1549ac79b39e7bd8df5208fc3f97921c4344a0766da8eadaee942eee287021f9",
+    "test_selftest_model.py": "4d450d7ff466ce004b188da07bbdd8df56fa4558d4a6b2ac46652f3d95d6d60e"
+  }
+}

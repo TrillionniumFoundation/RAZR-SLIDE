@@ -1,0 +1,234 @@
+{
+  "native_launch": {
+    "job": {
+      "args": [
+        "-c",
+        "python3 - <<'PY'\nfrom pathlib import Path\nimport hashlib,tarfile,subprocess\np=Path('/home/alex/RAZR-SLIDE-kicad9-erc-runtime-20261013-r2/proof-selftest-r5-v1')\nf=p/'native_inputs.tar.gz'\nassert hashlib.sha256(f.read_bytes()).hexdigest()=='0206cd123177a8392ae440ce241284c85d516aece203aa384d2f95bacd227d89'\nwith tarfile.open(f) as t:t.extractall(p,filter='data')\nr=subprocess.run(['python3',str(p/'native_runner.py')],cwd=p)\nraise SystemExit(r.returncode)\nPY"
+      ],
+      "created_unix_ms": 1791886314439,
+      "cwd": null,
+      "env_keys": [],
+      "executable": "/bin/sh",
+      "execution_mode": "operator",
+      "host": "pocket4",
+      "id": "1a134bf4bc7-1f807d-ac6",
+      "idempotency_key": "razr-proof-r5-native-20261013-1",
+      "launch_error": null,
+      "launch_state": "launched",
+      "remote_job_dir": "/home/alex/.local/state/hepta-runtime-operator-host/jobs/1a134bf4bc7-1f807d-ac6",
+      "request_digest": "f8b340f878305a0dc36392b7654764ada4100f9b982113f172036aff90ded637",
+      "request_fingerprint": 17920738778149837000,
+      "ssh_target": "pocket4",
+      "system_jobctl": false,
+      "unit": "hepta-runtime-job-1a134bf4bc7-1f807d-ac6"
+    },
+    "launch": {
+      "backend": "systemd",
+      "launcher_pid": null,
+      "ok": true,
+      "unit": "hepta-runtime-job-1a134bf4bc7-1f807d-ac6"
+    },
+    "reused": false
+  },
+  "native_status": {
+    "at_unix_ms": 1791886315967,
+    "cancelled": false,
+    "exit_code": 0,
+    "job_id": "1a134bf4bc7-1f807d-ac6",
+    "log_bytes": {
+      "stderr": {
+        "seen": 0,
+        "stored": 0
+      },
+      "stdout": {
+        "seen": 422,
+        "stored": 422
+      }
+    },
+    "log_errors": {
+      "stderr": null,
+      "stdout": null
+    },
+    "log_truncated": {
+      "stderr": false,
+      "stdout": false
+    },
+    "output_complete": true,
+    "state": "succeeded",
+    "timed_out": false
+  },
+  "native_stdout": "{\"native_success\": true, \"rows\": [{\"operation\": \"version\", \"exit\": 0}, {\"operation\": \"netlist\", \"exit\": 0}, {\"operation\": \"svg\", \"exit\": 0}, {\"operation\": \"ERC\", \"exit\": 0}, {\"operation\": \"model\", \"exit\": 0}], \"ERC_counts\": {}, \"native_pins\": 662, \"expected_pins\": 662, \"native_outputs_bytes\": 893576, \"native_outputs_sha256\": \"c93cc310360829570dc9e4da1726f6e270d857d6773603c8d2f2e042c4cdc31e\", \"manufacturing_go\": false}\n",
+  "archive_reads": [
+    {
+      "offset": 0,
+      "version": "66306:34483591:893576:1791886315922115104:1791886315922115104",
+      "size": 893576,
+      "chunk_sha256": "c03d82ad9354facc163ee60e43d2998eb32368488f4e4c774b2073f4b803ef56",
+      "next_offset": 65536,
+      "eof": false
+    },
+    {
+      "offset": 65536,
+      "version": "66306:34483591:893576:1791886315922115104:1791886315922115104",
+      "size": 893576,
+      "chunk_sha256": "e74aa01296c9001c4c11daf60746833b89e785cbb4a0936205bee39d8268e51e",
+      "next_offset": 131072,
+      "eof": false
+    },
+    {
+      "offset": 131072,
+      "version": "66306:34483591:893576:1791886315922115104:1791886315922115104",
+      "size": 893576,
+      "chunk_sha256": "6e72280237b66dec4102c837fdf1f6cd6c3211ea1969b6e827b589ccd9ed2c35",
+      "next_offset": 196608,
+      "eof": false
+    },
+    {
+      "offset": 196608,
+      "version": "66306:34483591:893576:1791886315922115104:1791886315922115104",
+      "size": 893576,
+      "chunk_sha256": "38b90a60146a4e2e2fea51b51f03bfa2805464461e446649a997ca11dfcf7625",
+      "next_offset": 262144,
+      "eof": false
+    },
+    {
+      "offset": 262144,
+      "version": "66306:34483591:893576:1791886315922115104:1791886315922115104",
+      "size": 893576,
+      "chunk_sha256": "d6c2ed0965cfded67038e1127ce671f73da420bd417f90523ee9c9004d2ac80b",
+      "next_offset": 327680,
+      "eof": false
+    },
+    {
+      "offset": 327680,
+      "version": "66306:34483591:893576:1791886315922115104:1791886315922115104",
+      "size": 893576,
+      "chunk_sha256": "b1f1db835e7aa1b9a25173191b95f6192aa2c500c815996e59bc8c78a82ba280",
+      "next_offset": 393216,
+      "eof": false
+    },
+    {
+      "offset": 393216,
+      "version": "66306:34483591:893576:1791886315922115104:1791886315922115104",
+      "size": 893576,
+      "chunk_sha256": "7ea0f39d90ce88629379b05270f381181b1405a2650780bd31a502771355e309",
+      "next_offset": 458752,
+      "eof": false
+    },
+    {
+      "offset": 458752,
+      "version": "66306:34483591:893576:1791886315922115104:1791886315922115104",
+      "size": 893576,
+      "chunk_sha256": "ab34143ae07123c6b8244a72c41cd042c8309d5d872db015f5b53a053f0831f2",
+      "next_offset": 524288,
+      "eof": false
+    },
+    {
+      "offset": 524288,
+      "version": "66306:34483591:893576:1791886315922115104:1791886315922115104",
+      "size": 893576,
+      "chunk_sha256": "2fd0f2238639a266d182424ffdfb7700c28c04c0013ca826764122fc8640ea4e",
+      "next_offset": 589824,
+      "eof": false
+    },
+    {
+      "offset": 589824,
+      "version": "66306:34483591:893576:1791886315922115104:1791886315922115104",
+      "size": 893576,
+      "chunk_sha256": "e4028ce210f6ff578e859f21645c0a668b504b014c34c8003cdfcded57aea0b3",
+      "next_offset": 655360,
+      "eof": false
+    },
+    {
+      "offset": 655360,
+      "version": "66306:34483591:893576:1791886315922115104:1791886315922115104",
+      "size": 893576,
+      "chunk_sha256": "a9b2e04f1000997c81c5f3c258bee9f23b4ac66b9535ef32b00c4929d8d3727f",
+      "next_offset": 720896,
+      "eof": false
+    },
+    {
+      "offset": 720896,
+      "version": "66306:34483591:893576:1791886315922115104:1791886315922115104",
+      "size": 893576,
+      "chunk_sha256": "0dc2f8436db8b811f749bcf1c11a74a273ab962af88e43bc404535d8802e055f",
+      "next_offset": 786432,
+      "eof": false
+    },
+    {
+      "offset": 786432,
+      "version": "66306:34483591:893576:1791886315922115104:1791886315922115104",
+      "size": 893576,
+      "chunk_sha256": "cc9e6eb822c43e31e10ee3cd276b97db40be5b95c5361c366496dd09eb42ce07",
+      "next_offset": 851968,
+      "eof": false
+    },
+    {
+      "offset": 851968,
+      "version": "66306:34483591:893576:1791886315922115104:1791886315922115104",
+      "size": 893576,
+      "chunk_sha256": "8fc1a4f9c81a0608b6dbd195855c553a939c0b8f865a6715df034bf7960f3643",
+      "next_offset": 893576,
+      "eof": true
+    }
+  ],
+  "vendor_launch": {
+    "job": {
+      "args": [
+        "-c",
+        "python3 /home/alex/RAZR-SLIDE-kicad9-erc-runtime-20261013-r2/proof-selftest-r5-v1/download_vendor.py"
+      ],
+      "created_unix_ms": 1791886424094,
+      "cwd": null,
+      "env_keys": [],
+      "executable": "/bin/sh",
+      "execution_mode": "operator",
+      "host": "pocket4",
+      "id": "1a134c0f81e-1f807d-ac9",
+      "idempotency_key": "razr-proof-r5-vendor-get-20261013-1",
+      "launch_error": null,
+      "launch_state": "launched",
+      "remote_job_dir": "/home/alex/.local/state/hepta-runtime-operator-host/jobs/1a134c0f81e-1f807d-ac9",
+      "request_digest": "1d45c9427544edd9c383331b26c1d2897631393bef0e5294570494b7b2bcafef",
+      "request_fingerprint": 2109313287765421600,
+      "ssh_target": "pocket4",
+      "system_jobctl": false,
+      "unit": "hepta-runtime-job-1a134c0f81e-1f807d-ac9"
+    },
+    "launch": {
+      "backend": "systemd",
+      "launcher_pid": null,
+      "ok": true,
+      "unit": "hepta-runtime-job-1a134c0f81e-1f807d-ac9"
+    },
+    "reused": false
+  },
+  "vendor_status": {
+    "at_unix_ms": 1791886441038,
+    "cancelled": false,
+    "exit_code": 0,
+    "job_id": "1a134c0f81e-1f807d-ac9",
+    "log_bytes": {
+      "stderr": {
+        "seen": 0,
+        "stored": 0
+      },
+      "stdout": {
+        "seen": 831,
+        "stored": 831
+      }
+    },
+    "log_errors": {
+      "stderr": null,
+      "stdout": null
+    },
+    "log_truncated": {
+      "stderr": false,
+      "stdout": false
+    },
+    "output_complete": true,
+    "state": "succeeded",
+    "timed_out": false
+  },
+  "manufacturing_go": false
+}

@@ -1,0 +1,17 @@
+{
+  "drawn_oscillator": {"R_ohm":22000,"R_tolerance_fraction":0.01,"C_F":0.000001,"C_tolerance_fraction":0.1,"nominal_R_times_C_ms":22,"R_times_C_range_ms":[19.602,24.442],"R_times_C_is_period":false},
+  "behavior_model_example": {"half_cycle_ms":10,"oscillator_period_ms":20,"four_state_repeat_interval_ms":80,"counter_advance_ordering_delay_assumed_ms":0.1,"these_values_are_actual_RC_measurements":false},
+  "phase_watchdog_requirement": {"CWD_preset_R_ohm":10000,"datasheet_timeout_ms_min":170,"datasheet_timeout_ms_max":230,"valid_phase_falling_edge_once_every_oscillator_cycles":4,"required_oscillator_period_ms_strict_upper_limit_without_additional_margin":42.5,"minimum_pulse_ns":50},
+  "unresolved_clock_inputs": ["SN74LVC1G14 VT thresholds at the exact 3.3V rail and temperature/load corners","actual output high/low at RC/transient fanout load","5uA input leakage effects on oscillator node","selected capacitor leakage and temperature/aging drift","actual propagation/nonoverlap and setup/hold margins"],
+  "datasheet_discrete_VT_points_V": [1.65,2.3,3,4.5,5.5],
+  "linear_interpolation_at_3V3_is_full_temperature_factory_guarantee": false,
+  "actual_oscillator_period_or_worst_case_phase_interval_ms": null,
+  "phase_watchdog_minimum_timeout_met_by_actual_hardware": null,
+  "drawn_delayed_advance_RC": {"R_ohm":10000,"C_F":0.00000001,"nominal_R_times_C_us":100,"actual_gate_nonoverlap_proven":false},
+  "drawn_test_injection": {"R_ohm":220000,"C_sense_F":0.000000001,"nominal_R_times_C_us":220,"nominal_7tau_ms":1.54,"actual_settling_at_sample_proven":false},
+  "source_driver_load": {"conditional_max_V":3.465,"normal_drive_R_min_ohm":46530,"test_injection_R_min_ohm":217800,"conditional_short_plus_test_capacitor_peak_uA":90.38,"total_output_load_including_unbounded_3V3_mux_leakage_proven_below_100uA":false},
+  "physical_measurements":0,
+  "main_power_fault_energy_or_safe_response_time":null,
+  "watchdog_230ms_is_phone_energy_safety_qualification":false,
+  "manufacturing_go":false
+}

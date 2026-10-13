@@ -1,0 +1,4769 @@
+{
+  "schema": "razr-slide-selftest-dynamic-dual-receiver-r5",
+  "manufacturing_go": false,
+  "phone_complete_PCB": false,
+  "fabrication_netlist": false,
+  "components": [
+    {
+      "ref": "U1",
+      "part_candidate": "SN74LVC1G14DBV",
+      "value": "SN74LVC1G14DBV",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "A",
+          "net": "OSC_RC",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "PHASE",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_OSC"
+    },
+    {
+      "ref": "R1",
+      "part_candidate": "R",
+      "value": "22k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "PHASE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "OSC_RC",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_OSC"
+    },
+    {
+      "ref": "C1",
+      "part_candidate": "C",
+      "value": "1u_10pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "OSC_RC",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_OSC"
+    },
+    {
+      "ref": "U2",
+      "part_candidate": "SN74LVC1G04DBV",
+      "value": "SN74LVC1G04DBV",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "A",
+          "net": "PHASE",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "PHASE_N",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_PHASE_N"
+    },
+    {
+      "ref": "R2",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "PHASE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ADVANCE_RC",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_ADVANCE"
+    },
+    {
+      "ref": "C2",
+      "part_candidate": "C",
+      "value": "10n_10pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ADVANCE_RC",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_ADVANCE"
+    },
+    {
+      "ref": "U3",
+      "part_candidate": "SN74LVC1G14DBV",
+      "value": "SN74LVC1G14DBV",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "A",
+          "net": "ADVANCE_RC",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "ADVANCE_N",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_ADVANCE_N"
+    },
+    {
+      "ref": "U4",
+      "part_candidate": "SN74LVC1G04DBV",
+      "value": "SN74LVC1G04DBV",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "A",
+          "net": "ADVANCE_N",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "ADVANCE_CLK",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_ADVANCE"
+    },
+    {
+      "ref": "U5",
+      "part_candidate": "TLV803EA29DBZ",
+      "value": "TLV803EA29DBZ",
+      "pins": {
+        "1": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "2": {
+          "name": "RESETn",
+          "net": "TX_PGOOD",
+          "type": "open_collector"
+        },
+        "3": {
+          "name": "VDD",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": "Actual local 3.3V supervisor; not an externally asserted flag",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "TX_PG"
+    },
+    {
+      "ref": "R3",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "TX_PGOOD",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "TX_PG_PU"
+    },
+    {
+      "ref": "U6",
+      "part_candidate": "SN74LVC1G74DCU",
+      "value": "SN74LVC1G74DCU",
+      "pins": {
+        "1": {
+          "name": "CLK",
+          "net": "ADVANCE_CLK",
+          "type": "input"
+        },
+        "2": {
+          "name": "D",
+          "net": "STATE_B_N",
+          "type": "input"
+        },
+        "3": {
+          "name": "Qn",
+          "net": "STATE_A_N",
+          "type": "output"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "Q",
+          "net": "STATE_A",
+          "type": "output"
+        },
+        "6": {
+          "name": "CLRn",
+          "net": "TX_PGOOD",
+          "type": "input"
+        },
+        "7": {
+          "name": "PREn",
+          "net": "TX_BENCH_3V3",
+          "type": "input"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_JOHNSON_A"
+    },
+    {
+      "ref": "U7",
+      "part_candidate": "SN74LVC1G74DCU",
+      "value": "SN74LVC1G74DCU",
+      "pins": {
+        "1": {
+          "name": "CLK",
+          "net": "ADVANCE_CLK",
+          "type": "input"
+        },
+        "2": {
+          "name": "D",
+          "net": "STATE_A",
+          "type": "input"
+        },
+        "3": {
+          "name": "Qn",
+          "net": "STATE_B_N",
+          "type": "output"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "Q",
+          "net": "STATE_B",
+          "type": "output"
+        },
+        "6": {
+          "name": "CLRn",
+          "net": "TX_PGOOD",
+          "type": "input"
+        },
+        "7": {
+          "name": "PREn",
+          "net": "TX_BENCH_3V3",
+          "type": "input"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_JOHNSON_B"
+    },
+    {
+      "ref": "U8",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "STATE_A_N",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "STATE_B_N",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "STATE_NL",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_DEC_NL"
+    },
+    {
+      "ref": "U9",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "STATE_A",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "STATE_B_N",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "STATE_NH",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_DEC_NH"
+    },
+    {
+      "ref": "U10",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "STATE_A",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "STATE_B",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "STATE_TH",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_DEC_TH"
+    },
+    {
+      "ref": "U11",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "STATE_A_N",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "STATE_B",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "STATE_TL",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_DEC_TL"
+    },
+    {
+      "ref": "U12",
+      "part_candidate": "SN74LVC1G04DBV",
+      "value": "SN74LVC1G04DBV",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "A",
+          "net": "STATE_A",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "DRIVE_N",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_DRIVE_N"
+    },
+    {
+      "ref": "U13",
+      "part_candidate": "SN74LVC1G04DBV",
+      "value": "SN74LVC1G04DBV",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "A",
+          "net": "DRIVE_N",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "CHALLENGE_DRIVE",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_DRIVE"
+    },
+    {
+      "ref": "R4",
+      "part_candidate": "R",
+      "value": "47k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "CHALLENGE_DRIVE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "NORMAL_LOOP_NODE",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_DRIVE"
+    },
+    {
+      "ref": "J1",
+      "part_candidate": "PORT2",
+      "value": "DRY_LOOP_A_NOT_MAIN_N",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "NORMAL_LOOP_NODE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_DRY_A"
+    },
+    {
+      "ref": "J2",
+      "part_candidate": "PORT2",
+      "value": "DRY_LOOP_B_NOT_MAIN_N",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "NORMAL_LOOP_NODE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_DRY_B"
+    },
+    {
+      "ref": "R5",
+      "part_candidate": "R",
+      "value": "47k_1pct_AT_REMOTE_B_ONLY",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "NORMAL_LOOP_NODE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_REMOTE_SIG"
+    },
+    {
+      "ref": "R6",
+      "part_candidate": "R",
+      "value": "220k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "CHALLENGE_DRIVE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "TEST_INJECT_NODE",
+          "type": "passive"
+        }
+      },
+      "role": "Known high/low injection limited in energy; it does not bypass remote loop in normal states",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_TEST_LIMIT"
+    },
+    {
+      "ref": "U14",
+      "part_candidate": "TS5A3159DBV",
+      "value": "TS5A3159DBV",
+      "pins": {
+        "1": {
+          "name": "NO",
+          "net": "TEST_INJECT_NODE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "3": {
+          "name": "NC",
+          "net": "NORMAL_LOOP_NODE",
+          "type": "passive"
+        },
+        "4": {
+          "name": "COM",
+          "net": "PROBE_SENSE",
+          "type": "passive"
+        },
+        "5": {
+          "name": "V+",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        },
+        "6": {
+          "name": "IN",
+          "net": "STATE_B",
+          "type": "input"
+        }
+      },
+      "role": "NC in normal LOW/HIGH; NO in test HIGH/LOW. Stuck route must fail a phase pattern",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_TEST_MUX"
+    },
+    {
+      "ref": "C3",
+      "part_candidate": "C",
+      "value": "1n_10pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "PROBE_SENSE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_SENSE"
+    },
+    {
+      "ref": "R7",
+      "part_candidate": "R",
+      "value": "15k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "TH_HLO",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_HLO_TOP"
+    },
+    {
+      "ref": "R8",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TH_HLO",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_HLO_BOT"
+    },
+    {
+      "ref": "R9",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "TH_HHI",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_HHI_TOP"
+    },
+    {
+      "ref": "R10",
+      "part_candidate": "R",
+      "value": "15k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TH_HHI",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_HHI_BOT"
+    },
+    {
+      "ref": "R11",
+      "part_candidate": "R",
+      "value": "90.9k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "TH_LHI",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_LHI_TOP"
+    },
+    {
+      "ref": "R12",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TH_LHI",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_LHI_BOT"
+    },
+    {
+      "ref": "U15",
+      "part_candidate": "TLV3202DGK",
+      "value": "TLV3202DGK",
+      "pins": {
+        "1": {
+          "name": "1OUT",
+          "net": "ABOVE_HLO",
+          "type": "output"
+        },
+        "2": {
+          "name": "1IN-",
+          "net": "TH_HLO",
+          "type": "input"
+        },
+        "3": {
+          "name": "1IN+",
+          "net": "PROBE_SENSE",
+          "type": "input"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "2IN+",
+          "net": "TH_HHI",
+          "type": "input"
+        },
+        "6": {
+          "name": "2IN-",
+          "net": "PROBE_SENSE",
+          "type": "input"
+        },
+        "7": {
+          "name": "2OUT",
+          "net": "BELOW_HHI",
+          "type": "output"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_HIGH_WIN"
+    },
+    {
+      "ref": "U16",
+      "part_candidate": "TLV3202DGK",
+      "value": "TLV3202DGK",
+      "pins": {
+        "1": {
+          "name": "1OUT",
+          "net": "BELOW_LHI",
+          "type": "output"
+        },
+        "2": {
+          "name": "1IN-",
+          "net": "PROBE_SENSE",
+          "type": "input"
+        },
+        "3": {
+          "name": "1IN+",
+          "net": "TH_LHI",
+          "type": "input"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "2IN+",
+          "net": "ISOLATED_BENCH_G",
+          "type": "input"
+        },
+        "6": {
+          "name": "2IN-",
+          "net": "TX_BENCH_3V3",
+          "type": "input"
+        },
+        "7": {
+          "name": "2OUT",
+          "net": null,
+          "type": "output"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_LOW_WIN"
+    },
+    {
+      "ref": "U17",
+      "part_candidate": "SN74LVC1G04DBV",
+      "value": "SN74LVC1G04DBV",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "A",
+          "net": "ABOVE_HLO",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "NOT_HLO",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_NOT_HLO"
+    },
+    {
+      "ref": "U18",
+      "part_candidate": "SN74LVC1G04DBV",
+      "value": "SN74LVC1G04DBV",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "A",
+          "net": "BELOW_HHI",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "NOT_HHI",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_NOT_HHI"
+    },
+    {
+      "ref": "U19",
+      "part_candidate": "SN74LVC1G04DBV",
+      "value": "SN74LVC1G04DBV",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "A",
+          "net": "BELOW_LHI",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "NOT_LHI",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_NOT_LHI"
+    },
+    {
+      "ref": "U20",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "NOT_HLO",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "BELOW_HHI",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "U_NORMAL_LOW_MATCH_TMP",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_NORMAL_LOW_MATCH_1"
+    },
+    {
+      "ref": "U21",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "U_NORMAL_LOW_MATCH_TMP",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "BELOW_LHI",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "MATCH_LOW",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_NORMAL_LOW_MATCH_2"
+    },
+    {
+      "ref": "U22",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "ABOVE_HLO",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "BELOW_HHI",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "U_NORMAL_HIGH_MATCH_TMP",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_NORMAL_HIGH_MATCH_1"
+    },
+    {
+      "ref": "U23",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "U_NORMAL_HIGH_MATCH_TMP",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "NOT_LHI",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "MATCH_HIGH",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_NORMAL_HIGH_MATCH_2"
+    },
+    {
+      "ref": "U24",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "ABOVE_HLO",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "NOT_HHI",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "U_TEST_HIGH_MATCH_TMP",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_TEST_HIGH_MATCH_1"
+    },
+    {
+      "ref": "U25",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "U_TEST_HIGH_MATCH_TMP",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "NOT_LHI",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "MATCH_TEST_HIGH",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_TEST_HIGH_MATCH_2"
+    },
+    {
+      "ref": "U26",
+      "part_candidate": "TPS3431DRB",
+      "value": "TPS3431DRB",
+      "pins": {
+        "1": {
+          "name": "VDD",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        },
+        "2": {
+          "name": "CWD",
+          "net": "TX_CWD",
+          "type": "input"
+        },
+        "3": {
+          "name": "EN",
+          "net": "TX_BENCH_3V3",
+          "type": "input"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "SET1",
+          "net": "TX_BENCH_3V3",
+          "type": "input"
+        },
+        "6": {
+          "name": "WDI",
+          "net": "ACTUAL_TX_WDI",
+          "type": "input"
+        },
+        "7": {
+          "name": "WDO",
+          "net": "TX_WD_OK",
+          "type": "open_collector"
+        },
+        "8": {
+          "name": "ENOUT",
+          "net": null,
+          "type": "open_collector"
+        },
+        "EP": {
+          "name": "THERMAL_PAD",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "TX_WD"
+    },
+    {
+      "ref": "R13",
+      "part_candidate": "R",
+      "value": "10k_1pct_170to230ms",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "TX_CWD",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "TX_CWD_R"
+    },
+    {
+      "ref": "R14",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "TX_WD_OK",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "TX_WD_PU"
+    },
+    {
+      "ref": "U27",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "TX_PGOOD",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "TX_WD_OK",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "TX_CLRn",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_TX_CLEAR"
+    },
+    {
+      "ref": "U28",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "PHASE_N",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "STATE_NL",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "SAMPLE_CLK_NL",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_SAMPLE_CLK_NL"
+    },
+    {
+      "ref": "U29",
+      "part_candidate": "SN74LVC1G74DCU",
+      "value": "SN74LVC1G74DCU",
+      "pins": {
+        "1": {
+          "name": "CLK",
+          "net": "SAMPLE_CLK_NL",
+          "type": "input"
+        },
+        "2": {
+          "name": "D",
+          "net": "MATCH_LOW",
+          "type": "input"
+        },
+        "3": {
+          "name": "Qn",
+          "net": null,
+          "type": "output"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "Q",
+          "net": "VALID_NL",
+          "type": "output"
+        },
+        "6": {
+          "name": "CLRn",
+          "net": "TX_CLRn",
+          "type": "input"
+        },
+        "7": {
+          "name": "PREn",
+          "net": "TX_BENCH_3V3",
+          "type": "input"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_SAMPLE_NL"
+    },
+    {
+      "ref": "U30",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "PHASE_N",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "STATE_NH",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "SAMPLE_CLK_NH",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_SAMPLE_CLK_NH"
+    },
+    {
+      "ref": "U31",
+      "part_candidate": "SN74LVC1G74DCU",
+      "value": "SN74LVC1G74DCU",
+      "pins": {
+        "1": {
+          "name": "CLK",
+          "net": "SAMPLE_CLK_NH",
+          "type": "input"
+        },
+        "2": {
+          "name": "D",
+          "net": "MATCH_HIGH",
+          "type": "input"
+        },
+        "3": {
+          "name": "Qn",
+          "net": null,
+          "type": "output"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "Q",
+          "net": "VALID_NH",
+          "type": "output"
+        },
+        "6": {
+          "name": "CLRn",
+          "net": "TX_CLRn",
+          "type": "input"
+        },
+        "7": {
+          "name": "PREn",
+          "net": "TX_BENCH_3V3",
+          "type": "input"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_SAMPLE_NH"
+    },
+    {
+      "ref": "U32",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "PHASE_N",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "STATE_TH",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "SAMPLE_CLK_TH",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_SAMPLE_CLK_TH"
+    },
+    {
+      "ref": "U33",
+      "part_candidate": "SN74LVC1G74DCU",
+      "value": "SN74LVC1G74DCU",
+      "pins": {
+        "1": {
+          "name": "CLK",
+          "net": "SAMPLE_CLK_TH",
+          "type": "input"
+        },
+        "2": {
+          "name": "D",
+          "net": "MATCH_TEST_HIGH",
+          "type": "input"
+        },
+        "3": {
+          "name": "Qn",
+          "net": null,
+          "type": "output"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "Q",
+          "net": "VALID_TH",
+          "type": "output"
+        },
+        "6": {
+          "name": "CLRn",
+          "net": "TX_CLRn",
+          "type": "input"
+        },
+        "7": {
+          "name": "PREn",
+          "net": "TX_BENCH_3V3",
+          "type": "input"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_SAMPLE_TH"
+    },
+    {
+      "ref": "U34",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "PHASE_N",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "STATE_TL",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "SAMPLE_CLK_TL",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_SAMPLE_CLK_TL"
+    },
+    {
+      "ref": "U35",
+      "part_candidate": "SN74LVC1G74DCU",
+      "value": "SN74LVC1G74DCU",
+      "pins": {
+        "1": {
+          "name": "CLK",
+          "net": "SAMPLE_CLK_TL",
+          "type": "input"
+        },
+        "2": {
+          "name": "D",
+          "net": "MATCH_LOW",
+          "type": "input"
+        },
+        "3": {
+          "name": "Qn",
+          "net": null,
+          "type": "output"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "Q",
+          "net": "VALID_TL",
+          "type": "output"
+        },
+        "6": {
+          "name": "CLRn",
+          "net": "TX_CLRn",
+          "type": "input"
+        },
+        "7": {
+          "name": "PREn",
+          "net": "TX_BENCH_3V3",
+          "type": "input"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_SAMPLE_TL"
+    },
+    {
+      "ref": "U36",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "VALID_NL",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "VALID_NH",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "NORMAL_VALID",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_PAIR_NORMAL"
+    },
+    {
+      "ref": "U37",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "VALID_TH",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "VALID_TL",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "TEST_VALID",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_PAIR_TEST"
+    },
+    {
+      "ref": "U38",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "NORMAL_VALID",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "TEST_VALID",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "ALL_VALID",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_ALL_VALID"
+    },
+    {
+      "ref": "U39",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "PHASE",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "ALL_VALID",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "TX_HEARTBEAT",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_TX_HEARTBEAT"
+    },
+    {
+      "ref": "R15",
+      "part_candidate": "R",
+      "value": "1k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_HEARTBEAT",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ACTUAL_TX_WDI",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_TX_WDI_SER"
+    },
+    {
+      "ref": "R16",
+      "part_candidate": "R",
+      "value": "100k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ACTUAL_TX_WDI",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_TX_WDI_PD"
+    },
+    {
+      "ref": "U40",
+      "part_candidate": "SN74LVC1G74DCU",
+      "value": "SN74LVC1G74DCU",
+      "pins": {
+        "1": {
+          "name": "CLK",
+          "net": "TX_SERVICE_EDGE",
+          "type": "input"
+        },
+        "2": {
+          "name": "D",
+          "net": "TX_BENCH_3V3",
+          "type": "input"
+        },
+        "3": {
+          "name": "Qn",
+          "net": null,
+          "type": "output"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "Q",
+          "net": "TX_PENDING",
+          "type": "output"
+        },
+        "6": {
+          "name": "CLRn",
+          "net": "TX_CLRn",
+          "type": "input"
+        },
+        "7": {
+          "name": "PREn",
+          "net": "TX_BENCH_3V3",
+          "type": "input"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_TX_REQUEST"
+    },
+    {
+      "ref": "U41",
+      "part_candidate": "SN74LVC1G04DBV",
+      "value": "SN74LVC1G04DBV",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "A",
+          "net": "ACTUAL_TX_WDI",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "ACTUAL_TX_WDI_N",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_TX_WDI_N"
+    },
+    {
+      "ref": "U42",
+      "part_candidate": "SN74LVC1G74DCU",
+      "value": "SN74LVC1G74DCU",
+      "pins": {
+        "1": {
+          "name": "CLK",
+          "net": "ACTUAL_TX_WDI_N",
+          "type": "input"
+        },
+        "2": {
+          "name": "D",
+          "net": "TX_PENDING",
+          "type": "input"
+        },
+        "3": {
+          "name": "Qn",
+          "net": null,
+          "type": "output"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "Q",
+          "net": "TX_ARMED",
+          "type": "output"
+        },
+        "6": {
+          "name": "CLRn",
+          "net": "TX_CLRn",
+          "type": "input"
+        },
+        "7": {
+          "name": "PREn",
+          "net": "TX_BENCH_3V3",
+          "type": "input"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_TX_ARM"
+    },
+    {
+      "ref": "U43",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "ALL_VALID",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "TX_CLRn",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "U_TX_QUAL_TMP",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_TX_QUAL_1"
+    },
+    {
+      "ref": "U44",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "U_TX_QUAL_TMP",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "TX_ARMED",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "TX_QUALIFIED",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_TX_QUAL_2"
+    },
+    {
+      "ref": "U45",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "PHASE",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "TX_QUALIFIED",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "DYN_A_TX",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_DYN_A"
+    },
+    {
+      "ref": "U46",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "PHASE_N",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "TX_QUALIFIED",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "DYN_B_TX",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "TX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_DYN_B"
+    },
+    {
+      "ref": "R17",
+      "part_candidate": "R",
+      "value": "1k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "DYN_A_TX",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ACTUAL_RX_A_WDI",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_LINK_A"
+    },
+    {
+      "ref": "R18",
+      "part_candidate": "R",
+      "value": "1k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "DYN_B_TX",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ACTUAL_RX_B_WDI",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_LINK_B"
+    },
+    {
+      "ref": "R19",
+      "part_candidate": "R",
+      "value": "100k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ACTUAL_RX_A_WDI",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_RX_A_PD"
+    },
+    {
+      "ref": "R20",
+      "part_candidate": "R",
+      "value": "100k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ACTUAL_RX_B_WDI",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_RX_B_PD"
+    },
+    {
+      "ref": "U47",
+      "part_candidate": "TLV803EA29DBZ",
+      "value": "TLV803EA29DBZ",
+      "pins": {
+        "1": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "2": {
+          "name": "RESETn",
+          "net": "RX_PGOOD",
+          "type": "open_collector"
+        },
+        "3": {
+          "name": "VDD",
+          "net": "RX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": "Actual local 3.3V supervisor; not an externally asserted flag",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "RX_PG"
+    },
+    {
+      "ref": "R21",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "RX_PGOOD",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "RX_PG_PU"
+    },
+    {
+      "ref": "U48",
+      "part_candidate": "TPS3431DRB",
+      "value": "TPS3431DRB",
+      "pins": {
+        "1": {
+          "name": "VDD",
+          "net": "RX_BENCH_3V3",
+          "type": "power_in"
+        },
+        "2": {
+          "name": "CWD",
+          "net": "RX_A_CWD",
+          "type": "input"
+        },
+        "3": {
+          "name": "EN",
+          "net": "RX_BENCH_3V3",
+          "type": "input"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "SET1",
+          "net": "RX_BENCH_3V3",
+          "type": "input"
+        },
+        "6": {
+          "name": "WDI",
+          "net": "ACTUAL_RX_A_WDI",
+          "type": "input"
+        },
+        "7": {
+          "name": "WDO",
+          "net": "RX_A_WD_OK",
+          "type": "open_collector"
+        },
+        "8": {
+          "name": "ENOUT",
+          "net": null,
+          "type": "open_collector"
+        },
+        "EP": {
+          "name": "THERMAL_PAD",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "RX_A_WD"
+    },
+    {
+      "ref": "R22",
+      "part_candidate": "R",
+      "value": "10k_1pct_170to230ms",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "RX_A_CWD",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "RX_A_CWD_R"
+    },
+    {
+      "ref": "R23",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "RX_A_WD_OK",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "RX_A_WD_PU"
+    },
+    {
+      "ref": "U49",
+      "part_candidate": "TPS3431DRB",
+      "value": "TPS3431DRB",
+      "pins": {
+        "1": {
+          "name": "VDD",
+          "net": "RX_BENCH_3V3",
+          "type": "power_in"
+        },
+        "2": {
+          "name": "CWD",
+          "net": "RX_B_CWD",
+          "type": "input"
+        },
+        "3": {
+          "name": "EN",
+          "net": "RX_BENCH_3V3",
+          "type": "input"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "SET1",
+          "net": "RX_BENCH_3V3",
+          "type": "input"
+        },
+        "6": {
+          "name": "WDI",
+          "net": "ACTUAL_RX_B_WDI",
+          "type": "input"
+        },
+        "7": {
+          "name": "WDO",
+          "net": "RX_B_WD_OK",
+          "type": "open_collector"
+        },
+        "8": {
+          "name": "ENOUT",
+          "net": null,
+          "type": "open_collector"
+        },
+        "EP": {
+          "name": "THERMAL_PAD",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "RX_B_WD"
+    },
+    {
+      "ref": "R24",
+      "part_candidate": "R",
+      "value": "10k_1pct_170to230ms",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "RX_B_CWD",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "RX_B_CWD_R"
+    },
+    {
+      "ref": "R25",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "RX_B_WD_OK",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "RX_B_WD_PU"
+    },
+    {
+      "ref": "U50",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "RX_PGOOD",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "RX_A_WD_OK",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "U_RX_CLEAR_TMP",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "RX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_RX_CLEAR_1"
+    },
+    {
+      "ref": "U51",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "U_RX_CLEAR_TMP",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "RX_B_WD_OK",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "RX_CLRn",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "RX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_RX_CLEAR_2"
+    },
+    {
+      "ref": "U52",
+      "part_candidate": "SN74LVC1G74DCU",
+      "value": "SN74LVC1G74DCU",
+      "pins": {
+        "1": {
+          "name": "CLK",
+          "net": "RX_SERVICE_EDGE",
+          "type": "input"
+        },
+        "2": {
+          "name": "D",
+          "net": "RX_BENCH_3V3",
+          "type": "input"
+        },
+        "3": {
+          "name": "Qn",
+          "net": null,
+          "type": "output"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "Q",
+          "net": "RX_PENDING",
+          "type": "output"
+        },
+        "6": {
+          "name": "CLRn",
+          "net": "RX_CLRn",
+          "type": "input"
+        },
+        "7": {
+          "name": "PREn",
+          "net": "RX_BENCH_3V3",
+          "type": "input"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "RX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_RX_REQUEST"
+    },
+    {
+      "ref": "U53",
+      "part_candidate": "SN74LVC1G04DBV",
+      "value": "SN74LVC1G04DBV",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "A",
+          "net": "ACTUAL_RX_A_WDI",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "ACTUAL_RX_A_WDI_N",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "RX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_RX_A_N"
+    },
+    {
+      "ref": "U54",
+      "part_candidate": "SN74LVC1G04DBV",
+      "value": "SN74LVC1G04DBV",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "A",
+          "net": "ACTUAL_RX_B_WDI",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "ACTUAL_RX_B_WDI_N",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "RX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_RX_B_N"
+    },
+    {
+      "ref": "U55",
+      "part_candidate": "SN74LVC1G74DCU",
+      "value": "SN74LVC1G74DCU",
+      "pins": {
+        "1": {
+          "name": "CLK",
+          "net": "ACTUAL_RX_A_WDI_N",
+          "type": "input"
+        },
+        "2": {
+          "name": "D",
+          "net": "RX_PENDING",
+          "type": "input"
+        },
+        "3": {
+          "name": "Qn",
+          "net": null,
+          "type": "output"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "Q",
+          "net": "RX_A_SEEN",
+          "type": "output"
+        },
+        "6": {
+          "name": "CLRn",
+          "net": "RX_CLRn",
+          "type": "input"
+        },
+        "7": {
+          "name": "PREn",
+          "net": "RX_BENCH_3V3",
+          "type": "input"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "RX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_RX_A_SEEN"
+    },
+    {
+      "ref": "U56",
+      "part_candidate": "SN74LVC1G74DCU",
+      "value": "SN74LVC1G74DCU",
+      "pins": {
+        "1": {
+          "name": "CLK",
+          "net": "ACTUAL_RX_B_WDI_N",
+          "type": "input"
+        },
+        "2": {
+          "name": "D",
+          "net": "RX_PENDING",
+          "type": "input"
+        },
+        "3": {
+          "name": "Qn",
+          "net": null,
+          "type": "output"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "Q",
+          "net": "RX_B_SEEN",
+          "type": "output"
+        },
+        "6": {
+          "name": "CLRn",
+          "net": "RX_CLRn",
+          "type": "input"
+        },
+        "7": {
+          "name": "PREn",
+          "net": "RX_BENCH_3V3",
+          "type": "input"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "RX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_RX_B_SEEN"
+    },
+    {
+      "ref": "U57",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "RX_A_SEEN",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "RX_B_SEEN",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "RX_BOTH_SEEN",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "RX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_RX_BOTH"
+    },
+    {
+      "ref": "U58",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "RX_BOTH_SEEN",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "RX_CLRn",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "RX_EN_A_DRV",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "RX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_RX_PERMIT_A"
+    },
+    {
+      "ref": "U59",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "RX_BOTH_SEEN",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "RX_CLRn",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "RX_EN_B_DRV",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "RX_BENCH_3V3",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_RX_PERMIT_B"
+    },
+    {
+      "ref": "R26",
+      "part_candidate": "R",
+      "value": "1k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_EN_A_DRV",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "COUPON_ON_A",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_ON_A_SER"
+    },
+    {
+      "ref": "R27",
+      "part_candidate": "R",
+      "value": "1k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_EN_B_DRV",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "COUPON_ON_B",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_ON_B_SER"
+    },
+    {
+      "ref": "R28",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "COUPON_ON_A",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_ON_A_PD"
+    },
+    {
+      "ref": "R29",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "COUPON_ON_B",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_ON_B_PD"
+    },
+    {
+      "ref": "U60",
+      "part_candidate": "TPS22918DBV",
+      "value": "TPS22918DBV",
+      "pins": {
+        "1": {
+          "name": "VIN",
+          "net": "COUPON_INPUT_3V3",
+          "type": "power_in"
+        },
+        "2": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "3": {
+          "name": "ON",
+          "net": "COUPON_ON_A",
+          "type": "input"
+        },
+        "4": {
+          "name": "CT",
+          "net": "CT_A",
+          "type": "passive"
+        },
+        "5": {
+          "name": "QOD",
+          "net": "QOD_A",
+          "type": "passive"
+        },
+        "6": {
+          "name": "VOUT",
+          "net": "COUPON_MID",
+          "type": "power_out"
+        }
+      },
+      "role": "First forward-only research cut; no reverse-blocking or overcurrent qualification",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_COUPON_A"
+    },
+    {
+      "ref": "U61",
+      "part_candidate": "TPS22918DBV",
+      "value": "TPS22918DBV",
+      "pins": {
+        "1": {
+          "name": "VIN",
+          "net": "COUPON_MID",
+          "type": "power_in"
+        },
+        "2": {
+          "name": "GND",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_in"
+        },
+        "3": {
+          "name": "ON",
+          "net": "COUPON_ON_B",
+          "type": "input"
+        },
+        "4": {
+          "name": "CT",
+          "net": "CT_B",
+          "type": "passive"
+        },
+        "5": {
+          "name": "QOD",
+          "net": "QOD_B",
+          "type": "passive"
+        },
+        "6": {
+          "name": "VOUT",
+          "net": "COUPON_OUT",
+          "type": "power_out"
+        }
+      },
+      "role": "Second series research cut controlled through separate final ON net",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_COUPON_B"
+    },
+    {
+      "ref": "C4",
+      "part_candidate": "C",
+      "value": "1u_INPUT",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "COUPON_INPUT_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_CUT_IN_A"
+    },
+    {
+      "ref": "C5",
+      "part_candidate": "C",
+      "value": "1n_RESEARCH_SLEW",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "CT_A",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_CUT_CT_A"
+    },
+    {
+      "ref": "R30",
+      "part_candidate": "R",
+      "value": "10k_OUTPUT_DISCHARGE",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "COUPON_MID",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "QOD_A",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_CUT_QOD_A"
+    },
+    {
+      "ref": "C6",
+      "part_candidate": "C",
+      "value": "1u_INPUT",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "COUPON_MID",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_CUT_IN_B"
+    },
+    {
+      "ref": "C7",
+      "part_candidate": "C",
+      "value": "1n_RESEARCH_SLEW",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "CT_B",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_CUT_CT_B"
+    },
+    {
+      "ref": "R31",
+      "part_candidate": "R",
+      "value": "10k_OUTPUT_DISCHARGE",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "COUPON_OUT",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "QOD_B",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_CUT_QOD_B"
+    },
+    {
+      "ref": "R32",
+      "part_candidate": "R",
+      "value": "10k_MICROPOWER_RESEARCH_LOAD",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "COUPON_OUT",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_COUPON_LOAD"
+    },
+    {
+      "ref": "J3",
+      "part_candidate": "PORT2",
+      "value": "MANUAL_BENCH_REQUEST_NO_AUTORETRY",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_SERVICE_EDGE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_TX_SERVICE"
+    },
+    {
+      "ref": "R33",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_SERVICE_EDGE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_TX_SERVICE_PD"
+    },
+    {
+      "ref": "J4",
+      "part_candidate": "PORT2",
+      "value": "MANUAL_BENCH_REQUEST_NO_AUTORETRY",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_SERVICE_EDGE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_RX_SERVICE"
+    },
+    {
+      "ref": "R34",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_SERVICE_EDGE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_RX_SERVICE_PD"
+    },
+    {
+      "ref": "J5",
+      "part_candidate": "EXTERNAL_BENCH_SUPPLY3",
+      "value": "EXTERNAL_ISOLATED_LAB_TX_RX_3V3_NOT_PHONE_REGULATORS",
+      "pins": {
+        "1": {
+          "name": "TX_3V3_OUT",
+          "net": "TX_BENCH_3V3",
+          "type": "power_out"
+        },
+        "2": {
+          "name": "RX_3V3_OUT",
+          "net": "RX_BENCH_3V3",
+          "type": "power_out"
+        },
+        "3": {
+          "name": "ISOLATED_BENCH_REFERENCE",
+          "net": "ISOLATED_BENCH_G",
+          "type": "power_out"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_SUPPLY"
+    },
+    {
+      "ref": "J6",
+      "part_candidate": "EXTERNAL_COUPON_SUPPLY2",
+      "value": "EXTERNAL_CURRENT_LIMITED_3V3_COUPON_ONLY",
+      "pins": {
+        "1": {
+          "name": "COUPON_VIN",
+          "net": "COUPON_INPUT_3V3",
+          "type": "power_out"
+        },
+        "2": {
+          "name": "ISOLATED_REFERENCE",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_POWER"
+    },
+    {
+      "ref": "J7",
+      "part_candidate": "PORT2",
+      "value": "RESEARCH_DYNAMIC_LINK_A",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ACTUAL_RX_A_WDI",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_LINK_A"
+    },
+    {
+      "ref": "J8",
+      "part_candidate": "PORT2",
+      "value": "RESEARCH_DYNAMIC_LINK_B",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ACTUAL_RX_B_WDI",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_LINK_B"
+    },
+    {
+      "ref": "J9",
+      "part_candidate": "PORT2",
+      "value": "ISOLATED_RESEARCH_LOAD_NO_PHONE_CONNECTION",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "COUPON_OUT",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_OUTPUT"
+    },
+    {
+      "ref": "C8",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_0"
+    },
+    {
+      "ref": "C9",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_3"
+    },
+    {
+      "ref": "C10",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_6"
+    },
+    {
+      "ref": "C11",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_7"
+    },
+    {
+      "ref": "C12",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_8"
+    },
+    {
+      "ref": "C13",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_10"
+    },
+    {
+      "ref": "C14",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_11"
+    },
+    {
+      "ref": "C15",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_12"
+    },
+    {
+      "ref": "C16",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_13"
+    },
+    {
+      "ref": "C17",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_14"
+    },
+    {
+      "ref": "C18",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_15"
+    },
+    {
+      "ref": "C19",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_16"
+    },
+    {
+      "ref": "C20",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_17"
+    },
+    {
+      "ref": "C21",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_23"
+    },
+    {
+      "ref": "C22",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_31"
+    },
+    {
+      "ref": "C23",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_32"
+    },
+    {
+      "ref": "C24",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_33"
+    },
+    {
+      "ref": "C25",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_34"
+    },
+    {
+      "ref": "C26",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_35"
+    },
+    {
+      "ref": "C27",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_36"
+    },
+    {
+      "ref": "C28",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_37"
+    },
+    {
+      "ref": "C29",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_38"
+    },
+    {
+      "ref": "C30",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_39"
+    },
+    {
+      "ref": "C31",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_40"
+    },
+    {
+      "ref": "C32",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_41"
+    },
+    {
+      "ref": "C33",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_42"
+    },
+    {
+      "ref": "C34",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_45"
+    },
+    {
+      "ref": "C35",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_46"
+    },
+    {
+      "ref": "C36",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_47"
+    },
+    {
+      "ref": "C37",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_48"
+    },
+    {
+      "ref": "C38",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_49"
+    },
+    {
+      "ref": "C39",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_50"
+    },
+    {
+      "ref": "C40",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_51"
+    },
+    {
+      "ref": "C41",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_52"
+    },
+    {
+      "ref": "C42",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_53"
+    },
+    {
+      "ref": "C43",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_54"
+    },
+    {
+      "ref": "C44",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_55"
+    },
+    {
+      "ref": "C45",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_56"
+    },
+    {
+      "ref": "C46",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_57"
+    },
+    {
+      "ref": "C47",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_60"
+    },
+    {
+      "ref": "C48",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_61"
+    },
+    {
+      "ref": "C49",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_62"
+    },
+    {
+      "ref": "C50",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_63"
+    },
+    {
+      "ref": "C51",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_64"
+    },
+    {
+      "ref": "C52",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_65"
+    },
+    {
+      "ref": "C53",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_66"
+    },
+    {
+      "ref": "C54",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_71"
+    },
+    {
+      "ref": "C55",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_73"
+    },
+    {
+      "ref": "C56",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_76"
+    },
+    {
+      "ref": "C57",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_79"
+    },
+    {
+      "ref": "C58",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_80"
+    },
+    {
+      "ref": "C59",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_81"
+    },
+    {
+      "ref": "C60",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_82"
+    },
+    {
+      "ref": "C61",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_83"
+    },
+    {
+      "ref": "C62",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_84"
+    },
+    {
+      "ref": "C63",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_85"
+    },
+    {
+      "ref": "C64",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_86"
+    },
+    {
+      "ref": "C65",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_87"
+    },
+    {
+      "ref": "C66",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "RX_BENCH_3V3",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_BENCH_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_88"
+    }
+  ],
+  "physical_hardware": false,
+  "dry_loop_is_actual_main_return": false,
+  "implemented_editable_schematic": [
+    "Johnson four-state phase generator with delayed advance",
+    "known-rail switch-injection checks all three comparator outputs",
+    "four hardware valid-sample FFs",
+    "TX edge-qualified manual rearm and watchdog",
+    "dual dynamic outputs",
+    "two independent receiver watchdogs and edge sample latches",
+    "two series micro-power research load switches"
+  ],
+  "missing_qualification": [
+    "actual main return diagnostic isolation",
+    "all PCB and assembly",
+    "exact RC/setup/hold/load/routing qualification",
+    "true multi-fault common-cause independence",
+    "any physical OEM qualification"
+  ],
+  "dynamic_links_are_independent_fault_domains": false,
+  "shared_TX_comparators_clock_and_logic": true,
+  "receiver_supply_and_dry_probe_are_bench_only": true
+}
