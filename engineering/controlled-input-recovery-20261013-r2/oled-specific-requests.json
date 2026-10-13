@@ -1,0 +1,35 @@
+{
+  "status": "PREPARED_NOT_SENT",
+  "manufacturing_go": false,
+  "request_scope": "supplier must identify actual exact module, not a substitute product category",
+  "product_motion": {
+    "B_upward_mm": 79.75,
+    "normal_seat_mm": 8.2,
+    "single_about_7inch_display": true,
+    "equal_A_B_external_envelopes": true
+  },
+  "DFRobot_DFR1262_specific_requests": [
+    "Provide ordered bare-module OEM SKU, lot/revision identification, and mapping to DFX-TM667009 Rev A versus supplied flexible no-touch kit.",
+    "Confirm whether FT3658U on-cell/touch7pin and CG assembly in the linked PDF actually apply to the shipped kit, and provide the correctly scoped complete drawing including seal/COF/FPC/adapter tail.",
+    "Provide direct-MIPI initialization and PMIC schematics/BOM and explain pin-name voltage suffixes versus DDIC DC values; specify actual full-load/inrush/brownout currents, modes and lane rate.",
+    "Confirm material axis and bend side, all no-bend regions, laminate/neutral plane, approved dynamic radius/twist/tension/support/friction for the exact 79.75mm+8.2mm route. The 2.51mm CG-BPL clearance is not assumed to be a radius.",
+    "Provide exact module/lot dynamic optical/touch/seal qualification and explain sales-page no-humidity-test scope versus generic PDF environmental conditions."
+  ],
+  "DisplayModule_DMKDO06501DNA_specific_requests": [
+    "Provide signed consistent SKU-to-OEM drawing 97065003A revision mapping and corrected complete pinout: duplicatedpin5/pin7AVDD, pin8AVDD_EN versusREST, pin12ID2 versusGND, pin10logicrail name and ELVDD side-contact polarity.",
+    "Correct electrical rating min/max for negative ELVSS, touch current/voltage labels, and identify actually supplied touch IC/laminate/driver and connector wiring.",
+    "Reconcile 6.48inch label with154.560x69.552mm AA, verticalpitch0.060mm, 2240-line input timing versus2400array, H Total/porches, exact command/video mode, rate/DSC and approved full initialization matching ordered revision.",
+    "Provide original terminal orientation and mating drawing for exact BK13C06-40DP/DS suffix865; confirm orderable part/revision, side power contacts and key/mating orientation without aliasing to800/895 or BM28.",
+    "Provide full3D/tolerances including FPC112.386mm tail and local1.01/.95mm component heights, seal/DDIC/no-bend regions, protectivefilm removal state, touch/cover/adhesive and approved neutral-plane materials.",
+    "Approve or reject the exact rolling route, bend axes/radius/tension/twist/pressure/flat-storage dwell and provide relevant dynamic tests for the supplied module; environmental reference tables/Visionox reference reports alone do not qualify this phone."
+  ],
+  "common_requested_attachments": [
+    "Controlled original drawings and scope of CAD/PCB reproduction",
+    "Exact vendor revision-approved pin and rail map",
+    "Material-layer and no-bend map",
+    "Full-motion installation approval and limits",
+    "Serial/lot tied dynamic/optical/touch/seal test records",
+    "Supply-lifecycle/orderable module declaration"
+  ],
+  "historical_300k_goal": "Prior research target only; cycle count, environments and pass criteria must be agreed for actual intended module. It is not evidence already achieved."
+}
