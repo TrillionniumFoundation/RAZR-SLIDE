@@ -1,0 +1,555 @@
+{
+  "repository": "TrillionniumFoundation/RAZR-SLIDE",
+  "commit": "e666d2dbcd5508b928a6fd583175ec1040006ce7",
+  "sources": [
+    {
+      "path": "engineering/connector-review-20261013/BM28_raw_step_inspection_qian_rerun.json",
+      "git_blob": "2447feb5a3d9c2dc9fba9dc7f6eb592addf679ad",
+      "facts": {
+        "revision": "20261013 genuine vendor BM28 raw shape inspection only",
+        "machine": "qian-qi",
+        "utc": "2026-10-13T03:33:53.711939+00:00",
+        "FreeCAD_version": [
+          "1",
+          "1",
+          "1",
+          "44227 +647 (Git)",
+          "Unknown",
+          "2026/04/14 22:09:59",
+          "tag: 1.1.1",
+          "0108fd4b4850cc46e625b60e53cea7a7bbe69f8d"
+        ],
+        "python": "3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0]",
+        "rows": [
+          {
+            "role": "header",
+            "part": "BM28B0.6-24DP/2-0.35V(53)",
+            "source_path": "/home/qian-qi/Documents/Codex/RAZR_SLIDE_R66/vendor_hirose/header/BM28-24DP.stp",
+            "size_bytes": 665174,
+            "sha256": "787382f59954cdb58375d04f67807c54edede419020abaf790023df4714f49d6",
+            "shape_type": "Compound",
+            "is_valid": true,
+            "solids_count": 1,
+            "shells_count": 1,
+            "faces_count": 350,
+            "volume_mm3": 1.4994725129648514,
+            "bbox_xyz_mm": [
+              -3.0600000000318155,
+              3.0600000000318097,
+              -0.749999984417146,
+              0.7499999844132511,
+              -2.372269047867803e-13,
+              0.46500003426223174
+            ],
+            "bbox_size_mm": [
+              6.120000000063625,
+              1.499999968830397,
+              0.46500003426246894
+            ],
+            "each_solid_valid": true,
+            "raw_file_unchanged_after_read": true
+          },
+          {
+            "role": "receptacle",
+            "part": "BM28B0.6-24DS/2-0.35V(53)",
+            "source_path": "/home/qian-qi/Documents/Codex/RAZR_SLIDE_R66/vendor_hirose/receptacle/BM28-24DS.stp",
+            "size_bytes": 2184648,
+            "sha256": "4dc2955e5c0e4b4cce461b1d5ffc036542f0f69ebd753af03207186020587bd2",
+            "shape_type": "Compound",
+            "is_valid": true,
+            "solids_count": 1,
+            "shells_count": 1,
+            "faces_count": 1266,
+            "volume_mm3": 3.6558396338257624,
+            "bbox_xyz_mm": [
+              -3.4000000000000195,
+              3.3999999999999693,
+              -0.8500000000882796,
+              0.8500000000882822,
+              -2.0274837364553377e-11,
+              0.6000000000000025
+            ],
+            "bbox_size_mm": [
+              6.799999999999988,
+              1.7000000001765618,
+              0.6000000000202774
+            ],
+            "each_solid_valid": true,
+            "raw_file_unchanged_after_read": true
+          }
+        ],
+        "no_vendor_CAD_export_or_modification": true,
+        "assembly_alignment_verified": false,
+        "physical_pairing_qualified": false,
+        "raw_vendor_CAD_redistribution_permission_received": false,
+        "manufacturing_go": false
+      }
+    },
+    {
+      "path": "engineering/connector-review-20261013/interconnect_partition.json",
+      "git_blob": "1404d46280cd33ab85e39e3a18770d10a8ea3e00",
+      "facts": {
+        "revision": "20261013 partition proposal; no physical routing or circuit qualification",
+        "manufacturing_go": false,
+        "product_constraints": {
+          "A_B_same_finished_external_size": true,
+          "one_flexible_OLED_inches_approx": 7,
+          "B_slide_y_mm": 79.75,
+          "B_terminal_normal_motion_mm": 8.2,
+          "A_larger_battery_priority": true,
+          "second_external_display": false
+        },
+        "static_termination": {
+          "header": "BM28B0.6-24DP/2-0.35V(53)",
+          "receptacle": "BM28B0.6-24DS/2-0.35V(53)",
+          "role": "internal static manufacturing/service termination only",
+          "sliding_motion_must_not_unmate": true,
+          "mated_board_gap_mm": 0.6,
+          "complete_installed_stack_mm": null,
+          "pinout_assigned": false,
+          "PCBA_solder_stiffener_buffer_fixture_built": false,
+          "all_service_mating_counts_must_be_recorded": true
+        },
+        "routes": [
+          {
+            "id": "SIGNAL",
+            "function": "low-speed control, wake and position diagnostics",
+            "physical_harness_id": "H_SIGNAL",
+            "A_static_connector": "S_A",
+            "B_static_connector": "S_B",
+            "static_connector_candidate": "BM28 exact pair",
+            "high_current_power_allowed": false,
+            "battery_positive_conductor_allowed": false,
+            "USB_high_speed_allowed": false,
+            "dynamic_conductor_and_return_specification": null,
+            "powered_off_IO_phantom_supply_control_verified": false,
+            "route_is_built": false
+          },
+          {
+            "id": "USB",
+            "function": "USB data and its defined local reference/shield",
+            "physical_harness_id": "H_USB",
+            "A_static_connector": "U_A_if_cross_cabin",
+            "B_static_connector": "U_B_if_cross_cabin",
+            "topology_branches": [
+              {
+                "id": "USB_LOCAL_B",
+                "basis": "R22 existing exploratory partition",
+                "USB_PHY_and_port_in_B": true,
+                "cross_cabin_USB_conductor_required": false,
+                "B_actual_port_fit_verified": false
+              },
+              {
+                "id": "USB_CROSS_CABIN",
+                "cross_cabin_USB_conductor_required": true,
+                "USB_version_and_rate": null,
+                "differential_pairs_and_pinout": null,
+                "qualified_actual_stack_SI": false
+              }
+            ],
+            "branch_frozen": null,
+            "battery_positive_conductor_allowed": false,
+            "power_return_allowed": false,
+            "USB_ground_shield_fault_coupling_to_power_reference_verified": false,
+            "dynamic_conductor_impedance_stack_specification": null,
+            "route_is_built": false
+          },
+          {
+            "id": "A_POWER_DISCHARGE",
+            "function": "A protected regulated output and dedicated return to system power combination",
+            "physical_harness_id": "H_POWER_A",
+            "A_static_connector": "P_A",
+            "B_static_connector": "P_B",
+            "static_connector_selected": null,
+            "candidate_BM28_rating_is_approval": false,
+            "dedicated_forward_and_return_conductors": true,
+            "signal_or_USB_return_as_battery_return_allowed": false,
+            "A_pack_local_BMS_fuse_isolation_and_measurement_required": true,
+            "raw_A_B_cell_positive_parallel_allowed": false,
+            "peak_current_A": null,
+            "minimum_pack_V": null,
+            "fault_energy_limit_J": null,
+            "dynamic_conductor_stack_thermal_and_insulation_specification": null,
+            "route_is_built": false
+          },
+          {
+            "id": "B_POWER_DISCHARGE",
+            "function": "B local protected output to system power combination",
+            "physical_harness_id": "H_POWER_B_LOCAL",
+            "B_pack_local_BMS_fuse_isolation_and_measurement_required": true,
+            "raw_A_B_cell_positive_parallel_allowed": false,
+            "peak_current_A": null,
+            "route_is_built": false
+          },
+          {
+            "id": "A_CHARGE_FEED",
+            "function": "controlled charge feed to independent A charger; never direct raw battery tie",
+            "physical_harness_id": "H_CHARGE_A",
+            "dedicated_forward_and_return_conductors": true,
+            "independent_A_charge_control_required": true,
+            "charge_current_A": null,
+            "route_is_built": false
+          },
+          {
+            "id": "B_CHARGE_FEED",
+            "function": "B local independent charging control",
+            "physical_harness_id": "H_CHARGE_B_LOCAL",
+            "independent_B_charge_control_required": true,
+            "charge_current_A": null,
+            "route_is_built": false
+          }
+        ],
+        "mechanical_load_path": {
+          "sliding_load_must_bypass_all_electrical_terminations": true,
+          "dynamic_clamp_anchors": null,
+          "local_compliant_neck_at_static_connector_required": true,
+          "strain_relief_fixture_must_not_rigidly_lock_connector_FPC": true,
+          "8p2mm_normal_motion_accommodated_by_constant_material_length": false,
+          "supplier_dynamic_radius_mm": null,
+          "copper_neutral_plane_mm": null,
+          "twist_and_cycle_qualification_available": false
+        },
+        "common_cause_faults_still_require_evidence": [
+          "power-to-signal or power-to-USB insulation abrasion short",
+          "one board trace bypassing both claimed isolation devices",
+          "one driver or sensor command simultaneously disabling both safety channels",
+          "shared connector latch or strain-relief failure affecting separate harnesses",
+          "battery reverse feed, precharge transient, disconnected conductor residual energy",
+          "measurement path failure or unpowered IO phantom powering"
+        ],
+        "frozen_implementation": false
+      }
+    },
+    {
+      "path": "engineering/endpoint-carrier-repair-20261013-r3/carrier_receipt.json",
+      "git_blob": "34a749aff5c3601a5448d9d02f02d0b96957dfd6",
+      "facts": {
+        "source_hashes_before": {
+          "endpoint_DP.kicad_pcb": "7afd1cfc2c60fa3d87b781a28e1973428a08497f5033833dc0818761f8537103",
+          "endpoint_DS.kicad_pcb": "124aa788def7f5a9c2f67247f7adf26e6dc4705a8a337e235ff90cf762b65f1d",
+          "mating_site_map.json": "361600fbdadf7f3ed6e403c925197b0b041d519620dc03ef616e2f6517f93955",
+          "native_pcba_receipt.json": "a9d5ec84d3e970d7f14d33a4da05fd705aefda6ce965864395c830f8f0d2bef3"
+        },
+        "source_hashes_after": {
+          "endpoint_DP.kicad_pcb": "7afd1cfc2c60fa3d87b781a28e1973428a08497f5033833dc0818761f8537103",
+          "endpoint_DS.kicad_pcb": "124aa788def7f5a9c2f67247f7adf26e6dc4705a8a337e235ff90cf762b65f1d",
+          "mating_site_map.json": "361600fbdadf7f3ed6e403c925197b0b041d519620dc03ef616e2f6517f93955",
+          "native_pcba_receipt.json": "a9d5ec84d3e970d7f14d33a4da05fd705aefda6ce965864395c830f8f0d2bef3"
+        },
+        "actual_native_PCB_holes_used": {
+          "DP": [
+            [
+              -15,
+              12
+            ],
+            [
+              15,
+              12
+            ],
+            [
+              -12,
+              -12
+            ]
+          ],
+          "DS": [
+            [
+              -15,
+              -12
+            ],
+            [
+              15,
+              -12
+            ],
+            [
+              -12,
+              12
+            ]
+          ]
+        },
+        "rows": [
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 2.6,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 2.5,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 2.4,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 2.3,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 2.2,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 2.1,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 2,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 1.9,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 1.8,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 1.7,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 1.6,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 1.5,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 1.4,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 1.3,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 1.2,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 1.1,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 1,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 0.9,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 0.8,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 0.7,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Rx180_correct",
+            "DP_mount_plane_z_mm": 0.6,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 2.6,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 2.5,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 2.4,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 2.3,
+            "carrier_overlap_mm3": 0.763407014822324
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 2.2,
+            "carrier_overlap_mm3": 1.5268140296446409
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 2.1,
+            "carrier_overlap_mm3": 2.2902210444669637
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 2,
+            "carrier_overlap_mm3": 3.0536280592892817
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 1.9,
+            "carrier_overlap_mm3": 3.817035074111603
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 1.8,
+            "carrier_overlap_mm3": 4.580442088933922
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 1.7,
+            "carrier_overlap_mm3": 5.34384910375624
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 1.6,
+            "carrier_overlap_mm3": 6.10725611857856
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 1.5,
+            "carrier_overlap_mm3": 6.107256118578558
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 1.4,
+            "carrier_overlap_mm3": 6.107256118578562
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 1.3,
+            "carrier_overlap_mm3": 6.107256118578558
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 1.2,
+            "carrier_overlap_mm3": 6.107256118578559
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 1.1,
+            "carrier_overlap_mm3": 6.107256118578562
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 1,
+            "carrier_overlap_mm3": 6.107256118578558
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 0.9,
+            "carrier_overlap_mm3": 6.107256118578562
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 0.8,
+            "carrier_overlap_mm3": 6.107256118578562
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 0.7,
+            "carrier_overlap_mm3": 6.10725611857856
+          },
+          {
+            "orientation": "Ry180_wrong",
+            "DP_mount_plane_z_mm": 0.6,
+            "carrier_overlap_mm3": 6.107256118578562
+          },
+          {
+            "orientation": "correct_lateral_perturbation",
+            "dx_mm": 0,
+            "dy_mm": 0,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "correct_lateral_perturbation",
+            "dx_mm": 0.05,
+            "dy_mm": 0,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "correct_lateral_perturbation",
+            "dx_mm": -0.05,
+            "dy_mm": 0,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "correct_lateral_perturbation",
+            "dx_mm": 0,
+            "dy_mm": 0.05,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "correct_lateral_perturbation",
+            "dx_mm": 0,
+            "dy_mm": -0.05,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "correct_lateral_perturbation",
+            "dx_mm": 0.05,
+            "dy_mm": 0.05,
+            "carrier_overlap_mm3": 0
+          },
+          {
+            "orientation": "correct_lateral_perturbation",
+            "dx_mm": -0.05,
+            "dy_mm": -0.05,
+            "carrier_overlap_mm3": 0
+          }
+        ],
+        "exports": [
+          {
+            "path": "cad/CORRECT_RX180.step",
+            "sha256": "91d3c85ccc7aec3443f04e6f191eea5a5bde0e0748ab1e8d1c17ab54bcc522fb",
+            "solids": 3
+          },
+          {
+            "path": "cad/REJECTED_WRONG_RY180.step",
+            "sha256": "bffbaedba57e79b6c2765c27fa891852f391c57cf80217f09f0aa3595ee6e416",
+            "solids": 3
+          },
+          {
+            "path": "cad/REJECTED_MISSING_PINS_WRONG_ESCAPE.step",
+            "sha256": "da611d37fd6f7b7aa2479e444ae377cc045060025614cad5b501aaf9e87b076a",
+            "solids": 3
+          }
+        ],
+        "board_thickness_hypothesis_mm": 0.8,
+        "pin_diameter_hypothesis_mm": 1.8,
+        "mounting_plane_gap_mm": 0.6,
+        "physical_continuity": false,
+        "fastener_and_material_qualified": false,
+        "coupon_fabrication_go": false,
+        "manufacturing_go": false
+      }
+    },
+    {
+      "path": "engineering/endpoint-carrier-repair-20261013-r3/build_carrier.py",
+      "git_blob": "dedaf5350947dea968761a248231126fddcf9984",
+      "source_sha256": "129cb2ef5bd618eb8c46a280998b496d8261a71806b3729bba9dbc5295cd1d11"
+    }
+  ]
+}
