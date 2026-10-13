@@ -1,0 +1,31 @@
+{
+  "job": {
+    "args": [
+      "-c",
+      "python3 - <<'PY'\nimport json,hashlib,tarfile,subprocess,platform,sys,os\nfrom pathlib import Path,PurePosixPath\nroot=Path('/home/qian/RAZR-SLIDE-mechanical-independent-20261013-de3e982a-a65f4f15')\narchive=root/'inputs.tar.gz'\nexpected='e535a607d5861ed43bccb14fdd2071e688a1a15c70d8c3cae960ee90bf7cf117'\nassert hashlib.sha256(archive.read_bytes()).hexdigest()==expected\nwork=root/'unpacked';work.mkdir(mode=0o700,exist_ok=False)\nwith tarfile.open(archive,'r:gz') as package:\n seen=set()\n for member in package.getmembers():\n  rel=PurePosixPath(member.name)\n  assert not rel.is_absolute() and '..' not in rel.parts and '\\\\' not in member.name\n  assert member.isfile() and member.name not in seen\n  seen.add(member.name);dest=work/member.name\n  dest.parent.mkdir(parents=True,exist_ok=True)\n  assert not dest.exists()\n  dest.write_bytes(package.extractfile(member).read())\nmanifest=json.loads((work/'transfer-input-manifest.json').read_text())\nfor name,sha in manifest['files'].items():\n assert hashlib.sha256((work/name).read_bytes()).hexdigest()==sha\nfolder=work/'engineering/mechanical-closure-20261013'\npython='/home/qian/RAZR-SLIDE-work-20261013/cad-venv/bin/python'\nenv={**os.environ,'PYTHONDONTWRITEBYTECODE':'1','OPENBLAS_NUM_THREADS':'1'}\nr=subprocess.run([python,'-B',str(folder/'verify_exported_geometry.py')],cwd=work,env=env,capture_output=True)\n(root/'native.stdout.log').write_bytes(r.stdout);(root/'native.stderr.log').write_bytes(r.stderr)\npost={name:hashlib.sha256((work/name).read_bytes()).hexdigest() for name in manifest['files']}\nunchanged=post==manifest['files']\nresult={'host_actual':platform.node(),'platform':platform.platform(),'controller_python':platform.python_version(),'dedicated_path':str(root),'verification_python':python,'archive_sha256':expected,'archive_bytes':archive.stat().st_size,'input_file_count':len(post),'all_input_bytes_unchanged':unchanged,'native_verifier_exit':r.returncode,'stdout_sha256':hashlib.sha256(r.stdout).hexdigest(),'stderr_sha256':hashlib.sha256(r.stderr).hexdigest(),'fixture_fabrication_go':False,'manufacturing_go':False}\nverify=folder/'independent-exported-geometry-check.json'\nif verify.exists():\n result['independent_report_sha256']=hashlib.sha256(verify.read_bytes()).hexdigest()\n report=json.loads(verify.read_text());result['independent_environment']=report['environment'];result['STEPs_checked']=len(report['independent_exported_STEP_checks']);result['all_exported_checks_passed']=report['all_exported_checks_passed']\n(root/'native-host-result.json').write_text(json.dumps(result,indent=2)+'\\n')\nprint(json.dumps(result,indent=2))\nsys.exit(r.returncode if r.returncode else (0 if unchanged else 5))\nPY"
+    ],
+    "created_unix_ms": 1791866824958,
+    "cwd": "/home/qian/RAZR-SLIDE-mechanical-independent-20261013-de3e982a-a65f4f15",
+    "env_keys": [],
+    "executable": "/bin/sh",
+    "execution_mode": "operator",
+    "host": "x230",
+    "id": "1a13395e8fe-1f807d-499",
+    "idempotency_key": "razr-slide-mechanical-independent-native-a65f4f15",
+    "launch_error": null,
+    "launch_state": "launched",
+    "remote_job_dir": "/home/qian/.local/state/hepta-runtime-operator-host/jobs/1a13395e8fe-1f807d-499",
+    "request_digest": "dd614b62e8c9152cf658ed8cc85a0a2dd4a44540b584579c24c2e0971a9879d5",
+    "request_fingerprint": 15952114243307379000,
+    "ssh_target": "x230-ts",
+    "system_jobctl": false,
+    "unit": "hepta-runtime-job-1a13395e8fe-1f807d-499"
+  },
+  "launch": {
+    "backend": "systemd",
+    "launcher_pid": null,
+    "ok": true,
+    "unit": "hepta-runtime-job-1a13395e8fe-1f807d-499"
+  },
+  "reused": false
+}

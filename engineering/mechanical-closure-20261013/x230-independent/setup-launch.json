@@ -1,0 +1,31 @@
+{
+  "job": {
+    "args": [
+      "-c",
+      "python3 - <<'PY'\nfrom pathlib import Path\nimport json\np=Path('/home/qian/RAZR-SLIDE-mechanical-independent-20261013-de3e982a-a65f4f15')\np.mkdir(mode=0o700,exist_ok=False)\nprint(json.dumps({'dedicated_new_path':str(p),'created':True}))\nPY"
+    ],
+    "created_unix_ms": 1791866699380,
+    "cwd": "/home/qian",
+    "env_keys": [],
+    "executable": "/bin/sh",
+    "execution_mode": "operator",
+    "host": "x230",
+    "id": "1a13393fe74-1f807d-484",
+    "idempotency_key": "razr-slide-mechanical-new-path-a65f4f15",
+    "launch_error": null,
+    "launch_state": "launched",
+    "remote_job_dir": "/home/qian/.local/state/hepta-runtime-operator-host/jobs/1a13393fe74-1f807d-484",
+    "request_digest": "fe640d22e090198a969f96c01af663c8547834c731a27c30c6c64a25dbe213ab",
+    "request_fingerprint": 18330790826752350000,
+    "ssh_target": "x230-ts",
+    "system_jobctl": false,
+    "unit": "hepta-runtime-job-1a13393fe74-1f807d-484"
+  },
+  "launch": {
+    "backend": "systemd",
+    "launcher_pid": null,
+    "ok": true,
+    "unit": "hepta-runtime-job-1a13393fe74-1f807d-484"
+  },
+  "reused": false
+}
