@@ -46,3 +46,5 @@ The second round recovers six primary-source documents with variant and OLED con
 R3 adds an [actual pin-keyed endpoint carrier](engineering/endpoint-carrier-repair-20261013-r3), [hardware continuity-permission gates](engineering/electrical-isolation-repair-20261013-r3), and [pinned OEM display/touch/USB identities](engineering/controlled-input-recovery-20261013-r3). Complete phone layout, the physical probe source and matching physical qualifications remain unimplemented or unverified.
 
 No complete controlled phone manufacturing package or matching physical qualification evidence exists in this repository. Its research drawings and software passes do not constitute manufacturing release.
+
+R3 捕获实体修复与独立导出检查：[passive-veto-repair-20261013-r3](engineering/passive-veto-repair-20261013-r3/README.md)。
