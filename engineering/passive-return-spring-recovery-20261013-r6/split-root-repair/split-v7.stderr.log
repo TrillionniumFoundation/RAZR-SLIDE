@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/522038b915ed/production-audit/engineering/passive-return-spring-recovery-20261013-r6/split-root-repair/split_root_cartridges.py", line 103, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/522038b915ed/production-audit/engineering/passive-return-spring-recovery-20261013-r6/split-root-repair/split_root_cartridges.py", line 76, in main
+    p,raw=scene(port,side);topologies.append({'port':port,'side':side,'initial_split_all_fragments':raw,'final_connected_root_count':2})
+          ^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/522038b915ed/production-audit/engineering/passive-return-spring-recovery-20261013-r6/split-root-repair/split_root_cartridges.py", line 56, in scene
+    b.participant(outer)
+  File "/workspace/scratch/522038b915ed/production-audit/engineering/passive-return-spring-recovery-20261013-r6/strict_signed_common.py", line 13, in participant
+    value = validated_solid_volume(shape)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/522038b915ed/production-audit/engineering/passive-return-spring-recovery-20261013-r6/inputs/occ_signed_volume.py", line 28, in validated_solid_volume
+    raise InconsistentGeometry("Input must contain one valid solid")
+occ_signed_volume.InconsistentGeometry: Input must contain one valid solid
