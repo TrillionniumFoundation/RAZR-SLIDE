@@ -23,9 +23,18 @@ def main():
     parser.add_argument("--cache", type=Path,
         default=Path(__file__).resolve().parents[3] / "work-cad/r45-safe-cache")
     parser.add_argument("--out", type=Path, default=Path(__file__).resolve().parent)
+    parser.add_argument("--minimal-source", action="store_true",
+        help="Use a SHA-manifest-verified extracted source tree instead of ancestor ZIPs")
     args = parser.parse_args()
     started = time.monotonic()
-    ancestry = prepare(args.baseline, args.cache)
+    if args.minimal_source:
+        manifest = json.loads((args.cache / "minimal_source_manifest.json").read_text())
+        for name, expected in manifest["files"].items():
+            if digest(args.cache / name) != expected:
+                raise ValueError("Minimal source manifest mismatch: " + name)
+        ancestry = manifest["source_chain"]
+    else:
+        ancestry = prepare(args.baseline, args.cache)
     sys.path.insert(0, str(args.cache.resolve()))
     import cadquery as cq
     import numpy as np
@@ -38,6 +47,7 @@ def main():
     from r36_parts import keeper, catalog_m08x2_screw
     from r40_occ import intersectvol
     from r42_occ import A_SHELL, B_SHELL
+    from r17_cad import a_fixed_leaf, a_moving_leaf
 
     args.out.mkdir(parents=True, exist_ok=True)
     out_cad = args.out / "cad"
@@ -52,20 +62,29 @@ def main():
             ("INBOARD_RAIL", inboard_rail), ("ARM_GUIDE", arm_guide),
             ("CAP", bored_cap), ("PIN", pin), ("KEEPER", keeper),
             ("M08_SCREW", catalog_m08x2_screw), ("TE_GAUGE", te_signal_envelope))}
+    a_bridges = {"A_FIXED_BRIDGE_SKIN_PROXY": a_fixed_leaf(P)}
+    for deploy in (0., .5, 1.):
+        a_bridges[f"A_MOVING_BRIDGE_DEPLOY_{deploy}_PROXY"] = a_moving_leaf(P, deploy)
 
     def build(sec, easy_axis=False):
         points, (leg, count) = centerline(sec, leg_samples=12, arc_samples=70)
         vectors = [cq.Vector(*(float(x) for x in point)) for point in points]
         # Original R44 unconstrained interpolation yields nonzero endpoint
         # tangent error. Enforce the actual adjoining straight leg directions.
-        arc = cq.Edge.makeSpline(vectors[leg:leg + count + 1],
-            tangents=(cq.Vector(0, 1, 0), cq.Vector(0, -1, 0)))
+        if abs(sec["end"][2] - sec["start"][2]) < 1e-10:
+            arc = cq.Edge.makeThreePointArc(vectors[leg],
+                cq.Vector(sec["x_middle"], sec["center_y"]+R, sec["start"][2]),
+                vectors[leg+count])
+        else:
+            arc = cq.Edge.makeSpline(vectors[leg:leg + count + 1],
+                tangents=(cq.Vector(0, R, 0), cq.Vector(0, -R, 0)),
+                parameters=list(np.linspace(0, math.pi, count+1)), scale=False)
         wire = cq.Wire.assembleEdges((cq.Edge.makeLine(vectors[0], vectors[leg]),
             arc, cq.Edge.makeLine(vectors[leg + count], vectors[-1])))
         plane = cq.Plane(origin=vectors[0],
             xDir=(0, 0, 1) if easy_axis else (1, 0, 0), normal=(0, 1, 0))
         shape = cq.Workplane(plane).rect(FPC_W, FPC_T).sweep(
-            cq.Workplane().newObject([wire]), isFrenet=False).val()
+            cq.Workplane().newObject([wire]), isFrenet=True).val()
         if not shape.isValid() or len(shape.Solids()) != 1:
             raise ValueError("Invalid swept study shape")
         return shape, wire
@@ -73,12 +92,9 @@ def main():
     def obstacles(s, q):
         obs = protected(s, q)
         obs["B_R37_BEFORE_UNAPPROVED_HEADER_CUT"] = original_b.translate((0, s, q - 8.2))
-        ref = r21.r17_assembly(P, s, q, 0)
-        obs["A_FIXED_BRIDGE_SKIN_PROXY"] = ref["A_fixed_skin"]
         # Include all three bridge configurations; this is conservative spatial
         # coverage, not an assertion that premature deployment is permitted.
-        for deploy in (0., .5, 1.):
-            obs[f"A_MOVING_BRIDGE_DEPLOY_{deploy}_PROXY"] = r21.r17_assembly(P, s, q, deploy)["A_moving_leaf"]
+        obs.update(a_bridges)
         obs.update({name: shape.translate((0, s, q - 8.2)) for name, shape in b_fittings.items()})
         return obs
 
@@ -110,7 +126,7 @@ def main():
             "normal_xyz": list(face.normalAt().toTuple())}
 
     def curve_quality(wire):
-        arc = next(edge for edge in wire.Edges() if edge.geomType() == "BSPLINE")
+        arc = next(edge for edge in wire.Edges() if edge.geomType() in ("BSPLINE", "CIRCLE"))
         a = BRepAdaptor_Curve(arc.wrapped)
         radius = []
         for param in np.linspace(a.FirstParameter(), a.LastParameter(), 2001):
@@ -123,6 +139,7 @@ def main():
         def angle(v, desired):
             return math.degrees(math.acos(min(1., max(-1., v.dot(desired)))))
         return {"BSpline_curvature_sample_count": 2001,
+            "curve_geometry_type": arc.geomType(),
             "sampled_min_actual_BSpline_radius_mm": min(radius),
             "start_join_tangent_error_deg": angle(tangent_start, cq.Vector(0, 1, 0)),
             "end_join_tangent_error_deg": angle(tangent_end, cq.Vector(0, -1, 0))}
@@ -141,6 +158,7 @@ def main():
         lower_bounds = {name: bbox_distance(shape, body) for name, body in obs.items() if name not in main4}
         rows.append({"index": index, "stage": stage["stage"], "s_mm": s, "q_mm": q,
             "wire_length_mm": float(wire.Length()), "valid_single_solid": True,
+            "ribbon_volume_mm3": float(shape.Volume()),
             "intersections_mm3": intersections, "exact_main4_distances_mm": distances,
             "additional_obstacle_AABB_distance_lower_bounds_mm": lower_bounds,
             "B_end_material_frame": frame(shape, sec["end"])})
@@ -197,7 +215,8 @@ def main():
         "no_protected_BRep_or_OLED_was_cut_or_modified": True,
         "constraints": {"slide_mm": 79.75, "dock_mm": 8.2, "single_about_7_inch_OLED": True,
             "equal_A_B_finished_covers_target_not_validated": True, "A_prioritizes_battery": True},
-        "new_CAD_change": "Constrain spline endpoint tangents to the adjoining straight legs",
+        "new_CAD_change": "Exact planar circular arc; explicit parameterization/derivatives at 3D spline ends; Frenet geometric frame instead of corrected-Frenet material twist",
+        "Frenet_director_is_geometric_hypothesis_not_material_or_clamp_qualification": True,
         "continuous_motion_qualification": False,
         "pose_count": len(rows), "obstacles_per_pose": expanded_count,
         "collision_pose_count_above_1e_minus6": sum(any(v > 1e-6 for v in row["intersections_mm3"].values()) for row in rows),

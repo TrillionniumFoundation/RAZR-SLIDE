@@ -1,0 +1,119 @@
+{
+  "revision": "20261013 partition proposal; no physical routing or circuit qualification",
+  "manufacturing_go": false,
+  "product_constraints": {
+    "A_B_same_finished_external_size": true,
+    "one_flexible_OLED_inches_approx": 7,
+    "B_slide_y_mm": 79.75,
+    "B_terminal_normal_motion_mm": 8.2,
+    "A_larger_battery_priority": true,
+    "second_external_display": false
+  },
+  "static_termination": {
+    "header": "BM28B0.6-24DP/2-0.35V(53)",
+    "receptacle": "BM28B0.6-24DS/2-0.35V(53)",
+    "role": "internal static manufacturing/service termination only",
+    "sliding_motion_must_not_unmate": true,
+    "mated_board_gap_mm": 0.6,
+    "complete_installed_stack_mm": null,
+    "pinout_assigned": false,
+    "PCBA_solder_stiffener_buffer_fixture_built": false,
+    "all_service_mating_counts_must_be_recorded": true
+  },
+  "routes": [
+    {
+      "id": "SIGNAL",
+      "function": "low-speed control, wake and position diagnostics",
+      "physical_harness_id": "H_SIGNAL",
+      "A_static_connector": "S_A",
+      "B_static_connector": "S_B",
+      "static_connector_candidate": "BM28 exact pair",
+      "high_current_power_allowed": false,
+      "battery_positive_conductor_allowed": false,
+      "USB_high_speed_allowed": false,
+      "dynamic_conductor_and_return_specification": null,
+      "powered_off_IO_phantom_supply_control_verified": false,
+      "route_is_built": false
+    },
+    {
+      "id": "USB",
+      "function": "USB data and its defined local reference/shield",
+      "physical_harness_id": "H_USB",
+      "A_static_connector": "U_A_if_cross_cabin",
+      "B_static_connector": "U_B_if_cross_cabin",
+      "topology_branches": [
+        {"id": "USB_LOCAL_B", "basis": "R22 existing exploratory partition", "USB_PHY_and_port_in_B": true, "cross_cabin_USB_conductor_required": false, "B_actual_port_fit_verified": false},
+        {"id": "USB_CROSS_CABIN", "cross_cabin_USB_conductor_required": true, "USB_version_and_rate": null, "differential_pairs_and_pinout": null, "qualified_actual_stack_SI": false}
+      ],
+      "branch_frozen": null,
+      "battery_positive_conductor_allowed": false,
+      "power_return_allowed": false,
+      "USB_ground_shield_fault_coupling_to_power_reference_verified": false,
+      "dynamic_conductor_impedance_stack_specification": null,
+      "route_is_built": false
+    },
+    {
+      "id": "A_POWER_DISCHARGE",
+      "function": "A protected regulated output and dedicated return to system power combination",
+      "physical_harness_id": "H_POWER_A",
+      "A_static_connector": "P_A",
+      "B_static_connector": "P_B",
+      "static_connector_selected": null,
+      "candidate_BM28_rating_is_approval": false,
+      "dedicated_forward_and_return_conductors": true,
+      "signal_or_USB_return_as_battery_return_allowed": false,
+      "A_pack_local_BMS_fuse_isolation_and_measurement_required": true,
+      "raw_A_B_cell_positive_parallel_allowed": false,
+      "peak_current_A": null,
+      "minimum_pack_V": null,
+      "fault_energy_limit_J": null,
+      "dynamic_conductor_stack_thermal_and_insulation_specification": null,
+      "route_is_built": false
+    },
+    {
+      "id": "B_POWER_DISCHARGE",
+      "function": "B local protected output to system power combination",
+      "physical_harness_id": "H_POWER_B_LOCAL",
+      "B_pack_local_BMS_fuse_isolation_and_measurement_required": true,
+      "raw_A_B_cell_positive_parallel_allowed": false,
+      "peak_current_A": null,
+      "route_is_built": false
+    },
+    {
+      "id": "A_CHARGE_FEED",
+      "function": "controlled charge feed to independent A charger; never direct raw battery tie",
+      "physical_harness_id": "H_CHARGE_A",
+      "dedicated_forward_and_return_conductors": true,
+      "independent_A_charge_control_required": true,
+      "charge_current_A": null,
+      "route_is_built": false
+    },
+    {
+      "id": "B_CHARGE_FEED",
+      "function": "B local independent charging control",
+      "physical_harness_id": "H_CHARGE_B_LOCAL",
+      "independent_B_charge_control_required": true,
+      "charge_current_A": null,
+      "route_is_built": false
+    }
+  ],
+  "mechanical_load_path": {
+    "sliding_load_must_bypass_all_electrical_terminations": true,
+    "dynamic_clamp_anchors": null,
+    "local_compliant_neck_at_static_connector_required": true,
+    "strain_relief_fixture_must_not_rigidly_lock_connector_FPC": true,
+    "8p2mm_normal_motion_accommodated_by_constant_material_length": false,
+    "supplier_dynamic_radius_mm": null,
+    "copper_neutral_plane_mm": null,
+    "twist_and_cycle_qualification_available": false
+  },
+  "common_cause_faults_still_require_evidence": [
+    "power-to-signal or power-to-USB insulation abrasion short",
+    "one board trace bypassing both claimed isolation devices",
+    "one driver or sensor command simultaneously disabling both safety channels",
+    "shared connector latch or strain-relief failure affecting separate harnesses",
+    "battery reverse feed, precharge transient, disconnected conductor residual energy",
+    "measurement path failure or unpowered IO phantom powering"
+  ],
+  "frozen_implementation": false
+}

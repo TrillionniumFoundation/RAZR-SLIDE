@@ -5,10 +5,6 @@
   "standalone_Markdown_review_count": 157,
   "standalone_JSON_parse_count": 205,
   "early_PDF_text_extraction_count": 29,
-  "PDF_no_meaningful_text": [
-    "R4_工程优化与失效门槛(1).pdf",
-    "R4_工程优化与失效门槛.pdf"
-  ],
   "archive_audit_reference": "all 121 original ZIP and nested CRC checks are in package_readme_manifest_coverage.json; this file does not claim fresh all-source test execution",
   "standalone_Markdown": [
     {
@@ -5275,14 +5271,22 @@
       "sha256": "df34871b8418e166a9c89c87f14005f7e72eade722bf43864936f50a71d1ad36",
       "extraction_exit_code": 0,
       "extracted_chars": 6,
-      "material_class": "early concept / mechanical / electrical PDF"
+      "material_class": "early concept / mechanical / electrical PDF",
+      "visual_review_complete": true,
+      "page_count": 6,
+      "visual_review_sha256": "df34871b8418e166a9c89c87f14005f7e72eade722bf43864936f50a71d1ad36",
+      "visual_review_summary": "R4B first preference is a nominal zero-thickness top-U candidate with unresolved aligned-body overlap, support, real OEM/OLED/FPC and physical qualification; older 78.98mm travel is superseded by current79.75mm constraint."
     },
     {
       "name": "R4_工程优化与失效门槛.pdf",
       "sha256": "df34871b8418e166a9c89c87f14005f7e72eade722bf43864936f50a71d1ad36",
       "extraction_exit_code": 0,
       "extracted_chars": 6,
-      "material_class": "early concept / mechanical / electrical PDF"
+      "material_class": "early concept / mechanical / electrical PDF",
+      "visual_review_complete": true,
+      "page_count": 6,
+      "visual_review_sha256": "df34871b8418e166a9c89c87f14005f7e72eade722bf43864936f50a71d1ad36",
+      "visual_review_summary": "R4B first preference is a nominal zero-thickness top-U candidate with unresolved aligned-body overlap, support, real OEM/OLED/FPC and physical qualification; older 78.98mm travel is superseded by current79.75mm constraint."
     },
     {
       "name": "R5_双抽屏路径二维三维工程审查.pdf",
@@ -5685,5 +5689,91 @@
       "nested_archives": []
     }
   ],
-  "upper_branch_review_scope": "All R49-R79 standalone Markdown plus all standalone supplier/trust/vendor/RFQ/RFI Markdown; all R49-R79 ZIP indexes and CRC"
+  "upper_branch_review_scope": "All R49-R79 standalone Markdown plus all standalone supplier/trust/vendor/RFQ/RFI Markdown; all R49-R79 ZIP indexes and CRC",
+  "R50_source_bodies": [
+    {
+      "member": "baseline/R46_source/reference/R38_A_unchanged.brep",
+      "sha256": "500fd5446d63d0ea8291b2edf4c86abcae4f917f65d8716b2b0ac12f29082cf0",
+      "bytes": 64441
+    },
+    {
+      "member": "baseline/R46_source/reference/R38_B_unchanged.brep",
+      "sha256": "e9ee0f36a61142efa5c557c53ff23e2486bd74b71705ce86181acb10ad2250c7",
+      "bytes": 746867
+    }
+  ],
+  "PDF_no_meaningful_text_but_visually_reviewed": [
+    "R4_工程优化与失效门槛(1).pdf",
+    "R4_工程优化与失效门槛.pdf"
+  ],
+  "current_derivative_evidence": [
+    {
+      "path": "engineering/cad-review-20261013/R45_CAD_motion_audit.json",
+      "sha256": "fc2a786921be8c2c9be03b0811112b78b29d5bc9edb12e3ee9f3210167557b4e",
+      "bytes": 362559,
+      "physical_qualification": false
+    },
+    {
+      "path": "engineering/cad-review-20261013/occ_signed_volume.py",
+      "sha256": "5c227c88574ebb651a25736d9e320d23d0cbf1422cfffb02917694bd541c77b8",
+      "bytes": 2585,
+      "physical_qualification": false
+    },
+    {
+      "path": "engineering/cad-review-20261013/OCC_signed_volume_tests.log",
+      "sha256": "e5287975f1fe735dbb369b304022c5a6765b7892932a293fc640293c1badc9eb",
+      "bytes": 1343,
+      "physical_qualification": false
+    },
+    {
+      "path": "engineering/cad-review-20261013/branch_comparison.json",
+      "sha256": "e827d8063f63352805bc32dd4582e9df9cd3d06ef236c6809e0f83b44cfadd24",
+      "bytes": 574995,
+      "physical_qualification": false
+    },
+    {
+      "path": "engineering/safety-review-20261013/upper-branch-review.md",
+      "sha256": "f1c50c85a005afd745faacea6c9e7a00010170ac71b1e4ce89d083e2ce9faebc",
+      "bytes": 11644,
+      "physical_qualification": false
+    },
+    {
+      "path": "engineering/safety-review-20261013/upper-branch-source-coverage.json",
+      "sha256": "a6ca0947a060a50655ff95c50c0e6cc18f57aff064916b2dae8dc79ef715977e",
+      "bytes": 160692,
+      "physical_qualification": false
+    },
+    {
+      "path": "engineering/safety-review-20261013/R50-source-lineage.json",
+      "sha256": "f0a16c93f93be792775aba187c8bd37996ca0a6af338faddaec699b6689a9d57",
+      "bytes": 1754,
+      "physical_qualification": false
+    }
+  ],
+  "current_connector_acquisition_update": {
+    "historical_R38_directory_boxes_are_not_current_acquisition_status": true,
+    "native_BM28_pair_present_on_qian_qi": true,
+    "two_read_only_FreeCAD_shape_inspections_consistent": true,
+    "native_repeat_exit_code": 0,
+    "supplier_original_geometry_not_transferred_or_published": true,
+    "installed_PCB_FPC_clamps_and_strain_relief_qualified": false,
+    "manufacturing_go": false,
+    "evidence": [
+      {
+        "path": "engineering/connector-review-20261013/BM28_machine_execution_receipt.json",
+        "sha256": "008ac638b4e6ca2bbc9a76d8e076bfd922ab59e74dd29d997906b585dba1b61a",
+        "bytes": 891
+      },
+      {
+        "path": "engineering/connector-review-20261013/BM28_raw_step_inspection_qian.json",
+        "sha256": "3aaa5075eeb05817bf6005faf907dfc2ba14fc5c8d505ed864c01eb34e639141",
+        "bytes": 2368
+      },
+      {
+        "path": "engineering/connector-review-20261013/BM28_raw_step_inspection_qian_rerun.json",
+        "sha256": "b3159f6d9c37631ca170bcdd3ac5c9956327ea5183cb777a0c9ab1d932881b73",
+        "bytes": 2368
+      }
+    ]
+  }
 }
