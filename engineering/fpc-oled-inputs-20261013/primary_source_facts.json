@@ -1,0 +1,126 @@
+{
+  "retrieved_at_local_date": "2026-10-13",
+  "scope": "Public primary sources only. No supplier qualification or drawing acquired.",
+  "source_facts": [
+    {
+      "id": "samsung_vertical_ces2025",
+      "publisher": "Samsung Display",
+      "url": "https://global.samsungdisplay.com/31326?category=62&page=1&type=list",
+      "tool_ref": "turn8view0",
+      "published": "2025-01-05",
+      "location": "L107-L109",
+      "facts": "CES demonstration Slidable Flex Vertical expands vertically from 5.1 to 6.7 inches.",
+      "project_qualification": false,
+      "orderable_part_and_revision": null,
+      "full_outline_and_COF_received": false
+    },
+    {
+      "id": "tcl_csot_2021_phone",
+      "publisher": "TCL Group via PRNewswire",
+      "url": "https://www.prnewswire.co.uk/news-releases/tcl-csot-launches-two-flexible-displays-at-ces-2021-re-defining-standards-for-portable-devices-883702119.html",
+      "tool_refs": ["turn38view3", "turn40view0", "turn40search3"],
+      "published": "2021-01-11",
+      "facts": "Phone AMOLED rollable 6.7 to 7.8 inches; claimed curl/slide R3 mm with a special mechanism. The 0.18 mm thickness belongs to the separate 17-inch printed OLED.",
+      "lifetime_claim_conflict": {
+        "direct_open_and_find_cycles": 100000,
+        "direct_location": "turn38view3/turn40view0 L416",
+        "search_index_cycles": 200000,
+        "search_location": "turn40search3",
+        "prior_cached_body_cycles": 200000,
+        "prior_cached_body_location": "child turn29view1 L440; Crawled: 4 months ago; child independently rechecked the original tool output",
+        "adopted_project_qualification_cycles": null,
+        "resolution": "Preserved conflict. No value promoted to project fatigue proof. Both are below project 300k and omit test conditions."
+      },
+      "project_qualification": false,
+      "orderable_part_and_revision": null,
+      "full_outline_and_COF_received": false
+    },
+    {
+      "id": "boe_dual_slidable",
+      "publisher": "BOE",
+      "url": "https://event.boe.com/",
+      "tool_refs": ["turn10view4", "turn12view7"],
+      "location": "L99-L104/L135-L140",
+      "facts": "Dual-slidable solution claims 2.5 mm radius and targets ultra-thin portable laptop displays.",
+      "project_qualification": false,
+      "mobile_7inch_part_received": false
+    },
+    {
+      "id": "boe_foled",
+      "publisher": "BOE",
+      "url": "https://www.boe.com/global/en/Products_OLED.html",
+      "tool_refs": ["turn38view0", "turn40view2"],
+      "location": "L19-L27",
+      "facts": "Flexible OLED technology description includes slidable phones.",
+      "project_qualification": false,
+      "orderable_part_and_revision": null
+    },
+    {
+      "id": "visionox_multiform",
+      "publisher": "Visionox",
+      "url": "https://www.visionox.com/en/contents/191/425.html",
+      "tool_refs": ["turn38view1", "turn40view1"],
+      "published": "2021-06-03",
+      "location": "L59-L60",
+      "facts": "Flexible AMOLED capabilities include foldable, slidable and rollable through layered structures and stress management.",
+      "project_qualification": false,
+      "orderable_part_and_revision": null
+    },
+    {
+      "id": "allflex_radius_paper",
+      "publisher": "All Flex Solutions",
+      "url": "https://www.allflexinc.com/wp-content/uploads/2024/03/Minimum-Bend-Radius-Considerations-in-Flexible-Circuits.pdf",
+      "tool_refs": ["turn10view1", "turn16view0"],
+      "location": "p0, p3-p4",
+      "facts": "RA copper starting bend ratios use total composite including coverlay/bondply/shield: 6x for one/two layers and 12x for three-plus. Grain and plating matter. Unbonded sections can press into each other; air gaps/crosshatching require impedance review.",
+      "exact_project_stackup_received": false,
+      "width_axis_twist_and_300k_permission": false
+    },
+    {
+      "id": "allflex_design_guide",
+      "publisher": "All Flex Solutions",
+      "url": "https://www.allflexinc.com/wp-content/uploads/2023/04/AFS-AllFlex-Circuit-Design-Guide.pdf",
+      "tool_refs": ["turn10view0", "turn12view2"],
+      "location": "p15-p16",
+      "facts": "Approximate 10x thickness guide; solid copper shield stiffens flex, silver shield is discouraged for dynamic flex. Stagger conductors rather than stacked I-beam layout.",
+      "exact_project_stackup_received": false
+    },
+    {
+      "id": "allflex_2026_dynamic",
+      "publisher": "All Flex Solutions",
+      "url": "https://www.allflexinc.com/blog/pcb-conductor-fillet/",
+      "tool_refs": ["turn10view2", "turn16view1"],
+      "published": "2026-08-05",
+      "location": "L74-L83",
+      "facts": "Dynamic recommendation is 12x overall thickness. Pad/transition separation from fold line 0.76 mm; plated holes outside bend region and selective plating for flexibility.",
+      "exact_project_stackup_received": false
+    },
+    {
+      "id": "minco_design_guide",
+      "publisher": "Minco",
+      "url": "https://www.minco.com/wp-content/uploads/Minco-Flex-Circuits-Design-Guide-2019.pdf",
+      "tool_refs": ["turn16view3", "turn22view0", "turn32view0"],
+      "location": "p22-p26",
+      "facts": "Dynamic application needs its own material/layer/copper/plating/radius/cycle design. FAQ specifies single-layer for dynamic flex. Manufacturing requires full artwork, layerstack, controlled dimensions/tolerances, netlist and testing.",
+      "exact_project_stackup_received": false
+    },
+    {
+      "id": "minco_flexibility_paper",
+      "publisher": "Minco",
+      "url": "https://www.minco.com/wp-content/uploads/Designing-a-Flex-Circuit-for-Flexibility.pdf",
+      "tool_ref": "turn16view2",
+      "location": "p1, p6-p8",
+      "facts": "Neutral bend plane is distinct from outer tension/inner compression layers. Material and handling affect cracks, tears, wrinkling and delamination; conductor staggering and unbonding have design limits.",
+      "exact_project_stackup_received": false
+    }
+  ],
+  "rejected_or_unconfirmed_leads": [
+    {"id": "samsung_4p7_to_7p2_media", "reason": "No verified public official parameter page. Media claim not frozen as supplier data."},
+    {"id": "boe_2017_7p56_backward_R5", "url": "https://www.boe.com/en/company/dynamic-4f5f6ca6a75740768c3660558d3f801c", "reason": "Official search summary lead; exact body retrieval unstable, and backward folding is not sliding fatigue qualification."},
+    {"id": "visionox_2024_vehicle", "url": "https://www.visionox.com/cn/contents/14/1066.html", "reason": "Exact body retrieval empty in independent check; not used as module specification."}
+  ],
+  "supplier_native_geometry_or_stackup_acquired_this_round": false,
+  "supplier_contact_or_order_or_NDA_acceptance": false,
+  "candidate_go": false,
+  "manufacturing_go": false
+}
