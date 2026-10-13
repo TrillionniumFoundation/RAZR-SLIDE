@@ -48,3 +48,7 @@ R3 adds an [actual pin-keyed endpoint carrier](engineering/endpoint-carrier-repa
 No complete controlled phone manufacturing package or matching physical qualification evidence exists in this repository. Its research drawings and software passes do not constitute manufacturing release.
 
 R3 捕获实体修复与独立导出检查：[passive-veto-repair-20261013-r3](engineering/passive-veto-repair-20261013-r3/README.md)。
+
+R4 原厂资料与实改：[OLED来源](engineering/oled-controlled-search-20261013-r4/README.md)、[FPC与RA材料](engineering/fpc-controlled-search-20261013-r4/README.md)、[自主干回路与WDI修复](engineering/proof-detector-design-20261013-r4/README.md)。厂家资料请求以[修正R4请求](engineering/production-inputs-20261013-r4/targeted-controlled-input-request.json)为准：4700mAh是整机目标，A优先大电池。
+
+R4 当前完整状态：[PRODUCTION_BLOCKERS_R4.md](engineering/PRODUCTION_BLOCKERS_R4.md)。
