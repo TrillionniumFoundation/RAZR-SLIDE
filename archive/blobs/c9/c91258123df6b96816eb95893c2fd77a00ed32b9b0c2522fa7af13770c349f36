@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>R3A RAZR 双舱滑移验证 | 研究原型</title><style>
+*{box-sizing:border-box}body{background:#081321;color:#edf5ff;margin:0;padding:20px;font:15px system-ui,'Noto Sans CJK SC',sans-serif}
+.container{max-width:1050px;margin:auto}.card{border:1px solid #456079;background:#122338;border-radius:14px;padding:18px;margin:14px 0}
+input[type=range]{width:100%}svg{background:#0b1927;border-radius:10px;width:100%;max-height:620px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}.stat{background:#182f46;padding:10px;border-radius:8px}
+.note{color:#fbbf70}.bad{color:#ff667e}.good{color:#57d9b7}p{line-height:1.6}button{background:#253d56;color:white;border:1px solid #456079;border-radius:8px;padding:8px 12px;cursor:pointer}
+</style></head><body><div class="container"><h1>R3A · RAZR 双舱背滑屏幕机构</h1><p>参数化二维探索，不是量产CAD。两完整机舱保持原RAZR外包络；屏幕由移动顶部U形导向在两舱之间释放。屏幕背板与末端Z向锁止仍未解决。</p>
+<div class="card"><label>上半机身行程 <b id="snum">0.00 mm</b>　<span id="pct">0%</span></label><input type="range" id="slide" min="0" max="83.22" step="0.01" value="0"><button id="seat">末端Z向就位演示（须先滑到底）</button><p id="seatstatus" class="note">末端机构尚未定义</p>
+<svg id="view" viewBox="0 0 1000 580" role="img" aria-label="左右分别是双舱正视和侧面剖视，每一毫米按同样纵向比例绘制"></svg></div>
+<div class="card stats" id="stats"></div>
+<div class="card"><b>测试状态</b><p><span class="good">通过：</span>模型内显示屏长度守恒和两舱纵向包络。<span class="bad">不通过：</span>大面积展开OLED支撑，按压挠度；前后机舱错层。<span class="note">待测：</span>弹簧、薄屏R与寿命、真实电池及PCB尺寸、末端Cam、天线、排线。</p></div></div>
+<script>
+const P={"source": "Motorola Razr 60 (JP manufacturer published dimensions)", "closed_h": 88.08, "open_h_target": 171.3, "width": 73.99, "single_module_thickness": 7.25, "closed_thickness": 15.85, "screen_front_bottom_y": 4.5, "screen_front_depth": 7.25, "screen_return_depth": -0.6749999999999998, "seat_notch_lower_height": 6.0, "minimum_tail_panel_grip": 8.0, "screen_thickness_nominal_for_visualization": 0.22, "slide_life_target": 300000, "stroke_target": 83.22000000000001, "gap_closed": 1.3499999999999996, "neutral_radius": 3.9625, "neutral_curve_center_x": 3.2875, "zero_stroke_tail_y": 0.8974999999999795, "screen_total_nominal": 175.28606088984955, "upper_depth_start": [-8.6, -1.3499999999999996], "lower_depth": [0, 7.25], "end_depth_shift": 8.6, "min_required_upper_bottom_notch": 4.859999999999985, "max_stroke_with_grip8": 75.22000000000001};let seat=false;const el=id=>document.getElementById(id), H=P.closed_h,S=P.stroke_target,R=P.neutral_radius;
+const C={blue:'#4cc5f9', bluefill:'#16476e', gray:'#42596c', red:'#ff667e', orange:'#fbbf70', white:'#edf5ff'};
+function draw(){let s=+el('slide').value, f=s/S,nowseat=seat && Math.abs(s-S)<.001; if(seat && !nowseat) seat=false;
+ const sc=2.65,Y=y=>505-y*sc, mx=x=>740+(x+10)*sc*3.3;
+ let front=H+s-R,tail=P.zero_stroke_tail_y+2*s,back=front-tail,lowerH=H;
+ let html=`<text x="70" y="35" fill="white" font-size="19">正面投影 · 统一宽度</text><text x="650" y="35" fill="white" font-size="19">侧剖面 · 同一高度比例</text>`;
+ html+=`<rect x="90" y="${Y(H)}" width="195" height="${H*sc}" rx="8" fill="${C.gray}" opacity=".9"/><rect x="90" y="${Y(H+s)}" width="195" height="${H*sc}" rx="8" fill="${C.bluefill}" stroke="${C.blue}" opacity=".7"/>`;
+ html+=`<rect x="99" y="${Y(front)}" width="177" height="${(front-4.5)*sc}" rx="5" fill="#20658b" stroke="${C.blue}"/>`;
+ let ux=nowseat?0:-(P.single_module_thickness+P.gap_closed);let lx=0;
+ html+=`<rect x="${mx(lx)}" y="${Y(H)}" width="${P.single_module_thickness*sc*3.3}" height="${H*sc}" fill="#33485b" stroke="#7b91a8"/>`;
+ html+=`<rect x="${mx(ux)}" y="${Y(H+s-(nowseat?R+0.5:0))}" width="${P.single_module_thickness*sc*3.3}" height="${(H-(nowseat?R+0.5+P.seat_notch_lower_height:0))*sc}" fill="#19496e" stroke="${C.blue}"/>`;
+ if(nowseat)html+=`<rect x="${mx(ux)}" y="${Y(H+s)}" width="${P.single_module_thickness*sc*3.3}" height="${H*sc}" fill="none" stroke="${C.blue}" stroke-dasharray="5 4"/>`;
+ let pts=[[P.screen_front_depth,4.5],[P.screen_front_depth,front]];
+ for(let i=1;i<=80;i++){let a=i*Math.PI/80;pts.push([P.neutral_curve_center_x+R*Math.cos(a),front+R*Math.sin(a)]);}
+ if(back>1e-7)pts.push([P.screen_return_depth,tail]);
+ html+=`<polyline points="${pts.map(p=>[mx(p[0]),Y(p[1])].join(',')).join(' ')}" fill="none" stroke="${C.blue}" stroke-width="4" stroke-linecap="round"/>`;
+ html+=`<circle cx="${mx(P.screen_return_depth)}" cy="${Y(tail)}" r="6" fill="${C.orange}"/>`;
+ if(!nowseat&&front>H)html+=`<line x1="${mx(P.screen_front_depth)+11}" y1="${Y(H)}" x2="${mx(P.screen_front_depth)+11}" y2="${Y(front)}" stroke="${C.red}" stroke-width="4" stroke-dasharray="7 5"/>`;
+ html+=`<text x="650" y="546" fill="${C.orange}" font-size="15">红色虚线 = 屏幕缺少刚性背板支撑</text>`;
+ el('view').innerHTML=html;
+ el('snum').textContent=s.toFixed(2)+' mm';el('pct').textContent=(100*f).toFixed(1)+'%';
+ el('seatstatus').textContent=nowseat?'就位示意：上舱Z向平移8.60mm；仅示意主实体槽口清空，未检查导轨与屏幕干涉':'前后机舱深度错层8.60mm；就位前不可当作平整显示面';
+ el('stats').innerHTML=[['机身外高', (H+s).toFixed(2)+' mm'],['前屏平直长度',(front-4.5).toFixed(2)+' mm'],['背部储屏长度',back.toFixed(2)+' mm'],['OLED路径总长',P.screen_total_nominal.toFixed(3)+' mm'],['屏尾绝对高度',tail.toFixed(2)+' mm'],['缺少支撑的前屏长度',(!nowseat?Math.max(0,front-H):0).toFixed(2)+' mm'],['终点普通夹持余量',back.toFixed(2)+' mm'],['前后深度错层',nowseat?'0 (仅实体示意)':'8.60 mm']].map(([k,v])=>`<div class="stat"><small>${k}</small><br><b>${v}</b></div>`).join('');}
+ el('slide').addEventListener('input',draw);el('seat').addEventListener('click',()=>{if(Math.abs(+el('slide').value-S)>.001){alert('先将上舱滑动到83.22mm终点');return;}seat=!seat;draw();});draw();
+</script></body></html>

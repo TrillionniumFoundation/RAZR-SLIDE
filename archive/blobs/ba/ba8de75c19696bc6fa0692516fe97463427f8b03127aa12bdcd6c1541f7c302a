@@ -1,0 +1,92 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>RAZR Slide R9 双轴运动学</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,'Noto Sans CJK SC',sans-serif;background:#091424;color:#eef4fc}
+body{max-width:1280px;margin:0 auto;padding:22px}
+h1{font-size:24px;margin-bottom:6px}.sub{color:#a7bed4;margin-bottom:20px;line-height:1.7}
+.wrap{display:grid;grid-template-columns:minmax(350px,1fr) 300px;gap:16px}
+.panel,.controls{border:1px solid #35516c;border-radius:12px;background:#0f2238;padding:14px}
+.controls{line-height:1.7}input[type=range]{width:100%;accent-color:#36dac5}button{background:#164b72;color:white;border:1px solid #5f9bbb;border-radius:7px;padding:8px 11px;cursor:pointer}
+button:hover{background:#24638c}label{display:block;margin-top:12px;color:#cbe0f3}output{font-variant-numeric:tabular-nums;color:#7fffcf}
+#main{width:100%;height:auto}.small{font-size:12px;color:#b3cadc}
+.fail{color:#ff8995}.ok{color:#70f4c6}.info{background:#0b192a;border-radius:8px;padding:10px;margin-top:10px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;margin-top:8px}.dot{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:4px}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}}
+</style></head><body><h1>RAZR SLIDE R9 · 双机身分段就位机构</h1>
+<div class="sub">A固定，B由收纳后层向上滑出，先完成纵向滑移，再完成前后齐平。OLED路径保持独立。<b>仅为名义几何候选，不具备实际驱动机构及锁止寿命证明。</b></div>
+<div class="wrap"><div class="panel">
+<svg id="main" viewBox="0 0 650 640" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="650" height="640" fill="#0b1b2d" rx="8"/><g id="drawing"></g>
+<text x="165" y="26" fill="#cce9ff" text-anchor="middle" font-size="15" font-weight="bold">X &lt; 0 左半截面</text>
+<text x="472" y="26" fill="#cce9ff" text-anchor="middle" font-size="15" font-weight="bold">X &gt; 0 右半截面</text>
+<text x="322" y="610" fill="#82a3bd" text-anchor="middle" font-size="12">两列是不同 X 截面，深度 Z 水平，长度 Y 竖直；不是双屏手机</text></svg>
+<div class="legend"><span><i class="dot" style="background:#6a7e94"></i>A固定模块</span><span><i class="dot" style="background:#268dc4"></i>B向上滑出模块</span><span><i class="dot" style="background:#24d6c3"></i>单块OLED</span><span><i class="dot" style="background:#c69a4e"></i>背部导杆未收回</span></div>
+</div><div class="controls">
+<button id="play" type="button">播放 ①滑出 → ②前后就位</button> <button id="reset" type="button">恢复收纳</button>
+<label>完整顺序进度 <output id="progress">0%</output><input id="progressSlide" type="range" min="0" max="1000" value="0" step="1"/></label>
+<div class="info">纵向行程 s：<output id="s">0.000</output> mm<br/>法向就位 d：<output id="d">0.000</output> mm<br/>OLED中性线：<output id="len">190.436</output> mm<br/>展开外包络高度：<output id="height">94.250</output> mm<br/>实体导杆未收回：<output>8.65 mm</output></div>
+<label><input id="adversarial" type="checkbox" /> 对抗模式：允许提前法向就位（仅用于观察碰撞）</label>
+<label>独立 s <output id="sa">0.00</output><input id="sSlide" type="range" min="0" max="79.75" step="0.05" value="0" disabled/></label>
+<label>独立 d <output id="da">0.00</output><input id="dSlide" type="range" min="0" max="8.5" step="0.05" value="0" disabled/></label>
+<div id="phase" class="info ok">第1阶段：沿Y方向滑动，Z位移锁止为0</div>
+<p class="small">工程边界：互补接合端仅消除已建模主体的几何冲突；原R8的26条托板、凸轮、侧柱与本机构尚未集成。展开后后侧导杆突出、FPC法向行程、屏下刚度仍不合格。</p>
+</div></div>
+<script>
+const p = {"H": 94.25, "W": 73.99, "S": 79.75, "thickness": 7.19, "rear_shift": 8.5, "closed_gap": 1.31, "A_full_end": 78.9, "A_tongue_top_avoid_U": 86.0, "B_right_tongue_len": 15.75, "tongue_seam_halfgap": 0.45, "side_pocket_min_x": 34.7, "side_pocket_max_x": 36.3, "shaft_x": 35.5, "shaft_radius": 0.35, "sleeve_outer_radius": 0.6, "sleeve_inner_radius": 0.43, "sleeve_length": 2.0, "shaft_z_low": -8.65, "shaft_z_high": 7.45, "shaft_local_y1": 20.0, "shaft_local_y2": 66.0, "lock_hole_radius": 0.75, "lock_pin_radius": 0.57, "lock_ys": [81.0, 84.75], "part_tolerance": 0.05, "min_pocket_margin_goal": 0.15, "min_tongue_gap_goal": 0.2, "remaining_rear_rail_max_goal": 0.0, "dock_guard_tol": 0.001, "outer_shell_z_gate": 0.2, "OLED_front_z": 9.6, "OLED_rear_z": -0.8, "OLED_R": 5.2, "OLED_length_mm": 190.43628179866693, "OLED_width": 67.32091996910563};
+let stepTimer=null;
+const D=document.getElementById('drawing');
+const $=id=>document.getElementById(id);
+const ns='http://www.w3.org/2000/svg';
+function E(name,attrs){const e=document.createElementNS(ns,name);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);D.appendChild(e);return e;}
+function pxZ(z,origin){return origin+(z+11)*7.9;}
+function pxY(y){return 574-y*2.97;}
+function box(z0,z1,y0,y1,origin,fill,opacity=.62,stroke='#96afc8'){
+ E('rect',{x:pxZ(z0,origin),y:pxY(y1),width:(z1-z0)*7.9,height:(y1-y0)*2.97,rx:1,
+  fill,'fill-opacity':opacity,stroke,'stroke-width':.85});}
+function path(points,origin,color,w){const ps=points.map(q=>pxZ(q[0],origin)+','+pxY(q[1])).join(' ');
+ E('polyline',{points:ps,fill:'none',stroke:color,'stroke-width':w,'stroke-linecap':'round','stroke-linejoin':'round'});}
+function screen(s){const U=p.H+s-p.OLED_R-1,tail=1+2*s,zc=(p.OLED_front_z+p.OLED_rear_z)/2;
+const out=[[p.OLED_front_z,1],[p.OLED_front_z,U]];
+for(let j=0;j<=36;j++){const t=Math.PI*j/36;out.push([zc+p.OLED_R*Math.cos(t),U+p.OLED_R*Math.sin(t)]);}
+out.push([p.OLED_rear_z,tail]);return out;}
+function positiveVolume(s,d){let za0=-p.rear_shift+d,za1=-p.closed_gap+d,A0=0,A1=p.thickness;
+if(za1<=A0||za0>=A1)return 0;
+const zov=Math.max(0,Math.min(A1,za1)-Math.max(A0,za0)), W=p.W,g=p.tongue_seam_halfgap;
+const Av=[[-W/2,W/2,0,p.A_full_end],[-W/2,-g,p.A_full_end,p.H]];
+const Bv=[[g,W/2,s,s+p.B_right_tongue_len],[-W/2,W/2,s+p.B_right_tongue_len,s+p.H-17],
+[-W/2,-34,s+p.H-17,s+p.H],[34,W/2,s+p.H-17,s+p.H]];
+let result=0;for(const a of Av)for(const b of Bv){let xx=Math.max(0,Math.min(a[1],b[1])-Math.max(a[0],b[0]));
+let yy=Math.max(0,Math.min(a[3],b[3])-Math.max(a[2],b[2]));result+=xx*yy*zov;}return result;}
+function pose(){let s=0,d=0;const adv=$('adversarial').checked;
+if(adv){s=Number($('sSlide').value);d=Number($('dSlide').value);}else{
+let v=Number($('progressSlide').value)/1000;
+if(v<=.8)s=p.S*v/.8;else {s=p.S;d=p.rear_shift*(v-.8)/.2;}}
+D.innerHTML='';
+for(const [i,origin] of [105,415].entries()){
+ const neg=i===0;
+ box(0,p.thickness,0,p.A_full_end,origin,'#6a7e94',.58);
+ if(neg)box(0,p.thickness,p.A_full_end,p.A_tongue_top_avoid_U,origin,'#6a7e94',.55);
+ if(!neg)box(-p.rear_shift+d,-p.closed_gap+d,s,s+p.B_right_tongue_len,origin,'#268dc4',.67);
+ box(-p.rear_shift+d,-p.closed_gap+d,s+p.B_right_tongue_len,s+p.H-17,origin,'#268dc4',.53);
+ box(-8.8,-8.55,s+20,s+66,origin,'#c69a4e',.92);
+ for(const y of [s+20,s+66])path([[-8.65,y],[7.45,y]],origin,'#e4ab57',2.5);
+ path(screen(s),origin,'#24d6c3',3);
+ E('text',{x:origin+8,y:593,fill:'#8daac7','font-size':11}) .textContent=neg?'A左舌保留；B右舌缺席':'B右舌保留；A左舌缺席';
+ }
+ $('s').textContent=s.toFixed(3);$('d').textContent=d.toFixed(3);
+ $('sa').textContent=s.toFixed(2);$('da').textContent=d.toFixed(2);
+ $('height').textContent=(p.H+s).toFixed(3);$('len').textContent=p.OLED_length_mm.toFixed(3);
+ const coll=positiveVolume(s,d);
+ const invalid=(s<p.S-.001&&d>.0001);
+ $('phase').className='info '+(coll>1e-8||invalid?'fail':'ok');
+ $('phase').textContent=(coll>1e-8?'非法穿透 '+coll.toFixed(1)+' mm³ — ':'')+(invalid?'不允许提前Z就位；机械联锁尚未建模':d>0?'第2阶段：纵向到顶后法向就位（受控运动学）':'第1阶段：沿Y方向滑动，Z保持不动');
+}
+$('progressSlide').oninput=()=>{$('progress').textContent=(Number($('progressSlide').value)/10).toFixed(1)+'%';pose();};
+$('adversarial').onchange=()=>{let f=$('adversarial').checked;$('sSlide').disabled=!f;$('dSlide').disabled=!f;pose();};
+$('sSlide').oninput=pose;$('dSlide').oninput=pose;
+$('reset').onclick=()=>{clearInterval(stepTimer);stepTimer=null;$('play').textContent='播放 ①滑出 → ②前后就位';$('progressSlide').value='0';$('progress').textContent='0%';$('adversarial').checked=false;$('sSlide').disabled=true;$('dSlide').disabled=true;pose();};
+$('play').onclick=()=>{if(stepTimer!==null){clearInterval(stepTimer);stepTimer=null;$('play').textContent='播放 ①滑出 → ②前后就位';return;}
+$('adversarial').checked=false;$('sSlide').disabled=true;$('dSlide').disabled=true;
+$('play').textContent='暂停';stepTimer=setInterval(()=>{let v=Number($('progressSlide').value)+5;if(v>1000){clearInterval(stepTimer);stepTimer=null;$('play').textContent='播放 ①滑出 → ②前后就位';return;}$('progressSlide').value=v;$('progress').textContent=(v/10).toFixed(1)+'%';pose();},35)};
+pose();
+</script></body></html>

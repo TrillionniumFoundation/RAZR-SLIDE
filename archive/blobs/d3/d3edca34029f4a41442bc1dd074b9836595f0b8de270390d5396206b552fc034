@@ -1,0 +1,3269 @@
+{
+  "revision": "R39 numerical continuous multiaxis route + sparse OCC collision falsification",
+  "route_proxies_not_actual_flat_FPC": true,
+  "dynamic_radii_not_supplier_approved": true,
+  "section_profile_round_collision_proxy_not_flat_ribbon": true,
+  "dynamic_FPC_stress_and_torsion_life_NOT_checked": true,
+  "input_R38_primary_archive_not_modified": true,
+  "R38_A_original_BRep_sha256": "500fd5446d63d0ea8291b2edf4c86abcae4f917f65d8716b2b0ac12f29082cf0",
+  "R38_B_original_BRep_sha256": "e9ee0f36a61142efa5c557c53ff23e2486bd74b71705ce86181acb10ad2250c7",
+  "enlarged_nonvendor_B_mate_cavity_used": true,
+  "reference_OLED_is_unapproved_proxy": true,
+  "routes": [
+    {
+      "name": "NARROW_R2p5_UNQUALIFIED",
+      "radius": 2.5,
+      "xA": 29.0,
+      "xB": 34.0,
+      "length": 100.0,
+      "width": 6.0,
+      "thickness": 0.15,
+      "limits_are_hypotheses": true,
+      "numerical": {
+        "trajectory_samples": 122,
+        "slide_samples": 81,
+        "dock_samples": 41,
+        "spine_length_target_mm": 100.0,
+        "max_spine_length_deviation_mm": 0.0,
+        "worst_local_bend_radius_mm": 2.5,
+        "worst_local_bend_pose": {
+          "stage": "SLIDE",
+          "s_mm": 76.7594,
+          "q_mm": 0.0
+        },
+        "maximum_width_overhang_if_6mm_width_mm": 0.005,
+        "stow_U_tip_y_mm": 90.7103,
+        "does_not_validate_continuous_OCC_collision": true,
+        "NOT_qualified_dynamic_material_lifetime": true
+      },
+      "connection_stub": {
+        "A_transverse_stub_nominal_length_mm": 3.700000000000003,
+        "A_stub_spine_Occ_inside_A_chassis": 0,
+        "B_transverse_stub_nominal_length_mm": 1.2999999999999972,
+        "B_stub_spine_Occ_inside_B_chassis": 0,
+        "stubs_not_bent_or_mechanically_terminated": true
+      }
+    },
+    {
+      "name": "DYNAMIC_R15_INBOARD_SACRIFICE",
+      "radius": 15.0,
+      "xA": 4.0,
+      "xB": 34.0,
+      "length": 116.0,
+      "width": 6.0,
+      "thickness": 0.15,
+      "limits_are_hypotheses": true,
+      "numerical": {
+        "trajectory_samples": 122,
+        "slide_samples": 81,
+        "dock_samples": 41,
+        "spine_length_target_mm": 116.0,
+        "max_spine_length_deviation_mm": 0.0,
+        "worst_local_bend_radius_mm": 15.0,
+        "worst_local_bend_pose": {
+          "stage": "SLIDE",
+          "s_mm": 77.7562,
+          "q_mm": 0.0
+        },
+        "maximum_width_overhang_if_6mm_width_mm": 0.005,
+        "stow_U_tip_y_mm": 91.5095,
+        "does_not_validate_continuous_OCC_collision": true,
+        "NOT_qualified_dynamic_material_lifetime": true
+      },
+      "connection_stub": {
+        "A_transverse_stub_nominal_length_mm": 28.700000000000003,
+        "A_stub_spine_Occ_inside_A_chassis": 0,
+        "B_transverse_stub_nominal_length_mm": 1.2999999999999972,
+        "B_stub_spine_Occ_inside_B_chassis": 0,
+        "stubs_not_bent_or_mechanically_terminated": true
+      }
+    },
+    {
+      "name": "DYNAMIC_R15_OUTBOARD_BREAKS_WIDTH",
+      "radius": 15.0,
+      "xA": 32.0,
+      "xB": 62.0,
+      "length": 116.0,
+      "width": 6.0,
+      "thickness": 0.15,
+      "limits_are_hypotheses": true,
+      "numerical": {
+        "trajectory_samples": 122,
+        "slide_samples": 81,
+        "dock_samples": 41,
+        "spine_length_target_mm": 116.0,
+        "max_spine_length_deviation_mm": 0.0,
+        "worst_local_bend_radius_mm": 15.0,
+        "worst_local_bend_pose": {
+          "stage": "SLIDE",
+          "s_mm": 77.7562,
+          "q_mm": 0.0
+        },
+        "maximum_width_overhang_if_6mm_width_mm": 28.005,
+        "stow_U_tip_y_mm": 91.5095,
+        "does_not_validate_continuous_OCC_collision": true,
+        "NOT_qualified_dynamic_material_lifetime": true
+      },
+      "connection_stub": {
+        "A_transverse_stub_nominal_length_mm": 0.7000000000000028,
+        "A_stub_spine_Occ_inside_A_chassis": 0,
+        "B_transverse_stub_nominal_length_mm": 29.299999999999997,
+        "B_stub_spine_Occ_inside_B_chassis": 1,
+        "stubs_not_bent_or_mechanically_terminated": true
+      }
+    }
+  ],
+  "occt_reference_checks": [
+    {
+      "name": "NARROW_R2p5_UNQUALIFIED",
+      "tag": "STOW_FULLY_INSERTED",
+      "s": 0.0,
+      "q": 0.0,
+      "envelope_radius_mm": 0.75,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 100.0,
+      "discrete_spine_length_mm": 100.0,
+      "swept_approx_spine_length_mm": 100.003412,
+      "minimum_discrete_bend_radius_mm": 2.5,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 3.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        29.0,
+        15.0,
+        -3.4,
+        34.0,
+        90.71033,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 16,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 100,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                79.059,
+                5.6439
+              ]
+            },
+            {
+              "spine_index": 104,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                69.9077,
+                4.5734
+              ]
+            },
+            {
+              "spine_index": 108,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                60.7565,
+                3.06
+              ]
+            },
+            {
+              "spine_index": 112,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                51.6052,
+                1.325
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 7,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 120,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                33.3026,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 124,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                24.1513,
+                -2.9939
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                33.4,
+                33.3026,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                34.6,
+                33.3026,
+                -1.9234
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "NARROW_R2p5_UNQUALIFIED",
+      "tag": "STOW_0p04",
+      "s": 0.04,
+      "q": 0.0,
+      "envelope_radius_mm": 0.75,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 100.0,
+      "discrete_spine_length_mm": 100.0,
+      "swept_approx_spine_length_mm": 100.003412,
+      "minimum_discrete_bend_radius_mm": 2.5,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 3.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        29.0,
+        15.04,
+        -3.4,
+        34.0,
+        90.73023,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 16,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 100,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                79.0815,
+                5.6439
+              ]
+            },
+            {
+              "spine_index": 104,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                69.9327,
+                4.5734
+              ]
+            },
+            {
+              "spine_index": 108,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                60.7839,
+                3.06
+              ]
+            },
+            {
+              "spine_index": 112,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                51.6351,
+                1.325
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 7,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 120,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                33.3376,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 124,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                24.1888,
+                -2.9939
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                33.4,
+                33.3376,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                34.6,
+                33.3376,
+                -1.9234
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "NARROW_R2p5_UNQUALIFIED",
+      "tag": "STOW_1p59",
+      "s": 1.59,
+      "q": 0.0,
+      "envelope_radius_mm": 0.75,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 100.0,
+      "discrete_spine_length_mm": 100.0,
+      "swept_approx_spine_length_mm": 100.003412,
+      "minimum_discrete_bend_radius_mm": 2.5,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 3.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        29.0,
+        16.59,
+        -3.4,
+        34.0,
+        91.50138,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 14,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 104,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                70.8985,
+                4.5734
+              ]
+            },
+            {
+              "spine_index": 108,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                61.8471,
+                3.06
+              ]
+            },
+            {
+              "spine_index": 112,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                52.7957,
+                1.325
+              ]
+            },
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                29.0,
+                70.0,
+                5.45
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 7,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 120,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                34.6928,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 124,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                25.6414,
+                -2.9939
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                33.4,
+                34.6928,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                34.6,
+                34.6928,
+                -1.9234
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "NARROW_R2p5_UNQUALIFIED",
+      "tag": "STOW_2",
+      "s": 2.0,
+      "q": 0.0,
+      "envelope_radius_mm": 0.75,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 100.0,
+      "discrete_spine_length_mm": 100.0,
+      "swept_approx_spine_length_mm": 100.003412,
+      "minimum_discrete_bend_radius_mm": 2.5,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 3.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        29.0,
+        17.0,
+        -3.4,
+        34.0,
+        91.70535,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 14,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 104,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                71.154,
+                4.5734
+              ]
+            },
+            {
+              "spine_index": 108,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                62.1283,
+                3.06
+              ]
+            },
+            {
+              "spine_index": 112,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                53.1027,
+                1.325
+              ]
+            },
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                29.0,
+                70.0,
+                5.45
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 7,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 120,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                35.0513,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 124,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                26.0257,
+                -2.9939
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                33.4,
+                35.0513,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                34.6,
+                35.0513,
+                -1.9234
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "NARROW_R2p5_UNQUALIFIED",
+      "tag": "STOW_8",
+      "s": 8.0,
+      "q": 0.0,
+      "envelope_radius_mm": 0.75,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 100.0,
+      "discrete_spine_length_mm": 100.0,
+      "swept_approx_spine_length_mm": 100.003416,
+      "minimum_discrete_bend_radius_mm": 2.5,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 3.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        29.0,
+        23.0,
+        -3.4,
+        34.0,
+        94.68955,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 13,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 104,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                74.8922,
+                4.5734
+              ]
+            },
+            {
+              "spine_index": 108,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                66.2435,
+                3.06
+              ]
+            },
+            {
+              "spine_index": 112,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                57.5948,
+                1.325
+              ]
+            },
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                29.0,
+                70.0,
+                5.45
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 7,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 120,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                40.2974,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 124,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                31.6487,
+                -2.9939
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                33.4,
+                40.2974,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                34.6,
+                40.2974,
+                -1.9234
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "NARROW_R2p5_UNQUALIFIED",
+      "tag": "MID",
+      "s": 39.875,
+      "q": 0.0,
+      "envelope_radius_mm": 0.75,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 100.0,
+      "discrete_spine_length_mm": 100.0,
+      "swept_approx_spine_length_mm": 100.003477,
+      "minimum_discrete_bend_radius_mm": 2.5,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 3.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        29.0,
+        54.875,
+        -3.4,
+        34.0,
+        110.51378,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 2,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                29.0,
+                70.0,
+                5.45
+              ]
+            },
+            {
+              "spine_index": 8,
+              "type": "tube_ring",
+              "position_mm": [
+                29.0,
+                79.5034,
+                5.45
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 7,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 120,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                68.1597,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 124,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                61.5173,
+                -2.9939
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                33.4,
+                68.1597,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                34.6,
+                68.1597,
+                -1.9234
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "NARROW_R2p5_UNQUALIFIED",
+      "tag": "OPEN_PREDOCK",
+      "s": 79.75,
+      "q": 0.0,
+      "envelope_radius_mm": 0.75,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 100.0,
+      "discrete_spine_length_mm": 100.0,
+      "swept_approx_spine_length_mm": 100.00354,
+      "minimum_discrete_bend_radius_mm": 2.5,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 3.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        29.0,
+        70.0,
+        -3.4,
+        34.0,
+        130.16174,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 1,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                29.0,
+                70.0,
+                5.45
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 7,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 120,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                102.9779,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 124,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                98.864,
+                -2.9939
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                33.4,
+                102.9779,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                34.6,
+                102.9779,
+                -1.9234
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "NARROW_R2p5_UNQUALIFIED",
+      "tag": "OPEN_6p61",
+      "s": 79.75,
+      "q": 6.61,
+      "envelope_radius_mm": 0.75,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 100.0,
+      "discrete_spine_length_mm": 100.0,
+      "swept_approx_spine_length_mm": 100.002986,
+      "minimum_discrete_bend_radius_mm": 2.5,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 3.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        29.0,
+        70.0,
+        3.21,
+        34.0,
+        130.87672,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 1,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                29.0,
+                70.0,
+                5.45
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 24,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 104,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                119.97,
+                5.6063
+              ]
+            },
+            {
+              "spine_index": 108,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                115.7667,
+                5.1514
+              ]
+            },
+            {
+              "spine_index": 112,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                111.5634,
+                4.63
+              ]
+            },
+            {
+              "spine_index": 116,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                107.36,
+                4.1086
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 41,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 8,
+              "type": "spine",
+              "position_mm": [
+                29.0,
+                84.5942,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 12,
+              "type": "spine",
+              "position_mm": [
+                29.0,
+                91.8913,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 16,
+              "type": "spine",
+              "position_mm": [
+                29.0,
+                99.1884,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 20,
+              "type": "spine",
+              "position_mm": [
+                29.0,
+                106.4855,
+                6.05
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "NARROW_R2p5_UNQUALIFIED",
+      "tag": "OPEN_8p15",
+      "s": 79.75,
+      "q": 8.15,
+      "envelope_radius_mm": 0.75,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 100.0,
+      "discrete_spine_length_mm": 100.0,
+      "swept_approx_spine_length_mm": 100.002928,
+      "minimum_discrete_bend_radius_mm": 2.5,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 3.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        29.0,
+        70.0,
+        4.75,
+        34.0,
+        130.93337,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 1,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                29.0,
+                70.0,
+                5.45
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 54,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 56,
+              "type": "spine",
+              "position_mm": [
+                30.5433,
+                130.7431,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 60,
+              "type": "spine",
+              "position_mm": [
+                31.0123,
+                130.8853,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 64,
+              "type": "spine",
+              "position_mm": [
+                31.5,
+                130.9334,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 68,
+              "type": "spine",
+              "position_mm": [
+                31.9877,
+                130.8853,
+                6.05
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 6,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 8,
+              "type": "tube_ring",
+              "position_mm": [
+                29.0,
+                84.6083,
+                6.65
+              ]
+            },
+            {
+              "spine_index": 16,
+              "type": "tube_ring",
+              "position_mm": [
+                29.0,
+                99.2167,
+                6.65
+              ]
+            },
+            {
+              "spine_index": 24,
+              "type": "tube_ring",
+              "position_mm": [
+                29.0,
+                113.825,
+                6.65
+              ]
+            },
+            {
+              "spine_index": 32,
+              "type": "tube_ring",
+              "position_mm": [
+                29.0,
+                128.4334,
+                6.65
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "NARROW_R2p5_UNQUALIFIED",
+      "tag": "OPEN_SEATED",
+      "s": 79.75,
+      "q": 8.2,
+      "envelope_radius_mm": 0.75,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 100.0,
+      "discrete_spine_length_mm": 100.0,
+      "swept_approx_spine_length_mm": 100.002927,
+      "minimum_discrete_bend_radius_mm": 2.5,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 3.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        29.0,
+        70.0,
+        4.8,
+        34.0,
+        130.93451,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 1,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                29.0,
+                70.0,
+                5.45
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 54,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 56,
+              "type": "spine",
+              "position_mm": [
+                30.5433,
+                130.7442,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 60,
+              "type": "spine",
+              "position_mm": [
+                31.0123,
+                130.8865,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 64,
+              "type": "spine",
+              "position_mm": [
+                31.5,
+                130.9345,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 68,
+              "type": "spine",
+              "position_mm": [
+                31.9877,
+                130.8865,
+                6.05
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "DYNAMIC_R15_INBOARD_SACRIFICE",
+      "tag": "STOW_FULLY_INSERTED",
+      "s": 0.0,
+      "q": 0.0,
+      "envelope_radius_mm": 1.0,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 116.0,
+      "discrete_spine_length_mm": 116.0,
+      "swept_approx_spine_length_mm": 116.003778,
+      "minimum_discrete_bend_radius_mm": 15.0,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 28.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        4.0,
+        15.0,
+        -3.4,
+        34.0,
+        91.50952,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 22,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 96,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                76.5095,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 100,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                68.8208,
+                5.6439
+              ]
+            },
+            {
+              "spine_index": 104,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                61.1321,
+                4.5734
+              ]
+            },
+            {
+              "spine_index": 108,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                53.4435,
+                3.06
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 8,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 120,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                30.3774,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 124,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                22.6887,
+                -2.9939
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                33.2,
+                30.3774,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                34.8,
+                30.3774,
+                -1.9234
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 2,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 40,
+              "type": "tube_ring",
+              "position_mm": [
+                4.4027,
+                82.5559,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 88,
+              "type": "tube_ring",
+              "position_mm": [
+                33.5973,
+                82.5559,
+                6.05
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "DYNAMIC_R15_INBOARD_SACRIFICE",
+      "tag": "STOW_0p04",
+      "s": 0.04,
+      "q": 0.0,
+      "envelope_radius_mm": 1.0,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 116.0,
+      "discrete_spine_length_mm": 116.0,
+      "swept_approx_spine_length_mm": 116.003776,
+      "minimum_discrete_bend_radius_mm": 15.0,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 28.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        4.0,
+        15.04,
+        -3.4,
+        34.0,
+        91.52939,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 22,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 96,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                76.5294,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 100,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                68.8432,
+                5.6439
+              ]
+            },
+            {
+              "spine_index": 104,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                61.157,
+                4.5734
+              ]
+            },
+            {
+              "spine_index": 108,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                53.4709,
+                3.06
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 8,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 120,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                30.4123,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 124,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                22.7262,
+                -2.9939
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                33.2,
+                30.4123,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                34.8,
+                30.4123,
+                -1.9234
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 2,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 40,
+              "type": "tube_ring",
+              "position_mm": [
+                4.4027,
+                82.5758,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 88,
+              "type": "tube_ring",
+              "position_mm": [
+                33.5973,
+                82.5758,
+                6.05
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "DYNAMIC_R15_INBOARD_SACRIFICE",
+      "tag": "STOW_1p59",
+      "s": 1.59,
+      "q": 0.0,
+      "envelope_radius_mm": 1.0,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 8,
+      "OCCT_pipe_failures": [
+        {
+          "stride": 4,
+          "error": "StdFail_NotDone"
+        }
+      ],
+      "target_spine_length_mm": 116.0,
+      "discrete_spine_length_mm": 116.0,
+      "swept_approx_spine_length_mm": 115.990375,
+      "minimum_discrete_bend_radius_mm": 15.0,
+      "adaptive_turn_height_mm": 6.04982,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 28.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        4.0,
+        16.59,
+        -3.4,
+        34.0,
+        92.29897,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 21,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 96,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                77.299,
+                6.0498
+              ]
+            },
+            {
+              "spine_index": 100,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                69.7104,
+                5.6438
+              ]
+            },
+            {
+              "spine_index": 104,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                62.1217,
+                4.5733
+              ]
+            },
+            {
+              "spine_index": 108,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                54.5331,
+                3.0598
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 8,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 120,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                31.7672,
+                -1.9235
+              ]
+            },
+            {
+              "spine_index": 124,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                24.1786,
+                -2.994
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                33.2,
+                31.7672,
+                -1.9235
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                34.8,
+                31.7672,
+                -1.9235
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 2,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 40,
+              "type": "tube_ring",
+              "position_mm": [
+                5.1418,
+                83.0392,
+                5.2498
+              ]
+            },
+            {
+              "spine_index": 88,
+              "type": "tube_ring",
+              "position_mm": [
+                32.8582,
+                83.0392,
+                5.2498
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "DYNAMIC_R15_INBOARD_SACRIFICE",
+      "tag": "STOW_2",
+      "s": 2.0,
+      "q": 0.0,
+      "envelope_radius_mm": 1.0,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 8,
+      "OCCT_pipe_failures": [
+        {
+          "stride": 4,
+          "error": "StdFail_NotDone"
+        }
+      ],
+      "target_spine_length_mm": 116.0,
+      "discrete_spine_length_mm": 116.0,
+      "swept_approx_spine_length_mm": 115.99022,
+      "minimum_discrete_bend_radius_mm": 15.0,
+      "adaptive_turn_height_mm": 6.04963,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 28.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        4.0,
+        17.0,
+        -3.4,
+        34.0,
+        92.50253,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 21,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 96,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                77.5025,
+                6.0496
+              ]
+            },
+            {
+              "spine_index": 100,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                69.9397,
+                5.6436
+              ]
+            },
+            {
+              "spine_index": 104,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                62.3769,
+                4.5731
+              ]
+            },
+            {
+              "spine_index": 108,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                54.8141,
+                3.0597
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 8,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 120,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                32.1256,
+                -1.9235
+              ]
+            },
+            {
+              "spine_index": 124,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                24.5628,
+                -2.994
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                33.2,
+                32.1256,
+                -1.9235
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                34.8,
+                32.1256,
+                -1.9235
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "DYNAMIC_R15_INBOARD_SACRIFICE",
+      "tag": "STOW_8",
+      "s": 8.0,
+      "q": 0.0,
+      "envelope_radius_mm": 1.0,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 116.0,
+      "discrete_spine_length_mm": 116.0,
+      "swept_approx_spine_length_mm": 116.003477,
+      "minimum_discrete_bend_radius_mm": 15.0,
+      "adaptive_turn_height_mm": 6.02682,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 28.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        4.0,
+        23.0,
+        -3.4,
+        34.0,
+        95.4822,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 17,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 100,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                73.2969,
+                5.6218
+              ]
+            },
+            {
+              "spine_index": 104,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                66.1117,
+                4.5539
+              ]
+            },
+            {
+              "spine_index": 108,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                58.9264,
+                3.0441
+              ]
+            },
+            {
+              "spine_index": 112,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                51.7411,
+                1.3134
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 8,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 120,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                37.3706,
+                -1.9271
+              ]
+            },
+            {
+              "spine_index": 124,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                30.1853,
+                -2.9949
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                33.2,
+                37.3706,
+                -1.9271
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                34.8,
+                37.3706,
+                -1.9271
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "DYNAMIC_R15_INBOARD_SACRIFICE",
+      "tag": "MID",
+      "s": 39.875,
+      "q": 0.0,
+      "envelope_radius_mm": 1.0,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 116.0,
+      "discrete_spine_length_mm": 116.0,
+      "swept_approx_spine_length_mm": 116.002822,
+      "minimum_discrete_bend_radius_mm": 15.0,
+      "adaptive_turn_height_mm": 3.92868,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 28.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        4.0,
+        54.875,
+        -3.4,
+        34.0,
+        111.44477,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 6,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 112,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                75.6599,
+                0.2643
+              ]
+            },
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                4.0,
+                69.9941,
+                5.25
+              ]
+            },
+            {
+              "spine_index": 8,
+              "type": "tube_ring",
+              "position_mm": [
+                4.0,
+                76.5394,
+                4.9218
+              ]
+            },
+            {
+              "spine_index": 112,
+              "type": "tube_ring",
+              "position_mm": [
+                33.2,
+                75.6599,
+                0.2643
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 9,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 116,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                70.4637,
+                -1.0812
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                65.2674,
+                -2.2549
+              ]
+            },
+            {
+              "spine_index": 124,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                60.0712,
+                -3.0851
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                33.2,
+                65.2674,
+                -2.2549
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 1,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 16,
+              "type": "tube_ring",
+              "position_mm": [
+                4.0,
+                83.1269,
+                4.1951
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "DYNAMIC_R15_INBOARD_SACRIFICE",
+      "tag": "OPEN_PREDOCK",
+      "s": 79.75,
+      "q": 0.0,
+      "envelope_radius_mm": 1.0,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 116.0,
+      "discrete_spine_length_mm": 116.0,
+      "swept_approx_spine_length_mm": 116.002913,
+      "minimum_discrete_bend_radius_mm": 15.0,
+      "adaptive_turn_height_mm": 0.05,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 28.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        4.0,
+        70.0,
+        -3.4,
+        34.0,
+        131.42171,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 1,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                4.0,
+                69.9905,
+                5.2501
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 15,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 108,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                108.2948,
+                -1.0416
+              ]
+            },
+            {
+              "spine_index": 112,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                105.5859,
+                -1.675
+              ]
+            },
+            {
+              "spine_index": 116,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                102.8769,
+                -2.3084
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                100.1679,
+                -2.8609
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "DYNAMIC_R15_INBOARD_SACRIFICE",
+      "tag": "OPEN_6p61",
+      "s": 79.75,
+      "q": 6.61,
+      "envelope_radius_mm": 1.0,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 116.0,
+      "discrete_spine_length_mm": 116.0,
+      "swept_approx_spine_length_mm": 116.002933,
+      "minimum_discrete_bend_radius_mm": 15.0,
+      "adaptive_turn_height_mm": 4.88659,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 28.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        4.0,
+        70.0,
+        3.21,
+        34.0,
+        131.76857,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 1,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                4.0,
+                69.9982,
+                5.25
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 62,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 24,
+              "type": "spine",
+              "position_mm": [
+                4.0,
+                105.0764,
+                5.0684
+              ]
+            },
+            {
+              "spine_index": 28,
+              "type": "spine",
+              "position_mm": [
+                4.0,
+                110.9225,
+                4.9366
+              ]
+            },
+            {
+              "spine_index": 32,
+              "type": "spine",
+              "position_mm": [
+                4.0,
+                116.7686,
+                4.8866
+              ]
+            },
+            {
+              "spine_index": 36,
+              "type": "spine",
+              "position_mm": [
+                4.2882,
+                119.6949,
+                4.8866
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "DYNAMIC_R15_INBOARD_SACRIFICE",
+      "tag": "OPEN_8p15",
+      "s": 79.75,
+      "q": 8.15,
+      "envelope_radius_mm": 1.0,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 116.0,
+      "discrete_spine_length_mm": 116.0,
+      "swept_approx_spine_length_mm": 116.002936,
+      "minimum_discrete_bend_radius_mm": 15.0,
+      "adaptive_turn_height_mm": 6.01341,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 28.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        4.0,
+        70.0,
+        4.75,
+        34.0,
+        131.79374,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 1,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                4.0,
+                69.9999,
+                5.25
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 70,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 24,
+              "type": "spine",
+              "position_mm": [
+                4.0,
+                105.0953,
+                6.0191
+              ]
+            },
+            {
+              "spine_index": 28,
+              "type": "spine",
+              "position_mm": [
+                4.0,
+                110.9445,
+                6.015
+              ]
+            },
+            {
+              "spine_index": 32,
+              "type": "spine",
+              "position_mm": [
+                4.0,
+                116.7937,
+                6.0134
+              ]
+            },
+            {
+              "spine_index": 36,
+              "type": "spine",
+              "position_mm": [
+                4.2882,
+                119.7201,
+                6.0134
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "DYNAMIC_R15_INBOARD_SACRIFICE",
+      "tag": "OPEN_SEATED",
+      "s": 79.75,
+      "q": 8.2,
+      "envelope_radius_mm": 1.0,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 116.0,
+      "discrete_spine_length_mm": 116.0,
+      "swept_approx_spine_length_mm": 116.002936,
+      "minimum_discrete_bend_radius_mm": 15.0,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 0.0,
+      "A_static_header_to_route_stub_unmodeled_mm": 28.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        4.0,
+        70.0,
+        4.8,
+        34.0,
+        131.7942,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 1,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                4.0,
+                70.0,
+                5.25
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 70,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 24,
+              "type": "spine",
+              "position_mm": [
+                4.0,
+                105.0957,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 28,
+              "type": "spine",
+              "position_mm": [
+                4.0,
+                110.9449,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 32,
+              "type": "spine",
+              "position_mm": [
+                4.0,
+                116.7942,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 36,
+              "type": "spine",
+              "position_mm": [
+                4.2882,
+                119.7206,
+                6.05
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "DYNAMIC_R15_OUTBOARD_BREAKS_WIDTH",
+      "tag": "STOW_FULLY_INSERTED",
+      "s": 0.0,
+      "q": 0.0,
+      "envelope_radius_mm": 1.0,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 116.0,
+      "discrete_spine_length_mm": 116.0,
+      "swept_approx_spine_length_mm": 116.003778,
+      "minimum_discrete_bend_radius_mm": 15.0,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 26.005,
+      "A_static_header_to_route_stub_unmodeled_mm": 0.7000000000000028,
+      "B_static_header_to_route_stub_unmodeled_mm": 29.299999999999997,
+      "nominal_centerline_bbox_mm": [
+        32.0,
+        15.0,
+        -3.4,
+        62.0,
+        91.50952,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 10,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 48,
+              "type": "spine",
+              "position_mm": [
+                36.3934,
+                87.1161,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                32.0,
+                70.0,
+                5.25
+              ]
+            },
+            {
+              "spine_index": 8,
+              "type": "tube_ring",
+              "position_mm": [
+                32.0,
+                71.6274,
+                5.25
+              ]
+            },
+            {
+              "spine_index": 16,
+              "type": "tube_ring",
+              "position_mm": [
+                32.0,
+                73.2548,
+                5.25
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 1,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 40,
+              "type": "tube_ring",
+              "position_mm": [
+                32.4027,
+                82.5559,
+                6.05
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "DYNAMIC_R15_OUTBOARD_BREAKS_WIDTH",
+      "tag": "MID",
+      "s": 39.875,
+      "q": 0.0,
+      "envelope_radius_mm": 1.0,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 116.0,
+      "discrete_spine_length_mm": 116.0,
+      "swept_approx_spine_length_mm": 116.002822,
+      "minimum_discrete_bend_radius_mm": 15.0,
+      "adaptive_turn_height_mm": 3.92868,
+      "max_x_enclosure_overshoot_mm": 26.005,
+      "A_static_header_to_route_stub_unmodeled_mm": 0.7000000000000028,
+      "B_static_header_to_route_stub_unmodeled_mm": 29.299999999999997,
+      "nominal_centerline_bbox_mm": [
+        32.0,
+        54.875,
+        -3.4,
+        62.0,
+        111.44477,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 2,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                32.0,
+                69.9941,
+                5.25
+              ]
+            },
+            {
+              "spine_index": 8,
+              "type": "tube_ring",
+              "position_mm": [
+                32.0,
+                76.5394,
+                4.9218
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 1,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 16,
+              "type": "tube_ring",
+              "position_mm": [
+                32.0,
+                83.1269,
+                4.1951
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "DYNAMIC_R15_OUTBOARD_BREAKS_WIDTH",
+      "tag": "OPEN_SEATED",
+      "s": 79.75,
+      "q": 8.2,
+      "envelope_radius_mm": 1.0,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 116.0,
+      "discrete_spine_length_mm": 116.0,
+      "swept_approx_spine_length_mm": 116.002936,
+      "minimum_discrete_bend_radius_mm": 15.0,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 26.005,
+      "A_static_header_to_route_stub_unmodeled_mm": 0.7000000000000028,
+      "B_static_header_to_route_stub_unmodeled_mm": 29.299999999999997,
+      "nominal_centerline_bbox_mm": [
+        32.0,
+        70.0,
+        4.8,
+        62.0,
+        131.7942,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 1,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                32.0,
+                70.0,
+                5.25
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 24,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 20,
+              "type": "spine",
+              "position_mm": [
+                32.0,
+                99.2464,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 24,
+              "type": "spine",
+              "position_mm": [
+                32.0,
+                105.0957,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 28,
+              "type": "spine",
+              "position_mm": [
+                32.0,
+                110.9449,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 32,
+              "type": "spine",
+              "position_mm": [
+                32.0,
+                116.7942,
+                6.05
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    }
+  ],
+  "six_mm_round_envelope_stress_checks": [
+    {
+      "name": "DYNAMIC_R15_INBOARD_SACRIFICE",
+      "tag": "STOW_FULLY_INSERTED",
+      "s": 0.0,
+      "q": 0.0,
+      "envelope_radius_mm": 3.0,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 116.0,
+      "discrete_spine_length_mm": 116.0,
+      "swept_approx_spine_length_mm": 116.003778,
+      "minimum_discrete_bend_radius_mm": 15.0,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 0.005,
+      "A_static_header_to_route_stub_unmodeled_mm": 28.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        4.0,
+        15.0,
+        -3.4,
+        34.0,
+        91.50952,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 20,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 96,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                76.5095,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 100,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                68.8208,
+                5.6439
+              ]
+            },
+            {
+              "spine_index": 104,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                61.1321,
+                4.5734
+              ]
+            },
+            {
+              "spine_index": 108,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                53.4435,
+                3.06
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 9,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 120,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                30.3774,
+                -1.9234
+              ]
+            },
+            {
+              "spine_index": 124,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                22.6887,
+                -2.9939
+              ]
+            },
+            {
+              "spine_index": 112,
+              "type": "tube_ring",
+              "position_mm": [
+                34.0,
+                46.2931,
+                -1.0139
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "tube_ring",
+              "position_mm": [
+                31.6,
+                30.3774,
+                -1.9234
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "DYNAMIC_R15_INBOARD_SACRIFICE",
+      "tag": "OPEN_PREDOCK",
+      "s": 79.75,
+      "q": 0.0,
+      "envelope_radius_mm": 3.0,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 116.0,
+      "discrete_spine_length_mm": 116.0,
+      "swept_approx_spine_length_mm": 116.002913,
+      "minimum_discrete_bend_radius_mm": 15.0,
+      "adaptive_turn_height_mm": 0.05,
+      "max_x_enclosure_overshoot_mm": 0.005,
+      "A_static_header_to_route_stub_unmodeled_mm": 28.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        4.0,
+        70.0,
+        -3.4,
+        34.0,
+        131.42171,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 1,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                4.0,
+                69.9715,
+                3.6502
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 23,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 108,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                108.2948,
+                -1.0416
+              ]
+            },
+            {
+              "spine_index": 112,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                105.5859,
+                -1.675
+              ]
+            },
+            {
+              "spine_index": 116,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                102.8769,
+                -2.3084
+              ]
+            },
+            {
+              "spine_index": 120,
+              "type": "spine",
+              "position_mm": [
+                34.0,
+                100.1679,
+                -2.8609
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    },
+    {
+      "name": "DYNAMIC_R15_INBOARD_SACRIFICE",
+      "tag": "OPEN_SEATED",
+      "s": 79.75,
+      "q": 8.2,
+      "envelope_radius_mm": 3.0,
+      "swept_envelope_OCC_valid": true,
+      "OCCT_swept_tube_sample_stride": 4,
+      "OCCT_pipe_failures": [],
+      "target_spine_length_mm": 116.0,
+      "discrete_spine_length_mm": 116.0,
+      "swept_approx_spine_length_mm": 116.002936,
+      "minimum_discrete_bend_radius_mm": 15.0,
+      "adaptive_turn_height_mm": 6.05,
+      "max_x_enclosure_overshoot_mm": 0.005,
+      "A_static_header_to_route_stub_unmodeled_mm": 28.700000000000003,
+      "B_static_header_to_route_stub_unmodeled_mm": 1.2999999999999972,
+      "nominal_centerline_bbox_mm": [
+        4.0,
+        70.0,
+        4.8,
+        34.0,
+        131.7942,
+        6.05
+      ],
+      "OCC_BRep_point_classification": {
+        "A_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 1,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 0,
+              "type": "tube_ring",
+              "position_mm": [
+                4.0,
+                70.0,
+                3.65
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "B_protected_chassis": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 62,
+          "first_positive_witnesses": [
+            {
+              "spine_index": 24,
+              "type": "spine",
+              "position_mm": [
+                4.0,
+                105.0957,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 28,
+              "type": "spine",
+              "position_mm": [
+                4.0,
+                110.9449,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 32,
+              "type": "spine",
+              "position_mm": [
+                4.0,
+                116.7942,
+                6.05
+              ]
+            },
+            {
+              "spine_index": 36,
+              "type": "spine",
+              "position_mm": [
+                4.2882,
+                119.7206,
+                6.05
+              ]
+            }
+          ],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_unapproved_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        },
+        "OLED_OLD_internal_FPC_proxy": {
+          "OCC_isInside_probes": 101,
+          "positive_penetration_witnesses": 0,
+          "first_positive_witnesses": [],
+          "zero_sampled_hits_is_NOT_proof_of_global_clearance": true
+        }
+      },
+      "positive_OEM_surrogate_penetration": true,
+      "global_continuous_clearance_not_proven": true,
+      "modeled_physical_FPC": false,
+      "manufacturing_go": false
+    }
+  ],
+  "no_SI_power_USB_or_OLED_OEM_evidence": true,
+  "R38_unresolved_36_of_64_legacy_mechanical_faults_retained": true,
+  "single_point_power_PCB_bypass_categories_retained": 3,
+  "no_installed_cross_chamber_power_or_signal_wiring": true,
+  "manufacturing_go": false
+}

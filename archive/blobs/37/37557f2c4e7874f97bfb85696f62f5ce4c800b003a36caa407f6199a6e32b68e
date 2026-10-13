@@ -1,0 +1,536 @@
+{
+  "revision": "R18 cross-cabin 3D FPC and OLED contact/tension screening; prototype geometry, NOT RELEASE",
+  "R17_baseline": {
+    "H": 94.25,
+    "W": 73.99,
+    "travel": 79.75,
+    "T": 7.2,
+    "z_travel": 8.2,
+    "R": 3.4,
+    "oled_t": 0.16,
+    "oled_w": 67.32091996910563,
+    "U_end_clear": 0.6,
+    "OLED_A_start": 3.0,
+    "screen_front_standoff": 0.4,
+    "screen_tail_bottom_margin": 3.2,
+    "FPC_loop_R": 2.4,
+    "FPC_t": 0.15,
+    "FPC_w": 6.0,
+    "FPC_fixed_local_y": 2.0,
+    "FPC_upper_slack_at_max_tail": 3.55,
+    "OLED_rear_cavity_top_local_z": 1.35,
+    "FPC_channel_x0": 24.5,
+    "FPC_channel_x1": 30.5,
+    "A_bridge_length": 14.15,
+    "bridge_t": 0.8
+  },
+  "R18_parameters": {
+    "loop_radius": 5.0,
+    "flex_thickness": 0.12,
+    "flex_width": 3.0,
+    "flex_edge_clear": 0.35,
+    "side_channel_x0": 23.4,
+    "side_channel_x1": 33.4,
+    "anchor_A_y": 5.0,
+    "anchor_B_local_y": 5.0,
+    "anchor_A_z": 4.1,
+    "anchor_B_local_z": 4.1,
+    "stow_fold_tangent_y": 65.0,
+    "oled_neutral_radius": 3.4,
+    "oled_total_thickness": 0.16,
+    "guide_separation_nominal": 7.3,
+    "guide_tolerance_each": 0.1,
+    "additional_design_clearance": 0.15,
+    "oled_active_width": 67.32091996910563
+  },
+  "cross_cabin_fpc_motion": {
+    "states": 961,
+    "Y_states": 801,
+    "Z_states": 161,
+    "fpc_ref_length_mm": 136.37507363995982,
+    "fpc_max_length_drift_mm": 9.094947017729282e-13,
+    "minimum_fpc_bend_radius_mm": 5.0,
+    "service_fold_lowest_Y": 70.0,
+    "service_fold_highest_Y": 110.20855518600543,
+    "stow": {
+      "s": 0,
+      "q": 0,
+      "A_anchor": [
+        23.4,
+        5.0,
+        4.1
+      ],
+      "B_anchor": [
+        33.4,
+        5.0,
+        -4.1
+      ],
+      "length_mm": 136.37507363995982,
+      "fold_tangent_y": 65.0,
+      "fold_far_y": 70.0,
+      "return_leg_len_y": 60.0,
+      "return_z_change": -8.2,
+      "min_return_bend_radius_mm": 73.17073170731707,
+      "minimum_bend_radius_mm": 5.0,
+      "B_end_relative": [
+        33.4,
+        5.0,
+        4.1
+      ],
+      "centered_length_check_mm": 0.0
+    },
+    "predock": {
+      "s": 79.75,
+      "q": 0,
+      "A_anchor": [
+        23.4,
+        5.0,
+        4.1
+      ],
+      "B_anchor": [
+        33.4,
+        84.75,
+        -4.1
+      ],
+      "length_mm": 136.37507363995996,
+      "fold_tangent_y": 104.2413175367159,
+      "fold_far_y": 109.2413175367159,
+      "return_leg_len_y": 19.491317536715897,
+      "return_z_change": -8.2,
+      "min_return_bend_radius_mm": 7.7217776283961115,
+      "minimum_bend_radius_mm": 5.0,
+      "B_end_relative": [
+        33.4,
+        5.0,
+        4.1
+      ],
+      "centered_length_check_mm": 1.4210854715202004e-13
+    },
+    "seated": {
+      "s": 79.75,
+      "q": 8.2,
+      "A_anchor": [
+        23.4,
+        5.0,
+        4.1
+      ],
+      "B_anchor": [
+        33.4,
+        84.75,
+        4.1
+      ],
+      "length_mm": 136.37507363995982,
+      "fold_tangent_y": 105.20855518600543,
+      "fold_far_y": 110.20855518600543,
+      "return_leg_len_y": 20.458555186005427,
+      "return_z_change": 0.0,
+      "min_return_bend_radius_mm": null,
+      "minimum_bend_radius_mm": 5.0,
+      "B_end_relative": [
+        33.4,
+        5.0,
+        4.1
+      ],
+      "centered_length_check_mm": 0.0
+    }
+  },
+  "OLED_contact_and_clearance": {
+    "rows": [
+      {
+        "tail_N": 0.05,
+        "friction_mu": 0.05,
+        "front_N": 0.058504439374821096,
+        "force_ratio": 1.1700887874964219,
+        "radial_normal_total_N": 0.17008878749642187,
+        "contact_pressure_min_kPa": 0.2184444651037134,
+        "contact_pressure_max_kPa": 0.25559941930850844,
+        "axial_mean_stress_max_MPa": 0.0054314876603058036,
+        "note": "linear membrane idealization, NOT OCA strain or allowable tension"
+      },
+      {
+        "tail_N": 0.05,
+        "friction_mu": 0.15,
+        "front_N": 0.08009888256411783,
+        "force_ratio": 1.6019776512823565,
+        "radial_normal_total_N": 0.20065921709411885,
+        "contact_pressure_min_kPa": 0.2184444651037134,
+        "contact_pressure_max_kPa": 0.34994315114247754,
+        "axial_mean_stress_max_MPa": 0.0074362919617776465,
+        "note": "linear membrane idealization, NOT OCA strain or allowable tension"
+      },
+      {
+        "tail_N": 0.05,
+        "friction_mu": 0.3,
+        "front_N": 0.12831661976040676,
+        "force_ratio": 2.566332395208135,
+        "radial_normal_total_N": 0.2610553992013559,
+        "contact_pressure_min_kPa": 0.2184444651037134,
+        "contact_pressure_max_kPa": 0.5606011073495727,
+        "axial_mean_stress_max_MPa": 0.011912773531178419,
+        "note": "linear membrane idealization, NOT OCA strain or allowable tension"
+      },
+      {
+        "tail_N": 0.05,
+        "friction_mu": 0.4,
+        "front_N": 0.17567928121428666,
+        "force_ratio": 3.5135856242857333,
+        "radial_normal_total_N": 0.31419820303571666,
+        "contact_pressure_min_kPa": 0.2184444651037134,
+        "contact_pressure_max_kPa": 0.7675233322931939,
+        "axial_mean_stress_max_MPa": 0.016309870811230368,
+        "note": "linear membrane idealization, NOT OCA strain or allowable tension"
+      },
+      {
+        "tail_N": 0.15,
+        "friction_mu": 0.05,
+        "front_N": 0.17551331812446327,
+        "force_ratio": 1.1700887874964219,
+        "radial_normal_total_N": 0.5102663624892656,
+        "contact_pressure_min_kPa": 0.6553333953111402,
+        "contact_pressure_max_kPa": 0.7667982579255253,
+        "axial_mean_stress_max_MPa": 0.016294462980917412,
+        "note": "linear membrane idealization, NOT OCA strain or allowable tension"
+      },
+      {
+        "tail_N": 0.15,
+        "friction_mu": 0.15,
+        "front_N": 0.24029664769235345,
+        "force_ratio": 1.6019776512823565,
+        "radial_normal_total_N": 0.6019776512823565,
+        "contact_pressure_min_kPa": 0.6553333953111402,
+        "contact_pressure_max_kPa": 1.0498294534274324,
+        "axial_mean_stress_max_MPa": 0.022308875885332934,
+        "note": "linear membrane idealization, NOT OCA strain or allowable tension"
+      },
+      {
+        "tail_N": 0.15,
+        "friction_mu": 0.3,
+        "front_N": 0.3849498592812203,
+        "force_ratio": 2.566332395208135,
+        "radial_normal_total_N": 0.7831661976040676,
+        "contact_pressure_min_kPa": 0.6553333953111402,
+        "contact_pressure_max_kPa": 1.681803322048718,
+        "axial_mean_stress_max_MPa": 0.03573832059353525,
+        "note": "linear membrane idealization, NOT OCA strain or allowable tension"
+      },
+      {
+        "tail_N": 0.15,
+        "friction_mu": 0.4,
+        "front_N": 0.52703784364286,
+        "force_ratio": 3.5135856242857333,
+        "radial_normal_total_N": 0.9425946091071499,
+        "contact_pressure_min_kPa": 0.6553333953111402,
+        "contact_pressure_max_kPa": 2.3025699968795816,
+        "axial_mean_stress_max_MPa": 0.0489296124336911,
+        "note": "linear membrane idealization, NOT OCA strain or allowable tension"
+      },
+      {
+        "tail_N": 0.3,
+        "friction_mu": 0.05,
+        "front_N": 0.35102663624892655,
+        "force_ratio": 1.1700887874964219,
+        "radial_normal_total_N": 1.0205327249785312,
+        "contact_pressure_min_kPa": 1.3106667906222804,
+        "contact_pressure_max_kPa": 1.5335965158510505,
+        "axial_mean_stress_max_MPa": 0.032588925961834825,
+        "note": "linear membrane idealization, NOT OCA strain or allowable tension"
+      },
+      {
+        "tail_N": 0.3,
+        "friction_mu": 0.15,
+        "front_N": 0.4805932953847069,
+        "force_ratio": 1.6019776512823565,
+        "radial_normal_total_N": 1.203955302564713,
+        "contact_pressure_min_kPa": 1.3106667906222804,
+        "contact_pressure_max_kPa": 2.099658906854865,
+        "axial_mean_stress_max_MPa": 0.04461775177066587,
+        "note": "linear membrane idealization, NOT OCA strain or allowable tension"
+      },
+      {
+        "tail_N": 0.3,
+        "friction_mu": 0.3,
+        "front_N": 0.7698997185624405,
+        "force_ratio": 2.566332395208135,
+        "radial_normal_total_N": 1.5663323952081352,
+        "contact_pressure_min_kPa": 1.3106667906222804,
+        "contact_pressure_max_kPa": 3.363606644097436,
+        "axial_mean_stress_max_MPa": 0.0714766411870705,
+        "note": "linear membrane idealization, NOT OCA strain or allowable tension"
+      },
+      {
+        "tail_N": 0.3,
+        "friction_mu": 0.4,
+        "front_N": 1.05407568728572,
+        "force_ratio": 3.5135856242857333,
+        "radial_normal_total_N": 1.8851892182142997,
+        "contact_pressure_min_kPa": 1.3106667906222804,
+        "contact_pressure_max_kPa": 4.605139993759163,
+        "axial_mean_stress_max_MPa": 0.0978592248673822,
+        "note": "linear membrane idealization, NOT OCA strain or allowable tension"
+      },
+      {
+        "tail_N": 0.5,
+        "friction_mu": 0.05,
+        "front_N": 0.5850443937482109,
+        "force_ratio": 1.1700887874964219,
+        "radial_normal_total_N": 1.7008878749642187,
+        "contact_pressure_min_kPa": 2.184444651037134,
+        "contact_pressure_max_kPa": 2.5559941930850845,
+        "axial_mean_stress_max_MPa": 0.05431487660305804,
+        "note": "linear membrane idealization, NOT OCA strain or allowable tension"
+      },
+      {
+        "tail_N": 0.5,
+        "friction_mu": 0.15,
+        "front_N": 0.8009888256411782,
+        "force_ratio": 1.6019776512823565,
+        "radial_normal_total_N": 2.0065921709411882,
+        "contact_pressure_min_kPa": 2.184444651037134,
+        "contact_pressure_max_kPa": 3.499431511424775,
+        "axial_mean_stress_max_MPa": 0.07436291961777645,
+        "note": "linear membrane idealization, NOT OCA strain or allowable tension"
+      },
+      {
+        "tail_N": 0.5,
+        "friction_mu": 0.3,
+        "front_N": 1.2831661976040676,
+        "force_ratio": 2.566332395208135,
+        "radial_normal_total_N": 2.6105539920135588,
+        "contact_pressure_min_kPa": 2.184444651037134,
+        "contact_pressure_max_kPa": 5.606011073495727,
+        "axial_mean_stress_max_MPa": 0.11912773531178418,
+        "note": "linear membrane idealization, NOT OCA strain or allowable tension"
+      },
+      {
+        "tail_N": 0.5,
+        "friction_mu": 0.4,
+        "front_N": 1.7567928121428666,
+        "force_ratio": 3.5135856242857333,
+        "radial_normal_total_N": 3.1419820303571666,
+        "contact_pressure_min_kPa": 2.184444651037134,
+        "contact_pressure_max_kPa": 7.675233322931939,
+        "axial_mean_stress_max_MPa": 0.1630987081123037,
+        "note": "linear membrane idealization, NOT OCA strain or allowable tension"
+      }
+    ],
+    "guide_sep_mm": 7.3,
+    "oled_neutral_R_mm": 3.4,
+    "ideal_free_space_mm": 0.33999999999999997,
+    "worst_free_space_after_two_face_tolerances_mm": 0.13999999999999996,
+    "required_total_two_face_clearance_mm": 0.3,
+    "nominal_clearance_gate": true,
+    "worst_clearance_gate": false,
+    "supplier_bending_tension_friction_creep_life_verified": false
+  },
+  "cross_cabin_3D_CAD_nominal_five_pose": [
+    {
+      "tag": "STOW",
+      "s": 0,
+      "q": 0,
+      "core_A_components_after_relief": 2,
+      "core_B_components_after_relief": 2,
+      "reimport_count": 9,
+      "initial_collision_mm3": {
+        "A": 38.12635675053743,
+        "B": 5.637911185148891,
+        "A_fixed_skin": 0.0,
+        "A_moving_leaf": 0.0,
+        "OLED": 0.0,
+        "FPC": 0.0
+      },
+      "after_theoretical_side_tunnel_cut_mm3": {
+        "FPC_A_relief": 0.0,
+        "FPC_B_relief": 0.0,
+        "FPC_A_fixed_skin": 0.0,
+        "FPC_A_moving_leaf": 0.0,
+        "FPC_OLED": 0.0,
+        "FPC_B_internal_FPC": 0.0
+      },
+      "removed_core_proxy_volume": {
+        "A_removed_proxy_cm3": 5.969237599999993,
+        "B_removed_proxy_cm3": 2.2054083750000135
+      },
+      "step_import_good": true,
+      "original_cad_scope_only": true
+    },
+    {
+      "tag": "Y_HALF",
+      "s": 39.875,
+      "q": 0,
+      "core_A_components_after_relief": 2,
+      "core_B_components_after_relief": 2,
+      "reimport_count": 9,
+      "initial_collision_mm3": {
+        "A": 32.45400331352089,
+        "B": 2.6456835969712977,
+        "A_fixed_skin": 0.0,
+        "A_moving_leaf": 0.0,
+        "OLED": 0.11651657883484035,
+        "FPC": 0.0
+      },
+      "after_theoretical_side_tunnel_cut_mm3": {
+        "FPC_A_relief": 0.0,
+        "FPC_B_relief": 0.0,
+        "FPC_A_fixed_skin": 0.0,
+        "FPC_A_moving_leaf": 0.0,
+        "FPC_OLED": 0.11651657883484035,
+        "FPC_B_internal_FPC": 0.0
+      },
+      "removed_core_proxy_volume": {
+        "A_removed_proxy_cm3": 5.969237599999993,
+        "B_removed_proxy_cm3": 2.2054083750000064
+      },
+      "step_import_good": true,
+      "original_cad_scope_only": true
+    },
+    {
+      "tag": "PREDOCK",
+      "s": 79.75,
+      "q": 0,
+      "core_A_components_after_relief": 2,
+      "core_B_components_after_relief": 2,
+      "reimport_count": 9,
+      "initial_collision_mm3": {
+        "A": 26.909999999999176,
+        "B": 0.08177068900409287,
+        "A_fixed_skin": 0.0,
+        "A_moving_leaf": 0.0,
+        "OLED": 0.16876775793238086,
+        "FPC": 0.0
+      },
+      "after_theoretical_side_tunnel_cut_mm3": {
+        "FPC_A_relief": 0.0,
+        "FPC_B_relief": 0.0,
+        "FPC_A_fixed_skin": 0.0,
+        "FPC_A_moving_leaf": 0.0,
+        "FPC_OLED": 0.16876775793238086,
+        "FPC_B_internal_FPC": 0.0
+      },
+      "removed_core_proxy_volume": {
+        "A_removed_proxy_cm3": 5.969237599999993,
+        "B_removed_proxy_cm3": 2.2054083750000064
+      },
+      "step_import_good": true,
+      "original_cad_scope_only": true
+    },
+    {
+      "tag": "Z_HALF",
+      "s": 79.75,
+      "q": 4.1,
+      "core_A_components_after_relief": 2,
+      "core_B_components_after_relief": 2,
+      "reimport_count": 9,
+      "initial_collision_mm3": {
+        "A": 26.909999999999172,
+        "B": 3.0875389028820153,
+        "A_fixed_skin": 0.0,
+        "A_moving_leaf": 0.0,
+        "OLED": 0.9417931856286829,
+        "FPC": 0.09889782152480657
+      },
+      "after_theoretical_side_tunnel_cut_mm3": {
+        "FPC_A_relief": 0.0,
+        "FPC_B_relief": 0.0,
+        "FPC_A_fixed_skin": 0.0,
+        "FPC_A_moving_leaf": 0.0,
+        "FPC_OLED": 0.9417931856286829,
+        "FPC_B_internal_FPC": 0.09889782152480657
+      },
+      "removed_core_proxy_volume": {
+        "A_removed_proxy_cm3": 5.969237599999993,
+        "B_removed_proxy_cm3": 2.2054083750000135
+      },
+      "step_import_good": true,
+      "original_cad_scope_only": true
+    },
+    {
+      "tag": "SEATED",
+      "s": 79.75,
+      "q": 8.2,
+      "core_A_components_after_relief": 2,
+      "core_B_components_after_relief": 2,
+      "reimport_count": 9,
+      "initial_collision_mm3": {
+        "A": 26.909999999999165,
+        "B": 11.124859733527611,
+        "A_fixed_skin": 0.0,
+        "A_moving_leaf": 0.0,
+        "OLED": 0.0,
+        "FPC": 0.0
+      },
+      "after_theoretical_side_tunnel_cut_mm3": {
+        "FPC_A_relief": 0.0,
+        "FPC_B_relief": 0.0,
+        "FPC_A_fixed_skin": 0.0,
+        "FPC_A_moving_leaf": 0.0,
+        "FPC_OLED": 0.0,
+        "FPC_B_internal_FPC": 0.0
+      },
+      "removed_core_proxy_volume": {
+        "A_removed_proxy_cm3": 5.969237599999993,
+        "B_removed_proxy_cm3": 2.205408375000017
+      },
+      "step_import_good": true,
+      "original_cad_scope_only": true
+    }
+  ],
+  "collision_counterexamples": {
+    "OLED_collision_at_Y_half": 0.11651657883484035,
+    "OLED_collision_at_Z_half": 0.9417931856286829,
+    "B_local_FPC_collision_at_Z_half": 0.09889782152480657,
+    "each_A_core_relief_connected": false,
+    "each_B_core_relief_connected": false,
+    "min_A_components": 2,
+    "min_B_components": 2
+  },
+  "side_lane_flex_screen": {
+    "thickness_assumed_mm": 0.12,
+    "loop_radius_assumed_mm": 5.0,
+    "min_3D_flex_curve_radius_model_mm": 5.0,
+    "radius_to_thickness": 41.66666666666667,
+    "illustrative_dynamic_20x_gate": true,
+    "illustrative_dynamic_40x_gate": true,
+    "more_conservative_100x_gate": false,
+    "side_lane_required_mm": 10.819999999999999,
+    "existing_R17_B_local_lane_mm": 6.0,
+    "lane_width_deficit_mm": 4.8199999999999985,
+    "manufacturer_cycle_permission": false,
+    "pin_count_ampacity_signal_integrity_EMI": false,
+    "wrong_keep_fold_center_fixed_when_Z_seating_slack_mm": 1.9344752985790592,
+    "needed_fold_center_Z_adjust_mm": 0.9672376492895296
+  },
+  "battery_proxy_tradeoff": {
+    "R17_nominal_battery_boxes_cm3": 24.7886,
+    "A_pack_box_overlap_with_R18_side_lane_cm3": 2.134665000000001,
+    "remaining_battery_boxes_if_lane_replaces_A_pack_space_cm3": 22.653934999999997,
+    "density_required_Wh_per_L_ideal100pct": 798.7574785572575,
+    "density_required_Wh_per_L_effective85pct": 939.714680655597,
+    "not_real_cell_or_safety_clearance": true
+  },
+  "gates": {
+    "R17_regression_17_tests": true,
+    "cross_cabin_FPC_3D_variable_U_neutral_length_conservation": true,
+    "cross_cabin_FPC_3D_model_min_curvature_at_least_R5": true,
+    "cross_cabin_FPC_fits_original_6mm_side_lane": false,
+    "cross_cabin_FPC_3D_collisions_against_R17_original_A_B_cores": false,
+    "cross_cabin_FPC_clearance_after_naive_side_tunnel": false,
+    "A_B_core_connected_after_naive_side_tunnel": false,
+    "original_R17_battery_proxy_kept_without_change": false,
+    "OLED_R3_4_two_face_tolerance_and_guidance_clearance": false,
+    "OLED_contact_tension_supplier_limit": false,
+    "OLED_creep_and_static_storage": false,
+    "cross_cabin_FPC_dynamic_300k_cycles_vendor_permission": false,
+    "OLED_bridge_supported_while_sliding": false,
+    "actual_interconnect_electrical_current_and_high_speed_integrity": false,
+    "real_4700mAh_pack_and_thermal_mechanical_safety": false,
+    "PRODUCTION_RELEASE": false
+  },
+  "scope": "screen contact uses assumed capstan friction and no actual laminate stack; CAD is cut-core PROXY, not OEM.",
+  "sources": {
+    "IEC_62715_6_42_2026": "https://webstore.iec.ch/en/publication/78233",
+    "NCAB_dynamic_FPC": "https://www.ncabgroup.com/faq/calculate-length-of-flex-part/",
+    "IPC_standards_reference": "https://www.ipc.org/media/5144/download",
+    "OLED_bending_paper": "https://sid.onlinelibrary.wiley.com/doi/full/10.1002/jsid.1090",
+    "OCA_creep_paper": "https://sid.onlinelibrary.wiley.com/doi/10.1002/sdtp.16454"
+  }
+}

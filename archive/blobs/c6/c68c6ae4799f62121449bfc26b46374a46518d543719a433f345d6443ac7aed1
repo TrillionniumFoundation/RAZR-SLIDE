@@ -1,0 +1,53 @@
+{
+  "revision": "R43 external/OEM dataset intake gate",
+  "date": "2026-10-12",
+  "definition_frozen": {
+    "A_B_same_finished_external_shape_target": true,
+    "B_slide_stroke_mm": 79.75,
+    "B_final_normal_seat_mm": 8.2,
+    "single_main_display_inch_approx": 7,
+    "independent_outer_display": false,
+    "A_prefers_larger_battery": true,
+    "battery_capacity_mAh_target_not_validated": 4700
+  },
+  "mandatory_dataset_requirements": [
+    {
+      "id": "CAD-OEM-AB",
+      "state": "MISSING",
+      "needs": ["finished A/B identical-envelope 3D CAD and coordinates", "PCB, cameras, two batteries, fasteners and mechanically protected volumes", "modification authorization and version", "B slide and seat tolerance stack"],
+      "release_gate": "No geometry may be removed from protected OEM volumes without documented approval."
+    },
+    {
+      "id": "D-OLED",
+      "state": "MISSING",
+      "needs": ["specific 7-inch OLED module OEM model and revision", "complete seal COF/FPC adhesive touch stackup 3D", "dynamic radius vs cycles and minimum neutral-plane curvature", "long dwell stored-set/recovery and flattening-force datasets", "mechanical touch pressure limits"],
+      "release_gate": "IEC 62715-6-42 flattening force method cannot certify cycle life."
+    },
+    {
+      "id": "H-FPC-DYNAMIC",
+      "state": "MISSING",
+      "needs": ["exact layer stack including copper thickness, coverlay and neutral plane", "dynamic-minimum radius at specified target cycle, environmental profile and samples", "twist allowance and clamp tangent/strain relief", "bend force and full stroke cycle data", "connector-to-cable termination drawing"],
+      "release_gate": "0.15mm thickness, 2mm width and R15 are hypothetical research inputs."
+    },
+    {
+      "id": "U-USB-SI",
+      "state": "MISSING",
+      "needs": ["target USB link speed and lane count", "true mated Hirose or other supplier CAD and pad stack", "TDR / VNA S-parameters / eye or BER / EMI ESD", "flexing worst-case continuity / crosstalk / return path"],
+      "release_gate": "BM28 advertised 10 mating cycles applies to static mating, not per-slide connection."
+    },
+    {
+      "id": "P-POWER",
+      "state": "MISSING",
+      "needs": ["A/B battery current and power demand", "deterministic local fail-safe supply architecture", "precharge backfeed dual-FET fuse residual energy behavior", "3 known single-point energized-bypass hardware tests", "physical hot-swap and isolation disconnect sequence"],
+      "release_gate": "1.5A single-signal contact is not main dual-battery power qualification."
+    },
+    {
+      "id": "M-SAFETY",
+      "state": "MISSING",
+      "needs": ["dual-sided end capture and independent strength path", "mechanical seat-before-electrical, retraction-before-separation", "fail-closed tests including legacy 36/64 counterexamples", "pin fracture and common-cause failure, wear, vibration, drop", "load/cycle and toleranced GD&T proof"],
+      "release_gate": "Computer OCC overlap or software lock state does not certify a physical failsafe."
+    }
+  ],
+  "cad_may_be_called_manufacturable": false,
+  "manufacturing_go": false
+}

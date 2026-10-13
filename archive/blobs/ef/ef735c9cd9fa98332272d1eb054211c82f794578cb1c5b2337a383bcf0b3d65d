@@ -1,0 +1,95 @@
+{
+  "constraints": {
+    "A_B_same_finished_external_dimensions_required": true,
+    "A_prefers_more_battery": true,
+    "B_rises_from_rear_lower_pod_mm": 79.75,
+    "final_normal_dock_mm": 8.2,
+    "one_flexible_approx_7inch_OLED_no_external_screen": true,
+    "total_4700mAh": "target_only_not_qualified"
+  },
+  "engineering_option_selection": "BLOCKED_PENDING_OEM_AND_PRODUCT_CAPABILITY_CHOICE",
+  "gate_pass": {
+    "C_BOARD_TERMINATION": false,
+    "D_OLED": false,
+    "F_DYNAMIC_FPC": false,
+    "M_OEM_MECHANICAL": false,
+    "P_POWER": false,
+    "U_USB": false
+  },
+  "manufacturing_go": false,
+  "no_bom_and_complete_endpoint_FPC_selected": true,
+  "no_real_telephony_display_camera_audio_route_on_B_pod_verified": true,
+  "previous_R27_power_single_PCB_bypass_3_classes": true,
+  "previous_R37_mechanical_36_of_64_unsafe": true,
+  "product_owner_continuous_interpod_service_requirement": null,
+  "required_supplier_OEM_and_bench_receipts": {
+    "C_BOARD_TERMINATION": {
+      "actual_two_end_mating_3D_and_footprint": null,
+      "connector_contact_and_service_mating_rating": null
+    },
+    "D_OLED": {
+      "authorized_exact_seven_inch_laminate_COF_FPC_module_3D": null,
+      "dynamic_R_stored_flatness_force_and_lifetime_test": null
+    },
+    "F_DYNAMIC_FPC": {
+      "end_stress_relief_and_cycle_300k_sample_report": null,
+      "tested_dynamic_min_radius_both_motion_axes": null,
+      "vendor_exact_stackup_copper_layers_torsion_design": null
+    },
+    "M_OEM_MECHANICAL": {
+      "actual_common_coordinate_A_B_pcb_battery_camera_casing_STEP": null,
+      "allowed_service_cavity_geometry_and_GDT": null,
+      "mechanical_end_capture_and_force_loaded_fail_closed_bench": null
+    },
+    "P_POWER": {
+      "A_B_cell_BMS_part_numbers_and_max_steady_transient_current": null,
+      "contact_break-before-unlock_current_voltage_scope": null,
+      "short_backfeed_welded_switch_single_PCB_bypass_bench": null
+    },
+    "U_USB": {
+      "TDR_Sparams_eye_BER_ESD_EMI_on_actual_moving_channel": null,
+      "frozen_protocol_lane_count_data_rate_and_continuity_requirement": null
+    }
+  },
+  "revision": "R44 evidence-driven service-topology decision gate",
+  "topologies": [
+    {
+      "blockers": [
+        "R39_R15_model_S_wept_turn_static_bulbs_invalid",
+        "moving_bbox_B_keepout_unlicensed",
+        "unqualified_3D_stubs_and_FPC_laminate",
+        "no_real_SI_or_power_isolation"
+      ],
+      "can_satisfy_continuous_physical_USB_in_principle": true,
+      "name": "CONTINUOUS_FPC",
+      "qualification": "NO_GO",
+      "requires_hardware_interpod_link_during_sliding": true
+    },
+    {
+      "blockers": [
+        "continuous_interpod_USB_breaks_during_slide_by_topology",
+        "B_independent_SoC_cell_and_peripherals_not_proven",
+        "end_contact_mechanical_36_of_64_faults_unresolved",
+        "end_contact_PCB_single_fault_power_bypass_unresolved"
+      ],
+      "can_satisfy_continuous_physical_USB_in_principle": false,
+      "name": "DOCK_ONLY_WITH_B_STANDALONE",
+      "product_owner_accepts_interpod_interruption": null,
+      "qualification": "NO_GO",
+      "requires_hardware_interpod_link_during_sliding": false
+    },
+    {
+      "blockers": [
+        "RF_data_bridge_cannot_claim_physical_USB",
+        "no_RF_chipset_or_latency_throughput",
+        "B_independent_supply_and_coexistence_unproven",
+        "end_dock_power_mechanics_unproven"
+      ],
+      "can_satisfy_continuous_physical_USB_in_principle": false,
+      "name": "DOCK_ONLY_WITH_WIRELESS_DATA",
+      "product_owner_accepts_interpod_interruption": null,
+      "qualification": "NO_GO",
+      "requires_hardware_interpod_link_during_sliding": false
+    }
+  ]
+}

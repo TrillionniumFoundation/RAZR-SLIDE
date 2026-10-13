@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>R15 分布式侧边互锁 - 几何交互</title><style>body{font-family:system-ui,"Noto Sans CJK SC",sans-serif;max-width:1140px;margin:auto;background:#f1f5f9;color:#102033;padding:20px}h1{font-size:1.7rem;margin:.3em 0}.warn{padding:12px 15px;background:#fff1f2;border-left:5px solid #dc2626;margin:16px 0}.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel{background:#fff;border:1px solid #dbe3ec;border-radius:10px;padding:14px}svg{width:100%;height:auto;background:#fff}label{display:flex;gap:10px;align-items:center;margin:12px 0}label input{flex:1}.nums{display:grid;grid-template-columns:1fr 1fr;gap:8px}.nums>div{background:#edf5ff;border-radius:6px;padding:8px}.small{font-size:12px;color:#657386}.bad{color:#b91c1c;font-weight:700}.good{color:#047857;font-weight:700}@media(max-width:800px){.cols{grid-template-columns:1fr}}</style></head><body>
+<h1>R15 | 两侧独立接收座 + 常闭遮挡片</h1><div class="warn"><b>研究模型，禁止制造放行。</b>Y几何压入不等于实际承力坐实；OEM、OLED/FPC、弹簧、整机受力均未验证。两完整舱末端齐平还会产生约14mm实体重叠。</div>
+<div class="cols"><div class="panel"><h3>运动输入</h3>
+<label>纵向行程 Y <input id="s" type="range" min="0" max="80.05" step="0.01" value="79.78"><output id="sout"></output></label>
+<label>左侧装配误差 <input id="eL" type="range" min="-.20" max=".20" step=".01" value="0"><output id="le"></output></label>
+<label>右侧装配误差 <input id="eR" type="range" min="-.20" max=".20" step=".01" value="0"><output id="re"></output></label>
+<label><input type="checkbox" id="request"> 人工请求 X 向撤锁（不能代表已完成执行机构）</label>
+<label><input type="checkbox" id="noL"> 左侧接触脚失效/缺失</label>
+<label><input type="checkbox" id="jam"> 共因故障：左右常闭遮挡同时卡在退让位</label>
+<div id="status" class="nums"></div><p class="small">绿色仅代表代理狗齿在输入的几何姿态下不相交。该模型不能验证机械接触力、复位寿命或实机放行。</p>
+</div><div class="panel"><h3>左右局部 XY 接触与阻挡</h3><svg viewBox="0 0 750 440" xmlns="http://www.w3.org/2000/svg" id="svg"></svg><p class="small">形状来自 Python R15 XY 参数和相同阈值；绘图为两侧镜像局部视图，非完整CAD。</p></div></div>
+<div class="panel" style="margin-top:16px"><h3>独立的整机包络硬阻塞</h3><p id="envelope"></p><p class="small">最终前后齐平，必须在纵向交叠处设计互补局部退让与真实承力接头；单靠弹簧和双侧锁狗无法解决。</p></div>
+<script>const p={"s": 79.75, "h": 94.25, "toe": 14.15, "start": 93.48, "proof": 0.45, "max": 1.05, "e": 0.2, "f": 0.05, "width": 73.99};
+const by=id=>document.getElementById(id);const f=n=>(+n).toFixed(3);
+function rect(x,y,w,h,color,stroke=color){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${color}" fill-opacity=".3" stroke="${stroke}" stroke-width="1.6"/>`;}
+function draw(){const s=+by('s').value,eL=+by('eL').value,eR=+by('eR').value,req=by('request').checked,missing=by('noL').checked,jam=by('jam').checked;
+by('sout').textContent=f(s);by('le').textContent=f(eL);by('re').textContent=f(eR);
+let html='';let states=[];
+[['L',eL,missing,0],['R',eR,false,385]].forEach(([id,e,absent,offset])=>{const c=absent?0:Math.max(0,Math.min(p.max,s+p.toe+e-p.start));let proof=jam||(!absent&&c>=p.proof-1e-8),opened=req&&proof;let padY=p.start+c,shY=jam?p.start+p.max:padY;let coll=req&&!proof;states.push({id,c,proof,opened,coll});
+const sc=235,baseX=offset+32,baseY=395;
+const toX=x=>baseX+(x-34.0)*sc/1.5;const toY=y=>baseY-(y-93.1)*sc;
+html+=`<text x="${offset+20}" y="30" font-size="19" font-weight="700">${id==='L'?'左':'右'}侧 ${f(c)}mm压入</text>`;
+html+=rect(toX(35.65),toY(94.65),.63*sc/1.5,1.5*sc,'#475569');
+html+=rect(toX(34.4),toY(padY+.18),1.15*sc/1.5,.18*sc,'#0d9488');
+html+=rect(toX(34.4),toY(shY+.5),.49*sc/1.5,.5*sc,'#22c55e');
+let x=35.08-(opened?.70:0);html+=rect(toX(x),toY(93.93),.16*sc/1.5,.83*sc,coll?'#dc2626':'#d97706');
+if(!absent){let tip=s+p.toe+e;html+=rect(toX(34.4),toY(tip),1.15*sc/1.5,.24*sc,'#3b82f6');}
+html+=`<text x="${offset+20}" y="422" font-size="14" fill="${coll?'#b91c1c':'#0f766e'}">${coll?'强行撤锁必碰撞':proof?'已达到代理许可条件':'仍由遮挡片常闭'}</text>`;
+});by('svg').innerHTML=html;
+let allowed=states.every(x=>x.opened);
+by('status').innerHTML=`<div>左接收座: ${f(states[0].c)}mm</div><div>右接收座: ${f(states[1].c)}mm</div><div>几何双侧许可: <b class="${allowed?'good':'bad'}">${allowed?'是':'否'}</b></div><div>双侧退锁: ${req?'已提出请求':'未请求'}</div>`;
+let ov=p.h-s;by('envelope').innerHTML=`当前名义重叠: <b>${f(ov)} mm</b>。若仍用两块完整实心矩形机身，在相同深度平面下会发生三维干涉。`;}
+for(const id of ['s','eL','eR','request','noL','jam'])by(id).addEventListener('input',draw);
+draw();</script></body></html>

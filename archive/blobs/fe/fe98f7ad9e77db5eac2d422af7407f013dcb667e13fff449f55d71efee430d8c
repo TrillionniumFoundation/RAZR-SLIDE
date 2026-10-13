@@ -1,0 +1,228 @@
+{
+  "revision": "R1",
+  "scope": "nominal component/envelope occupancy; not compliance, contacts, forces, tolerance stack, FEA or manufacturing qualification",
+  "continuous_method": "affine box inequalities + relative polygon sweeps for translating cross-sections",
+  "arc_approximation": {
+    "segments_per_half_circle": 180,
+    "max_sagitta_mm": 0.00019609621951775514,
+    "note": "CAD files use analytic circular arcs; polygon verifier has the stated chord error."
+  },
+  "excluded_same_rigid_owner_pairs": 5676,
+  "allowed_joint_pairs": [
+    {
+      "parts": [
+        "L_belt_front",
+        "L_front_belt_lug"
+      ],
+      "reason": "timing-belt attachment zone"
+    },
+    {
+      "parts": [
+        "R_belt_front",
+        "R_front_belt_lug"
+      ],
+      "reason": "timing-belt attachment zone"
+    },
+    {
+      "parts": [
+        "display_front",
+        "front_clamp"
+      ],
+      "reason": "bonded display front termination"
+    },
+    {
+      "parts": [
+        "display_back",
+        "tail_display_clamp"
+      ],
+      "reason": "bonded rear display termination"
+    },
+    {
+      "parts": [
+        "L_belt_back",
+        "L_tail_belt_lug"
+      ],
+      "reason": "opposed timing-belt attachment zone"
+    },
+    {
+      "parts": [
+        "R_belt_back",
+        "R_tail_belt_lug"
+      ],
+      "reason": "opposed timing-belt attachment zone"
+    },
+    {
+      "parts": [
+        "L_spring_strip",
+        "L_spring_tail_tab"
+      ],
+      "reason": "spring strip attachment"
+    },
+    {
+      "parts": [
+        "R_spring_strip",
+        "R_spring_tail_tab"
+      ],
+      "reason": "spring strip attachment"
+    },
+    {
+      "parts": [
+        "FPC_moving_leg",
+        "FPC_tail_connector"
+      ],
+      "reason": "moving FPC termination"
+    },
+    {
+      "parts": [
+        "FPC_fixed_header",
+        "FPC_fixed_leg"
+      ],
+      "reason": "fixed FPC termination"
+    }
+  ],
+  "checks": {
+    "samples": 651,
+    "sample_step_mm": 0.1,
+    "display_length_mm": 187.70796326794897,
+    "max_display_length_error_mm": 0.0,
+    "fpc_length_mm": 101.85398163397448,
+    "max_fpc_length_error_mm": 0.0,
+    "min_rail_engagement_mm": 20.0,
+    "min_rear_cover_overlap_mm": 10.5,
+    "min_tail_to_arc_mm": 12.5,
+    "spring_extension_range_mm": [
+      10.0,
+      75.0
+    ],
+    "front_support_gap_mm": 0.25,
+    "radial_display_guide_clearance_mm": 0.2999999999999998,
+    "PCB_to_display_barrier_mm": 0.34999999999999964,
+    "rear_cover_to_slide_shell_mm": 0.3000000000000007
+  },
+  "interferences": [],
+  "unresolved": [],
+  "continuous_pair_counts": {
+    "separated_affine_AABB": 10419,
+    "separated_relative_sweep": 5
+  },
+  "source_geometry_consistency": [
+    {
+      "check": "front_endpoint",
+      "s_mm": 0.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "tail_endpoint",
+      "s_mm": 0.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "front_face",
+      "s_mm": 0.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "rear_face",
+      "s_mm": 0.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "guide_radius",
+      "s_mm": 0.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "guide_center_Z",
+      "s_mm": 0.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "actual_height",
+      "s_mm": 0.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "actual_width",
+      "s_mm": 0.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "actual_depth",
+      "s_mm": 0.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "front_endpoint",
+      "s_mm": 65.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "tail_endpoint",
+      "s_mm": 65.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "front_face",
+      "s_mm": 65.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "rear_face",
+      "s_mm": 65.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "guide_radius",
+      "s_mm": 65.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "guide_center_Z",
+      "s_mm": 65.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "actual_height",
+      "s_mm": 65.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "actual_width",
+      "s_mm": 65.0,
+      "error_mm": 0.0,
+      "passed": true
+    },
+    {
+      "check": "actual_depth",
+      "s_mm": 65.0,
+      "error_mm": 0.0,
+      "passed": true
+    }
+  ],
+  "outside_nominal_housing": [],
+  "geometry_pass": true,
+  "NOT_verified": [
+    "Purchased battery/SoC/camera/spring dimensions and performance",
+    "Screen flattening force, friction/contact, fatigue and residual crease",
+    "Elastic deformation, +/-0.40 mm floating-clamp dynamics and tolerance extremes",
+    "Belt tooth engagement, bearing/fastener details, locking and anti-pinch mechanisms",
+    "Continuous side seals, dust/water protection, all audio/RF/antenna and power circuits",
+    "Drop strength, touch-load stiffness, assembly sequence, mass and cooling"
+  ]
+}

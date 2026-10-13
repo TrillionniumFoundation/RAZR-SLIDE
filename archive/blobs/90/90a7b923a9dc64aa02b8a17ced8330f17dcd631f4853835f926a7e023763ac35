@@ -1,0 +1,116 @@
+{
+  "revision": "R41 fixed-tangent Hermite centerline FAIL-only prototype",
+  "not_a_vendor_laminate_or_FPC": true,
+  "target_cable_length_mm_assumed": 130.0,
+  "A_and_B_rigid_fanout_each_mm_assumed": 4.0,
+  "both_terminal_tangents_assumed": "+Y constant, independent of pose",
+  "route_cases": [
+    {
+      "name": "FANOUT_NEGATIVE_Y",
+      "states_tested": 101,
+      "solved_cases": 101,
+      "max_length_error_mm": 3.572608875401784e-11,
+      "minimum_center_curvature_radius_mm": 0.00015017784640054008,
+      "minimum_normalized_curve_speed_mm": 0.373450564028081,
+      "max_X_excess_mm": 0.0,
+      "max_Y_excess_mm": 18.554697685066653,
+      "num_both_R5_screen_and_XY_inside": 0,
+      "num_both_R15_screen_and_XY_inside": 0,
+      "terminal_tangent_error_max_deg": 0.0,
+      "states_with_excess_Y": 38,
+      "states_with_R_below_5": 101,
+      "reason_for_rejection": "no full OEM collision/strain/stiffener/supplier qualification; preserve any additional geometric failures"
+    },
+    {
+      "name": "FANOUT_POSITIVE_Y",
+      "states_tested": 101,
+      "solved_cases": 101,
+      "max_length_error_mm": 3.5697667044587433e-11,
+      "minimum_center_curvature_radius_mm": 0.00015017784640052357,
+      "minimum_normalized_curve_speed_mm": 0.3734505640280673,
+      "max_X_excess_mm": 0.0,
+      "max_Y_excess_mm": 9.304697685066671,
+      "num_both_R5_screen_and_XY_inside": 0,
+      "num_both_R15_screen_and_XY_inside": 0,
+      "terminal_tangent_error_max_deg": 0.0,
+      "states_with_excess_Y": 19,
+      "states_with_R_below_5": 101,
+      "reason_for_rejection": "no full OEM collision/strain/stiffener/supplier qualification; preserve any additional geometric failures"
+    }
+  ],
+  "occ_endpoint_core_cases": [
+    {
+      "name": "STOW",
+      "orientation": -1,
+      "sample_points": 39,
+      "centerline_inside_model_solids": {
+        "A": 11,
+        "B": 0,
+        "OLED_proxy": 0,
+        "legacy_FPC_proxy": 0
+      },
+      "positive_occupancy": true
+    },
+    {
+      "name": "MID",
+      "orientation": -1,
+      "sample_points": 39,
+      "centerline_inside_model_solids": {
+        "A": 19,
+        "B": 0,
+        "OLED_proxy": 0,
+        "legacy_FPC_proxy": 0
+      },
+      "positive_occupancy": true
+    },
+    {
+      "name": "SEATED",
+      "orientation": -1,
+      "sample_points": 39,
+      "centerline_inside_model_solids": {
+        "A": 29,
+        "B": 0,
+        "OLED_proxy": 0,
+        "legacy_FPC_proxy": 0
+      },
+      "positive_occupancy": true
+    },
+    {
+      "name": "STOW",
+      "orientation": 1,
+      "sample_points": 39,
+      "centerline_inside_model_solids": {
+        "A": 0,
+        "B": 9,
+        "OLED_proxy": 0,
+        "legacy_FPC_proxy": 0
+      },
+      "positive_occupancy": true
+    },
+    {
+      "name": "MID",
+      "orientation": 1,
+      "sample_points": 39,
+      "centerline_inside_model_solids": {
+        "A": 0,
+        "B": 9,
+        "OLED_proxy": 1,
+        "legacy_FPC_proxy": 0
+      },
+      "positive_occupancy": true
+    },
+    {
+      "name": "SEATED",
+      "orientation": 1,
+      "sample_points": 39,
+      "centerline_inside_model_solids": {
+        "A": 0,
+        "B": 28,
+        "OLED_proxy": 0,
+        "legacy_FPC_proxy": 0
+      },
+      "positive_occupancy": true
+    }
+  ],
+  "manufacturing_go": false
+}

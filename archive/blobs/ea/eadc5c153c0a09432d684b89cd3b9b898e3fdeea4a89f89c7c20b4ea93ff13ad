@@ -1,0 +1,110 @@
+{
+  "revision": "R41 independent provenance, terminal-tangent and material-coordinate negative gate",
+  "root_r39_latest": {
+    "zip_sha256": "2b46037ec1d1bbcc18fb39b03b84b3c888f866c7bc9cac13592fee1874863e84",
+    "members": 1151,
+    "hash_manifest_members_checked": 1150,
+    "crc_ok": true,
+    "member_hashes_ok": true,
+    "manifest_path": "audit/R39_member_manifest.json"
+  },
+  "r39_expected_sha_match": true,
+  "r39_parent_R38_sha": "649c89711e5bd25a357fbac972d1c0e4ac8144841dd34e8b261cd67aa50bb7a6",
+  "r40_standalone_archived": {
+    "zip_sha256": "3503c0017628e115aa4e156a1b6b5bfecbb68d78548c8707ba11519438fccdbb",
+    "members": 51,
+    "hash_manifest_members_checked": 50,
+    "crc_ok": true,
+    "member_hashes_ok": true,
+    "manifest_path": "R40_SHA256_MANIFEST.json"
+  },
+  "r40_external_sha256_record": "1565b97bc4bc42fe24438be9c69b0ea7cf855bc9c5f1cb0e6f935a05fa9fc3dd",
+  "r40_external_digest_matches_archived_bytes": false,
+  "r40_archived_embedded_R39_sha": "236f7b50e01d4747d4e0da6086cfbb862fb42994bb1e8934b4c427cb484615f9",
+  "r40_archived_embedded_R39_members": 56,
+  "r40_archived_embedded_R39_matches_newest_R39": false,
+  "r40_archived_baseline_hash_in_manifest_matches": true,
+  "separate_later_R40_audit_claim_parent_R39_sha": "8524a085b44fe87d9597d4b0965a6004058c19420ce72a93483bd3bd100bac74",
+  "later_R40_audit_claim_parent_matches_newest_R39": false,
+  "later_R40_audit_claim_parent_matches_standalone_R40_embedded": false,
+  "R40_archived_revision_claim": "R40 independent finite-section collision rejection, study only",
+  "lineage_conflict_requires_separate_branches": true,
+  "r41_independent_new_geometry_metrics": {
+    "route_count": 3,
+    "two_axis_states_per_route": 101,
+    "no_R39_candidate_qualified_for_nominal_radius_and_XY_silhouette": true,
+    "route_endpoint_boundary_audit": [
+      {
+        "route": "INNER_TIGHT",
+        "motion_states": 101,
+        "target_centerline_length_mm": 100.0,
+        "largest_abs_centerline_length_error_mm": 9.727330052555772e-11,
+        "minimum_local_curvature_radius_mm": 0.06489124629003451,
+        "max_A_anchor_tangent_rotation_between_sampled_states_deg": 5.634702325221944,
+        "max_B_anchor_tangent_rotation_between_sampled_states_deg": 5.634702325221944,
+        "fixed_t_0p25_arc_coordinate_min_mm": 13.146469458832012,
+        "fixed_t_0p25_arc_coordinate_max_mm": 30.80240709213863,
+        "fixed_t_0p25_arc_coordinate_span_mm": 17.655937633306618,
+        "passes_both_radius_and_reference_envelope": 0,
+        "this_is_NOT_a_clamped_strain_relief_or_Lagrangian_material_model": true
+      },
+      {
+        "route": "EDGE_DETOUR",
+        "motion_states": 101,
+        "target_centerline_length_mm": 130.0,
+        "largest_abs_centerline_length_error_mm": 9.600853445590474e-11,
+        "minimum_local_curvature_radius_mm": 0.5051453199533256,
+        "max_A_anchor_tangent_rotation_between_sampled_states_deg": 3.662410078183492,
+        "max_B_anchor_tangent_rotation_between_sampled_states_deg": 3.662410078183492,
+        "fixed_t_0p25_arc_coordinate_min_mm": 20.495049410513847,
+        "fixed_t_0p25_arc_coordinate_max_mm": 38.15978969072802,
+        "fixed_t_0p25_arc_coordinate_span_mm": 17.664740280214172,
+        "passes_both_radius_and_reference_envelope": 0,
+        "this_is_NOT_a_clamped_strain_relief_or_Lagrangian_material_model": true
+      },
+      {
+        "route": "R15_OUTBOARD",
+        "motion_states": 101,
+        "target_centerline_length_mm": 220.0,
+        "largest_abs_centerline_length_error_mm": 7.958078640513122e-11,
+        "minimum_local_curvature_radius_mm": 23.343576056802483,
+        "max_A_anchor_tangent_rotation_between_sampled_states_deg": 2.845964039292212,
+        "max_B_anchor_tangent_rotation_between_sampled_states_deg": 2.845964039292212,
+        "fixed_t_0p25_arc_coordinate_min_mm": 46.028527506027075,
+        "fixed_t_0p25_arc_coordinate_max_mm": 59.106313639629725,
+        "fixed_t_0p25_arc_coordinate_span_mm": 13.07778613360265,
+        "passes_both_radius_and_reference_envelope": 0,
+        "this_is_NOT_a_clamped_strain_relief_or_Lagrangian_material_model": true
+      }
+    ],
+    "limited_single_U_footprint_budgets": {
+      "body_reference_width_mm": 73.99,
+      "OLED_reference_width_without_full_OEM_packaging_mm": 67.32092,
+      "one_side_geometrical_residual_before_rails_mm": 3.334539999999997,
+      "single_U_XY_bend_R5_ideal_turn_span_mm": 10.0,
+      "single_U_XY_bend_R15_ideal_turn_span_mm": 30.0,
+      "R15_PURE_PLANAR_YZ_U_min_required_Z_span_mm": 30.0,
+      "R40_assumed_assembled_Z_envelope_mm": 15.88,
+      "R15_pure_YZ_U_nominal_Z_shortfall_mm": 14.12,
+      "topology_limited_inequalities_only": true
+    }
+  },
+  "interpretation": {
+    "end_tangent_changes_need_real_strain_relief_CAD": true,
+    "fixed_parameter_t_is_not_automatically_material_arclength_coordinate": true,
+    "constant_length_does_not_establish_small_material_strain": true,
+    "preliminary_radius_values_do_not_certify_dynamic_FPC_life": true,
+    "all_negative_proofs_are_for_tested_path_families_only": true,
+    "R40_legacy_and_other_report_tests_not_counted_as_fresh_R41_replay": true
+  },
+  "missing_real_qualification": {
+    "OEM_A_B_full_CAD": true,
+    "actual_7in_OLED_package_CAD_and_fatigue": true,
+    "actual_FPC_model_laminate_strain_relief_fatigue": true,
+    "real_hirose_termination_and_keepout": true,
+    "real_dual_battery_power_BMS_isolation": true,
+    "real_USB_signal_integrity": true,
+    "physical_mechanical_fail_closed": true
+  },
+  "manufacturing_go": false
+}

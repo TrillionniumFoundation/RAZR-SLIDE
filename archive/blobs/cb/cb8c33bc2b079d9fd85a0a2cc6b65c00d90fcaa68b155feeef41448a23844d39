@@ -1,0 +1,119 @@
+{
+  "CAD_modify_go": false,
+  "actual_3D_OCC_sweep_count": 0,
+  "actual_physical_FPC_and_USB_continuity": false,
+  "analytic_conditional_certificate": {
+    "C1_construction": "Linear -k to s_minus, then U_E to s_plus, then +k tangent, then 1mm quadratic taper +k to zero, then constant during q-dock.",
+    "all_pose_lower": "Each linear/quadratic segment F-(d+E) is concave with nonnegative endpoints, central segment U_E>=d+E for E<=Ecrit.",
+    "all_pose_upper": "Tangents and downward taper lie below convex U_E; pre-gate F <= material total 70; dock uses monotone decreasing upper and lower with endpoints verified.",
+    "forced_branch_switch": "s_safe=Y-sqrt((2R-E)^2-Z^2), so nominal chord + E <=2R for all later slide and dock stages",
+    "global_closed_form_selectable": true,
+    "global_lower_bound": "Any scalar k-Lipschitz F must satisfy F(0)>=d(0)+E and F(s_minus)<=U_E(s_minus); thus k >= (d0+E-U_E(s_minus))/s_minus.",
+    "midpoint_ceiling": "At s=Y=55, pointwise feasibility requires Z+E <= 2R asin((Z-E)/(2R)); width increases strictly with d, so s=55 minimizes window over full itinerary",
+    "proof_status": "CONDITIONAL exact scalar Lipschitz optimum only, under explicit E and shifted mode gate",
+    "robust_interval_justification": "For all independent instantaneous distance errors e in [-E,E], l=max(d+e)=d+E and u=min(2R asin((d+e)/(2R)))=2R asin((d-E)/(2R))",
+    "strictly_nonphysical": [
+      "No 3D curve",
+      "No FPC conductor or vendor stackup",
+      "No continuous collision sweeps",
+      "No tension/friction/slip",
+      "No electrical timing",
+      "No motor acceleration/dt",
+      "No OEM GD&T",
+      "No fatigue/procurement"
+    ],
+    "tangency_upper": "The robust U_E(s)=2R asin((d(s)-E)/(2R)) is convex on forced short-arc branch; unique tangency roots symmetric about Y=55."
+  },
+  "at_E_0p08_no_scalar_schedule_even_infinite_reel_speed": true,
+  "candidate_go": false,
+  "exact_optimal_robust_scalar_rate_mm_FPC_per_mm_mechanical": 0.9277021685718772,
+  "hypothetical_dynamic_R_mm": 15.0,
+  "hypothetical_error_E_mm": 0.05,
+  "hypothetical_total_FPC_length_mm": 70.0,
+  "independent_actual_OEM_supplier_docs_newly_received": false,
+  "largest_independent_error_admissible_IN_THIS_SCALAR_MODEL_mm": 0.07973091360421503,
+  "manufacturing_go": false,
+  "material_motion_example_not_sizing_or_force": {
+    "max_hypothetical_stored_material_mm": 60.43896701218986,
+    "mid_free_mm": 9.561032987810135,
+    "payout_mm": 17.7680613927905,
+    "predock_free_mm": 27.329094380600633,
+    "retraction_mm": 46.29490307637572,
+    "stow_free_mm": 55.855936064185855,
+    "total_absolute_material_motion_mm": 64.06296446916622
+  },
+  "new_fatigue_or_power_timing_tests": false,
+  "new_mode_gate_required_due_to_distance_uncertainty": true,
+  "nominal_R77_rate_mm_per_mm": 0.9251629638709197,
+  "original_OEM_CAD_modified": false,
+  "parents_roles": {
+    "R41_SIDE": "parallel NEGATIVE OCC not same CAD ancestry",
+    "R74": "necessary arc/chord under R15",
+    "R75": "forced short-arc branch assumptions",
+    "R76": "two-pose E=0.05 bound only",
+    "R77": "nominal exactly optimal C1 scalar schedule"
+  },
+  "parents_verified_by_hash_crc_not_combined_as_CAD_chain": {
+    "R41_SIDE": {
+      "archive_sha256": "0ce7e712882d1b393790e40874f28836475e6d5b2fe4fdb3293b1fd82223d96f",
+      "crc_ok": true,
+      "members": 21
+    },
+    "R74": {
+      "archive_sha256": "47113a1bc97d386108c9963f9f3fa87b254214419d37be2ca108eca69f4c9769",
+      "crc_ok": true,
+      "members": 18
+    },
+    "R75": {
+      "archive_sha256": "b992bff4c57554a26a2437e6639ba8966f403005392767915932e23baef97525",
+      "crc_ok": true,
+      "members": 32
+    },
+    "R76": {
+      "archive_sha256": "d3205dbabc1c72adfbbac63948b9cb20285e0bf52e07dd184b45268f628e397e",
+      "crc_ok": true,
+      "members": 19
+    },
+    "R77": {
+      "archive_sha256": "43a61e1afd43d075d35638dcb683eefe1682a3cdae65f916e1409c44ae3abee2",
+      "crc_ok": true,
+      "members": 21
+    }
+  },
+  "revision": "R78 conditional robust scalar interval hardgate",
+  "robust_critical_pair": {
+    "analytic_argument": "Lipschitz distance bound from robust [lower(0), upper(s_minus)] necessary pair",
+    "necessary_k_from_pair": 0.9277021685718772,
+    "robust_critical_upper_mm": 16.291782243791815,
+    "robust_stow_lower_mm": 55.855936064185855,
+    "t_critical_mm": 42.64747368360675,
+    "t_start_mm": 0.0,
+    "violations_if_rate_less_by_0p000001_mm": 4.2647473684098713e-05
+  },
+  "robust_piecewise_C1_parameters": {
+    "E_mm_ASSUMED": 0.05,
+    "dock_min_lower_margin_mm": 0.7863595274375861,
+    "dock_min_upper_margin_mm": 1.7443424479982035,
+    "f_at_slide_end_mm": 27.329094380600633,
+    "k_exact_robust_scalar_mm_per_mm": 0.9277021685718772,
+    "minimum_midpoint_window_mm": 0.061032987810135,
+    "mode_gate_shift_mm": 0.05268679499880946,
+    "not_an_actual_motor_or_FPC": true,
+    "parent_R77_E0p05_pair_witness_mm_per_mm": 0.927698765730195,
+    "parent_nominal_k_mm_per_mm": 0.9251629638709197,
+    "s_minus_mm": 42.64747368360675,
+    "s_plus_mm": 67.35252631639325,
+    "s_safe_short_arc_mm": 26.579936664391475,
+    "stationarity_residual_mm": 1.4210854715202004e-14
+  },
+  "sampled_numerical_sanity": {
+    "first_failure": null,
+    "grid_dock_poses": 2401,
+    "grid_slide_poses": 24001,
+    "max_abs_derivative": 0.9277021685718772,
+    "min_lower_margin_mm": 0.0,
+    "min_upper_margin_mm": 0.0,
+    "numerical_sanity_only_continuum_requires_analytic_proof": true
+  },
+  "supplier_RFQ_sent": false
+}

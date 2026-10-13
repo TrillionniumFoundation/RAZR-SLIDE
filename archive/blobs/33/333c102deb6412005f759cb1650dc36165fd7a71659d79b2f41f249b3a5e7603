@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RAZR SLIDE R11 局部双锁闩运动学检查</title><style>
+:root{color-scheme:dark}body{margin:0;background:#0c1829;color:#e8f3fb;font:14px system-ui,"Noto Sans CJK SC",sans-serif}.wrap{max-width:1150px;margin:0 auto;padding:24px 22px}h1{font-size:25px}h2{font-size:16px;margin:0 0 10px}p{line-height:1.65;color:#b9cfe0}.controls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:22px 0}label{display:block;margin-bottom:8px;color:#d5e9f8}input[type=range],select{width:100%;accent-color:#47c2fa}select{padding:9px;color:#fff;background:#203249;border:1px solid #567;border-radius:8px}.panel{background:#152740;padding:18px;border:1px solid #344e69;border-radius:12px}.tiles{display:grid;grid-template-columns:1fr 1fr;gap:18px}.stat{font-size:14px;line-height:1.75;background:#142336;border-radius:8px;padding:14px}.num{font-size:20px;color:#54cfac}.warn{color:#ffb980}.error{color:#ff8185}.ok{color:#66d8bb}svg{width:100%;height:auto}.legend{font-size:12px;color:#a8c2d8;margin-top:8px}footer{color:#8da9be;margin-top:18px} @media(max-width:800px){.controls,.tiles{grid-template-columns:1fr}}</style></head>
+<body><main class="wrap"><h1>R11 局部机构交互复核</h1><p>同源参数：两个等尺寸功能舱；B 从后下方向上滑；局部双J槽、浅层隧道、2.45 mm释放滑闩。此为二维几何检查器，不是可运行的物理解锁机构。</p>
+<div class="controls"><div class="panel"><label>纵向行程 <span id="ys">79.75</span> mm</label><input id="s" type="range" min="0" max="79.75" value="79.75" step="0.05"></div>
+<div class="panel"><label>滑闩释放行程 <span id="rs">0</span>%</label><input id="r" type="range" min="0" max="100" value="0" step="1"></div>
+<div class="panel"><label>硬止挡误差案例</label><select id="mode"><option value="nominal">名义零公差</option><option value="early">两侧提前0.20mm</option><option value="split">左右相差0.40mm</option></select></div></div>
+<div class="tiles"><section class="panel"><h2>双机身纵向运动（非原厂尺寸）</h2><svg viewBox="0 0 340 340" aria-label="two cabins"><rect x="90" y="160" width="86" height="135" rx="5" fill="#597e9c" fill-opacity=".65" stroke="#c7e6fc"/><rect id="B" x="98" y="160" width="86" height="135" rx="5" fill="#2f65a5" fill-opacity=".70" stroke="#70d6ff"/><rect x="181" y="167" width="7" height="14" rx="2" fill="#eac46b"/><text x="17" y="315" fill="#bcd4e9">A固定 / B向上滑动</text><text id="bstatus" x="17" y="335" fill="#5ad6bc"></text></svg></section>
+<section class="panel"><h2>Y-Z 局部闩锁截面（放大）</h2><svg id="local" viewBox="0 0 560 310" aria-label="local shutter cross-section"><g id="geometry"></g></svg><div class="legend">蓝：接收器J孔与浅层滑道；黄：锁闩；红：移动捕获销（假设Z强制上抬至接触层）。</div></section></div>
+<div class="panel" style="margin-top:18px"><h2>几何状态检查与反例</h2><div class="stat" id="state"></div></div><footer>R11 工程审计 · 名义双舱每舱94.25 mm · OLED中性路径190.436 mm · 公差假设见随附PDF。不能用本视图证明真实硬止挡、FPC、OLED寿命、承力与安全。</footer></main>
+<script>
+const S=79.75;const get=id=>document.getElementById(id);
+function update(){let s=+get('s').value,u=+get('r').value/100,mode=get('mode').value;get('ys').textContent=s.toFixed(2);get('rs').textContent=Math.round(u*100);
+const y=v=>35+(v-81.3)*66;
+const rect=(Ylo,Yhi,Zlo,Zhi,fill,stroke='none')=>`<rect x="${y(Ylo)}" y="${253-Zhi*110}" width="${(Yhi-Ylo)*66}" height="${(Zhi-Zlo)*110}" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/>`;
+let txt=`<rect x="0" y="0" width="560" height="310" fill="#152740"/>`;
+txt+=rect(81.3,89.15,0,2.05,'#3b4d63');
+txt+=rect(83.74,88.6,0,.85,'#152740','#58bdf2');
+for(let cy of [82.45,87.4])txt+=rect(cy-.625,cy+.625,0,2.05,'#152740','#58bdf2');
+let center=87.4-2.45*u;txt+=rect(center-.85,center+.85,.04,.39,u>=1?'#4ed4ab':'#f3c664');
+let pcenter=s+7.65;txt+=rect(pcenter-.20,pcenter+.20,.26,.50,'#fd7282');
+txt+=`<text x="18" y="35" fill="#e8f3fb" font-size="15">J1 | 浅槽 | J2 / Lock: ${u<1?'not fully released':'parked'}</text>`;get('geometry').innerHTML=txt;
+const b_y=160-(s/S)*115;get('B').setAttribute('y',b_y.toFixed(2));get('bstatus').textContent=`Y 行程 ${s.toFixed(2)} / ${S.toFixed(2)} mm`;
+let gapL=S-s,gapR=S-s;if(mode==='early'){gapL-=.2;gapR-=.2;}if(mode==='split'){gapL-=.2;gapR+=.2;}
+let seated=[gapL,gapR].map(g=>g>=-.22-1e-9&&g<=1e-9);
+let allowed=seated.every(Boolean),req=u>0;
+let bad=req&&!allowed; let premature=allowed&&s<S-.05;
+let pos=rect=>'';
+get('state').innerHTML=`Y=${s.toFixed(2)} mm；左/右接触间隙 ${gapL.toFixed(3)} / ${gapR.toFixed(3)} mm<br>`+
+`双止挡接触判定：<span class="${allowed?'ok':'error'}">${allowed?'两侧满足逻辑接触条件':'不满足双侧接触'}</span>　`+
+`滑闩释放请求：<span class="${bad?'error':'ok'}">${bad?'应拒绝':'未触发禁止条件（仅代理逻辑）'}</span><br>`+
+`<span class="${premature?'error':'warn'}">${premature?'警告：硬止挡偏差导致在名义终点前释放；未放行！':'全局真实就位机构尚未证明。'}</span><br>`+
+`Y包络最坏遮挡 +0.225mm，X包络最坏重叠 +0.165mm。实物弹簧、防脱导轨、AND锁与强度未设计完成。`;
+}['s','r','mode'].forEach(id=>get(id).addEventListener('input',update));update();</script></body></html>

@@ -1,0 +1,44 @@
+{
+  "revision": "R41 clean extraction independent source replay",
+  "archive_sha256": "b9ad4c4db258a79c13a905a2451c0bce599f5bcb8d0ce986cac70348a5b26831",
+  "commands": [
+    {
+      "cmd": "python source/r41_preflight.py",
+      "exit_code": 0,
+      "seconds": 6.41,
+      "stdout_tail": "lved': 0, 'optimistic_screen_pass': 90, 'hypothetical_full_trajectory_screen_pass': False} minR 5.0 Yex 5.054899\n150360605 R 5 L 152 {'states': 101, 'kinematic_unsolved': 0, 'optimistic_screen_pass': 65, 'hypothetical_full_trajectory_screen_pass': False} minR 5.0 Yex 17.601906\n150360405 R 10 L 102 {'states': 101, 'kinematic_unsolved': 6, 'optimistic_screen_pass': 56, 'hypothetical_full_trajectory_screen_pass': False} minR 2.353453 Yex 0\n150360505 R 10 L 127 {'states': 101, 'kinematic_unsolved': 0, 'optimistic_screen_pass': 101, 'hypothetical_full_trajectory_screen_pass': True} minR 10.0 Yex 0\n150360605 R 10 L 152 {'states': 101, 'kinematic_unsolved': 0, 'optimistic_screen_pass': 81, 'hypothetical_full_trajectory_screen_pass': False} minR 10.0 Yex 9.700159\n150360505 R 15 L 127 {'states': 101, 'kinematic_unsolved': 7, 'optimistic_screen_pass': 42, 'hypothetical_full_trajectory_screen_pass': False} minR 2.190293 Yex 0\n150360605 R 15 L 152 {'states': 101, 'kinematic_unsolved': 0, 'optimistic_screen_pass': 83, 'hypothetical_full_trajectory_screen_pass': False} minR 10.944407 Yex 1.779322\n",
+      "stderr_tail": ""
+    },
+    {
+      "cmd": "python source/r41_occ_and_export.py",
+      "exit_code": 0,
+      "seconds": 10.04,
+      "stdout_tail": "n': True}\nR41 OCC 10 127 STOW {'A_core': 16.00761287, 'B_core': 9.14487727, 'OLED_assumed': 0.26543491, 'display_FPC_assumed': 0.0}\nR41 STEP {'file': 'cad/R41_GHOST_R10_L127_STOW_NO_CONNECTIVITY.step', 'sha256': '9ade3939be9c9bef527f21bf1a7db7029dae262668ef3a31273eb9eb12c4409b', 'bytes': 4156787, 'valid': True, 'research_solid_count': 5, 'represents_real_FFC': False, 'electrical_continuity': False, 'displays_collision': True}\nR41 OCC 10 127 MID {'A_core': 4.75962051, 'B_core': 6.25494556, 'OLED_assumed': 0.22520355, 'display_FPC_assumed': 0.0}\nR41 OCC 10 127 PREDOCK {'A_core': 1.535625, 'B_core': 3.3763246, 'OLED_assumed': 0.30748588, 'display_FPC_assumed': 0.0}\nR41 OCC 10 127 SEATED {'A_core': 1.535625, 'B_core': 30.32744625, 'OLED_assumed': 0.37017517, 'display_FPC_assumed': 0.16080981}\nR41 STEP {'file': 'cad/R41_GHOST_R10_L127_SEATED_NO_CONNECTIVITY.step', 'sha256': 'af290ff738f9904e43af9e24013995d62184486b97a12cb8da3228fdd65d8f3e', 'bytes': 3685641, 'valid': True, 'research_solid_count': 5, 'represents_real_FFC': False, 'electrical_continuity': False, 'displays_collision': True}\n",
+      "stderr_tail": ""
+    },
+    {
+      "cmd": "python source/r41_relocated_anchor_lattice.py",
+      "exit_code": 0,
+      "seconds": 3.86,
+      "stdout_tail": "RELOC X -30.0 occupied 9 out False\nRELOC X -20.0 occupied 9 out False\nRELOC X -10.0 occupied 9 out False\nRELOC X 0.0 occupied 9 out False\nRELOC X 10.0 occupied 9 out False\nRELOC X 20.0 occupied 3 out False\nRELOC X 22.7 occupied 8 out False\n",
+      "stderr_tail": ""
+    },
+    {
+      "cmd": "python -m unittest discover -s source -p test_r41.py -v",
+      "exit_code": 0,
+      "seconds": 5.46,
+      "stdout_tail": "",
+      "stderr_tail": "relocation_partial_occupancy) ... ok\ntest_all_step_ghosts_reimport (test_r41.ResearchR41.test_all_step_ghosts_reimport) ... ok\ntest_lineage_separation (test_r41.ResearchR41.test_lineage_separation) ... ok\ntest_molex_single_circuit_not_power_system (test_r41.ResearchR41.test_molex_single_circuit_not_power_system) ... ok\ntest_no_claim_route_passes_integrated_cad (test_r41.ResearchR41.test_no_claim_route_passes_integrated_cad) ... ok\ntest_no_vendor_material_life_qualification (test_r41.ResearchR41.test_no_vendor_material_life_qualification) ... ok\ntest_oled_proxy_collision (test_r41.ResearchR41.test_oled_proxy_collision) ... ok\ntest_parent_sha (test_r41.ResearchR41.test_parent_sha) ... ok\ntest_selected_3d_collision_all_named_chassis (test_r41.ResearchR41.test_selected_3d_collision_all_named_chassis) ... ok\ntest_stow_straight_distance (test_r41.ResearchR41.test_stow_straight_distance) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 3.333s\n\nOK\n"
+    }
+  ],
+  "checks": {
+    "preflight_full_json_byte_equal": true,
+    "occ_intersections_equal": true,
+    "lane_probe_counts_equal": true,
+    "post_export_STEP_valid_count": 4,
+    "step_hashes_may_differ_after_export": true,
+    "parent_R39_sha256_reverified": "2b46037ec1d1bbcc18fb39b03b84b3c888f866c7bc9cac13592fee1874863e84",
+    "research_only_not_manufacturing": true
+  },
+  "manufacturing_go": false
+}

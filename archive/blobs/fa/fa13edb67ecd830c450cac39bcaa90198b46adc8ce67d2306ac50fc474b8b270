@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+"""Recheck R40 published CAD evidence, without claiming new CAD or OEM validation."""
+import argparse, hashlib, json, zipfile
+from pathlib import Path
+
+def run(path):
+    path=Path(path)
+    sha=hashlib.file_digest(path.open('rb'),'sha256').hexdigest()
+    with zipfile.ZipFile(path) as z:
+        assert z.testzip() is None
+        d=json.loads(z.read('verification/R40_all_193_finite_volume_motion.json'))
+        size=json.loads(z.read('verification/R40_section_sensitivity.json'))
+        route=json.loads(z.read('verification/R40_B_header_reroute_probes.json'))
+        rows=d['rows']; n=len(rows)
+        ac=sum(x['A_volume_overlap_mm3']>0 for x in rows)
+        bc=sum(x['B_volume_overlap_mm3']>0 for x in rows)
+        both=sum(x['A_volume_overlap_mm3']>0 and x['B_volume_overlap_mm3']>0 for x in rows)
+        bmin=min(x['B_volume_overlap_mm3'] for x in rows)
+        bmax=max(x['B_volume_overlap_mm3'] for x in rows)
+        results={'source_sha256':sha,'source_zip_members':len(z.namelist()),'movement_states':n,'A_collision_states':ac,'B_collision_states':bc,'simultaneous_A_B_collision_states':both,'B_min_overlap_mm3':bmin,'B_max_overlap_mm3':bmax,'A_max_overlap_mm3':max(x['A_volume_overlap_mm3'] for x in rows),'fpc_width_mm_unverified':d['ribbon_width_mm_unverified'],'fpc_thickness_mm_unverified':d['ribbon_thickness_mm_unverified'],'centerline_length_mm':d['ribbon_length_mm'],'route_proxy_count':len(route['rows']),'route_proxy_collisions':sum(x['B_solid_intersection'] for x in route['rows']),'section_sensitivity_keys':list(size),'manufacturing_go':False}
+        assert n==193 and ac==92 and bc==193 and results['route_proxy_collisions']==18
+        assert abs(bmax-31.844319197)<1e-6 and abs(bmin-2.883716)<1e-5
+        return results
+if __name__=='__main__':
+ p=argparse.ArgumentParser();p.add_argument('zip_file');p.add_argument('--output');a=p.parse_args();r=run(a.zip_file);v=json.dumps(r,ensure_ascii=False,indent=2);print(v)
+ if a.output:Path(a.output).write_text(v+'\n')

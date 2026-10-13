@@ -1,0 +1,53 @@
+{
+  "format": "razr-slide-materialization-and-archive-receipt-v1",
+  "manufacturing_go": false,
+  "original_count": 728,
+  "all_original_expected_lengths_verified": true,
+  "initial_download_failures": [
+    {
+      "name": "RAZR_SLIDE_R38_verified_engineering_package_20261011.zip",
+      "expected_bytes": 79874182,
+      "initial_bytes": 20971520
+    },
+    {
+      "name": "RAZR_SLIDE_R39_verified_engineering_package_20261011.zip",
+      "expected_bytes": 85327508,
+      "initial_bytes": 16777216
+    },
+    {
+      "name": "RAZR_SLIDE_R48_verified_dense_motion_gate_20261011.zip",
+      "expected_bytes": 97597234,
+      "initial_bytes": 28966912
+    }
+  ],
+  "download_retry": {
+    "page": 3,
+    "exact_selection": "011135145",
+    "completed": true,
+    "all_retried_lengths_correct": true
+  },
+  "archiver_failure": {
+    "cause": "Bounded seek view raised ValueError instead of OSError for negative end-relative seeks on short non-ZIP files",
+    "correction": "Match standard file seek semantics; originals unchanged",
+    "first_failure_log": "receipts/first_build_failure.log",
+    "second_build_completed": true
+  },
+  "final_summary": {
+    "original_count": 728,
+    "distinct_original_hashes": 678,
+    "original_bytes": 3552594718,
+    "distinct_original_bytes": 3324705918,
+    "excluded_count": 0,
+    "allowed_original_count": 728,
+    "stored_blob_count": 20270,
+    "stored_blob_bytes": 1006089117,
+    "referenced_segment_count": 54207,
+    "all_allowed_originals_reconstructed_and_sha256_verified": true
+  },
+  "archive_manifest_sha256": "a674d11b4b06df309ecf7d19653b781a754b155ee31a32e69a19b7d05060580c",
+  "vendor_review": {
+    "restricted_raw_fingerprint_matches": 0,
+    "additional_derived_restrictions_identified": 0,
+    "bm28_shapes": "Independently generated catalogue bounding boxes in r38_parts.py / r38_export.py; vendor-native source absent"
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "revision": "R22 adversarial verification addendum 2026-10-10",
+  "prior_320_cases_not_an_all_independent_stop_release_scan": true,
+  "exhaustive_512_case_matrix": {
+    "scope": "Idealized box proxies: two stations x eight poses x eight independent new-stop states x four old-dog states",
+    "states": 512,
+    "seated": 64,
+    "unseated": 448,
+    "unseated_blocked": 392,
+    "unseated_unblocked": 56,
+    "premature_all_three_open": 56,
+    "legacy_both_open_centre_still_closed_blocked": 14,
+    "one_stop_remaining_unseated_failures": 0,
+    "two_or_more_remaining_unseated_failures": 0,
+    "critical_negative_samples": [
+      {
+        "port": "STOW",
+        "stage": "STOW_DEPART_0P03",
+        "old_dog_l_open": false,
+        "old_dog_r_open": false,
+        "new_stops_spuriously_all_open": true,
+        "blocked": false,
+        "unseated": true
+      },
+      {
+        "port": "STOW",
+        "stage": "STOW_DEPART_0P03",
+        "old_dog_l_open": false,
+        "old_dog_r_open": true,
+        "new_stops_spuriously_all_open": true,
+        "blocked": false,
+        "unseated": true
+      },
+      {
+        "port": "STOW",
+        "stage": "STOW_DEPART_0P03",
+        "old_dog_l_open": true,
+        "old_dog_r_open": false,
+        "new_stops_spuriously_all_open": true,
+        "blocked": false,
+        "unseated": true
+      },
+      {
+        "port": "STOW",
+        "stage": "STOW_DEPART_0P03",
+        "old_dog_l_open": true,
+        "old_dog_r_open": true,
+        "new_stops_spuriously_all_open": true,
+        "blocked": false,
+        "unseated": true
+      },
+      {
+        "port": "STOW",
+        "stage": "STOW_DEPART_0P20",
+        "old_dog_l_open": false,
+        "old_dog_r_open": false,
+        "new_stops_spuriously_all_open": true,
+        "blocked": false,
+        "unseated": true
+      }
+    ],
+    "no_actual_A_side_mechanical_capture_or_spring_model": true,
+    "complete_triple_release_has_a_proven_proxy_escape_path": true,
+    "engineering_gate_pass": false
+  },
+  "continuous_carriage_travel": {
+    "all_stops_engaged": {
+      "ideal_full_extension_mm": 0.8,
+      "last_clear_sample_mm": 0.25,
+      "first_positive_solid_intersection": {
+        "extension_mm": 0.251,
+        "contacts": {
+          "B_LOAD_FACE_BOLT_L": 0.0009199999999998983,
+          "B_LOAD_FACE_BOLT_R": 0.0009199999999998983,
+          "B_INDEPENDENT_CENTRE_STOP": 0.0009999999999998896
+        }
+      },
+      "contact_make_travel_mm": "UNKNOWN - OEM contacts and pad stack missing",
+      "force_to_override_stop_N": "UNKNOWN - no material/FEA/spring/fastener",
+      "not_hardware_pass": true
+    },
+    "only_center_engaged": {
+      "ideal_full_extension_mm": 0.8,
+      "last_clear_sample_mm": 0.25,
+      "first_positive_solid_intersection": {
+        "extension_mm": 0.251,
+        "contacts": {
+          "B_LOAD_FACE_BOLT_L": 0.0,
+          "B_LOAD_FACE_BOLT_R": 0.0,
+          "B_INDEPENDENT_CENTRE_STOP": 0.0009999999999998896
+        }
+      },
+      "contact_make_travel_mm": "UNKNOWN - OEM contacts and pad stack missing",
+      "force_to_override_stop_N": "UNKNOWN - no material/FEA/spring/fastener",
+      "not_hardware_pass": true
+    },
+    "all_three_spuriously_released": {
+      "ideal_full_extension_mm": 0.8,
+      "last_clear_sample_mm": 0.8,
+      "first_positive_solid_intersection": null,
+      "contact_make_travel_mm": "UNKNOWN - OEM contacts and pad stack missing",
+      "force_to_override_stop_N": "UNKNOWN - no material/FEA/spring/fastener",
+      "not_hardware_pass": true
+    }
+  },
+  "unresolved_hardware_contract": {
+    "M_LOCK": {
+      "A_side_center_key_geometry_captive_and_unforgeable_by_B_actuator": false,
+      "positive_load_bearing_faces_with_material_FEA_and_safety_factor": false,
+      "two_independent_default_engaged_retraction_springs": false,
+      "contacts_forced_fully_retracted_before_any_A_B_separation": false,
+      "power_isolated_before_power_contacts_separate": false,
+      "30万次_污染_热循环_冲击_偏载_失弹试验": false,
+      "positive_solid_box_proxy_only": true,
+      "qualified": false
+    },
+    "E_SEPARATE": {
+      "B_usbC_PHY_port_real_placement_CAD": false,
+      "TE_signal_aging_cycle_qualification": false,
+      "power_mating_connector_300k_OEM_approval": false,
+      "A_and_B_BMS_fuses_back_to_back_FET_schematic_PCB": false,
+      "FET_weld_open_short_thermal_hardware_tests": false,
+      "qualified": false
+    },
+    "D_OLED": {
+      "7inch_full_package_step_from_supplier": false,
+      "authorized_R3p4_dynamic_300k": false,
+      "long_stow_residual_set_and_flattening_data": false,
+      "full_boundary_tolerance_stack_pass": false,
+      "qualified": false
+    },
+    "overall": "MANUFACTURING_NO_GO"
+  },
+  "verdict": "NO_GO: centre physical capture and true sequence interlock still missing",
+  "manufacturing_go": false
+}

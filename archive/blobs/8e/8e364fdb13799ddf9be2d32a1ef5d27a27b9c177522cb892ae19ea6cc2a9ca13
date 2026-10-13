@@ -1,0 +1,213 @@
+{
+  "zip_member_count": 271,
+  "zip_crc_error": null,
+  "STEP_models_in_manifest": 10,
+  "step_sha256_match": [
+    {
+      "file": "01_STOW_SEATED_GATE_CLOSED_SAFE_RETRACTED.step",
+      "sha256": "f77c9b7cf5fd97fc1e260c8ad5c813a324b882af761d62511bd21e50ac602007",
+      "parts": 18,
+      "is_fault_scene": false
+    },
+    {
+      "file": "02_STOW_SEATED_MANUAL_GATE_OPEN_UNPOWERED.step",
+      "sha256": "15a14546b63ad4cd38efc6b2c6a603ce8a7c4b7afcb5903b906ae7ed8684ea48",
+      "parts": 18,
+      "is_fault_scene": false
+    },
+    {
+      "file": "03_STOW_EARLY_1p59_LEGACY_FALSE_OPEN_R25_VETO_GHOST.step",
+      "sha256": "e5c5cab67e0ef8de796ceced9684bc52595ec168f56528792d0899d88a8f7804",
+      "parts": 18,
+      "is_fault_scene": true
+    },
+    {
+      "file": "04_MID_SLIDE_ALL_PARKED.step",
+      "sha256": "1dfa49b044520ce9f8fa80c149de2680fc1089ef2b0de001d11d9a32677ada1b",
+      "parts": 18,
+      "is_fault_scene": false
+    },
+    {
+      "file": "05_OPEN_EARLY_6p61_GATE_CLOSED_FORCE_EXT_0p15_GHOST.step",
+      "sha256": "bcebc4400e0308fe791ee7ef8b86809f2ca372d46f95db05bfda537e312f570d",
+      "parts": 18,
+      "is_fault_scene": true
+    },
+    {
+      "file": "06_OPEN_SEATED_CAPTURED_GATE_CLOSED_RETRACTED.step",
+      "sha256": "c18f50ff9be4ebbe9735f8505105f9e37752fbe2eeaf71edcde7d9344fdfffa9",
+      "parts": 18,
+      "is_fault_scene": false
+    },
+    {
+      "file": "07_OPEN_SEATED_CAPTURED_MANUAL_GATE_OPEN_UNPOWERED.step",
+      "sha256": "69d37b75f474d0a434bfcf22d7d4a194f11d1b414f81fae417180f419145a4ac",
+      "parts": 18,
+      "is_fault_scene": false
+    },
+    {
+      "file": "08_OPEN_EARLY_6p61_FALSE_CAPTURE_BOTH_OPEN_GHOST.step",
+      "sha256": "e5b887888cb88889ef1122010b89ac23b1133bd190b0556b6c3d992f8c93add7",
+      "parts": 18,
+      "is_fault_scene": true
+    },
+    {
+      "file": "09_OPEN_UNDOCKED_PARKED_PAWL_FORCED_GATE_0p2_GHOST.step",
+      "sha256": "32eca6e5cb41a4b85a43b7c494c3168db2f34ebf4ed4d99f92ddb12ffa48e9f2",
+      "parts": 18,
+      "is_fault_scene": true
+    },
+    {
+      "file": "10_OPEN_GATE_CLOSED_CARRIER_ALREADY_EXTENDED_GHOST.step",
+      "sha256": "46fe26687001952522950172b8dc2311bcbb26572fe709f629b7a069139f3f87",
+      "parts": 18,
+      "is_fault_scene": true
+    }
+  ],
+  "r25_original_A_shell_intersection_each_side_mm3": {
+    "L": 0.02112,
+    "R": 0.02112
+  },
+  "r26_new_A_shell_intersection_each_side_mm3": {
+    "L": 0.0,
+    "R": 0.0
+  },
+  "closed_gate_blocks_initial_extension_but_not_already_extended": {
+    "L": {
+      "at_extension_0p15_mm3": 0.004708,
+      "at_extension_0p8_mm3": 0.0
+    },
+    "R": {
+      "at_extension_0p15_mm3": 0.004708,
+      "at_extension_0p8_mm3": 0.0
+    }
+  },
+  "modeled_fault_rows": 64,
+  "fault_escape_rows_under_forced_old_stops_broken": 36,
+  "new_B_removed_mm3": 5.64273274,
+  "dynamic_sample_poses": 10,
+  "dynamic_unexpected_collisions": 0,
+  "manifest_manufacturing_go": false,
+  "power_hw_qualified": false,
+  "OLED_OEM_qualified": false,
+  "full_zip_sha256": "c35f929492d637d9be4d47c24d8f199eba3ca579d90800728ea77370d1e8dd19",
+  "zip_sha_sidecar_verified": true,
+  "independent_test_runs": [
+    {
+      "name": "R21",
+      "expected": 28,
+      "observed": 28,
+      "verified": true
+    },
+    {
+      "name": "R22",
+      "expected": 37,
+      "observed": 37,
+      "verified": true
+    },
+    {
+      "name": "R22_adversarial",
+      "expected": 11,
+      "observed": 11,
+      "verified": true
+    },
+    {
+      "name": "R23",
+      "expected": 22,
+      "observed": 22,
+      "verified": true
+    },
+    {
+      "name": "R24",
+      "expected": 25,
+      "observed": 25,
+      "verified": true
+    },
+    {
+      "name": "R25",
+      "expected": 30,
+      "observed": 30,
+      "verified": true
+    },
+    {
+      "name": "R26",
+      "expected": 38,
+      "observed": 38,
+      "verified": true
+    }
+  ],
+  "independent_all_191_passed": true,
+  "hardware_or_manufacturing_release": false,
+  "scope": "Existing research CAD, discrete geometry and logical unit tests only. No physical proof; not 191 real hardware trials.",
+  "independent_full_geometry_scripts_reexecuted": true,
+  "independent_full_geometry_run_final_message": "R26 OFFLINE GEOMETRY/FAULTS VERIFIED: RESEARCH ONLY, MANUFACTURING NO-GO",
+  "independent_rebuilt_json_identical_to_original_archive": {
+    "faults": true,
+    "tolerance": true,
+    "integration": true,
+    "dynamic": true
+  },
+  "independent_rebuilt_STEP_comparison": [
+    {
+      "STEP": "01_STOW_SEATED_GATE_CLOSED_SAFE_RETRACTED.step",
+      "source_core_geometry_matches_archive": true,
+      "full_file_byte_equal": false,
+      "reimported_solids": 18
+    },
+    {
+      "STEP": "02_STOW_SEATED_MANUAL_GATE_OPEN_UNPOWERED.step",
+      "source_core_geometry_matches_archive": true,
+      "full_file_byte_equal": false,
+      "reimported_solids": 18
+    },
+    {
+      "STEP": "03_STOW_EARLY_1p59_LEGACY_FALSE_OPEN_R25_VETO_GHOST.step",
+      "source_core_geometry_matches_archive": true,
+      "full_file_byte_equal": false,
+      "reimported_solids": 18
+    },
+    {
+      "STEP": "04_MID_SLIDE_ALL_PARKED.step",
+      "source_core_geometry_matches_archive": true,
+      "full_file_byte_equal": false,
+      "reimported_solids": 18
+    },
+    {
+      "STEP": "05_OPEN_EARLY_6p61_GATE_CLOSED_FORCE_EXT_0p15_GHOST.step",
+      "source_core_geometry_matches_archive": true,
+      "full_file_byte_equal": false,
+      "reimported_solids": 18
+    },
+    {
+      "STEP": "06_OPEN_SEATED_CAPTURED_GATE_CLOSED_RETRACTED.step",
+      "source_core_geometry_matches_archive": true,
+      "full_file_byte_equal": false,
+      "reimported_solids": 18
+    },
+    {
+      "STEP": "07_OPEN_SEATED_CAPTURED_MANUAL_GATE_OPEN_UNPOWERED.step",
+      "source_core_geometry_matches_archive": true,
+      "full_file_byte_equal": false,
+      "reimported_solids": 18
+    },
+    {
+      "STEP": "08_OPEN_EARLY_6p61_FALSE_CAPTURE_BOTH_OPEN_GHOST.step",
+      "source_core_geometry_matches_archive": true,
+      "full_file_byte_equal": false,
+      "reimported_solids": 18
+    },
+    {
+      "STEP": "09_OPEN_UNDOCKED_PARKED_PAWL_FORCED_GATE_0p2_GHOST.step",
+      "source_core_geometry_matches_archive": true,
+      "full_file_byte_equal": false,
+      "reimported_solids": 18
+    },
+    {
+      "STEP": "10_OPEN_GATE_CLOSED_CARRIER_ALREADY_EXTENDED_GHOST.step",
+      "source_core_geometry_matches_archive": true,
+      "full_file_byte_equal": false,
+      "reimported_solids": 18
+    }
+  ],
+  "STEP_full_SHA_diff_cause": "Exporter regenerated timestamps and visual styling order; core geometry entity prefixes matched after normalizing timestamp; physical CAD not qualified."
+}

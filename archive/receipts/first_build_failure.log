@@ -1,0 +1,46 @@
+{"phase": "scan_complete", "original_count": 728, "distinct_original_hashes": 678, "original_bytes": 3552594718, "distinct_original_bytes": 3324705918, "excluded_count": 0}
+{"phase": "archive", "completed": 1, "total": 728}
+{"phase": "archive", "completed": 26, "total": 728}
+{"phase": "archive", "completed": 51, "total": 728}
+{"phase": "archive", "completed": 76, "total": 728}
+{"phase": "archive", "completed": 101, "total": 728}
+{"phase": "archive", "completed": 126, "total": 728}
+{"phase": "archive", "completed": 151, "total": 728}
+{"phase": "archive", "completed": 176, "total": 728}
+{"phase": "archive", "completed": 201, "total": 728}
+{"phase": "archive", "completed": 226, "total": 728}
+{"phase": "archive", "completed": 251, "total": 728}
+{"phase": "archive", "completed": 276, "total": 728}
+{"phase": "archive", "completed": 301, "total": 728}
+{"phase": "archive", "completed": 326, "total": 728}
+{"phase": "archive", "completed": 351, "total": 728}
+{"phase": "archive", "completed": 376, "total": 728}
+{"phase": "archive", "completed": 401, "total": 728}
+{"phase": "archive", "completed": 426, "total": 728}
+{"phase": "archive", "completed": 451, "total": 728}
+{"phase": "archive", "completed": 476, "total": 728}
+{"phase": "archive", "completed": 501, "total": 728}
+{"phase": "archive", "completed": 526, "total": 728}
+Traceback (most recent call last):
+  File "/workspace/scratch/522038b915ed/archive_audit/archive_exact.py", line 274, in <module>
+    main()
+  File "/workspace/scratch/522038b915ed/archive_audit/archive_exact.py", line 258, in main
+    record["segments"] = archiver.segment(path)
+                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/522038b915ed/archive_audit/archive_exact.py", line 180, in segment
+    result.extend(self.segment(path, start+offset, info.compress_size, depth+1))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/522038b915ed/archive_audit/archive_exact.py", line 167, in segment
+    with Window(path, start, size) as view, zipfile.ZipFile(view) as z:
+                                            ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipfile/__init__.py", line 1371, in __init__
+    self._RealGetContents()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipfile/__init__.py", line 1434, in _RealGetContents
+    endrec = _EndRecData(fp)
+             ^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipfile/__init__.py", line 312, in _EndRecData
+    fpin.seek(-sizeEndCentDir, 2)
+  File "/workspace/scratch/522038b915ed/archive_audit/archive_exact.py", line 52, in seek
+    if new < 0: raise ValueError("Negative archive view position")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Negative archive view position

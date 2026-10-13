@@ -1,0 +1,320 @@
+{
+  "revision": "R12.0 dual independent physical X-dog + Y-to-X cam concept",
+  "R11_source": "real R11 ZIP baseline, unchanged OLED neutral length source",
+  "S_mm": 79.75,
+  "both_cabins_H_mm": 94.25,
+  "OLED_length_mm": 190.43628179866693,
+  "screen_length_max_drift_mm": 5.684341886080802e-14,
+  "R11_31_tests_retain_baseline": true,
+  "new_2D_formula_samples": 2001,
+  "R12_proposed_parts": "per side: stationary gate, captive X-dog, diagonal Y-cam, cam-pin, return springs, B striker and stop; independently locked both sides",
+  "cam_slot_nominal_extra_x_width_mm": 0.04400000000000001,
+  "cam_slot_assumed_worst_x_margin_mm": -0.20600000000000002,
+  "cam_ratio": 1.05,
+  "cam_nominal_slope_angle_degrees": 46.39718102729638,
+  "stop_contact_error_assumed_max_each_mm": 0.2,
+  "corner_cases": [
+    {
+      "offset_L_mm": -0.2,
+      "offset_R_mm": -0.2,
+      "terminal_u_L_mm": 0.6499999999999999,
+      "terminal_u_R_mm": 0.6499999999999999,
+      "both_physically_retracted_at_terminal": true,
+      "left_worst_clearance_mm": 0.03249999999999598,
+      "right_worst_clearance_mm": 0.03249999999999598
+    },
+    {
+      "offset_L_mm": -0.2,
+      "offset_R_mm": 0.2,
+      "terminal_u_L_mm": 0.6499999999999999,
+      "terminal_u_R_mm": 0.85,
+      "both_physically_retracted_at_terminal": true,
+      "left_worst_clearance_mm": 0.03249999999999598,
+      "right_worst_clearance_mm": 0.24249999999999683
+    },
+    {
+      "offset_L_mm": 0.2,
+      "offset_R_mm": -0.2,
+      "terminal_u_L_mm": 0.85,
+      "terminal_u_R_mm": 0.6499999999999999,
+      "both_physically_retracted_at_terminal": true,
+      "left_worst_clearance_mm": 0.24249999999999683,
+      "right_worst_clearance_mm": 0.03249999999999598
+    },
+    {
+      "offset_L_mm": 0.2,
+      "offset_R_mm": 0.2,
+      "terminal_u_L_mm": 0.85,
+      "terminal_u_R_mm": 0.85,
+      "both_physically_retracted_at_terminal": true,
+      "left_worst_clearance_mm": 0.24249999999999683,
+      "right_worst_clearance_mm": 0.24249999999999683
+    }
+  ],
+  "possible_early_Z_counterexample": {
+    "dog_retraction_threshold_u_mm": 0.33333333333333465,
+    "earliest_both_dogs_retracted_s_mm": 79.03333333333333,
+    "J_full_window_first_s_mm": 79.325,
+    "first_nominal_J_and_dog_possible_s_mm": 79.325,
+    "premature_window_mm": 0.42499999999999716
+  },
+  "two_plunger_indistinguishability_proof": {
+    "terminal_late_errors": {
+      "L": 0.6499999999999999,
+      "R": 0.6499999999999999
+    },
+    "premature_early_errors": {
+      "L": 0.6499999999999944,
+      "R": 0.6499999999999944
+    },
+    "both_sensor_vectors_identical": true,
+    "premature_s_mm": 79.35,
+    "true_hardstop_not_yet_seated_mm": 0.4,
+    "conclusion": "no two-plunger-only mechanical AND can distinguish these two states without an independent physical stop-seating datum"
+  },
+  "all_offsets_scan": [
+    {
+      "error_L_mm": -0.2,
+      "error_R_mm": -0.2,
+      "earliest_uninterdicted_J_s_mm": 79.470875
+    },
+    {
+      "error_L_mm": -0.2,
+      "error_R_mm": 0,
+      "earliest_uninterdicted_J_s_mm": 79.470875
+    },
+    {
+      "error_L_mm": -0.2,
+      "error_R_mm": 0.2,
+      "earliest_uninterdicted_J_s_mm": 79.470875
+    },
+    {
+      "error_L_mm": 0,
+      "error_R_mm": -0.2,
+      "earliest_uninterdicted_J_s_mm": 79.470875
+    },
+    {
+      "error_L_mm": 0,
+      "error_R_mm": 0,
+      "earliest_uninterdicted_J_s_mm": 79.35125
+    },
+    {
+      "error_L_mm": 0,
+      "error_R_mm": 0.2,
+      "earliest_uninterdicted_J_s_mm": 79.35125
+    },
+    {
+      "error_L_mm": 0.2,
+      "error_R_mm": -0.2,
+      "earliest_uninterdicted_J_s_mm": 79.470875
+    },
+    {
+      "error_L_mm": 0.2,
+      "error_R_mm": 0,
+      "earliest_uninterdicted_J_s_mm": 79.35125
+    },
+    {
+      "error_L_mm": 0.2,
+      "error_R_mm": 0.2,
+      "earliest_uninterdicted_J_s_mm": 79.35125
+    }
+  ],
+  "nominal_3D_CAD_pass_to_be_written_separately": null,
+  "spring_load_or_fatigue_proven": false,
+  "actual_cam_contact_force_proven": false,
+  "full_rail_structural_fea": false,
+  "active_OLED_and_battery_unverified": true,
+  "released_for_manufacture": false,
+  "decision": "REJECT: early Z release, stack-up slot clearance, true hard-stop seated permission and real load path unsolved",
+  "assumed_specs_mm": {
+    "dog_x_lo": 35.74,
+    "dog_x_hi": 36.13,
+    "dog_y_lo": 86.95,
+    "dog_y_hi": 87.85,
+    "dog_z_lo": 0.08,
+    "dog_z_hi": 0.36,
+    "pin_y": 87.4,
+    "cam_pin_x0": 36.1,
+    "cam_pin_y": 89.0,
+    "cam_ratio": 1.05,
+    "cam_slot_halfwidth_x": 0.16,
+    "cam_pin_radius": 0.08,
+    "stroke_mm": 0.85,
+    "start_contact_at_mm_before_terminal": 0.85,
+    "seated_release_fraction": 0.94,
+    "stop_error_each_mm": 0.1,
+    "nose_error_each_mm": 0.1,
+    "part_center_x_tol": 0.1,
+    "part_halfwidth_x_tol": 0.05,
+    "min_safe_clearance_x_mm": 0.15,
+    "minimum_both_side_seated_mm": 0.0,
+    "return_force_target_N": 0.3,
+    "closed_to_open_actuation_s_mm": 0.85,
+    "B_pin_x_lo": 35.78,
+    "B_pin_x_hi": 36.22,
+    "B_pin_half_y": 0.2,
+    "slot_half_y": 0.625,
+    "source_closed_body_height_mm": 94.25
+  },
+  "physical_cad_scenes": [
+    {
+      "name": "R12_Z_attempt_both_open_SUBASSEMBLY.step",
+      "sha256": "8007df354da5b86180ae9f86968c40a3475dc8a1b6029b32bcf25c794c7b2627",
+      "reimport_solids": 28,
+      "all_valid": true
+    },
+    {
+      "name": "R12_at_stop_BOTH_RELEASED_SUBASSEMBLY.step",
+      "sha256": "a20be04237a090e5bab143a064a532f15672f70ab5f7a182e76735f75e903ad8",
+      "reimport_solids": 28,
+      "all_valid": true
+    },
+    {
+      "name": "R12_at_stop_LEFT_FAILED_SUBASSEMBLY.step",
+      "sha256": "bbce91eda675ac945e7bfded53088b967c9023ce8cdbed0945eb17a769ed7d24",
+      "reimport_solids": 28,
+      "all_valid": true
+    },
+    {
+      "name": "R12_early_Z_counterexample_SUBASSEMBLY.step",
+      "sha256": "1b5a7cf75b51b3316775bace633533e8d42314ed93fdba4d300280b238a5e137",
+      "reimport_solids": 28,
+      "all_valid": true
+    },
+    {
+      "name": "R12_near_stop_LOCKED_SUBASSEMBLY.step",
+      "sha256": "e5b86c674743cf090117b58c51bf281b2e777162ebb7b41b15b2b65d9fdf0266",
+      "reimport_solids": 28,
+      "all_valid": true
+    },
+    {
+      "name": "R12_reverse_rearmed_SUBASSEMBLY.step",
+      "sha256": "819fb5e476178967f98f553c0295441d58c3f2afbab4eb6ad0fbfc46d6a9cff1",
+      "reimport_solids": 28,
+      "all_valid": true
+    },
+    {
+      "name": "R12_slide_75_SUBASSEMBLY.step",
+      "sha256": "f4344e7e234f09162233b2da79e2b22263d2f054269af2541cffaf690b81e376",
+      "reimport_solids": 28,
+      "all_valid": true
+    },
+    {
+      "name": "R12_stowed_SUBASSEMBLY.step",
+      "sha256": "0b4d2bae1120dc81de04e441dbaecc066b3dc24869c1b9e71474ced6e3399bd6",
+      "reimport_solids": 28,
+      "all_valid": true
+    }
+  ],
+  "local_sweep": {
+    "n_actuation_samples_per_side": 25,
+    "max_receiver_cam_overlap": 0.0,
+    "max_receiver_dog_overlap": 0.0,
+    "max_cam_follower_volume_overlap": 0.0,
+    "max_receiver_striker_overlap": 0.0,
+    "max_dog_guide_overlap": 0.0,
+    "failed_states": [],
+    "docking_blocked_at_nominal_rest": true,
+    "early_unsafe_case": {
+      "slide_s_mm": 79.35,
+      "plunger_mm": 0.6499999999999944,
+      "receiver_to_pin_volume_mm3": 0.0,
+      "dog_to_pin_volume_mm3": 0.0,
+      "docking_fraction": 0.2,
+      "early_docking_unobstructed_local": true
+    },
+    "rest_Bpin_dog_contact_mm3": 0.03360000000000061,
+    "released_Bpin_dog_contact_mm3": 0.0
+  },
+  "3D_selected_adversarial_cases": {
+    "rest_right_dog_blocks_true": true,
+    "both_retracted_at_stop_allow_Z_local": true,
+    "EARLY_RELEASE_counterexample_physically_open": true,
+    "early_s_mm": 79.35,
+    "early_stop_remaining_mm": 0.4000000000000057,
+    "right_and_left_plunger_from_plus0p2_mm": 0.6499999999999944
+  },
+  "real_pair_side_envelope": {
+    "outer_half_w_mm": 36.995,
+    "OLED_half_width_mm": 33.660459984552816,
+    "side_deep_cavity_x_min_mm": 34.1,
+    "side_deep_cavity_x_max_mm": 36.68,
+    "OLED_to_cavity_margin_mm": 0.4395400154471858,
+    "cavity_to_outer_surface_mm": 0.3149999999999977,
+    "A_cell_to_cavity_margin_mm": 1.1000000000000014,
+    "not_reliable_without_OEM_housing_cross_sections": true
+  },
+  "spring_screening_ASSUMPTION": {
+    "G_N_per_mm2_ASSUMED": 77000.0,
+    "wire_diameter_mm": 0.07,
+    "mean_coil_diameter_mm": 0.38,
+    "active_coils_nominal": 5,
+    "uncalibrated_linear_k_N_per_mm": 0.8423102857559412,
+    "nominal_dog_return_force_at_end_N": 0.7517619300371775,
+    "nominal_Y_return_force_at_end_N": 0.71596374289255,
+    "ideal_cam_drive_force_at_end_N_NO_FRICTION": 1.5053137694315866,
+    "spring_stack_height_mm": 0.35000000000000003,
+    "dog_spring_mounted_length_at_end_mm": 0.46750000000000114,
+    "dog_spring_extra_coil_clearance_mm": 0.1175000000000011,
+    "dog_spring_clearance_minus_two_0p05mm_axial_tols": 0.017500000000001098,
+    "cam_spring_mounted_length_at_end_mm": 1.1100000000000136,
+    "ground_ends_preload_buckling_stress_fatigue_ALL_NOT_QUALIFIED": true
+  },
+  "load_section_proxy_ASSUMPTION": {
+    "dog_nose_width_x_mm": 0.39000000000000057,
+    "dog_nose_thickness_z_mm": 0.27999999999999997,
+    "nominal_shear_A_mm2": 0.10920000000000014,
+    "screening_not_actual_failure_stress": [
+      {
+        "single_dog_load_N": 5,
+        "single_dog_shear_nominal_MPa": 45.787545787545724,
+        "two_dogs_share_ideal_MPa_each": 22.893772893772862
+      },
+      {
+        "single_dog_load_N": 10,
+        "single_dog_shear_nominal_MPa": 91.57509157509145,
+        "two_dogs_share_ideal_MPa_each": 45.787545787545724
+      },
+      {
+        "single_dog_load_N": 15,
+        "single_dog_shear_nominal_MPa": 137.36263736263717,
+        "two_dogs_share_ideal_MPa_each": 68.68131868131859
+      },
+      {
+        "single_dog_load_N": 20,
+        "single_dog_shear_nominal_MPa": 183.1501831501829,
+        "two_dogs_share_ideal_MPa_each": 91.57509157509145
+      },
+      {
+        "single_dog_load_N": 30,
+        "single_dog_shear_nominal_MPa": 274.72527472527435,
+        "two_dogs_share_ideal_MPa_each": 137.36263736263717
+      },
+      {
+        "single_dog_load_N": 50,
+        "single_dog_shear_nominal_MPa": 457.87545787545724,
+        "two_dogs_share_ideal_MPa_each": 228.93772893772862
+      },
+      {
+        "single_dog_load_N": 75,
+        "single_dog_shear_nominal_MPa": 686.8131868131859,
+        "two_dogs_share_ideal_MPa_each": 343.40659340659295
+      },
+      {
+        "single_dog_load_N": 100,
+        "single_dog_shear_nominal_MPa": 915.7509157509145,
+        "two_dogs_share_ideal_MPa_each": 457.87545787545724
+      }
+    ],
+    "pin_contact_bearing_and_receiver_web_FEA_MISSING": true
+  },
+  "manufacturing_release": false,
+  "gate_fail_reasons": [
+    "real CAD at 0.4mm before terminal permits Z escape under opposed stop/nose offsets",
+    "cam slot nominal room positive but worst independent feature tolerances negative",
+    "thin 0.315mm outside shell boundary at deepest side pocket; strength not verified",
+    "captive elements have actual 3D lip geometry but springs seats/retainers unqualified",
+    "one dog load path could exceed untested material stress under abuse load",
+    "no actual OLED material fatigue, full OEM PCB/cell/FPC fit, dust and drop validation"
+  ]
+}

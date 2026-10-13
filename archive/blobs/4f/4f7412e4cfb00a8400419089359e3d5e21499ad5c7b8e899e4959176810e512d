@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>RAZR SLIDE R4 | 运动学对照</title>
+<style>body{background:#081320;color:#ecf5ff;font:16px system-ui,"Noto Sans CJK SC",sans-serif;margin:0}header{padding:21px 28px;border-bottom:1px solid #2c4055}h1{font-size:24px;margin:0 0 8px}.muted{color:#a6bbd1;font-size:13px}.wrap{display:flex;gap:24px;margin:20px auto;max-width:1350px;padding:0 24px}.ctl{width:310px;padding:18px;background:#10243a;border-radius:14px}.art{flex:1;padding:20px;background:#10243a;border-radius:14px}label{display:block;margin:12px 0 5px}input[type=range]{width:100%}select{width:100%;padding:9px;background:#203951;color:white;border:1px solid #49617a;border-radius:9px}.v{font:23px ui-monospace,monospace;color:#52d8f3;margin:7px 0}.warn{background:#3f2a31;color:#ffb1aa;border-radius:8px;padding:10px;margin-top:16px}svg{background:#09192a;border-radius:12px;width:100%;height:auto}small{line-height:1.8;color:#c1d2e2}b{color:#fff}</style></head>
+<body><header><h1>R4 · 双舱纵向上滑 | 同源屏幕运动路径</h1><div class="muted">一块主屏，两个完整机身包络；仅名义二维运动模型。拖动滑块检查收纳端、展开端及中间状态，不能视为量产CAD。</div></header><div class="wrap"><div class="ctl">
+<label>储屏路径</label><select id="route"><option value="moving_top_U">优先 B：上滑模块储屏 / 顶部U</option><option value="fixed_bottom_U">对照 A：固定模块储屏 / 底部U</option></select>
+<label>行程 / 滑动状态</label><input id="travel" type="range" min="0" max="1000" value="500" step="1"><div id="p" class="v">50%</div>
+<div id="metrics"></div><div class="warn">名义屏幕路径守恒不代表实体可装配。支持横梁、相机鼻部、跨舱排线及电池4700mAh实物仍未验证。</div></div><div class="art">
+<svg viewBox="0 0 900 535"><text x="38" y="37" fill="#a9c6da" font-size="16">侧面剖视 · X为厚度方向，Y为上滑方向</text>
+<g id="side" transform="translate(202,480) scale(2.30,-2.30)">
+<rect id="A" fill="#6f8da0" fill-opacity=".60" stroke="#b5cde3" stroke-width=".55"/>
+<rect id="B" fill="#3e95d7" fill-opacity=".58" stroke="#9bd5ff" stroke-width=".55"/>
+<rect id="pocket" fill="#ed8173" fill-opacity=".36" stroke="#ed8173" stroke-dasharray="1.2 1" stroke-width=".4"/>
+<path id="screen" fill="none" stroke="#32dafa" stroke-width="1.25" stroke-linecap="round"/>
+<circle id="tail" r="1.1" fill="#ffc078"/>
+<line id="oldend" x1="-13" x2="11" stroke="#ffb56e" stroke-dasharray="1 1" stroke-width=".4" />
+</g>
+<text x="320" y="84" fill="#32dafa" font-size="15">青色：OLED中性线 · 橙点：移动尾端</text>
+<text x="320" y="111" fill="#d5e6f7" font-size="13">灰色 A 固定功能舱 / 蓝色 B 后层上滑功能舱</text>
+<text x="320" y="136" fill="#d5e6f7" font-size="13">顶部红区表示需挖出屏幕折返导向口</text>
+<text x="320" y="189" fill="#ffb27a" font-size="15">注意：未画出实物横梁、镜头和PCB，不代表不碰撞。</text>
+<text x="320" y="232" fill="#d5e6f7" font-size="13">实际展开后两舱在厚度方向仍错层。</text>
+<text x="320" y="253" fill="#d5e6f7" font-size="13">要和RAZR一样薄，必须增加末端就位机构。</text>
+<text x="320" y="315" fill="#65e3b7" font-size="16" id="lengthStatus">长度守恒</text>
+<text x="320" y="353" fill="#a9c6da" font-size="12">单U/全程无二次卷绕，机构尺寸为研发假设。</text>
+</svg></div></div>
+<script>
+const P={"common": {"T": 7.19, "G": 2.7, "XF": 7.85, "XR": -0.95, "R": 4.3999999999999995, "width": 73.99, "O": 171.48}, "routes": {"fixed_bottom_U": {"H": 93.0, "S": 78.47999999999999, "label": "固定模块储屏 · 底部U", "kind": "fixed_bottom_U", "top_g": 1, "bot_g": 1, "grip": 5, "A_top_margin": 2}, "moving_top_U": {"H": 92.5, "S": 78.97999999999999, "label": "上滑模块储屏 · 顶部U", "kind": "moving_top_U", "top_g": 1, "bot_g": 1, "grip": 5, "A_top_margin": 2}}};const route=document.getElementById('route'),travel=document.getElementById('travel');
+const $=x=>document.getElementById(x);function update(){let m=P.routes[route.value],h=m.H,s=m.S*(+travel.value/1000),R=P.common.R,T=P.common.T,G=P.common.G,xf=P.common.XF,xr=P.common.XR,xc=(xf+xr)/2,yc,tail,lf,lb,pts=[];
+if(route.value==='moving_top_U'){yc=h+s-R-1;tail=1+2*s;lf=yc-1;lb=yc-tail;pts.push([xf,1],[xf,yc]);for(let i=0;i<=110;i++){let a=i*Math.PI/110;pts.push([xc+R*Math.cos(a),yc+R*Math.sin(a)])}pts.push([xr,tail]);}
+else{yc=R+1;tail=h-2-s;lf=h-2+s-yc;lb=tail-yc;pts.push([xf,h-2+s],[xf,yc]);for(let i=0;i<=110;i++){let a=i*Math.PI/110;pts.push([xc+R*Math.cos(a),yc-R*Math.sin(a)])}pts.push([xr,tail]);}
+$('A').setAttribute('x',0);$('A').setAttribute('y',0);$('A').setAttribute('width',T);$('A').setAttribute('height',h);
+$('B').setAttribute('x',-(T+G));$('B').setAttribute('y',s);$('B').setAttribute('width',T);$('B').setAttribute('height',h);
+$('pocket').setAttribute('x',0);$('pocket').setAttribute('y',route.value==='moving_top_U'?h-R-2:0);$('pocket').setAttribute('width',T);$('pocket').setAttribute('height',R+2);
+$('screen').setAttribute('d',pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(4)+' '+p[1].toFixed(4)).join(' '));$('tail').setAttribute('cx',xr);$('tail').setAttribute('cy',tail);
+$('oldend').setAttribute('y1',h);$('oldend').setAttribute('y2',h);
+$('p').textContent=(s/m.S*100).toFixed(1)+'%  ·  '+s.toFixed(2)+'mm';let total=lf+lb+Math.PI*R;
+$('metrics').innerHTML='<small>收纳高度 <b>'+h.toFixed(2)+'</b> mm<br>当前整机高度 <b>'+(h+s).toFixed(2)+'</b> mm<br>正面平直OLED <b>'+lf.toFixed(2)+'</b> mm<br>隐藏平直OLED <b>'+lb.toFixed(2)+'</b> mm<br>尾端纵向坐标 <b>'+tail.toFixed(2)+'</b> mm<br>中性线总长 <b>'+total.toFixed(6)+'</b> mm<br>尾端夹持富余 <b>'+(lb-5).toFixed(2)+'</b> mm<br>机身Y向重叠 <b>'+(h-s).toFixed(2)+'</b> mm</small>';
+$('lengthStatus').textContent='总长恒定 '+total.toFixed(6)+'mm（解析）';
+}route.addEventListener('change',update);travel.addEventListener('input',update);update();
+</script></body></html>

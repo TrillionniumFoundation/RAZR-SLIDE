@@ -1,0 +1,39 @@
+{
+  "revision": "R39 independent OCC Boolean anomaly audit",
+  "occt_conservative_pipe_volume_intersection_unreliable_if_zero_or_negative": true,
+  "physically_valid_negative_overlap_volume_exists": false,
+  "centerline_inside_reference_overrides_negative_or_zero_boolean": false,
+  "flags": [
+    {
+      "family": "inner_compact_120",
+      "pose": "SEATED",
+      "problem": {
+        "type": "zero_or_negative_intersection_but_centerline_inside",
+        "shape": "A_native_chassis",
+        "sampled_inside_points": 54,
+        "raw_volume_mm3": 0.0,
+        "centerline_witness_xyz_mm": [
+          14.770968,
+          79.532312,
+          5.4
+        ],
+        "small_ball_radius_mm": 0.15,
+        "small_ball_vs_reference_volume_mm3": 0.007068583,
+        "small_ball_vs_pipe_volume_mm3": 0.007068583,
+        "local_sphere_witness_both_positive": true
+      }
+    },
+    {
+      "family": "outer_radius_210",
+      "pose": "SEATED",
+      "problem": {
+        "type": "negative_boolean_volume_not_physical",
+        "shape": "B_R38_provisional_chassis",
+        "raw_volume_mm3": -0.72503369
+      }
+    }
+  ],
+  "flag_count": 2,
+  "note": "Only positive local solid witnesses and centerline-inside classification are used for strong geometry rejection; zero swept-tube overlap is NOT evidence of no collision.",
+  "manufacturing_go": false
+}

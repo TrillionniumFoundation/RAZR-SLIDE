@@ -1,29 +1,38 @@
 # RAZR SLIDE
 
-Private engineering research archive for an equal-sized dual-compartment sliding phone.
+Private engineering research repository. **`candidate_go=false`; `manufacturing_go=false`.**
 
-## Frozen product constraints
+## Product constraints
 
-- A and B have the same finished exterior dimensions.
-- One approximately 7-inch flexible OLED; no independent rear display.
-- B moves upward 79.75 mm, then seats normally by 8.20 mm at the endpoint.
-- A has priority for the larger battery. 4700 mAh remains a target, not a verified capacity.
+Equal finished A/B dimensions; one approximately 7-inch flexible OLED; no independent rear display; B travels upward 79.75 mm, then seats normally by 8.20 mm; A has priority for the larger battery. 4700 mAh is an unverified target.
 
-## Qualification status
+## Selected repair branch
 
-**`candidate_go=false`; `manufacturing_go=false`.** Research tests, readable STEP exports, or mathematical witnesses do not establish physical mechanical, electrical, USB, FPC or OLED qualification.
+**R50_20261011 is the integration and rejection-validation base**, original archive SHA256 `86f226f9bce3a3f0659737327c7cc32415eed3b9be3f96f35a746ac32844dfd6`. Its seven routes remain rejected. Selection follows whole-inventory review rather than revision numbering or isolated zero-collision results.
 
-## Evidence branches
+R44_FPC_20261013 is a separate, unterminated rear-loop research input. R79 is a separate conditional scalar mathematics branch. Neither establishes an assembled continuous electrical path.
 
-- Current CAD research: R44 FPC, continuing R39 through R40–R43. R44 has floating endpoints and unresolved real termination; discrete collision screening is not continuous-motion qualification.
-- Parallel mathematical research: R79. Its conditional scalar motion witness is not CAD geometry or a physical actuator proof.
-- Preserve every prior failed witness and baseline. Same revision numbers with different dates or hashes are distinct branches.
+Read the branch comparisons and current review in `engineering/`; do not interchange same-numbered packages from different dates/hashes.
 
-## Consolidation
+## Original records
 
-The 2026-10-13 intake inventories the project records, imports reproducible research sources and evidence, and independently reviews CAD, BM28 static termination, mechanical safety and separated power/signal/USB paths. Exact-byte archive identity and reproducibility instructions accompany the completed import.
+- `archive/`: reversible exact-byte originals, identities, independent verification, package lineage, historical failures and restoration tool.
+- `docs/records/`: 157 directly readable historical Markdown documents.
+- `docs/razr-slide-library-inventory.json`: project records and historical visual candidates.
+- `baselines/`: frozen, selected source/evidence views. Nested original archives are restored from `archive/` when a historical reproduction script needs them.
+- `engineering/`: new independent CAD, BM28 static termination, separated interfaces and mechanical/power safety reviews.
 
-Raw third-party vendor CAD is excluded where its supplied Readme restricts redistribution. Record official sources and hashes; obtain the required rights before adding those bytes.
+```sh
+python3 archive/restore.py --verify
+python3 archive/restore.py --restore RAZR_SLIDE_R50_verified_negative_gate_20261011.zip --destination recovered
+```
 
-No manufacturing release, physical assembly or electrical qualification is claimed.
+728 originals (3,552,594,718 bytes) are preserved, including superseded visual concepts and two mismatching historical SHA sidecars. Historical images are illustrative records, not current geometry or qualifications.
 
+Raw vendor CAD remains on its authorized source machine where the supplied Readme restricts redistribution. Its provenance, unchanged hashes, exact dimensions and our original reservation-envelope results are recorded; those models are not included here.
+
+## Engineering limits
+
+CAD and software checks can reject a proposal but do not supply actual FPC stackup/fatigue, OEM keep-out permission, BM28 PCB/clamp design, continuous USB SI, battery/BMS short/backfeed/isolation tests, mechanical load/jam/retraction tests, or OLED qualification. STEP exports labelled GHOST are research-only.
+
+No physical manufacturing, powered assembly or product qualification is authorized by this repository.

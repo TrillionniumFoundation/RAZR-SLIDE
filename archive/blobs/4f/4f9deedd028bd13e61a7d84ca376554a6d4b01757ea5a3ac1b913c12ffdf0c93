@@ -1,0 +1,103 @@
+{
+  "revision": "R26 real OCC CAD + adversarial, NOT manufacturing-qualified",
+  "product_constraints": {
+    "A_B_same_external_nominal_mm": [
+      94.25,
+      73.99
+    ],
+    "B_slides_up_mm": 79.75,
+    "B_Z_docking_mm": 8.2,
+    "one_main_OLED_inches_approx": 7,
+    "independent_back_screen": false,
+    "A_prioritized_battery": true,
+    "battery_capacity_mAh_target": 4700,
+    "target_not_measured": true
+  },
+  "inherited_and_new_tests": {
+    "R21": {
+      "tests": 28,
+      "sha256": "57244a07a67b0e26e1ad4f5677e39c3d5c5cc254b949fdcef293a8aba6aace3e",
+      "log": "baseline_R24/verification/R24_R21_baseline.log"
+    },
+    "R22": {
+      "tests": 37,
+      "sha256": "4472f313faad8f2aed9102cbf176f3141d2201a7ca319e22df079c7454cb79eb",
+      "log": "baseline_R24/verification/R24_R22_baseline.log"
+    },
+    "R22_adversarial": {
+      "tests": 11,
+      "sha256": "0dacce4eaa44de58bbfe50a2e3e2c6e9d4c90a8a5dfc414d5c2d3ff867b5cceb",
+      "log": "baseline_R24/verification/R24_R22_adversarial.log"
+    },
+    "R23": {
+      "tests": 22,
+      "sha256": "435f6bc3c1f84e8c812a1395c7602f8172dbe777094bfdb4d434eef6d88fb125",
+      "log": "baseline_R24/verification/R24_R23_baseline.log"
+    },
+    "R24": {
+      "tests": 25,
+      "sha256": "0c3ee742424fcbf6dbac0643bf5365b8bf589628c6f234340a609eccde7cdd7b",
+      "log": "baseline_R24/verification/R24_new_25.log"
+    },
+    "R25": {
+      "tests": 30,
+      "sha256": "a8946fa3a6d78b1fdd4cffab1b9ac3562d0a29af2ab1e863fdf2d753b0ae5c89",
+      "log": "verification/R25_new_30.log"
+    },
+    "R26": {
+      "tests": 38,
+      "sha256": "7ce9b878fecd891546ccd2c025662991e4b60f4e02d5ace48e4797a123c1b523",
+      "log": "verification/R26_new_38.log"
+    }
+  },
+  "total_regression_tests": 191,
+  "every_reported_test_passed": true,
+  "new_OPEN_stage2_OCC_valid": true,
+  "old_R25_uncovered_pawl_A_full_shell_clash_mm3_per_side": 0.02112,
+  "R26_six_B_actual_pockets": 6,
+  "R26_extra_B_cut_mm3": 5.64273274,
+  "ten_reference_poses_checked": 10,
+  "reference_pose_collision_failures": 0,
+  "new_partial_tolerance_case_count": 216,
+  "new_targeted_issues_by_width": [
+    {
+      "hypothetical_xyz_offset_magnitude_mm": 0.02,
+      "parked_pawl_cases": 54,
+      "ear_cases": 54,
+      "A_shell_collision_at_seat": 0,
+      "false_jam_gate_stays_closed": 0,
+      "parked_pawl_fails_to_block_open_attempt_0p2": 0,
+      "gate_jams_fully_retracted_carrier": 0,
+      "gate_fails_arrest_carrier_at_ext_0p15": 0
+    },
+    {
+      "hypothetical_xyz_offset_magnitude_mm": 0.05,
+      "parked_pawl_cases": 54,
+      "ear_cases": 54,
+      "A_shell_collision_at_seat": 0,
+      "false_jam_gate_stays_closed": 0,
+      "parked_pawl_fails_to_block_open_attempt_0p2": 0,
+      "gate_jams_fully_retracted_carrier": 0,
+      "gate_fails_arrest_carrier_at_ext_0p15": 0
+    }
+  ],
+  "old_R25_capture_GDT_still_unqualified": true,
+  "joint_fault_modes": 64,
+  "joint_fault_escape_counterexamples": 36,
+  "first_closed_gate_carrier_sweep_contact_mm": {
+    "L": 0.08,
+    "R": 0.08
+  },
+  "initial_0p8_carrier_extension_not_blocked_in_end_pose": true,
+  "assembled_STEP_count": 10,
+  "parts_each_STEP": 18,
+  "sample_OLED_nominal_X_gap_to_OPEN_gate_mm": 0.12954,
+  "B_native_top_clearance_near_gate_mm": 0.11,
+  "OEM_OLED_suppliers_authorization_missing": true,
+  "real_power_hardware_and_electrical_isolation_missing": true,
+  "physical_spring_guide_endstop_and_mechanical_capture_proof_missing": true,
+  "R24_side_rail_min_web_thickness_prev_model_mm": 0.22,
+  "qualified_battery_mAh": null,
+  "full_OLED_external_package_width_mm": null,
+  "manufacturing_go": false
+}

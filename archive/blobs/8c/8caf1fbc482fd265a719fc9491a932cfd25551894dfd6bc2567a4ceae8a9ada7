@@ -1,0 +1,416 @@
+{
+  "revision": "R20 local concept: gated / fail-retract terminal signal contacts; NOT production",
+  "design": {
+    "te_part": "TE 2199001-1",
+    "te_url": "https://www.te.com/en/product-2199001-1.html",
+    "free_height": 1.2,
+    "hmin": 0.7,
+    "hmax": 1.0,
+    "te_width": 1.05,
+    "te_length": 2.4,
+    "te_signal_current_A": 1.5,
+    "nominal_h": 0.85,
+    "retract": 0.8,
+    "tongue_zmin": -1.5,
+    "tongue_zmax": -1.2,
+    "dog_zmin": -1.55,
+    "dog_zmax": -1.0,
+    "pad_t": 0.12,
+    "pad_width": 2.1,
+    "pad_length": 3.4,
+    "x_pins": [
+      -12.0,
+      -4.0,
+      4.0,
+      12.0
+    ],
+    "dog_closed_left": [
+      -18.1,
+      -16.9
+    ],
+    "tongue_left": [
+      -17.8,
+      -17.2
+    ],
+    "dog_retract_x": 1.4,
+    "local_housing_halfwidth": 23.0,
+    "station_halfwidth": 24.0,
+    "y_station_halfextent": 3.2,
+    "global_preset_error": 0.25,
+    "new_datums_error": 0.04,
+    "carrier_machining_error": 0.02,
+    "pcb_stack_error": 0.03,
+    "contact_solder_error": 0.02,
+    "thermal_wear_increment": 0.05,
+    "contact_pad_xy_error": 0.25,
+    "safe_retracted_tip_clearance_min": 0.15
+  },
+  "R19_source": "/mnt/data/RAZR_SLIDE_R19/r19_dock_model.py",
+  "vendor_source": "https://www.te.com/en/product-2199001-1.html",
+  "tolerance": {
+    "old": {
+      "half_stack_error_mm": 0.25,
+      "working_height_interval_mm": [
+        0.6,
+        1.1
+      ],
+      "min_vendor_margin_mm": -0.1,
+      "passes": false
+    },
+    "preliminary_room_temp": {
+      "half_stack_error_mm": 0.11,
+      "working_height_interval_mm": [
+        0.74,
+        0.96
+      ],
+      "min_vendor_margin_mm": 0.04,
+      "passes": true
+    },
+    "thermal_wear": {
+      "half_stack_error_mm": 0.16,
+      "working_height_interval_mm": [
+        0.69,
+        1.01
+      ],
+      "min_vendor_margin_mm": -0.01,
+      "passes": false
+    },
+    "proposed_error_sources_mm": {
+      "real_locating_faces": 0.04,
+      "carrier_seat": 0.02,
+      "board_pad_stack": 0.03,
+      "solder_contact_seat": 0.02,
+      "additional_aging_thermal": 0.05
+    },
+    "proposed_stack_achieved_in_reality": false,
+    "retracted_free_tip_clearance_nominal_mm": 0.45,
+    "retracted_free_tip_clearance_if_global_error_025_mm": 0.2,
+    "passes_hypothesized_retracted_min": true,
+    "nominal_xy_min_overlap_x_mm": 0.275,
+    "nominal_xy_min_overlap_y_mm": 0.25,
+    "signal_contact_NOT_battery_power_qualified": true
+  },
+  "bend": {
+    "R_assumed_mm": 3.4,
+    "panel_total_thickness_assumed_mm": 0.16,
+    "required_stack_spacing_2R_plus_screen_t_mm": 6.96,
+    "available_mm": 7.3,
+    "ideal_spare_mm": 0.33999999999999986,
+    "required_protective_spare_mm": 0.3,
+    "screen_geometric_pass": true,
+    "supplier_dynamic_R_and_creep_qualified": false
+  },
+  "dock_positions": {
+    "closed": {
+      "B_slide_mm": 0,
+      "B_dock_mm": 0,
+      "A_station_y_mm": 30,
+      "B_local_y_mm": 30
+    },
+    "open": {
+      "B_slide_mm": 79.75,
+      "B_dock_mm": 8.2,
+      "A_station_y_mm": 84.75,
+      "B_local_y_mm": 5.0
+    }
+  },
+  "gates": {
+    "local_right_left_blocking_geometry": false,
+    "real_both_end_seating_cam": false,
+    "real_carriage_actuation": false,
+    "real_carriage_retract_before_unlock": false,
+    "full_two_cabin_3D_noninterference": false,
+    "power_USB_audio_qualified": false,
+    "OLED_dynamic_R3_4_qualified": false,
+    "4700mAh_real_cell_fit_qualified": false,
+    "manufacturing_release": false
+  },
+  "methodology": {
+    "unit_tests": 28,
+    "all_pass": true,
+    "CAD_poses": 9,
+    "body_comparison_stages": 2,
+    "R19_30_tests_rechecked_separately": true
+  },
+  "local_CAD_summary": {
+    "revision": "R20 compact local-dog docking demonstrator, not OEM fit",
+    "rows": [
+      {
+        "tag": "01_SLIDE_RETRACTED_DOGS_CLOSED",
+        "retracted": true,
+        "gate_L_open": false,
+        "gate_R_open": false,
+        "should_block": false,
+        "parts": 15,
+        "collisions": {
+          "L_block_mm3": 0.0,
+          "R_block_mm3": 0.0,
+          "pad_contact_overlap_mm3": 0.0,
+          "dog_L_rib_overlap_mm3": 0.0,
+          "dog_R_rib_overlap_mm3": 0.0
+        },
+        "step_sha256": "cb0a22d4a22f14f688d67118ceda9f569675ee04a96e70a12b712925e77ee92b",
+        "failsafe_outcome": "parked"
+      },
+      {
+        "tag": "02_ONE_SIDE_SEATED_RETRACTED",
+        "retracted": true,
+        "gate_L_open": true,
+        "gate_R_open": false,
+        "should_block": false,
+        "parts": 15,
+        "collisions": {
+          "L_block_mm3": 0.0,
+          "R_block_mm3": 0.0,
+          "pad_contact_overlap_mm3": 0.0,
+          "dog_L_rib_overlap_mm3": 0.0,
+          "dog_R_rib_overlap_mm3": 0.0
+        },
+        "step_sha256": "b0882a21d62ba1ca89769a20262ebb732d21eaae7000efc8f438e2803ee8c57d",
+        "failsafe_outcome": "parked"
+      },
+      {
+        "tag": "03_BOTH_DOGS_OPEN_RETRACTED",
+        "retracted": true,
+        "gate_L_open": true,
+        "gate_R_open": true,
+        "should_block": false,
+        "parts": 15,
+        "collisions": {
+          "L_block_mm3": 0.0,
+          "R_block_mm3": 0.0,
+          "pad_contact_overlap_mm3": 0.0,
+          "dog_L_rib_overlap_mm3": 0.0,
+          "dog_R_rib_overlap_mm3": 0.0
+        },
+        "step_sha256": "9993a996a123481a3645b57226a15986c83587cb2e4fc29a1e5cbca7274207ab",
+        "failsafe_outcome": "parked"
+      },
+      {
+        "tag": "04_BOTH_DOGS_OPEN_ENGAGED",
+        "retracted": false,
+        "gate_L_open": true,
+        "gate_R_open": true,
+        "should_block": false,
+        "parts": 15,
+        "collisions": {
+          "L_block_mm3": 0.0,
+          "R_block_mm3": 0.0,
+          "pad_contact_overlap_mm3": 0.0,
+          "dog_L_rib_overlap_mm3": 0.0,
+          "dog_R_rib_overlap_mm3": 0.0
+        },
+        "step_sha256": "1ada1fddfd37f9dfbd614426c844aa4bbd4e916f14c1c8f3333b0e83af2744f7",
+        "failsafe_outcome": "NO_REAL_SEATING_PROOF"
+      },
+      {
+        "tag": "05_FAULT_FORCE_WITH_LEFT_CLOSED",
+        "retracted": false,
+        "gate_L_open": false,
+        "gate_R_open": true,
+        "should_block": true,
+        "parts": 15,
+        "collisions": {
+          "L_block_mm3": 0.18000000000000047,
+          "R_block_mm3": 0.0,
+          "pad_contact_overlap_mm3": 0.0,
+          "dog_L_rib_overlap_mm3": 0.0,
+          "dog_R_rib_overlap_mm3": 0.0
+        },
+        "step_sha256": "ae50a13ba1a4e04b79431455999f2ceac3b136753cde721e579447ce813948ee",
+        "failsafe_outcome": "blocked_by_lug"
+      },
+      {
+        "tag": "06_FAULT_FORCE_WITH_RIGHT_CLOSED",
+        "retracted": false,
+        "gate_L_open": true,
+        "gate_R_open": false,
+        "should_block": true,
+        "parts": 15,
+        "collisions": {
+          "L_block_mm3": 0.0,
+          "R_block_mm3": 0.18000000000000047,
+          "pad_contact_overlap_mm3": 0.0,
+          "dog_L_rib_overlap_mm3": 0.0,
+          "dog_R_rib_overlap_mm3": 0.0
+        },
+        "step_sha256": "b621192c74facb65082e524cea5693523d1504d376f60cbb354a8c5326e04f61",
+        "failsafe_outcome": "blocked_by_lug"
+      },
+      {
+        "tag": "07_FAULT_FORCE_BOTH_CLOSED",
+        "retracted": false,
+        "gate_L_open": false,
+        "gate_R_open": false,
+        "should_block": true,
+        "parts": 15,
+        "collisions": {
+          "L_block_mm3": 0.18000000000000047,
+          "R_block_mm3": 0.18000000000000047,
+          "pad_contact_overlap_mm3": 0.0,
+          "dog_L_rib_overlap_mm3": 0.0,
+          "dog_R_rib_overlap_mm3": 0.0
+        },
+        "step_sha256": "51ef5929d73720ddea40f93e90dd82dbf1f126025bf86d5ecea68fe0cb14fd10",
+        "failsafe_outcome": "blocked_by_lug"
+      },
+      {
+        "tag": "08_FAULT_FALSE_BOTH_OPEN_EARLY",
+        "retracted": false,
+        "gate_L_open": true,
+        "gate_R_open": true,
+        "should_block": false,
+        "parts": 15,
+        "collisions": {
+          "L_block_mm3": 0.0,
+          "R_block_mm3": 0.0,
+          "pad_contact_overlap_mm3": 0.0,
+          "dog_L_rib_overlap_mm3": 0.0,
+          "dog_R_rib_overlap_mm3": 0.0
+        },
+        "step_sha256": "f7d32877a215446249a174954a927a59939d311135e17478283e90742e9940cd",
+        "failsafe_outcome": "NO_REAL_SEATING_PROOF"
+      },
+      {
+        "tag": "09_REVERSE_AFTER_RETRACT",
+        "retracted": true,
+        "gate_L_open": false,
+        "gate_R_open": false,
+        "should_block": false,
+        "parts": 15,
+        "collisions": {
+          "L_block_mm3": 0.0,
+          "R_block_mm3": 0.0,
+          "pad_contact_overlap_mm3": 0.0,
+          "dog_L_rib_overlap_mm3": 0.0,
+          "dog_R_rib_overlap_mm3": 0.0
+        },
+        "step_sha256": "458234c625ba3268ff59b88aa052fcd67a13c01791234641b00750adad943f21",
+        "failsafe_outcome": "parked"
+      }
+    ],
+    "envelope": {
+      "x_span_mm": 48.0,
+      "y_span_mm": 6.4,
+      "proxy_h_mm": 2.5,
+      "upper_bound_cartridge_envelope_cm3_per_port": 0.7680000000000001,
+      "two_station_envelope_cm3": 1.5360000000000003
+    },
+    "vendor_REAL_STEP_imported": false,
+    "unmodeled": [
+      "dog/cam seating actuation",
+      "elastic force-displacement",
+      "blind-mate alignment / vibration",
+      "side-wall strength and full R17/19 assembly packaging",
+      "current and PCB thermal"
+    ],
+    "unsafe_fault": [
+      "08_FAULT_FALSE_BOTH_OPEN_EARLY has NO geometry blockade; hard-stop actuation unproven"
+    ],
+    "assembly_manufacturing_release": false
+  },
+  "assembly_negative": {
+    "sources": {
+      "R17": "R17/OLED and B display FPC proxy",
+      "R19": "R19 A/B cores and floating island"
+    },
+    "notes": [
+      "Overlap with B core requires carving pockets, weakening load path; it is not permitted automatically.",
+      "This is an adversarial footprint check, not a full Y/Z sweep of the cartridge.",
+      "Spring backs, driving links, TE real STEP and solder PCB stack are not represented."
+    ],
+    "results": [
+      {
+        "stage": "STOW",
+        "main_body_s_mm": 0,
+        "main_body_q_mm": 0,
+        "pad_plane_global_z_mm": -0.15,
+        "center_global_y_mm": 30.0,
+        "crosstalk_intersect_mm3": {
+          "A_FRAME_PROXY": 0.0,
+          "B_CORE_RECESSED_PROXY": 67.311,
+          "B_OPEN_FLOATING_ISLAND_PROXY": 0.0,
+          "OLED_R17_PROXY": 0.0,
+          "LOCAL_B_FPC_R17_PROXY": 0.0
+        },
+        "collisions": [
+          {
+            "cartridge_part": "B_CARRIER_LUG_L",
+            "baseline_part": "B_CORE_RECESSED_PROXY",
+            "volume_mm3": 0.18
+          },
+          {
+            "cartridge_part": "B_DOG_L",
+            "baseline_part": "B_CORE_RECESSED_PROXY",
+            "volume_mm3": 0.858
+          },
+          {
+            "cartridge_part": "B_GUIDE_RIB_L",
+            "baseline_part": "B_CORE_RECESSED_PROXY",
+            "volume_mm3": 31.2
+          },
+          {
+            "cartridge_part": "B_CARRIER_LUG_R",
+            "baseline_part": "B_CORE_RECESSED_PROXY",
+            "volume_mm3": 0.18
+          },
+          {
+            "cartridge_part": "B_DOG_R",
+            "baseline_part": "B_CORE_RECESSED_PROXY",
+            "volume_mm3": 0.858
+          },
+          {
+            "cartridge_part": "B_GUIDE_RIB_R",
+            "baseline_part": "B_CORE_RECESSED_PROXY",
+            "volume_mm3": 31.2
+          },
+          {
+            "cartridge_part": "B_BOTTOM_CARRIER_BACKBONE_PROXY",
+            "baseline_part": "B_CORE_RECESSED_PROXY",
+            "volume_mm3": 2.835
+          }
+        ],
+        "includes_full_OEM_objects": false
+      },
+      {
+        "stage": "OPEN",
+        "main_body_s_mm": 79.75,
+        "main_body_q_mm": 8.2,
+        "pad_plane_global_z_mm": 6.25,
+        "center_global_y_mm": 84.75,
+        "crosstalk_intersect_mm3": {
+          "A_FRAME_PROXY": 0.0,
+          "B_CORE_RECESSED_PROXY": 0.0,
+          "B_OPEN_FLOATING_ISLAND_PROXY": 8.064,
+          "OLED_R17_PROXY": 0.0,
+          "LOCAL_B_FPC_R17_PROXY": 0.0
+        },
+        "collisions": [
+          {
+            "cartridge_part": "B_TE_CONTACT_RECT_PROXY_0",
+            "baseline_part": "B_OPEN_FLOATING_ISLAND_PROXY",
+            "volume_mm3": 2.016
+          },
+          {
+            "cartridge_part": "B_TE_CONTACT_RECT_PROXY_1",
+            "baseline_part": "B_OPEN_FLOATING_ISLAND_PROXY",
+            "volume_mm3": 2.016
+          },
+          {
+            "cartridge_part": "B_TE_CONTACT_RECT_PROXY_2",
+            "baseline_part": "B_OPEN_FLOATING_ISLAND_PROXY",
+            "volume_mm3": 2.016
+          },
+          {
+            "cartridge_part": "B_TE_CONTACT_RECT_PROXY_3",
+            "baseline_part": "B_OPEN_FLOATING_ISLAND_PROXY",
+            "volume_mm3": 2.016
+          }
+        ],
+        "includes_full_OEM_objects": false
+      }
+    ],
+    "manufacturing_release": false
+  },
+  "safety_decision": "REJECT: both-dog false opening; B core contact-housing overlaps; aged tolerance and OLED not approved"
+}

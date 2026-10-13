@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RAZR SLIDE R16 | 双舱机构参数查看器</title>
+<style>body{font:14px/1.5 system-ui,"Noto Sans CJK SC",sans-serif;margin:0;background:#0a1524;color:#e9f3ff}header{padding:22px 5vw;border-bottom:1px solid #33516e}h1{margin:0;font-size:24px}small{color:#9cb6cf}.wrap{max-width:1300px;margin:auto;padding:20px 4vw;display:grid;grid-template-columns:minmax(250px,.8fr) 1fr;gap:16px}.card{background:#12263c;border:1px solid #2b4662;border-radius:12px;padding:18px}h2{font-size:17px;margin:0 0 16px}label{display:flex;justify-content:space-between;margin-top:14px;font-weight:600}input[type=range]{width:100%;accent-color:#4abbe8}.stage{width:100%;height:690px}svg{max-width:100%;background:#0e2032;border-radius:12px}svg text{font-size:10px;fill:#daeaff;font-family:system-ui,sans-serif}.danger{color:#ff7e7e}.good{color:#69e3b9}.hint{padding:12px 0;border-top:1px solid #35506d;margin-top:12px}.horiz{display:flex;gap:10px;align-items:center}.bottom{grid-column:1 / -1}button{background:#244664;border:1px solid #4b6b86;color:white;padding:10px 16px;border-radius:8px;cursor:pointer}@media(max-width:850px){.wrap{display:block}.card{margin-bottom:16px}.stage{height:520px}}</style></head><body>
+<header><h1>R16 · 双功能舱互补端部 <small>研究用动态剖面</small></h1><small>A固定在下、B从后下层向上滑出；R15“两个整长方体末端穿模”的修正候选。不是实际OEM手机CAD。</small></header>
+<div class="wrap"><section class="card"><h2>两阶段运动控制</h2><label>纵向滑动 Y <span id="yst">0.00 mm</span></label><input id="y" type="range" min="0" max="79.75" step="0.05" value="0"><label>末端前后就位 Z <span id="zst">0.00 mm</span></label><input id="z" type="range" min="0" max="8.20" step="0.05" value="0"><label class="horiz" style="justify-content:start"><input id="lock" type="checkbox"> 四枚侧向锁销插入（假设动作）</label><div class="horiz" style="margin-top:15px"><button onclick="preset(0,0,false)">收纳</button><button onclick="preset(79.75,0,false)">纵向到位</button><button onclick="preset(79.75,8.2,true)">齐平锁定</button></div>
+<div class="hint" id="status"></div><p class="danger">OLED当前未纳入实体扫掠：假设R5.2的U形回弯，在7.2mm单舱内仍缺约3.1mm空间；屏幕/FPC长度及寿命未验证。</p><p><small>所有单位为毫米。横向比例已放大，避免7.2mm机身厚度在174mm长度下无法分辨。</small></p></section>
+<section class="card"><h2>同一参数源 · 侧面Y-Z剖视</h2><svg id="side" class="stage" viewBox="0 0 360 600" preserveAspectRatio="xMidYMid meet"></svg></section>
+<section class="card bottom"><h2>正面X-Y投影｜互补端部局部</h2><svg id="front" viewBox="0 0 760 260" style="width:100%;height:260px"></svg><div class="hint"><small>灰：A核心和外侧耳；蓝：B核心和内侧耳；青：A屏下薄桥；橙：四枚试验用横向锁销。当前R16没有把省下的端部空间虚报为可用电池容积。</small></div></section>
+</div><script>
+const p={"H": 94.25, "W": 73.99, "Y": 79.75, "O": 14.5, "T": 7.2, "Z": 8.2, "bridge": 0.35, "activehalf": 33.660459984552816};const $=x=>document.getElementById(x);const y=$('y'),z=$('z'),lock=$('lock');
+function tag(n,a={},txt=''){return `<${n} ${Object.entries(a).map(([k,v])=>`${k}="${v}"`).join(' ')}>${txt}</${n}>`}
+function rect(x,y,w,h,fill,stroke='none',dash=''){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" stroke="${stroke}" ${dash?`stroke-dasharray="${dash}"`:''}/>`}
+function preset(ys,zs,lp){y.value=ys;z.value=zs;lock.checked=lp;draw()}
+function draw(){let s=+y.value,dz=+z.value,k=lock.checked;$('yst').textContent=s.toFixed(2)+' mm';$('zst').textContent=dz.toFixed(2)+' mm';
+let ready=s>=p.Y-.00001, seated=dz>=p.Z-.00001;let status=[];
+if(!ready && dz>0)status.push('纵向尚未到位，却要求前后就位；CAD预期碰撞/夹屏风险');
+if(k && !seated)status.push('前后尚未完全齐平，却要求插销插入；不具备互锁许可');
+if(!status.length)status.push(ready?(seated?'名义几何：齐平；仍需真实锁止与OLED验证':'纵向已到位，允许进行独立Z向就位'):'名义几何：B舱保持在A背后滑动');
+$('status').innerHTML=`<strong class="${(!ready&&dz>0)||(k&&!seated)?'danger':'good'}">${status.join('；')}</strong><br><small>名义主体重叠量：${Math.max(0,p.H-s).toFixed(2)} mm；局部孔销与槽不是实测止挡。</small>`;
+let sx=20,zw=12,sy=t=>580-t*3.14,zx=t=>sx+(t+10)*zw;
+let shtml='';for(let h of [0,40,80,120,174]){shtml+=`<line x1="10" x2="350" y1="${sy(h)}" y2="${sy(h)}" stroke="#34516d" stroke-dasharray="3 5"/>`+tag('text',{x:8,y:sy(h)-3},h)}
+shtml+=rect(zx(0),sy(p.Y),p.T*zw,p.Y*3.14,'#5f7589');
+shtml+=rect(zx(p.T-.8),sy(p.H-p.bridge),.8*zw,(p.O-p.bridge)*3.14,'#41bfb1');
+let zb=-p.Z+dz;
+shtml+=rect(zx(zb),sy(s+p.H),p.T*zw,(p.H-p.O)*3.14,'#327eaf','#80cdff');
+shtml+=rect(zx(zb),sy(s+p.O),p.T*zw,p.O*3.14,'none','#80cdff','6 4');
+shtml+=tag('text',{x:185,y:38},'纵向高度 Y / mm');
+shtml+=tag('text',{x:130,y:597},'深度 Z（放大表示）');
+$('side').innerHTML=shtml;
+let fw=6.7,xf=t=>380+t*fw,yt=t=>235-(t-(p.Y-5))*7.3;let ff='';
+ff+=rect(xf(-p.W/2),yt(p.Y),p.W*fw,(5)*7.3,'#5f7589');
+ff+=rect(xf(-p.W/2),yt(s+p.H),p.W*fw,(p.H-p.O)*7.3,'#327eaf');
+ff+=rect(xf(-33.5),yt(p.H-p.bridge),67*fw,(p.O-p.bridge)*7.3,'#41bfb1');
+for (let side of [-1,1]){let ao=side>0?p.W/2*-0+p.W/2:-p.W/2;
+let a=side>0?[35.6,p.W/2]:[-p.W/2,-35.6];let b=side>0?[34,35.1]:[-35.1,-34];
+ff+=rect(xf(a[0]),yt(p.H-p.bridge),(a[1]-a[0])*fw,(p.O-p.bridge)*7.3,'#5f7589');
+ff+=rect(xf(b[0]),yt(s+p.O),(b[1]-b[0])*fw,p.O*7.3,'#327eaf');
+for(let t of [4,10]){let yv=p.Y+t;ff+=`<line x1="${xf(side>0?34.15:-36.75)}" x2="${xf(side>0?36.75:-34.15)}" y1="${yt(yv)}" y2="${yt(yv)}" stroke="#ffbb54" stroke-width="4" opacity="${k?1:.35}"/>`;}}
+ff+=tag('text',{x:24,y:38},'X：宽度73.99 mm   /   Y：接合区14.50 mm');
+ff+=tag('text',{x:24,y:60},'注意：这里是同源坐标投影，不是镜面前屏照片');
+$('front').innerHTML=ff;
+}
+y.addEventListener('input',draw);z.addEventListener('input',draw);lock.addEventListener('change',draw);draw();
+</script></body></html>

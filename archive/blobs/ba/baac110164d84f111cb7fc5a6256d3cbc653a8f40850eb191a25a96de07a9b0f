@@ -1,0 +1,48 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>R10 – 滑动与双侧机械互锁运动检查</title>
+<style>
+:root{color-scheme:dark;--bg:#08111f;--panel:#111e31;--line:#28405d;--txt:#e1eafa;--muted:#93a7bd;--blue:#4a9ae6;--cyan:#43d4e3;--gold:#f2be70;--red:#f17f69;--green:#65cba3}*{box-sizing:border-box}body{background:var(--bg);color:var(--txt);font-family:system-ui,"Noto Sans CJK SC",sans-serif;margin:0;padding:24px}header{max-width:1280px;margin:0 auto 18px}h1{font-size:23px;margin:0 0 10px}p{color:var(--muted);line-height:1.65}.pill{display:inline-block;border:1px solid var(--line);border-radius:15px;padding:4px 10px;font-size:12px;color:#a9cde8}.layout{max-width:1280px;margin:auto;display:grid;grid-template-columns:1fr 360px;gap:18px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;min-width:0}h2{margin:0 0 15px;font-size:17px}#svg{width:100%;height:640px;display:block}label{display:block;margin:15px 0 8px;font-size:13px;color:#aac2dc}input[type=range]{width:100%;accent-color:#4fb8eb}button{padding:9px 14px;border:1px solid #405c77;background:#1b3652;color:white;border-radius:8px;margin:5px 3px 5px 0;cursor:pointer}button:disabled{opacity:.38;cursor:default}button:hover:not(:disabled){background:#2b5b86}.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}.stat{border:1px solid var(--line);padding:12px;border-radius:9px;background:#132339}.value{font:600 20px ui-monospace,monospace}.hint{font-size:11px;color:var(--muted)}.fail{border-left:3px solid var(--red);padding:8px 12px;background:#2b1e2b;color:#ffc2b5;font-size:12px;line-height:1.6;margin-top:15px}.ok{color:var(--green)}.blocked{color:#f8b2a1}footer{max-width:1280px;margin:16px auto;font-size:12px;color:var(--muted)}@media(max-width:850px){.layout{grid-template-columns:1fr}#svg{height:480px}}
+</style></head><body><header><h1>R10 · 双侧 J 槽锁闩与双轴就位</h1><p>同源参数化运动查看器 · 单块 OLED、等外形双舱、B 舱从下/后层向上滑出。<span class="pill">机构候选 / NOT FOR MANUFACTURE</span></p></header>
+<div class="layout"><section class="panel"><h2>侧视图：纵向滑动＋末端前后就位（尺寸单位 mm）</h2><svg id="svg" viewBox="0 0 680 660"><g id="scene"></g></svg></section><aside class="panel"><h2>运动学控制</h2><label>纵向行程 Y · <span id="sval">0</span> mm</label><input id="s" type="range" min="0" max="79.75" step="0.05" value="0"/><label>机械阶段与反向动作</label><div><button id="end">滑到终点</button><button id="release">释放滑闩</button><button id="dock">前后就位</button><button id="retract">反向缩回</button><button id="rearm">重新闭锁</button></div><div class="stats"><div class="stat"><div class="hint">B 舱前后就位</div><div id="zval" class="value">0.00</div></div><div class="stat"><div class="hint">OLED 路径长度</div><div id="olen" class="value">190.436</div></div><div class="stat"><div class="hint">尾端绝对 Y</div><div id="tail" class="value">1.00</div></div><div class="stat"><div class="hint">滑闩</div><div id="lock" class="value">锁闭</div></div></div><div class="fail">红色风险：画面只校核名义几何。真实解锁弹簧、终点触发机构、止动强度、A舱开槽强度、屏幕/FPC疲劳和电池4700mAh尚未通过。</div><p id="message">沿纵向上滑，直至到达硬终点，然后释放滑闩进行独立前后就位。</p></aside></div><footer>注意：槽销形状、支撑板高度和屏幕U形中性路径取自 R10/R9 同一模型。手动按钮模拟动作条件，不证明实际动力传输和防夹。</footer>
+<script>
+const cfg={"H": 94.25, "S": 79.75, "R": 5.2, "frontZ": 10.0, "rearZ": -0.4, "halfT": 7.19, "gap": 1.31, "topGuideMargin": 1.0, "bottomGuideMargin": 1.0, "AplateBottom": 8.920000000000002, "AplateTop": 9.770000000000001, "BplateBottom": 7.570000000000002, "BplateTop": 8.570000000000002, "BdeckY0": 68.0, "AdeckYEnd": 87.8, "pinLocalY": [3.45, 6.25], "slotCenters": [83.2, 86.0], "halfSlotY": 0.625, "halfPinY": 0.2};
+let s=0,d=0,unlocked=false;
+const els={s:document.querySelector('#s'),sval:document.querySelector('#sval'),zval:document.querySelector('#zval'),olen:document.querySelector('#olen'),tail:document.querySelector('#tail'),lock:document.querySelector('#lock'),scene:document.querySelector('#scene'),message:document.querySelector('#message')};
+function tag(x,y,w,h,fill,stroke='none',opacity=1){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" stroke="${stroke}" opacity="${opacity}" stroke-width="1" rx="1"/>`}
+const sc=3.18,ox=290,oy=614;const X=z=>ox+z*sc,Y=y=>oy-y*sc;
+function rectZ(z0,y0,z1,y1,c,o=.70){return tag(X(z0),Y(y1),sc*(z1-z0),sc*(y1-y0),c,'#b9c9da',o)}
+function line(points,color,width=2.5){return `<path d="M${points.map((p,i)=>(i?'L':'')+X(p[0]).toFixed(1)+' '+Y(p[1]).toFixed(1)).join(' ')}" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round"/>`}
+function state(){const coreZ=-cfg.gap+8.5*d;
+const guideY=cfg.H+s-cfg.R-cfg.topGuideMargin, tailY=cfg.bottomGuideMargin+2*s;
+const skinBot=cfg.AplateBottom,skinTop=cfg.AplateTop;
+const lowTop=cfg.BplateTop,lowBot=cfg.BplateBottom;
+const lift=Math.max(0,Math.min(1.20,8.5*d-7.30));
+let svg='<g opacity=".85">';
+for(let y=0;y<=180;y+=20){svg+=`<line x1="220" x2="368" y1="${Y(y)}" y2="${Y(y)}" stroke="#294258" stroke-dasharray="4 6"/>`;}
+svg+='</g>';
+svg+=rectZ(0,0,cfg.halfT,cfg.H,'#8295a7',.57);
+svg+=rectZ(coreZ-cfg.halfT,s,coreZ,s+cfg.H,'#287cbe',.55);
+svg+=rectZ(skinBot,1,skinTop,87.8,'#ffcb75',.96);
+svg+=rectZ(lowBot+lift,s+8.7,lowTop+lift,s+cfg.H-cfg.R-cfg.topGuideMargin,'#eb9f49',.96);
+const center=(cfg.frontZ+cfg.rearZ)/2;
+const pts=[[cfg.frontZ,cfg.bottomGuideMargin],[cfg.frontZ,guideY]];
+for(let k=0;k<=44;k++){let a=Math.PI*k/44;pts.push([center+cfg.R*Math.cos(a),guideY+cfg.R*Math.sin(a)])}
+pts.push([cfg.rearZ,tailY]);svg+=line(pts,'#43d4e3',3.8);
+for(let j=0;j<2;j++) {let y=cfg.slotCenters[j];svg+=tag(X(coreZ-.25),Y(y+.22),2.6,2.6,'#eb8262')}
+svg+=`<text x="26" y="26" fill="#edf7ff" font-size="15">B → 上滑 ${(s/cfg.S*100).toFixed(1)}% ｜ Z ${(8.5*d).toFixed(2)} mm</text>`;
+svg+=`<text x="26" y="48" fill="${unlocked?'#65cba3':'#f8b5a6'}" font-size="13">滑闩：${unlocked?'已释放':'锁闭'} · 接合深度与OLED导向分离</text>`;
+svg+=`<text x="30" y="630" fill="#a7b9cd" font-size="13">灰色 A固定舱　蓝色 B上滑舱　青色 OLED　黄色/橙色承托板</text>`;
+els.scene.innerHTML=svg;
+els.sval.textContent=s.toFixed(2);els.zval.textContent=(8.5*d).toFixed(2)+' mm';els.tail.textContent=tailY.toFixed(2)+' mm';els.olen.textContent=(cfg.H-cfg.R-cfg.topGuideMargin-cfg.bottomGuideMargin+cfg.H-cfg.R-cfg.topGuideMargin-cfg.bottomGuideMargin+Math.PI*cfg.R).toFixed(3)+' mm';els.lock.textContent=unlocked?'已释放':'锁闭';
+ document.querySelector('#release').disabled=(s<cfg.S-.0001 || d!==0 ||unlocked);
+ document.querySelector('#dock').disabled=(s<cfg.S-.0001 || !unlocked || d===1);
+ document.querySelector('#retract').disabled=(d===0);
+ document.querySelector('#rearm').disabled=(s<cfg.S-.0001 ||d>0||!unlocked);
+ els.s.disabled=(d>0||unlocked);}
+els.s.addEventListener('input',e=>{s=Number(e.target.value);state()});
+document.querySelector('#end').addEventListener('click',()=>{if(d>0||unlocked){els.message.textContent='先完全缩回并重新闭锁，才能回到纵向滑动阶段。';return;}s=cfg.S;els.s.value=s;state()});
+document.querySelector('#release').addEventListener('click',()=>{if(s<cfg.S-.0001||d>0)return;unlocked=true;els.message.textContent='已模拟释放滑闩。真实弹簧和Y终点触发尚未设计/验证。';state()});
+document.querySelector('#dock').addEventListener('click',()=>{if(!unlocked||s<cfg.S-.0001)return;d=1;els.message.textContent='机械概念完全就位：接缝与OLED承托仍待载荷/寿命试验。';state()});
+document.querySelector('#retract').addEventListener('click',()=>{d=0;els.message.textContent='Z已完全缩回；必须重新闭锁后再沿Y回滑。';state()});
+document.querySelector('#rearm').addEventListener('click',()=>{if(d===0&&s>=cfg.S-.0001){unlocked=false;els.message.textContent='滑闩重新闭锁，可沿纵向向下滑回。';state()}});
+state();
+</script></body></html>

@@ -1,0 +1,109 @@
+{
+  "CAD_modify_go": false,
+  "R41_independent_negative_evidence_not_merged_as_geometry_ancestor": true,
+  "R42_alternative_geometry_not_retested_here": true,
+  "R76_lower_pair_witness_matched_by_R77_C1_construction": true,
+  "analytic_certificate": {
+    "analytic_piecewise_conditions_pass": true,
+    "limits": [
+      "No 3D routing",
+      "No connector tangency",
+      "No FPC width/thickness",
+      "No feeder force/acceleration",
+      "No supplier materials",
+      "No tolerance proof",
+      "No OEM CAD clearance"
+    ],
+    "minimality_lower_bound": "The specific (0, s_minus) pair forces k >= (d_stow - U(s_minus))/s_minus",
+    "minimality_upper_construction": "C1 piecewise F attains sup abs(dF/dt) = k under the frozen necessary scalar intervals",
+    "proof_piece_0": "F linear; lower gap F-d concave and nonnegative endpoints; short-arc U convex so tangent below U, material cap 70 before crossing",
+    "proof_piece_1": "F=U from s_minus to s_plus; U>=d and U convex has -k<=U_prime<=k",
+    "proof_piece_2": "F is +k tangent under convex U; F-d concave and positive at endpoints",
+    "proof_piece_3": "Last delta=1 mm is concave quadratic C1 taper; F-d concave and positive at both endpoints; F below tangent below U",
+    "proof_piece_4": "Dock q 0..8.2: constant F; chord decreases and short-arc U decreases; endpoint extrema bracket F"
+  },
+  "candidate_go": false,
+  "decision": "ONLY_SCALAR_NECESSARY_INTERVAL_GLOBAL_BOUND_CLOSED_NOT_PHYSICAL_FPC",
+  "exact_minimal_scalar_max_abs_dfree_dtravel_mm_per_mm_CONDITIONAL": 0.9251629638709197,
+  "example_E_0p05": {
+    "assumed_endpoint_distance_error_E_mm": 0.05,
+    "necessary_k_under_independent_adversarial_errors_mm_per_mm": 0.927698765730195,
+    "nominal_schedule_at_critical_mm": 16.275756320968718,
+    "nominal_schedule_at_stow_mm": 55.80593606418586,
+    "nominal_schedule_critical_upper_violation_mm": 0.058349239220437,
+    "nominal_schedule_stow_violation_mm": 0.05,
+    "not_a_robust_closed_loop_schedule": true,
+    "short_branch_upper_at_critical_if_chord_decreased_E_mm": 16.21740708174828,
+    "stow_chord_if_perturbed_plusE_mm": 55.855936064185855
+  },
+  "external_OEM_FPC_data_not_newly_received_or_checked": true,
+  "hypothetical_FPC_material_length_mm_UNQUALIFIED": 70.0,
+  "hypothetical_min_centerline_radius_mm_UNQUALIFIED": 15.0,
+  "manufacturing_go": false,
+  "material_motion_one_example": {
+    "max_stored_mm": 60.38630037851206,
+    "min_free_mm": 9.613699621487937,
+    "no_dock_reel_motion_in_this_scalar_construction_mm": 0.0,
+    "pay_out_mid_to_predock_mm": 17.743475303667147,
+    "stationary_dock_feasibility_only_scalar": true,
+    "stored_at_predock_mm": 42.64282507484492,
+    "stored_at_stow_mm": 14.194063935814142,
+    "take_up_stow_to_mid_mm": 46.19223644269792,
+    "total_absolute_reel_motion_mm": 63.93571174636506
+  },
+  "model_short_arc_upper_not_sufficient_for_real_3D_routing": true,
+  "new_3D_OCC_FPC_sweeps": 0,
+  "new_OEM_B_shell_CAD_changes": 0,
+  "nominal_schedule_fails_independent_E_perturbation": true,
+  "numerical_crosscheck": {
+    "dock_grid_count": 2401,
+    "first_bad_pose": null,
+    "max_abs_derivative_mm_per_mm": 0.9251629638709197,
+    "max_lower_violation_mm": 0.0,
+    "max_upper_violation_mm": 0.0,
+    "min_lower_margin_mm": 0.0,
+    "min_upper_margin_mm": 0.0,
+    "slide_grid_count": 24001,
+    "test_is_numerical_sanity_not_whole_domain_proof": true
+  },
+  "physical_bidirectional_feeder_or_tension_spring_built": false,
+  "piecewise_parameters": {
+    "crossing_mm": 26.527249869392666,
+    "k_optimal_mm_per_mm": 0.9251629638709197,
+    "nominal_end_transition_length_mm": 1.0,
+    "s_minus_mm": 42.727801789450425,
+    "s_plus_mm": 67.27219821054958,
+    "slide_end_C1_smoothed_free_mm": 27.35717492515508,
+    "slide_end_linear_extension_mm": 27.819756407090537,
+    "smoothed_terminal_margin_above_chord_mm": 0.864440071992032,
+    "smoothed_terminal_margin_below_short_upper_mm": 1.8047868462957233,
+    "stationarity_residual_mm": 1.4210854715202004e-14
+  },
+  "product_dock_mm": 8.2,
+  "product_slide_mm": 79.75,
+  "qualifying_mechanical_power_USB_OLED_fatigue_tests": false,
+  "revision": "R77 exact conditional scalar Lipschitz bound + C1 phase end taper",
+  "source_archives_pinned_not_merged_CAD_parents": {
+    "R41_OCC_SIDE": {
+      "CRC": true,
+      "members": 21,
+      "sha256": "0ce7e712882d1b393790e40874f28836475e6d5b2fe4fdb3293b1fd82223d96f"
+    },
+    "R74": {
+      "CRC": true,
+      "members": 18,
+      "sha256": "47113a1bc97d386108c9963f9f3fa87b254214419d37be2ca108eca69f4c9769"
+    },
+    "R75": {
+      "CRC": true,
+      "members": 32,
+      "sha256": "b992bff4c57554a26a2437e6639ba8966f403005392767915932e23baef97525"
+    },
+    "R76": {
+      "CRC": true,
+      "members": 19,
+      "sha256": "d3205dbabc1c72adfbbac63948b9cb20285e0bf52e07dd184b45268f628e397e"
+    }
+  },
+  "supplier_RFQ_not_sent": true
+}

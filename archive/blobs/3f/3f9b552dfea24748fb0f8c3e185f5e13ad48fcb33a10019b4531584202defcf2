@@ -1,0 +1,130 @@
+{
+  "USB_interface_generation_data_rate_not_yet_frozen": true,
+  "candidate_topologies": [
+    {
+      "dock_used_as_USB_hot_switch": false,
+      "qualified": false,
+      "real_FPC_exists": false,
+      "rejected_by_definition": false,
+      "topology": "CONTINUOUS_FPC",
+      "wired_USB_in_theory_all_states": true
+    },
+    {
+      "ideal_endpoints_connected": 2,
+      "ideal_intermediate_positions_disconnected": 479,
+      "qualified": false,
+      "rejected_by_definition": true,
+      "topology": "DOCK_ONLY",
+      "wired_USB_in_theory_all_states": false
+    },
+    {
+      "dock_optional_power_or_secondary_signals_only": true,
+      "dock_used_as_USB_hot_switch": false,
+      "qualified": false,
+      "real_FPC_exists": false,
+      "rejected_by_definition": false,
+      "topology": "DOCK_PLUS_FPC_HYBRID",
+      "wired_USB_in_theory_all_states": true
+    },
+    {
+      "qualified": false,
+      "rejected_by_definition": true,
+      "topology": "DOCK_PLUS_RADIO",
+      "wired_USB_in_theory_all_states": false
+    }
+  ],
+  "dock_only_full_sweep_compliant": false,
+  "fault_injections": [
+    {
+      "case": "MID_SLIDE_FREEZE",
+      "dock_closed": false,
+      "dock_only_USB_live": false,
+      "hybrid_USB_with_good_FPC_ideally_live": true,
+      "q_mm": 0,
+      "s_mm": 39.875
+    },
+    {
+      "case": "PREDOCK",
+      "dock_closed": false,
+      "dock_only_USB_live": false,
+      "hybrid_USB_with_good_FPC_ideally_live": true,
+      "q_mm": 0,
+      "s_mm": 79.75
+    },
+    {
+      "case": "NORMAL_DOCK_APPROACH",
+      "dock_closed": false,
+      "dock_only_USB_live": false,
+      "hybrid_USB_with_good_FPC_ideally_live": true,
+      "q_mm": 8.15,
+      "s_mm": 79.75
+    },
+    {
+      "FPC_would_continue_if_real_and_qualified": true,
+      "case": "STOW_CONTACT_BOUNCE",
+      "contact_bounce_breaks_dock_only_USB": true,
+      "q_mm": 0,
+      "s_mm": 0
+    },
+    {
+      "FPC_carries_USB": true,
+      "USB_live": false,
+      "case": "FPC_CONDUCTOR_FRACTURE",
+      "dock_cannot_restore_USB_mid_slide": true,
+      "q_mm": 0,
+      "s_mm": 39.875
+    },
+    {
+      "USB_continuity_not_power_isolation_proof": true,
+      "case": "SINGLE_POWER_SWITCH_WELDED",
+      "energized_exposed_contacts_risk": true,
+      "q_mm": 0,
+      "s_mm": 39.875
+    },
+    {
+      "USB_continuity_not_power_isolation_proof": true,
+      "case": "PCB_POWER_BYPASS",
+      "q_mm": 0,
+      "s_mm": 39.875,
+      "single_point_exposed_live_contact_risk": true
+    },
+    {
+      "FPC_must_work_both_directions": true,
+      "case": "REVERSE_BEFORE_DOCK",
+      "dock_only_USB_live": false,
+      "q_mm": 0,
+      "s_mm": 78.75
+    }
+  ],
+  "firmware_emulation_link_training_does_not_substitute_physical_connection": true,
+  "hybrid_docking_must_not_disconnect_USB_path": true,
+  "hypothetical_states_total": 481,
+  "ideal_dock_connected_positions": 2,
+  "ideal_dock_only_disconnected_positions": 479,
+  "ideal_model_graph_connected_positions": {
+    "CONTINUOUS_FPC": 481,
+    "DOCK_ONLY": 2,
+    "DOCK_PLUS_FPC_HYBRID": 481,
+    "DOCK_PLUS_RADIO": 2
+  },
+  "ideal_model_positions_after_FPC_fracture": {
+    "CONTINUOUS_FPC": 0,
+    "DOCK_ONLY": 2,
+    "DOCK_PLUS_FPC_HYBRID": 2,
+    "DOCK_PLUS_RADIO": 2
+  },
+  "manufacturing_go": false,
+  "mechanical_36_of_64_unsafe_still_unresolved": true,
+  "no_electrical_measurements_yet": true,
+  "no_energized_exposed_power_contacts_during_travel": true,
+  "owner_decision_prohibit_reinterpreting_as_reconnect": true,
+  "requires_actual_A_to_B_USB_conductors_and_reference_ground_at_every_position": true,
+  "requires_qualified_active_USB_link_at_all_positions": true,
+  "revision": "R46 strict hard-gate: uninterrupted real physical interpod USB during complete two-axis motion",
+  "these_graph_counts_are_not_physical_test_data": true,
+  "three_single_point_PCB_bypasses_still_unresolved": true,
+  "transition_count": 480,
+  "user_authorized_USB_disconnection_during_slide": false,
+  "wired_mid_motion_bypass_required_if_keeping_endpoint_dock": true,
+  "wireless_or_data_buffering_is_not_physical_USB": true
+}

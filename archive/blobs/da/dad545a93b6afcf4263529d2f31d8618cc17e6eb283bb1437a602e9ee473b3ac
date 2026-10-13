@@ -1,0 +1,180 @@
+{
+  "revision": "R11.0 mechanical lock tolerance closure SCREEN; never product release",
+  "geometry": {
+    "revision": "R11.0 local dual receiver geometry only",
+    "new_pin_centers_y_mm": [
+      82.45,
+      87.4
+    ],
+    "R10_1_known_margin_mm": -0.025,
+    "R11_worst_min_latched_Y_overlap_mm": 0.22500000000000003,
+    "required_locked_overlap_mm": 0.15,
+    "R11_worst_released_parking_each_end_mm": 0.1600000000000008,
+    "slot_to_pocket_worst_web_low_and_high_mm": [
+      0.4650000000000034,
+      0.41500000000002046
+    ],
+    "early_J_window_worst_mm": 0.7250000000000001,
+    "shield_length_mm": 1.7,
+    "released_shutter_travel_mm": 2.45,
+    "receiver_y_limit_mm": 89.2,
+    "shutter_x_bounds_mm": [
+      35.705,
+      36.245
+    ],
+    "pin_x_bounds_mm": [
+      35.78,
+      36.22
+    ],
+    "worst_shutter_X_clearance_to_channel_mm": 0.15499999999999825,
+    "worst_pin_shutter_X_contact_overlap_mm": 0.16499999999999204,
+    "shutter_channel_side_rail_actually_modeled": false,
+    "continuous_shallow_shutter_tunnel_y_mm": [
+      83.74,
+      88.6
+    ],
+    "minimal_end_of_tunnel_gate_roof_depth_mm": 6.340000000000001,
+    "shutter_tunnel_retention_rail_qualified": false,
+    "sliding_B_Y_stroke_mm": 79.75,
+    "OLED_length_mm": 190.43628179866693,
+    "named_assumed_tolerances_mm": {
+      "center_y_tol": 0.1,
+      "halfwidth_y_tol": 0.05,
+      "center_x_tol": 0.1,
+      "halfwidth_x_tol": 0.05,
+      "center_z_tol": 0.1,
+      "thickness_z_tol": 0.05,
+      "pocket_edge_tol": 0.05,
+      "parking_center_tol": 0.1,
+      "stop_face_tol": 0.1,
+      "nose_face_tol": 0.1,
+      "min_latch_overlap": 0.15,
+      "min_pocket_gap": 0.15,
+      "min_slot_pocket_web": 0.4,
+      "min_shutter_lateral_clearance": 0.15,
+      "min_pin_shutter_lateral_overlap": 0.15,
+      "stop_compliance_budget": 0.22,
+      "released_y_travel": 2.45,
+      "blocker_y_lo": 89.1,
+      "blocker_y_hi": 89.55,
+      "blocker_z_lo": -0.55,
+      "blocker_z_hi": -0.15,
+      "retract_z": -1.25,
+      "carriage_tongue_start": 89.75,
+      "carriage_tongue_end": 90.1
+    },
+    "nominal_feature_gate": true,
+    "dual_contact_trigger_actuator_proven": false,
+    "double_sided_lock_load_proven": false,
+    "true_seated_mechanical_AND_proven": false,
+    "spring_force_return_overtravel_and_stick_slip_proven": false,
+    "full_3d_OLED_support_FPC_battery_verified": false,
+    "manufacturing_release": false
+  },
+  "interval_Y": {
+    "vertices": 64,
+    "min_intersection_y_mm": 0.22500000000000853,
+    "max_earliest_j_slot_early_open_mm": 0.725,
+    "argmin": [
+      {
+        "flags": [
+          -1,
+          1,
+          -1,
+          1,
+          -1,
+          -1
+        ],
+        "u_mm": 0.525,
+        "contact_y_mm": 0.22500000000000853
+      },
+      {
+        "flags": [
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          -1
+        ],
+        "u_mm": 0.725,
+        "contact_y_mm": 0.22500000000000853
+      }
+    ]
+  },
+  "interval_X": {
+    "vertices": 16,
+    "min_intersection_x_mm": 0.16499999999999204
+  },
+  "stops": {
+    "hardstop_early_seat_s_mm": 79.55,
+    "hardstop_early_seat_delta_mm": 0.20000000000000284,
+    "early_release_allowed_by_contact_oracle": true,
+    "early_release_is_unsafe_not_approved": true,
+    "opposed_L_R_gap_at_nominal_S_mm": [
+      -0.19999999999998863,
+      0.19999999999998863
+    ],
+    "required_floating_relative_travel_mm": 0.39999999999997726,
+    "assumed_single_side_overtravel_allowance_mm": 0.22,
+    "uncompensated_stop_asymmetry_failed": true
+  },
+  "slide_states": 2001,
+  "OLED_max_length_drift_mm": 5.684341886080802e-14,
+  "local_CAD": {
+    "scenes": [
+      {
+        "scene": "locked_nominal",
+        "reimported_solids": 8,
+        "all_reimported_valid": true
+      },
+      {
+        "scene": "locked_worst",
+        "reimported_solids": 8,
+        "all_reimported_valid": true
+      },
+      {
+        "scene": "terminal_parked",
+        "reimported_solids": 8,
+        "all_reimported_valid": true
+      }
+    ],
+    "shutter_sweep_samples": 122
+  },
+  "full_proxy_CAD": {
+    "poses": 5,
+    "reimported_solids_each": [
+      57,
+      57,
+      57,
+      57,
+      57
+    ],
+    "selected_targeted_contacts_only": true
+  },
+  "test_r11": {
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 31 tests in 0.460s\n\nOK"
+  },
+  "test_r10_baseline": {
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 26 tests in 0.277s\n\nOK"
+  },
+  "verdicts": {
+    "known_R10_Y_window_bypass_closed_under_assumed_Y_envelope": true,
+    "R11_local_X_overlap_envelope": true,
+    "R11_shutter_sweeps_local_receiver_nominal": true,
+    "R11_full_proxy_reimport": true,
+    "full_3d_total_nonconsensual_collision_freedom": false,
+    "physical_endstop_trigger_and_bilateral_AND": false,
+    "actuator_spring_return_rail_contact_stress": false,
+    "battery_4700mAh_OLED_FPC_wear_real_hardware": false,
+    "release_for_manufacture": false
+  },
+  "notes": [
+    "Tolerance vertices are interval extremes; Y proof uses earliest fully entered J aperture; does not bound tilt or compliant bypass",
+    "Visible STEP receiver has bottom-layer shallow tunnel but lacks positive retained bearings, fasteners and release linkage",
+    "Endstop oracle can unlock before design S under ±0.1mm face/nose tolerances: secondary hard-key reference remains unsolved",
+    "A/B core, screen, support and real OEM packaging unchanged from R9/R10 simplified envelope; no FEA, contact/wear or OEM battery integration"
+  ]
+}

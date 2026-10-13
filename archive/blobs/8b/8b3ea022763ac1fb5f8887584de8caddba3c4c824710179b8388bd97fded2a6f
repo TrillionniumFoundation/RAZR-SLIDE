@@ -1,0 +1,149 @@
+{
+  "negative_controls": [
+    {
+      "name": "wrong_tail_direction",
+      "rejected": true,
+      "reason": "A and B both +s would add 130 mm of display length",
+      "error_mm": 130.0
+    },
+    {
+      "name": "false_16mm_envelope",
+      "rejected": true,
+      "outside_parts": [
+        "base",
+        "left_wall_low",
+        "left_wall_high",
+        "left_port_rear",
+        "right_wall",
+        "rear_cover_upper",
+        "rear_cover_left",
+        "rear_cover_right",
+        "rear_cover_bottom",
+        "L_rear_spine",
+        "L_front_lug_arm",
+        "L_front_lug_bridge",
+        "R_rear_spine",
+        "R_front_lug_arm",
+        "R_front_lug_bridge",
+        "sliding_back_shell",
+        "top_crosshead",
+        "fixed_camera_envelope",
+        "L_belt_back",
+        "L_belt_bottom",
+        "L_belt_top",
+        "L_pulley_bottom",
+        "L_pulley_top",
+        "R_belt_back",
+        "R_belt_bottom",
+        "R_belt_top",
+        "R_pulley_bottom",
+        "R_pulley_top",
+        "L_tail_arm",
+        "L_tail_belt_lug",
+        "R_tail_arm",
+        "R_tail_belt_lug",
+        "L_spring_coil",
+        "R_spring_coil",
+        "FPC_U",
+        "FPC_fixed_leg",
+        "FPC_fixed_header",
+        "fixed_electrical_bridge",
+        "fixed_header_riser"
+      ]
+    },
+    {
+      "name": "battery_invades_storage_channel",
+      "rejected": true,
+      "status": "INTERFERENCE",
+      "detail": {
+        "s": 32.5,
+        "area": 11.850000000000028,
+        "interval": [
+          0.0,
+          65.0
+        ]
+      }
+    },
+    {
+      "name": "opaque_front_panel_crosses_display",
+      "rejected": true,
+      "status": "INTERFERENCE",
+      "detail": {
+        "s": 32.5,
+        "area": 25.799999999999994,
+        "interval": [
+          0.0,
+          65.0
+        ]
+      }
+    },
+    {
+      "name": "overtravel_86mm",
+      "rejected": true,
+      "rear_straight_mm": -7,
+      "rail_overlap_mm": -1
+    }
+  ],
+  "all_negative_controls_rejected": true,
+  "rigid_skeleton_connectivity": [
+    {
+      "owner": "fixed_frame",
+      "input_shapes": 42,
+      "solid_components": 1,
+      "is_valid": true,
+      "volume_mm3": 15512.946483133936
+    },
+    {
+      "owner": "rear_carriage",
+      "input_shapes": 98,
+      "solid_components": 1,
+      "is_valid": true,
+      "volume_mm3": 15154.998000000045
+    },
+    {
+      "owner": "tail_carriage",
+      "input_shapes": 9,
+      "solid_components": 1,
+      "is_valid": true,
+      "volume_mm3": 172.22399999999948
+    }
+  ],
+  "independent_volume_length_checks": [
+    {
+      "s_mm": 0,
+      "display_length_from_BREP_volume_mm": 187.70796326794914,
+      "fpc_length_from_BREP_volume_mm": 101.85398163397333,
+      "display_volume_mm3": 3716.617672705393,
+      "fpc_volume_mm3": 97.77982236861439
+    },
+    {
+      "s_mm": 16.25,
+      "display_length_from_BREP_volume_mm": 187.7079632679491,
+      "fpc_length_from_BREP_volume_mm": 101.85398163397316,
+      "display_volume_mm3": 3716.6176727053926,
+      "fpc_volume_mm3": 97.77982236861423
+    },
+    {
+      "s_mm": 32.5,
+      "display_length_from_BREP_volume_mm": 187.70796326794905,
+      "fpc_length_from_BREP_volume_mm": 101.85398163397299,
+      "display_volume_mm3": 3716.617672705391,
+      "fpc_volume_mm3": 97.77982236861406
+    },
+    {
+      "s_mm": 48.75,
+      "display_length_from_BREP_volume_mm": 187.70796326794903,
+      "fpc_length_from_BREP_volume_mm": 101.85398163397288,
+      "display_volume_mm3": 3716.6176727053908,
+      "fpc_volume_mm3": 97.77982236861396
+    },
+    {
+      "s_mm": 65,
+      "display_length_from_BREP_volume_mm": 187.70796326794894,
+      "fpc_length_from_BREP_volume_mm": 101.85398163397275,
+      "display_volume_mm3": 3716.6176727053894,
+      "fpc_volume_mm3": 97.77982236861384
+    }
+  ],
+  "interpretation": "Fused carrier connectivity is topological only, not strength, assembly or manufacturability proof."
+}
