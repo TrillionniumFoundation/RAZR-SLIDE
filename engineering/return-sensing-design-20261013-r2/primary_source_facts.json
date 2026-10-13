@@ -1,0 +1,147 @@
+{
+  "schema": "razr-return-sense-primary-source-facts-r2",
+  "observed_on": "2026-10-13",
+  "manufacturing_go": false,
+  "product_parts_selected": false,
+  "raw_vendor_documents_not_redistributed": true,
+  "sources": [
+    {
+      "id": "TI_INA240_C",
+      "url": "https://www.ti.com/lit/ds/symlink/ina240.pdf",
+      "retrieved_reference": "turn57view0",
+      "document": "SBOS662C, December 2021",
+      "pdf_pages": [3, 4, 5, 8],
+      "conditional_package": "INA240A1PW TSSOP, NOT SOIC pin numbering",
+      "facts": {
+        "PW_pin_map": {"1":"NC","2":"IN+","3":"IN-","4":"GND","5":"VS","6":"REF2","7":"REF1","8":"OUT"},
+        "gain": 20,
+        "supply_V": [2.7, 5.5],
+        "common_mode_V": [-4, 80],
+        "offset_max_input_V_at_25C": 0.000025,
+        "offset_drift_max_V_per_C": 0.00000025,
+        "gain_error_max_fraction": 0.002,
+        "gain_drift_max_per_C": 0.0000025,
+        "CMRR_min_dB": 120,
+        "PSRR_max_input_V_per_supply_V": 0.00001,
+        "A1_settling_0p5_percent_typical_s": 0.0000096,
+        "guaranteed_whole_circuit_delay_s": null,
+        "broken_sense_wire_diagnosis_specified": false
+      }
+    },
+    {
+      "id": "TI_OPA333_E",
+      "url": "https://www.ti.com/lit/ds/symlink/opa333.pdf",
+      "retrieved_reference": "turn60view0",
+      "document": "SBOS351E, December 2015",
+      "pdf_pages": [3, 7],
+      "conditional_package": "OPA333DBV SOT23, NOT DCK/SC70 pin numbering",
+      "facts": {
+        "DBV_pin_map": {"1":"OUT","2":"V-","3":"+IN","4":"-IN","5":"V+"},
+        "supply_V": [1.8, 5.5],
+        "GBW_typical_Hz": 350000,
+        "slew_typical_V_per_s": 160000,
+        "input_rail_clamps_exist": true,
+        "difference_stage_guaranteed_settling_s": null
+      }
+    },
+    {
+      "id": "TI_TLV3202_C",
+      "url": "https://www.ti.com/lit/ds/symlink/tlv3202.pdf",
+      "retrieved_reference": "turn57view1",
+      "document": "SBOS561C, May 2024",
+      "pdf_pages": [3, 4, 5, 6],
+      "facts": {
+        "DGK_pin_map": {"1":"1OUT","2":"1IN-","3":"1IN+","4":"GND","5":"2IN+","6":"2IN-","7":"2OUT","8":"VCC"},
+        "supply_V": [2.7, 5.5],
+        "input_offset_max_V_minus40_to125C": 0.006,
+        "propagation_max_ns_at_2p7V_100mV_overdrive_CL15pF_full_temperature": 55,
+        "40ns_headline_is_not_entire_cut_chain": true,
+        "input_rail_clamps_exist": true
+      }
+    },
+    {
+      "id": "TI_SN74LVC1G08_AA",
+      "url": "https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf",
+      "retrieved_reference": "turn60view2",
+      "document": "SCES217AA, August 2026",
+      "pdf_pages": [3, 6, 10],
+      "facts": {
+        "DBV_pin_map": {"1":"A","2":"B","3":"GND","4":"Y","5":"VCC"},
+        "Ioff_max_A_at_VCC_zero": 0.00001,
+        "powered_off_outputs_high_Z_with_finite_leakage": true,
+        "Ioff_is_not_brownout_guarantee": true,
+        "input_leakage_max_A": 0.000005
+      }
+    },
+    {
+      "id": "TI_SN74LVC1G74_G",
+      "url": "https://www.ti.com/lit/gpn/sn74lvc1g74",
+      "retrieved_reference": "turn66view0",
+      "document": "SCES794G, September 2021",
+      "pdf_pages": [4, 6, 10],
+      "facts": {
+        "DCU_pin_map": {"1":"CLK","2":"D","3":"Qn","4":"GND","5":"Q","6":"CLRn","7":"PREn","8":"VCC"},
+        "CLRn_low_PREn_high_sets_Q_low_independent_of_clock": true,
+        "PREn_low_overrides_clear_safety_claim": true,
+        "both_PREn_and_CLRn_low_is_nonstable_invalid_operating_combination": true,
+        "normal_latch_is_positive_edge_triggered": true,
+        "Ioff_supported": true,
+        "power_up_Q_default_is_not_assumed": true
+      }
+    },
+    {
+      "id": "TI_TLV803E_J",
+      "url": "https://www.ti.com/lit/ds/symlink/tlv803e.pdf",
+      "retrieved_reference": "turn57view3",
+      "document": "SLVSES2J, May 2021",
+      "pdf_pages": [4, 5, 8, 9, 26],
+      "conditional_part": "TLV803EA29DBZR standard DBZ pin1 ground, R suffix reel, not optional R/V pinout variant",
+      "facts": {
+        "standard_DBZ_pin_map": {"1":"GND","2":"RESETn","3":"VDD"},
+        "A29_threshold_V": 2.93,
+        "A29_release_delay_typical_s": 0.2,
+        "A29_release_delay_min_max_s": [0.13, 0.27],
+        "reset_falling_delay_max_s_specific_datasheet_step_condition": 0.00005,
+        "VPOR_controlled_output_floor_V": 0.7,
+        "below_VPOR_output_undefined": true,
+        "specified_rail_V": [1.7, 6]
+      }
+    },
+    {
+      "id": "TI_TPS25947_C",
+      "url": "https://www.ti.com/lit/ds/symlink/tps25947.pdf",
+      "retrieved_reference": "turn64view2",
+      "document": "SLVSFC9C, May 2026",
+      "pdf_pages": [3, 9, 11, 12],
+      "facts": {
+        "conditional_part": "TPS259470LRPW, not TPS259474L pin aliases",
+        "EN_pin": 1,
+        "EN_falling_UVLO_min_V": 1.076,
+        "EN_low_shutdown_threshold_min_V": 0.45,
+        "EN_leakage_max_A": 0.0000001,
+        "2p7V_tDOFF_typical_us_at_RL100ohm_COUT1uF": 64.44,
+        "12V_tDOFF_typical_us_at_RL100ohm_COUT1uF": 25.32,
+        "switching_delay_depends_on_load_RC_and_is_typical": true,
+        "500ns_fast_trip_not_an_EN_imbalance_cutoff_guarantee": true,
+        "input_current_continuous_device_A": 5.5,
+        "operating_input_V": [2.7, 23]
+      }
+    }
+  ],
+  "retrieval_failures": [
+    {"url":"https://www.ti.com/lit/ds/symlink/sn74lvc1g74.pdf","result":"web Internal Error; successfully retrieved official /lit/gpn route instead"},
+    {"url":"https://www.ti.com/jp/lit/ds/symlink/sn74lvc1g74.pdf","result":"web Internal Error; no reliance on mirror"}
+  ],
+  "OEM_repair_context": {
+    "source": "../controlled-input-recovery-20261013-r2/motorola-derived-interface-facts.json",
+    "battery_SBOM_pdf_page": 1,
+    "base_SB18E50882_mAh": 3520,
+    "flip_SB18E50881_mAh": 1180,
+    "sum_mAh": 4700,
+    "capacity_is_custom_A_B_qualified": false,
+    "actual_battery_voltage_and_limits": null,
+    "custom_A_B_mapping": null,
+    "U2300_key_component_native_pin_map_received": false,
+    "replacement_charger_BQ25622_OEM_equivalence": false
+  }
+}
