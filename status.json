@@ -28,7 +28,7 @@
     "role": "integration and rejection validation; all old routes rejected"
   },
   "unconnected_topology_input": "R44_FPC_20261013",
-  "current_production_review": "engineering/PRODUCTION_BLOCKERS_R6.md",
+  "current_production_review": "CURRENT_DESIGN.md",
   "phone_native_assembly_complete": false,
   "phone_complete_PCB": false,
   "controlled_specific_OLED_received": false,
@@ -37,7 +37,9 @@
     "G2_routes": "engineering/fpc-g2-route-candidates-20261013-r6",
     "OLED_FPC_sources": "engineering/controlled-inputs-web-20261013-r6",
     "four_phase_bench_detector": "engineering/proof-selftest-design-20261013-r5",
-    "A_only_power_chain_boards": "engineering/power-chain-pcba-20261013-r5"
+    "A_only_power_chain_boards": "engineering/power-chain-pcba-20261013-r5",
+    "P0_recovery_and_tests": "engineering/workplan-execution-20261014/p0",
+    "native_integration_and_reproduced_failures": "engineering/workplan-execution-20261014/integration"
   },
   "G2_scope": {
     "X230_motion_poses": 121,
@@ -56,5 +58,19 @@
     "continuous interference-free finished FPC route and actual endpoint strain relief",
     "complete native phone assembly and PCB including selected A/B cells, protection, charging, USB and OLED",
     "physical capture, fail-closed, finite-force retraction, dual-battery, USB and OLED qualification"
-  ]
+  ],
+  "previous_production_review": "engineering/PRODUCTION_BLOCKERS_R6.md",
+  "current_input_registry": "integration/assembly_inputs.json",
+  "current_execution_summary": "engineering/workplan-execution-20261014/integration/summary.json",
+  "current_unit_tests": {
+    "count": 290,
+    "passed": true,
+    "scope": "unit-only; physical qualification remains missing"
+  },
+  "split_root_sampled_sequence": {
+    "requested_rows": 564,
+    "positive_intersection_rows": 18,
+    "actual_exit_code": 1,
+    "geometry_accepted": false
+  }
 }

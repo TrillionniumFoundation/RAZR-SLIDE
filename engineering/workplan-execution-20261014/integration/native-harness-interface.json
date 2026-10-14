@@ -1,0 +1,225 @@
+{
+  "schema": "razr-native-harness-bindings-v1",
+  "input_SHA256": {
+    "engineering/power-chain-pcba-20261013-r5/native_pocket_v2/modules/A1/native.xml": "32a17209fdcd6fa125333269d2474d11eb50dbe1e737f2f45691e4275172f50b",
+    "engineering/power-chain-pcba-20261013-r5/native_pocket_v2/modules/A2/native.xml": "c3891d9e40dd29c788b33757090adc06a685a80bad461e3dfc54b0805ea8a57d",
+    "engineering/power-chain-pcba-20261013-r5/native_pocket_v2/modules/B1/native.xml": "eaa46d04d39a91ef07d7965e40b05a9b322218490111d747277d14ff5f593459",
+    "engineering/power-chain-pcba-20261013-r5/native_pocket_v2/modules/B2/native.xml": "7716b71bf9f78bb806e490ae3ece93c94b4793ee328e1d13e7b72d4b74130996",
+    "engineering/power-chain-pcba-20261013-r5/harness_terminal_schedule.csv": "2555aec726450c17f3bb282bde430ccf4910fa988fccbc52bb4078d209ad4a00"
+  },
+  "source_sha256": "61b80bfbb4cbcc481a1b63770f39ef9f9e0b0d27295143a9eba4ae16152f5b71",
+  "boards": {
+    "A1": {
+      "component_count": 17,
+      "unique_pins": 42,
+      "terminals": {
+        "A1.J1.1": "A_PACK_P",
+        "A1.J1.2": "A_PACK_N",
+        "A1.J2.1": "A_MID_P",
+        "A1.J2.2": "A_PACK_N",
+        "A1.J3.1": "A1_ISO_LED_P",
+        "A1.J3.2": "A1_ISO_LED_N"
+      },
+      "role": "A_source_cut",
+      "independent_B_battery": false
+    },
+    "A2": {
+      "component_count": 17,
+      "unique_pins": 42,
+      "terminals": {
+        "A2.J1.1": "A_MID_P",
+        "A2.J1.2": "A_PACK_N",
+        "A2.J2.1": "A_TX_P",
+        "A2.J2.2": "A_PACK_N",
+        "A2.J3.1": "A2_ISO_LED_P",
+        "A2.J3.2": "A2_ISO_LED_N"
+      },
+      "role": "A_source_cut",
+      "independent_B_battery": false
+    },
+    "B1": {
+      "component_count": 17,
+      "unique_pins": 42,
+      "terminals": {
+        "B1.J1.1": "A_RX_P",
+        "B1.J1.2": "B_SYS_N",
+        "B1.J2.1": "A_RX_MID_P",
+        "B1.J2.2": "B_SYS_N",
+        "B1.J3.1": "B1_ISO_LED_P",
+        "B1.J3.2": "B1_ISO_LED_N"
+      },
+      "role": "A_chain_receiver_cut",
+      "independent_B_battery": false
+    },
+    "B2": {
+      "component_count": 17,
+      "unique_pins": 42,
+      "terminals": {
+        "B2.J1.1": "A_RX_MID_P",
+        "B2.J1.2": "B_SYS_N",
+        "B2.J2.1": "SYS_B_P",
+        "B2.J2.2": "B_SYS_N",
+        "B2.J3.1": "B2_ISO_LED_P",
+        "B2.J3.2": "B2_ISO_LED_N"
+      },
+      "role": "A_chain_receiver_cut",
+      "independent_B_battery": false
+    }
+  },
+  "native_components_read": 68,
+  "native_unique_pins_read": 168,
+  "builder_imported": false,
+  "frozen_input_bytes_unchanged": true,
+  "conductors": 18,
+  "conductor_ends": 36,
+  "native_board_terminals_bound": 24,
+  "external_boundary_ends": 12,
+  "resolved_wiring": [
+    {
+      "harness": "H_A_LOCAL",
+      "from": "A1.J2.1",
+      "to": "A2.J1.1",
+      "from_native_net": "A_MID_P",
+      "to_native_net": "A_MID_P"
+    },
+    {
+      "harness": "H_A_LOCAL",
+      "from": "A1.J2.2",
+      "to": "A2.J1.2",
+      "from_native_net": "A_PACK_N",
+      "to_native_net": "A_PACK_N"
+    },
+    {
+      "harness": "H_CROSS",
+      "from": "A2.J2.1",
+      "to": "B1.J1.1",
+      "from_native_net": "A_TX_P",
+      "to_native_net": "A_RX_P"
+    },
+    {
+      "harness": "H_CROSS",
+      "from": "A2.J2.2",
+      "to": "B1.J1.2",
+      "from_native_net": "A_PACK_N",
+      "to_native_net": "B_SYS_N"
+    },
+    {
+      "harness": "H_B_LOCAL",
+      "from": "B1.J2.1",
+      "to": "B2.J1.1",
+      "from_native_net": "A_RX_MID_P",
+      "to_native_net": "A_RX_MID_P"
+    },
+    {
+      "harness": "H_B_LOCAL",
+      "from": "B1.J2.2",
+      "to": "B2.J1.2",
+      "from_native_net": "B_SYS_N",
+      "to_native_net": "B_SYS_N"
+    },
+    {
+      "harness": "H_INPUT",
+      "from": "ISOLATED_PROTECTED_SUPPLY_BOUNDARY.1",
+      "to": "A1.J1.1",
+      "from_native_net": null,
+      "to_native_net": "A_PACK_P"
+    },
+    {
+      "harness": "H_INPUT",
+      "from": "ISOLATED_PROTECTED_SUPPLY_BOUNDARY.2",
+      "to": "A1.J1.2",
+      "from_native_net": null,
+      "to_native_net": "A_PACK_N"
+    },
+    {
+      "harness": "H_OUTPUT",
+      "from": "B2.J2.1",
+      "to": "ISOLATED_LOAD_BOUNDARY.1",
+      "from_native_net": "SYS_B_P",
+      "to_native_net": null
+    },
+    {
+      "harness": "H_OUTPUT",
+      "from": "B2.J2.2",
+      "to": "ISOLATED_LOAD_BOUNDARY.2",
+      "from_native_net": "B_SYS_N",
+      "to_native_net": null
+    },
+    {
+      "harness": "CTRL_A1",
+      "from": "FLOATING_DRIVER_A1.1",
+      "to": "A1.J3.1",
+      "from_native_net": null,
+      "to_native_net": "A1_ISO_LED_P"
+    },
+    {
+      "harness": "CTRL_A1",
+      "from": "FLOATING_DRIVER_A1.2",
+      "to": "A1.J3.2",
+      "from_native_net": null,
+      "to_native_net": "A1_ISO_LED_N"
+    },
+    {
+      "harness": "CTRL_A2",
+      "from": "FLOATING_DRIVER_A2.1",
+      "to": "A2.J3.1",
+      "from_native_net": null,
+      "to_native_net": "A2_ISO_LED_P"
+    },
+    {
+      "harness": "CTRL_A2",
+      "from": "FLOATING_DRIVER_A2.2",
+      "to": "A2.J3.2",
+      "from_native_net": null,
+      "to_native_net": "A2_ISO_LED_N"
+    },
+    {
+      "harness": "CTRL_B1",
+      "from": "FLOATING_DRIVER_B1.1",
+      "to": "B1.J3.1",
+      "from_native_net": null,
+      "to_native_net": "B1_ISO_LED_P"
+    },
+    {
+      "harness": "CTRL_B1",
+      "from": "FLOATING_DRIVER_B1.2",
+      "to": "B1.J3.2",
+      "from_native_net": null,
+      "to_native_net": "B1_ISO_LED_N"
+    },
+    {
+      "harness": "CTRL_B2",
+      "from": "FLOATING_DRIVER_B2.1",
+      "to": "B2.J3.1",
+      "from_native_net": null,
+      "to_native_net": "B2_ISO_LED_P"
+    },
+    {
+      "harness": "CTRL_B2",
+      "from": "FLOATING_DRIVER_B2.2",
+      "to": "B2.J3.2",
+      "from_native_net": null,
+      "to_native_net": "B2_ISO_LED_N"
+    }
+  ],
+  "common_main_return_path": [
+    "ISOLATED_PROTECTED_SUPPLY_BOUNDARY.2",
+    "A1.J1.2",
+    "A1.J2.2",
+    "A2.J1.2",
+    "A2.J2.2",
+    "B1.J1.2",
+    "B1.J2.2",
+    "B2.J1.2",
+    "B2.J2.2",
+    "ISOLATED_LOAD_BOUNDARY.2"
+  ],
+  "A_PACK_N_and_B_SYS_N_are_connected_by_scheduled_harness": true,
+  "separate_control_input_pairs": 4,
+  "independent_B_battery_implemented": false,
+  "dry_selftest_connected_to_real_return": false,
+  "native_ERC_DRC_rerun": false,
+  "moving_FPC_qualified": false,
+  "complete_phone_PCB": false,
+  "manufacturing_go": false
+}
