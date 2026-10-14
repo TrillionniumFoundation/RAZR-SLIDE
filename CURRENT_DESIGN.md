@@ -1,5 +1,7 @@
 # 当前研究设计｜KEY通道与外盖绕接
 
+独立GitHub检出复核：源码 `1d278a6f55995b90609856c7817477a632e3b919` 的12项新候选测试、130对完整运动及材料/42个未改零件/92个装配实体复验通过，源字节和工作树未变。完整369项在提交前同字节源码上执行，本次独立检出未重复全部369项。回执：`engineering/keycover-geometry-20261014/fresh-GitHub-verification/SUMMARY.json`。外盖实际装入仍不合格。
+
 当前源码：`integration/keycover_bypass.py`。
 当前证据：`engineering/keycover-geometry-20261014/SUMMARY.json` 及同目录README。
 
