@@ -42,3 +42,5 @@
 - `integration/continue_split_sequence.py --output NEW_EXTERNAL_DIR`：原参数的局部搜索续跑；当前 18 项干涉导致退出 1，属于正确保留的失败。
 
 四份较大原始 JSON 采用 gzip 精确字节保存，其原始大小、原始哈希及压缩文件哈希在 `compressed-raw-receipts.json`；全部实际退出状态和未截断日志保存在 jobs 子目录。16 份新研究反例 STEP 以无损归档保存，没有供应商受限原件。
+
+最终独立检出复核：集成源码 `f1d3171e41b2a508af2a953d8e18f2845fd02360` 从 GitHub 取回后，以同一 uv 锁定环境通过全部 **290 项 / 17 组**，工作树和源字节未变。回执见 `engineering/workplan-execution-20261014/FINAL_VERIFICATION.json`。这次证据提交不改变已测 Python 源码。
