@@ -1,5 +1,7 @@
 # 最新接续：STOW 分阶段装入名义几何已修复
 
+独立 GitHub 检出复核：提交 `03f5be6974c61e62003a8534ca37a9187fbe0ae8` 的新候选 8 项专用测试及 64 阶段 / 506 静态求交反向 STEP 复验再次通过，工作树和源字节未变。完整 334 项是在提交前同字节源码上执行，本次独立检出没有冒称又跑了全部 334 项。回执见 `engineering/stow-installation-closure-20261014/fresh-GitHub-verification/SUMMARY.json`。
+
 当前采用 `integration/stow_continuous_slots_v2.py`，本轮摘要与全部原始凭据在 `engineering/stow-installation-closure-20261014/`。334 项 / 19 组单元测试、原 564/184 项采样回归，以及新顺序 64 对完整直线阶段包络 / 506 对静态检查通过；独立反向 STEP 和完整装配材料复读一致。
 
 只改变原创外根座，外廓不增，原材料在声明碰撞区外保留；单一实体不等于强度、公差、夹具或整机资格。旧顺序四项 STOP 装入干涉仍保留为失败。耦合 KEY/STOP 连续接触、实际装配夹具与同版本整机内腔、指定 OLED/FPC、电池/USB 等仍未完成。所有制造与实物放行继续为 false。
