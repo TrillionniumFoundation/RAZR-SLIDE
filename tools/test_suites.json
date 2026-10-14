@@ -1,11 +1,11 @@
 {
   "scope": "current unit suites; not archived/rejected experiments or full motion/ECAD/hardware",
-  "minimum_total_tests": 334,
+  "minimum_total_tests": 357,
   "suites": [
     {
       "id": "repository",
       "directory": "tests",
-      "minimum_tests": 76,
+      "minimum_tests": 91,
       "timeout_seconds": 900
     },
     {
@@ -116,6 +116,12 @@
     {
       "id": "stow-continuous",
       "directory": "integration/stow-continuous-tests",
+      "minimum_tests": 8,
+      "timeout_seconds": 600
+    },
+    {
+      "id": "native-contact",
+      "directory": "integration/contact-tests",
       "minimum_tests": 8,
       "timeout_seconds": 600
     }

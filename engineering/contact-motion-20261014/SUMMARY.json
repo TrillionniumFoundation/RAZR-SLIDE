@@ -1,0 +1,127 @@
+{
+  "date_utc": "2026-10-14",
+  "base_commit": "ace59e6c0ae7a7610a9e5a3f42e7e955fdb8a6f1",
+  "actual_host": "qian-qi",
+  "branch": "work/contact-motion-20261014",
+  "selected_partial_repair_source": "integration/stow_contact_slots.py",
+  "tested_source_sha256": "9fec819b9c733df39d1023dc1a5813cd4ffa20d04f1cc42dfd3ef3a9de9f1645",
+  "scope": "STOW nominal quasistatic lower-restoring-force contact branch; whole KEY motion remains rejected",
+  "unit_tests": {
+    "count": 357,
+    "groups": 20,
+    "passed": true,
+    "source_bytes_unchanged": true,
+    "new_pure_profile_tests": 15,
+    "new_native_contact_tests": 8
+  },
+  "regressions": {
+    "original_action_samples": 564,
+    "action_positive_rows": 0,
+    "original_assembly_samples": 184,
+    "assembly_positive_rows": 0,
+    "installation_stage_pairs": 64,
+    "installation_positive_pairs": 0,
+    "static_pairs": 506,
+    "static_positive_pairs": 0
+  },
+  "continuous_contact": {
+    "q_domain_mm": [
+      0,
+      12
+    ],
+    "pin_radius_mm": 0.1,
+    "STOP_vertical_stroke_mm": 1.16,
+    "native_breakpoints_q_mm": [
+      0.0011145618000001356,
+      0.09055728089999172,
+      0.6429179606749895
+    ],
+    "pin_profiles": 4,
+    "remainder_motion_cages": 12,
+    "complete_enclosure_pairs": 130,
+    "positive_pairs": 4,
+    "producer_exit_code": 1,
+    "restoring_force_assumed_not_qualified": true,
+    "initial_engagement_C0_not_C1": true,
+    "OPEN_continuous_contact_qualified": false
+  },
+  "independent_reimport": {
+    "STEP_files": 76,
+    "original_assembly_leaves": 46,
+    "complete_pair_count": 130,
+    "positive_pair_count": 4,
+    "exit_code": 1,
+    "results_consistent": true,
+    "builder_imported": false,
+    "same_CAD_kernel_not_cross_engine": true
+  },
+  "partial_STOP_root_repair": {
+    "old_V2_inter_sample_failures_retained": true,
+    "extra_material_removed_per_side_mm3": [
+      0.000857502297162958,
+      0.0008575022971629599
+    ],
+    "additional_original_v9_material_removed_mm3": [
+      0.0,
+      0.0
+    ],
+    "single_valid_root_each_side": true,
+    "outer_bounds_unchanged": true,
+    "non_root_parts_unchanged": true,
+    "legacy_material_fields_in_raw_repair_receipt_describe_V2_source": true
+  },
+  "remaining_actual_KEY_failures": [
+    {
+      "side": "L",
+      "part": "OLD_COVER",
+      "actual_pose_q_mm": 5.0,
+      "actual_pose_common_mm3": 0.016,
+      "whole_q_enclosure_common_mm3": 0.048
+    },
+    {
+      "side": "R",
+      "part": "OLD_COVER",
+      "actual_pose_q_mm": 5.0,
+      "actual_pose_common_mm3": 0.016,
+      "whole_q_enclosure_common_mm3": 0.048
+    },
+    {
+      "side": "L",
+      "part": "ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+      "actual_pose_q_mm": [
+        2.5,
+        3.0
+      ],
+      "actual_pose_common_mm3": 0.026,
+      "whole_q_enclosure_common_mm3": 0.026
+    },
+    {
+      "side": "R",
+      "part": "ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+      "actual_pose_q_mm": [
+        2.5,
+        3.0
+      ],
+      "actual_pose_common_mm3": 0.026,
+      "whole_q_enclosure_common_mm3": 0.026
+    }
+  ],
+  "rejected_direct_KEY_cut": {
+    "cover_solids_per_side": 2,
+    "all_fragments_retained": true,
+    "root_direct_cut_is_preflight_only": true,
+    "not_adopted": true
+  },
+  "kernel_failure_retained": "negative-direction STOP envelope failed existing whole topology check; validated positive-direction construction used without relaxing checks; no cross-direction kernel fix claimed",
+  "current_actual_fixture_created": false,
+  "fixture_gripping_force_preload_fatigue_or_tolerance_qualified": false,
+  "controlled_phone_cavities_received": false,
+  "controlled_specific_OLED_FPC_received": false,
+  "full_electronics_or_independent_B_battery_completed": false,
+  "supplier_messages_or_orders": 0,
+  "hardware_powered_or_services_restarted": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "next_dependency": "redesign OLD_COVER structural connection across actual KEY travel, and root KEY channel; preserve whole-material connectivity and rerun continuous 130 pairs plus unchanged 564/184 and 64/506"
+}
