@@ -1,0 +1,195 @@
+{
+  "date_utc": "2026-10-14",
+  "base_commit": "25a33b90a781f35aa47f15c6b319ac48e18f0b9c",
+  "branch": "work/cover-assembly-order-20261014",
+  "host": "qian-qi",
+  "research_candidate_source": "integration/cover_admission.py",
+  "reference_geometry_source_retained": "integration/keycover_bypass.py",
+  "scope": "cover-first bench candidate only; new interfaces and 3.5mm local growth are not a finished-phone approval",
+  "tests": {
+    "count": 385,
+    "groups": 22,
+    "passed": true,
+    "source_bytes_unchanged": true,
+    "new_region_tests": 6,
+    "new_candidate_tests": 10,
+    "obsolete_interrupted_run_not_counted_as_pass": true
+  },
+  "cover_first_sequence": {
+    "stage_count": 22,
+    "pair_count": 130,
+    "positive_pairs": 0,
+    "native_exit_code": 0,
+    "independent_exit_code": 0,
+    "independent_STEP_count": 56,
+    "unchanged_noncover_parts": 44,
+    "jaw_tip_bodies_included": true,
+    "two_nominal_join_screws_and_full_driver_occupancy_included": true
+  },
+  "independent_motion": {
+    "pair_count": 130,
+    "positive_pairs": 0,
+    "STEP_count": 76,
+    "same_CAD_kernel_not_cross_engine": true
+  },
+  "regressions": {
+    "action_samples": 564,
+    "action_positive_rows": 0,
+    "assembly_samples": 184,
+    "assembly_positive_rows": 0,
+    "full_valid_assembly_solids": 92,
+    "STOW_bijectively_matched_solids": 46,
+    "OPEN_solids_valid_but_no_new_continuous_OPEN_proof": true
+  },
+  "cover_interface_change": {
+    "new_lateral_slots": true,
+    "old_closed_locator_holes_preserved": false,
+    "old_tongue_feature_removed_mm3": 0.2424,
+    "bench_qmax_before_mm": 9.0,
+    "bench_qmax_after_mm": 12.5,
+    "local_growth_mm": 3.5,
+    "new_cover_single_solid_each_side": true,
+    "material_accounts": [
+      {
+        "side": "L",
+        "new_volume_mm3": 39.938445328941555,
+        "source_original_removed_mm3": 3.6636513289415364,
+        "new_added_mm3": 2.328000000000025,
+        "previous_candidate_removed_mm3": 5.463651328941543,
+        "previous_candidate_added_mm3": 2.328000000000025,
+        "old_bounds_eqr": [
+          [
+            -3.1499999999999986,
+            4.25
+          ],
+          [
+            -0.40000000000000013,
+            9.0
+          ],
+          [
+            -7.24,
+            -2.5
+          ]
+        ],
+        "new_bounds_eqr": [
+          [
+            -3.1499999999999986,
+            4.25
+          ],
+          [
+            1.7,
+            12.5
+          ],
+          [
+            -7.24,
+            -2.5
+          ]
+        ],
+        "late_cover_entry_not_relabelled": true,
+        "new_locator_interface_not_equivalent_to_old_closed_hole": true,
+        "actual_pose_negative_controls": [
+          {
+            "moving": "ROOT_INNER",
+            "old_positive_mm3": 0.004799999999999629,
+            "new_mm3": 0.0,
+            "translation_mm": [
+              0.05,
+              0,
+              0
+            ]
+          },
+          {
+            "moving": "ROOT_OUTER",
+            "old_positive_mm3": 0.02723856085579022,
+            "new_mm3": 0.0,
+            "translation_mm": [
+              -0.05,
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "side": "R",
+        "new_volume_mm3": 39.938445328941604,
+        "source_original_removed_mm3": 3.6636513289415205,
+        "new_added_mm3": 2.3280000000000256,
+        "previous_candidate_removed_mm3": 5.463651328941527,
+        "previous_candidate_added_mm3": 2.3280000000000256,
+        "old_bounds_eqr": [
+          [
+            -3.1499999999999986,
+            4.25
+          ],
+          [
+            -0.40000000000000013,
+            9.0
+          ],
+          [
+            -7.24,
+            -2.5
+          ]
+        ],
+        "new_bounds_eqr": [
+          [
+            -3.1499999999999986,
+            4.25
+          ],
+          [
+            1.7,
+            12.5
+          ],
+          [
+            -7.24,
+            -2.5
+          ]
+        ],
+        "late_cover_entry_not_relabelled": true,
+        "new_locator_interface_not_equivalent_to_old_closed_hole": true,
+        "actual_pose_negative_controls": [
+          {
+            "moving": "ROOT_INNER",
+            "old_positive_mm3": 0.004799999999999618,
+            "new_mm3": 0.0,
+            "translation_mm": [
+              -0.05,
+              0,
+              0
+            ]
+          },
+          {
+            "moving": "ROOT_OUTER",
+            "old_positive_mm3": 0.027238560855797733,
+            "new_mm3": 0.0,
+            "translation_mm": [
+              0.05,
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    ],
+    "finished_phone_cavity_fit": "unknown",
+    "locator_retention_and_strength_not_qualified": true
+  },
+  "canonical_native_inputs_used": true,
+  "original_in_memory_generator_sweep_failures_retained_not_declared_fixed": true,
+  "no_geometry_or_volume_tolerance_relaxed": true,
+  "clamp_actuator_grip_force_threads_preload_and_temporary_handling_qualified": false,
+  "real_fixture_built": false,
+  "hardware_powered_or_changed": false,
+  "supplier_messages_or_orders": 0,
+  "controlled_actual_cavities_or_OLED_FPC_received_this_round": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "fresh_remote_checkout_this_round": false,
+  "remote_commit_verification_to_follow": true,
+  "next_dependencies": [
+    "map the extra 3.5mm and revised cover interfaces into the actual same-version A/B cavities; do not silently replace prior size reference",
+    "prove retention, clamping force, temporary handling and screw preload for the open-slot assembly",
+    "qualify tolerance, fatigue and finite-force return; continue controlled OLED/FPC/endpoint/electronics lines"
+  ]
+}

@@ -1,0 +1,38 @@
+test_actual_obstacle_inside_sweep_is_detected (test_translation_regions.TranslationRegionsTests.test_actual_obstacle_inside_sweep_is_detected) ... ok
+test_axial_hole_is_not_filled (test_translation_regions.TranslationRegionsTests.test_axial_hole_is_not_filled) ... ok
+test_boxes_cover_whole_straight_travel (test_translation_regions.TranslationRegionsTests.test_boxes_cover_whole_straight_travel) ... ok
+test_invalid_motion_rejected (test_translation_regions.TranslationRegionsTests.test_invalid_motion_rejected) ... ok
+test_reverse_boxes_cover_same_material (test_translation_regions.TranslationRegionsTests.test_reverse_boxes_cover_same_material) ... ok
+test_unsupported_surface_rejected (test_translation_regions.TranslationRegionsTests.test_unsupported_surface_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.195s
+
+OK
+Traceback (most recent call last):
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/integration/cover_order_gate.py", line 79, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/integration/cover_order_gate.py", line 36, in main
+    parts,raw=s.scene('STOW',side);original,root,cover,relative,report,_,_=s.design(side);cover_reports.append(report)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/integration/cover_admission.py", line 69, in scene
+    out,report=repair_parts(parts,port,side,enabled=enabled)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/integration/cover_admission.py", line 60, in repair_parts
+    original,root,cover,relative,report,key,cut=design(side)
+                                                ^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/integration/cover_admission.py", line 21, in design
+    er,em=regions(root,(-inside*10.,0,0))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/integration/translation_regions.py", line 28, in regions
+    out.append(single(cq.Shape.cast(prism.Shape())));types.append('planar_face_'+str(i))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/integration/straight_envelope.py", line 45, in single
+    if len(whole_material(shape)[0]) != 1:
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/integration/straight_envelope.py", line 36, in whole_material
+    visit(shape)
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/integration/straight_envelope.py", line 21, in visit
+    raise ValueError('invalid topology')
+ValueError: invalid topology
