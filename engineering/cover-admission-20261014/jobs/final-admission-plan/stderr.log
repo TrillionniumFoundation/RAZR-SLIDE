@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/home/qian-qi/RAZR-SLIDE-cover-admission-20261014/integration/cover_admission_gate.py", line 81, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-cover-admission-20261014/integration/cover_admission_gate.py", line 44, in main
+    cells,method=translation_cells(endpoint,cell_vector)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-cover-admission-20261014/integration/admission_cells.py", line 32, in translation_cells
+    sh=single(cq.Solid.extrudeLinear(face.outerWire(),face.innerWires(),move))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-cover-admission-20261014/.venv/lib/python3.12/site-packages/multimethod/__init__.py", line 375, in __call__
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-cover-admission-20261014/.venv/lib/python3.12/site-packages/cadquery/occ_impl/shapes.py", line 4227, in extrudeLinear
+    face = Face.makeFromWires(outerWire, innerWires)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-cover-admission-20261014/.venv/lib/python3.12/site-packages/cadquery/occ_impl/shapes.py", line 3407, in makeFromWires
+    raise ValueError("Cannot build face(s): inner wire is not closed")
+ValueError: Cannot build face(s): inner wire is not closed

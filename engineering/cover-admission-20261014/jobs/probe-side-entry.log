@@ -1,0 +1,15 @@
+START_FULL_OUTER_E
+Traceback (most recent call last):
+  File "/home/qian-qi/RAZR-SLIDE-cover-admission-evidence-20261014/probe_side_entry.py", line 9, in <module>
+    print('START_FULL_OUTER_E',flush=True);sweep,method=envelope(outer,(-20,0,0));n.cq.exporters.export(sweep,str(out/'OUTER_POS_E_FULL.step'))
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-cover-admission-20261014/integration/straight_envelope.py", line 103, in envelope
+    if whole_material(shape.cut(result), empty=True)[1] > TOL or whole_material(shape.translate(move).cut(result), empty=True)[1] > TOL:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-cover-admission-20261014/integration/straight_envelope.py", line 36, in whole_material
+    visit(shape)
+  File "/home/qian-qi/RAZR-SLIDE-cover-admission-20261014/integration/straight_envelope.py", line 33, in visit
+    visit(child)
+  File "/home/qian-qi/RAZR-SLIDE-cover-admission-20261014/integration/straight_envelope.py", line 26, in visit
+    raise ValueError('nonpositive signed solid')
+ValueError: nonpositive signed solid

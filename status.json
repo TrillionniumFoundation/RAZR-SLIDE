@@ -42,7 +42,8 @@
     "native_integration_and_reproduced_failures": "engineering/workplan-execution-20261014/integration",
     "STOW_reordered_nominal_geometry": "engineering/stow-installation-closure-20261014",
     "continuous_contact_and_actual_KEY_failures": "engineering/contact-motion-20261014",
-    "keycover_connected_bypass": "engineering/keycover-geometry-20261014"
+    "keycover_connected_bypass": "engineering/keycover-geometry-20261014",
+    "cover_admission_prefix": "engineering/cover-admission-20261014"
   },
   "G2_scope": {
     "X230_motion_poses": 121,
@@ -64,12 +65,12 @@
   ],
   "previous_production_review": "engineering/PRODUCTION_BLOCKERS_R6.md",
   "current_input_registry": "integration/assembly_inputs.json",
-  "current_execution_summary": "engineering/keycover-geometry-20261014/SUMMARY.json",
+  "current_execution_summary": "engineering/cover-admission-20261014/SUMMARY.json",
   "current_unit_tests": {
-    "count": 369,
-    "groups": 21,
+    "count": 399,
+    "groups": 22,
     "passed": true,
-    "scope": "unit tests; complete physical assembly not qualified"
+    "scope": "unit tests only; full assembly remains blocked"
   },
   "split_root_sampled_sequence": {
     "selected_design": "stow_continuous_slots_v2",
@@ -81,7 +82,7 @@
     "geometry_accepted_for_product": false
   },
   "final_fresh_verification": "engineering/workplan-execution-20261014/FINAL_VERIFICATION.json",
-  "previous_current_execution_summary": "engineering/contact-motion-20261014/SUMMARY.json",
+  "previous_current_execution_summary": "engineering/keycover-geometry-20261014/SUMMARY.json",
   "STOW_reordered_rigid_subassembly": {
     "full_nominal_stage_pairs": 64,
     "positive_pairs": 0,
@@ -100,12 +101,20 @@
     "selected_lower_restoring_force_is_assumption": true
   },
   "previous_latest_fresh_verification": "engineering/stow-installation-closure-20261014/fresh-GitHub-verification/SUMMARY.json",
-  "current_fresh_verification": "engineering/keycover-geometry-20261014/fresh-GitHub-verification/SUMMARY.json",
+  "current_fresh_verification": "pending",
   "current_cover_entry": {
+    "admission_candidate": "integration/cover_admission_gate.py",
     "qualified": false,
-    "retained_actual_failure": true,
-    "old_and_new_cover_obstruction_same": true,
-    "phase_not_covered_by_old_184_64_checks": true
+    "passed_prefix_stages_each_side": 7,
+    "blocked_stage": "OUTER_ROOT_CLOSE",
+    "all_present_parts_and_fixture_checked": true,
+    "side_open_locator_capture_unqualified": true
   },
-  "previous_current_fresh_verification": "engineering/contact-motion-20261014/fresh-GitHub-verification/SUMMARY.json"
+  "previous_current_fresh_verification": "engineering/keycover-geometry-20261014/fresh-GitHub-verification/SUMMARY.json",
+  "admission_candidate_motion_recheck": {
+    "pairs": 130,
+    "positive_pairs": 0,
+    "cover_subtraction_only": true,
+    "previous_replays_not_repeated": true
+  }
 }

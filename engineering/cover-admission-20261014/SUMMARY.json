@@ -1,0 +1,160 @@
+{
+  "date_utc": "2026-10-14",
+  "base_commit": "25a33b90a781f35aa47f15c6b319ac48e18f0b9c",
+  "host": "qian-qi",
+  "branch": "work/cover-admission-20261014",
+  "operating_geometry_baseline": "integration/keycover_bypass.py (unchanged)",
+  "admission_study": "integration/cover_admission_gate.py",
+  "native_input_source": "integration/admission_native_inputs.py",
+  "scope": "finite native cover-first assembly prefix; not a complete buildable mechanism",
+  "unit_tests": {
+    "count": 399,
+    "groups": 22,
+    "new_tests": 30,
+    "passed": true,
+    "source_bytes_unchanged": true,
+    "superseded_run_not_counted": true
+  },
+  "assembly_prefix": {
+    "sides": [
+      {
+        "side": "L",
+        "accepted_stage_names": [
+          "COVER_ON_SUPPORTS",
+          "HOLD_DOWN",
+          "UNPARKED_PAWL_FROM_BELOW",
+          "PARK_PAWL",
+          "INNER_ROOT_SIDE_ENTRY",
+          "STOP_0_SIDE_ENTRY",
+          "STOP_1_SIDE_ENTRY"
+        ],
+        "accepted_cell_obstacle_checks": 256,
+        "blocked_stage": "OUTER_ROOT_CLOSE",
+        "failed_stage_cell_obstacle_checks": 301,
+        "overlapping_positive_cells_not_volume_sum": 8,
+        "last_actual_witness": {
+          "fraction": 0.9975,
+          "offset_world_mm": [
+            -0.04999999999999716,
+            0.0,
+            0.0
+          ],
+          "fixed": "OLD_COVER",
+          "volume_mm3": 0.02723856085579022,
+          "method": "strict_complete_native_common",
+          "native_witness_STEP": {
+            "path": "L_STAGE_7_ACTUAL_COLLISION.step",
+            "sha256": "ae693ba1ac5fbbcefbdfbc47c4a48a8107de2c10e0c4d8a016a3491de7725317",
+            "solid_count": 2
+          }
+        }
+      },
+      {
+        "side": "R",
+        "accepted_stage_names": [
+          "COVER_ON_SUPPORTS",
+          "HOLD_DOWN",
+          "UNPARKED_PAWL_FROM_BELOW",
+          "PARK_PAWL",
+          "INNER_ROOT_SIDE_ENTRY",
+          "STOP_0_SIDE_ENTRY",
+          "STOP_1_SIDE_ENTRY"
+        ],
+        "accepted_cell_obstacle_checks": 256,
+        "blocked_stage": "OUTER_ROOT_CLOSE",
+        "failed_stage_cell_obstacle_checks": 301,
+        "overlapping_positive_cells_not_volume_sum": 8,
+        "last_actual_witness": {
+          "fraction": 0.9975,
+          "offset_world_mm": [
+            0.04999999999999716,
+            0.0,
+            0.0
+          ],
+          "fixed": "OLD_COVER",
+          "volume_mm3": 0.027238560855797733,
+          "method": "strict_complete_native_common",
+          "native_witness_STEP": {
+            "path": "R_STAGE_7_ACTUAL_COLLISION.step",
+            "sha256": "3a428851fa9415953f2d2d4b3ec28009e33a14d9aca32dd0c855f0bca1de386c",
+            "solid_count": 2
+          }
+        }
+      }
+    ],
+    "all_prior_placed_parts_and_finite_fixture_included": true,
+    "first_seven_stages_each_side_passed": true,
+    "full_initial_plan_passed": false,
+    "root_closure_and_downstream_fastening_not_executed_after_failure": true,
+    "exit_code": 1
+  },
+  "closed_locator_control": {
+    "same_plan_and_fixture": true,
+    "passed_stages_each_side": 4,
+    "blocked_stage": "INNER_ROOT_SIDE_ENTRY",
+    "exit_code": 1,
+    "independent_reproduced": true
+  },
+  "cover_locator_change": {
+    "window_eqr_mm": [
+      -3.16,
+      -2.68,
+      2.98,
+      3.22,
+      -7.25,
+      -6.43
+    ],
+    "removed_mm3_each_side": 0.04416,
+    "added_mm3": 0.0,
+    "each_cover_still_one_positive_solid": true,
+    "external_bounds_unchanged": true,
+    "closed_hole_changed_to_open_side_slot": true,
+    "locator_retention_changed_and_not_qualified": true,
+    "closing_keeper_not_designed": true
+  },
+  "fixture": {
+    "native_finite_parts_each_side": 2,
+    "base_supports_and_rear_hold_down_fingers": true,
+    "vertical_clamp_interference_rejected_and_retained": true,
+    "real_fixture_built": false,
+    "machine_frame_actuator_holding_force_stability_and_fastening_qualified": false
+  },
+  "independent_reimport": {
+    "complete_single_solid_STEPs": 272,
+    "prior_phone_parts_compared": 46,
+    "same_prefix_and_obstruction_reproduced": true,
+    "no_scene_or_fixture_builder_imported": true,
+    "same_kernel_and_generic_cell_algorithm_not_cross_engine": true
+  },
+  "operating_motion_recheck": {
+    "pairs": 130,
+    "positive_pairs": 0,
+    "only_cover_subtraction": true,
+    "all_other_pinned_parts_unchanged": true,
+    "old_564_184_or_64_506_runs_repeated_this_round": false,
+    "old_results_retained_not_relabelled_new": true
+  },
+  "regeneration_limitation": {
+    "generated_root_face_prisms_failed_with_invalid_inner_wires": true,
+    "direct_existing_face_probe_did_not_close_it": true,
+    "pinned_STEP_source_is_byte_verified_not_regenerated_or_healed": true,
+    "regenerated_source_to_assembly_path_qualification_closed": false
+  },
+  "rejected_overcut": {
+    "full_outer_sweep_cut_leaves_cover_as_five_solids": true,
+    "all_fragments_retained": true,
+    "not_adopted": true
+  },
+  "original_worktree_unchanged": true,
+  "historical_file_bytes_changed": [],
+  "materialized_baseline_git_blobs_checked": 3148,
+  "sparse_files_not_rehashed": 20945,
+  "controlled_phone_cavities_or_OLED_FPC_added": false,
+  "OPEN_continuous_motion_or_complete_electronics_closed": false,
+  "hardware_powered_or_services_restarted": false,
+  "supplier_messages_or_orders": 0,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "next_dependency": "redesign an actually closable outer-root/cover retention interface, including a keeper for the newly opened inner locator; validate closure, screws and fixture release without restarting later stages from invented final poses"
+}

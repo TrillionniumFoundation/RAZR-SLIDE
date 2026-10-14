@@ -1,28 +1,15 @@
-# 当前研究设计｜KEY通道与外盖绕接
+# 当前研究状态｜盖件先定位的装配前段
 
-独立GitHub检出复核：源码 `1d278a6f55995b90609856c7817477a632e3b919` 的12项新候选测试、130对完整运动及材料/42个未改零件/92个装配实体复验通过，源字节和工作树未变。完整369项在提交前同字节源码上执行，本次独立检出未重复全部369项。回执：`engineering/keycover-geometry-20261014/fresh-GitHub-verification/SUMMARY.json`。外盖实际装入仍不合格。
+本轮证据：`engineering/cover-admission-20261014/SUMMARY.json`及README。
+入装执行器：`integration/cover_admission_gate.py`；原生输入：`integration/admission_native_inputs.py`。
+运行运动基线仍保留`integration/keycover_bypass.py`及PR5原始几何。
 
-当前源码：`integration/keycover_bypass.py`。
-当前证据：`engineering/keycover-geometry-20261014/SUMMARY.json` 及同目录README。
+两侧各七个装配阶段通过，均包括当时已放入的零件和有限夹具。第八步外根座闭合仍有实际碰撞，计划退出1；后续紧固和完整夹具退出没有执行。侧开定位口每侧移除0.04416mm³，保持/承载边界改变，闭合保持件尚未设计。
 
-## 已验证范围
+399项/22组单元测试通过。独立原生复读复现七段通过与闭合失败；全部130对既有运行包络重新计算仍零相交。旧564/184及64/506本轮未重复，历史结果不冒充本轮。
 
-STOW q=0–12mm、此前下向恢复力假设下，130对完整运动检查零正干涉，独立76份STEP复读一致。369项/21组测试通过；原564/184采样和64阶段/506静态检查通过。完整装配92个实体及42个非改动零件逐一比对。
+再生外根座对象构造面棱柱有未闭合线错误；本轮使用已绑定的原始STEP验证入装，没有据此宣布源端再生问题已修复。夹具仅有有限CAD几何，机架/驱动/保持力/材料和实际制作未获资格。
 
-## 必须保留的边界
+下一步：可闭合外根座/盖件保持接口、侧开定位口保持件、完整紧固和夹具退出；随后公差/载荷与真实整机输入。所有产品、夹具制造、整机制造放行继续为false。
 
-只改外盖和外根座。外盖q下界1.7→-0.4mm，局部装配外包络不增；不代表实际手机内腔已通过。原底板和孔位保留，完整两片重新连接，不丢弃材料碎片。
-
-盖件实际装入尚未闭合：根座先闭合后，上方装入在r=+0.05mm仍有实际碰撞；原件同样失败。原184/64项不覆盖这一步，不能替代新增装配拒绝。
-
-## 下一步
-
-先验证外盖进入、根座闭合及紧固的真实装配顺序和夹具/工具通道；再做载荷、公差与实物资格。同版本手机内腔、完整布线端接、指定OLED/FPC、独立B电池和USB/OLED系统仍未闭合。
-
-所有candidate/fixture/manufacturing放行继续为false。未上电、未采购、未合并主干。
-
-## 历史证据
-
-连续接触及四项KEY旧失败：`engineering/contact-motion-20261014/`。
-上一版装入与根座局部结果：`engineering/stow-installation-closure-20261014/`。
-恢复工具/统一测试入口与原18项失败：`engineering/workplan-execution-20261014/`。
+历史：`engineering/keycover-geometry-20261014/`、`engineering/contact-motion-20261014/`、`engineering/stow-installation-closure-20261014/`及`engineering/workplan-execution-20261014/`均保留。
