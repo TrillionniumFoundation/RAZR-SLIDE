@@ -1,0 +1,131 @@
+{
+  "date_utc": "2026-10-14",
+  "base_commit": "ce282a6412bb44916c2fbff1f80ec30fe0245043",
+  "actual_host": "qian-qi",
+  "adopted_existing_uncommitted_candidate": true,
+  "original_worktree_untouched": true,
+  "selected_design": "integration/stow_continuous_slots_v2.py",
+  "selected_design_sha256": "a5d7c4fea2f72d186b68059148dde01b02304771771e9db30b25fe0f79acc0cf",
+  "scope": "nominal STOW pawl return and reordered initial rigid subassembly; not whole-phone or physical qualification",
+  "tests": {
+    "count": 334,
+    "groups": 19,
+    "passed": true,
+    "source_bytes_unchanged": true,
+    "prior_300_second_group_timeout_preserved": true,
+    "only_wall_clock_budget_changed_not_assertions": true
+  },
+  "original_564_sampled_sequence": {
+    "rows": 564,
+    "positive_rows": 0,
+    "exit_code": 0,
+    "old_18_positive_rows_remain_in_original_receipt": true
+  },
+  "original_184_sampled_assembly": {
+    "rows": 184,
+    "positive_rows": 0,
+    "static_states": 4,
+    "exit_code": 0,
+    "not_proof_original_order_is_continuously_clear": true
+  },
+  "reordered_straight_stages": {
+    "order": [
+      "ROOT_INNER fixture boundary",
+      "PARKED_PAWL before STOPs",
+      "STOP_0",
+      "STOP_1",
+      "ROOT_OUTER last",
+      "final PAWL return"
+    ],
+    "stage_common_pairs": 64,
+    "positive_pairs": 0,
+    "static_common_pairs": 506,
+    "positive_static_pairs": 0,
+    "full_finite_envelopes_not_discrete_pose_unions": true,
+    "cylindrical_carriers_are_conservative_supersets": true
+  },
+  "independent_reimport": {
+    "single_solid_STEPs": 64,
+    "reverse_envelope_comparisons": 18,
+    "stage_pairs": 64,
+    "static_pairs": 506,
+    "complete_assembly_STEPs": 2,
+    "complete_assembly_solid_leaves": 92,
+    "STOW_assembly_leaves_bijectively_matched": 46,
+    "builder_imported": false,
+    "same_CAD_kernel_not_cross_engine": true
+  },
+  "material_changes": [
+    {
+      "side": "L",
+      "old_root_mm3": 99.87133043588383,
+      "new_root_mm3": 104.39489522752112,
+      "added_mm3": 4.549164791637275,
+      "removed_mm3": 0.02559999999999998,
+      "original_removed_outside_two_declared_motion_envelopes_mm3": 0.0,
+      "bounds_delta_mm": {
+        "xmin": 0.0,
+        "xmax": 0.0,
+        "ymin": 0.0,
+        "ymax": 0.0,
+        "zmin": 0.0,
+        "zmax": 0.0
+      },
+      "new_root_complete_positive_single_solid": true
+    },
+    {
+      "side": "R",
+      "old_root_mm3": 99.87133043588585,
+      "new_root_mm3": 104.39489522752908,
+      "added_mm3": 4.549164791636552,
+      "removed_mm3": 0.025600000000000123,
+      "original_removed_outside_two_declared_motion_envelopes_mm3": 0.0,
+      "bounds_delta_mm": {
+        "xmin": 0.0,
+        "xmax": 0.0,
+        "ymin": 0.0,
+        "ymax": 0.0,
+        "zmin": 0.0,
+        "zmax": 0.0
+      },
+      "new_root_complete_positive_single_solid": true
+    }
+  ],
+  "only_outer_root_geometry_changed": true,
+  "nominal_new_web_thickness_mm": 0.25,
+  "fixed_new_web_local_bounds_mm": [
+    0.05,
+    0.3,
+    1.26,
+    2.75,
+    -9.6,
+    9.35
+  ],
+  "old_order_negative_controls": {
+    "continuous_PAWL_insertion_STOP_collisions": 4,
+    "volume_mm3_each_approx": 0.0036,
+    "retained_not_relabelled_pass": true
+  },
+  "rejected_candidates_retained": [
+    "simple assembly reorderings",
+    "roots-first assembly",
+    "continuous-slots-v1 disconnected root",
+    "four wider-sheet disconnected-stock variants"
+  ],
+  "controlled_finished_cavities_received": false,
+  "controlled_OLED_FPC_received": false,
+  "full_phone_PCB_or_independent_B_battery_completed": false,
+  "continuous_coupled_KEY_STOP_motion_qualified": false,
+  "assembly_fixture_gripping_fastener_preload_load_tolerance_and_fatigue_qualified": false,
+  "hardware_powered_or_modified": false,
+  "supplier_messages_or_orders": 0,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "next_dependencies": [
+    "prove coupled KEY/STOP continuous motion and contact branch selection, not only 14 samples",
+    "design real fixture/gripping/tool access for the reordered assembly",
+    "tolerance, stiffness, finite-force return and capture load on same-version parts",
+    "complete actual phone cavity and populated endpoint/OLED/FPC inputs"
+  ]
+}
