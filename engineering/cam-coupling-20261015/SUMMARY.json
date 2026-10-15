@@ -8,7 +8,24 @@
   },
   "native_geometry_files": 19,
   "complete_conditional_participants_per_pose": 65,
-  "native_reimport_result": "v5 in progress; v4 prior result retained separately",
+  "native_reimport_result": {
+    "passed": true,
+    "reader_sha256": "42c61f8a75cc8064b1038c02802cc60461c2e24cc281630d58f749b14f11b133",
+    "native_STEP_files": 19,
+    "conditional_nominal_poses": 8,
+    "parts_per_pose": 65,
+    "sampled_pair_evaluations": 16640,
+    "finite_flank_tests": 32,
+    "joint_limit_tests": 24,
+    "extension_allocation_trials": 5,
+    "nonuniform_extension_allocations": 4,
+    "fully_collapsed_allocation": 1,
+    "added_arm_PAWL_full_return_envelope_checks": 6,
+    "same_CAD_kernel": true,
+    "candidate_builder_imported": false,
+    "local_current_regeneration_readback": true,
+    "hosted_current_regeneration_readback": true
+  },
   "B_slide_mm": 79.75,
   "KEY_nominal_travel_mm": 12.0,
   "normal_compensation_mm": 8.2,
@@ -89,7 +106,86 @@
   "PAWL_release_actuator_and_endpoint_relock_implemented": false,
   "cam_head_and_captured_telescope_assembly_not_qualified": true,
   "actual_electronics_OLED_storage_FPC_batteries_not_installed": true,
-  "hosted_CI": "pending for corrected source; earlier 480-test run is superseded",
+  "hosted_CI": {
+    "run_id": 38684896648,
+    "event": "pull_request",
+    "head_sha": "d64eb3e84f3cddd10ea4e6d4af68ba5157eeb1a4",
+    "tested_checkout_sha": "d76d052f5ba49f6be66a9dac781a7fa9f6571a02",
+    "tested_tree_sha": "cc185fdc52d0779dbc558638b4f68c4fd28d88b1",
+    "tested_tree_matches_functional_head": true,
+    "all_tested_source_hashes_match_delivery": true,
+    "conclusion": "success",
+    "tests_run": 481,
+    "groups": 27,
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "versions": {
+      "cadquery": "2.7.0",
+      "cadquery-ocp": "7.8.1.1.post1",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "shapely": "2.2.0"
+    },
+    "unit_report_sha256": "861deb595d210fa5ebad4e022b2eda645db6f53ac25b9540463909d65942b470",
+    "native_report_sha256": "c6671d146af6f0f1c56862880de7f2683b6e07ed11878a55eb81ab24bd506102",
+    "native_STEP_files": 19,
+    "native_verified": true,
+    "job_id": 116257479839,
+    "html_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/38684896648",
+    "steps": [
+      {
+        "name": "Set up job",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884",
+        "conclusion": "success"
+      },
+      {
+        "name": "Install locked research dependencies",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run every current suite",
+        "conclusion": "success"
+      },
+      {
+        "name": "Generate and independently reread the empty-shell study",
+        "conclusion": "success"
+      },
+      {
+        "name": "Generate and independently verify the thin mechanism",
+        "conclusion": "success"
+      },
+      {
+        "name": "Generate and independently verify the mounted cartridges",
+        "conclusion": "success"
+      },
+      {
+        "name": "Generate and independently verify cam transmission study",
+        "conclusion": "success"
+      },
+      {
+        "name": "Preserve actual results, including failures",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Run astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "conclusion": "success"
+      },
+      {
+        "name": "Complete job",
+        "conclusion": "success"
+      }
+    ]
+  },
   "candidate_go": false,
   "fixture_fabrication_go": false,
   "manufacturing_go": false,
@@ -137,5 +233,35 @@
     "strength_and_deflection_unqualified": true,
     "new_regression_checks_full_PAWL_return_envelope": true
   },
-  "local_full481_rerun": false
+  "local_full481_rerun": false,
+  "functional_commit": "d64eb3e84f3cddd10ea4e6d4af68ba5157eeb1a4",
+  "additional_local_diagnostics": {
+    "head_axial_capture_checks": 16,
+    "permitted_return_flank_PAWL_poses": 3,
+    "both_sides_checked": true,
+    "new_return_arm_positive_pairs": 0,
+    "old_return_arm_failure_retained": true,
+    "four_reader_negative_controls_rejected": true,
+    "included_in_481_unit_count": false,
+    "misbound_intermediate_observer_results_excluded_and_preserved": true
+  },
+  "native_finite_groove_span": {
+    "sides": 2,
+    "derived_from_native_end_centers": true,
+    "nominal_centerline_inside_both_finite_slots_for_whole_linear_stroke": true,
+    "not_full_phone_continuous_collision_proof": true,
+    "included_in_481_unit_count": false,
+    "record": "native-groove-span.json"
+  },
+  "additional_continuous_telescope_shell_envelopes": {
+    "checks": 36,
+    "passed": true,
+    "includes_long_slide_and_normal_seating": true,
+    "axial_joint_allocation_limits_included": true,
+    "nominal_coaxial_model_only": true,
+    "not_full_scene_continuous_qualification": true,
+    "included_in_481_unit_count": false,
+    "record": "telescope-shell-envelopes.json"
+  },
+  "recorded_utc": "2026-10-15T05:24:18.063017+00:00"
 }
