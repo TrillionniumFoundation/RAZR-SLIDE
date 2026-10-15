@@ -68,6 +68,40 @@ def reaction_by_part(patches,fit):
     return totals
 
 
+def disk_sweep(radius,x0,x1,y,z0,z1):
+    vals=(radius,x0,x1,y,z0,z1)
+    if any(type(x) not in (int,float) or not math.isfinite(x) for x in vals) or radius<=0 or x1<x0 or z1<=z0:
+        raise ValueError('finite ordered cylinder sweep required')
+    a=cq.Solid.makeCylinder(radius,z1-z0,cq.Vector(x0,y,z0),cq.Vector(0,0,1))
+    if x0==x1:return v.single(a)
+    b=cq.Solid.makeCylinder(radius,z1-z0,cq.Vector(x1,y,z0),cq.Vector(0,0,1))
+    return v.single(a.fuse(b).fuse(v.box((x0,y-radius,z0),(x1,y+radius,z1))).clean())
+
+
+def inverse_screw_sweep(screw,dx):
+    if type(dx) not in (int,float) or not math.isfinite(dx):raise ValueError('finite X translation required')
+    b=screw.BoundingBox();x=(b.xmin+b.xmax)/2.;y=(b.ymin+b.ymax)/2.
+    shank=disk_sweep(.5,x,x,y,.55,3.55);head=disk_sweep(.9,x,x,y,.10,.55)
+    expected=v.single(shank.fuse(head).clean());v.equal(screw,expected)
+    lo,hi=sorted((x,x-dx))
+    return v.single(disk_sweep(.5,lo,hi,y,.55,3.55).fuse(disk_sweep(.9,lo,hi,y,.10,.55)).clean())
+
+
+def panel_motion_with_exact_screw_voids(body,vector,fixed):
+    if len(vector)!=3 or vector[1]!=0 or vector[2]!=0:
+        raise ValueError('exact inverse certificate is only for declared pure X motion')
+    screws={name:part for name,part in fixed.items() if name.startswith('FRAME_')}
+    if len(screws)!=4:raise ValueError('four actual frame fasteners required')
+    result=e.v.motion('A_BACK_PANEL',body,vector,{name:part for name,part in fixed.items() if name not in screws})
+    for name,screw in sorted(screws.items()):
+        cage=inverse_screw_sweep(screw,vector[0]);value=v.common(body,cage)
+        row={'fixed':name,'method':'exact_inverse_swept_native_two_cylinder_union',
+             'complete_original_screw_material_matched':True,'common_mm3':[value],'clear':value<=TOL}
+        result['checks'].append(row)
+        if not row['clear']:result['failed'].append(row)
+    return result
+
+
 def verify(baseline,manifest,output,*,full=False):
     out=Path(output)
     if out.exists():raise ValueError('new report path required')
@@ -134,7 +168,7 @@ def verify(baseline,manifest,output,*,full=False):
         for index in (0,7):
             moving,fixed=shift_deck(allstates[index],-.02)
             for name,body in moving.items():
-                row=e.v.motion(name,body,(.04,0,0),fixed);row['state_index']=index
+                row=(panel_motion_with_exact_screw_voids(body,(.04,0,0),fixed) if name=='A_BACK_PANEL' else e.v.motion(name,body,(.04,0,0),fixed));row['state_index']=index
                 paths.append(row);failures+=row['failed']
             print('CONTINUOUS_DECK',index,'GROUPS',len(moving),'FAILURES',sum(len(p['failed']) for p in paths if p['state_index']==index),flush=True)
         # Existing controls assembled on detached panel; add no new parts.

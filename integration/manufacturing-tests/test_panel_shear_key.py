@@ -99,4 +99,28 @@ class PanelShearKeyTests(unittest.TestCase):
         self.assertFalse(r.w.equilibrium(p,(0,0,0),(1,0,0),(0,2,0))['feasible'])
 
 
+class ExactRelativeSweepTests(unittest.TestCase):
+    def screw(self):
+        return r.v.single(r.disk_sweep(.5,0,0,0,.55,3.55).fuse(r.disk_sweep(.9,0,0,0,.1,.55)).clean())
+
+    def test_sweep_volume_matches_complete_capsule_extrusion(self):
+        b=r.disk_sweep(.5,-.02,.02,0,0,3.)
+        self.assertAlmostEqual(r.v.vol(b),(math.pi*.5**2+2*.5*.04)*3,places=7)
+        self.assertAlmostEqual(r.v.vol(r.disk_sweep(.5,0,0,0,0,3)),math.pi*.5**2*3,places=7)
+
+    def test_invalid_sweep_parameters_rejected(self):
+        for vals in ((True,0,1,0,0,1),(.5,1,0,0,0,1),(.5,0,1,0,1,0),(.5,0,float('nan'),0,0,1)):
+            with self.assertRaises(ValueError):r.disk_sweep(*vals)
+
+    def test_hollow_panel_full_path_and_real_overtravel(self):
+        panel=r.v.box((-2,-2,0),(2,2,1.2))
+        panel=r.v.single(panel.cut(r.disk_sweep(.55,0,0,0,-.1,1.3)).cut(r.disk_sweep(.95,0,0,0,-.1,.55)).clean())
+        self.assertEqual(r.v.common(panel.translate((-.02,0,0)),r.inverse_screw_sweep(self.screw(),.04)),0.)
+        self.assertGreater(r.v.common(panel.translate((-.06,0,0)),r.inverse_screw_sweep(self.screw(),.12)),1e-7)
+
+    def test_unmodeled_screw_material_cannot_be_dropped(self):
+        changed=r.v.single(self.screw().fuse(r.v.box((.4,-.1,.7),(.65,.1,.9))).clean())
+        with self.assertRaises(ValueError):r.inverse_screw_sweep(changed,.04)
+
+
 if __name__=='__main__':unittest.main(verbosity=2)
