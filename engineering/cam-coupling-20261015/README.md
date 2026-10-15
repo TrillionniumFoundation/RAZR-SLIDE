@@ -45,3 +45,12 @@ The slot-only allowance omits guide play, telescope radial play, material
 compliance, force, friction and thermal effects. No measured release force,
 fatigue rating, real fixture, phone electronics or selected OLED/FPC/battery
 is inferred from this nominal model. No powered/hardware/procurement action.
+
+## PAWL 回位干涉修复
+
+早期输出臂在PAWL已退让时不碰撞，但回到中途和啮合位置分别相交约0.48和0.726mm³/侧。
+该原生负结果保留在 `REJECTED_RETURN_ARM.json`，旧源码与V4模型未覆盖。
+新固定连杆横向区间由R侧14.2–14.8mm移至13.2–13.45mm（L侧镜像），避开原PAWL全行程X包络；
+原KEY核心和PAWL都未切削。新增回归覆盖PAWL整个1.1mm返回包络，而不只是退让终点。
+这段0.25×0.30mm截面的长臂没有刚度/强度和制造公差依据，不能据此放行实物。
+当前21项新增局部测试通过；全量481项与V5原生报告以实际完成结果为准。

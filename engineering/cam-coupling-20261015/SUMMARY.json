@@ -1,27 +1,14 @@
 {
   "base_main": "f9091d28eda1ddbeed73d931e283a16aef7ac8d0",
-  "builder_sha256": "8494a6fad611bb28942ba33808106150606381e2fe71452bc96a0b48b28cb99f",
+  "builder_sha256": "4a3bf1d2b86d31fa8e3d60d3412e15548bf42287ed95d756798f3d88c6c4e631",
   "local_new_tests": {
-    "count": 20,
+    "count": 21,
     "passed": true,
-    "not_full480": true
+    "not_full481": true
   },
   "native_geometry_files": 19,
   "complete_conditional_participants_per_pose": 65,
-  "native_reimport_result": {
-    "passed": true,
-    "reader_sha256": "da7a9243c1744eeb9b794484a2202a4b4ddd609e88fe3c72d6610faad5791a2c",
-    "native_STEP_files": 19,
-    "conditional_nominal_poses": 8,
-    "parts_per_pose": 65,
-    "static_pairs_per_pose": 2080,
-    "sampled_pair_evaluations": 16640,
-    "finite_flank_tests": 32,
-    "joint_limit_tests": 24,
-    "unequal_extension_trials": 5,
-    "same_CAD_kernel": true,
-    "candidate_builder_imported": false
-  },
+  "native_reimport_result": "v5 in progress; v4 prior result retained separately",
   "B_slide_mm": 79.75,
   "KEY_nominal_travel_mm": 12.0,
   "normal_compensation_mm": 8.2,
@@ -102,10 +89,53 @@
   "PAWL_release_actuator_and_endpoint_relock_implemented": false,
   "cam_head_and_captured_telescope_assembly_not_qualified": true,
   "actual_electronics_OLED_storage_FPC_batteries_not_installed": true,
-  "hosted_CI": "not yet run",
+  "hosted_CI": "pending for corrected source; earlier 480-test run is superseded",
   "candidate_go": false,
   "fixture_fabrication_go": false,
   "manufacturing_go": false,
   "slot_band_scope": "two ideal groove clearances only; not measured full assembly backlash and not a complete tolerance bound",
-  "local_full480_rerun": false
+  "previous_v4_result": {
+    "builder_sha256": "8494a6fad611bb28942ba33808106150606381e2fe71452bc96a0b48b28cb99f",
+    "local_new_tests": {
+      "count": 20,
+      "passed": true,
+      "not_full480": true
+    },
+    "native_reimport_result": {
+      "passed": true,
+      "reader_sha256": "da7a9243c1744eeb9b794484a2202a4b4ddd609e88fe3c72d6610faad5791a2c",
+      "native_STEP_files": 19,
+      "conditional_nominal_poses": 8,
+      "parts_per_pose": 65,
+      "static_pairs_per_pose": 2080,
+      "sampled_pair_evaluations": 16640,
+      "finite_flank_tests": 32,
+      "joint_limit_tests": 24,
+      "unequal_extension_trials": 5,
+      "same_CAD_kernel": true,
+      "candidate_builder_imported": false
+    }
+  },
+  "current_native_inputs": {
+    "manifest": "V5_NATIVE_MANIFEST.json",
+    "archive_manifest": "geometry-v5-manifest.json"
+  },
+  "return_arm_repair": {
+    "old_fixed_arm_PAWL_collisions_mm3": {
+      "mid_return": 0.48,
+      "engaged": 0.726
+    },
+    "old_result": "REJECTED_RETURN_ARM.json",
+    "new_arm_R_X_interval_mm": [
+      13.2,
+      13.45
+    ],
+    "new_arm_nominal_section_mm": [
+      0.25,
+      0.3
+    ],
+    "strength_and_deflection_unqualified": true,
+    "new_regression_checks_full_PAWL_return_envelope": true
+  },
+  "local_full481_rerun": false
 }

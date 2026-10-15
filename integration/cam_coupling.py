@@ -126,8 +126,8 @@ def templates():
     c=(X0-.75,Y_OUTPUT+.75);d=(X0+12.75,Y_OUTPUT-12.75)
     yoke=capsule(c,d,1.1,1.2,1.6).cut(capsule(c,d,SLOT_RADIUS,1.1,1.7)).clean()
     arm=box((10.8,39.,1.2),(11.4,72.6,1.6))
-    post=box((14.2,39.,1.2),(14.8,39.6,4.35))
-    tab=one(box((14.2,15.8,4.05),(14.8,39.6,4.35)).fuse(box((10.8,39.,1.2),(14.8,39.6,1.6))).fuse(post).clean())
+    post=box((13.2,39.,1.2),(13.45,39.6,4.35))
+    tab=one(box((13.2,15.8,4.05),(13.45,39.6,4.35)).fuse(box((10.8,39.,1.2),(13.45,39.6,1.6))).fuse(post).clean())
     yoke=one(yoke.fuse(arm).fuse(tab).clean())
     # All telescopic tubes have bottom floors and retaining top lips. Nested
     # collars bound the relative offset to [0.1,2.9], not an equality schedule.

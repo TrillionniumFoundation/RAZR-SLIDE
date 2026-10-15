@@ -180,6 +180,16 @@ def verify(manifest,output):
     data=json.loads(gzip.decompress(f.read_bytes()));hashes[str(f)]=sha(f)
     fields=('pin_radius','floor_height','floor_corner_q','ramp_slope','pin_q','lower_stop_height','q_max')
     for side in 'LR':profiles[side]=[ContactProfile(**{k:v['profile'][k] for k in fields}) for v in data['sides'][side]['contacts']]
+    arm_return_checks=[]
+    half=(G-R)*(math.hypot(1,K)+math.sqrt(2))
+    for side in 'LR':
+        b=old[side+'_PAWL'].BoundingBox()
+        sweep=n.single(cq.Solid.makeBox(b.xmax-b.xmin,b.ymax-b.ymin,b.zmax-b.zmin+1.1,cq.Vector(b.xmin,b.ymin,b.zmin)))
+        added=p[side+'_KEY_YOKE'].cut(p[side+'_ORIGINAL_KEY'])
+        for q in (0.,half,12.):
+            value=common(added.translate((0,q,0)),sweep)
+            if value>TOL:raise ValueError('new output arm blocks the complete PAWL return envelope')
+            arm_return_checks.append({'side':side,'KEY_Y_mm':q,'added_arm_PAWL_sweep_common_mm3':value})
     contacts=inspect_contacts(p);print('CONTACTS',len(contacts['flank_tests']),'LIMITS',len(contacts['joint_limit_tests']),flush=True)
     allocations=[]
     for d,examples in ((0.,[(2.9,2.9,2.7),(2.7,2.9,2.9)]),(4.1,[(.1,1.4,2.9),(2.9,1.4,.1)]),(8.2,[(.1,.1,.1)])):
@@ -209,7 +219,7 @@ def verify(manifest,output):
     if 'cam_coupling' in sys.modules:raise ValueError('candidate generator imported')
     half=(G-R)*(math.hypot(1,K)+math.sqrt(2));allocation_failures=[x for x in allocations if x['positive_pairs']]
     result={'source_sha256':r['source_sha256'],'verifier_sha256':sha(__file__),'input_sha256':hashes,
-            'native_STEP_files':len(p),'contacts':contacts,'unequal_extension_trials':allocations,
+            'native_STEP_files':len(p),'added_arm_return_checks':arm_return_checks,'contacts':contacts,'unequal_extension_trials':allocations,
             'conditional_whole_assembly_poses':rows,'shell_material_changes':changes,
             'unique_forward_pose_count':len(trace),'reverse_centerline_parameter_trace':list(reversed(trace)),
             'reverse_native_shapes_reused_by_exact_rigid_pose_not_recomputed':True,

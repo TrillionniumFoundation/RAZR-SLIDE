@@ -111,3 +111,14 @@ class CouplingTests(unittest.TestCase):
     def test_actual_phone_input_register_is_unchanged(self):
         data=(ROOT/'integration/assembly_inputs.json').read_bytes()
         self.assertEqual(hashlib.sha256(data).hexdigest(),'7b7ebf0f48556f2feca175a35b882a9a48337de2bb5f54b1ba7a740f85e8ce6b')
+
+
+    def test_added_arm_clears_full_PAWL_return_and_old_arm_fails(self):
+        for side in 'LR':
+            pawl=c.parent(side+'_PAWL');b=pawl.BoundingBox()
+            full=c.box((b.xmin,b.ymin,b.zmin),(b.xmax,b.ymax,b.zmax+1.1))
+            added=self.t[side+'_KEY_YOKE'].cut(self.t[side+'_ORIGINAL_KEY'])
+            for q in (0.,c.output_band(0)['upper_mm'],12.):
+                self.assertEqual(common(added.translate((0,q,0)),full)[0],0.)
+            old_rod=c.handed(c.box((14.2,15.8,4.05),(14.8,39.6,4.35)),side)
+            self.assertGreater(common(old_rod,pawl)[0],1e-7)
