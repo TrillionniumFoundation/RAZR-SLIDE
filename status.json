@@ -1,43 +1,273 @@
 {
-  "project":"RAZR SLIDE","candidate_go":false,"manufacturing_go":false,
-  "physical_qualification":{"mechanical":"missing","FPC":"missing","power":"missing","USB":"missing","OLED":"missing"},
-  "constraints":{"same_size_compartments":true,"single_flexible_OLED_inches_approx":7,"B_upward_travel_mm":79.75,"endpoint_normal_seating_mm":8.2,"larger_battery_priority":"A","total_system_capacity_target_mAh":4700,"A_capacity_mAh":null,"B_capacity_mAh":null,"A_cell_part_number":null,"B_cell_part_number":null},
-  "parallel_math_research_branch":"R79_20261013",
-  "selected_repair_base":{"branch":"R50_20261011","sha256":"86f226f9bce3a3f0659737327c7cc32415eed3b9be3f96f35a746ac32844dfd6","role":"integration and rejection validation; all old routes rejected"},
-  "unconnected_topology_input":"R44_FPC_20261013","current_production_review":"CURRENT_DESIGN.md",
-  "phone_native_assembly_complete":false,"phone_complete_PCB":false,"controlled_specific_OLED_received":false,"controlled_specific_dynamic_FPC_received":false,
-  "latest_engineering_evidence":{"G2_routes":"engineering/fpc-g2-route-candidates-20261013-r6","OLED_FPC_sources":"engineering/controlled-inputs-web-20261013-r6","four_phase_bench_detector":"engineering/proof-selftest-design-20261013-r5","A_only_power_chain_boards":"engineering/power-chain-pcba-20261013-r5","P0_recovery_and_tests":"engineering/workplan-execution-20261014/p0","native_integration_and_reproduced_failures":"engineering/workplan-execution-20261014/integration","STOW_reordered_nominal_geometry":"engineering/stow-installation-closure-20261014","continuous_contact_and_actual_KEY_failures":"engineering/contact-motion-20261014","keycover_connected_bypass":"engineering/keycover-geometry-20261014","catalogue_dimensional_and_process_scenario":"engineering/catalogue-joint-20261015","root_rigid_error_envelopes":"engineering/root-clearance-20261015","root_cover_lateral_guidance":"engineering/lateral-guide-20261015"},
-  "G2_scope":{"X230_motion_poses":121,"candidate_count":3,"station_obstacle_rejected_candidate_poses":363,"finite_sweep_requests":30,"valid_single_sweeps":17,"strict_common_rejected_valid_sweeps":5,"complete_boolean_and_STEP_cases":12,"positive_interference_cases":12,"manufacturing_go":false},
-  "bench_detector_and_A_power_boards_end_to_end_validated":false,
-  "production_blockers":["specified OLED/FPC controlled revision and dynamic qualification","continuous interference-free finished FPC route and actual endpoint strain relief","complete native phone assembly and PCB including selected A/B cells, protection, charging, USB and OLED","physical capture, fail-closed, finite-force retraction, dual-battery, USB and OLED qualification"],
-  "previous_production_review":"engineering/PRODUCTION_BLOCKERS_R6.md","current_input_registry":"integration/assembly_inputs.json",
-  "current_execution_summary":"engineering/lateral-guide-20261015/SUMMARY.json",
-  "current_unit_tests":{"manifest":"tools/test_suites.json","configured_minimum":611,"groups":31,"result_source":"engineering/lateral-guide-20261015/SUMMARY.json; actual V2 functional-head hosted run38724312796"},
-  "previous_current_execution_summary":"engineering/root-clearance-20261015/SUMMARY.json",
-  "current_fresh_verification":"hosted locked checkout; isolated local root/cover subset only, no LAN process submitted",
-  "bench_cover_first_candidate":{"source":"integration/cover_admission.py","stages":22,"pairs":130,"positive_pairs":0,"local_q_growth_mm":3.5,"new_locator_interfaces":true,"not_a_drop_in_phone_design":true},
-  "geometry_reference_before_growth":"integration/keycover_bypass.py",
-  "cover_capture_candidate":{"source":"integration/cover_capture.py","rigid_normal_uplift_stop":true,"gap_mm":0.02,"force_and_six_DOF_capture_qualified":false},
-  "finished_phone_space":{"registration_available":false,"component_operating_size_eqr_mm":[12.0,16.445,21.21],"fit":"unknown"},
-  "historical_research_results":{
-    "split_root_sampled_sequence":{"selected_design":"stow_continuous_slots_v2","requested_rows":564,"positive_intersection_rows":0,"actual_exit_code":0,"original_failure_rows":18,"original_failure_preserved":true,"geometry_accepted_for_product":false},
-    "STOW_reordered_rigid_subassembly":{"full_nominal_stage_pairs":64,"positive_pairs":0,"static_pairs":506,"independent_reimport":true,"old_assembly_order_still_rejected":true,"fixture_or_physical_qualification":false},
-    "STOW_continuous_contact_motion":{"source":"integration/keycover_bypass.py","pairs":130,"positive_pairs":0,"exit_code":0,"independent_reproduced":true,"OPEN_qualified":false,"selected_lower_restoring_force_is_assumption":true},
-    "current_cover_entry":{"qualified":false,"retained_actual_failure":true,"old_and_new_cover_obstruction_same":true,"phase_not_covered_by_old_184_64_checks":true},
-    "final_fresh_verification":"engineering/workplan-execution-20261014/FINAL_VERIFICATION.json","previous_latest_fresh_verification":"engineering/workplan-execution-20261014/fresh-GitHub-verification/SUMMARY.json","previous_current_fresh_verification":"engineering/keycover-geometry-20261014/fresh-GitHub-verification/SUMMARY.json",
-    "execution_index_before_catalogue":"engineering/cam-coupling-20261015/SUMMARY.json",
-    "previous_root_increment_summary_before_catalogue":"engineering/cover-retention-and-space-20261015/SUMMARY.json",
-    "lateral_guide_V1":"engineering/lateral-guide-20261015/V1_FAILURE.json; full scene rejected, not accepted delivery geometry"
+  "project": "RAZR SLIDE",
+  "candidate_go": false,
+  "manufacturing_go": false,
+  "physical_qualification": {
+    "mechanical": "missing",
+    "FPC": "missing",
+    "power": "missing",
+    "USB": "missing",
+    "OLED": "missing"
   },
-  "current_phone_layout_study":{"source":"integration/phone_layout.py","parameters":"integration/phone_layout_study.json","evidence":"engineering/phone-layout-study-20261015","input_kind":"project-owned assumed geometry, not measured OEM cavities","selected_component_to_cabin_transform":null,"actual_components_installed":false},
-  "fixture_fabrication_go":false,
-  "thin_mechanism_research":{"source":"integration/thin_mechanism.py","verifier":"integration/verify_thin_mechanism.py","evidence":"engineering/thin-mechanism-20261015","nominal_depth_target_mm":6.6,"assumed_cavity_depth_mm":6.7,"actual_phone_registration":false,"shell_mounting_interface_complete":false,"force_tolerance_qualification":false,"nominal_native_geometry_passed":true,"actual_space_dimensions_eqr_mm":[6.6,30.6,21.21],"local_native_verification_passed":true,"hosted_native_verification_passed":true,"KEY_B_kinematic_interface_complete":false},
-  "current_mechanical_mount_study":{"source":"integration/mounted_mechanism.py","verifier":"integration/verify_mounted_mechanism.py","input_kind":"same project-owned assumed A/B shells, not measured OEM","native_cartridge_parts":46,"nominal_mounting_screws":8,"source_ROOT_INNER_modified":2,"moving_contact_geometry_resized":false,"B_to_KEY_coupling_implemented":false,"thread_preload_force_tolerance_seal_qualified":false,"evidence":"engineering/mounted-mechanism-20261015"},
-  "current_transmission_study":{"source":"integration/cam_coupling.py","native_reader":"integration/verify_cam_coupling.py","fixed_shell_mounting_and_cutouts_modeled":true,"original_KEY_core_preserved":true,"slot_only_output_allowance_width_mm":0.12127354213309306,"not_complete_assembly_tolerance_or_measured_backlash":true,"PAWL_release_and_relock_implemented":false,"all_motion_continuous_clearance_proved":false,"hardware_qualification":false},
-  "current_manual_PAWL_study":{"source":"integration/pawl_actuator.py","reader":"integration/verify_pawl_actuator.py","independent_manual_inputs":2,"nominal_tab_travel_mm":3.0,"nominal_PAWL_stroke_mm":1.1,"full_clearance_force_assembly_and_OPEN_lock_qualified":false,"all_clearance_branches_clear":false},
-  "current_serviceable_PAWL_study":{"source":"integration/serviceable_pawl.py","reader":"integration/verify_serviceable_pawl.py","evidence":"engineering/serviceable-pawl-20261015","assembly_on_detached_backpanel":true,"actual_thread_preload_force_and_endpoint_lock_qualified":false,"earlier_root_admission_repair":"nominal V2 envelope verified; see versioned SUMMARY.json; no force qualification"},
-  "current_endpoint_joint_study":{"source":"integration/endpoint_joint_pawl.py","reader":"integration/verify_endpoint_joint_pawl.py","evidence":"engineering/endpoint-joint-20261015","force_inputs":"integration/roof_joint_load_inputs.json","physical_force_qualification":false},
-  "current_catalogue_joint_study":{"source":"integration/catalogue_roof_joint.py","reader":"integration/verify_catalogue_roof_joint.py","evidence":"engineering/catalogue-joint-20261015","catalogue_dimensional_candidate":"NBK SNZS-M1-5","nominal_fit_verified":true,"actual_supplier_tolerances_threads_and_preload_qualified":false,"process_error_scenarios_certified":false,"material_design_candidate":"Custom630/H1075, not a procured lot or strength allowable"},
-  "current_root_clearance_study":{"source":"integration/root_clearance.py","reader":"integration/verify_root_clearance.py","evidence":"engineering/root-clearance-20261015","bounded_rigid_relative_error_xyz_mm":[0.03,0.05,0.02],"minimum_conservative_interface_gap_mm":0.05,"nominal_full_scene_and_changed_assembly_verified":true,"physical_guidance_freeplay_support_strength_and_preload_qualified":false,"actual_feature_size_form_rotation_process_qualified":false},
-  "current_lateral_guide_study":{"source":"integration/pawl_lateral_guide.py","reader":"integration/verify_pawl_lateral_guide.py","evidence":"engineering/lateral-guide-20261015","current_version":"V2 reuses actual OLD_COVER","nominal_native_integration_verified":true,"old_failed_spine_not_current_geometry":true,"conditional_pure_X_contact_mm":[-0.05,0.05],"current_combined_root_cover_error_envelope_minimum_gap_mm":0.02,"prior_root_only0p05_certificate_not_reused_as_current":true,"same_orientation_and_overlapping_faces_required":true,"actual_six_DOF_force_preload_wear_and_manufacturing_qualified":false}
+  "constraints": {
+    "same_size_compartments": true,
+    "single_flexible_OLED_inches_approx": 7,
+    "B_upward_travel_mm": 79.75,
+    "endpoint_normal_seating_mm": 8.2,
+    "larger_battery_priority": "A",
+    "total_system_capacity_target_mAh": 4700,
+    "A_capacity_mAh": null,
+    "B_capacity_mAh": null,
+    "A_cell_part_number": null,
+    "B_cell_part_number": null
+  },
+  "parallel_math_research_branch": "R79_20261013",
+  "selected_repair_base": {
+    "branch": "R50_20261011",
+    "sha256": "86f226f9bce3a3f0659737327c7cc32415eed3b9be3f96f35a746ac32844dfd6",
+    "role": "integration and rejection validation; all old routes rejected"
+  },
+  "unconnected_topology_input": "R44_FPC_20261013",
+  "current_production_review": "CURRENT_DESIGN.md",
+  "phone_native_assembly_complete": false,
+  "phone_complete_PCB": false,
+  "controlled_specific_OLED_received": false,
+  "controlled_specific_dynamic_FPC_received": false,
+  "latest_engineering_evidence": {
+    "G2_routes": "engineering/fpc-g2-route-candidates-20261013-r6",
+    "OLED_FPC_sources": "engineering/controlled-inputs-web-20261013-r6",
+    "four_phase_bench_detector": "engineering/proof-selftest-design-20261013-r5",
+    "A_only_power_chain_boards": "engineering/power-chain-pcba-20261013-r5",
+    "P0_recovery_and_tests": "engineering/workplan-execution-20261014/p0",
+    "native_integration_and_reproduced_failures": "engineering/workplan-execution-20261014/integration",
+    "STOW_reordered_nominal_geometry": "engineering/stow-installation-closure-20261014",
+    "continuous_contact_and_actual_KEY_failures": "engineering/contact-motion-20261014",
+    "keycover_connected_bypass": "engineering/keycover-geometry-20261014",
+    "catalogue_dimensional_and_process_scenario": "engineering/catalogue-joint-20261015",
+    "root_rigid_error_envelopes": "engineering/root-clearance-20261015",
+    "root_cover_lateral_guidance": "engineering/lateral-guide-20261015"
+  },
+  "G2_scope": {
+    "X230_motion_poses": 121,
+    "candidate_count": 3,
+    "station_obstacle_rejected_candidate_poses": 363,
+    "finite_sweep_requests": 30,
+    "valid_single_sweeps": 17,
+    "strict_common_rejected_valid_sweeps": 5,
+    "complete_boolean_and_STEP_cases": 12,
+    "positive_interference_cases": 12,
+    "manufacturing_go": false
+  },
+  "bench_detector_and_A_power_boards_end_to_end_validated": false,
+  "production_blockers": [
+    "specified OLED/FPC controlled revision and dynamic qualification",
+    "continuous interference-free finished FPC route and actual endpoint strain relief",
+    "complete native phone assembly and PCB including selected A/B cells, protection, charging, USB and OLED",
+    "physical capture, fail-closed, finite-force retraction, dual-battery, USB and OLED qualification"
+  ],
+  "previous_production_review": "engineering/PRODUCTION_BLOCKERS_R6.md",
+  "current_input_registry": "integration/assembly_inputs.json",
+  "current_execution_summary": "engineering/body-guide-20261015/DELIVERY_VERIFICATION.json",
+  "current_unit_tests": {
+    "manifest": "tools/test_suites.json",
+    "configured_minimum": 634,
+    "groups": 31,
+    "result_source": "functionalf1acc44d hosted run38729911189; desktop23 new tests plus current full-native, not local634"
+  },
+  "previous_current_execution_summary": "engineering/lateral-guide-20261015/SUMMARY.json",
+  "current_fresh_verification": "hosted locked checkout; isolated local root/cover subset only, no LAN process submitted",
+  "bench_cover_first_candidate": {
+    "source": "integration/cover_admission.py",
+    "stages": 22,
+    "pairs": 130,
+    "positive_pairs": 0,
+    "local_q_growth_mm": 3.5,
+    "new_locator_interfaces": true,
+    "not_a_drop_in_phone_design": true
+  },
+  "geometry_reference_before_growth": "integration/keycover_bypass.py",
+  "cover_capture_candidate": {
+    "source": "integration/cover_capture.py",
+    "rigid_normal_uplift_stop": true,
+    "gap_mm": 0.02,
+    "force_and_six_DOF_capture_qualified": false
+  },
+  "finished_phone_space": {
+    "registration_available": false,
+    "component_operating_size_eqr_mm": [
+      12.0,
+      16.445,
+      21.21
+    ],
+    "fit": "unknown"
+  },
+  "historical_research_results": {
+    "split_root_sampled_sequence": {
+      "selected_design": "stow_continuous_slots_v2",
+      "requested_rows": 564,
+      "positive_intersection_rows": 0,
+      "actual_exit_code": 0,
+      "original_failure_rows": 18,
+      "original_failure_preserved": true,
+      "geometry_accepted_for_product": false
+    },
+    "STOW_reordered_rigid_subassembly": {
+      "full_nominal_stage_pairs": 64,
+      "positive_pairs": 0,
+      "static_pairs": 506,
+      "independent_reimport": true,
+      "old_assembly_order_still_rejected": true,
+      "fixture_or_physical_qualification": false
+    },
+    "STOW_continuous_contact_motion": {
+      "source": "integration/keycover_bypass.py",
+      "pairs": 130,
+      "positive_pairs": 0,
+      "exit_code": 0,
+      "independent_reproduced": true,
+      "OPEN_qualified": false,
+      "selected_lower_restoring_force_is_assumption": true
+    },
+    "current_cover_entry": {
+      "qualified": false,
+      "retained_actual_failure": true,
+      "old_and_new_cover_obstruction_same": true,
+      "phase_not_covered_by_old_184_64_checks": true
+    },
+    "final_fresh_verification": "engineering/workplan-execution-20261014/FINAL_VERIFICATION.json",
+    "previous_latest_fresh_verification": "engineering/workplan-execution-20261014/fresh-GitHub-verification/SUMMARY.json",
+    "previous_current_fresh_verification": "engineering/keycover-geometry-20261014/fresh-GitHub-verification/SUMMARY.json",
+    "execution_index_before_catalogue": "engineering/cam-coupling-20261015/SUMMARY.json",
+    "previous_root_increment_summary_before_catalogue": "engineering/cover-retention-and-space-20261015/SUMMARY.json",
+    "lateral_guide_V1": "engineering/lateral-guide-20261015/V1_FAILURE.json; full scene rejected, not accepted delivery geometry"
+  },
+  "current_phone_layout_study": {
+    "source": "integration/phone_layout.py",
+    "parameters": "integration/phone_layout_study.json",
+    "evidence": "engineering/phone-layout-study-20261015",
+    "input_kind": "project-owned assumed geometry, not measured OEM cavities",
+    "selected_component_to_cabin_transform": null,
+    "actual_components_installed": false
+  },
+  "fixture_fabrication_go": false,
+  "thin_mechanism_research": {
+    "source": "integration/thin_mechanism.py",
+    "verifier": "integration/verify_thin_mechanism.py",
+    "evidence": "engineering/thin-mechanism-20261015",
+    "nominal_depth_target_mm": 6.6,
+    "assumed_cavity_depth_mm": 6.7,
+    "actual_phone_registration": false,
+    "shell_mounting_interface_complete": false,
+    "force_tolerance_qualification": false,
+    "nominal_native_geometry_passed": true,
+    "actual_space_dimensions_eqr_mm": [
+      6.6,
+      30.6,
+      21.21
+    ],
+    "local_native_verification_passed": true,
+    "hosted_native_verification_passed": true,
+    "KEY_B_kinematic_interface_complete": false
+  },
+  "current_mechanical_mount_study": {
+    "source": "integration/mounted_mechanism.py",
+    "verifier": "integration/verify_mounted_mechanism.py",
+    "input_kind": "same project-owned assumed A/B shells, not measured OEM",
+    "native_cartridge_parts": 46,
+    "nominal_mounting_screws": 8,
+    "source_ROOT_INNER_modified": 2,
+    "moving_contact_geometry_resized": false,
+    "B_to_KEY_coupling_implemented": false,
+    "thread_preload_force_tolerance_seal_qualified": false,
+    "evidence": "engineering/mounted-mechanism-20261015"
+  },
+  "current_transmission_study": {
+    "source": "integration/cam_coupling.py",
+    "native_reader": "integration/verify_cam_coupling.py",
+    "fixed_shell_mounting_and_cutouts_modeled": true,
+    "original_KEY_core_preserved": true,
+    "slot_only_output_allowance_width_mm": 0.12127354213309306,
+    "not_complete_assembly_tolerance_or_measured_backlash": true,
+    "PAWL_release_and_relock_implemented": false,
+    "all_motion_continuous_clearance_proved": false,
+    "hardware_qualification": false
+  },
+  "current_manual_PAWL_study": {
+    "source": "integration/pawl_actuator.py",
+    "reader": "integration/verify_pawl_actuator.py",
+    "independent_manual_inputs": 2,
+    "nominal_tab_travel_mm": 3.0,
+    "nominal_PAWL_stroke_mm": 1.1,
+    "full_clearance_force_assembly_and_OPEN_lock_qualified": false,
+    "all_clearance_branches_clear": false
+  },
+  "current_serviceable_PAWL_study": {
+    "source": "integration/serviceable_pawl.py",
+    "reader": "integration/verify_serviceable_pawl.py",
+    "evidence": "engineering/serviceable-pawl-20261015",
+    "assembly_on_detached_backpanel": true,
+    "actual_thread_preload_force_and_endpoint_lock_qualified": false,
+    "earlier_root_admission_repair": "nominal V2 envelope verified; see versioned SUMMARY.json; no force qualification"
+  },
+  "current_endpoint_joint_study": {
+    "source": "integration/endpoint_joint_pawl.py",
+    "reader": "integration/verify_endpoint_joint_pawl.py",
+    "evidence": "engineering/endpoint-joint-20261015",
+    "force_inputs": "integration/roof_joint_load_inputs.json",
+    "physical_force_qualification": false
+  },
+  "current_catalogue_joint_study": {
+    "source": "integration/catalogue_roof_joint.py",
+    "reader": "integration/verify_catalogue_roof_joint.py",
+    "evidence": "engineering/catalogue-joint-20261015",
+    "catalogue_dimensional_candidate": "NBK SNZS-M1-5",
+    "nominal_fit_verified": true,
+    "actual_supplier_tolerances_threads_and_preload_qualified": false,
+    "process_error_scenarios_certified": false,
+    "material_design_candidate": "Custom630/H1075, not a procured lot or strength allowable"
+  },
+  "current_root_clearance_study": {
+    "source": "integration/root_clearance.py",
+    "reader": "integration/verify_root_clearance.py",
+    "evidence": "engineering/root-clearance-20261015",
+    "bounded_rigid_relative_error_xyz_mm": [
+      0.03,
+      0.05,
+      0.02
+    ],
+    "minimum_conservative_interface_gap_mm": 0.05,
+    "nominal_full_scene_and_changed_assembly_verified": true,
+    "physical_guidance_freeplay_support_strength_and_preload_qualified": false,
+    "actual_feature_size_form_rotation_process_qualified": false
+  },
+  "current_lateral_guide_study": {
+    "source": "integration/pawl_lateral_guide.py",
+    "reader": "integration/verify_pawl_lateral_guide.py",
+    "evidence": "engineering/lateral-guide-20261015",
+    "current_version": "V2 reuses actual OLD_COVER",
+    "nominal_native_integration_verified": true,
+    "old_failed_spine_not_current_geometry": true,
+    "conditional_pure_X_contact_mm": [
+      -0.05,
+      0.05
+    ],
+    "current_combined_root_cover_error_envelope_minimum_gap_mm": 0.02,
+    "prior_root_only0p05_certificate_not_reused_as_current": true,
+    "same_orientation_and_overlapping_faces_required": true,
+    "actual_six_DOF_force_preload_wear_and_manufacturing_qualified": false
+  },
+  "current_body_guide_study": {
+    "source": "integration/pawl_box_guide.py",
+    "reader": "integration/verify_pawl_box_guide.py",
+    "evidence": "engineering/body-guide-20261015/DELIVERY_VERIFICATION.json",
+    "nominal_geometric_verification": true,
+    "actual_force_preload_process_or_cover_holding_qualified": false
+  },
+  "current_cover_holding_gap": {
+    "evidence": "engineering/body-guide-20261015/cover-escape-path.json",
+    "complete_outward_path_mm": 0.05,
+    "both_sides_clear_in_home_geometry": true,
+    "repair_implemented": false,
+    "not_physical_failure_load": true
+  }
 }
