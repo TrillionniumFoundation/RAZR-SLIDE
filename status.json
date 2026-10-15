@@ -67,17 +67,17 @@
   ],
   "previous_production_review": "engineering/PRODUCTION_BLOCKERS_R6.md",
   "current_input_registry": "integration/assembly_inputs.json",
-  "current_execution_summary": "engineering/panel-shear-key-20261015/DELIVERY_VERIFICATION.json",
+  "current_execution_summary": "engineering/frame-nut-anchor-20261015/DELIVERY_VERIFICATION.json",
   "current_unit_tests": {
     "manifest": "tools/test_suites.json",
-    "configured_minimum": 678,
+    "configured_minimum": 704,
+    "actual_complete_tests": 704,
     "groups": 31,
-    "actual_complete_tests": 678,
-    "environment": "authorized desktop locked environment",
-    "functional_commit": "955e120f10ede3ba0b2e8afb834c61e16e34aa24",
+    "environment": "authorized desktop locked Python3.12/CadQuery2.7",
+    "functional_commit": "0e6ccb282d643f930cc49570bf85766fa3bee15d",
     "hosted_execution": false
   },
-  "previous_current_execution_summary": "engineering/cover-backing-20261015/DELIVERY_RESUME.json",
+  "previous_current_execution_summary": "engineering/panel-shear-key-20261015/DELIVERY_VERIFICATION.json",
   "current_fresh_verification": "existing locked desktop run resumed to completion; no duplicate full run launched; standard native full passed",
   "bench_cover_first_candidate": {
     "source": "integration/cover_admission.py",
@@ -304,5 +304,15 @@
     "panel_takeup_mm": 0.02,
     "nominal_outward_coordinate_sum_mm": 0.09,
     "actual_thread_preload_anchorage_and_stiffness_qualified": false
+  },
+  "current_frame_nut_anchor": {
+    "source": "integration/frame_nut_anchor.py",
+    "reader": "integration/verify_frame_nut_anchor.py",
+    "catalogue_screw": "NBK SNZS-M1-3",
+    "catalogue_nut": "NBK SHNS-M1",
+    "local_nominal_full_passed": true,
+    "native_thread_retention_verified": false,
+    "actual_torque_preload_strength_verified": false,
+    "physical_parts": 83
   }
 }
