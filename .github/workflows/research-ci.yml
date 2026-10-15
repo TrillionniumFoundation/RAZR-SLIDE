@@ -88,6 +88,11 @@ jobs:
               uv run --locked python -B integration/endpoint_joint_pawl.py --output "$RUNNER_TEMP/razr-endpoint-joint"
               uv run --locked python -B integration/verify_endpoint_joint_pawl.py --manifest "$RUNNER_TEMP/razr-endpoint-joint/manifest.json" --output "$RUNNER_TEMP/razr-endpoint-joint/verification.json"
               uv run --locked python -B integration/roof_joint_budget.py --inputs integration/roof_joint_load_inputs.json --output "$RUNNER_TEMP/razr-endpoint-joint/load-budget.json"
+          - id: catalogue-joint
+            commands: |
+              uv run --locked python -B integration/endpoint_joint_pawl.py --output "$RUNNER_TEMP/razr-catalogue-baseline"
+              uv run --locked python -B integration/catalogue_roof_joint.py --baseline "$RUNNER_TEMP/razr-catalogue-baseline/manifest.json" --output "$RUNNER_TEMP/razr-catalogue"
+              uv run --locked python -B integration/verify_catalogue_roof_joint.py --baseline "$RUNNER_TEMP/razr-catalogue-baseline/manifest.json" --manifest "$RUNNER_TEMP/razr-catalogue/manifest.json" --output "$RUNNER_TEMP/razr-catalogue/verification.json" --full
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:

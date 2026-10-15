@@ -1,0 +1,51 @@
+{
+  "reviewed_date": "2026-10-15",
+  "catalogue_design_candidate": {
+    "part": "NBK SNZS-M1-5",
+    "source": "https://www.nbk1560.com/en-US/products/specialscrew/nedzicom/miniaturescrew/SNZS-M/SNZS-M1/SNZS-M1-5/",
+    "nominal_mm": {"diameter":1.0,"pitch":0.25,"underhead_length":5.0,"head_diameter":1.8,"head_height":0.45},
+    "recess_number":0,
+    "material_as_published":"SUSXM7 (equivalent to SUS304)",
+    "published_maximum_torque_Nm":0.02,
+    "assembly_torque_prescribed":null,
+    "scope":"named dimensional candidate; not actual vendor STEP, max-material model, stocked or purchased item",
+    "vendor_tolerances_thread_runout_fillet_recess_and_joint_preload_known":false
+  },
+  "critical_pair_material_design_proposal": {
+    "grade":"Carpenter Custom 630 (17-4 PH), H1075",
+    "applies_to":"future critical PAWL/root guide matched material study, not automatically the screw or entire phone",
+    "source":"https://www.carpentertechnology.com/hubfs/7407324/Material%20Saftey%20Data%20Sheets/Custom%20630%20(17-4%20PH).pdf",
+    "source_revision":"v4-24",
+    "typical_CTE_per_K":0.0000113,
+    "CTE_temperature_range_C":[21,93],
+    "source_page":3,
+    "procured_lot_or_allowable_strength_selected":false,
+    "decision":"evaluate finishing and inspection after selected aging, because heat treatment changes dimensions; do not transfer H900/H1150 contraction values into H1075",
+    "supply_tolerances_friction_galling_hardness_and_surface_finish_qualified":false
+  },
+  "process_reference": {
+    "source":"https://www.hubs.com/knowledge-base/cnc-machining-iso-based-tolerances-and-finishes/",
+    "scope":"generic ISO-based supplier reference, not a quotation for these parts",
+    "scenario_independent_feature_error_mm":0.05,
+    "alternative_unqualified_precision_scenario_mm":0.005,
+    "decision":"neither scenario certifies the measured 0.0034853 mm gap; specific GD&T datums, process capability, thermal and deflection allowances remain required",
+    "actual_process_accepted":false
+  },
+  "engineering_changes": {
+    "prior_nominal_screw_length_mm":6.4,
+    "selected_catalogue_length_mm":5.0,
+    "original_seat_mm":0.55,
+    "original_catalogue_tip_mm":5.55,
+    "female_region_start_mm":5.7,
+    "original_catalogue_overlap_mm":0.0,
+    "new_seat_mm":1.95,
+    "new_tip_mm":6.95,
+    "new_nominal_overlap_mm":1.25,
+    "blind_tip_gap_mm":0.05,
+    "counterbore_radius_mm":0.95,
+    "threads_and_drive_recess_not_modeled":true
+  },
+  "input_handling":"shared exact error source coefficients combine before absolute bounding; same alloy on different parts does not imply common-mode error cancellation",
+  "actual_assembly_and_roof_load_input_registers_unchanged":true,
+  "candidate_go":false,"fixture_fabrication_go":false,"manufacturing_go":false
+}
