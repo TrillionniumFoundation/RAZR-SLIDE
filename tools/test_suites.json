@@ -1,6 +1,6 @@
 {
   "scope": "current unit suites; not archived/rejected experiments or full motion/ECAD/hardware",
-  "minimum_total_tests": 385,
+  "minimum_total_tests": 395,
   "suites": [
     {
       "id": "repository",
@@ -134,6 +134,12 @@
     {
       "id": "cover-admission",
       "directory": "integration/cover-admission-tests",
+      "minimum_tests": 10,
+      "timeout_seconds": 600
+    },
+    {
+      "id": "cover-capture",
+      "directory": "integration/capture-tests",
       "minimum_tests": 10,
       "timeout_seconds": 600
     }
