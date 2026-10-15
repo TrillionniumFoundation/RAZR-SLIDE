@@ -67,9 +67,9 @@
   "current_execution_summary": "engineering/cam-coupling-20261015/SUMMARY.json",
   "current_unit_tests": {
     "manifest": "tools/test_suites.json",
-    "configured_minimum": 501,
-    "groups": 28,
-    "result_source": "actual current reports; configured count is not a pass"
+    "configured_minimum": 522,
+    "groups": 29,
+    "result_source": "actual current run reports; count is not qualification"
   },
   "previous_current_execution_summary": "engineering/cover-retention-and-space-20261015/SUMMARY.json",
   "current_fresh_verification": "not_repeated_this_increment",
@@ -194,5 +194,13 @@
     "nominal_PAWL_stroke_mm": 1.1,
     "full_clearance_force_assembly_and_OPEN_lock_qualified": false,
     "all_clearance_branches_clear": false
+  },
+  "current_serviceable_PAWL_study": {
+    "source": "integration/serviceable_pawl.py",
+    "reader": "integration/verify_serviceable_pawl.py",
+    "evidence": "engineering/serviceable-pawl-20261015",
+    "assembly_on_detached_backpanel": true,
+    "actual_thread_preload_force_and_endpoint_lock_qualified": false,
+    "earlier_root_admission_repair": "fixed lower mouth; actual validation pending"
   }
 }

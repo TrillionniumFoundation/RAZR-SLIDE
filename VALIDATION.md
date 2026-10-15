@@ -71,3 +71,8 @@ Manual PAWL candidate: `python -B integration/pawl_actuator.py --output NEW_DIR`
 then `python -B integration/verify_pawl_actuator.py --manifest NEW_DIR/manifest.json --output NEW_REPORT`.
 A successful nominal geometry run still retains endpoint clearance collisions
 as unresolved results; inspect all_clearance_branches_clear separately.
+
+For the serviceable controls, run `integration/serviceable_pawl.py --output NEW_DIR`
+and `integration/verify_serviceable_pawl.py --manifest NEW_DIR/manifest.json --output NEW_REPORT`
+with the locked Python environment. Assembly paths intentionally exclude the
+A frame and B shell until their separate closure check. Inspect all scope fields.
