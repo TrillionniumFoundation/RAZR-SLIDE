@@ -67,9 +67,9 @@
   "current_execution_summary": "engineering/cam-coupling-20261015/SUMMARY.json",
   "current_unit_tests": {
     "manifest": "tools/test_suites.json",
-    "configured_minimum": 481,
-    "groups": 27,
-    "result_source": "actual current unit/native reports and hosted CI"
+    "configured_minimum": 501,
+    "groups": 28,
+    "result_source": "actual current reports; configured count is not a pass"
   },
   "previous_current_execution_summary": "engineering/cover-retention-and-space-20261015/SUMMARY.json",
   "current_fresh_verification": "not_repeated_this_increment",
@@ -185,5 +185,14 @@
     "PAWL_release_and_relock_implemented": false,
     "all_motion_continuous_clearance_proved": false,
     "hardware_qualification": false
+  },
+  "current_manual_PAWL_study": {
+    "source": "integration/pawl_actuator.py",
+    "reader": "integration/verify_pawl_actuator.py",
+    "independent_manual_inputs": 2,
+    "nominal_tab_travel_mm": 3.0,
+    "nominal_PAWL_stroke_mm": 1.1,
+    "full_clearance_force_assembly_and_OPEN_lock_qualified": false,
+    "all_clearance_branches_clear": false
   }
 }

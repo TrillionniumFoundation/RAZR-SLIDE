@@ -56,6 +56,10 @@ jobs:
         run: |
           uv run --locked python -B integration/cam_coupling.py --output "$RUNNER_TEMP/razr-coupling"
           uv run --locked python -B integration/verify_cam_coupling.py --manifest "$RUNNER_TEMP/razr-coupling/manifest.json" --output "$RUNNER_TEMP/razr-coupling/verification.json"
+      - name: Generate and independently verify manual PAWL controls
+        run: |
+          uv run --locked python -B integration/pawl_actuator.py --output "$RUNNER_TEMP/razr-pawl"
+          uv run --locked python -B integration/verify_pawl_actuator.py --manifest "$RUNNER_TEMP/razr-pawl/manifest.json" --output "$RUNNER_TEMP/razr-pawl/verification.json"
       - name: Preserve actual results, including failures
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -67,5 +71,6 @@ jobs:
             ${{ runner.temp }}/razr-thin
             ${{ runner.temp }}/razr-mounted
             ${{ runner.temp }}/razr-coupling
+            ${{ runner.temp }}/razr-pawl
           if-no-files-found: warn
           retention-days: 14

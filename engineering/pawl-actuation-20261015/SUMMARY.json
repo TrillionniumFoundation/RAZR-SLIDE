@@ -1,0 +1,272 @@
+{
+  "base_main": "27abd4d77f83cf4ad6dcf25acdad7e34a8206a8a",
+  "source_sha256": "bedcf56f111b2d01640f619bfd8d5c15281d77a161895556509c9621711ec63f",
+  "reader_sha256": "27d374feca39d5ab794cc18bf145ecb6224a7d50659175e7bd040c4fba5a039c",
+  "local_new_tests": 20,
+  "local_full501_rerun": false,
+  "native_exports": 13,
+  "nominal_states": 7,
+  "participants_per_state": 67,
+  "nominal_pair_evaluations": 15477,
+  "nominal_geometry_passed": true,
+  "native_slot_flank_checks": 12,
+  "native_tab_end_stop_checks": 8,
+  "wrong_order_obstructions": [
+    {
+      "name": "MOVE_WITHOUT_RELEASE",
+      "slide_mm": 5.0,
+      "tabs_mm": [
+        0.0,
+        0.0
+      ],
+      "positive_pairs": [
+        {
+          "a": "L_KEY",
+          "b": "L_PAWL",
+          "common_mm3": 0.1190761755485906
+        },
+        {
+          "a": "R_KEY",
+          "b": "R_PAWL",
+          "common_mm3": 0.11907617554859072
+        }
+      ]
+    },
+    {
+      "name": "MOVE_WITH_ONE_RELEASE",
+      "slide_mm": 5.0,
+      "tabs_mm": [
+        3.0,
+        0.0
+      ],
+      "positive_pairs": [
+        {
+          "a": "R_KEY",
+          "b": "R_PAWL",
+          "common_mm3": 0.11907617554859072
+        }
+      ]
+    },
+    {
+      "name": "RETURN_BEFORE_KEY",
+      "slide_mm": 40.0,
+      "tabs_mm": [
+        0.0,
+        0.0
+      ],
+      "positive_pairs": [
+        {
+          "a": "L_KEY",
+          "b": "L_PAWL",
+          "common_mm3": 2.8920000000000052
+        },
+        {
+          "a": "R_KEY",
+          "b": "R_PAWL",
+          "common_mm3": 2.8920000000000066
+        }
+      ]
+    }
+  ],
+  "combined_clearance_probes": [
+    {
+      "tab_mm": 0.0,
+      "KEY_positive_return_offset_mm": 0.06063677106654653,
+      "PAWL_flank_offset_mm": -0.02662757551445073,
+      "positive_pairs": [
+        {
+          "a": "L_PAWL",
+          "b": "L_ROOT_INNER",
+          "common_mm3": 0.0005036957390982652
+        },
+        {
+          "a": "R_PAWL",
+          "b": "R_ROOT_INNER",
+          "common_mm3": 0.0005036957390982697
+        }
+      ]
+    },
+    {
+      "tab_mm": 0.0,
+      "KEY_positive_return_offset_mm": 0.06063677106654653,
+      "PAWL_flank_offset_mm": 0.02662757551445073,
+      "positive_pairs": []
+    },
+    {
+      "tab_mm": 1.5,
+      "KEY_positive_return_offset_mm": 0.06063677106654653,
+      "PAWL_flank_offset_mm": -0.02662757551445073,
+      "positive_pairs": []
+    },
+    {
+      "tab_mm": 1.5,
+      "KEY_positive_return_offset_mm": 0.06063677106654653,
+      "PAWL_flank_offset_mm": 0.02662757551445073,
+      "positive_pairs": []
+    },
+    {
+      "tab_mm": 3.0,
+      "KEY_positive_return_offset_mm": 0.06063677106654653,
+      "PAWL_flank_offset_mm": -0.02662757551445073,
+      "positive_pairs": []
+    },
+    {
+      "tab_mm": 3.0,
+      "KEY_positive_return_offset_mm": 0.06063677106654653,
+      "PAWL_flank_offset_mm": 0.02662757551445073,
+      "positive_pairs": [
+        {
+          "a": "L_PAWL",
+          "b": "L_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+          "common_mm3": 0.0008284469393068623
+        },
+        {
+          "a": "R_PAWL",
+          "b": "R_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+          "common_mm3": 0.0008284469393062031
+        }
+      ]
+    }
+  ],
+  "all_clearance_branches_clear": false,
+  "manual_tab_stroke_mm": 3.0,
+  "nominal_PAWL_stroke_mm": 1.1,
+  "slot_only_output_halfwidth_mm": 0.02662757551445073,
+  "material": [
+    {
+      "side": "L",
+      "original_PAWL_lost_mm3": 0.0,
+      "pin_added_mm3": 1.7373007374351523,
+      "root_window_removed_mm3": 1.3009380098815693
+    },
+    {
+      "side": "R",
+      "original_PAWL_lost_mm3": 0.0,
+      "pin_added_mm3": 1.7373007374351617,
+      "root_window_removed_mm3": 1.3009380098815693
+    }
+  ],
+  "source_original_PAWL_cut": false,
+  "new_guide_and_input_openings_in_panel": true,
+  "manual_controls_required": 2,
+  "automatic_return_or_detent_implemented": false,
+  "actual_force_preload_tolerance_assembly_and_OPEN_lock_qualified": false,
+  "negative_KEY_play_branch_unqualified": true,
+  "whole_continuous_assembly_proved": false,
+  "STOP_restoring_force_is_boundary_condition": true,
+  "hosted_CI": {
+    "run_id": 38692277894,
+    "functional_head": "312aafc86a5adf0db1bfb354ddb9c451c5f4b677",
+    "tested_checkout": "acfed058503fb03d8a18460fcceff3f9d2272536",
+    "tested_tree": "e2ee8421c5ce905d8f6aea4e8d1ed4059f0d3395",
+    "tested_tree_matches_functional_head": true,
+    "all_tested_hashes_matched_before_evidence_append": true,
+    "conclusion": "success",
+    "tests": 501,
+    "groups": 28,
+    "native_exports": 13,
+    "nominal_sequence_states": 7,
+    "participants_per_state": 67,
+    "nominal_pair_evaluations": 15477,
+    "native_nominal_geometry_passed": true,
+    "all_clearance_branches_clear": false,
+    "local_hosted_endpoint_failure_pairs_agree_within_mm3": 1e-07,
+    "unit_report_sha256": "0bcc6a6fce6fed5912ae507653b82976bd01413c523c1c7a9627e6fd37ffa98f",
+    "native_report_sha256": "8e44383f9786aeea9bc46a35f8ccc3d13a477f5a9639cc0f678261779beee288",
+    "job_ids": [
+      116280709086
+    ],
+    "url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/38692277894",
+    "steps": [
+      {
+        "name": "Set up job",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884",
+        "conclusion": "success"
+      },
+      {
+        "name": "Install locked research dependencies",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run every current suite",
+        "conclusion": "success"
+      },
+      {
+        "name": "Generate and independently reread the empty-shell study",
+        "conclusion": "success"
+      },
+      {
+        "name": "Generate and independently verify the thin mechanism",
+        "conclusion": "success"
+      },
+      {
+        "name": "Generate and independently verify the mounted cartridges",
+        "conclusion": "success"
+      },
+      {
+        "name": "Generate and independently verify cam transmission study",
+        "conclusion": "success"
+      },
+      {
+        "name": "Generate and independently verify manual PAWL controls",
+        "conclusion": "success"
+      },
+      {
+        "name": "Preserve actual results, including failures",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Run astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "conclusion": "success"
+      },
+      {
+        "name": "Complete job",
+        "conclusion": "success"
+      }
+    ],
+    "candidate_go": false,
+    "fixture_fabrication_go": false,
+    "manufacturing_go": false
+  },
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "functional_commit": "312aafc86a5adf0db1bfb354ddb9c451c5f4b677",
+  "additional_local_continuous_control_checks": {
+    "count": 10,
+    "passed": true,
+    "scope": "complete nominal control strokes only, not full phone/clearance/force/assembly",
+    "included_in_501_unit_count": false
+  },
+  "reader_negative_controls": {
+    "count": 4,
+    "all_rejected": true,
+    "included_in_501_unit_count": false
+  },
+  "additional_minimum_release_play_probes": {
+    "count": 6,
+    "PAWL_minimum_outward_mm": 1.0733724244855494,
+    "passed": true,
+    "scope": "sampled changed-part scene checks, not full continuous/force qualification",
+    "included_in_501_unit_count": false
+  },
+  "endpoint_threshold_brackets": {
+    "record": "endpoint-contact-brackets.json",
+    "lower_contact_approx_mm": -0.02,
+    "upper_contact_approx_mm": 1.12,
+    "native_signed_volume_threshold_mm3": 1e-07,
+    "not_certified_surface_or_global_reachable_set_bound": true
+  },
+  "recorded_utc": "2026-10-15T06:48:22.277840+00:00"
+}
