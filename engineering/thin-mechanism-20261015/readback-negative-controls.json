@@ -1,0 +1,31 @@
+{
+  "functional_commit": "9d420d882217d905c5e040bb142c5dd9d713d2ad",
+  "verifier_sha256": "3eca4f5649c874b4c50ac9792b33edbd0972606748e166ab53950193a1a2cbed",
+  "tests": [
+    {
+      "case": "omitted_named_part",
+      "exit_code": 1,
+      "result_published": false,
+      "last_error": "ValueError: missing or extra declared participant"
+    },
+    {
+      "case": "nonfinite_bounds",
+      "exit_code": 1,
+      "result_published": false,
+      "last_error": "ValueError: invalid bounds certificate"
+    },
+    {
+      "case": "false_volume_certificate",
+      "exit_code": 1,
+      "result_published": false,
+      "last_error": "ValueError: native volume certificate differs"
+    },
+    {
+      "case": "changed_STEP_bytes",
+      "exit_code": 1,
+      "result_published": false,
+      "last_error": "ValueError: native STEP bytes differ"
+    }
+  ],
+  "all_four_rejected_before_publishing_result": true
+}
