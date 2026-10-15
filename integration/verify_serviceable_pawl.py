@@ -123,6 +123,15 @@ def tools(new,installed):
     return result
 
 
+def root_closure_check(new,side):
+    if side not in ('L','R'):raise ValueError('invalid side')
+    parked=new[side+'_PAWL'].translate((0,0,1.1))
+    enclosure,receipt=regions(parked,(0,0,-10.))
+    result=checks(enclosure,new[side+'_ROOT_OUTER'])
+    return {'side':side,'scope':'earlier outer-root closure over parked PAWL socket',
+            'relative_full_translation_mm':[0.,0.,-10.],'enclosure':receipt,'result':result}
+
+
 def verify(manifest,output):
     output=Path(output)
     if output.exists():raise ValueError('new result path required')
@@ -136,11 +145,15 @@ def verify(manifest,output):
         lost=rootold.cut(rootnew);leaves,_=w.v.n.whole_material(lost)
         for b in leaves:
             bb=b.BoundingBox()
-            if bb.ymin<19.3-TOL or bb.ymax>20.7+TOL or bb.zmin<4.6-TOL or bb.zmax>7.1+TOL:raise ValueError('root cut outside declared pin corridor')
+            if bb.ymin<19.3-TOL or bb.ymax>20.7+TOL or bb.zmin<3.9-TOL or bb.zmax>7.1+TOL:raise ValueError('root cut outside declared pin corridor')
         accounting[side]={'original_PAWL_removed_mm3':vol(original.cut(modified)),'boss_added_mm3':vol(modified.cut(original)),'root_removed_mm3':vol(lost)}
         # Complete active slotted plate is identical; changes below it serve pad installation.
         region=box((-40,0,4.6),(40,40,10))
         w.v.equal(new[side+'_TAB'].intersect(region),parent[side+'_TAB'].intersect(region))
+    root_closure=[root_closure_check(new,side) for side in 'LR']
+    if any(not r['result']['all_regions_clear'] for r in root_closure):
+        raise ValueError('socket boss obstructs earlier outer-root assembly')
+    print('EARLIER_ROOT_CLOSURE',root_closure,flush=True)
     # Every pair is rechecked at home. Additional states check all new/modified participants.
     changed={'A_BACK_PANEL'}|{s+'_'+k for s in 'LR' for k in ('PAWL','ROOT_OUTER_CONNECTED_ALL_FRAGMENTS',*INSERT_ROLES)}
     static=[];static_failed=[]
@@ -190,7 +203,7 @@ def verify(manifest,output):
     if any(sha(p)!=v for p,v in h.items()):raise ValueError('native input changed during check')
     if any(k in sys.modules for k in ('serviceable_pawl','pawl_actuator','cam_coupling')):raise ValueError('candidate generator imported')
     result={'base_main':meta['base_main'],'source_sha256':meta['source_sha256'],'reader_sha256':sha(__file__),'input_sha256':h,
-            'native_templates':len(new),'material':accounting,'nominal_states':static,'assembly_stages':stages,'finite_tool_checks':tool_rows,
+            'native_templates':len(new),'earlier_root_closure':root_closure,'material':accounting,'nominal_states':static,'assembly_stages':stages,'finite_tool_checks':tool_rows,
             'old_assembly_counterexamples':negatives,'slot_contacts':contacts,'nominal_control_motion':motions,'control_frame_closure':closure,
             'failures':failed,'passed':not any(failed.values()),'same_CAD_kernel':True,'candidate_builder_imported':False,
             'assembly_stage_frame_and_B_absent':True,'parent_cartridge_and_transmission_preassembly_not_recertified':True,

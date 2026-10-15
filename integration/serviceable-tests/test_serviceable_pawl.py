@@ -110,3 +110,19 @@ class ServiceableControlsTests(unittest.TestCase):
         outer=s.c.parent('A_OUTER')
         for key,b in self.new.items():
             if not key.endswith('GUIDE_REFERENCE'):self.assertEqual(v.vol(b.cut(outer)),0.)
+
+    def test_admission_mouth_clears_earlier_root_closure_and_old_root_fails(self):
+        import json,tarfile,tempfile
+        folder=ROOT/'engineering/serviceable-pawl-20261015'
+        gm=json.loads((folder/'geometry-manifest.json').read_text())
+        arc=folder/gm['archive']
+        self.assertEqual(hashlib.sha256(arc.read_bytes()).hexdigest(),gm['archive_sha256'])
+        for side in 'LR':
+            self.assertTrue(v.root_closure_check(self.new,side)['result']['all_regions_clear'])
+            name=side+'_ROOT_OUTER.step';rec=next(r for r in gm['files'] if r['path']==name)
+            with tarfile.open(arc,'r:gz') as stream:raw=stream.extractfile(name).read()
+            self.assertEqual(hashlib.sha256(raw).hexdigest(),rec['sha256'])
+            with tempfile.TemporaryDirectory() as td:
+                p=Path(td)/name;p.write_bytes(raw);roots=s.cq.importers.importStep(str(p)).vals()
+            self.assertEqual(len(roots),1);oldroot=s.c.n.single(roots[0])
+            self.assertGreater(v.common(oldroot.translate((0,0,1.5)),self.new[side+'_PAWL'].translate((0,0,1.1))),1e-7)

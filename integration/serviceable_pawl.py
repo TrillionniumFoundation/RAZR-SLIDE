@@ -79,7 +79,10 @@ def build():
         if c.vol(pawl.cut(newpawl))>1e-7:raise ValueError('original PAWL material removed')
         root=c.parent(side+'_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS')
         passage=mirror(a.slot_yz((20.,5.3),(20.,6.4),.70,12.05,13.85))
-        root=c.one(root.cut(passage).clean())
+        # Fixed lower admission mouth for root closure over the parked socket boss.
+        # A finite operating slot alone obstructed the earlier root insertion.
+        admission=mirror(c.box((12.05,19.3,3.9),(13.85,20.7,5.3)))
+        root=c.one(root.cut(passage).cut(admission).clean())
         # Open-top guide body, preserving the original side guide geometry.
         original_guide=old[side+'_GUIDE']
         guide=c.one(original_guide.intersect(c.box((-40,13.,.5),(40,32.,ROOF_SPLIT_Z))).clean())
