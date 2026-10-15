@@ -81,3 +81,11 @@ The current software suite manifest is `tools/test_suites.json`; actual results
 come from the report and the Research validation workflow, not a fixed README
 pass count. Software merges are independent of physical qualification.
 `candidate_go=false`; `fixture_fabrication_go=false`; `manufacturing_go=false`.
+
+## Mounted-cartridge continuation — 2026-10-15
+
+The current integration is `integration/mounted_mechanism.py`, with evidence in
+`engineering/mounted-mechanism-20261015`. It adds a removable A back panel,
+connected mounting ears, frame bosses and eight nominal screw envelopes.
+Complete B-shell travel clearance is separate from the unimplemented B-to-KEY
+transmission. Start with `CURRENT_DESIGN.md`; all manufacturing flags stay false.
