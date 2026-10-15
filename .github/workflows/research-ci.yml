@@ -48,6 +48,10 @@ jobs:
         run: |
           uv run --locked python -B integration/thin_mechanism.py --output "$RUNNER_TEMP/razr-thin"
           uv run --locked python -B integration/verify_thin_mechanism.py --manifest "$RUNNER_TEMP/razr-thin/manifest.json" --output "$RUNNER_TEMP/razr-thin/verification.json"
+      - name: Generate and independently verify the mounted cartridges
+        run: |
+          uv run --locked python -B integration/mounted_mechanism.py --output "$RUNNER_TEMP/razr-mounted"
+          uv run --locked python -B integration/verify_mounted_mechanism.py --manifest "$RUNNER_TEMP/razr-mounted/manifest.json" --output "$RUNNER_TEMP/razr-mounted/verification.json"
       - name: Preserve actual results, including failures
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -57,5 +61,6 @@ jobs:
             ${{ runner.temp }}/razr-unit
             ${{ runner.temp }}/razr-phone-layout
             ${{ runner.temp }}/razr-thin
+            ${{ runner.temp }}/razr-mounted
           if-no-files-found: warn
           retention-days: 14

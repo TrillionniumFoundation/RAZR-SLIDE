@@ -44,3 +44,10 @@ retains the rectangular overlap negative control, and records the cost in
 empty cavity space. It is not an OEM cavity, a selected phone assembly, a
 battery-capacity estimate or physical qualification. Both programs use the
 same native CAD kernel; independent readback is not cross-kernel validation.
+
+
+The mounted-cartridge workflow additionally generates `mounted_mechanism.py`
+and independently rereads it with `verify_mounted_mechanism.py`. It retains
+all static pairs, cassette insertion, nominal screw and finite tool-shaft paths,
+new local motion pairs, and the direct-rigid-coupling rejection. Shell clearance
+through both complete translations is not coupled B-to-KEY operation.
