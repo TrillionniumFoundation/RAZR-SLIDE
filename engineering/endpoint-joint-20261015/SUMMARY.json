@@ -1,0 +1,99 @@
+{
+  "base_main": "6ac042a14b976e549e27631530e8464ede0bfcc9",
+  "source_sha256": "3d3108abceccf6915789809ccad09e453f2a7b66a5c9e0aec30a6d4c39d63b67",
+  "native_templates": 21,
+  "slot_origin_mm": 0.02,
+  "slot_span_mm": 1.06,
+  "pin_radius_mm": 0.4,
+  "slot_radius_mm": 0.425,
+  "slot_only_closed_interval": {
+    "center_mm": 0.02,
+    "lower_mm": -0.006514670991316789,
+    "upper_mm": 0.04651467099131679,
+    "scope": "two ideal native slot flanks only, no guide/pin play, process or force budget"
+  },
+  "slot_only_released_interval": {
+    "center_mm": 1.08,
+    "lower_mm": 1.0534853290086832,
+    "upper_mm": 1.106514670991317,
+    "scope": "two ideal native slot flanks only, no guide/pin play, process or force budget"
+  },
+  "nominal_roof_overlap_old_mm": 0.25,
+  "nominal_roof_overlap_new_mm": 1.25,
+  "threads_modeled": false,
+  "original_PAWL_KEY_roots_pins_screws_unchanged": true,
+  "changed_geometry": {
+    "L_TAB": {
+      "old_mm3": 23.106481760303474,
+      "removed_mm3": 0.05127181011045792,
+      "added_mm3": 0.06432357297970336,
+      "new_mm3": 23.119533523172976
+    },
+    "L_ROOF": {
+      "old_mm3": 10.987568510509435,
+      "removed_mm3": 0.0,
+      "added_mm3": 2.450442269800038,
+      "new_mm3": 13.438010780309472
+    },
+    "L_GUIDE_REFERENCE": {
+      "old_mm3": 65.71144143756712,
+      "removed_mm3": 2.770884720466197,
+      "added_mm3": 0.0,
+      "new_mm3": 62.940556717100925
+    },
+    "R_TAB": {
+      "old_mm3": 23.10648176030347,
+      "removed_mm3": 0.05127181011030646,
+      "added_mm3": 0.06432357297960628,
+      "new_mm3": 23.119533523172983
+    },
+    "R_ROOF": {
+      "old_mm3": 10.987568510509435,
+      "removed_mm3": 0.0,
+      "added_mm3": 2.450442269800039,
+      "new_mm3": 13.438010780309472
+    },
+    "R_GUIDE_REFERENCE": {
+      "old_mm3": 65.71144143756715,
+      "removed_mm3": 2.770884720466196,
+      "added_mm3": 0.0,
+      "new_mm3": 62.94055671710095
+    },
+    "A_BACK_PANEL": {
+      "old_mm3": 4667.5691145039655,
+      "removed_mm3": 5.541769440932395,
+      "added_mm3": 0.0,
+      "new_mm3": 4662.027345063019
+    }
+  },
+  "native_verification": {
+    "local_full_unpartitioned_report": "failed only at overly broad roof sweeps; retained",
+    "current_local_corrected_assembly_passed": true,
+    "current_local_assembly_steps": 14,
+    "current_local_assembly_pairs": 973,
+    "current_full_hosted_result": "pending"
+  },
+  "local_new_suite": {
+    "tests": 27,
+    "passed": true,
+    "not_local_full549": true
+  },
+  "hosted_CI": "pending",
+  "actual_material_preload_load_data_selected": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "actual_load_screen": {
+    "status": "undetermined",
+    "missing_physical_inputs": 9,
+    "record": "actual-load-budget.json"
+  },
+  "proof_repair": {
+    "candidate_geometry_changed": false,
+    "original_unpartitioned_certificate_rejected": true,
+    "exact_roof_material_partition_components": 3,
+    "threshold_unchanged_mm3": 1e-07,
+    "finite_native_collision_witness_found": false,
+    "full_corrected_verification": "local full assembly passed; hosted complete reader pending"
+  }
+}

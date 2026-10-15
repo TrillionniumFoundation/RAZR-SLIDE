@@ -16,9 +16,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  current-suites:
+  unit:
+    name: full-unit-suites
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -40,42 +41,94 @@ jobs:
         run: uv sync --locked
       - name: Run every current suite
         run: uv run --locked python -B tools/verify.py --output "$RUNNER_TEMP/razr-unit"
-      - name: Generate and independently reread the empty-shell study
-        run: |
-          uv run --locked python -B integration/phone_layout.py --output "$RUNNER_TEMP/razr-phone-layout"
-          uv run --locked python -B integration/verify_phone_layout.py --report "$RUNNER_TEMP/razr-phone-layout/report.json" --output "$RUNNER_TEMP/razr-phone-layout/readback.json"
-      - name: Generate and independently verify the thin mechanism
-        run: |
-          uv run --locked python -B integration/thin_mechanism.py --output "$RUNNER_TEMP/razr-thin"
-          uv run --locked python -B integration/verify_thin_mechanism.py --manifest "$RUNNER_TEMP/razr-thin/manifest.json" --output "$RUNNER_TEMP/razr-thin/verification.json"
-      - name: Generate and independently verify the mounted cartridges
-        run: |
-          uv run --locked python -B integration/mounted_mechanism.py --output "$RUNNER_TEMP/razr-mounted"
-          uv run --locked python -B integration/verify_mounted_mechanism.py --manifest "$RUNNER_TEMP/razr-mounted/manifest.json" --output "$RUNNER_TEMP/razr-mounted/verification.json"
-      - name: Generate and independently verify cam transmission study
-        run: |
-          uv run --locked python -B integration/cam_coupling.py --output "$RUNNER_TEMP/razr-coupling"
-          uv run --locked python -B integration/verify_cam_coupling.py --manifest "$RUNNER_TEMP/razr-coupling/manifest.json" --output "$RUNNER_TEMP/razr-coupling/verification.json"
-      - name: Generate and independently verify manual PAWL controls
-        run: |
-          uv run --locked python -B integration/pawl_actuator.py --output "$RUNNER_TEMP/razr-pawl"
-          uv run --locked python -B integration/verify_pawl_actuator.py --manifest "$RUNNER_TEMP/razr-pawl/manifest.json" --output "$RUNNER_TEMP/razr-pawl/verification.json"
-      - name: Generate and independently verify serviceable PAWL controls
-        run: |
-          uv run --locked python -B integration/serviceable_pawl.py --output "$RUNNER_TEMP/razr-serviceable"
-          uv run --locked python -B integration/verify_serviceable_pawl.py --manifest "$RUNNER_TEMP/razr-serviceable/manifest.json" --output "$RUNNER_TEMP/razr-serviceable/verification.json"
-      - name: Preserve actual results, including failures
+      - name: Preserve all unit results
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: research-${{ github.run_id }}-${{ github.run_attempt }}
-          path: |
-            ${{ runner.temp }}/razr-unit
-            ${{ runner.temp }}/razr-phone-layout
-            ${{ runner.temp }}/razr-thin
-            ${{ runner.temp }}/razr-mounted
-            ${{ runner.temp }}/razr-coupling
-            ${{ runner.temp }}/razr-pawl
-            ${{ runner.temp }}/razr-serviceable
+          name: research-unit-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/razr-unit
           if-no-files-found: warn
           retention-days: 14
+
+  native:
+    name: native-${{ matrix.id }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        include:
+          - id: phone-layout
+            commands: |
+              uv run --locked python -B integration/phone_layout.py --output "$RUNNER_TEMP/razr-phone-layout"
+              uv run --locked python -B integration/verify_phone_layout.py --report "$RUNNER_TEMP/razr-phone-layout/report.json" --output "$RUNNER_TEMP/razr-phone-layout/readback.json"
+          - id: thin
+            commands: |
+              uv run --locked python -B integration/thin_mechanism.py --output "$RUNNER_TEMP/razr-thin"
+              uv run --locked python -B integration/verify_thin_mechanism.py --manifest "$RUNNER_TEMP/razr-thin/manifest.json" --output "$RUNNER_TEMP/razr-thin/verification.json"
+          - id: mounted
+            commands: |
+              uv run --locked python -B integration/mounted_mechanism.py --output "$RUNNER_TEMP/razr-mounted"
+              uv run --locked python -B integration/verify_mounted_mechanism.py --manifest "$RUNNER_TEMP/razr-mounted/manifest.json" --output "$RUNNER_TEMP/razr-mounted/verification.json"
+          - id: coupling
+            commands: |
+              uv run --locked python -B integration/cam_coupling.py --output "$RUNNER_TEMP/razr-coupling"
+              uv run --locked python -B integration/verify_cam_coupling.py --manifest "$RUNNER_TEMP/razr-coupling/manifest.json" --output "$RUNNER_TEMP/razr-coupling/verification.json"
+          - id: pawl
+            commands: |
+              uv run --locked python -B integration/pawl_actuator.py --output "$RUNNER_TEMP/razr-pawl"
+              uv run --locked python -B integration/verify_pawl_actuator.py --manifest "$RUNNER_TEMP/razr-pawl/manifest.json" --output "$RUNNER_TEMP/razr-pawl/verification.json"
+          - id: serviceable
+            commands: |
+              uv run --locked python -B integration/serviceable_pawl.py --output "$RUNNER_TEMP/razr-serviceable"
+              uv run --locked python -B integration/verify_serviceable_pawl.py --manifest "$RUNNER_TEMP/razr-serviceable/manifest.json" --output "$RUNNER_TEMP/razr-serviceable/verification.json"
+          - id: endpoint-joint
+            commands: |
+              uv run --locked python -B integration/endpoint_joint_pawl.py --output "$RUNNER_TEMP/razr-endpoint-joint"
+              uv run --locked python -B integration/verify_endpoint_joint_pawl.py --manifest "$RUNNER_TEMP/razr-endpoint-joint/manifest.json" --output "$RUNNER_TEMP/razr-endpoint-joint/verification.json"
+              uv run --locked python -B integration/roof_joint_budget.py --inputs integration/roof_joint_load_inputs.json --output "$RUNNER_TEMP/razr-endpoint-joint/load-budget.json"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/archive/blobs/
+            !/baselines/**
+            /baselines/**/*.py
+            /baselines/**/*.md
+            /baselines/**/*.json
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: '0.10.10'
+          python-version: '3.12'
+          enable-cache: true
+      - name: Install locked research dependencies
+        run: uv sync --locked
+      - name: Generate and independently reread this native study
+        run: ${{ matrix.commands }}
+      - name: Preserve this study including failures
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: research-native-${{ matrix.id }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/razr-*
+          if-no-files-found: warn
+          retention-days: 14
+
+  current-suites:
+    name: current-suites
+    if: always()
+    needs: [unit, native]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Require all independent checks to succeed
+        env:
+          UNIT_RESULT: ${{ needs.unit.result }}
+          NATIVE_RESULT: ${{ needs.native.result }}
+        run: |
+          test "$UNIT_RESULT" = success
+          test "$NATIVE_RESULT" = success
