@@ -70,6 +70,8 @@ jobs:
               uv run --locked python -B integration/verify_pawl_box_guide.py --baseline "$RUNNER_TEMP/razr-lateral-guide/manifest.json" --manifest "$RUNNER_TEMP/razr-body-guide/manifest.json" --output "$RUNNER_TEMP/razr-body-guide/verification.json" --full
               uv run --locked python -B integration/cover_backing.py --baseline "$RUNNER_TEMP/razr-body-guide/manifest.json" --output "$RUNNER_TEMP/razr-cover-backing"
               uv run --locked python -B integration/verify_cover_backing.py --baseline "$RUNNER_TEMP/razr-body-guide/manifest.json" --manifest "$RUNNER_TEMP/razr-cover-backing/manifest.json" --output "$RUNNER_TEMP/razr-cover-backing/verification.json" --full
+              uv run --locked python -B integration/panel_shear_key.py --baseline "$RUNNER_TEMP/razr-cover-backing/manifest.json" --output "$RUNNER_TEMP/razr-panel-shear"
+              uv run --locked python -B integration/verify_panel_shear_key.py --baseline "$RUNNER_TEMP/razr-cover-backing/manifest.json" --manifest "$RUNNER_TEMP/razr-panel-shear/manifest.json" --output "$RUNNER_TEMP/razr-panel-shear/verification.json" --full
           - id: phone-layout
             commands: |
               uv run --locked python -B integration/phone_layout.py --output "$RUNNER_TEMP/razr-phone-layout"
