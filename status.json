@@ -67,17 +67,17 @@
   ],
   "previous_production_review": "engineering/PRODUCTION_BLOCKERS_R6.md",
   "current_input_registry": "integration/assembly_inputs.json",
-  "current_execution_summary": "engineering/frame-nut-anchor-20261015/DELIVERY_VERIFICATION.json",
+  "current_execution_summary": "engineering/panel-bearing-web-20261015/DELIVERY_VERIFICATION.json",
   "current_unit_tests": {
     "manifest": "tools/test_suites.json",
-    "configured_minimum": 736,
+    "configured_minimum": 759,
     "groups": 31,
-    "actual_complete_tests": 736,
-    "functional_commit": "f8cdce7debf7824d0c2ae04ee51dc3e73697941f",
-    "environment": "authorized desktop locked environment, three disjoint unchanged canonical selections",
+    "actual_complete_tests": 759,
+    "functional_commit": "56807c2d2303cdae36d9d14b00b673a182134aab",
+    "environment": "authorized desktop existing locked environment",
     "hosted_execution": false
   },
-  "previous_current_execution_summary": "engineering/panel-shear-key-20261015/DELIVERY_VERIFICATION.json",
+  "previous_current_execution_summary": "engineering/frame-nut-anchor-20261015/DELIVERY_VERIFICATION.json",
   "current_fresh_verification": "existing locked desktop run resumed to completion; no duplicate full run launched; standard native full passed",
   "bench_cover_first_candidate": {
     "source": "integration/cover_admission.py",
@@ -325,5 +325,15 @@
     "current_screw_length_mm": 3,
     "alternative4mm_adopted": false,
     "hardware_qualified": false
+  },
+  "current_panel_bearing_web_study": {
+    "source": "integration/panel_bearing_web.py",
+    "native_reader": "integration/verify_panel_bearing_web.py",
+    "only_physical_part_changed": "A_BACK_PANEL",
+    "added_mm3": 3.564,
+    "nominal_X_wall_mm": 0.15,
+    "local_full_tests_and_standard_native_passed": true,
+    "structural_scope": "conditional full-panel fixed-ring first-boundary fields audited after output failure; separate isolated-post comparator",
+    "actual_force_preload_thread_material_and_joint_stiffness_qualified": false
   }
 }
