@@ -1,0 +1,88 @@
+{
+  "input_candidate_STEP_sha256": "90d04064bd221d8d46992d9d58bd6dd9c4ffa0f31c8894e28315e9e426dac642",
+  "optional_packages": {
+    "gmsh": "4.15.2",
+    "scikit-fem": "12.0.2"
+  },
+  "scope": "full panel under synthetic full-face unit loads and ideal fixed mounting rings, plus SEPARATE isolated-post rigid-root comparators",
+  "E_normalization_N_per_mm2": 1.0,
+  "synthetic_poisson_ratio": 0.3,
+  "material_or_service_force_not_assigned": true,
+  "mesh_quality": [
+    {
+      "mesh_size_parameter_mm": 3.0,
+      "nodes": 19628,
+      "tetrahedra": 57620,
+      "displacement_DOFs": 344103,
+      "relative_volume_error": 1.9985883890324745e-05,
+      "min_abs_tet_jacobian_mm3": 0.00014938266007341312
+    },
+    {
+      "mesh_size_parameter_mm": 2.0,
+      "nodes": 25528,
+      "tetrahedra": 77355,
+      "displacement_DOFs": 453717,
+      "relative_volume_error": 2.110428532223841e-05,
+      "min_abs_tet_jacobian_mm3": 0.00016561729484761037
+    }
+  ],
+  "P2_displacement_P1_geometry": true,
+  "full_panel_ring_fixed_coefficients_E_delta_over_F_per_mm": [
+    384.83277976219114,
+    337.483396967689,
+    384.9098062660894,
+    337.9640633722155
+  ],
+  "post_comparison": [
+    {
+      "location": "L_front",
+      "complete_panel_ring_clamped_coefficient": 384.83277976219114,
+      "isolated_rigid_root_coefficient": 131.1594484160223,
+      "panel_to_isolated_ratio": 2.9340835479998892,
+      "isolated_two_mesh_relative_change": 0.003908846529499753
+    },
+    {
+      "location": "L_rear",
+      "complete_panel_ring_clamped_coefficient": 337.483396967689,
+      "isolated_rigid_root_coefficient": 108.20852163386743,
+      "panel_to_isolated_ratio": 3.11882457935792,
+      "isolated_two_mesh_relative_change": 0.0038794239496094994
+    },
+    {
+      "location": "R_front",
+      "complete_panel_ring_clamped_coefficient": 384.9098062660894,
+      "isolated_rigid_root_coefficient": 131.1594484160223,
+      "panel_to_isolated_ratio": 2.9346708217710775,
+      "isolated_two_mesh_relative_change": 0.003908846529499753
+    },
+    {
+      "location": "R_rear",
+      "complete_panel_ring_clamped_coefficient": 337.9640633722155,
+      "isolated_rigid_root_coefficient": 108.20852163386743,
+      "panel_to_isolated_ratio": 3.1232666177230026,
+      "isolated_two_mesh_relative_change": 0.0038794239496094994
+    }
+  ],
+  "two_mesh_diagonal_relative_difference": [
+    0.024091571323127777,
+    0.02783008992167262,
+    0.02821057933976543,
+    0.03039869522454959
+  ],
+  "declared_mean_response_target": 0.05,
+  "meets_mean_response_target": true,
+  "not_stress_or_global_FE_error_bound": true,
+  "same_mesh_independent_solver_ordering_relative_difference": 2.645316406201823e-09,
+  "analytic_patch_cases": 8,
+  "original_combined_solver_runs_exited1": true,
+  "first_ring_boundary_complete_fields_recovered_and_audited": true,
+  "full_panel_rigid_skin_second_boundary_not_completed": true,
+  "raw_field_producer_source_sha256": "1eb1f51bb142e7fcb6d1e8ee087a5850d7b8324b45e12d86d24caf2967907e0c",
+  "corrected_future_reproduction_script_sha256": "387bf47bbeb650b59dda004a9f2ba40cde04138aa359b10665f7be5a50d3060b",
+  "full_panel_not_rerun_with_corrected_json_writer": true,
+  "recovered_force_moment_energy_residual_reciprocity_and_positive_response_checked": true,
+  "real_frame_compliance_contact_preload_material_and_capacity_qualified": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}
