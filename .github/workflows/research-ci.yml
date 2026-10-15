@@ -60,6 +60,10 @@ jobs:
         run: |
           uv run --locked python -B integration/pawl_actuator.py --output "$RUNNER_TEMP/razr-pawl"
           uv run --locked python -B integration/verify_pawl_actuator.py --manifest "$RUNNER_TEMP/razr-pawl/manifest.json" --output "$RUNNER_TEMP/razr-pawl/verification.json"
+      - name: Generate and independently verify serviceable PAWL controls
+        run: |
+          uv run --locked python -B integration/serviceable_pawl.py --output "$RUNNER_TEMP/razr-serviceable"
+          uv run --locked python -B integration/verify_serviceable_pawl.py --manifest "$RUNNER_TEMP/razr-serviceable/manifest.json" --output "$RUNNER_TEMP/razr-serviceable/verification.json"
       - name: Preserve actual results, including failures
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -72,5 +76,6 @@ jobs:
             ${{ runner.temp }}/razr-mounted
             ${{ runner.temp }}/razr-coupling
             ${{ runner.temp }}/razr-pawl
+            ${{ runner.temp }}/razr-serviceable
           if-no-files-found: warn
           retention-days: 14

@@ -89,3 +89,10 @@ See CURRENT_DESIGN.md and engineering/pawl-actuation-20261015. Two independent
 manual tabs now have actual slot/pin actuation geometry. Nominal paths and
 wrong-order obstruction are distinct from endpoint-play failures, assembly
 access, detents/preload and real locking qualification. No hardware release.
+
+## Serviceable manual control study — 2026-10-15
+
+The current entry is CURRENT_DESIGN.md. A removable shoulder pin, separate
+thumb pad and detachable guide roof replace trapped integral interfaces.
+This is a detached-backpanel nominal assembly sequence, not qualified
+threads, preload, lock force or complete phone assembly.
