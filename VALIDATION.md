@@ -51,3 +51,18 @@ and independently rereads it with `verify_mounted_mechanism.py`. It retains
 all static pairs, cassette insertion, nominal screw and finite tool-shaft paths,
 new local motion pairs, and the direct-rigid-coupling rejection. Shell clearance
 through both complete translations is not coupled B-to-KEY operation.
+
+
+The cam transmission is generated and checked with:
+
+```sh
+uv run --locked python -B integration/cam_coupling.py --output /tmp/razr-coupling-new
+uv run --locked python -B integration/verify_cam_coupling.py --manifest /tmp/razr-coupling-new/manifest.json --output /tmp/razr-coupling-new/verification.json
+```
+
+The native reader does not import the candidate builder. It checks finite groove
+faces/flanks, collar/floor limits, unequal telescope allocations and eight
+conditional nominal full-assembly poses. It does NOT assert continuous whole-
+phone clearance, unique reverse motion with clearance, actual PAWL release,
+endpoint relock, real spring forces, assembled captured-head tooling or product
+qualification. Original failed development geometry is retained separately.

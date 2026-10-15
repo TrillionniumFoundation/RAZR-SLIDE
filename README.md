@@ -64,28 +64,21 @@ R6 [实际取得的 39 页 OLED 候选原始规格与来源核验](engineering/c
 
 ## Current execution index — 2026-10-15
 
-Start with `CURRENT_DESIGN.md`. `integration/thin_mechanism.py` is the current
-6.6-mm nominal-depth study candidate with successful native verification and
-hosted 440-test CI. `integration/cover_capture.py` remains the old wide reference;
-`integration/phone_layout.py` supplies the explicitly assumed empty-shell study.
-None is a complete mounted or qualified phone assembly.
-`integration/assembly_inputs.json` retains the missing actual component and
-finished-cavity inputs; study dimensions do not fill those fields.
+Start with `CURRENT_DESIGN.md`. The current transmission study is
+`integration/cam_coupling.py`: a finite B cam, transverse follower, original-KEY
+yoke and three captured telescopic stages. Its native evidence and explicit
+remaining constraints are under `engineering/cam-coupling-20261015/`.
 
-The earlier 18 STOW interference rows belong to the preserved P0 baseline,
-not the latest cover-capture candidate. Per-revision native evidence remains
-in `engineering/`; raw failures and original archives are not rewritten.
+The mounted and thin mechanisms, empty-shell study and rejected rigid-link
+experiments remain preserved research inputs, not replaced historical receipts.
+Actual phone inputs remain in `integration/assembly_inputs.json`, unchanged.
+The new shell cuts are project-owned study geometry, not approved OEM changes.
 
 Run `uv sync --locked` and `uv run --locked python -B tools/verify.py`.
-The current software suite manifest is `tools/test_suites.json`; actual results
-come from the report and the Research validation workflow, not a fixed README
-pass count. Software merges are independent of physical qualification.
+Use `tools/test_suites.json` for the current configured scope; use actual reports
+and Research validation for results. Local scoped tests are not full CI reruns.
+
+Groove-centerline compatibility is not complete unlock/relock qualification.
+Backlash, PAWL actuation, return preload, all-pose interference, assembly and
+real phone component/load/tolerance qualification remain open.
 `candidate_go=false`; `fixture_fabrication_go=false`; `manufacturing_go=false`.
-
-## Mounted-cartridge continuation — 2026-10-15
-
-The current integration is `integration/mounted_mechanism.py`, with evidence in
-`engineering/mounted-mechanism-20261015`. It adds a removable A back panel,
-connected mounting ears, frame bosses and eight nominal screw envelopes.
-Complete B-shell travel clearance is separate from the unimplemented B-to-KEY
-transmission. Start with `CURRENT_DESIGN.md`; all manufacturing flags stay false.
