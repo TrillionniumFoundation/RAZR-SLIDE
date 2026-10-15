@@ -1,3 +1,15 @@
+# 当前增量：有限螺纹与预紧预算已完成本机完整验证
+
+PR21当前代码保持3mm螺钉与既有83件框架总成几何不变。frame_thread_budget.py只计算有限牙形重叠和条件预紧/扭矩窗口。
+功能提交f8cdce7本机全部736项/31组、现役3mm标准原生full重新通过。完整报告见engineering/thread-connection-20261015/DELIVERY_VERIFICATION.json。
+4mm仅是原隔离候选，未自动采用；实际啮合/预紧输入仍为空，输出undetermined。
+仍需实际完整牙起止/配合限值、同表面扭矩-拉力、每颗载荷与框架/背板变形数据；不把画螺纹设成新的形式闸门。
+本轮未改硬件放行状态或账务设置。
+
+---
+
+## 保留的当前几何与边界
+
 # 当前研究入口：目录框架螺母座已集成，真实螺纹与有载锚固未放行
 
 新增integration/frame_nut_anchor.py与verify_frame_nut_anchor.py；沿用原panel_shear_key、cover_backing和主体导向，不改历史输入与失败证据。
