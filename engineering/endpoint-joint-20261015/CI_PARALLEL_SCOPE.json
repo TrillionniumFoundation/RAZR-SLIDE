@@ -1,0 +1,17 @@
+{
+  "old_serial_native_commands": {
+    "phone-layout": "uv run --locked python -B integration/phone_layout.py --output \"$RUNNER_TEMP/razr-phone-layout\"\nuv run --locked python -B integration/verify_phone_layout.py --report \"$RUNNER_TEMP/razr-phone-layout/report.json\" --output \"$RUNNER_TEMP/razr-phone-layout/readback.json\"",
+    "thin": "uv run --locked python -B integration/thin_mechanism.py --output \"$RUNNER_TEMP/razr-thin\"\nuv run --locked python -B integration/verify_thin_mechanism.py --manifest \"$RUNNER_TEMP/razr-thin/manifest.json\" --output \"$RUNNER_TEMP/razr-thin/verification.json\"",
+    "mounted": "uv run --locked python -B integration/mounted_mechanism.py --output \"$RUNNER_TEMP/razr-mounted\"\nuv run --locked python -B integration/verify_mounted_mechanism.py --manifest \"$RUNNER_TEMP/razr-mounted/manifest.json\" --output \"$RUNNER_TEMP/razr-mounted/verification.json\"",
+    "coupling": "uv run --locked python -B integration/cam_coupling.py --output \"$RUNNER_TEMP/razr-coupling\"\nuv run --locked python -B integration/verify_cam_coupling.py --manifest \"$RUNNER_TEMP/razr-coupling/manifest.json\" --output \"$RUNNER_TEMP/razr-coupling/verification.json\"",
+    "pawl": "uv run --locked python -B integration/pawl_actuator.py --output \"$RUNNER_TEMP/razr-pawl\"\nuv run --locked python -B integration/verify_pawl_actuator.py --manifest \"$RUNNER_TEMP/razr-pawl/manifest.json\" --output \"$RUNNER_TEMP/razr-pawl/verification.json\"",
+    "serviceable": "uv run --locked python -B integration/serviceable_pawl.py --output \"$RUNNER_TEMP/razr-serviceable\"\nuv run --locked python -B integration/verify_serviceable_pawl.py --manifest \"$RUNNER_TEMP/razr-serviceable/manifest.json\" --output \"$RUNNER_TEMP/razr-serviceable/verification.json\"",
+    "endpoint-joint": "uv run --locked python -B integration/endpoint_joint_pawl.py --output \"$RUNNER_TEMP/razr-endpoint-joint\"\nuv run --locked python -B integration/verify_endpoint_joint_pawl.py --manifest \"$RUNNER_TEMP/razr-endpoint-joint/manifest.json\" --output \"$RUNNER_TEMP/razr-endpoint-joint/verification.json\"\nuv run --locked python -B integration/roof_joint_budget.py --inputs integration/roof_joint_load_inputs.json --output \"$RUNNER_TEMP/razr-endpoint-joint/load-budget.json\""
+  },
+  "new_matrix_commands_identical": true,
+  "native_cases": 7,
+  "max_parallel_native_jobs": 4,
+  "unit_scope": "all current suites unchanged",
+  "aggregate_rejects_failure_cancelled_skipped": true,
+  "success_not_verified_until_actual_run": true
+}

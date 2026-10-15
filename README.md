@@ -64,34 +64,10 @@ R6 [实际取得的 39 页 OLED 候选原始规格与来源核验](engineering/c
 
 ## Current execution index — 2026-10-15
 
-Start with `CURRENT_DESIGN.md`. The current assembly continuation is
-`integration/serviceable_pawl.py`, verified by `integration/verify_serviceable_pawl.py`.
-Evidence is under `engineering/serviceable-pawl-20261015/`: detachable control
-roof, rear thumb pad and shoulder pin, plus the repaired earlier root-admission path.
-These are nominal detached-backpanel assembly results, not thread/preload,
-holding-force, fixture, sealed-phone or manufacturing qualification.
-
-The manual PAWL and cam transmission models remain explicit parent designs.
-Old failures and raw receipts remain preserved. Actual phone inputs in
-`integration/assembly_inputs.json` are unchanged; unknowns stay unknown.
-
-Run `uv sync --locked` and `uv run --locked python -B tools/verify.py`.
-Use `tools/test_suites.json` for configured scope and bound actual reports
-for results. Local new tests are not full hosted reruns. Endpoint clearance,
-preload, automatic return, original transmission installation, full-scene
-continuous motion and actual components/load/tolerance remain unqualified.
+Start with CURRENT_DESIGN.md and engineering/endpoint-joint-20261015.
+The current candidate changes only the manual slot datum/rise and the roof
+joint reservation. Old native sources and endpoint failures remain frozen.
+Run the manifest in tools/test_suites.json and inspect actual reports. Nominal
+geometry, ideal slot clearance, thread/force screening and hardware release
+are distinct. The actual joint-load inputs remain unknown, not assumed safe.
 `candidate_go=false`; `fixture_fabrication_go=false`; `manufacturing_go=false`.
-
-## Manual PAWL study — 2026-10-15
-
-See CURRENT_DESIGN.md and engineering/pawl-actuation-20261015. Two independent
-manual tabs now have actual slot/pin actuation geometry. Nominal paths and
-wrong-order obstruction are distinct from endpoint-play failures, assembly
-access, detents/preload and real locking qualification. No hardware release.
-
-## Serviceable manual control study — 2026-10-15
-
-The current entry is CURRENT_DESIGN.md. A removable shoulder pin, separate
-thumb pad and detachable guide roof replace trapped integral interfaces.
-This is a detached-backpanel nominal assembly sequence, not qualified
-threads, preload, lock force or complete phone assembly.
