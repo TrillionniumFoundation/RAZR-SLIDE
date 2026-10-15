@@ -61,3 +61,10 @@ R5/R6 当前实改与证据：[G2 路线与全部拒绝实体](engineering/fpc-g
 单正实体、零 DRC/ERC 和研究 STEP 不等于完整手机可生产。指定 OLED/FPC、真实整机装配、完整 PCB 及机械/双电池/USB/OLED 实物资格仍按 [当前生产门槛](engineering/PRODUCTION_BLOCKERS_R6.md)约束。`manufacturing_go=false`。
 
 R6 [实际取得的 39 页 OLED 候选原始规格与来源核验](engineering/controlled-inputs-web-20261013-r6/README.md)保留完整40pin事实和动态资格缺口，未替代指定受控OLED。
+
+## Current execution index — 2026-10-14
+
+See `CURRENT_DESIGN.md`, `integration/assembly_inputs.json` and
+`engineering/workplan-execution-20261014/integration/summary.json`.
+Unit tests pass; the complete requested sampled split-root sequence still
+rejects 18 STOW pawl/root interference rows. Manufacturing remains NO-GO.
