@@ -1,0 +1,330 @@
+{
+  "source_commit": "2f1bf96dbc4e2b96e9597fffb79f52aee01075b9",
+  "remote_origin": "https://github.com/TrillionniumFoundation/RAZR-SLIDE.git",
+  "new_checkout": true,
+  "new_virtual_environment": true,
+  "uv_sync_locked_succeeded": true,
+  "all_current_suites_reexecuted_here": false,
+  "scope": "repository and phone-layout suites only plus fresh native CAD generation/reimport",
+  "tests_run": 122,
+  "suites": [
+    {
+      "id": "repository",
+      "tests_run": 102,
+      "minimum_tests": 102,
+      "test_ids": [
+        "test_archive_restore.RestoreTests.test_bad_whole_hash_does_not_modify_existing",
+        "test_archive_restore.RestoreTests.test_bad_whole_hash_does_not_publish_new",
+        "test_archive_restore.RestoreTests.test_corrupt_segment_does_not_publish",
+        "test_archive_restore.RestoreTests.test_empty_original",
+        "test_archive_restore.RestoreTests.test_existing_different_is_preserved",
+        "test_archive_restore.RestoreTests.test_existing_fifo_rejected_without_blocking",
+        "test_archive_restore.RestoreTests.test_existing_identical_is_idempotent_without_writing",
+        "test_archive_restore.RestoreTests.test_existing_symlink_even_to_identical_bytes_rejected",
+        "test_archive_restore.RestoreTests.test_interruption_before_publication_cleans_temp",
+        "test_archive_restore.RestoreTests.test_invalid_manifest_lengths_and_digest_rejected",
+        "test_archive_restore.RestoreTests.test_missing_segment_preserves_existing",
+        "test_archive_restore.RestoreTests.test_multi_segment_whole_verification",
+        "test_archive_restore.RestoreTests.test_new_destination_is_exact",
+        "test_archive_restore.RestoreTests.test_partial_stream_write_error_cleans_temp",
+        "test_archive_restore.RestoreTests.test_publish_race_preserves_competing_destination",
+        "test_archive_restore.RestoreTests.test_relative_destination_root_supported",
+        "test_archive_restore.RestoreTests.test_source_fifo_rejected_without_blocking",
+        "test_archive_restore.RestoreTests.test_source_segment_symlink_rejected",
+        "test_archive_restore.RestoreTests.test_symlink_destination_root_rejected",
+        "test_archive_restore.RestoreTests.test_symlink_parent_cannot_escape",
+        "test_archive_restore.RestoreTests.test_unsafe_manifest_paths_rejected",
+        "test_archive_restore.RestoreTests.test_verify_only_never_creates_output",
+        "test_cam_contact_profile.ContactProfileTests.test_all_joins_continuous",
+        "test_cam_contact_profile.ContactProfileTests.test_bad_travel_rejected",
+        "test_cam_contact_profile.ContactProfileTests.test_breakpoints_have_native_values",
+        "test_cam_contact_profile.ContactProfileTests.test_corner_center_distance_equals_radius",
+        "test_cam_contact_profile.ContactProfileTests.test_derivative_matches_symmetric_difference",
+        "test_cam_contact_profile.ContactProfileTests.test_interval_extrema_are_at_endpoints",
+        "test_cam_contact_profile.ContactProfileTests.test_lower_stop_impact_not_hidden_by_smoothing",
+        "test_cam_contact_profile.ContactProfileTests.test_measured_home_and_lower_stop",
+        "test_cam_contact_profile.ContactProfileTests.test_misordered_branch_rejected",
+        "test_cam_contact_profile.ContactProfileTests.test_no_force_or_fatigue_release",
+        "test_cam_contact_profile.ContactProfileTests.test_nonfinite_profile_rejected",
+        "test_cam_contact_profile.ContactProfileTests.test_offset_pin_height_keeps_same_kinematics",
+        "test_cam_contact_profile.ContactProfileTests.test_ramp_tangent_distance_equals_pin_radius",
+        "test_cam_contact_profile.ContactProfileTests.test_rounding_and_plateau_are_C1",
+        "test_cam_contact_profile.ContactProfileTests.test_wrong_interval_rejected",
+        "test_harness_interface.NativeHarnessTests.test_control_pair_cannot_be_rerouted_to_power_ground",
+        "test_harness_interface.NativeHarnessTests.test_crossed_polarity_is_rejected",
+        "test_harness_interface.NativeHarnessTests.test_distinct_A_B_return_names_are_not_electrical_isolation",
+        "test_harness_interface.NativeHarnessTests.test_duplicate_conductor_is_rejected",
+        "test_harness_interface.NativeHarnessTests.test_duplicate_native_pin_rejected",
+        "test_harness_interface.NativeHarnessTests.test_incomplete_four_board_set_is_rejected",
+        "test_harness_interface.NativeHarnessTests.test_missing_cross_return_is_rejected",
+        "test_harness_interface.NativeHarnessTests.test_native_eFuse_pin_function_error_rejected",
+        "test_harness_interface.NativeHarnessTests.test_real_native_168_pins_and_18_conductors",
+        "test_harness_interface.NativeHarnessTests.test_static_wire_schedule_cannot_claim_motion_qualification",
+        "test_local_clearance.LocalClearanceTests.test_first_point_clear_does_not_invent_negative_bracket",
+        "test_local_clearance.LocalClearanceTests.test_invalid_grids_are_rejected",
+        "test_local_clearance.LocalClearanceTests.test_invalid_tolerances_iterations_rejected",
+        "test_local_clearance.LocalClearanceTests.test_monotone_transition",
+        "test_local_clearance.LocalClearanceTests.test_negative_signed_volume_is_not_abs_or_zero",
+        "test_local_clearance.LocalClearanceTests.test_no_clear_sample_is_explicit_rejection",
+        "test_local_clearance.LocalClearanceTests.test_nonfinite_common_is_not_clearance",
+        "test_local_clearance.LocalClearanceTests.test_nonmonotone_both_ends_collide_but_middle_is_clear",
+        "test_stow_web_repair.StowWebRepairTests.test_564_sequence_and_184_assembly_preserve_original_checks",
+        "test_stow_web_repair.StowWebRepairTests.test_OPEN_is_not_modified",
+        "test_stow_web_repair.StowWebRepairTests.test_actual_sweep_cuts_without_side_web_remain_disconnected",
+        "test_stow_web_repair.StowWebRepairTests.test_all_frozen_spring_snapshot_files_remain_exact",
+        "test_stow_web_repair.StowWebRepairTests.test_box_sweeps_match_analytical_volume_in_both_directions",
+        "test_stow_web_repair.StowWebRepairTests.test_concave_sweep_matches_independent_rectangular_union",
+        "test_stow_web_repair.StowWebRepairTests.test_curved_boundary_is_rejected_not_bounding_box_approximated",
+        "test_stow_web_repair.StowWebRepairTests.test_cut_only_negative_control_splits_root_into_three",
+        "test_stow_web_repair.StowWebRepairTests.test_disabling_patch_keeps_exact_original_shape_identities",
+        "test_stow_web_repair.StowWebRepairTests.test_envelope_and_material_accounting_are_preserved",
+        "test_stow_web_repair.StowWebRepairTests.test_full_parked_insertion_envelope_rejects_old_not_candidate",
+        "test_stow_web_repair.StowWebRepairTests.test_full_translation_envelope_rejects_old_and_accepts_repaired_root",
+        "test_stow_web_repair.StowWebRepairTests.test_invalid_scene_identity_or_switch_is_rejected",
+        "test_stow_web_repair.StowWebRepairTests.test_missing_high_ties_negative_control_splits_root_into_two",
+        "test_stow_web_repair.StowWebRepairTests.test_only_outer_root_is_modified_and_remains_one_solid",
+        "test_stow_web_repair.StowWebRepairTests.test_removed_volume_is_only_the_two_declared_motion_interferences",
+        "test_stow_web_repair.StowWebRepairTests.test_root_geometry_does_not_change_with_simulated_lift_or_key_state",
+        "test_stow_web_repair.StowWebRepairTests.test_zero_or_nonfinite_translation_is_rejected",
+        "test_straight_envelope.StraightEnvelopeTests.test_axial_cylinder_both_directions",
+        "test_straight_envelope.StraightEnvelopeTests.test_degenerate_translation_rejected",
+        "test_straight_envelope.StraightEnvelopeTests.test_free_topology_rejected",
+        "test_straight_envelope.StraightEnvelopeTests.test_oblique_cylinder_motion_rejected",
+        "test_straight_envelope.StraightEnvelopeTests.test_orthogonal_cylinder_capsule_volume",
+        "test_straight_envelope.StraightEnvelopeTests.test_planar_box",
+        "test_straight_envelope.StraightEnvelopeTests.test_planar_hole_kept",
+        "test_straight_envelope.StraightEnvelopeTests.test_reverse_full_capsule_is_same",
+        "test_straight_envelope.StraightEnvelopeTests.test_separate_solids_not_filtered",
+        "test_straight_envelope.StraightEnvelopeTests.test_sphere_not_silently_boxed",
+        "test_translation_regions.TranslationRegionsTests.test_actual_obstacle_inside_sweep_is_detected",
+        "test_translation_regions.TranslationRegionsTests.test_axial_hole_is_not_filled",
+        "test_translation_regions.TranslationRegionsTests.test_boxes_cover_whole_straight_travel",
+        "test_translation_regions.TranslationRegionsTests.test_invalid_motion_rejected",
+        "test_translation_regions.TranslationRegionsTests.test_reverse_boxes_cover_same_material",
+        "test_translation_regions.TranslationRegionsTests.test_unsupported_surface_rejected",
+        "test_validation_entry.ManifestTests.test_duplicate_or_empty_suite_set_rejected",
+        "test_validation_entry.ManifestTests.test_invalid_or_boolean_minimum_rejected",
+        "test_validation_entry.ManifestTests.test_matching_total_accepted",
+        "test_validation_entry.ManifestTests.test_missing_suite_cannot_keep_larger_declared_total",
+        "test_validation_entry.OutputAliasTests.test_symlinked_protected_tree_rejected_through_both_names",
+        "test_validation_entry.ValidationEntryTests.test_expected_failure_cannot_hide_failed_case",
+        "test_validation_entry.ValidationEntryTests.test_import_error_is_failure",
+        "test_validation_entry.ValidationEntryTests.test_missing_expected_tests_is_failure",
+        "test_validation_entry.ValidationEntryTests.test_nonpositive_or_boolean_count_invalid",
+        "test_validation_entry.ValidationEntryTests.test_output_cannot_replace_immutable_evidence",
+        "test_validation_entry.ValidationEntryTests.test_positive_complete_suite",
+        "test_validation_entry.ValidationEntryTests.test_skip_is_not_pass",
+        "test_validation_entry.ValidationEntryTests.test_zero_discovery_is_failure"
+      ],
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "unexpected_successes": 0,
+      "passed": true,
+      "manufacturing_go": false
+    },
+    {
+      "id": "phone-layout",
+      "tests_run": 20,
+      "minimum_tests": 20,
+      "test_ids": [
+        "test_phone_layout.PhoneLayoutTests.test_both_outer_bounds_equal",
+        "test_phone_layout.PhoneLayoutTests.test_cavity_never_relabels_shell_material_as_free",
+        "test_phone_layout.PhoneLayoutTests.test_current_complete_reservation_rejected_in_limited_study",
+        "test_phone_layout.PhoneLayoutTests.test_enclosures_contain_mid_motion_not_only_endpoints",
+        "test_phone_layout.PhoneLayoutTests.test_exactly_24_proper_rotations_without_reflections",
+        "test_phone_layout.PhoneLayoutTests.test_fixed_dimensions_not_tied_to_one_nominal_case",
+        "test_phone_layout.PhoneLayoutTests.test_invalid_reservations_rejected",
+        "test_phone_layout.PhoneLayoutTests.test_no_negative_cavity",
+        "test_phone_layout.PhoneLayoutTests.test_nonfinite_and_boolean_dimensions_rejected",
+        "test_phone_layout.PhoneLayoutTests.test_overlap_model_requires_positive_overlap",
+        "test_phone_layout.PhoneLayoutTests.test_overlap_uses_current_motion",
+        "test_phone_layout.PhoneLayoutTests.test_rectangular_negative_control_really_collides",
+        "test_phone_layout.PhoneLayoutTests.test_removed_lap_clearance_reintroduces_collision",
+        "test_phone_layout.PhoneLayoutTests.test_reservation_search_can_pass_small_positive_control",
+        "test_phone_layout.PhoneLayoutTests.test_shells_and_cavities_are_complete_connected_solids",
+        "test_phone_layout.PhoneLayoutTests.test_stowed_gap_not_silently_violated",
+        "test_phone_layout.PhoneLayoutTests.test_three_study_poses_have_no_positive_interference",
+        "test_phone_layout.PhoneLayoutTests.test_unknown_cabin_and_nonboolean_variant_rejected",
+        "test_phone_layout.PhoneLayoutTests.test_usable_cavity_cost_is_not_hidden",
+        "test_phone_layout.PhoneLayoutTests.test_whole_translation_enclosures_clear"
+      ],
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "unexpected_successes": 0,
+      "passed": true,
+      "manufacturing_go": false
+    }
+  ],
+  "no_hardware_qualification": true,
+  "native_readback": {
+    "complete_STEP_files": 21,
+    "native_positive_solids": 21,
+    "comparisons": {
+      "rectangular_negative_A_outer": [
+        0.0,
+        0.0
+      ],
+      "rectangular_negative_B_outer": [
+        0.0,
+        0.0
+      ],
+      "rectangular_negative_A_cavity": [
+        0.0,
+        0.0
+      ],
+      "rectangular_negative_B_cavity": [
+        0.0,
+        0.0
+      ],
+      "stepped_A_outer": [
+        0.0,
+        0.0
+      ],
+      "stepped_B_outer": [
+        0.0,
+        0.0
+      ],
+      "stepped_A_cavity": [
+        0.0,
+        0.0
+      ],
+      "stepped_B_cavity": [
+        0.0,
+        0.0
+      ],
+      "slide_outer_superset": [
+        0.0,
+        0.0
+      ],
+      "seat_lap_superset": [
+        0.0,
+        0.0
+      ],
+      "seat_body_superset": [
+        0.0,
+        0.0
+      ],
+      "rectangular_negative_A_shell": [
+        0.0,
+        0.0
+      ],
+      "rectangular_negative_B_shell": [
+        0.0,
+        0.0
+      ],
+      "stepped_A_shell": [
+        0.0,
+        0.0
+      ],
+      "stepped_B_shell": [
+        0.0,
+        0.0
+      ],
+      "rectangular_negative_STOW_B_shell": [
+        0.0,
+        0.0
+      ],
+      "rectangular_negative_PREDOCK_B_shell": [
+        0.0,
+        0.0
+      ],
+      "rectangular_negative_OPEN_SEATED_B_shell": [
+        0.0,
+        0.0
+      ],
+      "stepped_STOW_B_shell": [
+        0.0,
+        0.0
+      ],
+      "stepped_PREDOCK_B_shell": [
+        0.0,
+        0.0
+      ],
+      "stepped_OPEN_SEATED_B_shell": [
+        0.0,
+        0.0
+      ]
+    },
+    "poses": [
+      {
+        "variant": "rectangular_negative",
+        "pose": "STOW",
+        "shell_common_mm3": 0.0
+      },
+      {
+        "variant": "rectangular_negative",
+        "pose": "PREDOCK",
+        "shell_common_mm3": 0.0
+      },
+      {
+        "variant": "rectangular_negative",
+        "pose": "OPEN_SEATED",
+        "shell_common_mm3": 1521.006500000001
+      },
+      {
+        "variant": "stepped",
+        "pose": "STOW",
+        "shell_common_mm3": 0.0
+      },
+      {
+        "variant": "stepped",
+        "pose": "PREDOCK",
+        "shell_common_mm3": 0.0
+      },
+      {
+        "variant": "stepped",
+        "pose": "OPEN_SEATED",
+        "shell_common_mm3": 0.0
+      }
+    ],
+    "continuous_enclosure_common_mm3": {
+      "slide_outer_superset": 0.0,
+      "seat_lap_superset": 0.0,
+      "seat_body_superset": 0.0
+    },
+    "input_sha256": {
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/report.json": "73961a968537b53b1444de7926ca74f15d5b39fe47d70dbb39f81056c6fd953e",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/rectangular_negative_A_outer.step": "746e51df4b47be9ee1a116474f2be14336b8dbe21ef709e14b349bc35aa7a364",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/rectangular_negative_A_cavity.step": "db0591002a3d3a2adbde6ffdcb230097b96164c0e86d186c8c31bd8e02884cdf",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/rectangular_negative_A_shell.step": "7abd99cb18561af2e36ff4bb70e537295d053a6b3739072b7471a87e6a041d58",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/rectangular_negative_B_outer.step": "8272575bdaf08ec27151928641734866e90b8bde6295e493bb2159c2bf4e82ac",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/rectangular_negative_B_cavity.step": "131b84828bcb6b6343ca199252421aed9c4f8e6b5f1823647780fccae36e37a2",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/rectangular_negative_B_shell.step": "4c73a495cbcdc80f6126cfad6f5f2ef40e04a51f0002ade2a897ef5227040237",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/stepped_A_outer.step": "3bec639806506a7424a67558a2aef6c7d494b5add6a7aeeac5e69571800b6069",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/stepped_A_cavity.step": "6d2535820479f7b352f795dfe74ebfc510634bd2fca78b4cc486d2651c0c5edc",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/stepped_A_shell.step": "b18338f95cd32387f869a688b89e4c173b398a2f220d8c71739e0badf50f2489",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/stepped_B_outer.step": "9ab60543238f8762841d802a4ea25571ef046e18fe8db7395e6f0773893ec167",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/stepped_B_cavity.step": "96143d4260afee9e66a655cbb790d60a144fc4cb08afca2afb6dca5a8720526c",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/stepped_B_shell.step": "5ac159903950da8c196a2f4b573ee7890cad033e30e0324052fe601e136796ec",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/rectangular_negative_STOW_B_shell.step": "3063fe9c2872143ff02f703532e8011b55c6dc2f642af00ad9d1aa71a931e3f0",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/rectangular_negative_PREDOCK_B_shell.step": "2a387abb63554b88befdf9ece29e1398121477666823d1a86aae2110f40ee60b",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/rectangular_negative_OPEN_SEATED_B_shell.step": "92fefd502317a04c049baaf0eb51c13325c7f0f219b6a4e0987ee18570fdba6f",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/stepped_STOW_B_shell.step": "d88dfeb6e8485a2c7b8350765bf60e01d22a6d2f684aaca6242cf77312ad99fc",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/stepped_PREDOCK_B_shell.step": "d5c5bbe8c5790ea2fa49295e34c99c54bbc35dd10d06121c8252d1a04b87072d",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/stepped_OPEN_SEATED_B_shell.step": "5ba5bb8ae341f907def1acdd12d19ff78fe669df9ae63f7f48a0a42dfd93ee68",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/slide_outer_superset.step": "b7baca6fe33fbe3d79cda9ffce98c99632c59a2ba4a7986f75dfe585afe800a8",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/seat_lap_superset.step": "940645ca2998fc817c4de96be20337af935d6ede1da238bcba0005beee445d5b",
+      "/tmp/razr-slide-main-space-20261015/fresh-layout/seat_body_superset.step": "09c8d10fe504093247099345b01657301dc78c411f1aff105bc51eb13ff60177"
+    },
+    "same_kernel_not_cross_engine": true,
+    "candidate_builder_imported": false,
+    "passed": true,
+    "only_empty_project_owned_shells": true,
+    "actual_phone_fit": "unknown",
+    "candidate_go": false,
+    "fixture_fabrication_go": false,
+    "manufacturing_go": false
+  },
+  "versions": {
+    "cadquery": "2.7.0",
+    "cadquery-ocp": "7.8.1.1.post1",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "shapely": "2.2.0"
+  },
+  "tracked_status_after": ""
+}

@@ -1,0 +1,145 @@
+{
+  "run_date_utc": "2026-10-15T01:22:16.949609+00:00",
+  "base_commit": "8f4a7edd01e8db77105d28ab30d3b679c3e6835e",
+  "branch": "work/cover-assembly-order-20261014",
+  "existing_PR_updated": 6,
+  "candidate_source": "integration/cover_capture.py",
+  "candidate_source_sha256": "86373b1f2f7d35ace981520e7df7d271275e55f5bbee29b462c5f5b379b47f5b",
+  "new_tests": 10,
+  "all_current_unit_tests": 395,
+  "test_groups": 23,
+  "all_unit_tests_passed": true,
+  "tested_source_bytes_unchanged": true,
+  "retained_reference_failure": {
+    "old_cover_continuous_1mm_normal_uplift_clear_against_all_22_other_nominal_parts": true,
+    "both_sides_checked": true,
+    "not_a_physical_measurement": true
+  },
+  "new_integral_capture_channels": {
+    "per_side": 2,
+    "total": 4,
+    "roots_single_positive_connected_solids": true,
+    "added_volume_mm3_by_root": [
+      {
+        "side": "L",
+        "root": "ROOT_INNER",
+        "original_removed_mm3": 0.0,
+        "added_mm3": 0.19309999999999966,
+        "positive_joint_overlap_mm3": 0.18049999999999933,
+        "bounds_delta_mm": {
+          "xmin": 0.0,
+          "xmax": 0.0,
+          "ymin": 0.0,
+          "ymax": 0.0,
+          "zmin": 0.0,
+          "zmax": 0.0
+        }
+      },
+      {
+        "side": "L",
+        "root": "ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+        "original_removed_mm3": 0.0,
+        "added_mm3": 0.1730999999999976,
+        "positive_joint_overlap_mm3": 0.14250000000000013,
+        "bounds_delta_mm": {
+          "xmin": 0.0,
+          "xmax": 0.0,
+          "ymin": 0.0,
+          "ymax": 0.0,
+          "zmin": 0.0,
+          "zmax": 0.0
+        }
+      },
+      {
+        "side": "R",
+        "root": "ROOT_INNER",
+        "original_removed_mm3": 0.0,
+        "added_mm3": 0.1930999999999997,
+        "positive_joint_overlap_mm3": 0.18049999999999933,
+        "bounds_delta_mm": {
+          "xmin": 0.0,
+          "xmax": 0.0,
+          "ymin": 0.0,
+          "ymax": 0.0,
+          "zmin": 0.0,
+          "zmax": 0.0
+        }
+      },
+      {
+        "side": "R",
+        "root": "ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+        "original_removed_mm3": 0.0,
+        "added_mm3": 0.1730999999999976,
+        "positive_joint_overlap_mm3": 0.14250000000000013,
+        "bounds_delta_mm": {
+          "xmin": 0.0,
+          "xmax": 0.0,
+          "ymin": 0.0,
+          "ymax": 0.0,
+          "zmin": 0.0,
+          "zmax": 0.0
+        }
+      }
+    ],
+    "original_root_material_removed_mm3": 0.0,
+    "cover_and_all_other_parts_changed": false,
+    "root_bounds_and_prior_bench_bounds_grew": false,
+    "nominal_top_clearance_mm": 0.02,
+    "nominal_post_wall_mm": 0.13,
+    "lift_019mm_no_interference": true,
+    "lift_050mm_stopped_in_both_roots": true,
+    "arbitrary_six_degree_capture_strength_fatigue_or_tolerances_qualified": false
+  },
+  "current_native_checks": {
+    "replayed_cover_first_stages": 22,
+    "assembly_path_pairs": 130,
+    "continuous_motion_pairs": 130,
+    "static_pairs": 506,
+    "jaw_release_pairs": 94,
+    "positive_unintended_pairs": 0,
+    "native_validator_imported_candidate_generator": false,
+    "same_CAD_kernel_and_generic_math_not_cross_engine": true,
+    "baseline_motion_envelopes_reused_due_unchanged_KEY_STOP_and_pawl": true,
+    "all_130_motion_pairs_recomputed_for_modified_roots": true,
+    "complete_assembly_reimported_solids": 46
+  },
+  "scope_not_repeated": {
+    "original_564_action_and_184_assembly_sample_grid_repeated_this_round": false,
+    "fresh_remote_clone_repeated_this_round": false,
+    "full_OPEN_continuous_motion_newly_qualified": false
+  },
+  "space": {
+    "static_component_size_eqr_mm": [
+      12.0,
+      15.8,
+      21.21
+    ],
+    "full_nominal_operating_size_eqr_mm": [
+      12.0,
+      16.445,
+      21.21
+    ],
+    "full_operating_qmax_mm": 13.145,
+    "cover_only_qmax_mm": 12.5,
+    "motion_beyond_cover_qmax_mm": 0.645,
+    "prior_cover_growth_mm": 3.5,
+    "no_further_growth_from_new_channels": true,
+    "frame": "native STOW research e/q/r, NOT finished-phone registration",
+    "finished_A_B_cavity_fields_missing": 10,
+    "component_to_cabin_registration_missing": true,
+    "finished_phone_fit": "unknown",
+    "no_research_CORE_relabelled_as_cavity": true
+  },
+  "retention_and_release_limits": {
+    "jaw_withdrawal_is_geometric_clearance_only": true,
+    "actuator_contact_force_deflection_threads_and_preload_unqualified": true,
+    "positive_top_gap_adverse_error_budget_mm": 0.02,
+    "safe_hardware_unclamp_authorized": false
+  },
+  "hardware_powered_or_services_restarted": false,
+  "supplier_messages_or_orders": 0,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "next_required_input": "same-revision finished/custom A/B cavity solids and actual component envelopes with mechanical placement; then material/process tolerance and load/tilt/retention testing"
+}

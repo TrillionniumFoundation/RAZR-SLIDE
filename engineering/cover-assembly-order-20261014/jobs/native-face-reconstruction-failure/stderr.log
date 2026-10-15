@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/integration/cover_order_gate.py", line 79, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/integration/cover_order_gate.py", line 36, in main
+    parts,raw=s.scene('STOW',side);original,root,cover,relative,report,_,_=s.design(side);cover_reports.append(report)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/integration/cover_admission.py", line 69, in scene
+    out,report=repair_parts(parts,port,side,enabled=enabled)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/integration/cover_admission.py", line 60, in repair_parts
+    original,root,cover,relative,report,key,cut=design(side)
+                                                ^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/integration/cover_admission.py", line 21, in design
+    er,em=regions(root,(-inside*10.,0,0))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/integration/translation_regions.py", line 22, in regions
+    out.append(single(cq.Solid.extrudeLinear(face.outerWire(),face.innerWires(),move)));types.append('planar_face_'+str(i))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/.venv/lib/python3.12/site-packages/multimethod/__init__.py", line 375, in __call__
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/.venv/lib/python3.12/site-packages/cadquery/occ_impl/shapes.py", line 4227, in extrudeLinear
+    face = Face.makeFromWires(outerWire, innerWires)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/.venv/lib/python3.12/site-packages/cadquery/occ_impl/shapes.py", line 3407, in makeFromWires
+    raise ValueError("Cannot build face(s): inner wire is not closed")
+ValueError: Cannot build face(s): inner wire is not closed

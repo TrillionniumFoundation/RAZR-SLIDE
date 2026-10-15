@@ -1,11 +1,11 @@
 {
   "scope": "current unit suites; not archived/rejected experiments or full motion/ECAD/hardware",
-  "minimum_total_tests": 369,
+  "minimum_total_tests": 420,
   "suites": [
     {
       "id": "repository",
       "directory": "tests",
-      "minimum_tests": 91,
+      "minimum_tests": 102,
       "timeout_seconds": 900
     },
     {
@@ -130,6 +130,24 @@
       "directory": "integration/keycover-tests",
       "minimum_tests": 12,
       "timeout_seconds": 600
+    },
+    {
+      "id": "cover-admission",
+      "directory": "integration/cover-admission-tests",
+      "minimum_tests": 10,
+      "timeout_seconds": 600
+    },
+    {
+      "id": "cover-capture",
+      "directory": "integration/capture-tests",
+      "minimum_tests": 10,
+      "timeout_seconds": 600
+    },
+    {
+      "id": "phone-layout",
+      "directory": "integration/phone-layout-tests",
+      "minimum_tests": 20,
+      "timeout_seconds": 180
     }
   ]
 }

@@ -64,48 +64,84 @@
   ],
   "previous_production_review": "engineering/PRODUCTION_BLOCKERS_R6.md",
   "current_input_registry": "integration/assembly_inputs.json",
-  "current_execution_summary": "engineering/keycover-geometry-20261014/SUMMARY.json",
+  "current_execution_summary": "engineering/cover-retention-and-space-20261015/SUMMARY.json",
   "current_unit_tests": {
-    "count": 369,
-    "groups": 21,
-    "passed": true,
-    "scope": "unit tests; complete physical assembly not qualified"
+    "manifest": "tools/test_suites.json",
+    "configured_minimum": 420,
+    "groups": 24,
+    "result_source": "actual current run report and GitHub Actions; not product qualification"
   },
-  "split_root_sampled_sequence": {
-    "selected_design": "stow_continuous_slots_v2",
-    "requested_rows": 564,
-    "positive_intersection_rows": 0,
-    "actual_exit_code": 0,
-    "original_failure_rows": 18,
-    "original_failure_preserved": true,
-    "geometry_accepted_for_product": false
-  },
-  "final_fresh_verification": "engineering/workplan-execution-20261014/FINAL_VERIFICATION.json",
-  "previous_current_execution_summary": "engineering/contact-motion-20261014/SUMMARY.json",
-  "STOW_reordered_rigid_subassembly": {
-    "full_nominal_stage_pairs": 64,
-    "positive_pairs": 0,
-    "static_pairs": 506,
-    "independent_reimport": true,
-    "old_assembly_order_still_rejected": true,
-    "fixture_or_physical_qualification": false
-  },
-  "STOW_continuous_contact_motion": {
-    "source": "integration/keycover_bypass.py",
+  "previous_current_execution_summary": "engineering/cover-assembly-order-20261014/SUMMARY.json",
+  "current_fresh_verification": "not_repeated_this_increment",
+  "bench_cover_first_candidate": {
+    "source": "integration/cover_admission.py",
+    "stages": 22,
     "pairs": 130,
     "positive_pairs": 0,
-    "exit_code": 0,
-    "independent_reproduced": true,
-    "OPEN_qualified": false,
-    "selected_lower_restoring_force_is_assumption": true
+    "local_q_growth_mm": 3.5,
+    "new_locator_interfaces": true,
+    "not_a_drop_in_phone_design": true
   },
-  "previous_latest_fresh_verification": "engineering/stow-installation-closure-20261014/fresh-GitHub-verification/SUMMARY.json",
-  "current_fresh_verification": "engineering/keycover-geometry-20261014/fresh-GitHub-verification/SUMMARY.json",
-  "current_cover_entry": {
-    "qualified": false,
-    "retained_actual_failure": true,
-    "old_and_new_cover_obstruction_same": true,
-    "phase_not_covered_by_old_184_64_checks": true
+  "geometry_reference_before_growth": "integration/keycover_bypass.py",
+  "cover_capture_candidate": {
+    "source": "integration/cover_capture.py",
+    "rigid_normal_uplift_stop": true,
+    "gap_mm": 0.02,
+    "force_and_six_DOF_capture_qualified": false
   },
-  "previous_current_fresh_verification": "engineering/contact-motion-20261014/fresh-GitHub-verification/SUMMARY.json"
+  "finished_phone_space": {
+    "registration_available": false,
+    "component_operating_size_eqr_mm": [
+      12.0,
+      16.445,
+      21.21
+    ],
+    "fit": "unknown"
+  },
+  "historical_research_results": {
+    "split_root_sampled_sequence": {
+      "selected_design": "stow_continuous_slots_v2",
+      "requested_rows": 564,
+      "positive_intersection_rows": 0,
+      "actual_exit_code": 0,
+      "original_failure_rows": 18,
+      "original_failure_preserved": true,
+      "geometry_accepted_for_product": false
+    },
+    "STOW_reordered_rigid_subassembly": {
+      "full_nominal_stage_pairs": 64,
+      "positive_pairs": 0,
+      "static_pairs": 506,
+      "independent_reimport": true,
+      "old_assembly_order_still_rejected": true,
+      "fixture_or_physical_qualification": false
+    },
+    "STOW_continuous_contact_motion": {
+      "source": "integration/keycover_bypass.py",
+      "pairs": 130,
+      "positive_pairs": 0,
+      "exit_code": 0,
+      "independent_reproduced": true,
+      "OPEN_qualified": false,
+      "selected_lower_restoring_force_is_assumption": true
+    },
+    "current_cover_entry": {
+      "qualified": false,
+      "retained_actual_failure": true,
+      "old_and_new_cover_obstruction_same": true,
+      "phase_not_covered_by_old_184_64_checks": true
+    },
+    "final_fresh_verification": "engineering/workplan-execution-20261014/FINAL_VERIFICATION.json",
+    "previous_latest_fresh_verification": "engineering/stow-installation-closure-20261014/fresh-GitHub-verification/SUMMARY.json",
+    "previous_current_fresh_verification": "engineering/keycover-geometry-20261014/fresh-GitHub-verification/SUMMARY.json"
+  },
+  "current_phone_layout_study": {
+    "source": "integration/phone_layout.py",
+    "parameters": "integration/phone_layout_study.json",
+    "evidence": "engineering/phone-layout-study-20261015",
+    "input_kind": "project-owned assumed geometry, not measured OEM cavities",
+    "selected_component_to_cabin_transform": null,
+    "actual_components_installed": false
+  },
+  "fixture_fabrication_go": false
 }

@@ -1,0 +1,334 @@
+{
+  "component_revision": "cover-capture-20261015",
+  "base_commit": "8f4a7edd01e8db77105d28ab30d3b679c3e6835e",
+  "component_coordinate_frame": "STOW local e/q/r and archived R4-research world xyz; NOT a registered finished phone frame",
+  "units": "mm",
+  "exact_source_register": {
+    "path": "integration/assembly_inputs.json",
+    "sha256": "7b7ebf0f48556f2feca175a35b882a9a48337de2bb5f54b1ba7a740f85e8ce6b"
+  },
+  "requested_constraints": {
+    "equal_finished_A_B_dimensions": true,
+    "single_flexible_OLED_approx_inches": 7,
+    "independent_rear_display": false,
+    "B_upward_travel_mm": 79.75,
+    "then_normal_seating_mm": 8.2,
+    "larger_battery_priority": "A",
+    "total_capacity_target_mAh": 4700,
+    "continuous_wired_USB_through_motion_required": true
+  },
+  "native_same_revision_component_reservations": [
+    {
+      "side": "L",
+      "bounds_world_mm": {
+        "xmin": -43.15,
+        "xmax": -31.15,
+        "ymin": -11.3,
+        "ymax": 4.5,
+        "zmin": -1.06,
+        "zmax": 20.15
+      },
+      "bounds_local_eqr_mm": [
+        [
+          -3.6000000000000014,
+          8.399999999999999
+        ],
+        [
+          -3.3,
+          12.5
+        ],
+        [
+          -11.06,
+          10.149999999999999
+        ]
+      ],
+      "change_from_prior_bench_mm": {
+        "xmin": 0.0,
+        "xmax": 0.0,
+        "ymin": 0.0,
+        "ymax": 0.0,
+        "zmin": 0.0,
+        "zmax": 0.0
+      },
+      "prior_extra_local_q_mm": 3.5,
+      "registered_to_finished_A_B_cavity": false
+    },
+    {
+      "side": "R",
+      "bounds_world_mm": {
+        "xmin": 31.15,
+        "xmax": 43.15,
+        "ymin": -11.3,
+        "ymax": 4.5,
+        "zmin": -1.06,
+        "zmax": 20.15
+      },
+      "bounds_local_eqr_mm": [
+        [
+          -3.6000000000000014,
+          8.399999999999999
+        ],
+        [
+          -3.3,
+          12.5
+        ],
+        [
+          -11.06,
+          10.149999999999999
+        ]
+      ],
+      "change_from_prior_bench_mm": {
+        "xmin": 0.0,
+        "xmax": 0.0,
+        "ymin": 0.0,
+        "ymax": 0.0,
+        "zmin": 0.0,
+        "zmax": 0.0
+      },
+      "prior_extra_local_q_mm": 3.5,
+      "registered_to_finished_A_B_cavity": false
+    }
+  ],
+  "missing_finished_geometry_inputs": {
+    "A_finished_dimensions_mm": null,
+    "B_finished_dimensions_mm": null,
+    "A_usable_inner_cavity_native_CAD": null,
+    "B_usable_inner_cavity_native_CAD": null,
+    "mainboard_camera_battery_bms_keepouts_native_CAD": null,
+    "approved_modifiable_regions": null,
+    "OLED_full_finished_module_CAD": null,
+    "endpoint_complete_populated_PCB_clamp_envelope": null,
+    "A_battery_reservation_and_swelling_mm": null,
+    "B_battery_reservation_and_swelling_mm": null
+  },
+  "missing_installation_registration": {
+    "assigned_cabin_per_mechanism": null,
+    "component_to_A_rigid_transform": null,
+    "component_to_B_rigid_transform": null,
+    "clearance_and_battery_swelling_tolerances": null
+  },
+  "measured_A_B_shells_or_components_found_this_round": false,
+  "searched_sources": "current repository source register and two Library semantic searches; not a claim about all user storage or current inbox",
+  "Library_results_consulted": [
+    "R58_OEM_FPC_RFQ_READY_NOT_SENT_CN_EN.md",
+    "R59_OEM_FPC_RFQ_READY_NOT_SENT_CN_EN.md",
+    "R60_supplier_native_data_gate_READY_NOT_SENT_20261012.md",
+    "R58_hardgate_audit_20261012.md"
+  ],
+  "existing_assembly_tests_not_cavity_tests": true,
+  "research_CORE_not_usable_free_cavity": true,
+  "coordinate_alignment_not_invented": true,
+  "finished_phone_fit_checked": false,
+  "finished_phone_fit": "unknown",
+  "source_register_not_promoted_to_verified": true,
+  "nominal_channel_top_gap_mm": 0.02,
+  "nominal_thin_channel_wall_mm": 0.13,
+  "remaining_clearance_condition": "sum of adverse height, assembly, thermal and deflection errors must be below 0.02 mm; actual errors/materials unavailable",
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "full_operational_space_reservations": [
+    {
+      "side": "L",
+      "full_nominal_operating_bounds_eqr_mm": [
+        [
+          -3.6000000000000014,
+          8.399999999999999
+        ],
+        [
+          -3.3,
+          13.145
+        ],
+        [
+          -11.06,
+          10.149999999999999
+        ]
+      ],
+      "size_eqr_mm": [
+        12.0,
+        16.445,
+        21.21
+      ],
+      "moving_proof_sources": [
+        {
+          "member": "motion/L_KEY_COMPLETE_Q.step",
+          "sha256": "38dda3eb86212fe766809d6ac1e8a9884b9c0a892f49e27dfb3557f7cc7929ec",
+          "bounds_eqr_mm": [
+            [
+              -1.5,
+              0.20000000000000284
+            ],
+            [
+              -1.265,
+              13.145
+            ],
+            [
+              -10.7,
+              6.48
+            ]
+          ]
+        },
+        {
+          "member": "motion/L_STOP_0_COMPLETE_R.step",
+          "sha256": "2968646dc3083a1a712470b61b2d05111e2ebe531b67ccca5457947e9718a1c6",
+          "bounds_eqr_mm": [
+            [
+              -0.8500000000000014,
+              4.349999999999994
+            ],
+            [
+              -0.10000000000000009,
+              2.75
+            ],
+            [
+              -0.11999999999999922,
+              2.9399999999999995
+            ]
+          ]
+        },
+        {
+          "member": "motion/L_STOP_1_COMPLETE_R.step",
+          "sha256": "baac6453e04976a29d3e4b4241e796f2fc41a3bd5ce34edced7032692cd09ed7",
+          "bounds_eqr_mm": [
+            [
+              -0.8500000000000014,
+              3.3499999999999943
+            ],
+            [
+              -0.10000000000000009,
+              4.8500000000000005
+            ],
+            [
+              4.880000000000001,
+              7.940000000000001
+            ]
+          ]
+        },
+        {
+          "member": "cover-first/L_PARKED_PAWL.step",
+          "sha256": "e53345566e7604a390e682affebe5d029dfd233314c390a3727ce3f009fe5955",
+          "bounds_eqr_mm": [
+            [
+              0.5,
+              3.1000000000000014
+            ],
+            [
+              1.25,
+              7.350000000000001
+            ],
+            [
+              -10.25,
+              6.100000000000001
+            ]
+          ]
+        }
+      ],
+      "translation_endpoints_suffice_only_for_pawl_AABB": true,
+      "not_available_free_volume": true,
+      "process_tools_and_fixture_not_included": true,
+      "tolerance_or_battery_swell_allowance_added": false,
+      "registered_phone_placement": false
+    },
+    {
+      "side": "R",
+      "full_nominal_operating_bounds_eqr_mm": [
+        [
+          -3.6000000000000014,
+          8.399999999999999
+        ],
+        [
+          -3.3,
+          13.145
+        ],
+        [
+          -11.06,
+          10.149999999999999
+        ]
+      ],
+      "size_eqr_mm": [
+        12.0,
+        16.445,
+        21.21
+      ],
+      "moving_proof_sources": [
+        {
+          "member": "motion/R_KEY_COMPLETE_Q.step",
+          "sha256": "8d39fee371d28485fcaef21a18c5a3cb03b36f535f5f0c96b7aba25346ef6456",
+          "bounds_eqr_mm": [
+            [
+              -1.5,
+              0.20000000000000284
+            ],
+            [
+              -1.265,
+              13.145
+            ],
+            [
+              -10.7,
+              6.48
+            ]
+          ]
+        },
+        {
+          "member": "motion/R_STOP_0_COMPLETE_R.step",
+          "sha256": "8a7a3fe31322003b69c27c6f4e8d6d6cbc97a150509310b603d8e3a5808f3a7c",
+          "bounds_eqr_mm": [
+            [
+              -0.8500000000000014,
+              4.349999999999994
+            ],
+            [
+              -0.10000000000000009,
+              2.75
+            ],
+            [
+              -0.11999999999999922,
+              2.9399999999999995
+            ]
+          ]
+        },
+        {
+          "member": "motion/R_STOP_1_COMPLETE_R.step",
+          "sha256": "a77d6b1ba77cab922816d9175c9702692a8997c951f64632891b7b47c77e0fff",
+          "bounds_eqr_mm": [
+            [
+              -0.8500000000000014,
+              3.3499999999999943
+            ],
+            [
+              -0.10000000000000009,
+              4.8500000000000005
+            ],
+            [
+              4.880000000000001,
+              7.940000000000001
+            ]
+          ]
+        },
+        {
+          "member": "cover-first/R_PARKED_PAWL.step",
+          "sha256": "318dd4d5131d76ad24c1995a801c390053e35954d28641f01cde86bc44a30f0b",
+          "bounds_eqr_mm": [
+            [
+              0.5,
+              3.1000000000000014
+            ],
+            [
+              1.25,
+              7.350000000000001
+            ],
+            [
+              -10.25,
+              6.100000000000001
+            ]
+          ]
+        }
+      ],
+      "translation_endpoints_suffice_only_for_pawl_AABB": true,
+      "not_available_free_volume": true,
+      "process_tools_and_fixture_not_included": true,
+      "tolerance_or_battery_swell_allowance_added": false,
+      "registered_phone_placement": false
+    }
+  ]
+}

@@ -25,3 +25,22 @@ symlinks, special files and unsafe paths are rejected. Power/process death
 may leave a private temporary file, never a partially published original.
 Directory rename by an administrator/noncooperating writer is outside this
 restorer's confinement guarantee. No historical archive bytes are modified.
+
+
+The Research validation workflow uses the same sparse source selection and
+locked environment, runs every configured suite, and retains raw reports on
+success or failure. It does not need archive blobs or rewrite frozen evidence.
+The suite-total field is checked against the actual declared suite minima.
+
+For the new empty-shell geometry study and builder-free native readback:
+
+```sh
+uv run --locked python -B integration/phone_layout.py --output /tmp/razr-layout-new
+uv run --locked python -B integration/verify_phone_layout.py --report /tmp/razr-layout-new/report.json --output /tmp/razr-layout-new/readback.json
+```
+
+Use a new output directory. This creates project-owned study STEP, explicitly
+retains the rectangular overlap negative control, and records the cost in
+empty cavity space. It is not an OEM cavity, a selected phone assembly, a
+battery-capacity estimate or physical qualification. Both programs use the
+same native CAD kernel; independent readback is not cross-kernel validation.

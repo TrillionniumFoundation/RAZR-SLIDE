@@ -62,9 +62,20 @@ R5/R6 当前实改与证据：[G2 路线与全部拒绝实体](engineering/fpc-g
 
 R6 [实际取得的 39 页 OLED 候选原始规格与来源核验](engineering/controlled-inputs-web-20261013-r6/README.md)保留完整40pin事实和动态资格缺口，未替代指定受控OLED。
 
-## Current execution index — 2026-10-14
+## Current execution index — 2026-10-15
 
-See `CURRENT_DESIGN.md`, `integration/assembly_inputs.json` and
-`engineering/workplan-execution-20261014/integration/summary.json`.
-Unit tests pass; the complete requested sampled split-root sequence still
-rejects 18 STOW pawl/root interference rows. Manufacturing remains NO-GO.
+Start with `CURRENT_DESIGN.md`. `integration/cover_capture.py` remains the
+nominal mechanism candidate; `integration/phone_layout.py` is a new, explicitly
+assumed empty-shell/overlap and space study. Neither is an assembled phone.
+`integration/assembly_inputs.json` retains the missing actual component and
+finished-cavity inputs; study dimensions do not fill those fields.
+
+The earlier 18 STOW interference rows belong to the preserved P0 baseline,
+not the latest cover-capture candidate. Per-revision native evidence remains
+in `engineering/`; raw failures and original archives are not rewritten.
+
+Run `uv sync --locked` and `uv run --locked python -B tools/verify.py`.
+The current software suite manifest is `tools/test_suites.json`; actual results
+come from the report and the Research validation workflow, not a fixed README
+pass count. Software merges are independent of physical qualification.
+`candidate_go=false`; `fixture_fabrication_go=false`; `manufacturing_go=false`.

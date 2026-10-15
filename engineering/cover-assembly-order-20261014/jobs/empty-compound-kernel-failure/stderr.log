@@ -1,0 +1,34 @@
+test_actual_obstacle_inside_sweep_is_detected (test_translation_regions.TranslationRegionsTests.test_actual_obstacle_inside_sweep_is_detected) ... ok
+test_axial_hole_is_not_filled (test_translation_regions.TranslationRegionsTests.test_axial_hole_is_not_filled) ... ok
+test_boxes_cover_whole_straight_travel (test_translation_regions.TranslationRegionsTests.test_boxes_cover_whole_straight_travel) ... ok
+test_invalid_motion_rejected (test_translation_regions.TranslationRegionsTests.test_invalid_motion_rejected) ... ok
+test_reverse_boxes_cover_same_material (test_translation_regions.TranslationRegionsTests.test_reverse_boxes_cover_same_material) ... ERROR
+test_unsupported_surface_rejected (test_translation_regions.TranslationRegionsTests.test_unsupported_surface_rejected) ... ok
+
+======================================================================
+ERROR: test_reverse_boxes_cover_same_material (test_translation_regions.TranslationRegionsTests.test_reverse_boxes_cover_same_material)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/tests/test_translation_regions.py", line 18, in test_reverse_boxes_cover_same_material
+    for p in f:self.assertEqual(r.whole_material(r.subtract_regions(p,b),empty=True)[1],0.)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/integration/translation_regions.py", line 43, in subtract_regions
+    result=result.cut(region).clean()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/.venv/lib/python3.12/site-packages/cadquery/occ_impl/shapes.py", line 4641, in cut
+    return tcast(Compound, self._bool_op(self, toCut, cut_op))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/.venv/lib/python3.12/site-packages/cadquery/occ_impl/shapes.py", line 1300, in _bool_op
+    return Shape.cast(op.Shape())
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/.venv/lib/python3.12/site-packages/cadquery/occ_impl/shapes.py", line 473, in cast
+    t = shapetype(obj)
+        ^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-coverorder-20261014/.venv/lib/python3.12/site-packages/cadquery/occ_impl/shapes.py", line 395, in shapetype
+    raise ValueError("Null TopoDS_Shape object")
+ValueError: Null TopoDS_Shape object
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.128s
+
+FAILED (errors=1)
