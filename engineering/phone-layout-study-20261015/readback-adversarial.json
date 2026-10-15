@@ -1,0 +1,30 @@
+{
+  "tests": [
+    {
+      "case": "omitted_native_part",
+      "exit_code": 1,
+      "published_pass_receipt": false,
+      "last_error": "ValueError: missing or extra native participants"
+    },
+    {
+      "case": "false_common_certificate",
+      "exit_code": 1,
+      "published_pass_receipt": false,
+      "last_error": "ValueError: pose common differs"
+    },
+    {
+      "case": "nonfinite_native_bounds",
+      "exit_code": 1,
+      "published_pass_receipt": false,
+      "last_error": "ValueError: invalid bounds certificate"
+    },
+    {
+      "case": "changed_STEP_bytes",
+      "exit_code": 1,
+      "published_pass_receipt": false,
+      "last_error": "ValueError: native STEP bytes changed"
+    }
+  ],
+  "all_negative_controls_rejected": true,
+  "candidate_verifier_sha256": "e5c5e7e5916ed4f8476afca4faff3940d9a83ad692819384038ffc38bce5376b"
+}
