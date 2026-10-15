@@ -67,9 +67,14 @@
   "current_execution_summary": "engineering/cover-retention-and-space-20261015/SUMMARY.json",
   "current_unit_tests": {
     "manifest": "tools/test_suites.json",
-    "configured_minimum": 420,
-    "groups": 24,
-    "result_source": "actual current run report and GitHub Actions; not product qualification"
+    "configured_minimum": 440,
+    "groups": 25,
+    "result_source": "engineering/thin-mechanism-20261015/HOSTED_CI.json",
+    "actual_passed_tests": 440,
+    "actual_passed_groups": 25,
+    "tested_functional_commit": "9d420d882217d905c5e040bb142c5dd9d713d2ad",
+    "hosted_success_run": 38675454654,
+    "local_scope": "20 new candidate tests plus full native verification, not a local full440 rerun"
   },
   "previous_current_execution_summary": "engineering/cover-assembly-order-20261014/SUMMARY.json",
   "current_fresh_verification": "not_repeated_this_increment",
@@ -143,5 +148,24 @@
     "selected_component_to_cabin_transform": null,
     "actual_components_installed": false
   },
-  "fixture_fabrication_go": false
+  "fixture_fabrication_go": false,
+  "thin_mechanism_research": {
+    "source": "integration/thin_mechanism.py",
+    "verifier": "integration/verify_thin_mechanism.py",
+    "evidence": "engineering/thin-mechanism-20261015",
+    "nominal_depth_target_mm": 6.6,
+    "assumed_cavity_depth_mm": 6.7,
+    "actual_phone_registration": false,
+    "shell_mounting_interface_complete": false,
+    "force_tolerance_qualification": false,
+    "nominal_native_geometry_passed": true,
+    "actual_space_dimensions_eqr_mm": [
+      6.6,
+      30.6,
+      21.21
+    ],
+    "local_native_verification_passed": true,
+    "hosted_native_verification_passed": true,
+    "KEY_B_kinematic_interface_complete": false
+  }
 }

@@ -64,9 +64,11 @@ R6 [实际取得的 39 页 OLED 候选原始规格与来源核验](engineering/c
 
 ## Current execution index — 2026-10-15
 
-Start with `CURRENT_DESIGN.md`. `integration/cover_capture.py` remains the
-nominal mechanism candidate; `integration/phone_layout.py` is a new, explicitly
-assumed empty-shell/overlap and space study. Neither is an assembled phone.
+Start with `CURRENT_DESIGN.md`. `integration/thin_mechanism.py` is the current
+6.6-mm nominal-depth study candidate with successful native verification and
+hosted 440-test CI. `integration/cover_capture.py` remains the old wide reference;
+`integration/phone_layout.py` supplies the explicitly assumed empty-shell study.
+None is a complete mounted or qualified phone assembly.
 `integration/assembly_inputs.json` retains the missing actual component and
 finished-cavity inputs; study dimensions do not fill those fields.
 
