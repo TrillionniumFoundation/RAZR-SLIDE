@@ -28,7 +28,10 @@ def carrier_relief():
          cq.Vector(RELIEF_X[0],RELIEF_Y,z),cq.Vector(1,0,0)) for z in RELIEF_Z]
     bridge=box((RELIEF_X[0],RELIEF_Y-RELIEF_RADIUS,RELIEF_Z[0]),
                (RELIEF_X[1],RELIEF_Y+RELIEF_RADIUS,RELIEF_Z[1]))
-    return single(cylinders[0].fuse(cylinders[1]).fuse(bridge).clean())
+    rounded=single(cylinders[0].fuse(cylinders[1]).fuse(bridge).clean())
+    # Do not remove unused crown/floor material: complete moving carrier
+    # envelope remains below7.0831 and above4.6169mm in the declared family.
+    return single(rounded.intersect(box((10.5,19.2,4.57),(12.6,20.8,7.13))).clean())
 
 
 def build(base):
@@ -70,6 +73,7 @@ def generate(baseline,output):
     if any(sha(f)!=v for f,v in h.items()):raise ValueError('baseline changed during generation')
     data={'base_main':BASE,'source_sha256':sha(__file__),'baseline_manifest_sha256':sha(baseline),'baseline_input_sha256':h,
           'exports':exports,'material':changes,'new_Y_lands_R_mm':Y_LANDS,'stationary_pin_carrier_radius_mm':RELIEF_RADIUS,
+          'fixed_relief_z_limits_mm':[4.57,7.13],'nominal_minimum_roof_crown_mm':.17,
           'pure_Y_body_contact_mm':[-.075,.075],'relief_is_not_free_play_or_load_qualification':True,
           'moving_PAWL_KEY_pins_slot_and_all_fasteners_unchanged':True,
           'selected_material_forces_preload_and_stiffness_qualified':False,

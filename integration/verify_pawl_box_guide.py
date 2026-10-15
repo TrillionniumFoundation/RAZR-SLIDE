@@ -18,7 +18,8 @@ def relief(side):
     shape=v.box((10.5,19.2,5.3),(12.6,20.8,6.4))
     for z in (5.3,6.4):
         shape=shape.fuse(cq.Solid.makeCylinder(.8,2.1,cq.Vector(10.5,20,z),cq.Vector(1,0,0))).clean()
-    return v.hand(v.single(shape),side)
+    clipped=v.single(shape.intersect(v.box((10.5,19.2,4.57),(12.6,20.8,7.13))).clean())
+    return v.hand(clipped,side)
 
 
 def expected_root(old,side):

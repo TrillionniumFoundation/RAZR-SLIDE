@@ -32,10 +32,10 @@ class BodyGuideTests(unittest.TestCase):
         for s in 'LR':self.assertAlmostEqual(self.material[s+'_ROOT_OUTER']['added_mm3'],.191,places=6)
 
     def test_panel_removal_recorded(self):
-        self.assertAlmostEqual(self.material['A_BACK_PANEL']['removed_mm3'],.78164219065,places=6)
+        self.assertAlmostEqual(self.material['A_BACK_PANEL']['removed_mm3'],.70356319581,places=6)
 
     def test_roof_removal_recorded(self):
-        for s in 'LR':self.assertAlmostEqual(self.material[s+'_ROOF']['removed_mm3'],.12289326386,places=6)
+        for s in 'LR':self.assertAlmostEqual(self.material[s+'_ROOF']['removed_mm3'],.10440001247,places=6)
 
     def test_all_changes_balance(self):
         for key,rec in self.material.items():
@@ -102,3 +102,11 @@ class BodyGuideTests(unittest.TestCase):
     def test_incomplete_base_rejected(self):
         p=dict(self.base);p.pop('R_OLD_COVER')
         with self.assertRaises(ValueError):g.build(p)
+
+    def test_unneeded_crown_removal_is_stopped(self):
+        for side in 'LR':
+            for x in (10.9,12.3):
+                patch=v.hand(v.box((x-.05,19.9,7.13),(x+.05,20.1,7.3)),side)
+                self.assertEqual(v.vol(patch.cut(self.new[side+'_ROOF'])),0.)
+        self.assertAlmostEqual(g.carrier_relief().BoundingBox().zmin,4.57,places=6)
+        self.assertAlmostEqual(g.carrier_relief().BoundingBox().zmax,7.13,places=6)
