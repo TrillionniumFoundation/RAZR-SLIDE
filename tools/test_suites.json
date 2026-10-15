@@ -1,37 +1,195 @@
 {
   "scope": "current unit suites; not archived/rejected experiments or full motion/ECAD/hardware",
-  "minimum_total_tests": 634,
+  "minimum_total_tests": 654,
   "suites": [
-    {"id":"repository","directory":"tests","minimum_tests":102,"timeout_seconds":900},
-    {"id":"cad","directory":"engineering/cad-review-20261013","minimum_tests":19,"timeout_seconds":180},
-    {"id":"isolation","directory":"engineering/electrical-isolation-repair-20261013-r3","minimum_tests":12,"timeout_seconds":180},
-    {"id":"fpc-inputs","directory":"engineering/fpc-controlled-search-20261013-r4","minimum_tests":13,"timeout_seconds":180},
-    {"id":"fpc-layers","directory":"engineering/fpc-layer-stackup-20261013-r5","minimum_tests":10,"timeout_seconds":180},
-    {"id":"material-motion","directory":"engineering/fpc-material-motion-20261013-r5","minimum_tests":10,"timeout_seconds":180},
-    {"id":"bend-axis","directory":"engineering/fpc-oled-inputs-20261013","minimum_tests":6,"timeout_seconds":180},
-    {"id":"endpoint","directory":"engineering/native-endpoint-20261013","minimum_tests":11,"timeout_seconds":180},
-    {"id":"power-usb","directory":"engineering/power-usb-design-20261013","minimum_tests":13,"timeout_seconds":180},
-    {"id":"proof-detector","directory":"engineering/proof-detector-design-20261013-r4","minimum_tests":27,"timeout_seconds":180},
-    {"id":"proof-selftest","directory":"engineering/proof-selftest-design-20261013-r5","minimum_tests":34,"timeout_seconds":180},
-    {"id":"r50-repair","directory":"engineering/r50-repair-20261013","minimum_tests":4,"timeout_seconds":180},
-    {"id":"r50-topology","directory":"engineering/r50-topology-repair-20261013","minimum_tests":19,"timeout_seconds":180,"extra_paths":["engineering/r50-topology-repair-20261013/src"]},
-    {"id":"return-sensing","directory":"engineering/return-sensing-design-20261013-r2","minimum_tests":22,"timeout_seconds":180},
-    {"id":"safety","directory":"engineering/safety-review-20261013","minimum_tests":13,"timeout_seconds":180},
-    {"id":"strict-motion","directory":"engineering/strict-motion-audit-20261013","minimum_tests":17,"timeout_seconds":180},
-    {"id":"g2-geometry","directory":"engineering/fpc-g2-route-candidates-20261013-r6/recovered_x230/input","minimum_tests":12,"timeout_seconds":180},
-    {"id":"stow-slots","directory":"integration/stow-slot-tests","minimum_tests":8,"timeout_seconds":600},
-    {"id":"stow-continuous","directory":"integration/stow-continuous-tests","minimum_tests":8,"timeout_seconds":600},
-    {"id":"native-contact","directory":"integration/contact-tests","minimum_tests":8,"timeout_seconds":600},
-    {"id":"keycover","directory":"integration/keycover-tests","minimum_tests":12,"timeout_seconds":600},
-    {"id":"cover-admission","directory":"integration/cover-admission-tests","minimum_tests":10,"timeout_seconds":600},
-    {"id":"cover-capture","directory":"integration/capture-tests","minimum_tests":10,"timeout_seconds":600},
-    {"id":"phone-layout","directory":"integration/phone-layout-tests","minimum_tests":20,"timeout_seconds":180},
-    {"id":"thin-mechanism","directory":"integration/thin-tests","minimum_tests":20,"timeout_seconds":900},
-    {"id":"mounted-mechanism","directory":"integration/mount-tests","minimum_tests":20,"timeout_seconds":600},
-    {"id":"cam-coupling","directory":"integration/coupling-tests","minimum_tests":21,"timeout_seconds":300},
-    {"id":"pawl-actuator","directory":"integration/pawl-tests","minimum_tests":20,"timeout_seconds":180},
-    {"id":"serviceable-pawl","directory":"integration/serviceable-tests","minimum_tests":21,"timeout_seconds":240},
-    {"id":"endpoint-joint","directory":"integration/endpoint-joint-tests","minimum_tests":27,"timeout_seconds":360},
-    {"id":"manufacturing-fit","directory":"integration/manufacturing-tests","minimum_tests":85,"timeout_seconds":240}
+    {
+      "id": "repository",
+      "directory": "tests",
+      "minimum_tests": 102,
+      "timeout_seconds": 900
+    },
+    {
+      "id": "cad",
+      "directory": "engineering/cad-review-20261013",
+      "minimum_tests": 19,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "isolation",
+      "directory": "engineering/electrical-isolation-repair-20261013-r3",
+      "minimum_tests": 12,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "fpc-inputs",
+      "directory": "engineering/fpc-controlled-search-20261013-r4",
+      "minimum_tests": 13,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "fpc-layers",
+      "directory": "engineering/fpc-layer-stackup-20261013-r5",
+      "minimum_tests": 10,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "material-motion",
+      "directory": "engineering/fpc-material-motion-20261013-r5",
+      "minimum_tests": 10,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "bend-axis",
+      "directory": "engineering/fpc-oled-inputs-20261013",
+      "minimum_tests": 6,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "endpoint",
+      "directory": "engineering/native-endpoint-20261013",
+      "minimum_tests": 11,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "power-usb",
+      "directory": "engineering/power-usb-design-20261013",
+      "minimum_tests": 13,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "proof-detector",
+      "directory": "engineering/proof-detector-design-20261013-r4",
+      "minimum_tests": 27,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "proof-selftest",
+      "directory": "engineering/proof-selftest-design-20261013-r5",
+      "minimum_tests": 34,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "r50-repair",
+      "directory": "engineering/r50-repair-20261013",
+      "minimum_tests": 4,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "r50-topology",
+      "directory": "engineering/r50-topology-repair-20261013",
+      "minimum_tests": 19,
+      "timeout_seconds": 180,
+      "extra_paths": [
+        "engineering/r50-topology-repair-20261013/src"
+      ]
+    },
+    {
+      "id": "return-sensing",
+      "directory": "engineering/return-sensing-design-20261013-r2",
+      "minimum_tests": 22,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "safety",
+      "directory": "engineering/safety-review-20261013",
+      "minimum_tests": 13,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "strict-motion",
+      "directory": "engineering/strict-motion-audit-20261013",
+      "minimum_tests": 17,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "g2-geometry",
+      "directory": "engineering/fpc-g2-route-candidates-20261013-r6/recovered_x230/input",
+      "minimum_tests": 12,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "stow-slots",
+      "directory": "integration/stow-slot-tests",
+      "minimum_tests": 8,
+      "timeout_seconds": 600
+    },
+    {
+      "id": "stow-continuous",
+      "directory": "integration/stow-continuous-tests",
+      "minimum_tests": 8,
+      "timeout_seconds": 600
+    },
+    {
+      "id": "native-contact",
+      "directory": "integration/contact-tests",
+      "minimum_tests": 8,
+      "timeout_seconds": 600
+    },
+    {
+      "id": "keycover",
+      "directory": "integration/keycover-tests",
+      "minimum_tests": 12,
+      "timeout_seconds": 600
+    },
+    {
+      "id": "cover-admission",
+      "directory": "integration/cover-admission-tests",
+      "minimum_tests": 10,
+      "timeout_seconds": 600
+    },
+    {
+      "id": "cover-capture",
+      "directory": "integration/capture-tests",
+      "minimum_tests": 10,
+      "timeout_seconds": 600
+    },
+    {
+      "id": "phone-layout",
+      "directory": "integration/phone-layout-tests",
+      "minimum_tests": 20,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "thin-mechanism",
+      "directory": "integration/thin-tests",
+      "minimum_tests": 20,
+      "timeout_seconds": 900
+    },
+    {
+      "id": "mounted-mechanism",
+      "directory": "integration/mount-tests",
+      "minimum_tests": 20,
+      "timeout_seconds": 600
+    },
+    {
+      "id": "cam-coupling",
+      "directory": "integration/coupling-tests",
+      "minimum_tests": 21,
+      "timeout_seconds": 300
+    },
+    {
+      "id": "pawl-actuator",
+      "directory": "integration/pawl-tests",
+      "minimum_tests": 20,
+      "timeout_seconds": 180
+    },
+    {
+      "id": "serviceable-pawl",
+      "directory": "integration/serviceable-tests",
+      "minimum_tests": 21,
+      "timeout_seconds": 240
+    },
+    {
+      "id": "endpoint-joint",
+      "directory": "integration/endpoint-joint-tests",
+      "minimum_tests": 27,
+      "timeout_seconds": 360
+    },
+    {
+      "id": "manufacturing-fit",
+      "directory": "integration/manufacturing-tests",
+      "minimum_tests": 105,
+      "timeout_seconds": 240
+    }
   ]
 }
