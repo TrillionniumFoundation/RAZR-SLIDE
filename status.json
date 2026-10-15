@@ -40,7 +40,8 @@
     "A_only_power_chain_boards": "engineering/power-chain-pcba-20261013-r5",
     "P0_recovery_and_tests": "engineering/workplan-execution-20261014/p0",
     "native_integration_and_reproduced_failures": "engineering/workplan-execution-20261014/integration",
-    "STOW_reordered_nominal_geometry": "engineering/stow-installation-closure-20261014"
+    "STOW_reordered_nominal_geometry": "engineering/stow-installation-closure-20261014",
+    "continuous_contact_and_actual_KEY_failures": "engineering/contact-motion-20261014"
   },
   "G2_scope": {
     "X230_motion_poses": 121,
@@ -62,12 +63,12 @@
   ],
   "previous_production_review": "engineering/PRODUCTION_BLOCKERS_R6.md",
   "current_input_registry": "integration/assembly_inputs.json",
-  "current_execution_summary": "engineering/stow-installation-closure-20261014/SUMMARY.json",
+  "current_execution_summary": "engineering/contact-motion-20261014/SUMMARY.json",
   "current_unit_tests": {
-    "count": 334,
-    "groups": 19,
+    "count": 357,
+    "groups": 20,
     "passed": true,
-    "scope": "unit only; not hardware qualification"
+    "scope": "unit tests only; whole continuous motion rejected"
   },
   "split_root_sampled_sequence": {
     "selected_design": "stow_continuous_slots_v2",
@@ -79,7 +80,7 @@
     "geometry_accepted_for_product": false
   },
   "final_fresh_verification": "engineering/workplan-execution-20261014/FINAL_VERIFICATION.json",
-  "previous_current_execution_summary": "engineering/workplan-execution-20261014/integration/summary.json",
+  "previous_current_execution_summary": "engineering/stow-installation-closure-20261014/SUMMARY.json",
   "STOW_reordered_rigid_subassembly": {
     "full_nominal_stage_pairs": 64,
     "positive_pairs": 0,
@@ -88,5 +89,15 @@
     "old_assembly_order_still_rejected": true,
     "fixture_or_physical_qualification": false
   },
-  "latest_fresh_verification": "engineering/stow-installation-closure-20261014/fresh-GitHub-verification/SUMMARY.json"
+  "STOW_continuous_contact_motion": {
+    "source": "integration/stow_contact_slots.py",
+    "pairs": 130,
+    "positive_pairs": 4,
+    "exit_code": 1,
+    "independent_reproduced": true,
+    "OPEN_qualified": false,
+    "selected_lower_restoring_force_is_assumption": true
+  },
+  "previous_latest_fresh_verification": "engineering/stow-installation-closure-20261014/fresh-GitHub-verification/SUMMARY.json",
+  "current_fresh_verification": "engineering/contact-motion-20261014/fresh-GitHub-verification/SUMMARY.json"
 }
