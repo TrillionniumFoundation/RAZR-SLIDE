@@ -1,0 +1,161 @@
+{
+  "base_main": "27abd4d77f83cf4ad6dcf25acdad7e34a8206a8a",
+  "source_sha256": "bedcf56f111b2d01640f619bfd8d5c15281d77a161895556509c9621711ec63f",
+  "reader_sha256": "27d374feca39d5ab794cc18bf145ecb6224a7d50659175e7bd040c4fba5a039c",
+  "local_new_tests": 20,
+  "local_full501_rerun": false,
+  "native_exports": 13,
+  "nominal_states": 7,
+  "participants_per_state": 67,
+  "nominal_pair_evaluations": 15477,
+  "nominal_geometry_passed": true,
+  "native_slot_flank_checks": 12,
+  "native_tab_end_stop_checks": 8,
+  "wrong_order_obstructions": [
+    {
+      "name": "MOVE_WITHOUT_RELEASE",
+      "slide_mm": 5.0,
+      "tabs_mm": [
+        0.0,
+        0.0
+      ],
+      "positive_pairs": [
+        {
+          "a": "L_KEY",
+          "b": "L_PAWL",
+          "common_mm3": 0.1190761755485906
+        },
+        {
+          "a": "R_KEY",
+          "b": "R_PAWL",
+          "common_mm3": 0.11907617554859072
+        }
+      ]
+    },
+    {
+      "name": "MOVE_WITH_ONE_RELEASE",
+      "slide_mm": 5.0,
+      "tabs_mm": [
+        3.0,
+        0.0
+      ],
+      "positive_pairs": [
+        {
+          "a": "R_KEY",
+          "b": "R_PAWL",
+          "common_mm3": 0.11907617554859072
+        }
+      ]
+    },
+    {
+      "name": "RETURN_BEFORE_KEY",
+      "slide_mm": 40.0,
+      "tabs_mm": [
+        0.0,
+        0.0
+      ],
+      "positive_pairs": [
+        {
+          "a": "L_KEY",
+          "b": "L_PAWL",
+          "common_mm3": 2.8920000000000052
+        },
+        {
+          "a": "R_KEY",
+          "b": "R_PAWL",
+          "common_mm3": 2.8920000000000066
+        }
+      ]
+    }
+  ],
+  "combined_clearance_probes": [
+    {
+      "tab_mm": 0.0,
+      "KEY_positive_return_offset_mm": 0.06063677106654653,
+      "PAWL_flank_offset_mm": -0.02662757551445073,
+      "positive_pairs": [
+        {
+          "a": "L_PAWL",
+          "b": "L_ROOT_INNER",
+          "common_mm3": 0.0005036957390982652
+        },
+        {
+          "a": "R_PAWL",
+          "b": "R_ROOT_INNER",
+          "common_mm3": 0.0005036957390982697
+        }
+      ]
+    },
+    {
+      "tab_mm": 0.0,
+      "KEY_positive_return_offset_mm": 0.06063677106654653,
+      "PAWL_flank_offset_mm": 0.02662757551445073,
+      "positive_pairs": []
+    },
+    {
+      "tab_mm": 1.5,
+      "KEY_positive_return_offset_mm": 0.06063677106654653,
+      "PAWL_flank_offset_mm": -0.02662757551445073,
+      "positive_pairs": []
+    },
+    {
+      "tab_mm": 1.5,
+      "KEY_positive_return_offset_mm": 0.06063677106654653,
+      "PAWL_flank_offset_mm": 0.02662757551445073,
+      "positive_pairs": []
+    },
+    {
+      "tab_mm": 3.0,
+      "KEY_positive_return_offset_mm": 0.06063677106654653,
+      "PAWL_flank_offset_mm": -0.02662757551445073,
+      "positive_pairs": []
+    },
+    {
+      "tab_mm": 3.0,
+      "KEY_positive_return_offset_mm": 0.06063677106654653,
+      "PAWL_flank_offset_mm": 0.02662757551445073,
+      "positive_pairs": [
+        {
+          "a": "L_PAWL",
+          "b": "L_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+          "common_mm3": 0.0008284469393068623
+        },
+        {
+          "a": "R_PAWL",
+          "b": "R_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+          "common_mm3": 0.0008284469393062031
+        }
+      ]
+    }
+  ],
+  "all_clearance_branches_clear": false,
+  "manual_tab_stroke_mm": 3.0,
+  "nominal_PAWL_stroke_mm": 1.1,
+  "slot_only_output_halfwidth_mm": 0.02662757551445073,
+  "material": [
+    {
+      "side": "L",
+      "original_PAWL_lost_mm3": 0.0,
+      "pin_added_mm3": 1.7373007374351523,
+      "root_window_removed_mm3": 1.3009380098815693
+    },
+    {
+      "side": "R",
+      "original_PAWL_lost_mm3": 0.0,
+      "pin_added_mm3": 1.7373007374351617,
+      "root_window_removed_mm3": 1.3009380098815693
+    }
+  ],
+  "source_original_PAWL_cut": false,
+  "new_guide_and_input_openings_in_panel": true,
+  "manual_controls_required": 2,
+  "automatic_return_or_detent_implemented": false,
+  "actual_force_preload_tolerance_assembly_and_OPEN_lock_qualified": false,
+  "negative_KEY_play_branch_unqualified": true,
+  "whole_continuous_assembly_proved": false,
+  "STOP_restoring_force_is_boundary_condition": true,
+  "hosted_CI": "pending for this functional commit",
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}

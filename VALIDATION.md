@@ -66,3 +66,8 @@ conditional nominal full-assembly poses. It does NOT assert continuous whole-
 phone clearance, unique reverse motion with clearance, actual PAWL release,
 endpoint relock, real spring forces, assembled captured-head tooling or product
 qualification. Original failed development geometry is retained separately.
+
+Manual PAWL candidate: `python -B integration/pawl_actuator.py --output NEW_DIR`,
+then `python -B integration/verify_pawl_actuator.py --manifest NEW_DIR/manifest.json --output NEW_REPORT`.
+A successful nominal geometry run still retains endpoint clearance collisions
+as unresolved results; inspect all_clearance_branches_clear separately.

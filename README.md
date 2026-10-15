@@ -82,3 +82,10 @@ Groove-centerline compatibility is not complete unlock/relock qualification.
 Backlash, PAWL actuation, return preload, all-pose interference, assembly and
 real phone component/load/tolerance qualification remain open.
 `candidate_go=false`; `fixture_fabrication_go=false`; `manufacturing_go=false`.
+
+## Manual PAWL study — 2026-10-15
+
+See CURRENT_DESIGN.md and engineering/pawl-actuation-20261015. Two independent
+manual tabs now have actual slot/pin actuation geometry. Nominal paths and
+wrong-order obstruction are distinct from endpoint-play failures, assembly
+access, detents/preload and real locking qualification. No hardware release.
