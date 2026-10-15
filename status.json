@@ -39,7 +39,8 @@
     "four_phase_bench_detector": "engineering/proof-selftest-design-20261013-r5",
     "A_only_power_chain_boards": "engineering/power-chain-pcba-20261013-r5",
     "P0_recovery_and_tests": "engineering/workplan-execution-20261014/p0",
-    "native_integration_and_reproduced_failures": "engineering/workplan-execution-20261014/integration"
+    "native_integration_and_reproduced_failures": "engineering/workplan-execution-20261014/integration",
+    "STOW_reordered_nominal_geometry": "engineering/stow-installation-closure-20261014"
   },
   "G2_scope": {
     "X230_motion_poses": 121,
@@ -61,17 +62,31 @@
   ],
   "previous_production_review": "engineering/PRODUCTION_BLOCKERS_R6.md",
   "current_input_registry": "integration/assembly_inputs.json",
-  "current_execution_summary": "engineering/workplan-execution-20261014/integration/summary.json",
+  "current_execution_summary": "engineering/stow-installation-closure-20261014/SUMMARY.json",
   "current_unit_tests": {
-    "count": 290,
+    "count": 334,
+    "groups": 19,
     "passed": true,
-    "scope": "unit-only; physical qualification remains missing"
+    "scope": "unit only; not hardware qualification"
   },
   "split_root_sampled_sequence": {
+    "selected_design": "stow_continuous_slots_v2",
     "requested_rows": 564,
-    "positive_intersection_rows": 18,
-    "actual_exit_code": 1,
-    "geometry_accepted": false
+    "positive_intersection_rows": 0,
+    "actual_exit_code": 0,
+    "original_failure_rows": 18,
+    "original_failure_preserved": true,
+    "geometry_accepted_for_product": false
   },
-  "final_fresh_verification": "engineering/workplan-execution-20261014/FINAL_VERIFICATION.json"
+  "final_fresh_verification": "engineering/workplan-execution-20261014/FINAL_VERIFICATION.json",
+  "previous_current_execution_summary": "engineering/workplan-execution-20261014/integration/summary.json",
+  "STOW_reordered_rigid_subassembly": {
+    "full_nominal_stage_pairs": 64,
+    "positive_pairs": 0,
+    "static_pairs": 506,
+    "independent_reimport": true,
+    "old_assembly_order_still_rejected": true,
+    "fixture_or_physical_qualification": false
+  },
+  "latest_fresh_verification": "engineering/stow-installation-closure-20261014/fresh-GitHub-verification/SUMMARY.json"
 }
