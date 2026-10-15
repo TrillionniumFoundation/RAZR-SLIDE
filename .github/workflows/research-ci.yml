@@ -59,6 +59,13 @@ jobs:
       max-parallel: 4
       matrix:
         include:
+          - id: lateral-guide
+            commands: |
+              uv run --locked python -B integration/endpoint_joint_pawl.py --output "$RUNNER_TEMP/razr-guide-endpoint"
+              uv run --locked python -B integration/catalogue_roof_joint.py --baseline "$RUNNER_TEMP/razr-guide-endpoint/manifest.json" --output "$RUNNER_TEMP/razr-guide-catalogue"
+              uv run --locked python -B integration/root_clearance.py --baseline "$RUNNER_TEMP/razr-guide-catalogue/manifest.json" --output "$RUNNER_TEMP/razr-guide-root"
+              uv run --locked python -B integration/pawl_lateral_guide.py --baseline "$RUNNER_TEMP/razr-guide-root/manifest.json" --output "$RUNNER_TEMP/razr-lateral-guide"
+              uv run --locked python -B integration/verify_pawl_lateral_guide.py --baseline "$RUNNER_TEMP/razr-guide-root/manifest.json" --manifest "$RUNNER_TEMP/razr-lateral-guide/manifest.json" --output "$RUNNER_TEMP/razr-lateral-guide/verification.json" --full
           - id: phone-layout
             commands: |
               uv run --locked python -B integration/phone_layout.py --output "$RUNNER_TEMP/razr-phone-layout"
