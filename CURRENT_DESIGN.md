@@ -15,3 +15,7 @@ all_clearance_branches_clear=false，未夹紧位移或降低相交阈值。可�
 下一步先收敛可装配导向与接触约束下的端位定位/预紧，再做真实保持/反向复锁，不再扩充孤立通过数量。
 `integration/assembly_inputs.json`原字节与空字段保持不变。等外包络双舱、单约7英寸主屏、无独立外屏、
 A大电池、B储屏及4700mAh目标不变。candidate/fixture/manufacturing go均为false。
+
+本轮功能提交312aafc已通过托管501项/28组及独立原生重读；云端原样保留端位允许带失败。
+完整报告见engineering/pawl-actuation-20261015/HOSTED_CI.json。
+新增10项名义控制行程包络通过，仅限该子集；实际装配/预紧/力学和展开端锁仍未闭合。
