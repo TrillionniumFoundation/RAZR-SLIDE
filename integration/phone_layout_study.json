@@ -1,0 +1,27 @@
+{
+  "input_kind": "project_owned_parametric_study_not_measured",
+  "historical_planform_reference": "docs/records/README_先读_R22.md: nominal 94.25 x 73.99 mm; not finished OEM geometry",
+  "component_reservation_source": "engineering/cover-retention-and-space-20261015/SPACE_INPUTS_AND_RESERVATION.json",
+  "dimensions": {
+    "width_mm": 73.99,
+    "height_mm": 94.25,
+    "thickness_mm": 8.0,
+    "slide_mm": 79.75,
+    "normal_seating_mm": 8.2,
+    "study_clearance_mm": 0.2,
+    "study_wall_mm": 0.65
+  },
+  "assumptions": {
+    "planform": "historical reference, not an approved finished product size",
+    "thickness_mm": "8.2 mm normal displacement minus an assumed 0.2 mm stowed gap",
+    "wall_mm": "0.65 mm design study; no material/process/strength qualification",
+    "clearance_mm": "0.2 mm nominal study, not a certified tolerance allowance",
+    "end_steps": "new project-owned complementary shell geometry, not an allowed cut in an OEM component",
+    "cavity": "empty reserved box; actual components, OLED/storage and battery capacity not installed or inferred"
+  },
+  "actual_finished_input_register_unchanged": "integration/assembly_inputs.json",
+  "selected_component_to_cabin_transform": null,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}

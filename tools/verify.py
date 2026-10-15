@@ -45,10 +45,27 @@ def snapshot(root: Path) -> dict[str, str]:
     return result
 
 
+def validate_manifest(config: dict) -> None:
+    suites = config.get("suites", [])
+    if not suites or not isinstance(suites, list):
+        raise ValueError("Empty or invalid suite manifest")
+    ids = [s["id"] for s in suites]
+    if any(not isinstance(i, str) or not i for i in ids) or len(set(ids)) != len(ids):
+        raise ValueError("Missing or duplicate suite identity")
+    minimums = [s["minimum_tests"] for s in suites]
+    if any(type(n) is not int or n <= 0 for n in minimums):
+        raise ValueError("Invalid suite minimum")
+    total = config.get("minimum_total_tests")
+    if type(total) is not int or total != sum(minimums):
+        raise ValueError("Suite minimums disagree with total; missing suites are not a pass")
+
+
 def output_location(root: Path, output: Path) -> Path:
+    root = root.resolve()
     p = output.resolve()
-    if p == root or any(p == root / n or (root / n) in p.parents
-                        for n in ("archive", "baselines", "docs", "engineering", "tools", "tests", "integration", ".git", ".venv")):
+    protected = [(root / n).resolve() for n in
+                 ("archive", "baselines", "docs", "engineering", "tools", "tests", "integration", ".git", ".venv")]
+    if p == root or any(p == directory or directory in p.parents for directory in protected):
         raise ValueError("Output must not overwrite source or frozen evidence")
     return p
 
@@ -60,6 +77,7 @@ def main() -> None:
     args = ap.parse_args()
     config_path = ROOT / "tools/test_suites.json"
     config = json.loads(config_path.read_text())
+    validate_manifest(config)
     suites = config["suites"]
     if args.suite:
         unknown = set(args.suite) - {s["id"] for s in suites}

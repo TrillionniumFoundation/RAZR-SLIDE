@@ -48,3 +48,37 @@ class ValidationEntryTests(unittest.TestCase):
             with self.subTest(name=name), self.assertRaises(ValueError):
                 verify.output_location(ROOT, ROOT / name / 'generated')
         self.assertEqual(verify.output_location(ROOT, ROOT / '.runs' / 'new'), ROOT / '.runs' / 'new')
+
+
+class ManifestTests(unittest.TestCase):
+    def manifest(self):
+        return {"suites": [{"id": "one", "minimum_tests": 2}], "minimum_total_tests": 2}
+
+    def test_matching_total_accepted(self):
+        verify.validate_manifest(self.manifest())
+
+    def test_missing_suite_cannot_keep_larger_declared_total(self):
+        m=self.manifest();m["minimum_total_tests"]=5
+        with self.assertRaises(ValueError):verify.validate_manifest(m)
+
+    def test_duplicate_or_empty_suite_set_rejected(self):
+        for suites in ([], [{"id":"one","minimum_tests":1}]*2):
+            m=self.manifest();m["suites"]=suites
+            with self.assertRaises(ValueError):verify.validate_manifest(m)
+
+    def test_invalid_or_boolean_minimum_rejected(self):
+        for n in (True,0,-1,1.5):
+            m=self.manifest();m["suites"][0]["minimum_tests"]=n
+            with self.assertRaises(ValueError):verify.validate_manifest(m)
+
+
+class OutputAliasTests(unittest.TestCase):
+    def test_symlinked_protected_tree_rejected_through_both_names(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as td:
+            base=Path(td).resolve();root=base/'repo';root.mkdir()
+            actual=base/'shared-env';actual.mkdir()
+            (root/'.venv').symlink_to(actual,target_is_directory=True)
+            for p in (root/'.venv'/'new',actual/'new'):
+                with self.assertRaises(ValueError):verify.output_location(root,p)
+            self.assertEqual(verify.output_location(root,base/'results'),base/'results')

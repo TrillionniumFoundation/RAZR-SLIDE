@@ -1,0 +1,56 @@
+name: Research validation
+
+on:
+  push:
+    branches: [main, work/cover-assembly-order-20261014]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: research-${{ github.event.pull_request.head.ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  current-suites:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/archive/blobs/
+            !/baselines/**
+            /baselines/**/*.py
+            /baselines/**/*.md
+            /baselines/**/*.json
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: '0.10.10'
+          python-version: '3.12'
+          enable-cache: true
+      - name: Install locked research dependencies
+        run: uv sync --locked
+      - name: Run every current suite
+        run: uv run --locked python -B tools/verify.py --output "$RUNNER_TEMP/razr-unit"
+      - name: Generate and independently reread the empty-shell study
+        run: |
+          uv run --locked python -B integration/phone_layout.py --output "$RUNNER_TEMP/razr-phone-layout"
+          uv run --locked python -B integration/verify_phone_layout.py --report "$RUNNER_TEMP/razr-phone-layout/report.json" --output "$RUNNER_TEMP/razr-phone-layout/readback.json"
+      - name: Preserve actual results, including failures
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: research-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/razr-unit
+            ${{ runner.temp }}/razr-phone-layout
+          if-no-files-found: warn
+          retention-days: 14
