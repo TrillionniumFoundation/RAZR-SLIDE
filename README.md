@@ -64,23 +64,22 @@ R6 [实际取得的 39 页 OLED 候选原始规格与来源核验](engineering/c
 
 ## Current execution index — 2026-10-15
 
-Start with `CURRENT_DESIGN.md`. The current transmission study is
-`integration/cam_coupling.py`: a finite B cam, transverse follower, original-KEY
-yoke and three captured telescopic stages. Its native evidence and explicit
-remaining constraints are under `engineering/cam-coupling-20261015/`.
+Start with `CURRENT_DESIGN.md`. The current assembly continuation is
+`integration/serviceable_pawl.py`, verified by `integration/verify_serviceable_pawl.py`.
+Evidence is under `engineering/serviceable-pawl-20261015/`: detachable control
+roof, rear thumb pad and shoulder pin, plus the repaired earlier root-admission path.
+These are nominal detached-backpanel assembly results, not thread/preload,
+holding-force, fixture, sealed-phone or manufacturing qualification.
 
-The mounted and thin mechanisms, empty-shell study and rejected rigid-link
-experiments remain preserved research inputs, not replaced historical receipts.
-Actual phone inputs remain in `integration/assembly_inputs.json`, unchanged.
-The new shell cuts are project-owned study geometry, not approved OEM changes.
+The manual PAWL and cam transmission models remain explicit parent designs.
+Old failures and raw receipts remain preserved. Actual phone inputs in
+`integration/assembly_inputs.json` are unchanged; unknowns stay unknown.
 
 Run `uv sync --locked` and `uv run --locked python -B tools/verify.py`.
-Use `tools/test_suites.json` for the current configured scope; use actual reports
-and Research validation for results. Local scoped tests are not full CI reruns.
-
-Groove-centerline compatibility is not complete unlock/relock qualification.
-Backlash, PAWL actuation, return preload, all-pose interference, assembly and
-real phone component/load/tolerance qualification remain open.
+Use `tools/test_suites.json` for configured scope and bound actual reports
+for results. Local new tests are not full hosted reruns. Endpoint clearance,
+preload, automatic return, original transmission installation, full-scene
+continuous motion and actual components/load/tolerance remain unqualified.
 `candidate_go=false`; `fixture_fabrication_go=false`; `manufacturing_go=false`.
 
 ## Manual PAWL study — 2026-10-15
