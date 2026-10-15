@@ -69,3 +69,16 @@ class PanelBearingWebTests(unittest.TestCase):
     def test_strips_disconnected_from_parent_rejected(self):
         p=dict(self.parts);p['A_BACK_PANEL']=a.v.box((50.,50.,50.),(51.,51.,51.))
         with self.assertRaises(ValueError):a.build(p)
+
+    def test_whole_material_partition_closes(self):
+        from verify_panel_bearing_web import partition_certificate
+        r=partition_certificate(self.before,self.after['A_BACK_PANEL'])
+        self.assertTrue(r['all_material_partitioned']);self.assertAlmostEqual(r['gain_mm3'],3.564,places=7)
+    def test_loss_outside_windows_rejected(self):
+        from verify_panel_bearing_web import partition_certificate
+        broken=self.after['A_BACK_PANEL'].cut(a.v.box((0.,20.,-.1),(1.,21.,1.)))
+        with self.assertRaises(ValueError):partition_certificate(self.before,broken)
+    def test_incomplete_local_web_rejected(self):
+        from verify_panel_bearing_web import partition_certificate
+        broken=self.after['A_BACK_PANEL'].cut(a.v.box((12.65,13.4,.65),(12.7,15.6,2.)))
+        with self.assertRaises(ValueError):partition_certificate(self.before,broken)
