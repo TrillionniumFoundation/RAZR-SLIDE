@@ -1,0 +1,158 @@
+{
+  "schema": "razr-slide-primary-power-usb-facts-v1",
+  "observed_on": "2026-10-13",
+  "manufacturing_go": false,
+  "sources": [
+    {
+      "id": "TI_TPS25947_C",
+      "url": "https://www.ti.com/lit/ds/symlink/tps25947.pdf",
+      "reference": "turn20view0",
+      "document": "SLVSFC9C",
+      "revision": "May 2026",
+      "sections": [
+        "4",
+        "5",
+        "6.3",
+        "6.5",
+        "7.3.5.1",
+        "7.3.5.3",
+        "8.4"
+      ],
+      "facts": {
+        "input_operating_V": [
+          2.7,
+          23
+        ],
+        "continuous_device_A": 5.5,
+        "conditional_part": "TPS259470LRPW",
+        "reverse_current": "blocked OUT to IN; finite leakage, not galvanic isolation",
+        "R_ILM_ohm_equation": "3334 / I_limit_A",
+        "C_dVdt_pF_equation": "2000 / slew_V_per_ms",
+        "R_on_max_ohm": 0.045,
+        "R_on_test_A": 3,
+        "R_on_temperature_C": [
+          -40,
+          125
+        ],
+        "shutdown_is_not_zero_leakage": true,
+        "C_dVdt_above_10nF_series_R_ohm": 100
+      },
+      "package_land_pattern_downloaded": false,
+      "product_part_selected": false
+    },
+    {
+      "id": "TI_BQ2970_I",
+      "url": "https://www.ti.com/lit/ds/symlink/bq2970.pdf",
+      "reference": "turn20view2",
+      "document": "SLUSBU9I",
+      "revision": "August 2024",
+      "sections": [
+        "6.6",
+        "9.1",
+        "9.2"
+      ],
+      "facts": {
+        "cell_count_supported": 1,
+        "external_protection_switch_location": "low-side; separate CELL_N and PACK_N",
+        "exact_threshold_variant": null,
+        "system_specific_FETs": null,
+        "raw_CELL_N_to_system_GND_bypasses_switch": true
+      },
+      "product_part_selected": false
+    },
+    {
+      "id": "TI_BQ25622_D",
+      "url": "https://www.ti.com/lit/ds/symlink/bq25622.pdf",
+      "reference": "turn20view3",
+      "document": "SLUSEG2D",
+      "revision": "February 2025",
+      "sections": [
+        "1",
+        "8.3.9.1",
+        "8.3.9.2"
+      ],
+      "facts": {
+        "cell_count_supported": 1,
+        "input_operating_V": [
+          3.9,
+          18
+        ],
+        "charge_device_A": 3.5,
+        "OTG_capable": true,
+        "shutdown_command_with_adapter_present": "ignored; BATFET_CTRL resets 00",
+        "ship_mode_with_adapter": "behavior depends BATFET_CTRL_WVBUS; can leave converter/SYS live",
+        "independent_VBUS_cut_required": true,
+        "direct_20V_PD_input_qualified": false
+      },
+      "product_part_selected": false
+    },
+    {
+      "id": "TI_TMUXHS221F_A",
+      "url": "https://www.ti.com/lit/ds/symlink/tmuxhs221f.pdf",
+      "reference": "turn34view0",
+      "document": "SLVSIV4A",
+      "revision": "November 2025",
+      "sections": [
+        "4",
+        "5.1",
+        "5.5",
+        "7.3.2",
+        "7.3.3",
+        "7.4"
+      ],
+      "facts": {
+        "USB_subsection": "USB2 only conditional screen",
+        "high_voltage_protected_side": "common D+/D-",
+        "D1_D2_absmax_V": [
+          -0.5,
+          6
+        ],
+        "D_common_absmax_V": [
+          -0.5,
+          30
+        ],
+        "supply_operating_V": [
+          1.62,
+          5.5
+        ],
+        "powered_off": "high Z with finite leakage",
+        "control_pins_have_internal_pulldown": false,
+        "product_USB_rate_frozen": false
+      },
+      "product_part_selected": false
+    },
+    {
+      "id": "TI_TPD6S300A",
+      "url": "https://www.ti.com/lit/ds/symlink/tpd6s300a.pdf",
+      "reference": "turn34view1",
+      "document": "SLVSEL8",
+      "revision": "June 2018",
+      "sections": [
+        "1",
+        "8"
+      ],
+      "facts": {
+        "short_VBUS_OVP_channels": 4,
+        "default_full_feature_assignment": [
+          "CC1",
+          "CC2",
+          "SBU1",
+          "SBU2"
+        ],
+        "ESD_Dplus_Dminus_is_sustained_OVP": false,
+        "alternate_DP_DM_assignment_requires_topology_review": true
+      },
+      "product_part_selected": false
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "url": "https://www.ti.com/lit/ds/symlink/tpd3s716.pdf",
+      "result": "Internal Error; never adopted"
+    },
+    {
+      "url": "https://www.ti.com/lit/ds/symlink/tpd3s714.pdf",
+      "result": "Internal Error; never adopted"
+    }
+  ]
+}

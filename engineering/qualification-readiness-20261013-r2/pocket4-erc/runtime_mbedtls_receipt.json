@@ -1,0 +1,55 @@
+{
+  "log": [
+    {
+      "declared_dependencies": "libc6 (>= 2.38), libmbedcrypto16 (>= 3.6.0), libmbedtls21 (>= 3.6.0), libmbedx509-7 (>= 3.6.0)\n",
+      "argv": [
+        "apt",
+        "download",
+        "libmbedcrypto16",
+        "libmbedtls21",
+        "libmbedx509-7"
+      ],
+      "exit": 0,
+      "log": "\nWARNING: apt does not have a stable CLI interface. Use with caution in scripts.\n\nGet:1 https://mirrors.ustc.edu.cn/ubuntu resolute/universe amd64 libmbedcrypto16 amd64 3.6.5-0.1ubuntu2 [259 kB]\nGet:2 https://mirrors.ustc.edu.cn/ubuntu resolute/universe amd64 libmbedtls21 amd64 3.6.5-0.1ubuntu2 [130 kB]\nGet:3 https://mirrors.ustc.edu.cn/ubuntu resolute/universe amd64 libmbedx509-7 amd64 3.6.5-0.1ubuntu2 [35.4 kB]\nFetched 424 kB in 10s (41.6 kB/s)\n"
+    },
+    {
+      "package": "libmbedcrypto16_3.6.5-0.1ubuntu2_amd64.deb",
+      "size": 258752,
+      "sha256": "dd320215c1bd6e954d5aea07e640f7063865af9ef55bd64c5d9cd3cbd1bf7555",
+      "extract_exit": 0
+    },
+    {
+      "package": "libmbedtls21_3.6.5-0.1ubuntu2_amd64.deb",
+      "size": 130250,
+      "sha256": "5b3ec9e23f8fc475160c15714f268634fabdbad8b3df32cc8dd2e634bdacea5e",
+      "extract_exit": 0
+    },
+    {
+      "package": "libmbedx509-7_3.6.5-0.1ubuntu2_amd64.deb",
+      "size": 35368,
+      "sha256": "ed69a413d170094d6d6a91bb538c16c91d3f664b7166a1740245bbbbefd4540f",
+      "extract_exit": 0
+    },
+    {
+      "argv": [
+        "/home/alex/RAZR-SLIDE-kicad9-erc-runtime-20261013-r2/root/usr/bin/kicad-cli",
+        "version"
+      ],
+      "exit": 0,
+      "log": "02:08:30 PM: Error: schema file '/usr/share/kicad/schemas/api.v1.schema.json' not found\n9.0.8\n"
+    },
+    {
+      "argv": [
+        "/home/alex/RAZR-SLIDE-kicad9-erc-runtime-20261013-r2/root/usr/bin/kicad-cli",
+        "sch",
+        "erc",
+        "--help"
+      ],
+      "exit": 0,
+      "log": "02:08:30 PM: Error: schema file '/usr/share/kicad/schemas/api.v1.schema.json' not found\nUsage: erc [--help] [--output OUTPUT_FILE] [--define-var KEY=VALUE] [--format VAR] [--units VAR] [--severity-all] [--severity-error] [--severity-warning] [--severity-exclusions] [--exit-code-violations] INPUT_FILE\n\nRuns the Electrical Rules Check (ERC) on the schematic and creates a report\n\nPositional arguments:\n  INPUT_FILE              Input file \n\nOptional arguments:\n  -h, --help              Shows help message and exits \n  -o, --output            Output file [nargs=0..1] [default: \"\"]\n  -D, --define-var        Overrides or adds project variables, can be used multiple times to declare multiple variables.\n                          Use in the format of '--define-var key=value' or '-D key=value' [nargs=0..1] [default: {}]\n  --format                Output file format, options: json, report [nargs=0..1] [default: \"report\"]\n  --units                 Report units; valid options: in, mm, mils [nargs=0..1] [default: \"mm\"]\n  --severity-all          Report all ERC violations, this is equivalent to including all the other severity arguments \n  --severity-error        Report all ERC error level violations, this can be combined with the other severity arguments \n  --severity-warning      Report all ERC warning level violations, this can be combined with the other severity arguments \n  --severity-exclusions   Report all excluded ERC violations, this can be combined with the other severity arguments \n  --exit-code-violations  Return a nonzero exit code if ERC violations exist \n"
+    }
+  ],
+  "modules": [],
+  "native_runtime_ready": true,
+  "system_install_performed": false
+}

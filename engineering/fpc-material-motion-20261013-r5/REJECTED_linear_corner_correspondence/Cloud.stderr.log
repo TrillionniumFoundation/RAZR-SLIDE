@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/522038b915ed/production-audit/engineering/fpc-material-motion-20261013-r5/material_motion.py", line 267, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/522038b915ed/production-audit/engineering/fpc-material-motion-20261013-r5/material_motion.py", line 260, in main
+    native=[] if a.no_cad else verify_native_cells(r50,r47,r,A,B,c,target,sigma,out/'cad')
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/522038b915ed/production-audit/engineering/fpc-material-motion-20261013-r5/material_motion.py", line 197, in verify_native_cells
+    if classifier.State()!=TopAbs_IN and not classifier.IsOnAFace():raise ValueError(f'R50 ruled cell station containment failed {name} sigma={sigma[n]} cell={idx}')
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: R50 ruled cell station containment failed SLIDE_20p125 sigma=29.037588673282688 cell=4

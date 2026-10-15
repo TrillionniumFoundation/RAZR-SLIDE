@@ -1,0 +1,150 @@
+{
+  "frozen_slide_mm": 79.75,
+  "frozen_normal_seating_mm": 8.2,
+  "original_public_profile_screens": [
+    {
+      "profile_id": "FLEX1_1F-Ri_030_17_2V13",
+      "radius_mm": 16.5,
+      "max_total_thickness_mm": 0.14700000000000002,
+      "generic_dynamic_min_radius_mm": 14.700000000000003,
+      "generic_radius_screen_only_passed": true,
+      "generic_guide": "Sierra Circuits own layout guide, dynamic 100x finished board thickness",
+      "required_Use_B_stackup_received": false,
+      "public_profile_suitable_for_project_dynamic_use": false,
+      "rejection_reasons": [
+        "supplied_profile_is_not_Use_B_dynamic",
+        "RA_copper_not_specified_in_delivered_profile",
+        "no_project_dynamic_qualification_report"
+      ],
+      "manufacturing_go": false
+    },
+    {
+      "profile_id": "FLEX2_2F-Ri_027_17_2V13",
+      "radius_mm": 16.5,
+      "max_total_thickness_mm": 0.16999999999999998,
+      "generic_dynamic_min_radius_mm": 17.0,
+      "generic_radius_screen_only_passed": false,
+      "generic_guide": "Sierra Circuits own layout guide, dynamic 100x finished board thickness",
+      "required_Use_B_stackup_received": false,
+      "public_profile_suitable_for_project_dynamic_use": false,
+      "rejection_reasons": [
+        "below_generic_100x_max_thickness_design_screen",
+        "supplied_profile_is_not_Use_B_dynamic",
+        "RA_copper_not_specified_in_delivered_profile",
+        "plated_copper_in_dynamic_zone_requires_specific_review",
+        "multilayer_dynamic_zone_requires_specific_review",
+        "no_project_dynamic_qualification_report"
+      ],
+      "manufacturing_go": false
+    }
+  ],
+  "source_conflict": {
+    "automatic_import_allowed": false,
+    "rejection_reasons": [
+      "XML_overall_vs_PDF_rigid_thickness_mismatch",
+      "unused_physical_layer_in_XML_thickness_sum",
+      "XML_zero_vs_PDF_nonzero_thickness_tolerance"
+    ],
+    "supplier_source_silently_repaired": false,
+    "manufacturing_go": false
+  },
+  "preserved_counterexamples": {
+    "same_R44_nominal_thickness_does_not_control_worst_case": {
+      "profile_id": "R44_RESEARCH_T0.15_ILLUSTRATIVE_WORST_PLUS0.05_NOT_PROJECT_TOLERANCE",
+      "radius_mm": 16.5,
+      "max_total_thickness_mm": 0.2,
+      "generic_dynamic_min_radius_mm": 20.0,
+      "generic_radius_screen_only_passed": false,
+      "generic_guide": "Sierra Circuits own layout guide, dynamic 100x finished board thickness",
+      "required_Use_B_stackup_received": false,
+      "public_profile_suitable_for_project_dynamic_use": false,
+      "rejection_reasons": [
+        "below_generic_100x_max_thickness_design_screen",
+        "supplied_profile_is_not_Use_B_dynamic",
+        "RA_copper_not_specified_in_delivered_profile",
+        "multilayer_dynamic_zone_requires_specific_review",
+        "no_project_dynamic_qualification_report"
+      ],
+      "manufacturing_go": false
+    },
+    "same_100x_radius_does_not_cover_width_axis": {
+      "profile_id": "R44_RESEARCH_T0.15_ILLUSTRATIVE_WORST_PLUS0.05_NOT_PROJECT_TOLERANCE",
+      "radius_mm": 16.5,
+      "max_total_thickness_mm": 0.1,
+      "generic_dynamic_min_radius_mm": 10.0,
+      "generic_radius_screen_only_passed": true,
+      "generic_guide": "Sierra Circuits own layout guide, dynamic 100x finished board thickness",
+      "required_Use_B_stackup_received": false,
+      "public_profile_suitable_for_project_dynamic_use": false,
+      "rejection_reasons": [
+        "supplied_profile_is_not_Use_B_dynamic",
+        "RA_copper_not_specified_in_delivered_profile",
+        "multilayer_dynamic_zone_requires_specific_review",
+        "3D_hard_axis_or_twist_is_outside_generic_radius_guidance",
+        "no_project_dynamic_qualification_report"
+      ],
+      "manufacturing_go": false
+    },
+    "all_24_signal_pins_at_5A": {
+      "contact_rating_screen_passed": false,
+      "rejection_reasons": [
+        "signal_contact_above_0.3A",
+        "catalog_total_current_above_10A"
+      ],
+      "rated_current_is_FPC_capacity": false,
+      "manufacturing_go": false
+    },
+    "two_5A_power_fittings_plus_24_0p3A_signal": {
+      "contact_rating_screen_passed": false,
+      "rejection_reasons": [
+        "catalog_total_current_above_10A"
+      ],
+      "rated_current_is_FPC_capacity": false,
+      "manufacturing_go": false
+    },
+    "connector_mates_on_every_slide": {
+      "contact_rating_screen_passed": false,
+      "rejection_reasons": [
+        "above_specified_10_mating_cycles",
+        "sliding_motion_must_not_mate_or_unmate_BM28"
+      ],
+      "rated_current_is_FPC_capacity": false,
+      "manufacturing_go": false
+    }
+  },
+  "conditional_electrical_loss_examples": [
+    {
+      "assumed_copper_rho_ohm_m": 1.724e-08,
+      "temperature_assumed_C": 20,
+      "each_conductor_length_mm": 120,
+      "each_full_conductor_width_mm": 1.2,
+      "copper_mm": 0.018,
+      "current_A": 0.3,
+      "ideal_loop_ohm": 0.1915555555555556,
+      "ideal_loop_drop_V": 0.05746666666666667,
+      "ideal_loop_loss_W": 0.017240000000000002,
+      "ignores_pad_neckdowns_contacts_heat_transfer_and_tolerance": true,
+      "is_actual_FPC_ampacity_or_temperature_result": false
+    },
+    {
+      "assumed_copper_rho_ohm_m": 1.724e-08,
+      "temperature_assumed_C": 20,
+      "each_conductor_length_mm": 120,
+      "each_full_conductor_width_mm": 1.2,
+      "copper_mm": 0.018,
+      "current_A": 5.0,
+      "ideal_loop_ohm": 0.1915555555555556,
+      "ideal_loop_drop_V": 0.957777777777778,
+      "ideal_loop_loss_W": 4.78888888888889,
+      "ignores_pad_neckdowns_contacts_heat_transfer_and_tolerance": true,
+      "is_actual_FPC_ampacity_or_temperature_result": false
+    }
+  ],
+  "all_loss_examples_use_two_separate_full_width_strips_not_one_split_strip": true,
+  "no_actual_current_or_temp_or_force_or_fatigue_measured": true,
+  "supplier_selected_dynamic_FPC_part_and_revision": null,
+  "full_artwork_and_netlist_received": false,
+  "continuous_3D_material_frames_and_twist_received": false,
+  "complete_phone_PCBA_received": false,
+  "manufacturing_go": false
+}

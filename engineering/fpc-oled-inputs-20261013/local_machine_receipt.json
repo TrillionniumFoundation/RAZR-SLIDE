@@ -1,0 +1,47 @@
+{
+  "date_UTC": "2026-10-13T04:25:29.056727+00:00",
+  "host": "bb50ac791cbc",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "python": "3.12.14",
+  "checks": [
+    {
+      "name": "unit-tests",
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_bend_axis_sensitivity.py"
+      ],
+      "returncode": 0,
+      "log": "unit-tests-machine.log"
+    },
+    {
+      "name": "kinematic-screen",
+      "argv": [
+        "python",
+        "-B",
+        "bend_axis_sensitivity.py"
+      ],
+      "returncode": 0,
+      "log": "kinematic-screen-machine.log"
+    }
+  ],
+  "files_sha256": {
+    "README.md": "0d2f787f90c142201060fefcb8d3ff196954ff4cf2a9e26ca766fdcbc5f8a523",
+    "bend_axis_sensitivity.json": "3707a405fbc0a4955aee0f803f47a547a601214dc5d84c9609c98297999e4a8d",
+    "bend_axis_sensitivity.py": "f3bc2953f841a24e2e54238cd22a3857181f817d4ab650142764eb7ab611c73f",
+    "execution.log": "5a9ae022d79fe9ce310be6703feae3ec0408f3492b1c93117830d73e0676b51a",
+    "kinematic-screen-machine.log": "5a9ae022d79fe9ce310be6703feae3ec0408f3492b1c93117830d73e0676b51a",
+    "primary_source_facts.json": "36571cc7cbcdf7864c399ec85ab1c0169b94aef1c8057182cff51e8f678c8920",
+    "supplier_input_contract.json": "e135d33992200518db3e98830c7d7d34c4cb987b255d7ecc8834ee61cf814591",
+    "test_bend_axis_sensitivity.py": "03b58d8ab17339266db870ffaad9cbd177f0c537c6dd4be8b2805b250eba7f13",
+    "tests.log": "12c2bc834dc1fe0ca19e00648b38c3edca6cbd70a86860c9bcd4326b66f39771",
+    "unit-tests-machine.log": "12c2bc834dc1fe0ca19e00648b38c3edca6cbd70a86860c9bcd4326b66f39771"
+  },
+  "scope": "Research kinematic screen only; no new CAD or supplier qualification",
+  "actual_copper_fatigue_test": false,
+  "supplier_geometry_import": false,
+  "manufacturing_go": false
+}

@@ -1,0 +1,771 @@
+{
+  "schema": "razr-slide-architecture-terminal-netlist-v1",
+  "manufacturing_go": false,
+  "fabrication_netlist": false,
+  "schematic_ERC_completed": false,
+  "PCB_layout_exists": false,
+  "components": [
+    {
+      "ref": "U_A1",
+      "part_candidate": "TPS259470LRPW",
+      "candidate_condition": "actual operating voltage/current and fault-energy budget must fit; not selected",
+      "zone": "A_source_zone1",
+      "placement_xyz_mm": null,
+      "pins": {
+        "1": {
+          "name": "EN/UVLO",
+          "net": "U_A1_EN"
+        },
+        "2": {
+          "name": "OVLO",
+          "net": "U_A1_OVLO"
+        },
+        "3": {
+          "name": "AUXOFF",
+          "net": null,
+          "disposition": "unconnected; not used for shared safety enables"
+        },
+        "4": {
+          "name": "FLT",
+          "net": "U_A1_FLT"
+        },
+        "5": {
+          "name": "IN",
+          "net": "A_PACK_P"
+        },
+        "6": {
+          "name": "OUT",
+          "net": "A_MID_P"
+        },
+        "7": {
+          "name": "DVDT",
+          "net": "U_A1_DVDT"
+        },
+        "8": {
+          "name": "GND",
+          "net": "A_PACK_N"
+        },
+        "9": {
+          "name": "ILM",
+          "net": "U_A1_ILM"
+        },
+        "10": {
+          "name": "ITIMER",
+          "net": null,
+          "disposition": "open, shortest blanking; actual fault energy unverified"
+        }
+      },
+      "external_components": {
+        "EN_default_off_pulldown_ohm": null,
+        "EN_gate_independent_driver": null,
+        "OVLO_divider_ohm": [
+          null,
+          null
+        ],
+        "ILM_R_ohm": null,
+        "DVDT_C_F": null,
+        "input_C_F": null,
+        "output_C_F": null,
+        "FLT_pullup_rail_V": null,
+        "FLT_pullup_ohm": null
+      }
+    },
+    {
+      "ref": "U_A2",
+      "part_candidate": "TPS259470LRPW",
+      "candidate_condition": "actual operating voltage/current and fault-energy budget must fit; not selected",
+      "zone": "A_harness_launch_zone2",
+      "placement_xyz_mm": null,
+      "pins": {
+        "1": {
+          "name": "EN/UVLO",
+          "net": "U_A2_EN"
+        },
+        "2": {
+          "name": "OVLO",
+          "net": "U_A2_OVLO"
+        },
+        "3": {
+          "name": "AUXOFF",
+          "net": null,
+          "disposition": "unconnected; not used for shared safety enables"
+        },
+        "4": {
+          "name": "FLT",
+          "net": "U_A2_FLT"
+        },
+        "5": {
+          "name": "IN",
+          "net": "A_MID_P"
+        },
+        "6": {
+          "name": "OUT",
+          "net": "A_TX_P"
+        },
+        "7": {
+          "name": "DVDT",
+          "net": "U_A2_DVDT"
+        },
+        "8": {
+          "name": "GND",
+          "net": "A_PACK_N"
+        },
+        "9": {
+          "name": "ILM",
+          "net": "U_A2_ILM"
+        },
+        "10": {
+          "name": "ITIMER",
+          "net": null,
+          "disposition": "open, shortest blanking; actual fault energy unverified"
+        }
+      },
+      "external_components": {
+        "EN_default_off_pulldown_ohm": null,
+        "EN_gate_independent_driver": null,
+        "OVLO_divider_ohm": [
+          null,
+          null
+        ],
+        "ILM_R_ohm": null,
+        "DVDT_C_F": null,
+        "input_C_F": null,
+        "output_C_F": null,
+        "FLT_pullup_rail_V": null,
+        "FLT_pullup_ohm": null
+      }
+    },
+    {
+      "ref": "U_ARX",
+      "part_candidate": "TPS259470LRPW",
+      "candidate_condition": "actual operating voltage/current and fault-energy budget must fit; not selected",
+      "zone": "B_A_harness_receiver",
+      "placement_xyz_mm": null,
+      "pins": {
+        "1": {
+          "name": "EN/UVLO",
+          "net": "U_ARX_EN"
+        },
+        "2": {
+          "name": "OVLO",
+          "net": "U_ARX_OVLO"
+        },
+        "3": {
+          "name": "AUXOFF",
+          "net": null,
+          "disposition": "unconnected; not used for shared safety enables"
+        },
+        "4": {
+          "name": "FLT",
+          "net": "U_ARX_FLT"
+        },
+        "5": {
+          "name": "IN",
+          "net": "A_RX_P"
+        },
+        "6": {
+          "name": "OUT",
+          "net": "SYS_B_P"
+        },
+        "7": {
+          "name": "DVDT",
+          "net": "U_ARX_DVDT"
+        },
+        "8": {
+          "name": "GND",
+          "net": "B_PACK_N"
+        },
+        "9": {
+          "name": "ILM",
+          "net": "U_ARX_ILM"
+        },
+        "10": {
+          "name": "ITIMER",
+          "net": null,
+          "disposition": "open, shortest blanking; actual fault energy unverified"
+        }
+      },
+      "external_components": {
+        "EN_default_off_pulldown_ohm": null,
+        "EN_gate_independent_driver": null,
+        "OVLO_divider_ohm": [
+          null,
+          null
+        ],
+        "ILM_R_ohm": null,
+        "DVDT_C_F": null,
+        "input_C_F": null,
+        "output_C_F": null,
+        "FLT_pullup_rail_V": null,
+        "FLT_pullup_ohm": null
+      }
+    },
+    {
+      "ref": "U_B1",
+      "part_candidate": "TPS259470LRPW",
+      "candidate_condition": "actual operating voltage/current and fault-energy budget must fit; not selected",
+      "zone": "B_source_zone1",
+      "placement_xyz_mm": null,
+      "pins": {
+        "1": {
+          "name": "EN/UVLO",
+          "net": "U_B1_EN"
+        },
+        "2": {
+          "name": "OVLO",
+          "net": "U_B1_OVLO"
+        },
+        "3": {
+          "name": "AUXOFF",
+          "net": null,
+          "disposition": "unconnected; not used for shared safety enables"
+        },
+        "4": {
+          "name": "FLT",
+          "net": "U_B1_FLT"
+        },
+        "5": {
+          "name": "IN",
+          "net": "B_PACK_P"
+        },
+        "6": {
+          "name": "OUT",
+          "net": "B_MID_P"
+        },
+        "7": {
+          "name": "DVDT",
+          "net": "U_B1_DVDT"
+        },
+        "8": {
+          "name": "GND",
+          "net": "B_PACK_N"
+        },
+        "9": {
+          "name": "ILM",
+          "net": "U_B1_ILM"
+        },
+        "10": {
+          "name": "ITIMER",
+          "net": null,
+          "disposition": "open, shortest blanking; actual fault energy unverified"
+        }
+      },
+      "external_components": {
+        "EN_default_off_pulldown_ohm": null,
+        "EN_gate_independent_driver": null,
+        "OVLO_divider_ohm": [
+          null,
+          null
+        ],
+        "ILM_R_ohm": null,
+        "DVDT_C_F": null,
+        "input_C_F": null,
+        "output_C_F": null,
+        "FLT_pullup_rail_V": null,
+        "FLT_pullup_ohm": null
+      }
+    },
+    {
+      "ref": "U_B2",
+      "part_candidate": "TPS259470LRPW",
+      "candidate_condition": "actual operating voltage/current and fault-energy budget must fit; not selected",
+      "zone": "B_source_zone2",
+      "placement_xyz_mm": null,
+      "pins": {
+        "1": {
+          "name": "EN/UVLO",
+          "net": "U_B2_EN"
+        },
+        "2": {
+          "name": "OVLO",
+          "net": "U_B2_OVLO"
+        },
+        "3": {
+          "name": "AUXOFF",
+          "net": null,
+          "disposition": "unconnected; not used for shared safety enables"
+        },
+        "4": {
+          "name": "FLT",
+          "net": "U_B2_FLT"
+        },
+        "5": {
+          "name": "IN",
+          "net": "B_MID_P"
+        },
+        "6": {
+          "name": "OUT",
+          "net": "SYS_B_P"
+        },
+        "7": {
+          "name": "DVDT",
+          "net": "U_B2_DVDT"
+        },
+        "8": {
+          "name": "GND",
+          "net": "B_PACK_N"
+        },
+        "9": {
+          "name": "ILM",
+          "net": "U_B2_ILM"
+        },
+        "10": {
+          "name": "ITIMER",
+          "net": null,
+          "disposition": "open, shortest blanking; actual fault energy unverified"
+        }
+      },
+      "external_components": {
+        "EN_default_off_pulldown_ohm": null,
+        "EN_gate_independent_driver": null,
+        "OVLO_divider_ohm": [
+          null,
+          null
+        ],
+        "ILM_R_ohm": null,
+        "DVDT_C_F": null,
+        "input_C_F": null,
+        "output_C_F": null,
+        "FLT_pullup_rail_V": null,
+        "FLT_pullup_ohm": null
+      }
+    },
+    {
+      "ref": "U_VBUS",
+      "part_candidate": "TPS259470LRPW",
+      "candidate_condition": "actual operating voltage/current and fault-energy budget must fit; not selected",
+      "zone": "B_USB_sink_zone",
+      "placement_xyz_mm": null,
+      "pins": {
+        "1": {
+          "name": "EN/UVLO",
+          "net": "U_VBUS_EN"
+        },
+        "2": {
+          "name": "OVLO",
+          "net": "U_VBUS_OVLO"
+        },
+        "3": {
+          "name": "AUXOFF",
+          "net": null,
+          "disposition": "unconnected; not used for shared safety enables"
+        },
+        "4": {
+          "name": "FLT",
+          "net": "U_VBUS_FLT"
+        },
+        "5": {
+          "name": "IN",
+          "net": "USB_VBUS_PORT"
+        },
+        "6": {
+          "name": "OUT",
+          "net": "CHARGE_BUS_B"
+        },
+        "7": {
+          "name": "DVDT",
+          "net": "U_VBUS_DVDT"
+        },
+        "8": {
+          "name": "GND",
+          "net": "USB_GND"
+        },
+        "9": {
+          "name": "ILM",
+          "net": "U_VBUS_ILM"
+        },
+        "10": {
+          "name": "ITIMER",
+          "net": null,
+          "disposition": "open, shortest blanking; actual fault energy unverified"
+        }
+      },
+      "external_components": {
+        "EN_default_off_pulldown_ohm": null,
+        "EN_gate_independent_driver": null,
+        "OVLO_divider_ohm": [
+          null,
+          null
+        ],
+        "ILM_R_ohm": null,
+        "DVDT_C_F": null,
+        "input_C_F": null,
+        "output_C_F": null,
+        "FLT_pullup_rail_V": null,
+        "FLT_pullup_ohm": null
+      }
+    },
+    {
+      "ref": "U_CHA_TX",
+      "part_candidate": "TPS259470LRPW",
+      "candidate_condition": "actual operating voltage/current and fault-energy budget must fit; not selected",
+      "zone": "B_charge_harness_launch",
+      "placement_xyz_mm": null,
+      "pins": {
+        "1": {
+          "name": "EN/UVLO",
+          "net": "U_CHA_TX_EN"
+        },
+        "2": {
+          "name": "OVLO",
+          "net": "U_CHA_TX_OVLO"
+        },
+        "3": {
+          "name": "AUXOFF",
+          "net": null,
+          "disposition": "unconnected; not used for shared safety enables"
+        },
+        "4": {
+          "name": "FLT",
+          "net": "U_CHA_TX_FLT"
+        },
+        "5": {
+          "name": "IN",
+          "net": "CHARGE_BUS_B"
+        },
+        "6": {
+          "name": "OUT",
+          "net": "A_CHARGE_TX"
+        },
+        "7": {
+          "name": "DVDT",
+          "net": "U_CHA_TX_DVDT"
+        },
+        "8": {
+          "name": "GND",
+          "net": "USB_GND"
+        },
+        "9": {
+          "name": "ILM",
+          "net": "U_CHA_TX_ILM"
+        },
+        "10": {
+          "name": "ITIMER",
+          "net": null,
+          "disposition": "open, shortest blanking; actual fault energy unverified"
+        }
+      },
+      "external_components": {
+        "EN_default_off_pulldown_ohm": null,
+        "EN_gate_independent_driver": null,
+        "OVLO_divider_ohm": [
+          null,
+          null
+        ],
+        "ILM_R_ohm": null,
+        "DVDT_C_F": null,
+        "input_C_F": null,
+        "output_C_F": null,
+        "FLT_pullup_rail_V": null,
+        "FLT_pullup_ohm": null
+      }
+    },
+    {
+      "ref": "U_CHA_RX",
+      "part_candidate": "TPS259470LRPW",
+      "candidate_condition": "actual operating voltage/current and fault-energy budget must fit; not selected",
+      "zone": "A_charge_receiver",
+      "placement_xyz_mm": null,
+      "pins": {
+        "1": {
+          "name": "EN/UVLO",
+          "net": "U_CHA_RX_EN"
+        },
+        "2": {
+          "name": "OVLO",
+          "net": "U_CHA_RX_OVLO"
+        },
+        "3": {
+          "name": "AUXOFF",
+          "net": null,
+          "disposition": "unconnected; not used for shared safety enables"
+        },
+        "4": {
+          "name": "FLT",
+          "net": "U_CHA_RX_FLT"
+        },
+        "5": {
+          "name": "IN",
+          "net": "A_CHARGE_RX"
+        },
+        "6": {
+          "name": "OUT",
+          "net": "CHARGER_A_VIN"
+        },
+        "7": {
+          "name": "DVDT",
+          "net": "U_CHA_RX_DVDT"
+        },
+        "8": {
+          "name": "GND",
+          "net": "A_PACK_N"
+        },
+        "9": {
+          "name": "ILM",
+          "net": "U_CHA_RX_ILM"
+        },
+        "10": {
+          "name": "ITIMER",
+          "net": null,
+          "disposition": "open, shortest blanking; actual fault energy unverified"
+        }
+      },
+      "external_components": {
+        "EN_default_off_pulldown_ohm": null,
+        "EN_gate_independent_driver": null,
+        "OVLO_divider_ohm": [
+          null,
+          null
+        ],
+        "ILM_R_ohm": null,
+        "DVDT_C_F": null,
+        "input_C_F": null,
+        "output_C_F": null,
+        "FLT_pullup_rail_V": null,
+        "FLT_pullup_ohm": null
+      }
+    },
+    {
+      "ref": "U_USB2_HOST",
+      "conditional_part_candidate": "TMUXHS221F",
+      "only_if": "actual chosen USB2 subsection voltage/SI is compatible; not entire USB implementation",
+      "zone": "host-side termination after incoming vulnerable harness",
+      "placement_xyz_mm": null,
+      "pins": {
+        "1": {
+          "name": "D+",
+          "net": "H_USB_DP_HOSTEND"
+        },
+        "2": {
+          "name": "D-",
+          "net": "H_USB_DM_HOSTEND"
+        },
+        "3": {
+          "name": "GND",
+          "net": "USB_GND"
+        },
+        "4": {
+          "name": "D1-",
+          "net": "OEM_HOST_DM_NULL"
+        },
+        "5": {
+          "name": "D1+",
+          "net": "OEM_HOST_DP_NULL"
+        },
+        "6": {
+          "name": "D2-",
+          "net": null,
+          "disposition": "unused port"
+        },
+        "7": {
+          "name": "D2+",
+          "net": null,
+          "disposition": "unused port"
+        },
+        "8": {
+          "name": "OEn",
+          "net": "USB2_FAULT_DISABLE"
+        },
+        "9": {
+          "name": "VCC",
+          "net": "USB_SWITCH_VCC_NULL"
+        },
+        "10": {
+          "name": "SEL",
+          "net": "USB2_SELECT_D1"
+        }
+      },
+      "external_components": {
+        "OE_pullup_default_off_ohm": null,
+        "SEL_pulldown_ohm": null,
+        "supply_bypass_F": null,
+        "shield_bonding": null
+      },
+      "OEM_HOST_DP_DM_pin_numbers": null,
+      "SI_qualified": false
+    }
+  ],
+  "pack_modules": {
+    "A": {
+      "cell_part": null,
+      "cell_count": null,
+      "BMS_part": null,
+      "BQ297xx_conditional_one_cell_example_only": true,
+      "CELL_P_and_CELL_N_exported_to_interconnect_PCB": false,
+      "protected_external_terminals": [
+        "A_PACK_P",
+        "A_PACK_N"
+      ],
+      "fuse_part": null,
+      "fuse_coordination": null,
+      "CELL_N_to_chassis_shield_ground_allowed": false,
+      "measured_qualified": false
+    },
+    "B": {
+      "cell_part": null,
+      "cell_count": null,
+      "BMS_part": null,
+      "BQ297xx_conditional_one_cell_example_only": true,
+      "CELL_P_and_CELL_N_exported_to_interconnect_PCB": false,
+      "protected_external_terminals": [
+        "B_PACK_P",
+        "B_PACK_N"
+      ],
+      "fuse_part": null,
+      "fuse_coordination": null,
+      "CELL_N_to_chassis_shield_ground_allowed": false,
+      "measured_qualified": false
+    }
+  },
+  "harnesses": [
+    {
+      "id": "H_POWER_A",
+      "physical_conductors": [
+        "A_TX_P -> A_RX_P",
+        "A_PACK_N -> B_PACK_N dedicated return"
+      ],
+      "static_connector_parts": [
+        null,
+        null
+      ],
+      "repeated_motion_mating": false,
+      "copper_continuous_all_motion_required": true,
+      "dynamic_specification": null
+    },
+    {
+      "id": "H_CHARGE_A",
+      "physical_conductors": [
+        "A_CHARGE_TX -> A_CHARGE_RX",
+        "USB_GND -> A_PACK_N dedicated charge return"
+      ],
+      "static_connector_parts": [
+        null,
+        null
+      ],
+      "repeated_motion_mating": false,
+      "copper_continuous_all_motion_required": true,
+      "dynamic_specification": null
+    },
+    {
+      "id": "H_USB",
+      "physical_conductors": null,
+      "pair_count": null,
+      "pinout": null,
+      "rate": null,
+      "copper_continuous_all_motion_required": true,
+      "reference": "USB_GND, distinct routing; system-side bond not raw CELL_N",
+      "shield_bonding": null,
+      "all_motion_fault_free_data_switch_state": "ON, never DOCK_ONLY",
+      "qualified": false
+    },
+    {
+      "id": "H_SIGNAL",
+      "connector_candidate": "BM28 static pair only",
+      "pinout": null,
+      "raw_battery_or_USB_highspeed_allowed": false,
+      "powered_off_IO_clamp_model": null
+    }
+  ],
+  "chargers": {
+    "A": {
+      "part": null,
+      "BQ25622_candidate_only_if_one_cell_and_VIN_3p9_to_18V": true,
+      "VIN": "CHARGER_A_VIN",
+      "BAT": "A_PACK_P",
+      "GND": "A_PACK_N",
+      "SYS": "A_CHARGER_SYS_LOCAL",
+      "SYS_direct_to_SYS_B_P_allowed": false,
+      "charging_setpoints": null,
+      "inductor_and_capacitors": null,
+      "OTG_role_selected": null,
+      "physical_pinout": null
+    },
+    "B": {
+      "part": null,
+      "BQ25622_candidate_only_if_one_cell_and_VIN_3p9_to_18V": true,
+      "VIN": "CHARGE_BUS_B",
+      "BAT": "B_PACK_P",
+      "GND": "B_PACK_N",
+      "SYS": "B_CHARGER_SYS_LOCAL",
+      "SYS_direct_to_SYS_B_P_allowed": false,
+      "charging_setpoints": null,
+      "inductor_and_capacitors": null,
+      "OTG_role_selected": null,
+      "physical_pinout": null
+    }
+  },
+  "source_OTG_path": {
+    "regulator_part": null,
+    "cut_part": null,
+    "output_net": "USB_VBUS_PORT",
+    "reverse_oriented_sink_cut_as_source_usable": false,
+    "implementation_closed": false
+  },
+  "hazardous_energy_nodes": [
+    "A_TX_P",
+    "A_RX_P",
+    "A_CHARGE_TX",
+    "A_CHARGE_RX",
+    "USB_VBUS_PORT",
+    "SYS_B_P"
+  ],
+  "physical_design_rules": [
+    {
+      "id": "RAW_CELL_BOUNDARY",
+      "rule": "raw CELL_P/N confined to separate pack module; no final harness pad copper on same raw-cell zone",
+      "coordinates_mm": null,
+      "verified": false
+    },
+    {
+      "id": "FINAL_LAUNCH",
+      "rule": "no pre-U_A2 or pre-U_CHA_TX rail routed beneath/adjacent to corresponding final harness launch",
+      "required_clearance_mm": null,
+      "verified": false
+    },
+    {
+      "id": "RETURN_REFERENCE",
+      "rule": "pack-local low-side protection may only export PACK_N; USB/signal/shield/chassis must never bypass to CELL_N",
+      "actual_bond_matrix": null,
+      "verified": false
+    },
+    {
+      "id": "CUT_INDEPENDENCE",
+      "rule": "separate default-OFF controls and downstream voltage measurements; no shared AUXOFF or firmware-only release",
+      "driver_parts": null,
+      "verified": false
+    },
+    {
+      "id": "CAPACITOR_DISCHARGE",
+      "rule": "sense actual downstream voltage; dimension bleed against capacitance and all leakage/source paths",
+      "bleed_part": null,
+      "safe_voltage_V": null,
+      "verified": false
+    }
+  ],
+  "missing_for_schematic_and_layout": [
+    "cell/OEM ports",
+    "pack protectors/FETs/fuses",
+    "charger selection and supporting circuit",
+    "actual USB topology/rate",
+    "regulated OTG path",
+    "voltage sensing and independent gate hardware",
+    "all component values",
+    "PCB footprint and coordinates",
+    "physical separation and insulation",
+    "full dynamic harness pinout",
+    "real fault-energy/thermal/USB tests"
+  ],
+  "return_fault_hardware": {
+    "sensor_part": null,
+    "measurement": "A forward and dedicated return currents, separately sensed at launch; compare imbalance",
+    "trip_current_A": null,
+    "worst_case_latency_s": null,
+    "independent_cutpoint": "U_A2 before A_TX_P harness launch",
+    "reverse_source_cutpoint": "U_ARX at B termination",
+    "cut_driver_part": null,
+    "fault_return_conductor_thermal_energy_limit_J": null,
+    "charge_feed_action": "independently command U_CHA_TX and U_CHA_RX OFF if fault includes charge path",
+    "USB_reference_stays_connected_until_its_own_fault_policy_requires_shutdown": true,
+    "physical_implementation_verified": false
+  }
+}

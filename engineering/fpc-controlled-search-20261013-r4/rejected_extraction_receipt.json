@@ -1,0 +1,10 @@
+{
+  "command": "audit_primary_inputs.py --raw-dir vendor-inputs-r4/fpc-controlled --receipt download_receipt.json --baseline R66_vendor_CAD_provenance.json --out input_audit.json",
+  "actual_native_exit_code": 1,
+  "error": "ValueError: unconfirmed XML length units",
+  "reason": "Initial own extractor looked for units on CadData; actual IPC-2581 source puts units=MILLIMETER on CadHeader and DictionaryStandard.",
+  "rejected_source_saved": "REJECTED_CadData_units_assumption.py",
+  "vendor_file_changed": false,
+  "fix": "Read actual CadHeader units; require explicit MILLIMETER before calculation.",
+  "manufacturing_go": false
+}

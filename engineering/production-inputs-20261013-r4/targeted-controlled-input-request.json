@@ -1,0 +1,69 @@
+{
+  "schema": "razr-slide-targeted-actual-oem-input-request-r4-v1",
+  "contact_status": "READY_NOT_SENT",
+  "sent_messages_or_forms": 0,
+  "orders_placed": 0,
+  "NDA_acceptances": 0,
+  "source_family_clues": {
+    "software_panel_family": "CSOT 697 1224x2992 DSC command mode",
+    "software_DDIC_variants": [
+      "NT37707",
+      "NT37707A"
+    ],
+    "software_main_touch_compatible": "goodix,gt9916P",
+    "actual_orderable_module_part": null,
+    "actual_assembly_or_silicon_revision": null,
+    "actual_donor_panel_ID": null,
+    "actual_donor_board_and_region": null,
+    "a_software_filename_is_not_the_factory_module_BOM": true
+  },
+  "fixed_motion_and_envelope": {
+    "equal_finished_A_B_envelopes": true,
+    "single_about_7inch_OLED": true,
+    "B_slide_mm": 79.75,
+    "B_normal_seat_mm": 8.2,
+    "A_large_battery_priority": true,
+    "A_capacity_hardware_qualified": false,
+    "system_capacity_engineering_target_mAh": 4700,
+    "A_capacity_mAh": null,
+    "B_capacity_mAh": null,
+    "system_capacity_hardware_qualified": false
+  },
+  "minimum_first_response": [
+    {
+      "owner": "Motorola / CSOT full display module",
+      "request": "Map one real module label, lot and revision to the NT37707/NT37707A software variant and touch revision; return full native module mechanical drawing with touch, DDIC/COF, seal, FPC, fixed-tail, connector/no-bend keep-outs and assembly datums. Provide controlled pin map and electrical supply/current/inrush/timing limits for that same module. The software 67x164 integers and regulator votes are insufficient."
+    },
+    {
+      "owner": "CSOT dynamic use qualification",
+      "request": "For the exact module, confirm rolling direction and allowed material transport, radius/tension/pressure/twist, flat-storage and dwell behavior through the project 79.75mm slide plus 8.2mm seating. Supply matching qualification conditions and optical/touch/seal criteria/results; fold-only product-category cycle claims cannot qualify this motion."
+    },
+    {
+      "owner": "Novatek / Goodix via the controlled module design owner",
+      "request": "Supply the applicable NT37707/NT37707A and GT9916P package/COF/bump or pad geometry, pin/function diagram, power sequencing and initialization/firmware revision compatibility. Do not substitute GT9912V, GT911 or a generic NT377xx document."
+    },
+    {
+      "owner": "Motorola exact donor architecture",
+      "official_key_component_request_entry_already_identified": "SVCPE@lenovo.com from original Level 3 manual page 52; no message sent",
+      "request": "Provide matching native board/assembly CAD and full electrical schematic/netlist/board interface for the actual model suffix/region/revision, and resolve the software battery ID map versus service-BOM part identities. A runtime GPIO address cannot be assigned to an OEM connector terminal without this mapping."
+    },
+    {
+      "owner": "Project dynamic FPC manufacturing owner",
+      "request": "After real module and donor mapping are frozen, approve independently routed signal, USB, A/B discharge and A/B charge artwork/stackup/material stations and static BM28 endpoint clamps. Approve actual transported copper curvature/twist and dynamic USB/power test conditions. OEM panel FPC/COF and the new cross-cabin carrier must be identified separately."
+    }
+  ],
+  "direct_public_download_closed_only": [
+    "Exact immutable OEM software configuration files"
+  ],
+  "direct_public_download_not_closed": [
+    "Factory orderable full-module identity",
+    "Full native module/assembly MCAD",
+    "Complete native manufacturing ECAD",
+    "Controlled project FPC artwork/stackup",
+    "Module-specific dynamic rolling permission and qualifications"
+  ],
+  "hardware_qualification_performed": false,
+  "manufacturing_go": false,
+  "supersedes": "engineering/controlled-input-recovery-20261013-r3/targeted-controlled-input-request.json",
+  "correction": "R3 accidentally assigned the system 4700mAh goal to A alone; A remains the larger-battery priority with no qualified capacity."
+}

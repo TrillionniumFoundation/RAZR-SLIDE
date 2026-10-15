@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/qian-qi/Documents/Codex/RAZR_SLIDE_WORK_20261013/endpoint_pcba_r2_v3/engineering/endpoint-pcba-design-20261013-r2/verify_native_pcba_v7.py", line 77, in <module>
+    assert sha(stale)==sha(native_schematic_svg)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+The obsolete schematic preview and newly exported schematic contain different creation dates. Comparing their full hashes for equality was an incorrect cleanup precondition. The final verifier identifies the obsolete engine descriptor, retains that file, and separately checks that actual board and actual schematic SVG files exist and differ.

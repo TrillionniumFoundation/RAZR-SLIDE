@@ -1,0 +1,65 @@
+{
+  "schema": "razr-slide-minimal-controlled-source-requests-r2-v1",
+  "contact_status": "READY_NOT_SENT",
+  "outgoing_contact_attempts": 0,
+  "orders_placed": 0,
+  "NDA_acceptances": 0,
+  "supplier_response_received": false,
+  "fixed_product": {
+    "equal_finished_cabin_envelopes": true,
+    "single_about_7inch_flexible_OLED": true,
+    "B_upward_slide_mm": 79.75,
+    "B_normal_seat_mm": 8.2,
+    "A_larger_battery_priority": true,
+    "qualified_project_capacity_mAh": null
+  },
+  "requests": [
+    {
+      "source_owner": "Motorola / Lenovo for exact donor identity",
+      "official_entry": "https://en-us.support.motorola.com/app/product_support/p/12208/motorola_razr_ultra_-_2025",
+      "official_key_schematic_contact_from_L3_page52": "SVCPE@lenovo.com",
+      "actual_donor_suffix": null,
+      "actual_main_and_USB_board_revision": null,
+      "actual_device_and_battery_label_receipt": null,
+      "minimum_first_response": [
+        "Match device suffix, sales region, main-board and USB-board revision to a controlled regional service BOM; do not alias XT2551-1/-2/-3/-5/-6.",
+        "Confirm permission and permitted deliverables for the RAZR SLIDE engineering use; public repair access does not grant modified-product manufacturing rights.",
+        "Provide native mechanical keep-outs/datums and exact board, battery, main/display-FPC terminal drawings, and full key-component schematic/netlist or explicitly state unavailable."
+      ],
+      "hard_block_if_unavailable": "Cannot freeze the actual two-cabin donor interface, battery envelopes, OEM board interconnect and controlled native assembly."
+    },
+    {
+      "source_owner": "Chosen OLED module vendor",
+      "chosen_released_project_module_part": null,
+      "chosen_released_project_revision": null,
+      "minimum_first_response": [
+        "Offer an orderable about-7-inch full touch/DDIC/COF/seal/FPC module and exact revision, with controlled native outline and local thickness limits.",
+        "Resolve the recovered drawing-versus-body pin/rail/touch discrepancies for any offered SKU before pin assignment enters PCB.",
+        "Confirm dynamic rolling permission for the project material transport, bend direction, minimum permitted radius, tension, pressure and twist; fixed-curvature or fold-only permission is insufficient.",
+        "Provide matching module samples and supplier qualification conditions/results, including post-motion optical/seal/touch criteria and dwell/flat-storage behavior; distinguish sample availability from production qualification."
+      ],
+      "hard_block_if_unavailable": "Cannot freeze panel geometry, PCB interface, support geometry or dynamic OLED qualification."
+    },
+    {
+      "source_owner": "Chosen dynamic FPC manufacturer",
+      "chosen_supplier_and_controlled_artwork_revision": null,
+      "baseline_motion_and_material_inputs": [
+        "engineering/fpc-oled-inputs-20261013/bend_axis_sensitivity.json",
+        "engineering/fpc-oled-inputs-20261013/supplier_input_contract.json"
+      ],
+      "minimum_first_response": [
+        "For signal, USB, each pack discharge and each pack charge path, approve artwork/netlist, stackup, copper type/grain/layer thickness, coverlay/adhesive/shield and physical terminal/clamp/stiffener drawings.",
+        "Approve transported material-station curvature and twist through full S79.75/Q8.2 motion, or propose a corrected manufacturable route using the same product envelope.",
+        "Return allowable current/temperature and actual dynamic continuity/insulation/crack and USB impedance/eye qualification conditions for the same revision, with samples traceable to those files."
+      ],
+      "hard_block_if_unavailable": "Cannot derive actual copper strain/fatigue, independent protected cable geometry or whole-motion USB/power qualification."
+    }
+  ],
+  "public_downloads_do_not_close": [
+    "Native OEM CAD/ECAD and actual donor identity",
+    "Chosen fully specified dynamic OLED module",
+    "Project-specific dynamic FPC stackup and artwork",
+    "Real assembly and hardware tests"
+  ],
+  "manufacturing_go": false
+}

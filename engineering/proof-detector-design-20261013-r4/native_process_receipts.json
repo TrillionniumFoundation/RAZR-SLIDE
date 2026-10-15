@@ -1,0 +1,183 @@
+{
+  "native_v1": {
+    "at_unix_ms": 1791883319586,
+    "cancelled": false,
+    "exit_code": 0,
+    "job_id": "1a134919423-1f807d-a1f",
+    "log_bytes": {
+      "stderr": {
+        "seen": 0,
+        "stored": 0
+      },
+      "stdout": {
+        "seen": 422,
+        "stored": 422
+      }
+    },
+    "log_errors": {
+      "stderr": null,
+      "stdout": null
+    },
+    "log_truncated": {
+      "stderr": false,
+      "stdout": false
+    },
+    "output_complete": true,
+    "state": "succeeded",
+    "timed_out": false
+  },
+  "native_v1_stdout": "{\"native_success\": true, \"rows\": [{\"operation\": \"version\", \"exit\": 0}, {\"operation\": \"netlist\", \"exit\": 0}, {\"operation\": \"svg\", \"exit\": 0}, {\"operation\": \"ERC\", \"exit\": 0}, {\"operation\": \"model\", \"exit\": 0}], \"ERC_counts\": {}, \"native_pins\": 200, \"expected_pins\": 200, \"native_outputs_bytes\": 326335, \"native_outputs_sha256\": \"9605357cc6a6bf0f3f544d52590f232c6b165a69999f66b0517a853f7d06d343\", \"manufacturing_go\": false}\n",
+  "native_v2": {
+    "at_unix_ms": 1791883612023,
+    "cancelled": false,
+    "exit_code": 0,
+    "job_id": "1a134960ab5-1f807d-a28",
+    "log_bytes": {
+      "stderr": {
+        "seen": 0,
+        "stored": 0
+      },
+      "stdout": {
+        "seen": 422,
+        "stored": 422
+      }
+    },
+    "log_errors": {
+      "stderr": null,
+      "stdout": null
+    },
+    "log_truncated": {
+      "stderr": false,
+      "stdout": false
+    },
+    "output_complete": true,
+    "state": "succeeded",
+    "timed_out": false
+  },
+  "native_v2_stdout": "{\"native_success\": true, \"rows\": [{\"operation\": \"version\", \"exit\": 0}, {\"operation\": \"netlist\", \"exit\": 0}, {\"operation\": \"svg\", \"exit\": 0}, {\"operation\": \"ERC\", \"exit\": 0}, {\"operation\": \"model\", \"exit\": 0}], \"ERC_counts\": {}, \"native_pins\": 219, \"expected_pins\": 219, \"native_outputs_bytes\": 353928, \"native_outputs_sha256\": \"4209ae23fff1b1065243cb65dfc19738a59caa9c6bcc535424152f6a5fa277e7\", \"manufacturing_go\": false}\n",
+  "native_v2_launch": {
+    "job": {
+      "args": [
+        "-c",
+        "python3 - <<'PY'\nfrom pathlib import Path\nimport hashlib,tarfile,subprocess\np=Path('/home/alex/RAZR-SLIDE-kicad9-erc-runtime-20261013-r2/proof-detector-r4-v2')\nf=p/'native_inputs.tar.gz'\nassert hashlib.sha256(f.read_bytes()).hexdigest()=='e35b3e554e2c3ca1567af478f636a24a1474852814605278d496024504a899eb'\nwith tarfile.open(f) as t:t.extractall(p,filter='data')\nr=subprocess.run(['python3',str(p/'native_runner.py')],cwd=p)\nraise SystemExit(r.returncode)\nPY"
+      ],
+      "created_unix_ms": 1791883610805,
+      "cwd": null,
+      "env_keys": [],
+      "executable": "/bin/sh",
+      "execution_mode": "operator",
+      "host": "pocket4",
+      "id": "1a134960ab5-1f807d-a28",
+      "idempotency_key": "razr-proof-r4-v2-native-20261013-1",
+      "launch_error": null,
+      "launch_state": "launched",
+      "remote_job_dir": "/home/alex/.local/state/hepta-runtime-operator-host/jobs/1a134960ab5-1f807d-a28",
+      "request_digest": "3e3c20b697e0a0a7b2c63ba4dea4aec424a5f630dbcb5f21319e0a25c047ac67",
+      "request_fingerprint": 4484495297558388700,
+      "ssh_target": "pocket4",
+      "system_jobctl": false,
+      "unit": "hepta-runtime-job-1a134960ab5-1f807d-a28"
+    },
+    "launch": {
+      "backend": "systemd",
+      "launcher_pid": null,
+      "ok": true,
+      "unit": "hepta-runtime-job-1a134960ab5-1f807d-a28"
+    },
+    "reused": false
+  },
+  "native_v1_archive_reads": [
+    {
+      "offset": 0,
+      "version": "66306:34480589:326335:1791883319535692113:1791883319535692113",
+      "size": 326335,
+      "chunk_sha256": "2e84c6951af20f0f3fe9d85ccb51355b04815c02094fefdd7ba9e91684800c78",
+      "next_offset": 65536,
+      "eof": false
+    },
+    {
+      "offset": 65536,
+      "version": "66306:34480589:326335:1791883319535692113:1791883319535692113",
+      "size": 326335,
+      "chunk_sha256": "f3db4712fb5be701abefa9467fc1c11f97400a1e0bcd95a70ccd297de3380cd7",
+      "next_offset": 131072,
+      "eof": false
+    },
+    {
+      "offset": 131072,
+      "version": "66306:34480589:326335:1791883319535692113:1791883319535692113",
+      "size": 326335,
+      "chunk_sha256": "d28b494f32f5a3166c2171e8a6f60a63c3a541ad21c92c1b56f2f0527ccb4c1c",
+      "next_offset": 196608,
+      "eof": false
+    },
+    {
+      "offset": 196608,
+      "version": "66306:34480589:326335:1791883319535692113:1791883319535692113",
+      "size": 326335,
+      "chunk_sha256": "2697335ddc485850752b9a0a54e82522d5206bf6c84050f899188cb39ecaa7bf",
+      "next_offset": 262144,
+      "eof": false
+    },
+    {
+      "offset": 262144,
+      "version": "66306:34480589:326335:1791883319535692113:1791883319535692113",
+      "size": 326335,
+      "chunk_sha256": "98e4fcf469f33c81bbfadd68d5698aa245a55cd22876e22ab37930f8c285a1e6",
+      "next_offset": 326335,
+      "eof": true
+    }
+  ],
+  "native_v2_archive_reads": [
+    {
+      "offset": 0,
+      "version": "66306:34480681:353928:1791883611985013563:1791883611985013563",
+      "size": 353928,
+      "chunk_sha256": "5faa9fdf9ef673d8c561bdfe20f840998beb5ffb40d6f2af2a5560594e816959",
+      "next_offset": 65536,
+      "eof": false
+    },
+    {
+      "offset": 65536,
+      "version": "66306:34480681:353928:1791883611985013563:1791883611985013563",
+      "size": 353928,
+      "chunk_sha256": "bb4f30a5ac69dcbdb30d6f4fe73a8695065779e2ffb1ba7fbb30ad7686757ec6",
+      "next_offset": 131072,
+      "eof": false
+    },
+    {
+      "offset": 131072,
+      "version": "66306:34480681:353928:1791883611985013563:1791883611985013563",
+      "size": 353928,
+      "chunk_sha256": "c55eb4dbd418f852612b267415093bbcc6a4355027f19f14deb20db30c97ed62",
+      "next_offset": 196608,
+      "eof": false
+    },
+    {
+      "offset": 196608,
+      "version": "66306:34480681:353928:1791883611985013563:1791883611985013563",
+      "size": 353928,
+      "chunk_sha256": "dd0d861e2239919c4d66663596abc8ca1fb0d97091ba4085e1a0d97edba9efeb",
+      "next_offset": 262144,
+      "eof": false
+    },
+    {
+      "offset": 262144,
+      "version": "66306:34480681:353928:1791883611985013563:1791883611985013563",
+      "size": 353928,
+      "chunk_sha256": "f4ae38d91ca1c6f0fda5ccffa0f0c037ab359010c81c7dd2817942de776df242",
+      "next_offset": 327680,
+      "eof": false
+    },
+    {
+      "offset": 327680,
+      "version": "66306:34480681:353928:1791883611985013563:1791883611985013563",
+      "size": 353928,
+      "chunk_sha256": "da872e222d39e6c1bc8ce19b868ad5f467f80720c83cda9d080b3f03b095ef49",
+      "next_offset": 353928,
+      "eof": true
+    }
+  ],
+  "vendor_get_job_id": "1a1349271cf-1f807d-a22",
+  "manufacturing_go": false
+}

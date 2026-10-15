@@ -1,0 +1,102 @@
+{
+  "host": "cloud",
+  "actual_native_exits_observed": true,
+  "executions": [
+    {
+      "scope": "guard_tests",
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_strict_intersections"
+      ],
+      "native_exit_code": 0,
+      "log": "strict-guard-tests.log",
+      "log_sha256": "efe0dc75a2a7ad83c36a751ca63359f59e5b7b084c15629d34d80ea7df9bf4ba"
+    },
+    {
+      "scope": "full_motion",
+      "command": [
+        "python",
+        "-B",
+        "cad_motion_audit.py",
+        "--minimal-source",
+        "--cache",
+        "/workspace/scratch/522038b915ed/work-cad/r45-safe-cache",
+        "--out",
+        "."
+      ],
+      "native_exit_code": 0,
+      "log": "strict-motion-native.log",
+      "log_sha256": "528c74b70fd8a05177bb77cbf08297cd5bbb01e217efcc4c48f710613d79099e"
+    },
+    {
+      "scope": "real_OCC_witnesses",
+      "command": [
+        "python",
+        "-B",
+        "record_occ_witnesses.py"
+      ],
+      "native_exit_code": 0,
+      "log": "real-occ-witnesses-native.log",
+      "log_sha256": "cfcccebecb194e98fabac5cef13699e6c7c788098d039f9eade5a9736bbeebd8"
+    },
+    {
+      "scope": "full_STEP_payload_tests",
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_full_step_payload"
+      ],
+      "native_exit_code": 0,
+      "log": "full-step-payload-tests.log",
+      "log_sha256": "03a38334b8538ee3b50ddfaf694ccb9382db255808e998b1bc1b0065e63af0d8"
+    },
+    {
+      "scope": "full_STEP_payload",
+      "command": [
+        "python",
+        "-B",
+        "verify_step_payload.py"
+      ],
+      "native_exit_code": 0,
+      "log": "full-step-payload-native.log",
+      "log_sha256": "e0f65b44321182d3431dbd4b75da07b4c88138119b34304872edda72068d01f1"
+    },
+    {
+      "scope": "numeric_comparison",
+      "command": [
+        "python",
+        "-B",
+        "compare_reports.py"
+      ],
+      "native_exit_code": 0,
+      "log": "previous-numeric-comparison-native.log",
+      "log_sha256": "0e7d9e371aa5ac50d0243f7289983a597783d98a7b4c499e6ccd08b3e2bf2fc3"
+    },
+    {
+      "scope": "rejected_initial_alias_test_fixture",
+      "native_exit_code": 1,
+      "log": "REJECTED_alias_test_exact_float_fixture.log",
+      "reason": "The unit-cube Compound and Solid differed at 1e-16 mm3, so the exact-equal alias bypass fixture was not the intended witness. Changed to actual box(1,2,3) exact 6.0 mm3; direct-child guard remains unchanged.",
+      "log_sha256": "bf60e675b92d993866027e6868abda732b5ba1ea44c1299dcf3daf8d2b3062d2"
+    }
+  ],
+  "source_files_sha256": {
+    "cad_motion_audit.py": "2ffe870a88c3265b39814d2037b12de896dc8fd723e1e252bef36f249722bfdb",
+    "compare_reports.py": "5d804d398a9714792cb546f2a00c9553859233e78dfb0535b47332246d3d339f",
+    "occ_signed_volume.py": "5c227c88574ebb651a25736d9e320d23d0cbf1422cfffb02917694bd541c77b8",
+    "prepare_inputs.py": "9cc667f334ca2d3936c8b57ac8b5149dabc809586c3e650e2fb00674ea0687c6",
+    "record_occ_witnesses.py": "3a5e09d659b64740dec1915fbff38c214dc39fd4740c6aab832d3c8578b16c60",
+    "strict_intersections.py": "e373a6764c81004575bba804d9d4a42431c52896641334719b1c6ef597e23b89",
+    "test_full_step_payload.py": "1e59effa3550b25dc6c2e91bb9e8f5fa6e6d136525dc148b50d73d6127bd5363",
+    "test_strict_intersections.py": "4e810ca6142d94c04b8167168fe5f8862af5d91529e7474178305af7dbca5e86",
+    "verify_step_payload.py": "1b4563eb9b81fca8ac64b816a5037b09815cf85516016d2b9ba07e4e4f508861"
+  },
+  "manufacturing_go": false
+}

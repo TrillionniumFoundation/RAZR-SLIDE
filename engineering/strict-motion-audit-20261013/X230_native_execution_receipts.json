@@ -1,0 +1,42 @@
+{
+  "host": "x230",
+  "package_sha256": "40b125c43d982da6e9aa152c2ac0ff651ea837b0ada75fdb7624c587f9858f0e",
+  "input_hashes_unchanged": true,
+  "input_paths_count": 252,
+  "results": [
+    {
+      "command": [
+        "/home/qian/RAZR-SLIDE-work-20261013/cad-venv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_strict_intersections"
+      ],
+      "native_exit_code": 0,
+      "elapsed_s": 3.0229008197784424,
+      "log_sha256": "25d33c9c9dae00674f4e6d2ecfd1481774832e8d25629cc2139f8245a2392c98",
+      "log_path": "/home/qian/RAZR-SLIDE-work-20261013/strict-motion-20261013/output/strict-guard-native.log"
+    },
+    {
+      "command": [
+        "/home/qian/RAZR-SLIDE-work-20261013/cad-venv/bin/python",
+        "-B",
+        "cad_motion_audit.py",
+        "--minimal-source",
+        "--cache",
+        "/home/qian/RAZR-SLIDE-work-20261013/cad-review/sources",
+        "--prior",
+        "/home/qian/RAZR-SLIDE-work-20261013/strict-motion-20261013/prior-reference",
+        "--out",
+        "/home/qian/RAZR-SLIDE-work-20261013/strict-motion-20261013/output"
+      ],
+      "native_exit_code": 0,
+      "elapsed_s": 1066.2398388385773,
+      "log_sha256": "1eda30222a361314a92553de15ef2856febcedc6f2bcf8fdb50dc15a8b28bba8",
+      "log_path": "/home/qian/RAZR-SLIDE-work-20261013/strict-motion-20261013/output/strict-motion-native.log"
+    }
+  ],
+  "manufacturing_go": false,
+  "no_original_source_or_STEP_was_modified": true
+}

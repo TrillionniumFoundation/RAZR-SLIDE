@@ -1,0 +1,87 @@
+{
+  "schema": "razr-slide-fpc-coverlay-primary-facts-r5",
+  "sources": [
+    {
+      "id": "LF",
+      "url": "https://www.qnityelectronics.com/content/dam/electronics/amer/us/en/electronics/public/documents/en/EI-10118-Pyralux-LF-CL-Data-Sheet.pdf",
+      "author": "DuPont; publicly hosted by current manufacturer Qnity",
+      "document": "EI-10118 (10/22)",
+      "pages": 2,
+      "sha256": "e5472d2aacdb287ab74ec3e0bc942389af5d6ac7d762328f84132475cb7c391c",
+      "native_recovery": "download_readonly_recovery.json",
+      "facts": {
+        "LF7001_nominal_um": {
+          "adhesive": 13,
+          "polyimide": 13
+        },
+        "LF0110_nominal_um": {
+          "adhesive": 25,
+          "polyimide": 25
+        },
+        "LF0110_table_values_are_typical": true,
+        "adhesive_flow_mm": [
+          0.05,
+          0.1
+        ],
+        "adhesive_flow_is_finished_thickness_tolerance": false,
+        "finished_layer_tolerance_um": null,
+        "each_constituent_modulus_GPa": null,
+        "project_dynamic_fatigue_cycles": null
+      }
+    },
+    {
+      "id": "CURRENT_AC",
+      "url": "https://www.qnityelectronics.com/products/pyralux-ac-all-polyimide-single-sided-copper-clad-laminate.html",
+      "sha256": "bc62299c1ead95674646b25096d02672ff0c227a3a3fc3153e987e94c489eb91",
+      "prior_verified_HTTP_receipt": "../fpc-controlled-search-20261013-r4/RA_laminate_recovery.json",
+      "facts": {
+        "AC181200RY": {
+          "RA_copper_um": 18,
+          "polyimide_um": 12
+        },
+        "AC182500RY": {
+          "RA_copper_um": 18,
+          "polyimide_um": 25
+        },
+        "base_laminate_is_finished_FPC": false
+      }
+    },
+    {
+      "id": "LEGACY_AC",
+      "url": "https://www.epectec.com/downloads/DuPont-Pyralux-AC-Data-Sheet.pdf",
+      "author": "DuPont manufacturer-authored document, distributor mirror",
+      "document": "Rev. 03/24/09; H-73247 04/09",
+      "pages": 3,
+      "sha256": "e687510b7efee3078d8ff91f0f9515075321d46161ef32dfd0f32deeb62bc518",
+      "facts": {
+        "product_codes_are_legacy_R_not_current_RY": true,
+        "reported_tensile_modulus_MPa": 7580,
+        "reported_modulus_is_individual_copper_or_adhesive_modulus": false,
+        "not_current_project_controlled_specification": true
+      }
+    },
+    {
+      "id": "GATEMA",
+      "url": "https://www.gatema.com/wp-content/uploads/2023/08/design-rules-rigidflex-outer.pdf",
+      "pages": 13,
+      "web_PDF_read": true,
+      "native_raw_file_recovered": false,
+      "native_sha256": null,
+      "facts": {
+        "manufacturer_rigid_flex_rules_are_project_dynamic_qualification": false,
+        "listed_AP8525R_nominal_um": {
+          "polyimide": 50,
+          "copper_each": 18
+        },
+        "listed_LF0110_nominal_um": {
+          "polyimide": 25,
+          "adhesive": 25
+        },
+        "project_selected": false
+      }
+    }
+  ],
+  "finished_stackup_selected": false,
+  "actual_project_material_qualified": false,
+  "manufacturing_go": false
+}

@@ -1,0 +1,43 @@
+{
+  "manufacturing_go": false,
+  "native_schematic_terminal_objects": 143,
+  "datasheet_mapped_IC_physical_pins": 70,
+  "generic_passive_and_bench_port_terminal_objects": 73,
+  "all_143_objects_are_supplier_selected_phone_terminals": false,
+  "generic_terminal_numbering": "owned research R/C/port symbol IDs; no supplier footprint or exact physical part selected",
+  "shunt": {
+    "selected_supplier_part": null,
+    "schematic_power_sense_electrical_node_pairs": 2,
+    "actual_Kelvin_shunt_four_pad_map": null,
+    "two_node_symbol_does_not_prove_four_pad_PCB_routing": true,
+    "sense_wires_are_local_only_and_open_self_diagnosis_unqualified": true
+  },
+  "default_low_controls": {
+    "healthy_output_wire_open": "conditional DC pulled-low coverage at receiving input",
+    "PGOOD_wire_open": "synthetic leakage/resistor DC screen only",
+    "driver_to_EN_open": "conditional local EN pulldown coverage",
+    "EN_driver_short_HIGH": "not closed",
+    "PREn_short_LOW": "not closed, can force Q high",
+    "CLEARn_short_HIGH": "not closed",
+    "sensor_Kelvin_open": "not closed",
+    "sensor_outputs_stuck_matching": "not closed",
+    "power_brownout_phantom_feed": "not closed",
+    "eFuse_weld_or_PCB_bypass": "not closed"
+  },
+  "partial_offset_screen_SYNTHETIC_SHUNT_ONLY": {
+    "INA240A1_gain_datasheet": 20,
+    "shunt_ohm_synthetic_only": 0.01,
+    "two_INA_offsets_each_25uV_at_25C_A_sum": 0.005,
+    "one_TLV3202_6mV_full_temperature_offset_referred_to_current_A": 0.03,
+    "screen_formula": "pair current sense offset / Rs; comparator output offset / (gain * Rs)",
+    "not_a_complete_error_bound": true,
+    "missing": ["temperature drift", "shunt tolerance/drift", "gain error/drift", "CMRR and actual input CM", "PSRR and actual supply", "reference and matched resistor errors", "comparator hysteresis", "noise/transients", "saturation/recovery", "charge ground currents"]
+  },
+  "native_SVG_visual_review": "Inkscape native SVG raster at 3364px inspected: 47 symbols, same-page net labels, page border and research title fully present; not physical assembly or PCB review",
+  "phone_PCB": false,
+  "fabrication_go": false,
+  "SPICE_device_transient_qualification": false,
+  "physical_current_fault_injection": false,
+  "controlled_OEM_PMIH0104_terminal_map": false,
+  "raw_vendor_documents_redistributed": false
+}

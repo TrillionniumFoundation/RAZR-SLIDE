@@ -1,0 +1,48 @@
+{
+  "native_commands": [
+    {
+      "command": "python endpoint_relocation.py > native.stdout.log 2> native.stderr.log",
+      "exit_code": 0,
+      "source_receipt": "native_receipt.json"
+    },
+    {
+      "command": "python verify_endpoint_exports.py > independent.stdout.log 2> independent.stderr.log",
+      "exit_code": 0,
+      "source_receipt": "independent_STEP_verification.json"
+    },
+    {
+      "command": "python corner_bay_followup.py > followup.stdout.log 2> followup.stderr.log",
+      "exit_code": 0,
+      "source_receipt": "corner_bay_followup_receipt.json"
+    },
+    {
+      "command": "python mini_mount_reposition.py > reposition.stdout.log 2> reposition.stderr.log",
+      "exit_code": 0,
+      "source_receipt": "mini_mount_reposition_receipt.json"
+    },
+    {
+      "command": "python verify_followup_exports.py > independent_followup.stdout.log 2> independent_followup.stderr.log",
+      "exit_code": 0,
+      "source_receipt": "independent_followup_verification.json"
+    },
+    {
+      "command": "python verify_path_exports.py > independent_path.stdout.log 2> independent_path.stderr.log",
+      "exit_code": 1,
+      "source_receipt": "REJECTED_path_length_assertion_v1/failure_status.json",
+      "version": "preserved_v1"
+    },
+    {
+      "command": "python verify_path_exports.py > independent_path.stdout.log 2> independent_path.stderr.log",
+      "exit_code": 0,
+      "source_receipt": "independent_path_verification.json",
+      "version": "all_outcomes_recorded_gate_still_failed"
+    },
+    {
+      "command": "python measure_step_path_length_precision.py > length_precision.stdout.log 2> length_precision.stderr.log",
+      "exit_code": 0,
+      "source_receipt": "path_length_precision_probe.json"
+    }
+  ],
+  "native_zero_is_not_route_qualification": true,
+  "manufacturing_go": false
+}

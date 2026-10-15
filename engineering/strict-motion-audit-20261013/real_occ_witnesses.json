@@ -1,0 +1,272 @@
+{
+  "environment": {
+    "python": "3.12.14",
+    "cadquery": "2.7.0"
+  },
+  "strict_guard_sha256": "e373a6764c81004575bba804d9d4a42431c52896641334719b1c6ef597e23b89",
+  "source_sha256": "3a5e09d659b64740dec1915fbff38c214dc39fd4740c6aab832d3c8578b16c60",
+  "rows": [
+    {
+      "label": "reversed_far_body",
+      "a": {
+        "isValid": true,
+        "shape_type": "Solid",
+        "solid_count": 1,
+        "raw_signed_volume_mm3": 0.9999999999999998
+      },
+      "b": {
+        "isValid": true,
+        "shape_type": "Solid",
+        "solid_count": 1,
+        "raw_signed_volume_mm3": -0.9999999999999998
+      },
+      "strict_guard_outcome": "rejected",
+      "rejection_reason": "Input has nonpositive signed volume"
+    },
+    {
+      "label": "valid_wire_positive_Volume_is_not_solid",
+      "a": {
+        "isValid": true,
+        "shape_type": "Solid",
+        "solid_count": 1,
+        "raw_signed_volume_mm3": 0.9999999999999998
+      },
+      "b": {
+        "isValid": true,
+        "shape_type": "Wire",
+        "solid_count": 0,
+        "raw_signed_volume_mm3": 4.0
+      },
+      "strict_guard_outcome": "rejected",
+      "rejection_reason": "Input must contain one valid solid"
+    },
+    {
+      "label": "repeated_existing_wire_same_topology_count_and_exact_volume",
+      "a": {
+        "isValid": true,
+        "shape_type": "Solid",
+        "solid_count": 1,
+        "raw_signed_volume_mm3": 0.9999999999999998
+      },
+      "b": {
+        "isValid": true,
+        "shape_type": "Compound",
+        "solid_count": 1,
+        "raw_signed_volume_mm3": 6.0
+      },
+      "strict_guard_outcome": "rejected",
+      "rejection_reason": "Single-solid Compound contains extra direct children"
+    },
+    {
+      "label": "real_negative_common_about_minus_1e_minus15",
+      "a": {
+        "isValid": true,
+        "shape_type": "Solid",
+        "solid_count": 1,
+        "raw_signed_volume_mm3": -1.0000000000000003e-15
+      },
+      "b": {
+        "isValid": true,
+        "shape_type": "Solid",
+        "solid_count": 1,
+        "raw_signed_volume_mm3": 1.0000000000000003e-15
+      },
+      "direct_unguarded_OCC_common_witness": {
+        "isValid": true,
+        "shape_type": "Compound",
+        "solid_count": 1,
+        "raw_signed_volume_mm3": -1.0000000000000003e-15
+      },
+      "negative_witness_has_reversed_input_and_does_not_assert_normal_inputs_produce_negative_common": true,
+      "strict_guard_outcome": "rejected",
+      "rejection_reason": "Input has nonpositive signed volume"
+    },
+    {
+      "label": "exact_face_touch_zero_common_no_positive_clearance",
+      "a": {
+        "isValid": true,
+        "shape_type": "Solid",
+        "solid_count": 1,
+        "raw_signed_volume_mm3": 0.9999999999999998
+      },
+      "b": {
+        "isValid": true,
+        "shape_type": "Solid",
+        "solid_count": 1,
+        "raw_signed_volume_mm3": 0.9999999999999998
+      },
+      "strict_result": {
+        "method": "OCC_common_with_signed_volume_and_upper_bound_checks",
+        "a": {
+          "shape_type": "Solid",
+          "valid_single_solid": true,
+          "pure_single_solid_compound_wrapper": false,
+          "signed_volume_mm3": 0.9999999999999998,
+          "bounds_mm": {
+            "xmin": -0.5,
+            "xmax": 0.5,
+            "ymin": -0.5,
+            "ymax": 0.5,
+            "zmin": -0.5,
+            "zmax": 0.5
+          }
+        },
+        "b": {
+          "shape_type": "Solid",
+          "valid_single_solid": true,
+          "pure_single_solid_compound_wrapper": false,
+          "signed_volume_mm3": 0.9999999999999998,
+          "bounds_mm": {
+            "xmin": 0.5,
+            "xmax": 1.5,
+            "ymin": -0.5,
+            "ymax": 0.5,
+            "zmin": -0.5,
+            "zmax": 0.5
+          }
+        },
+        "signed_axis_separations_mm": {
+          "x": 0.0,
+          "y": -1.0,
+          "z": -1.0
+        },
+        "OCC_boolean_was_run": true,
+        "raw_signed_volume_mm3": 0.0,
+        "checked_volume_mm3": 0.0,
+        "cell_volume_mm3": 0.9999999999999998,
+        "body_volume_mm3": 0.9999999999999998,
+        "absolute_numeric_tolerance_mm3": 1e-07,
+        "checks_performed": "valid solid inputs; finite, strictly nonnegative raw common; participating-solid upper bound",
+        "negative_raw_value_is_never_clamped_to_clearance": true
+      },
+      "strict_guard_outcome": "accepted"
+    },
+    {
+      "label": "kernel_zero_for_subtolerance_1e_minus8_overlap",
+      "a": {
+        "isValid": true,
+        "shape_type": "Solid",
+        "solid_count": 1,
+        "raw_signed_volume_mm3": 0.9999999999999998
+      },
+      "b": {
+        "isValid": true,
+        "shape_type": "Solid",
+        "solid_count": 1,
+        "raw_signed_volume_mm3": 0.9999999999999999
+      },
+      "strict_result": {
+        "method": "OCC_common_with_signed_volume_and_upper_bound_checks",
+        "a": {
+          "shape_type": "Solid",
+          "valid_single_solid": true,
+          "pure_single_solid_compound_wrapper": false,
+          "signed_volume_mm3": 0.9999999999999998,
+          "bounds_mm": {
+            "xmin": -0.5,
+            "xmax": 0.5,
+            "ymin": -0.5,
+            "ymax": 0.5,
+            "zmin": -0.5,
+            "zmax": 0.5
+          }
+        },
+        "b": {
+          "shape_type": "Solid",
+          "valid_single_solid": true,
+          "pure_single_solid_compound_wrapper": false,
+          "signed_volume_mm3": 0.9999999999999999,
+          "bounds_mm": {
+            "xmin": 0.49999998999999995,
+            "xmax": 1.49999999,
+            "ymin": -0.5,
+            "ymax": 0.5,
+            "zmin": -0.5,
+            "zmax": 0.5
+          }
+        },
+        "signed_axis_separations_mm": {
+          "x": -1.0000000050247593e-08,
+          "y": -1.0,
+          "z": -1.0
+        },
+        "OCC_boolean_was_run": true,
+        "raw_signed_volume_mm3": 0.0,
+        "checked_volume_mm3": 0.0,
+        "cell_volume_mm3": 0.9999999999999998,
+        "body_volume_mm3": 0.9999999999999999,
+        "absolute_numeric_tolerance_mm3": 1e-07,
+        "checks_performed": "valid solid inputs; finite, strictly nonnegative raw common; participating-solid upper bound",
+        "negative_raw_value_is_never_clamped_to_clearance": true
+      },
+      "strict_guard_outcome": "accepted",
+      "independent_axis_interval_overlap_mm": 1.0000000050247593e-08,
+      "independent_analytic_box_common_volume_mm3": 1.0000000050247593e-08,
+      "observed_kernel_volume_mm3": 0.0,
+      "qualification_status": "UNCERTAIN_KERNEL_ZERO_FOR_REAL_SUBTOLERANCE_OVERLAP",
+      "signed_guard_does_not_detect_this_real_overlap": true
+    },
+    {
+      "label": "resolved_1e_minus6_overlap",
+      "a": {
+        "isValid": true,
+        "shape_type": "Solid",
+        "solid_count": 1,
+        "raw_signed_volume_mm3": 0.9999999999999998
+      },
+      "b": {
+        "isValid": true,
+        "shape_type": "Solid",
+        "solid_count": 1,
+        "raw_signed_volume_mm3": 0.9999999999999998
+      },
+      "strict_result": {
+        "method": "OCC_common_with_signed_volume_and_upper_bound_checks",
+        "a": {
+          "shape_type": "Solid",
+          "valid_single_solid": true,
+          "pure_single_solid_compound_wrapper": false,
+          "signed_volume_mm3": 0.9999999999999998,
+          "bounds_mm": {
+            "xmin": -0.5,
+            "xmax": 0.5,
+            "ymin": -0.5,
+            "ymax": 0.5,
+            "zmin": -0.5,
+            "zmax": 0.5
+          }
+        },
+        "b": {
+          "shape_type": "Solid",
+          "valid_single_solid": true,
+          "pure_single_solid_compound_wrapper": false,
+          "signed_volume_mm3": 0.9999999999999998,
+          "bounds_mm": {
+            "xmin": 0.49999899999999997,
+            "xmax": 1.4999989999999999,
+            "ymin": -0.5,
+            "ymax": 0.5,
+            "zmin": -0.5,
+            "zmax": 0.5
+          }
+        },
+        "signed_axis_separations_mm": {
+          "x": -1.0000000000287557e-06,
+          "y": -1.0,
+          "z": -1.0
+        },
+        "OCC_boolean_was_run": true,
+        "raw_signed_volume_mm3": 1.0000000000287557e-06,
+        "checked_volume_mm3": 1.0000000000287557e-06,
+        "cell_volume_mm3": 0.9999999999999998,
+        "body_volume_mm3": 0.9999999999999998,
+        "absolute_numeric_tolerance_mm3": 1e-07,
+        "checks_performed": "valid solid inputs; finite, strictly nonnegative raw common; participating-solid upper bound",
+        "negative_raw_value_is_never_clamped_to_clearance": true
+      },
+      "strict_guard_outcome": "accepted"
+    }
+  ],
+  "manufacturing_go": false,
+  "zero_OCC_volume_is_not_subtolerance_no_contact_or_positive_clearance": true
+}

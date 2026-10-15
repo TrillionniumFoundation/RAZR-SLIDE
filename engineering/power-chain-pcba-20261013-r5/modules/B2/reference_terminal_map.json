@@ -1,0 +1,256 @@
+{
+  "schema": "single-cut-reference-r4",
+  "manufacturing_go": false,
+  "phone_complete_PCB": false,
+  "circuit_role": "B2 independent optically controlled source/receiver cut bench reference",
+  "package_copper": "nominal L copper extents from RPW0010A, overlapping same-number pads",
+  "package_deviations": [
+    "square rather than R0.05 copper corners",
+    "full-area paste rather than TI 82/93 percent example; requires stencil review"
+  ],
+  "bench_conditions": {
+    "input_V": [
+      3.4,
+      4.4
+    ],
+    "external_enable_V": null,
+    "load_current_qualified_A": null,
+    "R_B2_ILM_ohm": 2210,
+    "nominal_ILIM_A": 1.5085972850678733,
+    "device_tolerance_ILIM_fraction": 0.1,
+    "C_dvdt_F": 1e-08,
+    "nominal_slew_V_per_ms": 0.2,
+    "R_EN_default_off_ohm": 47000,
+    "cell_voltage_or_current_frozen": false,
+    "ambient_condition_C": 25,
+    "maximum_assumed_load_A": 1,
+    "external_optocoupler_LED_driver_V": [
+      3.135,
+      3.465
+    ]
+  },
+  "unimplemented": [
+    "real cell/pack protection/OEM pin mapping",
+    "independent B battery source discharge and charge path",
+    "complete dualpack charging/OR/USB/OTG implementation",
+    "automatic fault-proof hardware driving the four isolated LED inputs",
+    "forward/return imbalance diagnosis and finite fault energy",
+    "thermal/current rating and transient waveforms on the assembled boards/harness",
+    "manufacturer land/stencil/DFM and physical crimp/assembly tests"
+  ],
+  "components": [
+    {
+      "ref": "U1",
+      "part": "TPS259470LRPW",
+      "value": "TPS259470LRPW",
+      "nets": [
+        "B2_BENCH_EN",
+        "B_SYS_N",
+        null,
+        "B2_FLT",
+        "A_RX_MID_P",
+        "SYS_B_P",
+        "B2_DVDT",
+        "B_SYS_N",
+        "B2_ILM",
+        null
+      ],
+      "x_mm": 100,
+      "y_mm": 100,
+      "footprint": "RPW0010A_OWNED_NOMINAL"
+    },
+    {
+      "ref": "R1",
+      "part": "R",
+      "value": "ERJ6ENF4702V",
+      "nets": [
+        "B2_BENCH_EN",
+        "B_SYS_N"
+      ],
+      "x_mm": 96,
+      "y_mm": 98,
+      "footprint": "Passive_0805_Vertical_BENCH"
+    },
+    {
+      "ref": "R2",
+      "part": "R",
+      "value": "ERJ6ENF2211V",
+      "nets": [
+        "B2_ILM",
+        "B_SYS_N"
+      ],
+      "x_mm": 104,
+      "y_mm": 98.5,
+      "footprint": "Passive_0805_BENCH"
+    },
+    {
+      "ref": "R3",
+      "part": "R",
+      "value": "ERJ6ENF1003V",
+      "nets": [
+        "B2_FLT",
+        "A_RX_MID_P"
+      ],
+      "x_mm": 96,
+      "y_mm": 102,
+      "footprint": "Passive_0805_BENCH"
+    },
+    {
+      "ref": "C1",
+      "part": "C",
+      "value": "C2012X7R1H105K125AB",
+      "nets": [
+        "A_RX_MID_P",
+        "B_SYS_N"
+      ],
+      "x_mm": 100,
+      "y_mm": 95,
+      "footprint": "Passive_0805_BENCH"
+    },
+    {
+      "ref": "C2",
+      "part": "C",
+      "value": "C2012X7R1H105K125AB",
+      "nets": [
+        "SYS_B_P",
+        "B_SYS_N"
+      ],
+      "x_mm": 104,
+      "y_mm": 104,
+      "footprint": "Passive_0805_BENCH"
+    },
+    {
+      "ref": "C3",
+      "part": "C",
+      "value": "C0805C103J5GACTU",
+      "nets": [
+        "B2_DVDT",
+        "B_SYS_N"
+      ],
+      "x_mm": 104,
+      "y_mm": 101.5,
+      "footprint": "Passive_0805_BENCH"
+    },
+    {
+      "ref": "C4",
+      "part": "C",
+      "value": "C2012X7R1H105K125AB",
+      "nets": [
+        "SYS_B_P",
+        "B_SYS_N"
+      ],
+      "x_mm": 104,
+      "y_mm": 108,
+      "footprint": "Passive_0805_BENCH"
+    },
+    {
+      "ref": "U2",
+      "part": "VOS618A-8X001T",
+      "value": "VOS618A-8X001T",
+      "nets": [
+        "B2_ISO_LED_A",
+        "B2_ISO_LED_N",
+        "B2_BENCH_EN",
+        "A_RX_MID_P"
+      ],
+      "x_mm": 81.625,
+      "y_mm": 98,
+      "footprint": "VOS618A_OWNED_DATASHEET"
+    },
+    {
+      "ref": "R4",
+      "part": "R",
+      "value": "ERJ6ENF1501V",
+      "nets": [
+        "B2_ISO_LED_P",
+        "B2_ISO_LED_A"
+      ],
+      "x_mm": 75,
+      "y_mm": 94.5,
+      "footprint": "Passive_0805_BENCH"
+    },
+    {
+      "ref": "D1",
+      "part": "SMBJ5.0CA-E3/52",
+      "value": "SMBJ5.0CA-E3/52",
+      "nets": [
+        "A_RX_MID_P",
+        "B_SYS_N"
+      ],
+      "x_mm": 104,
+      "y_mm": 91,
+      "footprint": "SMB_OWNED_NOMINAL"
+    },
+    {
+      "ref": "D2",
+      "part": "PMEG3050EP",
+      "value": "PMEG3050EP",
+      "nets": [
+        "SYS_B_P",
+        "B_SYS_N"
+      ],
+      "x_mm": 110,
+      "y_mm": 100,
+      "footprint": "SOD128_OWNED_NOMINAL"
+    },
+    {
+      "ref": "J1",
+      "part": "StageSupply2",
+      "value": "B2B-PH-K-S(LF)(SN)",
+      "nets": [
+        "A_RX_MID_P",
+        "B_SYS_N"
+      ],
+      "x_mm": 90,
+      "y_mm": 94,
+      "footprint": "PH2_OWNED_VERTICAL_IN"
+    },
+    {
+      "ref": "J2",
+      "part": "PORT2",
+      "value": "B2B-PH-K-S(LF)(SN)",
+      "nets": [
+        "SYS_B_P",
+        "B_SYS_N"
+      ],
+      "x_mm": 110,
+      "y_mm": 106,
+      "footprint": "PH2_OWNED_VERTICAL_OUT"
+    },
+    {
+      "ref": "J3",
+      "part": "PORT2",
+      "value": "B2B-PH-K-S(LF)(SN)",
+      "nets": [
+        "B2_ISO_LED_P",
+        "B2_ISO_LED_N"
+      ],
+      "x_mm": 73,
+      "y_mm": 92,
+      "footprint": "PH2_OWNED_HORIZONTAL"
+    },
+    {
+      "ref": "TP1",
+      "part": "Probe",
+      "value": "B2_FLT_HIGH_Z_ISOLATED_INSTRUMENT_ONLY",
+      "nets": [
+        "B2_FLT"
+      ],
+      "x_mm": 90,
+      "y_mm": 104,
+      "footprint": "Probe_1p8mm"
+    },
+    {
+      "ref": "TP2",
+      "part": "Probe",
+      "value": "REFERENCE_HIGH_Z_ISOLATED_INSTRUMENT_ONLY",
+      "nets": [
+        "B_SYS_N"
+      ],
+      "x_mm": 90,
+      "y_mm": 106,
+      "footprint": "Probe_1p8mm"
+    }
+  ],
+  "routing_segments": 68
+}

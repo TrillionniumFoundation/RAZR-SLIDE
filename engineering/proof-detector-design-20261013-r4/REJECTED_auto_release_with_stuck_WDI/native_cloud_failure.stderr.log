@@ -1,0 +1,45 @@
+test_auto_release_wdo_does_not_restore_stale_samples (__main__.TestDrawnCircuit.test_auto_release_wdo_does_not_restore_stale_samples) ... ok
+test_comparator_low_output_stuck_low_rejects (__main__.TestDrawnCircuit.test_comparator_low_output_stuck_low_rejects) ... ok
+test_constant_midpoint_rejects_low_phase (__main__.TestDrawnCircuit.test_constant_midpoint_rejects_low_phase) ... ok
+test_healthy_zero_main_load_permits_dry_loop (__main__.TestDrawnCircuit.test_healthy_zero_main_load_permits_dry_loop) ... ok
+test_lower_comparator_stuck_high_crosscheck_rejects (__main__.TestDrawnCircuit.test_lower_comparator_stuck_high_crosscheck_rejects) ... ok
+test_no_phase_credits_from_startup (__main__.TestDrawnCircuit.test_no_phase_credits_from_startup) ... ok
+test_one_sample_cannot_permit (__main__.TestDrawnCircuit.test_one_sample_cannot_permit) ... ok
+test_open_dry_loop_rejects (__main__.TestDrawnCircuit.test_open_dry_loop_rejects) ... ok
+test_preserve_fault_immediately_after_sample_latency (__main__.TestDrawnCircuit.test_preserve_fault_immediately_after_sample_latency) ... ok
+test_preserve_main_return_open_with_healthy_dry_loop (__main__.TestDrawnCircuit.test_preserve_main_return_open_with_healthy_dry_loop) ... ok
+test_preserve_matched_local_resistor_bridge_escape (__main__.TestDrawnCircuit.test_preserve_matched_local_resistor_bridge_escape) ... ok
+test_preserve_output_line_stuck_high_escape (__main__.TestDrawnCircuit.test_preserve_output_line_stuck_high_escape) ... ok
+test_preserve_upper_comparator_stuck_high_open_escape (__main__.TestDrawnCircuit.test_preserve_upper_comparator_stuck_high_open_escape) ... ok
+test_preserve_watchdog_output_stuck_high_clock_stop_escape (__main__.TestDrawnCircuit.test_preserve_watchdog_output_stuck_high_clock_stop_escape) ... ok
+test_reset_clears_samples_without_inventing_clock_edges (__main__.TestDrawnCircuit.test_reset_clears_samples_without_inventing_clock_edges) ... ok
+test_short_dry_loop_rejects (__main__.TestDrawnCircuit.test_short_dry_loop_rejects) ... ok
+test_static_rail_rejects_both_phases (__main__.TestDrawnCircuit.test_static_rail_rejects_both_phases) ... ok
+test_static_zero_rejects_high_phase (__main__.TestDrawnCircuit.test_static_zero_rejects_high_phase) ... ok
+test_stopped_high_phase_expires (__main__.TestDrawnCircuit.test_stopped_high_phase_expires) ... ok
+test_stopped_low_phase_expires (__main__.TestDrawnCircuit.test_stopped_low_phase_expires) ... ok
+test_watchdog_input_stuck_high_expires (__main__.TestDrawnCircuit.test_watchdog_input_stuck_high_expires) ... FAIL
+test_watchdog_input_stuck_low_expires (__main__.TestDrawnCircuit.test_watchdog_input_stuck_low_expires) ... FAIL
+
+======================================================================
+FAIL: test_watchdog_input_stuck_high_expires (__main__.TestDrawnCircuit.test_watchdog_input_stuck_high_expires)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/522038b915ed/production-audit/engineering/proof-detector-design-20261013-r4/REJECTED_auto_release_with_stuck_WDI/test_proof_model.py", line 32, in test_watchdog_input_stuck_high_expires
+    p=self.healthy();p.hb_forced=True;cycles(p,30);self.assertFalse(p.fresh)
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_watchdog_input_stuck_low_expires (__main__.TestDrawnCircuit.test_watchdog_input_stuck_low_expires)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/522038b915ed/production-audit/engineering/proof-detector-design-20261013-r4/REJECTED_auto_release_with_stuck_WDI/test_proof_model.py", line 34, in test_watchdog_input_stuck_low_expires
+    p=self.healthy();p.hb_forced=False;cycles(p,30);self.assertFalse(p.fresh)
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.001s
+
+FAILED (failures=2)

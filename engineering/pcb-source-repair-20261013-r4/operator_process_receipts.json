@@ -1,0 +1,542 @@
+[
+  {
+    "host": "pocket4",
+    "job_id": "1a13487239d-1f807d-a03",
+    "purpose": "Official TI downloads and EU 405",
+    "status": {
+      "at_unix_ms": 1791882665294,
+      "cancelled": false,
+      "exit_code": 0,
+      "job_id": "1a13487239d-1f807d-a03",
+      "log_bytes": {
+        "stderr": {
+          "seen": 0,
+          "stored": 0
+        },
+        "stdout": {
+          "seen": 656,
+          "stored": 656
+        }
+      },
+      "log_errors": {
+        "stderr": null,
+        "stdout": null
+      },
+      "log_truncated": {
+        "stderr": false,
+        "stdout": false
+      },
+      "output_complete": true,
+      "state": "succeeded",
+      "timed_out": false
+    },
+    "stdout": "{\"file\": \"EU_L3_V1.pdf\", \"error\": \"<HTTPError 405: 'Not Allowed'>\"}\n{\"file\": \"tps25947.pdf\", \"url\": \"https://www.ti.com/lit/ds/symlink/tps25947.pdf\", \"size\": 5316794, \"sha256\": \"8f96de389903091650d4f462dcfad3210071c3ae7093623a7978f34baf8a65b4\", \"header\": \"%PDF-1.4\"}\n{\"file\": \"tps25947evm.pdf\", \"url\": \"https://www.ti.com/lit/pdf/slvuc01\", \"size\": 3559350, \"sha256\": \"9b23d531a91db1370bab9fd02568d9ae6be5d2c64c93f1c9141b7ebb930e07e0\", \"header\": \"%PDF-1.4\"}\n{\"file\": \"tusb2e22.pdf\", \"url\": \"https://www.ti.com/lit/ds/symlink/tusb2e22.pdf\", \"size\": 1550349, \"sha256\": \"db4e4f1067257d650b3296d2de1068e8f2cb51ed1192a717abbcedb98bc81cfc\", \"header\": \"%PDF-1.4\"}\n",
+    "stderr": "",
+    "stdout_read_eof": true,
+    "stderr_read_eof": true
+  },
+  {
+    "host": "pocket4",
+    "job_id": "1a13488136b-1f807d-a06",
+    "purpose": "Default Python pcbnew absent",
+    "status": {
+      "at_unix_ms": 1791882696016,
+      "cancelled": false,
+      "exit_code": 0,
+      "job_id": "1a13488136b-1f807d-a06",
+      "log_bytes": {
+        "stderr": {
+          "seen": 0,
+          "stored": 0
+        },
+        "stdout": {
+          "seen": 48,
+          "stored": 48
+        }
+      },
+      "log_errors": {
+        "stderr": null,
+        "stdout": null
+      },
+      "log_truncated": {
+        "stderr": false,
+        "stdout": false
+      },
+      "output_complete": true,
+      "state": "succeeded",
+      "timed_out": false
+    },
+    "stdout": "ModuleNotFoundError(\"No module named 'pcbnew'\")\n",
+    "stderr": "",
+    "stdout_read_eof": true,
+    "stderr_read_eof": true
+  },
+  {
+    "host": "pocket4",
+    "job_id": "1a1348d5fdd-1f807d-a12",
+    "purpose": "Preflight missing env wx runtime",
+    "status": {
+      "at_unix_ms": 1791883043301,
+      "cancelled": false,
+      "exit_code": 127,
+      "job_id": "1a1348d5fdd-1f807d-a12",
+      "log_bytes": {
+        "stderr": {
+          "seen": 200,
+          "stored": 200
+        },
+        "stdout": {
+          "seen": 0,
+          "stored": 0
+        }
+      },
+      "log_errors": {
+        "stderr": null,
+        "stdout": null
+      },
+      "log_truncated": {
+        "stderr": false,
+        "stdout": false
+      },
+      "output_complete": true,
+      "state": "failed",
+      "timed_out": false
+    },
+    "stdout": "",
+    "stderr": "/home/alex/RAZR-SLIDE-kicad9-erc-runtime-20261013-r2/root/usr/bin/kicad-cli: error while loading shared libraries: libwx_gtk3u_core-3.2.so.0: cannot open shared object file: No such file or directory\n",
+    "stdout_read_eof": true,
+    "stderr_read_eof": true
+  },
+  {
+    "host": "pocket4",
+    "job_id": "1a1348de273-1f807d-a15",
+    "purpose": "V1 native9 ERC success and PCB missing OCC failure",
+    "status": {
+      "at_unix_ms": 1791883077219,
+      "cancelled": false,
+      "exit_code": 0,
+      "job_id": "1a1348de273-1f807d-a15",
+      "log_bytes": {
+        "stderr": {
+          "seen": 0,
+          "stored": 0
+        },
+        "stdout": {
+          "seen": 1574,
+          "stored": 1574
+        }
+      },
+      "log_errors": {
+        "stderr": null,
+        "stdout": null
+      },
+      "log_truncated": {
+        "stderr": false,
+        "stdout": false
+      },
+      "output_complete": true,
+      "state": "succeeded",
+      "timed_out": false
+    },
+    "stdout": "{\"argv\": [\"--version\"], \"returncode\": 0, \"stdout\": \"9.0.8\\n\", \"stderr\": \"\"}\n{\"argv\": [\"sch\", \"export\", \"netlist\", \"--format\", \"kicadxml\", \"--output\", \"native.xml\", \"cut_reference.kicad_sch\"], \"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}\n{\"argv\": [\"sch\", \"erc\", \"--format\", \"json\", \"--severity-all\", \"--exit-code-violations\", \"--output\", \"ERC.json\", \"cut_reference.kicad_sch\"], \"returncode\": 0, \"stdout\": \"Found 0 violations\\nSaved ERC Report to ERC.json\\n\", \"stderr\": \"\"}\n{\"argv\": [\"pcb\", \"drc\", \"--format\", \"json\", \"--severity-all\", \"--exit-code-violations\", \"--output\", \"DRC.json\", \"cut_reference.kicad_pcb\"], \"returncode\": 255, \"stdout\": \"\", \"stderr\": \"05:17:57 PM: Error: Failed to load shared library '/home/alex/RAZR-SLIDE-kicad9-erc-runtime-20261013-r2/root/usr/bin/_pcbnew.kiface': libTKBO.so.7.9: cannot open shared object file: No such file or directory\\n05:17:57 PM: Error: Failed to load kiface library '/home/alex/RAZR-SLIDE-kicad9-erc-runtime-20261013-r2/root/usr/bin/_pcbnew.kiface'.\\n\"}\n{\"argv\": [\"pcb\", \"drc\", \"--format\", \"json\", \"--severity-all\", \"--exit-code-violations\", \"--output\", \"REJECTED_DRC_missing_ILM_route.json\", \"REJECTED_missing_ILM_route.kicad_pcb\"], \"returncode\": 255, \"stdout\": \"\", \"stderr\": \"05:17:57 PM: Error: Failed to load shared library '/home/alex/RAZR-SLIDE-kicad9-erc-runtime-20261013-r2/root/usr/bin/_pcbnew.kiface': libTKBO.so.7.9: cannot open shared object file: No such file or directory\\n05:17:57 PM: Error: Failed to load kiface library '/home/alex/RAZR-SLIDE-kicad9-erc-runtime-20261013-r2/root/usr/bin/_pcbnew.kiface'.\\n\"}\n",
+    "stderr": "",
+    "stdout_read_eof": true,
+    "stderr_read_eof": true
+  },
+  {
+    "host": "pocket4",
+    "job_id": "1a1348ec7c6-1f807d-a16",
+    "purpose": "OCC dependency inventory",
+    "status": {
+      "at_unix_ms": 1791883135621,
+      "cancelled": false,
+      "exit_code": 0,
+      "job_id": "1a1348ec7c6-1f807d-a16",
+      "log_bytes": {
+        "stderr": {
+          "seen": 0,
+          "stored": 0
+        },
+        "stdout": {
+          "seen": 2240,
+          "stored": 2240
+        }
+      },
+      "log_errors": {
+        "stderr": null,
+        "stdout": null
+      },
+      "log_truncated": {
+        "stderr": false,
+        "stdout": false
+      },
+      "output_complete": true,
+      "state": "succeeded",
+      "timed_out": false
+    },
+    "stdout": "\tlibTKBO.so.7.9 => not found\n\tlibTKBRep.so.7.9 => not found\n\tlibTKCDF.so.7.9 => not found\n\tlibTKernel.so.7.9 => not found\n\tlibTKG3d.so.7.9 => not found\n\tlibTKGeomBase.so.7.9 => not found\n\tlibTKLCAF.so.7.9 => not found\n\tlibTKMath.so.7.9 => not found\n\tlibTKMesh.so.7.9 => not found\n\tlibTKPrim.so.7.9 => not found\n\tlibTKRWMesh.so.7.9 => not found\n\tlibTKShHealing.so.7.9 => not found\n\tlibTKTopAlgo.so.7.9 => not found\n\tlibTKXCAF.so.7.9 => not found\n\tlibTKXSBase.so.7.9 => not found\n\tlibTKDEIGES.so.7.9 => not found\n\tlibTKDEGLTF.so.7.9 => not found\n\tlibTKDESTEP.so.7.9 => not found\n\tlibTKDESTL.so.7.9 => not found\n\tlibTKDEVRML.so.7.9 => not found\n\tlibTKDEPLY.so.7.9 => not found\nlibocct-data-exchange-7.9 - Open CASCADE Technology module for CAD data format interoperability\nlibocct-data-exchange-dev - Open CASCADE Technology module for CAD data format interoperability - dev files\nlibocct-doc - Open CASCADE Technology CAE platform documentation\nlibocct-draw-7.9 - Open CASCADE Technology command interpreter & graphical test library\nlibocct-draw-dev - Open CASCADE Technology interpreter & graphics test library - dev files\nlibocct-foundation-7.9 - OCCT module underlying all other OCCT classes\nlibocct-foundation-dev - Open CASCADE Technology module underlying all other OCCT classes - dev files\nlibocct-ivtk-7.9 - Open CASCADE Technology graphical data ivtk module\nlibocct-ivtk-dev - Open CASCADE Technology graphical data ivtk module - dev files\nlibocct-modeling-algorithms-7.9 - Open CASCADE Technology geometrical & topological algorithms module\nlibocct-modeling-algorithms-dev - Open CASCADE Technology geometrical & topological algorithms module - dev files\nlibocct-modeling-data-7.9 - Open CASCADE Technology 2D/3D geometric primitives data structures\nlibocct-modeling-data-dev - Open CASCADE Technology 2D/3D geometric primitives data structures - dev files\nlibocct-ocaf-7.9 - Open CASCADE Technology application-specific data and functionality\nlibocct-ocaf-dev - Open CASCADE Technology application-specific data and functionality - dev files\nlibocct-visualization-7.9 - Open CASCADE Technology graphical data visualization module\nlibocct-visualization-dev - Open CASCADE Technology graphical data visualization module - dev files\n\n",
+    "stderr": "",
+    "stdout_read_eof": true,
+    "stderr_read_eof": true
+  },
+  {
+    "host": "pocket4",
+    "job_id": "1a1348fcb98-1f807d-a1b",
+    "purpose": "Private download timeout124",
+    "status": {
+      "at_unix_ms": 1791883442106,
+      "cancelled": false,
+      "exit_code": 124,
+      "job_id": "1a1348fcb98-1f807d-a1b",
+      "log_bytes": {
+        "stderr": {
+          "seen": 0,
+          "stored": 0
+        },
+        "stdout": {
+          "seen": 926,
+          "stored": 926
+        }
+      },
+      "log_errors": {
+        "stderr": null,
+        "stdout": null
+      },
+      "log_truncated": {
+        "stderr": false,
+        "stdout": false
+      },
+      "output_complete": true,
+      "state": "timed_out",
+      "timed_out": true
+    },
+    "stdout": "{\"pkg\": \"libocct-foundation-7.9\", \"exit\": 0, \"stdout\": \"Get:1 https://mirrors.ustc.edu.cn/ubuntu resolute/universe amd64 libocct-foundation-7.9 amd64 7.9.2+dfsg-4 [1,491 kB]\\nFetched 1,491 kB in 58s (25.7 kB/s)\\n\", \"stderr\": \"\"}\n{\"pkg\": \"libocct-modeling-data-7.9\", \"exit\": 0, \"stdout\": \"Get:1 https://mirrors.ustc.edu.cn/ubuntu resolute/universe amd64 libocct-modeling-data-7.9 amd64 7.9.2+dfsg-4 [2,707 kB]\\nFetched 2,707 kB in 12s (219 kB/s)\\n\", \"stderr\": \"\"}\n{\"pkg\": \"libocct-modeling-algorithms-7.9\", \"exit\": 0, \"stdout\": \"Get:1 https://mirrors.ustc.edu.cn/ubuntu resolute/universe amd64 libocct-modeling-algorithms-7.9 amd64 7.9.2+dfsg-4 [7,146 kB]\\nFetched 7,146 kB in 20s (366 kB/s)\\n\", \"stderr\": \"\"}\n{\"pkg\": \"libocct-ocaf-7.9\", \"exit\": 0, \"stdout\": \"Get:1 https://mirrors.ustc.edu.cn/ubuntu resolute/universe amd64 libocct-ocaf-7.9 amd64 7.9.2+dfsg-4 [1,132 kB]\\nFetched 1,132 kB in 25s (45.9 kB/s)\\n\", \"stderr\": \"\"}\n",
+    "stderr": "",
+    "stdout_read_eof": true,
+    "stderr_read_eof": true
+  },
+  {
+    "host": "main",
+    "job_id": "1a1349150cc-1f807d-a1d",
+    "purpose": "Native7 preflight missing LD_LIBRARY_PATH",
+    "status": {
+      "at_unix_ms": 1791883301670,
+      "cancelled": false,
+      "exit_code": 0,
+      "job_id": "1a1349150cc-1f807d-a1d",
+      "log_bytes": {
+        "stderr": {
+          "seen": 236,
+          "stored": 236
+        },
+        "stdout": {
+          "seen": 0,
+          "stored": 0
+        }
+      },
+      "log_errors": {
+        "stderr": null,
+        "stdout": null
+      },
+      "log_truncated": {
+        "stderr": false,
+        "stdout": false
+      },
+      "output_complete": true,
+      "state": "succeeded",
+      "timed_out": false
+    },
+    "stdout": "",
+    "stderr": "/home/qian-qi/Documents/Codex/RAZR_SLIDE_WORK_20261013/native_endpoint_kicad_verify/extracted/usr/bin/kicad-cli: error while loading shared libraries: libwx_gtk3u_core-3.2.so.0: cannot open shared object file: No such file or directory\n",
+    "stdout_read_eof": true,
+    "stderr_read_eof": true
+  },
+  {
+    "host": "main",
+    "job_id": "1a134922617-1f807d-a21",
+    "purpose": "Native7 CLI does not expose PCB DRC",
+    "status": {
+      "at_unix_ms": 1791883356620,
+      "cancelled": false,
+      "exit_code": 0,
+      "job_id": "1a134922617-1f807d-a21",
+      "log_bytes": {
+        "stderr": {
+          "seen": 0,
+          "stored": 0
+        },
+        "stdout": {
+          "seen": 976,
+          "stored": 976
+        }
+      },
+      "log_errors": {
+        "stderr": null,
+        "stdout": null
+      },
+      "log_truncated": {
+        "stderr": false,
+        "stdout": false
+      },
+      "output_complete": true,
+      "state": "succeeded",
+      "timed_out": false
+    },
+    "stdout": "{\"argv\": [\"/home/qian-qi/Documents/Codex/RAZR_SLIDE_WORK_20261013/native_endpoint_kicad_verify/extracted/usr/bin/kicad-cli\", \"pcb\", \"drc\", \"--format\", \"json\", \"--severity-all\", \"--exit-code-violations\", \"--output\", \"DRC.json\", \"cut_reference.kicad_pcb\"], \"exit\": 1, \"stdout\": \"Maximum number of positional arguments exceeded\\nUsage: pcb [-h] {export}\\n\\nOptional arguments:\\n  -h, --help\\tshows help message and exits \\n\\nSubcommands:\\n  export     \\n\", \"stderr\": \"\"}\n{\"argv\": [\"/home/qian-qi/Documents/Codex/RAZR_SLIDE_WORK_20261013/native_endpoint_kicad_verify/extracted/usr/bin/kicad-cli\", \"pcb\", \"drc\", \"--format\", \"json\", \"--severity-all\", \"--exit-code-violations\", \"--output\", \"REJECTED_DRC_missing_ILM_route.json\", \"REJECTED_missing_ILM_route.kicad_pcb\"], \"exit\": 1, \"stdout\": \"Maximum number of positional arguments exceeded\\nUsage: pcb [-h] {export}\\n\\nOptional arguments:\\n  -h, --help\\tshows help message and exits \\n\\nSubcommands:\\n  export     \\n\", \"stderr\": \"\"}\n",
+    "stderr": "",
+    "stdout_read_eof": true,
+    "stderr_read_eof": true
+  },
+  {
+    "host": "main",
+    "job_id": "1a13493a24b-1f807d-a24",
+    "purpose": "Fresh native7 V1 reports 37 violations",
+    "status": {
+      "at_unix_ms": 1791883454519,
+      "cancelled": false,
+      "exit_code": 0,
+      "job_id": "1a13493a24b-1f807d-a24",
+      "log_bytes": {
+        "stderr": {
+          "seen": 0,
+          "stored": 0
+        },
+        "stdout": {
+          "seen": 19083,
+          "stored": 19083
+        }
+      },
+      "log_errors": {
+        "stderr": null,
+        "stdout": null
+      },
+      "log_truncated": {
+        "stderr": false,
+        "stdout": false
+      },
+      "output_complete": true,
+      "state": "succeeded",
+      "timed_out": false
+    },
+    "stdout": "{\"file\": \"cut_reference\", \"exit\": 0, \"stdout\": \"{\\\"engine\\\": \\\"7.0.11\\\", \\\"serialized_board\\\": \\\"cut_reference.kicad_pcb\\\", \\\"board_sha256\\\": \\\"0172b2447ecbd22e71a6c951aacc0ce952b68f767598d92d3a8eb6dd9d354d7a\\\", \\\"rules\\\": {\\\"min_clearance_mm\\\": 0.1, \\\"hole_clearance_mm\\\": 0.25, \\\"netclass_clearance_mm\\\": {\\\"Default\\\": 0.1}}, \\\"counts\\\": {\\\"DRC violations\\\": 37, \\\"unconnected pads\\\": 0, \\\"Footprint errors\\\": 0}, \\\"native_unconnected\\\": 0, \\\"fresh_native_process\\\": true}\\n\", \"stderr\": \"\"}\n** Drc report for /home/qian-qi/RAZR-SLIDE-pcb-source-r4/v1/cut_reference.kicad_pcb **\n** Created on 2026-10-13 17:24:13 **\n\n** Found 37 DRC violations **\n[silk_over_copper]: Silkscreen clipped by solder mask\n    Local override; Severity: warning\n    @(104.0000 mm, 102.1000 mm): Reference 'C2'\n[silk_over_copper]: Silkscreen clipped by solder mask\n    Local override; Severity: warning\n    @(90.0000 mm, 92.1000 mm): Reference 'TP1'\n[silk_over_copper]: Silkscreen clipped by solder mask\n    Local override; Severity: warning\n    @(110.0000 mm, 106.1000 mm): Reference 'TP4'\n[silk_over_copper]: Silkscreen clipped by solder mask\n    Local override; Severity: warning\n    @(90.0000 mm, 95.2000 mm): Reference 'TP5'\n[silk_over_copper]: Silkscreen clipped by solder mask\n    Local override; Severity: warning\n    @(90.0000 mm, 97.2000 mm): Reference 'TP6'\n[silk_over_copper]: Silkscreen clipped by solder mask\n    Local override; Severity: warning\n    @(90.0000 mm, 104.1000 mm): Reference 'TP8'\n[solder_mask_bridge]: Front solder mask aperture bridges items with different nets\n    Rule: board setup solder mask min width; Severity: error\n    @(99.7500 mm, 97.0000 mm): Track [PACK_PROTECTED_P] on F.Cu, length 2.6575 mm\n    @(98.9000 mm, 96.0000 mm): Pad 2 [PACK_PROTECTED_N] of C1 on F.Cu\n[solder_mask_bridge]: Front solder mask aperture bridges items with different nets\n    Rule: board setup solder mask min width; Severity: error\n    @(98.0000 mm, 100.7000 mm): Track [FLT] on F.Cu, length 3.1780 mm\n    @(96.9000 mm, 102.0000 mm): Pad 2 [PACK_PROTECTED_P] of R3 on F.Cu\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(99.5000 mm, 111.9000 mm): PCB Text 'UNPOWERED REFERENCE - NOT PHONE PCB' on F.Silkscreen\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(100.0000 mm, 98.1000 mm): Reference 'U1'\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(96.0000 mm, 96.1000 mm): Reference 'R1'\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(104.0000 mm, 96.6000 mm): Reference 'R2'\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(96.0000 mm, 100.1000 mm): Reference 'R3'\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(98.0000 mm, 94.1000 mm): Reference 'C1'\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(104.0000 mm, 102.1000 mm): Reference 'C2'\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(104.0000 mm, 99.6000 mm): Reference 'C3'\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(90.0000 mm, 92.1000 mm): Reference 'TP1'\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(90.0000 mm, 90.1000 mm): Reference 'TP2'\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(110.0000 mm, 104.1000 mm): Reference 'TP3'\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(110.0000 mm, 106.1000 mm): Reference 'TP4'\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(90.0000 mm, 95.2000 mm): Reference 'TP5'\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(90.0000 mm, 97.2000 mm): Reference 'TP6'\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(90.0000 mm, 102.1000 mm): Reference 'TP7'\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(90.0000 mm, 104.1000 mm): Reference 'TP8'\n[lib_footprint_mismatch]: Footprint 'RPW0010A_OWNED_NOMINAL' does not match copy in library 'OwnedCut'.\n    Local override; Severity: warning\n    @(100.0000 mm, 100.0000 mm): Footprint U1\n[lib_footprint_mismatch]: Footprint 'Passive_0805_BENCH' does not match copy in library 'OwnedCut'.\n    Local override; Severity: warning\n    @(96.0000 mm, 98.0000 mm): Footprint R1\n[clearance]: Clearance violation (netclass 'Default' clearance 0.1000 mm; actual 0.0000 mm)\n    Rule: netclass 'Default'; Severity: error\n    @(99.7500 mm, 97.0000 mm): Track [PACK_PROTECTED_P] on F.Cu, length 2.6575 mm\n    @(98.9000 mm, 96.0000 mm): Track [PACK_PROTECTED_N] on F.Cu, length 0.1000 mm\n[clearance]: Clearance violation (netclass 'Default' clearance 0.1000 mm; actual 0.0000 mm)\n    Rule: netclass 'Default'; Severity: error\n    @(99.7500 mm, 97.0000 mm): Track [PACK_PROTECTED_P] on F.Cu, length 2.6575 mm\n    @(99.0000 mm, 96.0000 mm): Via [PACK_PROTECTED_N] on F.Cu - B.Cu\n[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.0000 mm)\n    Rule: board setup constraints hole; Severity: error\n    @(99.7500 mm, 97.0000 mm): Track [PACK_PROTECTED_P] on F.Cu, length 2.6575 mm\n    @(99.0000 mm, 96.0000 mm): Via [PACK_PROTECTED_N] on F.Cu - B.Cu\n[clearance]: Clearance violation (netclass 'Default' clearance 0.1000 mm; actual 0.0000 mm)\n    Rule: netclass 'Default'; Severity: error\n    @(99.7500 mm, 97.0000 mm): Track [PACK_PROTECTED_P] on F.Cu, length 2.6575 mm\n    @(98.9000 mm, 96.0000 mm): Pad 2 [PACK_PROTECTED_N] of C1 on F.Cu\n[clearance]: Clearance violation (netclass 'Default' clearance 0.1000 mm; actual 0.0637 mm)\n    Rule: netclass 'Default'; Severity: error\n    @(103.1000 mm, 104.0000 mm): Track [AFTER_FIRST_CUT_P] on F.Cu, length 3.5228 mm\n    @(104.9000 mm, 104.0000 mm): Pad 2 [PACK_PROTECTED_N] of C2 on F.Cu\n[clearance]: Clearance violation (netclass 'Default' clearance 0.1000 mm; actual 0.0400 mm)\n    Rule: netclass 'Default'; Severity: error\n    @(99.1000 mm, 100.7000 mm): Track [FLT] on F.Cu, length 1.1000 mm\n    @(98.3000 mm, 100.3000 mm): Via [PACK_PROTECTED_N] on F.Cu - B.Cu\n[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.1900 mm)\n    Rule: board setup constraints hole; Severity: error\n    @(99.1000 mm, 100.7000 mm): Track [FLT] on F.Cu, length 1.1000 mm\n    @(98.3000 mm, 100.3000 mm): Via [PACK_PROTECTED_N] on F.Cu - B.Cu\n[clearance]: Clearance violation (netclass 'Default' clearance 0.1000 mm; actual 0.0000 mm)\n    Rule: netclass 'Default'; Severity: error\n    @(98.0000 mm, 100.7000 mm): Track [FLT] on F.Cu, length 3.1780 mm\n    @(96.9000 mm, 102.0000 mm): Pad 2 [PACK_PROTECTED_P] of R3 on F.Cu\n[clearance]: Clearance violation (netclass 'Default' clearance 0.1000 mm; actual 0.0900 mm)\n    Rule: netclass 'Default'; Severity: error\n    @(100.9000 mm, 99.7750 mm): Track [ILM] on F.Cu, length 1.1000 mm\n    @(101.6000 mm, 100.2250 mm): Via [PACK_PROTECTED_N] on F.Cu - B.Cu\n[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.2400 mm)\n    Rule: board setup constraints hole; Severity: error\n    @(100.9000 mm, 99.7750 mm): Track [ILM] on F.Cu, length 1.1000 mm\n    @(101.6000 mm, 100.2250 mm): Via [PACK_PROTECTED_N] on F.Cu - B.Cu\n[clearance]: Clearance violation (netclass 'Default' clearance 0.1000 mm; actual 0.0471 mm)\n    Rule: netclass 'Default'; Severity: error\n    @(99.1000 mm, 99.7750 mm): Track [PACK_PROTECTED_N] on F.Cu, length 0.9569 mm\n    @(99.1000 mm, 100.2250 mm): Pad 3 [<no net>] of U1 on F.Cu\n\n** Found 0 unconnected pads **\n\n** Found 0 Footprint errors **\n\n** End of Report **\n\n{\"file\": \"REJECTED_missing_ILM_route\", \"exit\": 0, \"stdout\": \"{\\\"engine\\\": \\\"7.0.11\\\", \\\"serialized_board\\\": \\\"REJECTED_missing_ILM_route.kicad_pcb\\\", \\\"board_sha256\\\": \\\"3cea283e1dc77d90323c551c7ee0994e798d2a2b535638ee9359933a15070ebd\\\", \\\"rules\\\": {\\\"min_clearance_mm\\\": 0.1, \\\"hole_clearance_mm\\\": 0.25, \\\"netclass_clearance_mm\\\": {\\\"Default\\\": 0.1}}, \\\"counts\\\": {\\\"DRC violations\\\": 36, \\\"unconnected pads\\\": 1, \\\"Footprint errors\\\": 0}, \\\"native_unconnected\\\": 1, \\\"fresh_native_process\\\": true}\\n\", \"stderr\": \"\"}\n** Drc report for /home/qian-qi/RAZR-SLIDE-pcb-source-r4/v1/REJECTED_missing_ILM_route.kicad_pcb **\n** Created on 2026-10-13 17:24:14 **\n\n** Found 36 DRC violations **\n[silk_over_copper]: Silkscreen clipped by solder mask\n    Local override; Severity: warning\n    @(104.0000 mm, 102.1000 mm): Reference 'C2'\n[silk_over_copper]: Silkscreen clipped by solder mask\n    Local override; Severity: warning\n    @(90.0000 mm, 92.1000 mm): Reference 'TP1'\n[silk_over_copper]: Silkscreen clipped by solder mask\n    Local override; Severity: warning\n    @(110.0000 mm, 106.1000 mm): Reference 'TP4'\n[silk_over_copper]: Silkscreen clipped by solder mask\n    Local override; Severity: warning\n    @(90.0000 mm, 95.2000 mm): Reference 'TP5'\n[silk_over_copper]: Silkscreen clipped by solder mask\n    Local override; Severity: warning\n    @(90.0000 mm, 97.2000 mm): Reference 'TP6'\n[silk_over_copper]: Silkscreen clipped by solder mask\n    Local override; Severity: warning\n    @(90.0000 mm, 104.1000 mm): Reference 'TP8'\n[solder_mask_bridge]: Front solder mask aperture bridges items with different nets\n    Rule: board setup solder mask min width; Severity: error\n    @(99.7500 mm, 97.0000 mm): Track [PACK_PROTECTED_P] on F.Cu, length 2.6575 mm\n    @(98.9000 mm, 96.0000 mm): Pad 2 [PACK_PROTECTED_N] of C1 on F.Cu\n[solder_mask_bridge]: Front solder mask aperture bridges items with different nets\n    Rule: board setup solder mask min width; Severity: error\n    @(98.0000 mm, 100.7000 mm): Track [FLT] on F.Cu, length 3.1780 mm\n    @(96.9000 mm, 102.0000 mm): Pad 2 [PACK_PROTECTED_P] of R3 on F.Cu\n[text_height]: Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6000 mm)\n    Rule: board setup constraints silk text height; Severity: warning\n    @(99.5000 mm, 111.9000 mm): PCB Text 'UNPOWERED REFERENCE - NOT PHO",
+    "stderr": "",
+    "stdout_read_eof": false,
+    "stderr_read_eof": true
+  },
+  {
+    "host": "pocket4",
+    "job_id": "1a13495854b-1f807d-a25",
+    "purpose": "Private remaining OCC download timeout",
+    "status": {
+      "at_unix_ms": 1791883657421,
+      "cancelled": false,
+      "exit_code": 1,
+      "job_id": "1a13495854b-1f807d-a25",
+      "log_bytes": {
+        "stderr": {
+          "seen": 996,
+          "stored": 996
+        },
+        "stdout": {
+          "seen": 0,
+          "stored": 0
+        }
+      },
+      "log_errors": {
+        "stderr": null,
+        "stdout": null
+      },
+      "log_truncated": {
+        "stderr": false,
+        "stdout": false
+      },
+      "output_complete": true,
+      "state": "failed",
+      "timed_out": false
+    },
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<stdin>\", line 6, in <module>\n  File \"/usr/lib/python3.14/subprocess.py\", line 557, in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/subprocess.py\", line 1221, in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/subprocess.py\", line 2154, in _communicate\n    self._check_timeout(endtime, orig_timeout, stdout, stderr)\n    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/subprocess.py\", line 1268, in _check_timeout\n    raise TimeoutExpired(\n    ...<2 lines>...\n            stderr=b''.join(stderr_seq) if stderr_seq else None)\nsubprocess.TimeoutExpired: Command '['apt-get', '-o', 'Acquire::https::Timeout=45', 'download', 'libocct-visualization-7.9']' timed out after 80 seconds\n",
+    "stdout_read_eof": true,
+    "stderr_read_eof": true
+  },
+  {
+    "host": "main",
+    "job_id": "1a13496626a-1f807d-a29",
+    "purpose": "Fresh native7 V2 0 and negative1",
+    "status": {
+      "at_unix_ms": 1791883634717,
+      "cancelled": false,
+      "exit_code": 0,
+      "job_id": "1a13496626a-1f807d-a29",
+      "log_bytes": {
+        "stderr": {
+          "seen": 0,
+          "stored": 0
+        },
+        "stdout": {
+          "seen": 1873,
+          "stored": 1873
+        }
+      },
+      "log_errors": {
+        "stderr": null,
+        "stdout": null
+      },
+      "log_truncated": {
+        "stderr": false,
+        "stdout": false
+      },
+      "output_complete": true,
+      "state": "succeeded",
+      "timed_out": false
+    },
+    "stdout": "{\"file\": \"cut_reference\", \"exit\": 0, \"stdout\": \"{\\\"engine\\\": \\\"7.0.11\\\", \\\"serialized_board\\\": \\\"cut_reference.kicad_pcb\\\", \\\"board_sha256\\\": \\\"865cc642f0fdee847a41bc838dd2a65fb579d92004809559e44da6a8c33a6177\\\", \\\"rules\\\": {\\\"min_clearance_mm\\\": 0.1, \\\"hole_clearance_mm\\\": 0.25, \\\"netclass_clearance_mm\\\": {\\\"Default\\\": 0.1}}, \\\"counts\\\": {\\\"DRC violations\\\": 0, \\\"unconnected pads\\\": 0, \\\"Footprint errors\\\": 0}, \\\"native_unconnected\\\": 0, \\\"fresh_native_process\\\": true}\\n\", \"stderr\": \"\"}\n** Drc report for /home/qian-qi/RAZR-SLIDE-pcb-source-r4/v2/cut_reference.kicad_pcb **\n** Created on 2026-10-13 17:27:14 **\n\n** Found 0 DRC violations **\n\n** Found 0 unconnected pads **\n\n** Found 0 Footprint errors **\n\n** End of Report **\n\n{\"file\": \"REJECTED_missing_ILM_route\", \"exit\": 0, \"stdout\": \"{\\\"engine\\\": \\\"7.0.11\\\", \\\"serialized_board\\\": \\\"REJECTED_missing_ILM_route.kicad_pcb\\\", \\\"board_sha256\\\": \\\"ca52ba77a2e1d8176028681d3bc9935d3d4fd53e47423d2bb1271bb992d46124\\\", \\\"rules\\\": {\\\"min_clearance_mm\\\": 0.1, \\\"hole_clearance_mm\\\": 0.25, \\\"netclass_clearance_mm\\\": {\\\"Default\\\": 0.1}}, \\\"counts\\\": {\\\"DRC violations\\\": 1, \\\"unconnected pads\\\": 1, \\\"Footprint errors\\\": 0}, \\\"native_unconnected\\\": 1, \\\"fresh_native_process\\\": true}\\n\", \"stderr\": \"\"}\n** Drc report for /home/qian-qi/RAZR-SLIDE-pcb-source-r4/v2/REJECTED_missing_ILM_route.kicad_pcb **\n** Created on 2026-10-13 17:27:14 **\n\n** Found 1 DRC violations **\n[track_dangling]: Track has unconnected end\n    Local override; Severity: warning\n    @(102.0000 mm, 99.7750 mm): Track [ILM] on F.Cu, length 1.6839 mm\n\n** Found 1 unconnected pads **\n[unconnected_items]: Missing connection between items\n    Local override; Severity: error\n    @(100.9000 mm, 99.7750 mm): Pad 9 [ILM] of U1 on F.Cu\n    @(102.0000 mm, 99.7750 mm): Track [ILM] on F.Cu, length 1.6839 mm\n\n** Found 0 Footprint errors **\n\n** End of Report **\n\n",
+    "stderr": "",
+    "stdout_read_eof": true,
+    "stderr_read_eof": true
+  },
+  {
+    "host": "pocket4",
+    "job_id": "1a134966973-1f807d-a2a",
+    "purpose": "Native9 V2 ERC0 XML/PCB 30pins",
+    "status": {
+      "at_unix_ms": 1791883635891,
+      "cancelled": false,
+      "exit_code": 0,
+      "job_id": "1a134966973-1f807d-a2a",
+      "log_bytes": {
+        "stderr": {
+          "seen": 0,
+          "stored": 0
+        },
+        "stdout": {
+          "seen": 1195,
+          "stored": 1195
+        }
+      },
+      "log_errors": {
+        "stderr": null,
+        "stdout": null
+      },
+      "log_truncated": {
+        "stderr": false,
+        "stdout": false
+      },
+      "output_complete": true,
+      "state": "succeeded",
+      "timed_out": false
+    },
+    "stdout": "{\"argv\": [\"sch\", \"export\", \"netlist\", \"--format\", \"kicadxml\", \"--output\", \"native.xml\", \"cut_reference.kicad_sch\"], \"returncode\": 0, \"stdout\": \"\", \"stderr\": \"\"}\n{\"argv\": [\"sch\", \"erc\", \"--format\", \"json\", \"--severity-all\", \"--exit-code-violations\", \"--output\", \"ERC.json\", \"cut_reference.kicad_sch\"], \"returncode\": 0, \"stdout\": \"Found 0 violations\\nSaved ERC Report to ERC.json\\n\", \"stderr\": \"\"}\n{\"argv\": [\"python3\", \"verify_native_mapping.py\"], \"returncode\": 0, \"stdout\": \"{\\\"native_XML_PCB_unique_pin_matches\\\": 30, \\\"extra_same_number_L_land_rectangles\\\": 4, \\\"official_exact_variant_pin_functions_matched\\\": 10, \\\"AUXOFF_and_FLT_types\\\": \\\"open_collector\\\", \\\"raw_CELLP_CELLN_not_present\\\": true, \\\"phone_complete_PCB\\\": false, \\\"manufacturing_go\\\": false, \\\"frozen_inputs\\\": {\\\"cut_reference.kicad_sch\\\": \\\"c6bd0854ecbebbac2f30cb662a644ffe929d1f2bb44312092de04f6e268e35a2\\\", \\\"cut_reference.kicad_pcb\\\": \\\"865cc642f0fdee847a41bc838dd2a65fb579d92004809559e44da6a8c33a6177\\\", \\\"OwnedCut.kicad_sym\\\": \\\"84d69b15d784d4bd86ba1764d4a0a604e52a2b3c770183ebb6a3463146a93bc0\\\", \\\"reference_terminal_map.json\\\": \\\"f88b34af4029b78fc6af4e482c9b90d854d93fd0606fa121ace87ebf42aa76fb\\\"}}\\n\", \"stderr\": \"\"}\n",
+    "stderr": "",
+    "stdout_read_eof": true,
+    "stderr_read_eof": true
+  },
+  {
+    "host": "main",
+    "job_id": "1a134981b63-1f807d-a3a",
+    "purpose": "Validated V2 native exports all0",
+    "status": {
+      "at_unix_ms": 1791883749592,
+      "cancelled": false,
+      "exit_code": 0,
+      "job_id": "1a134981b63-1f807d-a3a",
+      "log_bytes": {
+        "stderr": {
+          "seen": 0,
+          "stored": 0
+        },
+        "stdout": {
+          "seen": 2882,
+          "stored": 2882
+        }
+      },
+      "log_errors": {
+        "stderr": null,
+        "stdout": null
+      },
+      "log_truncated": {
+        "stderr": false,
+        "stdout": false
+      },
+      "output_complete": true,
+      "state": "succeeded",
+      "timed_out": false
+    },
+    "stdout": "{\"argv\": [\"--version\"], \"exit\": 0, \"stdout\": \"7.0.11\\n\", \"stderr\": \"\"}\n{\"argv\": [\"pcb\", \"export\", \"gerbers\", \"--output\", \"exports/\", \"--layers\", \"F.Cu,B.Cu,F.Paste,F.Mask,B.Mask,F.SilkS,Edge.Cuts\", \"cut_reference.kicad_pcb\"], \"exit\": 0, \"stdout\": \"\\u52a0\\u8f7d\\u7535\\u8def\\u677f\\n\\u7ed8\\u5236\\u5230 'exports/cut_reference-F_Cu.gtl'\\u3002\\n\\u7ed8\\u5236\\u5230 'exports/cut_reference-B_Cu.gbl'\\u3002\\n\\u7ed8\\u5236\\u5230 'exports/cut_reference-F_Paste.gtp'\\u3002\\n\\u7ed8\\u5236\\u5230 'exports/cut_reference-F_Silkscreen.gto'\\u3002\\n\\u7ed8\\u5236\\u5230 'exports/cut_reference-F_Mask.gts'\\u3002\\n\\u7ed8\\u5236\\u5230 'exports/cut_reference-B_Mask.gbs'\\u3002\\n\\u7ed8\\u5236\\u5230 'exports/cut_reference-Edge_Cuts.gm1'\\u3002\\n\", \"stderr\": \"\"}\n{\"argv\": [\"pcb\", \"export\", \"drill\", \"--output\", \"exports/\", \"--excellon-separate-th\", \"--generate-map\", \"--map-format\", \"svg\", \"cut_reference.kicad_pcb\"], \"exit\": 0, \"stdout\": \"\\u52a0\\u8f7d\\u7535\\u8def\\u677f\\n\\u5df2\\u521b\\u5efa\\u6587\\u4ef6 'exports/cut_reference-PTH.drl'\\n\\u5df2\\u521b\\u5efa\\u6587\\u4ef6 'exports/cut_reference-NPTH.drl'\\n\\u521b\\u5efa\\u6587\\u4ef6 'exports/cut_reference-PTH-drl_map.svg'\\u3002\\n\\u521b\\u5efa\\u6587\\u4ef6 'exports/cut_reference-NPTH-drl_map.svg'\\u3002\\n\\u5b8c\\u6210\\u3002\\n\", \"stderr\": \"\"}\n{\"argv\": [\"pcb\", \"export\", \"pos\", \"--output\", \"exports/cut_reference_placement.csv\", \"--format\", \"csv\", \"--units\", \"mm\", \"--smd-only\", \"cut_reference.kicad_pcb\"], \"exit\": 0, \"stdout\": \"\\u52a0\\u8f7d\\u7535\\u8def\\u677f\\n\", \"stderr\": \"\"}\n{\"argv\": [\"pcb\", \"export\", \"svg\", \"--output\", \"exports/pcb_review.svg\", \"--page-size-mode\", \"2\", \"--exclude-drawing-sheet\", \"--layers\", \"F.Cu,B.Cu,F.Paste,F.Mask,B.Mask,F.Fab,Edge.Cuts\", \"cut_reference.kicad_pcb\"], \"exit\": 0, \"stdout\": \"\\u52a0\\u8f7d\\u7535\\u8def\\u677f\\n\\u5df2\\u6210\\u529f\\u521b\\u5efa svg \\u6587\\u4ef6\\n\", \"stderr\": \"\"}\n{\"argv\": [\"pcb\", \"export\", \"step\", \"--output\", \"exports/cut_reference_board_ONLY.step\", \"--subst-models\", \"cut_reference.kicad_pcb\"], \"exit\": 0, \"stdout\": \"\\u52a0\\u8f7d\\u7535\\u8def\\u677f\\n\\u786e\\u5b9a PCB \\u6570\\u636e\\n\\u7535\\u8def\\u677f\\u53e0\\u5c42\\u539a\\u5ea6: 1.600 mm\\n\\u6784\\u5efa STEP \\u6570\\u636e\\nCreate PCB solid model\\nBoard outline: find 4 initial points\\nBuild board main outline 1 with 4 points.\\nBuild board cutouts and holes (8 hole(s)).\\n\\nGenerate board full shape.\\n\\u5199\\u5165 STEP \\u6587\\u4ef6\\n\\n\\u5df2\\u521b\\u5efa STEP \\u6587\\u4ef6 \\\"exports/cut_reference_board_ONLY.step\\\"\\u3002\\n\", \"stderr\": \"\"}\n{\"argv\": [\"sch\", \"export\", \"svg\", \"--output\", \"exports/schematic/\", \"cut_reference.kicad_sch\"], \"exit\": 0, \"stdout\": \"\\u5df2\\u7ed8\\u5236\\u5230 '/home/qian-qi/RAZR-SLIDE-pcb-source-r4/v2/exports/schematic/cut_reference.svg'\\u3002\\n\\u5b8c\\u6210\\n\", \"stderr\": \"\"}\n{\"archive\": \"/home/qian-qi/RAZR-SLIDE-pcb-source-r4/native_outputs_main_v1_v2.tar.gz\", \"sha256\": \"46ea6fec831170cf64ed586868e93115d134aa5271ab7c08159484fb076276d8\", \"size\": 116593}\n",
+    "stderr": "",
+    "stdout_read_eof": true,
+    "stderr_read_eof": true
+  },
+  {
+    "host": "pocket4",
+    "job_id": "1a134982f13-1f807d-a3c",
+    "purpose": "Native9 SVG and own archive export0",
+    "status": {
+      "at_unix_ms": 1791883751877,
+      "cancelled": false,
+      "exit_code": 0,
+      "job_id": "1a134982f13-1f807d-a3c",
+      "log_bytes": {
+        "stderr": {
+          "seen": 0,
+          "stored": 0
+        },
+        "stdout": {
+          "seen": 318,
+          "stored": 318
+        }
+      },
+      "log_errors": {
+        "stderr": null,
+        "stdout": null
+      },
+      "log_truncated": {
+        "stderr": false,
+        "stdout": false
+      },
+      "output_complete": true,
+      "state": "succeeded",
+      "timed_out": false
+    },
+    "stdout": "{\"sch_svg_exit\": 0, \"stdout\": \"Plotted to '/home/alex/RAZR-SLIDE-pcb-source-r4/v2/native9_svg/cut_reference.svg'.\\nDone.\\n\", \"stderr\": \"\"}\n{\"archive\": \"/home/alex/RAZR-SLIDE-pcb-source-r4/native_outputs_pocket_v1_v2.tar.gz\", \"sha256\": \"33075511f6d2dbb96de2983a1615c48f02bffdac0162a797ca4168611dd3ba1d\", \"size\": 66852}\n",
+    "stderr": "",
+    "stdout_read_eof": true,
+    "stderr_read_eof": true
+  },
+  {
+    "host": "main",
+    "job_id": "1a1349c2984-1f807d-a64",
+    "purpose": "Clean copper review SVG0",
+    "status": {
+      "at_unix_ms": 1791884013008,
+      "cancelled": false,
+      "exit_code": 0,
+      "job_id": "1a1349c2984-1f807d-a64",
+      "log_bytes": {
+        "stderr": {
+          "seen": 0,
+          "stored": 0
+        },
+        "stdout": {
+          "seen": 549,
+          "stored": 549
+        }
+      },
+      "log_errors": {
+        "stderr": null,
+        "stdout": null
+      },
+      "log_truncated": {
+        "stderr": false,
+        "stdout": false
+      },
+      "output_complete": true,
+      "state": "succeeded",
+      "timed_out": false
+    },
+    "stdout": "{\"argv\": [\"/home/qian-qi/Documents/Codex/RAZR_SLIDE_WORK_20261013/native_endpoint_kicad_verify/extracted/usr/bin/kicad-cli\", \"pcb\", \"export\", \"svg\", \"--output\", \"exports/copper_only_review.svg\", \"--page-size-mode\", \"2\", \"--exclude-drawing-sheet\", \"--layers\", \"F.Cu,B.Cu,F.SilkS,Edge.Cuts\", \"cut_reference.kicad_pcb\"], \"exit\": 0, \"stdout\": \"\\u52a0\\u8f7d\\u7535\\u8def\\u677f\\n\\u5df2\\u6210\\u529f\\u521b\\u5efa svg \\u6587\\u4ef6\\n\", \"stderr\": \"\"}\n{\"sha256_uncompressed\": \"e182322c711f7a9b76c7ea1ddfd24079a4bfce40b18917febb191af7c5e1fea0\", \"size_gzip\": 4029}\n",
+    "stderr": "",
+    "stdout_read_eof": true,
+    "stderr_read_eof": true
+  }
+]

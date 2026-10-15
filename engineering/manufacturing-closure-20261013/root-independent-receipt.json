@@ -1,0 +1,83 @@
+{
+  "schema": "razr-slide-root-independent-verification-v1",
+  "base_commit": "de3e982a04a3b4f62d0c301a9930aa9cd494cce5",
+  "checks": [
+    {
+      "scope": "power",
+      "argv": "python -B -m unittest -v test_design_review.py",
+      "actual_native_exit_code": 0,
+      "log": "power-root-independent-tests.log",
+      "log_sha256": "549ec6fba1f5ffd6cc1e576433ecbbb1d104936c0e8ca698e829d3a350be5cec",
+      "physical_qualification": false
+    },
+    {
+      "scope": "FPC",
+      "argv": "python -B -m unittest -v test_bend_axis_sensitivity.py",
+      "actual_native_exit_code": 0,
+      "log": "fpc-root-independent-tests.log",
+      "log_sha256": "12c2bc834dc1fe0ca19e00648b38c3edca6cbd70a86860c9bcd4326b66f39771",
+      "physical_qualification": false
+    },
+    {
+      "scope": "mechanical",
+      "argv": "python -B engineering/mechanical-closure-20261013/verify_exported_geometry.py",
+      "actual_native_exit_code": 0,
+      "log": "mechanical-root-independent-tests.log",
+      "log_sha256": "e8265390219f43bb6d0d0d2fac65094ce577f70a6c81c716501d502c3f2155b2",
+      "physical_qualification": false
+    },
+    {
+      "scope": "BM28",
+      "argv": "python -B -m unittest discover -s engineering/native-endpoint-20261013 -p test_endpoint.py -v",
+      "actual_native_exit_code": 0,
+      "log": "endpoint-root-independent-tests.log",
+      "log_sha256": "2062b4784c3fbca53111b7901479b29015ac360f76230876cb12c3a4fa630e03",
+      "manifest_entries_verified": 33,
+      "physical_qualification": false,
+      "native_KiCad_SVG_raster_visual_review": {
+        "DP": "28 nominal pads and 4 narrower power paste apertures visible",
+        "DS": "28 nominal pads visible; native zone parameters checked in receipt",
+        "native_svg_sources_sha256": {
+          "Hirose_BM28B0.6-24DS_2-0.35V_53_RESEARCH_PHYSICAL_SITES.svg": "2c020a2f513076afa06390afcf54daec2dae4f124c4e56f7bd4040f8a13ee166",
+          "Hirose_BM28B0.6-24DP_2-0.35V_53_RESEARCH_PHYSICAL_SITES.svg": "742275f1e16d51b3f5cf73df4ef51d39ae0e4e82b7aa8c61998705c05bab6570"
+        }
+      }
+    },
+    {
+      "scope": "R50 pure-participant topology",
+      "argv": "PYTHONPATH=engineering/r50-topology-repair-20261013/src python -B -m unittest discover -s engineering/r50-topology-repair-20261013 -p test_*.py -v",
+      "actual_native_exit_code": 0,
+      "log": "r50-topology-root-independent-tests.log",
+      "log_sha256": "aa0f110f840c4d6006dea4860f03199440615debfa147071f701d8e9ede41c6b",
+      "tests_run": 19,
+      "root_did_not_repeat_the_two_108_cell_poses": true,
+      "physical_qualification": false
+    },
+    {
+      "scope": "Complete transferred STEP payloads",
+      "argv": "python -B engineering/manufacturing-closure-20261013/verify_step_payloads.py",
+      "actual_native_exit_code": 0,
+      "log": "complete_step_payload_native.log",
+      "log_sha256": "769cc1e4315b873d7e7d172accd7211d62e8fa6f7a5f3b2d902ac782ece80ee9",
+      "STEP_files_checked": 13,
+      "valid_positive_Solid_leaves": 144,
+      "unexpected_non_Solid_leaves": 0,
+      "physical_qualification": false
+    },
+    {
+      "scope": "Strict motion guard and historical STEP export boundary tests",
+      "argv": "python -B -m unittest discover -s engineering/strict-motion-audit-20261013 -p test_*.py -v",
+      "actual_native_exit_code": 0,
+      "tests_run": 17,
+      "log": "strict-motion-root-independent-tests.log",
+      "log_sha256": "c7054b051f668a79aacb2e8a186375c4dddffda34c2422c38ac15f93ab476c26",
+      "STEP_export_test_source_exact_copy": "../strict-motion-audit-20261013/historical_full_step_payload_test.py",
+      "STEP_export_test_source_sha256": "1e59effa3550b25dc6c2e91bb9e8f5fa6e6d136525dc148b50d73d6127bd5363",
+      "this_execution_regenerated_one_new_research_failure_STEP": true,
+      "regeneration_provenance": "../strict-motion-audit-20261013/witness_regeneration_provenance.json",
+      "root_did_not_repeat_the_full_121_pose_motion": true,
+      "physical_qualification": false
+    }
+  ],
+  "manufacturing_go": false
+}

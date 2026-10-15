@@ -1,0 +1,604 @@
+{
+  "schema": "razr-slide-node-path-review-v1",
+  "host": "bb50ac791cbc",
+  "system": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "physical_hardware_test": false,
+  "manufacturing_go": false,
+  "product_sizing": {
+    "product_qualified": false,
+    "manufacturing_go": false,
+    "computed": {
+      "slew_V_per_ms": null,
+      "DVDT_C_pF_screen": null,
+      "ILM_R_ohm_screen": null,
+      "capacitor_energy_J": null,
+      "single_eFuse_I2R_W_screen": null,
+      "harness_conduction_W": null,
+      "bleed_equilibrium_V": null,
+      "bleed_time_s": null
+    },
+    "incomplete": [
+      {
+        "calculation": "slew_V_per_ms",
+        "missing": [
+          "target_inrush_A",
+          "output_capacitance_F"
+        ]
+      },
+      {
+        "calculation": "DVDT_C_pF_screen",
+        "missing": [
+          "target_inrush_A",
+          "output_capacitance_F"
+        ]
+      },
+      {
+        "calculation": "ILM_R_ohm_screen",
+        "missing": [
+          "current_limit_A"
+        ]
+      },
+      {
+        "calculation": "capacitor_energy_J",
+        "missing": [
+          "output_capacitance_F",
+          "A_pack_max_V"
+        ]
+      },
+      {
+        "calculation": "single_eFuse_I2R_W_screen",
+        "missing": [
+          "load_continuous_A"
+        ]
+      },
+      {
+        "calculation": "harness_conduction_W",
+        "missing": [
+          "load_continuous_A",
+          "harness_resistance_ohm"
+        ]
+      },
+      {
+        "calculation": "bleed_equilibrium_V",
+        "missing": [
+          "leakage_max_A",
+          "bleed_R_ohm"
+        ]
+      },
+      {
+        "calculation": "bleed_time_s",
+        "missing_or_invalid": [
+          "output_capacitance_F",
+          "A_pack_max_V",
+          "residual_voltage_limit_V",
+          "leakage_max_A",
+          "bleed_R_ohm"
+        ]
+      }
+    ],
+    "invalid": [],
+    "limits": {
+      "TPS_input_range_check": null,
+      "TPS_continuous_current_check": null,
+      "TPS_resistance_test_current_A": 3,
+      "ILM_resistor_range_check": null,
+      "actual_fault_energy_fuse_SOA_thermal_qualification": false
+    }
+  },
+  "path_counterexamples": [
+    {
+      "id": "all_energy_cuts_off",
+      "on": [
+        "A_PACK_PROTECT",
+        "B_PACK_PROTECT"
+      ],
+      "welded": [],
+      "faults": [],
+      "cabin": "A",
+      "hazard_node": "A_TX_P",
+      "forward_path": null,
+      "return_path": [
+        {
+          "from": "B_PACK_N",
+          "to": "A_PACK_N",
+          "via": "H_POWER_A.dedicated_return"
+        },
+        {
+          "from": "A_PACK_N",
+          "to": "A_CELL_N",
+          "via": "A_pack_low_side_protection"
+        }
+      ],
+      "conductive_loop_exists": false,
+      "actual_voltage_current_energy": null
+    },
+    {
+      "id": "one_source_stage_welded",
+      "on": [
+        "A_PACK_PROTECT"
+      ],
+      "welded": [
+        "U_A1"
+      ],
+      "faults": [],
+      "cabin": "A",
+      "hazard_node": "A_TX_P",
+      "forward_path": null,
+      "return_path": [
+        {
+          "from": "B_PACK_N",
+          "to": "A_PACK_N",
+          "via": "H_POWER_A.dedicated_return"
+        },
+        {
+          "from": "A_PACK_N",
+          "to": "A_CELL_N",
+          "via": "A_pack_low_side_protection"
+        }
+      ],
+      "conductive_loop_exists": false,
+      "actual_voltage_current_energy": null
+    },
+    {
+      "id": "both_A_source_stages_welded",
+      "on": [
+        "A_PACK_PROTECT"
+      ],
+      "welded": [
+        "U_A1",
+        "U_A2"
+      ],
+      "faults": [],
+      "cabin": "A",
+      "hazard_node": "A_TX_P",
+      "forward_path": [
+        {
+          "from": "A_CELL_P",
+          "to": "A_PACK_P",
+          "via": "A_pack_fuse_unspecified"
+        },
+        {
+          "from": "A_PACK_P",
+          "to": "A_MID_P",
+          "via": "U_A1"
+        },
+        {
+          "from": "A_MID_P",
+          "to": "A_TX_P",
+          "via": "U_A2"
+        }
+      ],
+      "return_path": [
+        {
+          "from": "B_PACK_N",
+          "to": "A_PACK_N",
+          "via": "H_POWER_A.dedicated_return"
+        },
+        {
+          "from": "A_PACK_N",
+          "to": "A_CELL_N",
+          "via": "A_pack_low_side_protection"
+        }
+      ],
+      "conductive_loop_exists": true,
+      "actual_voltage_current_energy": null
+    },
+    {
+      "id": "raw_A_direct_short_bypasses_both_cuts",
+      "on": [
+        "A_PACK_PROTECT"
+      ],
+      "welded": [],
+      "faults": [
+        "raw_A_to_harness"
+      ],
+      "cabin": "A",
+      "hazard_node": "A_TX_P",
+      "forward_path": [
+        {
+          "from": "A_CELL_P",
+          "to": "A_TX_P",
+          "via": "INJECTED:raw_A_to_harness"
+        }
+      ],
+      "return_path": [
+        {
+          "from": "B_PACK_N",
+          "to": "A_PACK_N",
+          "via": "H_POWER_A.dedicated_return"
+        },
+        {
+          "from": "A_PACK_N",
+          "to": "A_CELL_N",
+          "via": "A_pack_low_side_protection"
+        }
+      ],
+      "conductive_loop_exists": true,
+      "actual_voltage_current_energy": null
+    },
+    {
+      "id": "raw_B_direct_short_to_other_harness",
+      "on": [
+        "B_PACK_PROTECT"
+      ],
+      "welded": [],
+      "faults": [
+        "raw_B_to_harness"
+      ],
+      "cabin": "B",
+      "hazard_node": "A_RX_P",
+      "forward_path": [
+        {
+          "from": "B_CELL_P",
+          "to": "A_RX_P",
+          "via": "INJECTED:raw_B_to_harness"
+        }
+      ],
+      "return_path": [
+        {
+          "from": "B_PACK_N",
+          "to": "B_CELL_N",
+          "via": "B_pack_low_side_protection"
+        }
+      ],
+      "conductive_loop_exists": true,
+      "actual_voltage_current_energy": null
+    },
+    {
+      "id": "B_live_receiver_blocks_reverse",
+      "on": [
+        "B_PACK_PROTECT",
+        "U_B1",
+        "U_B2"
+      ],
+      "welded": [],
+      "faults": [],
+      "cabin": "B",
+      "hazard_node": "A_RX_P",
+      "forward_path": null,
+      "return_path": [
+        {
+          "from": "B_PACK_N",
+          "to": "B_CELL_N",
+          "via": "B_pack_low_side_protection"
+        }
+      ],
+      "conductive_loop_exists": false,
+      "actual_voltage_current_energy": null
+    },
+    {
+      "id": "B_live_system_PCB_short_bypasses_receiver",
+      "on": [
+        "B_PACK_PROTECT",
+        "U_B1",
+        "U_B2"
+      ],
+      "welded": [],
+      "faults": [
+        "system_bus_to_harness"
+      ],
+      "cabin": "B",
+      "hazard_node": "A_RX_P",
+      "forward_path": [
+        {
+          "from": "B_CELL_P",
+          "to": "B_PACK_P",
+          "via": "B_pack_fuse_unspecified"
+        },
+        {
+          "from": "B_PACK_P",
+          "to": "B_MID_P",
+          "via": "U_B1"
+        },
+        {
+          "from": "B_MID_P",
+          "to": "SYS_B_P",
+          "via": "U_B2"
+        },
+        {
+          "from": "SYS_B_P",
+          "to": "A_RX_P",
+          "via": "INJECTED:system_bus_to_harness"
+        }
+      ],
+      "return_path": [
+        {
+          "from": "B_PACK_N",
+          "to": "B_CELL_N",
+          "via": "B_pack_low_side_protection"
+        }
+      ],
+      "conductive_loop_exists": true,
+      "actual_voltage_current_energy": null
+    },
+    {
+      "id": "pack_protection_off_return_isolated",
+      "on": [
+        "U_A1",
+        "U_A2",
+        "U_ARX"
+      ],
+      "welded": [],
+      "faults": [],
+      "cabin": "A",
+      "hazard_node": "SYS_B_P",
+      "forward_path": [
+        {
+          "from": "A_CELL_P",
+          "to": "A_PACK_P",
+          "via": "A_pack_fuse_unspecified"
+        },
+        {
+          "from": "A_PACK_P",
+          "to": "A_MID_P",
+          "via": "U_A1"
+        },
+        {
+          "from": "A_MID_P",
+          "to": "A_TX_P",
+          "via": "U_A2"
+        },
+        {
+          "from": "A_TX_P",
+          "to": "A_RX_P",
+          "via": "H_POWER_A.forward"
+        },
+        {
+          "from": "A_RX_P",
+          "to": "SYS_B_P",
+          "via": "U_ARX"
+        }
+      ],
+      "return_path": null,
+      "conductive_loop_exists": false,
+      "actual_voltage_current_energy": null
+    },
+    {
+      "id": "pack_protection_off_raw_negative_USB_bypass",
+      "on": [
+        "U_A1",
+        "U_A2",
+        "U_ARX"
+      ],
+      "welded": [],
+      "faults": [
+        "raw_A_negative_to_USB_ground"
+      ],
+      "cabin": "A",
+      "hazard_node": "SYS_B_P",
+      "forward_path": [
+        {
+          "from": "A_CELL_P",
+          "to": "A_PACK_P",
+          "via": "A_pack_fuse_unspecified"
+        },
+        {
+          "from": "A_PACK_P",
+          "to": "A_MID_P",
+          "via": "U_A1"
+        },
+        {
+          "from": "A_MID_P",
+          "to": "A_TX_P",
+          "via": "U_A2"
+        },
+        {
+          "from": "A_TX_P",
+          "to": "A_RX_P",
+          "via": "H_POWER_A.forward"
+        },
+        {
+          "from": "A_RX_P",
+          "to": "SYS_B_P",
+          "via": "U_ARX"
+        }
+      ],
+      "return_path": [
+        {
+          "from": "B_PACK_N",
+          "to": "USB_GND",
+          "via": "proposed_system_side_USB_reference_bond"
+        },
+        {
+          "from": "USB_GND",
+          "to": "A_CELL_N",
+          "via": "INJECTED:raw_A_negative_to_USB_ground"
+        }
+      ],
+      "conductive_loop_exists": true,
+      "actual_voltage_current_energy": null
+    },
+    {
+      "id": "raw_negative_bypass_does_not_defeat_positive_off_cuts",
+      "on": [],
+      "welded": [],
+      "faults": [
+        "raw_A_negative_to_USB_ground"
+      ],
+      "cabin": "A",
+      "hazard_node": "SYS_B_P",
+      "forward_path": null,
+      "return_path": [
+        {
+          "from": "B_PACK_N",
+          "to": "USB_GND",
+          "via": "proposed_system_side_USB_reference_bond"
+        },
+        {
+          "from": "USB_GND",
+          "to": "A_CELL_N",
+          "via": "INJECTED:raw_A_negative_to_USB_ground"
+        }
+      ],
+      "conductive_loop_exists": false,
+      "actual_voltage_current_energy": null
+    },
+    {
+      "id": "unsafe_parallel_precharge_branch",
+      "on": [
+        "A_PACK_PROTECT"
+      ],
+      "welded": [],
+      "faults": [
+        "unsafe_precharge_bypasses_two_cuts"
+      ],
+      "cabin": "A",
+      "hazard_node": "A_TX_P",
+      "forward_path": [
+        {
+          "from": "A_CELL_P",
+          "to": "A_PACK_P",
+          "via": "A_pack_fuse_unspecified"
+        },
+        {
+          "from": "A_PACK_P",
+          "to": "A_TX_P",
+          "via": "INJECTED:unsafe_precharge_bypasses_two_cuts"
+        }
+      ],
+      "return_path": [
+        {
+          "from": "B_PACK_N",
+          "to": "A_PACK_N",
+          "via": "H_POWER_A.dedicated_return"
+        },
+        {
+          "from": "A_PACK_N",
+          "to": "A_CELL_N",
+          "via": "A_pack_low_side_protection"
+        }
+      ],
+      "conductive_loop_exists": true,
+      "actual_voltage_current_energy": null
+    },
+    {
+      "id": "power_return_open_reroutes_through_charge_return",
+      "on": [
+        "A_PACK_PROTECT",
+        "U_A1",
+        "U_A2",
+        "U_ARX"
+      ],
+      "welded": [],
+      "faults": [
+        "open_H_POWER_A_return"
+      ],
+      "cabin": "A",
+      "hazard_node": "SYS_B_P",
+      "forward_path": [
+        {
+          "from": "A_CELL_P",
+          "to": "A_PACK_P",
+          "via": "A_pack_fuse_unspecified"
+        },
+        {
+          "from": "A_PACK_P",
+          "to": "A_MID_P",
+          "via": "U_A1"
+        },
+        {
+          "from": "A_MID_P",
+          "to": "A_TX_P",
+          "via": "U_A2"
+        },
+        {
+          "from": "A_TX_P",
+          "to": "A_RX_P",
+          "via": "H_POWER_A.forward"
+        },
+        {
+          "from": "A_RX_P",
+          "to": "SYS_B_P",
+          "via": "U_ARX"
+        }
+      ],
+      "return_path": [
+        {
+          "from": "B_PACK_N",
+          "to": "USB_GND",
+          "via": "proposed_system_side_USB_reference_bond"
+        },
+        {
+          "from": "USB_GND",
+          "to": "A_PACK_N",
+          "via": "H_CHARGE_A.dedicated_return"
+        },
+        {
+          "from": "A_PACK_N",
+          "to": "A_CELL_N",
+          "via": "A_pack_low_side_protection"
+        }
+      ],
+      "conductive_loop_exists": true,
+      "actual_voltage_current_energy": null
+    },
+    {
+      "id": "adapter_live_despite_all_battery_source_cuts_off",
+      "on": [
+        "U_VBUS",
+        "CHARGER_B"
+      ],
+      "faults": [
+        "unsafe_B_charger_SYS_to_system"
+      ],
+      "forward_path": [
+        {
+          "from": "USB_VBUS_PORT",
+          "to": "CHARGE_BUS_B",
+          "via": "U_VBUS"
+        },
+        {
+          "from": "CHARGE_BUS_B",
+          "to": "B_CHARGER_SYS_LOCAL",
+          "via": "unselected_B_charger_converter"
+        },
+        {
+          "from": "B_CHARGER_SYS_LOCAL",
+          "to": "SYS_B_P",
+          "via": "INJECTED:unsafe_B_charger_SYS_to_system"
+        }
+      ],
+      "return_path": [
+        {
+          "from": "USB_GND",
+          "to": "USB_GND",
+          "via": "external adapter return"
+        }
+      ],
+      "scope": "unsafe proposed charger SYS tie, not measured charger model; grounded in documented adapter mode"
+    },
+    {
+      "id": "unselected_IO_clamp_can_phantom_supply_HOST_VDD",
+      "forward_path": [
+        {
+          "from": "A_CELL_P",
+          "to": "A_PACK_P",
+          "via": "A_pack_fuse_unspecified"
+        },
+        {
+          "from": "A_PACK_P",
+          "to": "A_MID_P",
+          "via": "U_A1"
+        },
+        {
+          "from": "A_MID_P",
+          "to": "A_TX_P",
+          "via": "U_A2"
+        },
+        {
+          "from": "A_TX_P",
+          "to": "USB_DATA_HOST",
+          "via": "INJECTED:power_to_USB_data_abrasion"
+        },
+        {
+          "from": "USB_DATA_HOST",
+          "to": "HOST_VDD",
+          "via": "INJECTED:unpowered_host_clamp_bypass"
+        }
+      ],
+      "scope": "explicit injected insulation fault and clamp path; actual host clamp parameters unknown"
+    }
+  ],
+  "finite_leakage_and_residual_energy_not_simulated": true,
+  "PCB_short_clearance_or_physical_independence_verified": false
+}

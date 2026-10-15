@@ -1,0 +1,1728 @@
+{
+  "schema": "razr-slide-dynamic-proof-detector-r4",
+  "manufacturing_go": false,
+  "phone_complete_PCB": false,
+  "fabrication_netlist": false,
+  "components": [
+    {
+      "ref": "U1",
+      "part_candidate": "SN74LVC1G14DBV",
+      "value": "SN74LVC1G14DBV",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "A",
+          "net": "OSC_RC",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "PHASE",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "Autonomous RC challenge; timing must be measured, no MCU receipt accepted",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_OSC"
+    },
+    {
+      "ref": "R1",
+      "part_candidate": "R",
+      "value": "22k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "PHASE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "OSC_RC",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_OSC"
+    },
+    {
+      "ref": "C1",
+      "part_candidate": "C",
+      "value": "1u_10pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "OSC_RC",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_OSC"
+    },
+    {
+      "ref": "U2",
+      "part_candidate": "SN74LVC1G04DBV",
+      "value": "SN74LVC1G04DBV",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "A",
+          "net": "PHASE",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "PHASE_N",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "HIGH phase sampled at falling PHASE, before delayed analog response changes",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_PHASE_N"
+    },
+    {
+      "ref": "U3",
+      "part_candidate": "SN74LVC1G04DBV",
+      "value": "SN74LVC1G04DBV",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "A",
+          "net": "PHASE_N",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "PROBE_DRIVE",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "Double inversion reproduces PHASE with separate light-load driver",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_PROBE_BUF"
+    },
+    {
+      "ref": "R2",
+      "part_candidate": "R",
+      "value": "47k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "PROBE_DRIVE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "PROBE_SENSE",
+          "type": "passive"
+        }
+      },
+      "role": "Limits current into dedicated dry loop; no main power wiring connected",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_DRIVE"
+    },
+    {
+      "ref": "C2",
+      "part_candidate": "C",
+      "value": "1n_10pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "PROBE_SENSE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": "Analog settling delay preserves sample hold; real parasitics/edges still unmeasured",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_SENSE"
+    },
+    {
+      "ref": "J1",
+      "part_candidate": "PORT2",
+      "value": "DRY_LOOP_A_END_NOT_MAIN_POWER_RETURN",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "PROBE_SENSE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_A"
+    },
+    {
+      "ref": "J2",
+      "part_candidate": "PORT2",
+      "value": "DRY_LOOP_B_END_NOT_MAIN_POWER_RETURN",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "PROBE_SENSE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_B"
+    },
+    {
+      "ref": "R3",
+      "part_candidate": "R",
+      "value": "47k_1pct_REMOTE_B_ONLY",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "PROBE_SENSE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": "Required physically at remote B; same logical nets do not prove location or exclude local matched bridge",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_REMOTE_SIG"
+    },
+    {
+      "ref": "R4",
+      "part_candidate": "R",
+      "value": "15k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "TH_HLO",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_HLO_TOP"
+    },
+    {
+      "ref": "R5",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TH_HLO",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_HLO_BOT"
+    },
+    {
+      "ref": "R6",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "TH_HHI",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_HHI_TOP"
+    },
+    {
+      "ref": "R7",
+      "part_candidate": "R",
+      "value": "15k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TH_HHI",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_HHI_BOT"
+    },
+    {
+      "ref": "R8",
+      "part_candidate": "R",
+      "value": "90.9k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "TH_LHI",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_LHI_TOP"
+    },
+    {
+      "ref": "R9",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "TH_LHI",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_LHI_BOT"
+    },
+    {
+      "ref": "U4",
+      "part_candidate": "TLV3202DGK",
+      "value": "TLV3202DGK",
+      "pins": {
+        "1": {
+          "name": "1OUT",
+          "net": "ABOVE_HLO",
+          "type": "output"
+        },
+        "2": {
+          "name": "1IN-",
+          "net": "TH_HLO",
+          "type": "input"
+        },
+        "3": {
+          "name": "1IN+",
+          "net": "PROBE_SENSE",
+          "type": "input"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "2IN+",
+          "net": "TH_HHI",
+          "type": "input"
+        },
+        "6": {
+          "name": "2IN-",
+          "net": "PROBE_SENSE",
+          "type": "input"
+        },
+        "7": {
+          "name": "2OUT",
+          "net": "BELOW_HHI",
+          "type": "output"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "HIGH result requires sense above 0.4 and below 0.6 of rail",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_HIGH_WIN"
+    },
+    {
+      "ref": "U5",
+      "part_candidate": "TLV3202DGK",
+      "value": "TLV3202DGK",
+      "pins": {
+        "1": {
+          "name": "1OUT",
+          "net": "BELOW_LHI",
+          "type": "output"
+        },
+        "2": {
+          "name": "1IN-",
+          "net": "PROBE_SENSE",
+          "type": "input"
+        },
+        "3": {
+          "name": "1IN+",
+          "net": "TH_LHI",
+          "type": "input"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "2IN+",
+          "net": "ISOLATED_PROBE_G",
+          "type": "input"
+        },
+        "6": {
+          "name": "2IN-",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "input"
+        },
+        "7": {
+          "name": "2OUT",
+          "net": null,
+          "type": "output"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "LOW result requires sense below 0.0991 rail; unused half has defined unequal inputs and NC output",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_LOW"
+    },
+    {
+      "ref": "U6",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "ABOVE_HLO",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "BELOW_HHI",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "HIGH_VALID",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_HVALID_AND"
+    },
+    {
+      "ref": "U7",
+      "part_candidate": "SN74LVC1G04DBV",
+      "value": "SN74LVC1G04DBV",
+      "pins": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "type": "no_connect"
+        },
+        "2": {
+          "name": "A",
+          "net": "ABOVE_HLO",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "NOT_ABOVE_HLO",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "LOW phase must also demonstrate lower HIGH comparator has changed state",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_LOWER_NOT"
+    },
+    {
+      "ref": "U8",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "BELOW_LHI",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "NOT_ABOVE_HLO",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "LOW_VALID",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_LVALID_AND"
+    },
+    {
+      "ref": "U9",
+      "part_candidate": "TLV803EA29DBZ",
+      "value": "TLV803EA29DBZ",
+      "pins": {
+        "1": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "2": {
+          "name": "RESETn",
+          "net": "PGOOD",
+          "type": "open_collector"
+        },
+        "3": {
+          "name": "VDD",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "2.93V threshold, 200ms typical; standard DBZ pin1 GND; exact 3.3V bench supply only",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_PGOOD"
+    },
+    {
+      "ref": "R10",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "PGOOD",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_PG_PU"
+    },
+    {
+      "ref": "U10",
+      "part_candidate": "TPS3431DRB",
+      "value": "TPS3431DRB",
+      "pins": {
+        "1": {
+          "name": "VDD",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        },
+        "2": {
+          "name": "CWD",
+          "net": "WD_CWD",
+          "type": "input"
+        },
+        "3": {
+          "name": "EN",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "input"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "SET1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "input"
+        },
+        "6": {
+          "name": "WDI",
+          "net": "VALID_HEARTBEAT",
+          "type": "input"
+        },
+        "7": {
+          "name": "WDO",
+          "net": "WD_OK",
+          "type": "open_collector"
+        },
+        "8": {
+          "name": "ENOUT",
+          "net": null,
+          "type": "open_collector"
+        },
+        "EP": {
+          "name": "THERMAL_PAD",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": "SET1 and EN hard high prevents software disable; falling WDI edge required; ENOUT unconnected, WDO goes low on missing edges",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_WATCHDOG"
+    },
+    {
+      "ref": "R11",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "WD_CWD",
+          "type": "passive"
+        }
+      },
+      "role": "TI preset 170..230ms watchdog timeout, avoids capacitor-timing typical-only assumption",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_WD_CWD"
+    },
+    {
+      "ref": "R12",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "WD_OK",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_WD_PU"
+    },
+    {
+      "ref": "U11",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "PGOOD",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "WD_OK",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "VALID_CLRn",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "Watchdog assertion clears BOTH samples: auto-released WDO cannot restore stale proof",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_CLEAR"
+    },
+    {
+      "ref": "U12",
+      "part_candidate": "SN74LVC1G74DCU",
+      "value": "SN74LVC1G74DCU",
+      "pins": {
+        "1": {
+          "name": "CLK",
+          "net": "PHASE_N",
+          "type": "input"
+        },
+        "2": {
+          "name": "D",
+          "net": "HIGH_VALID",
+          "type": "input"
+        },
+        "3": {
+          "name": "Qn",
+          "net": null,
+          "type": "output"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "Q",
+          "net": "H_SEEN_VALID",
+          "type": "output"
+        },
+        "6": {
+          "name": "CLRn",
+          "net": "VALID_CLRn",
+          "type": "input"
+        },
+        "7": {
+          "name": "PREn",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "input"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "Sample pre-fall HIGH state; asynchronous clear at reset/timeout",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_SAMPLE_H"
+    },
+    {
+      "ref": "U13",
+      "part_candidate": "SN74LVC1G74DCU",
+      "value": "SN74LVC1G74DCU",
+      "pins": {
+        "1": {
+          "name": "CLK",
+          "net": "PHASE",
+          "type": "input"
+        },
+        "2": {
+          "name": "D",
+          "net": "LOW_VALID",
+          "type": "input"
+        },
+        "3": {
+          "name": "Qn",
+          "net": null,
+          "type": "output"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "Q",
+          "net": "L_SEEN_VALID",
+          "type": "output"
+        },
+        "6": {
+          "name": "CLRn",
+          "net": "VALID_CLRn",
+          "type": "input"
+        },
+        "7": {
+          "name": "PREn",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "input"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "Sample pre-rise LOW state; no credit from reset or manual ARM",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_SAMPLE_L"
+    },
+    {
+      "ref": "U14",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "H_SEEN_VALID",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "L_SEEN_VALID",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "TWO_VALID",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_TWO_VALID"
+    },
+    {
+      "ref": "U15",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "PHASE",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "TWO_VALID",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "VALID_HEARTBEAT",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "Only physical sampled dual-phase validity permits WDI edges",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_RECEIPT"
+    },
+    {
+      "ref": "U16",
+      "part_candidate": "SN74LVC1G74DCU",
+      "value": "SN74LVC1G74DCU",
+      "pins": {
+        "1": {
+          "name": "CLK",
+          "net": "SERVICE_RESET_EDGE",
+          "type": "input"
+        },
+        "2": {
+          "name": "D",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "input"
+        },
+        "3": {
+          "name": "Qn",
+          "net": null,
+          "type": "output"
+        },
+        "4": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "5": {
+          "name": "Q",
+          "net": "SERVICE_HEALTH_Q",
+          "type": "output"
+        },
+        "6": {
+          "name": "CLRn",
+          "net": "VALID_CLRn",
+          "type": "input"
+        },
+        "7": {
+          "name": "PREn",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "input"
+        },
+        "8": {
+          "name": "VCC",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "Reset or watchdog fault clears; ONLY a new manual reset edge can rearm; a held input cannot automatically recover",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_SERVICE_LATCH"
+    },
+    {
+      "ref": "U17",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "TWO_VALID",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "VALID_CLRn",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "PRE_FRESH",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_FRESH1"
+    },
+    {
+      "ref": "U18",
+      "part_candidate": "SN74LVC1G08DBV",
+      "value": "SN74LVC1G08DBV",
+      "pins": {
+        "1": {
+          "name": "A",
+          "net": "PRE_FRESH",
+          "type": "input"
+        },
+        "2": {
+          "name": "B",
+          "net": "SERVICE_HEALTH_Q",
+          "type": "input"
+        },
+        "3": {
+          "name": "GND",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_in"
+        },
+        "4": {
+          "name": "Y",
+          "net": "PROBE_FRESH_OK",
+          "type": "output"
+        },
+        "5": {
+          "name": "VCC",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_in"
+        }
+      },
+      "role": "No external proof input; manual reset cannot create two-phase continuity; output DC stuck-high remains a counterexample",
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "U_FRESH2"
+    },
+    {
+      "ref": "J3",
+      "part_candidate": "PORT2",
+      "value": "MANUAL_RESET_ONLY_NO_AUTORETRY",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "SERVICE_RESET_EDGE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_SERVICE"
+    },
+    {
+      "ref": "R13",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "SERVICE_RESET_EDGE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_SERVICE_PD"
+    },
+    {
+      "ref": "R14",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "SERVICE_HEALTH_Q",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_SERVICE_Q_PD"
+    },
+    {
+      "ref": "R15",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "PHASE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_PD_PHASE"
+    },
+    {
+      "ref": "R16",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "H_SEEN_VALID",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_PD_H"
+    },
+    {
+      "ref": "R17",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "L_SEEN_VALID",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_PD_L"
+    },
+    {
+      "ref": "R18",
+      "part_candidate": "R",
+      "value": "100k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "VALID_HEARTBEAT",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_PD_HB"
+    },
+    {
+      "ref": "R19",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "VALID_CLRn",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_PD_CLEAR"
+    },
+    {
+      "ref": "R20",
+      "part_candidate": "R",
+      "value": "10k_1pct",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "PROBE_FRESH_OK",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "R_PD_FRESH"
+    },
+    {
+      "ref": "C3",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_0"
+    },
+    {
+      "ref": "C4",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_3"
+    },
+    {
+      "ref": "C5",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_4"
+    },
+    {
+      "ref": "C6",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_16"
+    },
+    {
+      "ref": "C7",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_17"
+    },
+    {
+      "ref": "C8",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_18"
+    },
+    {
+      "ref": "C9",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_19"
+    },
+    {
+      "ref": "C10",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_20"
+    },
+    {
+      "ref": "C11",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_21"
+    },
+    {
+      "ref": "C12",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_23"
+    },
+    {
+      "ref": "C13",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_26"
+    },
+    {
+      "ref": "C14",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_27"
+    },
+    {
+      "ref": "C15",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_28"
+    },
+    {
+      "ref": "C16",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_29"
+    },
+    {
+      "ref": "C17",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_30"
+    },
+    {
+      "ref": "C18",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_31"
+    },
+    {
+      "ref": "C19",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_32"
+    },
+    {
+      "ref": "C20",
+      "part_candidate": "C",
+      "value": "100n_LOCAL_AT_IC",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "C_BYP_33"
+    },
+    {
+      "ref": "J4",
+      "part_candidate": "EXTERNAL_BENCH_SUPPLY2",
+      "value": "ISOLATED_3V3_BENCH_SUPPLY_NOT_IMPLEMENTED_PHONE_REGULATOR",
+      "pins": {
+        "1": {
+          "name": "BENCH_3V3_OUT",
+          "net": "ISOLATED_BENCH_3V3_ONLY",
+          "type": "power_out"
+        },
+        "2": {
+          "name": "ISOLATED_BENCH_REFERENCE",
+          "net": "ISOLATED_PROBE_G",
+          "type": "power_out"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_SUPPLY"
+    },
+    {
+      "ref": "J5",
+      "part_candidate": "PORT2",
+      "value": "OUTPUT_TO_RESEARCH_GATE_ONLY_NO_PHONE_CONNECTION",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "PROBE_FRESH_OK",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "ISOLATED_PROBE_G",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_PROOF_OUT"
+    },
+    {
+      "ref": "J6",
+      "part_candidate": "PORT3",
+      "value": "ISOLATED_HIGH_Z_MEASUREMENT_PORT",
+      "pins": {
+        "1": {
+          "name": "1",
+          "net": "PROBE_SENSE",
+          "type": "passive"
+        },
+        "2": {
+          "name": "2",
+          "net": "PHASE",
+          "type": "passive"
+        },
+        "3": {
+          "name": "3",
+          "net": "VALID_HEARTBEAT",
+          "type": "passive"
+        }
+      },
+      "role": null,
+      "product_part_selected": false,
+      "footprint_selected": false,
+      "logical_ref": "J_ANALOG"
+    }
+  ],
+  "component_values_are_research_fixture_values": true,
+  "physical_hardware": false,
+  "local_measurement_reference": "isolated 3.3V bench reference; no phone pack, USB or main power-return connected",
+  "continuity_proof_generation_implemented": "editable schematic only; autonomous two-phase dry-loop detector and hardware freshness timer",
+  "unimplemented": [
+    "physical assembly/measurement",
+    "actual powered main return isolation",
+    "OFF leakage and welded-cut diagnosis",
+    "full phone PCB",
+    "final output stuck-high independent cut",
+    "comparator self-test",
+    "material signal identity",
+    "phone rail regulator"
+  ],
+  "freshness_timer": "TPS3431 SET1/EN hard tied high, CWD 10k to supply; 170..230 ms timeout, both sampled-valid FFs and independent manual-service latch asynchronously cleared when WDO low",
+  "proof_boundary": "research dry loop only; not actual complete main power-return continuity proof"
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "razr-slide-production-blockers-v1",
+  "integration_base": "R50_20261011",
+  "historical_source_head": "de3e982a04a3b4f62d0c301a9930aa9cd494cce5",
+  "candidate_go": false,
+  "manufacturing_go": false,
+  "complete_controlled_manufacturing_package": false,
+  "blockers": [
+    {
+      "id": "ACTUAL_ASSEMBLY",
+      "deliverable": "Controlled actual A/B assembly, PCB, battery, rails, capture roots and keep-out / endpoint geometry",
+      "input_contract": "../mechanical-closure-20261013/physical-inputs.json",
+      "physical_evidence_required": true,
+      "status": "BLOCKED_ACTUAL_INPUTS_OR_HARDWARE",
+      "qualification_evidence_sha256": null,
+      "closed": false
+    },
+    {
+      "id": "OLED_FPC",
+      "deliverable": "Orderable full OLED module and separately controlled SIGNAL, USB, A/B charge/discharge dynamic FPC stackup and qualification",
+      "input_contract": "../fpc-oled-inputs-20261013/supplier_input_contract.json",
+      "physical_evidence_required": true,
+      "status": "BLOCKED_ACTUAL_INPUTS_OR_HARDWARE",
+      "qualification_evidence_sha256": null,
+      "closed": false
+    },
+    {
+      "id": "ECAD_POWER_USB",
+      "deliverable": "Actual cell/load/USB inputs, complete native schematic and PCB, independent cut/return-imbalance hardware, fault/thermal/SI evidence",
+      "input_contract": "../power-usb-design-20261013/product_inputs.json",
+      "physical_evidence_required": true,
+      "status": "BLOCKED_ACTUAL_INPUTS_OR_HARDWARE",
+      "qualification_evidence_sha256": null,
+      "closed": false
+    },
+    {
+      "id": "BM28_INSTALLED",
+      "deliverable": "Resolved supplier conflicts, actual coupon/PCBA, foolproof 26-terminal orientation, anchored flexible neck and measured installed stack",
+      "input_contract": "../native-endpoint-20261013/official_dimensions.json",
+      "physical_evidence_required": true,
+      "status": "BLOCKED_ACTUAL_INPUTS_OR_HARDWARE",
+      "qualification_evidence_sha256": null,
+      "closed": false
+    },
+    {
+      "id": "CAPTURE_RETRACTION",
+      "deliverable": "Actual independent springs, guide/root/fastener properties, passive absent-key veto and calibrated fail-closed/limited-force trials",
+      "input_contract": "../mechanical-closure-20261013/physical-inputs.json",
+      "physical_evidence_required": true,
+      "status": "BLOCKED_ACTUAL_INPUTS_OR_HARDWARE",
+      "qualification_evidence_sha256": null,
+      "closed": false
+    }
+  ],
+  "supplier_contact_status": "READY_NOT_SENT",
+  "software_or_CAD_zero_intersection_cannot_supply_physical_qualification": true
+}

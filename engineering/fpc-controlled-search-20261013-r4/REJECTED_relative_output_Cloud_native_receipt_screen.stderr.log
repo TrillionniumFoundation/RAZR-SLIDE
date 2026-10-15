@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/522038b915ed/production-audit/engineering/fpc-controlled-search-20261013-r4/dynamic_input_rules.py", line 86, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/522038b915ed/production-audit/engineering/fpc-controlled-search-20261013-r4/dynamic_input_rules.py", line 83, in main
+    result=build_report(a.folder);out=a.out or a.folder/'dynamic_screen.json';out.write_text(json.dumps(result,indent=2)+'\n')
+                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1047, in write_text
+    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'production-audit/engineering/fpc-controlled-search-20261013-r4/dynamic_screen_native.json'
