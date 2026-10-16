@@ -1,0 +1,103 @@
+{
+  "base_main": "5cfa8a86cf7648ac0add84898eeeb5b365440016",
+  "functional_commit": "212c4956d10231d4dbc9c86b10c48564385d82ee",
+  "local_complete_tests": 814,
+  "suites": 31,
+  "new_tests_included": 28,
+  "all_tests_passed": true,
+  "source_bytes_unchanged": true,
+  "full_unit_report_sha256": "9d407e4dd48ecfc2a58d45dec4aead7a70b782033f1f1a1b2b522b623d200834",
+  "full_unit_execution": "three disjoint unchanged canonical --suite invocations, identical snapshots and unique full coverage; no old786 result reuse",
+  "original_CAD_templates_dependencies_workflow_and_actual_input_registries_changed": false,
+  "previous_standard_native_CAD_jobs_reexecuted": false,
+  "coupled_full_field_audit": {
+    "cases": 8,
+    "panel_DOFs": 344103,
+    "frame_DOFs": 474726,
+    "saved_V2_full_fields_hashes_verified": true,
+    "new_K_assemblies": 2,
+    "fresh_K_checks_per_body": 8,
+    "fresh_K_free_residual_max": {
+      "panel": 4.2876043342777786e-13,
+      "frame": 9.62023429668113e-15
+    },
+    "fresh_panel_gauge_reaction_max": 9.56266316132215e-16,
+    "fresh_energy_work_relative_error_max": 8.966382069014994e-09,
+    "force_moment_balance_and_energy_passed": true
+  },
+  "local_gap_audit": {
+    "patches": 8,
+    "common_convex_cells": 5255,
+    "quadratic_piece_case_evaluations": 42040,
+    "patch_case_checks": 64,
+    "negative_patch_cases": 48,
+    "complete_load_cases_with_negative_gaps": 8,
+    "worst_pad_gap_mm": -0.0005401959915530962,
+    "worst_shear_gap_mm": -0.0012479102473295866,
+    "all_mean_port_cases_passed": true,
+    "local_nonpenetration_all_cases": false,
+    "resolved_contact_solution_accepted": false,
+    "gap_numerical_tolerance_mm": 1e-07,
+    "circle_clip": "inscribed256gon on nominal pad radius1.8mm",
+    "shared_mesh_domain_only": true,
+    "max_pad_uncovered_area_mm2": 0.0061231320412300505,
+    "vertex_edge_stationary_and_interior_stationary_checks": true,
+    "not_certified_interval_arithmetic_or_continuum_error_bound": true
+  },
+  "independent_witness_check": {
+    "library": "existing scikit-fem tetrahedral P2 local basis, not face polynomial evaluator",
+    "evaluations": 64,
+    "negative_witnesses": 48,
+    "maximum_absolute_gap_difference_mm": 7.786740002790893e-16,
+    "polygon_subdivision_rechecks": 64,
+    "subdivision_is_not_FE_mesh_refinement": true,
+    "failed_first_JSON_writer_retained": true,
+    "corrected_full_reexecution_exit_code": 0
+  },
+  "model_assumptions": {
+    "Epanel_normalization": 1.0,
+    "Epanel_over_Eframe": 1.0,
+    "nu": 0.3,
+    "synthetic_external_force_over_Epanel_mm2": 1e-05,
+    "synthetic_spring_initial_force_over_Epanel_mm2": [
+      0.0,
+      0.0002
+    ],
+    "initial_spring_force_is_not_final_installed_preload": true,
+    "frame_far_Y94p25_face_still_ideal_fixed": true,
+    "small_displacement_reference_pairing_not_finite_rotation_contact": true,
+    "one_neutral_Y_mode_retained": true
+  },
+  "next_step": "replace average prescribed-pressure contact with spatial unilateral pressure/gap discretization, then rerun field admissibility before coupled mesh convergence; do not machine away a calculation artifact",
+  "new_coupled_FE_mesh_convergence_complete": false,
+  "actual_material_load_preload_thread_strength_or_hardware_assigned": false,
+  "full_reconstructed_field_locations": {
+    "panel": {
+      "path": "/tmp/razr-contact-field-20261015/audit-v1/panel-coupled.npz",
+      "sha256": "f10c022645d12b6c7a4c94a2a1194fceae5cf67286c3a8a9261dbf7fac325299"
+    },
+    "frame": {
+      "path": "/tmp/razr-contact-field-20261015/audit-v1/frame-coupled.npz",
+      "sha256": "06bbd3ee958f1a0f2f2eafe1d5949bd9aa8aa9a49f55dbe70492b312884587a2"
+    }
+  },
+  "current_input_sha256": {
+    "assembly_inputs.json": "7b7ebf0f48556f2feca175a35b882a9a48337de2bb5f54b1ba7a740f85e8ce6b",
+    "roof_joint_load_inputs.json": "09f7b392b00a59ca1fdb5fa97ad10e6b4d5361ae0f440afb8dd4e9ee225a2640",
+    "frame_thread_actual_inputs.json": "4dcb50162bd25a7507a3afb4ba7e0f7aa33b8c233c0a366e68b8adec51a13609"
+  },
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "recorded_utc": "2026-10-15T23:58:46.396690+00:00",
+  "hosted_CI": {
+    "run_id": 38825946707,
+    "tests_executed": false,
+    "jobs_without_runner_or_steps": 12,
+    "conclusion": "failure_before_execution",
+    "annotation_messages": [
+      "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings"
+    ],
+    "billing_spending_or_protection_changed": false
+  }
+}
