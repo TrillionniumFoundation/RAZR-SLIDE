@@ -85,7 +85,7 @@ class CacheTests(unittest.TestCase):
         with self.assertRaises(ValueError):c.reconstruct(np.zeros(21),np.zeros(7))
     def test_storage_does_not_retain_N_by_m_responses(self):
         c=self.cache();c.append(csc_matrix(self.C))
-        self.assertNotIn('U',vars(c));self.assertEqual(set(vars(c)),{'identity','size','response','C','H','calls','_busy'})
+        self.assertNotIn('U',vars(c));self.assertEqual(set(vars(c)),{'identity','size','response','response_block','response_batch_size','C','H','calls','_busy'})
         self.assertGreater(c.storage_bytes(),c.H.nbytes)
     def test_random_energies_and_restore_orders(self):
         for n,m in ((8,4),(31,17),(61,40)):

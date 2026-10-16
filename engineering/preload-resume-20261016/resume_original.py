@@ -1,8 +1,8 @@
 """Resume the unchanged original RAZR contact problem from a pinned checkpoint.
 
-This adapter is delivered but has NOT been run on the full RAZR model in the
-current turn. Use explicit prepared input paths, then independently recheck
-all returned full fields before any integration claim. It does not change
+Use explicit prepared input paths, then independently recheck all returned
+full fields before any integration claim. Multiple right-hand sides change
+only evaluation of the same factored elastic operator. It does not change
 CAD, E/nu, load, bolt compliance, gauge, frame support or gap tolerance.
 """
 from __future__ import annotations
@@ -42,12 +42,13 @@ def arguments():
     p.add_argument('--new-points',type=int,default=128)
     p.add_argument('--max-points',type=int,default=6000)
     p.add_argument('--max-exchanges',type=int,default=80)
+    p.add_argument('--response-batch-size',type=int,default=16)
     a=p.parse_args()
     if a.repo.resolve() != ROOT.resolve():
         p.error('--repo must be this adapter repository, not another code tree')
     if len(a.cases)!=len(set(a.cases)) or any(i not in range(8) for i in a.cases):
         p.error('unique original case indices 0..7 required')
-    if not 1<=a.new_points<=512 or a.max_points<1 or a.max_exchanges<1:
+    if not 1<=a.new_points<=512 or a.max_points<1 or a.max_exchanges<1 or not 1<=a.response_batch_size<=64:
         p.error('invalid explicit resource bound')
     a.repo=a.repo.resolve();a.inputs=a.inputs.resolve();a.output=a.output.resolve()
     if a.output==a.repo or a.repo in a.output.parents or a.output==a.inputs or a.inputs in a.output.parents:
@@ -87,9 +88,10 @@ def main(a):
         print('FACTOR',name,K.shape,time.monotonic()-before,flush=True)
     P,F=bodies['panel'],bodies['frame'];npanel=P['K'].shape[0];nframe=F['K'].shape[0];n=npanel+nframe
     def response(rhs):
-        u=np.zeros(n)
-        u[P['free']]=P['factor'].solve(rhs[P['free']])
-        u[npanel+F['free']]=F['factor'].solve(rhs[npanel+F['free']])
+        # SuperLU accepts one or several RHS columns with identical factors.
+        u=np.zeros_like(rhs, dtype=float)
+        u[P['free']]=P['factor'].solve(np.asfortranarray(rhs[P['free']]))
+        u[npanel+F['free']]=F['factor'].solve(np.asfortranarray(rhs[npanel+F['free']]))
         return u
     cf=a.repo/'engineering/contact-field-20261015/common-cell-results.json.gz'
     mf=a.repo/'engineering/contact-field-20261015/coupled-field-audit.json.gz'
@@ -97,7 +99,8 @@ def main(a):
     metas=json.loads(gzip.decompress(mf.read_bytes()))['contact_patches']
     # Bind the exact common domains in the cache identity, not just in the report.
     hashes[str(cf)]=sha256(cf);hashes[str(mf)]=sha256(mf)
-    cache=ExactResponseCache(n,response,{'base':BASE_COMMIT,'input_sha256':hashes})
+    cache=ExactResponseCache(n,response,{'base':BASE_COMMIT,'input_sha256':hashes},
+                             response_block=response,response_batch_size=a.response_batch_size)
     byname={m['patch']:m for m in metas};cells=[]
     for group in raw:
         m=byname[group['patch']];axis=m['normal_axis'];tan=[i for i in range(3) if i!=axis]
@@ -173,6 +176,15 @@ def main(a):
                  'seconds':time.monotonic()-tic,'retained_response_storage_bytes':cache.storage_bytes()}
             history.append(row);dump(out/'progress.json',history);print('EXCHANGE',case,row,flush=True)
             returned=(lam,rigid,u,applied,q,audit,points.copy())
+            snap=out/f'checkpoint-{exchange:03d}';snap.mkdir()
+            np.savez_compressed(snap/'response.npz',H=cache.H,G=G,qfree=qfree,
+                                initialgap=initialgap,loadG=loadG,forces=lam,rigid=rigid)
+            dump(snap/'points.json',points)
+            dump(snap/'manifest.json',{'case':case,'exchange':exchange,'input_sha256':hashes,
+                'source_sha256':sha256(Path(__file__)),'response_sha256':sha256(snap/'response.npz'),
+                'points_sha256':sha256(snap/'points.json'),'state_is_finite_QP_not_gap_qualification':True,
+                'minimum_gap_mm':float(audit['minimum'].min()),'gap_tolerance_mm':GAP_TOLERANCE})
+
             if not len(bad):success=True;break
             if len(points)>=a.max_points+4:break
             candidates=[{'patch':cells[i]['label'],'cell':int(i),'minimum':float(audit['minimum'][i]),

@@ -125,7 +125,8 @@ class ExactResponseCache:
     must not be substituted for missing spatial maps. Fingerprints of K, mesh,
     boundary conditions, loads and point identities belong in input_identity.
     """
-    def __init__(self, size: int, response: Callable, input_identity: dict):
+    def __init__(self, size: int, response: Callable, input_identity: dict, *,
+                 response_block: Callable | None = None, response_batch_size: int = 16):
         if type(size) is not int or size < 1 or not callable(response):
             raise ValueError('positive dimension and response callback required')
         encoded = json.dumps(input_identity, sort_keys=True, separators=(',', ':'), allow_nan=False)
@@ -133,7 +134,13 @@ class ExactResponseCache:
             raise ValueError('nonempty input identity required')
         self.identity = json.loads(encoded)
         self.size = size
+        if response_block is not None and not callable(response_block):
+            raise ValueError('optional block response must be callable')
+        if type(response_batch_size) is not int or not 1 <= response_batch_size <= 64:
+            raise ValueError('response batch size must be an integer from 1 to 64')
         self.response = response
+        self.response_block = response_block
+        self.response_batch_size = response_batch_size
         self.C = csc_matrix((size, 0), dtype=float)
         self.H = np.empty((0, 0), dtype=float)
         self.calls = 0
@@ -161,6 +168,21 @@ class ExactResponseCache:
             raise ValueError('response did not retain full displacement dimension')
         return u
 
+    def _responses(self, rhs):
+        """Bounded multiple-RHS response; no long-lived per-column fields."""
+        if self._busy:
+            raise RuntimeError('recursive response callback')
+        self._busy = True
+        try:
+            u = _real(self.response_block(np.array(rhs, order='F', copy=True)), 2,
+                      'full block elastic response')
+        finally:
+            self._busy = False
+        if u.shape != rhs.shape:
+            raise ValueError('block response did not retain all displacement/RHS dimensions')
+        self.calls += rhs.shape[1]
+        return u
+
     def append(self, maps, *, reciprocity_tolerance=2e-8):
         """Solve only the new columns; commits state after all checks succeed."""
         if type(reciprocity_tolerance) not in (float, int) or not 0 < reciprocity_tolerance < 1e-3:
@@ -170,11 +192,19 @@ class ExactResponseCache:
         if not k:
             return
         cross = np.zeros((n, k)); block = np.zeros((k, k))
-        for j in range(k):
-            u = self._response(new[:, j].toarray().ravel())
-            if n:
-                cross[:, j] = np.asarray(self.C.T @ u).ravel()
-            block[:, j] = np.asarray(new.T @ u).ravel()
+        if self.response_block is None:
+            for j in range(k):
+                u = self._response(new[:, j].toarray().ravel())
+                if n:
+                    cross[:, j] = np.asarray(self.C.T @ u).ravel()
+                block[:, j] = np.asarray(new.T @ u).ravel()
+        else:
+            for start in range(0, k, self.response_batch_size):
+                end = min(start + self.response_batch_size, k)
+                u = self._responses(new[:, start:end].toarray(order='F'))
+                if n:
+                    cross[:, start:end] = np.asarray(self.C.T @ u)
+                block[:, start:end] = np.asarray(new.T @ u)
         scale = max(float(np.max(abs(block))), 1e-300)
         if np.max(abs(block-block.T)) > reciprocity_tolerance*scale:
             raise ValueError('nonreciprocal new elastic response')
