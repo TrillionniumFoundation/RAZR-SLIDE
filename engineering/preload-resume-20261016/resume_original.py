@@ -15,7 +15,7 @@ from scipy.sparse.linalg import splu
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'integration'))
 from contact_patch_audit import triangle_coefficients,evaluate
-from contact_exchange import ExactResponseCache,QuadraticGapBatch,select_violations,sha256
+from contact_exchange import ExactResponseCache,QuadraticGapBatch,select_violations,sha256,feasible_force_guess
 from contact_dual_active import solve_force_qp
 
 BASE_COMMIT='ab8e32acf4d6dc0510e45838ec03458f4de28363'
@@ -43,6 +43,7 @@ def arguments():
     p.add_argument('--max-points',type=int,default=6000)
     p.add_argument('--max-exchanges',type=int,default=80)
     p.add_argument('--response-batch-size',type=int,default=16)
+    p.add_argument('--resume-state',type=Path,help='immutable completed finite-QP checkpoint directory')
     a=p.parse_args()
     if a.repo.resolve() != ROOT.resolve():
         p.error('--repo must be this adapter repository, not another code tree')
@@ -62,10 +63,27 @@ def main(a):
     delivery=json.loads((e/'DELIVERY_VERIFICATION.json').read_text())
     expected_inputs=delivery['full_response_checkpoint']
     response_file=e/'bounded-exact-response.npz';point_file=e/'bounded-contact-points.json'
-    assert sha256(response_file)==expected_inputs['exact-response-system.npz']['sha256']
-    assert sha256(point_file)==expected_inputs['contact-point-locations.json']['sha256']
+    resumed=None
+    if a.resume_state is None:
+        assert sha256(response_file)==expected_inputs['exact-response-system.npz']['sha256']
+        assert sha256(point_file)==expected_inputs['contact-point-locations.json']['sha256']
+    else:
+        state=a.resume_state.resolve()
+        if state==a.output or a.output in state.parents or state in a.output.parents:
+            raise ValueError('resume state and new output must not overlap')
+        resumed=json.loads((state/'manifest.json').read_text())
+        assert resumed['gap_tolerance_mm']==GAP_TOLERANCE
+        assert 0<=resumed['case']<8 and resumed['state_is_finite_QP_not_gap_qualification']
+        for path,want in resumed['input_sha256'].items():
+            assert sha256(Path(path))==want,('changed checkpoint dependency',path)
+        response_file=state/'response.npz';point_file=state/'points.json'
+        assert sha256(response_file)==resumed['response_sha256']
+        assert sha256(point_file)==resumed['points_sha256']
+
     assert sha256(a.repo/'integration/contact_patch_audit.py')==AUDITOR_SHA
     hashes={str(response_file):sha256(response_file),str(point_file):sha256(point_file)}
+    if resumed is not None:
+        path=a.resume_state.resolve()/'manifest.json';hashes[str(path)]=sha256(path)
     for name,want in {
         'assembly_inputs.json':'7b7ebf0f48556f2feca175a35b882a9a48337de2bb5f54b1ba7a740f85e8ce6b',
         'roof_joint_load_inputs.json':'09f7b392b00a59ca1fdb5fa97ad10e6b4d5361ae0f440afb8dd4e9ee225a2640',
@@ -144,19 +162,28 @@ def main(a):
     print('CHECKPOINT_RESTORED',len(points)-4,check,flush=True)
     dump(a.output/'checkpoint-validation.json',{'probes':check.probes,'relative_error':check.largest_relative_error,
          'input_sha256':hashes,'full_fields_recomputed_per_old_point':False})
-    seed=json.loads((e/'case-4/report.json').read_text())
-    seed_points=seed['contact_points']
-    assert all(x==y for x,y in zip(seed_points,points))
-    oldlam=np.asarray(seed['forces']);oldlam=np.pad(oldlam,(0,len(points)-len(oldlam)))
+    if resumed is None:
+        seed=json.loads((e/'case-4/report.json').read_text())
+        seed_points=seed['contact_points']
+        assert len(seed_points)<=len(points) and all(x==y for x,y in zip(seed_points,points))
+        oldlam=np.asarray(seed['forces']);oldlam=np.pad(oldlam,(0,len(points)-len(oldlam)))
+    else:
+        oldlam=np.asarray(checkpoint['forces'])
+        assert oldlam.shape==(len(points),) and np.isfinite(oldlam).all()
+
     seen={m['patch']:[] for m in metas}
     for p in points[4:]:seen[p['patch']].append(p['xy'])
     case_summaries=[]
     for case in a.cases:
         out=a.output/f'case-{case}';out.mkdir();j=case%4;force=1e-5;pre=0. if case<4 else 2e-4
         history=[];success=False;returned=None
-        # Only case 4 shares the immutable seed's load. Other cases get their
-        # own feasible start from the unchanged solver, not a copied success.
-        if case!=4:oldlam=None
+        # Transfer only a feasible optimization GUESS, never a copied result.
+        if oldlam is not None:
+            oldlam=np.pad(oldlam,(0,len(points)-len(oldlam)))
+            warm=feasible_force_guess(G,loadG[:,j]*force,oldlam)
+            oldlam=warm.pop('forces')
+            dump(out/'warm-start.json',warm)
+
         for exchange in range(a.max_exchanges):
             m=len(points);S=cache.H.copy();S[np.arange(4),np.arange(4)]+=5.
             d=qfree[:,j]*force-initialgap;d[:4]+=5.*pre
@@ -235,6 +262,7 @@ def main(a):
                             load_frame=applied[npanel:],lambda_forces=lam,rigid=rigid)
         dump(out/'gap-extrema.json',{k:v for k,v in audit.items()})
         case_summaries.append({k:report[k] for k in ['case','passed','minimum_gap_mm','audited_cells']})
+        oldlam=lam.copy()
         # A failed case is saved explicitly; subsequent work is not called done.
         if not report['passed']:break
     np.savez_compressed(a.output/'exact-response-system.npz',H=cache.H,G=G,qfree=qfree,initialgap=initialgap,loadG=loadG)

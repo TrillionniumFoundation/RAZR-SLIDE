@@ -321,3 +321,51 @@ def select_violations(checks, existing, *, maximum_new=128, duplicate_distance=1
         if not progress:
             break
     return selected
+
+
+def feasible_force_guess(G, load, previous, *, free_prefix=4):
+    """Find an L1-near feasible optimizer start for a DIFFERENT rigid load.
+
+    This is never a contact/elastic solution or an assigned physical load
+    distribution. The unchanged energy QP must solve and certify its result.
+    No force guess is returned for an unsupported or numerically bad LP.
+    """
+    from scipy.optimize import linprog
+    from scipy.sparse import eye, vstack
+    g = _real(G, 2, 'rigid map')
+    b = _real(load, 1, 'rigid load')
+    old = _real(previous, 1, 'previous force guess')
+    m = len(old)
+    if m < 1 or g.shape != (m, len(b)):
+        raise ValueError('inconsistent force-guess dimensions')
+    if type(free_prefix) is not int or not 0 <= free_prefix <= m:
+        raise ValueError('invalid free prefix')
+    scale = max(float(np.max(abs(old), initial=0.)),
+                float(np.max(abs(b), initial=0.)), 1e-15)
+    tolerance = 1e-10 * scale
+    if (np.max(abs(g.T @ old - b), initial=0.) <= tolerance
+            and np.min(old[free_prefix:], initial=0.) >= 0.):
+        return {'forces': old.copy(), 'status': 'already_feasible',
+                'optimizer_guess_only': True}
+    I = eye(m, format='csc')
+    E = csc_matrix(g.T)
+    zero = csc_matrix((len(b), m))
+    result = linprog(np.r_[np.zeros(m), np.ones(m)],
+        A_ub=vstack([hstack([I, -I]), hstack([-I, -I])], format='csc'),
+        b_ub=np.r_[old / scale, -old / scale],
+        A_eq=hstack([E, zero], format='csc') if len(b) else None,
+        b_eq=b / scale if len(b) else None,
+        bounds=[(None, None)]*free_prefix + [(0, None)]*(m-free_prefix) + [(0, None)]*m,
+        method='highs', options={'primal_feasibility_tolerance': 1e-9,
+            'dual_feasibility_tolerance': 1e-9, 'time_limit': 30.})
+    if not result.success:
+        return {'forces': None, 'status': 'no_feasible_guess',
+                'lp_status': int(result.status), 'optimizer_guess_only': True}
+    guess = result.x[:m] * scale
+    error = float(np.max(abs(g.T @ guess - b), initial=0.))
+    negative = float(max(0., -np.min(guess[free_prefix:], initial=0.)))
+    good = error <= tolerance and negative <= tolerance
+    return {'forces': guess if good else None,
+            'status': 'projected_feasible' if good else 'numerical_guess_rejected',
+            'equilibrium_error': error, 'negative_contact_guess': negative,
+            'optimizer_guess_only': True}
