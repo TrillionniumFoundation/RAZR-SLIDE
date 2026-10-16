@@ -1,0 +1,7585 @@
+{
+  "case": 3,
+  "load_index": 3,
+  "force_over_Epanel_mm2": 1e-05,
+  "spring_initial_over_Epanel_mm2": 0.0,
+  "spring_compliance_times_Epanel_per_mm": 5.0,
+  "Epanel_over_Eframe": 1.0,
+  "nu": 0.3,
+  "all_original_cells_nonpenetrating": true,
+  "bolt_tension_branch_valid": true,
+  "full_field_checks": {
+    "bodies": {
+      "panel": {
+        "free_residual_max": 1.1772477253018526e-14,
+        "gauge_or_fixture_reaction_max": 8.666841116306001e-17,
+        "strain_energy": 1.8154952074741182e-08,
+        "half_work": 1.815495204433091e-08,
+        "relative_work_error": 1.6750401047648305e-09
+      },
+      "frame": {
+        "free_residual_max": 2.7907363919776884e-16,
+        "gauge_or_fixture_reaction_max": 2.034983596156899e-06,
+        "strain_energy": 2.7504042216072595e-08,
+        "half_work": 2.7504042214307706e-08,
+        "relative_work_error": 6.416835331659137e-11
+      }
+    },
+    "total_force_moment_balance": [
+      -4.9710397289919347e-17,
+      -4.921790819139519e-18,
+      7.987303375340345e-17,
+      8.202144139197615e-15,
+      -2.7879180048008147e-15,
+      3.419378639756575e-15
+    ],
+    "energy": 4.565899429081378e-08,
+    "half_work": 4.5658994258638615e-08,
+    "bolt_relative_displacements": [
+      9.204227033774662e-06,
+      2.1551530108789626e-05,
+      3.6370834044662957e-06,
+      3.4924867901651568e-06
+    ],
+    "minimum_enforced_point_gap": -2.721874375194444e-13,
+    "contact_complementarity_max": 6.055543450436912e-20,
+    "minimum_contact_reaction": 0.0,
+    "minimum_bolt_tension": 6.984974009949669e-07
+  },
+  "history": [
+    {
+      "exchange": 0,
+      "point_constraints": 469,
+      "minimum_gap_mm": -1.039083374222807e-06,
+      "negative_cells": 45,
+      "nonzero_contact_reactions": 204,
+      "minimum_bolt_tension": 6.987953062545183e-07,
+      "qp_iterations": 211
+    },
+    {
+      "exchange": 1,
+      "point_constraints": 483,
+      "minimum_gap_mm": -1.687728051239602e-07,
+      "negative_cells": 16,
+      "nonzero_contact_reactions": 217,
+      "minimum_bolt_tension": 6.986034169439703e-07,
+      "qp_iterations": 16
+    },
+    {
+      "exchange": 2,
+      "point_constraints": 489,
+      "minimum_gap_mm": -9.913248575379201e-08,
+      "negative_cells": 0,
+      "nonzero_contact_reactions": 220,
+      "minimum_bolt_tension": 6.984974009949669e-07,
+      "qp_iterations": 14
+    }
+  ],
+  "contact_points": [
+    {
+      "kind": "bolt",
+      "index": 0
+    },
+    {
+      "kind": "bolt",
+      "index": 1
+    },
+    {
+      "kind": "bolt",
+      "index": 2
+    },
+    {
+      "kind": "bolt",
+      "index": 3
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 57,
+      "xy": [
+        -33.544563315228345,
+        51.2870355144231
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 322,
+      "xy": [
+        -33.54456331522832,
+        48.712964485576926
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 137,
+      "xy": [
+        -36.0271141557758,
+        51.31027921327263
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 244,
+      "xy": [
+        -36.02711415577583,
+        48.68972078672739
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1223,
+      "xy": [
+        36.02711415577577,
+        51.31027921327266
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1483,
+      "xy": [
+        36.0271141557758,
+        48.68972078672738
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1307,
+      "xy": [
+        33.54456331522836,
+        51.28703551442312
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1404,
+      "xy": [
+        33.544563315228366,
+        48.712964485576876
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2375,
+      "xy": [
+        -33.544563315228366,
+        71.28703551442312
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2637,
+      "xy": [
+        -33.54456331522834,
+        68.71296448557689
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2447,
+      "xy": [
+        -36.027114155775855,
+        71.31027921327258
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2558,
+      "xy": [
+        -36.0271141557758,
+        68.68972078672736
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3584,
+      "xy": [
+        36.02711415577574,
+        71.31027921327268
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3842,
+      "xy": [
+        36.027114155775735,
+        68.68972078672732
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3663,
+      "xy": [
+        33.544563315228295,
+        71.28703551442307
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3762,
+      "xy": [
+        33.544563315228324,
+        68.7129644855769
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4882,
+      "xy": [
+        20.5,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4777,
+      "xy": [
+        20.5,
+        0.65
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4707,
+      "xy": [
+        16.5,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4673,
+      "xy": [
+        16.5,
+        0.65
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4911,
+      "xy": [
+        24.0,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4885,
+      "xy": [
+        24.0,
+        0.65
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4954,
+      "xy": [
+        22.5,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4926,
+      "xy": [
+        22.5,
+        0.65
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5173,
+      "xy": [
+        20.5,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5065,
+      "xy": [
+        20.5,
+        0.65
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 4995,
+      "xy": [
+        16.5,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 4963,
+      "xy": [
+        16.5,
+        0.65
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_rear",
+      "cell": 5198,
+      "xy": [
+        24.0,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_rear",
+      "cell": 5174,
+      "xy": [
+        24.0,
+        0.65
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_rear",
+      "cell": 5249,
+      "xy": [
+        22.5,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_rear",
+      "cell": 5209,
+      "xy": [
+        22.5,
+        0.65
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 73,
+      "xy": [
+        -34.083605172085505,
+        51.64824954631989
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 84,
+      "xy": [
+        -34.32154880839462,
+        51.72680092642181
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 79,
+      "xy": [
+        -33.80077827809817,
+        51.49617637762577
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1424,
+      "xy": [
+        34.2654154528642,
+        48.290226940818094
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1428,
+      "xy": [
+        34.114282024472644,
+        48.34052715469996
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1443,
+      "xy": [
+        34.447915683946334,
+        48.240756628398145
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2416,
+      "xy": [
+        -34.843374742744935,
+        71.79572796071679
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2405,
+      "xy": [
+        -34.613012044013736,
+        71.78158329380402
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2436,
+      "xy": [
+        -35.149078074579144,
+        71.76286139058679
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3742,
+      "xy": [
+        33.173226180850726,
+        69.24342691250179
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3741,
+      "xy": [
+        33.21486441096164,
+        69.16552726306448
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3730,
+      "xy": [
+        33.10307137825344,
+        69.42307301719752
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4759,
+      "xy": [
+        18.11753407598791,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4760,
+      "xy": [
+        18.02002542703806,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4771,
+      "xy": [
+        18.475795140665216,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4942,
+      "xy": [
+        23.547742128420335,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4948,
+      "xy": [
+        23.425724016122214,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4950,
+      "xy": [
+        23.29463145839031,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 36,
+      "xy": [
+        -33.16939142490607,
+        50.749398763734426
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 38,
+      "xy": [
+        -33.21617741496023,
+        50.83692919464106
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 27,
+      "xy": [
+        -33.10304764164648,
+        50.57684873369595
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1417,
+      "xy": [
+        33.80030591333068,
+        48.50408995955001
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1454,
+      "xy": [
+        34.89718271609505,
+        48.20957166209026
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1439,
+      "xy": [
+        34.800841396473665,
+        48.2053517068746
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2440,
+      "xy": [
+        -35.54973768080253,
+        71.63042742014687
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2424,
+      "xy": [
+        -35.46983155923992,
+        71.66874632659231
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2439,
+      "xy": [
+        -35.72413776378402,
+        71.53720863368252
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3794,
+      "xy": [
+        34.18554206425631,
+        68.31445626836079
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3791,
+      "xy": [
+        34.31995149543092,
+        68.27368361316842
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3778,
+      "xy": [
+        34.050139214282794,
+        68.36963838080092
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4756,
+      "xy": [
+        16.8341045775653,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4763,
+      "xy": [
+        17.143543091411455,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4764,
+      "xy": [
+        17.223758125905217,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4943,
+      "xy": [
+        23.920956225743105,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4949,
+      "xy": [
+        23.00496449251147,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4956,
+      "xy": [
+        22.791635294622306,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 98,
+      "xy": [
+        -34.80267540217444,
+        51.79469484757482
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 100,
+      "xy": [
+        -34.897182716095074,
+        51.79042833790973
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 116,
+      "xy": [
+        -35.149530631314654,
+        51.76279886252665
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1378,
+      "xy": [
+        33.30719460413964,
+        49.00436633860222
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1379,
+      "xy": [
+        33.22031429792085,
+        49.15533124170465
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1393,
+      "xy": [
+        33.374321602733026,
+        48.922061280948874
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2397,
+      "xy": [
+        -34.185542064256296,
+        71.68554373163921
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2398,
+      "xy": [
+        -34.3200129396188,
+        71.72633502572221
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2389,
+      "xy": [
+        -34.05019267127406,
+        71.6303901925562
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3784,
+      "xy": [
+        33.800133599439874,
+        68.50418711665863
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3795,
+      "xy": [
+        34.789083961046025,
+        68.20565015792775
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3812,
+      "xy": [
+        34.897182716095045,
+        68.20957166209027
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4756,
+      "xy": [
+        16.679341540004216,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4769,
+      "xy": [
+        18.666047599421262,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4751,
+      "xy": [
+        17.684134642315282,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4942,
+      "xy": [
+        23.70197420871433,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4950,
+      "xy": [
+        23.152574585808875,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 47,
+      "xy": [
+        -33.36245463715009,
+        51.07203990382788
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 54,
+      "xy": [
+        -33.38586008258489,
+        50.984042139876074
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 46,
+      "xy": [
+        -33.58094801640733,
+        51.01512326051724
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1456,
+      "xy": [
+        35.24239888472683,
+        48.26226272585019
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1462,
+      "xy": [
+        35.15138860313432,
+        48.23745784644385
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1417,
+      "xy": [
+        33.98291361843776,
+        48.62684030229438
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2468,
+      "xy": [
+        -36.462983158520316,
+        70.68883017825716
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2472,
+      "xy": [
+        -36.41475156842835,
+        70.7790651366106
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2485,
+      "xy": [
+        -36.507355148327,
+        70.54255533101302
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3754,
+      "xy": [
+        33.3721023091189,
+        68.91897862564859
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3763,
+      "xy": [
+        33.78440143774308,
+        68.79430061882891
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3778,
+      "xy": [
+        34.14665807409998,
+        68.58891414894147
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4756,
+      "xy": [
+        16.756723058808348,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 97,
+      "xy": [
+        -34.52658411882457,
+        51.65886376073487
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 72,
+      "xy": [
+        -34.10096428306206,
+        51.39252876858329
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 90,
+      "xy": [
+        -34.29712107467046,
+        51.4706714752669
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1440,
+      "xy": [
+        34.71457436323074,
+        48.39396507548497
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1447,
+      "xy": [
+        34.62471947912231,
+        48.45374710317179
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1448,
+      "xy": [
+        34.51126879531431,
+        48.47617438048837
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2414,
+      "xy": [
+        -34.95671261214163,
+        71.58264548715654
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2418,
+      "xy": [
+        -34.78817912474404,
+        71.57955390303259
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2434,
+      "xy": [
+        -35.045486026992755,
+        71.57888672752853
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3802,
+      "xy": [
+        34.53189551528115,
+        68.34279257899912
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3804,
+      "xy": [
+        34.480868266389315,
+        68.43355662739195
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3795,
+      "xy": [
+        34.66945657781145,
+        68.31584798053674
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 59,
+      "xy": [
+        -33.75734978419381,
+        51.29667012463497
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 68,
+      "xy": [
+        -33.72494858995418,
+        51.20781747626308
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 76,
+      "xy": [
+        -33.84043498012964,
+        51.258065583320594
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1407,
+      "xy": [
+        33.66217896445027,
+        48.83271429744012
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1402,
+      "xy": [
+        33.73679099763903,
+        48.72424174821335
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1408,
+      "xy": [
+        33.59253712174991,
+        48.895929821095415
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2458,
+      "xy": [
+        -36.23033095533739,
+        71.08083068481692
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2412,
+      "xy": [
+        -34.481937373706906,
+        71.59773950250226
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2398,
+      "xy": [
+        -34.395247909590225,
+        71.55847865540211
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3752,
+      "xy": [
+        33.575373600755476,
+        68.90696503236995
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3738,
+      "xy": [
+        33.47512346958548,
+        69.05884485563405
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3760,
+      "xy": [
+        33.71015044980813,
+        68.6353965189991
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 45,
+      "xy": [
+        -33.33250798194979,
+        50.708571558343344
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 51,
+      "xy": [
+        -33.4070116566402,
+        50.807269444513935
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 25,
+      "xy": [
+        -33.03883349541672,
+        50.35205035325795
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1428,
+      "xy": [
+        34.281072361515605,
+        48.528653178602646
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1425,
+      "xy": [
+        34.34576454154148,
+        48.60162073069009
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1462,
+      "xy": [
+        35.05252313859689,
+        48.38173352011902
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2428,
+      "xy": [
+        -35.30265453590642,
+        71.60573715915265
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2452,
+      "xy": [
+        -35.76581430267768,
+        71.3550607652459
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2444,
+      "xy": [
+        -35.469118115690115,
+        71.47940811994668
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3814,
+      "xy": [
+        35.16835663844041,
+        68.23980225599237
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3819,
+      "xy": [
+        35.467618773114864,
+        68.33058243207512
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3823,
+      "xy": [
+        34.990205654484896,
+        68.36591598840356
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 113,
+      "xy": [
+        -35.406934181132804,
+        51.687826037648705
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 105,
+      "xy": [
+        -34.797209995293265,
+        51.59702470101194
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 100,
+      "xy": [
+        -34.932757845636665,
+        51.614364298805356
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1417,
+      "xy": [
+        33.97489694086158,
+        48.40985621383881
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1440,
+      "xy": [
+        34.60176210890535,
+        48.22634744831075
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1394,
+      "xy": [
+        33.435996556506375,
+        49.07601592422278
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2395,
+      "xy": [
+        -33.80072686275025,
+        71.4961473877021
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2463,
+      "xy": [
+        -36.03125902477733,
+        71.09752642493125
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2401,
+      "xy": [
+        -34.10926938868578,
+        71.46744483666834
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3785,
+      "xy": [
+        33.92681601423256,
+        68.63984410048577
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3779,
+      "xy": [
+        33.94802299941122,
+        68.55987120180349
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3789,
+      "xy": [
+        33.99244778419986,
+        68.7163654032272
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 49,
+      "xy": [
+        -33.51960363183302,
+        51.12880740626277
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 95,
+      "xy": [
+        -34.613012044013736,
+        51.781583293804026
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 78,
+      "xy": [
+        -33.942644124037855,
+        51.35562743040262
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1402,
+      "xy": [
+        33.68241590977247,
+        48.59983178497383
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1452,
+      "xy": [
+        34.84291627128345,
+        48.38104632343743
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1421,
+      "xy": [
+        34.403522851131875,
+        48.405053929287774
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2481,
+      "xy": [
+        -36.20939622972319,
+        70.92375750386815
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2496,
+      "xy": [
+        -36.56778675491313,
+        70.32706656610475
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2492,
+      "xy": [
+        -36.57712677068264,
+        70.23223579457394
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3791,
+      "xy": [
+        34.29612167562097,
+        68.51424458566532
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3792,
+      "xy": [
+        34.33783886312679,
+        68.58335576611272
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3778,
+      "xy": [
+        34.245768943873756,
+        68.58208415187643
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 71,
+      "xy": [
+        -33.928111703925666,
+        51.565136556020846
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 66,
+      "xy": [
+        -33.788544037567895,
+        51.08137930391609
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 59,
+      "xy": [
+        -33.67072266151415,
+        51.390571814184675
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1401,
+      "xy": [
+        33.90478277246001,
+        48.73523729245241
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1432,
+      "xy": [
+        34.20734466684862,
+        48.71737057104321
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1460,
+      "xy": [
+        35.467618773114864,
+        48.33058243207512
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2432,
+      "xy": [
+        -35.17954911685391,
+        71.4512249052003
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2405,
+      "xy": [
+        -34.67164296553436,
+        71.63575948585817
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2402,
+      "xy": [
+        -34.26576440237324,
+        71.52452725282835
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3779,
+      "xy": [
+        33.92341518388479,
+        68.43737378624121
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3739,
+      "xy": [
+        33.282730376041805,
+        69.04258738111828
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3802,
+      "xy": [
+        34.44793837050823,
+        68.24075231108309
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 41,
+      "xy": [
+        -33.236195182535624,
+        50.59993425779166
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 95,
+      "xy": [
+        -34.69381054848839,
+        51.642113610450764
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 94,
+      "xy": [
+        -34.62892737363809,
+        51.545642915162496
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1416,
+      "xy": [
+        34.047961801004575,
+        48.49730075860664
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1400,
+      "xy": [
+        33.78706043461349,
+        48.623719746761644
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1381,
+      "xy": [
+        33.15016867070233,
+        49.295232634664465
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2412,
+      "xy": [
+        -34.45245770244847,
+        71.76010773020137
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2456,
+      "xy": [
+        -35.6199730867511,
+        71.39034819968005
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2465,
+      "xy": [
+        -35.931619105232194,
+        71.2151390377729
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3812,
+      "xy": [
+        34.773840238492085,
+        68.44818559158101
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3767,
+      "xy": [
+        33.65644679622868,
+        68.80239756718349
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3752,
+      "xy": [
+        33.45693893779941,
+        68.81283064271821
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 84,
+      "xy": [
+        -34.41909105615065,
+        51.58437112388051
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 1125,
+      "xy": [
+        -33.59511145300034,
+        50.8605600931782
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 76,
+      "xy": [
+        -33.93914756885509,
+        51.19818962337643
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1392,
+      "xy": [
+        33.46840515780556,
+        48.851234763523394
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1451,
+      "xy": [
+        35.02619542786728,
+        48.22227830512362
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1440,
+      "xy": [
+        34.564256231698245,
+        48.31910732141233
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2449,
+      "xy": [
+        -35.886049340059905,
+        71.42604811566282
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2388,
+      "xy": [
+        -33.92437331701325,
+        71.56313834658567
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2415,
+      "xy": [
+        -35.0282589196445,
+        71.70830333116733
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 97,
+      "xy": [
+        -34.472375556950595,
+        51.76389815263464
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 25,
+      "xy": [
+        -33.06847801356574,
+        50.462887942466445
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 101,
+      "xy": [
+        -35.048730063961564,
+        51.70684847100666
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1456,
+      "xy": [
+        35.23561468186147,
+        48.338417103244495
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1393,
+      "xy": [
+        33.51212116050802,
+        48.98043870569116
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1406,
+      "xy": [
+        33.83833499857488,
+        48.84935284407118
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2473,
+      "xy": [
+        -36.30008388542002,
+        70.83342899133835
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2428,
+      "xy": [
+        -35.315935976567566,
+        71.7154300412178
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2434,
+      "xy": [
+        -35.172980931349166,
+        71.63797133819658
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 64,
+      "xy": [
+        -33.67109544821184,
+        50.985888598539326
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 39,
+      "xy": [
+        -33.32138565501822,
+        50.939793622670834
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 68,
+      "xy": [
+        -33.61381666632212,
+        51.203801730460555
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1379,
+      "xy": [
+        33.331083652413646,
+        49.15088977222115
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1447,
+      "xy": [
+        34.583264758985194,
+        48.5643901762779
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1451,
+      "xy": [
+        34.955340379905984,
+        48.3024024565419
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2446,
+      "xy": [
+        -35.371077677838066,
+        71.50140347466095
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 113,
+      "xy": [
+        -35.23596744699075,
+        51.715610307630236
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 50,
+      "xy": [
+        -33.48737899040955,
+        50.862448565903236
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 81,
+      "xy": [
+        -34.19590727359835,
+        51.68868798351802
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1429,
+      "xy": [
+        34.12996722288817,
+        48.43521071242659
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1439,
+      "xy": [
+        34.72058053761554,
+        48.24890029025426
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 78,
+      "xy": [
+        -33.82133735769536,
+        51.37067427801655
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 27,
+      "xy": [
+        -33.14935339376959,
+        50.527589834113925
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 38,
+      "xy": [
+        -33.32055172599887,
+        50.85134205595118
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 59,
+      "xy": [
+        -33.65237109421133,
+        51.28454472359464
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 89,
+      "xy": [
+        -34.15662400006743,
+        51.542565396677944
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 36,
+      "xy": [
+        -33.27237802768076,
+        50.77127780700023
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 83,
+      "xy": [
+        -34.538309617685336,
+        51.48042153892215
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 84,
+      "xy": [
+        -34.333696087755,
+        51.562055568817115
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 69,
+      "xy": [
+        -33.82777711292027,
+        51.16869000805078
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 105,
+      "xy": [
+        -34.82538279337365,
+        51.70448371408365
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 96,
+      "xy": [
+        -34.69556228595991,
+        51.7568573056139
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 3,
+      "xy": [
+        -33.0169022533913,
+        50.17161145861646
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 33,
+      "xy": [
+        -33.1705894105009,
+        50.34252263421906
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 4,
+      "xy": [
+        -33.07668354817127,
+        50.25877203877712
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 27,
+      "xy": [
+        -33.25467213581028,
+        50.44968343160615
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 1125,
+      "xy": [
+        -33.538655913770036,
+        50.79334751897156
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 101,
+      "xy": [
+        -35.028559020635704,
+        51.77748890130765
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1379,
+      "xy": [
+        33.29595562144329,
+        49.2563341620418
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1374,
+      "xy": [
+        33.10304816439765,
+        49.423149543024394
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1411,
+      "xy": [
+        33.737173942848116,
+        48.9586803946381
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1380,
+      "xy": [
+        33.45499911746697,
+        49.22011835603847
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1412,
+      "xy": [
+        33.67138833820329,
+        49.013487165677304
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1433,
+      "xy": [
+        33.98940167575897,
+        48.80127310591897
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4884,
+      "xy": [
+        19.242503278506934,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4878,
+      "xy": [
+        19.36281222460442,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4877,
+      "xy": [
+        19.099237761906082,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4765,
+      "xy": [
+        17.43982374918484,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4856,
+      "xy": [
+        19.0,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4755,
+      "xy": [
+        16.989135900262163,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4956,
+      "xy": [
+        22.71224863919094,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 25,
+      "xy": [
+        -33.14140680322058,
+        50.41618254035132
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 72,
+      "xy": [
+        -34.0483704046663,
+        51.471190850550094
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 3,
+      "xy": [
+        -33.02388783504666,
+        50.242537259419855
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 41,
+      "xy": [
+        -33.322450608500105,
+        50.58713562843374
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 27,
+      "xy": [
+        -33.23119970427174,
+        50.51600051363541
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 295,
+      "xy": [
+        -34.39344286036373,
+        48.25139025134227
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 313,
+      "xy": [
+        -34.114885243498335,
+        48.34030646362676
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 292,
+      "xy": [
+        -34.6037728799929,
+        48.219326684426235
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 277,
+      "xy": [
+        -34.799144573998895,
+        48.205394779061365
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 314,
+      "xy": [
+        -34.10452264758151,
+        48.42267378248269
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 301,
+      "xy": [
+        -34.547812118060826,
+        48.33227636413165
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1296,
+      "xy": [
+        34.08360517208553,
+        51.648249546319896
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1287,
+      "xy": [
+        34.317946239770514,
+        51.72570809917722
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1276,
+      "xy": [
+        34.45218182704763,
+        51.760055230354666
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1321,
+      "xy": [
+        33.800679035855424,
+        51.496120421084406
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1304,
+      "xy": [
+        34.27818078800921,
+        51.60116736035523
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1274,
+      "xy": [
+        34.6027691388555,
+        51.78057445570054
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2663,
+      "xy": [
+        -33.16939142490608,
+        69.25060123626552
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2662,
+      "xy": [
+        -33.21520341347445,
+        69.16489303397172
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2668,
+      "xy": [
+        -33.10320889783786,
+        69.42261967588259
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2650,
+      "xy": [
+        -33.307908342365366,
+        69.00325124848116
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2672,
+      "xy": [
+        -33.2739638739662,
+        69.26783318778648
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2677,
+      "xy": [
+        -33.244135035443115,
+        69.39010021769755
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3622,
+      "xy": [
+        34.83997573321807,
+        71.79564168016869
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3631,
+      "xy": [
+        34.611983918935,
+        71.78148203232219
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3651,
+      "xy": [
+        34.45310781048488,
+        71.76023144754677
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3629,
+      "xy": [
+        35.149810593703215,
+        71.76276018117757
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3644,
+      "xy": [
+        34.32790255495279,
+        71.72872831436871
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3635,
+      "xy": [
+        34.8478668181337,
+        71.70078061707937
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5047,
+      "xy": [
+        18.078449572454982,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5055,
+      "xy": [
+        17.993169163595663,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5045,
+      "xy": [
+        17.675640936166445,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5052,
+      "xy": [
+        18.486508631460683,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5058,
+      "xy": [
+        18.585274067424788,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5036,
+      "xy": [
+        17.364827134660047,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_rear",
+      "cell": 5231,
+      "xy": [
+        23.604481851537777,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_rear",
+      "cell": 5241,
+      "xy": [
+        23.34762826397816,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_rear",
+      "cell": 5240,
+      "xy": [
+        23.118444487060902,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_rear",
+      "cell": 5242,
+      "xy": [
+        22.889383059337668,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_rear",
+      "cell": 5232,
+      "xy": [
+        23.851186673762292,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 340,
+      "xy": [
+        -33.28057452554658,
+        49.0459555173663
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 342,
+      "xy": [
+        -33.219953760951725,
+        49.15600575893146
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 336,
+      "xy": [
+        -33.39408438131862,
+        48.95517348263891
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 355,
+      "xy": [
+        -33.14281665840555,
+        49.31230253975577
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 326,
+      "xy": [
+        -33.79992140735199,
+        48.50430675860761
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 351,
+      "xy": [
+        -33.37411056415678,
+        49.15595317982322
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1329,
+      "xy": [
+        33.16939142490606,
+        50.74939876373442
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1331,
+      "xy": [
+        33.215983453224474,
+        50.836566317756535
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1344,
+      "xy": [
+        33.103053526154085,
+        50.5768681323178
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1337,
+      "xy": [
+        33.30663244070647,
+        50.99475538016225
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1349,
+      "xy": [
+        33.1951646150124,
+        50.59303495158301
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1358,
+      "xy": [
+        33.038436011075724,
+        50.35045386761832
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2608,
+      "xy": [
+        -34.387288270070385,
+        68.25325722589672
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2629,
+      "xy": [
+        -34.11486473466557,
+        68.34031396689858
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2607,
+      "xy": [
+        -34.60276913885549,
+        68.21942554429947
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2596,
+      "xy": [
+        -34.80076693332611,
+        68.20535359704911
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2616,
+      "xy": [
+        -34.5532292430201,
+        68.30207630472285
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2617,
+      "xy": [
+        -34.434176092098774,
+        68.36818767343978
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3598,
+      "xy": [
+        35.597655945294406,
+        71.60481457416051
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3612,
+      "xy": [
+        35.48801922430969,
+        71.66165644291165
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3597,
+      "xy": [
+        35.72578108489814,
+        71.53633026024708
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3586,
+      "xy": [
+        35.798783873847555,
+        71.49166305698395
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3609,
+      "xy": [
+        35.58737093584276,
+        71.44474561504667
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3580,
+      "xy": [
+        36.29161832875787,
+        70.99832100929738
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5050,
+      "xy": [
+        16.806538610904703,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5048,
+      "xy": [
+        16.952953210895014,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5049,
+      "xy": [
+        16.65949334683477,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5037,
+      "xy": [
+        17.099969065234276,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5046,
+      "xy": [
+        17.496350845141844,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5055,
+      "xy": [
+        17.832823924896708,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_rear",
+      "cell": 5231,
+      "xy": [
+        23.72783426264849,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_rear",
+      "cell": 5248,
+      "xy": [
+        22.68087685416509,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 258,
+      "xy": [
+        -35.16143898772568,
+        48.238846470240134
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 264,
+      "xy": [
+        -35.46760147204278,
+        48.33057718385228
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 274,
+      "xy": [
+        -34.966165972040756,
+        48.35422255188982
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 262,
+      "xy": [
+        -35.19362932131931,
+        48.446326983081974
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 261,
+      "xy": [
+        -35.27710568650625,
+        48.44064905537478
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 283,
+      "xy": [
+        -35.0113692830623,
+        48.45872401688689
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1271,
+      "xy": [
+        35.08048099860723,
+        51.77233919028535
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1253,
+      "xy": [
+        35.188589722179465,
+        51.75406010515624
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1270,
+      "xy": [
+        34.904998813742836,
+        51.78965851948363
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1283,
+      "xy": [
+        34.842735664687574,
+        51.736459011102966
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1250,
+      "xy": [
+        35.467755457770565,
+        51.66937610508788
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1294,
+      "xy": [
+        33.97839539548965,
+        51.41932920356433
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2641,
+      "xy": [
+        -33.80009215464379,
+        68.50421048480693
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2623,
+      "xy": [
+        -34.003388270211204,
+        68.56219364654692
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2645,
+      "xy": [
+        -33.879218063978485,
+        68.6858684583932
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2636,
+      "xy": [
+        -33.755908449057394,
+        68.73007139764108
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 3116,
+      "xy": [
+        -34.07163380602418,
+        68.63732269547539
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2646,
+      "xy": [
+        -33.84385613983961,
+        68.82006912580667
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3655,
+      "xy": [
+        34.07685645603783,
+        71.64464228243904
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3674,
+      "xy": [
+        33.80084648315551,
+        71.49621483422456
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3644,
+      "xy": [
+        34.25901014111679,
+        71.5411271389588
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3647,
+      "xy": [
+        34.40472809266568,
+        71.5307712424915
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3650,
+      "xy": [
+        34.51400373074811,
+        71.57542001047345
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3631,
+      "xy": [
+        34.64633572660498,
+        71.56696622996412
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5051,
+      "xy": [
+        16.601320099011005,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5047,
+      "xy": [
+        18.282479101953232,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 308,
+      "xy": [
+        -33.97753459859967,
+        48.60711391531758
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 320,
+      "xy": [
+        -33.74969813825553,
+        48.69221933646961
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 980,
+      "xy": [
+        -34.08532179020689,
+        48.67010023279526
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 310,
+      "xy": [
+        -34.30822072505975,
+        48.51148506024716
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 1094,
+      "xy": [
+        -33.934857826780146,
+        48.80091113292186
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 316,
+      "xy": [
+        -34.27871806997914,
+        48.5938384049946
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1327,
+      "xy": [
+        33.58045057569034,
+        51.09377589969596
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1308,
+      "xy": [
+        33.674041683771634,
+        51.175793145367635
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1338,
+      "xy": [
+        33.56052733875912,
+        50.99769044293431
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1309,
+      "xy": [
+        33.73070990361326,
+        51.283874610496525
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1305,
+      "xy": [
+        33.690744842066806,
+        51.07697800104495
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1315,
+      "xy": [
+        33.76112952006858,
+        51.15276918212926
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2594,
+      "xy": [
+        -35.1194549357357,
+        68.23304569185919
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2648,
+      "xy": [
+        -33.49642750456099,
+        68.924728683754
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2595,
+      "xy": [
+        -34.972123813769734,
+        68.32523824228694
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2627,
+      "xy": [
+        -34.294623843801126,
+        68.51220256768357
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2652,
+      "xy": [
+        -33.62729396817138,
+        68.89738743524495
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2604,
+      "xy": [
+        -34.803293765750006,
+        68.4065936435796
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3553,
+      "xy": [
+        36.5283754810844,
+        70.47326058050697
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3511,
+      "xy": [
+        36.56541350472581,
+        70.35116257962903
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3571,
+      "xy": [
+        36.462983158520316,
+        70.68883017825716
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3508,
+      "xy": [
+        36.57757468255757,
+        70.22768806898922
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3569,
+      "xy": [
+        36.40391152476204,
+        70.56091952292371
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3562,
+      "xy": [
+        36.41496935368257,
+        70.77865768905791
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 290,
+      "xy": [
+        -34.76202614887901,
+        48.3866828363419
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 303,
+      "xy": [
+        -34.61662368635473,
+        48.478699373703975
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 334,
+      "xy": [
+        -33.59798903975775,
+        48.89503446681968
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 973,
+      "xy": [
+        -34.69305586408961,
+        48.54334755219769
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 321,
+      "xy": [
+        -33.67585938736462,
+        48.853656958311596
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 304,
+      "xy": [
+        -34.50884147721064,
+        48.49054846659303
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1274,
+      "xy": [
+        34.61490707956969,
+        51.588022805552995
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1275,
+      "xy": [
+        34.696044930544176,
+        51.59386370613577
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1289,
+      "xy": [
+        34.50198186109495,
+        51.61242422027026
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1331,
+      "xy": [
+        33.40644073521708,
+        50.834250586453514
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1302,
+      "xy": [
+        34.54988601577491,
+        51.496749064726615
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1298,
+      "xy": [
+        34.16973774816878,
+        51.41052906174231
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2624,
+      "xy": [
+        -33.944905208455054,
+        68.42588712879655
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2635,
+      "xy": [
+        -33.690062135182856,
+        68.62250806644464
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2630,
+      "xy": [
+        -34.1043496343841,
+        68.4029935919211
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2609,
+      "xy": [
+        -34.29416049257352,
+        68.34878607599592
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2619,
+      "xy": [
+        -34.57420346899948,
+        68.49293741310267
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2649,
+      "xy": [
+        -33.41194220619419,
+        69.04253657318999
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3617,
+      "xy": [
+        35.28038847219174,
+        71.58990314276893
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3626,
+      "xy": [
+        35.265557557556136,
+        71.49467568109466
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3629,
+      "xy": [
+        35.07891762877275,
+        71.5683733743406
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3599,
+      "xy": [
+        35.3841104041764,
+        71.49166226015743
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 4538,
+      "xy": [
+        35.19014182959148,
+        71.39679895375015
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3611,
+      "xy": [
+        35.31476578643439,
+        71.37821489730281
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 308,
+      "xy": [
+        -33.923047614241376,
+        48.43757025630886
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 275,
+      "xy": [
+        -34.973202139709755,
+        48.21705892180448
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 307,
+      "xy": [
+        -34.01821877095298,
+        48.48768549562748
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 259,
+      "xy": [
+        -35.333294119917745,
+        48.28983549400107
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 298,
+      "xy": [
+        -34.244845404346,
+        48.29646679681774
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 296,
+      "xy": [
+        -34.39203395650656,
+        48.33422875102549
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1323,
+      "xy": [
+        33.37173965762665,
+        51.08335373401373
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1309,
+      "xy": [
+        33.68279343709639,
+        51.40047804369387
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1329,
+      "xy": [
+        33.32749747130686,
+        50.69506586842703
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1318,
+      "xy": [
+        33.922400733198046,
+        51.16909392202409
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1320,
+      "xy": [
+        33.837851327898086,
+        51.35697966835658
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1337,
+      "xy": [
+        33.41913743940015,
+        50.998974729945616
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2642,
+      "xy": [
+        -33.885613783688086,
+        68.56923311874212
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 3419,
+      "xy": [
+        -34.21954285286012,
+        68.65142846224771
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2652,
+      "xy": [
+        -33.72093166828526,
+        68.83826318869201
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2644,
+      "xy": [
+        -33.934536954318204,
+        68.81573790033318
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 3420,
+      "xy": [
+        -34.280392507928006,
+        68.74869547822186
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2648,
+      "xy": [
+        -33.43747736640335,
+        68.83654463607779
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3581,
+      "xy": [
+        36.13159262740179,
+        71.12496222150595
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3585,
+      "xy": [
+        35.85926611971859,
+        71.21288724164471
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3592,
+      "xy": [
+        36.02501533988702,
+        71.11922858818626
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3586,
+      "xy": [
+        35.771966846923284,
+        71.31096584252029
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3578,
+      "xy": [
+        36.13768056588681,
+        70.90549753133095
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3654,
+      "xy": [
+        34.05540593464744,
+        71.49104112220697
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 292,
+      "xy": [
+        -34.663605528750466,
+        48.31916196146064
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 320,
+      "xy": [
+        -33.68238139443658,
+        48.59986011097796
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 279,
+      "xy": [
+        -35.104300072671606,
+        48.34667789999476
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 327,
+      "xy": [
+        -33.8712497104676,
+        48.60892920302389
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 259,
+      "xy": [
+        -35.22932051414881,
+        48.331619620557184
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 980,
+      "xy": [
+        -34.19074417478079,
+        48.65175804950725
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1294,
+      "xy": [
+        33.9242707046045,
+        51.563083499110505
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1271,
+      "xy": [
+        35.00235390234447,
+        51.65096701667667
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1299,
+      "xy": [
+        34.17056434260572,
+        51.55417961455402
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1255,
+      "xy": [
+        35.100117958091055,
+        51.6331268286478
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1254,
+      "xy": [
+        35.323304683048846,
+        51.70766082132667
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1327,
+      "xy": [
+        33.457881261582806,
+        51.188317582134104
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2635,
+      "xy": [
+        -33.78469945582506,
+        68.61577032803116
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2606,
+      "xy": [
+        -34.67438338966221,
+        68.35778924253694
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3620,
+      "xy": [
+        34.97586341169536,
+        71.6663746712724
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3635,
+      "xy": [
+        34.873307660070054,
+        71.54372049160887
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 4540,
+      "xy": [
+        34.90089995823992,
+        71.44501000631121
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3617,
+      "xy": [
+        35.33719497265283,
+        71.7089811952585
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 4537,
+      "xy": [
+        34.97935361804097,
+        71.4282319151255
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3640,
+      "xy": [
+        34.733742676472964,
+        71.62966860171755
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 331,
+      "xy": [
+        -33.79319035547891,
+        48.848431034932155
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 283,
+      "xy": [
+        -34.88151134388108,
+        48.44913811097303
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 345,
+      "xy": [
+        -33.52453542638235,
+        49.02269148042764
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 296,
+      "xy": [
+        -34.43270035680098,
+        48.45583714995891
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 313,
+      "xy": [
+        -34.19884475184123,
+        48.448261765088965
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 314,
+      "xy": [
+        -34.12618242007748,
+        48.53202093973005
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1287,
+      "xy": [
+        34.38976774706666,
+        51.636411477332736
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1303,
+      "xy": [
+        34.35820911610436,
+        51.541979441280304
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1301,
+      "xy": [
+        34.38074670789986,
+        51.4043322587525
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1343,
+      "xy": [
+        33.06830666139344,
+        50.462323070056236
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 2011,
+      "xy": [
+        33.663355749477304,
+        50.90273267067533
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1284,
+      "xy": [
+        34.21099637201713,
+        51.693265211481986
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3651,
+      "xy": [
+        34.49615712632172,
+        71.67781313400235
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3645,
+      "xy": [
+        34.402143109192586,
+        71.66184768448156
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3653,
+      "xy": [
+        33.91474752777839,
+        71.55799325504732
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3641,
+      "xy": [
+        34.2130470960018,
+        71.65949607906201
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3598,
+      "xy": [
+        35.47971788144845,
+        71.50896503092874
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3603,
+      "xy": [
+        35.72827152857465,
+        71.41172322545795
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 334,
+      "xy": [
+        -33.4484831311605,
+        48.823134072919416
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 979,
+      "xy": [
+        -34.40628212178185,
+        48.63122493884675
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 321,
+      "xy": [
+        -33.66645433103654,
+        48.738752626772836
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 290,
+      "xy": [
+        -34.72474524755653,
+        48.2532848124661
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 274,
+      "xy": [
+        -34.85163724438824,
+        48.32274183051498
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 329,
+      "xy": [
+        -33.90400854794329,
+        48.678563515760274
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1275,
+      "xy": [
+        34.73105607724932,
+        51.79287686072879
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 2099,
+      "xy": [
+        34.138325281965386,
+        51.24999666656338
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1308,
+      "xy": [
+        33.597615629481915,
+        51.2119774514141
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1343,
+      "xy": [
+        33.14542852596131,
+        50.525150853411645
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1332,
+      "xy": [
+        33.26181196558083,
+        50.92230543388335
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1338,
+      "xy": [
+        33.46964935709507,
+        50.909051844333916
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3563,
+      "xy": [
+        36.26932610500218,
+        70.8331115165368
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1278,
+      "xy": [
+        34.800932945650075,
+        51.61510076855885
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1274,
+      "xy": [
+        34.55633870202125,
+        51.703111416135584
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1331,
+      "xy": [
+        33.33192976081517,
+        50.77817298969292
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1294,
+      "xy": [
+        34.02318702043844,
+        51.528698718059594
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1303,
+      "xy": [
+        34.47177538538867,
+        51.4483248450072
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1329,
+      "xy": [
+        33.23819919192173,
+        50.69496158440663
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 343,
+      "xy": [
+        -33.28061963770028,
+        49.25102525367999
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 355,
+      "xy": [
+        -33.24196864292591,
+        49.331667157694525
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 357,
+      "xy": [
+        -33.13660567938543,
+        49.41668045163105
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 1095,
+      "xy": [
+        -34.077651339310904,
+        48.76501807479592
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1355,
+      "xy": [
+        33.01612122782286,
+        50.163681572942934
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1343,
+      "xy": [
+        33.17835724294201,
+        50.3396272059576
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1349,
+      "xy": [
+        33.34661705422563,
+        50.54002019960957
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1353,
+      "xy": [
+        33.4200591396687,
+        50.6779589122011
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1352,
+      "xy": [
+        33.360463806949106,
+        50.622047334281426
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1344,
+      "xy": [
+        33.26045548930774,
+        50.477850566533235
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2585,
+      "xy": [
+        -35.354186236064685,
+        68.29617304814778
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3665,
+      "xy": [
+        33.70213680660537,
+        71.41635273679304
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5037,
+      "xy": [
+        17.227176757220352,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_rear",
+      "cell": 5231,
+      "xy": [
+        23.666158057095025,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1356,
+      "xy": [
+        33.04556823109428,
+        50.27530837530205
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1274,
+      "xy": [
+        34.65229617527597,
+        51.691507882419565
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1314,
+      "xy": [
+        33.79274060870287,
+        51.027853322455904
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1283,
+      "xy": [
+        34.74198231991702,
+        51.68495462882658
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1343,
+      "xy": [
+        33.12713582151668,
+        50.40656557256256
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1308,
+      "xy": [
+        33.63885395177298,
+        51.295078078183636
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    }
+  ],
+  "forces": [
+    1.840845420381253e-06,
+    4.310306076269485e-06,
+    7.274166872439686e-07,
+    6.984974009949669e-07,
+    0.0,
+    4.2260606997914546e-08,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.2454092511315525e-08,
+    0.0,
+    0.0,
+    1.6073048107575924e-08,
+    0.0,
+    0.0,
+    1.728182294323359e-08,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.202616034728192e-07,
+    0.0,
+    6.442724185531384e-06,
+    0.0,
+    3.802042371859446e-07,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    5.154657338558991e-08,
+    2.020005624657986e-08,
+    1.9630729646454968e-08,
+    1.280157310001458e-08,
+    3.975752208912595e-08,
+    5.99152734517132e-08,
+    6.531135872008002e-08,
+    2.342472705106641e-08,
+    5.291735027106667e-08,
+    5.0927228426918935e-08,
+    7.675026435154222e-08,
+    6.4864556514373775e-09,
+    2.162682188539839e-09,
+    1.1102876071537199e-08,
+    0.0,
+    1.3216520667971611e-08,
+    0.0,
+    0.0,
+    2.0046831930423622e-08,
+    1.929045230144422e-08,
+    4.402906687040168e-09,
+    1.9818724171569394e-08,
+    1.0942955266627762e-08,
+    1.3975204030931838e-08,
+    2.8758325892855722e-08,
+    2.6850960933406502e-08,
+    5.3963733473752585e-08,
+    0.0,
+    0.0,
+    4.056223312638591e-08,
+    0.0,
+    2.9607275316833976e-07,
+    6.6270189230567635e-09,
+    1.0352069564475454e-08,
+    0.0,
+    4.096717509404566e-08,
+    9.981205266904844e-09,
+    5.492480655640315e-08,
+    2.415031701347644e-08,
+    2.347609431702873e-08,
+    4.99078678821459e-08,
+    7.149632798598975e-08,
+    1.564176798802956e-08,
+    0.0,
+    6.036917465866583e-08,
+    1.0893760941045891e-07,
+    8.329770851285961e-09,
+    1.0606123420548398e-08,
+    7.117722429524282e-09,
+    7.995939641978132e-09,
+    1.1087937328254201e-08,
+    1.1125397139455704e-08,
+    2.0962737501895363e-08,
+    1.2631282240295597e-08,
+    7.296152711489916e-09,
+    3.2207608789347326e-10,
+    9.796575822591226e-09,
+    2.1948416251274444e-08,
+    1.2934906933222073e-08,
+    2.2751587896093648e-07,
+    6.781332992303636e-08,
+    1.4294500852429056e-08,
+    8.551083142647075e-08,
+    7.152596860868169e-08,
+    4.8986303115450736e-08,
+    1.9489387133170392e-08,
+    1.681751091772649e-07,
+    1.9137014518888736e-08,
+    0.0,
+    4.0033613663704966e-08,
+    0.0,
+    0.0,
+    0.0,
+    2.3314191206785532e-08,
+    0.0,
+    2.6030892421130192e-08,
+    4.425741152152563e-08,
+    0.0,
+    2.2443624301795368e-07,
+    2.9986877604850236e-09,
+    2.9620124078545206e-08,
+    1.5627901316581966e-08,
+    1.3321104203012695e-08,
+    1.6631215705148904e-08,
+    8.684929027124508e-09,
+    1.1277588900262833e-08,
+    8.610344277030539e-09,
+    2.7037219283853336e-08,
+    2.290751005587567e-08,
+    6.630308965266231e-09,
+    2.5570500841403858e-08,
+    8.08083267327682e-08,
+    0.0,
+    4.2669614645153755e-08,
+    7.999065284296677e-08,
+    2.0901585102484122e-08,
+    8.695621369564737e-08,
+    3.8923800083999636e-08,
+    0.0,
+    1.9289021009327368e-07,
+    3.8191663841473086e-08,
+    1.0458856548256597e-07,
+    9.17263705789615e-08,
+    0.0,
+    1.1841057861552046e-07,
+    8.635539794162731e-09,
+    3.1562244123120375e-08,
+    1.3910478759403081e-08,
+    3.247465446726963e-08,
+    2.9206281608255773e-08,
+    1.652279471109624e-08,
+    1.1118971637519309e-08,
+    3.212159227117518e-09,
+    1.1247759266297793e-08,
+    0.0,
+    0.0,
+    7.698319816434729e-09,
+    3.4629649128565576e-08,
+    7.023303210094933e-08,
+    1.097154402468375e-07,
+    0.0,
+    2.2965266854942484e-08,
+    2.3199762999451417e-08,
+    3.70889623823026e-08,
+    0.0,
+    3.2393735424840006e-08,
+    1.0334381497148307e-07,
+    0.0,
+    1.7356762184541147e-07,
+    1.5218688892136335e-08,
+    2.219247683972722e-08,
+    2.3289519433777005e-08,
+    2.1958571092832677e-08,
+    2.2046979118787833e-08,
+    1.8685143455360324e-08,
+    3.325496648718577e-08,
+    3.636243039949177e-09,
+    2.7919813659555417e-08,
+    1.4370286206402107e-08,
+    1.1548841505329753e-08,
+    4.51664646515485e-09,
+    4.873749099385662e-08,
+    4.392092021506581e-08,
+    6.505590627120338e-08,
+    1.0959928303102343e-08,
+    3.7752138291971314e-08,
+    5.981247058738237e-08,
+    5.4064570383321e-08,
+    6.846328840083159e-08,
+    3.796467882182876e-08,
+    1.1409524793443878e-07,
+    1.956924165373899e-07,
+    4.227767900045799e-08,
+    1.9861492789087277e-08,
+    1.877350703577507e-08,
+    1.829188750665398e-08,
+    1.5886671027382586e-08,
+    4.26909729452227e-09,
+    9.950777204762282e-09,
+    1.9286826018311916e-08,
+    2.6101219494116336e-08,
+    1.0046862468438179e-08,
+    1.3372242743844043e-08,
+    1.013471526674081e-08,
+    3.416126541993322e-08,
+    5.24812154756719e-08,
+    3.299725651919487e-08,
+    3.193547856126201e-08,
+    1.017630807022113e-07,
+    8.921016176083245e-09,
+    5.609539677044727e-08,
+    6.207832397382322e-08,
+    0.0,
+    1.2393686514299226e-07,
+    0.0,
+    0.0,
+    7.321288237812468e-08,
+    1.691593417240983e-08,
+    1.4748939488576203e-08,
+    3.163241621323275e-08,
+    2.0974792562693116e-08,
+    9.05591358246401e-09,
+    1.0829051177271805e-08,
+    4.290950075303792e-09,
+    3.1979723419542195e-08,
+    6.760838138203911e-08,
+    1.7637496491106454e-08,
+    7.472795866497646e-08,
+    6.756413525112188e-08,
+    7.51891453358022e-08,
+    5.9464637447418423e-08,
+    1.273926142645373e-07,
+    4.29309788713548e-08,
+    1.2252789113571282e-08,
+    1.2971173099004147e-08,
+    8.488047571267276e-08,
+    4.074575816999501e-08,
+    3.1513360210576104e-08,
+    8.989677664913068e-09,
+    1.15055486253478e-08,
+    1.9738357518432153e-08,
+    2.030464497324937e-08,
+    1.6950357790015025e-08,
+    2.64924991066972e-08,
+    1.492389329708136e-08,
+    4.9079951880373806e-08,
+    5.163450480715602e-08,
+    5.235787091405951e-08,
+    2.248210325079098e-08,
+    3.9148512405727444e-08,
+    2.646496808510511e-08,
+    8.857568480180246e-08,
+    8.042798913131909e-08,
+    5.287345202772196e-08,
+    1.211982840487016e-07,
+    1.6310097472908056e-08,
+    0.0,
+    6.17150803191035e-08,
+    1.4014550948812072e-07,
+    3.3516379318762624e-08,
+    4.045364110204187e-09,
+    5.14384268291293e-08,
+    3.454118240997634e-08,
+    0.0,
+    3.289711362957119e-09,
+    2.1041718898197533e-08,
+    1.6540743916388726e-08,
+    0.0,
+    2.6278692860185153e-08,
+    5.0270657902637676e-08,
+    2.097254034805802e-08,
+    0.0,
+    3.4612821953937006e-09,
+    4.773513222750124e-09,
+    1.402016603494792e-07,
+    1.5693015824478453e-06,
+    4.6385341235278854e-08,
+    6.395817577879798e-08,
+    2.758616249121032e-08,
+    2.518644495221664e-08,
+    1.2131784685375492e-07,
+    5.603503007040877e-08
+  ],
+  "rigid": [
+    0.03240767217245322,
+    1.760079998024968e-17,
+    -0.0002094969204924692,
+    0.0008507831105152502,
+    -0.00012511160051154903,
+    -0.023849278442681827
+  ],
+  "enforced_gaps": [
+    1.7253433812479055e-05,
+    -7.514518521323232e-14,
+    2.5959618177573678e-05,
+    6.337681126393924e-06,
+    1.36038584744925e-05,
+    7.922430557959692e-05,
+    -2.7094299026586555e-13,
+    4.174695884728353e-05,
+    1.2954634929250694e-05,
+    -3.783984844213384e-14,
+    1.0701442727999231e-05,
+    5.585942383555748e-07,
+    -2.1164710609089532e-13,
+    3.924626345191843e-06,
+    2.9011221807945936e-07,
+    1.4778301812294137e-05,
+    0.04466475942069459,
+    0.04466223239802082,
+    0.0435807104821096,
+    0.04355449531234729,
+    0.04560355830377153,
+    0.045619731939108524,
+    0.045202127169834086,
+    0.045210785520556136,
+    4.682751418256387e-06,
+    0.0008387538190993624,
+    -4.853756285783106e-15,
+    0.0006416858179979883,
+    -4.659467256473704e-15,
+    0.0005055185522081611,
+    -4.593547764386585e-15,
+    0.000782982282851629,
+    2.1535987747989347e-05,
+    2.271439988607831e-05,
+    1.9633936943642266e-05,
+    6.777721999449158e-05,
+    6.355423373159827e-05,
+    7.243382714753775e-05,
+    1.60331037299395e-05,
+    1.623742151204955e-05,
+    1.530498997893764e-05,
+    1.3009388581158919e-05,
+    1.3356547255605916e-05,
+    1.208421567664938e-05,
+    0.044020709015267695,
+    0.04399424818043704,
+    0.0441178589997757,
+    0.04548266371438821,
+    0.04545002604321374,
+    0.045414951189140386,
+    1.1424960627816338e-05,
+    1.2360462401154147e-05,
+    9.624711837560862e-06,
+    5.280686320845271e-05,
+    8.050651471549954e-05,
+    7.921810166159433e-05,
+    1.364424739714893e-05,
+    1.4056817728923341e-05,
+    1.2695379928336255e-05,
+    1.3783863013627209e-05,
+    1.3277812841253306e-05,
+    1.4209314940068652e-05,
+    0.043671775458464276,
+    0.04375603309753025,
+    0.04377786158199867,
+    0.04558243751024461,
+    0.04533741349443046,
+    0.04528027806999709,
+    2.4492391092325715e-05,
+    2.472782265338508e-05,
+    2.5314471582108672e-05,
+    2.898488640984561e-05,
+    2.3291388409562696e-05,
+    3.250937322593888e-05,
+    1.5919192938852484e-05,
+    1.6125295462819005e-05,
+    1.5575941345236013e-05,
+    1.4750432439961342e-05,
+    1.1090833349290891e-05,
+    1.0504641102795356e-05,
+    0.04362960448593779,
+    0.04416940459178296,
+    0.04390303592936219,
+    0.045523905584834934,
+    0.04537693158757114,
+    1.4896430745491279e-05,
+    1.413146494534754e-05,
+    1.4814991732552997e-05,
+    8.362578496433912e-05,
+    8.324741475938986e-05,
+    5.160702337719423e-05,
+    6.431573723133231e-06,
+    6.924632895750514e-06,
+    5.6983331622622625e-06,
+    1.4282867724913309e-05,
+    1.319573245226835e-05,
+    1.2563879233540081e-05,
+    0.04365069257514604,
+    2.25579681469054e-05,
+    1.9233048215738704e-05,
+    2.032885288533442e-05,
+    7.106047234780363e-05,
+    6.748415040521609e-05,
+    6.496317164207026e-05,
+    1.4169151893929257e-05,
+    1.4367746978825738e-05,
+    1.4015142900246033e-05,
+    1.1822172748008264e-05,
+    1.164922236932106e-05,
+    1.122577435007789e-05,
+    1.7737336871795524e-05,
+    1.6863149527444887e-05,
+    1.7526171150495165e-05,
+    3.987769175557688e-05,
+    4.452775333880273e-05,
+    3.68170543675753e-05,
+    9.000720710932559e-06,
+    1.4894311592193558e-05,
+    1.4668314742181878e-05,
+    1.3489087611257868e-05,
+    1.2995139635951693e-05,
+    1.4457045832134692e-05,
+    1.1433460767333505e-05,
+    1.2526994328364988e-05,
+    7.314841542458133e-06,
+    5.9612271527204486e-05,
+    5.7926639203480755e-05,
+    7.648280796928057e-05,
+    1.3850611035984327e-05,
+    1.1335415595621515e-05,
+    1.2642012168669601e-05,
+    8.996042186861907e-06,
+    7.227038562721108e-06,
+    9.358457125487637e-06,
+    2.5679048369098897e-05,
+    2.2703083144743914e-05,
+    2.327100087616031e-05,
+    5.887475632376359e-05,
+    7.539189771630598e-05,
+    2.8986455051736252e-05,
+    1.4614586083985305e-05,
+    9.294495058801756e-06,
+    1.4183914185390552e-05,
+    1.3379826482453217e-05,
+    1.3712880907635174e-05,
+    1.2627352935493412e-05,
+    1.5751070297618033e-05,
+    2.3871182120706064e-05,
+    1.8606884585142553e-05,
+    4.76772193790428e-05,
+    7.345744316520101e-05,
+    6.59173728235706e-05,
+    8.018200958492079e-06,
+    4.683406319382446e-06,
+    4.2774769978814195e-06,
+    1.2195850861177523e-05,
+    1.1622284997268493e-05,
+    1.2098365700110593e-05,
+    2.0491485018886684e-05,
+    1.579709551742959e-05,
+    1.843549913880171e-05,
+    4.6744686315868976e-05,
+    5.173683390512565e-05,
+    8.427230660045231e-05,
+    1.2810846710194289e-05,
+    1.4980038385826468e-05,
+    1.4519859695766345e-05,
+    1.4500704258942586e-05,
+    1.387395121147186e-05,
+    1.2755909748647654e-05,
+    1.0182760186964665e-05,
+    2.2828514734078622e-05,
+    2.1775585864634503e-05,
+    5.705894750589321e-05,
+    4.862144333391493e-05,
+    1.8403153096818378e-05,
+    1.625809725970106e-05,
+    1.1778546951693078e-05,
+    1.017553948001195e-05,
+    1.0076299249968152e-05,
+    1.3746289352603103e-05,
+    1.4571276226116097e-05,
+    2.16369246611209e-05,
+    1.3400733632372083e-05,
+    1.7137854306851358e-05,
+    3.6190113243343485e-05,
+    8.196165317426486e-05,
+    7.148886287102136e-05,
+    1.167308111610821e-05,
+    1.5104890782851395e-05,
+    1.506935688806374e-05,
+    2.337399857172762e-05,
+    8.449831215136434e-06,
+    2.447745037553392e-05,
+    8.073893443308246e-05,
+    3.299336011805109e-05,
+    4.19979586765277e-05,
+    7.351318393892148e-06,
+    1.466487733738542e-05,
+    1.4297811922535202e-05,
+    1.4704084640681115e-05,
+    1.357422246093436e-05,
+    1.6622955865190376e-05,
+    2.5199313487601384e-05,
+    6.273669359399721e-05,
+    7.800773046973348e-05,
+    1.2946142878625714e-05,
+    2.5226971595694245e-05,
+    1.3212030775186945e-05,
+    2.2117590184921217e-05,
+    6.053271992653448e-05,
+    7.643809906480656e-05,
+    1.852848214174696e-05,
+    9.278501537007388e-06,
+    1.2744671829891061e-05,
+    1.7435528466636444e-05,
+    2.0716607536074017e-05,
+    1.1881326947467841e-05,
+    2.0948708905438925e-05,
+    2.1250046805178658e-05,
+    1.6676986262747443e-05,
+    2.3753423921270538e-05,
+    2.3865046885530698e-05,
+    5.5353514243116145e-06,
+    7.592841130220872e-06,
+    6.5367303693757844e-06,
+    8.82016866511669e-06,
+    1.2667460801880654e-05,
+    2.5027158308354655e-05,
+    2.1754531956055074e-05,
+    1.4388107384491434e-05,
+    3.706286767549572e-05,
+    2.5186373232360558e-05,
+    3.4420483075781484e-05,
+    4.574328756691646e-05,
+    0.044325389606404544,
+    0.044357909460370895,
+    0.04428665037809351,
+    0.04383663141449115,
+    0.04425980744539108,
+    0.0437139996088254,
+    0.04525900933402164,
+    8.205800024470994e-06,
+    1.986227142757079e-05,
+    6.228523802570378e-06,
+    1.0274145693430197e-05,
+    9.380974354914699e-06,
+    -7.254179895666013e-14,
+    -7.354967329620266e-14,
+    -7.175640290291163e-14,
+    -7.084914252497576e-14,
+    -7.34638044841418e-14,
+    -7.170262647515635e-14,
+    -2.711502897212448e-13,
+    -2.6994769267152385e-13,
+    -2.70910030519822e-13,
+    -2.6974017637571013e-13,
+    -2.702892163558568e-13,
+    -2.71023004386195e-13,
+    -3.801787443885596e-14,
+    -3.813540195435339e-14,
+    3.288157804345925e-07,
+    -3.811274212894844e-14,
+    8.743202260916207e-08,
+    3.919137506819747e-07,
+    -2.0795485559249594e-13,
+    -2.0750068330244176e-13,
+    -2.0719699827392857e-13,
+    -2.0808973034275313e-13,
+    -2.081626971489614e-13,
+    -2.079882490194085e-13,
+    -4.777428452840127e-15,
+    -4.791306240647941e-15,
+    -4.808653475407709e-15,
+    2.046920474611802e-07,
+    3.093824318262106e-07,
+    -4.839878497975292e-15,
+    2.70174397291878e-07,
+    -4.5900783174346316e-15,
+    -4.586608870482678e-15,
+    -4.576200529626817e-15,
+    8.105232009308905e-07,
+    -7.56855515759991e-14,
+    -7.603076154771848e-14,
+    -7.548085420583384e-14,
+    -7.594532641652663e-14,
+    -7.442440760896396e-14,
+    -7.528396309131047e-14,
+    -2.704154174887341e-13,
+    -2.702282841937631e-13,
+    7.375947927586689e-08,
+    -2.6938108861618293e-13,
+    -2.701450174669162e-13,
+    -2.6945568172564993e-13,
+    -3.6232843982075824e-14,
+    -3.69712940817557e-14,
+    -3.561463190332459e-14,
+    -3.514723234676609e-14,
+    -3.5611921397893376e-14,
+    -3.594130201789447e-14,
+    -2.0838138072715173e-13,
+    -2.08903640913638e-13,
+    -2.093411164902359e-13,
+    -2.0929503789790527e-13,
+    -2.1005267837603814e-13,
+    -2.1249918057825168e-13,
+    -4.839878497975292e-15,
+    -4.871103520542874e-15,
+    -4.8329396040713846e-15,
+    -4.822531263215524e-15,
+    -4.805184028455756e-15,
+    -4.805184028455756e-15,
+    -4.6178338930502605e-15,
+    -4.597017211338539e-15,
+    -6.924105386274526e-14,
+    3.508054516108798e-07,
+    -6.977838445942908e-14,
+    3.5077184728799643e-07,
+    5.124560735667548e-07,
+    1.5881688732915025e-07,
+    -2.7182639819600674e-13,
+    3.6978050757920447e-07,
+    -2.716264713154004e-13,
+    -2.716798140622867e-13,
+    3.01411508629593e-06,
+    -2.698113000382252e-13,
+    -3.755763061663586e-14,
+    -3.683912983692972e-14,
+    -3.687566745014248e-14,
+    -3.718314718625937e-14,
+    -3.665037023869999e-14,
+    -3.6806495351537905e-14,
+    -2.0745460471011112e-13,
+    -2.0844415603293864e-13,
+    -2.0857686237885087e-13,
+    -2.0794802511880928e-13,
+    -2.090485987440993e-13,
+    -2.0859290857100365e-13,
+    -4.85722573273506e-15,
+    5.919289911698877e-08,
+    -7.356225004140349e-14,
+    -7.441183086376313e-14,
+    -7.305094029685932e-14,
+    -7.242513880290069e-14,
+    -7.342303848245635e-14,
+    4.862414829890499e-08,
+    -2.70460737139544e-13,
+    -2.693925811592113e-13,
+    -2.701443669456127e-13,
+    -2.69637177169324e-13,
+    4.2732879120249007e-08,
+    -2.7014133117952976e-13,
+    -3.407517323861242e-14,
+    -3.775766591745944e-14,
+    -3.444922298811992e-14,
+    -3.605286642144323e-14,
+    -3.73491385388669e-14,
+    -3.4716045142768603e-14,
+    -2.1428540365742155e-13,
+    -2.1429472779610492e-13,
+    -2.1376054138572131e-13,
+    4.4147911922552685e-08,
+    2.7216929573796456e-09,
+    -2.1291009320162368e-13,
+    -7.077368205377077e-14,
+    -7.114838232458176e-14,
+    -7.489104822400172e-14,
+    5.927120648452355e-09,
+    -7.436455964904276e-14,
+    -7.158943576834886e-14,
+    -2.7131704001537305e-13,
+    1.1004580840784546e-07,
+    -2.7151740057684837e-13,
+    -2.704006723391883e-13,
+    1.6546095323944146e-08,
+    -2.6974581422700705e-13,
+    -3.710204886375745e-14,
+    -3.763775315718254e-14,
+    -3.6726481231208474e-14,
+    -3.634831151344553e-14,
+    -3.52959848848311e-14,
+    -3.7669520280836366e-14,
+    -2.084655148157366e-13,
+    -2.0889778622190658e-13,
+    -2.0794748301772303e-13,
+    -2.0882720466047777e-13,
+    -2.1023395697927771e-13,
+    -2.0942579267990702e-13,
+    -7.419802619534899e-14,
+    -6.997657661655943e-14,
+    -7.354533648751271e-14,
+    -6.849685749155121e-14,
+    -7.290652456748425e-14,
+    -7.228549356308456e-14,
+    -2.704462088304327e-13,
+    -2.7047092863996536e-13,
+    -2.7044338990478423e-13,
+    -2.709319314037062e-13,
+    -2.698457776673102e-13,
+    -2.7039525132832587e-13,
+    -3.719333868668073e-14,
+    -3.606360002295084e-14,
+    -3.7188568197121796e-14,
+    -3.675022525878591e-14,
+    -3.5614089802238347e-14,
+    -3.8107863219172255e-14,
+    -2.108004526144014e-13,
+    -2.100820602549125e-13,
+    -2.1121418416342186e-13,
+    -2.1069116503541485e-13,
+    -2.1231193886306343e-13,
+    -2.0899926754525122e-13,
+    -7.13322630130353e-14,
+    -7.477872487893222e-14,
+    -6.935728033563571e-14,
+    -7.405057469989096e-14,
+    -6.881387820678597e-14,
+    -7.26341729817559e-14,
+    -2.6905973109225823e-13,
+    4.5105820887288844e-07,
+    -2.7085213412381126e-13,
+    1.012739432119155e-06,
+    1.51722273167244e-06,
+    -2.6937913705227245e-13,
+    -3.7359980560591755e-14,
+    -3.520935713124951e-14,
+    -2.0839775217995626e-13,
+    -2.090869795010053e-13,
+    -2.0887718638062935e-13,
+    -2.0705377516694323e-13,
+    -2.0917935352610106e-13,
+    -2.0808907982144964e-13,
+    -7.389098014010109e-14,
+    -6.993581061487397e-14,
+    -7.47657144528624e-14,
+    -7.186482312016018e-14,
+    -7.29702756552264e-14,
+    -7.312813549154029e-14,
+    -2.7087576973117145e-13,
+    -2.706311737210587e-13,
+    -2.71393801529185e-13,
+    -2.6952810643077196e-13,
+    -2.703850598279045e-13,
+    -2.7034320962404657e-13,
+    -2.0733187302418576e-13,
+    -2.0879652173899643e-13,
+    -2.0834321681068024e-13,
+    -2.0737209692478498e-13,
+    -2.088878115619197e-13,
+    -2.0938654456126304e-13,
+    -7.544095556588637e-14,
+    -7.188954292969285e-14,
+    -7.477568911284926e-14,
+    -7.10403957882022e-14,
+    -7.043888042290725e-14,
+    -7.376477900722378e-14,
+    -2.7133243568622234e-13,
+    -2.709690111180052e-13,
+    -2.7044794355390867e-13,
+    -2.7061209176282297e-13,
+    -2.6938087177574843e-13,
+    -2.69152972479092e-13,
+    -2.1276448484985888e-13,
+    1.3692581005315951e-07,
+    -2.7174248094785636e-13,
+    -2.6959749536981104e-13,
+    -2.704305963191489e-13,
+    -2.707530380452461e-13,
+    -2.696983261718522e-13,
+    -7.536766349902635e-14,
+    2.913851203595677e-08,
+    -7.581912528364931e-14,
+    -7.286879433188176e-14,
+    -2.700326941218467e-13,
+    1.4412071449882574e-07,
+    -2.689643213010795e-13,
+    -2.6989521728637555e-13,
+    -2.698538007633866e-13,
+    5.416371142113845e-08,
+    -3.322559241625278e-14,
+    -2.0856157512821882e-13,
+    -4.826000710167477e-15,
+    -4.603956105242446e-15,
+    -2.695925080398176e-13,
+    -2.7157139384503814e-13,
+    -2.699125645211353e-13,
+    -2.721874375194444e-13,
+    -2.698175884108256e-13,
+    -2.697954706865069e-13
+  ],
+  "qp": {
+    "passed": true,
+    "status": "optimal",
+    "forces": [
+      1.840845420381253e-06,
+      4.310306076269485e-06,
+      7.274166872439686e-07,
+      6.984974009949669e-07,
+      0.0,
+      4.2260606997914546e-08,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.2454092511315525e-08,
+      0.0,
+      0.0,
+      1.6073048107575924e-08,
+      0.0,
+      0.0,
+      1.728182294323359e-08,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.202616034728192e-07,
+      0.0,
+      6.442724185531384e-06,
+      0.0,
+      3.802042371859446e-07,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      5.154657338558991e-08,
+      2.020005624657986e-08,
+      1.9630729646454968e-08,
+      1.280157310001458e-08,
+      3.975752208912595e-08,
+      5.99152734517132e-08,
+      6.531135872008002e-08,
+      2.342472705106641e-08,
+      5.291735027106667e-08,
+      5.0927228426918935e-08,
+      7.675026435154222e-08,
+      6.4864556514373775e-09,
+      2.162682188539839e-09,
+      1.1102876071537199e-08,
+      0.0,
+      1.3216520667971611e-08,
+      0.0,
+      0.0,
+      2.0046831930423622e-08,
+      1.929045230144422e-08,
+      4.402906687040168e-09,
+      1.9818724171569394e-08,
+      1.0942955266627762e-08,
+      1.3975204030931838e-08,
+      2.8758325892855722e-08,
+      2.6850960933406502e-08,
+      5.3963733473752585e-08,
+      0.0,
+      0.0,
+      4.056223312638591e-08,
+      0.0,
+      2.9607275316833976e-07,
+      6.6270189230567635e-09,
+      1.0352069564475454e-08,
+      0.0,
+      4.096717509404566e-08,
+      9.981205266904844e-09,
+      5.492480655640315e-08,
+      2.415031701347644e-08,
+      2.347609431702873e-08,
+      4.99078678821459e-08,
+      7.149632798598975e-08,
+      1.564176798802956e-08,
+      0.0,
+      6.036917465866583e-08,
+      1.0893760941045891e-07,
+      8.329770851285961e-09,
+      1.0606123420548398e-08,
+      7.117722429524282e-09,
+      7.995939641978132e-09,
+      1.1087937328254201e-08,
+      1.1125397139455704e-08,
+      2.0962737501895363e-08,
+      1.2631282240295597e-08,
+      7.296152711489916e-09,
+      3.2207608789347326e-10,
+      9.796575822591226e-09,
+      2.1948416251274444e-08,
+      1.2934906933222073e-08,
+      2.2751587896093648e-07,
+      6.781332992303636e-08,
+      1.4294500852429056e-08,
+      8.551083142647075e-08,
+      7.152596860868169e-08,
+      4.8986303115450736e-08,
+      1.9489387133170392e-08,
+      1.681751091772649e-07,
+      1.9137014518888736e-08,
+      0.0,
+      4.0033613663704966e-08,
+      0.0,
+      0.0,
+      0.0,
+      2.3314191206785532e-08,
+      0.0,
+      2.6030892421130192e-08,
+      4.425741152152563e-08,
+      0.0,
+      2.2443624301795368e-07,
+      2.9986877604850236e-09,
+      2.9620124078545206e-08,
+      1.5627901316581966e-08,
+      1.3321104203012695e-08,
+      1.6631215705148904e-08,
+      8.684929027124508e-09,
+      1.1277588900262833e-08,
+      8.610344277030539e-09,
+      2.7037219283853336e-08,
+      2.290751005587567e-08,
+      6.630308965266231e-09,
+      2.5570500841403858e-08,
+      8.08083267327682e-08,
+      0.0,
+      4.2669614645153755e-08,
+      7.999065284296677e-08,
+      2.0901585102484122e-08,
+      8.695621369564737e-08,
+      3.8923800083999636e-08,
+      0.0,
+      1.9289021009327368e-07,
+      3.8191663841473086e-08,
+      1.0458856548256597e-07,
+      9.17263705789615e-08,
+      0.0,
+      1.1841057861552046e-07,
+      8.635539794162731e-09,
+      3.1562244123120375e-08,
+      1.3910478759403081e-08,
+      3.247465446726963e-08,
+      2.9206281608255773e-08,
+      1.652279471109624e-08,
+      1.1118971637519309e-08,
+      3.212159227117518e-09,
+      1.1247759266297793e-08,
+      0.0,
+      0.0,
+      7.698319816434729e-09,
+      3.4629649128565576e-08,
+      7.023303210094933e-08,
+      1.097154402468375e-07,
+      0.0,
+      2.2965266854942484e-08,
+      2.3199762999451417e-08,
+      3.70889623823026e-08,
+      0.0,
+      3.2393735424840006e-08,
+      1.0334381497148307e-07,
+      0.0,
+      1.7356762184541147e-07,
+      1.5218688892136335e-08,
+      2.219247683972722e-08,
+      2.3289519433777005e-08,
+      2.1958571092832677e-08,
+      2.2046979118787833e-08,
+      1.8685143455360324e-08,
+      3.325496648718577e-08,
+      3.636243039949177e-09,
+      2.7919813659555417e-08,
+      1.4370286206402107e-08,
+      1.1548841505329753e-08,
+      4.51664646515485e-09,
+      4.873749099385662e-08,
+      4.392092021506581e-08,
+      6.505590627120338e-08,
+      1.0959928303102343e-08,
+      3.7752138291971314e-08,
+      5.981247058738237e-08,
+      5.4064570383321e-08,
+      6.846328840083159e-08,
+      3.796467882182876e-08,
+      1.1409524793443878e-07,
+      1.956924165373899e-07,
+      4.227767900045799e-08,
+      1.9861492789087277e-08,
+      1.877350703577507e-08,
+      1.829188750665398e-08,
+      1.5886671027382586e-08,
+      4.26909729452227e-09,
+      9.950777204762282e-09,
+      1.9286826018311916e-08,
+      2.6101219494116336e-08,
+      1.0046862468438179e-08,
+      1.3372242743844043e-08,
+      1.013471526674081e-08,
+      3.416126541993322e-08,
+      5.24812154756719e-08,
+      3.299725651919487e-08,
+      3.193547856126201e-08,
+      1.017630807022113e-07,
+      8.921016176083245e-09,
+      5.609539677044727e-08,
+      6.207832397382322e-08,
+      0.0,
+      1.2393686514299226e-07,
+      0.0,
+      0.0,
+      7.321288237812468e-08,
+      1.691593417240983e-08,
+      1.4748939488576203e-08,
+      3.163241621323275e-08,
+      2.0974792562693116e-08,
+      9.05591358246401e-09,
+      1.0829051177271805e-08,
+      4.290950075303792e-09,
+      3.1979723419542195e-08,
+      6.760838138203911e-08,
+      1.7637496491106454e-08,
+      7.472795866497646e-08,
+      6.756413525112188e-08,
+      7.51891453358022e-08,
+      5.9464637447418423e-08,
+      1.273926142645373e-07,
+      4.29309788713548e-08,
+      1.2252789113571282e-08,
+      1.2971173099004147e-08,
+      8.488047571267276e-08,
+      4.074575816999501e-08,
+      3.1513360210576104e-08,
+      8.989677664913068e-09,
+      1.15055486253478e-08,
+      1.9738357518432153e-08,
+      2.030464497324937e-08,
+      1.6950357790015025e-08,
+      2.64924991066972e-08,
+      1.492389329708136e-08,
+      4.9079951880373806e-08,
+      5.163450480715602e-08,
+      5.235787091405951e-08,
+      2.248210325079098e-08,
+      3.9148512405727444e-08,
+      2.646496808510511e-08,
+      8.857568480180246e-08,
+      8.042798913131909e-08,
+      5.287345202772196e-08,
+      1.211982840487016e-07,
+      1.6310097472908056e-08,
+      0.0,
+      6.17150803191035e-08,
+      1.4014550948812072e-07,
+      3.3516379318762624e-08,
+      4.045364110204187e-09,
+      5.14384268291293e-08,
+      3.454118240997634e-08,
+      0.0,
+      3.289711362957119e-09,
+      2.1041718898197533e-08,
+      1.6540743916388726e-08,
+      0.0,
+      2.6278692860185153e-08,
+      5.0270657902637676e-08,
+      2.097254034805802e-08,
+      0.0,
+      3.4612821953937006e-09,
+      4.773513222750124e-09,
+      1.402016603494792e-07,
+      1.5693015824478453e-06,
+      4.6385341235278854e-08,
+      6.395817577879798e-08,
+      2.758616249121032e-08,
+      2.518644495221664e-08,
+      1.2131784685375492e-07,
+      5.603503007040877e-08
+    ],
+    "rigid_mode_coordinates": [
+      0.03240767217245322,
+      1.760079998024968e-17,
+      -0.0002094969204924692,
+      0.0008507831105152502,
+      -0.00012511160051154903,
+      -0.023849278442681827
+    ],
+    "reduced_gradient": [
+      -6.5052130349130266e-18,
+      -3.209238430557093e-17,
+      1.0299920638612292e-18,
+      3.983087731168622e-17,
+      1.725343388380839e-05,
+      -1.3552527156068805e-17,
+      2.5959618238824433e-05,
+      6.337681191353003e-06,
+      1.3603858749563266e-05,
+      7.92243058560247e-05,
+      1.4140706834642192e-16,
+      4.174695911943234e-05,
+      1.295463496240771e-05,
+      -1.4826464708739273e-17,
+      1.0701442753856952e-05,
+      5.585942688885918e-07,
+      -5.3139458978945786e-17,
+      3.924626568061993e-06,
+      2.9011242688352986e-07,
+      1.477830203083605e-05,
+      0.04466475942070899,
+      0.044662232398029605,
+      0.043580710482124814,
+      0.043554495312356833,
+      0.0456035583037852,
+      0.04561973193911678,
+      0.04520212716984795,
+      0.04521078552056455,
+      4.682751422915854e-06,
+      0.0008387538190989113,
+      3.469446951953614e-18,
+      0.0006416858179971174,
+      -6.938893903907228e-18,
+      0.0005055185522084005,
+      -6.938893903907228e-18,
+      0.000782982282851577,
+      2.1535987816665586e-05,
+      2.271439995362061e-05,
+      1.963393701357385e-05,
+      6.777722026746484e-05,
+      6.35542340040084e-05,
+      7.243382742204798e-05,
+      1.6033103758201318e-05,
+      1.6237421541082416e-05,
+      1.530499000657937e-05,
+      1.3009388798298343e-05,
+      1.3356547472947123e-05,
+      1.2084215893187877e-05,
+      0.04402070901528269,
+      0.043994248180452056,
+      0.0441178589997906,
+      0.04548266371440192,
+      0.04545002604322748,
+      0.04541495118915412,
+      1.1424960701529943e-05,
+      1.236046247455683e-05,
+      9.6247119116953e-06,
+      5.280686348029136e-05,
+      8.050651499006735e-05,
+      7.921810193605865e-05,
+      1.3644247423812761e-05,
+      1.4056817755719357e-05,
+      1.2695379954704085e-05,
+      1.3783863235338998e-05,
+      1.3277813063589032e-05,
+      1.4209315161673301e-05,
+      0.04367177545847947,
+      0.043756033097545416,
+      0.043777861582013834,
+      0.04558243751025829,
+      0.04533741349444425,
+      0.04528027807001091,
+      2.449239115767031e-05,
+      2.4727822718198468e-05,
+      2.5314471646126717e-05,
+      2.898488668131048e-05,
+      2.329138868052298e-05,
+      3.250937349722437e-05,
+      1.5919192969340012e-05,
+      1.612529549290457e-05,
+      1.5575941376202304e-05,
+      1.475043266031785e-05,
+      1.109083357226049e-05,
+      1.0504641326071655e-05,
+      0.043629604485953,
+      0.044169404591797835,
+      0.04390303592937729,
+      0.04552390558484863,
+      0.04537693158758491,
+      1.4896430817616283e-05,
+      1.4131465017791544e-05,
+      1.4814991804211605e-05,
+      8.362578523967885e-05,
+      8.324741503445849e-05,
+      5.1607023649375734e-05,
+      6.431573748815283e-06,
+      6.924632921442941e-06,
+      5.698333188157977e-06,
+      1.4282867942839585e-05,
+      1.3195732671172225e-05,
+      1.2563879453612035e-05,
+      0.043650692575161236,
+      2.2557968213646066e-05,
+      1.9233048284760695e-05,
+      2.0328852953317364e-05,
+      7.10604726223569e-05,
+      6.748415067923152e-05,
+      6.496317191570581e-05,
+      1.4169151922327101e-05,
+      1.436774700764745e-05,
+      1.4015142928579156e-05,
+      1.1822172969445282e-05,
+      1.1649222591078703e-05,
+      1.1225774571780957e-05,
+      1.7737336942402293e-05,
+      1.6863149598011514e-05,
+      1.7526171220710917e-05,
+      3.987769202708837e-05,
+      4.452775361078203e-05,
+      3.6817054638159255e-05,
+      9.000720736609678e-06,
+      1.489431162192968e-05,
+      1.4668314772275264e-05,
+      1.3489087829360422e-05,
+      1.299513985339096e-05,
+      1.4457046051236596e-05,
+      1.143346084038515e-05,
+      1.252699440110655e-05,
+      7.314841617285674e-06,
+      5.9612271800177564e-05,
+      5.792663947694007e-05,
+      7.648280824379123e-05,
+      1.3850611063421493e-05,
+      1.1335415622186135e-05,
+      1.2642012195852657e-05,
+      8.996042409933136e-06,
+      7.227038785781224e-06,
+      9.358457348221551e-06,
+      2.5679048432252616e-05,
+      2.2703083210518258e-05,
+      2.32710009413439e-05,
+      5.887475659676261e-05,
+      7.539189799015921e-05,
+      2.8986455322865237e-05,
+      1.4614586115938477e-05,
+      9.294495085058463e-06,
+      1.418391421641497e-05,
+      1.3379826702680442e-05,
+      1.3712881127702465e-05,
+      1.2627353155584006e-05,
+      1.5751070369350123e-05,
+      2.387118218698299e-05,
+      1.8606884654723748e-05,
+      4.7677219649664327e-05,
+      7.345744343900473e-05,
+      6.591737309765731e-05,
+      8.018200984502123e-06,
+      4.683406345445514e-06,
+      4.277477024045813e-06,
+      1.2195851082104973e-05,
+      1.1622285217736891e-05,
+      1.2098365919881017e-05,
+      2.0491485088273807e-05,
+      1.579709558818297e-05,
+      1.843549920940512e-05,
+      4.67446865883022e-05,
+      5.1736834178511484e-05,
+      8.427230687521646e-05,
+      1.2810846738227623e-05,
+      1.4980038415048732e-05,
+      1.4519859726239826e-05,
+      1.4500704479718186e-05,
+      1.3873951428323781e-05,
+      1.275590997064351e-05,
+      1.018276026046582e-05,
+      2.282851480034636e-05,
+      2.177558593111095e-05,
+      5.7058947778159227e-05,
+      4.862144360631953e-05,
+      1.8403153367156194e-05,
+      1.625809728931533e-05,
+      1.1778546978578778e-05,
+      1.0175539506247474e-05,
+      1.0076299471331518e-05,
+      1.3746289571984325e-05,
+      1.4571276444338578e-05,
+      2.163692472856467e-05,
+      1.3400733704038633e-05,
+      1.7137854376785217e-05,
+      3.619011351448361e-05,
+      8.196165344877889e-05,
+      7.148886314502529e-05,
+      1.1673081142106619e-05,
+      1.5104890814351148e-05,
+      1.506935691611863e-05,
+      2.3373998638549846e-05,
+      8.449831289620744e-06,
+      2.4477450440221407e-05,
+      8.073893470825574e-05,
+      3.299336038896058e-05,
+      4.199795894879778e-05,
+      7.3513184197849965e-06,
+      1.466487736459392e-05,
+      1.4297811950234561e-05,
+      1.4704084711971663e-05,
+      1.3574222533742765e-05,
+      1.662295593640728e-05,
+      2.5199313759316543e-05,
+      6.273669386790411e-05,
+      7.8007730744343e-05,
+      1.2946142905991668e-05,
+      2.5226971659405e-05,
+      1.3212030847359845e-05,
+      2.211759025294818e-05,
+      6.05327201992078e-05,
+      7.64380993392177e-05,
+      1.8528482211965693e-05,
+      9.278501611062787e-06,
+      1.2744671902959267e-05,
+      1.743552853748255e-05,
+      2.0716607604499588e-05,
+      1.1881327020747657e-05,
+      2.094870897237388e-05,
+      2.12500468728757e-05,
+      1.6676986333162742e-05,
+      2.375342398662844e-05,
+      2.386504695147315e-05,
+      5.535351499490654e-06,
+      7.592841204577056e-06,
+      6.5367304441166165e-06,
+      8.82016873879926e-06,
+      1.2667460874080225e-05,
+      2.5027158372805595e-05,
+      2.1754532227713204e-05,
+      1.4388107655928766e-05,
+      3.70628679470492e-05,
+      2.5186373502700433e-05,
+      3.44204833475341e-05,
+      4.5743287838633515e-05,
+      0.04432538960641927,
+      0.044357909460385564,
+      0.044286650378108264,
+      0.043836631414506264,
+      0.044259807445405856,
+      0.043713999608840585,
+      0.04525900933403548,
+      8.205800098705151e-06,
+      1.9862271496591722e-05,
+      6.228523877535992e-06,
+      1.027414576669234e-05,
+      9.380974428502156e-06,
+      4.607859233063394e-19,
+      2.9815559743351372e-18,
+      1.111307226797642e-18,
+      -1.8431436932253575e-17,
+      -5.093039705250657e-17,
+      1.4826464708739273e-17,
+      2.747097254535147e-16,
+      6.049848122469115e-17,
+      5.320722161472613e-17,
+      1.1164571871169482e-16,
+      -2.13316777436523e-17,
+      1.8992511556514824e-16,
+      -2.9544509200229996e-18,
+      -1.0083080204115191e-17,
+      3.2881581818182295e-07,
+      -2.0735366548785272e-17,
+      8.743206014111065e-08,
+      3.9191378831086453e-07,
+      1.9695887715914795e-16,
+      4.4520051707686026e-17,
+      -2.0948818851493356e-16,
+      2.1734865426545347e-16,
+      2.122122464733034e-16,
+      1.9603052904895724e-16,
+      -3.469446951953614e-18,
+      -6.938893903907228e-18,
+      0.0,
+      2.046920522212614e-07,
+      3.0938243657241404e-07,
+      0.0,
+      2.7017440189930353e-07,
+      0.0,
+      -1.0408340855860843e-17,
+      -3.469446951953614e-18,
+      8.105232055799494e-07,
+      6.1257422745431e-18,
+      -2.3960868011929648e-17,
+      -3.672734859294646e-17,
+      1.919037845299343e-17,
+      -2.710505431213761e-18,
+      -4.4994390158148434e-18,
+      -6.906367838732663e-17,
+      -2.575522260739316e-16,
+      7.375974801491808e-08,
+      -8.492013515992713e-17,
+      1.0489656018797255e-17,
+      -6.770842567171975e-17,
+      7.26415455565288e-18,
+      2.2768245622195593e-17,
+      1.179069862577986e-17,
+      8.592302216947623e-18,
+      2.574980159653073e-18,
+      2.5112832820195496e-17,
+      9.58638008384527e-17,
+      1.6575418338229952e-16,
+      1.009663273127126e-18,
+      5.421010862427522e-18,
+      -3.54737398310101e-17,
+      1.0942988052167757e-16,
+      -3.469446951953614e-18,
+      0.0,
+      6.938893903907228e-18,
+      -3.469446951953614e-18,
+      -6.938893903907228e-18,
+      -3.469446951953614e-18,
+      -6.938893903907228e-18,
+      0.0,
+      -1.4203048459560108e-17,
+      3.5080551941851e-07,
+      5.494194509070294e-17,
+      3.5077191612120054e-07,
+      5.124561420001322e-07,
+      1.588169568474075e-07,
+      9.963817965141786e-17,
+      3.6978077960761664e-07,
+      3.848917712323541e-17,
+      5.664956351236761e-17,
+      3.014115359504984e-06,
+      -7.532494593343042e-17,
+      -9.540979117872439e-18,
+      1.2766480581016815e-17,
+      1.7293024651143796e-17,
+      1.906840570858881e-17,
+      1.7306577178299865e-17,
+      1.737433981408021e-17,
+      -5.991572255698019e-17,
+      2.401236761512271e-16,
+      1.8809552439907895e-16,
+      2.0846497271465037e-16,
+      4.3300324263639833e-17,
+      -2.0877668083923995e-16,
+      -6.938893903907228e-18,
+      5.919290388747833e-08,
+      2.3852447794681098e-17,
+      -1.656118818471608e-17,
+      8.944667923005412e-19,
+      -1.5260145577733475e-17,
+      1.5720931501039814e-18,
+      4.862422083097323e-08,
+      -2.7598366300618515e-16,
+      1.126486057212439e-16,
+      -5.675798372961616e-17,
+      -6.21247844834194e-17,
+      4.273314893157615e-08,
+      -1.1872013788716274e-17,
+      1.5246593050577406e-17,
+      -1.566672139241554e-17,
+      -1.3471211993132393e-17,
+      2.2876665839444144e-17,
+      -1.0164395367051604e-17,
+      -7.237049501340742e-18,
+      1.2124090793819153e-16,
+      1.2920301764238196e-16,
+      1.4251837557321956e-16,
+      4.414812710512009e-08,
+      2.7219070338168868e-09,
+      -2.003741140024773e-17,
+      2.962582436316641e-17,
+      3.4884204899721105e-17,
+      -2.2768245622195593e-17,
+      5.927191191389082e-09,
+      -3.2498960120252995e-17,
+      -1.2387009820646888e-17,
+      -1.204277563088274e-16,
+      1.1004608009310764e-07,
+      2.2827876741682296e-16,
+      -2.7321894746634712e-17,
+      1.6546367199971697e-08,
+      -2.4340338772299575e-17,
+      -8.538092108323347e-18,
+      1.677802861921318e-17,
+      3.876022766635678e-18,
+      1.623592753297043e-17,
+      3.9979955110402976e-18,
+      4.4208343583096443e-17,
+      1.088267930632325e-17,
+      3.6737512988313514e-16,
+      1.1072414686508214e-16,
+      3.9607260613611084e-17,
+      1.2041420378167134e-17,
+      2.200320546423551e-16,
+      3.6591823321385775e-18,
+      5.9631119486702744e-18,
+      1.9813794702172594e-17,
+      2.0843786766033823e-17,
+      -1.4148838350935833e-17,
+      -7.426784881525705e-18,
+      5.2909066017292616e-17,
+      2.0599841277224584e-17,
+      8.183015896834345e-17,
+      -1.1882855810441129e-16,
+      -3.876022766635678e-18,
+      -2.2171934427328566e-17,
+      1.7753810574450135e-18,
+      2.9788454689039234e-17,
+      2.3744027577432547e-17,
+      1.2563192673675783e-17,
+      1.5016200088924236e-17,
+      -1.3145951341386741e-17,
+      5.4277871260055566e-17,
+      3.0121169230720723e-16,
+      1.338583107204916e-16,
+      -7.70935507272974e-17,
+      -1.784732301182701e-16,
+      -9.066640667410031e-18,
+      6.613633252161577e-18,
+      5.095750210681871e-18,
+      -1.1248597539537109e-17,
+      -2.3418766925686896e-17,
+      -1.2468324983583301e-18,
+      -4.607859233063394e-18,
+      9.2970336290632e-18,
+      4.510584804351208e-07,
+      -1.4750570556665288e-16,
+      1.0127397045681021e-06,
+      1.5172230054102053e-06,
+      -2.673100456263011e-16,
+      6.261267546103788e-18,
+      -2.087089182034596e-17,
+      -2.047109226924193e-17,
+      -2.3313734840227363e-16,
+      -5.219078207802097e-17,
+      -1.1693798056613969e-16,
+      1.0081724951399584e-16,
+      2.4183129457289176e-16,
+      1.7211709488207383e-17,
+      1.9949319973733282e-17,
+      8.402566836762659e-19,
+      -2.4909544912854464e-17,
+      -1.7943545954635098e-17,
+      -8.863352760068999e-18,
+      -9.841845220737166e-17,
+      -1.347663300399482e-16,
+      9.448821933211171e-17,
+      1.5707378973883745e-16,
+      6.890104806145381e-17,
+      2.2039119661199091e-16,
+      -1.634434775021898e-16,
+      1.4796649148995922e-16,
+      -3.4470852821461007e-17,
+      3.1742729104944356e-16,
+      2.7117251586578073e-16,
+      -1.6127507315721878e-18,
+      1.5748036555351952e-17,
+      -2.574980159653073e-18,
+      1.3823577699190182e-17,
+      3.117081245895825e-17,
+      -5.421010862427522e-20,
+      5.9631119486702744e-18,
+      -6.638027801042501e-17,
+      6.076953176781252e-17,
+      -7.844202717932625e-17,
+      1.3660947373317356e-16,
+      -7.196391919872536e-17,
+      -6.749158523722265e-17,
+      -4.461491939777851e-17,
+      1.3692608213491443e-07,
+      3.3989738107420564e-17,
+      3.4098158324669114e-17,
+      1.0809495659680479e-16,
+      1.7593890754008523e-16,
+      1.5178830414797062e-18,
+      -2.293087594806842e-17,
+      2.9138587582269683e-08,
+      -1.1492543028346347e-17,
+      -1.441988889405721e-17,
+      -3.69712940817557e-17,
+      1.4412098566727585e-07,
+      -1.4531019616736973e-16,
+      3.8733122612044646e-17,
+      -9.500321536404233e-17,
+      5.416398141865021e-08,
+      3.333921680392926e-18,
+      -1.2157294485351522e-16,
+      0.0,
+      1.0408340855860843e-17,
+      1.4750570556665288e-16,
+      -4.003416521902725e-17,
+      6.418476861114186e-17,
+      -1.111307226797642e-17,
+      4.2825985813177425e-17,
+      1.5395670849294163e-16
+    ],
+    "iterations": 14,
+    "remaining_unsupported_rigid_directions": 1,
+    "errors": {
+      "equilibrium": 3.3881317890172014e-21,
+      "free_stationarity": 3.983087731168622e-17,
+      "negative_contact_force": 0.0,
+      "negative_reduced_gradient": 2.7598366300618515e-16,
+      "complementarity": 5.323454673957429e-23
+    },
+    "history": [
+      {
+        "iteration": 0,
+        "admit": 487,
+        "free": 222
+      },
+      {
+        "iteration": 1,
+        "admit": 488,
+        "free": 223
+      },
+      {
+        "iteration": 2,
+        "release": 375,
+        "alpha": 0.5132724199983629,
+        "free": 222
+      },
+      {
+        "iteration": 3,
+        "release": 262,
+        "alpha": 0.7840975581949213,
+        "free": 221
+      },
+      {
+        "iteration": 4,
+        "admit": 491,
+        "free": 222
+      },
+      {
+        "iteration": 5,
+        "release": 482,
+        "alpha": 0.26277288957113,
+        "free": 221
+      },
+      {
+        "iteration": 6,
+        "release": 478,
+        "alpha": 0.08044467790839904,
+        "free": 220
+      },
+      {
+        "iteration": 7,
+        "admit": 489,
+        "free": 221
+      },
+      {
+        "iteration": 8,
+        "release": 354,
+        "alpha": 0.03170057172509725,
+        "free": 220
+      },
+      {
+        "iteration": 9,
+        "admit": 492,
+        "free": 221
+      },
+      {
+        "iteration": 10,
+        "admit": 490,
+        "free": 222
+      },
+      {
+        "iteration": 11,
+        "admit": 262,
+        "free": 223
+      },
+      {
+        "iteration": 12,
+        "admit": 471,
+        "free": 224
+      }
+    ],
+    "force_space_complementary_energy_not_primal_stiffness": true,
+    "regularization_added": false,
+    "candidate_go": false,
+    "fixture_fabrication_go": false,
+    "manufacturing_go": false
+  },
+  "input_sha256": {
+    "/tmp/razr-spatial-integration-20261015/elastic/panel/K.npz": "6144f7694493f5d0922d56db2ad5447145f24e252adb65c5b8d2ef1a5b5cff86",
+    "/tmp/razr-spatial-integration-20261015/elastic/panel/loads.npz": "811ba687959bb34dec5ada401b35f07123c917bfc4e68ad982d661fd62fac9a6",
+    "/tmp/razr-spatial-integration-20261015/elastic/frame/K.npz": "b9ee0416ee1a888f6b5ba992eb57b964dc28843bdfa4ac38ec9c8ad02fabf19c",
+    "/tmp/razr-spatial-integration-20261015/elastic/frame/loads.npz": "eb2b180696785a77b71412506760df974fbf54c800090e36f027f2aaf70135a3",
+    "/home/qian-qi/RAZR-SLIDE-spatial-integration-20261015/integration/assembly_inputs.json": "7b7ebf0f48556f2feca175a35b882a9a48337de2bb5f54b1ba7a740f85e8ce6b",
+    "/home/qian-qi/RAZR-SLIDE-spatial-integration-20261015/integration/roof_joint_load_inputs.json": "09f7b392b00a59ca1fdb5fa97ad10e6b4d5361ae0f440afb8dd4e9ee225a2640",
+    "/home/qian-qi/RAZR-SLIDE-spatial-integration-20261015/integration/frame_thread_actual_inputs.json": "4dcb50162bd25a7507a3afb4ba7e0f7aa33b8c233c0a366e68b8adec51a13609",
+    "/home/qian-qi/RAZR-SLIDE-spatial-integration-20261015/engineering/contact-field-20261015/common-cell-results.json.gz": "7d316b2aabb75ea7706f7137a970156b73b680740643465c6c3f33568a9a3493",
+    "/tmp/razr-spatial-integration-20261015/solve-v1/case-0/report.json": "59c505209f3206125ad3cdea7c5e74b6db18ce620c6be07a5b6f29eb48f160c5"
+  },
+  "source_sha256": "d7469fc70f0529888faa5d80983af69c45b036c5aeea76d330b6a7355f0f3a95",
+  "dual_solver_sha256": "86ef4af4c54d2ebfdc8fcc2a62175be79230a356cdb2a9fa581ebebd7cb73948",
+  "original_auditor_sha256": "6e6ee08ecf2eac3539edab1f9c18be8cfed8e6dc03f80a3010dc48bc7c612100",
+  "audited_cells": 5255,
+  "mean_pressure_contact_replaced_by_point_reactions": true,
+  "full_volume_energy_retained": true,
+  "primal_stiffness_not_replaced_by_old_port_compliance": true,
+  "neutral_Y_mode_not_physically_fixed": true,
+  "frame_end_ideal_fixture_unchanged": true,
+  "circles_common_planar_domain_only": true,
+  "force_is_not_area_pressure": true,
+  "FE_mesh_convergence": false,
+  "point_contact_convergence": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "passed": true
+}
