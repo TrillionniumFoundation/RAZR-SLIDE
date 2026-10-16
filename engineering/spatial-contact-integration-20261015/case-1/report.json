@@ -1,0 +1,3928 @@
+{
+  "case": 1,
+  "load_index": 1,
+  "force_over_Epanel_mm2": 1e-05,
+  "spring_initial_over_Epanel_mm2": 0.0,
+  "spring_compliance_times_Epanel_per_mm": 5.0,
+  "Epanel_over_Eframe": 1.0,
+  "nu": 0.3,
+  "all_original_cells_nonpenetrating": true,
+  "bolt_tension_branch_valid": true,
+  "full_field_checks": {
+    "bodies": {
+      "panel": {
+        "free_residual_max": 7.843443776411885e-15,
+        "gauge_or_fixture_reaction_max": 5.761179294044849e-17,
+        "strain_energy": 1.8179053682788207e-08,
+        "half_work": 1.817905360185073e-08,
+        "relative_work_error": 4.452238108195619e-09
+      },
+      "frame": {
+        "free_residual_max": 2.8037468180475145e-16,
+        "gauge_or_fixture_reaction_max": 2.037258742713709e-06,
+        "strain_energy": 2.75444309606179e-08,
+        "half_work": 2.7544430958060735e-08,
+        "relative_work_error": 9.28378590081342e-11
+      }
+    },
+    "total_force_moment_balance": [
+      1.3728110649448067e-16,
+      1.3012951286800055e-16,
+      6.218219639257941e-16,
+      1.3325773088080896e-14,
+      -1.4721770511860905e-14,
+      -6.079831055174906e-15
+    ],
+    "energy": 4.572348464340611e-08,
+    "half_work": 4.5723484559911463e-08,
+    "bolt_relative_displacements": [
+      2.153178808438766e-05,
+      9.197319074303722e-06,
+      3.455779127089641e-06,
+      3.6362348313406833e-06
+    ],
+    "minimum_enforced_point_gap": -3.861030418994549e-13,
+    "contact_complementarity_max": 3.8744972075018724e-20,
+    "minimum_contact_reaction": 0.0,
+    "minimum_bolt_tension": 6.911558349068374e-07
+  },
+  "history": [
+    {
+      "exchange": 0,
+      "point_constraints": 223,
+      "minimum_gap_mm": -1.0949921328593509e-06,
+      "negative_cells": 54,
+      "nonzero_contact_reactions": 183,
+      "minimum_bolt_tension": 6.919592511356521e-07,
+      "qp_iterations": 190
+    },
+    {
+      "exchange": 1,
+      "point_constraints": 242,
+      "minimum_gap_mm": -1.5494170584457398e-07,
+      "negative_cells": 7,
+      "nonzero_contact_reactions": 198,
+      "minimum_bolt_tension": 6.911893307464179e-07,
+      "qp_iterations": 22
+    },
+    {
+      "exchange": 2,
+      "point_constraints": 247,
+      "minimum_gap_mm": -9.813240613120624e-08,
+      "negative_cells": 0,
+      "nonzero_contact_reactions": 200,
+      "minimum_bolt_tension": 6.911558349068374e-07,
+      "qp_iterations": 9
+    }
+  ],
+  "contact_points": [
+    {
+      "kind": "bolt",
+      "index": 0
+    },
+    {
+      "kind": "bolt",
+      "index": 1
+    },
+    {
+      "kind": "bolt",
+      "index": 2
+    },
+    {
+      "kind": "bolt",
+      "index": 3
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 57,
+      "xy": [
+        -33.544563315228345,
+        51.2870355144231
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 322,
+      "xy": [
+        -33.54456331522832,
+        48.712964485576926
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 137,
+      "xy": [
+        -36.0271141557758,
+        51.31027921327263
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 244,
+      "xy": [
+        -36.02711415577583,
+        48.68972078672739
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1223,
+      "xy": [
+        36.02711415577577,
+        51.31027921327266
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1483,
+      "xy": [
+        36.0271141557758,
+        48.68972078672738
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1307,
+      "xy": [
+        33.54456331522836,
+        51.28703551442312
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1404,
+      "xy": [
+        33.544563315228366,
+        48.712964485576876
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2375,
+      "xy": [
+        -33.544563315228366,
+        71.28703551442312
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2637,
+      "xy": [
+        -33.54456331522834,
+        68.71296448557689
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2447,
+      "xy": [
+        -36.027114155775855,
+        71.31027921327258
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2558,
+      "xy": [
+        -36.0271141557758,
+        68.68972078672736
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3584,
+      "xy": [
+        36.02711415577574,
+        71.31027921327268
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3842,
+      "xy": [
+        36.027114155775735,
+        68.68972078672732
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3663,
+      "xy": [
+        33.544563315228295,
+        71.28703551442307
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3762,
+      "xy": [
+        33.544563315228324,
+        68.7129644855769
+      ],
+      "gap": 0.0,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4882,
+      "xy": [
+        20.5,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4777,
+      "xy": [
+        20.5,
+        0.65
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4707,
+      "xy": [
+        16.5,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4673,
+      "xy": [
+        16.5,
+        0.65
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4911,
+      "xy": [
+        24.0,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4885,
+      "xy": [
+        24.0,
+        0.65
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4954,
+      "xy": [
+        22.5,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4926,
+      "xy": [
+        22.5,
+        0.65
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5173,
+      "xy": [
+        20.5,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 5065,
+      "xy": [
+        20.5,
+        0.65
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 4995,
+      "xy": [
+        16.5,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_front",
+      "cell": 4963,
+      "xy": [
+        16.5,
+        0.65
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_rear",
+      "cell": 5198,
+      "xy": [
+        24.0,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_rear",
+      "cell": 5174,
+      "xy": [
+        24.0,
+        0.65
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_rear",
+      "cell": 5249,
+      "xy": [
+        22.5,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_R_rear",
+      "cell": 5209,
+      "xy": [
+        22.5,
+        0.65
+      ],
+      "gap": 0.02,
+      "reason": "seed_extreme"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 73,
+      "xy": [
+        -34.083605172085505,
+        51.64824954631989
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 84,
+      "xy": [
+        -34.32154880839462,
+        51.72680092642181
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 79,
+      "xy": [
+        -33.80077827809817,
+        51.49617637762577
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1424,
+      "xy": [
+        34.2654154528642,
+        48.290226940818094
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1428,
+      "xy": [
+        34.114282024472644,
+        48.34052715469996
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1443,
+      "xy": [
+        34.447915683946334,
+        48.240756628398145
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2416,
+      "xy": [
+        -34.843374742744935,
+        71.79572796071679
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2405,
+      "xy": [
+        -34.613012044013736,
+        71.78158329380402
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2436,
+      "xy": [
+        -35.149078074579144,
+        71.76286139058679
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3742,
+      "xy": [
+        33.173226180850726,
+        69.24342691250179
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3741,
+      "xy": [
+        33.21486441096164,
+        69.16552726306448
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3730,
+      "xy": [
+        33.10307137825344,
+        69.42307301719752
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4759,
+      "xy": [
+        18.11753407598791,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4760,
+      "xy": [
+        18.02002542703806,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4771,
+      "xy": [
+        18.475795140665216,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4942,
+      "xy": [
+        23.547742128420335,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4948,
+      "xy": [
+        23.425724016122214,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4950,
+      "xy": [
+        23.29463145839031,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 36,
+      "xy": [
+        -33.16939142490607,
+        50.749398763734426
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 38,
+      "xy": [
+        -33.21617741496023,
+        50.83692919464106
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 27,
+      "xy": [
+        -33.10304764164648,
+        50.57684873369595
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1417,
+      "xy": [
+        33.80030591333068,
+        48.50408995955001
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1454,
+      "xy": [
+        34.89718271609505,
+        48.20957166209026
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1439,
+      "xy": [
+        34.800841396473665,
+        48.2053517068746
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2440,
+      "xy": [
+        -35.54973768080253,
+        71.63042742014687
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2424,
+      "xy": [
+        -35.46983155923992,
+        71.66874632659231
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2439,
+      "xy": [
+        -35.72413776378402,
+        71.53720863368252
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3794,
+      "xy": [
+        34.18554206425631,
+        68.31445626836079
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3791,
+      "xy": [
+        34.31995149543092,
+        68.27368361316842
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3778,
+      "xy": [
+        34.050139214282794,
+        68.36963838080092
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4756,
+      "xy": [
+        16.8341045775653,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4763,
+      "xy": [
+        17.143543091411455,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4764,
+      "xy": [
+        17.223758125905217,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4943,
+      "xy": [
+        23.920956225743105,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4949,
+      "xy": [
+        23.00496449251147,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4956,
+      "xy": [
+        22.791635294622306,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 98,
+      "xy": [
+        -34.80267540217444,
+        51.79469484757482
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 100,
+      "xy": [
+        -34.897182716095074,
+        51.79042833790973
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 116,
+      "xy": [
+        -35.149530631314654,
+        51.76279886252665
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1378,
+      "xy": [
+        33.30719460413964,
+        49.00436633860222
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1379,
+      "xy": [
+        33.22031429792085,
+        49.15533124170465
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1393,
+      "xy": [
+        33.374321602733026,
+        48.922061280948874
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2397,
+      "xy": [
+        -34.185542064256296,
+        71.68554373163921
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2398,
+      "xy": [
+        -34.3200129396188,
+        71.72633502572221
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2389,
+      "xy": [
+        -34.05019267127406,
+        71.6303901925562
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3784,
+      "xy": [
+        33.800133599439874,
+        68.50418711665863
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3795,
+      "xy": [
+        34.789083961046025,
+        68.20565015792775
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3812,
+      "xy": [
+        34.897182716095045,
+        68.20957166209027
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4756,
+      "xy": [
+        16.679341540004216,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4769,
+      "xy": [
+        18.666047599421262,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4751,
+      "xy": [
+        17.684134642315282,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4942,
+      "xy": [
+        23.70197420871433,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4950,
+      "xy": [
+        23.152574585808875,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 47,
+      "xy": [
+        -33.36245463715009,
+        51.07203990382788
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 54,
+      "xy": [
+        -33.38586008258489,
+        50.984042139876074
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 46,
+      "xy": [
+        -33.58094801640733,
+        51.01512326051724
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1456,
+      "xy": [
+        35.24239888472683,
+        48.26226272585019
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1462,
+      "xy": [
+        35.15138860313432,
+        48.23745784644385
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1417,
+      "xy": [
+        33.98291361843776,
+        48.62684030229438
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2468,
+      "xy": [
+        -36.462983158520316,
+        70.68883017825716
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2472,
+      "xy": [
+        -36.41475156842835,
+        70.7790651366106
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2485,
+      "xy": [
+        -36.507355148327,
+        70.54255533101302
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3754,
+      "xy": [
+        33.3721023091189,
+        68.91897862564859
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3763,
+      "xy": [
+        33.78440143774308,
+        68.79430061882891
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3778,
+      "xy": [
+        34.14665807409998,
+        68.58891414894147
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4756,
+      "xy": [
+        16.756723058808348,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 97,
+      "xy": [
+        -34.52658411882457,
+        51.65886376073487
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 72,
+      "xy": [
+        -34.10096428306206,
+        51.39252876858329
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 90,
+      "xy": [
+        -34.29712107467046,
+        51.4706714752669
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1440,
+      "xy": [
+        34.71457436323074,
+        48.39396507548497
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1447,
+      "xy": [
+        34.62471947912231,
+        48.45374710317179
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1448,
+      "xy": [
+        34.51126879531431,
+        48.47617438048837
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2414,
+      "xy": [
+        -34.95671261214163,
+        71.58264548715654
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2418,
+      "xy": [
+        -34.78817912474404,
+        71.57955390303259
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2434,
+      "xy": [
+        -35.045486026992755,
+        71.57888672752853
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3802,
+      "xy": [
+        34.53189551528115,
+        68.34279257899912
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3804,
+      "xy": [
+        34.480868266389315,
+        68.43355662739195
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3795,
+      "xy": [
+        34.66945657781145,
+        68.31584798053674
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 59,
+      "xy": [
+        -33.75734978419381,
+        51.29667012463497
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 68,
+      "xy": [
+        -33.72494858995418,
+        51.20781747626308
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 76,
+      "xy": [
+        -33.84043498012964,
+        51.258065583320594
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1407,
+      "xy": [
+        33.66217896445027,
+        48.83271429744012
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1402,
+      "xy": [
+        33.73679099763903,
+        48.72424174821335
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1408,
+      "xy": [
+        33.59253712174991,
+        48.895929821095415
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2458,
+      "xy": [
+        -36.23033095533739,
+        71.08083068481692
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2412,
+      "xy": [
+        -34.481937373706906,
+        71.59773950250226
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2398,
+      "xy": [
+        -34.395247909590225,
+        71.55847865540211
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3752,
+      "xy": [
+        33.575373600755476,
+        68.90696503236995
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3738,
+      "xy": [
+        33.47512346958548,
+        69.05884485563405
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3760,
+      "xy": [
+        33.71015044980813,
+        68.6353965189991
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 45,
+      "xy": [
+        -33.33250798194979,
+        50.708571558343344
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 51,
+      "xy": [
+        -33.4070116566402,
+        50.807269444513935
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 25,
+      "xy": [
+        -33.03883349541672,
+        50.35205035325795
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1428,
+      "xy": [
+        34.281072361515605,
+        48.528653178602646
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1425,
+      "xy": [
+        34.34576454154148,
+        48.60162073069009
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1462,
+      "xy": [
+        35.05252313859689,
+        48.38173352011902
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2428,
+      "xy": [
+        -35.30265453590642,
+        71.60573715915265
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2452,
+      "xy": [
+        -35.76581430267768,
+        71.3550607652459
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2444,
+      "xy": [
+        -35.469118115690115,
+        71.47940811994668
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3814,
+      "xy": [
+        35.16835663844041,
+        68.23980225599237
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3819,
+      "xy": [
+        35.467618773114864,
+        68.33058243207512
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3823,
+      "xy": [
+        34.990205654484896,
+        68.36591598840356
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 113,
+      "xy": [
+        -35.406934181132804,
+        51.687826037648705
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 105,
+      "xy": [
+        -34.797209995293265,
+        51.59702470101194
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 100,
+      "xy": [
+        -34.932757845636665,
+        51.614364298805356
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1417,
+      "xy": [
+        33.97489694086158,
+        48.40985621383881
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1440,
+      "xy": [
+        34.60176210890535,
+        48.22634744831075
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1394,
+      "xy": [
+        33.435996556506375,
+        49.07601592422278
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2395,
+      "xy": [
+        -33.80072686275025,
+        71.4961473877021
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2463,
+      "xy": [
+        -36.03125902477733,
+        71.09752642493125
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2401,
+      "xy": [
+        -34.10926938868578,
+        71.46744483666834
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3785,
+      "xy": [
+        33.92681601423256,
+        68.63984410048577
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3779,
+      "xy": [
+        33.94802299941122,
+        68.55987120180349
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3789,
+      "xy": [
+        33.99244778419986,
+        68.7163654032272
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 49,
+      "xy": [
+        -33.51960363183302,
+        51.12880740626277
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 95,
+      "xy": [
+        -34.613012044013736,
+        51.781583293804026
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 78,
+      "xy": [
+        -33.942644124037855,
+        51.35562743040262
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1402,
+      "xy": [
+        33.68241590977247,
+        48.59983178497383
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1452,
+      "xy": [
+        34.84291627128345,
+        48.38104632343743
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1421,
+      "xy": [
+        34.403522851131875,
+        48.405053929287774
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2481,
+      "xy": [
+        -36.20939622972319,
+        70.92375750386815
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2496,
+      "xy": [
+        -36.56778675491313,
+        70.32706656610475
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2492,
+      "xy": [
+        -36.57712677068264,
+        70.23223579457394
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3791,
+      "xy": [
+        34.29612167562097,
+        68.51424458566532
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3792,
+      "xy": [
+        34.33783886312679,
+        68.58335576611272
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3778,
+      "xy": [
+        34.245768943873756,
+        68.58208415187643
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 71,
+      "xy": [
+        -33.928111703925666,
+        51.565136556020846
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 66,
+      "xy": [
+        -33.788544037567895,
+        51.08137930391609
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 59,
+      "xy": [
+        -33.67072266151415,
+        51.390571814184675
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1401,
+      "xy": [
+        33.90478277246001,
+        48.73523729245241
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1432,
+      "xy": [
+        34.20734466684862,
+        48.71737057104321
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1460,
+      "xy": [
+        35.467618773114864,
+        48.33058243207512
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2432,
+      "xy": [
+        -35.17954911685391,
+        71.4512249052003
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2405,
+      "xy": [
+        -34.67164296553436,
+        71.63575948585817
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2402,
+      "xy": [
+        -34.26576440237324,
+        71.52452725282835
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3779,
+      "xy": [
+        33.92341518388479,
+        68.43737378624121
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3739,
+      "xy": [
+        33.282730376041805,
+        69.04258738111828
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3802,
+      "xy": [
+        34.44793837050823,
+        68.24075231108309
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 41,
+      "xy": [
+        -33.236195182535624,
+        50.59993425779166
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 95,
+      "xy": [
+        -34.69381054848839,
+        51.642113610450764
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 94,
+      "xy": [
+        -34.62892737363809,
+        51.545642915162496
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1416,
+      "xy": [
+        34.047961801004575,
+        48.49730075860664
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1400,
+      "xy": [
+        33.78706043461349,
+        48.623719746761644
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1381,
+      "xy": [
+        33.15016867070233,
+        49.295232634664465
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2412,
+      "xy": [
+        -34.45245770244847,
+        71.76010773020137
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2456,
+      "xy": [
+        -35.6199730867511,
+        71.39034819968005
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2465,
+      "xy": [
+        -35.931619105232194,
+        71.2151390377729
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3812,
+      "xy": [
+        34.773840238492085,
+        68.44818559158101
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3767,
+      "xy": [
+        33.65644679622868,
+        68.80239756718349
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad3",
+      "cell": 3752,
+      "xy": [
+        33.45693893779941,
+        68.81283064271821
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 84,
+      "xy": [
+        -34.41909105615065,
+        51.58437112388051
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 1125,
+      "xy": [
+        -33.59511145300034,
+        50.8605600931782
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 76,
+      "xy": [
+        -33.93914756885509,
+        51.19818962337643
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1392,
+      "xy": [
+        33.46840515780556,
+        48.851234763523394
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1451,
+      "xy": [
+        35.02619542786728,
+        48.22227830512362
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1440,
+      "xy": [
+        34.564256231698245,
+        48.31910732141233
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2449,
+      "xy": [
+        -35.886049340059905,
+        71.42604811566282
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2388,
+      "xy": [
+        -33.92437331701325,
+        71.56313834658567
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2415,
+      "xy": [
+        -35.0282589196445,
+        71.70830333116733
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 97,
+      "xy": [
+        -34.472375556950595,
+        51.76389815263464
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 25,
+      "xy": [
+        -33.06847801356574,
+        50.462887942466445
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 101,
+      "xy": [
+        -35.048730063961564,
+        51.70684847100666
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1456,
+      "xy": [
+        35.23561468186147,
+        48.338417103244495
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1393,
+      "xy": [
+        33.51212116050802,
+        48.98043870569116
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1406,
+      "xy": [
+        33.83833499857488,
+        48.84935284407118
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2473,
+      "xy": [
+        -36.30008388542002,
+        70.83342899133835
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2428,
+      "xy": [
+        -35.315935976567566,
+        71.7154300412178
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2434,
+      "xy": [
+        -35.172980931349166,
+        71.63797133819658
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 64,
+      "xy": [
+        -33.67109544821184,
+        50.985888598539326
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 39,
+      "xy": [
+        -33.32138565501822,
+        50.939793622670834
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 68,
+      "xy": [
+        -33.61381666632212,
+        51.203801730460555
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1379,
+      "xy": [
+        33.331083652413646,
+        49.15088977222115
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1447,
+      "xy": [
+        34.583264758985194,
+        48.5643901762779
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1451,
+      "xy": [
+        34.955340379905984,
+        48.3024024565419
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad2",
+      "cell": 2446,
+      "xy": [
+        -35.371077677838066,
+        71.50140347466095
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 113,
+      "xy": [
+        -35.23596744699075,
+        51.715610307630236
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 50,
+      "xy": [
+        -33.48737899040955,
+        50.862448565903236
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 81,
+      "xy": [
+        -34.19590727359835,
+        51.68868798351802
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1429,
+      "xy": [
+        34.12996722288817,
+        48.43521071242659
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1439,
+      "xy": [
+        34.72058053761554,
+        48.24890029025426
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 78,
+      "xy": [
+        -33.82133735769536,
+        51.37067427801655
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 27,
+      "xy": [
+        -33.14935339376959,
+        50.527589834113925
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 38,
+      "xy": [
+        -33.32055172599887,
+        50.85134205595118
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 59,
+      "xy": [
+        -33.65237109421133,
+        51.28454472359464
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 89,
+      "xy": [
+        -34.15662400006743,
+        51.542565396677944
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 36,
+      "xy": [
+        -33.27237802768076,
+        50.77127780700023
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 83,
+      "xy": [
+        -34.538309617685336,
+        51.48042153892215
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 84,
+      "xy": [
+        -34.333696087755,
+        51.562055568817115
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 69,
+      "xy": [
+        -33.82777711292027,
+        51.16869000805078
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 105,
+      "xy": [
+        -34.82538279337365,
+        51.70448371408365
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 96,
+      "xy": [
+        -34.69556228595991,
+        51.7568573056139
+      ],
+      "gap": 0.0,
+      "reason": "previous_case0_location_new_response"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 3,
+      "xy": [
+        -33.0169022533913,
+        50.17161145861646
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 33,
+      "xy": [
+        -33.1705894105009,
+        50.34252263421906
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 4,
+      "xy": [
+        -33.07668354817127,
+        50.25877203877712
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 27,
+      "xy": [
+        -33.25467213581028,
+        50.44968343160615
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 1125,
+      "xy": [
+        -33.538655913770036,
+        50.79334751897156
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 101,
+      "xy": [
+        -35.028559020635704,
+        51.77748890130765
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1379,
+      "xy": [
+        33.29595562144329,
+        49.2563341620418
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1374,
+      "xy": [
+        33.10304816439765,
+        49.423149543024394
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1411,
+      "xy": [
+        33.737173942848116,
+        48.9586803946381
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1380,
+      "xy": [
+        33.45499911746697,
+        49.22011835603847
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1412,
+      "xy": [
+        33.67138833820329,
+        49.013487165677304
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad1",
+      "cell": 1433,
+      "xy": [
+        33.98940167575897,
+        48.80127310591897
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4884,
+      "xy": [
+        19.242503278506934,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4878,
+      "xy": [
+        19.36281222460442,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4877,
+      "xy": [
+        19.099237761906082,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4765,
+      "xy": [
+        17.43982374918484,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4856,
+      "xy": [
+        19.0,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_front",
+      "cell": 4755,
+      "xy": [
+        16.989135900262163,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "key_L_rear",
+      "cell": 4956,
+      "xy": [
+        22.71224863919094,
+        2.0
+      ],
+      "gap": 0.02,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 25,
+      "xy": [
+        -33.14140680322058,
+        50.41618254035132
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 72,
+      "xy": [
+        -34.0483704046663,
+        51.471190850550094
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 3,
+      "xy": [
+        -33.02388783504666,
+        50.242537259419855
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 41,
+      "xy": [
+        -33.322450608500105,
+        50.58713562843374
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    },
+    {
+      "kind": "contact",
+      "patch": "pad0",
+      "cell": 27,
+      "xy": [
+        -33.23119970427174,
+        50.51600051363541
+      ],
+      "gap": 0.0,
+      "reason": "actual_quadratic_minimum"
+    }
+  ],
+  "forces": [
+    4.3063576260825e-06,
+    1.8394638682375942e-06,
+    6.911558349068374e-07,
+    7.27247044630585e-07,
+    4.8405344039227346e-08,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    4.4359634030102046e-08,
+    0.0,
+    0.0,
+    1.1634464487748738e-08,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.3573073519969583e-08,
+    0.0,
+    0.0,
+    2.605628492909456e-07,
+    0.0,
+    4.7104547931254065e-06,
+    0.0,
+    4.1813988078963016e-07,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    6.15887025972768e-08,
+    4.789035825026431e-08,
+    5.007049256628361e-08,
+    7.815811489698639e-08,
+    1.647180539239265e-08,
+    3.2704559650038934e-08,
+    2.8004699923284215e-08,
+    1.714933031100753e-08,
+    1.104544094382257e-08,
+    3.228888032075656e-09,
+    6.2615458698157535e-09,
+    0.0,
+    5.239716136255366e-08,
+    3.1378103112377576e-08,
+    6.826072894041908e-10,
+    7.64306698770286e-07,
+    0.0,
+    1.6368272914420696e-07,
+    1.08062043940004e-07,
+    1.6958568141298517e-08,
+    1.4126554225912156e-08,
+    3.6137547230029294e-08,
+    2.3365382532064577e-08,
+    0.0,
+    1.3999519870521634e-08,
+    4.691674281006009e-09,
+    1.2024708891681015e-08,
+    1.9709366277613952e-08,
+    1.0178776124044687e-08,
+    1.3256142013671544e-08,
+    3.734369757385357e-08,
+    0.0,
+    1.1862345192455924e-07,
+    1.5269659632390194e-06,
+    2.3007223504486163e-08,
+    7.721419801287647e-09,
+    5.7053008925640644e-09,
+    3.3224875954037373e-08,
+    0.0,
+    3.0717902013458625e-08,
+    1.4796916796289139e-08,
+    2.1950208055021938e-08,
+    1.7400576785712217e-08,
+    1.385261710917594e-08,
+    1.2177903019544427e-08,
+    1.179519975079116e-08,
+    9.843323959218419e-09,
+    8.13841587215464e-09,
+    7.260113774036163e-09,
+    0.0,
+    8.597491655706766e-08,
+    1.1904778037023e-06,
+    2.3448943210186354e-08,
+    4.630372398677994e-08,
+    1.6056879970380417e-07,
+    1.1837943600910751e-07,
+    2.3666135110355216e-08,
+    8.737961287063073e-09,
+    1.4005471531462993e-07,
+    6.893054546893668e-09,
+    8.531761257931756e-09,
+    1.264208618200323e-08,
+    1.4194915794944052e-08,
+    3.5208457757175063e-08,
+    4.539837679001668e-08,
+    1.8469343080342263e-07,
+    1.160619319926787e-07,
+    2.173201702485616e-07,
+    8.86366109406145e-08,
+    5.4212974181919664e-08,
+    4.0907984019102426e-08,
+    3.839576763107662e-08,
+    3.704635985688404e-08,
+    3.393491822239859e-08,
+    5.12623790252879e-09,
+    2.1585114450871993e-08,
+    2.3853533392585983e-08,
+    2.206014969626553e-08,
+    5.70409076434921e-08,
+    1.0700297947855393e-07,
+    1.2662868089000526e-08,
+    9.65056287200051e-08,
+    6.916183637571055e-08,
+    4.157634156441912e-08,
+    1.554936462617688e-08,
+    4.280130383152126e-08,
+    1.6771762041965255e-08,
+    3.6177345185854594e-08,
+    2.5512260766485604e-08,
+    3.078894115494353e-08,
+    1.0701115381392462e-07,
+    1.208367661717526e-07,
+    1.1508465122425578e-08,
+    1.5115902861665987e-07,
+    0.0,
+    3.921943811801576e-08,
+    2.7392348372385882e-08,
+    2.5142321262205538e-08,
+    2.674562810069916e-08,
+    8.40531265168322e-09,
+    1.934588740784991e-09,
+    1.3717239431167712e-08,
+    0.0,
+    0.0,
+    0.0,
+    6.59317956521021e-08,
+    1.2344813121582273e-08,
+    4.9470953772888357e-08,
+    1.1486760925027065e-08,
+    2.1363110205441756e-08,
+    2.461679260396721e-08,
+    3.9026978331072094e-08,
+    1.2112888478760252e-08,
+    1.5256733377246733e-08,
+    2.3366524581836335e-07,
+    1.1660233756985976e-08,
+    1.6420802027355178e-07,
+    3.598032722353664e-08,
+    6.362809598961715e-08,
+    1.40657221759697e-07,
+    1.8096636504713637e-08,
+    6.075277955728266e-09,
+    0.0,
+    3.4922417586287245e-08,
+    1.2807208393004633e-08,
+    2.5916117240268744e-10,
+    1.026494298528711e-07,
+    9.342081260729728e-08,
+    7.713886980336615e-08,
+    6.149167483894349e-08,
+    6.756340048358588e-08,
+    0.0,
+    2.5460472901262544e-08,
+    4.1457705471693056e-08,
+    3.300998793307085e-08,
+    1.569078877993608e-08,
+    1.4190906267188722e-08,
+    1.0232012605368431e-08,
+    1.1332099264553559e-07,
+    3.154051334629708e-08,
+    1.3463498070022921e-08,
+    8.244510078330814e-08,
+    7.00923291232051e-08,
+    2.7436808966393e-08,
+    1.3467501583453048e-08,
+    2.5054474376316637e-08,
+    2.130444213900389e-08,
+    1.5279151903781653e-08,
+    2.129152454519492e-08,
+    9.868969280929608e-09,
+    1.2013659750692866e-07,
+    5.086435918821164e-08,
+    7.900293119976153e-08,
+    4.387173719593468e-08,
+    2.724515504708146e-08,
+    6.372302784252722e-08,
+    9.590483276637336e-09,
+    1.676369274091419e-08,
+    2.3485640248416913e-08,
+    4.5554873248309034e-08,
+    1.8807512961269345e-08,
+    0.0,
+    4.109714121393346e-09,
+    7.649085763438769e-08,
+    2.6721191956785964e-08,
+    1.208805845749487e-08,
+    8.511620844478731e-09,
+    2.0633089822668473e-08,
+    6.948179075825899e-08,
+    5.591690216258615e-08,
+    4.674608942546707e-08,
+    4.2168555314784296e-08,
+    1.953798766080427e-08,
+    3.508237763449009e-08,
+    1.3450647385267027e-08,
+    0.0,
+    3.185993067661451e-08,
+    7.43783624198301e-08,
+    4.177590029946799e-08,
+    8.948109183706316e-08,
+    1.2091539405327548e-07,
+    8.091631075097346e-08,
+    4.990956970477487e-08,
+    8.010026389434453e-08,
+    1.016669362281812e-07,
+    4.911018982207294e-08,
+    0.0,
+    7.238678672350442e-08,
+    2.1512908377212616e-08,
+    3.7059212560233874e-08,
+    9.001204587665535e-08,
+    0.0,
+    0.0,
+    1.2192651541519112e-08,
+    0.0,
+    3.4464830083450794e-08,
+    2.524382571498791e-08,
+    2.9591080923540284e-08,
+    4.79119032970342e-09,
+    2.3905549937326234e-08,
+    0.0,
+    3.742975333346231e-09,
+    1.4713275021422832e-08,
+    3.130550540138544e-08,
+    0.0,
+    1.5467685048105792e-09,
+    1.0030755904634034e-07,
+    0.0,
+    1.7924881455166526e-07,
+    8.046956552072891e-08,
+    1.2363704248300077e-07,
+    4.773260348545157e-08,
+    4.7350155534056533e-08,
+    3.834237099850327e-08,
+    0.0
+  ],
+  "rigid": [
+    -0.03243956597334688,
+    -2.196075449798758e-17,
+    -0.00046998920903622044,
+    0.0002763774846309378,
+    0.00012306850726686674,
+    0.024014830504212957
+  ],
+  "enforced_gaps": [
+    -4.8489641121807203e-14,
+    4.185047906457486e-05,
+    1.362458027458777e-05,
+    7.903128486850576e-05,
+    2.607457601291061e-05,
+    6.402050126738668e-06,
+    1.718954498547854e-05,
+    -2.536178732304162e-13,
+    2.6141545745748864e-07,
+    1.4659954739279697e-05,
+    -4.1137883030617495e-14,
+    3.811626766730904e-06,
+    1.0734901732106718e-05,
+    5.336125284731907e-07,
+    1.297029255535099e-05,
+    -3.7579325502107297e-13,
+    3.286308346946848e-06,
+    0.0008412734850162494,
+    1.2732870313669764e-15,
+    0.0006441407610577009,
+    6.765421556309548e-16,
+    0.0004970837443030139,
+    6.38378239159465e-16,
+    0.0007832990022285831,
+    0.04466920020163681,
+    0.04466670135287733,
+    0.043578418844867226,
+    0.04355226676766226,
+    0.04561387641255875,
+    0.04563003579538443,
+    0.04520994077012462,
+    0.04521858966390155,
+    -4.7828277796591046e-14,
+    -4.7388525395430925e-14,
+    -4.823029996214867e-14,
+    -2.5473286674460027e-13,
+    -2.55126215292778e-13,
+    -2.5557073818349707e-13,
+    -4.6519320513749296e-14,
+    -4.755581779064544e-14,
+    -4.495004628929378e-14,
+    -3.7661540552846873e-13,
+    -3.7634641496947507e-13,
+    3.462657262095093e-07,
+    1.294103713078698e-15,
+    1.3149203947904198e-15,
+    1.2351231148954867e-15,
+    6.626643678231403e-16,
+    3.579778286612323e-07,
+    6.557254739192331e-16,
+    -4.885393305176233e-14,
+    -4.899271092984048e-14,
+    -4.9150570766154367e-14,
+    -2.538256063666644e-13,
+    -2.5771789216588736e-13,
+    1.1270833471382913e-08,
+    -4.3177484157497226e-14,
+    -4.344333053019067e-14,
+    -4.238493236941032e-14,
+    -3.7749198298492326e-13,
+    -3.775719971052527e-13,
+    -3.7697807115516513e-13,
+    1.3079815008865125e-15,
+    6.199051488103846e-08,
+    1.3287981825982342e-15,
+    6.626643678231403e-16,
+    6.349087922075114e-16,
+    6.349087922075114e-16,
+    -4.6220839655664037e-14,
+    -4.65901189156126e-14,
+    8.243967011432526e-08,
+    -2.540519877802794e-13,
+    -2.5420941393572427e-13,
+    -2.5403117109856765e-13,
+    -4.976965020664359e-14,
+    -4.9202395629999174e-14,
+    -5.052273703565202e-14,
+    -3.761233945825948e-13,
+    -3.809786687514194e-13,
+    -3.8165347618357437e-13,
+    1.2871648191747909e-15,
+    6.607384947857065e-08,
+    1.3287981825982342e-15,
+    6.626643678231403e-16,
+    6.349087922075114e-16,
+    -4.865682509680447e-14,
+    -4.833568441331426e-14,
+    -4.841418065060221e-14,
+    -2.5979088671967965e-13,
+    -2.5930299574206117e-13,
+    -2.554944103505541e-13,
+    -3.925722594222414e-14,
+    -3.928389731566728e-14,
+    -3.894063890785837e-14,
+    -3.75790652935859e-13,
+    -3.78352080568356e-13,
+    -3.7944571529974214e-13,
+    1.3079815008865125e-15,
+    -4.712658215055843e-14,
+    -4.747396052662278e-14,
+    -4.718643011047963e-14,
+    -2.5765284003553823e-13,
+    -2.579559829629652e-13,
+    -2.5725385363606357e-13,
+    -4.596084797470201e-14,
+    -4.687363778371756e-14,
+    -4.549442420009875e-14,
+    -3.7988210667416755e-13,
+    -3.797526529347728e-13,
+    -3.810338546419989e-13,
+    -4.798331870725647e-14,
+    -4.8098460977974433e-14,
+    -4.790872559778947e-14,
+    -2.546170739525788e-13,
+    -2.545589607161336e-13,
+    -2.5482567445056503e-13,
+    -4.0097482625900405e-14,
+    -4.844952564142524e-14,
+    -4.875104226559346e-14,
+    -3.7738540591136793e-13,
+    -3.775117154644625e-13,
+    -3.7614377758343753e-13,
+    -4.864533255377612e-14,
+    -4.8501350505270047e-14,
+    -4.8992060408536986e-14,
+    -2.5631927136338106e-13,
+    6.34392583968163e-08,
+    -2.5937758885152817e-13,
+    -4.434039940770518e-14,
+    -4.2184246547283255e-14,
+    -4.354069188527987e-14,
+    -3.834313509060161e-13,
+    -3.861030418994549e-13,
+    -3.8342473727276394e-13,
+    2.2876996404411903e-06,
+    2.1251426649731078e-07,
+    4.94037493850661e-07,
+    -2.544180144337105e-13,
+    -2.562724338295297e-13,
+    -2.5505032114070403e-13,
+    -5.1720780436248504e-14,
+    -4.090510482418486e-14,
+    -5.020409001715853e-14,
+    -3.7774633681458836e-13,
+    -3.776537459490581e-13,
+    -3.784473819393175e-13,
+    -4.844345410925932e-14,
+    -4.6805007786199226e-14,
+    -4.778989703968506e-14,
+    -2.5441974915718646e-13,
+    -2.5839790376847027e-13,
+    -2.5626202548867383e-13,
+    -4.0138465468020357e-14,
+    -3.870948700468446e-14,
+    4.685273784048316e-08,
+    -3.801407973125226e-13,
+    -3.806283630294893e-13,
+    -3.799764322631738e-13,
+    -4.807178960453129e-14,
+    -4.7847793435695785e-14,
+    -4.824851455864643e-14,
+    -2.5558635069478086e-13,
+    -2.5698627253989414e-13,
+    3.169457100638505e-07,
+    -4.494603474125558e-14,
+    -4.742256934364697e-14,
+    -4.9560507607571136e-14,
+    -3.759465612082624e-13,
+    -3.7626726821088363e-13,
+    -3.7902363539399353e-13,
+    -4.864988620290056e-14,
+    -4.677031331667969e-14,
+    -4.6979998016838387e-14,
+    -2.549926415851278e-13,
+    -2.5455549126918164e-13,
+    -2.5530445812993463e-13,
+    -4.822520421193799e-14,
+    -4.281221644558686e-14,
+    -4.139245370071709e-14,
+    -3.821812658011403e-13,
+    -3.765526302226818e-13,
+    -3.7599242296015856e-13,
+    -4.692210162082766e-14,
+    -4.806723595540685e-14,
+    -4.769947457849977e-14,
+    -2.5398780301166823e-13,
+    -2.5849504828312497e-13,
+    -2.566397615255678e-13,
+    -4.16238224443255e-14,
+    -5.099338919872798e-14,
+    -4.552521554179734e-14,
+    -4.7040713338497575e-14,
+    -4.877175052708793e-14,
+    2.794963432227633e-07,
+    -2.6028615027207103e-13,
+    -2.54902002283508e-13,
+    -2.5532570849251535e-13,
+    -3.996455943955368e-14,
+    -4.4284562995822174e-14,
+    -4.49521062734215e-14,
+    -4.815093636312273e-14,
+    -4.86093370416496e-14,
+    -4.8153538448336697e-14,
+    -2.5440717241198563e-13,
+    -2.5794297253689535e-13,
+    -2.582552227625712e-13,
+    -4.4087671881298807e-14,
+    8.690912729762863e-07,
+    -4.852780503827869e-14,
+    -4.7570237679539495e-14,
+    -2.5533221370555026e-13,
+    -2.5685963772614784e-13,
+    -4.8126650234459056e-14,
+    -4.8654006171156006e-14,
+    -4.8747464398424256e-14,
+    -4.8353248488508527e-14,
+    -4.754616839131032e-14,
+    -4.8845476274816946e-14,
+    1.1678394909236597e-07,
+    -4.719011639786608e-14,
+    -4.80633328275859e-14,
+    -4.642250125974634e-14,
+    -4.6818451893138047e-14,
+    1.3907522996886752e-07,
+    3.821896151791869e-08,
+    -4.8645115713341625e-14,
+    1.7746265458247305e-07,
+    -4.808133058364916e-14,
+    -4.612239409840235e-14,
+    -2.5475802023500194e-13,
+    -2.5490590541132896e-13,
+    -2.562563876373769e-13,
+    1.1004889176585014e-08,
+    -2.558825547283039e-13,
+    -2.5664236361078174e-13,
+    1.0998146837692957e-15,
+    1.5326722922065494e-08,
+    1.141448047192739e-15,
+    1.3287981825982342e-15,
+    1.1762978923551826e-07,
+    1.3287981825982342e-15,
+    6.418476861114186e-16,
+    -4.9121514147931755e-14,
+    -4.772983223932936e-14,
+    -4.8927008278187856e-14,
+    -4.861042124382209e-14,
+    3.552825552418509e-08
+  ],
+  "qp": {
+    "passed": true,
+    "status": "optimal",
+    "forces": [
+      4.3063576260825e-06,
+      1.8394638682375942e-06,
+      6.911558349068374e-07,
+      7.27247044630585e-07,
+      4.8405344039227346e-08,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      4.4359634030102046e-08,
+      0.0,
+      0.0,
+      1.1634464487748738e-08,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.3573073519969583e-08,
+      0.0,
+      0.0,
+      2.605628492909456e-07,
+      0.0,
+      4.7104547931254065e-06,
+      0.0,
+      4.1813988078963016e-07,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      6.15887025972768e-08,
+      4.789035825026431e-08,
+      5.007049256628361e-08,
+      7.815811489698639e-08,
+      1.647180539239265e-08,
+      3.2704559650038934e-08,
+      2.8004699923284215e-08,
+      1.714933031100753e-08,
+      1.104544094382257e-08,
+      3.228888032075656e-09,
+      6.2615458698157535e-09,
+      0.0,
+      5.239716136255366e-08,
+      3.1378103112377576e-08,
+      6.826072894041908e-10,
+      7.64306698770286e-07,
+      0.0,
+      1.6368272914420696e-07,
+      1.08062043940004e-07,
+      1.6958568141298517e-08,
+      1.4126554225912156e-08,
+      3.6137547230029294e-08,
+      2.3365382532064577e-08,
+      0.0,
+      1.3999519870521634e-08,
+      4.691674281006009e-09,
+      1.2024708891681015e-08,
+      1.9709366277613952e-08,
+      1.0178776124044687e-08,
+      1.3256142013671544e-08,
+      3.734369757385357e-08,
+      0.0,
+      1.1862345192455924e-07,
+      1.5269659632390194e-06,
+      2.3007223504486163e-08,
+      7.721419801287647e-09,
+      5.7053008925640644e-09,
+      3.3224875954037373e-08,
+      0.0,
+      3.0717902013458625e-08,
+      1.4796916796289139e-08,
+      2.1950208055021938e-08,
+      1.7400576785712217e-08,
+      1.385261710917594e-08,
+      1.2177903019544427e-08,
+      1.179519975079116e-08,
+      9.843323959218419e-09,
+      8.13841587215464e-09,
+      7.260113774036163e-09,
+      0.0,
+      8.597491655706766e-08,
+      1.1904778037023e-06,
+      2.3448943210186354e-08,
+      4.630372398677994e-08,
+      1.6056879970380417e-07,
+      1.1837943600910751e-07,
+      2.3666135110355216e-08,
+      8.737961287063073e-09,
+      1.4005471531462993e-07,
+      6.893054546893668e-09,
+      8.531761257931756e-09,
+      1.264208618200323e-08,
+      1.4194915794944052e-08,
+      3.5208457757175063e-08,
+      4.539837679001668e-08,
+      1.8469343080342263e-07,
+      1.160619319926787e-07,
+      2.173201702485616e-07,
+      8.86366109406145e-08,
+      5.4212974181919664e-08,
+      4.0907984019102426e-08,
+      3.839576763107662e-08,
+      3.704635985688404e-08,
+      3.393491822239859e-08,
+      5.12623790252879e-09,
+      2.1585114450871993e-08,
+      2.3853533392585983e-08,
+      2.206014969626553e-08,
+      5.70409076434921e-08,
+      1.0700297947855393e-07,
+      1.2662868089000526e-08,
+      9.65056287200051e-08,
+      6.916183637571055e-08,
+      4.157634156441912e-08,
+      1.554936462617688e-08,
+      4.280130383152126e-08,
+      1.6771762041965255e-08,
+      3.6177345185854594e-08,
+      2.5512260766485604e-08,
+      3.078894115494353e-08,
+      1.0701115381392462e-07,
+      1.208367661717526e-07,
+      1.1508465122425578e-08,
+      1.5115902861665987e-07,
+      0.0,
+      3.921943811801576e-08,
+      2.7392348372385882e-08,
+      2.5142321262205538e-08,
+      2.674562810069916e-08,
+      8.40531265168322e-09,
+      1.934588740784991e-09,
+      1.3717239431167712e-08,
+      0.0,
+      0.0,
+      0.0,
+      6.59317956521021e-08,
+      1.2344813121582273e-08,
+      4.9470953772888357e-08,
+      1.1486760925027065e-08,
+      2.1363110205441756e-08,
+      2.461679260396721e-08,
+      3.9026978331072094e-08,
+      1.2112888478760252e-08,
+      1.5256733377246733e-08,
+      2.3366524581836335e-07,
+      1.1660233756985976e-08,
+      1.6420802027355178e-07,
+      3.598032722353664e-08,
+      6.362809598961715e-08,
+      1.40657221759697e-07,
+      1.8096636504713637e-08,
+      6.075277955728266e-09,
+      0.0,
+      3.4922417586287245e-08,
+      1.2807208393004633e-08,
+      2.5916117240268744e-10,
+      1.026494298528711e-07,
+      9.342081260729728e-08,
+      7.713886980336615e-08,
+      6.149167483894349e-08,
+      6.756340048358588e-08,
+      0.0,
+      2.5460472901262544e-08,
+      4.1457705471693056e-08,
+      3.300998793307085e-08,
+      1.569078877993608e-08,
+      1.4190906267188722e-08,
+      1.0232012605368431e-08,
+      1.1332099264553559e-07,
+      3.154051334629708e-08,
+      1.3463498070022921e-08,
+      8.244510078330814e-08,
+      7.00923291232051e-08,
+      2.7436808966393e-08,
+      1.3467501583453048e-08,
+      2.5054474376316637e-08,
+      2.130444213900389e-08,
+      1.5279151903781653e-08,
+      2.129152454519492e-08,
+      9.868969280929608e-09,
+      1.2013659750692866e-07,
+      5.086435918821164e-08,
+      7.900293119976153e-08,
+      4.387173719593468e-08,
+      2.724515504708146e-08,
+      6.372302784252722e-08,
+      9.590483276637336e-09,
+      1.676369274091419e-08,
+      2.3485640248416913e-08,
+      4.5554873248309034e-08,
+      1.8807512961269345e-08,
+      0.0,
+      4.109714121393346e-09,
+      7.649085763438769e-08,
+      2.6721191956785964e-08,
+      1.208805845749487e-08,
+      8.511620844478731e-09,
+      2.0633089822668473e-08,
+      6.948179075825899e-08,
+      5.591690216258615e-08,
+      4.674608942546707e-08,
+      4.2168555314784296e-08,
+      1.953798766080427e-08,
+      3.508237763449009e-08,
+      1.3450647385267027e-08,
+      0.0,
+      3.185993067661451e-08,
+      7.43783624198301e-08,
+      4.177590029946799e-08,
+      8.948109183706316e-08,
+      1.2091539405327548e-07,
+      8.091631075097346e-08,
+      4.990956970477487e-08,
+      8.010026389434453e-08,
+      1.016669362281812e-07,
+      4.911018982207294e-08,
+      0.0,
+      7.238678672350442e-08,
+      2.1512908377212616e-08,
+      3.7059212560233874e-08,
+      9.001204587665535e-08,
+      0.0,
+      0.0,
+      1.2192651541519112e-08,
+      0.0,
+      3.4464830083450794e-08,
+      2.524382571498791e-08,
+      2.9591080923540284e-08,
+      4.79119032970342e-09,
+      2.3905549937326234e-08,
+      0.0,
+      3.742975333346231e-09,
+      1.4713275021422832e-08,
+      3.130550540138544e-08,
+      0.0,
+      1.5467685048105792e-09,
+      1.0030755904634034e-07,
+      0.0,
+      1.7924881455166526e-07,
+      8.046956552072891e-08,
+      1.2363704248300077e-07,
+      4.773260348545157e-08,
+      4.7350155534056533e-08,
+      3.834237099850327e-08,
+      0.0
+    ],
+    "rigid_mode_coordinates": [
+      -0.03243956597334688,
+      -2.196075449798758e-17,
+      -0.00046998920903622044,
+      0.0002763774846309378,
+      0.00012306850726686674,
+      0.024014830504212957
+    ],
+    "reduced_gradient": [
+      3.3068166260807885e-17,
+      3.165870343657673e-17,
+      4.103705222857634e-17,
+      3.7621815385247004e-17,
+      -5.355958732078392e-17,
+      4.1850479111983554e-05,
+      1.3624580319059737e-05,
+      7.903128491214262e-05,
+      2.607457629355515e-05,
+      6.402050392696279e-06,
+      1.7189545252839543e-05,
+      -1.3444106938820255e-17,
+      2.6141551051443983e-07,
+      1.4659954792754608e-05,
+      -1.3010426069826053e-17,
+      3.8116268087872145e-06,
+      1.0734902140002549e-05,
+      5.336129204394353e-07,
+      1.2970292947280914e-05,
+      2.5153490401663703e-17,
+      3.2863083460447917e-06,
+      0.00084127348501822,
+      -6.938893903907228e-18,
+      0.0006441407610599074,
+      3.469446951953614e-18,
+      0.000497083744304655,
+      -1.0408340855860843e-17,
+      0.0007832990022304288,
+      0.04466920020161963,
+      0.04466670135286703,
+      0.04357841884484997,
+      0.043552266767651504,
+      0.04561387641254122,
+      0.04563003579537395,
+      0.045209940770107176,
+      0.04521858966389118,
+      8.72782748850831e-18,
+      -1.691355389077387e-17,
+      2.1358782797964437e-17,
+      4.2392304944183223e-17,
+      4.2609145378680324e-17,
+      5.843849709696869e-17,
+      -3.7730235602495554e-17,
+      -3.230922474006803e-17,
+      -2.097931203759451e-17,
+      2.4936649967166602e-17,
+      9.269928574751063e-18,
+      3.462661034965781e-07,
+      -6.938893903907228e-18,
+      -6.938893903907228e-18,
+      -3.469446951953614e-18,
+      1.0408340855860843e-17,
+      3.5797782800897626e-07,
+      3.469446951953614e-18,
+      -4.8626467435974874e-17,
+      6.2341624917916505e-18,
+      -1.1980434005964824e-17,
+      1.2902005852577503e-17,
+      7.892991815694472e-17,
+      1.1271090708648256e-08,
+      -2.3310346708438345e-18,
+      -2.780978572425319e-17,
+      5.800481622797449e-18,
+      -4.320545657354735e-17,
+      5.990217002982412e-17,
+      2.4936649967166602e-17,
+      -3.469446951953614e-18,
+      6.199051354183194e-08,
+      3.469446951953614e-18,
+      -6.938893903907228e-18,
+      -1.3877787807814457e-17,
+      -1.0408340855860843e-17,
+      -6.7220534694101275e-18,
+      -7.546047120499111e-17,
+      8.243971599922488e-08,
+      4.7704895589362195e-17,
+      3.8163916471489756e-17,
+      1.0018028073766061e-16,
+      -1.2088854223213374e-17,
+      -9.974659986866641e-18,
+      8.131516293641283e-18,
+      8.294146619514109e-18,
+      8.998878031629687e-17,
+      7.209944447028604e-17,
+      -1.3877787807814457e-17,
+      6.607384823303919e-08,
+      -2.0816681711721685e-17,
+      -1.0408340855860843e-17,
+      -3.469446951953614e-18,
+      -2.710505431213761e-19,
+      -3.7133924407628527e-17,
+      1.463672932855431e-17,
+      3.122502256758253e-17,
+      7.24247051220317e-17,
+      -1.8214596497756474e-17,
+      -1.5287250632045613e-17,
+      -3.69712940817557e-17,
+      -2.054563116860031e-17,
+      1.0663128366394936e-16,
+      1.4517467089580904e-16,
+      4.4072818311535755e-17,
+      0.0,
+      1.0191500421363742e-17,
+      -2.314771638256552e-17,
+      -1.566672139241554e-17,
+      5.3017486234541167e-17,
+      -2.168404344971009e-18,
+      6.028164079019405e-17,
+      1.1167282376600696e-17,
+      -6.071532165918825e-18,
+      -2.2171934427328566e-17,
+      5.3017486234541167e-17,
+      5.545694112263355e-17,
+      4.401860820291148e-17,
+      -5.5185890579512176e-17,
+      -6.1257422745431e-18,
+      2.5587171270657905e-17,
+      -1.734723475976807e-18,
+      -7.43762690325056e-17,
+      6.006480035569695e-17,
+      -3.2526065174565133e-18,
+      -7.318364664277155e-18,
+      -4.700016417724662e-17,
+      1.4690939437178585e-17,
+      6.732895491134983e-17,
+      5.702903427273753e-17,
+      -1.8865117801247777e-17,
+      2.4231918555051024e-17,
+      -7.643625316022806e-18,
+      2.190088388420719e-17,
+      6.343951552880561e-08,
+      5.4752209710517974e-17,
+      -1.6154612370034016e-17,
+      -2.8893987896738693e-17,
+      -1.951563910473908e-17,
+      7.48099499014998e-17,
+      -5.692061405548898e-18,
+      6.862999751833243e-17,
+      2.2876996858820007e-06,
+      2.1251431286571035e-07,
+      4.940375402001955e-07,
+      6.21247844834194e-17,
+      -6.938893903907228e-18,
+      1.1980434005964824e-16,
+      -1.463672932855431e-17,
+      -1.235990476633475e-17,
+      -1.2576745200831851e-17,
+      -1.3227266504323154e-17,
+      1.6653345369377348e-16,
+      -7.209944447028604e-18,
+      -2.200930410145574e-17,
+      -5.252959525692269e-17,
+      -1.691355389077387e-17,
+      1.8865117801247777e-17,
+      1.1600963245594897e-17,
+      8.218252467440124e-17,
+      -1.577514160966409e-17,
+      -1.7672495411513722e-17,
+      4.685277656108324e-08,
+      3.913969842672671e-17,
+      1.2354483755472323e-16,
+      5.377642775528102e-17,
+      -3.9085488318102435e-17,
+      -3.892285799222961e-17,
+      -4.4398078963281407e-17,
+      5.5077470362263625e-17,
+      2.168404344971009e-17,
+      3.169459717883034e-07,
+      -2.4990860075790877e-17,
+      -1.2305694657710475e-17,
+      -1.1438332919722072e-17,
+      1.2002118049414534e-16,
+      5.637851296924623e-17,
+      1.2235221516498918e-16,
+      -2.211772431870429e-17,
+      -5.616167253474913e-17,
+      2.2442984970449942e-17,
+      3.176712365382528e-17,
+      7.719519468096792e-17,
+      5.692061405548898e-17,
+      -5.2583805365546965e-18,
+      -2.314771638256552e-17,
+      -1.7726705520137997e-17,
+      5.388484797252957e-17,
+      1.0570971181733668e-17,
+      8.771195575407731e-17,
+      -1.0950441942103595e-17,
+      2.3906657903305373e-17,
+      1.3552527156068805e-17,
+      6.114900252818245e-17,
+      8.738669510233166e-17,
+      -4.445228907190568e-17,
+      -1.2739375526704677e-17,
+      5.204170427930421e-18,
+      -1.8756697583999227e-17,
+      -7.101524229780054e-18,
+      -2.1575623232461538e-17,
+      2.794963892786958e-07,
+      6.711211447685272e-17,
+      6.201636426617085e-17,
+      7.470152968425126e-17,
+      -4.808436634973212e-17,
+      -1.1438332919722072e-17,
+      1.5016200088924236e-17,
+      1.984089975648473e-17,
+      4.065758146820642e-18,
+      -2.47198095326695e-17,
+      5.431852884152377e-17,
+      1.8756697583999227e-17,
+      1.3877787807814457e-17,
+      -9.324138683375338e-18,
+      8.690913187078255e-07,
+      -1.3010426069826053e-18,
+      -2.0057740190981832e-17,
+      6.093216209368535e-17,
+      6.949735925632083e-17,
+      -2.0111950299606107e-17,
+      -2.6400322900022033e-17,
+      -3.5561831257524545e-17,
+      1.8973538018496328e-17,
+      -8.944667923005412e-18,
+      -4.981908982570893e-17,
+      1.1678399574412178e-07,
+      3.9085488318102435e-17,
+      -2.7484525072507537e-17,
+      -2.108773225484306e-17,
+      -3.0140820395097023e-17,
+      1.3907527874446697e-07,
+      3.821901025589632e-08,
+      -3.3393426912553537e-17,
+      1.7746270301953037e-07,
+      -5.55653613398821e-17,
+      -5.204170427930421e-18,
+      5.898059818321144e-17,
+      1.0234868508263162e-16,
+      9.454242944073599e-17,
+      1.100514518295563e-08,
+      8.044780119842443e-17,
+      7.676151381197371e-17,
+      -2.0816681711721685e-17,
+      1.5326721815311917e-08,
+      -3.469446951953614e-18,
+      -1.734723475976807e-17,
+      1.1762978807672297e-07,
+      -3.469446951953614e-18,
+      -1.3877787807814457e-17,
+      4.889751797909625e-17,
+      1.1546753136970622e-17,
+      -4.3639137442541553e-17,
+      -1.0863705768304754e-16,
+      3.552830410256816e-08
+    ],
+    "iterations": 9,
+    "remaining_unsupported_rigid_directions": 1,
+    "errors": {
+      "equilibrium": 2.0328790734103208e-20,
+      "free_stationarity": 4.103705222857634e-17,
+      "negative_contact_force": 0.0,
+      "negative_reduced_gradient": 1.0863705768304754e-16,
+      "complementarity": 1.6342673024324234e-23
+    },
+    "history": [
+      {
+        "iteration": 0,
+        "admit": 246,
+        "free": 203
+      },
+      {
+        "iteration": 1,
+        "release": 230,
+        "alpha": 0.12693942796766586,
+        "free": 202
+      },
+      {
+        "iteration": 2,
+        "release": 228,
+        "alpha": 0.8856645542380127,
+        "free": 201
+      },
+      {
+        "iteration": 3,
+        "admit": 248,
+        "free": 202
+      },
+      {
+        "iteration": 4,
+        "release": 227,
+        "alpha": 0.3183456487934275,
+        "free": 201
+      },
+      {
+        "iteration": 5,
+        "admit": 247,
+        "free": 202
+      },
+      {
+        "iteration": 6,
+        "admit": 249,
+        "free": 203
+      },
+      {
+        "iteration": 7,
+        "admit": 56,
+        "free": 204
+      }
+    ],
+    "force_space_complementary_energy_not_primal_stiffness": true,
+    "regularization_added": false,
+    "candidate_go": false,
+    "fixture_fabrication_go": false,
+    "manufacturing_go": false
+  },
+  "input_sha256": {
+    "/tmp/razr-spatial-integration-20261015/elastic/panel/K.npz": "6144f7694493f5d0922d56db2ad5447145f24e252adb65c5b8d2ef1a5b5cff86",
+    "/tmp/razr-spatial-integration-20261015/elastic/panel/loads.npz": "811ba687959bb34dec5ada401b35f07123c917bfc4e68ad982d661fd62fac9a6",
+    "/tmp/razr-spatial-integration-20261015/elastic/frame/K.npz": "b9ee0416ee1a888f6b5ba992eb57b964dc28843bdfa4ac38ec9c8ad02fabf19c",
+    "/tmp/razr-spatial-integration-20261015/elastic/frame/loads.npz": "eb2b180696785a77b71412506760df974fbf54c800090e36f027f2aaf70135a3",
+    "/home/qian-qi/RAZR-SLIDE-spatial-integration-20261015/integration/assembly_inputs.json": "7b7ebf0f48556f2feca175a35b882a9a48337de2bb5f54b1ba7a740f85e8ce6b",
+    "/home/qian-qi/RAZR-SLIDE-spatial-integration-20261015/integration/roof_joint_load_inputs.json": "09f7b392b00a59ca1fdb5fa97ad10e6b4d5361ae0f440afb8dd4e9ee225a2640",
+    "/home/qian-qi/RAZR-SLIDE-spatial-integration-20261015/integration/frame_thread_actual_inputs.json": "4dcb50162bd25a7507a3afb4ba7e0f7aa33b8c233c0a366e68b8adec51a13609",
+    "/home/qian-qi/RAZR-SLIDE-spatial-integration-20261015/engineering/contact-field-20261015/common-cell-results.json.gz": "7d316b2aabb75ea7706f7137a970156b73b680740643465c6c3f33568a9a3493",
+    "/tmp/razr-spatial-integration-20261015/solve-v1/case-0/report.json": "59c505209f3206125ad3cdea7c5e74b6db18ce620c6be07a5b6f29eb48f160c5"
+  },
+  "source_sha256": "d7469fc70f0529888faa5d80983af69c45b036c5aeea76d330b6a7355f0f3a95",
+  "dual_solver_sha256": "86ef4af4c54d2ebfdc8fcc2a62175be79230a356cdb2a9fa581ebebd7cb73948",
+  "original_auditor_sha256": "6e6ee08ecf2eac3539edab1f9c18be8cfed8e6dc03f80a3010dc48bc7c612100",
+  "audited_cells": 5255,
+  "mean_pressure_contact_replaced_by_point_reactions": true,
+  "full_volume_energy_retained": true,
+  "primal_stiffness_not_replaced_by_old_port_compliance": true,
+  "neutral_Y_mode_not_physically_fixed": true,
+  "frame_end_ideal_fixture_unchanged": true,
+  "circles_common_planar_domain_only": true,
+  "force_is_not_area_pressure": true,
+  "FE_mesh_convergence": false,
+  "point_contact_convergence": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "passed": true
+}

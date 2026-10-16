@@ -67,14 +67,14 @@
   ],
   "previous_production_review": "engineering/PRODUCTION_BLOCKERS_R6.md",
   "current_input_registry": "integration/assembly_inputs.json",
-  "current_execution_summary": "engineering/contact-field-20261015/DELIVERY_VERIFICATION.json",
+  "current_execution_summary": "engineering/spatial-contact-integration-20261015/DELIVERY_VERIFICATION.json",
   "current_unit_tests": {
     "manifest": "tools/test_suites.json",
-    "actual_complete_tests": 814,
-    "configured_minimum": 814,
+    "configured_minimum": 873,
+    "actual_complete_tests": 873,
     "groups": 31,
-    "functional_commit": "212c4956d10231d4dbc9c86b10c48564385d82ee",
-    "environment": "authorized existing locked desktop environment",
+    "functional_commit": "3ac96fd366cbb423adb30b6a045630bacb850c32",
+    "environment": "authorized desktop locked environment",
     "hosted_execution": false
   },
   "previous_current_execution_summary": "engineering/panel-bearing-web-20261015/DELIVERY_VERIFICATION.json",
@@ -344,5 +344,24 @@
     "CAD_changed": false,
     "mesh_convergence_complete": false,
     "evidence": "engineering/contact-field-20261015/DELIVERY_VERIFICATION.json"
+  },
+  "current_spatial_contact": {
+    "source": "integration/spatial_contact.py",
+    "large_scale_backend": "integration/contact_dual_active.py",
+    "original_cases_passed": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "original_case_rejected": 4,
+    "remaining_not_run": [
+      5,
+      6,
+      7
+    ],
+    "all_eight_cases_closed": false,
+    "gap_tolerance_mm": 1e-07,
+    "continuum_pressure_mesh_convergence_or_physical_qualification": false
   }
 }
