@@ -1,23 +1,18 @@
-# Full-energy spatial contact integration study
+# Original panel/frame spatial contact: verified bounded delivery
 
-Imports the previously delivered spatial_contact.py and its 41 tests byte-exact.
-Adds an 18-test feasible working-set solver for complementary energy in force
-coordinates, with explicit rigid equilibrium. This is not interpreting the
-old twelve prescribed-pressure port compliance as primal stiffness.
+Current result: complete local 873 tests / 31 suites pass. Original cases0..3
+also pass the unchanged 1e-7 mm criterion on all5255 common polygons per case,
+with independent full-field and tetrahedral P2 reconstruction.
 
-For full-scale use, each interface point applies exactly opposite P2 trace
-loads to the complete unchanged panel and frame K. An elastic response cache
-and exact generalized complementary-energy equations avoid materializing an
-800k-by-800k dense primal operator. Every supplied common polygon is audited
-with the unchanged quadratic extrema routine; a negative region adds its
-actual extremum position and repeats equilibrium. No displacement clipping,
-penalty stiffness or extra physical anchor is introduced.
+Case4 is NOT accepted: after72 finite-QP/audit cycles with2193 contact points,
+2261 regions remain below the same criterion; independently recomputed minimum
+is -6.89005779769651e-7 mm. Cases5..7 were not run after this bounded stop.
+Full volume energy and point equilibrium do not override that failed gap test.
 
-Current 59 new tests passed locally, including original 41 tests and 18 new
-backend tests. Complete 873-test/31-suite regression and the original device
-cases are pending, not inferred from the configured count. CAD, actual
-material/load inputs, dependencies, workflows and old counterexamples remain
-unchanged. Current diagnostics retain the ideal remote frame end, conditional
-four axial bolt pressure shapes/spring values and small-displacement pairing.
-Point contact forces are not a resolved area-pressure field or stress rating.
-Physical and manufacturing go remain false.
+See DELIVERY_VERIFICATION.json, METHOD_AND_LIMITS.md and each case directory.
+The exact bounded force-response matrix and contact-point locations are
+included for continuation, together with hash-pinned complete meshes/loads.
+Large full stiffness and solution fields remain at documented host paths.
+No CAD, real physical inputs, dependency or workflow changes. No continuum
+pressure, stress, mesh convergence or hardware release is claimed. All go=false.
+INITIAL_README.md preserves the original draft note, not the current status.
