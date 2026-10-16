@@ -23,10 +23,19 @@ GAP_TOLERANCE=1e-7
 AUDITOR_SHA='6e6ee08ecf2eac3539edab1f9c18be8cfed8e6dc03f80a3010dc48bc7c612100'
 
 
+def _json_numpy(value):
+    # ndarray.item() is not a conversion for multi-element arrays.
+    if isinstance(value,np.ndarray):
+        return value.tolist()
+    if isinstance(value,np.generic):
+        return value.item()
+    raise TypeError('unsupported result type: '+type(value).__name__)
+
+
 def dump(path, value):
     # Output paths are always in a newly created result directory.
     Path(path).write_text(json.dumps(value,indent=2,allow_nan=False,
-        default=lambda x:x.item() if hasattr(x,'item') else x.tolist())+'\n')
+        default=_json_numpy)+'\n')
 
 
 def column(size, indices, weights):
