@@ -10,7 +10,7 @@ level2接触及其他细化工况尚未闭合，不能称整个网格收敛完�
 证据engineering/volume-convergence-20261017/DELIVERY_VERIFICATION.json。
 
 独立平铺组装128例补查通过，不重复计入989。另在原体网格收紧case6到5e-8mm已独立通过；
-2.5e-8mm的有限续算仍待终态，补丁未改现役入口。见contact-target-study和independent-review。
+2.5e-8mm续算在1800秒预算内未完成，退出1并保留检查点，补丁未改现役入口。见contact-target-study和independent-review。
 下一步应完成更细体空间的接触平衡及界面迹加密，逐项比较响应；不以固定旧接触力的柔度变化代替新解。
 
 真实材料、初始力与安装预紧、牙面/框架承载、实际支撑、摩擦及服务载荷仍未验证。
