@@ -7,3 +7,7 @@ This increment adds an optional factor_reuse=False backend to the existing force
 All18 existing dual tests and10 new targeted tests actually passed in scoped runs. A real2453-force-column checkpoint was independently re-solved from its previous warm guess: same227 active-set iterations; maximum force difference about1.91e-13. The observed optimized solve was21.34s, versus78.76s for the original solve+field audit observation; this is not a controlled whole-solver speed comparison. Original physical fields still require complete checks.
 
 No CAD, physical input, dependency or workflow changes. The two original full K matrices, original audit polygons and numerical thresholds remain hash-bound. Configured961/31 is not yet a completed regression. All hardware/manufacturing flags remain false.
+
+## Final actual outcome
+
+All961 tests/31suites completed on the functional commit, and cases4..7 now have original-domain independent full-field reports. Earlier draft statements above are preserved as history; see DELIVERY_VERIFICATION.json and METHOD_AND_LIMITS.md for final scope. No physical load or mesh-convergence qualification.

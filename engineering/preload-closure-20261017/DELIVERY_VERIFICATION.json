@@ -1,0 +1,394 @@
+{
+  "base_main": "ab8e32acf4d6dc0510e45838ec03458f4de28363",
+  "functional_commit": "6d3c80af56eebba387ceb15fc7ffdedb7a7361ae",
+  "full_unit_tests": 961,
+  "suites": 31,
+  "new_tests_this_turn": 10,
+  "existing_PR27_tests_951_rerun_before_optimization": true,
+  "all_unit_tests_passed": true,
+  "source_bytes_unchanged": true,
+  "new_original_cases_independently_passed": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "prior_original_cases_independently_passed": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "prior_four_cases_reexecuted_this_turn": false,
+  "all_eight_original_cases_closed_on_same_frozen_grid": true,
+  "cases": [
+    {
+      "case": 4,
+      "passed": true,
+      "independently_rechecked": true,
+      "resumed_checkpoint_provenance": {
+        "/tmp/razr-preload-closure-20261017/original-v1/case-4/checkpoint-004/response.npz": "0d0c508b21e1a77bad6b5ebdaff946e421fec85f5f6da76e21341829c5e95dbe",
+        "/tmp/razr-preload-closure-20261017/original-v1/case-4/checkpoint-004/points.json": "aba2f238d2d372719da4fed73968269d11f210d40ef8a3000b8b6465f997cffc",
+        "/tmp/razr-preload-closure-20261017/original-v1/case-4/checkpoint-004/manifest.json": "6663a338e8a333909963f40be7fede3ce83be910be1c1a8fd9ed5612343b2c9d",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/integration/assembly_inputs.json": "7b7ebf0f48556f2feca175a35b882a9a48337de2bb5f54b1ba7a740f85e8ce6b",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/integration/roof_joint_load_inputs.json": "09f7b392b00a59ca1fdb5fa97ad10e6b4d5361ae0f440afb8dd4e9ee225a2640",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/integration/frame_thread_actual_inputs.json": "4dcb50162bd25a7507a3afb4ba7e0f7aa33b8c233c0a366e68b8adec51a13609",
+        "/tmp/razr-preload-contact-20261016/elastic/panel/K.npz": "6144f7694493f5d0922d56db2ad5447145f24e252adb65c5b8d2ef1a5b5cff86",
+        "/tmp/razr-preload-contact-20261016/elastic/panel/loads.npz": "811ba687959bb34dec5ada401b35f07123c917bfc4e68ad982d661fd62fac9a6",
+        "/tmp/razr-preload-contact-20261016/elastic/panel/mesh.npz": "310152fc64af21451cc5ea4be683a73075109ed7e6ec588a6e8bcacf4979ac34",
+        "/tmp/razr-preload-contact-20261016/elastic/frame/K.npz": "b9ee0416ee1a888f6b5ba992eb57b964dc28843bdfa4ac38ec9c8ad02fabf19c",
+        "/tmp/razr-preload-contact-20261016/elastic/frame/loads.npz": "eb2b180696785a77b71412506760df974fbf54c800090e36f027f2aaf70135a3",
+        "/tmp/razr-preload-contact-20261016/elastic/frame/mesh.npz": "fc0eeecf966eda3bf242b0abd90f5603132f47d5235fcf81ea7238c1faf33132",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/engineering/contact-field-20261015/common-cell-results.json.gz": "7d316b2aabb75ea7706f7137a970156b73b680740643465c6c3f33568a9a3493",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/engineering/contact-field-20261015/coupled-field-audit.json.gz": "cc8655e28957a88de6c8125b7010f60707df8a9a2ea1fff6bf2d2abb806f3c0b"
+      },
+      "load_index": 0,
+      "spring_initial_over_Epanel_mm2": 0.0002,
+      "adaptive_solves_this_stage": 6,
+      "contact_constraints": 3569,
+      "first_minimum_gap_mm": -8.487161947703757e-07,
+      "final_minimum_gap_mm": -9.919789068690858e-08,
+      "final_negative_cells": 0,
+      "minimum_bolt_tension_over_Epanel": 0.00017907576353934704,
+      "minimum_contact_reaction": 0.0,
+      "contact_complementarity_max": 4.3498779890718435e-17,
+      "full_field_checks": {
+        "panel": {
+          "independent_tetra_load_error_max": 9.60852999541597e-20,
+          "fresh_K_free_residual_max": 2.8767949394187253e-15,
+          "gauge_or_fixture_reaction_max": 1.3639263329867646e-16,
+          "energy_work_relative_error": 1.7609377302246138e-09
+        },
+        "frame": {
+          "independent_tetra_load_error_max": 1.4643082075658717e-19,
+          "fresh_K_free_residual_max": 1.087454779002961e-16,
+          "gauge_or_fixture_reaction_max": 2.17976875645763e-06,
+          "energy_work_relative_error": 6.436962212107343e-11
+        }
+      },
+      "net_force_moment": [
+        1.52072887317122e-16,
+        1.2514275197482867e-16,
+        6.263284659523291e-16,
+        1.3023199283873645e-14,
+        -1.4234638186171238e-14,
+        -6.323305643527594e-15
+      ],
+      "full_fields_sha256": "3c74d1f2b85300423064d44d351703678368dbf88bf15fb6bb6910b92917ee14",
+      "full_fields_repository_path": "engineering/preload-closure-20261017/case-4/full-fields.npz",
+      "factor_reuse_counts": {
+        "refactor": 1,
+        "append": 1,
+        "delete": 1,
+        "fallback": 0
+      },
+      "factor_reuse_enabled": true,
+      "frozen_original_qp_crosscheck": {
+        "passed": true,
+        "original_qp_iterations": 1,
+        "maximum_force_difference": 3.935451358956506e-13,
+        "relative_objective_difference": 5.991872562016789e-11,
+        "complementary_energy_of_difference": 5.348604967001704e-27
+      }
+    },
+    {
+      "case": 5,
+      "passed": true,
+      "independently_rechecked": true,
+      "resumed_checkpoint_provenance": {
+        "/tmp/razr-preload-closure-20261017/original-v1/case-4/checkpoint-004/response.npz": "0d0c508b21e1a77bad6b5ebdaff946e421fec85f5f6da76e21341829c5e95dbe",
+        "/tmp/razr-preload-closure-20261017/original-v1/case-4/checkpoint-004/points.json": "aba2f238d2d372719da4fed73968269d11f210d40ef8a3000b8b6465f997cffc",
+        "/tmp/razr-preload-closure-20261017/original-v1/case-4/checkpoint-004/manifest.json": "6663a338e8a333909963f40be7fede3ce83be910be1c1a8fd9ed5612343b2c9d",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/integration/assembly_inputs.json": "7b7ebf0f48556f2feca175a35b882a9a48337de2bb5f54b1ba7a740f85e8ce6b",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/integration/roof_joint_load_inputs.json": "09f7b392b00a59ca1fdb5fa97ad10e6b4d5361ae0f440afb8dd4e9ee225a2640",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/integration/frame_thread_actual_inputs.json": "4dcb50162bd25a7507a3afb4ba7e0f7aa33b8c233c0a366e68b8adec51a13609",
+        "/tmp/razr-preload-contact-20261016/elastic/panel/K.npz": "6144f7694493f5d0922d56db2ad5447145f24e252adb65c5b8d2ef1a5b5cff86",
+        "/tmp/razr-preload-contact-20261016/elastic/panel/loads.npz": "811ba687959bb34dec5ada401b35f07123c917bfc4e68ad982d661fd62fac9a6",
+        "/tmp/razr-preload-contact-20261016/elastic/panel/mesh.npz": "310152fc64af21451cc5ea4be683a73075109ed7e6ec588a6e8bcacf4979ac34",
+        "/tmp/razr-preload-contact-20261016/elastic/frame/K.npz": "b9ee0416ee1a888f6b5ba992eb57b964dc28843bdfa4ac38ec9c8ad02fabf19c",
+        "/tmp/razr-preload-contact-20261016/elastic/frame/loads.npz": "eb2b180696785a77b71412506760df974fbf54c800090e36f027f2aaf70135a3",
+        "/tmp/razr-preload-contact-20261016/elastic/frame/mesh.npz": "fc0eeecf966eda3bf242b0abd90f5603132f47d5235fcf81ea7238c1faf33132",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/engineering/contact-field-20261015/common-cell-results.json.gz": "7d316b2aabb75ea7706f7137a970156b73b680740643465c6c3f33568a9a3493",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/engineering/contact-field-20261015/coupled-field-audit.json.gz": "cc8655e28957a88de6c8125b7010f60707df8a9a2ea1fff6bf2d2abb806f3c0b"
+      },
+      "load_index": 1,
+      "spring_initial_over_Epanel_mm2": 0.0002,
+      "adaptive_solves_this_stage": 2,
+      "contact_constraints": 3581,
+      "first_minimum_gap_mm": -2.55615759828041e-07,
+      "final_minimum_gap_mm": -9.79700415959472e-08,
+      "final_negative_cells": 0,
+      "minimum_bolt_tension_over_Epanel": 0.00017906894799133447,
+      "minimum_contact_reaction": 0.0,
+      "contact_complementarity_max": 4.3630526224798763e-17,
+      "full_field_checks": {
+        "panel": {
+          "independent_tetra_load_error_max": 9.629705819097327e-20,
+          "fresh_K_free_residual_max": 2.2364126203060566e-15,
+          "gauge_or_fixture_reaction_max": 4.1253892663073444e-17,
+          "energy_work_relative_error": 2.8418956872624936e-09
+        },
+        "frame": {
+          "independent_tetra_load_error_max": 5.2334062995004955e-20,
+          "fresh_K_free_residual_max": 7.892991815694472e-17,
+          "gauge_or_fixture_reaction_max": 2.0299755058278583e-06,
+          "energy_work_relative_error": 4.477832754738121e-11
+        }
+      },
+      "net_force_moment": [
+        1.342320790519408e-16,
+        1.2850506249384441e-16,
+        6.146738786691301e-16,
+        1.3267433042724031e-14,
+        -1.4488560159261816e-14,
+        -5.960758975098159e-15
+      ],
+      "full_fields_sha256": "b530e53f475e3c4e8364d749d7370128737ebce2a9572a1f0327f532feee51dc",
+      "full_fields_repository_path": "engineering/preload-closure-20261017/case-5/full-fields.npz",
+      "factor_reuse_counts": {
+        "refactor": 1,
+        "append": 7,
+        "delete": 1,
+        "fallback": 0
+      },
+      "factor_reuse_enabled": true,
+      "frozen_original_qp_crosscheck": {
+        "passed": true,
+        "original_qp_iterations": 1,
+        "maximum_force_difference": 1.0200002385399282e-12,
+        "relative_objective_difference": 5.8955251466527915e-12,
+        "complementary_energy_of_difference": 9.89975219982453e-27
+      }
+    },
+    {
+      "case": 6,
+      "passed": true,
+      "independently_rechecked": true,
+      "resumed_checkpoint_provenance": {
+        "/tmp/razr-preload-closure-20261017/original-v1/case-4/checkpoint-004/response.npz": "0d0c508b21e1a77bad6b5ebdaff946e421fec85f5f6da76e21341829c5e95dbe",
+        "/tmp/razr-preload-closure-20261017/original-v1/case-4/checkpoint-004/points.json": "aba2f238d2d372719da4fed73968269d11f210d40ef8a3000b8b6465f997cffc",
+        "/tmp/razr-preload-closure-20261017/original-v1/case-4/checkpoint-004/manifest.json": "6663a338e8a333909963f40be7fede3ce83be910be1c1a8fd9ed5612343b2c9d",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/integration/assembly_inputs.json": "7b7ebf0f48556f2feca175a35b882a9a48337de2bb5f54b1ba7a740f85e8ce6b",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/integration/roof_joint_load_inputs.json": "09f7b392b00a59ca1fdb5fa97ad10e6b4d5361ae0f440afb8dd4e9ee225a2640",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/integration/frame_thread_actual_inputs.json": "4dcb50162bd25a7507a3afb4ba7e0f7aa33b8c233c0a366e68b8adec51a13609",
+        "/tmp/razr-preload-contact-20261016/elastic/panel/K.npz": "6144f7694493f5d0922d56db2ad5447145f24e252adb65c5b8d2ef1a5b5cff86",
+        "/tmp/razr-preload-contact-20261016/elastic/panel/loads.npz": "811ba687959bb34dec5ada401b35f07123c917bfc4e68ad982d661fd62fac9a6",
+        "/tmp/razr-preload-contact-20261016/elastic/panel/mesh.npz": "310152fc64af21451cc5ea4be683a73075109ed7e6ec588a6e8bcacf4979ac34",
+        "/tmp/razr-preload-contact-20261016/elastic/frame/K.npz": "b9ee0416ee1a888f6b5ba992eb57b964dc28843bdfa4ac38ec9c8ad02fabf19c",
+        "/tmp/razr-preload-contact-20261016/elastic/frame/loads.npz": "eb2b180696785a77b71412506760df974fbf54c800090e36f027f2aaf70135a3",
+        "/tmp/razr-preload-contact-20261016/elastic/frame/mesh.npz": "fc0eeecf966eda3bf242b0abd90f5603132f47d5235fcf81ea7238c1faf33132",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/engineering/contact-field-20261015/common-cell-results.json.gz": "7d316b2aabb75ea7706f7137a970156b73b680740643465c6c3f33568a9a3493",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/engineering/contact-field-20261015/coupled-field-audit.json.gz": "cc8655e28957a88de6c8125b7010f60707df8a9a2ea1fff6bf2d2abb806f3c0b"
+      },
+      "load_index": 2,
+      "spring_initial_over_Epanel_mm2": 0.0002,
+      "adaptive_solves_this_stage": 7,
+      "contact_constraints": 3812,
+      "first_minimum_gap_mm": -1.3374725977020386e-06,
+      "final_minimum_gap_mm": -9.989753845522669e-08,
+      "final_negative_cells": 0,
+      "minimum_bolt_tension_over_Epanel": 0.00017894171024360726,
+      "minimum_contact_reaction": 0.0,
+      "contact_complementarity_max": 4.7469829938519864e-17,
+      "full_field_checks": {
+        "panel": {
+          "independent_tetra_load_error_max": 9.936755262477011e-20,
+          "fresh_K_free_residual_max": 1.1195302226495868e-15,
+          "gauge_or_fixture_reaction_max": 2.0922391423539022e-16,
+          "energy_work_relative_error": 9.563112481318216e-10
+        },
+        "frame": {
+          "independent_tetra_load_error_max": 2.0371142381465923e-19,
+          "fresh_K_free_residual_max": 1.444157293750692e-16,
+          "gauge_or_fixture_reaction_max": 2.1791232316481743e-06,
+          "energy_work_relative_error": 4.107865414125031e-12
+        }
+      },
+      "net_force_moment": [
+        -7.948449156917708e-17,
+        -1.9346278837402523e-17,
+        -6.065184514529781e-17,
+        4.939519227418195e-15,
+        -5.363022888243506e-16,
+        4.541981031616294e-15
+      ],
+      "full_fields_sha256": "7b15782b68ecf3c166e9300ab067de62e117aded26a8b255f625e2b27c848b16",
+      "full_fields_repository_path": "engineering/preload-closure-20261017/case-6/full-fields.npz",
+      "factor_reuse_counts": {
+        "refactor": 1,
+        "append": 1,
+        "delete": 2,
+        "fallback": 0
+      },
+      "factor_reuse_enabled": true,
+      "frozen_original_qp_crosscheck": {
+        "passed": true,
+        "original_qp_iterations": 1,
+        "maximum_force_difference": 3.714383043941782e-13,
+        "relative_objective_difference": 1.8768320558903186e-11,
+        "complementary_energy_of_difference": 7.4343359248997e-27
+      }
+    },
+    {
+      "case": 7,
+      "passed": true,
+      "independently_rechecked": true,
+      "resumed_checkpoint_provenance": {
+        "/tmp/razr-preload-closure-20261017/original-v1/case-4/checkpoint-004/response.npz": "0d0c508b21e1a77bad6b5ebdaff946e421fec85f5f6da76e21341829c5e95dbe",
+        "/tmp/razr-preload-closure-20261017/original-v1/case-4/checkpoint-004/points.json": "aba2f238d2d372719da4fed73968269d11f210d40ef8a3000b8b6465f997cffc",
+        "/tmp/razr-preload-closure-20261017/original-v1/case-4/checkpoint-004/manifest.json": "6663a338e8a333909963f40be7fede3ce83be910be1c1a8fd9ed5612343b2c9d",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/integration/assembly_inputs.json": "7b7ebf0f48556f2feca175a35b882a9a48337de2bb5f54b1ba7a740f85e8ce6b",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/integration/roof_joint_load_inputs.json": "09f7b392b00a59ca1fdb5fa97ad10e6b4d5361ae0f440afb8dd4e9ee225a2640",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/integration/frame_thread_actual_inputs.json": "4dcb50162bd25a7507a3afb4ba7e0f7aa33b8c233c0a366e68b8adec51a13609",
+        "/tmp/razr-preload-contact-20261016/elastic/panel/K.npz": "6144f7694493f5d0922d56db2ad5447145f24e252adb65c5b8d2ef1a5b5cff86",
+        "/tmp/razr-preload-contact-20261016/elastic/panel/loads.npz": "811ba687959bb34dec5ada401b35f07123c917bfc4e68ad982d661fd62fac9a6",
+        "/tmp/razr-preload-contact-20261016/elastic/panel/mesh.npz": "310152fc64af21451cc5ea4be683a73075109ed7e6ec588a6e8bcacf4979ac34",
+        "/tmp/razr-preload-contact-20261016/elastic/frame/K.npz": "b9ee0416ee1a888f6b5ba992eb57b964dc28843bdfa4ac38ec9c8ad02fabf19c",
+        "/tmp/razr-preload-contact-20261016/elastic/frame/loads.npz": "eb2b180696785a77b71412506760df974fbf54c800090e36f027f2aaf70135a3",
+        "/tmp/razr-preload-contact-20261016/elastic/frame/mesh.npz": "fc0eeecf966eda3bf242b0abd90f5603132f47d5235fcf81ea7238c1faf33132",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/engineering/contact-field-20261015/common-cell-results.json.gz": "7d316b2aabb75ea7706f7137a970156b73b680740643465c6c3f33568a9a3493",
+        "/home/qian-qi/RAZR-SLIDE-preload-factor-20261017/engineering/contact-field-20261015/coupled-field-audit.json.gz": "cc8655e28957a88de6c8125b7010f60707df8a9a2ea1fff6bf2d2abb806f3c0b"
+      },
+      "load_index": 3,
+      "spring_initial_over_Epanel_mm2": 0.0002,
+      "adaptive_solves_this_stage": 2,
+      "contact_constraints": 3813,
+      "first_minimum_gap_mm": -1.0007793346313517e-07,
+      "final_minimum_gap_mm": -9.928279346892019e-08,
+      "final_negative_cells": 0,
+      "minimum_bolt_tension_over_Epanel": 0.00017895340078745157,
+      "minimum_contact_reaction": 0.0,
+      "contact_complementarity_max": 4.740183649757992e-17,
+      "full_field_checks": {
+        "panel": {
+          "independent_tetra_load_error_max": 9.904991526954975e-20,
+          "fresh_K_free_residual_max": 2.2377610967580855e-15,
+          "gauge_or_fixture_reaction_max": 7.577217932958069e-17,
+          "energy_work_relative_error": 5.567483365888506e-10
+        },
+        "frame": {
+          "independent_tetra_load_error_max": 4.3929907971466194e-20,
+          "fresh_K_free_residual_max": 1.214306433183765e-16,
+          "gauge_or_fixture_reaction_max": 2.027583328039711e-06,
+          "energy_work_relative_error": 4.20075339513641e-11
+        }
+      },
+      "net_force_moment": [
+        -5.252339370775088e-17,
+        -5.908372444453965e-18,
+        7.522262158497653e-17,
+        8.159390017524832e-15,
+        -2.640190032691521e-15,
+        3.516981399235741e-15
+      ],
+      "full_fields_sha256": "a989e6ada1e0ae9d114dcbe4de7d48f15223e32d31ef5861a8a4a2d8d6ec604c",
+      "full_fields_repository_path": "engineering/preload-closure-20261017/case-7/full-fields.npz",
+      "factor_reuse_counts": {
+        "refactor": 1,
+        "append": 1,
+        "delete": 1,
+        "fallback": 0
+      },
+      "factor_reuse_enabled": true,
+      "frozen_original_qp_crosscheck": {
+        "passed": true,
+        "original_qp_iterations": 1,
+        "maximum_force_difference": 2.8959620721112725e-13,
+        "relative_objective_difference": 1.7217988139206098e-11,
+        "complementary_energy_of_difference": 5.794965866324938e-27
+      }
+    }
+  ],
+  "original_common_cells_per_case": 5255,
+  "gap_tolerance_mm": 1e-07,
+  "fixed_original_full_panel_DOFs": 344103,
+  "fixed_original_full_frame_DOFs": 474726,
+  "same_original_K_mesh_CAD_load_and_support": true,
+  "batch_vs_scalar_on_actual_original_field_checks": {
+    "polynomial_case_checks": 42040,
+    "classification_and_candidate_counts_equal": true,
+    "maximum_extrema_difference_mm": 1.3877787807814457e-17
+  },
+  "optimization": {
+    "kind": "optional exact active-system Cholesky and transformed-RHS updates",
+    "default_for_existing_callers": false,
+    "current_resume_adapter_opt_in": true,
+    "existing_finite_QP_acceptance_checks_unchanged": true,
+    "fallback_to_original_pivoted_linear_system": true,
+    "diagonal_regularization_or_penalty_added": false,
+    "real_checkpoint_comparison": "factor-benchmark-v3.json"
+  },
+  "baseline_solve_cancelled_only_after_validated_checkpoint": {
+    "state": "/tmp/razr-preload-closure-20261017/original-v1/case-4/checkpoint-004",
+    "manifest_sha256": "6663a338e8a333909963f40be7fede3ce83be910be1c1a8fd9ed5612343b2c9d",
+    "points": 3221,
+    "minimum_gap_mm": -8.48716197391238e-07,
+    "old_job": "1a149ada49d-1b6abb-d",
+    "reason": "reuse exact immutable checkpoint with verified active-factor acceleration; cancel is not successful completion",
+    "factor_source_commit": "6d3c80af56eebba387ceb15fc7ffdedb7a7361ae"
+  },
+  "main_thread_and_physical_inputs_modified": false,
+  "whole_old_native_CAD_tasks_reexecuted": false,
+  "new_FE_or_contact_discretization_convergence": false,
+  "contact_reactions_are_point_forces_not_area_pressure": true,
+  "initial_spring_force_not_installed_preload": true,
+  "frame_remote_end_fixed_assumption_retained": true,
+  "panel_numeric_gauges_not_physical_support": true,
+  "neutral_Y_mode_not_artificially_fixed": true,
+  "Epanel_normalization": 1.0,
+  "nu": 0.3,
+  "synthetic_force_over_Epanel_mm2": 1e-05,
+  "actual_material_preload_torque_service_load_or_thread_strength_assigned": false,
+  "shared_planar_domain_and_uncovered_edges_unchanged": true,
+  "full_response_checkpoint": {
+    "path": "/tmp/razr-preload-closure-20261017/original-optimized-v1/exact-response-system.npz",
+    "sha256": "a86d830fffaf9e00246fe86d878ee3acf80712e2bf8024cd9b8e052791131f80",
+    "point_path": "/tmp/razr-preload-closure-20261017/original-optimized-v1/contact-point-locations.json",
+    "point_sha256": "3be140476e30d1c228e6a0e036405bce9426e473ad3b6237330d0b72ee98ae9b",
+    "large_checkpoint_not_copied_into_git": true
+  },
+  "durable_final_checkpoint": {
+    "source_state": "/tmp/razr-preload-closure-20261017/original-optimized-v1/case-7/checkpoint-001",
+    "durable_state": "/home/qian-qi/.local/share/razr-slide-evidence/preload-closure-20261017/final-case7-state",
+    "files": [
+      {
+        "name": "manifest.json",
+        "original_path": "/tmp/razr-preload-closure-20261017/original-optimized-v1/case-7/checkpoint-001/manifest.json",
+        "durable_path": "/home/qian-qi/.local/share/razr-slide-evidence/preload-closure-20261017/final-case7-state/manifest.json",
+        "sha256": "f123f0725fde973e1c858cd869f7a34391b7898be201780a18b2fb315e32ac0a",
+        "bytes": 2573
+      },
+      {
+        "name": "response.npz",
+        "original_path": "/tmp/razr-preload-closure-20261017/original-optimized-v1/case-7/checkpoint-001/response.npz",
+        "durable_path": "/home/qian-qi/.local/share/razr-slide-evidence/preload-closure-20261017/final-case7-state/response.npz",
+        "sha256": "7c40d4aa20e92dca81a5088df2edc9c7711e4705e7e6d75f7f6158ce61469327",
+        "bytes": 107998077
+      },
+      {
+        "name": "points.json",
+        "original_path": "/tmp/razr-preload-closure-20261017/original-optimized-v1/case-7/checkpoint-001/points.json",
+        "durable_path": "/home/qian-qi/.local/share/razr-slide-evidence/preload-closure-20261017/final-case7-state/points.json",
+        "sha256": "3be140476e30d1c228e6a0e036405bce9426e473ad3b6237330d0b72ee98ae9b",
+        "bytes": 782823
+      }
+    ],
+    "exact_bytes_preserved": true,
+    "old_dependency_paths_in_manifest_are_unchanged": "original input hashes still need validation and explicit rebinding if paths are relocated; no claim this is a portable solver environment"
+  },
+  "unit961_report_sha256": "42ebe8fb7ca29fae1cba8fdb0acc95c26d8d7143216a27b7319dd133d0a07fbe",
+  "tested_source_hashes_retained_in_full_unit_report": true,
+  "recorded_utc": "2026-10-17T12:28:52.588489+00:00",
+  "hosted_CI": {
+    "checked_run_id": 39031578852,
+    "checked_commit": "6d3c80af56eebba387ceb15fc7ffdedb7a7361ae",
+    "earlier_PR27_run_id": 38910860821,
+    "twelve_jobs_without_runner_or_steps": true,
+    "annotation": "account payment failure or spending limit; no tests executed",
+    "not_hosted_success": true,
+    "no_billing_spending_protection_change": true
+  },
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}
