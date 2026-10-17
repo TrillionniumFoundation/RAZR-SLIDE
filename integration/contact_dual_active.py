@@ -10,7 +10,7 @@ checked by the caller. No diagonal regularization is used.
 from __future__ import annotations
 import numpy as np
 from scipy.optimize import linprog
-from scipy.linalg import solve, LinAlgWarning
+from scipy.linalg import solve, LinAlgWarning, cholesky, solve_triangular
 import warnings
 
 
@@ -21,13 +21,66 @@ def _a(x,dim,name):
     return a.astype(float)
 
 
-def solve_force_qp(S,d,G,load,free_prefix=4,initial=None,tolerance=2e-10,max_iterations=5000):
+class _WorkingFactor:
+    def __init__(self):
+        self.indices=None;self.L=None;self.T=None
+        self.counts={'refactor':0,'append':0,'delete':0,'fallback':0}
+    def _factor(self,Q,indices,p,E):
+        ids=tuple(int(i) for i in indices)
+        if self.indices==ids and self.L is not None:return
+        old=self.indices;L=self.L;T=self.T;built=None;newT=None
+        if old is not None and L is not None and len(ids)==len(old)+1 and ids[:-1]==old:
+            w=solve_triangular(L,Q[np.asarray(old,dtype=int),ids[-1]],lower=True,check_finite=False)
+            diag=float(Q[ids[-1],ids[-1]]-w@w)
+            if diag>1e-13*max(abs(Q[ids[-1],ids[-1]]),1e-300):
+                root=np.sqrt(diag);built=np.zeros((len(ids),len(ids)));built[:-1,:-1]=L;built[-1,:-1]=w;built[-1,-1]=root
+                row=(np.r_[p[ids[-1]],E[:,ids[-1]]]-w@T)/root
+                newT=np.vstack([T,row]);self.counts['append']+=1
+        elif old is not None and L is not None and len(ids)==len(old)-1:
+            k=next((i for i in range(len(ids)) if ids[i]!=old[i]),len(ids))
+            if old[:k]+old[k+1:]==ids:
+                U=np.array(np.delete(L.T,k,axis=1),order='C');W=T.copy()
+                for j in range(k,len(ids)):
+                    a,b=U[j,j],U[j+1,j];norm=np.hypot(a,b)
+                    if norm==0:raise np.linalg.LinAlgError('singular factor deletion')
+                    c,s=a/norm,b/norm;row=U[j,j:].copy();other=U[j+1,j:].copy()
+                    U[j,j:]=c*row+s*other;U[j+1,j:]=-s*row+c*other
+                    row=W[j].copy();other=W[j+1].copy();W[j]=c*row+s*other;W[j+1]=-s*row+c*other
+                built=np.array(U[:-1,:].T,order='F');newT=W[:-1].copy();self.counts['delete']+=1
+        if built is None:
+            built=cholesky(Q[np.ix_(ids,ids)],lower=True,check_finite=False)
+            newT=solve_triangular(built,np.column_stack([p[list(ids)],E[:,list(ids)].T]),lower=True,check_finite=False)
+            self.counts['refactor']+=1
+        self.indices=ids;self.L=built;self.T=newT
+    def solve(self,Q,indices,E,p,b,tolerance,A,rhs):
+        try:
+            self._factor(Q,indices,p,E);t=self.T[:,0];W=self.T[:,1:]
+            if len(b):
+                schur=W.T@W
+                with warnings.catch_warnings():
+                    warnings.simplefilter('error',LinAlgWarning)
+                    nu=solve(schur,b-W.T@t,assume_a='sym',check_finite=False)
+            else:nu=np.empty(0)
+            x=solve_triangular(self.L.T,t+W@nu,lower=False,check_finite=False)
+            result=np.r_[x,nu]
+            if not np.isfinite(result).all() or np.max(abs(A@result-rhs),initial=0.)>tolerance*10*max(np.max(abs(rhs),initial=0.),1.):
+                raise np.linalg.LinAlgError('updated active-system residual')
+            return result
+        except (np.linalg.LinAlgError,LinAlgWarning,ValueError):
+            self.indices=None;self.L=None;self.T=None;self.counts['fallback']+=1
+            with warnings.catch_warnings():
+                warnings.simplefilter('error',LinAlgWarning)
+                return solve(A,rhs,assume_a='gen',check_finite=False)
+
+
+def solve_force_qp(S,d,G,load,free_prefix=4,initial=None,tolerance=2e-10,max_iterations=5000, factor_reuse=False):
     """Min .5*l*S*l-d*l, G.T*l=load, l[free_prefix:]>=0.
 
     Uses a feasible working-set method. Negative reactions release a contact;
     a negative reduced gradient admits a previously open contact. Numerical
     gauges are not introduced into the elastic energy or equilibrium rows.
     """
+    if type(factor_reuse) is not bool:raise ValueError('factor_reuse must be boolean')
     S=_a(S,2,'S');d=_a(d,1,'d');G=_a(G,2,'G');load=_a(load,1,'load');m=len(d)
     if not m or S.shape!=(m,m) or G.shape!=(m,len(load)):raise ValueError('inconsistent dimensions')
     if type(free_prefix) is not int or not 0<=free_prefix<=m:raise ValueError('invalid free prefix')
@@ -61,14 +114,14 @@ def solve_force_qp(S,d,G,load,free_prefix=4,initial=None,tolerance=2e-10,max_ite
         if not result.success:return {'passed':False,'status':'no_feasible_support','lp_status':int(result.status)}
         x=result.x
     F=list(range(free_prefix))+[i for i in range(free_prefix,m) if x[i]>tolerance]
-    history=[];status='iteration_limit';nu=np.zeros(rank)
+    history=[];status='iteration_limit';nu=np.zeros(rank);factor_cache=_WorkingFactor() if factor_reuse else None
     for iteration in range(max_iterations):
         FF=np.array(F,dtype=int);EF=E[:,FF]
         A=np.block([[Q[np.ix_(FF,FF)],-EF.T],[EF,np.zeros((rank,rank))]])
         rr=np.r_[p[FF],b]
         try:
             with warnings.catch_warnings():
-                warnings.simplefilter('error',LinAlgWarning);sol=solve(A,rr,assume_a='gen',check_finite=False)
+                warnings.simplefilter('error',LinAlgWarning);sol=factor_cache.solve(Q,FF,E,p,b,tolerance,A,rr) if factor_reuse else solve(A,rr,assume_a='gen',check_finite=False)
             err=np.max(abs(A@sol-rr),initial=0.)
             if err>tolerance*10*max(np.max(abs(rr),initial=0.),1.):raise np.linalg.LinAlgError('working-set residual')
         except (np.linalg.LinAlgError,LinAlgWarning):
@@ -100,5 +153,6 @@ def solve_force_qp(S,d,G,load,free_prefix=4,initial=None,tolerance=2e-10,max_ite
     return {'passed':bool(passed),'status':status if passed else 'numerical_'+status,'forces':lam.tolist(),
             'rigid_mode_coordinates':rigid.tolist(),'reduced_gradient':grad.tolist(),'iterations':iteration+1,
             'remaining_unsupported_rigid_directions':int(len(load)-rank),'errors':errors,'history':history,
-            'force_space_complementary_energy_not_primal_stiffness':True,'regularization_added':False,
+            'force_space_complementary_energy_not_primal_stiffness':True,'regularization_added':False,'factor_reuse_enabled':factor_reuse,
+            'factor_reuse_counts':factor_cache.counts if factor_reuse else {},
             'candidate_go':False,'fixture_fabrication_go':False,'manufacturing_go':False}
