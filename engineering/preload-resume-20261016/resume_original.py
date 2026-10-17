@@ -197,7 +197,7 @@ def main(a):
             m=len(points);S=cache.H.copy();S[np.arange(4),np.arange(4)]+=5.
             d=qfree[:,j]*force-initialgap;d[:4]+=5.*pre
             if oldlam is not None:oldlam=np.pad(oldlam,(0,m-len(oldlam)))
-            tic=time.monotonic();q=solve_force_qp(S,d,G,loadG[:,j]*force,initial=oldlam,tolerance=2e-10)
+            tic=time.monotonic();q=solve_force_qp(S,d,G,loadG[:,j]*force,initial=oldlam,tolerance=2e-10,factor_reuse=True)
             if not q['passed']:
                 dump(out/'failure-qp.json',q);break
             lam=np.array(q['forces']);rigid=np.array(q['rigid_mode_coordinates'])
