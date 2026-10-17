@@ -1,0 +1,11 @@
+# Method and limits
+
+Two nested interior-enriched volume levels retain every original exterior P2 trace and the same contact polygons, loads and ideal supports. All internal DOFs are eliminated exactly and independently recovered; they are not set to zero. Four preloaded normalized load cases were re-equilibrated at both levels and each passed the unchanged scalar/tetrahedral full-field audit. The original zero-initial-force cases were not solved on the enriched levels.
+
+This delivers same-energy checkpoint reuse and an eight-case sensitivity comparison, not full h or surface-trace convergence. The relative energy distance uses recovered nested fields; the cross term reduces to the old trace vector paired with the fine condensed force because fine internal residuals vanish. A 32-case independent SPD block experiment validates this identity and rejects replacing coarse self-energy by the finer harmonic extension. It does not create a continuum error certificate.
+
+Reaction sums and first moments are retained per patch; point count and individual point-force amplitudes are not used as convergence metrics or area pressures. The load-weighted displacement, elastic energy and bolt-force changes are descriptive differences, not preselected acceptance margins. Differences include residual contact-solve tolerance, so they are not pure volume-error estimates. Contact target sensitivity is separate: PR28 stricter-target results and its timeout are not rewritten.
+
+The shared planar domain omits the previously recorded edge strips. E/nu, initial spring force, linear tension-only accepted bolt branch, ideal remote frame fixture and neutral Y mode are the inherited synthetic model. No real material, service load, installed preload, friction, thread strength, machining or hardware qualification is assigned.
+
+The first complete-test attempt timed out in manufacturing-fit at its unchanged240s budget; thirty other suites passed. A separate canonical full455-test retry at the same commit and exact source snapshot passed within that original budget. All1004 unique tests therefore have current completed passes, but this is not a clean first-run claim. Original import errors and test logs are retained, not reclassified.

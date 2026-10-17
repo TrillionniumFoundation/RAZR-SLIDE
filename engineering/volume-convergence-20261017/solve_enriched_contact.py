@@ -2,7 +2,8 @@
 
 Copied bounded driver retains all original contact laws, auditing and checks.
 Every force response is recomputed with the new K; old response matrices are
-NOT reused. Original case6 point locations/forces are optimizer seeds only.
+NOT reused across energies. A same-energy, hash-bound checkpoint may resume.
+Original case6 point locations/forces are optimizer seeds only on fresh runs.
 Internal tetrahedral bubble fields require separate full recovery and audit.
 """
 from __future__ import annotations
@@ -68,6 +69,53 @@ def arguments():
     return a
 
 
+def read_same_energy_state(state, inputs, level, repo, output):
+    """Resume only the exact energy/loads/domains; a level label alone is insufficient.
+
+    Older PR28 manifests have no explicit level field, so their immutable
+    per-body level/K identities are also required. No old contact pass is
+    inherited: each requested case is solved and audited again.
+    """
+    if type(level) is not int or level not in (1, 2):
+        raise ValueError('invalid volume level')
+    state, inputs, repo, output = map(lambda x: Path(x).resolve(), (state, inputs, repo, output))
+    if state == output or state in output.parents or output in state.parents:
+        raise ValueError('checkpoint and output overlap')
+    manifest = state/'manifest.json'
+    saved = json.loads(manifest.read_text())
+    if (saved.get('gap_tolerance_mm') != GAP_TOLERANCE
+            or saved.get('state_is_finite_QP_not_gap_qualification') is not True
+            or type(saved.get('case')) is not int or saved['case'] not in range(8)):
+        raise ValueError('invalid finite state identity')
+    if 'volume_level' in saved and (type(saved['volume_level']) is not int or saved['volume_level'] != level):
+        raise ValueError('checkpoint volume level differs')
+    prior = saved.get('input_sha256')
+    if not isinstance(prior, dict) or not prior:
+        raise ValueError('missing checkpoint provenance')
+    # Validate recorded dependencies before trusting any stored matrix/map.
+    for name, digest in prior.items():
+        if not isinstance(digest, str) or len(digest) != 64 or sha256(Path(name)) != digest:
+            raise ValueError('changed checkpoint dependency: '+str(name))
+    required = {}
+    for body in ('panel', 'frame'):
+        for filename in ('K.npz', 'loads.npz', 'mesh.npz', 'report.json'):
+            suffix = f'/{body}/level-{level}/{filename}'
+            current = inputs/body/f'level-{level}'/filename
+            required[suffix] = sha256(current)
+    for filename in ('common-cell-results.json.gz', 'coupled-field-audit.json.gz'):
+        required['/engineering/contact-field-20261015/'+filename] = sha256(repo/'engineering/contact-field-20261015'/filename)
+    for filename in ('assembly_inputs.json','roof_joint_load_inputs.json','frame_thread_actual_inputs.json'):
+        required['/integration/'+filename] = sha256(repo/'integration'/filename)
+    for suffix, digest in required.items():
+        matching = [h for name,h in prior.items() if str(Path(name)).endswith(suffix)]
+        if not matching or any(h != digest for h in matching):
+            raise ValueError('checkpoint energy, domain or physical-input identity differs: '+suffix)
+    for name,key in (('response.npz','response_sha256'),('points.json','points_sha256')):
+        if sha256(state/name) != saved.get(key):
+            raise ValueError('checkpoint payload changed: '+name)
+    return saved
+
+
 def main(a):
     e=a.repo/'engineering/spatial-contact-integration-20261015'
     point_file=a.repo/'engineering/preload-closure-20261017/case-6/report.json.gz'
@@ -75,7 +123,13 @@ def main(a):
     seed=json.loads(gzip.decompress(point_file.read_bytes()))
     assert seed['passed'] and seed['audited_cells']==5255
     resumed=None
-    if a.resume_state is not None:raise ValueError('old energy checkpoints cannot be restored into an enriched K')
+    if a.resume_state is not None:
+        a.resume_state=a.resume_state.resolve()
+        resumed=read_same_energy_state(a.resume_state,a.inputs,a.volume_level,a.repo,a.output)
+        response_file=a.resume_state/'response.npz';point_file=a.resume_state/'points.json'
+        with np.load(response_file,allow_pickle=False) as data:
+            checkpoint={k:data[k] for k in data.files}
+        seed={'contact_points':json.loads(point_file.read_text()),'forces':checkpoint['forces']}
     assert sha256(a.repo/'integration/contact_patch_audit.py')==AUDITOR_SHA
     hashes={str(response_file):sha256(response_file),str(point_file):sha256(point_file)}
     if resumed is not None:
@@ -148,12 +202,16 @@ def main(a):
         assert abs(wp.sum()-sign)<2e-9 and abs(wf.sum()+sign)<2e-9
         return column(n,np.r_[c['dp'],npanel+c['df']],np.r_[wp,wf])
     C=hstack([point_column(p) for p in points],format='csc')
-    before=time.monotonic();print('NEW_ENERGY_RESPONSES',len(points),flush=True)
-    for begin in range(0,C.shape[1],128):
-        cache.append(C[:,begin:begin+128])
-        print('NEW_ENERGY_COLUMNS',cache.C.shape[1],C.shape[1],time.monotonic()-before,flush=True)
-        dump(a.output/'column-progress.json',{'completed':cache.C.shape[1],'required':C.shape[1],'seconds':time.monotonic()-before})
-    print('NEW_ENERGY_RESPONSES_DONE',time.monotonic()-before,flush=True)
+    if resumed is None:
+        before=time.monotonic();print('NEW_ENERGY_RESPONSES',len(points),flush=True)
+        for begin in range(0,C.shape[1],128):
+            cache.append(C[:,begin:begin+128])
+            print('NEW_ENERGY_COLUMNS',cache.C.shape[1],C.shape[1],time.monotonic()-before,flush=True)
+            dump(a.output/'column-progress.json',{'completed':cache.C.shape[1],'required':C.shape[1],'seconds':time.monotonic()-before})
+        print('NEW_ENERGY_RESPONSES_DONE',time.monotonic()-before,flush=True)
+    else:
+        checked=cache.restore(C,checkpoint['H'],cache.identity,probes=5)
+        print('SAME_ENERGY_CHECKPOINT_RESTORED',len(points)-4,checked,flush=True)
     # Recompute low-dimensional maps from the unchanged full force maps. Never
     # infer them from the checkpoint without checking their physical identity.
     Uext=np.stack([response(np.r_[P['data']['F'][:,j],np.zeros(nframe)]) for j in range(4)],axis=1)
@@ -161,8 +219,13 @@ def main(a):
     G=np.asarray(cache.C.T@R);qfree=np.asarray(cache.C.T@Uext)
     initialgap=np.array([p.get('gap',0.) for p in points])
     loadG=P['data']['R'].T@P['data']['F']
-    print('ALL_POINT_RESPONSES_RECOMPUTED_FOR_CHANGED_ENERGY',len(points)-4,flush=True)
-    dump(a.output/'checkpoint-validation.json',{'old_response_reused':False,'old_locations_and_forces_are_initialization_only':True,'input_sha256':hashes})
+    if resumed is not None:
+        np.testing.assert_allclose(G,checkpoint['G'],rtol=1e-8,atol=2e-8)
+        np.testing.assert_allclose(qfree,checkpoint['qfree'],rtol=2e-7,atol=1e-8)
+        np.testing.assert_array_equal(initialgap,checkpoint['initialgap'])
+        np.testing.assert_allclose(loadG,checkpoint['loadG'],rtol=1e-10,atol=1e-10)
+    print('POINT_RESPONSE_IDENTITY_READY',len(points)-4,'same_energy_resume',resumed is not None,flush=True)
+    dump(a.output/'checkpoint-validation.json',{'old_response_reused_across_energies':False,'same_energy_response_restored':resumed is not None,'old_locations_and_forces_are_initialization_only':True,'input_sha256':hashes})
     np.savez_compressed(a.output/'new-energy-seed-response.npz',H=cache.H,G=G,qfree=qfree,initialgap=initialgap,loadG=loadG)
     dump(a.output/'seed-points.json',points)
     oldlam=initial_forces.copy()
@@ -202,7 +265,7 @@ def main(a):
             np.savez_compressed(snap/'response.npz',H=cache.H,G=G,qfree=qfree,
                                 initialgap=initialgap,loadG=loadG,forces=lam,rigid=rigid)
             dump(snap/'points.json',points)
-            dump(snap/'manifest.json',{'case':case,'exchange':exchange,'input_sha256':hashes,
+            dump(snap/'manifest.json',{'case':case,'exchange':exchange,'volume_level':a.volume_level,'input_sha256':hashes,
                 'source_sha256':sha256(Path(__file__)),'response_sha256':sha256(snap/'response.npz'),
                 'points_sha256':sha256(snap/'points.json'),'state_is_finite_QP_not_gap_qualification':True,
                 'minimum_gap_mm':float(audit['minimum'].min()),'gap_tolerance_mm':GAP_TOLERANCE})
@@ -249,7 +312,7 @@ def main(a):
                 'all_original_cells_nonpenetrating':success,'bolt_tension_branch_valid':branch,
                 'full_field_checks':physical,'input_sha256':hashes,'source_sha256':sha256(Path(__file__)),
                 'minimum_enforced_point_gap':float(pointgaps.min()),'contact_complementarity_max':complementarity,
-                'whole_field_reconstructed_by_one_exact_response':True,'volume_level':enriched['level'],'recovered_internal_field_audit_still_required':True,
+                'whole_field_reconstructed_by_one_exact_response':True,'same_energy_checkpoint_restored':resumed is not None,'volume_level':enriched['level'],'recovered_internal_field_audit_still_required':True,
                 'independent_tetra_verifier_rerun':False,'FE_mesh_convergence':False,'point_contact_convergence':False,
                 'candidate_go':False,'fixture_fabrication_go':False,'manufacturing_go':False,'passed':success and branch}
         dump(out/'report.json',report)
