@@ -1,0 +1,9 @@
+# Additional independent review and stricter-target study
+
+PR28 is the selected volume implementation; the parallel one-level reference is retained only for independent flat assembly comparisons. No second production refinement framework is introduced. 128 randomized 4/16-child element comparisons ran in the isolated container and were rerun on qian-qi; these are supplemental checks, not part of989 tests. Reference and candidate use distinct local node ordering and one-shot versus recursive elimination.
+
+The one-level preliminary full-body driver reached its final JSON output but exited1 for an int32 serialization error on both bodies. Its source and raw failures remain in rejected-own-volume-prototype.tar.gz. These failed terminal runs are NOT used as PR28's completed volume evidence; the separately corrected PR28 results are in the parent folder.
+
+The contact-target-only.patch.gz (gzip decompression restores the exact patch bytes) is an unapplied modification of the original runner, not a change to PR28's tested volume/core/manifest. It adds stricter targets with baseline1e-7mm unchanged. The original frozen-grid case6 reached5e-8mm and independently passed all5255 regions, original K balance, gauge reactions and energy. Complete field and reports are in ../contact-target-study. The second2.5e-8 run was started in the same bounded execution and has not yet supplied a final result; do not claim convergence, completion or duplicate its launch. Read job1a14a67a0fc-1b6abb-1f4 and /tmp/razr-convergence-20261017 before resuming.
+
+No mesh/trace convergence, continuum pressure, materials, preload or physical qualification follows. Three hardware flags remainfalse. The running-source tree /home/qian-qi/RAZR-SLIDE-convergence-20261017 is not modified by this evidence publication.
