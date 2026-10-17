@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/tmp/razr-convergence-20261017/run_contact_targets.py", line 8, in <module>
+    with (O/(label+'.log')).open('x') as log:p=subprocess.run(cmd,stdout=log,stderr=subprocess.STDOUT,cwd=R,timeout=1800)
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 2141, in _communicate
+    self.wait(timeout=self._remaining_time(endtime))
+  File "/usr/lib/python3.12/subprocess.py", line 1264, in wait
+    return self._wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 2045, in _wait
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['/home/qian-qi/RAZR-SLIDE-convergence-20261017/.venv/bin/python', '-u', '-B', '/home/qian-qi/RAZR-SLIDE-convergence-20261017/engineering/preload-resume-20261016/resume_original.py', '--inputs', '/tmp/razr-preload-contact-20261016/elastic', '--output', '/tmp/razr-convergence-20261017/contact-25e9', '--resume-state', '/tmp/razr-convergence-20261017/contact-5e8/case-6/checkpoint-008', '--cases', '6', '--gap-target', '2.5e-08', '--new-points', '128', '--max-points', '7000', '--max-exchanges', '25', '--response-batch-size', '32']' timed out after 1799.9999595810077 seconds
