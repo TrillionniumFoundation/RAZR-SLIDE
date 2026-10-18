@@ -108,7 +108,7 @@ def run(a):
             'old_discrete_nodal_loads_unchanged_new_coefficients_zero_at_old_nodes':True,
             'new_traction_pressure_not_assigned':True,'all_new_components_free':True})
         bodies[name]={'K':K,'A':A,'B':B,'Z':Z,'sf':sf,'data':data,'free':free,'D':D,'factor':factor,
-            'N':basis.N,'nb':nb,'lookup':lookup,'chosen':chosen,'mesh':mesh,'ids':ids}
+            'N':int(basis.N),'nb':nb,'lookup':lookup,'chosen':chosen,'mesh':mesh,'ids':ids}
         selection.extend(chosen);print('BODY_READY',name,basis.N,nb,'relative_oldblock',oldrel,'seconds',time.monotonic()-start,flush=True)
     dump(out/'selection.json',selection)
     P,F=bodies['panel'],bodies['frame'];npanel=P['N'];nframe=F['N'];n0=npanel+nframe
@@ -207,6 +207,8 @@ def run(a):
         dump(out/f'gaps-{iteration:03d}.json',gaps)
         if success:break
         if len(gaps['unresolved_cells']):break
+        if len(points)>=a.max_points+4:
+            break
         selected=select_violations([{'patch':cells[i]['label'],'cell':int(i),'minimum':float(gaps['minimum'][i]),'minimum_at':gaps['minimum_at'][i].tolist()} for i in bad],seen,maximum_new=min(128,a.max_points+4-len(points)))
         if not selected:break
         newpoints=[{'kind':'contact','cell':p['cell'],'patch':p['patch'],'xy':p['minimum_at'],'gap':cells[p['cell']]['gap']} for p in selected]
