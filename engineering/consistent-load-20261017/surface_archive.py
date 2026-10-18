@@ -101,3 +101,16 @@ def frozen_trace_selection(record, body, expected_mesh_sha256):
     if not output:
         raise ValueError('requested body has no selected face')
     return sorted(output, key=lambda x: (x['patch'], x['vertices']))
+
+
+def checked_external_load_scale(value=None):
+    """Research load/Epanel amplitude; zero is an unloaded assembly reference.
+
+    Does not convert the normalized problem to actual Newtons or set preload.
+    Omitting this option preserves the historical 1e-5 value exactly.
+    """
+    if value is None:
+        return 1e-5
+    if type(value) not in (int, float) or not np.isfinite(value) or value < 0:
+        raise ValueError('external normalized load scale must be nonnegative and finite')
+    return float(value)
