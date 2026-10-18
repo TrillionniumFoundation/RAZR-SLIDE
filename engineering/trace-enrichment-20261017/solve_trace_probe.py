@@ -36,6 +36,7 @@ def run(a):
     from surface_archive import checked_study_controls, frozen_trace_selection, checked_external_load_scale
     case,target,load_index,spring_initial=checked_study_controls(getattr(a,'case',6),getattr(a,'gap_tolerance',TOL))
     external_scale=checked_external_load_scale(getattr(a,'external_load_scale',None))
+    from installation_control import binding_digest,read_control,force_equalities,split_coordinates,adjustment_from_state
     out=a.output.resolve();out.mkdir(parents=True,exist_ok=False)
     fieldroot=ROOT/'engineering/nested-contact-20261017/level-2'
     seedfile=fieldroot/'case-6/report.json.gz';seed=json.loads(gzip.decompress(seedfile.read_bytes()))
@@ -131,6 +132,18 @@ def run(a):
             'N':int(basis.N),'nb':nb,'lookup':lookup,'chosen':chosen,'mesh':mesh,'ids':ids}
         selection.extend(chosen);print('BODY_READY',name,basis.N,nb,'relative_oldblock',oldrel,'seconds',time.monotonic()-start,flush=True)
     dump(out/'selection.json',selection)
+    model_payload={'bodies':{name:{file:sha256(a.volume/name/'level-2'/file) for file in ['K.npz','loads.npz','mesh.npz']} for name in ['panel','frame']},
+        'selection':selection,'common_regions':sha256(cf),'contact_patches':sha256(mf),
+        'surface_mode':load_mode,'surface_manifest':sha256(surface.root/'manifest.json') if surface else None}
+    model_identity=binding_digest(model_payload)
+    control={'mode':'legacy_initial_parameter','compliance':np.full(4,5.),'targets':None,'adjustment':np.full(4,5.*spring_initial)}
+    control_path=getattr(a,'installation_control',None)
+    if control_path is not None:
+        control,control_hashes=read_control(control_path,model_identity=model_identity,external_scale=external_scale)
+        hashes.update(control_hashes)
+    force_mode=control['mode']=='force_targets'
+    hashes[str(ROOT/'integration/installation_control.py')]=sha256(ROOT/'integration/installation_control.py')
+    dump(out/'installation-model-identity.json',{'model_identity':model_identity,'payload':model_payload})
     P,F=bodies['panel'],bodies['frame'];npanel=P['N'];nframe=F['N'];n0=npanel+nframe
     nP=npanel+P['nb'];nF=nframe+F['nb'];n=nP+nF
     def base_body(b,rhs):
@@ -220,12 +233,14 @@ def run(a):
         'unresolved_cells':fa['unresolved_cells'],'old_fixed_tractions_are_not_new_contact_solution':True})
     old=feasible_force_guess(G,loadG,oldforce)['forces'];seen={m['patch']:[] for m in metas}
     for p in points[4:]:seen[p['patch']].append(p['xy'])
+    if force_mode:old=None
     history=[];success=False
     for iteration in range(a.max_exchanges):
-        start=time.monotonic();S=cache.H.copy();S[np.arange(4),np.arange(4)]+=5.
-        d=qfree-initialgap;d[:4]+=5.*spring_initial
+        start=time.monotonic();S=cache.H.copy();S[np.arange(4),np.arange(4)]+=control['compliance']
+        d=qfree-initialgap;d[:4]+=control['adjustment']
+        QG,QL=force_equalities(G,loadG,control['targets']) if force_mode else (G,loadG)
         if old is not None:old=np.pad(old,(0,len(points)-len(old)))
-        qp=solve_force_qp(S,d,G,loadG,initial=old,tolerance=2e-10,factor_reuse=True,rank_fallback=getattr(a,'rank_fallback','svd'))
+        qp=solve_force_qp(S,d,QG,QL,initial=old,tolerance=2e-10,factor_reuse=True,rank_fallback=getattr(a,'rank_fallback','svd'))
         if not qp['passed']:
             dump(out/'failed-qp.json',qp)
             dump(out/'report.json',{'passed':False,'case':case,'load_index':load_index,
@@ -234,7 +249,8 @@ def run(a):
                 'gap_tolerance_mm':target,'no_final_field_qualification':True,
                 'candidate_go':False,'fixture_fabrication_go':False,'manufacturing_go':False})
             return False
-        lam=np.array(qp['forces']);rigid=np.array(qp['rigid_mode_coordinates']);u,applied=cache.reconstruct(external,lam,rigid_displacement=R@rigid)
+        lam=np.array(qp['forces']);rigid,actuator=split_coordinates(qp['rigid_mode_coordinates'],R.shape[1],force_control=force_mode)
+        u,applied=cache.reconstruct(external,lam,rigid_displacement=R@rigid)
         dump(out/f'qp-{iteration:03d}.json',qp)
         gaps=audit(u);bad=gaps['negative_cells'];success=not len(bad) and not len(gaps['unresolved_cells'])
         row={'exchange':iteration,'contacts':len(points)-4,'negative_cells':len(bad),'unresolved_cells':len(gaps['unresolved_cells']),
@@ -262,10 +278,24 @@ def run(a):
         checks[name]={'old_free_residual':residual,'new_trace_residual':bubres,'gauge_or_fixture_reaction':gauge,'energy_work_relative':err,'twice_strain_energy':energy,'maximum_trace_coefficient_mm':float(np.max(abs(ub)))}
     pgap=initialgap[:len(lam)]-np.asarray(cache.C[:,:len(lam)].T@u).ravel();comp=float(np.max(abs(lam[4:]*pgap[4:])));assert comp<1e-11
     success=success and bool(lam[:4].min()>=-1e-10)
+    measured_q=np.asarray(cache.C[:,:4].T@u).ravel()
+    inferred_adjustment=adjustment_from_state(lam[:4],measured_q,control['compliance'])
+    if force_mode:
+        assert np.max(abs(lam[:4]-control['targets']))<1e-10
+        assert np.max(abs(actuator-inferred_adjustment))<1e-9
+    else:assert np.max(abs(inferred_adjustment-control['adjustment']))<1e-9
+    installation={'mode':control['mode'],'model_identity':model_identity,
+        'compliance_Epanel_over_k_per_mm':control['compliance'].tolist(),
+        'target_force_over_Epanel_mm2':control['targets'].tolist() if force_mode else None,
+        'assembly_force_over_Epanel_mm2':lam[:4].tolist(),'assembly_separation_mm':measured_q.tolist(),
+        'adjustment_mm':inferred_adjustment.tolist() if force_mode else control['adjustment'].tolist(),
+        'actuator_multipliers_mm':actuator.tolist(),'additional_equations_are_force_controls_not_displacement_supports':force_mode,
+        'physical_measurement':False,'prescribed_pressure_weighted_connector_not_resolved_head_contact':True}
+
     dump(out/'report.json',{'base_main':BASE,'passed':success,'case':case,'face_per_patch_body':a.faces_per_patch,'selected_faces':selection,
         'old_volume_level':2,'new_trace_dofs':P['nb']+F['nb'],'audited_common_regions':5255,'enriched_common_regions':len(enriched_cells),'gap_tolerance_mm':target,'load_index':load_index,'spring_initial_over_Epanel_mm2':spring_initial,
         'external_load_scale_over_Epanel_mm2':external_scale,'unloaded_assembly_reference':external_scale==0,
-        'initial_spring_force_not_equilibrated_installed_preload':True,
+        'initial_spring_force_not_equilibrated_installed_preload':True,'installation_control':installation,
         'frozen_selection_sha256':sha256(frozen_path) if frozen_path is not None else None,
         'history':history,'contact_points':points[:len(lam)],'forces':lam,'rigid':rigid,'full_condensed_checks':checks,'complementarity_max':comp,
         'rank_fallback':getattr(a,'rank_fallback','svd'),'minimum_bolt_force_over_E':float(lam[:4].min()),'input_sha256':hashes,'source_sha256':sha256(__file__),
@@ -288,5 +318,6 @@ if __name__=='__main__':
     p.add_argument('--case',type=int,default=6);p.add_argument('--gap-tolerance',type=float,default=TOL);p.add_argument('--frozen-selection',type=Path)
     p.add_argument('--rank-fallback',choices=('svd','qr','qr_pivot'),default='svd')
     p.add_argument('--external-load-scale',type=float,default=None)
+    p.add_argument('--installation-control',type=Path)
     a=p.parse_args();assert 1<=a.faces_per_patch<=4 and a.max_exchanges>0 and a.max_points>=4000 and 0<=a.load_face_cap<=4
     raise SystemExit(0 if run(a) else 1)
