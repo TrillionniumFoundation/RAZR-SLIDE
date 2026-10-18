@@ -224,9 +224,10 @@ def run(a):
         start=time.monotonic();S=cache.H.copy();S[np.arange(4),np.arange(4)]+=5.
         d=qfree-initialgap;d[:4]+=5.*spring_initial
         if old is not None:old=np.pad(old,(0,len(points)-len(old)))
-        qp=solve_force_qp(S,d,G,loadG,initial=old,tolerance=2e-10,factor_reuse=True)
+        qp=solve_force_qp(S,d,G,loadG,initial=old,tolerance=2e-10,factor_reuse=True,rank_fallback=getattr(a,'rank_fallback','svd'))
         if not qp['passed']:dump(out/'failed-qp.json',qp);break
         lam=np.array(qp['forces']);rigid=np.array(qp['rigid_mode_coordinates']);u,applied=cache.reconstruct(external,lam,rigid_displacement=R@rigid)
+        dump(out/f'qp-{iteration:03d}.json',qp)
         gaps=audit(u);bad=gaps['negative_cells'];success=not len(bad) and not len(gaps['unresolved_cells'])
         row={'exchange':iteration,'contacts':len(points)-4,'negative_cells':len(bad),'unresolved_cells':len(gaps['unresolved_cells']),
             'minimum_witness_mm':float(gaps['minimum'].min()),'minimum_covered_bound_mm':float(gaps['covered_lower_bounds'].min()),'seconds':time.monotonic()-start}
@@ -257,7 +258,7 @@ def run(a):
         'old_volume_level':2,'new_trace_dofs':P['nb']+F['nb'],'audited_common_regions':5255,'enriched_common_regions':len(enriched_cells),'gap_tolerance_mm':target,'load_index':load_index,'spring_initial_over_Epanel_mm2':spring_initial,
         'frozen_selection_sha256':sha256(frozen_path) if frozen_path is not None else None,
         'history':history,'contact_points':points[:len(lam)],'forces':lam,'rigid':rigid,'full_condensed_checks':checks,'complementarity_max':comp,
-        'minimum_bolt_force_over_E':float(lam[:4].min()),'input_sha256':hashes,'source_sha256':sha256(__file__),
+        'rank_fallback':getattr(a,'rank_fallback','svd'),'minimum_bolt_force_over_E':float(lam[:4].min()),'input_sha256':hashes,'source_sha256':sha256(__file__),
         'not_full_P3_or_all_interface_refinement':True,'old_discrete_nodal_load_functionals_preserved':load_mode=='discrete',
         'continuous_load_projection_not_claimed':load_mode=='discrete',
         'surface_load_archive':str(surface.root) if surface is not None else None,'surface_load_mode':load_mode,
@@ -275,5 +276,6 @@ if __name__=='__main__':
     p.add_argument('--faces-per-patch',type=int,default=2);p.add_argument('--max-exchanges',type=int,default=30);p.add_argument('--max-points',type=int,default=5500)
     p.add_argument('--surface-loads',type=Path);p.add_argument('--surface-load-mode',choices=('discrete','consistent'),default='discrete');p.add_argument('--load-face-cap',type=int,default=0)
     p.add_argument('--case',type=int,default=6);p.add_argument('--gap-tolerance',type=float,default=TOL);p.add_argument('--frozen-selection',type=Path)
+    p.add_argument('--rank-fallback',choices=('svd','qr'),default='svd')
     a=p.parse_args();assert 1<=a.faces_per_patch<=4 and a.max_exchanges>0 and a.max_points>=4000 and 0<=a.load_face_cap<=4
     raise SystemExit(0 if run(a) else 1)
