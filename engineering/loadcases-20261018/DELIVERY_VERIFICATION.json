@@ -1,0 +1,750 @@
+{
+  "completed_utc": "2026-10-18T07:31:03.845418+00:00",
+  "PR": 33,
+  "base_main": "15d3286e0eff22eaa717993eef0c3736bb9ecc93",
+  "tested_functional_commit": "26539a79b953bdd0b6978551f13c3361f13853b6",
+  "original_eight_fields_functional_commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+  "eight_original_cases_freshly_solved_this_turn": true,
+  "eight_fields_not_rerun_after_optional_equality_fix": true,
+  "final_full_tests": 1157,
+  "suites": 31,
+  "new_tests_included": 20,
+  "latest_tests_freshly_rerun": true,
+  "prior1149_not_substituted": true,
+  "source_snapshots_unchanged": true,
+  "test_report_sha256": "6d8dc3c6a11b45a34bd9aef8ea0f1c5ff47d476912f8599f740df18aabd15371",
+  "coverage": {
+    "original_normalized_load_cases": 8,
+    "unloaded_references_solved": 1,
+    "all_current_model_states_passed": true,
+    "new_trace_faces": 86,
+    "new_trace_coefficients": 258,
+    "same_volume_contact_basis_and_load_maps": true,
+    "same_target": 1e-07,
+    "regions_per_field": 5255,
+    "total_region_field_checks": 47295,
+    "not_new_mesh_or_full_trace_convergence": true,
+    "not_installed_preload_or_servicerating": true
+  },
+  "preload_reference": {
+    "input_initial_spring_parameter": 0.0002,
+    "equilibrated_zero_external_forces_over_Epanel_mm2": [
+      0.00017889298965695442,
+      0.00017885680730302832,
+      0.00017885380404103162,
+      0.000178841733612296
+    ],
+    "ratio_to_input_initial_parameter": [
+      0.8944649482847721,
+      0.8942840365151415,
+      0.8942690202051581,
+      0.8942086680614799
+    ],
+    "difference_is_model_redistribution_not_measured_preload_loss": true
+  },
+  "load_to_bolt_transfers": [
+    {
+      "case": 0,
+      "load_index": 0,
+      "initial_spring_parameter": 0.0,
+      "reference": "exact_zero_load_zero_force_algebraic_state",
+      "bolt_force_increment_over_Epanel_mm2": [
+        4.047799075756506e-06,
+        2.0265054088964685e-06,
+        6.356951130255069e-07,
+        7.829363540046567e-07
+      ],
+      "increment_over_applied_load": [
+        0.4047799075756506,
+        0.20265054088964682,
+        0.06356951130255069,
+        0.07829363540046566
+      ]
+    },
+    {
+      "case": 1,
+      "load_index": 1,
+      "initial_spring_parameter": 0.0,
+      "reference": "exact_zero_load_zero_force_algebraic_state",
+      "bolt_force_increment_over_Epanel_mm2": [
+        4.310642401824376e-06,
+        1.8406410043460162e-06,
+        6.939823775695337e-07,
+        7.335552400877722e-07
+      ],
+      "increment_over_applied_load": [
+        0.4310642401824376,
+        0.1840641004346016,
+        0.06939823775695336,
+        0.07335552400877722
+      ]
+    },
+    {
+      "case": 2,
+      "load_index": 2,
+      "initial_spring_parameter": 0.0,
+      "reference": "exact_zero_load_zero_force_algebraic_state",
+      "bolt_force_increment_over_Epanel_mm2": [
+        2.0278826232218175e-06,
+        4.0486134570693945e-06,
+        7.81078771124854e-07,
+        6.418769347262428e-07
+      ],
+      "increment_over_applied_load": [
+        0.20278826232218172,
+        0.40486134570693944,
+        0.0781078771124854,
+        0.06418769347262428
+      ]
+    },
+    {
+      "case": 3,
+      "load_index": 3,
+      "initial_spring_parameter": 0.0,
+      "reference": "exact_zero_load_zero_force_algebraic_state",
+      "bolt_force_increment_over_Epanel_mm2": [
+        1.8420911786431209e-06,
+        4.316290543604146e-06,
+        7.314903372494157e-07,
+        7.003606387450861e-07
+      ],
+      "increment_over_applied_load": [
+        0.18420911786431207,
+        0.43162905436041454,
+        0.07314903372494157,
+        0.0700360638745086
+      ]
+    },
+    {
+      "case": 4,
+      "load_index": 0,
+      "initial_spring_parameter": 0.0002,
+      "reference": "independently_solved_assembly",
+      "bolt_force_increment_over_Epanel_mm2": [
+        -6.805997284416859e-08,
+        6.858546052645369e-08,
+        1.9484117757520483e-09,
+        -1.0625659193312783e-08
+      ],
+      "increment_over_applied_load": [
+        -0.006805997284416858,
+        0.006858546052645368,
+        0.0001948411775752048,
+        -0.0010625659193312783
+      ]
+    },
+    {
+      "case": 5,
+      "load_index": 1,
+      "initial_spring_parameter": 0.0002,
+      "reference": "independently_solved_assembly",
+      "bolt_force_increment_over_Epanel_mm2": [
+        -5.639989698229611e-08,
+        6.175264834066326e-08,
+        -2.9978543055636e-10,
+        -1.040503301542265e-08
+      ],
+      "increment_over_applied_load": [
+        -0.00563998969822961,
+        0.006175264834066325,
+        -2.9978543055635996e-05,
+        -0.001040503301542265
+      ]
+    },
+    {
+      "case": 6,
+      "load_index": 2,
+      "initial_spring_parameter": 0.0002,
+      "reference": "independently_solved_assembly",
+      "bolt_force_increment_over_Epanel_mm2": [
+        6.951161622098891e-08,
+        -6.638481932740026e-08,
+        -1.0774805955500542e-08,
+        1.9124126379721496e-09
+      ],
+      "increment_over_applied_load": [
+        0.006951161622098891,
+        -0.006638481932740025,
+        -0.0010774805955500542,
+        0.00019124126379721493
+      ]
+    },
+    {
+      "case": 7,
+      "load_index": 3,
+      "initial_spring_parameter": 0.0002,
+      "reference": "independently_solved_assembly",
+      "bolt_force_increment_over_Epanel_mm2": [
+        6.257948086403728e-08,
+        -5.476532716124712e-08,
+        -1.0554044197125852e-08,
+        -2.9588018360805594e-10
+      ],
+      "increment_over_applied_load": [
+        0.006257948086403727,
+        -0.005476532716124711,
+        -0.0010554044197125852,
+        -2.958801836080559e-05
+      ]
+    }
+  ],
+  "source_cases": [
+    {
+      "id": "case-0",
+      "commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+      "minimum_gap_bound_mm": -9.161682490770607e-08,
+      "contact_constraints": 3881,
+      "finite_exchange_solves": 1,
+      "bolt_forces_over_Epanel_mm2": [
+        4.047799075756506e-06,
+        2.0265054088964685e-06,
+        6.356951130255069e-07,
+        7.829363540046567e-07
+      ]
+    },
+    {
+      "id": "case-1",
+      "commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+      "minimum_gap_bound_mm": -9.67423207579298e-08,
+      "contact_constraints": 3884,
+      "finite_exchange_solves": 2,
+      "bolt_forces_over_Epanel_mm2": [
+        4.310642401824376e-06,
+        1.8406410043460162e-06,
+        6.939823775695337e-07,
+        7.335552400877722e-07
+      ]
+    },
+    {
+      "id": "case-2",
+      "commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+      "minimum_gap_bound_mm": -9.586406548041478e-08,
+      "contact_constraints": 3887,
+      "finite_exchange_solves": 3,
+      "bolt_forces_over_Epanel_mm2": [
+        2.0278826232218175e-06,
+        4.0486134570693945e-06,
+        7.81078771124854e-07,
+        6.418769347262428e-07
+      ]
+    },
+    {
+      "id": "case-3",
+      "commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+      "minimum_gap_bound_mm": -9.065474444945091e-08,
+      "contact_constraints": 3889,
+      "finite_exchange_solves": 3,
+      "bolt_forces_over_Epanel_mm2": [
+        1.8420911786431209e-06,
+        4.316290543604146e-06,
+        7.314903372494157e-07,
+        7.003606387450861e-07
+      ]
+    },
+    {
+      "id": "case-4",
+      "commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+      "minimum_gap_bound_mm": -9.999307260715897e-08,
+      "contact_constraints": 3972,
+      "finite_exchange_solves": 3,
+      "bolt_forces_over_Epanel_mm2": [
+        0.00017882492968411025,
+        0.00017892539276355478,
+        0.00017885575245280737,
+        0.00017883110795310268
+      ]
+    },
+    {
+      "id": "case-5",
+      "commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+      "minimum_gap_bound_mm": -9.990260988897539e-08,
+      "contact_constraints": 3976,
+      "finite_exchange_solves": 3,
+      "bolt_forces_over_Epanel_mm2": [
+        0.00017883658975997212,
+        0.000178918559951369,
+        0.00017885350425560106,
+        0.00017883132857928057
+      ]
+    },
+    {
+      "id": "case-6",
+      "commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+      "minimum_gap_bound_mm": -9.968764332493734e-08,
+      "contact_constraints": 3987,
+      "finite_exchange_solves": 4,
+      "bolt_forces_over_Epanel_mm2": [
+        0.0001789625012731754,
+        0.00017879042248370092,
+        0.00017884302923507612,
+        0.00017884364602493397
+      ]
+    },
+    {
+      "id": "case-7",
+      "commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+      "minimum_gap_bound_mm": -9.965613491593102e-08,
+      "contact_constraints": 3989,
+      "finite_exchange_solves": 4,
+      "bolt_forces_over_Epanel_mm2": [
+        0.00017895556913781845,
+        0.00017880204197586708,
+        0.0001788432499968345,
+        0.0001788414377321124
+      ]
+    },
+    {
+      "id": "assembly-reference",
+      "commit": "26539a79b953bdd0b6978551f13c3361f13853b6",
+      "minimum_gap_bound_mm": -9.97975919509636e-08,
+      "contact_constraints": 4000,
+      "finite_exchange_solves": 6,
+      "bolt_forces_over_Epanel_mm2": [
+        0.00017889298965695442,
+        0.00017885680730302832,
+        0.00017885380404103162,
+        0.000178841733612296
+      ]
+    }
+  ],
+  "accepted_region_field_checks": 47295,
+  "original_assembly_timeout_preserved": true,
+  "original_supervisor_failure_not_relabelled": true,
+  "captured_rank_analysis": {
+    "input_sha256": "3f0d3436aadbeaf3df9b136db4154fa05c74f60ca53e4b41f51f34107e5195cb",
+    "shape": [
+      2598,
+      2598
+    ],
+    "active_forces": 2593,
+    "equalities": 5,
+    "active_equality_singular_values": [
+      33.30571689775718,
+      32.89448444925166,
+      31.130222240070765,
+      7.784210444611591e-17,
+      2.96664942302914e-18
+    ],
+    "active_equality_rank_estimate": 3,
+    "full_field_not_solved_by_this_diagnostic": true,
+    "source_constraints_unchanged": true,
+    "active_force_block_positive_definite": true,
+    "schur_eigenvalues": [
+      -6.0510419305945e-15,
+      -2.202396146500786e-21,
+      1.199174846147475,
+      1.3853515104892056,
+      18.46576281427128
+    ],
+    "small_schur_rank": 3,
+    "small_solve_seconds": 0.4365802109823562,
+    "full_original_residual": 4.830448785105371e-13,
+    "full_original_residual_limit": 2e-09,
+    "linear_solution_not_complete_QP": true
+  },
+  "actual_QP_KKT": {
+    "passed": true,
+    "checks": {
+      "equilibrium": 1.955885101993885e-19,
+      "stationarity_bolts": 1.6154124479056398e-14,
+      "min_force_contact": 0.0,
+      "min_gradient_contact": -2.656810058412895e-11,
+      "complementarity": 5.105130233355163e-20
+    },
+    "same_original_KKT_limits": true,
+    "not_a_fullfield_pass": true
+  },
+  "core_sha256": {
+    "integration/contact_dual_active.py": "79bd9285502e41ac0d5ca37186bd5f460fe917c468776fff442e412e9e504942",
+    "integration/rank_fallback.py": "bf01394f41cfc7cb22940ae58011d8d5d11012dc7f37c1837030a5c16f396433",
+    "engineering/trace-enrichment-20261017/solve_trace_probe.py": "721b7a1bee41bec6148c67a55eefac965826b8197c073fa734af11181bfb7f87",
+    "engineering/consistent-load-20261017/surface_archive.py": "f0e7dcbf5015e0469c53cb2f724b25d7fda555c7ddcaf763be5d09fda7e82783",
+    "tools/test_suites.json": "c9e401e361bc8fb2bde1926ea38ab79184e6b30dd6c8cb94aac6d22b36acee51"
+  },
+  "jobs": [
+    {
+      "job_id": "1a14dc1505e-1b6abb-e91",
+      "exit": {
+        "at_unix_ms": 1792307911747,
+        "cancelled": false,
+        "exit_code": 1,
+        "log_bytes": {
+          "stderr": {
+            "seen": 0,
+            "stored": 0
+          },
+          "stdout": {
+            "seen": 517,
+            "stored": 517
+          }
+        },
+        "log_errors": {
+          "stderr": null,
+          "stdout": null
+        },
+        "log_truncated": {
+          "stderr": false,
+          "stdout": false
+        },
+        "output_complete": true,
+        "timed_out": false
+      }
+    },
+    {
+      "job_id": "1a14dc4aab9-1b6abb-ea0",
+      "exit": {
+        "at_unix_ms": 1792308262128,
+        "cancelled": false,
+        "exit_code": 1,
+        "log_bytes": {
+          "stderr": {
+            "seen": 0,
+            "stored": 0
+          },
+          "stdout": {
+            "seen": 384,
+            "stored": 384
+          }
+        },
+        "log_errors": {
+          "stderr": null,
+          "stdout": null
+        },
+        "log_truncated": {
+          "stderr": false,
+          "stdout": false
+        },
+        "output_complete": true,
+        "timed_out": false
+      }
+    },
+    {
+      "job_id": "1a14dc201ad-1b6abb-e94",
+      "exit": {
+        "at_unix_ms": 1792306404397,
+        "cancelled": false,
+        "exit_code": 0,
+        "log_bytes": {
+          "stderr": {
+            "seen": 0,
+            "stored": 0
+          },
+          "stdout": {
+            "seen": 164,
+            "stored": 164
+          }
+        },
+        "log_errors": {
+          "stderr": null,
+          "stdout": null
+        },
+        "log_truncated": {
+          "stderr": false,
+          "stdout": false
+        },
+        "output_complete": true,
+        "timed_out": false
+      }
+    },
+    {
+      "job_id": "1a14dda6617-1b6abb-ef8",
+      "exit": {
+        "at_unix_ms": 1792308020819,
+        "cancelled": false,
+        "exit_code": 0,
+        "log_bytes": {
+          "stderr": {
+            "seen": 0,
+            "stored": 0
+          },
+          "stdout": {
+            "seen": 165,
+            "stored": 165
+          }
+        },
+        "log_errors": {
+          "stderr": null,
+          "stdout": null
+        },
+        "log_truncated": {
+          "stderr": false,
+          "stdout": false
+        },
+        "output_complete": true,
+        "timed_out": false
+      }
+    },
+    {
+      "job_id": "1a14dce418c-1b6abb-ecc",
+      "exit": {
+        "at_unix_ms": 1792307142131,
+        "cancelled": false,
+        "exit_code": 0,
+        "log_bytes": {
+          "stderr": {
+            "seen": 196,
+            "stored": 196
+          },
+          "stdout": {
+            "seen": 428,
+            "stored": 428
+          }
+        },
+        "log_errors": {
+          "stderr": null,
+          "stdout": null
+        },
+        "log_truncated": {
+          "stderr": false,
+          "stdout": false
+        },
+        "output_complete": true,
+        "timed_out": false
+      }
+    },
+    {
+      "job_id": "1a14dd51c1c-1b6abb-eeb",
+      "exit": {
+        "at_unix_ms": 1792307179769,
+        "cancelled": false,
+        "exit_code": 0,
+        "log_bytes": {
+          "stderr": {
+            "seen": 0,
+            "stored": 0
+          },
+          "stdout": {
+            "seen": 810,
+            "stored": 810
+          }
+        },
+        "log_errors": {
+          "stderr": null,
+          "stdout": null
+        },
+        "log_truncated": {
+          "stderr": false,
+          "stdout": false
+        },
+        "output_complete": true,
+        "timed_out": false
+      }
+    },
+    {
+      "job_id": "1a14dd98dfa-1b6abb-ef4",
+      "exit": {
+        "at_unix_ms": 1792307528564,
+        "cancelled": false,
+        "exit_code": 0,
+        "log_bytes": {
+          "stderr": {
+            "seen": 0,
+            "stored": 0
+          },
+          "stdout": {
+            "seen": 362,
+            "stored": 362
+          }
+        },
+        "log_errors": {
+          "stderr": null,
+          "stdout": null
+        },
+        "log_truncated": {
+          "stderr": false,
+          "stdout": false
+        },
+        "output_complete": true,
+        "timed_out": false
+      }
+    },
+    {
+      "job_id": "1a14dde600c-1b6abb-f04",
+      "exit": {
+        "at_unix_ms": 1792308274789,
+        "cancelled": false,
+        "exit_code": 0,
+        "log_bytes": {
+          "stderr": {
+            "seen": 0,
+            "stored": 0
+          },
+          "stdout": {
+            "seen": 78,
+            "stored": 78
+          }
+        },
+        "log_errors": {
+          "stderr": null,
+          "stdout": null
+        },
+        "log_truncated": {
+          "stderr": false,
+          "stdout": false
+        },
+        "output_complete": true,
+        "timed_out": false
+      }
+    },
+    {
+      "job_id": "1a14ddf7789-1b6abb-f0f",
+      "exit": {
+        "at_unix_ms": 1792308580283,
+        "cancelled": false,
+        "exit_code": 0,
+        "log_bytes": {
+          "stderr": {
+            "seen": 0,
+            "stored": 0
+          },
+          "stdout": {
+            "seen": 85,
+            "stored": 85
+          }
+        },
+        "log_errors": {
+          "stderr": null,
+          "stdout": null
+        },
+        "log_truncated": {
+          "stderr": false,
+          "stdout": false
+        },
+        "output_complete": true,
+        "timed_out": false
+      }
+    },
+    {
+      "job_id": "1a14dbf63d7-1b6abb-e8b",
+      "exit": {
+        "at_unix_ms": 1792305751790,
+        "cancelled": false,
+        "exit_code": 1,
+        "log_bytes": {
+          "stderr": {
+            "seen": 89,
+            "stored": 89
+          },
+          "stdout": {
+            "seen": 153,
+            "stored": 153
+          }
+        },
+        "log_errors": {
+          "stderr": null,
+          "stdout": null
+        },
+        "log_truncated": {
+          "stderr": false,
+          "stdout": false
+        },
+        "output_complete": true,
+        "timed_out": false
+      }
+    }
+  ],
+  "large_files": 823,
+  "large_bytes": 1160403053,
+  "CAD_screws_actual_physical_unknowns_dependencies_workflow_unchanged": true,
+  "no_new_hardware_or_supplier_action": true,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "hosted_CI": {
+    "run_id": 39106762454,
+    "head_sha": "26539a79b953bdd0b6978551f13c3361f13853b6",
+    "status": "completed",
+    "conclusion": "failure",
+    "observed_utc": "2026-10-18T07:32:50.424887+00:00",
+    "jobs": [
+      {
+        "name": "full-unit-suites",
+        "runner_id": 0,
+        "step_count": 0,
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "native-serviceable",
+        "runner_id": 0,
+        "step_count": 0,
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "native-thin",
+        "runner_id": 0,
+        "step_count": 0,
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "native-lateral-guide",
+        "runner_id": 0,
+        "step_count": 0,
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "native-pawl",
+        "runner_id": 0,
+        "step_count": 0,
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "native-endpoint-joint",
+        "runner_id": 0,
+        "step_count": 0,
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "native-mounted",
+        "runner_id": 0,
+        "step_count": 0,
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "native-phone-layout",
+        "runner_id": 0,
+        "step_count": 0,
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "native-catalogue-joint",
+        "runner_id": 0,
+        "step_count": 0,
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "native-coupling",
+        "runner_id": 0,
+        "step_count": 0,
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "native-root-clearance",
+        "runner_id": 0,
+        "step_count": 0,
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "current-suites",
+        "runner_id": 0,
+        "step_count": 0,
+        "status": "completed",
+        "conclusion": "failure"
+      }
+    ],
+    "annotations": [
+      "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings"
+    ],
+    "billing_protection_changes": false
+  }
+}

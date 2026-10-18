@@ -1,0 +1,1101 @@
+{
+  "base_main": "15d3286e0eff22eaa717993eef0c3736bb9ecc93",
+  "functional_commit": "26539a79b953bdd0b6978551f13c3361f13853b6",
+  "original_eight_source_commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+  "eight_fields_not_rerun_after_optional_equality_fix": true,
+  "original_assembly_timeout_retained": true,
+  "coverage": {
+    "original_normalized_load_cases": 8,
+    "unloaded_references_solved": 1,
+    "all_current_model_states_passed": true,
+    "new_trace_faces": 86,
+    "new_trace_coefficients": 258,
+    "same_volume_contact_basis_and_load_maps": true,
+    "same_target": 1e-07,
+    "regions_per_field": 5255,
+    "total_region_field_checks": 47295,
+    "not_new_mesh_or_full_trace_convergence": true,
+    "not_installed_preload_or_servicerating": true
+  },
+  "cases": [
+    {
+      "id": "case-0",
+      "source_label": "case-0",
+      "source_functional_commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+      "definition": {
+        "id": "case-0",
+        "case": 0,
+        "external_load_scale_over_Epanel_mm2": 1e-05,
+        "load_index": 0,
+        "initial_spring_force_over_Epanel_mm2": 0.0
+      },
+      "independently_passed": true,
+      "contact_constraints": 3881,
+      "finite_exchange_solves": 1,
+      "minimum_gap_bound_mm": -9.161682490770607e-08,
+      "bolt_forces_over_Epanel_mm2": [
+        4.047799075756506e-06,
+        2.0265054088964685e-06,
+        6.356951130255069e-07,
+        7.829363540046567e-07
+      ],
+      "load_weighted_observations_mm": [
+        0.02895620530549808,
+        0.02635895428050356,
+        -0.02579049852698798,
+        -0.025379395820289086
+      ],
+      "load_weighted_response_mm": 0.02895620530549808,
+      "elastic_energy_normalized": 4.4727255870841514e-08,
+      "rigid_mode_coordinates": [
+        -0.023411422756079228,
+        9.494396179260262e-18,
+        -0.00029767481550597427,
+        0.0010226444028586554,
+        -0.001395209096260537,
+        -0.009495267490984055
+      ],
+      "contact_patch_scalar_resultants_over_Epanel": {
+        "pad0": 3.7095839490664766e-06,
+        "pad1": 2.439762088106915e-06,
+        "pad2": 7.254447151905385e-07,
+        "pad3": 6.181451993192037e-07,
+        "key_L_front": 6.9229925963455e-06,
+        "key_L_rear": 3.0770074036545187e-06,
+        "key_R_front": 0.0,
+        "key_R_rear": 0.0
+      },
+      "full_checks": {
+        "panel": {
+          "independent_load_error": 6.403618712079264e-21,
+          "retained_free_residual": 1.0900372130525499e-14,
+          "new_trace_residual": 9.700814235019325e-17,
+          "gauge_or_fixture_reaction": 2.314012696735812e-15,
+          "relative_energy_error": 3.086231384349573e-08,
+          "twice_strain_energy": 3.8558657603835e-08,
+          "internal_recovery": {
+            "unselected_parents": 57574,
+            "selected_parents": 46,
+            "total_parents": 57620,
+            "private_DOFs_recovered": 4321500,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 1.2434497875801753e-14,
+            "relative_integrated_energy_error": 3.513010535351896e-08,
+            "private_file_sha256": "89659169df111604c496e0640636d41201496546bc901ed045e42678361a239e"
+          }
+        },
+        "frame": {
+          "independent_load_error": 1.4208977690190888e-19,
+          "retained_free_residual": 8.153200337090993e-17,
+          "new_trace_residual": 6.722293196691403e-18,
+          "gauge_or_fixture_reaction": 2.1913619339718168e-06,
+          "relative_energy_error": 1.3552382927128207e-10,
+          "twice_strain_energy": 5.089585413784803e-08,
+          "internal_recovery": {
+            "unselected_parents": 79588,
+            "selected_parents": 40,
+            "total_parents": 79628,
+            "private_DOFs_recovered": 5972100,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 2.7755575615628914e-16,
+            "relative_integrated_energy_error": 5.718363286389255e-10,
+            "private_file_sha256": "0c36197c9697fd68bb4375b33f8f2607f37557f4daddeda9724abd371bc26aed"
+          }
+        }
+      },
+      "force_moment_residual": [
+        2.3957888619169648e-15,
+        -9.087489986360001e-16,
+        6.223101975959676e-16,
+        1.365168580860608e-13,
+        -2.0309013963993283e-13,
+        -4.9773475383393466e-14
+      ],
+      "complementarity": 3.763864313758261e-19,
+      "report_sha256": "7c7e7123644c6437dc4da6f831585d29ff5a9af9e501a4234a5790ef2336f641",
+      "independent_report_sha256": "bff7d4fbc3e98b57be99aaef1cd1d3152db62496f3ccb066dfad70f3e105d4bf",
+      "field_sha256": "1d07c94781929c6ea01de5c62b135d6e3a182c192922f52b8da134d388dc82d4"
+    },
+    {
+      "id": "case-1",
+      "source_label": "case-1",
+      "source_functional_commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+      "definition": {
+        "id": "case-1",
+        "case": 1,
+        "external_load_scale_over_Epanel_mm2": 1e-05,
+        "load_index": 1,
+        "initial_spring_force_over_Epanel_mm2": 0.0
+      },
+      "independently_passed": true,
+      "contact_constraints": 3884,
+      "finite_exchange_solves": 2,
+      "minimum_gap_bound_mm": -9.67423207579298e-08,
+      "bolt_forces_over_Epanel_mm2": [
+        4.310642401824376e-06,
+        1.8406410043460162e-06,
+        6.939823775695337e-07,
+        7.335552400877722e-07
+      ],
+      "load_weighted_observations_mm": [
+        0.026358947813239515,
+        0.02920348881609901,
+        -0.025400581087738607,
+        -0.02639619578494707
+      ],
+      "load_weighted_response_mm": 0.02920348881609901,
+      "elastic_energy_normalized": 4.595997137314799e-08,
+      "rigid_mode_coordinates": [
+        -0.03252104657428051,
+        8.930785574442206e-17,
+        -0.0004881930973855049,
+        0.00025362252212756217,
+        0.00019143124338109134,
+        0.024201046783187886
+      ],
+      "contact_patch_scalar_resultants_over_Epanel": {
+        "pad0": 4.018978174234466e-06,
+        "pad1": 2.2283670578967224e-06,
+        "pad2": 7.505538527825756e-07,
+        "pad3": 5.809219389139296e-07,
+        "key_L_front": 1.074040145287422e-06,
+        "key_L_rear": 8.925959854712573e-06,
+        "key_R_front": 0.0,
+        "key_R_rear": 0.0
+      },
+      "full_checks": {
+        "panel": {
+          "independent_load_error": 6.342820937056616e-21,
+          "retained_free_residual": 1.2365437585546216e-14,
+          "new_trace_residual": 7.558696861260773e-17,
+          "gauge_or_fixture_reaction": 1.6563898690147294e-15,
+          "relative_energy_error": 3.145840890693616e-08,
+          "twice_strain_energy": 3.658145787347543e-08,
+          "internal_recovery": {
+            "unselected_parents": 57574,
+            "selected_parents": 46,
+            "total_parents": 57620,
+            "private_DOFs_recovered": 4321500,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 1.0658141036401503e-14,
+            "relative_integrated_energy_error": 3.6280412374959586e-08,
+            "private_file_sha256": "afc0d97db2f4291718eeeb6b8f72a6775cab11a2b2b4788771f069b8c6527c59"
+          }
+        },
+        "frame": {
+          "independent_load_error": 4.88764480345333e-20,
+          "retained_free_residual": 4.423544863740858e-17,
+          "new_trace_residual": 6.265909076240673e-18,
+          "gauge_or_fixture_reaction": 2.0437069571961294e-06,
+          "relative_energy_error": 7.996959863719777e-11,
+          "twice_strain_energy": 5.5338484872820545e-08,
+          "internal_recovery": {
+            "unselected_parents": 79588,
+            "selected_parents": 40,
+            "total_parents": 79628,
+            "private_DOFs_recovered": 5972100,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 2.220446049250313e-16,
+            "relative_integrated_energy_error": 4.3231095268991657e-10,
+            "private_file_sha256": "3463b8299eafb4f5a1121ce64af013700dd08a1c52747abcb028421991dd93a5"
+          }
+        }
+      },
+      "force_moment_residual": [
+        2.473950110453163e-15,
+        -8.267102975090647e-16,
+        -3.3254705147661636e-16,
+        8.988034956447269e-14,
+        -2.0094178136383843e-13,
+        -5.859130460368256e-14
+      ],
+      "complementarity": 3.740437080385646e-19,
+      "report_sha256": "ec85b64e4195127094684408e42bba507908a43412ac742c2d860e4612d59be7",
+      "independent_report_sha256": "757f7be00d070b9490a3c961910182788f4d020e15a4881bc1fa8ac9e96b86bc",
+      "field_sha256": "4e643ad8896f5c593930fbbc187e32a0bbc21ddab80248dece6aed13b1c2f991"
+    },
+    {
+      "id": "case-2",
+      "source_label": "case-2",
+      "source_functional_commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+      "definition": {
+        "id": "case-2",
+        "case": 2,
+        "external_load_scale_over_Epanel_mm2": 1e-05,
+        "load_index": 2,
+        "initial_spring_force_over_Epanel_mm2": 0.0
+      },
+      "independently_passed": true,
+      "contact_constraints": 3887,
+      "finite_exchange_solves": 3,
+      "minimum_gap_bound_mm": -9.586406548041478e-08,
+      "bolt_forces_over_Epanel_mm2": [
+        2.0278826232218175e-06,
+        4.0486134570693945e-06,
+        7.81078771124854e-07,
+        6.418769347262428e-07
+      ],
+      "load_weighted_observations_mm": [
+        -0.025791176895474926,
+        -0.025379805837062414,
+        0.028943211804879347,
+        0.026357295441296585
+      ],
+      "load_weighted_response_mm": 0.028943211804879347,
+      "elastic_energy_normalized": 4.466224538491269e-08,
+      "rigid_mode_coordinates": [
+        0.023430532239134782,
+        -1.7584507685314365e-17,
+        -0.0005697699747843365,
+        0.0004688487782542366,
+        0.0013895359073454049,
+        0.009498597453945826
+      ],
+      "contact_patch_scalar_resultants_over_Epanel": {
+        "pad0": 2.440915084175891e-06,
+        "pad1": 3.7109644661299287e-06,
+        "pad2": 6.165741055743169e-07,
+        "pad3": 7.309981302621838e-07,
+        "key_L_front": 0.0,
+        "key_L_rear": 0.0,
+        "key_R_front": 6.9080508937080895e-06,
+        "key_R_rear": 3.0919491062919054e-06
+      },
+      "full_checks": {
+        "panel": {
+          "independent_load_error": 7.093900933254765e-21,
+          "retained_free_residual": 1.0741678813791511e-14,
+          "new_trace_residual": 8.498472142215528e-17,
+          "gauge_or_fixture_reaction": 2.0736450750957758e-15,
+          "relative_energy_error": 2.7705170935061525e-08,
+          "twice_strain_energy": 3.843335570413574e-08,
+          "internal_recovery": {
+            "unselected_parents": 57574,
+            "selected_parents": 46,
+            "total_parents": 57620,
+            "private_DOFs_recovered": 4321500,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 1.3766765505351941e-14,
+            "relative_integrated_energy_error": 3.2809984783088374e-08,
+            "private_file_sha256": "7b3fdacc3b2a85b07e6479e3f9cf3f1f8b76705b39a9397def904bbb45df553b"
+          }
+        },
+        "frame": {
+          "independent_load_error": 1.6559494118821572e-19,
+          "retained_free_residual": 5.811323644522304e-17,
+          "new_trace_residual": 6.307288566663788e-18,
+          "gauge_or_fixture_reaction": 2.19165704397888e-06,
+          "relative_energy_error": 9.550285281013302e-12,
+          "twice_strain_energy": 5.0891135065689644e-08,
+          "internal_recovery": {
+            "unselected_parents": 79588,
+            "selected_parents": 40,
+            "total_parents": 79628,
+            "private_DOFs_recovered": 5972100,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 2.7755575615628914e-16,
+            "relative_integrated_energy_error": 3.0044142150587907e-10,
+            "private_file_sha256": "76b9fa0b6ae22816054a7d58a2f4f622991b8d75e0a68642b29d3441af3db1ab"
+          }
+        }
+      },
+      "force_moment_residual": [
+        -1.104453353246497e-15,
+        6.623126307743481e-16,
+        -5.04561713678503e-15,
+        -2.710131256589699e-13,
+        1.389553743227962e-13,
+        -4.81595755579645e-15
+      ],
+      "complementarity": 3.171631969660627e-19,
+      "report_sha256": "39cc1266e7cec8cd4d870f3a2f93fc4796762e434d84967f5b4f2fbada3f3b11",
+      "independent_report_sha256": "2bbf681133079edbf9a4378ecd1a4b321493aefa953c8389356107ba7311b206",
+      "field_sha256": "2652d0fb54f0526561b2ca927662d9c5586f9a171ec595ac99974f5915b2fe50"
+    },
+    {
+      "id": "case-3",
+      "source_label": "case-3",
+      "source_functional_commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+      "definition": {
+        "id": "case-3",
+        "case": 3,
+        "external_load_scale_over_Epanel_mm2": 1e-05,
+        "load_index": 3,
+        "initial_spring_force_over_Epanel_mm2": 0.0
+      },
+      "independently_passed": true,
+      "contact_constraints": 3889,
+      "finite_exchange_solves": 3,
+      "minimum_gap_bound_mm": -9.065474444945091e-08,
+      "bolt_forces_over_Epanel_mm2": [
+        1.8420911786431209e-06,
+        4.316290543604146e-06,
+        7.314903372494157e-07,
+        7.003606387450861e-07
+      ],
+      "load_weighted_observations_mm": [
+        -0.025400909254955084,
+        -0.02639381980486118,
+        0.02635728888609988,
+        0.029197522161059784
+      ],
+      "load_weighted_response_mm": 0.029197522161059784,
+      "elastic_energy_normalized": 4.592998818087507e-08,
+      "rigid_mode_coordinates": [
+        0.032520420441923895,
+        1.8886316485253986e-17,
+        -0.00019772873572611056,
+        0.0008830022870557906,
+        -0.00019166030874653354,
+        -0.024139114887443858
+      ],
+      "contact_patch_scalar_resultants_over_Epanel": {
+        "pad0": 2.229599429745505e-06,
+        "pad1": 4.025349888700947e-06,
+        "pad2": 5.790664818404656e-07,
+        "pad3": 7.56216897954866e-07,
+        "key_L_front": 0.0,
+        "key_L_rear": 0.0,
+        "key_R_front": 1.1013210563856582e-06,
+        "key_R_rear": 8.898678943614346e-06
+      },
+      "full_checks": {
+        "panel": {
+          "independent_load_error": 7.358598729271734e-21,
+          "retained_free_residual": 1.202957546943273e-14,
+          "new_trace_residual": 1.1450952821417002e-16,
+          "gauge_or_fixture_reaction": 1.227316859253591e-15,
+          "relative_energy_error": 2.7047521100275097e-08,
+          "twice_strain_energy": 3.653541925331544e-08,
+          "internal_recovery": {
+            "unselected_parents": 57574,
+            "selected_parents": 46,
+            "total_parents": 57620,
+            "private_DOFs_recovered": 4321500,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 1.0658141036401503e-14,
+            "relative_integrated_energy_error": 3.303535486340079e-08,
+            "private_file_sha256": "a582c701912448cb3fdd322f1eaf3232a2cd40e4f857f5effc0383a5859b6a3c"
+          }
+        },
+        "frame": {
+          "independent_load_error": 2.3081647812679684e-20,
+          "retained_free_residual": 7.025630077706069e-17,
+          "new_trace_residual": 5.794979217362746e-18,
+          "gauge_or_fixture_reaction": 2.0421741030285983e-06,
+          "relative_energy_error": 4.191540497673349e-11,
+          "twice_strain_energy": 5.5324557108434705e-08,
+          "internal_recovery": {
+            "unselected_parents": 79588,
+            "selected_parents": 40,
+            "total_parents": 79628,
+            "private_DOFs_recovered": 5972100,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 2.220446049250313e-16,
+            "relative_integrated_energy_error": 2.1112838404249772e-10,
+            "private_file_sha256": "26de5a39dc147c2ff16c0b67dd9f4fa02b1420c5a4a7aa5165847f159a4553c9"
+          }
+        }
+      },
+      "force_moment_residual": [
+        -9.778819803357765e-16,
+        5.32613059918973e-16,
+        -4.816993506779358e-15,
+        -2.511986127734129e-13,
+        1.120472830488295e-13,
+        -5.7479332655657534e-15
+      ],
+      "complementarity": 3.2919901110400023e-19,
+      "report_sha256": "7a811776291e09040997435614baf8c5c37437f696613fc7efa72e68acae7752",
+      "independent_report_sha256": "dc03d9d3660f465b91dc8f3a8974ceabc1394305ac59069b2654cd201c6e1492",
+      "field_sha256": "e9aa1a72b3fd2f12e11119f8a14d8427fe0d8e56d884205ff95aaa68c455f92c"
+    },
+    {
+      "id": "case-4",
+      "source_label": "case-4",
+      "source_functional_commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+      "definition": {
+        "id": "case-4",
+        "case": 4,
+        "external_load_scale_over_Epanel_mm2": 1e-05,
+        "load_index": 0,
+        "initial_spring_force_over_Epanel_mm2": 0.0002
+      },
+      "independently_passed": true,
+      "contact_constraints": 3972,
+      "finite_exchange_solves": 3,
+      "minimum_gap_bound_mm": -9.999307260715897e-08,
+      "bolt_forces_over_Epanel_mm2": [
+        0.00017882492968411025,
+        0.00017892539276355478,
+        0.00017885575245280737,
+        0.00017883110795310268
+      ],
+      "load_weighted_observations_mm": [
+        0.028934207301300745,
+        0.026336701052065967,
+        -0.025770307565716046,
+        -0.025359765142556216
+      ],
+      "load_weighted_response_mm": 0.028934207301300745,
+      "elastic_energy_normalized": 8.248313860619939e-08,
+      "rigid_mode_coordinates": [
+        -0.023406685434642697,
+        -4.330759144274789e-18,
+        -0.0005961509622822552,
+        0.0006116311673596744,
+        -0.0007899538636899423,
+        -0.009511482084961205
+      ],
+      "contact_patch_scalar_resultants_over_Epanel": {
+        "pad0": 0.00017855493504315742,
+        "pad1": 0.00017929415865363052,
+        "pad2": 0.0001788780264993051,
+        "pad3": 0.0001787100626574817,
+        "key_L_front": 6.922930458523588e-06,
+        "key_L_rear": 3.0770695414764138e-06,
+        "key_R_front": 0.0,
+        "key_R_rear": 0.0
+      },
+      "full_checks": {
+        "panel": {
+          "independent_load_error": 1.4378384279641748e-19,
+          "retained_free_residual": 1.1462959555630543e-14,
+          "new_trace_residual": 7.978338326064224e-17,
+          "gauge_or_fixture_reaction": 2.328974686716112e-15,
+          "relative_energy_error": 1.4009791700806805e-08,
+          "twice_strain_energy": 7.904617577124386e-08,
+          "internal_recovery": {
+            "unselected_parents": 57574,
+            "selected_parents": 46,
+            "total_parents": 57620,
+            "private_DOFs_recovered": 4321500,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 7.105427357601002e-15,
+            "relative_integrated_energy_error": 1.5995169022538772e-08,
+            "private_file_sha256": "c69dfc100c970587bb01615b7aa0ce76f1508fb40a0bc8af32d281b4d1d4d03a"
+          }
+        },
+        "frame": {
+          "independent_load_error": 1.4208977690190888e-19,
+          "retained_free_residual": 5.204170427930421e-17,
+          "new_trace_residual": 6.733652984365867e-18,
+          "gauge_or_fixture_reaction": 2.183517841955765e-06,
+          "relative_energy_error": 3.1156945582493743e-11,
+          "twice_strain_energy": 8.592010144115493e-08,
+          "internal_recovery": {
+            "unselected_parents": 79588,
+            "selected_parents": 40,
+            "total_parents": 79628,
+            "private_DOFs_recovered": 5972100,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 2.7755575615628914e-16,
+            "relative_integrated_energy_error": 2.9116430506194306e-10,
+            "private_file_sha256": "716e6a04b859707fc2fd0cdd5224dd897287ed112eb216b6eacd3aff9c7952ed"
+          }
+        }
+      },
+      "force_moment_residual": [
+        2.37436697516443e-15,
+        -9.034527398448354e-16,
+        6.371327704275793e-16,
+        1.3599145601954237e-13,
+        -2.0155941857953152e-13,
+        -4.9084159970917917e-14
+      ],
+      "complementarity": 4.647253794054907e-16,
+      "report_sha256": "97dea9e04171c4252b97d0344ef3029b4126c5e8b99ac8a2a14b9bbd846528e0",
+      "independent_report_sha256": "37004c1d9c3031a4b5a93cf5420ec52c95524c92816b9f5a9b03f64b3bb7b092",
+      "field_sha256": "912a7ec5e652bce55a57cc25eaafaf83bd588fe941e8fab30cc1a03af2646f9f"
+    },
+    {
+      "id": "case-5",
+      "source_label": "case-5",
+      "source_functional_commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+      "definition": {
+        "id": "case-5",
+        "case": 5,
+        "external_load_scale_over_Epanel_mm2": 1e-05,
+        "load_index": 1,
+        "initial_spring_force_over_Epanel_mm2": 0.0002
+      },
+      "independently_passed": true,
+      "contact_constraints": 3976,
+      "finite_exchange_solves": 3,
+      "minimum_gap_bound_mm": -9.990260988897539e-08,
+      "bolt_forces_over_Epanel_mm2": [
+        0.00017883658975997212,
+        0.000178918559951369,
+        0.00017885350425560106,
+        0.00017883132857928057
+      ],
+      "load_weighted_observations_mm": [
+        0.02633697640412418,
+        0.02918083461556798,
+        -0.02538208125896839,
+        -0.02637793349555354
+      ],
+      "load_weighted_response_mm": 0.02918083461556798,
+      "elastic_energy_normalized": 8.371517506532432e-08,
+      "rigid_mode_coordinates": [
+        -0.03251392964113094,
+        -8.87510945370144e-17,
+        -0.0007899482317171142,
+        -0.0001251207899648265,
+        0.0007573278389853984,
+        0.024177457246139726
+      ],
+      "contact_patch_scalar_resultants_over_Epanel": {
+        "pad0": 0.00017861450944373376,
+        "pad1": 0.00017926663061317984,
+        "pad2": 0.0001788420932891663,
+        "pad3": 0.00017871674920014267,
+        "key_L_front": 1.0739967198639112e-06,
+        "key_L_rear": 8.926003280136119e-06,
+        "key_R_front": 0.0,
+        "key_R_rear": 0.0
+      },
+      "full_checks": {
+        "panel": {
+          "independent_load_error": 1.4399560103323106e-19,
+          "retained_free_residual": 1.2477492844687908e-14,
+          "new_trace_residual": 1.0272646177710704e-16,
+          "gauge_or_fixture_reaction": 1.7854370325948166e-15,
+          "relative_energy_error": 1.632872091500188e-08,
+          "twice_strain_energy": 7.70704999363669e-08,
+          "internal_recovery": {
+            "unselected_parents": 57574,
+            "selected_parents": 46,
+            "total_parents": 57620,
+            "private_DOFs_recovered": 4321500,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 1.0658141036401503e-14,
+            "relative_integrated_energy_error": 1.8229885980517457e-08,
+            "private_file_sha256": "69b255e93b20e1e29c5b5bccc91fc948414cf40686fdd99af1804744b56f7f4b"
+          }
+        },
+        "frame": {
+          "independent_load_error": 6.755087754353045e-20,
+          "retained_free_residual": 8.153200337090993e-17,
+          "new_trace_residual": 6.09394466339004e-18,
+          "gauge_or_fixture_reaction": 2.0363672062818256e-06,
+          "relative_energy_error": 6.126360966346376e-11,
+          "twice_strain_energy": 9.035985019428176e-08,
+          "internal_recovery": {
+            "unselected_parents": 79588,
+            "selected_parents": 40,
+            "total_parents": 79628,
+            "private_DOFs_recovered": 5972100,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 2.7755575615628914e-16,
+            "relative_integrated_energy_error": 2.76433599968415e-10,
+            "private_file_sha256": "27a5258ac7c1614725ca3b5f4c2bc54992494c7c5f40028f229a5d79ddd7ee1f"
+          }
+        }
+      },
+      "force_moment_residual": [
+        2.451831036175699e-15,
+        -8.218085046084143e-16,
+        -3.088898106126858e-16,
+        8.975865882681414e-14,
+        -1.993466496229274e-13,
+        -5.781521299510141e-14
+      ],
+      "complementarity": 4.647012895105515e-16,
+      "report_sha256": "117e67404b062fecdb2edf5c2275822f6f3cb0f3f111838c28eced54a909842c",
+      "independent_report_sha256": "acee06bc4fe87637d3e43558b169c66f887c00d561fe110d8a41af7db7f2eeed",
+      "field_sha256": "32adf8ab63c68b838614462dcf9c17ee6286a4a9723f4c74877c5dbcc2d8b2bb"
+    },
+    {
+      "id": "case-6",
+      "source_label": "case-6",
+      "source_functional_commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+      "definition": {
+        "id": "case-6",
+        "case": 6,
+        "external_load_scale_over_Epanel_mm2": 1e-05,
+        "load_index": 2,
+        "initial_spring_force_over_Epanel_mm2": 0.0002
+      },
+      "independently_passed": true,
+      "contact_constraints": 3987,
+      "finite_exchange_solves": 4,
+      "minimum_gap_bound_mm": -9.968764332493734e-08,
+      "bolt_forces_over_Epanel_mm2": [
+        0.0001789625012731754,
+        0.00017879042248370092,
+        0.00017884302923507612,
+        0.00017884364602493397
+      ],
+      "load_weighted_observations_mm": [
+        -0.025770729559678025,
+        -0.0253599103734567,
+        0.028920983486158437,
+        0.026334796384330995
+      ],
+      "load_weighted_response_mm": 0.028920983486158437,
+      "elastic_energy_normalized": 8.241604337608516e-08,
+      "rigid_mode_coordinates": [
+        0.023424689590139484,
+        -3.494485768970513e-18,
+        -0.0005923314613252352,
+        0.0006429624772484412,
+        0.0007773400471707161,
+        0.009515279032055516
+      ],
+      "contact_patch_scalar_resultants_over_Epanel": {
+        "pad0": 0.00017933066254218068,
+        "pad1": 0.00017852130466657157,
+        "pad2": 0.00017872261080258188,
+        "pad3": 0.00017886502100555185,
+        "key_L_front": 0.0,
+        "key_L_rear": 0.0,
+        "key_R_front": 6.9079874857874755e-06,
+        "key_R_rear": 3.092012514212564e-06
+      },
+      "full_checks": {
+        "panel": {
+          "independent_load_error": 1.4399560103323106e-19,
+          "retained_free_residual": 1.1259697059277929e-14,
+          "new_trace_residual": 8.834580202699773e-17,
+          "gauge_or_fixture_reaction": 1.9682606239301847e-15,
+          "relative_energy_error": 1.4731334159249245e-08,
+          "twice_strain_energy": 7.891816586033897e-08,
+          "internal_recovery": {
+            "unselected_parents": 57574,
+            "selected_parents": 46,
+            "total_parents": 57620,
+            "private_DOFs_recovered": 4321500,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 1.0658141036401503e-14,
+            "relative_integrated_energy_error": 1.638625482275775e-08,
+            "private_file_sha256": "9f736fe7041e17fd164d5aa08ce48b3d08eba2a528710bdb5d6c8d873818494e"
+          }
+        },
+        "frame": {
+          "independent_load_error": 1.6517142471458857e-19,
+          "retained_free_residual": 5.377642775528102e-17,
+          "new_trace_residual": 6.383645609008558e-18,
+          "gauge_or_fixture_reaction": 2.182862649792261e-06,
+          "relative_energy_error": 2.55518304080749e-11,
+          "twice_strain_energy": 8.591392089183134e-08,
+          "internal_recovery": {
+            "unselected_parents": 79588,
+            "selected_parents": 40,
+            "total_parents": 79628,
+            "private_DOFs_recovered": 5972100,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 2.7755575615628914e-16,
+            "relative_integrated_energy_error": 2.00090200547707e-10,
+            "private_file_sha256": "82e7096d1e6740e803dabb0816970e041daa252317b36f1d076efb5a9edadf6f"
+          }
+        }
+      },
+      "force_moment_residual": [
+        -1.1035493043939806e-15,
+        6.624795161172919e-16,
+        -5.016967496327297e-15,
+        -2.6998908647508114e-13,
+        1.3863369670533164e-13,
+        -4.5674601119286666e-15
+      ],
+      "complementarity": 4.70358746612969e-16,
+      "report_sha256": "b45cb4f5fb944a5b7bf34c9a3497d4ed75e25a4c519ad41fde7a2cf122f46b13",
+      "independent_report_sha256": "f845eb0a22cc8637d132306cbab1fc38e7026e89f934d831aa38bd579b7ac4de",
+      "field_sha256": "7e83d4ef6def828cd736ed8bb52607b33d266c5343efc42310449ee3b0c2d253"
+    },
+    {
+      "id": "case-7",
+      "source_label": "case-7",
+      "source_functional_commit": "e54d71cc2c838091e9c6b20c1063acf1049e9a06",
+      "definition": {
+        "id": "case-7",
+        "case": 7,
+        "external_load_scale_over_Epanel_mm2": 1e-05,
+        "load_index": 3,
+        "initial_spring_force_over_Epanel_mm2": 0.0002
+      },
+      "independently_passed": true,
+      "contact_constraints": 3989,
+      "finite_exchange_solves": 4,
+      "minimum_gap_bound_mm": -9.965613491593102e-08,
+      "bolt_forces_over_Epanel_mm2": [
+        0.00017895556913781845,
+        0.00017880204197586708,
+        0.0001788432499968345,
+        0.0001788414377321124
+      ],
+      "load_weighted_observations_mm": [
+        -0.02538214139046355,
+        -0.026375279892618998,
+        0.026335061521876642,
+        0.029174594954535255
+      ],
+      "load_weighted_response_mm": 0.029174594954535255,
+      "elastic_energy_normalized": 8.368304325491072e-08,
+      "rigid_mode_coordinates": [
+        0.032511988741128345,
+        -1.3214990568076303e-16,
+        -0.00023837687834608393,
+        0.001057218452431463,
+        -0.0007651574883408109,
+        -0.024115008760004105
+      ],
+      "contact_patch_scalar_resultants_over_Epanel": {
+        "pad0": 0.00017930302251550656,
+        "pad1": 0.00017858109818916462,
+        "pad2": 0.00017872923401662758,
+        "pad3": 0.00017882894412133327,
+        "key_L_front": 0.0,
+        "key_L_rear": 0.0,
+        "key_R_front": 1.101269557090324e-06,
+        "key_R_rear": 8.89873044290965e-06
+      },
+      "full_checks": {
+        "panel": {
+          "independent_load_error": 1.4399560103323106e-19,
+          "retained_free_residual": 1.2321144538668394e-14,
+          "new_trace_residual": 9.033152467105975e-17,
+          "gauge_or_fixture_reaction": 1.1998865442897078e-15,
+          "relative_energy_error": 1.667592495744778e-08,
+          "twice_strain_energy": 7.702180525465874e-08,
+          "internal_recovery": {
+            "unselected_parents": 57574,
+            "selected_parents": 46,
+            "total_parents": 57620,
+            "private_DOFs_recovered": 4321500,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 1.0658141036401503e-14,
+            "relative_integrated_energy_error": 2.0161736813999934e-08,
+            "private_file_sha256": "215e3cfe498cebc4bba5e8c1c6bdc21eff884cc3555dc25dc165a01d1213945c"
+          }
+        },
+        "frame": {
+          "independent_load_error": 6.733911930671688e-20,
+          "retained_free_residual": 9.64939933512099e-17,
+          "new_trace_residual": 5.609505471693656e-18,
+          "gauge_or_fixture_reaction": 2.0347409483592433e-06,
+          "relative_energy_error": 1.4283891709614815e-11,
+          "twice_strain_energy": 9.034428125516269e-08,
+          "internal_recovery": {
+            "unselected_parents": 79588,
+            "selected_parents": 40,
+            "total_parents": 79628,
+            "private_DOFs_recovered": 5972100,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 2.498001805406602e-16,
+            "relative_integrated_energy_error": 9.206455664587579e-11,
+            "private_file_sha256": "e11d615a5016bc238faa0c2acc4a205e79892e7da28f385eb30378385bbdb18b"
+          }
+        }
+      },
+      "force_moment_residual": [
+        -9.776384848332205e-16,
+        5.335969945663272e-16,
+        -4.78774154713492e-15,
+        -2.5036888341230306e-13,
+        1.1196275553285749e-13,
+        -5.489548406104671e-15
+      ],
+      "complementarity": 4.681621038484491e-16,
+      "report_sha256": "aec241393c77d6342b20e27d92422172206cf12a4934f3617d1946e586a573ad",
+      "independent_report_sha256": "05f96bcf673414a473e6162f77235e080f9ca55cf0aa916afc2d313c38ec5d4e",
+      "field_sha256": "c10a898310673d8f6e0502c80e8095322d1b8580771295100e3e3fa8ca478dde"
+    },
+    {
+      "id": "assembly-reference",
+      "source_label": "assembly-reference-schur",
+      "source_functional_commit": "26539a79b953bdd0b6978551f13c3361f13853b6",
+      "definition": {
+        "id": "assembly-reference",
+        "case": 6,
+        "external_load_scale_over_Epanel_mm2": 0.0,
+        "load_index": 2,
+        "initial_spring_force_over_Epanel_mm2": 0.0002
+      },
+      "independently_passed": true,
+      "contact_constraints": 4000,
+      "finite_exchange_solves": 6,
+      "minimum_gap_bound_mm": -9.97975919509636e-08,
+      "bolt_forces_over_Epanel_mm2": [
+        0.00017889298965695442,
+        0.00017885680730302832,
+        0.00017885380404103162,
+        0.000178841733612296
+      ],
+      "load_weighted_observations_mm": [
+        5.5242496790239015e-06,
+        5.207013287973214e-06,
+        5.380889694116408e-07,
+        2.8137328439403373e-07
+      ],
+      "load_weighted_response_mm": 5.380889694116408e-07,
+      "elastic_energy_normalized": 3.7808899778596446e-08,
+      "rigid_mode_coordinates": [
+        -2.3048485662123136e-06,
+        -8.142273059296772e-21,
+        -0.0002907348980916321,
+        0.00011141116316260197,
+        -3.77868048774557e-06,
+        -6.249801781849828e-07
+      ],
+      "contact_patch_scalar_resultants_over_Epanel": {
+        "pad0": 0.00017889256736274023,
+        "pad1": 0.00017885662780244932,
+        "pad2": 0.00017885421454770875,
+        "pad3": 0.00017884192490041207,
+        "key_L_front": 0.0,
+        "key_L_rear": 0.0,
+        "key_R_front": 0.0,
+        "key_R_rear": 0.0
+      },
+      "full_checks": {
+        "panel": {
+          "independent_load_error": 1.4399560103323106e-19,
+          "retained_free_residual": 5.686640394686471e-17,
+          "new_trace_residual": 3.8142251887463956e-19,
+          "gauge_or_fixture_reaction": 1.1646364211567728e-16,
+          "relative_energy_error": 2.9185517904313836e-12,
+          "twice_strain_energy": 4.0468069461708694e-08,
+          "internal_recovery": {
+            "unselected_parents": 57574,
+            "selected_parents": 46,
+            "total_parents": 57620,
+            "private_DOFs_recovered": 4321500,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 7.632783294297951e-17,
+            "relative_integrated_energy_error": 3.2593329385403372e-12,
+            "private_file_sha256": "95a224b8029851afbeda880bf83ff0396042b5f49df0eee75995a370661d276c"
+          }
+        },
+        "frame": {
+          "independent_load_error": 6.755087754353045e-20,
+          "retained_free_residual": 5.149960319306146e-19,
+          "new_trace_residual": 4.648093298057973e-20,
+          "gauge_or_fixture_reaction": 1.582029590605072e-09,
+          "relative_energy_error": 1.8826445843105877e-16,
+          "twice_strain_energy": 3.51497300954842e-08,
+          "internal_recovery": {
+            "unselected_parents": 79588,
+            "selected_parents": 40,
+            "total_parents": 79628,
+            "private_DOFs_recovered": 5972100,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 2.168404344971009e-18,
+            "relative_integrated_energy_error": 4.141818085483311e-15,
+            "private_file_sha256": "604e22cd51d5878421b56ec9ee9e3c77a4eaf2b6655e748967275a00989a906a"
+          }
+        }
+      },
+      "force_moment_residual": [
+        -7.709837337121434e-18,
+        2.527951749429257e-18,
+        7.317908835924432e-18,
+        -3.2701300905007235e-16,
+        9.352806222298716e-17,
+        2.7499780847262914e-16
+      ],
+      "complementarity": 4.527132530275977e-16,
+      "report_sha256": "b3a34d5cf1a6da8cd4b29f793bdee82a8fd81f95668c0defabb74b7ee3531a3e",
+      "independent_report_sha256": "7bce2dff1a59b3072d6468bec51025163a92304cbe937095e65464d24881d11e",
+      "field_sha256": "e166677144b8f7a4bfb52601ea8e4edeca86b8e098836d9e1f54e00841a2b0c4"
+    }
+  ],
+  "preload_reference": {
+    "input_initial_spring_parameter": 0.0002,
+    "equilibrated_zero_external_forces_over_Epanel_mm2": [
+      0.00017889298965695442,
+      0.00017885680730302832,
+      0.00017885380404103162,
+      0.000178841733612296
+    ],
+    "ratio_to_input_initial_parameter": [
+      0.8944649482847721,
+      0.8942840365151415,
+      0.8942690202051581,
+      0.8942086680614799
+    ],
+    "difference_is_model_redistribution_not_measured_preload_loss": true
+  },
+  "load_to_bolt_transfers": [
+    {
+      "case": 0,
+      "load_index": 0,
+      "initial_spring_parameter": 0.0,
+      "reference": "exact_zero_load_zero_force_algebraic_state",
+      "bolt_force_increment_over_Epanel_mm2": [
+        4.047799075756506e-06,
+        2.0265054088964685e-06,
+        6.356951130255069e-07,
+        7.829363540046567e-07
+      ],
+      "increment_over_applied_load": [
+        0.4047799075756506,
+        0.20265054088964682,
+        0.06356951130255069,
+        0.07829363540046566
+      ]
+    },
+    {
+      "case": 1,
+      "load_index": 1,
+      "initial_spring_parameter": 0.0,
+      "reference": "exact_zero_load_zero_force_algebraic_state",
+      "bolt_force_increment_over_Epanel_mm2": [
+        4.310642401824376e-06,
+        1.8406410043460162e-06,
+        6.939823775695337e-07,
+        7.335552400877722e-07
+      ],
+      "increment_over_applied_load": [
+        0.4310642401824376,
+        0.1840641004346016,
+        0.06939823775695336,
+        0.07335552400877722
+      ]
+    },
+    {
+      "case": 2,
+      "load_index": 2,
+      "initial_spring_parameter": 0.0,
+      "reference": "exact_zero_load_zero_force_algebraic_state",
+      "bolt_force_increment_over_Epanel_mm2": [
+        2.0278826232218175e-06,
+        4.0486134570693945e-06,
+        7.81078771124854e-07,
+        6.418769347262428e-07
+      ],
+      "increment_over_applied_load": [
+        0.20278826232218172,
+        0.40486134570693944,
+        0.0781078771124854,
+        0.06418769347262428
+      ]
+    },
+    {
+      "case": 3,
+      "load_index": 3,
+      "initial_spring_parameter": 0.0,
+      "reference": "exact_zero_load_zero_force_algebraic_state",
+      "bolt_force_increment_over_Epanel_mm2": [
+        1.8420911786431209e-06,
+        4.316290543604146e-06,
+        7.314903372494157e-07,
+        7.003606387450861e-07
+      ],
+      "increment_over_applied_load": [
+        0.18420911786431207,
+        0.43162905436041454,
+        0.07314903372494157,
+        0.0700360638745086
+      ]
+    },
+    {
+      "case": 4,
+      "load_index": 0,
+      "initial_spring_parameter": 0.0002,
+      "reference": "independently_solved_assembly",
+      "bolt_force_increment_over_Epanel_mm2": [
+        -6.805997284416859e-08,
+        6.858546052645369e-08,
+        1.9484117757520483e-09,
+        -1.0625659193312783e-08
+      ],
+      "increment_over_applied_load": [
+        -0.006805997284416858,
+        0.006858546052645368,
+        0.0001948411775752048,
+        -0.0010625659193312783
+      ]
+    },
+    {
+      "case": 5,
+      "load_index": 1,
+      "initial_spring_parameter": 0.0002,
+      "reference": "independently_solved_assembly",
+      "bolt_force_increment_over_Epanel_mm2": [
+        -5.639989698229611e-08,
+        6.175264834066326e-08,
+        -2.9978543055636e-10,
+        -1.040503301542265e-08
+      ],
+      "increment_over_applied_load": [
+        -0.00563998969822961,
+        0.006175264834066325,
+        -2.9978543055635996e-05,
+        -0.001040503301542265
+      ]
+    },
+    {
+      "case": 6,
+      "load_index": 2,
+      "initial_spring_parameter": 0.0002,
+      "reference": "independently_solved_assembly",
+      "bolt_force_increment_over_Epanel_mm2": [
+        6.951161622098891e-08,
+        -6.638481932740026e-08,
+        -1.0774805955500542e-08,
+        1.9124126379721496e-09
+      ],
+      "increment_over_applied_load": [
+        0.006951161622098891,
+        -0.006638481932740025,
+        -0.0010774805955500542,
+        0.00019124126379721493
+      ]
+    },
+    {
+      "case": 7,
+      "load_index": 3,
+      "initial_spring_parameter": 0.0002,
+      "reference": "independently_solved_assembly",
+      "bolt_force_increment_over_Epanel_mm2": [
+        6.257948086403728e-08,
+        -5.476532716124712e-08,
+        -1.0554044197125852e-08,
+        -2.9588018360805594e-10
+      ],
+      "increment_over_applied_load": [
+        0.006257948086403727,
+        -0.005476532716124711,
+        -0.0010554044197125852,
+        -2.958801836080559e-05
+      ]
+    }
+  ],
+  "absolute_displacements_not_path_or_clearance_free_tangent_stiffness": true,
+  "ideal_remote_fixture_neutralY_prescribed_pressure_and_uncovered_edges_unchanged": true,
+  "raw_input_and_result_sha256": {
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/case-0/report.json": "7c7e7123644c6437dc4da6f831585d29ff5a9af9e501a4234a5790ef2336f641",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/case-0/full-fields.npz": "1d07c94781929c6ea01de5c62b135d6e3a182c192922f52b8da134d388dc82d4",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/audit-case-0/report.json": "bff7d4fbc3e98b57be99aaef1cd1d3152db62496f3ccb066dfad70f3e105d4bf",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/case-1/report.json": "ec85b64e4195127094684408e42bba507908a43412ac742c2d860e4612d59be7",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/case-1/full-fields.npz": "4e643ad8896f5c593930fbbc187e32a0bbc21ddab80248dece6aed13b1c2f991",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/audit-case-1/report.json": "757f7be00d070b9490a3c961910182788f4d020e15a4881bc1fa8ac9e96b86bc",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/case-2/report.json": "39cc1266e7cec8cd4d870f3a2f93fc4796762e434d84967f5b4f2fbada3f3b11",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/case-2/full-fields.npz": "2652d0fb54f0526561b2ca927662d9c5586f9a171ec595ac99974f5915b2fe50",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/audit-case-2/report.json": "2bbf681133079edbf9a4378ecd1a4b321493aefa953c8389356107ba7311b206",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/case-3/report.json": "7a811776291e09040997435614baf8c5c37437f696613fc7efa72e68acae7752",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/case-3/full-fields.npz": "e9aa1a72b3fd2f12e11119f8a14d8427fe0d8e56d884205ff95aaa68c455f92c",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/audit-case-3/report.json": "dc03d9d3660f465b91dc8f3a8974ceabc1394305ac59069b2654cd201c6e1492",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/case-4/report.json": "97dea9e04171c4252b97d0344ef3029b4126c5e8b99ac8a2a14b9bbd846528e0",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/case-4/full-fields.npz": "912a7ec5e652bce55a57cc25eaafaf83bd588fe941e8fab30cc1a03af2646f9f",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/audit-case-4/report.json": "37004c1d9c3031a4b5a93cf5420ec52c95524c92816b9f5a9b03f64b3bb7b092",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/case-5/report.json": "117e67404b062fecdb2edf5c2275822f6f3cb0f3f111838c28eced54a909842c",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/case-5/full-fields.npz": "32adf8ab63c68b838614462dcf9c17ee6286a4a9723f4c74877c5dbcc2d8b2bb",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/audit-case-5/report.json": "acee06bc4fe87637d3e43558b169c66f887c00d561fe110d8a41af7db7f2eeed",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/case-6/report.json": "b45cb4f5fb944a5b7bf34c9a3497d4ed75e25a4c519ad41fde7a2cf122f46b13",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/case-6/full-fields.npz": "7e83d4ef6def828cd736ed8bb52607b33d266c5343efc42310449ee3b0c2d253",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/audit-case-6/report.json": "f845eb0a22cc8637d132306cbab1fc38e7026e89f934d831aa38bd579b7ac4de",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/case-7/report.json": "aec241393c77d6342b20e27d92422172206cf12a4934f3617d1946e586a573ad",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/case-7/full-fields.npz": "c10a898310673d8f6e0502c80e8095322d1b8580771295100e3e3fa8ca478dde",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/audit-case-7/report.json": "05f96bcf673414a473e6162f77235e080f9ca55cf0aa916afc2d313c38ec5d4e",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/assembly-reference-schur/report.json": "b3a34d5cf1a6da8cd4b29f793bdee82a8fd81f95668c0defabb74b7ee3531a3e",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/assembly-reference-schur/full-fields.npz": "e166677144b8f7a4bfb52601ea8e4edeca86b8e098836d9e1f54e00841a2b0c4",
+    "/home/qian-qi/.local/share/razr-slide-evidence/loadcases-20261018/audit-assembly-reference-schur/report.json": "7bce2dff1a59b3072d6468bec51025163a92304cbe937095e65464d24881d11e"
+  },
+  "source_sha256": "27805f1aeac55f9fece27c87b33ad7e0357b92d85f1f2b714fc09f734cb7ffc3",
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}
