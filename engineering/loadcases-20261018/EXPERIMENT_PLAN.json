@@ -1,0 +1,86 @@
+{
+  "schema": "razr-loadcase-study-v1",
+  "base_main": "15d3286e0eff22eaa717993eef0c3736bb9ecc93",
+  "frozen_selection_sha256": "876eeac1e49322147aab77120a2233346d0568e4654b0f36f2378d5815cbf89d",
+  "scope": "original four lateral load positions with zero/2e-4 initial spring parameter, plus unloaded assembly reference; not actual materials or preload",
+  "circle_sides": 512,
+  "gap_tolerance_mm": 1e-07,
+  "volume_level": 2,
+  "selected_faces": 86,
+  "new_trace_dofs": 258,
+  "rank_fallback": "qr_pivot",
+  "max_exchanges": 40,
+  "max_points": 6500,
+  "cases": [
+    {
+      "id": "case-0",
+      "case": 0,
+      "external_load_scale_over_Epanel_mm2": 1e-05,
+      "load_index": 0,
+      "initial_spring_force_over_Epanel_mm2": 0.0
+    },
+    {
+      "id": "case-1",
+      "case": 1,
+      "external_load_scale_over_Epanel_mm2": 1e-05,
+      "load_index": 1,
+      "initial_spring_force_over_Epanel_mm2": 0.0
+    },
+    {
+      "id": "case-2",
+      "case": 2,
+      "external_load_scale_over_Epanel_mm2": 1e-05,
+      "load_index": 2,
+      "initial_spring_force_over_Epanel_mm2": 0.0
+    },
+    {
+      "id": "case-3",
+      "case": 3,
+      "external_load_scale_over_Epanel_mm2": 1e-05,
+      "load_index": 3,
+      "initial_spring_force_over_Epanel_mm2": 0.0
+    },
+    {
+      "id": "case-4",
+      "case": 4,
+      "external_load_scale_over_Epanel_mm2": 1e-05,
+      "load_index": 0,
+      "initial_spring_force_over_Epanel_mm2": 0.0002
+    },
+    {
+      "id": "case-5",
+      "case": 5,
+      "external_load_scale_over_Epanel_mm2": 1e-05,
+      "load_index": 1,
+      "initial_spring_force_over_Epanel_mm2": 0.0002
+    },
+    {
+      "id": "case-6",
+      "case": 6,
+      "external_load_scale_over_Epanel_mm2": 1e-05,
+      "load_index": 2,
+      "initial_spring_force_over_Epanel_mm2": 0.0002
+    },
+    {
+      "id": "case-7",
+      "case": 7,
+      "external_load_scale_over_Epanel_mm2": 1e-05,
+      "load_index": 3,
+      "initial_spring_force_over_Epanel_mm2": 0.0002
+    },
+    {
+      "id": "assembly-reference",
+      "case": 6,
+      "external_load_scale_over_Epanel_mm2": 0.0,
+      "load_index": 2,
+      "initial_spring_force_over_Epanel_mm2": 0.0002
+    }
+  ],
+  "same_physical_model_except_stated_load_and_initial_force": true,
+  "no_new_real_material_support_preload_inputs": true,
+  "failure_or_compressive_bolt_branch_not_forced_pass": true,
+  "all_5255_regions_and_independent_full_field_required": true,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}

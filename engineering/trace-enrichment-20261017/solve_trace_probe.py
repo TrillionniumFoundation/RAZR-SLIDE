@@ -33,8 +33,9 @@ def col(n,idx,val):return coo_matrix((val,(idx,np.zeros(len(idx),dtype=int))),sh
 
 def run(a):
     sys.path.insert(0,str(ROOT/'engineering/consistent-load-20261017'))
-    from surface_archive import checked_study_controls, frozen_trace_selection
+    from surface_archive import checked_study_controls, frozen_trace_selection, checked_external_load_scale
     case,target,load_index,spring_initial=checked_study_controls(getattr(a,'case',6),getattr(a,'gap_tolerance',TOL))
+    external_scale=checked_external_load_scale(getattr(a,'external_load_scale',None))
     out=a.output.resolve();out.mkdir(parents=True,exist_ok=False)
     fieldroot=ROOT/'engineering/nested-contact-20261017/level-2'
     seedfile=fieldroot/'case-6/report.json.gz';seed=json.loads(gzip.decompress(seedfile.read_bytes()))
@@ -188,7 +189,7 @@ def run(a):
     dump(out/'exact-energy-update.json',{'base_check':vars(check0),'augmented_check':vars(updated),
         'old_H_directly_used_as_new_energy':False,'formula':'Hnew=Hbase+sum(T.T S^-1 T), T=Cb-Z.T C0',
         'selected_faces':len(selection),'additional_trace_dofs':P['nb']+F['nb']})
-    external=np.r_[P['F'][:,load_index]*1e-5,P['Fb'][:,load_index]*1e-5,np.zeros(nF)]
+    external=np.r_[P['F'][:,load_index]*external_scale,P['Fb'][:,load_index]*external_scale,np.zeros(nF)]
     R=np.vstack([P['data']['R'],np.zeros((P['nb']+nF,6))]);G=np.asarray(C.T@R)
     loadG=R.T@external
     Uext=response(external);qfree=np.asarray(C.T@Uext).ravel();initialgap=np.array([p.get('gap',0.) for p in points])
@@ -225,7 +226,14 @@ def run(a):
         d=qfree-initialgap;d[:4]+=5.*spring_initial
         if old is not None:old=np.pad(old,(0,len(points)-len(old)))
         qp=solve_force_qp(S,d,G,loadG,initial=old,tolerance=2e-10,factor_reuse=True,rank_fallback=getattr(a,'rank_fallback','svd'))
-        if not qp['passed']:dump(out/'failed-qp.json',qp);break
+        if not qp['passed']:
+            dump(out/'failed-qp.json',qp)
+            dump(out/'report.json',{'passed':False,'case':case,'load_index':load_index,
+                'external_load_scale_over_Epanel_mm2':external_scale,'spring_initial_over_Epanel_mm2':spring_initial,
+                'status':'finite_contact_QP_failed','qp_status':qp.get('status'),'history':history,
+                'gap_tolerance_mm':target,'no_final_field_qualification':True,
+                'candidate_go':False,'fixture_fabrication_go':False,'manufacturing_go':False})
+            return False
         lam=np.array(qp['forces']);rigid=np.array(qp['rigid_mode_coordinates']);u,applied=cache.reconstruct(external,lam,rigid_displacement=R@rigid)
         dump(out/f'qp-{iteration:03d}.json',qp)
         gaps=audit(u);bad=gaps['negative_cells'];success=not len(bad) and not len(gaps['unresolved_cells'])
@@ -256,6 +264,8 @@ def run(a):
     success=success and bool(lam[:4].min()>=-1e-10)
     dump(out/'report.json',{'base_main':BASE,'passed':success,'case':case,'face_per_patch_body':a.faces_per_patch,'selected_faces':selection,
         'old_volume_level':2,'new_trace_dofs':P['nb']+F['nb'],'audited_common_regions':5255,'enriched_common_regions':len(enriched_cells),'gap_tolerance_mm':target,'load_index':load_index,'spring_initial_over_Epanel_mm2':spring_initial,
+        'external_load_scale_over_Epanel_mm2':external_scale,'unloaded_assembly_reference':external_scale==0,
+        'initial_spring_force_not_equilibrated_installed_preload':True,
         'frozen_selection_sha256':sha256(frozen_path) if frozen_path is not None else None,
         'history':history,'contact_points':points[:len(lam)],'forces':lam,'rigid':rigid,'full_condensed_checks':checks,'complementarity_max':comp,
         'rank_fallback':getattr(a,'rank_fallback','svd'),'minimum_bolt_force_over_E':float(lam[:4].min()),'input_sha256':hashes,'source_sha256':sha256(__file__),
@@ -277,5 +287,6 @@ if __name__=='__main__':
     p.add_argument('--surface-loads',type=Path);p.add_argument('--surface-load-mode',choices=('discrete','consistent'),default='discrete');p.add_argument('--load-face-cap',type=int,default=0)
     p.add_argument('--case',type=int,default=6);p.add_argument('--gap-tolerance',type=float,default=TOL);p.add_argument('--frozen-selection',type=Path)
     p.add_argument('--rank-fallback',choices=('svd','qr','qr_pivot'),default='svd')
+    p.add_argument('--external-load-scale',type=float,default=None)
     a=p.parse_args();assert 1<=a.faces_per_patch<=4 and a.max_exchanges>0 and a.max_points>=4000 and 0<=a.load_face_cap<=4
     raise SystemExit(0 if run(a) else 1)
