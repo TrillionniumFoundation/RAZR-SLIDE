@@ -228,6 +228,9 @@ def run(a):
         bad=np.flatnonzero(minimum < -target)
         return {'minimum':minimum,'minimum_at':where,'covered_lower_bounds':lower,'cubic_checks':checks,
             'negative_cells':bad,'unresolved_cells':unresolved,'enriched_common_cells':len(enriched_cells)}
+    if getattr(a,'rigid_bearing_contact',False):
+        from rigid_bearing_probe import run as bearing_probe
+        return bearing_probe({**locals(),'ROOT':ROOT,'dump':dump})
     frozen_u,frozen_f=cache.reconstruct(external,oldforce,rigid_displacement=R@np.array(seed['rigid']))
     fa=audit(frozen_u);dump(out/'old-tractions-new-space.json',{'minimum_gap_witness_mm':float(fa['minimum'].min()),'negative_cells':len(fa['negative_cells']),
         'unresolved_cells':fa['unresolved_cells'],'old_fixed_tractions_are_not_new_contact_solution':True})
@@ -319,5 +322,6 @@ if __name__=='__main__':
     p.add_argument('--rank-fallback',choices=('svd','qr','qr_pivot'),default='svd')
     p.add_argument('--external-load-scale',type=float,default=None)
     p.add_argument('--installation-control',type=Path)
+    p.add_argument('--rigid-bearing-contact',action='store_true')
     a=p.parse_args();assert 1<=a.faces_per_patch<=4 and a.max_exchanges>0 and a.max_points>=4000 and 0<=a.load_face_cap<=4
     raise SystemExit(0 if run(a) else 1)
