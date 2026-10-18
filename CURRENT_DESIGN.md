@@ -1,14 +1,7 @@
-# 当前研究入口：选定接触面位移增广已获得两档独立全场结果
+# Current research — consistent surface work, not hardware acceptance
 
-主线CAD仍为panel_bearing_web与3mm螺钉，真实材料/载荷/预紧、依赖和工作流均未改变。
-功能提交e905b4f39991f565017d15f73fcb821f0d1c6143通过本机1040项/31组完整回归。新增36项已包含其中。
-在L2体内部空间上加入选定接触面三次函数：两档实际为32/62个面、96/186个XYZ未知量。
-它们改变实际面位移空间，不是仅增加接触检查点。两档只重求原工况6，均独立通过原5255个共同区域、完整力/能量和全部私有内部自由度恢复。
-三次区域使用Bernstein子三角形界，未受影响区域仍用原二次极值。浮点界不是严格区间或连续体证书。
+PR31 candidate integrates clipped prescribed affine surface work into both P2 and selected cubic modes. Current source/integration: surface_load_functional.py, consistent-load-20261017/project_surface_loads.py and optional existing solve_trace_probe.py branch. See engineering/consistent-load-20261017/DELIVERY_VERIFICATION.json.
 
-本轮保留原离散节点载荷函数；新函数在旧节点为零，不代表已重投影真实连续面载荷。
-没有完成全界面、单元面/边的完整P3或全局h收敛；其他工况、接触容差分离、真实支撑和载荷仍须推进。
-下一步优先统一载荷表示后扩大完整面/边空间，与体细化和接触目标交叉复核；不能把本轮小变化当成物理资格。
-证据engineering/trace-enrichment-20261017/DELIVERY_VERIFICATION.json。
-框架远端理想固定、Y中性模式、未覆盖边缘、螺钉正拉力分支保持明确。
-OLED/B储屏、FPC、主板、双电池及展开锁未闭合。candidate/fixture/manufacturing go均false。
+All1081 current tests/31suites passed locally at functional bff1ba6 with unchanged snapshots. Twelve source load vectors reproduce before reintegration; independent geometry/quadrature/shape reconstruction verifies new loads. Two original-case6 variants on identical86faces/258 new DOFs pass all5255 contact regions and independent complete retained/new/private field checks. They differ in prescribed load functionals, not geometry. Do not label this full mesh/interface convergence or real preload. Head circles remain explicitly256-sided on the planar mesh;128/512 comparisons concern the load projection only.
+
+The prescribed bolt pressure and weighted axial spring remain modelling assumptions, as do remote ideal fixation, neutralY, finite contact traces, uncovered strips and positive bolt branch. Next resolve joint displacement/load/contact discretization and real connection data, rather than treating a unit resultant as a qualified pressure or guessing an installation torque. Current CAD,3mm screws, hardware/material/load unknowns and locked dependencies are unchanged. candidate_go=false;fixture_fabrication_go=false;manufacturing_go=false.
