@@ -22,7 +22,9 @@ def _a(x,dim,name):
 
 
 class _WorkingFactor:
-    def __init__(self):
+    def __init__(self,allow_singular_equalities=False):
+        if type(allow_singular_equalities) is not bool:raise ValueError('allow_singular_equalities must be boolean')
+        self.allow_singular_equalities=allow_singular_equalities
         self.indices=None;self.L=None;self.T=None
         self.counts={'refactor':0,'append':0,'delete':0,'fallback':0}
     def _factor(self,Q,indices,p,E):
@@ -57,9 +59,21 @@ class _WorkingFactor:
             self._factor(Q,indices,p,E);t=self.T[:,0];W=self.T[:,1:]
             if len(b):
                 schur=W.T@W
-                with warnings.catch_warnings():
-                    warnings.simplefilter('error',LinAlgWarning)
-                    nu=solve(schur,b-W.T@t,assume_a='sym',check_finite=False)
+                small_rhs=b-W.T@t
+                try:
+                    with warnings.catch_warnings():
+                        warnings.simplefilter('error',LinAlgWarning)
+                        nu=solve(schur,small_rhs,assume_a='sym',check_finite=False)
+                except (np.linalg.LinAlgError,LinAlgWarning):
+                    if not self.allow_singular_equalities:raise
+                    # Only redundant active equality directions are reduced.
+                    # Every original equality and the full KKT residual below
+                    # remain enforced; no stiffness or support is introduced.
+                    from rank_fallback import solve_rank_fallback
+                    nu,record=solve_rank_fallback(schur,small_rhs,cutoff=1e-13,
+                        residual_limit=tolerance*10*max(float(np.max(abs(small_rhs),initial=0.)),1.))
+                    if not record['residual_passed']:raise np.linalg.LinAlgError('inconsistent active equalities')
+                    self.counts['rank_schur']=self.counts.get('rank_schur',0)+1
             else:nu=np.empty(0)
             x=solve_triangular(self.L.T,t+W@nu,lower=False,check_finite=False)
             result=np.r_[x,nu]
@@ -116,7 +130,7 @@ def solve_force_qp(S,d,G,load,free_prefix=4,initial=None,tolerance=2e-10,max_ite
         if not result.success:return {'passed':False,'status':'no_feasible_support','lp_status':int(result.status)}
         x=result.x
     F=list(range(free_prefix))+[i for i in range(free_prefix,m) if x[i]>tolerance]
-    history=[];status='iteration_limit';nu=np.zeros(rank);factor_cache=_WorkingFactor() if factor_reuse else None
+    history=[];status='iteration_limit';nu=np.zeros(rank);factor_cache=_WorkingFactor(allow_singular_equalities=rank_fallback=='qr_pivot') if factor_reuse else None
     for iteration in range(max_iterations):
         FF=np.array(F,dtype=int);EF=E[:,FF]
         A=np.block([[Q[np.ix_(FF,FF)],-EF.T],[EF,np.zeros((rank,rank))]])
@@ -134,7 +148,7 @@ def solve_force_qp(S,d,G,load,free_prefix=4,initial=None,tolerance=2e-10,max_ite
                     x=pivot.pop('scaled_forces');j=pivot['release'];F.remove(j)
                     rank_diagnostics.append({'iteration':iteration,'kind':'null_direction_pivot',**pivot})
                     history.append({'iteration':iteration,'rank_release':j,'free':len(F)})
-                    factor_cache=_WorkingFactor() if factor_reuse else None
+                    factor_cache=_WorkingFactor(allow_singular_equalities=rank_fallback=='qr_pivot') if factor_reuse else None
                     continue
             if rank_fallback in ('qr','qr_pivot'):
                 from rank_fallback import solve_rank_fallback
