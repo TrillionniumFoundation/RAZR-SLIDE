@@ -1,0 +1,46 @@
+{
+  "base": "fb95a3b9a7d58849303287d7321bb7846254f029",
+  "historical_case": 6,
+  "fixed_selected_faces": 86,
+  "fixed_new_XYZ_coefficients": 258,
+  "volume_level": 2,
+  "surface_load_mode": "consistent",
+  "normalization": "same E=1,nu=.3,F/E=1e-5,initial spring force/E=2e-4,axial compliance*E=5",
+  "comparison_cells": [
+    {
+      "id": "p256-t100",
+      "circle_sides": 256,
+      "gap_tolerance_mm": 1e-07
+    },
+    {
+      "id": "p256-t020",
+      "circle_sides": 256,
+      "gap_tolerance_mm": 2e-08
+    },
+    {
+      "id": "p512-t100",
+      "circle_sides": 512,
+      "gap_tolerance_mm": 1e-07
+    },
+    {
+      "id": "p512-t020",
+      "circle_sides": 512,
+      "gap_tolerance_mm": 2e-08
+    }
+  ],
+  "all_cells_recomputed_not_prior_results_relabelled": true,
+  "frozen_selection": "frozen-selection.json",
+  "negative_or_unresolved_contact_is_not_pass": true,
+  "maximum_exchanges": 40,
+  "maximum_contact_points": 6500,
+  "primary_observations": [
+    "one_common_512_external_load_work",
+    "total_elastic_energy",
+    "four_bolt_forces",
+    "patch_resultants_and_first_moments"
+  ],
+  "not_full_mesh_or_material_qualification": true,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}

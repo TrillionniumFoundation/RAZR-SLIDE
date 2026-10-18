@@ -21,7 +21,7 @@ from contact_exchange import ExactResponseCache,QuadraticGapBatch,select_violati
 from contact_dual_active import solve_force_qp
 from cubic_trace_gap import audit_polygon
 
-BASE='2886fa11421d675222df443251be43145f322bbf'
+BASE='fb95a3b9a7d58849303287d7321bb7846254f029'
 TOL=1e-7
 
 def jsonable(x):
@@ -32,6 +32,9 @@ def dump(p,x):Path(p).write_text(json.dumps(x,indent=2,default=jsonable,allow_na
 def col(n,idx,val):return coo_matrix((val,(idx,np.zeros(len(idx),dtype=int))),shape=(n,1)).tocsc()
 
 def run(a):
+    sys.path.insert(0,str(ROOT/'engineering/consistent-load-20261017'))
+    from surface_archive import checked_study_controls, frozen_trace_selection
+    case,target,load_index,spring_initial=checked_study_controls(getattr(a,'case',6),getattr(a,'gap_tolerance',TOL))
     out=a.output.resolve();out.mkdir(parents=True,exist_ok=False)
     fieldroot=ROOT/'engineering/nested-contact-20261017/level-2'
     seedfile=fieldroot/'case-6/report.json.gz';seed=json.loads(gzip.decompress(seedfile.read_bytes()))
@@ -52,6 +55,9 @@ def run(a):
         from surface_archive import SurfaceArchive
         surface=SurfaceArchive(a.surface_loads);hashes.update(surface.hashes)
     elif load_mode!='discrete':raise ValueError('consistent loading requires a verified surface archive')
+    frozen_path=getattr(a,'frozen_selection',None);frozen=None
+    if frozen_path is not None:
+        frozen_path=Path(frozen_path).resolve();frozen=json.loads(frozen_path.read_text());hashes[str(frozen_path)]=sha256(frozen_path)
     oldforce=np.asarray(seed['forces']);bodies={};selection=[]
     for name in ('panel','frame'):
         folder=a.volume/name/'level-2';report=json.loads((folder/'report.json').read_text())
@@ -73,7 +79,8 @@ def run(a):
         for patch in sorted(scores):
             ranked=sorted(scores[patch],key=lambda key:(-scores[patch][key],key))
             for key in ranked[:a.faces_per_patch]:chosen.append({'body':name,'patch':patch,'vertices':list(key),'prior_resultant':scores[patch][key]})
-        if surface is not None:chosen=surface.extend_selection(name,chosen,a.load_face_cap)
+        if frozen is not None:chosen=frozen_trace_selection(frozen,name,report['mesh_sha256'])
+        elif surface is not None:chosen=surface.extend_selection(name,chosen,a.load_face_cap)
         chosen.sort(key=lambda x:(x['patch'],x['vertices']));lookup={tuple(x['vertices']):i for i,x in enumerate(chosen)}
         assert len(lookup)==len(chosen)
         face_lookup={tuple(sorted(tri)):i for i,tri in enumerate(mesh.facets.T)}
@@ -181,7 +188,7 @@ def run(a):
     dump(out/'exact-energy-update.json',{'base_check':vars(check0),'augmented_check':vars(updated),
         'old_H_directly_used_as_new_energy':False,'formula':'Hnew=Hbase+sum(T.T S^-1 T), T=Cb-Z.T C0',
         'selected_faces':len(selection),'additional_trace_dofs':P['nb']+F['nb']})
-    external=np.r_[P['F'][:,2]*1e-5,P['Fb'][:,2]*1e-5,np.zeros(nF)]
+    external=np.r_[P['F'][:,load_index]*1e-5,P['Fb'][:,load_index]*1e-5,np.zeros(nF)]
     R=np.vstack([P['data']['R'],np.zeros((P['nb']+nF,6))]);G=np.asarray(C.T@R)
     loadG=R.T@external
     Uext=response(external);qfree=np.asarray(C.T@Uext).ravel();initialgap=np.array([p.get('gap',0.) for p in points])
@@ -200,11 +207,11 @@ def run(a):
                     fi=c[name+'_face']
                     if fi is not None:v=v+sg*u[offset+b['N']+3*fi+c['axis']]*bubble(c,name,xy)
                 return v
-            r=audit_polygon(c['vertices'],val,gap_tolerance=TOL)
+            r=audit_polygon(c['vertices'],val,gap_tolerance=target)
             minimum[i]=r['minimum_witness'];where[i]=r['minimum_at'];lower[i]=r.get('covered_lower_bound',r.get('unresolved_lower_bound',minimum[i]))
             checks.append({'cell':i,**r})
             if r['status'] not in ('negative_witness','all_subtriangles_bounded'):unresolved.append(i)
-        bad=np.flatnonzero(minimum < -TOL)
+        bad=np.flatnonzero(minimum < -target)
         return {'minimum':minimum,'minimum_at':where,'covered_lower_bounds':lower,'cubic_checks':checks,
             'negative_cells':bad,'unresolved_cells':unresolved,'enriched_common_cells':len(enriched_cells)}
     frozen_u,frozen_f=cache.reconstruct(external,oldforce,rigid_displacement=R@np.array(seed['rigid']))
@@ -215,7 +222,7 @@ def run(a):
     history=[];success=False
     for iteration in range(a.max_exchanges):
         start=time.monotonic();S=cache.H.copy();S[np.arange(4),np.arange(4)]+=5.
-        d=qfree-initialgap;d[:4]+=5.*2e-4
+        d=qfree-initialgap;d[:4]+=5.*spring_initial
         if old is not None:old=np.pad(old,(0,len(points)-len(old)))
         qp=solve_force_qp(S,d,G,loadG,initial=old,tolerance=2e-10,factor_reuse=True)
         if not qp['passed']:dump(out/'failed-qp.json',qp);break
@@ -246,8 +253,9 @@ def run(a):
         checks[name]={'old_free_residual':residual,'new_trace_residual':bubres,'gauge_or_fixture_reaction':gauge,'energy_work_relative':err,'twice_strain_energy':energy,'maximum_trace_coefficient_mm':float(np.max(abs(ub)))}
     pgap=initialgap[:len(lam)]-np.asarray(cache.C[:,:len(lam)].T@u).ravel();comp=float(np.max(abs(lam[4:]*pgap[4:])));assert comp<1e-11
     success=success and bool(lam[:4].min()>=-1e-10)
-    dump(out/'report.json',{'base_main':BASE,'passed':success,'case':6,'face_per_patch_body':a.faces_per_patch,'selected_faces':selection,
-        'old_volume_level':2,'new_trace_dofs':P['nb']+F['nb'],'audited_common_regions':5255,'enriched_common_regions':len(enriched_cells),'gap_tolerance_mm':TOL,
+    dump(out/'report.json',{'base_main':BASE,'passed':success,'case':case,'face_per_patch_body':a.faces_per_patch,'selected_faces':selection,
+        'old_volume_level':2,'new_trace_dofs':P['nb']+F['nb'],'audited_common_regions':5255,'enriched_common_regions':len(enriched_cells),'gap_tolerance_mm':target,'load_index':load_index,'spring_initial_over_Epanel_mm2':spring_initial,
+        'frozen_selection_sha256':sha256(frozen_path) if frozen_path is not None else None,
         'history':history,'contact_points':points[:len(lam)],'forces':lam,'rigid':rigid,'full_condensed_checks':checks,'complementarity_max':comp,
         'minimum_bolt_force_over_E':float(lam[:4].min()),'input_sha256':hashes,'source_sha256':sha256(__file__),
         'not_full_P3_or_all_interface_refinement':True,'old_discrete_nodal_load_functionals_preserved':load_mode=='discrete',
@@ -266,5 +274,6 @@ if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--volume',type=Path,required=True);p.add_argument('--state',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
     p.add_argument('--faces-per-patch',type=int,default=2);p.add_argument('--max-exchanges',type=int,default=30);p.add_argument('--max-points',type=int,default=5500)
     p.add_argument('--surface-loads',type=Path);p.add_argument('--surface-load-mode',choices=('discrete','consistent'),default='discrete');p.add_argument('--load-face-cap',type=int,default=0)
+    p.add_argument('--case',type=int,default=6);p.add_argument('--gap-tolerance',type=float,default=TOL);p.add_argument('--frozen-selection',type=Path)
     a=p.parse_args();assert 1<=a.faces_per_patch<=4 and a.max_exchanges>0 and a.max_points>=4000 and 0<=a.load_face_cap<=4
     raise SystemExit(0 if run(a) else 1)
