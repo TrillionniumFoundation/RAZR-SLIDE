@@ -135,7 +135,8 @@ def solve_force_qp(S,d,G,load,free_prefix=4,initial=None,tolerance=2e-10,max_ite
             alpha,j=step;x=x+alpha*(trial-x);x[j]=0.;F.remove(j)
             history.append({'iteration':iteration,'release':int(j),'alpha':float(alpha),'free':len(F)});continue
         x=trial;gradient=Q@x-p-E.T@nu
-        outside=[i for i in range(free_prefix,m) if i not in F]
+        members=set(F)
+        outside=[i for i in range(free_prefix,m) if i not in members]
         j=min(outside,key=lambda j:gradient[j]) if outside else None
         if j is None or gradient[j]>=-tolerance*max(np.max(abs(p),initial=0.),1.):status='optimal';break
         F.append(j);history.append({'iteration':iteration,'admit':int(j),'free':len(F)})
