@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "implementation_baseline": {
+    "commit": "a1b3cc1e0773446f2e36d0a607edf61211dd9919",
+    "branch": "main",
+    "verification": "GitHub main and both open PR refs read before this implementation; unchanged from the audit baseline"
+  },
+  "stage_summary": "A common native product candidate, finite OLED/FPC motion studies and bench-coupon artwork are implemented. The current internal FPC candidate is rejected; donor fit, physical assembly and powered-phone operation remain unverified.",
+  "product_constraints": {
+    "same_finished_A_B_envelope": true,
+    "main_display_inches_approx": 7,
+    "independent_rear_display": false,
+    "storage_mode": "flat_in_B",
+    "B_upward_travel_mm": 79.75,
+    "normal_seating_mm": 8.2,
+    "larger_cell_priority": "A",
+    "total_capacity_target_mAh": 4700,
+    "capacity_target_convention": "sum of cell-label mAh at a common nominal reference voltage; physical series/parallel topology and actual terminal capacity remain unknown"
+  },
+  "hardware_summary": "Read-only ADB collection was actually executed on the available main host; no authorized donor device was connected. No physical prototype fabrication, cycles, display/touch operation or powered USB continuity is claimed. Native study parts, unpowered bench coupon artwork and a measurement/assembly package are available.",
+  "verification_summary": "Targeted mechanical, electrical and numerical checks have executed; canonical 32-suite / minimum 1240-test validation is configured and awaiting final source freeze. Native PCB and STEP readbacks are recorded independently. No full-unit execution result is inferred from this configured count.",
+  "completed_unit_runs": [
+    {
+      "label": "Accepted main baseline",
+      "tests": 1187,
+      "suites": 31,
+      "functional_commit": "2303ac50f7f881ca243cc7315718aba99354fd6a",
+      "scope": "all_current_unit_suites_via_disjoint_canonical_selections",
+      "report": "engineering/installation-control-20261018/local-unit1187.json.gz",
+      "in_main": true,
+      "uncompressed_report_sha256": "3976e1ebd75d88e6019bd77fb245fbc47913b89ee1c6ac5f9ae260b20c322632"
+    },
+    {
+      "label": "Separate PR35 draft",
+      "tests": 1216,
+      "suites": 31,
+      "functional_commit": "79b73bb3720bcc5b4e9d86ea6d6c8864988cbd1d",
+      "scope": "all_current_unit_suites_via_disjoint_canonical_selections",
+      "report": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/176df31ceb35bb3737d68030e60ba377665de210/engineering/bearing-followup-20261018/full-unit1216.json.gz",
+      "in_main": false,
+      "uncompressed_report_sha256": "b3c74df817004298041e53a90226178acd2dfc70c39e99bd14f3d19667f8ad90"
+    }
+  ],
+  "open_research_prs": [
+    {
+      "number": 35,
+      "url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/pull/35",
+      "head": "176df31ceb35bb3737d68030e60ba377665de210",
+      "in_main": false,
+      "result": "P2 edge ordering repaired; finite-point QP passes but 75 body and 1112 bearing regions fail the unchanged global gap target.",
+      "action": "Real retained-witness coverage has been diagnosed. A 3292-file, 3.24-second read-only cache preflight found no identified bearing response restart; stop before any new FE solve until exact response/points/trace state can be restored."
+    },
+    {
+      "number": 25,
+      "url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/pull/25",
+      "head": "44a5830f49af73605d5161efff80e6744b0fb468",
+      "in_main": false,
+      "result": "Old slack-spring API differs from main; all eight historical global cases remain rejected.",
+      "action": "The separately named slack_spring_contact adapter now reuses the main solver; tests and a retained legacy comparison are implemented. Reconcile the old draft after publishing the validated replacement change, without merging its old full-body driver."
+    }
+  ],
+  "work_packages": [
+    {
+      "id": "WP0",
+      "result": "One generator now synchronizes README, CURRENT_DESIGN and status; old original-case/L2 closure and PR35 draft are separated",
+      "path": "tools/sync_current_design.py",
+      "remaining": "Publish validated current state and reconcile PR25 metadata"
+    },
+    {
+      "id": "WP1",
+      "result": "Twelve logical interface routes, donor-reuse boundaries and actual empty-device readback are recorded",
+      "path": "design/product_interfaces.json",
+      "remaining": "Identify exact donor, board/display/touch/cell revisions and physical terminal mapping"
+    },
+    {
+      "id": "WP2",
+      "result": "One product scene integrates original mechanisms, candidate shell changes and A/B allocations; A cell 7.04 cm3, B cell 3.5904 cm3",
+      "path": "design/product_geometry.json",
+      "remaining": "Actual B mainboard fit in the 12-mm-wide reservation, real cells/swelling/RF/thermal/COF envelopes and structural requalification"
+    },
+    {
+      "id": "WP3",
+      "result": "Constant 187.9-mm trial OLED material has a flat-storage/turning model and whole-path native checks",
+      "path": "integration/oled_storage.py",
+      "remaining": "A matching physical panel, dynamic material limits and a full-motion support/traction design; removable OPEN support has no onboard storage"
+    },
+    {
+      "id": "WP4",
+      "result": "Complete endpoints, finite 140-mm free material and reverse travel are evaluated; 26-channel bench artwork is exported",
+      "path": "integration/product_fpc.py",
+      "remaining": "Current in-phone candidate is rejected by true solid intersections and minimum radius; no complete in-phone FPC candidate is qualified"
+    },
+    {
+      "id": "WP5",
+      "result": "Explicit unlock/slide/seat/OPEN screw hold/reverse/relock program and insertion paths are implemented",
+      "path": "integration/product_motion.py",
+      "remaining": "Physical holding/force, non-nominal telescope allocations, left/right misuse and actual ordered build remain unverified"
+    },
+    {
+      "id": "WP6",
+      "result": "168 unique frozen A-chain PCB/XML terminals and BM28 owned research sites are bound; donor paths have declared destinations",
+      "path": "integration/product_interfaces.py",
+      "remaining": "Real protected dual-cell/charging topology, supported OEM signals, powered display/touch and moving supply/USB continuity"
+    },
+    {
+      "id": "WP7",
+      "result": "Original 1112 rejected witnesses bind to 1196 domains; +128 seed alternatives, thin-section sensitivity and an explicit no-cache stop are recorded",
+      "path": "engineering/product-integration-20261018/numerics/README.md",
+      "remaining": "No new FE solve: restore exact bearing response/trace state first; measure materials/loads and requalify modified product geometry"
+    },
+    {
+      "id": "WP8",
+      "result": "Native study-part exports, bench coupon/fixture artwork and ordered build/measurement instructions are prepared",
+      "path": "engineering/product-integration-20261018/README.md",
+      "remaining": "No physical sample has been fabricated or measured; begin donor readback and unpowered component/assembly trials"
+    }
+  ],
+  "hosted_ci": {
+    "last_observed_main_run": 39112863852,
+    "last_observed_pr35_run": 39126664395,
+    "result": "failure_before_any_step",
+    "jobs_per_run": 12,
+    "billing_reason_source": "engineering/installation-control-20261018/hosted-status.json",
+    "current_account_billing_settings_read": false
+  },
+  "source_entrypoints_before_integration": {
+    "README.md": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/a1b3cc1e0773446f2e36d0a607edf61211dd9919/README.md",
+    "CURRENT_DESIGN.md": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/a1b3cc1e0773446f2e36d0a607edf61211dd9919/CURRENT_DESIGN.md",
+    "status.json": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/a1b3cc1e0773446f2e36d0a607edf61211dd9919/status.json"
+  },
+  "numerical_scope_boundary": "PR34/35 retained FE/contact matrices and domains belong to the original installation geometry. Newly cut product shells, OLED channels and added supports are not structurally requalified by those results."
+}

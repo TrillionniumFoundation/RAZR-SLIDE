@@ -1,0 +1,159 @@
+{
+  "scope": "eight_tiny_discrete_constitutive_examples_and_one_explicit_scope_difference",
+  "reference_commit": "44a5830f49af73605d5161efff80e6744b0fb468",
+  "reference_source_sha256": "c1bdefebf5ab98e1c0173c050459deca4ad49d59ae90f78f5f3b41608b25e195",
+  "current_backend_base_commit": "a1b3cc1e0773446f2e36d0a607edf61211dd9919",
+  "source_sha256": {
+    "integration/slack_spring_contact.py": "4657cecc3b61519855c3a76e31b9e1998d8b99af247e842a65d22a10eb3ba35d",
+    "integration/contact_dual_active.py": "79bd9285502e41ac0d5ca37186bd5f460fe917c468776fff442e412e9e504942",
+    "integration/rank_fallback.py": "bf01394f41cfc7cb22940ae58011d8d5d11012dc7f37c1837030a5c16f396433",
+    "engineering/product-integration-20261018/numerics/run_adapter_comparison.py": "0775e25ff4697b70d748490929e2fa8fc37b869f95741cb1658e666bd0aff8f5"
+  },
+  "cases": [
+    {
+      "case": "positive_spring",
+      "reference_forces": [
+        0.33999999999999997
+      ],
+      "adapter_forces": [
+        0.34
+      ],
+      "comparison_error": 5.551115123125783e-17,
+      "adapter_spring_slacks": [
+        5.551115123125783e-17
+      ],
+      "both_discrete_kkt_passed": true
+    },
+    {
+      "case": "released_spring",
+      "reference_forces": [
+        0.0
+      ],
+      "adapter_forces": [
+        0.0
+      ],
+      "comparison_error": 0.0,
+      "adapter_spring_slacks": [
+        0.7999999999999998
+      ],
+      "both_discrete_kkt_passed": true
+    },
+    {
+      "case": "independent_springs",
+      "reference_forces": [
+        1.9999999999999987,
+        1.0000000000000004
+      ],
+      "adapter_forces": [
+        2.0,
+        1.0
+      ],
+      "comparison_error": 1.3322676295501878e-15,
+      "adapter_spring_slacks": [
+        0.0,
+        0.0
+      ],
+      "both_discrete_kkt_passed": true
+    },
+    {
+      "case": "contact_stop",
+      "reference_forces": [
+        0.19999999999999998
+      ],
+      "adapter_forces": [
+        0.20000000000000004
+      ],
+      "comparison_error": 5.551115123125783e-17,
+      "adapter_spring_slacks": [],
+      "both_discrete_kkt_passed": true
+    },
+    {
+      "case": "duplicate_contact",
+      "reference_forces": [
+        1.0,
+        0.0
+      ],
+      "adapter_forces": [
+        1.0,
+        0.0
+      ],
+      "comparison_error": 0.0,
+      "adapter_spring_slacks": [],
+      "both_discrete_kkt_passed": true
+    },
+    {
+      "case": "coupled_0",
+      "reference_forces": [
+        0.41251851851851856,
+        0.07014814814814825,
+        0.08266666666666678
+      ],
+      "adapter_forces": [
+        0.4125185185185185,
+        0.07014814814814815,
+        0.08266666666666661
+      ],
+      "comparison_error": 1.6653345369377348e-16,
+      "adapter_spring_slacks": [
+        -1.6653345369377348e-16,
+        -5.551115123125783e-17
+      ],
+      "both_discrete_kkt_passed": true
+    },
+    {
+      "case": "coupled_1",
+      "reference_forces": [
+        0.0,
+        0.4000000000000002,
+        0.0
+      ],
+      "adapter_forces": [
+        0.0,
+        0.3999999999999999,
+        0.0
+      ],
+      "comparison_error": 2.7755575615628914e-16,
+      "adapter_spring_slacks": [
+        2.2700000000000005,
+        -1.1102230246251565e-16
+      ],
+      "both_discrete_kkt_passed": true
+    },
+    {
+      "case": "coupled_2",
+      "reference_forces": [
+        0.3814074074074073,
+        0.2212592592592595,
+        0.2026666666666667
+      ],
+      "adapter_forces": [
+        0.3814074074074075,
+        0.22125925925925927,
+        0.20266666666666663
+      ],
+      "comparison_error": 2.220446049250313e-16,
+      "adapter_spring_slacks": [
+        8.326672684688674e-17,
+        2.7755575615628914e-17
+      ],
+      "both_discrete_kkt_passed": true
+    }
+  ],
+  "intentional_scope_difference": {
+    "case": "zero_response_rigid_stop",
+    "pr25_passed": true,
+    "adapter_rejected": true,
+    "reason": "nonpositive or nonreciprocal response"
+  },
+  "wall_seconds": 0.1889309559992398,
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "pr25_full_body_driver_or_results_adopted": false,
+  "new_fe_solve": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}

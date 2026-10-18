@@ -45,7 +45,9 @@
     "keycover_connected_bypass": "engineering/keycover-geometry-20261014",
     "catalogue_dimensional_and_process_scenario": "engineering/catalogue-joint-20261015",
     "root_rigid_error_envelopes": "engineering/root-clearance-20261015",
-    "root_cover_lateral_guidance": "engineering/lateral-guide-20261015"
+    "root_cover_lateral_guidance": "engineering/lateral-guide-20261015",
+    "complete_endpoint_repair": "engineering/fpc-route-endpoint-repair-20261013-r7",
+    "common_product_integration": "engineering/product-integration-20261018"
   },
   "G2_scope": {
     "X230_motion_poses": 121,
@@ -67,17 +69,37 @@
   ],
   "previous_production_review": "engineering/PRODUCTION_BLOCKERS_R6.md",
   "current_input_registry": "integration/assembly_inputs.json",
-  "current_execution_summary": "engineering/spatial-contact-integration-20261015/DELIVERY_VERIFICATION.json",
+  "current_execution_summary": "engineering/product-integration-20261018/DELIVERY_VERIFICATION.json",
   "current_unit_tests": {
     "manifest": "tools/test_suites.json",
-    "configured_minimum": 1040,
-    "groups": 31,
-    "actual_local_passed": true,
-    "functional_commit": "e905b4f39991f565017d15f73fcb821f0d1c6143",
-    "report": "engineering/trace-enrichment-20261017/local-unit1040.json.gz"
+    "configured_minimum": 1240,
+    "groups": 32,
+    "completed_runs": [
+      {
+        "label": "Accepted main baseline",
+        "tests": 1187,
+        "suites": 31,
+        "functional_commit": "2303ac50f7f881ca243cc7315718aba99354fd6a",
+        "scope": "all_current_unit_suites_via_disjoint_canonical_selections",
+        "report": "engineering/installation-control-20261018/local-unit1187.json.gz",
+        "in_main": true,
+        "uncompressed_report_sha256": "3976e1ebd75d88e6019bd77fb245fbc47913b89ee1c6ac5f9ae260b20c322632"
+      },
+      {
+        "label": "Separate PR35 draft",
+        "tests": 1216,
+        "suites": 31,
+        "functional_commit": "79b73bb3720bcc5b4e9d86ea6d6c8864988cbd1d",
+        "scope": "all_current_unit_suites_via_disjoint_canonical_selections",
+        "report": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/176df31ceb35bb3737d68030e60ba377665de210/engineering/bearing-followup-20261018/full-unit1216.json.gz",
+        "in_main": false,
+        "uncompressed_report_sha256": "b3c74df817004298041e53a90226178acd2dfc70c39e99bd14f3d19667f8ad90"
+      }
+    ],
+    "configured_count_is_not_a_pass": true
   },
   "previous_current_execution_summary": "engineering/panel-bearing-web-20261015/DELIVERY_VERIFICATION.json",
-  "current_fresh_verification": "existing locked desktop run resumed to completion; no duplicate full run launched; standard native full passed",
+  "current_fresh_verification": "Targeted mechanical, electrical and numerical checks have executed; canonical 32-suite / minimum 1240-test validation is configured and awaiting final source freeze. Native PCB and STEP readbacks are recorded independently. No full-unit execution result is inferred from this configured count.",
   "bench_cover_first_candidate": {
     "source": "integration/cover_admission.py",
     "stages": 22,
@@ -101,7 +123,8 @@
       16.445,
       21.21
     ],
-    "fit": "unknown"
+    "fit": "unknown",
+    "historical_stage_scope": "historical thick-mechanism space diagnostic; current registered candidate is in design/product_geometry.json"
   },
   "historical_research_results": {
     "split_root_sampled_sequence": {
@@ -197,7 +220,8 @@
     "moving_contact_geometry_resized": false,
     "B_to_KEY_coupling_implemented": false,
     "thread_preload_force_tolerance_seal_qualified": false,
-    "evidence": "engineering/mounted-mechanism-20261015"
+    "evidence": "engineering/mounted-mechanism-20261015",
+    "historical_stage_scope": "mounted-mechanism stage; subsequent B-to-KEY transmission is in current_transmission_study"
   },
   "current_transmission_study": {
     "source": "integration/cam_coupling.py",
@@ -294,7 +318,8 @@
     "changed_part": "A_BACK_PANEL",
     "nominal_native_full_passed": true,
     "physical_panel_anchorage_preload_and_stiffness_qualified": false,
-    "panel_frame_shear_key_candidate_in_main": false
+    "panel_frame_shear_key_candidate_in_main": false,
+    "historical_stage_scope": "cover-backing stage; subsequent shear keys are in current_panel_shear_key_study"
   },
   "current_panel_shear_key_study": {
     "source": "integration/panel_shear_key.py",
@@ -342,7 +367,8 @@
     "negative_patch_cases": 48,
     "CAD_changed": false,
     "mesh_convergence_complete": false,
-    "evidence": "engineering/contact-field-20261015/DELIVERY_VERIFICATION.json"
+    "evidence": "engineering/contact-field-20261015/DELIVERY_VERIFICATION.json",
+    "historical_stage_scope": "rejected pre-contact-solve diagnostic; superseded for original cases by current_contact_closure"
   },
   "current_spatial_contact": {
     "source": "integration/spatial_contact.py",
@@ -351,17 +377,19 @@
       0,
       1,
       2,
-      3
-    ],
-    "original_case_rejected": 4,
-    "remaining_not_run": [
+      3,
+      4,
       5,
       6,
       7
     ],
-    "all_eight_cases_closed": false,
+    "original_case_rejected": null,
+    "remaining_not_run": [],
+    "all_eight_cases_closed": true,
     "gap_tolerance_mm": 1e-07,
-    "continuum_pressure_mesh_convergence_or_physical_qualification": false
+    "continuum_pressure_mesh_convergence_or_physical_qualification": false,
+    "evidence": "engineering/preload-closure-20261017/DELIVERY_VERIFICATION.json",
+    "scope": "original frozen surface and volume grid; later models are separate"
   },
   "current_contact_closure": {
     "evidence": "engineering/preload-closure-20261017/DELIVERY_VERIFICATION.json",
@@ -386,9 +414,17 @@
     ],
     "face_trace_unchanged": true,
     "case6_level1_independently_passed": true,
-    "level2_contact_completed": false,
+    "level2_contact_completed": true,
     "global_mesh_convergence": false,
-    "evidence": "engineering/volume-convergence-20261017/DELIVERY_VERIFICATION.json"
+    "evidence": "engineering/volume-convergence-20261017/DELIVERY_VERIFICATION.json",
+    "completed_level2_cases": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "completion_evidence": "engineering/nested-contact-20261017/DELIVERY_VERIFICATION.json",
+    "scope": "L1/L2 case4-7 on unchanged original surface trace; not all-interface convergence"
   },
   "current_supplemental_target": {
     "case": 6,
@@ -437,5 +473,82 @@
     "original_case6_load_variants": 2,
     "same_face_space": 86,
     "actual_pressure_or_preload_qualified": false
-  }
+  },
+  "current_product_state": "design/current_product.json",
+  "current_product_stage": "A common native product candidate, finite OLED/FPC motion studies and bench-coupon artwork are implemented. The current internal FPC candidate is rejected; donor fit, physical assembly and powered-phone operation remain unverified.",
+  "current_open_research_prs": [
+    {
+      "number": 35,
+      "url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/pull/35",
+      "head": "176df31ceb35bb3737d68030e60ba377665de210",
+      "in_main": false,
+      "result": "P2 edge ordering repaired; finite-point QP passes but 75 body and 1112 bearing regions fail the unchanged global gap target.",
+      "action": "Real retained-witness coverage has been diagnosed. A 3292-file, 3.24-second read-only cache preflight found no identified bearing response restart; stop before any new FE solve until exact response/points/trace state can be restored."
+    },
+    {
+      "number": 25,
+      "url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/pull/25",
+      "head": "44a5830f49af73605d5161efff80e6744b0fb468",
+      "in_main": false,
+      "result": "Old slack-spring API differs from main; all eight historical global cases remain rejected.",
+      "action": "The separately named slack_spring_contact adapter now reuses the main solver; tests and a retained legacy comparison are implemented. Reconcile the old draft after publishing the validated replacement change, without merging its old full-body driver."
+    }
+  ],
+  "current_work_packages": [
+    {
+      "id": "WP0",
+      "result": "One generator now synchronizes README, CURRENT_DESIGN and status; old original-case/L2 closure and PR35 draft are separated",
+      "path": "tools/sync_current_design.py",
+      "remaining": "Publish validated current state and reconcile PR25 metadata"
+    },
+    {
+      "id": "WP1",
+      "result": "Twelve logical interface routes, donor-reuse boundaries and actual empty-device readback are recorded",
+      "path": "design/product_interfaces.json",
+      "remaining": "Identify exact donor, board/display/touch/cell revisions and physical terminal mapping"
+    },
+    {
+      "id": "WP2",
+      "result": "One product scene integrates original mechanisms, candidate shell changes and A/B allocations; A cell 7.04 cm3, B cell 3.5904 cm3",
+      "path": "design/product_geometry.json",
+      "remaining": "Actual B mainboard fit in the 12-mm-wide reservation, real cells/swelling/RF/thermal/COF envelopes and structural requalification"
+    },
+    {
+      "id": "WP3",
+      "result": "Constant 187.9-mm trial OLED material has a flat-storage/turning model and whole-path native checks",
+      "path": "integration/oled_storage.py",
+      "remaining": "A matching physical panel, dynamic material limits and a full-motion support/traction design; removable OPEN support has no onboard storage"
+    },
+    {
+      "id": "WP4",
+      "result": "Complete endpoints, finite 140-mm free material and reverse travel are evaluated; 26-channel bench artwork is exported",
+      "path": "integration/product_fpc.py",
+      "remaining": "Current in-phone candidate is rejected by true solid intersections and minimum radius; no complete in-phone FPC candidate is qualified"
+    },
+    {
+      "id": "WP5",
+      "result": "Explicit unlock/slide/seat/OPEN screw hold/reverse/relock program and insertion paths are implemented",
+      "path": "integration/product_motion.py",
+      "remaining": "Physical holding/force, non-nominal telescope allocations, left/right misuse and actual ordered build remain unverified"
+    },
+    {
+      "id": "WP6",
+      "result": "168 unique frozen A-chain PCB/XML terminals and BM28 owned research sites are bound; donor paths have declared destinations",
+      "path": "integration/product_interfaces.py",
+      "remaining": "Real protected dual-cell/charging topology, supported OEM signals, powered display/touch and moving supply/USB continuity"
+    },
+    {
+      "id": "WP7",
+      "result": "Original 1112 rejected witnesses bind to 1196 domains; +128 seed alternatives, thin-section sensitivity and an explicit no-cache stop are recorded",
+      "path": "engineering/product-integration-20261018/numerics/README.md",
+      "remaining": "No new FE solve: restore exact bearing response/trace state first; measure materials/loads and requalify modified product geometry"
+    },
+    {
+      "id": "WP8",
+      "result": "Native study-part exports, bench coupon/fixture artwork and ordered build/measurement instructions are prepared",
+      "path": "engineering/product-integration-20261018/README.md",
+      "remaining": "No physical sample has been fabricated or measured; begin donor readback and unpowered component/assembly trials"
+    }
+  ],
+  "current_closed_research_prs": []
 }

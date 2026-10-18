@@ -1,0 +1,784 @@
+{
+  "scope": "ideal_rectangular_beam_parameter_sensitivity_only",
+  "nominal_geometry": {
+    "beam_axis": "Y",
+    "tab_lower_xyz_mm": [
+      13.2,
+      15.8,
+      4.05
+    ],
+    "tab_upper_xyz_mm": [
+      13.45,
+      39.6,
+      4.35
+    ],
+    "nominal_Y_extent_mm": 23.8,
+    "section": {
+      "width_x_mm": 0.25,
+      "thickness_z_mm": 0.3,
+      "area_mm2": 0.075,
+      "I_about_x_mm4": 0.0005625,
+      "I_about_z_mm4": 0.00039062499999999997,
+      "weak_I_mm4": 0.00039062499999999997,
+      "weak_radius_of_gyration_mm": 0.07216878364870322
+    }
+  },
+  "geometry_provenance": {
+    "construction_source": "integration/cam_coupling.py",
+    "construction_source_sha256": "4a3bf1d2b86d31fa8e3d60d3412e15548bf42287ed95d756798f3d88c6c4e631",
+    "main_commit": "a1b3cc1e0773446f2e36d0a607edf61211dd9919",
+    "current_role": "L_KEY_YOKE.step",
+    "current_role_expected_sha256": "a819b786a0d7f2a406194b60908233b106af6ed11988b4216c5e4e4d101aab94",
+    "native_v5_archive_expected_sha256": "249f50dae36b591df189e17ed8f46b1d1e793d481b1d0fb57f0ff1a553dfbd07",
+    "original_L_ORIGINAL_KEY_does_not_represent_this_added_web": true,
+    "step_or_brep_remeasured_by_this_script": false
+  },
+  "formulas": {
+    "E_N_per_mm2": "1000 * E_GPa",
+    "A": "b*h",
+    "I_about_x": "b*h^3/12",
+    "I_about_z": "h*b^3/12",
+    "hypothetical_cantilever_end_stiffness": "3*E*I/L^3",
+    "hypothetical_cantilever_end_deflection": "F*L^3/(3*E*I)",
+    "ideal_euler_load": "pi^2*E*I/(K*L)^2"
+  },
+  "effective_length_factor_idealizations": {
+    "0.5": "both ends fully fixed",
+    "1.0": "both ends pinned",
+    "2.0": "one end fixed, other end free"
+  },
+  "assumptions": [
+    "homogeneous isotropic linearly elastic straight uniform section",
+    "ideal end conditions; centered axial compression for Euler estimate",
+    "small deflection required for the lateral beam formula",
+    "Euler estimate may exceed yield or be inapplicable at low slenderness",
+    "guide clearance, imperfect straightness, notches, torsion and local stresses omitted"
+  ],
+  "unknown_actual_inputs": [
+    "material and modulus",
+    "yield and fatigue data",
+    "unsupported spans and guide stiffness/clearance",
+    "axial and lateral load histories",
+    "load eccentricity and connection stiffness"
+  ],
+  "parameter_cases": [
+    {
+      "assumed_E_GPa": 2.0,
+      "assumed_unsupported_span_mm": 23.8,
+      "hypothetical_cantilever_end_stiffness_N_per_mm": {
+        "x_deflection": 0.0001738522893091987,
+        "z_deflection": 0.0002503472966052461
+      },
+      "hypothetical_cantilever_end_displacements": [
+        {
+          "assumed_transverse_force_N": 1e-06,
+          "x_deflection_mm": 0.005752009386666667,
+          "z_deflection_mm": 0.003994450962962964,
+          "x_deflection_over_span": 0.00024168106666666667
+        },
+        {
+          "assumed_transverse_force_N": 1e-05,
+          "x_deflection_mm": 0.05752009386666668,
+          "z_deflection_mm": 0.03994450962962964,
+          "x_deflection_over_span": 0.002416810666666667
+        },
+        {
+          "assumed_transverse_force_N": 0.0001,
+          "x_deflection_mm": 0.5752009386666668,
+          "z_deflection_mm": 0.3994450962962964,
+          "x_deflection_over_span": 0.02416810666666667
+        }
+      ],
+      "ideal_euler_axial_buckling": [
+        {
+          "effective_length_factor": 0.5,
+          "weak_axis_load_N": 0.05444974534532208,
+          "about_x_load_N": 0.0784076332972638,
+          "about_z_load_N": 0.05444974534532208,
+          "effective_slenderness_weak_axis": 164.89123688055713
+        },
+        {
+          "effective_length_factor": 1.0,
+          "weak_axis_load_N": 0.01361243633633052,
+          "about_x_load_N": 0.01960190832431595,
+          "about_z_load_N": 0.01361243633633052,
+          "effective_slenderness_weak_axis": 329.78247376111426
+        },
+        {
+          "effective_length_factor": 2.0,
+          "weak_axis_load_N": 0.00340310908408263,
+          "about_x_load_N": 0.004900477081078988,
+          "about_z_load_N": 0.00340310908408263,
+          "effective_slenderness_weak_axis": 659.5649475222285
+        }
+      ]
+    },
+    {
+      "assumed_E_GPa": 2.0,
+      "assumed_unsupported_span_mm": 12.0,
+      "hypothetical_cantilever_end_stiffness_N_per_mm": {
+        "x_deflection": 0.0013563368055555555,
+        "z_deflection": 0.0019531249999999998
+      },
+      "hypothetical_cantilever_end_displacements": [
+        {
+          "assumed_transverse_force_N": 1e-06,
+          "x_deflection_mm": 0.00073728,
+          "z_deflection_mm": 0.0005120000000000001,
+          "x_deflection_over_span": 6.144e-05
+        },
+        {
+          "assumed_transverse_force_N": 1e-05,
+          "x_deflection_mm": 0.0073728000000000005,
+          "z_deflection_mm": 0.005120000000000001,
+          "x_deflection_over_span": 0.0006144000000000001
+        },
+        {
+          "assumed_transverse_force_N": 0.0001,
+          "x_deflection_mm": 0.073728,
+          "z_deflection_mm": 0.05120000000000001,
+          "x_deflection_over_span": 0.006144
+        }
+      ],
+      "ideal_euler_axial_buckling": [
+        {
+          "effective_length_factor": 0.5,
+          "weak_axis_load_N": 0.21418412328752945,
+          "about_x_load_N": 0.30842513753404244,
+          "about_z_load_N": 0.21418412328752945,
+          "effective_slenderness_weak_axis": 83.13843876330611
+        },
+        {
+          "effective_length_factor": 1.0,
+          "weak_axis_load_N": 0.05354603082188236,
+          "about_x_load_N": 0.07710628438351061,
+          "about_z_load_N": 0.05354603082188236,
+          "effective_slenderness_weak_axis": 166.27687752661222
+        },
+        {
+          "effective_length_factor": 2.0,
+          "weak_axis_load_N": 0.01338650770547059,
+          "about_x_load_N": 0.019276571095877652,
+          "about_z_load_N": 0.01338650770547059,
+          "effective_slenderness_weak_axis": 332.55375505322445
+        }
+      ]
+    },
+    {
+      "assumed_E_GPa": 2.0,
+      "assumed_unsupported_span_mm": 8.0,
+      "hypothetical_cantilever_end_stiffness_N_per_mm": {
+        "x_deflection": 0.00457763671875,
+        "z_deflection": 0.006591796874999999
+      },
+      "hypothetical_cantilever_end_displacements": [
+        {
+          "assumed_transverse_force_N": 1e-06,
+          "x_deflection_mm": 0.0002184533333333333,
+          "z_deflection_mm": 0.00015170370370370373,
+          "x_deflection_over_span": 2.7306666666666664e-05
+        },
+        {
+          "assumed_transverse_force_N": 1e-05,
+          "x_deflection_mm": 0.0021845333333333334,
+          "z_deflection_mm": 0.0015170370370370374,
+          "x_deflection_over_span": 0.00027306666666666667
+        },
+        {
+          "assumed_transverse_force_N": 0.0001,
+          "x_deflection_mm": 0.021845333333333335,
+          "z_deflection_mm": 0.015170370370370372,
+          "x_deflection_over_span": 0.002730666666666667
+        }
+      ],
+      "ideal_euler_axial_buckling": [
+        {
+          "effective_length_factor": 0.5,
+          "weak_axis_load_N": 0.48191427739694126,
+          "about_x_load_N": 0.6939565594515955,
+          "about_z_load_N": 0.48191427739694126,
+          "effective_slenderness_weak_axis": 55.42562584220408
+        },
+        {
+          "effective_length_factor": 1.0,
+          "weak_axis_load_N": 0.12047856934923531,
+          "about_x_load_N": 0.17348913986289888,
+          "about_z_load_N": 0.12047856934923531,
+          "effective_slenderness_weak_axis": 110.85125168440815
+        },
+        {
+          "effective_length_factor": 2.0,
+          "weak_axis_load_N": 0.03011964233730883,
+          "about_x_load_N": 0.04337228496572472,
+          "about_z_load_N": 0.03011964233730883,
+          "effective_slenderness_weak_axis": 221.7025033688163
+        }
+      ]
+    },
+    {
+      "assumed_E_GPa": 2.0,
+      "assumed_unsupported_span_mm": 4.0,
+      "hypothetical_cantilever_end_stiffness_N_per_mm": {
+        "x_deflection": 0.03662109375,
+        "z_deflection": 0.05273437499999999
+      },
+      "hypothetical_cantilever_end_displacements": [
+        {
+          "assumed_transverse_force_N": 1e-06,
+          "x_deflection_mm": 2.7306666666666664e-05,
+          "z_deflection_mm": 1.8962962962962966e-05,
+          "x_deflection_over_span": 6.826666666666666e-06
+        },
+        {
+          "assumed_transverse_force_N": 1e-05,
+          "x_deflection_mm": 0.00027306666666666667,
+          "z_deflection_mm": 0.00018962962962962968,
+          "x_deflection_over_span": 6.826666666666667e-05
+        },
+        {
+          "assumed_transverse_force_N": 0.0001,
+          "x_deflection_mm": 0.002730666666666667,
+          "z_deflection_mm": 0.0018962962962962965,
+          "x_deflection_over_span": 0.0006826666666666667
+        }
+      ],
+      "ideal_euler_axial_buckling": [
+        {
+          "effective_length_factor": 0.5,
+          "weak_axis_load_N": 1.927657109587765,
+          "about_x_load_N": 2.775826237806382,
+          "about_z_load_N": 1.927657109587765,
+          "effective_slenderness_weak_axis": 27.71281292110204
+        },
+        {
+          "effective_length_factor": 1.0,
+          "weak_axis_load_N": 0.48191427739694126,
+          "about_x_load_N": 0.6939565594515955,
+          "about_z_load_N": 0.48191427739694126,
+          "effective_slenderness_weak_axis": 55.42562584220408
+        },
+        {
+          "effective_length_factor": 2.0,
+          "weak_axis_load_N": 0.12047856934923531,
+          "about_x_load_N": 0.17348913986289888,
+          "about_z_load_N": 0.12047856934923531,
+          "effective_slenderness_weak_axis": 110.85125168440815
+        }
+      ]
+    },
+    {
+      "assumed_E_GPa": 70.0,
+      "assumed_unsupported_span_mm": 23.8,
+      "hypothetical_cantilever_end_stiffness_N_per_mm": {
+        "x_deflection": 0.006084830125821955,
+        "z_deflection": 0.008762155381183613
+      },
+      "hypothetical_cantilever_end_displacements": [
+        {
+          "assumed_transverse_force_N": 1e-06,
+          "x_deflection_mm": 0.00016434312533333335,
+          "z_deflection_mm": 0.0001141271703703704,
+          "x_deflection_over_span": 6.905173333333334e-06
+        },
+        {
+          "assumed_transverse_force_N": 1e-05,
+          "x_deflection_mm": 0.0016434312533333336,
+          "z_deflection_mm": 0.0011412717037037042,
+          "x_deflection_over_span": 6.905173333333334e-05
+        },
+        {
+          "assumed_transverse_force_N": 0.0001,
+          "x_deflection_mm": 0.016434312533333335,
+          "z_deflection_mm": 0.011412717037037041,
+          "x_deflection_over_span": 0.0006905173333333334
+        }
+      ],
+      "ideal_euler_axial_buckling": [
+        {
+          "effective_length_factor": 0.5,
+          "weak_axis_load_N": 1.9057410870862728,
+          "about_x_load_N": 2.7442671654042323,
+          "about_z_load_N": 1.9057410870862728,
+          "effective_slenderness_weak_axis": 164.89123688055713
+        },
+        {
+          "effective_length_factor": 1.0,
+          "weak_axis_load_N": 0.4764352717715682,
+          "about_x_load_N": 0.6860667913510581,
+          "about_z_load_N": 0.4764352717715682,
+          "effective_slenderness_weak_axis": 329.78247376111426
+        },
+        {
+          "effective_length_factor": 2.0,
+          "weak_axis_load_N": 0.11910881794289205,
+          "about_x_load_N": 0.17151669783776452,
+          "about_z_load_N": 0.11910881794289205,
+          "effective_slenderness_weak_axis": 659.5649475222285
+        }
+      ]
+    },
+    {
+      "assumed_E_GPa": 70.0,
+      "assumed_unsupported_span_mm": 12.0,
+      "hypothetical_cantilever_end_stiffness_N_per_mm": {
+        "x_deflection": 0.04747178819444445,
+        "z_deflection": 0.06835937499999999
+      },
+      "hypothetical_cantilever_end_displacements": [
+        {
+          "assumed_transverse_force_N": 1e-06,
+          "x_deflection_mm": 2.1065142857142856e-05,
+          "z_deflection_mm": 1.462857142857143e-05,
+          "x_deflection_over_span": 1.7554285714285713e-06
+        },
+        {
+          "assumed_transverse_force_N": 1e-05,
+          "x_deflection_mm": 0.00021065142857142858,
+          "z_deflection_mm": 0.00014628571428571433,
+          "x_deflection_over_span": 1.7554285714285715e-05
+        },
+        {
+          "assumed_transverse_force_N": 0.0001,
+          "x_deflection_mm": 0.002106514285714286,
+          "z_deflection_mm": 0.0014628571428571431,
+          "x_deflection_over_span": 0.00017554285714285715
+        }
+      ],
+      "ideal_euler_axial_buckling": [
+        {
+          "effective_length_factor": 0.5,
+          "weak_axis_load_N": 7.496444315063531,
+          "about_x_load_N": 10.794879813691484,
+          "about_z_load_N": 7.496444315063531,
+          "effective_slenderness_weak_axis": 83.13843876330611
+        },
+        {
+          "effective_length_factor": 1.0,
+          "weak_axis_load_N": 1.8741110787658828,
+          "about_x_load_N": 2.698719953422871,
+          "about_z_load_N": 1.8741110787658828,
+          "effective_slenderness_weak_axis": 166.27687752661222
+        },
+        {
+          "effective_length_factor": 2.0,
+          "weak_axis_load_N": 0.4685277696914707,
+          "about_x_load_N": 0.6746799883557177,
+          "about_z_load_N": 0.4685277696914707,
+          "effective_slenderness_weak_axis": 332.55375505322445
+        }
+      ]
+    },
+    {
+      "assumed_E_GPa": 70.0,
+      "assumed_unsupported_span_mm": 8.0,
+      "hypothetical_cantilever_end_stiffness_N_per_mm": {
+        "x_deflection": 0.16021728515625,
+        "z_deflection": 0.23071289062499997
+      },
+      "hypothetical_cantilever_end_displacements": [
+        {
+          "assumed_transverse_force_N": 1e-06,
+          "x_deflection_mm": 6.241523809523809e-06,
+          "z_deflection_mm": 4.3343915343915346e-06,
+          "x_deflection_over_span": 7.801904761904761e-07
+        },
+        {
+          "assumed_transverse_force_N": 1e-05,
+          "x_deflection_mm": 6.24152380952381e-05,
+          "z_deflection_mm": 4.334391534391535e-05,
+          "x_deflection_over_span": 7.801904761904762e-06
+        },
+        {
+          "assumed_transverse_force_N": 0.0001,
+          "x_deflection_mm": 0.000624152380952381,
+          "z_deflection_mm": 0.0004334391534391535,
+          "x_deflection_over_span": 7.801904761904762e-05
+        }
+      ],
+      "ideal_euler_axial_buckling": [
+        {
+          "effective_length_factor": 0.5,
+          "weak_axis_load_N": 16.866999708892944,
+          "about_x_load_N": 24.288479580805838,
+          "about_z_load_N": 16.866999708892944,
+          "effective_slenderness_weak_axis": 55.42562584220408
+        },
+        {
+          "effective_length_factor": 1.0,
+          "weak_axis_load_N": 4.216749927223236,
+          "about_x_load_N": 6.0721198952014594,
+          "about_z_load_N": 4.216749927223236,
+          "effective_slenderness_weak_axis": 110.85125168440815
+        },
+        {
+          "effective_length_factor": 2.0,
+          "weak_axis_load_N": 1.054187481805809,
+          "about_x_load_N": 1.5180299738003649,
+          "about_z_load_N": 1.054187481805809,
+          "effective_slenderness_weak_axis": 221.7025033688163
+        }
+      ]
+    },
+    {
+      "assumed_E_GPa": 70.0,
+      "assumed_unsupported_span_mm": 4.0,
+      "hypothetical_cantilever_end_stiffness_N_per_mm": {
+        "x_deflection": 1.28173828125,
+        "z_deflection": 1.8457031249999998
+      },
+      "hypothetical_cantilever_end_displacements": [
+        {
+          "assumed_transverse_force_N": 1e-06,
+          "x_deflection_mm": 7.801904761904761e-07,
+          "z_deflection_mm": 5.417989417989418e-07,
+          "x_deflection_over_span": 1.9504761904761904e-07
+        },
+        {
+          "assumed_transverse_force_N": 1e-05,
+          "x_deflection_mm": 7.801904761904762e-06,
+          "z_deflection_mm": 5.417989417989419e-06,
+          "x_deflection_over_span": 1.9504761904761905e-06
+        },
+        {
+          "assumed_transverse_force_N": 0.0001,
+          "x_deflection_mm": 7.801904761904762e-05,
+          "z_deflection_mm": 5.417989417989419e-05,
+          "x_deflection_over_span": 1.9504761904761905e-05
+        }
+      ],
+      "ideal_euler_axial_buckling": [
+        {
+          "effective_length_factor": 0.5,
+          "weak_axis_load_N": 67.46799883557178,
+          "about_x_load_N": 97.15391832322335,
+          "about_z_load_N": 67.46799883557178,
+          "effective_slenderness_weak_axis": 27.71281292110204
+        },
+        {
+          "effective_length_factor": 1.0,
+          "weak_axis_load_N": 16.866999708892944,
+          "about_x_load_N": 24.288479580805838,
+          "about_z_load_N": 16.866999708892944,
+          "effective_slenderness_weak_axis": 55.42562584220408
+        },
+        {
+          "effective_length_factor": 2.0,
+          "weak_axis_load_N": 4.216749927223236,
+          "about_x_load_N": 6.0721198952014594,
+          "about_z_load_N": 4.216749927223236,
+          "effective_slenderness_weak_axis": 110.85125168440815
+        }
+      ]
+    },
+    {
+      "assumed_E_GPa": 200.0,
+      "assumed_unsupported_span_mm": 23.8,
+      "hypothetical_cantilever_end_stiffness_N_per_mm": {
+        "x_deflection": 0.017385228930919868,
+        "z_deflection": 0.025034729660524613
+      },
+      "hypothetical_cantilever_end_displacements": [
+        {
+          "assumed_transverse_force_N": 1e-06,
+          "x_deflection_mm": 5.7520093866666676e-05,
+          "z_deflection_mm": 3.994450962962963e-05,
+          "x_deflection_over_span": 2.416810666666667e-06
+        },
+        {
+          "assumed_transverse_force_N": 1e-05,
+          "x_deflection_mm": 0.0005752009386666669,
+          "z_deflection_mm": 0.00039944509629629636,
+          "x_deflection_over_span": 2.4168106666666673e-05
+        },
+        {
+          "assumed_transverse_force_N": 0.0001,
+          "x_deflection_mm": 0.005752009386666668,
+          "z_deflection_mm": 0.003994450962962964,
+          "x_deflection_over_span": 0.00024168106666666673
+        }
+      ],
+      "ideal_euler_axial_buckling": [
+        {
+          "effective_length_factor": 0.5,
+          "weak_axis_load_N": 5.444974534532208,
+          "about_x_load_N": 7.8407633297263795,
+          "about_z_load_N": 5.444974534532208,
+          "effective_slenderness_weak_axis": 164.89123688055713
+        },
+        {
+          "effective_length_factor": 1.0,
+          "weak_axis_load_N": 1.361243633633052,
+          "about_x_load_N": 1.9601908324315949,
+          "about_z_load_N": 1.361243633633052,
+          "effective_slenderness_weak_axis": 329.78247376111426
+        },
+        {
+          "effective_length_factor": 2.0,
+          "weak_axis_load_N": 0.340310908408263,
+          "about_x_load_N": 0.4900477081078987,
+          "about_z_load_N": 0.340310908408263,
+          "effective_slenderness_weak_axis": 659.5649475222285
+        }
+      ]
+    },
+    {
+      "assumed_E_GPa": 200.0,
+      "assumed_unsupported_span_mm": 12.0,
+      "hypothetical_cantilever_end_stiffness_N_per_mm": {
+        "x_deflection": 0.13563368055555555,
+        "z_deflection": 0.1953125
+      },
+      "hypothetical_cantilever_end_displacements": [
+        {
+          "assumed_transverse_force_N": 1e-06,
+          "x_deflection_mm": 7.3728e-06,
+          "z_deflection_mm": 5.12e-06,
+          "x_deflection_over_span": 6.144e-07
+        },
+        {
+          "assumed_transverse_force_N": 1e-05,
+          "x_deflection_mm": 7.372800000000001e-05,
+          "z_deflection_mm": 5.1200000000000004e-05,
+          "x_deflection_over_span": 6.144000000000001e-06
+        },
+        {
+          "assumed_transverse_force_N": 0.0001,
+          "x_deflection_mm": 0.0007372800000000001,
+          "z_deflection_mm": 0.000512,
+          "x_deflection_over_span": 6.144000000000001e-05
+        }
+      ],
+      "ideal_euler_axial_buckling": [
+        {
+          "effective_length_factor": 0.5,
+          "weak_axis_load_N": 21.418412328752947,
+          "about_x_load_N": 30.842513753404244,
+          "about_z_load_N": 21.418412328752947,
+          "effective_slenderness_weak_axis": 83.13843876330611
+        },
+        {
+          "effective_length_factor": 1.0,
+          "weak_axis_load_N": 5.354603082188237,
+          "about_x_load_N": 7.710628438351061,
+          "about_z_load_N": 5.354603082188237,
+          "effective_slenderness_weak_axis": 166.27687752661222
+        },
+        {
+          "effective_length_factor": 2.0,
+          "weak_axis_load_N": 1.3386507705470592,
+          "about_x_load_N": 1.9276571095877653,
+          "about_z_load_N": 1.3386507705470592,
+          "effective_slenderness_weak_axis": 332.55375505322445
+        }
+      ]
+    },
+    {
+      "assumed_E_GPa": 200.0,
+      "assumed_unsupported_span_mm": 8.0,
+      "hypothetical_cantilever_end_stiffness_N_per_mm": {
+        "x_deflection": 0.45776367187499994,
+        "z_deflection": 0.6591796875
+      },
+      "hypothetical_cantilever_end_displacements": [
+        {
+          "assumed_transverse_force_N": 1e-06,
+          "x_deflection_mm": 2.1845333333333334e-06,
+          "z_deflection_mm": 1.517037037037037e-06,
+          "x_deflection_over_span": 2.730666666666667e-07
+        },
+        {
+          "assumed_transverse_force_N": 1e-05,
+          "x_deflection_mm": 2.184533333333334e-05,
+          "z_deflection_mm": 1.5170370370370371e-05,
+          "x_deflection_over_span": 2.7306666666666674e-06
+        },
+        {
+          "assumed_transverse_force_N": 0.0001,
+          "x_deflection_mm": 0.00021845333333333337,
+          "z_deflection_mm": 0.0001517037037037037,
+          "x_deflection_over_span": 2.730666666666667e-05
+        }
+      ],
+      "ideal_euler_axial_buckling": [
+        {
+          "effective_length_factor": 0.5,
+          "weak_axis_load_N": 48.19142773969413,
+          "about_x_load_N": 69.39565594515955,
+          "about_z_load_N": 48.19142773969413,
+          "effective_slenderness_weak_axis": 55.42562584220408
+        },
+        {
+          "effective_length_factor": 1.0,
+          "weak_axis_load_N": 12.047856934923532,
+          "about_x_load_N": 17.348913986289887,
+          "about_z_load_N": 12.047856934923532,
+          "effective_slenderness_weak_axis": 110.85125168440815
+        },
+        {
+          "effective_length_factor": 2.0,
+          "weak_axis_load_N": 3.011964233730883,
+          "about_x_load_N": 4.337228496572472,
+          "about_z_load_N": 3.011964233730883,
+          "effective_slenderness_weak_axis": 221.7025033688163
+        }
+      ]
+    },
+    {
+      "assumed_E_GPa": 200.0,
+      "assumed_unsupported_span_mm": 4.0,
+      "hypothetical_cantilever_end_stiffness_N_per_mm": {
+        "x_deflection": 3.6621093749999996,
+        "z_deflection": 5.2734375
+      },
+      "hypothetical_cantilever_end_displacements": [
+        {
+          "assumed_transverse_force_N": 1e-06,
+          "x_deflection_mm": 2.730666666666667e-07,
+          "z_deflection_mm": 1.8962962962962962e-07,
+          "x_deflection_over_span": 6.826666666666667e-08
+        },
+        {
+          "assumed_transverse_force_N": 1e-05,
+          "x_deflection_mm": 2.7306666666666674e-06,
+          "z_deflection_mm": 1.8962962962962964e-06,
+          "x_deflection_over_span": 6.826666666666669e-07
+        },
+        {
+          "assumed_transverse_force_N": 0.0001,
+          "x_deflection_mm": 2.730666666666667e-05,
+          "z_deflection_mm": 1.8962962962962963e-05,
+          "x_deflection_over_span": 6.826666666666668e-06
+        }
+      ],
+      "ideal_euler_axial_buckling": [
+        {
+          "effective_length_factor": 0.5,
+          "weak_axis_load_N": 192.7657109587765,
+          "about_x_load_N": 277.5826237806382,
+          "about_z_load_N": 192.7657109587765,
+          "effective_slenderness_weak_axis": 27.71281292110204
+        },
+        {
+          "effective_length_factor": 1.0,
+          "weak_axis_load_N": 48.19142773969413,
+          "about_x_load_N": 69.39565594515955,
+          "about_z_load_N": 48.19142773969413,
+          "effective_slenderness_weak_axis": 55.42562584220408
+        },
+        {
+          "effective_length_factor": 2.0,
+          "weak_axis_load_N": 12.047856934923532,
+          "about_x_load_N": 17.348913986289887,
+          "about_z_load_N": 12.047856934923532,
+          "effective_slenderness_weak_axis": 110.85125168440815
+        }
+      ]
+    }
+  ],
+  "hypothetical_dimension_loss": [
+    {
+      "hypothesis": "each_total_cross_section_dimension_reduced_by_0p02_mm",
+      "total_dimension_reduction_mm": 0.02,
+      "section": {
+        "width_x_mm": 0.23,
+        "thickness_z_mm": 0.27999999999999997,
+        "area_mm2": 0.0644,
+        "I_about_x_mm4": 0.00042074666666666653,
+        "I_about_z_mm4": 0.00028389666666666665,
+        "weak_I_mm4": 0.00028389666666666665,
+        "weak_radius_of_gyration_mm": 0.06639528095680697
+      },
+      "relative_loss": {
+        "area_mm2": 0.1413333333333333,
+        "I_about_x_mm4": 0.2520059259259261,
+        "I_about_z_mm4": 0.2732245333333333
+      },
+      "is_manufacturing_tolerance": false
+    },
+    {
+      "hypothesis": "each_opposed_outer_face_moves_inward_0p02_mm",
+      "total_dimension_reduction_mm": 0.04,
+      "section": {
+        "width_x_mm": 0.21,
+        "thickness_z_mm": 0.26,
+        "area_mm2": 0.0546,
+        "I_about_x_mm4": 0.00030758,
+        "I_about_z_mm4": 0.00020065499999999997,
+        "weak_I_mm4": 0.00020065499999999997,
+        "weak_radius_of_gyration_mm": 0.0606217782649107
+      },
+      "relative_loss": {
+        "area_mm2": 0.2719999999999999,
+        "I_about_x_mm4": 0.4531911111111111,
+        "I_about_z_mm4": 0.48632320000000007
+      },
+      "is_manufacturing_tolerance": false
+    }
+  ],
+  "hypothetical_section_increases": [
+    {
+      "assumed_section": {
+        "width_x_mm": 0.3,
+        "thickness_z_mm": 0.3,
+        "area_mm2": 0.09,
+        "I_about_x_mm4": 0.0006749999999999998,
+        "I_about_z_mm4": 0.0006749999999999998,
+        "weak_I_mm4": 0.0006749999999999998,
+        "weak_radius_of_gyration_mm": 0.08660254037844385
+      },
+      "weak_I_ratio_to_nominal": 1.7279999999999998,
+      "geometry_clearance_or_admission_verified": false
+    },
+    {
+      "assumed_section": {
+        "width_x_mm": 0.35,
+        "thickness_z_mm": 0.4,
+        "area_mm2": 0.13999999999999999,
+        "I_about_x_mm4": 0.0018666666666666669,
+        "I_about_z_mm4": 0.0014291666666666663,
+        "weak_I_mm4": 0.0014291666666666663,
+        "weak_radius_of_gyration_mm": 0.1010362971081845
+      },
+      "weak_I_ratio_to_nominal": 3.658666666666666,
+      "geometry_clearance_or_admission_verified": false
+    },
+    {
+      "assumed_section": {
+        "width_x_mm": 0.5,
+        "thickness_z_mm": 0.6,
+        "area_mm2": 0.3,
+        "I_about_x_mm4": 0.009,
+        "I_about_z_mm4": 0.0062499999999999995,
+        "weak_I_mm4": 0.0062499999999999995,
+        "weak_radius_of_gyration_mm": 0.14433756729740643
+      },
+      "weak_I_ratio_to_nominal": 16.0,
+      "geometry_clearance_or_admission_verified": false
+    }
+  ],
+  "span_reduction_ratios": [
+    {
+      "assumed_span_mm": 12.0,
+      "lateral_stiffness_ratio_same_support_type": 7.801662037037038,
+      "euler_load_ratio_same_K": 3.9336111111111114
+    },
+    {
+      "assumed_span_mm": 8.0,
+      "lateral_stiffness_ratio_same_support_type": 26.330609375,
+      "euler_load_ratio_same_K": 8.850625
+    },
+    {
+      "assumed_span_mm": 4.0,
+      "lateral_stiffness_ratio_same_support_type": 210.644875,
+      "euler_load_ratio_same_K": 35.4025
+    }
+  ],
+  "actual_load_or_boundary_condition_known": false,
+  "strength_qualified": false,
+  "physical_failure_inferred": false,
+  "new_fe_solve": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "source_sha256": "a99fa27912bd4993a3522d2e4fa271deec2b540f3927e5349db699b166f068b9"
+}
