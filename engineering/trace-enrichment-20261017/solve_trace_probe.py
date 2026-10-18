@@ -276,6 +276,6 @@ if __name__=='__main__':
     p.add_argument('--faces-per-patch',type=int,default=2);p.add_argument('--max-exchanges',type=int,default=30);p.add_argument('--max-points',type=int,default=5500)
     p.add_argument('--surface-loads',type=Path);p.add_argument('--surface-load-mode',choices=('discrete','consistent'),default='discrete');p.add_argument('--load-face-cap',type=int,default=0)
     p.add_argument('--case',type=int,default=6);p.add_argument('--gap-tolerance',type=float,default=TOL);p.add_argument('--frozen-selection',type=Path)
-    p.add_argument('--rank-fallback',choices=('svd','qr'),default='svd')
+    p.add_argument('--rank-fallback',choices=('svd','qr','qr_pivot'),default='svd')
     a=p.parse_args();assert 1<=a.faces_per_patch<=4 and a.max_exchanges>0 and a.max_points>=4000 and 0<=a.load_face_cap<=4
     raise SystemExit(0 if run(a) else 1)

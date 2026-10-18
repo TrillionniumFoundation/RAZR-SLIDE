@@ -81,7 +81,7 @@ def solve_force_qp(S,d,G,load,free_prefix=4,initial=None,tolerance=2e-10,max_ite
     gauges are not introduced into the elastic energy or equilibrium rows.
     """
     if type(factor_reuse) is not bool:raise ValueError('factor_reuse must be boolean')
-    if type(rank_fallback) is not str or rank_fallback not in ('svd','qr'):raise ValueError('rank_fallback must be svd or qr')
+    if type(rank_fallback) is not str or rank_fallback not in ('svd','qr','qr_pivot'):raise ValueError('rank_fallback must be svd, qr or qr_pivot')
     rank_diagnostics=[]
     S=_a(S,2,'S');d=_a(d,1,'d');G=_a(G,2,'G');load=_a(load,1,'load');m=len(d)
     if not m or S.shape!=(m,m) or G.shape!=(m,len(load)):raise ValueError('inconsistent dimensions')
@@ -127,7 +127,16 @@ def solve_force_qp(S,d,G,load,free_prefix=4,initial=None,tolerance=2e-10,max_ite
             err=np.max(abs(A@sol-rr),initial=0.)
             if err>tolerance*10*max(np.max(abs(rr),initial=0.),1.):raise np.linalg.LinAlgError('working-set residual')
         except (np.linalg.LinAlgError,LinAlgWarning):
-            if rank_fallback=='qr':
+            if rank_fallback=='qr_pivot':
+                from rank_fallback import release_dependent_force
+                pivot=release_dependent_force(A,Q,E,p,b,x,FF,free_prefix=free_prefix,tolerance=tolerance)
+                if pivot['accepted']:
+                    x=pivot.pop('scaled_forces');j=pivot['release'];F.remove(j)
+                    rank_diagnostics.append({'iteration':iteration,'kind':'null_direction_pivot',**pivot})
+                    history.append({'iteration':iteration,'rank_release':j,'free':len(F)})
+                    factor_cache=_WorkingFactor() if factor_reuse else None
+                    continue
+            if rank_fallback in ('qr','qr_pivot'):
                 from rank_fallback import solve_rank_fallback
                 sol,rank_record=solve_rank_fallback(A,rr,cutoff=1e-13,
                     residual_limit=tolerance*10*max(float(np.max(abs(rr),initial=0.)),1.))
@@ -164,5 +173,5 @@ def solve_force_qp(S,d,G,load,free_prefix=4,initial=None,tolerance=2e-10,max_ite
             'remaining_unsupported_rigid_directions':int(len(load)-rank),'errors':errors,'history':history,
             'force_space_complementary_energy_not_primal_stiffness':True,'regularization_added':False,'factor_reuse_enabled':factor_reuse,
             'factor_reuse_counts':factor_cache.counts if factor_reuse else {},
-            **({'rank_revealing_fallback':True,'rank_fallback_records':rank_diagnostics} if rank_fallback=='qr' else {}),
+            **({'rank_revealing_fallback':True,'rank_fallback_records':rank_diagnostics} if rank_fallback in ('qr','qr_pivot') else {}),
             'candidate_go':False,'fixture_fabrication_go':False,'manufacturing_go':False}
