@@ -1,0 +1,17 @@
+# Bearing-contact and frame-restraint follow-up
+
+Current product source remains at 79b73bb. Existing completed 1216 tests / 31 suites and every recorded source file are revalidated, not counted as another execution. The separate rigid head/nut comparator remains subject to the full body and bearing-domain audit. A finite-QP pass or declining negative-region count is not a final surface-contact pass. No old partial or incorrect-order field is promoted.
+
+The new frame experiment keeps the actual PR34 unloaded installation member load and entire selected elastic energy fixed, removes the 777 ideal fixed-face coordinates, and selects six pure coordinate gauges from the rigid-motion basis. Full residual, zero gauge-reaction, rigid null action, work/energy and alternate coordinate reexpression checks are required. The second coordinate gauge is not a second FEA solve. If no accepted linear report exists, the attempt is explicitly uncompleted; a timeout is not structural failure. A successful frozen-load field is still NOT a re-equilibrated contact or bolt solution.
+
+The separate service-resultant calculation sums the previously independently accepted nodal forces and moments. Added face bubbles do no work under rigid motion. Zero-external installation is self-equilibrated; the loaded case needs a physical counter-force and counter-moment. Removing the ideal frame fixture without supplying that external action has no static free-frame interpretation. Numerical gauges must not supply the missing load. This calculation does not identify a real grip/support surface or stiffness.
+
+No actual screw-head stiffness, material lot, torque, preload, service load rating or manufacturing precision is assigned. Rigid bearing planes are a conditional comparator, not verified M1 material behavior. Reference: GetFEM small sliding contact documentation distinguishes equivalent point/nodal forces from resolved pressure; SIMULIA rigid-part documentation describes rigidity as a modeling approximation. Neither package was installed or used by these probes. Original head/nut, volume/trace and fixture assumptions must remain explicit.
+
+Large live/partial bearing fields remain in persistent host storage and are hash-bound here, not copied wholesale into Git or the conversation. These diagnostics are additive evidence; historical CAD tests are not claimed freshly repeated.
+
+## Settled corrected comparator
+
+The original corrected source ended at its existing 3600-second limit (exit124). The final complete exchange is16:4515body contacts and1491bearing contacts;75body regions and1112bearing regions still exceed1e-7mm. Body minimum bound -1.5067284192759356e-7mm; bearing bound -1.1366238502892538e-5mm. The last finite QP is accepted, but this is not a whole-domain solution. No final independent bearing audit was started, and no physical infeasibility follows from timeout. All corrected partial arrays are retained in persistent storage with hashes, not copied as another large Git archive.
+
+The next numerical step should use the retained failing field to test a better spatial witness/initial-contact distribution and preserve exact force/moment, unilateral and full-field criteria. Do not merely restart the same limited run, loosen the gap tolerance, change real CAD, or replace missing physical restraint with numerical gauge reactions. A free-frame coupled model at zero external load and a physically balanced service problem are distinct follow-up tasks.
