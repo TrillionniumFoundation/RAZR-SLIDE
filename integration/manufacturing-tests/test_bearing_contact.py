@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from bearing_contact import (real,plane_basis,bearing_id,equilibrium_map,split_coordinates,gap,axial_adjustment,resultants)
+from bearing_contact import (real,plane_basis,bearing_id,equilibrium_map,split_coordinates,gap,axial_adjustment,resultants,bearing_coefficients)
 from installation_control import force_equalities
 from contact_dual_active import solve_force_qp
 
@@ -23,6 +23,32 @@ class BearingContactTests(unittest.TestCase):
         self.assertEqual(len(calls),1)
         payload=eval(compile(ast.Expression(calls[0].args[0]),'<tested dispatch>','eval'),{'locals':lambda:{'a':'args'},'ROOT':'root','dump':'writer'})
         self.assertEqual(payload,{'a':'args','ROOT':'root','dump':'writer'})
+    def test_projected_edge_order_matches_direct_basis(self):
+        from surface_load_functional import shape_values
+        from contact_patch_audit import evaluate
+        tri=np.array([[.1,.2],[1.7,.3],[.2,1.4]]);xy=np.array([[.2,.3],[.5,.4],[.3,.8]])
+        rng=np.random.default_rng(792)
+        for _ in range(20):
+            values=rng.normal(size=6);coeff=bearing_coefficients(tri,values,[.5,.5])
+            np.testing.assert_allclose(evaluate(coeff,xy,[.5,.5]),shape_values(tri,xy)[:,:6]@values,atol=1e-13)
+    def test_all_vertex_permutations_preserve_quadratic_field(self):
+        import itertools
+        from contact_patch_audit import evaluate
+        tri=np.array([[0.,0.],[2.,.1],[.2,1.6]]);xy=np.array([[.3,.3],[.4,.7]])
+        def f(p):return 1+2*p[:,0]+3*p[:,1]+4*p[:,0]**2+5*p[:,0]*p[:,1]+6*p[:,1]**2
+        for ids in itertools.permutations(range(3)):
+            v=tri[list(ids)];nodes=np.vstack((v,(v[0]+v[1])/2,(v[0]+v[2])/2,(v[1]+v[2])/2))
+            np.testing.assert_allclose(evaluate(bearing_coefficients(v,f(nodes),[0,0]),xy),f(xy),atol=1e-12)
+    def test_unconverted_edge_order_retains_negative_control(self):
+        from contact_patch_audit import triangle_coefficients,evaluate
+        tri=np.array([[0.,0.],[1.,0.],[0.,1.]]);values=np.array([0.,1.,2.,3.,4.,5.]);pt=np.array([[0.,.5]])
+        wrong=evaluate(triangle_coefficients(tri,values),pt)[0];right=evaluate(bearing_coefficients(tri,values,[0,0]),pt)[0]
+        self.assertEqual(right,4.);self.assertEqual(wrong,5.)
+    def test_edge_order_supports_multiple_fields(self):
+        from surface_load_functional import shape_values
+        from contact_patch_audit import evaluate
+        tri=np.array([[0.,0.],[1.,0.],[0.,1.]]);values=np.arange(18.).reshape(6,3);xy=np.array([[.2,.3]])
+        np.testing.assert_allclose(evaluate(bearing_coefficients(tri,values,[0,0]),xy),shape_values(tri,xy)[:,:6]@values,atol=1e-13)
     def test_head_nut_ids(self):
         self.assertEqual(bearing_id('panel',3),3);self.assertEqual(bearing_id('frame',0),4)
     def test_reject_unknown_body(self):

@@ -78,3 +78,12 @@ def resultants(forces,points,centers):
         if p.get('kind')=='bearing':
             k=bearing_id(p.get('body'),p.get('index'));rows[k]+=t[j]*plane_basis([p['xy']],c[p['index']])[0]
     return rows
+
+
+def bearing_coefficients(vertices, values, origin):
+    """Bridge load-face edge order 01,02,12 to audit order 01,12,20."""
+    from contact_patch_audit import triangle_coefficients
+    v=np.asarray(values)
+    if v.ndim not in (1,2) or v.shape[0]!=6 or v.dtype.kind not in 'fiu' or not np.isfinite(v).all():
+        raise ValueError('six finite projected face values required')
+    return triangle_coefficients(vertices,v[[0,1,2,3,5,4]],origin)

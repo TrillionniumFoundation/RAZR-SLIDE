@@ -12,7 +12,7 @@ from contact_exchange import ExactResponseCache,QuadraticGapBatch,select_violati
 from contact_patch_audit import triangle_coefficients,evaluate
 from cubic_trace_gap import audit_polygon
 from surface_load_functional import shape_values
-from bearing_contact import equilibrium_map,split_coordinates,axial_adjustment,resultants,bearing_id,plane_basis
+from bearing_contact import equilibrium_map,split_coordinates,axial_adjustment,resultants,bearing_id,plane_basis,bearing_coefficients
 from installation_control import force_equalities
 from contact_dual_active import solve_force_qp
 
@@ -68,7 +68,7 @@ def run(ctx):
     def bearing_audit(u,planes):
         coef=[]
         for f in faces:
-            d=u[f['offset']+np.array(f['dofs'])];c=-f['normal_sign']*triangle_coefficients(f['triangle_xy'],d,f['origin']);c[:3]-=planes[f['bearing']];coef.append(c)
+            d=u[f['offset']+np.array(f['dofs'])];c=-f['normal_sign']*bearing_coefficients(f['triangle_xy'],d,f['origin']);c[:3]-=planes[f['bearing']];coef.append(c)
         z=qb.extrema(coef);minimum=z['minimum'].copy();where=z['minimum_at'].copy();lower=minimum.copy();unresolved=[];cubic=[]
         for i,f in enumerate(faces):
             if f['trace_index'] is None:continue
