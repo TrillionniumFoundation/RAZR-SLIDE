@@ -15,6 +15,14 @@ class BearingContactTests(unittest.TestCase):
         G=equilibrium_map(np.zeros((36,0)),points,centers)
         S=np.diag(np.r_[np.full(4,5.),np.ones(32) if weights is None else weights])
         return centers,points,G,S
+    def test_optional_entrypoint_passes_globals_explicitly(self):
+        import ast
+        from pathlib import Path
+        source=(Path(__file__).resolve().parents[2]/'engineering/trace-enrichment-20261017/solve_trace_probe.py').read_text()
+        calls=[n for n in ast.walk(ast.parse(source)) if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='bearing_probe']
+        self.assertEqual(len(calls),1)
+        payload=eval(compile(ast.Expression(calls[0].args[0]),'<tested dispatch>','eval'),{'locals':lambda:{'a':'args'},'ROOT':'root','dump':'writer'})
+        self.assertEqual(payload,{'a':'args','ROOT':'root','dump':'writer'})
     def test_head_nut_ids(self):
         self.assertEqual(bearing_id('panel',3),3);self.assertEqual(bearing_id('frame',0),4)
     def test_reject_unknown_body(self):

@@ -230,7 +230,7 @@ def run(a):
             'negative_cells':bad,'unresolved_cells':unresolved,'enriched_common_cells':len(enriched_cells)}
     if getattr(a,'rigid_bearing_contact',False):
         from rigid_bearing_probe import run as bearing_probe
-        return bearing_probe(locals())
+        return bearing_probe({**locals(),'ROOT':ROOT,'dump':dump})
     frozen_u,frozen_f=cache.reconstruct(external,oldforce,rigid_displacement=R@np.array(seed['rigid']))
     fa=audit(frozen_u);dump(out/'old-tractions-new-space.json',{'minimum_gap_witness_mm':float(fa['minimum'].min()),'negative_cells':len(fa['negative_cells']),
         'unresolved_cells':fa['unresolved_cells'],'old_fixed_tractions_are_not_new_contact_solution':True})
