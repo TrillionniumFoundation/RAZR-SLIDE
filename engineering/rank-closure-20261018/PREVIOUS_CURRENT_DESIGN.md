@@ -1,0 +1,7 @@
+# Current research — consistent surface work, not hardware acceptance
+
+PR31 candidate integrates clipped prescribed affine surface work into both P2 and selected cubic modes. Current source/integration: surface_load_functional.py, consistent-load-20261017/project_surface_loads.py and optional existing solve_trace_probe.py branch. See engineering/consistent-load-20261017/DELIVERY_VERIFICATION.json.
+
+All1081 current tests/31suites passed locally at functional bff1ba6 with unchanged snapshots. Twelve source load vectors reproduce before reintegration; independent geometry/quadrature/shape reconstruction verifies new loads. Two original-case6 variants on identical86faces/258 new DOFs pass all5255 contact regions and independent complete retained/new/private field checks. They differ in prescribed load functionals, not geometry. Do not label this full mesh/interface convergence or real preload. Head circles remain explicitly256-sided on the planar mesh;128/512 comparisons concern the load projection only.
+
+The prescribed bolt pressure and weighted axial spring remain modelling assumptions, as do remote ideal fixation, neutralY, finite contact traces, uncovered strips and positive bolt branch. Next resolve joint displacement/load/contact discretization and real connection data, rather than treating a unit resultant as a qualified pressure or guessing an installation torque. Current CAD,3mm screws, hardware/material/load unknowns and locked dependencies are unchanged. candidate_go=false;fixture_fabrication_go=false;manufacturing_go=false.
