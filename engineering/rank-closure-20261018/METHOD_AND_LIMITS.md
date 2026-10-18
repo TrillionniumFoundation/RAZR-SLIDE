@@ -1,0 +1,11 @@
+# Rank-aware strict contact continuation
+
+The first failed active system and full force QP were captured after identity-checked replay. QR and SVD on that captured 2714-row system both estimated rank 2713 at cutoff 1e-13 and satisfied the original residual. This does not claim rank-estimator agreement on every matrix. The optional null-direction pivot changes only a feasible working-force vector, moves a unilateral force to zero, and retains that contact in the complete constraint/admission loop. Complete KKT and full-field checks remain required. Default SVD behavior remains.
+
+Two already running original case6 jobs were continued to their terminal states and independently audited. No duplicate baseline solve was launched in this follow-up. Earlier 256/512 polygon baselines at 1e-7 mm are distinguished from the new 2e-8 mm fields. Comparisons use the same frozen 86 faces, 258 coefficients, L2 energy and common 512-external-work observation. Four-cell changes are descriptive sensitivity, not continuum error bounds, pressure estimates or rated capacity.
+
+The normalized materials, prescribed affine bolt-pressure weighted displacement, synthetic initial spring force, positive tensile branch, ideal remote frame fixation, neutral Y mode and omitted edge strips remain assumptions. Point reactions are not area pressures, and numerical gap tolerances are not manufacturing precision.
+
+Full 1137 tests were completed at 4b180d5 before this follow-up. The raw report and all 4294 recorded source files were revalidated against the isolated delivery tree; they are not counted as another 1137 executions. Evidence-only additions follow that check. Large failed-system and recovered private arrays remain in durable host storage with exact hashes; they have not been copied to the conversation.
+
+An auxiliary next-capture wrapper collided with a local stiffness-variable name and exited 1 before replay. The original script and logs are retained. A renamed copy was syntax checked, not executed, because the live strict solves passed that replay point. Two evidence-preparation commands also failed due quoting/missing-file errors, changed no functional source, and retain their exit records. None is relabeled as a successful physical or numerical check. The earlier actual 2714 system is separately verified evidence.

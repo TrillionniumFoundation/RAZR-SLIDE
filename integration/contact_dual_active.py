@@ -73,7 +73,7 @@ class _WorkingFactor:
                 return solve(A,rhs,assume_a='gen',check_finite=False)
 
 
-def solve_force_qp(S,d,G,load,free_prefix=4,initial=None,tolerance=2e-10,max_iterations=5000, factor_reuse=False):
+def solve_force_qp(S,d,G,load,free_prefix=4,initial=None,tolerance=2e-10,max_iterations=5000, factor_reuse=False, rank_fallback='svd'):
     """Min .5*l*S*l-d*l, G.T*l=load, l[free_prefix:]>=0.
 
     Uses a feasible working-set method. Negative reactions release a contact;
@@ -81,6 +81,8 @@ def solve_force_qp(S,d,G,load,free_prefix=4,initial=None,tolerance=2e-10,max_ite
     gauges are not introduced into the elastic energy or equilibrium rows.
     """
     if type(factor_reuse) is not bool:raise ValueError('factor_reuse must be boolean')
+    if type(rank_fallback) is not str or rank_fallback not in ('svd','qr','qr_pivot'):raise ValueError('rank_fallback must be svd, qr or qr_pivot')
+    rank_diagnostics=[]
     S=_a(S,2,'S');d=_a(d,1,'d');G=_a(G,2,'G');load=_a(load,1,'load');m=len(d)
     if not m or S.shape!=(m,m) or G.shape!=(m,len(load)):raise ValueError('inconsistent dimensions')
     if type(free_prefix) is not int or not 0<=free_prefix<=m:raise ValueError('invalid free prefix')
@@ -125,7 +127,22 @@ def solve_force_qp(S,d,G,load,free_prefix=4,initial=None,tolerance=2e-10,max_ite
             err=np.max(abs(A@sol-rr),initial=0.)
             if err>tolerance*10*max(np.max(abs(rr),initial=0.),1.):raise np.linalg.LinAlgError('working-set residual')
         except (np.linalg.LinAlgError,LinAlgWarning):
-            sol,_,_,_=np.linalg.lstsq(A,rr,rcond=1e-13)
+            if rank_fallback=='qr_pivot':
+                from rank_fallback import release_dependent_force
+                pivot=release_dependent_force(A,Q,E,p,b,x,FF,free_prefix=free_prefix,tolerance=tolerance)
+                if pivot['accepted']:
+                    x=pivot.pop('scaled_forces');j=pivot['release'];F.remove(j)
+                    rank_diagnostics.append({'iteration':iteration,'kind':'null_direction_pivot',**pivot})
+                    history.append({'iteration':iteration,'rank_release':j,'free':len(F)})
+                    factor_cache=_WorkingFactor() if factor_reuse else None
+                    continue
+            if rank_fallback in ('qr','qr_pivot'):
+                from rank_fallback import solve_rank_fallback
+                sol,rank_record=solve_rank_fallback(A,rr,cutoff=1e-13,
+                    residual_limit=tolerance*10*max(float(np.max(abs(rr),initial=0.)),1.))
+                rank_diagnostics.append({'iteration':iteration,**rank_record})
+            else:
+                sol,_,_,_=np.linalg.lstsq(A,rr,rcond=1e-13)
             if np.max(abs(A@sol-rr),initial=0.)>tolerance*10*max(np.max(abs(rr),initial=0.),1.):
                 return {'passed':False,'status':'dependent_working_set','iterations':iteration+1,'history':history}
         trial=np.zeros(m);trial[FF]=sol[:len(F)];nu=sol[len(F):]
@@ -135,7 +152,8 @@ def solve_force_qp(S,d,G,load,free_prefix=4,initial=None,tolerance=2e-10,max_ite
             alpha,j=step;x=x+alpha*(trial-x);x[j]=0.;F.remove(j)
             history.append({'iteration':iteration,'release':int(j),'alpha':float(alpha),'free':len(F)});continue
         x=trial;gradient=Q@x-p-E.T@nu
-        outside=[i for i in range(free_prefix,m) if i not in F]
+        members=set(F)
+        outside=[i for i in range(free_prefix,m) if i not in members]
         j=min(outside,key=lambda j:gradient[j]) if outside else None
         if j is None or gradient[j]>=-tolerance*max(np.max(abs(p),initial=0.),1.):status='optimal';break
         F.append(j);history.append({'iteration':iteration,'admit':int(j),'free':len(F)})
@@ -155,4 +173,5 @@ def solve_force_qp(S,d,G,load,free_prefix=4,initial=None,tolerance=2e-10,max_ite
             'remaining_unsupported_rigid_directions':int(len(load)-rank),'errors':errors,'history':history,
             'force_space_complementary_energy_not_primal_stiffness':True,'regularization_added':False,'factor_reuse_enabled':factor_reuse,
             'factor_reuse_counts':factor_cache.counts if factor_reuse else {},
+            **({'rank_revealing_fallback':True,'rank_fallback_records':rank_diagnostics} if rank_fallback in ('qr','qr_pivot') else {}),
             'candidate_go':False,'fixture_fabrication_go':False,'manufacturing_go':False}

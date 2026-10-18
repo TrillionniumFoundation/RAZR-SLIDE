@@ -1,0 +1,787 @@
+{
+  "all_four_cells_independently_passed": true,
+  "same_energy_and_selected_trace_space": true,
+  "cases": [
+    {
+      "circle_sides": 256,
+      "gap_target_mm": 1e-07,
+      "source": "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/pr32-before-fix/p256-t100",
+      "audit": "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/pr32-before-fix/audit-p256-t100",
+      "prior_verified_baseline_not_rerun": true,
+      "case": 6,
+      "selected_faces": 86,
+      "new_trace_coefficients": 258,
+      "contact_constraints": 3987,
+      "new_exchange_solves": 4,
+      "independent_gap_bound_mm": -9.968542475916232e-08,
+      "all_regions_audited": 5255,
+      "common_512_external_observation": 0.02892098358000426,
+      "elastic_energy": 8.241807464848461e-08,
+      "bolt_forces": [
+        0.00017896121392523028,
+        0.00017878913409528753,
+        0.00017884174260892106,
+        0.00017884235762964367
+      ],
+      "patch_reactions": {
+        "pad0": {
+          "force": [
+            0.0,
+            0.0,
+            -0.00017932937542021205
+          ],
+          "moment": [
+            -0.008962465745508323,
+            -0.006239108493857868,
+            0.0
+          ],
+          "active_points": 669
+        },
+        "pad1": {
+          "force": [
+            0.0,
+            0.0,
+            -0.00017852001575164572
+          ],
+          "moment": [
+            -0.00893223709671537,
+            0.0062091770815342045,
+            0.0
+          ],
+          "active_points": 661
+        },
+        "pad2": {
+          "force": [
+            0.0,
+            0.0,
+            -0.00017872132395572082
+          ],
+          "moment": [
+            -0.012508932742169432,
+            -0.006219079145744627,
+            0.0
+          ],
+          "active_points": 664
+        },
+        "pad3": {
+          "force": [
+            0.0,
+            0.0,
+            -0.00017886373313150415
+          ],
+          "moment": [
+            -0.01252176883333232,
+            0.006224793582707427,
+            0.0
+          ],
+          "active_points": 649
+        },
+        "key_L_front": {
+          "force": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "moment": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "active_points": 0
+        },
+        "key_L_rear": {
+          "force": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "moment": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "active_points": 0
+        },
+        "key_R_front": {
+          "force": [
+            -6.907987489137282e-06,
+            0.0,
+            0.0
+          ],
+          "moment": [
+            0.0,
+            -1.3815974978274563e-05,
+            0.00011561654082265637
+          ],
+          "active_points": 15
+        },
+        "key_R_rear": {
+          "force": [
+            -3.092012510862697e-06,
+            0.0,
+            0.0
+          ],
+          "moment": [
+            0.0,
+            -6.184025021725394e-06,
+            7.338345917734319e-05
+          ],
+          "active_points": 11
+        }
+      },
+      "full_checks": {
+        "panel": {
+          "independent_load_error": 1.257843926672636e-19,
+          "retained_free_residual": 1.063174071350148e-14,
+          "new_trace_residual": 9.415348239587108e-17,
+          "gauge_or_fixture_reaction": 1.972434802294254e-15,
+          "relative_energy_error": 1.1643344672099818e-08,
+          "twice_strain_energy": 7.892183342206081e-08,
+          "internal_recovery": {
+            "unselected_parents": 57574,
+            "selected_parents": 46,
+            "total_parents": 57620,
+            "private_DOFs_recovered": 4321500,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 1.0658141036401503e-14,
+            "relative_integrated_energy_error": 1.2685392950022747e-08,
+            "private_file_sha256": "b4874ade0e20c5662b5ac2586523c5632e96af958f30bb4c095f2d73112d67b5"
+          }
+        },
+        "frame": {
+          "independent_load_error": 1.6559494118821572e-19,
+          "retained_free_residual": 6.591949208711867e-17,
+          "new_trace_residual": 6.790522517433592e-18,
+          "gauge_or_fixture_reaction": 2.182862724768403e-06,
+          "relative_energy_error": 1.174859038637168e-11,
+          "twice_strain_energy": 8.59143158749084e-08,
+          "internal_recovery": {
+            "unselected_parents": 79588,
+            "selected_parents": 40,
+            "total_parents": 79628,
+            "private_DOFs_recovered": 5972100,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 2.7755575615628914e-16,
+            "relative_integrated_energy_error": 1.861968105284011e-10,
+            "private_file_sha256": "03996b0806fcadac7ec354977bd11c02c461fa3dae50b052d3284971615cc02a"
+          }
+        }
+      },
+      "equilibrium_force_moment": [
+        -1.1036856766984885e-15,
+        6.624788345204671e-16,
+        -5.015189184514825e-15,
+        -2.700413474110989e-13,
+        1.3861880875171543e-13,
+        -4.546263959456575e-15
+      ],
+      "complementarity": 4.702919815766286e-16,
+      "solver_report_sha256": "dc9a8f1b4325d52fe0b1140c02884b54a1b72ecbb31d9945f564700ea86a6e2a",
+      "fields_sha256": "0db7e546bcf3da37c79248fa72b3e9287d777366e45a396ff32f2f80659dc1a8",
+      "independent_report_sha256": "43c85726b7e2e5f4d5088cbb286093d281412a43996496ef137a9b12815ba062"
+    },
+    {
+      "circle_sides": 256,
+      "gap_target_mm": 2e-08,
+      "source": "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/strict256-v2",
+      "audit": "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/audit256-v2",
+      "prior_verified_baseline_not_rerun": false,
+      "case": 6,
+      "selected_faces": 86,
+      "new_trace_coefficients": 258,
+      "contact_constraints": 5272,
+      "new_exchange_solves": 12,
+      "independent_gap_bound_mm": -1.9978631496852065e-08,
+      "all_regions_audited": 5255,
+      "common_512_external_observation": 0.02892094353992343,
+      "elastic_energy": 8.241356809903923e-08,
+      "bolt_forces": [
+        0.0001789638112682061,
+        0.00017879180725297812,
+        0.0001788443379265935,
+        0.00017884542062593324
+      ],
+      "patch_reactions": {
+        "pad0": {
+          "force": [
+            0.0,
+            0.0,
+            -0.0001793319276574408
+          ],
+          "moment": [
+            -0.008962592785638653,
+            -0.0062391972592751085,
+            0.0
+          ],
+          "active_points": 723
+        },
+        "pad1": {
+          "force": [
+            0.0,
+            0.0,
+            -0.00017852270064623905
+          ],
+          "moment": [
+            -0.008932371508364024,
+            0.006209270441699001,
+            0.0
+          ],
+          "active_points": 725
+        },
+        "pad2": {
+          "force": [
+            0.0,
+            0.0,
+            -0.00017872397153833962
+          ],
+          "moment": [
+            -0.012509117451552256,
+            -0.006219171123445765,
+            0.0
+          ],
+          "active_points": 713
+        },
+        "pad3": {
+          "force": [
+            0.0,
+            0.0,
+            -0.00017886677723169122
+          ],
+          "moment": [
+            -0.012521982279181174,
+            0.006224899879228998,
+            0.0
+          ],
+          "active_points": 721
+        },
+        "key_L_front": {
+          "force": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "moment": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "active_points": 0
+        },
+        "key_L_rear": {
+          "force": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "moment": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "active_points": 0
+        },
+        "key_R_front": {
+          "force": [
+            -6.908063321988521e-06,
+            0.0,
+            0.0
+          ],
+          "moment": [
+            0.0,
+            -1.3816126643977041e-05,
+            0.00011561763847178789
+          ],
+          "active_points": 13
+        },
+        "key_R_rear": {
+          "force": [
+            -3.0919366780115093e-06,
+            0.0,
+            0.0
+          ],
+          "moment": [
+            0.0,
+            -6.183873356023019e-06,
+            7.338236152821264e-05
+          ],
+          "active_points": 11
+        }
+      },
+      "full_checks": {
+        "panel": {
+          "independent_load_error": 1.257843926672636e-19,
+          "retained_free_residual": 1.092077546015896e-14,
+          "new_trace_residual": 8.244764598689183e-17,
+          "gauge_or_fixture_reaction": 1.968504569418994e-15,
+          "relative_energy_error": 1.4242051023946911e-08,
+          "twice_strain_energy": 7.89194487782827e-08,
+          "internal_recovery": {
+            "unselected_parents": 57574,
+            "selected_parents": 46,
+            "total_parents": 57620,
+            "private_DOFs_recovered": 4321500,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 7.105427357601002e-15,
+            "relative_integrated_energy_error": 1.6436569995112215e-08,
+            "private_file_sha256": "47209069a1afc5d119b3256fc12952f20ad9234cfc12e827212636e37a6ef30c"
+          }
+        },
+        "frame": {
+          "independent_load_error": 1.3976043629695956e-19,
+          "retained_free_residual": 7.979727989493313e-17,
+          "new_trace_residual": 6.262524860634869e-18,
+          "gauge_or_fixture_reaction": 2.18285456396607e-06,
+          "relative_energy_error": 2.180988611799024e-11,
+          "twice_strain_energy": 8.590768741979577e-08,
+          "internal_recovery": {
+            "unselected_parents": 79588,
+            "selected_parents": 40,
+            "total_parents": 79628,
+            "private_DOFs_recovered": 5972100,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 2.7755575615628914e-16,
+            "relative_integrated_energy_error": 1.993894211592787e-10,
+            "private_file_sha256": "397c8f81c8cac8c2fde67fc47ab66b432fe7f9b6e08d08213069d11c13e84692"
+          }
+        }
+      },
+      "equilibrium_force_moment": [
+        -1.1036525894739864e-15,
+        6.623235760282134e-16,
+        -5.016699920107035e-15,
+        -2.7017867670066714e-13,
+        1.3864059202257694e-13,
+        -4.565785527791945e-15
+      ],
+      "complementarity": 2.729391447020721e-16,
+      "solver_report_sha256": "ddcb896f06223da74b95ed099d7b227b3f1a07f06f248048219cb1447b7a9959",
+      "fields_sha256": "b006946d806e491f181ee76456b81c93a5748a5d85af809ab1e9912df9484a9c",
+      "independent_report_sha256": "9b14a7d316f76a5fd0f9f0ff0e8bb1e63b41c9c6efe5a77eaa7d560fd35411f6"
+    },
+    {
+      "circle_sides": 512,
+      "gap_target_mm": 1e-07,
+      "source": "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/pr32-before-fix/p512-t100",
+      "audit": "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/pr32-before-fix/audit-p512-t100",
+      "prior_verified_baseline_not_rerun": true,
+      "case": 6,
+      "selected_faces": 86,
+      "new_trace_coefficients": 258,
+      "contact_constraints": 3987,
+      "new_exchange_solves": 4,
+      "independent_gap_bound_mm": -9.968764332493734e-08,
+      "all_regions_audited": 5255,
+      "common_512_external_observation": 0.028920983486158434,
+      "elastic_energy": 8.241604337608516e-08,
+      "bolt_forces": [
+        0.0001789625012731754,
+        0.00017879042248370092,
+        0.00017884302923507612,
+        0.00017884364602493397
+      ],
+      "patch_reactions": {
+        "pad0": {
+          "force": [
+            0.0,
+            0.0,
+            -0.00017933066254218068
+          ],
+          "moment": [
+            -0.008962530095875774,
+            -0.006239153287874964,
+            0.0
+          ],
+          "active_points": 669
+        },
+        "pad1": {
+          "force": [
+            0.0,
+            0.0,
+            -0.00017852130466657157
+          ],
+          "moment": [
+            -0.008932301551247477,
+            0.006209221937043304,
+            0.0
+          ],
+          "active_points": 661
+        },
+        "pad2": {
+          "force": [
+            0.0,
+            0.0,
+            -0.00017872261080258188
+          ],
+          "moment": [
+            -0.012509022819598536,
+            -0.006219123931733942,
+            0.0
+          ],
+          "active_points": 664
+        },
+        "pad3": {
+          "force": [
+            0.0,
+            0.0,
+            -0.00017886502100555185
+          ],
+          "moment": [
+            -0.012521858989322694,
+            0.006224838404978968,
+            0.0
+          ],
+          "active_points": 649
+        },
+        "key_L_front": {
+          "force": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "moment": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "active_points": 0
+        },
+        "key_L_rear": {
+          "force": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "moment": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "active_points": 0
+        },
+        "key_R_front": {
+          "force": [
+            -6.9079874857874755e-06,
+            0.0,
+            0.0
+          ],
+          "moment": [
+            0.0,
+            -1.3815974971574951e-05,
+            0.00011561654075766487
+          ],
+          "active_points": 15
+        },
+        "key_R_rear": {
+          "force": [
+            -3.092012514212564e-06,
+            0.0,
+            0.0
+          ],
+          "moment": [
+            0.0,
+            -6.184025028425128e-06,
+            7.338345924233573e-05
+          ],
+          "active_points": 11
+        }
+      },
+      "full_checks": {
+        "panel": {
+          "independent_load_error": 1.4399560103323106e-19,
+          "retained_free_residual": 1.1259697059277929e-14,
+          "new_trace_residual": 8.834580202699773e-17,
+          "gauge_or_fixture_reaction": 1.9682606239301847e-15,
+          "relative_energy_error": 1.4731334159249245e-08,
+          "twice_strain_energy": 7.891816586033897e-08,
+          "internal_recovery": {
+            "unselected_parents": 57574,
+            "selected_parents": 46,
+            "total_parents": 57620,
+            "private_DOFs_recovered": 4321500,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 1.0658141036401503e-14,
+            "relative_integrated_energy_error": 1.638625482275775e-08,
+            "private_file_sha256": "9f736fe7041e17fd164d5aa08ce48b3d08eba2a528710bdb5d6c8d873818494e"
+          }
+        },
+        "frame": {
+          "independent_load_error": 1.6517142471458857e-19,
+          "retained_free_residual": 5.377642775528102e-17,
+          "new_trace_residual": 6.383645609008558e-18,
+          "gauge_or_fixture_reaction": 2.182862649792261e-06,
+          "relative_energy_error": 2.55518304080749e-11,
+          "twice_strain_energy": 8.591392089183134e-08,
+          "internal_recovery": {
+            "unselected_parents": 79588,
+            "selected_parents": 40,
+            "total_parents": 79628,
+            "private_DOFs_recovered": 5972100,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 2.7755575615628914e-16,
+            "relative_integrated_energy_error": 2.00090200547707e-10,
+            "private_file_sha256": "82e7096d1e6740e803dabb0816970e041daa252317b36f1d076efb5a9edadf6f"
+          }
+        }
+      },
+      "equilibrium_force_moment": [
+        -1.1035493043939806e-15,
+        6.624795161172919e-16,
+        -5.016967496327297e-15,
+        -2.6998908647508114e-13,
+        1.3863369670533164e-13,
+        -4.5674601119286666e-15
+      ],
+      "complementarity": 4.70358746612969e-16,
+      "solver_report_sha256": "2fa7376fd37f6d9ddc04a0292191279126356eac3705cf67d4c7268892fc793d",
+      "fields_sha256": "7e83d4ef6def828cd736ed8bb52607b33d266c5343efc42310449ee3b0c2d253",
+      "independent_report_sha256": "eedc5ba60dee734b6b4cc330ab466769f84d29bbc56e8410fc428f8cb064bb91"
+    },
+    {
+      "circle_sides": 512,
+      "gap_target_mm": 2e-08,
+      "source": "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/strict512-v2",
+      "audit": "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/audit512-v2",
+      "prior_verified_baseline_not_rerun": false,
+      "case": 6,
+      "selected_faces": 86,
+      "new_trace_coefficients": 258,
+      "contact_constraints": 5273,
+      "new_exchange_solves": 12,
+      "independent_gap_bound_mm": -1.998786615744018e-08,
+      "all_regions_audited": 5255,
+      "common_512_external_observation": 0.028920943512849857,
+      "elastic_energy": 8.241151708279659e-08,
+      "bolt_forces": [
+        0.0001789650986393371,
+        0.00017879307964808642,
+        0.0001788456858456915,
+        0.0001788467137595369
+      ],
+      "patch_reactions": {
+        "pad0": {
+          "force": [
+            0.0,
+            0.0,
+            -0.00017933321565187808
+          ],
+          "moment": [
+            -0.008962657197032304,
+            -0.0062392421036291485,
+            0.0
+          ],
+          "active_points": 723
+        },
+        "pad1": {
+          "force": [
+            0.0,
+            0.0,
+            -0.0001785239714713366
+          ],
+          "moment": [
+            -0.008932435042447425,
+            0.006209314683551961,
+            0.0
+          ],
+          "active_points": 724
+        },
+        "pad2": {
+          "force": [
+            0.0,
+            0.0,
+            -0.0001787253195505538
+          ],
+          "moment": [
+            -0.012509211807262369,
+            -0.006219217973630667,
+            0.0
+          ],
+          "active_points": 711
+        },
+        "pad3": {
+          "force": [
+            0.0,
+            0.0,
+            -0.00017886807121888314
+          ],
+          "moment": [
+            -0.012522072839995044,
+            0.006224944904214187,
+            0.0
+          ],
+          "active_points": 716
+        },
+        "key_L_front": {
+          "force": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "moment": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "active_points": 0
+        },
+        "key_L_rear": {
+          "force": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "moment": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "active_points": 0
+        },
+        "key_R_front": {
+          "force": [
+            -6.908063323492162e-06,
+            0.0,
+            0.0
+          ],
+          "moment": [
+            0.0,
+            -1.3816126646984323e-05,
+            0.00011561763855637636
+          ],
+          "active_points": 13
+        },
+        "key_R_rear": {
+          "force": [
+            -3.0919366765076697e-06,
+            0.0,
+            0.0
+          ],
+          "moment": [
+            0.0,
+            -6.183873353015339e-06,
+            7.338236144362016e-05
+          ],
+          "active_points": 11
+        }
+      },
+      "full_checks": {
+        "panel": {
+          "independent_load_error": 1.4399560103323106e-19,
+          "retained_free_residual": 1.113024331988316e-14,
+          "new_trace_residual": 7.357252386530551e-17,
+          "gauge_or_fixture_reaction": 1.966905371214578e-15,
+          "relative_energy_error": 1.4940058023005662e-08,
+          "twice_strain_energy": 7.89158138621178e-08,
+          "internal_recovery": {
+            "unselected_parents": 57574,
+            "selected_parents": 46,
+            "total_parents": 57620,
+            "private_DOFs_recovered": 4321500,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 1.8207657603852567e-14,
+            "relative_integrated_energy_error": 1.762711424756723e-08,
+            "private_file_sha256": "baed18e40645817edabbd2001844ccff5255059e28d41d0f6ea624445b91ad93"
+          }
+        },
+        "frame": {
+          "independent_load_error": 1.3976043629695956e-19,
+          "retained_free_residual": 6.505213034913027e-17,
+          "new_trace_residual": 6.132755111776325e-18,
+          "gauge_or_fixture_reaction": 2.182854237527897e-06,
+          "relative_energy_error": 1.3569628833747626e-12,
+          "twice_strain_energy": 8.590722030347538e-08,
+          "internal_recovery": {
+            "unselected_parents": 79588,
+            "selected_parents": 40,
+            "total_parents": 79628,
+            "private_DOFs_recovered": 5972100,
+            "selected_private_maps": "independent flat child mesh; separate arrays with reference coordinates",
+            "maximum_private_residual": 3.3306690738754696e-16,
+            "relative_integrated_energy_error": 1.7212461012783537e-10,
+            "private_file_sha256": "a8c8597978e664f4de440e693adc154012d4951bf8f0da09216f62fa377b7429"
+          }
+        }
+      },
+      "equilibrium_force_moment": [
+        -1.1034714303023924e-15,
+        6.622717018776389e-16,
+        -5.015041734657233e-15,
+        -2.700351399868541e-13,
+        1.3861819317519395e-13,
+        -4.569459956717134e-15
+      ],
+      "complementarity": 2.744958926750989e-16,
+      "solver_report_sha256": "254ff668a5d1c197bd95ad7222f26eaf40eb3a6e54485c6d0230f70f43dc84ee",
+      "fields_sha256": "edb18167190bae15dfd05747932123f2a7b1dd0024279c0014fac58b01cf2a75",
+      "independent_report_sha256": "d9cbbcd8a75efbed15033fe023756b9ce2d19306ac9ce790d2015017a2350f6f"
+    }
+  ],
+  "effects": [
+    {
+      "type": "stricter_contact_target",
+      "circle_sides": 256,
+      "relative_observation": -1.384464699105692e-06,
+      "relative_energy": -5.4679140038094154e-05
+    },
+    {
+      "type": "stricter_contact_target",
+      "circle_sides": 512,
+      "relative_observation": -1.382155921381134e-06,
+      "relative_energy": -5.492005079532625e-05
+    },
+    {
+      "type": "circle_refinement",
+      "target": 1e-07,
+      "relative_observation": -3.2449044562454787e-09,
+      "relative_energy": -2.4645957917845962e-05
+    },
+    {
+      "type": "circle_refinement",
+      "target": 2e-08,
+      "relative_observation": -9.361234010185626e-10,
+      "relative_energy": -2.4886875910734574e-05
+    }
+  ],
+  "interaction": {
+    "common_512_external_observation": {
+      "difference_of_differences": 6.677225439233325e-11,
+      "relative_to_256_original_target": 2.308782279400036e-09
+    },
+    "elastic_energy": {
+      "difference_of_differences": -1.9743843187672757e-14,
+      "relative_to_256_original_target": -2.395571999452887e-07
+    }
+  },
+  "unit_source_readback": {
+    "tested_commit": "4b180d500be53ad7ab07905d6adc35dfd8945be0",
+    "tests": 1137,
+    "suites": 31,
+    "prior_completed_run_not_rerun_this_turn": true,
+    "all_recorded_tested_files_match_now": 4294,
+    "complete_report_sha256": "61864b9fe75b3ce83b6602e99f6269b8d8fb73dff7365a3130eaaa0deb69d263",
+    "source_snapshot_unchanged": true,
+    "readback_only": true
+  },
+  "input_sha256": {
+    "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/pr32-before-fix/p256-t100/report.json": "dc9a8f1b4325d52fe0b1140c02884b54a1b72ecbb31d9945f564700ea86a6e2a",
+    "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/pr32-before-fix/p256-t100/full-fields.npz": "0db7e546bcf3da37c79248fa72b3e9287d777366e45a396ff32f2f80659dc1a8",
+    "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/pr32-before-fix/audit-p256-t100/report.json": "43c85726b7e2e5f4d5088cbb286093d281412a43996496ef137a9b12815ba062",
+    "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/strict256-v2/report.json": "ddcb896f06223da74b95ed099d7b227b3f1a07f06f248048219cb1447b7a9959",
+    "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/strict256-v2/full-fields.npz": "b006946d806e491f181ee76456b81c93a5748a5d85af809ab1e9912df9484a9c",
+    "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/audit256-v2/report.json": "9b14a7d316f76a5fd0f9f0ff0e8bb1e63b41c9c6efe5a77eaa7d560fd35411f6",
+    "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/pr32-before-fix/p512-t100/report.json": "2fa7376fd37f6d9ddc04a0292191279126356eac3705cf67d4c7268892fc793d",
+    "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/pr32-before-fix/p512-t100/full-fields.npz": "7e83d4ef6def828cd736ed8bb52607b33d266c5343efc42310449ee3b0c2d253",
+    "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/pr32-before-fix/audit-p512-t100/report.json": "eedc5ba60dee734b6b4cc330ab466769f84d29bbc56e8410fc428f8cb064bb91",
+    "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/strict512-v2/report.json": "254ff668a5d1c197bd95ad7222f26eaf40eb3a6e54485c6d0230f70f43dc84ee",
+    "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/strict512-v2/full-fields.npz": "edb18167190bae15dfd05747932123f2a7b1dd0024279c0014fac58b01cf2a75",
+    "/home/qian-qi/.local/share/razr-slide-evidence/rank-replay-20261018/audit512-v2/report.json": "d9cbbcd8a75efbed15033fe023756b9ce2d19306ac9ce790d2015017a2350f6f"
+  },
+  "script_sha256": "5a2c5ce1f343209f54db92f38a61765856ed8b007b41eb21bc0134d4fac30d2f",
+  "old_target_baselines_prior_465cefa_new_strict_4b180d5": true,
+  "one_normalized_physical_case_only": true,
+  "gap_targets_numerical_not_manufacturing_precision": true,
+  "sensitivity_not_continuum_error_or_capacity": true,
+  "ideal_remote_fixture_neutral_Y_prescribed_pressure_and_initial_spring_force_retained": true,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}
