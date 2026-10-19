@@ -152,16 +152,52 @@ class RoutingNativeTests(unittest.TestCase):
             self.assertAlmostEqual(b[1]-b[0],14.6,places=7)
             self.assertAlmostEqual(b[3]-b[2],35.,places=7)
 
-    def test_actual_free_ribbon_is_not_crossed_by_EP2_carrier_or_other_endpoint(self):
-        for slide,descent in ((0.,0.),(79.75,0.),(79.75,8.2)):
+    def test_full_EP2_material_pairs_preserve_OPEN_B_clamp_negative_control(self):
+        # Native report at 1c970e3 rejects OPEN: the retained free ribbon cuts
+        # both B clamp screws and the B lower jaw. Endpoint self-pair clearance
+        # does not imply that the complete moving material clears the endpoints.
+        open_b_overlaps = {
+            ('finite_material','B_M2_clamp_screw_1'): .314159265358978,
+            ('finite_material','B_M2_clamp_screw_2'): .314159265358978,
+            ('finite_material','B_lower_jaw'): 16.039734577831304,
+        }
+
+        def assert_pairs(check, expected_pairs, expected_overlaps):
+            self.assertTrue(check['all_pairs_evaluated'])
+            self.assertEqual(check['pair_count'],len(expected_pairs))
+            self.assertEqual(len(check['pairs']),len(expected_pairs))
+            rows = {(row['a'],row['b']):row for row in check['pairs']}
+            self.assertEqual(set(rows),expected_pairs)
+            self.assertFalse(any(row.get('evaluation_failed') for row in check['pairs']),check['failures'])
+            self.assertEqual(len(check['failures']),len(expected_overlaps))
+            self.assertEqual({(row['a'],row['b']) for row in check['failures']},set(expected_overlaps))
+            self.assertIs(check['no_positive_common_or_evaluation_error'],not bool(expected_overlaps))
+            for pair,row in rows.items():
+                self.assertIs(row['positive_material_common'],pair in expected_overlaps)
+                self.assertTrue(math.isfinite(row['common_mm3']))
+                self.assertGreaterEqual(row['common_mm3'],0.)
+                if pair in expected_overlaps:
+                    self.assertEqual(row['method'],'native_common')
+                    self.assertEqual(row['axis_gap_lower_mm'],0.)
+                    self.assertGreater(row['common_mm3'],r.TOL)
+                    self.assertAlmostEqual(row['common_mm3'],expected_overlaps[pair],places=6)
+                else:
+                    self.assertLessEqual(row['common_mm3'],r.TOL)
+
+        for pose,slide,descent in (('STOW',0.,0.),('PREDOCK',79.75,0.),('OPEN',79.75,8.2)):
             sections,_ = self.f.route_pose(self.cfg,slide,descent)
             material,_ = self.f.finite_material_solid(sections['corners'])
             placed = {e:self.f.place_endpoint(self.ep2[e],sections,e) for e in ('A','B')}
             for end in ('A','B'):
-                check = r.native_pair_checks({'finite_material':material},placed[end])
-                self.assertTrue(check['no_positive_common_or_evaluation_error'],check['failures'])
-            check = r.native_pair_checks(placed['A'],placed['B'])
-            self.assertTrue(check['no_positive_common_or_evaluation_error'],check['failures'])
+                with self.subTest(pose=pose,group='material_to_'+end+'_endpoint'):
+                    self.assertEqual(len(placed[end]),20)
+                    check = r.native_pair_checks({'finite_material':material},placed[end])
+                    expected = open_b_overlaps if (pose,end)==('OPEN','B') else {}
+                    assert_pairs(check,{('finite_material',name) for name in placed[end]},expected)
+            with self.subTest(pose=pose,group='A_to_B_endpoints'):
+                check = r.native_pair_checks(placed['A'],placed['B'])
+                self.assertEqual(check['pair_count'],400)
+                assert_pairs(check,{(a,b) for a in placed['A'] for b in placed['B']},{})
 
 
 if __name__ == '__main__':
