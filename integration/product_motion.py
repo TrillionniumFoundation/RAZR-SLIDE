@@ -243,10 +243,10 @@ def verify():
                              'B_material_not_covered_mm3':shell_uncovered}
                 allocation_paths.append(row)
     allocation_bad=[r for r in allocation_paths if r['common_mm3']>TOL]
-    # Preserve the rejected wide B allocation and its real midpoint witness.
-    prior_path=p.ROOT/'engineering/product-integration-20261018/mechanical/geometry-trial-r1.json'
+    # Reproduce the explicit wide-B negative control; historical r1 bytes were not restored.
+    prior_path=p.ROOT/'engineering/product-integration-20261018/mechanical/geometry-wide-B-negative-control.json'
     prior=p.load_config(prior_path);mid,_=p.product_scene(40.,0.,3.,3.);old_alloc=p.registered_components(prior,40.,0.)
-    allocation_negatives=[{'configuration_sha256':p.sha(prior_path),'pose':{'slide_mm':40.,'descent_mm':0.},'allocation':name,'obstacle':role,**p.strict_common(body,mid[role])}
+    allocation_negatives=[{'configuration_sha256':p.sha(prior_path),'historical_r1_bytes_restored':False,'negative_control_kind':'reconstructed 22-mm-wide B battery allocation','pose':{'slide_mm':40.,'descent_mm':0.},'allocation':name,'obstacle':role,**p.strict_common(body,mid[role])}
         for name,body in old_alloc.items() if name in ('B_BATTERY_ALLOCATION','B_ELECTRONICS_ALLOCATION') for role in mid if 'TELESCOPE_' in role]
     allocation_negatives=[r for r in allocation_negatives if r['common_mm3']>TOL]
     allpaths=controls+assembly+holds

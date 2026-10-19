@@ -1,0 +1,77 @@
+{
+  "schema": "razr-product-scene-metadata-correction-v2",
+  "recorded_at_utc": "2026-10-19T01:06:18.213000+00:00",
+  "comparison_source": {
+    "functional_snapshot_commit": "b6abcb6326439270ec137cdac00cd6dd7ade4ac7",
+    "restored_archive_sha256": "17d9f8c310a4fd4cdde677fca9c037c17b61a768942f4670184f0d350355c9c6",
+    "archive_bytes": 174191,
+    "origin": "Surviving tool response restored to restore/functional.b64; files compared directly with archive members in memory."
+  },
+  "changed_sources": {
+    "integration/product_assembly.py": {
+      "before_sha256": "22b9c6107305a5310e91a4b43f0adfbc73d7ef7cd966bbda137003104caf7fd4",
+      "after_sha256": "695073e313dae45edbb7cf8c305d31c167b4e24e1731bf8be8f1a91a77dbd77b"
+    },
+    "integration/product-study-tests/test_product_geometry.py": {
+      "before_sha256": "ef0587295cdbaa26f1ba0578fb50297b5411662eab47d1afb30a5b1fad5b3809",
+      "after_sha256": "2f116057679bb5cbfd1adcca191b8c96d5e817a34ed51f7c4905c4a1db99b6a7"
+    }
+  },
+  "product_API_correction": {
+    "scope": "Only the final metadata dictionary returned by product_scene changes. CAD construction, configuration, motion, tolerances, returned state and native_scene are unchanged.",
+    "current_expected_scene_participants": "len(state): 94 without OPEN accessories; 101 with both hold screws and the five-piece support assembly. Partial accessory configurations use their actual count.",
+    "current_material_geometry_changed": true,
+    "native_baseline_expected_scene_participants": 83,
+    "native_baseline_material_geometry_changed": false,
+    "native_scene_still_returns_expected_scene_participants": 83,
+    "native_scene_still_returns_material_geometry_changed": false
+  },
+  "existing_test_updates": {
+    "test_method_count_before": 14,
+    "test_method_count_after": 14,
+    "metadata_assertions_method": "test_equal_finished_rigid_envelopes_are_native_bounds",
+    "metadata_assertions": "Baseline len/count 83 and false; each sampled product count equals len(scene), lengths belong to {94, 101}, changed flag true and baseline provenance stays 83/false.",
+    "separate_fixture_packaging_repair": {
+      "method": "test_wide_B_battery_midpath_collision_is_preserved",
+      "before_path": "engineering/product-integration-20261018/mechanical/geometry-trial-r1.json",
+      "after_path": "engineering/product-integration-20261018/mechanical/geometry-wide-B-negative-control.json",
+      "local_variable_rename": "old -> negative",
+      "reason": "Original r1 fixture was absent from the functional bundle. The new file is an explicitly reconstructed negative control, not recovered historical r1 bytes.",
+      "fixture_sha256_at_recording": null,
+      "fixture_present_at_recording": false,
+      "fixture_semantics_or_negative_result_reexecuted_by_this_review": false,
+      "positive_overlap_assertion_and_current_clearance_assertion_unchanged": true,
+      "thresholds_unchanged": true,
+      "this_fixture_packaging_repair_is_separate_from_metadata_only_API_change": true
+    }
+  },
+  "static_verification": {
+    "whole_assembly_AST_identical_except_product_scene_final_return": true,
+    "returned_scene_expression_identical": true,
+    "native_scene_AST_identical": true,
+    "whole_test_AST_identical_after_removing_only_added_metadata_assertions_and_reverting_only_fixture_path_and_variable_name": true,
+    "test_method_names_order_and_count_identical": true,
+    "both_changed_Python_files_compile": true,
+    "CAD_or_test_execution_performed_by_this_review": false
+  },
+  "historical_artifact_status": {
+    "old_local_exports_lost_at_UTC_workspace_rollover": true,
+    "historical_archives_and_reports_not_claimed_preserved_in_recovered_repository": true,
+    "new_mechanical_and_FPC_evidence_must_be_regenerated_on_corrected_source": true,
+    "previously_observed_archive_SHA256_not_current_file_existence_evidence": {
+      "native-STOW.tar.gz": "5b342cf1a9a226959e122b110d3d3101baa6db512a066cc2641c4596343128aa",
+      "native-PREDOCK.tar.gz": "4c1211ea7329e39f2fb60bfc4b48225908232ac6917bb23b096ea5b2758b4be2",
+      "native-OPEN.tar.gz": "c41c3e41745cccaea1f5204cb957c57a54d483b410592ecb3a0edbb95651bdd5"
+    },
+    "previously_observed_assembly_source_sha256": "22b9c6107305a5310e91a4b43f0adfbc73d7ef7cd966bbda137003104caf7fd4",
+    "previous_695073_metadata_patch_was_recovered_exactly": true,
+    "prior_metadata_assertion_patch_SHA256_observation": "033736b06031b4d718a00f5c1de501556ffcc53961472268c027806c9596fb5e",
+    "current_test_has_root_rebuilt_assertions_and_separate_fixture_name_repair": true,
+    "old_manifest_field_explanation": "Previously observed mechanical manifests inherited expected_scene_participants=83 and material_geometry_changed=false from the native source. Those fields contradicted the exported modified candidate; product_changes and installed_mechanical_parts already described 94/94/101 mechanical parts, with complete exports 99/99/106. New exports must record the corrected API metadata and new execution/source identity."
+  },
+  "canonical_revalidation": "Root owns independent locked-environment re-execution and evidence regeneration; this static review does not assert a passing regression or reuse lost output bytes.",
+  "physical_product_qualification_changed": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}

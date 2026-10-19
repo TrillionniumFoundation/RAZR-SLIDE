@@ -55,6 +55,8 @@ def short_index(current: dict, manifest: dict) -> str:
         'in `tools/test_suites.json`. Completed execution reports retain their exact '
         'commit and scope in `design/current_product.json`; a configured count is not an execution result.',
         '',
+        current['verification_summary'],
+        '',
         'Accepted numerical evidence: [PR34 installation/service]('
         'engineering/installation-control-20261018/DELIVERY_VERIFICATION.json). '
         'Bearing research and the older spring experiment retain their own versioned '
@@ -94,6 +96,7 @@ def current_design(current: dict, manifest: dict) -> str:
         f"Configured unit manifest: **{manifest['minimum_total_tests']} tests / "
         f"{len(manifest['suites'])} suites**. Run `uv run --locked python -B tools/verify.py`. "
         'Run `python3 tools/sync_current_design.py --check` to check these entry points.', '',
+        current['verification_summary'], '',
     ])
     for run in current['completed_unit_runs']:
         parts.append(f"- {run['label']}: **{run['tests']} tests / {run['suites']} suites**, "

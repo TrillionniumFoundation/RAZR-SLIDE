@@ -11,6 +11,8 @@ The active milestone is a common assembly with flat OLED storage, complete termi
 
 Configured unit validation: **1240 tests / 32 suites** in `tools/test_suites.json`. Completed execution reports retain their exact commit and scope in `design/current_product.json`; a configured count is not an execution result.
 
+The first canonical 32-suite run executed 1220 of the configured 1240 tests and failed: five frozen input-register hashes, one missing ezdxf import and one missing negative-control fixture. Its raw failure is preserved. The frozen register is restored, an isolated dependency copy is verified, and a bounded 7-suite / 182-test repair run is being prepared. Native CAD, FPC and KiCad evidence retains separate execution identities.
+
 Accepted numerical evidence: [PR34 installation/service](engineering/installation-control-20261018/DELIVERY_VERIFICATION.json). Bearing research and the older spring experiment retain their own versioned results in the current product state; historical failures remain preserved.
 That FE evidence belongs to the original installation geometry. The newly modified product shells have not been structurally requalified.
 <!-- current-product:end -->

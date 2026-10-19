@@ -339,7 +339,11 @@ def product_scene(slide_mm=0.0,descent_mm=0.0,left_tab_mm=0.0,right_tab_mm=0.0,*
     if open_support:state['B_OPEN_DISPLAY_SUPPORT_ACCESSORY']=new['B_OPEN_DISPLAY_SUPPORT_ACCESSORY'].translate(b_transform(slide_mm,descent_mm))
     expected=94+(2 if open_hold else 0)+(5 if open_support else 0)
     if len(state)!=expected:raise ValueError('product candidate participant omission')
-    return state,{**meta,'product_changes':changes,'installed_mechanical_parts':expected,
+    return state,{**meta,
+                 'native_baseline_expected_scene_participants':meta['expected_scene_participants'],
+                 'native_baseline_material_geometry_changed':meta['material_geometry_changed'],
+                 'expected_scene_participants':len(state),'material_geometry_changed':True,
+                 'product_changes':changes,'installed_mechanical_parts':expected,
                  'OPEN_hold_screws_installed':open_hold,'OPEN_thread_retention_load_qualified':False,
                  'OPEN_display_support_insert_installed':open_support,
                  'loose_OPEN_accessories_have_onboard_storage':False,

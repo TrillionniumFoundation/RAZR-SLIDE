@@ -28,6 +28,8 @@ The implementation baseline is `a1b3cc1e0773446f2e36d0a607edf61211dd9919`. The d
 
 Configured unit manifest: **1240 tests / 32 suites**. Run `uv run --locked python -B tools/verify.py`. Run `python3 tools/sync_current_design.py --check` to check these entry points.
 
+The first canonical 32-suite run executed 1220 of the configured 1240 tests and failed: five frozen input-register hashes, one missing ezdxf import and one missing negative-control fixture. Its raw failure is preserved. The frozen register is restored, an isolated dependency copy is verified, and a bounded 7-suite / 182-test repair run is being prepared. Native CAD, FPC and KiCad evidence retains separate execution identities.
+
 - Accepted main baseline: **1187 tests / 31 suites**, functional commit `2303ac50f7f881ca243cc7315718aba99354fd6a`, scope `all_current_unit_suites_via_disjoint_canonical_selections`; [report](engineering/installation-control-20261018/local-unit1187.json.gz).
 - Separate PR35 draft: **1216 tests / 31 suites**, functional commit `79b73bb3720bcc5b4e9d86ea6d6c8864988cbd1d`, scope `all_current_unit_suites_via_disjoint_canonical_selections`; [report](https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/176df31ceb35bb3737d68030e60ba377665de210/engineering/bearing-followup-20261018/full-unit1216.json.gz).
 

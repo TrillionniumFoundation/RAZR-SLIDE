@@ -79,6 +79,16 @@ class ProductGeometryTests(unittest.TestCase):
 
     def test_equal_finished_rigid_envelopes_are_native_bounds(self):
         r=motion.finished_envelopes();self.assertTrue(r['equal_fixed_cabin_bounds'])
+        baseline,native_meta=p.native_scene()
+        self.assertEqual(len(baseline),83)
+        self.assertEqual(native_meta['expected_scene_participants'],83)
+        self.assertFalse(native_meta['material_geometry_changed'])
+        for scene,meta in (p.product_scene(),p.product_scene(79.75,8.2,3,3,open_hold=True,open_support=True)):
+            self.assertEqual(meta['expected_scene_participants'],len(scene))
+            self.assertIn(len(scene),(94,101))
+            self.assertTrue(meta['material_geometry_changed'])
+            self.assertEqual(meta['native_baseline_expected_scene_participants'],83)
+            self.assertFalse(meta['native_baseline_material_geometry_changed'])
         for kind in ('A_fixed_parts','B_fixed_body'):
             for a,b in zip(r[kind]['size_mm'],(73.99,94.25,9.15)):self.assertAlmostEqual(a,b,places=7)
         panel=p.product_templates()[0]['A_BACK_PANEL'];before=p.bounds(panel)
@@ -88,8 +98,8 @@ class ProductGeometryTests(unittest.TestCase):
             self.assertAlmostEqual(a,b,places=10,msg='STL mesh cache changed native geometric bounds')
 
     def test_wide_B_battery_midpath_collision_is_preserved(self):
-        old=p.load_config(p.ROOT/'engineering/product-integration-20261018/mechanical/geometry-trial-r1.json')
-        scene,_=p.product_scene(40,0,3,3);previous=p.registered_components(old,40,0)['B_BATTERY_ALLOCATION'];current=p.registered_components(slide_mm=40)['B_BATTERY_ALLOCATION']
+        negative=p.load_config(p.ROOT/'engineering/product-integration-20261018/mechanical/geometry-wide-B-negative-control.json')
+        scene,_=p.product_scene(40,0,3,3);previous=p.registered_components(negative,40,0)['B_BATTERY_ALLOCATION'];current=p.registered_components(slide_mm=40)['B_BATTERY_ALLOCATION']
         tracks=[body for name,body in scene.items() if 'TELESCOPE_' in name]
         self.assertTrue(any(p.strict_common(previous,b)['common_mm3']>1e-7 for b in tracks))
         self.assertTrue(all(p.strict_common(current,b)['common_mm3']<=1e-7 for b in tracks))
