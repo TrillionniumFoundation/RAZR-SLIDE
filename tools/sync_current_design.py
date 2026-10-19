@@ -39,7 +39,7 @@ def short_index(current: dict, manifest: dict) -> str:
     groups = len(manifest['suites'])
     return '\n'.join([
         START,
-        '## Current product integration — 2026-10-18',
+        '## Current product integration — ' + current.get('last_update_date', '2026-10-18'),
         '',
         '[Current design](CURRENT_DESIGN.md) · '
         '[Machine-readable product state](design/current_product.json) · '
@@ -136,7 +136,7 @@ def render_status(status: dict, current: dict, manifest: dict) -> dict:
     result = copy.deepcopy(status)
     result['current_product_state'] = 'design/current_product.json'
     result['current_production_review'] = 'CURRENT_DESIGN.md'
-    result['current_execution_summary'] = 'engineering/product-integration-20261018/DELIVERY_VERIFICATION.json'
+    result['current_execution_summary'] = current.get('current_execution_summary', 'engineering/product-integration-20261018/DELIVERY_VERIFICATION.json')
     result['current_product_stage'] = current['stage_summary']
     result['current_unit_tests'] = {
         'manifest': 'tools/test_suites.json',

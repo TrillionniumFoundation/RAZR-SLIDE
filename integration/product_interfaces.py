@@ -6,7 +6,9 @@ identities must never be promoted to Motorola connector pin assignments.
 from __future__ import annotations
 
 import argparse
+import copy
 import csv
+import datetime as dt
 import hashlib
 import json
 import math
@@ -48,7 +50,7 @@ def positive(value, name):
 def validate_pinmap(rows):
     if not isinstance(rows, list) or not rows:
         raise ValueError('a physical pin map must contain terminal rows')
-    sources, sinks = set(), set()
+    sources, sinks, terminal_nets = set(), set(), {}
     for row in rows:
         required = ('net', 'source_connector', 'source_pin', 'sink_connector', 'sink_pin', 'evidence')
         if any(not isinstance(row.get(k), str) or not row[k].strip() for k in required):
@@ -57,6 +59,12 @@ def validate_pinmap(rows):
         b = (row['sink_connector'], row['sink_pin'])
         if a in sources or b in sinks:
             raise ValueError('a physical terminal is assigned more than once')
+        if a == b:
+            raise ValueError('a terminal map cannot connect a physical pin to itself')
+        for terminal in (a, b):
+            if terminal in terminal_nets and terminal_nets[terminal] != row['net']:
+                raise ValueError('a physical terminal has contradictory net identities')
+            terminal_nets[terminal] = row['net']
         if row.get('identity_kind') != 'observed_physical_terminal':
             raise ValueError('software configuration or owned coupon IDs are not OEM terminals')
         sources.add(a)
@@ -83,6 +91,108 @@ def evidence_record(reference,schema,root=ROOT):
     return record
 
 
+def interface_contract_sha256(data):
+    """Hash design semantics without circular evidence pointers or observations.
+
+    Exact source JSON is archived by the importer too. Donor values and terminal
+    rows are compared directly to their records, not silently removed from checks.
+    """
+    value = copy.deepcopy(data)
+    value.pop('donor_evidence', None)
+    value.pop('donor', None)
+    value.get('architecture_decision', {}).pop('actual_donor_selected', None)
+    for row in value.get('interfaces', []):
+        for key in ('actual_pinmap', 'terminal_measurement_record', 'extension_approved'):
+            row.pop(key, None)
+    return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':'),
+                                     allow_nan=False).encode()).hexdigest()
+
+
+def observed_record_compatible(record, data, root=ROOT):
+    """A versioned physical record must identify this specimen and design inputs."""
+    if record.get('is_template') is not False or record.get('physical_execution_occurred') is not True:
+        return False
+    if not isinstance(record.get('specimen_id'), str) or not record['specimen_id'].strip():
+        return False
+    try:
+        stamp = dt.datetime.fromisoformat(record['recorded_at_utc'].replace('Z', '+00:00'))
+        if stamp.tzinfo is None:
+            return False
+        binding = record['design_binding']
+        if not re.fullmatch(r'[a-f0-9]{40}', binding.get('git_commit', '')):
+            return False
+        files = binding['files_sha256']
+        if any(not isinstance(files.get(name), str) or not re.fullmatch(r'[a-f0-9]{64}', files[name])
+               for name in ('design/product_geometry.json', 'design/product_interfaces.json')):
+            return False
+        geometry = 'design/product_geometry.json'
+        if files.get(geometry) != sha(Path(root)/geometry):
+            return False
+        if binding.get('interface_contract_sha256') != interface_contract_sha256(data):
+            return False
+        if any(row.get('kind') not in ('manufacturer_document', 'design_input')
+               and row.get('specimen_id') != record['specimen_id'] for row in record['observations']):
+            return False
+        # The exact JSON used for each observation is retained, even if adding
+        # evidence pointers later changes the current interface JSON bytes.
+        inputs = {row.get('input_design_path'): row.get('sha256')
+                  for row in record['observations'] if row.get('input_design_path')}
+        if not all(inputs.get(name) == files.get(name)
+                   for name in ('design/product_geometry.json', 'design/product_interfaces.json')):
+            return False
+        original = next(row for row in record['observations']
+                        if row.get('input_design_path') == 'design/product_interfaces.json')
+        archived = json.loads((Path(root)/original['path']).read_text())
+        return interface_contract_sha256(archived) == binding['interface_contract_sha256']
+    except (KeyError, TypeError, ValueError, OSError):
+        return False
+
+
+def observed_field_bound(field, observations, physical_only=False):
+    if not isinstance(field, dict) or not identity_value_known(field.get('value')):
+        return False
+    if not isinstance(field.get('locator'), str) or not field['locator'].strip():
+        return False
+    ids = field.get('observation_ids')
+    if not isinstance(ids, list) or not ids or not all(isinstance(key, str) for key in ids) or len(ids) != len(set(ids)):
+        return False
+    kinds = {'physical_label', 'physical_measurement', 'manufacturer_document'}
+    if not physical_only:
+        kinds |= {'device_readback', 'instrument_log'}
+    return all(key in observations and observations[key].get('kind') in kinds for key in ids)
+
+
+def readback_trace_consistent(readback):
+    """Check that declared properties and final connection exist in the raw trace."""
+    digest = readback.get('selected_serial_sha256', '')
+    if not isinstance(digest, str) or not re.fullmatch(r'[a-f0-9]{64}', digest):
+        return False
+    collector = readback.get('collector_sha256')
+    if not isinstance(collector, str) or not re.fullmatch(r'[a-f0-9]{64}', collector):
+        return False
+    records, properties = readback.get('command_records'), readback.get('properties')
+    if not isinstance(records, list) or not records or not isinstance(properties, dict):
+        return False
+    selected = 'sha256:'+digest
+    seen = {}
+    for row in records:
+        if not isinstance(row, dict) or not isinstance(row.get('stdout_text'), str):
+            return False
+        args = row.get('args', [])
+        if not isinstance(args, list):
+            return False
+        if row.get('returncode') == 0 and len(args) == 5 and args[:4] == ['-s', selected, 'shell', 'getprop']:
+            seen[args[4]] = row.get('stdout_text', '').strip() or None
+    if not properties.get('ro.product.model') or not properties.get('ro.build.fingerprint'):
+        return False
+    if any(key not in seen or seen[key] != value for key, value in properties.items()):
+        return False
+    last = records[-1]
+    inventory = [line.split() for line in last.get('stdout_text', '').splitlines()]
+    return (last.get('args') == ['devices', '-l'] and last.get('returncode') == 0
+            and any(len(row) >= 2 and row[:2] == [selected, 'device'] for row in inventory))
+
+
 def identity_value_known(value):
     return (isinstance(value,str) and bool(value.strip())) or (isinstance(value,list) and bool(value) and all(isinstance(x,str) and bool(x.strip()) for x in value))
 
@@ -91,20 +201,94 @@ def donor_identity_bound(data,root=ROOT):
     if any(not identity_value_known(v) for v in data['donor'].values()):return False
     evidence=data.get('donor_evidence')
     if not isinstance(evidence,dict):return False
-    record=evidence_record(evidence.get('identity_record'),'razr-observed-donor-identity-v1',root)
-    return record is not None and record.get('donor')==data['donor']
+    # v1 is still readable with evidence_record(..., v1), but has no specimen or
+    # design binding and cannot establish a new physical selection.
+    record=evidence_record(evidence.get('identity_record'),'razr-observed-donor-identity-v2',root)
+    if record is None or record.get('donor') != data['donor'] or not observed_record_compatible(record, data, root):
+        return False
+    observations = {r.get('id'): r for r in record['observations']}
+    if len(observations) != len(record['observations']):
+        return False
+    physical = {'mainboard_revision', 'display_module_part', 'display_module_revision',
+                'touch_revision', 'pack_A_label', 'pack_B_label'}
+    fields = record.get('field_evidence', {})
+    if not isinstance(fields, dict):
+        return False
+    if any(not observed_field_bound(fields.get(key), observations, key in physical)
+           or fields[key]['value'] != value for key, value in data['donor'].items()):
+        return False
+    capture = next((r for r in record['observations']
+                    if r.get('id') == record.get('device_readback_observation')), None)
+    if capture is None or capture.get('kind') != 'device_readback':
+        return False
+    try:
+        readback = json.loads((Path(root)/capture['path']).read_text())
+    except (ValueError, OSError):
+        return False
+    inventory = record.get('part_inventory')
+    if not isinstance(inventory, list) or not inventory:
+        return False
+    part_ids, roles = set(), set()
+    for part in inventory:
+        if (not isinstance(part, dict) or not isinstance(part.get('part_id'), str) or not part['part_id'].strip()
+            or part['part_id'] in part_ids or not observed_field_bound(part.get('label'), observations, True)):
+            return False
+        part_ids.add(part['part_id'])
+        declared = part.get('roles', [part.get('role')])
+        if not isinstance(declared, list) or not declared or not all(isinstance(r, str) and r for r in declared):
+            return False
+        roles.update(declared)
+    if not {'mainboard', 'display', 'touch', 'COF', 'pack_A', 'pack_B', 'USB_port_board'} <= roles:
+        return False
+    return (readback.get('schema') == 'razr-donor-readback-v2'
+            and readback_trace_consistent(readback)
+            and readback.get('specimen_id') == record['specimen_id']
+            and readback.get('selected_donor_connected') is True
+            and readback.get('software_identity_complete') is True
+            and readback.get('design_inputs_unchanged') is True
+            and readback.get('selected_serial_sha256') == record.get('selected_serial_sha256')
+            and readback.get('properties', {}).get('ro.product.model') == data['donor']['model']
+            and readback.get('design_binding', {}).get('files_sha256') == record['design_binding']['files_sha256'])
 
 
 def terminal_evidence_bound(row,data,root=ROOT):
     if row.get('actual_pinmap') is None or not donor_identity_bound(data,root):return False
-    record=evidence_record(row.get('terminal_measurement_record'),'razr-physical-terminal-measurement-v1',root)
-    if record is None or record.get('interface_id')!=row['id'] or record.get('donor')!=data['donor']:return False
+    record=evidence_record(row.get('terminal_measurement_record'),'razr-physical-terminal-measurement-v2',root)
+    identity=evidence_record(data['donor_evidence']['identity_record'],'razr-observed-donor-identity-v2',root)
+    if (record is None or record.get('interface_id')!=row['id'] or record.get('donor')!=data['donor']
+        or not observed_record_compatible(record, data, root)
+        or record.get('specimen_id') != identity.get('specimen_id')
+        or record.get('donor_identity_record') != data['donor_evidence']['identity_record']):return False
     fields=('net','source_connector','source_pin','sink_connector','sink_pin')
     expected=[{k:r[k] for k in fields} for r in row['actual_pinmap']]
-    return record.get('terminal_rows')==expected
+    observed = record.get('terminal_rows', [])
+    if not isinstance(observed, list) or [{k:r.get(k) for k in fields} for r in observed] != expected:
+        return False
+    observations = {r.get('id'): r for r in record['observations']}
+    connectors = record.get('connectors', {})
+    if not isinstance(connectors, dict) or not connectors:
+        return False
+    parts = {part['part_id'] for part in identity['part_inventory']}
+    used = {name: set() for name in connectors}
+    for terminal in observed:
+        if not observed_field_bound({'value': terminal.get('net'),
+                                     'locator': terminal.get('locator'),
+                                     'observation_ids': terminal.get('observation_ids')}, observations, True):
+            return False
+        for end in ('source', 'sink'):
+            connector = connectors.get(terminal[end+'_connector'], {})
+            if (connector.get('part_id') not in parts
+                or terminal[end+'_pin'] not in connector.get('observed_pins', [])
+                or not observed_field_bound(connector.get('label'), observations, True)):
+                return False
+            used[terminal[end+'_connector']].add(terminal[end+'_pin'])
+    if any(set(connector.get('observed_pins', [])) != used[name]
+           for name, connector in connectors.items()):
+        return False
+    return True
 
 
-def validate_config(data):
+def validate_config(data, root=ROOT):
     if data.get('schema') != 'razr-product-interfaces-v1':
         raise ValueError('unknown product interface schema')
     mode = data.get('architecture_decision', {}).get('mode')
@@ -126,11 +310,11 @@ def validate_config(data):
             raise ValueError('the required cross-cabin copper USB path cannot disappear')
         if row.get('actual_pinmap') is not None:
             validate_pinmap(row['actual_pinmap'])
-        if row.get('extension_approved') and not terminal_evidence_bound(row,data):
+        if row.get('extension_approved') and not terminal_evidence_bound(row,data,root):
             raise ValueError('extension approval cannot precede a physical terminal map')
     donor = data['donor']
     if data['architecture_decision'].get('actual_donor_selected'):
-        if not donor_identity_bound(data):
+        if not donor_identity_bound(data,root):
             raise ValueError('selected donor needs an actual identified device and evidence')
     coupon = data['coupon']
     if coupon.get('product_signal_or_power_assignment') is not None:
@@ -290,7 +474,7 @@ def cell_budget(data):
 
 def inspect(config=None, root=ROOT):
     config = config or load_config()
-    validate_config(config)
+    validate_config(config, root)
     before = verified_sources(config, root)
     power, endpoint = bind_power_chain(root), bind_endpoint(root)
     interfaces = []

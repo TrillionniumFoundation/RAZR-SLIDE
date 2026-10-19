@@ -6,6 +6,8 @@
 
 每次制作保留所用 Git commit、`design/product_geometry.json` 和 `design/product_interfaces.json` 的 SHA256，以及实际加工文件的 SHA256。使用本目录的 `measurement-record.template.json` 复制出新的记录；模板中的 `null` 表示尚未观察，不是零值或通过。将照片、尺寸表、仪器输出和循环日志放在同一个样件记录目录，原始文件与分析结论一同保存。
 
+本轮后续已增加可执行的 [采集与证据导入流程](IMPORT_EVIDENCE.md)。`tools/read_donor.py` v2 保存精确设计输入、Git 与工作区差异、命令原始轨迹和失败；`import_hardware_evidence.py` 将真实标签、端子 CSV、尺寸 CSV 和手机功能日志归档并绑定同一实物。上述旧模板保留作历史记录入口，不能直接作为新 v2 物理绑定使用。
+
 加工时采用当前 `../mechanical/` 与 `../electrical/` 的交付说明和文件索引。历史零件、失败试验和当前候选具有不同身份，不把早期 STEP 文件与新槽窗、新侧边操作件混装。尺寸或材料有任何实物偏差，都在样件记录中填写实际值；修改 CAD 后产生新的设计版本，不覆盖先前样件的记录。
 
 ## 2. 无电机构、尺寸替身与装配
@@ -35,10 +37,10 @@ OLED 几何研究使用恒长材料带和规定的储屏路径。先以可标记
 连接已允许 ADB 调试的 donor 后，可以运行：
 
 ```bash
-python3 tools/read_donor.py --output /tmp/razr-donor-readback-NEW.json
+python3 tools/read_donor.py --specimen-id YOUR-ACTUAL-SPECIMEN --output /tmp/razr-donor-readback-NEW.json
 ```
 
-多台 Motorola 设备连接时，通过 `--serial` 明确选择。工具仅采集软件身份，不修改设备设置；输出保存序列号摘要，不保存原始序列号。返回码 `2` 表示没有选到已连接的 Motorola donor，记录仍会保存。软件型号、SKU 和主板属性不代替拆机标签、PCB 修订号、屏幕料号或电芯型号。
+多台 Motorola 设备连接时，通过 `--serial` 明确选择。工具仅采集软件身份，不修改设备设置；输出保存序列号摘要，不保存原始序列号。v2 返回码 `2` 包括没有选到设备、读取失败、读取结束已掉线或设计输入改变；记录仍会保存，具体原因见 `capture_status` 和命令轨迹。软件型号、SKU 和主板属性不代替拆机标签、PCB 修订号、屏幕料号或电芯型号。
 
 先为匹配的一整套原主板、原屏幕/触控、原双电池与保护充电链、USB、相机和天线建立运行基线：开机、画面、触控网格、充电与电量读取、USB 数据、相机和无线连接分别记录。接口表中的原始针脚与电气条件未核实时，保持原配互连；新增适配器只能连接已追溯确认的端子。板间研究自检逻辑的通过不能替代这一步真实回线测试。
 
