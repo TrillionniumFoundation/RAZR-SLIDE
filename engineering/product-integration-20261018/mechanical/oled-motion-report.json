@@ -1,0 +1,4511 @@
+{
+  "budget": {
+    "analytic_whole_two_stage_length_interval_mm": [
+      187.76880324898116,
+      188.36880324898115
+    ],
+    "positive_tail_requires_strictly_more_than_lower_limit": true,
+    "trial_material_length_mm": 187.9,
+    "trial_inside_geometric_length_interval": true,
+    "original_closed_lap_full_depth_cavity_interval_mm": [
+      187.76880324898116,
+      178.41880324898116
+    ],
+    "original_full_depth_cavity_family_feasible": false,
+    "minimum_extra_planar_storage_into_original_solid_lap_mm": 9.349999999999994,
+    "new_channel_has_not_proved_battery_capacity_or_material_qualification": true,
+    "states": {
+      "STOW": {
+        "slide_mm": 0.0,
+        "descent_mm": 0,
+        "B_translation_mm": [
+          0.0,
+          0.0,
+          8.2
+        ],
+        "front_z_mm": -1.25,
+        "return_z_mm": 14.2,
+        "turn_y_mm": 85.75,
+        "circle_z_mm": 6.475,
+        "radius_mm": 7.725,
+        "front_length_mm": 83.75,
+        "arc_length_mm": 24.26880324898115,
+        "tail_length_mm": 79.88119675101885,
+        "total_material_length_mm": 187.9,
+        "tail_end_B_y_mm": 5.868803248981152,
+        "curve_max_B_y_mm": 93.57499999999999,
+        "material_allowable_radius_known": false
+      },
+      "PREDOCK": {
+        "slide_mm": 79.75,
+        "descent_mm": 0,
+        "B_translation_mm": [
+          0.0,
+          79.75,
+          8.2
+        ],
+        "front_z_mm": -1.25,
+        "return_z_mm": 14.2,
+        "turn_y_mm": 165.5,
+        "circle_z_mm": 6.475,
+        "radius_mm": 7.725,
+        "front_length_mm": 163.5,
+        "arc_length_mm": 24.26880324898115,
+        "tail_length_mm": 0.1311967510188552,
+        "total_material_length_mm": 187.9,
+        "tail_end_B_y_mm": 85.61880324898115,
+        "curve_max_B_y_mm": 93.57499999999999,
+        "material_allowable_radius_known": false
+      },
+      "OPEN_SEATED": {
+        "slide_mm": 79.75,
+        "descent_mm": 8.2,
+        "B_translation_mm": [
+          0.0,
+          79.75,
+          0.0
+        ],
+        "front_z_mm": -1.25,
+        "return_z_mm": 6.0,
+        "turn_y_mm": 165.5,
+        "circle_z_mm": 2.375,
+        "radius_mm": 3.625,
+        "front_length_mm": 163.5,
+        "arc_length_mm": 11.388273369263,
+        "tail_length_mm": 13.011726630737005,
+        "total_material_length_mm": 187.9,
+        "tail_end_B_y_mm": 72.738273369263,
+        "curve_max_B_y_mm": 89.475,
+        "material_allowable_radius_known": false
+      }
+    },
+    "proof": "monotone affine front length in slide and affine semicircle radius in seating; same swept sets for reverse",
+    "topology_specific_not_global_OLED_impossibility": true
+  },
+  "supplier_comparison": {
+    "rows": [
+      {
+        "model": "TOQ667XHT-01C",
+        "source": "engineering/controlled-inputs-web-20261013-r6/candidate_facts.json",
+        "source_sha256": "bacf9dc9a135d0f6ee0a7086a3438053b6a3fab78a41c9881852b235219d479d",
+        "panel_nominal_length_mm": 165.16,
+        "panel_nominal_width_mm": 71.532,
+        "panel_length_deficit_for_this_family_mm": 22.60880324898116,
+        "attached_FPC_dimension_mm_not_OLED_length": 200.587,
+        "thickness_scope": {
+          "finished_maximum_mm": null,
+          "partial_layers_only_mm": 0.234
+        },
+        "AA_physical_rectangle_not_inferred": true,
+        "dynamic_radius_allowed_mm": null,
+        "selected_for_product": false
+      },
+      {
+        "model": "TA066FHV01-V2049A",
+        "source": "engineering/oled-orderable-module-search-20261013-r5/extracted-tdo-inputs.json",
+        "source_sha256": "0e5f6a054dd5bf605771f323b6757a7dcaddb9f0cf07ee972d05809375528165",
+        "panel_nominal_length_mm": 156.64,
+        "panel_nominal_width_mm": 71.452,
+        "panel_length_deficit_for_this_family_mm": 31.12880324898117,
+        "attached_FPC_dimension_mm_not_OLED_length": 112.39,
+        "thickness_scope": {
+          "finished_maximum_mm": null,
+          "nominal_table_mm": 0.231,
+          "catalogue_conflict_mm": 0.291
+        },
+        "AA_physical_rectangle_not_inferred": true,
+        "dynamic_radius_allowed_mm": null,
+        "selected_for_product": false
+      }
+    ],
+    "trial_width_mm": 67.0,
+    "trial_length_mm": 187.9,
+    "finite_trial_strip_is_not_one_of_the_supplier_modules": true,
+    "COF_FPC_is_not_added_display_length": true
+  },
+  "mechanical_configuration_sha256": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+  "mechanical_candidate_source_sha256": "695073e313dae45edbb7cf8c305d31c167b4e24e1731bf8be8f1a91a77dbd77b",
+  "OLED_source_sha256": "04b32718ff6b0f6ee107c56b6aaf58c7f8d4c3b1b64b09b84297b6ff0ab75082",
+  "checks": [
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "A_FRAME",
+      "common_mm3": 0.0,
+      "method": "native_common",
+      "axis_gap_lower_mm": 0.0
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "A_BACK_PANEL",
+      "common_mm3": 0.0,
+      "method": "native_common",
+      "axis_gap_lower_mm": 0.0
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_SIDE_GUIDE",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 54.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_SIDE_GUIDE",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 54.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "A_FRAME",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 71.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "A_BACK_PANEL",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 71.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_SIDE_GUIDE",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 134.4
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_SIDE_GUIDE",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 134.4
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "A_FRAME",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.7999999999999998
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "A_BACK_PANEL",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.15
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_SIDE_GUIDE",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.09999999999999987
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_SIDE_GUIDE",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.09999999999999987
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "A_FRAME",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.1
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "A_BACK_PANEL",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.1
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_SIDE_GUIDE",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 14.1
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_SIDE_GUIDE",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 14.1
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "A_FRAME",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 58.238273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "A_BACK_PANEL",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 58.238273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_SIDE_GUIDE",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 121.388273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_SIDE_GUIDE",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 121.388273369263
+    },
+    {
+      "frame": "B",
+      "enclosure": "turn_all_motion_nested_disk_union",
+      "obstacle": "B_SHELL",
+      "common_mm3": 0.0,
+      "method": "native_common",
+      "axis_gap_lower_mm": 0.0
+    },
+    {
+      "frame": "B",
+      "enclosure": "return_all_motion_exact",
+      "obstacle": "B_SHELL",
+      "common_mm3": 0.0,
+      "method": "native_common",
+      "axis_gap_lower_mm": 0.0
+    },
+    {
+      "frame": "B",
+      "enclosure": "front_all_motion_box_superset",
+      "obstacle": "B_SHELL",
+      "common_mm3": 0.0,
+      "method": "native_common",
+      "axis_gap_lower_mm": 0.0
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "A_BATTERY_ALLOCATION",
+      "provenance": "design_space_allocation",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "A_BATTERY_ALLOCATION",
+      "provenance": "design_space_allocation",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 87.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "A_BATTERY_ALLOCATION",
+      "provenance": "design_space_allocation",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 5.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "A_BATTERY_ALLOCATION",
+      "provenance": "design_space_allocation",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "A_BATTERY_ALLOCATION",
+      "provenance": "design_space_allocation",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 74.488273369263
+    },
+    {
+      "frame": "B",
+      "enclosure": "turn_all_motion_nested_disk_union",
+      "obstacle": "B_BATTERY_ALLOCATION",
+      "provenance": "design_space_allocation",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.75
+    },
+    {
+      "frame": "B",
+      "enclosure": "return_all_motion_exact",
+      "obstacle": "B_BATTERY_ALLOCATION",
+      "provenance": "design_space_allocation",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.5999999999999996
+    },
+    {
+      "frame": "B",
+      "enclosure": "front_all_motion_box_superset",
+      "obstacle": "B_BATTERY_ALLOCATION",
+      "provenance": "design_space_allocation",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 2.0500000000000007
+    },
+    {
+      "frame": "B",
+      "enclosure": "turn_all_motion_nested_disk_union",
+      "obstacle": "B_ELECTRONICS_ALLOCATION",
+      "provenance": "design_space_allocation",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.75
+    },
+    {
+      "frame": "B",
+      "enclosure": "return_all_motion_exact",
+      "obstacle": "B_ELECTRONICS_ALLOCATION",
+      "provenance": "design_space_allocation",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.5999999999999996
+    },
+    {
+      "frame": "B",
+      "enclosure": "front_all_motion_box_superset",
+      "obstacle": "B_ELECTRONICS_ALLOCATION",
+      "provenance": "design_space_allocation",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 2.0500000000000007
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "A_CAMERA_ALLOCATION",
+      "provenance": "design_space_allocation",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 73.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "A_CAMERA_ALLOCATION",
+      "provenance": "design_space_allocation",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 153.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "A_CAMERA_ALLOCATION",
+      "provenance": "design_space_allocation",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 2.05
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "A_CAMERA_ALLOCATION",
+      "provenance": "design_space_allocation",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.1
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "A_CAMERA_ALLOCATION",
+      "provenance": "design_space_allocation",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 140.488273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "A_DISPLAY_SUPPORT",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.09999999999999432
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "CARTRIDGE_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 80.05
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "CARTRIDGE_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 80.05
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "CARTRIDGE_2_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 80.05
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "CARTRIDGE_3_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 80.05
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "FRAME_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 34.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "FRAME_0_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 34.49999999999888
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "FRAME_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 34.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "FRAME_1_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 34.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "FRAME_2_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 14.849999999999994
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "FRAME_2_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 14.499999999998877
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "FRAME_3_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 14.849999999999994
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "FRAME_3_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 14.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_A_SUPPORT_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 42.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_A_SUPPORT_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 8.849999999999994
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 68.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 68.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_CROSSHEAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.4500000000000028
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_KEY",
+      "obstacle_method": "complete relative straight sweep; native rigid endpoint identity checked",
+      "rejected_independent_time_box_common_mm3": 0.11658291774690471,
+      "obstacle_slide_Y_mm": 12.0,
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.400000000000006
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_OLD_COVER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 58.45
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_PAD_SCREW_M06_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 57.7
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_PAWL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 63.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_ROOF",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 55.050000000000004
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_ROOF_SCREW_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 70.35
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_ROOF_SCREW_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 55.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_ROOT_INNER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 61.949999999999996
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_ROOT_JOIN_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 72.45
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_ROOT_JOIN_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 72.45
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 48.45
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_SCREW_0_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 74.55
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_SCREW_0_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 76.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_SCREW_1_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 71.2
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_SCREW_1_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 68.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_SHOULDER_PIN_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 65.1
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_SIDE_GUIDE_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 63.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_SIDE_GUIDE_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 54.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_SPRING_0_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 54.019999999999996
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_SPRING_1_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 60.019999999999996
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_SPRING_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 51.05
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_SPRING_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 48.05
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_SPRING_GUIDE_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 53.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_SPRING_GUIDE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 59.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_SPRING_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 51.050000000000004
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_SPRING_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 48.050000000000004
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_STOP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 53.9
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_STOP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 59.9
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_TAB",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 57.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_TELESCOPE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 3.0999999999999943
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_TELESCOPE_2",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 3.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_TELESCOPE_3",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 3.5999999999999943
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "L_THUMB_PAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 57.35
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_A_SUPPORT_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 42.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_A_SUPPORT_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 8.849999999999994
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 68.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 68.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_CROSSHEAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.4500000000000028
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_KEY",
+      "obstacle_method": "complete relative straight sweep; native rigid endpoint identity checked",
+      "rejected_independent_time_box_common_mm3": 0.11658291774690469,
+      "obstacle_slide_Y_mm": 12.0,
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.400000000000006
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_OLD_COVER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 58.45
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_PAD_SCREW_M06_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 57.7
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_PAWL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 63.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_ROOF",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 55.050000000000004
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_ROOF_SCREW_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 70.35
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_ROOF_SCREW_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 55.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_ROOT_INNER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 61.95
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_ROOT_JOIN_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 72.45
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_ROOT_JOIN_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 72.45
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 48.45
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_SCREW_0_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 74.55
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_SCREW_0_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 76.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_SCREW_1_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 71.2
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_SCREW_1_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 68.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_SHOULDER_PIN_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 65.1
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_SIDE_GUIDE_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 63.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_SIDE_GUIDE_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 54.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_SPRING_0_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 54.019999999999996
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_SPRING_1_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 60.019999999999996
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_SPRING_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 51.05
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_SPRING_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 48.05
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_SPRING_GUIDE_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 53.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_SPRING_GUIDE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 59.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_SPRING_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 51.050000000000004
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_SPRING_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 48.050000000000004
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_STOP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 53.9
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_STOP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 59.9
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_TAB",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 57.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_TELESCOPE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 3.0999999999999943
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_TELESCOPE_2",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 3.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_TELESCOPE_3",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 3.5999999999999943
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "obstacle": "R_THUMB_PAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 57.35
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "A_DISPLAY_SUPPORT",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 79.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "CARTRIDGE_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 159.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "CARTRIDGE_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 159.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "CARTRIDGE_2_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 159.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "CARTRIDGE_3_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 159.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "FRAME_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 114.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "FRAME_0_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 114.24999999999888
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "FRAME_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 114.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "FRAME_1_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 114.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "FRAME_2_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 94.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "FRAME_2_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 94.24999999999888
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "FRAME_3_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 94.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "FRAME_3_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 94.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_A_SUPPORT_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 122.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_A_SUPPORT_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 88.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 148.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 148.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_CROSSHEAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 81.2
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_KEY",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 74.15
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_OLD_COVER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 138.2
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_PAD_SCREW_M06_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 137.45
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_PAWL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 143.35
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_ROOF",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 134.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_ROOF_SCREW_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 150.1
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_ROOF_SCREW_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 135.0
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_ROOT_INNER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 141.7
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_ROOT_JOIN_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 152.2
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_ROOT_JOIN_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 152.2
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 128.2
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_SCREW_0_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 154.3
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_SCREW_0_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 156.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_SCREW_1_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 150.95
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_SCREW_1_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 148.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_SHOULDER_PIN_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 144.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_SIDE_GUIDE_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 143.0
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_SIDE_GUIDE_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 134.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_SPRING_0_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 133.77
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_SPRING_1_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 139.77
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_SPRING_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 130.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_SPRING_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 127.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_SPRING_GUIDE_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 133.4
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_SPRING_GUIDE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 139.4
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_SPRING_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 130.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_SPRING_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 127.80000000000001
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_STOP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 133.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_STOP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 139.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_TAB",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 137.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_TELESCOPE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 82.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_TELESCOPE_2",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 83.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_TELESCOPE_3",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 83.35
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "L_THUMB_PAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 137.1
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_A_SUPPORT_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 122.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_A_SUPPORT_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 88.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 148.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 148.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_CROSSHEAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 81.2
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_KEY",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 74.15
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_OLD_COVER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 138.2
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_PAD_SCREW_M06_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 137.45
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_PAWL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 143.35
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_ROOF",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 134.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_ROOF_SCREW_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 150.1
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_ROOF_SCREW_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 135.0
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_ROOT_INNER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 141.7
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_ROOT_JOIN_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 152.2
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_ROOT_JOIN_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 152.2
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 128.2
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_SCREW_0_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 154.3
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_SCREW_0_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 156.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_SCREW_1_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 150.95
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_SCREW_1_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 148.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_SHOULDER_PIN_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 144.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_SIDE_GUIDE_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 143.0
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_SIDE_GUIDE_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 134.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_SPRING_0_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 133.77
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_SPRING_1_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 139.77
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_SPRING_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 130.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_SPRING_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 127.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_SPRING_GUIDE_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 133.4
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_SPRING_GUIDE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 139.4
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_SPRING_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 130.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_SPRING_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 127.80000000000001
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_STOP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 133.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_STOP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 139.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_TAB",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 137.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_TELESCOPE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 82.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_TELESCOPE_2",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 83.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_TELESCOPE_3",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 83.35
+    },
+    {
+      "frame": "A",
+      "enclosure": "seat_turn_nested_disk_union",
+      "obstacle": "R_THUMB_PAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 137.1
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "A_DISPLAY_SUPPORT",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "native_common",
+      "axis_gap_lower_mm": 0.0
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "CARTRIDGE_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "CARTRIDGE_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "CARTRIDGE_2_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "CARTRIDGE_3_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "FRAME_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "FRAME_0_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 3.6999999999999997
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "FRAME_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "FRAME_1_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 3.6999999999999997
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "FRAME_2_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "FRAME_2_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 3.6999999999999997
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "FRAME_3_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "FRAME_3_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 3.6999999999999997
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_A_SUPPORT_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.29999999999999993
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_A_SUPPORT_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.29999999999999993
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.8499999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.849999999999973
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_CROSSHEAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.8499999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_KEY",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 2.3499999999999996
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_OLD_COVER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 2.1999999999999997
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_PAD_SCREW_M06_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_PAWL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 4.769999999705882
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_ROOF",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_ROOF_SCREW_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 2.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_ROOF_SCREW_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 2.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_ROOT_INNER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.8499999999999996
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_ROOT_JOIN_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 4.1
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_ROOT_JOIN_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 4.1
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 5.399999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_SCREW_0_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_SCREW_0_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_SCREW_1_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_SCREW_1_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_SHOULDER_PIN_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 5.819999999705882
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_SIDE_GUIDE_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.29999999999999993
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_SIDE_GUIDE_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.29999999999999993
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_SPRING_0_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.120000000000001
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_SPRING_1_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.120000000000001
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_SPRING_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_SPRING_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_SPRING_GUIDE_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_SPRING_GUIDE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_SPRING_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_SPRING_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_STOP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 4.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_STOP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 4.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_TAB",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_TELESCOPE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.9499999999999997
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_TELESCOPE_2",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 2.05
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_TELESCOPE_3",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 2.15
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "L_THUMB_PAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.3999999999999998
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_A_SUPPORT_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.29999999999999993
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_A_SUPPORT_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.29999999999999993
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.8499999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.849999999999973
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_CROSSHEAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.8499999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_KEY",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 2.3499999999999996
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_OLD_COVER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 2.2
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_PAD_SCREW_M06_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.25
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_PAWL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 4.769999999705882
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_ROOF",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_ROOF_SCREW_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 2.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_ROOF_SCREW_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 2.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_ROOT_INNER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.8499999999999996
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_ROOT_JOIN_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 4.1
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_ROOT_JOIN_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 4.1
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 5.4
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_SCREW_0_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_SCREW_0_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_SCREW_1_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_SCREW_1_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_SHOULDER_PIN_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 5.819999999705882
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_SIDE_GUIDE_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.29999999999999993
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_SIDE_GUIDE_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.29999999999999993
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_SPRING_0_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.120000000000001
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_SPRING_1_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.120000000000001
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_SPRING_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_SPRING_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_SPRING_GUIDE_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_SPRING_GUIDE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_SPRING_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_SPRING_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.65
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_STOP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 4.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_STOP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 4.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_TAB",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.7499999999999996
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_TELESCOPE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 1.9499999999999997
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_TELESCOPE_2",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 2.05
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_TELESCOPE_3",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 2.15
+    },
+    {
+      "frame": "A",
+      "enclosure": "front_all_motion",
+      "obstacle": "R_THUMB_PAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.3999999999999998
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "A_DISPLAY_SUPPORT",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 14.1
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "CARTRIDGE_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 10.55
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "CARTRIDGE_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 10.55
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "CARTRIDGE_2_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 10.55
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "CARTRIDGE_3_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 10.55
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "FRAME_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 10.55
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "FRAME_0_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 10.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "FRAME_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 10.55
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "FRAME_1_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 10.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "FRAME_2_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 10.55
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "FRAME_2_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 10.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "FRAME_3_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 10.55
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "FRAME_3_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 10.75
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_A_SUPPORT_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 12.299999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_A_SUPPORT_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 12.299999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.8999999999999995
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.8999999999999995
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_CROSSHEAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 10.2
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_KEY",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 9.7
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_OLD_COVER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.129999999999998
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_PAD_SCREW_M06_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 12.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_PAWL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.819999999705882
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_ROOF",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_ROOF_SCREW_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.1499999999999995
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_ROOF_SCREW_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.1499999999999995
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_ROOT_INNER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 9.849999999999994
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_ROOT_JOIN_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.699999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_ROOT_JOIN_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.699999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.799999999999997
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_SCREW_0_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 11.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_SCREW_0_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 11.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_SCREW_1_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 11.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_SCREW_1_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 11.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_SHOULDER_PIN_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.069999999705882
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_SIDE_GUIDE_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 12.299999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_SIDE_GUIDE_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 12.299999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_SPRING_0_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.27
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_SPRING_1_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.27
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_SPRING_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_SPRING_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_SPRING_GUIDE_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.8999999999999995
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_SPRING_GUIDE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.8999999999999995
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_SPRING_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.799999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_SPRING_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.799999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_STOP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.1499999999999995
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_STOP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.1499999999999995
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_TAB",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.949999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_TELESCOPE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.366666666666666
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_TELESCOPE_2",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 4.533333333333333
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_TELESCOPE_3",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.9000000000000004
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "L_THUMB_PAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 13.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_A_SUPPORT_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 12.299999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_A_SUPPORT_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 12.299999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.8999999999999995
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.8999999999999995
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_CROSSHEAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 10.2
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_KEY",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 9.7
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_OLD_COVER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.129999999999998
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_PAD_SCREW_M06_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 12.85
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_PAWL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.819999999705882
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_ROOF",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_ROOF_SCREW_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.1499999999999995
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_ROOF_SCREW_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.1499999999999995
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_ROOT_INNER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 9.849999999999994
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_ROOT_JOIN_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.699999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_ROOT_JOIN_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.699999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.799999999999997
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_SCREW_0_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 11.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_SCREW_0_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 11.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_SCREW_1_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 11.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_SCREW_1_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 11.6
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_SHOULDER_PIN_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.069999999705882
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_SIDE_GUIDE_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 12.299999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_SIDE_GUIDE_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 12.299999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_SPRING_0_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.27
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_SPRING_1_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.27
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_SPRING_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_SPRING_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.8
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_SPRING_GUIDE_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.8999999999999995
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_SPRING_GUIDE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.8999999999999995
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_SPRING_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.799999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_SPRING_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.799999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_STOP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.1499999999999995
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_STOP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.1499999999999995
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_TAB",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 6.949999999999999
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_TELESCOPE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 7.366666666666666
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_TELESCOPE_2",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 4.533333333333333
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_TELESCOPE_3",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 0.9000000000000004
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_slide_exact",
+      "obstacle": "R_THUMB_PAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 13.5
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "A_DISPLAY_SUPPORT",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 66.83827336926299
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "CARTRIDGE_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 146.788273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "CARTRIDGE_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 146.788273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "CARTRIDGE_2_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 146.788273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "CARTRIDGE_3_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 146.788273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "FRAME_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 101.58827336926299
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "FRAME_0_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 101.23827336926188
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "FRAME_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 101.58827336926299
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "FRAME_1_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 101.238273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "FRAME_2_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 81.58827336926299
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "FRAME_2_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 81.23827336926188
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "FRAME_3_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 81.58827336926299
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "FRAME_3_NUT_SHNS_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 81.238273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_A_SUPPORT_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 109.58827336926299
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_A_SUPPORT_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 75.58827336926299
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 135.488273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 135.488273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_CROSSHEAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 68.188273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_KEY",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 61.138273369263004
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_OLD_COVER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 125.188273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_PAD_SCREW_M06_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 124.438273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_PAWL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 130.338273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_ROOF",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 121.78827336926301
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_ROOF_SCREW_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 137.088273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_ROOF_SCREW_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 121.988273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_ROOT_INNER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 128.688273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_ROOT_JOIN_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 139.188273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_ROOT_JOIN_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 139.188273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 115.188273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_SCREW_0_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 141.288273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_SCREW_0_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 143.488273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_SCREW_1_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 137.938273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_SCREW_1_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 135.588273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_SHOULDER_PIN_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 131.838273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_SIDE_GUIDE_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 129.988273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_SIDE_GUIDE_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 121.58827336926299
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_SPRING_0_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 120.758273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_SPRING_1_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 126.758273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_SPRING_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 117.788273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_SPRING_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 114.788273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_SPRING_GUIDE_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 120.388273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_SPRING_GUIDE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 126.388273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_SPRING_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 117.78827336926301
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_SPRING_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 114.78827336926301
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_STOP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 120.638273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_STOP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 126.638273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_TAB",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 124.488273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_TELESCOPE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 69.83827336926299
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_TELESCOPE_2",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 70.238273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_TELESCOPE_3",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 70.33827336926299
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "L_THUMB_PAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 124.08827336926299
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_A_SUPPORT_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 109.58827336926299
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_A_SUPPORT_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 75.58827336926299
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 135.488273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 135.488273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_CROSSHEAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 68.188273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_KEY",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 61.138273369263004
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_OLD_COVER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 125.188273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_PAD_SCREW_M06_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 124.438273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_PAWL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 130.338273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_ROOF",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 121.78827336926301
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_ROOF_SCREW_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 137.088273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_ROOF_SCREW_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 121.988273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_ROOT_INNER",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 128.688273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_ROOT_JOIN_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 139.188273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_ROOT_JOIN_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 139.188273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 115.188273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_SCREW_0_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 141.288273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_SCREW_0_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 143.488273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_SCREW_1_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 137.938273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_SCREW_1_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 135.588273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_SHOULDER_PIN_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 131.838273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_SIDE_GUIDE_0_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 129.988273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_SIDE_GUIDE_1_M1_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 121.58827336926299
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_SPRING_0_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 120.758273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_SPRING_1_OD_TOL_ENVELOPE",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 126.758273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_SPRING_CAP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 117.788273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_SPRING_CAP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 114.788273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_SPRING_GUIDE_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 120.388273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_SPRING_GUIDE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 126.388273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_SPRING_SCREW_0_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 117.78827336926301
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_SPRING_SCREW_1_M1x3_NOMINAL",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 114.78827336926301
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_STOP_0",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 120.638273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_STOP_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 126.638273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_TAB",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 124.488273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_TELESCOPE_1",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 69.83827336926299
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_TELESCOPE_2",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 70.238273369263
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_TELESCOPE_3",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 70.33827336926299
+    },
+    {
+      "frame": "A",
+      "enclosure": "return_seat_box_superset",
+      "obstacle": "R_THUMB_PAD",
+      "obstacle_method": "nominal affine per-stage bounding-box superset",
+      "common_mm3": 0.0,
+      "method": "positive_axis_gap",
+      "axis_gap_lower_mm": 124.08827336926299
+    }
+  ],
+  "rejected_enclosure_pairs": [],
+  "original_shell_negative_controls": [
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "original_obstacle": "A_FRAME",
+      "common_mm3": 478.12472996374765,
+      "method": "native_common",
+      "axis_gap_lower_mm": 0.0
+    },
+    {
+      "frame": "A",
+      "enclosure": "slide_turn_exact",
+      "original_obstacle": "A_BACK_PANEL",
+      "common_mm3": 174.36130759123935,
+      "method": "native_common",
+      "axis_gap_lower_mm": 0.0
+    },
+    {
+      "frame": "B",
+      "enclosure": "turn_all_motion_nested_disk_union",
+      "original_obstacle": "B_SHELL",
+      "common_mm3": 204.29021196056834,
+      "method": "native_common",
+      "axis_gap_lower_mm": 0.0
+    },
+    {
+      "frame": "B",
+      "enclosure": "return_all_motion_exact",
+      "original_obstacle": "B_SHELL",
+      "common_mm3": 127.0480364636521,
+      "method": "native_common",
+      "axis_gap_lower_mm": 0.0
+    }
+  ],
+  "all_declared_enclosures_clear": true,
+  "whole_slide_and_seat_and_reverse_covered": true,
+  "scope": "finite trial OLED and exact/superset path families against modified shells, controls and nominal affine moving-part enclosures; slot centerline and nominal equal telescope allocation",
+  "same_material_stations_across_all_poses": true,
+  "telescope_non_nominal_joint_allocations_covered": false,
+  "selected_module_fit_full_stack_COF_touch_and_strain_qualified": false,
+  "candidate_go": false,
+  "manufacturing_go": false
+}

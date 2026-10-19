@@ -94,12 +94,67 @@
         "report": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/176df31ceb35bb3737d68030e60ba377665de210/engineering/bearing-followup-20261018/full-unit1216.json.gz",
         "in_main": false,
         "uncompressed_report_sha256": "b3c74df817004298041e53a90226178acd2dfc70c39e99bd14f3d19667f8ad90"
+      },
+      {
+        "label": "Product branch: first canonical execution FAILED",
+        "tests": 1220,
+        "configured_tests": 1240,
+        "suites": 32,
+        "functional_commit": "b6abcb6326439270ec137cdac00cd6dd7ade4ac7",
+        "scope": "first_canonical_execution_with_retained_failures_and_incomplete_imported_tests",
+        "report": "engineering/product-integration-20261018/validation/initial-b6abcb6-report.json.gz",
+        "result": "FAILED",
+        "passed": false,
+        "in_main": false,
+        "single_full_execution": true
+      },
+      {
+        "label": "Product branch: bounded repair PASS",
+        "tests": 182,
+        "suites": 7,
+        "functional_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+        "scope": "bounded_rerun_of_seven_affected_canonical_suites",
+        "report": "engineering/product-integration-20261018/validation/repair-3eae4e7-report.json.gz",
+        "result": "PASS",
+        "passed": true,
+        "in_main": false,
+        "uncompressed_report_sha256": "57eeb1214e419433c624c6b24e759bdf590b8394179a1e1a6ffcdeb125bd562d"
+      },
+      {
+        "label": "Product branch: verified canonical selection PASS, two executions",
+        "tests": 1240,
+        "suites": 32,
+        "functional_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+        "scope": "disjoint_canonical_selection_25_suites_1058_tests_plus_7_suites_182_tests_not_one_full_rerun",
+        "report": "engineering/product-integration-20261018/validation/canonical-selection.json",
+        "report_sha256": "0895382ff6d743e92ab1ff2ba62584c84297c398781c7b1a5392c9eaf115e24e",
+        "result": "PASS",
+        "passed": true,
+        "in_main": false,
+        "single_full_execution": false,
+        "selection_verification_executed": true,
+        "selected_executions": [
+          {
+            "functional_commit": "b6abcb6326439270ec137cdac00cd6dd7ade4ac7",
+            "selected_passing_suites": 25,
+            "selected_passing_tests": 1058,
+            "original_execution_result": "FAILED",
+            "report": "engineering/product-integration-20261018/validation/initial-b6abcb6-report.json.gz"
+          },
+          {
+            "functional_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+            "selected_passing_suites": 7,
+            "selected_passing_tests": 182,
+            "original_execution_result": "PASS",
+            "report": "engineering/product-integration-20261018/validation/repair-3eae4e7-report.json.gz"
+          }
+        ]
       }
     ],
     "configured_count_is_not_a_pass": true
   },
   "previous_current_execution_summary": "engineering/panel-bearing-web-20261015/DELIVERY_VERIFICATION.json",
-  "current_fresh_verification": "The first canonical 32-suite run executed 1220 of the configured 1240 tests and failed: five frozen input-register hashes, one missing ezdxf import and one missing negative-control fixture. Its raw failure is preserved. The frozen register is restored, an isolated dependency copy is verified, and a bounded 7-suite / 182-test repair run is being prepared. Native CAD, FPC and KiCad evidence retains separate execution identities.",
+  "current_fresh_verification": "The first canonical execution at b6abcb6326439270ec137cdac00cd6dd7ade4ac7 ran 32 suites / 1220 tests and FAILED; its raw failure remains preserved. The bounded repair at 3eae4e7258814c7f5454937535d6c642dd51662f passed 7 suites / 182 tests. The independently checked canonical selection combines the first run's passing 25 suites / 1058 tests with the repaired 7 suites / 182 tests: 32 suites / 1240 tests, not one fresh full run. The selection report is engineering/product-integration-20261018/validation/canonical-selection.json. This product-branch evidence is not in main; accepted main 1187 and PR35 draft 1216 remain separate. New mechanical execution passed 14 targeted tests, 8106 changed/new-part pair checks, 484 OLED enclosures, 9021 added-material non-self comparisons and complete STEP readbacks with 99/99/106 participants. FPC reconstruction rejected all 49 motion plus 15 manual states with zero Boolean-operation errors; the selected-supplier dynamic bend-radius limit is unknown. New electrical/FPC evidence contains 90 files plus its index. The three PCB results reuse retained KiCad v4 zero-DRC/zero-unconnected/zero-footprint-error evidence and were not rerun. Original temporary mechanical/FPC large files were lost; current rebuilt artifacts retain new execution identities.",
   "bench_cover_first_candidate": {
     "source": "integration/cover_admission.py",
     "stages": 22,
@@ -475,7 +530,7 @@
     "actual_pressure_or_preload_qualified": false
   },
   "current_product_state": "design/current_product.json",
-  "current_product_stage": "A common native product candidate, finite OLED/FPC motion studies and bench-coupon artwork are implemented. The current internal FPC candidate is rejected; donor fit, physical assembly and powered-phone operation remain unverified.",
+  "current_product_stage": "A common native product candidate, finite OLED/FPC motion studies and bench-coupon artwork are implemented, with mechanical evidence regenerated on the product branch. The current internal FPC candidate is rejected; donor fit, physical assembly and powered-phone operation remain unverified.",
   "current_open_research_prs": [
     {
       "number": 35,
@@ -491,49 +546,49 @@
       "head": "44a5830f49af73605d5161efff80e6744b0fb468",
       "in_main": false,
       "result": "Old slack-spring API differs from main; all eight historical global cases remain rejected.",
-      "action": "The separately named slack_spring_contact adapter now reuses the main solver; tests and a retained legacy comparison are implemented. Reconcile the old draft after publishing the validated replacement change, without merging its old full-body driver."
+      "action": "PR25 remains open. The separately named slack_spring_contact adapter reuses the main solver and has retained comparison tests. Close the old draft only after publishing the validated replacement change; do not merge its old full-body driver."
     }
   ],
   "current_work_packages": [
     {
       "id": "WP0",
-      "result": "One generator now synchronizes README, CURRENT_DESIGN and status; old original-case/L2 closure and PR35 draft are separated",
+      "result": "One generator synchronizes README, CURRENT_DESIGN and status; verified canonical selection covers 32 suites / 1240 tests across two executions, while the first failed run and main/PR35 baselines remain separate",
       "path": "tools/sync_current_design.py",
-      "remaining": "Publish validated current state and reconcile PR25 metadata"
+      "remaining": "Publish validated product-branch state and then close the still-open PR25 draft"
     },
     {
       "id": "WP1",
-      "result": "Twelve logical interface routes, donor-reuse boundaries and actual empty-device readback are recorded",
+      "result": "Twelve logical interface routes and donor-reuse boundaries are recorded; the 2026-10-19T01:19:54.098255Z read-only connection check returned 2 with selected=false",
       "path": "design/product_interfaces.json",
       "remaining": "Identify exact donor, board/display/touch/cell revisions and physical terminal mapping"
     },
     {
       "id": "WP2",
-      "result": "One product scene integrates original mechanisms, candidate shell changes and A/B allocations; A cell 7.04 cm3, B cell 3.5904 cm3",
+      "result": "One product scene integrates original mechanisms, candidate shell changes and A/B allocations; A cell 7.04 cm3, B cell 3.5904 cm3; 99/99/106-part STEP exports passed independent readback",
       "path": "design/product_geometry.json",
       "remaining": "Actual B mainboard fit in the 12-mm-wide reservation, real cells/swelling/RF/thermal/COF envelopes and structural requalification"
     },
     {
       "id": "WP3",
-      "result": "Constant 187.9-mm trial OLED material has a flat-storage/turning model and whole-path native checks",
+      "result": "Constant 187.9-mm trial OLED material has a flat-storage/turning model; 484 complete native enclosure checks passed in the new execution",
       "path": "integration/oled_storage.py",
       "remaining": "A matching physical panel, dynamic material limits and a full-motion support/traction design; removable OPEN support has no onboard storage"
     },
     {
       "id": "WP4",
-      "result": "Complete endpoints, finite 140-mm free material and reverse travel are evaluated; 26-channel bench artwork is exported",
+      "result": "Complete endpoints and finite 140-mm free material were re-evaluated: 49 motion plus 15 manual states all rejected with zero Boolean-operation errors; new electrical/FPC evidence has 90 files plus its index",
       "path": "integration/product_fpc.py",
-      "remaining": "Current in-phone candidate is rejected by true solid intersections and minimum radius; no complete in-phone FPC candidate is qualified"
+      "remaining": "Current in-phone candidate is rejected by true solid intersections; selected-supplier dynamic bend limits remain unknown, and no complete in-phone FPC route is qualified"
     },
     {
       "id": "WP5",
-      "result": "Explicit unlock/slide/seat/OPEN screw hold/reverse/relock program and insertion paths are implemented",
+      "result": "Explicit unlock/slide/seat/OPEN screw hold/reverse/relock and insertion paths are implemented; new mechanical checks cover 8106 part pairs and 9021 added-material non-self comparisons",
       "path": "integration/product_motion.py",
       "remaining": "Physical holding/force, non-nominal telescope allocations, left/right misuse and actual ordered build remain unverified"
     },
     {
       "id": "WP6",
-      "result": "168 unique frozen A-chain PCB/XML terminals and BM28 owned research sites are bound; donor paths have declared destinations",
+      "result": "168 unique frozen A-chain PCB/XML terminals and BM28 owned research sites are bound; the three PCB source files exactly match retained KiCad v4 0 DRC / 0 unconnected / 0 footprint-error evidence, without a new KiCad run",
       "path": "integration/product_interfaces.py",
       "remaining": "Real protected dual-cell/charging topology, supported OEM signals, powered display/touch and moving supply/USB continuity"
     },
@@ -545,7 +600,7 @@
     },
     {
       "id": "WP8",
-      "result": "Native study-part exports, bench coupon/fixture artwork and ordered build/measurement instructions are prepared",
+      "result": "Native mechanical study exports and independent readbacks have been rebuilt; bench coupon/fixture artwork and ordered build/measurement instructions remain unpowered research deliverables",
       "path": "engineering/product-integration-20261018/README.md",
       "remaining": "No physical sample has been fabricated or measured; begin donor readback and unpowered component/assembly trials"
     }

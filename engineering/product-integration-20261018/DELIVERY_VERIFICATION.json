@@ -1,12 +1,805 @@
 {
-  "schema": "razr-product-integration-delivery-v1",
-  "stage": "functional_source_frozen_canonical_run_pending",
+  "schema": "razr-product-integration-delivery-v2",
+  "created_utc": "2026-10-19T01:42:36.276239+00:00",
+  "stage": "reviewable_research_implementation_with_rejected_internal_FPC_and_unmet_physical_inputs",
   "implementation_baseline": "a1b3cc1e0773446f2e36d0a607edf61211dd9919",
+  "functional_repair_and_native_rebuild_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
   "configured_unit_suites": 32,
   "configured_minimum_tests": 1240,
   "configured_counts_are_not_execution": true,
+  "unit_validation": {
+    "initial_full_run": {
+      "path": "engineering/product-integration-20261018/validation/initial-run-summary.json",
+      "sha256": "ba44643cce2d4721f75afaf83f341249dcd43113fca6f7142fa0bacbd44f816d",
+      "bytes": 27368,
+      "source_commit": "b6abcb6326439270ec137cdac00cd6dd7ade4ac7",
+      "suites": 32,
+      "tests": 1220,
+      "passed": false,
+      "full_raw_report": {
+        "path": "engineering/product-integration-20261018/validation/initial-b6abcb6-report.json.gz",
+        "sha256": "7a728cbf356619041c2bce077b933a75d8a125be13059ae59ba5eb5c786176af",
+        "bytes": 453236
+      },
+      "raw_report_sha256": "52c23dd2d01f93b4001e9f8e8044c903d5c5ba69a5d188f1846a082542982aa0",
+      "per_suite_logs": {
+        "path": "engineering/product-integration-20261018/validation/initial-b6abcb6-logs.tar.gz",
+        "sha256": "e5937da91a33462b10ac3411b20f7ab7478e4787fe9268cc9108a96bd37cfab4",
+        "bytes": 282749
+      },
+      "execution": {
+        "path": "engineering/product-integration-20261018/validation/initial-b6abcb6-execution.json",
+        "sha256": "599c231751ac304d85f29c2e05fccffa220a9fa3da327e70191eeb4795c0318f",
+        "bytes": 538
+      }
+    },
+    "repair_run": {
+      "path": "engineering/product-integration-20261018/validation/repair-run-summary.json",
+      "sha256": "ee0d477a9e09d0c6fcceeadcc5f6cb736f75e4d45994e9560cad49bc020771e0",
+      "bytes": 7063,
+      "source_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+      "suites": 7,
+      "tests": 182,
+      "passed": true,
+      "full_raw_report": {
+        "path": "engineering/product-integration-20261018/validation/repair-3eae4e7-report.json.gz",
+        "sha256": "f0095e0e6f268f360fddc84e86d52b88c367d412203566f194d5ac6ca18928d7",
+        "bytes": 435072
+      },
+      "raw_report_sha256": "57eeb1214e419433c624c6b24e759bdf590b8394179a1e1a6ffcdeb125bd562d",
+      "per_suite_logs": {
+        "path": "engineering/product-integration-20261018/validation/repair-3eae4e7-logs.tar.gz",
+        "sha256": "b443e16566135bf55550ff5601c4a6ce998ff634ced777139a89e8a15a8f6b6e",
+        "bytes": 225755
+      },
+      "execution": {
+        "path": "engineering/product-integration-20261018/validation/repair-3eae4e7-execution.json",
+        "sha256": "1c754c8a8cee17ac07945319777bf5e1738916cb465d8c7e6e31803110583ef0",
+        "bytes": 1343
+      }
+    },
+    "accepted_selection": {
+      "path": "engineering/product-integration-20261018/validation/canonical-selection.json",
+      "sha256": "0895382ff6d743e92ab1ff2ba62584c84297c398781c7b1a5392c9eaf115e24e",
+      "bytes": 160075,
+      "suites": 32,
+      "tests": 1240,
+      "passed": true,
+      "initial_passing_suites": 25,
+      "initial_passing_tests": 1058,
+      "repair_passing_suites": 7,
+      "repair_passing_tests": 182,
+      "single_full_run_passed": false,
+      "scope": "25 passing suites / 1058 tests from b6ab plus 7 repaired suites / 182 tests from 3eae; disjoint canonical selections, not one successful full run"
+    },
+    "initial_failures_and_repairs": [
+      {
+        "groups": [
+          "thin-mechanism",
+          "mounted-mechanism",
+          "cam-coupling",
+          "pawl-actuator",
+          "endpoint-joint"
+        ],
+        "failure": "Five frozen registry SHA assertions failed.",
+        "repair": "Restored exact main integration/assembly_inputs.json bytes; expected hashes and assertions were not weakened."
+      },
+      {
+        "groups": [
+          "serviceable-pawl"
+        ],
+        "failure": "ezdxf.math.polyline import failed in original environment.",
+        "repair": "Copied the available runtime into independent file storage; verified all 397 hash-bearing ezdxf RECORD entries and module origins; real 21 tests then passed.",
+        "cause_attribution": "The earlier absence/import failure and later available file are observations; no actor or package change is inferred."
+      },
+      {
+        "groups": [
+          "product-integration"
+        ],
+        "failure": "Historical geometry-trial-r1.json missing from functional bundle.",
+        "repair": "Added explicitly reconstructed 22-mm B battery negative control; changed fixture references and provenance only, keeping positive-intersection and current-clearance assertions and tolerances."
+      }
+    ],
+    "runtime_copy_and_integrity": {
+      "path": "engineering/product-integration-20261018/validation/runtime-copy-recheck-20261019.json",
+      "sha256": "51d5b4743327584c1aa547c7de8bad2c2be865fafde6c4dc9cfb5e9bab3bbc92",
+      "bytes": 2138
+    },
+    "source_bytes_unchanged_within_each_run": true,
+    "cross_run_source_differences": [
+      {
+        "path": "CURRENT_DESIGN.md",
+        "old_sha256": "6c6e8ab17a5a0f35c4e8764e66e40036ceea30cc146139cc3a0e3c72ed71c40e",
+        "new_sha256": "2b3b759e410b7f4b815abb62ddabe0516643b4d964bd3884d594174758554f59"
+      },
+      {
+        "path": "README.md",
+        "old_sha256": "4381ddb602e58de66f34ff165c3546246856ae8d5441444be430d889ab708114",
+        "new_sha256": "a74edaa90057d7496a55af3eb7002ed520baa2956e42cb46d18f56b1adfdb274"
+      },
+      {
+        "path": "design/current_product.json",
+        "old_sha256": "e36e7f8cbbb2ad074ee3738d73c7aa507ce2d4f9eaf142b8689409a574c5f0f8",
+        "new_sha256": "0351326d79759f7b3b75cf80571bab99f2c43ef7fb47550eaad84fb472456e5d"
+      },
+      {
+        "path": "engineering/product-integration-20261018/electrical/run_electrical_study.py",
+        "old_sha256": null,
+        "new_sha256": "cd9904c18814e4f5c5efccfe17be016fd9627bebc88bcd8e69f6c905c534c557"
+      },
+      {
+        "path": "engineering/product-integration-20261018/mechanical/geometry-wide-B-negative-control.json",
+        "old_sha256": null,
+        "new_sha256": "ae689a4e89fb1254822df7f834fdba9e9969b1aad515f2ad8d9a81a9be3639e1"
+      },
+      {
+        "path": "engineering/product-integration-20261018/mechanical/metadata-correction.json",
+        "old_sha256": null,
+        "new_sha256": "0a6a853d0f8be7278a167e034a873961d9acdfb25879b53f5b4e8aa42861700b"
+      },
+      {
+        "path": "engineering/product-integration-20261018/mechanical/seal_product_study.py",
+        "old_sha256": "ef477d3a0f587139c1020ce48d602ec872ee1f40426064dd25a2026ad5492198",
+        "new_sha256": "b303a244b3b1b4f8293090e8fe21197223f8df6501d3353ff24f4e3f240559a5"
+      },
+      {
+        "path": "integration/assembly_inputs.json",
+        "old_sha256": "08de8b2427abe61e6d14455b9e6572f4e97859bb04654828b3e8d65684fa6e4e",
+        "new_sha256": "7b7ebf0f48556f2feca175a35b882a9a48337de2bb5f54b1ba7a740f85e8ce6b"
+      },
+      {
+        "path": "integration/product-study-tests/test_product_geometry.py",
+        "old_sha256": "ef0587295cdbaa26f1ba0578fb50297b5411662eab47d1afb30a5b1fad5b3809",
+        "new_sha256": "2f116057679bb5cbfd1adcca191b8c96d5e817a34ed51f7c4905c4a1db99b6a7"
+      },
+      {
+        "path": "integration/product_assembly.py",
+        "old_sha256": "22b9c6107305a5310e91a4b43f0adfbc73d7ef7cd966bbda137003104caf7fd4",
+        "new_sha256": "695073e313dae45edbb7cf8c305d31c167b4e24e1731bf8be8f1a91a77dbd77b"
+      },
+      {
+        "path": "integration/product_motion.py",
+        "old_sha256": "43dacb20764c3d887ecb690f80490be3e0a6379a925252ed5e680d83d033728c",
+        "new_sha256": "293719a058ec4da4581cb3f45140e0a51f308ff0baf6d1170f57aa3202a5541c"
+      },
+      {
+        "path": "status.json",
+        "old_sha256": "d05d30d01a592a8c6db1060863fc87677f9c2f2c4611100d7389eac606200429",
+        "new_sha256": "95ac2772c76c9ede0800042d058c9889f00eca2984071810cf575a259f2c20b0"
+      },
+      {
+        "path": "tools/sync_current_design.py",
+        "old_sha256": "cbdf3408cb6192afdd10c9cbe5b9f0647aea5f10db56738b5dc7b0077bcf1309",
+        "new_sha256": "3c346ece808c3390dcfd5abe97f1dbc7c7af1e4c4df9b6e360f4ecd23af7bd7b"
+      }
+    ]
+  },
+  "mechanical_and_OLED": {
+    "sealed_delivery": {
+      "path": "engineering/product-integration-20261018/mechanical/final-delivery.json",
+      "sha256": "d4e06e2b1692a6c2c5e0a4b41883ace0a459abc927d0e68d74749071c7dab11f",
+      "bytes": 6489
+    },
+    "actual_execution_jobs": {
+      "path": "engineering/product-integration-20261018/mechanical/execution-record.json",
+      "sha256": "7e87c6d9b8616eb952e6b6b64f941700e7cdd295e4dc861bfff4a773cde0712a",
+      "bytes": 9480
+    },
+    "targeted_tests": {
+      "tests": 14,
+      "passed": true,
+      "not_added_again_to_unit_total": true
+    },
+    "complete_export_participants": {
+      "STOW": 99,
+      "PREDOCK": 99,
+      "OPEN": 106
+    },
+    "native_archives": {
+      "STOW": {
+        "path": "native-STOW.tar.gz",
+        "sha256": "71b1b64b907e627c9879517194d4618e537660c456a7e4ace0248974e5843c5d",
+        "bytes": 4705227,
+        "archive_members": 201,
+        "STEP_participants": 99,
+        "manifest_sha256": "049768eb1b09e594200026aa8dbfb10a59174535c27c8496cb92e3f61cc74d2b",
+        "readback_receipt": "readback-STOW.json",
+        "readback_sha256": "c8f28d15ca6832ef36d9cbee4e90e255bffce4bfa6f7a2a582f7de7c65b6cab0",
+        "all_member_bytes_rechecked": true,
+        "finite_added_M1_tool_access_clear": true
+      },
+      "PREDOCK": {
+        "path": "native-PREDOCK.tar.gz",
+        "sha256": "e01f605431a29daf83969e3150fa7b597aea1a4925817fd5095ba8ed6b2cab90",
+        "bytes": 4703733,
+        "archive_members": 201,
+        "STEP_participants": 99,
+        "manifest_sha256": "734383572872e55742c0a2ef24b5b19d4b370ec143418acaa519322df606e4a7",
+        "readback_receipt": "readback-PREDOCK.json",
+        "readback_sha256": "84ce7cae1cc4d254f525ec38c4a3977d9ec91a9203a4fba0f9309530fd9a2360",
+        "all_member_bytes_rechecked": true,
+        "finite_added_M1_tool_access_clear": true
+      },
+      "OPEN": {
+        "path": "native-OPEN.tar.gz",
+        "sha256": "52e92576afdf568b764ee0e6ee704d512d44fc0a41073c4d32aa585f0a57fac2",
+        "bytes": 4881842,
+        "archive_members": 215,
+        "STEP_participants": 106,
+        "manifest_sha256": "ceb484f3c15955662da05272fcbb2d674c7c28c617e4006dc8295e2f2bf254c4",
+        "readback_receipt": "readback-OPEN.json",
+        "readback_sha256": "9dd1556e894f4e135bee728fca0260ed3d7366867ed3aec9a7597d6345eb6a89",
+        "all_member_bytes_rechecked": true,
+        "finite_added_M1_tool_access_clear": true
+      }
+    },
+    "independent_STEP_readbacks_all_passed": true,
+    "independence_scope": "Separate reader does not import builders; it uses the same locked CAD kernel.",
+    "four_state_changed_part_pairs": 8106,
+    "OLED_complete_enclosure_checks": 484,
+    "added_material_nonself_comparisons": 9021,
+    "nominal_geometry_checks_passed": true,
+    "manual_program_states": 15,
+    "manual_actions": 14,
+    "new_assembly_scope": "candidate pads/bridges/A support on already assembled native cartridge scene, followed by OLED trial and reversible OPEN accessories",
+    "upstream_cartridge_telescopes_full_assembly_reverified": false,
+    "finished_envelopes": {
+      "A_fixed_parts": {
+        "bounds_mm": [
+          -36.995,
+          36.99500000000001,
+          0.0,
+          94.25,
+          -1.15,
+          8.0
+        ],
+        "size_mm": [
+          73.99000000000001,
+          94.25,
+          9.15
+        ]
+      },
+      "B_fixed_body": {
+        "bounds_mm": [
+          -36.995,
+          36.995000000000005,
+          0.0,
+          94.25,
+          -1.1500000000000004,
+          8.0
+        ],
+        "size_mm": [
+          73.99000000000001,
+          94.25,
+          9.15
+        ]
+      },
+      "equal_fixed_cabin_bounds": true,
+      "A_fixed_part_names": [
+        "L_SPRING_CAP_0",
+        "L_SPRING_1_OD_TOL_ENVELOPE",
+        "L_CAP_0",
+        "L_KEY",
+        "L_SCREW_0_1",
+        "L_SPRING_SCREW_0_M1x3_NOMINAL",
+        "L_ROOT_JOIN_SCREW_0_M1x3_NOMINAL",
+        "L_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+        "L_SCREW_1_0",
+        "L_SPRING_GUIDE_0",
+        "L_SPRING_0_OD_TOL_ENVELOPE",
+        "L_STOP_0",
+        "L_SCREW_0_0",
+        "L_STOP_1",
+        "L_SCREW_1_1",
+        "L_SPRING_GUIDE_1",
+        "L_SPRING_SCREW_1_M1x3_NOMINAL",
+        "L_PAWL",
+        "L_ROOT_INNER",
+        "L_SPRING_CAP_1",
+        "L_CAP_1",
+        "L_OLD_COVER",
+        "L_ROOT_JOIN_SCREW_1_M1x3_NOMINAL",
+        "R_SPRING_CAP_0",
+        "R_SPRING_1_OD_TOL_ENVELOPE",
+        "R_CAP_0",
+        "R_KEY",
+        "R_SCREW_0_1",
+        "R_SPRING_SCREW_0_M1x3_NOMINAL",
+        "R_ROOT_JOIN_SCREW_0_M1x3_NOMINAL",
+        "R_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS",
+        "R_SCREW_1_0",
+        "R_SPRING_GUIDE_0",
+        "R_SPRING_0_OD_TOL_ENVELOPE",
+        "R_STOP_0",
+        "R_SCREW_0_0",
+        "R_STOP_1",
+        "R_SCREW_1_1",
+        "R_SPRING_GUIDE_1",
+        "R_SPRING_SCREW_1_M1x3_NOMINAL",
+        "R_PAWL",
+        "R_ROOT_INNER",
+        "R_SPRING_CAP_1",
+        "R_CAP_1",
+        "R_OLD_COVER",
+        "R_ROOT_JOIN_SCREW_1_M1x3_NOMINAL",
+        "CARTRIDGE_0_M1x3_NOMINAL",
+        "CARTRIDGE_1_M1x3_NOMINAL",
+        "CARTRIDGE_2_M1x3_NOMINAL",
+        "CARTRIDGE_3_M1x3_NOMINAL",
+        "FRAME_0_M1x3_NOMINAL",
+        "FRAME_1_M1x3_NOMINAL",
+        "FRAME_2_M1x3_NOMINAL",
+        "FRAME_3_M1x3_NOMINAL",
+        "L_CROSSHEAD",
+        "R_CROSSHEAD",
+        "A_FRAME",
+        "A_BACK_PANEL",
+        "L_TAB",
+        "R_TAB",
+        "L_THUMB_PAD",
+        "L_PAD_SCREW_M06_NOMINAL",
+        "L_SHOULDER_PIN_NOMINAL",
+        "L_ROOF",
+        "L_ROOF_SCREW_0_M1_NOMINAL",
+        "L_ROOF_SCREW_1_M1_NOMINAL",
+        "R_THUMB_PAD",
+        "R_PAD_SCREW_M06_NOMINAL",
+        "R_SHOULDER_PIN_NOMINAL",
+        "R_ROOF",
+        "R_ROOF_SCREW_0_M1_NOMINAL",
+        "R_ROOF_SCREW_1_M1_NOMINAL",
+        "FRAME_0_NUT_SHNS_M1_NOMINAL",
+        "FRAME_1_NUT_SHNS_M1_NOMINAL",
+        "FRAME_2_NUT_SHNS_M1_NOMINAL",
+        "FRAME_3_NUT_SHNS_M1_NOMINAL",
+        "L_SIDE_GUIDE",
+        "L_SIDE_GUIDE_0_M1_NOMINAL",
+        "L_SIDE_GUIDE_1_M1_NOMINAL",
+        "L_A_SUPPORT_0_M1_NOMINAL",
+        "L_A_SUPPORT_1_M1_NOMINAL",
+        "R_SIDE_GUIDE",
+        "R_SIDE_GUIDE_0_M1_NOMINAL",
+        "R_SIDE_GUIDE_1_M1_NOMINAL",
+        "R_A_SUPPORT_0_M1_NOMINAL",
+        "R_A_SUPPORT_1_M1_NOMINAL",
+        "A_DISPLAY_SUPPORT"
+      ],
+      "telescopes_are_cross_cabin_participants_not_battery_space": true,
+      "OPEN_all_101_mechanical_parts": {
+        "bounds_mm": [
+          -36.995,
+          36.99500000000001,
+          0.0,
+          174.0,
+          -1.1500000000000004,
+          8.0
+        ],
+        "size_mm": [
+          73.99000000000001,
+          174.0,
+          9.15
+        ]
+      },
+      "OPEN_with_trial_OLED": {
+        "bounds_mm": [
+          -36.995,
+          36.99500000000001,
+          0.0,
+          174.0,
+          -1.35,
+          8.0
+        ],
+        "size_mm": [
+          73.99000000000001,
+          174.0,
+          9.35
+        ]
+      },
+      "STOW_all_94_parts_with_trial_OLED": {
+        "bounds_mm": [
+          -36.995,
+          36.99500000000001,
+          0.0,
+          94.25,
+          -1.35,
+          16.2
+        ],
+        "size_mm": [
+          73.99000000000001,
+          94.25,
+          17.55
+        ]
+      },
+      "trial_OLED_front_z_mm": -1.25,
+      "OLED_finished_module_is_unknown": true,
+      "OPEN_each_cabin_with_shared_flat_trial_OLED_depth_mm": 9.35,
+      "physical_finished_product_bounds_qualified": false
+    },
+    "capacity_budget": {
+      "path": "engineering/product-integration-20261018/capacity-budget.json",
+      "sha256": "46fe6c737c6378c784305197bb4f92a5b93a07b09bbea2fefa3dde83d7e42539",
+      "bytes": 3790
+    },
+    "physical_support_thread_strength_and_OEM_module_fit_qualified": false
+  },
+  "electrical_and_FPC": {
+    "rebuild_receipt": {
+      "path": "engineering/product-integration-20261018/electrical/rebuild-receipt.json",
+      "sha256": "cf42ad4018efa6a674b82fa2fbebd08e09001b8bd3707bf14ef00b6e1110c135",
+      "bytes": 10116
+    },
+    "actual_execution": {
+      "path": "engineering/product-integration-20261018/validation/electrical-rebuild-execution.json",
+      "sha256": "3d1949815f7a5278af34c19dcce6fe7aafd48233582969ed63931d14ea7961c4",
+      "bytes": 1234
+    },
+    "artifact_index": {
+      "path": "engineering/product-integration-20261018/electrical/artifact-index.json",
+      "sha256": "68fcada8223c9b43960a3c9670872343a954dc92b6232135facc63da0eaa4d52",
+      "bytes": 15034
+    },
+    "indexed_files": 90,
+    "files_including_index": 91,
+    "motion_report": {
+      "path": "engineering/product-integration-20261018/electrical/motion/motion-report.json",
+      "sha256": "b68e9a0525b249e0aa8b79dc8fccaf7be9d31a093cd2b56dbf51476fa54d8e17",
+      "bytes": 234987
+    },
+    "moving_records": 49,
+    "unique_moving_material_poses": 25,
+    "manual_records": 15,
+    "total_records": 64,
+    "rejected_moving_records": 49,
+    "rejected_manual_records": 15,
+    "native_Boolean_evaluation_errors": 0,
+    "full_endpoint_and_material_STEP_solids_each": 41,
+    "two_PCB_types_per_end": 2,
+    "PCB_solids_across_both_ends": 4,
+    "independent_bench_fixture_solids_excluding_PCBs": 8,
+    "native_terminal_pins": 168,
+    "physically_bound_product_interfaces": 0,
+    "rejected_on_actual_solid_intersections": true,
+    "supplier_dynamic_bend_qualification": false,
+    "full_smooth_interpose_clearance_proven": false,
+    "regenerated_PCBS_match_retained_KiCad_v4_inputs": true
+  },
+  "retained_native_KiCad_v4": {
+    "rerun_by_20261019_rebuild": false,
+    "receipts": {
+      "DP": {
+        "receipt": {
+          "path": "engineering/product-integration-20261018/electrical/native/DP/readback.json",
+          "sha256": "a371b8380bf0ed486b9d300e4aa5b3d5f28590b8d12abae260040b8fc82b2ad0",
+          "bytes": 24098
+        },
+        "version": "7.0.11+dfsg-1build4",
+        "project_loaded": true,
+        "input_bytes_unchanged": true,
+        "drc_sections": [
+          {
+            "count": 0,
+            "kind": "DRC violations **"
+          },
+          {
+            "count": 0,
+            "kind": "unconnected pads **"
+          },
+          {
+            "count": 0,
+            "kind": "Footprint errors **"
+          }
+        ],
+        "declared_board_thickness_mm": 0.8,
+        "inputs_sha256": {
+          "mini_DP.kicad_pcb": "6f30b58e4fb885b10f62957cc71570a42e2c77c3ddde65f999cf81ec5576b8e8",
+          "mini_DP.kicad_pro": "dbc1b44bc068c7bfb90c0a8afaaf7873dbb1780d5b2a7ece8c8ce75bff1659c4"
+        }
+      },
+      "DS": {
+        "receipt": {
+          "path": "engineering/product-integration-20261018/electrical/native/DS/readback.json",
+          "sha256": "3fa9da7657bc39708715aadf3e5fae0436adbbebf466b3f508be3e908679a6f5",
+          "bytes": 24051
+        },
+        "version": "7.0.11+dfsg-1build4",
+        "project_loaded": true,
+        "input_bytes_unchanged": true,
+        "drc_sections": [
+          {
+            "count": 0,
+            "kind": "DRC violations **"
+          },
+          {
+            "count": 0,
+            "kind": "unconnected pads **"
+          },
+          {
+            "count": 0,
+            "kind": "Footprint errors **"
+          }
+        ],
+        "declared_board_thickness_mm": 0.8,
+        "inputs_sha256": {
+          "mini_DS.kicad_pcb": "aabaef08cdcc628cc6352a4e6d2d753a58331c16d9494245623a98078a1ce893",
+          "mini_DS.kicad_pro": "1c8535574b49c7e9299cdf834da24d5a0aea5203102195cdc36619453abc3df9"
+        }
+      },
+      "FLEX": {
+        "receipt": {
+          "path": "engineering/product-integration-20261018/electrical/native/FLEX/readback.json",
+          "sha256": "00eb66dbc34d337a6a3ae4390b246443aec59edab90e7910c682a5774ec13633",
+          "bytes": 14463
+        },
+        "version": "7.0.11+dfsg-1build4",
+        "project_loaded": true,
+        "input_bytes_unchanged": true,
+        "drc_sections": [
+          {
+            "count": 0,
+            "kind": "DRC violations **"
+          },
+          {
+            "count": 0,
+            "kind": "unconnected pads **"
+          },
+          {
+            "count": 0,
+            "kind": "Footprint errors **"
+          }
+        ],
+        "declared_board_thickness_mm": 0.1,
+        "inputs_sha256": {
+          "continuity26.kicad_pcb": "3b0dd64778142ea746221d5198e01355df207d3cc6ac3af11847cff64ae252ba",
+          "continuity26.kicad_pro": "7f59cbba335600264c79b4cef5f32c08d9e2e568742b7cea6738c0c585c35be4"
+        }
+      }
+    },
+    "execution": {
+      "path": "engineering/product-integration-20261018/electrical/native/execution.json",
+      "sha256": "ec56547bac65fdb562ee088d9ad5f958303ae25f5eb5f19e12e92f3e9d451b37",
+      "bytes": 11038
+    },
+    "independent_STEP_readback": {
+      "path": "engineering/product-integration-20261018/electrical/native/step-readback.json",
+      "sha256": "52166f70d0105acf0e196750d0053851aae915d3dd51fdd2f9034bff51366d06",
+      "bytes": 1600
+    },
+    "STEP_results": [
+      {
+        "role": "DP",
+        "step_sha256": "9a83fae51c98520ede421adb221ca3825f9e2cb2643fb853d402e69cf2dd9520",
+        "valid": true,
+        "solids": 1,
+        "dimensions_mm": [
+          12.0,
+          12.0,
+          0.8
+        ],
+        "expected_dimensions_mm": [
+          12,
+          12,
+          0.8
+        ],
+        "dimensions_match": true,
+        "volume_mm3": 110.27398271917109,
+        "expected_volume_mm3": 110.27398271917122,
+        "volume_match": true
+      },
+      {
+        "role": "DS",
+        "step_sha256": "91c569798a3886f86f257af539b2fc6e3e197d630e91dcc1e52711d49e249954",
+        "valid": true,
+        "solids": 1,
+        "dimensions_mm": [
+          12.0,
+          12.0,
+          0.8
+        ],
+        "expected_dimensions_mm": [
+          12,
+          12,
+          0.8
+        ],
+        "dimensions_match": true,
+        "volume_mm3": 110.27398271917109,
+        "expected_volume_mm3": 110.27398271917122,
+        "volume_match": true
+      },
+      {
+        "role": "FLEX",
+        "step_sha256": "e2d243049fbb1fbc14dcd5e67ac16ecfeff60858099b1657fa3a0388682b628b",
+        "valid": true,
+        "solids": 1,
+        "dimensions_mm": [
+          12.0,
+          164.0,
+          0.1
+        ],
+        "expected_dimensions_mm": [
+          12,
+          164,
+          0.1
+        ],
+        "dimensions_match": true,
+        "volume_mm3": 196.8,
+        "expected_volume_mm3": 196.8,
+        "volume_match": true
+      }
+    ],
+    "preflight_failures_preserved": {
+      "path": "engineering/product-integration-20261018/electrical/native/preflight-failures.tar.gz",
+      "sha256": "0e9880f3002d25e66d8e8eac719d2132abc1373e4fae609f80f356d681ec22a5",
+      "bytes": 34610
+    },
+    "scope": "Research bare-board geometry, pad/net readback, actual project-rule DRC and exports; no OEM signals, SI, current capacity or flexible-material qualification."
+  },
+  "bounded_numerics": {
+    "retained_witness_coverage": {
+      "path": "engineering/product-integration-20261018/numerics/main-witness-coverage/report.json",
+      "sha256": "14c7411ead05b2f44390f1202b8b4c90a714ddefd8becbd952c9212a99a4e6c2",
+      "bytes": 14995
+    },
+    "domains_bound": 1196,
+    "retained_failed_bearing_regions": 1112,
+    "new_points_budget_each": 128,
+    "legacy_seed_count": 77,
+    "variant_seed_count": 205,
+    "seed_study_does_not_replace_failed_1491_point_final_iteration": true,
+    "cache_preflight": {
+      "path": "engineering/product-integration-20261018/numerics/restart-cache-preflight.json",
+      "sha256": "ebe476d027a59740d1454b6dd29e7df5bddc5f61f1c2fd450f3a951361378a4c",
+      "bytes": 26447
+    },
+    "files_scanned": 3292,
+    "read_errors": 0,
+    "identified_current_bearing_restarts": 0,
+    "stop_reason": "stop_no_identified_bearing_response_restart",
+    "new_FE_or_QP_solve_executed": false,
+    "slack_adapter_reference_comparison": {
+      "path": "engineering/product-integration-20261018/numerics/adapter-reference-comparison.json",
+      "sha256": "cc370cb12373b4c0a0207d01acb23ce0b890421034e4076691be4166d5eeefd4",
+      "bytes": 4221
+    },
+    "tiny_discrete_comparison_cases": 8,
+    "PR25_historical_full_body_cases_remain_rejected": 8,
+    "PR25_old_full_body_driver_adopted": false,
+    "key_section_sensitivity": {
+      "path": "engineering/product-integration-20261018/numerics/key-section-budget.json",
+      "sha256": "50c7b965d614dbe0a3a5a11bf1cf4399fd80d1d36b28e143c691fa1af0829d19",
+      "bytes": 27962
+    },
+    "modified_product_geometry_structurally_qualified": false
+  },
+  "actual_hardware_observation": {
+    "receipt": {
+      "path": "engineering/product-integration-20261018/hardware/connection-check-20261019.json",
+      "sha256": "2148b4f586f2f4612f951717b1ff0d64b27da17666c77b7e342ede6cc383261d",
+      "bytes": 474
+    },
+    "execution": {
+      "path": "engineering/product-integration-20261018/hardware/collector-execution-20261019.json",
+      "sha256": "0f5943b15e326044b4c2e7bd51a796f7ee3a56234fe71cdd2813b474c8375d9c",
+      "bytes": 835
+    },
+    "observed_utc": "2026-10-19T01:19:54.098255+00:00",
+    "returncode": 2,
+    "selected_donor_connected": false,
+    "device_count": 0,
+    "physical_identity_or_dimensions_measured": false,
+    "prototype_fabricated": false,
+    "physical_full_open_close_cycle_completed": false,
+    "powered_display_touch_supply_or_USB_verified": false
+  },
+  "evidence_recovery_and_preservation": {
+    "preservation_receipt": {
+      "path": "engineering/product-integration-20261018/validation/artifact-preservation.json",
+      "sha256": "800c3137773a86c254040e7c0f5ae0c7554498878d5e2caf4d4575f510338505",
+      "bytes": 28018
+    },
+    "old_temporary_mechanical_FPC_outputs_lost": true,
+    "old_original_archive_bytes_or_hashes_reused": false,
+    "mechanical_and_FPC_new_runs_have_new_source_and_output_hashes": true,
+    "initial_unit_failure_and_KiCad_numerics_raw_receipts_survived": true,
+    "historical_mechanical_files_unavailable": {
+      "source-downloads.json": {
+        "status": "not_available; no exact-byte restoration claimed"
+      },
+      "export-cache-drift-negative.json": {
+        "status": "not_available; no exact-byte restoration claimed"
+      },
+      "geometry-trial-r0.json": {
+        "status": "not_available; no exact-byte restoration claimed"
+      },
+      "geometry-trial-r1.json": {
+        "status": "not_available; no exact-byte restoration claimed"
+      },
+      "geometry-trial-r2.json": {
+        "status": "not_available; no exact-byte restoration claimed"
+      },
+      "packing-report.json": {
+        "status": "not_available; no exact-byte restoration claimed"
+      },
+      "rejected-r2-product-motion-report.json": {
+        "status": "not_available; no exact-byte restoration claimed"
+      }
+    },
+    "new_negative_control": {
+      "path": "engineering/product-integration-20261018/mechanical/geometry-wide-B-negative-control.json",
+      "sha256": "ae689a4e89fb1254822df7f834fdba9e9969b1aad515f2ad8d9a81a9be3639e1",
+      "bytes": 8670
+    }
+  },
+  "final_source_and_entrypoints": {
+    "path": "engineering/product-integration-20261018/validation/final-source-binding.json",
+    "sha256": "f6220ba744e1c12c97492a8c84b5528782a4f771ce5527b78c96225fc0d5019e",
+    "bytes": 2194
+  },
+  "work_package_states_are_partial_research_deliveries": true,
+  "work_packages": [
+    {
+      "id": "WP0",
+      "result": "One generator synchronizes README, CURRENT_DESIGN and status; verified canonical selection covers 32 suites / 1240 tests across two executions, while the first failed run and main/PR35 baselines remain separate",
+      "path": "tools/sync_current_design.py",
+      "remaining": "Publish validated product-branch state and then close the still-open PR25 draft"
+    },
+    {
+      "id": "WP1",
+      "result": "Twelve logical interface routes and donor-reuse boundaries are recorded; the 2026-10-19T01:19:54.098255Z read-only connection check returned 2 with selected=false",
+      "path": "design/product_interfaces.json",
+      "remaining": "Identify exact donor, board/display/touch/cell revisions and physical terminal mapping"
+    },
+    {
+      "id": "WP2",
+      "result": "One product scene integrates original mechanisms, candidate shell changes and A/B allocations; A cell 7.04 cm3, B cell 3.5904 cm3; 99/99/106-part STEP exports passed independent readback",
+      "path": "design/product_geometry.json",
+      "remaining": "Actual B mainboard fit in the 12-mm-wide reservation, real cells/swelling/RF/thermal/COF envelopes and structural requalification"
+    },
+    {
+      "id": "WP3",
+      "result": "Constant 187.9-mm trial OLED material has a flat-storage/turning model; 484 complete native enclosure checks passed in the new execution",
+      "path": "integration/oled_storage.py",
+      "remaining": "A matching physical panel, dynamic material limits and a full-motion support/traction design; removable OPEN support has no onboard storage"
+    },
+    {
+      "id": "WP4",
+      "result": "Complete endpoints and finite 140-mm free material were re-evaluated: 49 motion plus 15 manual states all rejected with zero Boolean-operation errors; new electrical/FPC evidence has 90 files plus its index",
+      "path": "integration/product_fpc.py",
+      "remaining": "Current in-phone candidate is rejected by true solid intersections; selected-supplier dynamic bend limits remain unknown, and no complete in-phone FPC route is qualified"
+    },
+    {
+      "id": "WP5",
+      "result": "Explicit unlock/slide/seat/OPEN screw hold/reverse/relock and insertion paths are implemented; new mechanical checks cover 8106 part pairs and 9021 added-material non-self comparisons",
+      "path": "integration/product_motion.py",
+      "remaining": "Physical holding/force, non-nominal telescope allocations, left/right misuse and actual ordered build remain unverified"
+    },
+    {
+      "id": "WP6",
+      "result": "168 unique frozen A-chain PCB/XML terminals and BM28 owned research sites are bound; the three PCB source files exactly match retained KiCad v4 0 DRC / 0 unconnected / 0 footprint-error evidence, without a new KiCad run",
+      "path": "integration/product_interfaces.py",
+      "remaining": "Real protected dual-cell/charging topology, supported OEM signals, powered display/touch and moving supply/USB continuity"
+    },
+    {
+      "id": "WP7",
+      "result": "Original 1112 rejected witnesses bind to 1196 domains; +128 seed alternatives, thin-section sensitivity and an explicit no-cache stop are recorded",
+      "path": "engineering/product-integration-20261018/numerics/README.md",
+      "remaining": "No new FE solve: restore exact bearing response/trace state first; measure materials/loads and requalify modified product geometry"
+    },
+    {
+      "id": "WP8",
+      "result": "Native mechanical study exports and independent readbacks have been rebuilt; bench coupon/fixture artwork and ordered build/measurement instructions remain unpowered research deliverables",
+      "path": "engineering/product-integration-20261018/README.md",
+      "remaining": "No physical sample has been fabricated or measured; begin donor readback and unpowered component/assembly trials"
+    }
+  ],
   "candidate_go": false,
   "fixture_fabrication_go": false,
   "manufacturing_go": false,
-  "physical_phone_verified": false
+  "physical_phone_verified": false,
+  "unmet_completion_conditions": [
+    "Exact donor, mainboard, OLED/touch/COF and cell identities with physical dimensions and pins.",
+    "A donor board/cell/thermal/RF layout that fits the common assembly and demonstrates capacity.",
+    "Full-motion OLED support/traction and an internal full-endpoint FPC route with no actual interference and supplier-qualified dynamic material.",
+    "Manufacturing process, assembly access, actual threads, load and retention, left/right misuse and complete physical cycles.",
+    "Protected electrical integration and controlled powered display/touch/supply/USB continuity measurements."
+  ]
 }

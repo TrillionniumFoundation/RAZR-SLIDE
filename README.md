@@ -5,13 +5,13 @@
 
 [Current design](CURRENT_DESIGN.md) · [Machine-readable product state](design/current_product.json) · [Implementation and evidence](engineering/product-integration-20261018/README.md)
 
-A common native product candidate, finite OLED/FPC motion studies and bench-coupon artwork are implemented. The current internal FPC candidate is rejected; donor fit, physical assembly and powered-phone operation remain unverified.
+A common native product candidate, finite OLED/FPC motion studies and bench-coupon artwork are implemented, with mechanical evidence regenerated on the product branch. The current internal FPC candidate is rejected; donor fit, physical assembly and powered-phone operation remain unverified.
 
 The active milestone is a common assembly with flat OLED storage, complete terminations, A/B cell reservations and an operable manual cycle. Measured parts, source specifications and project assumptions retain separate identities.
 
 Configured unit validation: **1240 tests / 32 suites** in `tools/test_suites.json`. Completed execution reports retain their exact commit and scope in `design/current_product.json`; a configured count is not an execution result.
 
-The first canonical 32-suite run executed 1220 of the configured 1240 tests and failed: five frozen input-register hashes, one missing ezdxf import and one missing negative-control fixture. Its raw failure is preserved. The frozen register is restored, an isolated dependency copy is verified, and a bounded 7-suite / 182-test repair run is being prepared. Native CAD, FPC and KiCad evidence retains separate execution identities.
+The first canonical execution at b6abcb6326439270ec137cdac00cd6dd7ade4ac7 ran 32 suites / 1220 tests and FAILED; its raw failure remains preserved. The bounded repair at 3eae4e7258814c7f5454937535d6c642dd51662f passed 7 suites / 182 tests. The independently checked canonical selection combines the first run's passing 25 suites / 1058 tests with the repaired 7 suites / 182 tests: 32 suites / 1240 tests, not one fresh full run. The selection report is engineering/product-integration-20261018/validation/canonical-selection.json. This product-branch evidence is not in main; accepted main 1187 and PR35 draft 1216 remain separate. New mechanical execution passed 14 targeted tests, 8106 changed/new-part pair checks, 484 OLED enclosures, 9021 added-material non-self comparisons and complete STEP readbacks with 99/99/106 participants. FPC reconstruction rejected all 49 motion plus 15 manual states with zero Boolean-operation errors; the selected-supplier dynamic bend-radius limit is unknown. New electrical/FPC evidence contains 90 files plus its index. The three PCB results reuse retained KiCad v4 zero-DRC/zero-unconnected/zero-footprint-error evidence and were not rerun. Original temporary mechanical/FPC large files were lost; current rebuilt artifacts retain new execution identities.
 
 Accepted numerical evidence: [PR34 installation/service](engineering/installation-control-20261018/DELIVERY_VERIFICATION.json). Bearing research and the older spring experiment retain their own versioned results in the current product state; historical failures remain preserved.
 That FE evidence belongs to the original installation geometry. The newly modified product shells have not been structurally requalified.
@@ -54,7 +54,7 @@ Raw vendor CAD remains on its authorized source machine where the supplied Readm
 
 ## Engineering limits
 
-CAD and software checks can reject a proposal but do not supply actual FPC stackup/fatigue, OEM keep-out permission, BM28 PCB/clamp design, continuous USB SI, battery/BMS short/backfeed/isolation tests, mechanical load/jam/retraction tests, or OLED qualification. STEP exports labelled GHOST are research-only.
+CAD and software checks can reject a proposal but do not supply actual FPC stackup/fatigue, OEM keep-out permission, physical BM28 connector/PCB/clamp fit and retention qualification, continuous USB SI, battery/BMS short/backfeed/isolation tests, mechanical load/jam/retraction tests, or OLED qualification. STEP exports labelled GHOST are research-only.
 
 Historical R6 design repairs and production blockers are recorded in [`engineering/PRODUCTION_BLOCKERS_R6.md`](engineering/PRODUCTION_BLOCKERS_R6.md). R3/R4 status files remain historical. The [`second-round status`](engineering/qualification-readiness-20261013-r2/CURRENT_STATUS.md) and earlier [`PRODUCTION_STATUS.md`](engineering/manufacturing-closure-20261013/PRODUCTION_STATUS.md) remain historical baselines. Native CAD/ECAD verification and machine receipts are kept with each artifact.
 
