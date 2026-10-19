@@ -17,7 +17,11 @@
 | `verify_added_material_motion.py` | 对全部新增材料做连续相对运动包络检查 |
 | `verify_product_exports.py` | 不导入产品构造器的完整 STEP 读回，以及新增 M1 螺钉的有限工具入口检查 |
 
-主干基线固定为 `a1b3cc1e0773446f2e36d0a607edf61211dd9919`。当前结构从 `engineering/panel-bearing-web-20261015/native-templates.tar.gz` 的 34 个模板及其固定父级来源重建；该归档 SHA256 为 `f8e610824c9a3603e12579c43c2169228f3729e4d07d4838c46c3cae0b2673b7`。补回的原始文件逐一保留固定 Git blob 和 SHA256，见 `source-downloads.json`。不改写原模板，`native_scene` 保留原 83 件场景作为对照。
+主干基线固定为 `a1b3cc1e0773446f2e36d0a607edf61211dd9919`。当前结构从 `engineering/panel-bearing-web-20261015/native-templates.tar.gz` 的 34 个模板及其固定父级来源重建；该归档 SHA256 为 `f8e610824c9a3603e12579c43c2169228f3729e4d07d4838c46c3cae0b2673b7`。当前构造器核验归档及源输入的 SHA256，导出 manifest 保留实际使用的来源。不改写原模板，`native_scene` 保留原 83 件场景作为对照。最初下载时的 `source-downloads.json` 回执已随本地临时材料丢失，不能声称该旧回执仍在本目录。
+
+### 2026-10-19 证据重建说明
+
+2026-10-18 的完整报告、旧否定配置和三个原生归档在本地临时环境重置后丢失；保留下来的旧哈希不是文件仍然存在的证据。功能源码已恢复，并修正当前 `product_scene` 曾继承原生基线 83 / false 的元数据问题：当前返回实际 94 / 101 件及材料已修改，基线来源仍单列 83 / false。此次在持久执行目录重新运行研究、完整 STEP 读回和封包，使用新执行记录及新文件哈希；以下几何设计数值不冒充已复原的旧输出字节。2026-10-19 已在 `3eae4e7258814c7f5454937535d6c642dd51662f` 完成新的 14 项测试、三状态导出、31 个新增材料区域的 9021 次非自身比较，以及三份独立 STEP 读回；检查均通过。实际归档身份以新 `final-delivery.json`、`execution-record.json` 及其绑定报告为准，单元修复的 7 组 / 182 项另见上级 validation 目录。
 
 现有尺寸来自项目自有设计假设，未冒充 OEM 实测。器件注册的来源类别区分 `design_space_allocation`、`supplier_nominal_envelope`、`measured_component`；实测类别必须带测量记录，未选型电池空间不能获得容量字段。
 
@@ -69,7 +73,7 @@ B 前缘 X = ±35.8…36.995、局部 Z = -1.15…0.10 mm 与 A 后缘实际切�
 
 A 优先较大电池分配在体积层面成立。A+B 总电池外包围只有 **10.6304 cm³**，未计入实物膨胀、极耳、保护和装配公差；没有从体积虚算出容量。B 的 12 mm 宽电子条带也绝不是已经安入原 Donor 主板的证据。摄像头只占位，光学出口和遮挡关系尚未建立。
 
-`geometry-trial-r0.json`、`geometry-trial-r1.json`、`geometry-trial-r2.json` 保留被淘汰的空间配置。`packing-report.json` 是 r0 的旧否定报告，不是当前结果。r1 较宽 B 电池在滑动 40 mm 的实际伸缩件上有正交集；r2 的两个 22 mm 宽侧舱各与 B 凸轮材料相交约 15.0430 mm³，还被完整横向立柱行程排除。当前 12 mm 侧条是对这些真实障碍的收缩，不能把损失的电子 / 电池空间隐藏掉。
+旧 `geometry-trial-r0.json` / `r1.json` / `r2.json` 及对应否定报告目前不可恢复为原始字节。新的 `geometry-wide-B-negative-control.json` 明确从当前配置派生：只把 B 电池的 X 下界从 21 改为 11 mm，上界仍为 33 mm，构成 22 mm 宽反例；其他几何不变。它不是旧 r1 的复原件。保留的原生交集断言要求此新反例在滑动 40 mm 时与真实伸缩件有大于 1e-7 mm³ 的正交集，同时要求当前 12 mm 分配对同组伸缩件没有超过该阈值的交集。实际见证由新测试和 `product-motion-report.json` 回写。当前电子 / 电池空间只有上表所列数值。
 
 伸缩件的正确名义轨迹是世界 Y 约为 81.5 mm，`|X| = 7.25 + (12 / 79.75) s`；不能错误地把它们当作不变 X 的固定柱，也不能把 X / Y 的独立最大包围相交直接认作同一时刻的真实碰撞。
 
@@ -116,7 +120,7 @@ STOP 采用原 `ContactProfile` 的单调四段位置，弹簧是随其变化的
 
 独立读回使用与构造器相同的 OCCT 内核，但不导入产品构造器；它检查所有 STEP 根和完整拓扑，不只抓取第一个 Solid；单件必须一体、正体积且有效，整机计数、体积和边界必须与清单相符。STL 只作可视化 / 后续加工评估，字节哈希核验不等于打印制造合格。
 
-本次独立读回还发现并修复了可复现的证书错误：默认 OCCT 边界会使用 STL 三角网格缓存，使同一 A_PANEL 的记录 Zmin 从 0 扩成约 -0.000295377 mm，尽管独立 STEP 体积只差 7.3e-12 mm³。现在构造器和独立读者都使用 `AddOptimal(useTriangulation=False)`；14 项测试中的外包围测试加入了 STL 网格化前后边界不变的断言。原失败见 `export-cache-drift-negative.json`，未通过放宽边界容差掩盖。
+初次独立读回曾发现并修复一个边界证书错误：默认 OCCT 边界使用 STL 三角网格缓存，使同一 A_PANEL 的记录 Zmin 从 0 扩成约 -0.000295377 mm，尽管独立 STEP 体积只差 7.3e-12 mm³。这些是当时观察到的数值；旧 `export-cache-drift-negative.json` 文件已丢失，不是本次可供重验的原始报告。当前构造器和独立读者都使用 `AddOptimal(useTriangulation=False)`，14 项测试中的外包围测试直接断言 STL 网格化前后边界不变；新读回仍使用原 1e-7 容差。
 
 ## 8. 复现与拆件交付
 
@@ -124,13 +128,15 @@ STOP 采用原 `ContactProfile` 的单调四段位置，弹簧是随其变化的
 
 ```bash
 python engineering/product-integration-20261018/mechanical/run_product_study.py --output /tmp/razr-product-study-run
-python engineering/product-integration-20261018/mechanical/verify_added_material_motion.py --output /tmp/razr-added-material-motion.json
-python engineering/product-integration-20261018/mechanical/verify_product_exports.py --manifest /tmp/razr-product-study-run/STOW/manifest.json --output /tmp/razr-STOW-readback.json
-python engineering/product-integration-20261018/mechanical/verify_product_exports.py --manifest /tmp/razr-product-study-run/PREDOCK/manifest.json --output /tmp/razr-PREDOCK-readback.json
-python engineering/product-integration-20261018/mechanical/verify_product_exports.py --manifest /tmp/razr-product-study-run/OPEN/manifest.json --output /tmp/razr-OPEN-readback.json
+mkdir -p /tmp/razr-product-study-evidence
+python engineering/product-integration-20261018/mechanical/verify_added_material_motion.py --output /tmp/razr-product-study-evidence/added-material-motion-report.json
+python engineering/product-integration-20261018/mechanical/verify_product_exports.py --manifest /tmp/razr-product-study-run/STOW/manifest.json --output /tmp/razr-product-study-evidence/readback-STOW.json
+python engineering/product-integration-20261018/mechanical/verify_product_exports.py --manifest /tmp/razr-product-study-run/PREDOCK/manifest.json --output /tmp/razr-product-study-evidence/readback-PREDOCK.json
+python engineering/product-integration-20261018/mechanical/verify_product_exports.py --manifest /tmp/razr-product-study-run/OPEN/manifest.json --output /tmp/razr-product-study-evidence/readback-OPEN.json
+python engineering/product-integration-20261018/mechanical/seal_product_study.py --input /tmp/razr-product-study-run --evidence-dir /tmp/razr-product-study-evidence --reconstruction
 ```
 
-输出目录必须不存在且在源码树之外。每个状态包含完整 STEP 总装、逐个可拆单件 STEP、对应 STL、BOM CSV 和 manifest；STOW / PREDOCK 各 99 个单体，OPEN 为 106 个单体。源码树内的 `native-STOW.tar.gz`、`native-PREDOCK.tar.gz` 和 `native-OPEN.tar.gz` 对应最终固定版的这些导出，`final-delivery.json` 给出完整哈希和结果入口。
+主研究的输出目录必须不存在且在源码树之外；独立读回和补充报告的父目录需要先创建。上面 `/tmp` 是短期复现示例，正式重建使用持久目录。每个状态包含完整 STEP 总装、逐个可拆单件 STEP、对应 STL、BOM CSV 和 manifest；STOW / PREDOCK 各 99 个单体，OPEN 为 106 个单体。封包器将 `native-STOW.tar.gz`、`native-PREDOCK.tar.gz`、`native-OPEN.tar.gz` 和 `final-delivery.json` 写入 `--evidence-dir`，逐成员重查归档字节，并拒绝错误的当前件数 / 基线元数据。缺失的历史文件单独列为不可用。封包时观察到的 Python / 依赖版本仅描述封包进程；生产各报告的真实执行环境应同时附在 `--execution-record` 指定的外部执行回执中。
 
 单独从当前 CLI 导出：
 

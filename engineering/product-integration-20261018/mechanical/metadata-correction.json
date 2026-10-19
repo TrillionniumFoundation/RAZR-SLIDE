@@ -15,6 +15,11 @@
     "integration/product-study-tests/test_product_geometry.py": {
       "before_sha256": "ef0587295cdbaa26f1ba0578fb50297b5411662eab47d1afb30a5b1fad5b3809",
       "after_sha256": "2f116057679bb5cbfd1adcca191b8c96d5e817a34ed51f7c4905c4a1db99b6a7"
+    },
+    "integration/product_motion.py": {
+      "before_sha256": "43dacb20764c3d887ecb690f80490be3e0a6379a925252ed5e680d83d033728c",
+      "after_sha256": "293719a058ec4da4581cb3f45140e0a51f308ff0baf6d1170f57aa3202a5541c",
+      "scope": "Separate verification fixture consumer repair, not part of the metadata-only product_scene API change."
     }
   },
   "product_API_correction": {
@@ -69,9 +74,53 @@
     "current_test_has_root_rebuilt_assertions_and_separate_fixture_name_repair": true,
     "old_manifest_field_explanation": "Previously observed mechanical manifests inherited expected_scene_participants=83 and material_geometry_changed=false from the native source. Those fields contradicted the exported modified candidate; product_changes and installed_mechanical_parts already described 94/94/101 mechanical parts, with complete exports 99/99/106. New exports must record the corrected API metadata and new execution/source identity."
   },
-  "canonical_revalidation": "Root owns independent locked-environment re-execution and evidence regeneration; this static review does not assert a passing regression or reuse lost output bytes.",
+  "canonical_revalidation": "Root owns independent locked-environment re-execution on the frozen metadata-plus-fixture source and regeneration of mechanical/FPC evidence. The fixture exists and is hash-bound, but this static review does not assert a passing collision counterexample, regression or restoration of lost output bytes.",
   "physical_product_qualification_changed": false,
   "candidate_go": false,
   "fixture_fabrication_go": false,
-  "manufacturing_go": false
+  "manufacturing_go": false,
+  "updated_at_utc": "2026-10-19T01:13:11.040665+00:00",
+  "fixture_consumer_recheck": {
+    "observed_at_utc": "2026-10-19T01:13:11.040665+00:00",
+    "consumer": "integration/product_motion.py",
+    "original_source_sha256": "43dacb20764c3d887ecb690f80490be3e0a6379a925252ed5e680d83d033728c",
+    "current_source_sha256": "293719a058ec4da4581cb3f45140e0a51f308ff0baf6d1170f57aa3202a5541c",
+    "changes": "One negative-control input path, its explanatory comment, and two output provenance fields (historical_r1_bytes_restored=false; reconstructed 22-mm-wide B battery allocation).",
+    "manual_program_AST_identical": true,
+    "whole_motion_source_AST_identical_after_reverting_only_one_fixture_path_and_two_report_fields": true,
+    "motion_state_program_and_all_geometry_path_computation_expressions_unchanged": true,
+    "negative_control_geometry_input_is_intentionally_different_from_missing_historical_r1": true,
+    "positive_common_computation_filtering_thresholds_and_required_checks_unchanged": true,
+    "Python_compile_succeeded": true,
+    "fixture": {
+      "repo_path": "engineering/product-integration-20261018/mechanical/geometry-wide-B-negative-control.json",
+      "present_at_this_recheck": true,
+      "sha256": "ae689a4e89fb1254822df7f834fdba9e9969b1aad515f2ad8d9a81a9be3639e1",
+      "bytes": 8670,
+      "basis_repo_path": "design/product_geometry.json",
+      "basis_sha256": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+      "only_geometric_change_from_current_configuration": "B_BATTERY_ALLOCATION lo_x 21 -> 11 mm, hi_x remains 33 mm (12 -> 22 mm width).",
+      "remaining_JSON_changes": "B battery source description and explicit negative_control_provenance metadata.",
+      "all_other_geometry_configuration_values_exactly_equal": true,
+      "historical_r1_original_bytes_restored": false,
+      "geometry_or_collision_execution_performed_by_this_review": false
+    }
+  },
+  "completed_native_reexecution_reference": {
+    "source_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+    "record_scope": "Later root-observed execution; earlier static-review at_recording flags remain historical observations.",
+    "targeted_tests": 14,
+    "targeted_tests_passed": true,
+    "export_participants": {
+      "STOW": 99,
+      "PREDOCK": 99,
+      "OPEN": 106
+    },
+    "added_material_nonself_comparisons": 9021,
+    "added_material_rejections": 0,
+    "independent_STEP_readbacks_all_passed": true,
+    "execution_record": "execution-record.json",
+    "sealed_delivery": "final-delivery.json",
+    "old_output_bytes_restored": false
+  }
 }
