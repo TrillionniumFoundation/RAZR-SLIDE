@@ -8,6 +8,14 @@
 
 原本地临时目录在重置后丢失了一批 2026-10-18 的原生报告、旧否定配置和归档。现有机械与 FPC 文件是新执行生成、重新读回并以新哈希封存的结果；旧哈希没有被用来证明旧文件仍存在。原始单元测试失败报告与日志另行保留，文件存续和重建边界见 [artifact-preservation.json](validation/artifact-preservation.json)。
 
+## GitHub 发布状态（2026-10-19）
+
+本轮已发布为 [PR #36](https://github.com/TrillionniumFoundation/RAZR-SLIDE/pull/36)，完整研究证据提交为 `1c7be2695ac55b94f38c9d8187d1f9440e6c926b`；此后状态文档有独立跟进提交。PR36 当前开放，尚未合入 main。main 仍为 `a1b3cc1e0773446f2e36d0a607edf61211dd9919`。
+
+[PR #25](https://github.com/TrillionniumFoundation/RAZR-SLIDE/pull/25) 已于 2026-10-19T02:13:29Z 关闭为由 PR36 替代，未合并旧全体积驱动；其八个历史全局失败算例仍保持失败结果。[PR #35](https://github.com/TrillionniumFoundation/RAZR-SLIDE/pull/35) 继续开放为 draft，头部仍为 `176df31ceb35bb3737d68030e60ba377665de210`，其正文已关联本轮见证覆盖与缓存停止诊断。
+
+PR36 的首轮 [Research validation 运行](https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/39188719769) 在12个 job 中均未执行任何 step 即失败；本次具体平台失败原因尚未核实，不沿用旧运行的计费解释，也不计为云端测试通过。主机实跑、云端结果和物理资格分别保留，观测头部与状态见 [publication-status.json](publication-status.json)。
+
 ## 1. 工作包的实际交付边界
 
 | 工作包 | 本轮实现 | 尚未满足的完成条件 |
