@@ -1,0 +1,394 @@
+{
+  "schema": "razr-phase4-publication-verification-v1",
+  "started_utc": "2026-10-20T07:47:37.693612+00:00",
+  "finished_utc": "2026-10-20T07:47:53.103323+00:00",
+  "seconds": 15.409715697984211,
+  "prepublication_head": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+  "working_tree_contains_archive_and_metadata_updates": true,
+  "scope": "archive identities/gzip, four independent reader inputs, generated entries and five existing state tests; not a full unit/native/hardware rerun",
+  "commands": [
+    {
+      "label": "entrypoint-sync",
+      "command": [
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+        "-B",
+        "tools/sync_current_design.py",
+        "--check"
+      ],
+      "cwd": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018",
+      "started_utc": "2026-10-20T07:47:52.330073+00:00",
+      "finished_utc": "2026-10-20T07:47:52.422035+00:00",
+      "seconds": 0.09199419000651687,
+      "exit_code": 0,
+      "log": "engineering/product-integration-20261018/phase4-20261020/validation/entrypoint-sync.log",
+      "log_sha256": "8bc4793b0e31159d0190bd1e5437aded48db059de85d4839c7d2c545bb7f81b0",
+      "stdout": "{\"mode\": \"check\", \"changed\": []}\n",
+      "stderr": ""
+    },
+    {
+      "label": "five-product-state-tests",
+      "command": [
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "integration/product-study-tests",
+        "-p",
+        "test_product_state.py",
+        "-v"
+      ],
+      "cwd": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018",
+      "started_utc": "2026-10-20T07:47:52.422326+00:00",
+      "finished_utc": "2026-10-20T07:47:52.741829+00:00",
+      "seconds": 0.31953135796356946,
+      "exit_code": 0,
+      "log": "engineering/product-integration-20261018/phase4-20261020/validation/five-product-state-tests.log",
+      "log_sha256": "2b64f82d8dac4e82281532a4cee2eff0668f2ff38d74cb43d92ed1eaccb79db5",
+      "stdout": "",
+      "stderr": "test_generated_entrypoints_are_current (test_product_state.ProductStateTests.test_generated_entrypoints_are_current) ... ok\ntest_later_closure_keeps_failed_diagnostic_history (test_product_state.ProductStateTests.test_later_closure_keeps_failed_diagnostic_history) ... ok\ntest_manifest_growth_never_inflates_completed_run (test_product_state.ProductStateTests.test_manifest_growth_never_inflates_completed_run) ... ok\ntest_open_draft_cannot_be_marked_as_main (test_product_state.ProductStateTests.test_open_draft_cannot_be_marked_as_main) ... ok\ntest_stale_readme_text_is_detected_and_repair_is_idempotent (test_product_state.ProductStateTests.test_stale_readme_text_is_detected_and_repair_is_idempotent) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.194s\n\nOK\n",
+      "tests_run": 5,
+      "test_identities": [
+        "test_product_state.ProductStateTests.test_generated_entrypoints_are_current",
+        "test_product_state.ProductStateTests.test_later_closure_keeps_failed_diagnostic_history",
+        "test_product_state.ProductStateTests.test_manifest_growth_never_inflates_completed_run",
+        "test_product_state.ProductStateTests.test_open_draft_cannot_be_marked_as_main",
+        "test_product_state.ProductStateTests.test_stale_readme_text_is_detected_and_repair_is_idempotent"
+      ]
+    }
+  ],
+  "checked_sources_sha256": {
+    "integration/product_routing_ep4.py": "f8286416e8d4f835b5a280f3c76e7dd69aaebda25ac2217f40f33e19e92251b8",
+    "design/product_routing_ep4.json": "7504d0714a6a61bf8742d2ab2f69dff245aa32dec449a34158c784803fe4240d",
+    "integration/product_routing_ep3.py": "dfee909ffe781036fb7cec84a2acabe4aada23409bb3ea721f402831462e90d2",
+    "design/product_routing_ep3.json": "5ea33c5948b1a46c9317ca4eceb4a290b5419bd8f09baa351b40346f13e5fa3e",
+    "integration/product_split_assembly.py": "0f5ed0e9f64e0733f1608dfb9a23418ddf965240ac69ded654a65c0175d5acbb",
+    "integration/product_assembly.py": "695073e313dae45edbb7cf8c305d31c167b4e24e1731bf8be8f1a91a77dbd77b",
+    "integration/product_fpc.py": "fe52b2582a4125090767d68c165a45968cf4d4c8f3191be3e92d9f29d4f2f93e",
+    "integration/product_interfaces.py": "bcf84897de521d9d783e33787c66df807035ca514e3ae4ed450431bf60347019",
+    "integration/oled_storage.py": "04b32718ff6b0f6ee107c56b6aaf58c7f8d4c3b1b64b09b84297b6ff0ab75082",
+    "integration/product_motion.py": "293719a058ec4da4581cb3f45140e0a51f308ff0baf6d1170f57aa3202a5541c",
+    "integration/cam_coupling.py": "4a3bf1d2b86d31fa8e3d60d3412e15548bf42287ed95d756798f3d88c6c4e631",
+    "integration/straight_envelope.py": "5fe5fa2238572123b292a940da9b2e8ec68734ce078a5cdf1c8e84c1e31047bf",
+    "engineering/product-integration-20261018/physical-test-followon-20261019/captured_follower_assembly.py": "d3ccd367ef791b90296ec09011e5368bd17a93da4fc2c6fd999e252133dca259",
+    "design/product_geometry.json": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+    "design/product_interfaces.json": "a5eeba7042ee44d1b8317e5e5d084b0bddbf6609550652a50f721a29af6f1bd7",
+    "design/current_product.json": "55f3f4f605594e359b52279059141d29084442bc849be135a229e35eee0e0e4d",
+    "README.md": "c231d520c6c866f83a0187f8fa600f21d919015b7c0a512723aa5f723be6d083",
+    "CURRENT_DESIGN.md": "cd350c7be7eb3cf00569ad9e8dabc4c43ac7998a2ae01bc2868bbe43891f6aa6",
+    "status.json": "f231cd74620f7ebaa6c2d6f897231ee676d50a711e50d054869e8d2c7b473f93",
+    "engineering/product-integration-20261018/README.md": "3b83a9765d167eedd8b6d813074e2071598a8c9055192079195f42b8a2721bec",
+    "tools/sync_current_design.py": "dedceb0b612ebdf459f5b9b3301e8aa35f244f1e4820eab57ceaa58e898d882e",
+    "integration/product-study-tests/test_product_state.py": "51498d70fe6201057ee3dc31af2865de8c6224c4938c3f8a7510aafb7058daf1",
+    "engineering/product-integration-20261018/phase4-20261020/README.md": "a7b577188ae5b03813e1dccdc8ce254c0cf129190ea59c37564fd8dfed4e4174",
+    "engineering/product-integration-20261018/phase4-20261020/SUMMARY.json": "ff16440aa8d6d79561dddef7a5d795036f1fa96e35884d19db0e00786edfa083",
+    "engineering/product-integration-20261018/phase4-20261020/local-studies/SUMMARY.json": "cb4ef5f4dd986b07df4d4e800a5208dff7d2477bd7e6a793f37ab2e3f8beb0a6",
+    "engineering/product-integration-20261018/phase4-20261020/validation/controllers/razr_phase4_verify_final.py": "fab288a6eb7723424e8f0ec2c091bd5c20f8c526fcdbe63c9bb33b4ccaaec9eb"
+  },
+  "checked_sources_unchanged_during_verification": true,
+  "archived_files": 305,
+  "all_archive_bytes_verified": true,
+  "relative_links_checked": 58,
+  "missing_relative_links": [],
+  "relative_links": [
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "target": "local-studies/SUMMARY.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "target": "validation/execution",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "target": "SUMMARY.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "target": "artifact-index.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "target": "EP4_ROUTING.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "target": "SOURCE_SCOPE.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "target": "reviews/ep4-independent-constraint-review.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "target": "native-summary.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "target": "native/predock/native-report.json.gz",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "target": "native/open-stow/native-report.json.gz",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "target": "local-studies/README.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "target": "reviews/ep4-b-anchor-and-a-web-followup.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "target": "reviews/ep4-b-anchor-wall-constraints.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "target": "reviews/audit-note.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "target": "reviews/phase4-platform-physical-handoff.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "target": "actions/90b09f5-run39378151409-final.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/local-studies/README.md",
+      "target": "../native-summary.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/local-studies/README.md",
+      "target": "SUMMARY.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/local-studies/README.md",
+      "target": "ep4_a_head_relief.py",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/local-studies/README.md",
+      "target": "A-head-relief/report.json.gz",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/local-studies/README.md",
+      "target": "../validation/readback-a-head-relief/report.json.gz",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/local-studies/README.md",
+      "target": "key-source/README.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/local-studies/README.md",
+      "target": "KEY/native/native-report.json.gz",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/local-studies/README.md",
+      "target": "../validation/readback-key-local/report.json.gz",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase4-20261020/local-studies/README.md",
+      "target": "../reviews/key-local-script-review.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "phase4-20261020/README.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "phase3-20261020/README.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "phase2-20261019/README.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "DELIVERY_VERIFICATION.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "validation/README.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "../../tools/sync_current_design.py",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "../../design/current_product.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "validation/artifact-preservation.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "publication-status.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "mechanical/native-STOW.tar.gz",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "mechanical/native-PREDOCK.tar.gz",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "mechanical/native-OPEN.tar.gz",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "mechanical/README.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "mechanical/final-delivery.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "mechanical/geometry-wide-B-negative-control.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "capacity-budget.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "../../integration/product_assembly.py",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "../../design/product_geometry.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "mechanical/README.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "mechanical/oled-motion-report.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "DELIVERY_VERIFICATION.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "electrical/README.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "electrical/coupon-static-terminal-schedule.csv",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "electrical/motion/motion-report.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "electrical/artifact-index.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "electrical/rebuild-receipt.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "validation/README.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "hardware/BUILD_AND_MEASURE.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "hardware/measurement-record.template.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "numerics/README.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "validation/README.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "validation/runtime-copy-recheck-20261019.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/README.md",
+      "target": "electrical/verify_native_mini.py",
+      "exists_or_pending_index": true
+    }
+  ],
+  "historical_latest_execution_and_unit_records_preserved": true,
+  "all_native_inputs_match_executed_N": true,
+  "donor_record_and_interfaces_preserved": true,
+  "all_declared_publication_checks_passed": true,
+  "candidate_go": false,
+  "manufacturing_go": false,
+  "hosted_execution_restored": false,
+  "physical_phone_verified": false
+}

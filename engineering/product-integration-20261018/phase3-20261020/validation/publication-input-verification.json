@@ -1,0 +1,270 @@
+{
+  "schema": "razr-phase3-publication-input-verification-v1",
+  "started_utc": "2026-10-20T06:00:47.287435+00:00",
+  "finished_utc": "2026-10-20T06:00:48.113891+00:00",
+  "seconds": 0.8264574289787561,
+  "prepublication_git_head": "a33e58cd555b8d9aff1e3649f79cd0dba378a804",
+  "working_tree_had_archive_and_metadata_changes": true,
+  "verification_scope": "entrypoint synchronization, five existing state regressions, archive byte identities, relative links and preserved actual evidence scopes; not a new full unit/native/hardware execution",
+  "controller_sha256": "1a99325535a9e07a43901673c34b8ac04802f8174611c09c8d9b7942a46ff280",
+  "commands": [
+    {
+      "label": "entrypoint-sync",
+      "command": [
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+        "-B",
+        "tools/sync_current_design.py",
+        "--check"
+      ],
+      "cwd": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018",
+      "started_utc": "2026-10-20T06:00:47.867706+00:00",
+      "finished_utc": "2026-10-20T06:00:47.960757+00:00",
+      "seconds": 0.0930498680099845,
+      "exit_code": 0,
+      "log": "engineering/product-integration-20261018/phase3-20261020/validation/entrypoint-sync.log",
+      "log_sha256": "8bc4793b0e31159d0190bd1e5437aded48db059de85d4839c7d2c545bb7f81b0",
+      "stdout": "{\"mode\": \"check\", \"changed\": []}\n",
+      "stderr": ""
+    },
+    {
+      "label": "five-product-state-tests",
+      "command": [
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "integration/product-study-tests",
+        "-p",
+        "test_product_state.py",
+        "-v"
+      ],
+      "cwd": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018",
+      "started_utc": "2026-10-20T06:00:47.960992+00:00",
+      "finished_utc": "2026-10-20T06:00:48.087067+00:00",
+      "seconds": 0.1260926810791716,
+      "exit_code": 0,
+      "log": "engineering/product-integration-20261018/phase3-20261020/validation/five-product-state-tests.log",
+      "log_sha256": "df40d49aa027a985d2e1a6850d8ed761d99623fbfdbe881b02ec45b2eb986db3",
+      "stdout": "",
+      "stderr": "test_generated_entrypoints_are_current (test_product_state.ProductStateTests.test_generated_entrypoints_are_current) ... ok\ntest_later_closure_keeps_failed_diagnostic_history (test_product_state.ProductStateTests.test_later_closure_keeps_failed_diagnostic_history) ... ok\ntest_manifest_growth_never_inflates_completed_run (test_product_state.ProductStateTests.test_manifest_growth_never_inflates_completed_run) ... ok\ntest_open_draft_cannot_be_marked_as_main (test_product_state.ProductStateTests.test_open_draft_cannot_be_marked_as_main) ... ok\ntest_stale_readme_text_is_detected_and_repair_is_idempotent (test_product_state.ProductStateTests.test_stale_readme_text_is_detected_and_repair_is_idempotent) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.029s\n\nOK\n",
+      "tests_run": 5,
+      "test_identities": [
+        "test_product_state.ProductStateTests.test_generated_entrypoints_are_current",
+        "test_product_state.ProductStateTests.test_later_closure_keeps_failed_diagnostic_history",
+        "test_product_state.ProductStateTests.test_manifest_growth_never_inflates_completed_run",
+        "test_product_state.ProductStateTests.test_open_draft_cannot_be_marked_as_main",
+        "test_product_state.ProductStateTests.test_stale_readme_text_is_detected_and_repair_is_idempotent"
+      ],
+      "ran_five_reported": true
+    }
+  ],
+  "checked_source_sha256_before": {
+    "integration/product_routing_ep3.py": "dfee909ffe781036fb7cec84a2acabe4aada23409bb3ea721f402831462e90d2",
+    "design/product_routing_ep3.json": "5ea33c5948b1a46c9317ca4eceb4a290b5419bd8f09baa351b40346f13e5fa3e",
+    "integration/product_split_assembly.py": "0f5ed0e9f64e0733f1608dfb9a23418ddf965240ac69ded654a65c0175d5acbb",
+    "integration/product_assembly.py": "695073e313dae45edbb7cf8c305d31c167b4e24e1731bf8be8f1a91a77dbd77b",
+    "integration/product_fpc.py": "fe52b2582a4125090767d68c165a45968cf4d4c8f3191be3e92d9f29d4f2f93e",
+    "integration/product_interfaces.py": "5b54b06023bcad187400053217babaeb1deadfa6c2f2d48c129b96044c668d89",
+    "integration/product_routing_diagnostic.py": "044d6176416e0d4a91fe0b798863e99ed7109671d2f4caa0cfe6abf909418c17",
+    "design/product_routing_followup.json": "27ab044938a78727fab79fefaa07aca22bf68df7794a74cda3a6b56e6966a0e8",
+    "integration/oled_storage.py": "04b32718ff6b0f6ee107c56b6aaf58c7f8d4c3b1b64b09b84297b6ff0ab75082",
+    "integration/product_motion.py": "293719a058ec4da4581cb3f45140e0a51f308ff0baf6d1170f57aa3202a5541c",
+    "integration/cam_coupling.py": "4a3bf1d2b86d31fa8e3d60d3412e15548bf42287ed95d756798f3d88c6c4e631",
+    "engineering/product-integration-20261018/physical-test-followon-20261019/captured_follower_assembly.py": "d3ccd367ef791b90296ec09011e5368bd17a93da4fc2c6fd999e252133dca259",
+    "design/product_geometry.json": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+    "design/product_interfaces.json": "a5eeba7042ee44d1b8317e5e5d084b0bddbf6609550652a50f721a29af6f1bd7",
+    "design/current_product.json": "741d5ec08c56c5ea18a7110c4296306f12c75d236cbfbf880daf8706c9f4f6fe",
+    "README.md": "37d17932a06b8988533d101558ec5049a5b62919263c2b9b5d232f52477686a6",
+    "CURRENT_DESIGN.md": "ed790cc67fc23a55d1db7dfd8711048ff9e6c6724c194b5c7e253e6999cec2de",
+    "status.json": "bd524382a74ad3ee2f8616becdba631e600f86af73114530e4f5dfd7995c3ab5",
+    "tools/sync_current_design.py": "dedceb0b612ebdf459f5b9b3301e8aa35f244f1e4820eab57ceaa58e898d882e",
+    "integration/product-study-tests/test_product_state.py": "51498d70fe6201057ee3dc31af2865de8c6224c4938c3f8a7510aafb7058daf1",
+    "engineering/product-integration-20261018/phase3-20261020/README.md": "07fadb20cb20a052bc6df99998525a9befdd5eee251bfd90a3fad6189cec5fed",
+    "engineering/product-integration-20261018/phase3-20261020/SUMMARY.json": "2e4d9cdde3e4193ac5c16ce7b6a8dc8c1aecb53cf93bef73e37756160d8a3e0f",
+    "engineering/product-integration-20261018/phase3-20261020/EP3_ROUTING.md": "b7117a10779da6c3f0e76dc5db5c20e003d68ab876e5eebdad117de742e699ea",
+    "engineering/product-integration-20261018/phase3-20261020/validation/final-verification.py": "1a99325535a9e07a43901673c34b8ac04802f8174611c09c8d9b7942a46ff280"
+  },
+  "checked_source_sha256_after": {
+    "integration/product_routing_ep3.py": "dfee909ffe781036fb7cec84a2acabe4aada23409bb3ea721f402831462e90d2",
+    "design/product_routing_ep3.json": "5ea33c5948b1a46c9317ca4eceb4a290b5419bd8f09baa351b40346f13e5fa3e",
+    "integration/product_split_assembly.py": "0f5ed0e9f64e0733f1608dfb9a23418ddf965240ac69ded654a65c0175d5acbb",
+    "integration/product_assembly.py": "695073e313dae45edbb7cf8c305d31c167b4e24e1731bf8be8f1a91a77dbd77b",
+    "integration/product_fpc.py": "fe52b2582a4125090767d68c165a45968cf4d4c8f3191be3e92d9f29d4f2f93e",
+    "integration/product_interfaces.py": "5b54b06023bcad187400053217babaeb1deadfa6c2f2d48c129b96044c668d89",
+    "integration/product_routing_diagnostic.py": "044d6176416e0d4a91fe0b798863e99ed7109671d2f4caa0cfe6abf909418c17",
+    "design/product_routing_followup.json": "27ab044938a78727fab79fefaa07aca22bf68df7794a74cda3a6b56e6966a0e8",
+    "integration/oled_storage.py": "04b32718ff6b0f6ee107c56b6aaf58c7f8d4c3b1b64b09b84297b6ff0ab75082",
+    "integration/product_motion.py": "293719a058ec4da4581cb3f45140e0a51f308ff0baf6d1170f57aa3202a5541c",
+    "integration/cam_coupling.py": "4a3bf1d2b86d31fa8e3d60d3412e15548bf42287ed95d756798f3d88c6c4e631",
+    "engineering/product-integration-20261018/physical-test-followon-20261019/captured_follower_assembly.py": "d3ccd367ef791b90296ec09011e5368bd17a93da4fc2c6fd999e252133dca259",
+    "design/product_geometry.json": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+    "design/product_interfaces.json": "a5eeba7042ee44d1b8317e5e5d084b0bddbf6609550652a50f721a29af6f1bd7",
+    "design/current_product.json": "741d5ec08c56c5ea18a7110c4296306f12c75d236cbfbf880daf8706c9f4f6fe",
+    "README.md": "37d17932a06b8988533d101558ec5049a5b62919263c2b9b5d232f52477686a6",
+    "CURRENT_DESIGN.md": "ed790cc67fc23a55d1db7dfd8711048ff9e6c6724c194b5c7e253e6999cec2de",
+    "status.json": "bd524382a74ad3ee2f8616becdba631e600f86af73114530e4f5dfd7995c3ab5",
+    "tools/sync_current_design.py": "dedceb0b612ebdf459f5b9b3301e8aa35f244f1e4820eab57ceaa58e898d882e",
+    "integration/product-study-tests/test_product_state.py": "51498d70fe6201057ee3dc31af2865de8c6224c4938c3f8a7510aafb7058daf1",
+    "engineering/product-integration-20261018/phase3-20261020/README.md": "07fadb20cb20a052bc6df99998525a9befdd5eee251bfd90a3fad6189cec5fed",
+    "engineering/product-integration-20261018/phase3-20261020/SUMMARY.json": "2e4d9cdde3e4193ac5c16ce7b6a8dc8c1aecb53cf93bef73e37756160d8a3e0f",
+    "engineering/product-integration-20261018/phase3-20261020/EP3_ROUTING.md": "b7117a10779da6c3f0e76dc5db5c20e003d68ab876e5eebdad117de742e699ea",
+    "engineering/product-integration-20261018/phase3-20261020/validation/final-verification.py": "1a99325535a9e07a43901673c34b8ac04802f8174611c09c8d9b7942a46ff280"
+  },
+  "checked_sources_unchanged_during_verification": true,
+  "native_input_file_count": 14,
+  "all_native_inputs_match_executed_A33": true,
+  "archived_transferred_file_count": 42,
+  "all_archive_hashes_and_gzip_roundtrips_match": true,
+  "relative_links_checked": 28,
+  "missing_relative_links": [],
+  "relative_links": [
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/EP3_ROUTING.md",
+      "target": "README.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/EP3_ROUTING.md",
+      "target": "native-summary.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/NEXT_PHYSICAL_INPUTS.md",
+      "target": "../hardware/IMPORT_EVIDENCE.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/NEXT_PHYSICAL_INPUTS.md",
+      "target": "../physical-test-followon-20261019/README.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "hardware/DONOR_IMPORT.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "../hardware/records/xt2551-3-20261020-f4db100-identity/record.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "native-summary.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "native/native-report.json.gz",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "native/EP3-PREDOCK-YZ.svg",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "ep3-constraint-review.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "native-first-failure/native-execution-failure.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "validation/ep3-native-execution.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "native-first-failure/native/progress.json.gz",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "validation/ep3-native-api-repair-commit.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "validation/ep3-api-repair/native-api-regression.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "validation/retained-STOW-counterexamples.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "validation/ep3-independent-readback/report.json.gz",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "read_ep3_step_independent.py",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "actions/f4db100-run39359899335.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "actions/42679be-run39355931047.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "NEXT_PHYSICAL_INPUTS.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "assembly-followup-review.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "SUMMARY.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "target": "artifact-index.json",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/donor-collector-followup.md",
+      "target": "hardware/DONOR_IMPORT.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/donor-collector-followup.md",
+      "target": "README.md",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/hardware/DONOR_IMPORT.md",
+      "target": "../../hardware/records/xt2551-3-20261020-f4db100-identity",
+      "exists_or_pending_index": true
+    },
+    {
+      "source": "engineering/product-integration-20261018/phase3-20261020/hardware/DONOR_IMPORT.md",
+      "target": "../../phase2-20261019/hardware/pocket4-20261020/README.md",
+      "exists_or_pending_index": true
+    }
+  ],
+  "donor_interfaces_and_imported_record_hashes_preserved": true,
+  "all_declared_publication_input_checks_passed": true,
+  "candidate_go": false,
+  "manufacturing_go": false,
+  "hosted_execution_restored": false,
+  "physical_phone_verified": false
+}

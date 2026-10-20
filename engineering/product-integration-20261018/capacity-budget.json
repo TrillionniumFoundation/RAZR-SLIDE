@@ -1,0 +1,91 @@
+{
+  "scope": "conditional capacity versus current outside allocation volume",
+  "cell_allocations": [
+    {
+      "name": "A_BATTERY_ALLOCATION",
+      "cabin": "A",
+      "outside_dimensions_mm": [
+        64.0,
+        40.0,
+        2.75
+      ],
+      "available_outside_volume_mm3": 7040.0,
+      "source_kind": "design_space_allocation",
+      "selected_part": null,
+      "capacity_mAh": null,
+      "swelling_included": false
+    },
+    {
+      "name": "B_BATTERY_ALLOCATION",
+      "cabin": "B",
+      "outside_dimensions_mm": [
+        12.0,
+        68.0,
+        4.3999999999999995
+      ],
+      "available_outside_volume_mm3": 3590.3999999999996,
+      "source_kind": "design_space_allocation",
+      "selected_part": null,
+      "capacity_mAh": null,
+      "swelling_included": false
+    }
+  ],
+  "A_has_larger_allocation_volume": true,
+  "A_larger_actual_capacity_verified": false,
+  "total_outside_allocation_cm3": 10.6304,
+  "total_target_mAh": 4700,
+  "capacity_target_convention": "sum of cell-label mAh at a common nominal reference voltage; not terminal Ah for an unidentified series/parallel topology",
+  "actual_system_terminal_capacity_verified": false,
+  "reference_voltage_and_pack_topology_selected": false,
+  "minimum_required_complete_pack_mAh_per_cm3": 442.1282360024082,
+  "required_density_is_lower_bound_before_unmodeled_allowances": true,
+  "hypothetical_density_sensitivity": [
+    {
+      "hypothetical_complete_pack_mAh_per_cm3": 100,
+      "capacity_if_entire_allocation_usable_mAh": 1063.04,
+      "outside_volume_needed_for_target_cm3": 47.0,
+      "extra_outside_volume_needed_cm3": 36.3696,
+      "source_kind": "conditional_arithmetic_not_a_supplier_claim"
+    },
+    {
+      "hypothetical_complete_pack_mAh_per_cm3": 150,
+      "capacity_if_entire_allocation_usable_mAh": 1594.56,
+      "outside_volume_needed_for_target_cm3": 31.333333333333332,
+      "extra_outside_volume_needed_cm3": 20.702933333333334,
+      "source_kind": "conditional_arithmetic_not_a_supplier_claim"
+    },
+    {
+      "hypothetical_complete_pack_mAh_per_cm3": 200,
+      "capacity_if_entire_allocation_usable_mAh": 2126.08,
+      "outside_volume_needed_for_target_cm3": 23.5,
+      "extra_outside_volume_needed_cm3": 12.8696,
+      "source_kind": "conditional_arithmetic_not_a_supplier_claim"
+    },
+    {
+      "hypothetical_complete_pack_mAh_per_cm3": 250,
+      "capacity_if_entire_allocation_usable_mAh": 2657.6,
+      "outside_volume_needed_for_target_cm3": 18.8,
+      "extra_outside_volume_needed_cm3": 8.1696,
+      "source_kind": "conditional_arithmetic_not_a_supplier_claim"
+    },
+    {
+      "hypothetical_complete_pack_mAh_per_cm3": 300,
+      "capacity_if_entire_allocation_usable_mAh": 3189.12,
+      "outside_volume_needed_for_target_cm3": 15.666666666666666,
+      "extra_outside_volume_needed_cm3": 5.036266666666666,
+      "source_kind": "conditional_arithmetic_not_a_supplier_claim"
+    },
+    {
+      "hypothetical_complete_pack_mAh_per_cm3": 350,
+      "capacity_if_entire_allocation_usable_mAh": 3720.64,
+      "outside_volume_needed_for_target_cm3": 13.428571428571429,
+      "extra_outside_volume_needed_cm3": 2.798171428571429,
+      "source_kind": "conditional_arithmetic_not_a_supplier_claim"
+    }
+  ],
+  "selected_cell_pair_capacity_or_Wh_verified": false,
+  "true_cell_shapes_tabs_protection_and_swelling_verified": false,
+  "interpretation": "A donor cell pair must satisfy both native geometric fit and its actual rated capacity. A lower-density pair requires more allocation volume or a revised target; unmodeled allowances increase the density requirement.",
+  "geometry_sha256": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+  "source_sha256": "8098d5b1cf0a5f13190faac6edcaec47f6f3f581bdc830fcc71175c21f465c02"
+}

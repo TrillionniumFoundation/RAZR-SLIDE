@@ -1,0 +1,434 @@
+{
+  "schema": "razr-ep3-readable-native-summary-v1",
+  "source_commit": "a33e58cd555b8d9aff1e3649f79cd0dba378a804",
+  "native_report": "engineering/product-integration-20261018/phase3-20261020/native/native-report.json.gz",
+  "native_report_uncompressed_sha256": "b7a115ab32dcf199ebcd1e89b30542a6785f6a6851ec5803964638598e505bf8",
+  "source_bytes_unchanged": true,
+  "endpoint_self_checks": {
+    "A": {
+      "pairs": 190,
+      "positive_common_pairs": 0,
+      "evaluation_errors": 0,
+      "failures": []
+    },
+    "B": {
+      "pairs": 190,
+      "positive_common_pairs": 0,
+      "evaluation_errors": 0,
+      "failures": []
+    }
+  },
+  "retained_EP2_OPEN_negative_control": {
+    "pairs": 20,
+    "positive_common_pairs": 3,
+    "evaluation_errors": 0,
+    "failures": [
+      {
+        "a": "finite_material",
+        "b": "B_M2_clamp_screw_1",
+        "common_mm3": 0.314159265358978,
+        "method": "native_common",
+        "axis_gap_lower_mm": 0.0,
+        "positive_material_common": true
+      },
+      {
+        "a": "finite_material",
+        "b": "B_M2_clamp_screw_2",
+        "common_mm3": 0.314159265358978,
+        "method": "native_common",
+        "axis_gap_lower_mm": 0.0,
+        "positive_material_common": true
+      },
+      {
+        "a": "finite_material",
+        "b": "B_lower_jaw",
+        "common_mm3": 16.039734577831304,
+        "method": "native_common",
+        "axis_gap_lower_mm": 0.0,
+        "positive_material_common": true
+      }
+    ]
+  },
+  "poses": [
+    {
+      "pose": "STOW",
+      "mechanical_participants": 108,
+      "external_participants": 113,
+      "candidate_participants": 41,
+      "combined_participants": 154,
+      "internal": {
+        "A_to_B_endpoints": {
+          "pairs": 400,
+          "positive_common_pairs": 0,
+          "evaluation_errors": 0,
+          "failures": []
+        },
+        "material_to_A_endpoint": {
+          "pairs": 20,
+          "positive_common_pairs": 0,
+          "evaluation_errors": 0,
+          "failures": []
+        },
+        "material_to_B_endpoint": {
+          "pairs": 20,
+          "positive_common_pairs": 0,
+          "evaluation_errors": 0,
+          "failures": []
+        }
+      },
+      "external": {
+        "pairs": 4633,
+        "positive_common_pairs": 6,
+        "evaluation_errors": 0,
+        "failures": [
+          {
+            "a": "A_inner_carrier_jaw",
+            "b": "A_BATTERY_ALLOCATION",
+            "common_mm3": 17.999999999999993,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0,
+            "positive_material_common": true
+          },
+          {
+            "a": "EP3_finite_material",
+            "b": "A_FRAME",
+            "common_mm3": 11.172405573687538,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0,
+            "positive_material_common": true
+          },
+          {
+            "a": "EP3_finite_material",
+            "b": "L_CROSSHEAD",
+            "common_mm3": 0.012751136426979125,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0,
+            "positive_material_common": true
+          },
+          {
+            "a": "EP3_finite_material",
+            "b": "L_KEY",
+            "common_mm3": 0.08472548214282768,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0,
+            "positive_material_common": true
+          },
+          {
+            "a": "EP3_finite_material",
+            "b": "R_CROSSHEAD",
+            "common_mm3": 0.0127511364269796,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0,
+            "positive_material_common": true
+          },
+          {
+            "a": "EP3_finite_material",
+            "b": "R_KEY",
+            "common_mm3": 0.08472548214282846,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0,
+            "positive_material_common": true
+          }
+        ]
+      },
+      "containment": {
+        "parts": 41,
+        "positive_outside_parts": 0,
+        "evaluation_errors": 0,
+        "failures": []
+      },
+      "low_straight_witness": null,
+      "all_declared_checks_clear_at_pose": false
+    },
+    {
+      "pose": "PREDOCK",
+      "mechanical_participants": 108,
+      "external_participants": 113,
+      "candidate_participants": 41,
+      "combined_participants": 154,
+      "internal": {
+        "A_to_B_endpoints": {
+          "pairs": 400,
+          "positive_common_pairs": 0,
+          "evaluation_errors": 0,
+          "failures": []
+        },
+        "material_to_A_endpoint": {
+          "pairs": 20,
+          "positive_common_pairs": 0,
+          "evaluation_errors": 0,
+          "failures": []
+        },
+        "material_to_B_endpoint": {
+          "pairs": 20,
+          "positive_common_pairs": 4,
+          "evaluation_errors": 0,
+          "failures": [
+            {
+              "a": "finite_material",
+              "b": "B_inner_carrier_jaw",
+              "common_mm3": 2.05307265345482,
+              "method": "native_common",
+              "axis_gap_lower_mm": 0.0,
+              "positive_material_common": true
+            },
+            {
+              "a": "finite_material",
+              "b": "B_mini_DP_PCB",
+              "common_mm3": 2.6998282523400112,
+              "method": "native_common",
+              "axis_gap_lower_mm": 0.0,
+              "positive_material_common": true
+            },
+            {
+              "a": "finite_material",
+              "b": "B_mini_DS_PCB",
+              "common_mm3": 1.3533572722290075,
+              "method": "native_common",
+              "axis_gap_lower_mm": 0.0,
+              "positive_material_common": true
+            },
+            {
+              "a": "finite_material",
+              "b": "B_static_26wire_transfer_reservation",
+              "common_mm3": 1.0320931313174375,
+              "method": "native_common",
+              "axis_gap_lower_mm": 0.0,
+              "positive_material_common": true
+            }
+          ]
+        }
+      },
+      "external": {
+        "pairs": 4633,
+        "positive_common_pairs": 5,
+        "evaluation_errors": 0,
+        "failures": [
+          {
+            "a": "A_inner_carrier_jaw",
+            "b": "A_BATTERY_ALLOCATION",
+            "common_mm3": 17.999999999999993,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0,
+            "positive_material_common": true
+          },
+          {
+            "a": "EP3_finite_material",
+            "b": "A_FRAME",
+            "common_mm3": 10.500000000000007,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0,
+            "positive_material_common": true
+          },
+          {
+            "a": "EP3_finite_material",
+            "b": "B_SHELL",
+            "common_mm3": 0.8028310741713096,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0,
+            "positive_material_common": true
+          },
+          {
+            "a": "EP3_finite_material",
+            "b": "L_KEY",
+            "common_mm3": 0.08472548214282691,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0,
+            "positive_material_common": true
+          },
+          {
+            "a": "EP3_finite_material",
+            "b": "R_KEY",
+            "common_mm3": 0.08472548214282911,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0,
+            "positive_material_common": true
+          }
+        ]
+      },
+      "containment": {
+        "parts": 41,
+        "positive_outside_parts": 1,
+        "evaluation_errors": 0,
+        "failures": [
+          {
+            "part": "EP3_finite_material",
+            "outside_outer_union_mm3": 49.08828834571794,
+            "rejected": true,
+            "method": "validated native cuts by distinct prisms; stop only at valid empty material",
+            "native_domain_cuts_executed": 2
+          }
+        ]
+      },
+      "low_straight_witness": {
+        "Y_interval_mm": [
+          94.25,
+          123.44270877176348
+        ],
+        "Z_interval_mm": [
+          1.4,
+          1.5
+        ],
+        "width_mm": 12.0,
+        "native_volume_mm3": 35.03125052611621,
+        "native_common_with_finite_material_mm3": 35.031250526116224,
+        "native_volume_outside_both_prisms_mm3": 35.03125052611621
+      },
+      "all_declared_checks_clear_at_pose": false
+    },
+    {
+      "pose": "OPEN",
+      "mechanical_participants": 115,
+      "external_participants": 120,
+      "candidate_participants": 41,
+      "combined_participants": 161,
+      "internal": {
+        "A_to_B_endpoints": {
+          "pairs": 400,
+          "positive_common_pairs": 0,
+          "evaluation_errors": 0,
+          "failures": []
+        },
+        "material_to_A_endpoint": {
+          "pairs": 20,
+          "positive_common_pairs": 0,
+          "evaluation_errors": 0,
+          "failures": []
+        },
+        "material_to_B_endpoint": {
+          "pairs": 20,
+          "positive_common_pairs": 4,
+          "evaluation_errors": 0,
+          "failures": [
+            {
+              "a": "finite_material",
+              "b": "B_M1_board_shaft_1",
+              "common_mm3": 0.0007240479471829807,
+              "method": "native_common",
+              "axis_gap_lower_mm": 0.0,
+              "positive_material_common": true
+            },
+            {
+              "a": "finite_material",
+              "b": "B_M1_board_shaft_2",
+              "common_mm3": 0.0007240479471829807,
+              "method": "native_common",
+              "axis_gap_lower_mm": 0.0,
+              "positive_material_common": true
+            },
+            {
+              "a": "finite_material",
+              "b": "B_inner_carrier_jaw",
+              "common_mm3": 1.6049842011155036,
+              "method": "native_common",
+              "axis_gap_lower_mm": 0.0,
+              "positive_material_common": true
+            },
+            {
+              "a": "finite_material",
+              "b": "B_mini_DP_PCB",
+              "common_mm3": 0.22867463801716975,
+              "method": "native_common",
+              "axis_gap_lower_mm": 0.0,
+              "positive_material_common": true
+            }
+          ]
+        }
+      },
+      "external": {
+        "pairs": 4920,
+        "positive_common_pairs": 5,
+        "evaluation_errors": 0,
+        "failures": [
+          {
+            "a": "A_inner_carrier_jaw",
+            "b": "A_BATTERY_ALLOCATION",
+            "common_mm3": 17.999999999999993,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0,
+            "positive_material_common": true
+          },
+          {
+            "a": "EP3_finite_material",
+            "b": "A_FRAME",
+            "common_mm3": 10.500000000000007,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0,
+            "positive_material_common": true
+          },
+          {
+            "a": "EP3_finite_material",
+            "b": "B_SHELL",
+            "common_mm3": 0.7799999999999904,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0,
+            "positive_material_common": true
+          },
+          {
+            "a": "EP3_finite_material",
+            "b": "L_KEY",
+            "common_mm3": 0.08472548214282741,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0,
+            "positive_material_common": true
+          },
+          {
+            "a": "EP3_finite_material",
+            "b": "R_KEY",
+            "common_mm3": 0.08472548214282853,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0,
+            "positive_material_common": true
+          }
+        ]
+      },
+      "containment": {
+        "parts": 41,
+        "positive_outside_parts": 0,
+        "evaluation_errors": 0,
+        "failures": []
+      },
+      "low_straight_witness": null,
+      "all_declared_checks_clear_at_pose": false
+    }
+  ],
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "full_cycle_internal_route_accepted": false,
+  "physical_fabrication_executed": false,
+  "independent_readback": {
+    "report": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-independent-readback/report.json.gz",
+    "uncompressed_sha256": "d3f9c00666b748bba2627b068c9981a0ce1d89423cb1345783a6121bb1561ef2",
+    "declared_checks_passed": true,
+    "independent_process_from_generator": true,
+    "all_assembly_geometry_has_generator_metric_baseline": false,
+    "scope": "five STEP files, all expected flat solids valid/positive, and injective bounds/volume matching for 41 recorded candidate bodies per pose; no complete material or label equivalence"
+  },
+  "stop_reason": "single-U PREDOCK finite low straight outside both cabin outer prisms; full cycle rejected",
+  "counterexample_comparison": "engineering/product-integration-20261018/phase3-20261020/validation/retained-STOW-counterexamples.json",
+  "validation_scopes": [
+    {
+      "source_commit": "bdb1bc19fce49692fd49cd508031bfc456e15208",
+      "tests": 109,
+      "suites": 2,
+      "passed": true,
+      "single_full_registry_execution": false,
+      "report": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-unit-bdb1bc1/report.json.gz",
+      "uncompressed_sha256": "dbe131f155420ac90ade04c8c71c83c1cf7f3f1320bc93c7ac1028fb85a3cb31"
+    },
+    {
+      "source_commit": "a33e58cd555b8d9aff1e3649f79cd0dba378a804",
+      "EP3_unit_tests": 7,
+      "native_API_cases": 8,
+      "scalar_witness_cases": 1,
+      "passed": true,
+      "109_tests_reexecuted": false,
+      "1310_tests_reexecuted": false,
+      "report": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-api-repair/native-api-regression.json"
+    }
+  ],
+  "total_pair_checks": 15906,
+  "total_pair_evaluation_errors": 0,
+  "total_containment_evaluation_errors": 0
+}

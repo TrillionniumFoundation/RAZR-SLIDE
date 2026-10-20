@@ -1,0 +1,84 @@
+TARGETED_TESTS_START
+test_B_transform_rejects_unphysical_combined_motion (test_product_geometry.ProductGeometryTests.test_B_transform_rejects_unphysical_combined_motion) ... ok
+test_OPEN_accessories_cannot_be_hidden_during_travel (test_product_geometry.ProductGeometryTests.test_OPEN_accessories_cannot_be_hidden_during_travel) ... ok
+test_complete_manual_roundtrip_preserves_physical_limitations (test_product_geometry.ProductGeometryTests.test_complete_manual_roundtrip_preserves_physical_limitations) ... ok
+test_current_full_depth_cavity_has_no_material_length_solution (test_product_geometry.ProductGeometryTests.test_current_full_depth_cavity_has_no_material_length_solution) ... ok
+test_equal_finished_rigid_envelopes_are_native_bounds (test_product_geometry.ProductGeometryTests.test_equal_finished_rigid_envelopes_are_native_bounds) ... ok
+test_finite_one_piece_OLED_material_volume_constant (test_product_geometry.ProductGeometryTests.test_finite_one_piece_OLED_material_volume_constant) ... ok
+test_measurement_claim_needs_actual_record (test_product_geometry.ProductGeometryTests.test_measurement_claim_needs_actual_record) ... ok
+test_motion_requires_both_independent_PAWL_controls (test_product_geometry.ProductGeometryTests.test_motion_requires_both_independent_PAWL_controls) ... ok
+test_native_dimensions_cannot_be_relabelled (test_product_geometry.ProductGeometryTests.test_native_dimensions_cannot_be_relabelled) ... ok
+test_same_material_station_not_reset_between_poses (test_product_geometry.ProductGeometryTests.test_same_material_station_not_reset_between_poses) ... ok
+test_single_flexible_display_and_flat_B_constraints (test_product_geometry.ProductGeometryTests.test_single_flexible_display_and_flat_B_constraints) ... ok
+test_supplier_FPC_is_not_more_OLED_and_partial_stack_stays_unknown (test_product_geometry.ProductGeometryTests.test_supplier_FPC_is_not_more_OLED_and_partial_stack_stays_unknown) ... ok
+test_unselected_battery_space_cannot_acquire_capacity (test_product_geometry.ProductGeometryTests.test_unselected_battery_space_cannot_acquire_capacity) ... ok
+test_wide_B_battery_midpath_collision_is_preserved (test_product_geometry.ProductGeometryTests.test_wide_B_battery_midpath_collision_is_preserved) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 46.652s
+
+OK
+
+PRODUCT_FULL_MOTION_START
+PRODUCT_INITIALIZED 94
+PRODUCT_STATE STOW 99 REJECTED 0
+PRODUCT_STATE RELEASED 99 REJECTED 0
+PRODUCT_STATE PREDOCK 99 REJECTED 0
+PRODUCT_STATE OPEN_SUPPORTED 106 REJECTED 0
+PRODUCT_FULL_MOTION_RESULT True
+OLED_FULL_MOTION_START
+OLED_FULL_MOTION_RESULT True
+NATIVE_EXPORT_START STOW
+NATIVE_EXPORT_FINISHED STOW 99
+NATIVE_EXPORT_START PREDOCK
+NATIVE_EXPORT_FINISHED PREDOCK 99
+NATIVE_EXPORT_START OPEN
+NATIVE_EXPORT_FINISHED OPEN 106
+{
+  "schema": "razr-product-study-run-v1",
+  "source_sha256": {
+    "integration/product_assembly.py": "695073e313dae45edbb7cf8c305d31c167b4e24e1731bf8be8f1a91a77dbd77b",
+    "integration/product_motion.py": "293719a058ec4da4581cb3f45140e0a51f308ff0baf6d1170f57aa3202a5541c",
+    "integration/oled_storage.py": "04b32718ff6b0f6ee107c56b6aaf58c7f8d4c3b1b64b09b84297b6ff0ab75082",
+    "design/product_geometry.json": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+    "integration/product-study-tests/test_product_geometry.py": "2f116057679bb5cbfd1adcca191b8c96d5e817a34ed51f7c4905c4a1db99b6a7",
+    "engineering/product-integration-20261018/mechanical/run_product_study.py": "efedf06d83d41def82433e49b49df6ea7259447f5b2b660577b76a59532fb459"
+  },
+  "targeted_tests": {
+    "tests": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": true,
+    "source_sha256": {
+      "integration/product_assembly.py": "695073e313dae45edbb7cf8c305d31c167b4e24e1731bf8be8f1a91a77dbd77b",
+      "integration/product_motion.py": "293719a058ec4da4581cb3f45140e0a51f308ff0baf6d1170f57aa3202a5541c",
+      "integration/oled_storage.py": "04b32718ff6b0f6ee107c56b6aaf58c7f8d4c3b1b64b09b84297b6ff0ab75082",
+      "design/product_geometry.json": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+      "integration/product-study-tests/test_product_geometry.py": "2f116057679bb5cbfd1adcca191b8c96d5e817a34ed51f7c4905c4a1db99b6a7",
+      "engineering/product-integration-20261018/mechanical/run_product_study.py": "efedf06d83d41def82433e49b49df6ea7259447f5b2b660577b76a59532fb459"
+    }
+  },
+  "nominal_mechanical_geometry_nonpenetrating": true,
+  "OLED_motion_report": "oled-motion-report.json",
+  "exports": {
+    "STOW": {
+      "participants": 99,
+      "manifest_sha256": "049768eb1b09e594200026aa8dbfb10a59174535c27c8496cb92e3f61cc74d2b"
+    },
+    "PREDOCK": {
+      "participants": 99,
+      "manifest_sha256": "734383572872e55742c0a2ef24b5b19d4b370ec143418acaa519322df606e4a7"
+    },
+    "OPEN": {
+      "participants": 106,
+      "manifest_sha256": "ceb484f3c15955662da05272fcbb2d674c7c28c617e4006dc8295e2f2bf254c4"
+    }
+  },
+  "elapsed_seconds": 229.83721581997816,
+  "independent_STEP_readback_still_required": true,
+  "physical_hardware_cycle_completed": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}

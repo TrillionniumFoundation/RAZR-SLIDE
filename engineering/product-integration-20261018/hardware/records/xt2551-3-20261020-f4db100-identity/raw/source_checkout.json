@@ -1,0 +1,76 @@
+{
+  "host_alias": "pocket4",
+  "source_root": "/home/alex/.local/share/razr-slide-evidence/product-followup-20261020/source",
+  "head": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+  "completed_utc": "2026-10-20T02:38:35.724293+00:00",
+  "steps": [
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "seconds": 0.006592359975911677,
+      "stdout": "42679bebe1aa5af00bc3221cee2fa9d11391b811\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "seconds": 0.06710595602635294,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "fetch",
+        "origin",
+        "work/product-integration-20261018"
+      ],
+      "exit_code": 0,
+      "seconds": 2.5599331869743764,
+      "stdout": "",
+      "stderr": "From https://github.com/TrillionniumFoundation/RAZR-SLIDE\n * branch            work/product-integration-20261018 -> FETCH_HEAD\n   42679be..f4db100  work/product-integration-20261018 -> origin/work/product-integration-20261018\n"
+    },
+    {
+      "command": [
+        "git",
+        "merge",
+        "--ff-only",
+        "f4db100cb62c0ac492118bf605b0e9e7ac7cce32"
+      ],
+      "exit_code": 0,
+      "seconds": 5.334499294986017,
+      "stdout": "Updating 42679be..f4db100\nFast-forward\n CURRENT_DESIGN.md                                  |   2 +-\n README.md                                          |   2 +-\n .../phase3-20261020/donor-collector-followup.md    |  72 +++++++++++++\n .../product-study-tests/test_donor_readback.py     | 118 ++++++++++++++++++++-\n .../product-study-tests/test_hardware_evidence.py  |   3 +-\n status.json                                        |   2 +-\n tools/read_donor.py                                | 112 ++++++++++++++++---\n tools/test_suites.json                             |   4 +-\n 8 files changed, 291 insertions(+), 24 deletions(-)\n create mode 100644 engineering/product-integration-20261018/phase3-20261020/donor-collector-followup.md\n",
+      "stderr": "Updating files:  14% (1/7)\nUpdating files:  28% (2/7)\nUpdating files:  42% (3/7)\nUpdating files:  57% (4/7)\nUpdating files:  71% (5/7)\nUpdating files:  85% (6/7)\nUpdating files: 100% (7/7)\nUpdating files: 100% (7/7), done.\n"
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "seconds": 0.0015122850891202688,
+      "stdout": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "seconds": 0.018375266925431788,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

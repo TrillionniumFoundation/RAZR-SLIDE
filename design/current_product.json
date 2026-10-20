@@ -1,0 +1,2278 @@
+{
+  "schema_version": 1,
+  "implementation_baseline": {
+    "commit": "a1b3cc1e0773446f2e36d0a607edf61211dd9919",
+    "branch": "main",
+    "verification": "GitHub main and both open PR refs read before this implementation; unchanged from the audit baseline"
+  },
+  "stage_summary": "PR36 now contains EP4 S+U routing and complete endpoints executed on 9a8307f, plus a physical-evidence anchor fix. All three finite assemblies remain rejected, although outer-domain escape and all material/end and A/B-end intersections are absent at these poses. Every assembly body has an independent STEP numeric comparison. A head relief and KEY closed-end studies are separate local candidates. The actual XT2551-3 donor still lacks physical labels, geometry and all 12 terminal-interface bindings. Main remains a1b3cc1; PR35 remains separate draft research; PR25 is closed unmerged.",
+  "product_constraints": {
+    "same_finished_A_B_envelope": true,
+    "main_display_inches_approx": 7,
+    "independent_rear_display": false,
+    "storage_mode": "flat_in_B",
+    "B_upward_travel_mm": 79.75,
+    "normal_seating_mm": 8.2,
+    "larger_cell_priority": "A",
+    "total_capacity_target_mAh": 4700,
+    "capacity_target_convention": "sum of cell-label mAh at a common nominal reference voltage; physical series/parallel topology and actual terminal capacity remain unknown"
+  },
+  "hardware_summary": "Formal collection on 2026-10-20 used the existing Pocket4 ADB service at 127.0.0.1:5061: 17 read-only commands succeeded, transport ID stayed 37, server boot/PID/start identity stayed unchanged, and source/design inputs matched exact f4db100. The imported record retains XT2551-3 only; ten other identity fields remain null, no seven-role physical inventory is supplied, and all 12 physical terminal interfaces remain unbound. ro.boot.hwrev is empty and is not converted into a board revision. Earlier software observations (3430/1140 mAh design values, 4570 mAh sum) and Chinese OEM manual values (4700 typical / 4540 rated mAh) keep their own dates and distinct scope. They do not prove the 4700-mAh layout. Actual board/module labels, dimensions, COF, cells/tabs/swelling, terminal topology, RF/thermal space and modified-phone measurements are still required. See engineering/product-integration-20261018/phase3-20261020/hardware/DONOR_IMPORT.md.",
+  "verification_summary": "On 9a8307f, 137 relevant tests in four suites passed with zero failures/errors/skips and unchanged source bytes; configured 1324 tests / 35 suites are not a full new run. Seven bounded native regression groups passed. PREDOCK and OPEN/STOW ran separately on the same unchanged source, retaining 16266 declared pair evaluations including repeated endpoint-self checks; 15886 unique pose/self pair declarations. STOW/PREDOCK/OPEN have 154/154/161 bodies and 17/12/25 external positive Common pairs, with zero pair/context/containment evaluation errors and no outside-outer-domain parts. Baseline A has one 0.180811856-mm3 screw-head/web self Common; B self, A/B end and all finite-material/end pairs are clear at the selected poses. Independent STEP processes passed all recorded assembly-body metrics plus exported positive Common and local material contexts. These are numeric comparisons, not full material or label equivalence. Separate A head relief removes 0.269207426 mm3, adds zero, clears 190 local self pairs and retains finite side-web/bearing probes. KEY local results and independent readers have their own source/report identities and do not replace the rejected whole-scene baseline. The old 18-mm3 A-cell allocation overlap is absent in EP4; the old PREDOCK outer-domain escape is absent. New B board/shell and OPEN frame intersections, STOW OLED/FPC overlap and other real obstacles remain. The source evidence bug now prevents OEM documents alone from establishing physical donor observations. Actual donor data and terminal states remain unchanged. All prior failed/native/unit records retain their historical commits and scopes. Run 39378151409 on prior publication 90b09f5 settled at 12 new failed jobs, no runner steps and 12 direct payment-or-spending annotations. New publication-head CI is recorded separately in PR36. No physical prototype, material/strength qualification, full phone motion, modified powered phone or new FE/QP solve is claimed.",
+  "completed_unit_runs": [
+    {
+      "label": "Accepted main baseline",
+      "tests": 1187,
+      "suites": 31,
+      "functional_commit": "2303ac50f7f881ca243cc7315718aba99354fd6a",
+      "scope": "all_current_unit_suites_via_disjoint_canonical_selections",
+      "report": "engineering/installation-control-20261018/local-unit1187.json.gz",
+      "in_main": true,
+      "uncompressed_report_sha256": "3976e1ebd75d88e6019bd77fb245fbc47913b89ee1c6ac5f9ae260b20c322632"
+    },
+    {
+      "label": "Separate PR35 draft",
+      "tests": 1216,
+      "suites": 31,
+      "functional_commit": "79b73bb3720bcc5b4e9d86ea6d6c8864988cbd1d",
+      "scope": "all_current_unit_suites_via_disjoint_canonical_selections",
+      "report": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/176df31ceb35bb3737d68030e60ba377665de210/engineering/bearing-followup-20261018/full-unit1216.json.gz",
+      "in_main": false,
+      "uncompressed_report_sha256": "b3c74df817004298041e53a90226178acd2dfc70c39e99bd14f3d19667f8ad90"
+    },
+    {
+      "label": "Product branch: first canonical execution FAILED",
+      "tests": 1220,
+      "configured_tests": 1240,
+      "suites": 32,
+      "functional_commit": "b6abcb6326439270ec137cdac00cd6dd7ade4ac7",
+      "scope": "first_canonical_execution_with_retained_failures_and_incomplete_imported_tests",
+      "report": "engineering/product-integration-20261018/validation/initial-b6abcb6-report.json.gz",
+      "result": "FAILED",
+      "passed": false,
+      "in_main": false,
+      "single_full_execution": true,
+      "uncompressed_report_sha256": "52c23dd2d01f93b4001e9f8e8044c903d5c5ba69a5d188f1846a082542982aa0"
+    },
+    {
+      "label": "Product branch: bounded repair PASS",
+      "tests": 182,
+      "suites": 7,
+      "functional_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+      "scope": "bounded_rerun_of_seven_affected_canonical_suites",
+      "report": "engineering/product-integration-20261018/validation/repair-3eae4e7-report.json.gz",
+      "result": "PASS",
+      "passed": true,
+      "in_main": false,
+      "uncompressed_report_sha256": "57eeb1214e419433c624c6b24e759bdf590b8394179a1e1a6ffcdeb125bd562d"
+    },
+    {
+      "label": "Product branch: verified canonical selection PASS, two executions",
+      "tests": 1240,
+      "suites": 32,
+      "functional_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+      "scope": "disjoint_canonical_selection_25_suites_1058_tests_plus_7_suites_182_tests_not_one_full_rerun",
+      "report": "engineering/product-integration-20261018/validation/canonical-selection.json",
+      "report_sha256": "0895382ff6d743e92ab1ff2ba62584c84297c398781c7b1a5392c9eaf115e24e",
+      "result": "PASS",
+      "passed": true,
+      "in_main": false,
+      "single_full_execution": false,
+      "selection_verification_executed": true,
+      "selected_executions": [
+        {
+          "functional_commit": "b6abcb6326439270ec137cdac00cd6dd7ade4ac7",
+          "selected_passing_suites": 25,
+          "selected_passing_tests": 1058,
+          "original_execution_result": "FAILED",
+          "report": "engineering/product-integration-20261018/validation/initial-b6abcb6-report.json.gz"
+        },
+        {
+          "functional_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+          "selected_passing_suites": 7,
+          "selected_passing_tests": 182,
+          "original_execution_result": "PASS",
+          "report": "engineering/product-integration-20261018/validation/repair-3eae4e7-report.json.gz"
+        }
+      ]
+    },
+    {
+      "label": "Product branch phase2: full execution FAILED, OPEN collision expectation",
+      "tests": 1297,
+      "suites": 33,
+      "functional_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+      "scope": "all_current_unit_suites",
+      "report": "engineering/product-integration-20261018/phase2-20261019/validation/full-unit-1c970e3-report.json.gz",
+      "uncompressed_report_sha256": "e300c8c2a15c6719d1b36a09f8b33a568b094155c3aa4ec740f6b53d3263f853",
+      "single_full_execution": true,
+      "passed": false,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "result": "FAILED",
+      "in_main": false
+    },
+    {
+      "label": "Product branch phase2: bounded routing test-oracle repair PASS",
+      "functional_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+      "model_native_execution_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+      "scope": "selected_routing_followup_after_test_oracle_correction",
+      "single_full_execution": false,
+      "suites": 1,
+      "tests": 14,
+      "passed": true,
+      "exit_code": 0,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 73.22669722198043,
+      "started_utc": "2026-10-19T05:26:50.084165+00:00",
+      "finished_utc": "2026-10-19T05:28:03.310887+00:00",
+      "source_bytes_unchanged": true,
+      "report": "engineering/product-integration-20261018/phase2-20261019/validation/routing-repair-report.json.gz",
+      "uncompressed_report_sha256": "e50e71ab97518fea85b71e29fb4f0f0ee89e6905885239b5d947ea74a2e0a3b4",
+      "geometry_changed": false,
+      "candidate_go": false,
+      "hardware_qualification": false,
+      "manufacturing_go": false,
+      "result": "PASS",
+      "in_main": false
+    },
+    {
+      "label": "Product branch phase2: disjoint 33-suite selection verified, not one full run",
+      "functional_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+      "native_execution_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+      "scope": "disjoint_passing_suite_selection_from_two_executions",
+      "single_full_execution": false,
+      "full_execution_passed": false,
+      "selected_suite_coverage_passed": true,
+      "suites": 33,
+      "tests": 1297,
+      "full_run_passing_suites": 32,
+      "full_run_passing_tests": 1283,
+      "bounded_repair_suites": 1,
+      "bounded_repair_tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "report": "engineering/product-integration-20261018/phase2-20261019/validation/canonical-selection.json",
+      "report_sha256": "4e706977a7befa03f3334d78104f8b69beb5fed72e6815e17d698045aaa699ed",
+      "not_a_new_execution_of_all_suites": true,
+      "candidate_go": false,
+      "manufacturing_go": false,
+      "result": "PASSING_SELECTION_VERIFIED",
+      "in_main": false
+    },
+    {
+      "label": "Product branch phase3: donor collector suite FAILED at legacy mock",
+      "functional_commit": "3e6864ccea6c03a651dd220a0c1510c2ea22dfec",
+      "scope": "selected_product_integration_suite_102_test_identities",
+      "tests": 102,
+      "suites": 1,
+      "single_full_execution": false,
+      "passed": false,
+      "result": "FAILED",
+      "failures": 0,
+      "errors": 13,
+      "skipped": 0,
+      "seconds": 77.11136691,
+      "source_bytes_unchanged": true,
+      "in_main": false,
+      "report": "engineering/product-integration-20261018/phase3-20261020/validation/3e6864c-failed-report.json.gz",
+      "uncompressed_report_sha256": "ae0dee358a853439378dd0057cd069914d331b5e4fcb30d1f83b51d0e5a4a651",
+      "hardware_qualification": false,
+      "candidate_go": false,
+      "manufacturing_go": false
+    },
+    {
+      "label": "Product branch phase3: bounded donor fixture repair PASS",
+      "functional_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+      "scope": "selected_product_integration_suite_102_test_identities",
+      "tests": 102,
+      "suites": 1,
+      "single_full_execution": false,
+      "passed": true,
+      "result": "PASS",
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 72.37533739,
+      "source_bytes_unchanged": true,
+      "in_main": false,
+      "report": "engineering/product-integration-20261018/phase3-20261020/validation/f4db100-passed-report.json.gz",
+      "uncompressed_report_sha256": "b3d63ee335d0b13de656b393de1be874a51ee63b8f9d1669498cfaf8dd4ef910",
+      "hardware_qualification": false,
+      "candidate_go": false,
+      "manufacturing_go": false
+    },
+    {
+      "label": "Product branch phase3: 109-test product and EP3 selection PASS",
+      "functional_commit": "bdb1bc19fce49692fd49cd508031bfc456e15208",
+      "scope": "selected_product_integration_102_and_EP3_arithmetic_7",
+      "tests": 109,
+      "suites": 2,
+      "passed": true,
+      "result": "PASS",
+      "single_full_execution": false,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "in_main": false,
+      "seconds": 70.7197644310072,
+      "source_bytes_unchanged": true,
+      "report": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-unit-bdb1bc1/report.json.gz",
+      "uncompressed_report_sha256": "dbe131f155420ac90ade04c8c71c83c1cf7f3f1320bc93c7ac1028fb85a3cb31",
+      "hardware_qualification": false,
+      "candidate_go": false,
+      "manufacturing_go": false
+    },
+    {
+      "label": "Product branch phase3: bounded EP3 API repair regression PASS",
+      "functional_commit": "a33e58cd555b8d9aff1e3649f79cd0dba378a804",
+      "scope": "seven_EP3_arithmetic_tests_plus_separately_recorded_native_API_cases",
+      "tests": 7,
+      "suites": 1,
+      "passed": true,
+      "result": "PASS",
+      "single_full_execution": false,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "in_main": false,
+      "source_bytes_unchanged": true,
+      "source_bytes_unchanged_scope": "EP3 module digest plus clean Git tree; no full-repository before/after snapshot in this bounded controller",
+      "report": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-api-repair/native-api-regression.json",
+      "report_sha256": "ee4640e5aaa2fdc22bf458becb82a627c13e17f2738924d358000351b166bfb3",
+      "native_API_cases": 8,
+      "scalar_witness_cases": 1,
+      "109_tests_reexecuted": false,
+      "1310_tests_reexecuted": false,
+      "candidate_geometry_changed": false,
+      "candidate_go": false,
+      "manufacturing_go": false
+    },
+    {
+      "label": "Product branch phase4: 137 relevant tests PASS",
+      "functional_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+      "scope": "product108_routing14_EP3_7_EP4_8",
+      "tests": 137,
+      "suites": 4,
+      "passed": true,
+      "result": "PASS",
+      "single_full_execution": false,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "in_main": false,
+      "seconds": 146.26281374401879,
+      "source_bytes_unchanged": true,
+      "report": "engineering/product-integration-20261018/phase4-20261020/validation/unit/report.json.gz",
+      "uncompressed_report_sha256": "34d683f60337eef3fc0e079685c0d073941b3937c07af7c704bcc2a66321f29e",
+      "hardware_qualification": false,
+      "candidate_go": false,
+      "manufacturing_go": false
+    }
+  ],
+  "open_research_prs": [
+    {
+      "number": 35,
+      "url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/pull/35",
+      "head": "176df31ceb35bb3737d68030e60ba377665de210",
+      "in_main": false,
+      "result": "P2 edge ordering repaired; finite-point QP passes but 75 body and 1112 bearing regions fail the unchanged global gap target.",
+      "action": "Real retained-witness coverage has been diagnosed. A 3292-file, 3.24-second read-only cache preflight found no identified bearing response restart; stop before any new FE solve until exact response/points/trace state can be restored."
+    }
+  ],
+  "work_packages": [
+    {
+      "id": "WP0",
+      "result": "Current entries distinguish EP4 native source, 137 selected tests, local A/KEY studies and exact prior/new publication hosted heads.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "remaining": "Resolve account payment/spending condition and obtain actual runner steps; keep main, PR35 and closed PR25 identities separate."
+    },
+    {
+      "id": "WP1",
+      "result": "The existing formal XT2551-3 partial readback is preserved. A reproduced validator bug was fixed: OEM documents alone cannot establish physical labels, components or terminals.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/reviews/phase4-platform-physical-handoff.md",
+      "remaining": "Obtain same-specimen physical labels, dimensions, heights, exits and terminals for the 10 unknown identity fields, 7 part roles and 12 interfaces."
+    },
+    {
+      "id": "WP2",
+      "result": "EP4 includes 154/154/161 finite bodies; independent readbacks now cover every recorded body metric. A-cell 18-mm3 overlap is absent, but B board/shell and OPEN frame overlaps remain.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/native-summary.json",
+      "remaining": "Freeze actual geometry and redesign B board placement/stack/orientation with RF, heat and cell swelling/tabs. The current b/L-only behind-wall branch has no feasible interval."
+    },
+    {
+      "id": "WP3",
+      "result": "The actual STOW finite FPC has 0.713045601 mm3 Common with the OLED geometric trial; screen/FPC integration is explicitly unfinished.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/native-summary.json",
+      "remaining": "Jointly redesign OLED storage, COF, support and FPC using actual material dimensions and supplier bending conditions."
+    },
+    {
+      "id": "WP4",
+      "result": "EP4 preserves both complete 20-body ends. Selected poses have no material/end or cross-end Common and no outer escape, while all whole-scene states are rejected. A local relief clears the head/web Common.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "remaining": "Change the remaining full endpoint and path arrangement, define fastener retention and actual conductor/material stack, then check continuous forward and return states."
+    },
+    {
+      "id": "WP5",
+      "result": "A head clearance and a KEY closed-end finite capture study provide separate local geometry evidence; original whole-device and current PAWL relocking qualification remain open.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/local-studies/README.md",
+      "remaining": "Select real processes and joining details; incorporate approved local changes into a new common assembly and prove actual ordered assembly, release/hold/skew/return."
+    },
+    {
+      "id": "WP6",
+      "result": "All 12 physical terminal interfaces remain unbound. Source classification is hardened without changing the actual donor record or original protected-chain assumptions.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/reviews/phase4-platform-physical-handoff.md",
+      "remaining": "Bind original protected power/charging, USB, OLED and touch terminals; capture baseline and moving continuity logs from actual hardware."
+    },
+    {
+      "id": "WP7",
+      "result": "An independent bounded constraint study excludes the fixed S+U behind-wall b/L relocation branch; A web material accounting has an analytic/native cross-check. No new FE/QP was launched.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/reviews/ep4-b-anchor-and-a-web-followup.md",
+      "remaining": "Use measured materials, spans and forces for structural study; restore identified PR35 cache before a separately bounded restart."
+    },
+    {
+      "id": "WP8",
+      "result": "Full EP4 STEP/Common artifacts, local A/KEY studies, independent readers and execution receipts are retained. No complete physical opening/closing assembly has been observed.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "remaining": "Build dimension/process specimens and unpowered assemblies after the real geometry/joining gates, then flexible samples and original protected electronics; return original calibrated logs."
+    }
+  ],
+  "hosted_ci": {
+    "last_observed_main_run": 39112863852,
+    "last_observed_pr35_run": 39126664395,
+    "result": "failure_before_any_step",
+    "jobs_per_run": 12,
+    "billing_reason_source": "engineering/product-integration-20261018/phase4-20261020/actions/90b09f5-run39378151409-final.json",
+    "current_account_billing_settings_read": false,
+    "billing_reason_source_scope": "Exact prior publication head 90b09f5, run39378151409 completed: all 12 new jobs have zero steps and direct payment-or-spending annotations. Early 11-job queued snapshot is retained as history.",
+    "product_PR36": {
+      "run_id": 39378151409,
+      "run_attempt": 1,
+      "head_sha": "90b09f5ef7c25aafd812909101b3d7d80081ba05",
+      "url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/39378151409",
+      "conclusion": "failure",
+      "job_records": 12,
+      "newly_attempted_jobs": 12,
+      "inherited_job_results": 0,
+      "steps_executed": 0,
+      "billing_block_jobs": 12,
+      "current_failure_cause_verified": true,
+      "cause": "direct provider annotation: account payments failed or spending limit needs increasing; account settings not read",
+      "successful_hosted_report": false,
+      "evidence": "engineering/product-integration-20261018/phase4-20261020/actions/90b09f5-run39378151409-final.json",
+      "report_sha256": "ffc565e3e9206605b54b0ae99544c5bb7612d641e30f82b03bdc77501062eb73"
+    },
+    "previous_product_runs": [
+      {
+        "run_id": 39189519907,
+        "run_attempt": 2,
+        "head_sha": "497e0da97467a7f149cbb610a5acd3a30941545a",
+        "url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/39189519907/attempts/2",
+        "conclusion": "failure",
+        "job_records": 12,
+        "newly_attempted_jobs": 2,
+        "inherited_job_results": 10,
+        "steps_executed": 0,
+        "current_failure_cause_verified": true,
+        "cause": "provider annotation: recent account payments failed or spending limit needs increasing; exact account setting is not read",
+        "evidence": "engineering/product-integration-20261018/phase2-20261019/actions/497e0da-attempt2.json"
+      },
+      {
+        "run_id": 39201906846,
+        "run_attempt": 1,
+        "head_sha": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+        "url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/39201906846",
+        "conclusion": "failure",
+        "job_records": 12,
+        "newly_attempted_jobs": 12,
+        "inherited_job_results": 0,
+        "steps_executed": 0,
+        "billing_block_jobs": 12,
+        "current_failure_cause_verified": true,
+        "cause": "provider annotation: recent account payments failed or spending limit needs increasing; exact account setting is not read",
+        "successful_hosted_report": false,
+        "evidence": "engineering/product-integration-20261018/phase2-20261019/actions/1c970e3-run39201906846.json"
+      },
+      {
+        "run_id": 39355931047,
+        "run_attempt": 1,
+        "head_sha": "42679bebe1aa5af00bc3221cee2fa9d11391b811",
+        "url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/39355931047",
+        "conclusion": "failure",
+        "job_records": 12,
+        "newly_attempted_jobs": 12,
+        "inherited_job_results": 0,
+        "steps_executed": 0,
+        "billing_block_jobs": 12,
+        "current_failure_cause_verified": true,
+        "cause": "provider annotation: recent account payments failed or spending limit needs increasing; exact account setting is not read",
+        "successful_hosted_report": false,
+        "evidence": "engineering/product-integration-20261018/phase3-20261020/actions/42679be-run39355931047.json",
+        "report_sha256": "c202652b53b94e51473d5d35fdae4bca0e4ea5a19488dca6a5da48712eef4fd0"
+      },
+      {
+        "run_id": 39359899335,
+        "run_attempt": 1,
+        "head_sha": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+        "url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/39359899335",
+        "conclusion": "failure",
+        "job_records": 12,
+        "newly_attempted_jobs": 12,
+        "inherited_job_results": 0,
+        "steps_executed": 0,
+        "billing_block_jobs": 12,
+        "current_failure_cause_verified": true,
+        "cause": "provider annotation: recent account payments failed or spending limit needs increasing; exact account setting is not read",
+        "successful_hosted_report": false,
+        "evidence": "engineering/product-integration-20261018/phase3-20261020/actions/f4db100-run39359899335.json",
+        "report_sha256": "e7d04454d2fb2a411182844ccdb6b83393a27aba30a8904db8546bb7832fd6b9"
+      }
+    ],
+    "historical_billing_reason_source": "engineering/installation-control-20261018/hosted-status.json",
+    "archive_scope": "last settled publication-head report archived here; this publication head is inspected and recorded separately in PR36"
+  },
+  "source_entrypoints_before_integration": {
+    "README.md": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/a1b3cc1e0773446f2e36d0a607edf61211dd9919/README.md",
+    "CURRENT_DESIGN.md": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/a1b3cc1e0773446f2e36d0a607edf61211dd9919/CURRENT_DESIGN.md",
+    "status.json": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/a1b3cc1e0773446f2e36d0a607edf61211dd9919/status.json"
+  },
+  "numerical_scope_boundary": "PR34/35 retained FE/contact matrices and domains belong to the original installation geometry. Newly cut product shells, OLED channels and added supports are not structurally requalified by those results.",
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "closed_research_prs": [
+    {
+      "number": 25,
+      "url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/pull/25",
+      "head": "44a5830f49af73605d5161efff80e6744b0fb468",
+      "in_main": false,
+      "result": "Old slack-spring API differs from main; all eight historical global cases remain rejected.",
+      "state": "closed",
+      "merged": false,
+      "closed_at": "2026-10-19T02:13:29Z",
+      "superseded_by": 36,
+      "resolution": "Superseded by PR36's separately named slack-spring adapter; old full-body driver not merged; eight historical global failures preserved."
+    }
+  ],
+  "product_pull_request": {
+    "number": 36,
+    "url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/pull/36",
+    "state": "open",
+    "draft": false,
+    "evidence_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+    "branch": "work/product-integration-20261018",
+    "merged": false,
+    "evidence_commit_is_observed_snapshot_not_future_metadata_commit": true,
+    "functional_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+    "native_execution_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+    "evidence_commit_scope": "actual EP4/unit execution source; final evidence publication and its post-push hosted observation are recorded in PR36",
+    "prior_phase2_execution": {
+      "evidence_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+      "functional_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+      "native_execution_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+      "test_repair_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c"
+    },
+    "donor_acquisition_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+    "donor_test_repair_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+    "source_API_repair_commit": "a33e58cd555b8d9aff1e3649f79cd0dba378a804"
+  },
+  "publication_record": "engineering/product-integration-20261018/phase4-20261020/validation/ep4-source-commit.json",
+  "main_at_publication": {
+    "commit": "a1b3cc1e0773446f2e36d0a607edf61211dd9919",
+    "product_PR_merged": false
+  },
+  "last_update_date": "2026-10-20",
+  "current_execution_summary": "engineering/product-integration-20261018/phase4-20261020/SUMMARY.json",
+  "active_followup": {
+    "scope": "EP4 three-pose native, physical-evidence fix and separate local A/KEY studies",
+    "execution_summary": "engineering/product-integration-20261018/phase4-20261020/SUMMARY.json",
+    "state": "bounded_native_and_local_studies_complete_physical_acceptance_open",
+    "formal_donor_source_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+    "donor_identity_readback_completed": true,
+    "connected_specimen_observed": true,
+    "actual_donor_selected": false,
+    "physical_platform_frozen": false,
+    "functional_source_frozen": true,
+    "native_verification_complete": true,
+    "full_local_unit_execution_passed": false,
+    "bounded_donor_test_repair_passed": true,
+    "actual_fabrication_executed": false,
+    "physical_prototype_built": false,
+    "physical_phone_verified": false,
+    "powered_phone_verified": false,
+    "hosted_execution_restored": false,
+    "functional_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+    "native_execution_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+    "native_CAD_reports_completed": true,
+    "native_verification_scope": "bounded computations and independent numeric readback completed; whole candidate rejected",
+    "selected_137_test_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+    "selected_137_tests_passed": true
+  },
+  "historical_product_executions": [
+    {
+      "functional_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+      "in_main": false,
+      "execution_summary": "engineering/product-integration-20261018/DELIVERY_VERIFICATION.json",
+      "mechanical": {
+        "targeted_tests": 14,
+        "targeted_tests_passed": true,
+        "changed_or_new_part_pair_checks": 8106,
+        "changed_or_new_part_checks_passed": true,
+        "OLED_complete_enclosure_checks": 484,
+        "OLED_enclosures_passed": true,
+        "added_material_regions": 31,
+        "added_material_nonself_comparisons": 9021,
+        "added_material_rejections": 0,
+        "STEP_readback_participants": {
+          "STOW": 99,
+          "PREDOCK": 99,
+          "OPEN": 106
+        },
+        "STEP_readbacks_passed": true,
+        "builder_independent_readback_same_OCCT_kernel": true,
+        "report": "engineering/product-integration-20261018/mechanical/final-delivery.json"
+      },
+      "FPC": {
+        "motion_states": 49,
+        "manual_program_states": 15,
+        "all_64_states_rejected": true,
+        "Boolean_operation_errors": 0,
+        "supplier_dynamic_bend_radius_allowable_mm": null,
+        "supplier_dynamic_qualified": false,
+        "all_motion_clearance_proven": false,
+        "report": "engineering/product-integration-20261018/electrical/motion/motion-report.json"
+      },
+      "rebuilt_electrical_evidence": {
+        "artifact_files": 90,
+        "index_is_additional_file": true,
+        "old_temporary_large_file_bytes_restored": false,
+        "new_execution_and_artifact_identities": true,
+        "index": "engineering/product-integration-20261018/electrical/artifact-index.json",
+        "total_files_including_index": 91,
+        "scope": "New electrical/FPC outputs only: interface records, mini/coupon sources, FPC/termination STEP, bench fixtures, artwork and execution receipts; excludes mechanical archive members and retained native KiCad v4 verification outputs."
+      },
+      "retained_KiCad": {
+        "verification_revision": "v4",
+        "boards": [
+          "mini_DP",
+          "mini_DS",
+          "continuity26"
+        ],
+        "each_board_DRC_violations": 0,
+        "each_board_unconnected_items": 0,
+        "each_board_footprint_errors": 0,
+        "rerun_during_this_reconstruction": false,
+        "scope": "Retained native verification evidence; rebuilding or repackaging files is not a new KiCad run.",
+        "three_PCB_source_bytes_exactly_match_retained_v4": true,
+        "included_in_90_new_artifact_file_count": false
+      },
+      "latest_donor_connection_check": {
+        "observed_utc": "2026-10-19T01:19:54.098255Z",
+        "exit_code": 2,
+        "selected": false,
+        "report": "engineering/product-integration-20261018/hardware/connection-check-20261019.json"
+      },
+      "negative_control": {
+        "report": "engineering/product-integration-20261018/mechanical/geometry-wide-B-negative-control.json",
+        "historical_r1_original_bytes_restored": false,
+        "new_counterexample_assertion_passed": true,
+        "scope": "Current configuration with only B_BATTERY_ALLOCATION lo_x 21 -> 11 mm, hi_x 33 mm; true common at slide 40 mm compared with the current 12-mm allocation."
+      },
+      "physical_hardware_cycle_completed": false,
+      "candidate_go": false,
+      "fixture_fabrication_go": false,
+      "manufacturing_go": false
+    },
+    {
+      "functional_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+      "native_execution_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+      "test_repair_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+      "in_main": false,
+      "execution_summary": "engineering/product-integration-20261018/phase2-20261019/SUMMARY.json",
+      "full_unit_execution": {
+        "functional_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+        "scope": "all_current_unit_suites",
+        "single_full_execution": true,
+        "suites": 33,
+        "tests": 1297,
+        "configured_minimum_tests": 1297,
+        "passed": false,
+        "exit_code": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "source_bytes_unchanged": true,
+        "seconds": 1435.8437950400403,
+        "started_utc": "2026-10-19T04:52:52.913239+00:00",
+        "finished_utc": "2026-10-19T05:16:48.757245+00:00",
+        "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+        "versions": {
+          "cadquery": "2.7.0",
+          "cadquery-ocp": "7.8.1.1.post1",
+          "numpy": "2.5.4",
+          "scipy": "1.18.1",
+          "shapely": "2.2.0"
+        },
+        "python_files_parsed": 1026,
+        "report": "engineering/product-integration-20261018/phase2-20261019/validation/full-unit-1c970e3-report.json.gz",
+        "uncompressed_report_sha256": "e300c8c2a15c6719d1b36a09f8b33a568b094155c3aa4ec740f6b53d3263f853",
+        "compressed_report_sha256": "4ee1521c6e15419267bea92b1f995e1ffa8a2ceb82bdf8f93bfd92559a62069a",
+        "full_motion_reexecuted": false,
+        "native_KiCad_reexecuted": false,
+        "hardware_qualification": false,
+        "candidate_go": false,
+        "manufacturing_go": false
+      },
+      "mechanical": {
+        "captured": {
+          "original_axial_paths_blocked": 8,
+          "continuous_local_assembly_actions_clear": 12,
+          "reassembled_local_parent_material_comparisons": 5,
+          "native_source_equivalence_comparisons": 5,
+          "native_source_containment_comparisons": 2,
+          "original_stop_checks": 12,
+          "individual_STEP_files": 14,
+          "local_assembly_STEP_solids": 11,
+          "independent_STEP_readback_passed": true,
+          "study_source_sha256": "d3ccd367ef791b90296ec09011e5368bd17a93da4fc2c6fd999e252133dca259",
+          "joining_material": null,
+          "joining_process": null,
+          "joint_load_capacity_N": null,
+          "report": "engineering/product-integration-20261018/phase2-20261019/mechanical/captured-report.json"
+        },
+        "common_assembly": {
+          "participants_by_pose": {
+            "STOW": 154,
+            "PREDOCK": 154,
+            "OPEN": 161
+          },
+          "mechanical_participants_by_pose": {
+            "STOW": 108,
+            "PREDOCK": 108,
+            "OPEN": 115
+          },
+          "all_declared_volume_and_bounds_signatures_match": true,
+          "parent_partitions_checked_in_three_poses_and_unequal_allocation": 32,
+          "new_seams_qualified": false,
+          "real_donor_components_included": false,
+          "whole_phone_clearance_passed": false,
+          "whole_phone_installation_order_verified": false,
+          "report": "engineering/product-integration-20261018/phase2-20261019/mechanical/common-manifest.json.gz"
+        },
+        "independent_readback_means": "separate STEP parser process without builders, same CAD kernel; count, validity, volume and bounds signatures, not Boolean shape equivalence or joining qualification"
+      },
+      "bounded_test_repair_execution": {
+        "functional_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+        "model_native_execution_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+        "scope": "selected_routing_followup_after_test_oracle_correction",
+        "single_full_execution": false,
+        "suites": 1,
+        "tests": 14,
+        "passed": true,
+        "exit_code": 0,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 73.22669722198043,
+        "started_utc": "2026-10-19T05:26:50.084165+00:00",
+        "finished_utc": "2026-10-19T05:28:03.310887+00:00",
+        "source_bytes_unchanged": true,
+        "report": "engineering/product-integration-20261018/phase2-20261019/validation/routing-repair-report.json.gz",
+        "uncompressed_report_sha256": "e50e71ab97518fea85b71e29fb4f0f0ee89e6905885239b5d947ea74a2e0a3b4",
+        "geometry_changed": false,
+        "candidate_go": false,
+        "hardware_qualification": false,
+        "manufacturing_go": false
+      },
+      "disjoint_passing_suite_selection": {
+        "functional_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+        "native_execution_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+        "scope": "disjoint_passing_suite_selection_from_two_executions",
+        "single_full_execution": false,
+        "full_execution_passed": false,
+        "selected_suite_coverage_passed": true,
+        "suites": 33,
+        "tests": 1297,
+        "full_run_passing_suites": 32,
+        "full_run_passing_tests": 1283,
+        "bounded_repair_suites": 1,
+        "bounded_repair_tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "report": "engineering/product-integration-20261018/phase2-20261019/validation/canonical-selection.json",
+        "report_sha256": "4e706977a7befa03f3334d78104f8b69beb5fed72e6815e17d698045aaa699ed",
+        "not_a_new_execution_of_all_suites": true,
+        "candidate_go": false,
+        "manufacturing_go": false
+      },
+      "routing": {
+        "variants_internal_pairs": {
+          "legacy_retained_negative_endpoint": {
+            "A": {
+              "pair_count": 190,
+              "rejected_pairs": 1
+            },
+            "B": {
+              "pair_count": 190,
+              "rejected_pairs": 1
+            }
+          },
+          "EP2_separate_board_pair_and_clamp": {
+            "A": {
+              "pair_count": 190,
+              "rejected_pairs": 0
+            },
+            "B": {
+              "pair_count": 190,
+              "rejected_pairs": 0
+            }
+          }
+        },
+        "key_pose_records": 6,
+        "key_pose_records_rejected": 6,
+        "external_obstacle_participants_by_pose": {
+          "STOW": 99,
+          "PREDOCK": 99,
+          "OPEN": 106
+        },
+        "EP2_dimensions_mm": [
+          14.6,
+          35.0,
+          4.65
+        ],
+        "EP2_B_lane_width_shortfall_mm": 2.6,
+        "EP2_height_shortfall_under_reference_guide_with_0p2_each_side_clearance_mm": 0.05,
+        "OPEN_G2_minimum_radius_approx_mm": 0.2182854174006789,
+        "OLED_retention_parameter_studies": [
+          {
+            "flat_tail_request_mm": 0.0,
+            "request_is_not_measured_COF_or_clamp": true,
+            "whole_motion_material_interval_mm": [
+              187.76880324898116,
+              188.36880324898115
+            ],
+            "lower_limit_is_strict_if_zero_reserve": true,
+            "nonempty_interval": true,
+            "interval_width_mm": 0.5999999999999943,
+            "current_material_length_mm": 187.9,
+            "current_PREDOCK_flat_tail_mm": 0.1311967510188481,
+            "current_material_meets_flat_tail_request": true,
+            "minimum_added_material_to_current_trial_mm": 0.0,
+            "minimum_storage_extension_toward_B_foot_if_turn_unchanged_mm": 0.0,
+            "maximum_B_storage_y_min_if_turn_unchanged_mm": 6.0,
+            "optimistic_maximum_turn_center_y_from_outer_head_mm": 86.22500000000001,
+            "optimistic_turn_forward_allowance_mm": 0.4750000000000085,
+            "minimum_storage_extension_even_with_optimistic_turn_shift_mm": 0.0,
+            "head_bound_is_not_a_free_cavity_or_native_clearance_proof": true,
+            "current_COF_envelope": null,
+            "actual_inactive_edge_available_for_clamp_mm": null,
+            "physical_retention_or_traction_qualified": false,
+            "derivation": "L >= (c-a+slide)+pi*r+reserve; L <= (c-a)+pi*r+(c-y_min)"
+          },
+          {
+            "flat_tail_request_mm": 1.0,
+            "request_is_not_measured_COF_or_clamp": true,
+            "whole_motion_material_interval_mm": [
+              188.76880324898116,
+              188.36880324898115
+            ],
+            "lower_limit_is_strict_if_zero_reserve": false,
+            "nonempty_interval": false,
+            "interval_width_mm": -0.4000000000000057,
+            "current_material_length_mm": 187.9,
+            "current_PREDOCK_flat_tail_mm": 0.1311967510188481,
+            "current_material_meets_flat_tail_request": false,
+            "minimum_added_material_to_current_trial_mm": 0.8688032489811519,
+            "minimum_storage_extension_toward_B_foot_if_turn_unchanged_mm": 0.4000000000000057,
+            "maximum_B_storage_y_min_if_turn_unchanged_mm": 5.0,
+            "optimistic_maximum_turn_center_y_from_outer_head_mm": 86.22500000000001,
+            "optimistic_turn_forward_allowance_mm": 0.4750000000000085,
+            "minimum_storage_extension_even_with_optimistic_turn_shift_mm": 0.0,
+            "head_bound_is_not_a_free_cavity_or_native_clearance_proof": true,
+            "current_COF_envelope": null,
+            "actual_inactive_edge_available_for_clamp_mm": null,
+            "physical_retention_or_traction_qualified": false,
+            "derivation": "L >= (c-a+slide)+pi*r+reserve; L <= (c-a)+pi*r+(c-y_min)"
+          },
+          {
+            "flat_tail_request_mm": 2.0,
+            "request_is_not_measured_COF_or_clamp": true,
+            "whole_motion_material_interval_mm": [
+              189.76880324898116,
+              188.36880324898115
+            ],
+            "lower_limit_is_strict_if_zero_reserve": false,
+            "nonempty_interval": false,
+            "interval_width_mm": -1.4000000000000057,
+            "current_material_length_mm": 187.9,
+            "current_PREDOCK_flat_tail_mm": 0.1311967510188481,
+            "current_material_meets_flat_tail_request": false,
+            "minimum_added_material_to_current_trial_mm": 1.868803248981152,
+            "minimum_storage_extension_toward_B_foot_if_turn_unchanged_mm": 1.4000000000000057,
+            "maximum_B_storage_y_min_if_turn_unchanged_mm": 4.0,
+            "optimistic_maximum_turn_center_y_from_outer_head_mm": 86.22500000000001,
+            "optimistic_turn_forward_allowance_mm": 0.4750000000000085,
+            "minimum_storage_extension_even_with_optimistic_turn_shift_mm": 0.9249999999999972,
+            "head_bound_is_not_a_free_cavity_or_native_clearance_proof": true,
+            "current_COF_envelope": null,
+            "actual_inactive_edge_available_for_clamp_mm": null,
+            "physical_retention_or_traction_qualified": false,
+            "derivation": "L >= (c-a+slide)+pi*r+reserve; L <= (c-a)+pi*r+(c-y_min)"
+          },
+          {
+            "flat_tail_request_mm": 3.0,
+            "request_is_not_measured_COF_or_clamp": true,
+            "whole_motion_material_interval_mm": [
+              190.76880324898116,
+              188.36880324898115
+            ],
+            "lower_limit_is_strict_if_zero_reserve": false,
+            "nonempty_interval": false,
+            "interval_width_mm": -2.4000000000000057,
+            "current_material_length_mm": 187.9,
+            "current_PREDOCK_flat_tail_mm": 0.1311967510188481,
+            "current_material_meets_flat_tail_request": false,
+            "minimum_added_material_to_current_trial_mm": 2.868803248981152,
+            "minimum_storage_extension_toward_B_foot_if_turn_unchanged_mm": 2.4000000000000057,
+            "maximum_B_storage_y_min_if_turn_unchanged_mm": 3.0,
+            "optimistic_maximum_turn_center_y_from_outer_head_mm": 86.22500000000001,
+            "optimistic_turn_forward_allowance_mm": 0.4750000000000085,
+            "minimum_storage_extension_even_with_optimistic_turn_shift_mm": 1.9249999999999972,
+            "head_bound_is_not_a_free_cavity_or_native_clearance_proof": true,
+            "current_COF_envelope": null,
+            "actual_inactive_edge_available_for_clamp_mm": null,
+            "physical_retention_or_traction_qualified": false,
+            "derivation": "L >= (c-a+slide)+pi*r+reserve; L <= (c-a)+pi*r+(c-y_min)"
+          },
+          {
+            "flat_tail_request_mm": 6.0,
+            "request_is_not_measured_COF_or_clamp": true,
+            "whole_motion_material_interval_mm": [
+              193.76880324898116,
+              188.36880324898115
+            ],
+            "lower_limit_is_strict_if_zero_reserve": false,
+            "nonempty_interval": false,
+            "interval_width_mm": -5.400000000000006,
+            "current_material_length_mm": 187.9,
+            "current_PREDOCK_flat_tail_mm": 0.1311967510188481,
+            "current_material_meets_flat_tail_request": false,
+            "minimum_added_material_to_current_trial_mm": 5.868803248981152,
+            "minimum_storage_extension_toward_B_foot_if_turn_unchanged_mm": 5.400000000000006,
+            "maximum_B_storage_y_min_if_turn_unchanged_mm": 0.0,
+            "optimistic_maximum_turn_center_y_from_outer_head_mm": 86.22500000000001,
+            "optimistic_turn_forward_allowance_mm": 0.4750000000000085,
+            "minimum_storage_extension_even_with_optimistic_turn_shift_mm": 4.924999999999997,
+            "head_bound_is_not_a_free_cavity_or_native_clearance_proof": true,
+            "current_COF_envelope": null,
+            "actual_inactive_edge_available_for_clamp_mm": null,
+            "physical_retention_or_traction_qualified": false,
+            "derivation": "L >= (c-a+slide)+pi*r+reserve; L <= (c-a)+pi*r+(c-y_min)"
+          },
+          {
+            "flat_tail_request_mm": 12.0,
+            "request_is_not_measured_COF_or_clamp": true,
+            "whole_motion_material_interval_mm": [
+              199.76880324898116,
+              188.36880324898115
+            ],
+            "lower_limit_is_strict_if_zero_reserve": false,
+            "nonempty_interval": false,
+            "interval_width_mm": -11.400000000000006,
+            "current_material_length_mm": 187.9,
+            "current_PREDOCK_flat_tail_mm": 0.1311967510188481,
+            "current_material_meets_flat_tail_request": false,
+            "minimum_added_material_to_current_trial_mm": 11.868803248981152,
+            "minimum_storage_extension_toward_B_foot_if_turn_unchanged_mm": 11.400000000000006,
+            "maximum_B_storage_y_min_if_turn_unchanged_mm": -6.0,
+            "optimistic_maximum_turn_center_y_from_outer_head_mm": 86.22500000000001,
+            "optimistic_turn_forward_allowance_mm": 0.4750000000000085,
+            "minimum_storage_extension_even_with_optimistic_turn_shift_mm": 10.924999999999997,
+            "head_bound_is_not_a_free_cavity_or_native_clearance_proof": true,
+            "current_COF_envelope": null,
+            "actual_inactive_edge_available_for_clamp_mm": null,
+            "physical_retention_or_traction_qualified": false,
+            "derivation": "L >= (c-a+slide)+pi*r+reserve; L <= (c-a)+pi*r+(c-y_min)"
+          }
+        ],
+        "EP2_material_and_complete_endpoints_by_pose": {
+          "STOW": {
+            "A_to_B_endpoints": {
+              "pair_count": 400,
+              "clear": true,
+              "failures": []
+            },
+            "material_to_A_endpoint": {
+              "pair_count": 20,
+              "clear": true,
+              "failures": []
+            },
+            "material_to_B_endpoint": {
+              "pair_count": 20,
+              "clear": true,
+              "failures": []
+            }
+          },
+          "PREDOCK": {
+            "A_to_B_endpoints": {
+              "pair_count": 400,
+              "clear": true,
+              "failures": []
+            },
+            "material_to_A_endpoint": {
+              "pair_count": 20,
+              "clear": true,
+              "failures": []
+            },
+            "material_to_B_endpoint": {
+              "pair_count": 20,
+              "clear": true,
+              "failures": []
+            }
+          },
+          "OPEN": {
+            "A_to_B_endpoints": {
+              "pair_count": 400,
+              "clear": true,
+              "failures": []
+            },
+            "material_to_A_endpoint": {
+              "pair_count": 20,
+              "clear": true,
+              "failures": []
+            },
+            "material_to_B_endpoint": {
+              "pair_count": 20,
+              "clear": false,
+              "failures": [
+                {
+                  "a": "finite_material",
+                  "b": "B_M2_clamp_screw_1",
+                  "common_mm3": 0.314159265358978,
+                  "method": "native_common",
+                  "axis_gap_lower_mm": 0.0,
+                  "positive_material_common": true
+                },
+                {
+                  "a": "finite_material",
+                  "b": "B_M2_clamp_screw_2",
+                  "common_mm3": 0.314159265358978,
+                  "method": "native_common",
+                  "axis_gap_lower_mm": 0.0,
+                  "positive_material_common": true
+                },
+                {
+                  "a": "finite_material",
+                  "b": "B_lower_jaw",
+                  "common_mm3": 16.039734577831304,
+                  "method": "native_common",
+                  "axis_gap_lower_mm": 0.0,
+                  "positive_material_common": true
+                }
+              ]
+            }
+          }
+        },
+        "OPEN_B_clamp_material_collision_count": 3,
+        "test_oracle_correction_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+        "test_correction_changed_geometry": false,
+        "full_cycle_internal_route_accepted": false,
+        "individual_static_conductors_routed": false,
+        "supplier_dynamic_qualified": false,
+        "report": "engineering/product-integration-20261018/phase2-20261019/routing/native-report.json.gz"
+      },
+      "latest_donor_connection_check": {
+        "schema": "razr-donor-discovery-summary-v1",
+        "selected_donor_connected": true,
+        "physical_platform_frozen": false,
+        "hardware_geometry_verified": false,
+        "physical_part_labels_verified": false,
+        "terminal_pinout_verified": false,
+        "battery_topology_verified": false,
+        "dynamic_material_qualified": false,
+        "specimen_serial_sha256": "41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+        "specimen_identity_basis": "Matching USB-descriptor serial hash, authorized ADB inventory serial hash, donor property readback and both later probe serial hashes; no physical module-label identity asserted.",
+        "observed_utc": "2026-10-20T01:17:51.920343+00:00",
+        "observation_window_utc": {
+          "first": "2026-10-20T01:12:24.662282+00:00",
+          "last": "2026-10-20T01:25:06.429788+00:00",
+          "not_a_continuous_monitoring_interval": true
+        },
+        "host_alias": "pocket4",
+        "adb_server_port": 5061,
+        "adb_authorized_device_count": 1,
+        "adb_state": "device",
+        "usb_vendor_id": "22b8",
+        "usb_product_id": "2e81",
+        "usb_model": "XT2551-3",
+        "boot_hardware_sku": "XT2551-3",
+        "reported_product_model": "XT2551-3",
+        "USB_ADB_serial_hash_match": true,
+        "model_SKU_USB_consistent": true,
+        "software_identity": {
+          "evidence_class": "software_reported_identity_not_physical_board_or_component_marking",
+          "properties": {
+            "ro.product.manufacturer": "motorola",
+            "ro.product.model": "XT2551-3",
+            "ro.product.device": "leap",
+            "ro.product.board": "leap",
+            "ro.product.name": "trillionnium_leap",
+            "ro.product.vendor.model": "leap",
+            "ro.product.vendor.device": "leap",
+            "ro.boot.hardware.sku": "XT2551-3",
+            "ro.boot.hardware.revision": "",
+            "ro.boot.hwrev": "",
+            "ro.boot.hwc": "",
+            "ro.hardware": "qcom",
+            "ro.board.platform": "sun",
+            "ro.soc.model": "SM8750",
+            "ro.soc.manufacturer": "QTI",
+            "ro.build.fingerprint": "motorola/trillionnium_leap/leap:17/CSV1.260518.010/eng.qq:userdebug/test-keys",
+            "ro.build.version.release": "17",
+            "ro.build.version.security_patch": "2026-05-05",
+            "ro.build.version.incremental": "eng.qq"
+          },
+          "custom_build_fingerprint": "motorola/trillionnium_leap/leap:17/CSV1.260518.010/eng.qq:userdebug/test-keys",
+          "custom_userdebug_test_keys_build_reported": true,
+          "Android_release_reported": "17",
+          "SOC_sysfs_readback": {
+            "soc_model": "SUN",
+            "soc_id": "618",
+            "soc_revision": "2.0"
+          },
+          "OEM_factory_OS_or_component_revision_verified": false,
+          "empty_hardware_revision_properties": [
+            "ro.boot.hardware.revision",
+            "ro.boot.hwrev",
+            "ro.boot.hwc"
+          ],
+          "source_records": [
+            "hardware/pocket4-20261020/donor-identity.json",
+            "hardware/pocket4-20261020/module-readback.json"
+          ]
+        },
+        "display_touch_reported": {
+          "evidence_class": "software_display_and_input_registration",
+          "wm_size_stdout": "Physical size: 1224x2992\n",
+          "wm_size_pixels": [
+            1224,
+            2992
+          ],
+          "wm_Physical_size_label_is_not_a_mm_measurement": true,
+          "surface_display_count_reported": 2,
+          "surface_display_screenPartStatus": "UNSUPPORTED",
+          "panel_part_number_read_back": null,
+          "DRM_DSI_nodes_registered": [
+            "card0-DSI-1",
+            "card0-DSI-2"
+          ],
+          "touch_input_registration": [
+            {
+              "name": "goodix_ts",
+              "IsExternal": false
+            },
+            {
+              "name": "fts_ts",
+              "IsExternal": true
+            }
+          ],
+          "physical_display_and_COF_identified": false,
+          "display_image_or_touch_function_exercised_by_this_probe": false,
+          "new_slide_phone_display_touch_verified": false,
+          "source_records": [
+            "hardware/pocket4-20261020/donor-identity.json",
+            "hardware/pocket4-20261020/module-readback.json",
+            "hardware/pocket4-20261020/available-nodes.json"
+          ]
+        },
+        "battery_reported": {
+          "evidence_class": "software_driver_design_values_and_model_strings_not_measured_cell_capacity",
+          "standard_unit_basis": {
+            "url": "https://docs.kernel.org/power/power_supply_class.html",
+            "section": "Units; CHARGE_*; CHARGE_FULL_DESIGN, CHARGE_EMPTY_DESIGN",
+            "CHARGE_unit": "uAh",
+            "mAh_conversion_divisor": 1000,
+            "driver_unit_conformance_independently_audited": false
+          },
+          "nodes": {
+            "main_battery": {
+              "source_record": "hardware/pocket4-20261020/module-readback.json",
+              "result_key": "power_supply_main_battery",
+              "node": "/sys/class/power_supply/main_battery/uevent",
+              "reported_type": "Mains",
+              "charge_full_design_raw": "3430000",
+              "charge_full_design_uAh": 3430000,
+              "charge_full_design_mAh": 3430.0,
+              "reported_charge_full_raw": "3479000",
+              "reported_model_name": null,
+              "capacity_measured_by_this_project": false,
+              "physical_cell_label_verified": false
+            },
+            "flip_battery": {
+              "source_record": "hardware/pocket4-20261020/module-readback.json",
+              "result_key": "power_supply_flip_battery",
+              "node": "/sys/class/power_supply/flip_battery/uevent",
+              "reported_type": "Mains",
+              "charge_full_design_raw": "1140000",
+              "charge_full_design_uAh": 1140000,
+              "charge_full_design_mAh": 1140.0,
+              "reported_charge_full_raw": "1153000",
+              "reported_model_name": null,
+              "capacity_measured_by_this_project": false,
+              "physical_cell_label_verified": false
+            },
+            "battery": {
+              "source_record": "hardware/pocket4-20261020/module-readback.json",
+              "result_key": "power_supply_battery",
+              "node": "/sys/class/power_supply/battery/uevent",
+              "reported_type": "Battery",
+              "charge_full_design_raw": "4570000",
+              "charge_full_design_uAh": 4570000,
+              "charge_full_design_mAh": 4570.0,
+              "reported_charge_full_raw": "4632000",
+              "reported_model_name": "NFG_ATL_RS35NVT_3520MAH",
+              "capacity_measured_by_this_project": false,
+              "physical_cell_label_verified": false
+            }
+          },
+          "software_design_sum_mAh": 4570.0,
+          "aggregate_design_matches_arithmetic_sum": true,
+          "software_aggregate_minus_OEM_rated_mAh": 30.0,
+          "software_aggregate_minus_OEM_typical_mAh": -130.0,
+          "capacity_difference_status": "Unresolved: software design 4570 mAh differs from OEM rated 4540 mAh by +30 mAh. No correction, averaging or equivalence asserted.",
+          "aggregate_MODEL_NAME_is_not_main_battery_physical_label": true,
+          "main_and_flip_reported_TYPE_Mains_not_corrected": true,
+          "node_names_or_capacity_sum_do_not_establish_series_parallel_or_charge_protection_topology": true,
+          "balance_nodes": {
+            "balance_master": {
+              "raw_uevent_fields": {
+                "POWER_SUPPLY_NAME": "balance_master",
+                "POWER_SUPPLY_TYPE": "Unknown",
+                "POWER_SUPPLY_STATUS": "Full",
+                "POWER_SUPPLY_ONLINE": "0",
+                "POWER_SUPPLY_TEMP": "23",
+                "POWER_SUPPLY_VOLTAGE_NOW": "4466",
+                "POWER_SUPPLY_VOLTAGE_MAX": "4475",
+                "POWER_SUPPLY_CURRENT_NOW": "6",
+                "POWER_SUPPLY_INPUT_CURRENT_LIMIT": "3400"
+              },
+              "units_verified": false,
+              "normalized_values": null,
+              "unit_policy": "Preserve raw values; do not assign a common unit or normalize from the generic power_supply convention without this driver definition."
+            },
+            "balance_slave": {
+              "raw_uevent_fields": {
+                "POWER_SUPPLY_NAME": "balance_slave",
+                "POWER_SUPPLY_TYPE": "Unknown",
+                "POWER_SUPPLY_STATUS": "Unknown",
+                "POWER_SUPPLY_ONLINE": "1",
+                "POWER_SUPPLY_TEMP": "24",
+                "POWER_SUPPLY_VOLTAGE_NOW": "4493",
+                "POWER_SUPPLY_VOLTAGE_MAX": "4480",
+                "POWER_SUPPLY_CURRENT_NOW": "6",
+                "POWER_SUPPLY_INPUT_CURRENT_LIMIT": "950"
+              },
+              "units_verified": false,
+              "normalized_values": null,
+              "unit_policy": "Preserve raw values; do not assign a common unit or normalize from the generic power_supply convention without this driver definition."
+            }
+          },
+          "donor_USB_powered_flag_reported": true,
+          "project_charge_discharge_capacity_test_performed": false,
+          "motion_power_or_USB_continuity_measured": false
+        },
+        "OEM_source": {
+          "publisher": "Motorola / Lenovo China support",
+          "url": "https://www.lenovocare.com.cn/ideaservice/535125b81e2f46eabffa9c1568443961.pdf",
+          "document_number": "SSC8E69755-B",
+          "page_1_based": 2,
+          "marketing_name": "moto razr 60 Ultra",
+          "model": "XT2551-3",
+          "typical_capacity_mAh": 4700,
+          "rated_capacity_mAh": 4540,
+          "source_checked_UTC_date": "2026-10-20",
+          "model_matches_observed_USB_and_boot_SKU": true,
+          "scope": "OEM complete-phone specification for the matching model; not an individual specimen capacity measurement or evidence that its cells fit the RAZR-SLIDE envelope.",
+          "new_slide_envelope_capacity_target_proven": false
+        },
+        "scope_reconciliation": {
+          "Pocket4_default_5037": {
+            "observed_utc": "2026-10-20T01:12:24.662282+00:00",
+            "authorized_motorola_count": 0,
+            "adb_inventory": [],
+            "source_record": "hardware/pocket4-20261020/usb-observation.json",
+            "scope": "Default-server observation only; does not describe the already-running 5061 server."
+          },
+          "two_servers_observed": {
+            "ports": [
+              5037,
+              5061
+            ],
+            "source_record": "hardware/pocket4-20261020/adb-servers.json"
+          },
+          "Pocket4_5061_resolves_donor_connection_unknown": true,
+          "earlier_main_host_empty_inventory_scope": "Earlier main-host observations remain limited to that host; this bundle contains six Pocket4 probes and does not re-probe main or establish a global absence of devices.",
+          "historical_empty_observations_overwritten": false
+        },
+        "read_only_probe_scope": {
+          "probe_count": 6,
+          "actual_file_count": 24,
+          "file_roles_per_probe": [
+            "structured JSON",
+            "raw stdout",
+            "probe source",
+            "provenance"
+          ],
+          "all_probe_capture_exit_codes_zero": true,
+          "all_raw_stdout_hashes_match_provenance": true,
+          "all_raw_stdout_JSON_matches_structured_record": true,
+          "wrapper_exit_zero_does_not_mean_all_inner_reads_succeeded": true,
+          "failed_read_command_count": 9,
+          "failed_read_commands": [
+            {
+              "source_path": "hardware/pocket4-20261020/donor-identity.json#/donor_observations/0/input_devices",
+              "returncode": 1,
+              "error": null,
+              "stderr": "cat: /proc/bus/input/devices: Permission denied\n"
+            },
+            {
+              "source_path": "hardware/pocket4-20261020/donor-identity.json#/donor_observations/0/soc_identity",
+              "returncode": 1,
+              "error": null,
+              "stderr": "/system/bin/sh: syntax error: unexpected 'do'\n"
+            },
+            {
+              "source_path": "hardware/pocket4-20261020/module-readback.json#/results/dt_model",
+              "returncode": 1,
+              "error": null,
+              "stderr": "cat: /sys/firmware/devicetree/base/model: Permission denied\n"
+            },
+            {
+              "source_path": "hardware/pocket4-20261020/module-readback.json#/results/dt_compatible",
+              "returncode": 1,
+              "error": null,
+              "stderr": "cat: /sys/firmware/devicetree/base/compatible: Permission denied\n"
+            },
+            {
+              "source_path": "hardware/pocket4-20261020/module-readback.json#/results/graphics_nodes",
+              "returncode": 1,
+              "error": null,
+              "stderr": "ls: /sys/class/graphics: No such file or directory\n"
+            },
+            {
+              "source_path": "hardware/pocket4-20261020/available-nodes.json#/directories/~1sys~1class~1drm~1card0-DSI-1",
+              "returncode": 1,
+              "error": null,
+              "stderr": "ls: /sys/class/drm/card0-DSI-1: Permission denied\n"
+            },
+            {
+              "source_path": "hardware/pocket4-20261020/available-nodes.json#/directories/~1sys~1class~1drm~1card0-DSI-2",
+              "returncode": 1,
+              "error": null,
+              "stderr": "ls: /sys/class/drm/card0-DSI-2: Permission denied\n"
+            },
+            {
+              "source_path": "hardware/pocket4-20261020/available-nodes.json#/directories/~1sys~1class~1power_supply~1main_battery",
+              "returncode": 1,
+              "error": null,
+              "stderr": "ls: /sys/class/power_supply/main_battery: Permission denied\n"
+            },
+            {
+              "source_path": "hardware/pocket4-20261020/available-nodes.json#/directories/~1sys~1class~1power_supply~1flip_battery",
+              "returncode": 1,
+              "error": null,
+              "stderr": "ls: /sys/class/power_supply/flip_battery: Permission denied\n"
+            }
+          ],
+          "first_SOC_loop_syntax_failure_retained": true,
+          "later_SOC_direct_reads_available": true,
+          "part_of_input_summary_was_filtered": true,
+          "input_summary_filter_scope": "Only hardware device summary lines retained; focused windows and event history excluded",
+          "physical_fabrication_performed": false,
+          "phone_project_acceptance_performed": false,
+          "all_probe_device_commands_read_only": true
+        },
+        "remaining_freeze_requirements": [
+          "Photograph and identify the physical mainboard revision, connector labels and mating parts; measure the board outline, component heights, mounts and cable exit directions.",
+          "Identify the actual OLED/touch module and COF; measure complete material length, inactive clamp allowance and stored envelope; obtain supplier dynamic bend and support conditions.",
+          "Read both physical cell labels and protection/NTC/terminal markings; measure their dimensions, mass, swelling allowance and tab exit envelopes.",
+          "Map actual board-side and terminal endpoints for display, touch, supply, USB, cameras, RF/antennas and every cross-cabin signal.",
+          "Trace the OEM two-battery protection/charge/current-combining topology and allowable reuse from terminal-level evidence; software node names and arithmetic charge sums do not determine the circuit.",
+          "Place verified parts into the common equal-cabin scene, retaining 79.75 mm slide, 8.2 mm seating, flat OLED storage in B, RF and thermal paths; prove cell/layout capacity or explicitly revise that target."
+        ],
+        "candidate_go": false,
+        "fixture_fabrication_go": false,
+        "fabrication_go": false,
+        "manufacturing_go": false,
+        "project_controlled_power_on_go": false,
+        "phone_project_acceptance_go": false,
+        "physical_phone_project_verified": false,
+        "evidence": {
+          "bundle_sha256": "17d6c2bf8b4ff7bfda34af1f7c4fba8a1e7679fa88b442679f72a0a547596c9b",
+          "destination_subtree": "hardware/pocket4-20261020",
+          "relative_paths_are_from_current_progress_README_directory": true,
+          "project_context_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+          "context_commit_is_not_a_hardware_qualification": true,
+          "files_sha256": {
+            "hardware/pocket4-20261020/adb-servers-probe.py": "307c84bec234a0426c06c8066faabc36fd622e0da853381021c6702fd2167330",
+            "hardware/pocket4-20261020/adb-servers-provenance.json": "b4efafd9add5b8318b83b6720652b56158095652c39f8a0e24a64bee816833ff",
+            "hardware/pocket4-20261020/adb-servers-raw-stdout.log": "2bd84dacbee515238f6e153bcff06b8792a8e6f4f33426c49eaba02475c2e514",
+            "hardware/pocket4-20261020/adb-servers.json": "8a5b2115aac5a077a99ed55069d8f5131b9b5b9f630f5bedd29ec6c06795c51f",
+            "hardware/pocket4-20261020/available-nodes-probe.py": "0a28c5adb9df294bf9d9612affc7bed71855f21c1cf18a675d0f1ad0370ab3f8",
+            "hardware/pocket4-20261020/available-nodes-provenance.json": "54a71cecb900c6cf63390c6cd48764672ff9ebcae39cbf186a3c2d245df695aa",
+            "hardware/pocket4-20261020/available-nodes-raw-stdout.log": "00b84099661bb162e2ee4a80720e62b5d22464270bb177e116a65ad5cdca60fa",
+            "hardware/pocket4-20261020/available-nodes.json": "8ca449d14f1eadf7075d31deca9010d76395d8e81947d8ab6bfeb0f33063a362",
+            "hardware/pocket4-20261020/donor-identity-probe.py": "73f4bb0630861adaac26ae8803e4696c8c21dc8589ee759ff7964da35696a9ff",
+            "hardware/pocket4-20261020/donor-identity-provenance.json": "aebca87e0ff814dab11c12ccb54bb6b6163f5b45d7cfb0a5e55a276a2338931f",
+            "hardware/pocket4-20261020/donor-identity-raw-stdout.log": "40602802e839964dd787f733191aafbe5e2580ea3918f414c2c6bcb5018752e6",
+            "hardware/pocket4-20261020/donor-identity.json": "219b5bd76aed5aab33788c3f4b2bf695cc5c2f27cfcd50e5261948ce1f1620ae",
+            "hardware/pocket4-20261020/module-readback-probe.py": "aa33016448e8dee2eb17a20c197753cdbb9bdf098c48c00afbbdabdeacde77f2",
+            "hardware/pocket4-20261020/module-readback-provenance.json": "0e6291196e9f5747699aa4a9b9e54923ea69293d08817d2dfe651c6acbbf877d",
+            "hardware/pocket4-20261020/module-readback-raw-stdout.log": "c810cc8c73667368c657746956d365ab6cfe879c4d63b1d0a0fce27e320daa99",
+            "hardware/pocket4-20261020/module-readback.json": "052f9df2ea7f45d41310ec2bc7d60813b73a8117d7d12ed3085dbcca2496b7f3",
+            "hardware/pocket4-20261020/usb-adb-interfaces-probe.py": "196c28a0a1f1d7ee9dd4cb0f814796865fe0aca316f79e3b84575374253e9d3a",
+            "hardware/pocket4-20261020/usb-adb-interfaces-provenance.json": "b5799dd32ed8f14bfb986b3b46efab486238d3d7741a8453f2f680a9c60d1fca",
+            "hardware/pocket4-20261020/usb-adb-interfaces-raw-stdout.log": "47349ff712da463c9b719314a0e97d8e0ec1ee1bae7077038c58d40d3d8415dd",
+            "hardware/pocket4-20261020/usb-adb-interfaces.json": "ed045a527ef65097da70df04772a1e92272df815cde49037210cf006f650894c",
+            "hardware/pocket4-20261020/usb-observation-probe.py": "e9a33858c63caef738779d5833fa20f14c5f9c25800f0e647a6f457821693991",
+            "hardware/pocket4-20261020/usb-observation-provenance.json": "92335ec7d2a185999353e9705f74f91dc68e68ebe9d138ba96285f1fc395b8c6",
+            "hardware/pocket4-20261020/usb-observation-raw-stdout.log": "87266d63c8b57c658a8adbecbc60c4cb5a3a1c0030546bcfad6df4899af7e170",
+            "hardware/pocket4-20261020/usb-observation.json": "74cd04e7e0612317670045a0937a99f717d67e3cf81dc24c6cb53871873b878a"
+          },
+          "probe_records": [
+            {
+              "name": "usb-observation",
+              "observed_utc": "2026-10-20T01:12:24.662282+00:00",
+              "report": "hardware/pocket4-20261020/usb-observation.json",
+              "probe_source": "hardware/pocket4-20261020/usb-observation-probe.py",
+              "raw_stdout": "hardware/pocket4-20261020/usb-observation-raw-stdout.log",
+              "provenance": "hardware/pocket4-20261020/usb-observation-provenance.json",
+              "source_output_sha256": "87266d63c8b57c658a8adbecbc60c4cb5a3a1c0030546bcfad6df4899af7e170",
+              "capture_exit_code": 0
+            },
+            {
+              "name": "usb-adb-interfaces",
+              "observed_utc": "2026-10-20T01:14:27.229661+00:00",
+              "report": "hardware/pocket4-20261020/usb-adb-interfaces.json",
+              "probe_source": "hardware/pocket4-20261020/usb-adb-interfaces-probe.py",
+              "raw_stdout": "hardware/pocket4-20261020/usb-adb-interfaces-raw-stdout.log",
+              "provenance": "hardware/pocket4-20261020/usb-adb-interfaces-provenance.json",
+              "source_output_sha256": "47349ff712da463c9b719314a0e97d8e0ec1ee1bae7077038c58d40d3d8415dd",
+              "capture_exit_code": 0
+            },
+            {
+              "name": "adb-servers",
+              "observed_utc": "2026-10-20T01:15:28.626851+00:00",
+              "report": "hardware/pocket4-20261020/adb-servers.json",
+              "probe_source": "hardware/pocket4-20261020/adb-servers-probe.py",
+              "raw_stdout": "hardware/pocket4-20261020/adb-servers-raw-stdout.log",
+              "provenance": "hardware/pocket4-20261020/adb-servers-provenance.json",
+              "source_output_sha256": "2bd84dacbee515238f6e153bcff06b8792a8e6f4f33426c49eaba02475c2e514",
+              "capture_exit_code": 0
+            },
+            {
+              "name": "donor-identity",
+              "observed_utc": "2026-10-20T01:17:51.920343+00:00",
+              "report": "hardware/pocket4-20261020/donor-identity.json",
+              "probe_source": "hardware/pocket4-20261020/donor-identity-probe.py",
+              "raw_stdout": "hardware/pocket4-20261020/donor-identity-raw-stdout.log",
+              "provenance": "hardware/pocket4-20261020/donor-identity-provenance.json",
+              "source_output_sha256": "40602802e839964dd787f733191aafbe5e2580ea3918f414c2c6bcb5018752e6",
+              "capture_exit_code": 0
+            },
+            {
+              "name": "module-readback",
+              "observed_utc": "2026-10-20T01:20:32.984519+00:00",
+              "report": "hardware/pocket4-20261020/module-readback.json",
+              "probe_source": "hardware/pocket4-20261020/module-readback-probe.py",
+              "raw_stdout": "hardware/pocket4-20261020/module-readback-raw-stdout.log",
+              "provenance": "hardware/pocket4-20261020/module-readback-provenance.json",
+              "source_output_sha256": "c810cc8c73667368c657746956d365ab6cfe879c4d63b1d0a0fce27e320daa99",
+              "capture_exit_code": 0
+            },
+            {
+              "name": "available-nodes",
+              "observed_utc": "2026-10-20T01:25:06.429788+00:00",
+              "report": "hardware/pocket4-20261020/available-nodes.json",
+              "probe_source": "hardware/pocket4-20261020/available-nodes-probe.py",
+              "raw_stdout": "hardware/pocket4-20261020/available-nodes-raw-stdout.log",
+              "provenance": "hardware/pocket4-20261020/available-nodes-provenance.json",
+              "source_output_sha256": "00b84099661bb162e2ee4a80720e62b5d22464270bb177e116a65ad5cdca60fa",
+              "capture_exit_code": 0
+            }
+          ]
+        }
+      },
+      "earlier_main_host_donor_observation": {
+        "observed_utc": "2026-10-19T04:54:32.084583+00:00",
+        "exit_code": 2,
+        "selected_donor_connected": false,
+        "device_count": 0,
+        "source_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+        "inputs_match_commit": true,
+        "specimen_id": null,
+        "automatically_compared_design_inputs": [
+          "design/product_geometry.json",
+          "design/product_interfaces.json"
+        ],
+        "arbitrary_CAD_builder_or_EP2_source_compatibility_proven": false,
+        "scope": "observed host/time only; absence of a readback is not a device failure or incompatibility finding",
+        "report": "engineering/product-integration-20261018/phase2-20261019/hardware/donor-v2.json"
+      },
+      "physical_hardware_cycle_completed": false,
+      "physical_phone_verified": false,
+      "candidate_go": false,
+      "fixture_fabrication_go": false,
+      "manufacturing_go": false,
+      "historical_phase": "phase2-20261019"
+    },
+    {
+      "phase": "phase3-20261020",
+      "in_main": false,
+      "execution_summary": "engineering/product-integration-20261018/phase3-20261020/SUMMARY.json",
+      "formal_donor_source_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+      "donor_identity_record": "engineering/product-integration-20261018/hardware/records/xt2551-3-20261020-f4db100-identity/record.json",
+      "donor_unit_executions": [
+        {
+          "label": "Product branch phase3: donor collector suite FAILED at legacy mock",
+          "functional_commit": "3e6864ccea6c03a651dd220a0c1510c2ea22dfec",
+          "scope": "selected_product_integration_suite_102_test_identities",
+          "tests": 102,
+          "suites": 1,
+          "single_full_execution": false,
+          "passed": false,
+          "result": "FAILED",
+          "failures": 0,
+          "errors": 13,
+          "skipped": 0,
+          "seconds": 77.11136691,
+          "source_bytes_unchanged": true,
+          "in_main": false,
+          "report": "engineering/product-integration-20261018/phase3-20261020/validation/3e6864c-failed-report.json.gz",
+          "uncompressed_report_sha256": "ae0dee358a853439378dd0057cd069914d331b5e4fcb30d1f83b51d0e5a4a651",
+          "hardware_qualification": false,
+          "candidate_go": false,
+          "manufacturing_go": false
+        },
+        {
+          "label": "Product branch phase3: bounded donor fixture repair PASS",
+          "functional_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+          "scope": "selected_product_integration_suite_102_test_identities",
+          "tests": 102,
+          "suites": 1,
+          "single_full_execution": false,
+          "passed": true,
+          "result": "PASS",
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 72.37533739,
+          "source_bytes_unchanged": true,
+          "in_main": false,
+          "report": "engineering/product-integration-20261018/phase3-20261020/validation/f4db100-passed-report.json.gz",
+          "uncompressed_report_sha256": "b3d63ee335d0b13de656b393de1be874a51ee63b8f9d1669498cfaf8dd4ef910",
+          "hardware_qualification": false,
+          "candidate_go": false,
+          "manufacturing_go": false
+        }
+      ],
+      "EP3": {
+        "state": "native_three_pose_study_completed_candidate_rejected",
+        "source_commit": "a33e58cd555b8d9aff1e3649f79cd0dba378a804",
+        "native_checks_executed": true,
+        "native_execution_receipt": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-native-repaired-execution.json",
+        "native_summary": "engineering/product-integration-20261018/phase3-20261020/native-summary.json",
+        "native_report": "engineering/product-integration-20261018/phase3-20261020/native/native-report.json.gz",
+        "native_report_uncompressed_sha256": "b7a115ab32dcf199ebcd1e89b30542a6785f6a6851ec5803964638598e505bf8",
+        "source_bytes_unchanged": true,
+        "total_pair_checks": 15906,
+        "pair_evaluation_errors": 0,
+        "containment_evaluation_errors": 0,
+        "combined_participants": {
+          "STOW": 154,
+          "PREDOCK": 154,
+          "OPEN": 161
+        },
+        "endpoint_self_checks": {
+          "A": {
+            "pairs": 190,
+            "positive_common_pairs": 0,
+            "evaluation_errors": 0
+          },
+          "B": {
+            "pairs": 190,
+            "positive_common_pairs": 0,
+            "evaluation_errors": 0
+          }
+        },
+        "independent_STEP_readback_executed": true,
+        "independent_readback": {
+          "report": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-independent-readback/report.json.gz",
+          "uncompressed_sha256": "d3f9c00666b748bba2627b068c9981a0ce1d89423cb1345783a6121bb1561ef2",
+          "declared_checks_passed": true,
+          "independent_process_from_generator": true,
+          "all_assembly_geometry_has_generator_metric_baseline": false,
+          "scope": "five STEP files, all expected flat solids valid/positive, and injective bounds/volume matching for 41 recorded candidate bodies per pose; no complete material or label equivalence"
+        },
+        "PREDOCK_finite_low_straight_witness": {
+          "Y_interval_mm": [
+            94.25,
+            123.44270877176348
+          ],
+          "Z_interval_mm": [
+            1.4,
+            1.5
+          ],
+          "width_mm": 12.0,
+          "native_volume_mm3": 35.03125052611621,
+          "native_common_with_finite_material_mm3": 35.031250526116224,
+          "native_volume_outside_both_prisms_mm3": 35.03125052611621
+        },
+        "all_three_poses_rejected": true,
+        "retained_first_native_failure": {
+          "source_commit": "bdb1bc19fce49692fd49cd508031bfc456e15208",
+          "exit_code": 1,
+          "seconds": 427.2756840089569,
+          "completed_poses": [
+            "STOW"
+          ],
+          "final_native_report_exists": false,
+          "record": "engineering/product-integration-20261018/phase3-20261020/native-first-failure/native-execution-failure.json",
+          "old_STOW_containment_evaluation_errors": 20,
+          "old_STOW_positive_external_pairs": 6
+        },
+        "repair_scope": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-native-api-repair-commit.json",
+        "counterexample_comparison": "engineering/product-integration-20261018/phase3-20261020/validation/retained-STOW-counterexamples.json",
+        "full_cycle_internal_route_accepted": false,
+        "actual_OLED_COF_or_dynamic_material_selected": false,
+        "candidate_go": false,
+        "fixture_fabrication_go": false,
+        "manufacturing_go": false,
+        "physical_fabrication_executed": false,
+        "scope": "three decisive native poses; all 20 endpoint bodies retained per end, plus finite material and split common scene; no continuous full-motion or physical qualification"
+      },
+      "full_current_unit_execution_passed": false,
+      "candidate_go": false,
+      "fixture_fabrication_go": false,
+      "manufacturing_go": false,
+      "physical_hardware_cycle_completed": false,
+      "physical_phone_verified": false,
+      "native_execution_commit": "a33e58cd555b8d9aff1e3649f79cd0dba378a804",
+      "functional_commit": "a33e58cd555b8d9aff1e3649f79cd0dba378a804",
+      "selected_product_unit_execution": {
+        "label": "Product branch phase3: 109-test product and EP3 selection PASS",
+        "functional_commit": "bdb1bc19fce49692fd49cd508031bfc456e15208",
+        "scope": "selected_product_integration_102_and_EP3_arithmetic_7",
+        "tests": 109,
+        "suites": 2,
+        "passed": true,
+        "result": "PASS",
+        "single_full_execution": false,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "in_main": false,
+        "seconds": 70.7197644310072,
+        "source_bytes_unchanged": true,
+        "report": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-unit-bdb1bc1/report.json.gz",
+        "uncompressed_report_sha256": "dbe131f155420ac90ade04c8c71c83c1cf7f3f1320bc93c7ac1028fb85a3cb31",
+        "hardware_qualification": false,
+        "candidate_go": false,
+        "manufacturing_go": false
+      },
+      "bounded_EP3_API_repair_execution": {
+        "label": "Product branch phase3: bounded EP3 API repair regression PASS",
+        "functional_commit": "a33e58cd555b8d9aff1e3649f79cd0dba378a804",
+        "scope": "seven_EP3_arithmetic_tests_plus_separately_recorded_native_API_cases",
+        "tests": 7,
+        "suites": 1,
+        "passed": true,
+        "result": "PASS",
+        "single_full_execution": false,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "in_main": false,
+        "source_bytes_unchanged": true,
+        "source_bytes_unchanged_scope": "EP3 module digest plus clean Git tree; no full-repository before/after snapshot in this bounded controller",
+        "report": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-api-repair/native-api-regression.json",
+        "report_sha256": "ee4640e5aaa2fdc22bf458becb82a627c13e17f2738924d358000351b166bfb3",
+        "native_API_cases": 8,
+        "scalar_witness_cases": 1,
+        "109_tests_reexecuted": false,
+        "1310_tests_reexecuted": false,
+        "candidate_geometry_changed": false,
+        "candidate_go": false,
+        "manufacturing_go": false
+      },
+      "native_CAD_reports_completed": true
+    }
+  ],
+  "latest_product_execution": {
+    "phase": "phase4-20261020",
+    "execution_summary": "engineering/product-integration-20261018/phase4-20261020/SUMMARY.json",
+    "functional_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+    "native_execution_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+    "selected_product_unit_execution": {
+      "label": "Product branch phase4: 137 relevant tests PASS",
+      "functional_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+      "scope": "product108_routing14_EP3_7_EP4_8",
+      "tests": 137,
+      "suites": 4,
+      "passed": true,
+      "result": "PASS",
+      "single_full_execution": false,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "in_main": false,
+      "seconds": 146.26281374401879,
+      "source_bytes_unchanged": true,
+      "report": "engineering/product-integration-20261018/phase4-20261020/validation/unit/report.json.gz",
+      "uncompressed_report_sha256": "34d683f60337eef3fc0e079685c0d073941b3937c07af7c704bcc2a66321f29e",
+      "hardware_qualification": false,
+      "candidate_go": false,
+      "manufacturing_go": false
+    },
+    "EP4": {
+      "state": "three_pose_native_completed_rejected_local_followups_separate",
+      "source_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+      "native_summary": "engineering/product-integration-20261018/phase4-20261020/native-summary.json",
+      "raw_reports": [
+        {
+          "path": "engineering/product-integration-20261018/phase4-20261020/native/predock/native-report.json.gz",
+          "uncompressed_sha256": "b27e4bdfea2355e1ce47f66dc56a752456b91fd4f01c8a63d058741722ccb377"
+        },
+        {
+          "path": "engineering/product-integration-20261018/phase4-20261020/native/open-stow/native-report.json.gz",
+          "uncompressed_sha256": "6f7a701f20273784f48ae459eae1e8f72a929e434252c589208725a067d633f3"
+        }
+      ],
+      "all_three_poses_rejected": true,
+      "unique_declared_pairs": 15886,
+      "actual_declared_pairs_across_two_executions": 16266,
+      "pair_evaluation_errors": 0,
+      "containment_evaluation_errors": 0,
+      "independent_STEP_readback_executed": true,
+      "all_assembly_parts_have_metric_comparison": true,
+      "independent_readbacks": [
+        {
+          "path": "engineering/product-integration-20261018/phase4-20261020/validation/readback-predock/report.json.gz",
+          "uncompressed_sha256": "f05ba364ea76792258ae0d84e0d4b663485c6f86079587d6b333dee503761282",
+          "all_assembly_parts_have_metric_comparison": true,
+          "passed": true,
+          "seconds": 36.44220123800915,
+          "scope": "all endpoint/assembly numeric metrics plus positive Common and 2 mm context exports; no full material or label equivalence"
+        },
+        {
+          "path": "engineering/product-integration-20261018/phase4-20261020/validation/readback-open-stow/report.json.gz",
+          "uncompressed_sha256": "51128874b390b09d4e50fa4b42d1f1eb9f5bbf3bfc40416e2f1be6f98bf77393",
+          "all_assembly_parts_have_metric_comparison": true,
+          "passed": true,
+          "seconds": 29.31016793602612,
+          "scope": "all endpoint/assembly numeric metrics plus positive Common and 2 mm context exports; no full material or label equivalence"
+        }
+      ],
+      "local_studies": {
+        "A_head_relief": {
+          "script": "engineering/product-integration-20261018/phase4-20261020/local-studies/ep4_a_head_relief.py",
+          "report": "engineering/product-integration-20261018/phase4-20261020/local-studies/A-head-relief/report.json.gz",
+          "checks_passed": true,
+          "removed_mm3": 0.26920742553668914,
+          "added_mm3": 0.0,
+          "head_common_before_mm3": 0.18081185628459612,
+          "head_common_after_mm3": 0.0,
+          "self_pairs": 190
+        },
+        "KEY_closed_end": {
+          "script": "engineering/product-integration-20261018/phase4-20261020/local-studies/key-source/key_endcap_local_study.py",
+          "report": "engineering/product-integration-20261018/phase4-20261020/local-studies/KEY/native/native-report.json.gz",
+          "checks_passed": true,
+          "checks": 199,
+          "failure_count": 0,
+          "source_bytes_unchanged": true,
+          "nominal_side_gap_request_mm": 0.2,
+          "manufacturing_tolerance_or_strength_qualified": false
+        },
+        "baseline_three_pose_assemblies_modified": false,
+        "whole_scene_recomputed_with_local_changes": false,
+        "current_PAWL_interlock_and_relocking_verified": false,
+        "physical_parts_built": false,
+        "candidate_go": false,
+        "fixture_fabrication_go": false,
+        "manufacturing_go": false,
+        "a-head-relief_independent_readback": {
+          "passed": true,
+          "report": "engineering/product-integration-20261018/phase4-20261020/validation/readback-a-head-relief/report.json.gz",
+          "uncompressed_sha256": "05925f0bc3760b012292562cad19974d1c03f54d1fea3841658574f7a86e520d",
+          "scope": "all declared nonempty artifact solid counts, validity and injective bounds/volume; no topological or label identity proof"
+        },
+        "key-local_independent_readback": {
+          "passed": true,
+          "report": "engineering/product-integration-20261018/phase4-20261020/validation/readback-key-local/report.json.gz",
+          "uncompressed_sha256": "a8b66755e140da6446cf0736fbafc9a4f2c862e716178c907ec12c5220ffd826",
+          "scope": "all declared nonempty artifact solid counts, validity and injective bounds/volume; no topological or label identity proof"
+        }
+      },
+      "full_cycle_internal_route_accepted": false,
+      "physical_fabrication_executed": false,
+      "candidate_go": false,
+      "fixture_fabrication_go": false,
+      "manufacturing_go": false
+    },
+    "native_CAD_reports_completed": true,
+    "physical_phone_verified": false,
+    "source_commit_is_executed_functional_identity": true,
+    "full_local_unit_execution_passed": false,
+    "hosted_execution_restored": false,
+    "candidate_go": false,
+    "manufacturing_go": false
+  },
+  "observed_donor_identity": {
+    "schema": "razr-formal-partial-donor-state-v1",
+    "source_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+    "observed_utc": "2026-10-20T02:59:58.946837+00:00",
+    "observation_finished_utc": "2026-10-20T02:59:59.249960+00:00",
+    "model": "XT2551-3",
+    "specimen_id": "XT2551-3-41ad305f",
+    "specimen_serial_sha256": "41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+    "connected_specimen_observed": true,
+    "host_alias": "pocket4",
+    "adb_server_host": "127.0.0.1",
+    "adb_server_port": 5061,
+    "read_only_commands": 17,
+    "successful_commands": 17,
+    "transport_id_before": 37,
+    "transport_id_after": 37,
+    "same_server_boot_PID_and_start_ticks_verified": true,
+    "inputs_match_commit": true,
+    "source_and_design_bytes_unchanged": true,
+    "record": "engineering/product-integration-20261018/hardware/records/xt2551-3-20261020-f4db100-identity/record.json",
+    "record_sha256": "b4200d53ab68ec95733eb00d26b3e53ee35a3055d448c8b70d81b024910cad7f",
+    "collector_sha256": "b2dada86400ec43ba1ace3a02b657fcf6790744656a4bfb8f322b4bcd091b351",
+    "adb_binary_sha256": "00108217733707a40debfc92c86d4232fd6e68870be5966515d74c071193ea90",
+    "binding_verification": "engineering/product-integration-20261018/phase3-20261020/hardware/actual-donor-binding-verification.json",
+    "binding_verification_sha256": "35d163f998b736da086fe1a5793fa04d9839467c79e61ebe1bc4f06a555547e6",
+    "known_identity_fields": 1,
+    "unknown_identity_fields": [
+      "region",
+      "mainboard_revision",
+      "runtime_panel_id",
+      "display_module_part",
+      "display_module_revision",
+      "touch_revision",
+      "pack_A_label",
+      "pack_B_label",
+      "USB_roles",
+      "USB_version_rate"
+    ],
+    "physical_parts_with_original_labels": 0,
+    "missing_inventory_roles": [
+      "COF",
+      "USB_port_board",
+      "display",
+      "mainboard",
+      "pack_A",
+      "pack_B",
+      "touch"
+    ],
+    "imported_model_only": true,
+    "raw_evidence_integrity_verified": true,
+    "observed_record_compatible": true,
+    "physical_platform_frozen": false,
+    "actual_donor_selected": false,
+    "donor_identity_bound": false,
+    "bound_physical_terminal_interfaces": 0,
+    "interface_count": 12,
+    "physical_fabrication_executed": false,
+    "physical_phone_verified": false,
+    "candidate_go": false,
+    "fixture_fabrication_go": false,
+    "manufacturing_go": false,
+    "scope": "actual read-only connected specimen identity; no physical labels, dimensions, terminal pinout, modified phone, fabrication or cell-topology qualification",
+    "extra_transport_checks_scope": "independently checked by actual execution receipt; not all new transport fields are mandatory validations in the legacy importer"
+  },
+  "physical_phone_verified": false,
+  "previous_publication_record": "engineering/product-integration-20261018/publication-status.json",
+  "prior_phase2_active_followup": {
+    "scope": "physical integration follow-up",
+    "execution_summary": "engineering/product-integration-20261018/phase2-20261019/SUMMARY.json",
+    "functional_source_frozen": true,
+    "native_verification_complete": true,
+    "physical_platform_frozen": false,
+    "actual_fabrication_executed": false,
+    "physical_phone_verified": false,
+    "state": "software_and_CAD_executed_physical_and_hosted_acceptance_open",
+    "functional_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+    "native_execution_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+    "full_local_unit_execution_passed": false,
+    "bounded_test_repair_passed": true,
+    "disjoint_suite_selection_verified": true,
+    "native_CAD_reports_completed": true,
+    "actual_donor_selected": true,
+    "donor_identity_readback_completed": true,
+    "physical_prototype_built": false,
+    "powered_phone_verified": false,
+    "hosted_execution_restored": false
+  },
+  "prior_observed_donor_identity": {
+    "schema": "razr-donor-discovery-summary-v1",
+    "selected_donor_connected": true,
+    "physical_platform_frozen": false,
+    "hardware_geometry_verified": false,
+    "physical_part_labels_verified": false,
+    "terminal_pinout_verified": false,
+    "battery_topology_verified": false,
+    "dynamic_material_qualified": false,
+    "specimen_serial_sha256": "41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+    "specimen_identity_basis": "Matching USB-descriptor serial hash, authorized ADB inventory serial hash, donor property readback and both later probe serial hashes; no physical module-label identity asserted.",
+    "observed_utc": "2026-10-20T01:17:51.920343+00:00",
+    "observation_window_utc": {
+      "first": "2026-10-20T01:12:24.662282+00:00",
+      "last": "2026-10-20T01:25:06.429788+00:00",
+      "not_a_continuous_monitoring_interval": true
+    },
+    "host_alias": "pocket4",
+    "adb_server_port": 5061,
+    "adb_authorized_device_count": 1,
+    "adb_state": "device",
+    "usb_vendor_id": "22b8",
+    "usb_product_id": "2e81",
+    "usb_model": "XT2551-3",
+    "boot_hardware_sku": "XT2551-3",
+    "reported_product_model": "XT2551-3",
+    "USB_ADB_serial_hash_match": true,
+    "model_SKU_USB_consistent": true,
+    "software_identity": {
+      "evidence_class": "software_reported_identity_not_physical_board_or_component_marking",
+      "properties": {
+        "ro.product.manufacturer": "motorola",
+        "ro.product.model": "XT2551-3",
+        "ro.product.device": "leap",
+        "ro.product.board": "leap",
+        "ro.product.name": "trillionnium_leap",
+        "ro.product.vendor.model": "leap",
+        "ro.product.vendor.device": "leap",
+        "ro.boot.hardware.sku": "XT2551-3",
+        "ro.boot.hardware.revision": "",
+        "ro.boot.hwrev": "",
+        "ro.boot.hwc": "",
+        "ro.hardware": "qcom",
+        "ro.board.platform": "sun",
+        "ro.soc.model": "SM8750",
+        "ro.soc.manufacturer": "QTI",
+        "ro.build.fingerprint": "motorola/trillionnium_leap/leap:17/CSV1.260518.010/eng.qq:userdebug/test-keys",
+        "ro.build.version.release": "17",
+        "ro.build.version.security_patch": "2026-05-05",
+        "ro.build.version.incremental": "eng.qq"
+      },
+      "custom_build_fingerprint": "motorola/trillionnium_leap/leap:17/CSV1.260518.010/eng.qq:userdebug/test-keys",
+      "custom_userdebug_test_keys_build_reported": true,
+      "Android_release_reported": "17",
+      "SOC_sysfs_readback": {
+        "soc_model": "SUN",
+        "soc_id": "618",
+        "soc_revision": "2.0"
+      },
+      "OEM_factory_OS_or_component_revision_verified": false,
+      "empty_hardware_revision_properties": [
+        "ro.boot.hardware.revision",
+        "ro.boot.hwrev",
+        "ro.boot.hwc"
+      ],
+      "source_records": [
+        "hardware/pocket4-20261020/donor-identity.json",
+        "hardware/pocket4-20261020/module-readback.json"
+      ]
+    },
+    "display_touch_reported": {
+      "evidence_class": "software_display_and_input_registration",
+      "wm_size_stdout": "Physical size: 1224x2992\n",
+      "wm_size_pixels": [
+        1224,
+        2992
+      ],
+      "wm_Physical_size_label_is_not_a_mm_measurement": true,
+      "surface_display_count_reported": 2,
+      "surface_display_screenPartStatus": "UNSUPPORTED",
+      "panel_part_number_read_back": null,
+      "DRM_DSI_nodes_registered": [
+        "card0-DSI-1",
+        "card0-DSI-2"
+      ],
+      "touch_input_registration": [
+        {
+          "name": "goodix_ts",
+          "IsExternal": false
+        },
+        {
+          "name": "fts_ts",
+          "IsExternal": true
+        }
+      ],
+      "physical_display_and_COF_identified": false,
+      "display_image_or_touch_function_exercised_by_this_probe": false,
+      "new_slide_phone_display_touch_verified": false,
+      "source_records": [
+        "hardware/pocket4-20261020/donor-identity.json",
+        "hardware/pocket4-20261020/module-readback.json",
+        "hardware/pocket4-20261020/available-nodes.json"
+      ]
+    },
+    "battery_reported": {
+      "evidence_class": "software_driver_design_values_and_model_strings_not_measured_cell_capacity",
+      "standard_unit_basis": {
+        "url": "https://docs.kernel.org/power/power_supply_class.html",
+        "section": "Units; CHARGE_*; CHARGE_FULL_DESIGN, CHARGE_EMPTY_DESIGN",
+        "CHARGE_unit": "uAh",
+        "mAh_conversion_divisor": 1000,
+        "driver_unit_conformance_independently_audited": false
+      },
+      "nodes": {
+        "main_battery": {
+          "source_record": "hardware/pocket4-20261020/module-readback.json",
+          "result_key": "power_supply_main_battery",
+          "node": "/sys/class/power_supply/main_battery/uevent",
+          "reported_type": "Mains",
+          "charge_full_design_raw": "3430000",
+          "charge_full_design_uAh": 3430000,
+          "charge_full_design_mAh": 3430.0,
+          "reported_charge_full_raw": "3479000",
+          "reported_model_name": null,
+          "capacity_measured_by_this_project": false,
+          "physical_cell_label_verified": false
+        },
+        "flip_battery": {
+          "source_record": "hardware/pocket4-20261020/module-readback.json",
+          "result_key": "power_supply_flip_battery",
+          "node": "/sys/class/power_supply/flip_battery/uevent",
+          "reported_type": "Mains",
+          "charge_full_design_raw": "1140000",
+          "charge_full_design_uAh": 1140000,
+          "charge_full_design_mAh": 1140.0,
+          "reported_charge_full_raw": "1153000",
+          "reported_model_name": null,
+          "capacity_measured_by_this_project": false,
+          "physical_cell_label_verified": false
+        },
+        "battery": {
+          "source_record": "hardware/pocket4-20261020/module-readback.json",
+          "result_key": "power_supply_battery",
+          "node": "/sys/class/power_supply/battery/uevent",
+          "reported_type": "Battery",
+          "charge_full_design_raw": "4570000",
+          "charge_full_design_uAh": 4570000,
+          "charge_full_design_mAh": 4570.0,
+          "reported_charge_full_raw": "4632000",
+          "reported_model_name": "NFG_ATL_RS35NVT_3520MAH",
+          "capacity_measured_by_this_project": false,
+          "physical_cell_label_verified": false
+        }
+      },
+      "software_design_sum_mAh": 4570.0,
+      "aggregate_design_matches_arithmetic_sum": true,
+      "software_aggregate_minus_OEM_rated_mAh": 30.0,
+      "software_aggregate_minus_OEM_typical_mAh": -130.0,
+      "capacity_difference_status": "Unresolved: software design 4570 mAh differs from OEM rated 4540 mAh by +30 mAh. No correction, averaging or equivalence asserted.",
+      "aggregate_MODEL_NAME_is_not_main_battery_physical_label": true,
+      "main_and_flip_reported_TYPE_Mains_not_corrected": true,
+      "node_names_or_capacity_sum_do_not_establish_series_parallel_or_charge_protection_topology": true,
+      "balance_nodes": {
+        "balance_master": {
+          "raw_uevent_fields": {
+            "POWER_SUPPLY_NAME": "balance_master",
+            "POWER_SUPPLY_TYPE": "Unknown",
+            "POWER_SUPPLY_STATUS": "Full",
+            "POWER_SUPPLY_ONLINE": "0",
+            "POWER_SUPPLY_TEMP": "23",
+            "POWER_SUPPLY_VOLTAGE_NOW": "4466",
+            "POWER_SUPPLY_VOLTAGE_MAX": "4475",
+            "POWER_SUPPLY_CURRENT_NOW": "6",
+            "POWER_SUPPLY_INPUT_CURRENT_LIMIT": "3400"
+          },
+          "units_verified": false,
+          "normalized_values": null,
+          "unit_policy": "Preserve raw values; do not assign a common unit or normalize from the generic power_supply convention without this driver definition."
+        },
+        "balance_slave": {
+          "raw_uevent_fields": {
+            "POWER_SUPPLY_NAME": "balance_slave",
+            "POWER_SUPPLY_TYPE": "Unknown",
+            "POWER_SUPPLY_STATUS": "Unknown",
+            "POWER_SUPPLY_ONLINE": "1",
+            "POWER_SUPPLY_TEMP": "24",
+            "POWER_SUPPLY_VOLTAGE_NOW": "4493",
+            "POWER_SUPPLY_VOLTAGE_MAX": "4480",
+            "POWER_SUPPLY_CURRENT_NOW": "6",
+            "POWER_SUPPLY_INPUT_CURRENT_LIMIT": "950"
+          },
+          "units_verified": false,
+          "normalized_values": null,
+          "unit_policy": "Preserve raw values; do not assign a common unit or normalize from the generic power_supply convention without this driver definition."
+        }
+      },
+      "donor_USB_powered_flag_reported": true,
+      "project_charge_discharge_capacity_test_performed": false,
+      "motion_power_or_USB_continuity_measured": false
+    },
+    "OEM_source": {
+      "publisher": "Motorola / Lenovo China support",
+      "url": "https://www.lenovocare.com.cn/ideaservice/535125b81e2f46eabffa9c1568443961.pdf",
+      "document_number": "SSC8E69755-B",
+      "page_1_based": 2,
+      "marketing_name": "moto razr 60 Ultra",
+      "model": "XT2551-3",
+      "typical_capacity_mAh": 4700,
+      "rated_capacity_mAh": 4540,
+      "source_checked_UTC_date": "2026-10-20",
+      "model_matches_observed_USB_and_boot_SKU": true,
+      "scope": "OEM complete-phone specification for the matching model; not an individual specimen capacity measurement or evidence that its cells fit the RAZR-SLIDE envelope.",
+      "new_slide_envelope_capacity_target_proven": false
+    },
+    "scope_reconciliation": {
+      "Pocket4_default_5037": {
+        "observed_utc": "2026-10-20T01:12:24.662282+00:00",
+        "authorized_motorola_count": 0,
+        "adb_inventory": [],
+        "source_record": "hardware/pocket4-20261020/usb-observation.json",
+        "scope": "Default-server observation only; does not describe the already-running 5061 server."
+      },
+      "two_servers_observed": {
+        "ports": [
+          5037,
+          5061
+        ],
+        "source_record": "hardware/pocket4-20261020/adb-servers.json"
+      },
+      "Pocket4_5061_resolves_donor_connection_unknown": true,
+      "earlier_main_host_empty_inventory_scope": "Earlier main-host observations remain limited to that host; this bundle contains six Pocket4 probes and does not re-probe main or establish a global absence of devices.",
+      "historical_empty_observations_overwritten": false
+    },
+    "read_only_probe_scope": {
+      "probe_count": 6,
+      "actual_file_count": 24,
+      "file_roles_per_probe": [
+        "structured JSON",
+        "raw stdout",
+        "probe source",
+        "provenance"
+      ],
+      "all_probe_capture_exit_codes_zero": true,
+      "all_raw_stdout_hashes_match_provenance": true,
+      "all_raw_stdout_JSON_matches_structured_record": true,
+      "wrapper_exit_zero_does_not_mean_all_inner_reads_succeeded": true,
+      "failed_read_command_count": 9,
+      "failed_read_commands": [
+        {
+          "source_path": "hardware/pocket4-20261020/donor-identity.json#/donor_observations/0/input_devices",
+          "returncode": 1,
+          "error": null,
+          "stderr": "cat: /proc/bus/input/devices: Permission denied\n"
+        },
+        {
+          "source_path": "hardware/pocket4-20261020/donor-identity.json#/donor_observations/0/soc_identity",
+          "returncode": 1,
+          "error": null,
+          "stderr": "/system/bin/sh: syntax error: unexpected 'do'\n"
+        },
+        {
+          "source_path": "hardware/pocket4-20261020/module-readback.json#/results/dt_model",
+          "returncode": 1,
+          "error": null,
+          "stderr": "cat: /sys/firmware/devicetree/base/model: Permission denied\n"
+        },
+        {
+          "source_path": "hardware/pocket4-20261020/module-readback.json#/results/dt_compatible",
+          "returncode": 1,
+          "error": null,
+          "stderr": "cat: /sys/firmware/devicetree/base/compatible: Permission denied\n"
+        },
+        {
+          "source_path": "hardware/pocket4-20261020/module-readback.json#/results/graphics_nodes",
+          "returncode": 1,
+          "error": null,
+          "stderr": "ls: /sys/class/graphics: No such file or directory\n"
+        },
+        {
+          "source_path": "hardware/pocket4-20261020/available-nodes.json#/directories/~1sys~1class~1drm~1card0-DSI-1",
+          "returncode": 1,
+          "error": null,
+          "stderr": "ls: /sys/class/drm/card0-DSI-1: Permission denied\n"
+        },
+        {
+          "source_path": "hardware/pocket4-20261020/available-nodes.json#/directories/~1sys~1class~1drm~1card0-DSI-2",
+          "returncode": 1,
+          "error": null,
+          "stderr": "ls: /sys/class/drm/card0-DSI-2: Permission denied\n"
+        },
+        {
+          "source_path": "hardware/pocket4-20261020/available-nodes.json#/directories/~1sys~1class~1power_supply~1main_battery",
+          "returncode": 1,
+          "error": null,
+          "stderr": "ls: /sys/class/power_supply/main_battery: Permission denied\n"
+        },
+        {
+          "source_path": "hardware/pocket4-20261020/available-nodes.json#/directories/~1sys~1class~1power_supply~1flip_battery",
+          "returncode": 1,
+          "error": null,
+          "stderr": "ls: /sys/class/power_supply/flip_battery: Permission denied\n"
+        }
+      ],
+      "first_SOC_loop_syntax_failure_retained": true,
+      "later_SOC_direct_reads_available": true,
+      "part_of_input_summary_was_filtered": true,
+      "input_summary_filter_scope": "Only hardware device summary lines retained; focused windows and event history excluded",
+      "physical_fabrication_performed": false,
+      "phone_project_acceptance_performed": false,
+      "all_probe_device_commands_read_only": true
+    },
+    "remaining_freeze_requirements": [
+      "Photograph and identify the physical mainboard revision, connector labels and mating parts; measure the board outline, component heights, mounts and cable exit directions.",
+      "Identify the actual OLED/touch module and COF; measure complete material length, inactive clamp allowance and stored envelope; obtain supplier dynamic bend and support conditions.",
+      "Read both physical cell labels and protection/NTC/terminal markings; measure their dimensions, mass, swelling allowance and tab exit envelopes.",
+      "Map actual board-side and terminal endpoints for display, touch, supply, USB, cameras, RF/antennas and every cross-cabin signal.",
+      "Trace the OEM two-battery protection/charge/current-combining topology and allowable reuse from terminal-level evidence; software node names and arithmetic charge sums do not determine the circuit.",
+      "Place verified parts into the common equal-cabin scene, retaining 79.75 mm slide, 8.2 mm seating, flat OLED storage in B, RF and thermal paths; prove cell/layout capacity or explicitly revise that target."
+    ],
+    "candidate_go": false,
+    "fixture_fabrication_go": false,
+    "fabrication_go": false,
+    "manufacturing_go": false,
+    "project_controlled_power_on_go": false,
+    "phone_project_acceptance_go": false,
+    "physical_phone_project_verified": false,
+    "evidence": {
+      "bundle_sha256": "17d6c2bf8b4ff7bfda34af1f7c4fba8a1e7679fa88b442679f72a0a547596c9b",
+      "destination_subtree": "hardware/pocket4-20261020",
+      "relative_paths_are_from_current_progress_README_directory": true,
+      "project_context_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+      "context_commit_is_not_a_hardware_qualification": true,
+      "files_sha256": {
+        "hardware/pocket4-20261020/adb-servers-probe.py": "307c84bec234a0426c06c8066faabc36fd622e0da853381021c6702fd2167330",
+        "hardware/pocket4-20261020/adb-servers-provenance.json": "b4efafd9add5b8318b83b6720652b56158095652c39f8a0e24a64bee816833ff",
+        "hardware/pocket4-20261020/adb-servers-raw-stdout.log": "2bd84dacbee515238f6e153bcff06b8792a8e6f4f33426c49eaba02475c2e514",
+        "hardware/pocket4-20261020/adb-servers.json": "8a5b2115aac5a077a99ed55069d8f5131b9b5b9f630f5bedd29ec6c06795c51f",
+        "hardware/pocket4-20261020/available-nodes-probe.py": "0a28c5adb9df294bf9d9612affc7bed71855f21c1cf18a675d0f1ad0370ab3f8",
+        "hardware/pocket4-20261020/available-nodes-provenance.json": "54a71cecb900c6cf63390c6cd48764672ff9ebcae39cbf186a3c2d245df695aa",
+        "hardware/pocket4-20261020/available-nodes-raw-stdout.log": "00b84099661bb162e2ee4a80720e62b5d22464270bb177e116a65ad5cdca60fa",
+        "hardware/pocket4-20261020/available-nodes.json": "8ca449d14f1eadf7075d31deca9010d76395d8e81947d8ab6bfeb0f33063a362",
+        "hardware/pocket4-20261020/donor-identity-probe.py": "73f4bb0630861adaac26ae8803e4696c8c21dc8589ee759ff7964da35696a9ff",
+        "hardware/pocket4-20261020/donor-identity-provenance.json": "aebca87e0ff814dab11c12ccb54bb6b6163f5b45d7cfb0a5e55a276a2338931f",
+        "hardware/pocket4-20261020/donor-identity-raw-stdout.log": "40602802e839964dd787f733191aafbe5e2580ea3918f414c2c6bcb5018752e6",
+        "hardware/pocket4-20261020/donor-identity.json": "219b5bd76aed5aab33788c3f4b2bf695cc5c2f27cfcd50e5261948ce1f1620ae",
+        "hardware/pocket4-20261020/module-readback-probe.py": "aa33016448e8dee2eb17a20c197753cdbb9bdf098c48c00afbbdabdeacde77f2",
+        "hardware/pocket4-20261020/module-readback-provenance.json": "0e6291196e9f5747699aa4a9b9e54923ea69293d08817d2dfe651c6acbbf877d",
+        "hardware/pocket4-20261020/module-readback-raw-stdout.log": "c810cc8c73667368c657746956d365ab6cfe879c4d63b1d0a0fce27e320daa99",
+        "hardware/pocket4-20261020/module-readback.json": "052f9df2ea7f45d41310ec2bc7d60813b73a8117d7d12ed3085dbcca2496b7f3",
+        "hardware/pocket4-20261020/usb-adb-interfaces-probe.py": "196c28a0a1f1d7ee9dd4cb0f814796865fe0aca316f79e3b84575374253e9d3a",
+        "hardware/pocket4-20261020/usb-adb-interfaces-provenance.json": "b5799dd32ed8f14bfb986b3b46efab486238d3d7741a8453f2f680a9c60d1fca",
+        "hardware/pocket4-20261020/usb-adb-interfaces-raw-stdout.log": "47349ff712da463c9b719314a0e97d8e0ec1ee1bae7077038c58d40d3d8415dd",
+        "hardware/pocket4-20261020/usb-adb-interfaces.json": "ed045a527ef65097da70df04772a1e92272df815cde49037210cf006f650894c",
+        "hardware/pocket4-20261020/usb-observation-probe.py": "e9a33858c63caef738779d5833fa20f14c5f9c25800f0e647a6f457821693991",
+        "hardware/pocket4-20261020/usb-observation-provenance.json": "92335ec7d2a185999353e9705f74f91dc68e68ebe9d138ba96285f1fc395b8c6",
+        "hardware/pocket4-20261020/usb-observation-raw-stdout.log": "87266d63c8b57c658a8adbecbc60c4cb5a3a1c0030546bcfad6df4899af7e170",
+        "hardware/pocket4-20261020/usb-observation.json": "74cd04e7e0612317670045a0937a99f717d67e3cf81dc24c6cb53871873b878a"
+      },
+      "probe_records": [
+        {
+          "name": "usb-observation",
+          "observed_utc": "2026-10-20T01:12:24.662282+00:00",
+          "report": "hardware/pocket4-20261020/usb-observation.json",
+          "probe_source": "hardware/pocket4-20261020/usb-observation-probe.py",
+          "raw_stdout": "hardware/pocket4-20261020/usb-observation-raw-stdout.log",
+          "provenance": "hardware/pocket4-20261020/usb-observation-provenance.json",
+          "source_output_sha256": "87266d63c8b57c658a8adbecbc60c4cb5a3a1c0030546bcfad6df4899af7e170",
+          "capture_exit_code": 0
+        },
+        {
+          "name": "usb-adb-interfaces",
+          "observed_utc": "2026-10-20T01:14:27.229661+00:00",
+          "report": "hardware/pocket4-20261020/usb-adb-interfaces.json",
+          "probe_source": "hardware/pocket4-20261020/usb-adb-interfaces-probe.py",
+          "raw_stdout": "hardware/pocket4-20261020/usb-adb-interfaces-raw-stdout.log",
+          "provenance": "hardware/pocket4-20261020/usb-adb-interfaces-provenance.json",
+          "source_output_sha256": "47349ff712da463c9b719314a0e97d8e0ec1ee1bae7077038c58d40d3d8415dd",
+          "capture_exit_code": 0
+        },
+        {
+          "name": "adb-servers",
+          "observed_utc": "2026-10-20T01:15:28.626851+00:00",
+          "report": "hardware/pocket4-20261020/adb-servers.json",
+          "probe_source": "hardware/pocket4-20261020/adb-servers-probe.py",
+          "raw_stdout": "hardware/pocket4-20261020/adb-servers-raw-stdout.log",
+          "provenance": "hardware/pocket4-20261020/adb-servers-provenance.json",
+          "source_output_sha256": "2bd84dacbee515238f6e153bcff06b8792a8e6f4f33426c49eaba02475c2e514",
+          "capture_exit_code": 0
+        },
+        {
+          "name": "donor-identity",
+          "observed_utc": "2026-10-20T01:17:51.920343+00:00",
+          "report": "hardware/pocket4-20261020/donor-identity.json",
+          "probe_source": "hardware/pocket4-20261020/donor-identity-probe.py",
+          "raw_stdout": "hardware/pocket4-20261020/donor-identity-raw-stdout.log",
+          "provenance": "hardware/pocket4-20261020/donor-identity-provenance.json",
+          "source_output_sha256": "40602802e839964dd787f733191aafbe5e2580ea3918f414c2c6bcb5018752e6",
+          "capture_exit_code": 0
+        },
+        {
+          "name": "module-readback",
+          "observed_utc": "2026-10-20T01:20:32.984519+00:00",
+          "report": "hardware/pocket4-20261020/module-readback.json",
+          "probe_source": "hardware/pocket4-20261020/module-readback-probe.py",
+          "raw_stdout": "hardware/pocket4-20261020/module-readback-raw-stdout.log",
+          "provenance": "hardware/pocket4-20261020/module-readback-provenance.json",
+          "source_output_sha256": "c810cc8c73667368c657746956d365ab6cfe879c4d63b1d0a0fce27e320daa99",
+          "capture_exit_code": 0
+        },
+        {
+          "name": "available-nodes",
+          "observed_utc": "2026-10-20T01:25:06.429788+00:00",
+          "report": "hardware/pocket4-20261020/available-nodes.json",
+          "probe_source": "hardware/pocket4-20261020/available-nodes-probe.py",
+          "raw_stdout": "hardware/pocket4-20261020/available-nodes-raw-stdout.log",
+          "provenance": "hardware/pocket4-20261020/available-nodes-provenance.json",
+          "source_output_sha256": "00b84099661bb162e2ee4a80720e62b5d22464270bb177e116a65ad5cdca60fa",
+          "capture_exit_code": 0
+        }
+      ]
+    }
+  },
+  "phase2_publication_record": "engineering/product-integration-20261018/phase2-20261019/publication/functional-push.json",
+  "publication_record_scope": "functional source9a8307f is fixed; this evidence publication and its post-push CI are recorded by containing commit and PR36",
+  "prior_phase3_active_followup": {
+    "scope": "formal partial donor import and fixed EP3 three-pose research follow-up",
+    "execution_summary": "engineering/product-integration-20261018/phase3-20261020/SUMMARY.json",
+    "state": "partial_donor_and_bounded_native_research_completed_physical_acceptance_open",
+    "formal_donor_source_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+    "donor_identity_readback_completed": true,
+    "connected_specimen_observed": true,
+    "actual_donor_selected": false,
+    "physical_platform_frozen": false,
+    "functional_source_frozen": true,
+    "native_verification_complete": true,
+    "full_local_unit_execution_passed": false,
+    "bounded_donor_test_repair_passed": true,
+    "actual_fabrication_executed": false,
+    "physical_prototype_built": false,
+    "physical_phone_verified": false,
+    "powered_phone_verified": false,
+    "hosted_execution_restored": false,
+    "functional_commit": "a33e58cd555b8d9aff1e3649f79cd0dba378a804",
+    "native_execution_commit": "a33e58cd555b8d9aff1e3649f79cd0dba378a804",
+    "native_CAD_reports_completed": true,
+    "bounded_EP3_API_repair_passed": true,
+    "selected_109_test_commit": "bdb1bc19fce49692fd49cd508031bfc456e15208",
+    "selected_109_tests_passed": true
+  },
+  "historical_publication_records": [
+    {
+      "record": "engineering/product-integration-20261018/phase3-20261020/validation/donor-source-push.json",
+      "scope": "last publication receipt archived inside this source tree is the donor-source push; final evidence publication and its CI identity are recorded in PR36",
+      "preserved_before_phase4": true
+    }
+  ]
+}

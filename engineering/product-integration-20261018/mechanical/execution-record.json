@@ -1,0 +1,169 @@
+{
+  "schema": "razr-actual-native-generation-and-readback-jobs-v1",
+  "generation_source_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+  "documentation_and_sealer_invocation_commit": "0fd4c716d0a0df4c9794a3a2685974e5f209aa6e",
+  "each_generation_job_completed_successfully_on_unchanged_clean_source": true,
+  "jobs_were_allowed_to_overlap": "Each receipt records actual start/end; duration sum is not wall time.",
+  "runtime_copy": {
+    "path": "executions/runtime-copy-recheck-20261019.json",
+    "sha256": "51d5b4743327584c1aa547c7de8bad2c2be865fafde6c4dc9cfb5e9bab3bbc92"
+  },
+  "executions": [
+    {
+      "path": "executions/mechanical-rebuild-primary-execution.json",
+      "sha256": "657b2a7c96a60dcabcbd7ca6c5f1886406d5df2c3b011794012a0ddb135f71ea",
+      "stdout_path": "executions/mechanical-rebuild-primary-stdout.log",
+      "stdout_sha256": "e0f5fbfc737337599f2fb911169e086e422ed45ae5a81bb263367d6630e1ac0c",
+      "execution": {
+        "job": "mechanical-rebuild-primary",
+        "functional_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+        "argv": [
+          "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+          "-B",
+          "-u",
+          "engineering/product-integration-20261018/mechanical/run_product_study.py",
+          "--output",
+          "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary"
+        ],
+        "cwd": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018",
+        "started_utc": "2026-10-19T01:13:57.789518+00:00",
+        "wall_timeout_seconds": 1800,
+        "runtime_record": "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/runtime-copy-recheck-20261019.json",
+        "runtime_record_sha256": "51d5b4743327584c1aa547c7de8bad2c2be865fafde6c4dc9cfb5e9bab3bbc92",
+        "status": "completed",
+        "returncode": 0,
+        "seconds": 239.07129988103407,
+        "completed_utc": "2026-10-19T01:17:56.861295+00:00",
+        "stdout_sha256": "e0f5fbfc737337599f2fb911169e086e422ed45ae5a81bb263367d6630e1ac0c",
+        "git_head_after": "3eae4e7258814c7f5454937535d6c642dd51662f",
+        "git_status_after": ""
+      }
+    },
+    {
+      "path": "executions/mechanical-rebuild-added-execution.json",
+      "sha256": "df15b9bbd54ffa56bbd64b9a86fa56a507799fb93a975007418da07539ecbf8c",
+      "stdout_path": "executions/mechanical-rebuild-added-stdout.log",
+      "stdout_sha256": "c167c986a81e557f5dd0f75e5255a44f5d8c49a61a142e0e93452eb591267796",
+      "execution": {
+        "job": "mechanical-rebuild-added",
+        "functional_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+        "argv": [
+          "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+          "-B",
+          "-u",
+          "engineering/product-integration-20261018/mechanical/verify_added_material_motion.py",
+          "--output",
+          "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/added-material-motion-report.json"
+        ],
+        "cwd": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018",
+        "started_utc": "2026-10-19T01:14:02.287395+00:00",
+        "wall_timeout_seconds": 1200,
+        "runtime_record": "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/runtime-copy-recheck-20261019.json",
+        "runtime_record_sha256": "51d5b4743327584c1aa547c7de8bad2c2be865fafde6c4dc9cfb5e9bab3bbc92",
+        "status": "completed",
+        "returncode": 0,
+        "seconds": 107.73647972597973,
+        "completed_utc": "2026-10-19T01:15:50.024402+00:00",
+        "stdout_sha256": "c167c986a81e557f5dd0f75e5255a44f5d8c49a61a142e0e93452eb591267796",
+        "git_head_after": "3eae4e7258814c7f5454937535d6c642dd51662f",
+        "git_status_after": ""
+      }
+    },
+    {
+      "path": "executions/mechanical-readback-STOW-execution.json",
+      "sha256": "39e5cf4d5be6462838cf14c4add72feb0de76cf187118c3f0d722b759703bb62",
+      "stdout_path": "executions/mechanical-readback-STOW-stdout.log",
+      "stdout_sha256": "976cebeaa14358e083ee999c1e11213d472d5614c53d19cabc37f32945c24858",
+      "execution": {
+        "job": "mechanical-readback-STOW",
+        "functional_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+        "argv": [
+          "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+          "-B",
+          "-u",
+          "engineering/product-integration-20261018/mechanical/verify_product_exports.py",
+          "--manifest",
+          "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary/STOW/manifest.json",
+          "--output",
+          "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/readback-STOW.json"
+        ],
+        "cwd": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018",
+        "started_utc": "2026-10-19T01:19:49.773867+00:00",
+        "wall_timeout_seconds": 240,
+        "runtime_record": "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/runtime-copy-recheck-20261019.json",
+        "runtime_record_sha256": "51d5b4743327584c1aa547c7de8bad2c2be865fafde6c4dc9cfb5e9bab3bbc92",
+        "status": "completed",
+        "returncode": 0,
+        "seconds": 18.66469241498271,
+        "completed_utc": "2026-10-19T01:20:08.439081+00:00",
+        "stdout_sha256": "976cebeaa14358e083ee999c1e11213d472d5614c53d19cabc37f32945c24858",
+        "git_head_after": "3eae4e7258814c7f5454937535d6c642dd51662f",
+        "git_status_after": ""
+      }
+    },
+    {
+      "path": "executions/mechanical-readback-PREDOCK-execution.json",
+      "sha256": "5e895176d72efefd61c1950d0ba2d58fa6e5ae46794384ca937849d5314f48d2",
+      "stdout_path": "executions/mechanical-readback-PREDOCK-stdout.log",
+      "stdout_sha256": "976cebeaa14358e083ee999c1e11213d472d5614c53d19cabc37f32945c24858",
+      "execution": {
+        "job": "mechanical-readback-PREDOCK",
+        "functional_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+        "argv": [
+          "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+          "-B",
+          "-u",
+          "engineering/product-integration-20261018/mechanical/verify_product_exports.py",
+          "--manifest",
+          "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary/PREDOCK/manifest.json",
+          "--output",
+          "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/readback-PREDOCK.json"
+        ],
+        "cwd": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018",
+        "started_utc": "2026-10-19T01:19:51.243102+00:00",
+        "wall_timeout_seconds": 240,
+        "runtime_record": "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/runtime-copy-recheck-20261019.json",
+        "runtime_record_sha256": "51d5b4743327584c1aa547c7de8bad2c2be865fafde6c4dc9cfb5e9bab3bbc92",
+        "status": "completed",
+        "returncode": 0,
+        "seconds": 19.414227697998285,
+        "completed_utc": "2026-10-19T01:20:10.657858+00:00",
+        "stdout_sha256": "976cebeaa14358e083ee999c1e11213d472d5614c53d19cabc37f32945c24858",
+        "git_head_after": "3eae4e7258814c7f5454937535d6c642dd51662f",
+        "git_status_after": ""
+      }
+    },
+    {
+      "path": "executions/mechanical-readback-OPEN-execution.json",
+      "sha256": "e6cd55826735d9d0428db07378f5fe7cac4eb53db4e73c752a53f34e00354390",
+      "stdout_path": "executions/mechanical-readback-OPEN-stdout.log",
+      "stdout_sha256": "1647631455d53c6126848a3b91bef93ba75cc52f16b87a801552d6863caa0a3a",
+      "execution": {
+        "job": "mechanical-readback-OPEN",
+        "functional_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+        "argv": [
+          "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+          "-B",
+          "-u",
+          "engineering/product-integration-20261018/mechanical/verify_product_exports.py",
+          "--manifest",
+          "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary/OPEN/manifest.json",
+          "--output",
+          "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/readback-OPEN.json"
+        ],
+        "cwd": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018",
+        "started_utc": "2026-10-19T01:19:52.701395+00:00",
+        "wall_timeout_seconds": 240,
+        "runtime_record": "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/runtime-copy-recheck-20261019.json",
+        "runtime_record_sha256": "51d5b4743327584c1aa547c7de8bad2c2be865fafde6c4dc9cfb5e9bab3bbc92",
+        "status": "completed",
+        "returncode": 0,
+        "seconds": 20.771400294965133,
+        "completed_utc": "2026-10-19T01:20:13.473333+00:00",
+        "stdout_sha256": "1647631455d53c6126848a3b91bef93ba75cc52f16b87a801552d6863caa0a3a",
+        "git_head_after": "3eae4e7258814c7f5454937535d6c642dd51662f",
+        "git_status_after": ""
+      }
+    }
+  ]
+}

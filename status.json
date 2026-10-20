@@ -45,7 +45,9 @@
     "keycover_connected_bypass": "engineering/keycover-geometry-20261014",
     "catalogue_dimensional_and_process_scenario": "engineering/catalogue-joint-20261015",
     "root_rigid_error_envelopes": "engineering/root-clearance-20261015",
-    "root_cover_lateral_guidance": "engineering/lateral-guide-20261015"
+    "root_cover_lateral_guidance": "engineering/lateral-guide-20261015",
+    "complete_endpoint_repair": "engineering/fpc-route-endpoint-repair-20261013-r7",
+    "common_product_integration": "engineering/product-integration-20261018"
   },
   "G2_scope": {
     "X230_motion_poses": 121,
@@ -67,17 +69,269 @@
   ],
   "previous_production_review": "engineering/PRODUCTION_BLOCKERS_R6.md",
   "current_input_registry": "integration/assembly_inputs.json",
-  "current_execution_summary": "engineering/spatial-contact-integration-20261015/DELIVERY_VERIFICATION.json",
+  "current_execution_summary": "engineering/product-integration-20261018/phase4-20261020/SUMMARY.json",
   "current_unit_tests": {
     "manifest": "tools/test_suites.json",
-    "configured_minimum": 1040,
-    "groups": 31,
-    "actual_local_passed": true,
-    "functional_commit": "e905b4f39991f565017d15f73fcb821f0d1c6143",
-    "report": "engineering/trace-enrichment-20261017/local-unit1040.json.gz"
+    "configured_minimum": 1324,
+    "groups": 35,
+    "completed_runs": [
+      {
+        "label": "Accepted main baseline",
+        "tests": 1187,
+        "suites": 31,
+        "functional_commit": "2303ac50f7f881ca243cc7315718aba99354fd6a",
+        "scope": "all_current_unit_suites_via_disjoint_canonical_selections",
+        "report": "engineering/installation-control-20261018/local-unit1187.json.gz",
+        "in_main": true,
+        "uncompressed_report_sha256": "3976e1ebd75d88e6019bd77fb245fbc47913b89ee1c6ac5f9ae260b20c322632"
+      },
+      {
+        "label": "Separate PR35 draft",
+        "tests": 1216,
+        "suites": 31,
+        "functional_commit": "79b73bb3720bcc5b4e9d86ea6d6c8864988cbd1d",
+        "scope": "all_current_unit_suites_via_disjoint_canonical_selections",
+        "report": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/176df31ceb35bb3737d68030e60ba377665de210/engineering/bearing-followup-20261018/full-unit1216.json.gz",
+        "in_main": false,
+        "uncompressed_report_sha256": "b3c74df817004298041e53a90226178acd2dfc70c39e99bd14f3d19667f8ad90"
+      },
+      {
+        "label": "Product branch: first canonical execution FAILED",
+        "tests": 1220,
+        "configured_tests": 1240,
+        "suites": 32,
+        "functional_commit": "b6abcb6326439270ec137cdac00cd6dd7ade4ac7",
+        "scope": "first_canonical_execution_with_retained_failures_and_incomplete_imported_tests",
+        "report": "engineering/product-integration-20261018/validation/initial-b6abcb6-report.json.gz",
+        "result": "FAILED",
+        "passed": false,
+        "in_main": false,
+        "single_full_execution": true,
+        "uncompressed_report_sha256": "52c23dd2d01f93b4001e9f8e8044c903d5c5ba69a5d188f1846a082542982aa0"
+      },
+      {
+        "label": "Product branch: bounded repair PASS",
+        "tests": 182,
+        "suites": 7,
+        "functional_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+        "scope": "bounded_rerun_of_seven_affected_canonical_suites",
+        "report": "engineering/product-integration-20261018/validation/repair-3eae4e7-report.json.gz",
+        "result": "PASS",
+        "passed": true,
+        "in_main": false,
+        "uncompressed_report_sha256": "57eeb1214e419433c624c6b24e759bdf590b8394179a1e1a6ffcdeb125bd562d"
+      },
+      {
+        "label": "Product branch: verified canonical selection PASS, two executions",
+        "tests": 1240,
+        "suites": 32,
+        "functional_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+        "scope": "disjoint_canonical_selection_25_suites_1058_tests_plus_7_suites_182_tests_not_one_full_rerun",
+        "report": "engineering/product-integration-20261018/validation/canonical-selection.json",
+        "report_sha256": "0895382ff6d743e92ab1ff2ba62584c84297c398781c7b1a5392c9eaf115e24e",
+        "result": "PASS",
+        "passed": true,
+        "in_main": false,
+        "single_full_execution": false,
+        "selection_verification_executed": true,
+        "selected_executions": [
+          {
+            "functional_commit": "b6abcb6326439270ec137cdac00cd6dd7ade4ac7",
+            "selected_passing_suites": 25,
+            "selected_passing_tests": 1058,
+            "original_execution_result": "FAILED",
+            "report": "engineering/product-integration-20261018/validation/initial-b6abcb6-report.json.gz"
+          },
+          {
+            "functional_commit": "3eae4e7258814c7f5454937535d6c642dd51662f",
+            "selected_passing_suites": 7,
+            "selected_passing_tests": 182,
+            "original_execution_result": "PASS",
+            "report": "engineering/product-integration-20261018/validation/repair-3eae4e7-report.json.gz"
+          }
+        ]
+      },
+      {
+        "label": "Product branch phase2: full execution FAILED, OPEN collision expectation",
+        "tests": 1297,
+        "suites": 33,
+        "functional_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+        "scope": "all_current_unit_suites",
+        "report": "engineering/product-integration-20261018/phase2-20261019/validation/full-unit-1c970e3-report.json.gz",
+        "uncompressed_report_sha256": "e300c8c2a15c6719d1b36a09f8b33a568b094155c3aa4ec740f6b53d3263f853",
+        "single_full_execution": true,
+        "passed": false,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "result": "FAILED",
+        "in_main": false
+      },
+      {
+        "label": "Product branch phase2: bounded routing test-oracle repair PASS",
+        "functional_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+        "model_native_execution_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+        "scope": "selected_routing_followup_after_test_oracle_correction",
+        "single_full_execution": false,
+        "suites": 1,
+        "tests": 14,
+        "passed": true,
+        "exit_code": 0,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 73.22669722198043,
+        "started_utc": "2026-10-19T05:26:50.084165+00:00",
+        "finished_utc": "2026-10-19T05:28:03.310887+00:00",
+        "source_bytes_unchanged": true,
+        "report": "engineering/product-integration-20261018/phase2-20261019/validation/routing-repair-report.json.gz",
+        "uncompressed_report_sha256": "e50e71ab97518fea85b71e29fb4f0f0ee89e6905885239b5d947ea74a2e0a3b4",
+        "geometry_changed": false,
+        "candidate_go": false,
+        "hardware_qualification": false,
+        "manufacturing_go": false,
+        "result": "PASS",
+        "in_main": false
+      },
+      {
+        "label": "Product branch phase2: disjoint 33-suite selection verified, not one full run",
+        "functional_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+        "native_execution_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+        "scope": "disjoint_passing_suite_selection_from_two_executions",
+        "single_full_execution": false,
+        "full_execution_passed": false,
+        "selected_suite_coverage_passed": true,
+        "suites": 33,
+        "tests": 1297,
+        "full_run_passing_suites": 32,
+        "full_run_passing_tests": 1283,
+        "bounded_repair_suites": 1,
+        "bounded_repair_tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "report": "engineering/product-integration-20261018/phase2-20261019/validation/canonical-selection.json",
+        "report_sha256": "4e706977a7befa03f3334d78104f8b69beb5fed72e6815e17d698045aaa699ed",
+        "not_a_new_execution_of_all_suites": true,
+        "candidate_go": false,
+        "manufacturing_go": false,
+        "result": "PASSING_SELECTION_VERIFIED",
+        "in_main": false
+      },
+      {
+        "label": "Product branch phase3: donor collector suite FAILED at legacy mock",
+        "functional_commit": "3e6864ccea6c03a651dd220a0c1510c2ea22dfec",
+        "scope": "selected_product_integration_suite_102_test_identities",
+        "tests": 102,
+        "suites": 1,
+        "single_full_execution": false,
+        "passed": false,
+        "result": "FAILED",
+        "failures": 0,
+        "errors": 13,
+        "skipped": 0,
+        "seconds": 77.11136691,
+        "source_bytes_unchanged": true,
+        "in_main": false,
+        "report": "engineering/product-integration-20261018/phase3-20261020/validation/3e6864c-failed-report.json.gz",
+        "uncompressed_report_sha256": "ae0dee358a853439378dd0057cd069914d331b5e4fcb30d1f83b51d0e5a4a651",
+        "hardware_qualification": false,
+        "candidate_go": false,
+        "manufacturing_go": false
+      },
+      {
+        "label": "Product branch phase3: bounded donor fixture repair PASS",
+        "functional_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+        "scope": "selected_product_integration_suite_102_test_identities",
+        "tests": 102,
+        "suites": 1,
+        "single_full_execution": false,
+        "passed": true,
+        "result": "PASS",
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 72.37533739,
+        "source_bytes_unchanged": true,
+        "in_main": false,
+        "report": "engineering/product-integration-20261018/phase3-20261020/validation/f4db100-passed-report.json.gz",
+        "uncompressed_report_sha256": "b3d63ee335d0b13de656b393de1be874a51ee63b8f9d1669498cfaf8dd4ef910",
+        "hardware_qualification": false,
+        "candidate_go": false,
+        "manufacturing_go": false
+      },
+      {
+        "label": "Product branch phase3: 109-test product and EP3 selection PASS",
+        "functional_commit": "bdb1bc19fce49692fd49cd508031bfc456e15208",
+        "scope": "selected_product_integration_102_and_EP3_arithmetic_7",
+        "tests": 109,
+        "suites": 2,
+        "passed": true,
+        "result": "PASS",
+        "single_full_execution": false,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "in_main": false,
+        "seconds": 70.7197644310072,
+        "source_bytes_unchanged": true,
+        "report": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-unit-bdb1bc1/report.json.gz",
+        "uncompressed_report_sha256": "dbe131f155420ac90ade04c8c71c83c1cf7f3f1320bc93c7ac1028fb85a3cb31",
+        "hardware_qualification": false,
+        "candidate_go": false,
+        "manufacturing_go": false
+      },
+      {
+        "label": "Product branch phase3: bounded EP3 API repair regression PASS",
+        "functional_commit": "a33e58cd555b8d9aff1e3649f79cd0dba378a804",
+        "scope": "seven_EP3_arithmetic_tests_plus_separately_recorded_native_API_cases",
+        "tests": 7,
+        "suites": 1,
+        "passed": true,
+        "result": "PASS",
+        "single_full_execution": false,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "in_main": false,
+        "source_bytes_unchanged": true,
+        "source_bytes_unchanged_scope": "EP3 module digest plus clean Git tree; no full-repository before/after snapshot in this bounded controller",
+        "report": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-api-repair/native-api-regression.json",
+        "report_sha256": "ee4640e5aaa2fdc22bf458becb82a627c13e17f2738924d358000351b166bfb3",
+        "native_API_cases": 8,
+        "scalar_witness_cases": 1,
+        "109_tests_reexecuted": false,
+        "1310_tests_reexecuted": false,
+        "candidate_geometry_changed": false,
+        "candidate_go": false,
+        "manufacturing_go": false
+      },
+      {
+        "label": "Product branch phase4: 137 relevant tests PASS",
+        "functional_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+        "scope": "product108_routing14_EP3_7_EP4_8",
+        "tests": 137,
+        "suites": 4,
+        "passed": true,
+        "result": "PASS",
+        "single_full_execution": false,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "in_main": false,
+        "seconds": 146.26281374401879,
+        "source_bytes_unchanged": true,
+        "report": "engineering/product-integration-20261018/phase4-20261020/validation/unit/report.json.gz",
+        "uncompressed_report_sha256": "34d683f60337eef3fc0e079685c0d073941b3937c07af7c704bcc2a66321f29e",
+        "hardware_qualification": false,
+        "candidate_go": false,
+        "manufacturing_go": false
+      }
+    ],
+    "configured_count_is_not_a_pass": true
   },
   "previous_current_execution_summary": "engineering/panel-bearing-web-20261015/DELIVERY_VERIFICATION.json",
-  "current_fresh_verification": "existing locked desktop run resumed to completion; no duplicate full run launched; standard native full passed",
+  "current_fresh_verification": "On 9a8307f, 137 relevant tests in four suites passed with zero failures/errors/skips and unchanged source bytes; configured 1324 tests / 35 suites are not a full new run. Seven bounded native regression groups passed. PREDOCK and OPEN/STOW ran separately on the same unchanged source, retaining 16266 declared pair evaluations including repeated endpoint-self checks; 15886 unique pose/self pair declarations. STOW/PREDOCK/OPEN have 154/154/161 bodies and 17/12/25 external positive Common pairs, with zero pair/context/containment evaluation errors and no outside-outer-domain parts. Baseline A has one 0.180811856-mm3 screw-head/web self Common; B self, A/B end and all finite-material/end pairs are clear at the selected poses. Independent STEP processes passed all recorded assembly-body metrics plus exported positive Common and local material contexts. These are numeric comparisons, not full material or label equivalence. Separate A head relief removes 0.269207426 mm3, adds zero, clears 190 local self pairs and retains finite side-web/bearing probes. KEY local results and independent readers have their own source/report identities and do not replace the rejected whole-scene baseline. The old 18-mm3 A-cell allocation overlap is absent in EP4; the old PREDOCK outer-domain escape is absent. New B board/shell and OPEN frame intersections, STOW OLED/FPC overlap and other real obstacles remain. The source evidence bug now prevents OEM documents alone from establishing physical donor observations. Actual donor data and terminal states remain unchanged. All prior failed/native/unit records retain their historical commits and scopes. Run 39378151409 on prior publication 90b09f5 settled at 12 new failed jobs, no runner steps and 12 direct payment-or-spending annotations. New publication-head CI is recorded separately in PR36. No physical prototype, material/strength qualification, full phone motion, modified powered phone or new FE/QP solve is claimed.",
   "bench_cover_first_candidate": {
     "source": "integration/cover_admission.py",
     "stages": 22,
@@ -101,7 +355,8 @@
       16.445,
       21.21
     ],
-    "fit": "unknown"
+    "fit": "unknown",
+    "historical_stage_scope": "historical thick-mechanism space diagnostic; current registered candidate is in design/product_geometry.json"
   },
   "historical_research_results": {
     "split_root_sampled_sequence": {
@@ -197,7 +452,8 @@
     "moving_contact_geometry_resized": false,
     "B_to_KEY_coupling_implemented": false,
     "thread_preload_force_tolerance_seal_qualified": false,
-    "evidence": "engineering/mounted-mechanism-20261015"
+    "evidence": "engineering/mounted-mechanism-20261015",
+    "historical_stage_scope": "mounted-mechanism stage; subsequent B-to-KEY transmission is in current_transmission_study"
   },
   "current_transmission_study": {
     "source": "integration/cam_coupling.py",
@@ -294,7 +550,8 @@
     "changed_part": "A_BACK_PANEL",
     "nominal_native_full_passed": true,
     "physical_panel_anchorage_preload_and_stiffness_qualified": false,
-    "panel_frame_shear_key_candidate_in_main": false
+    "panel_frame_shear_key_candidate_in_main": false,
+    "historical_stage_scope": "cover-backing stage; subsequent shear keys are in current_panel_shear_key_study"
   },
   "current_panel_shear_key_study": {
     "source": "integration/panel_shear_key.py",
@@ -342,7 +599,8 @@
     "negative_patch_cases": 48,
     "CAD_changed": false,
     "mesh_convergence_complete": false,
-    "evidence": "engineering/contact-field-20261015/DELIVERY_VERIFICATION.json"
+    "evidence": "engineering/contact-field-20261015/DELIVERY_VERIFICATION.json",
+    "historical_stage_scope": "rejected pre-contact-solve diagnostic; superseded for original cases by current_contact_closure"
   },
   "current_spatial_contact": {
     "source": "integration/spatial_contact.py",
@@ -351,17 +609,19 @@
       0,
       1,
       2,
-      3
-    ],
-    "original_case_rejected": 4,
-    "remaining_not_run": [
+      3,
+      4,
       5,
       6,
       7
     ],
-    "all_eight_cases_closed": false,
+    "original_case_rejected": null,
+    "remaining_not_run": [],
+    "all_eight_cases_closed": true,
     "gap_tolerance_mm": 1e-07,
-    "continuum_pressure_mesh_convergence_or_physical_qualification": false
+    "continuum_pressure_mesh_convergence_or_physical_qualification": false,
+    "evidence": "engineering/preload-closure-20261017/DELIVERY_VERIFICATION.json",
+    "scope": "original frozen surface and volume grid; later models are separate"
   },
   "current_contact_closure": {
     "evidence": "engineering/preload-closure-20261017/DELIVERY_VERIFICATION.json",
@@ -386,9 +646,17 @@
     ],
     "face_trace_unchanged": true,
     "case6_level1_independently_passed": true,
-    "level2_contact_completed": false,
+    "level2_contact_completed": true,
     "global_mesh_convergence": false,
-    "evidence": "engineering/volume-convergence-20261017/DELIVERY_VERIFICATION.json"
+    "evidence": "engineering/volume-convergence-20261017/DELIVERY_VERIFICATION.json",
+    "completed_level2_cases": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "completion_evidence": "engineering/nested-contact-20261017/DELIVERY_VERIFICATION.json",
+    "scope": "L1/L2 case4-7 on unchanged original surface trace; not all-interface convergence"
   },
   "current_supplemental_target": {
     "case": 6,
@@ -437,5 +705,87 @@
     "original_case6_load_variants": 2,
     "same_face_space": 86,
     "actual_pressure_or_preload_qualified": false
-  }
+  },
+  "current_product_state": "design/current_product.json",
+  "current_product_stage": "PR36 now contains EP4 S+U routing and complete endpoints executed on 9a8307f, plus a physical-evidence anchor fix. All three finite assemblies remain rejected, although outer-domain escape and all material/end and A/B-end intersections are absent at these poses. Every assembly body has an independent STEP numeric comparison. A head relief and KEY closed-end studies are separate local candidates. The actual XT2551-3 donor still lacks physical labels, geometry and all 12 terminal-interface bindings. Main remains a1b3cc1; PR35 remains separate draft research; PR25 is closed unmerged.",
+  "current_open_research_prs": [
+    {
+      "number": 35,
+      "url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/pull/35",
+      "head": "176df31ceb35bb3737d68030e60ba377665de210",
+      "in_main": false,
+      "result": "P2 edge ordering repaired; finite-point QP passes but 75 body and 1112 bearing regions fail the unchanged global gap target.",
+      "action": "Real retained-witness coverage has been diagnosed. A 3292-file, 3.24-second read-only cache preflight found no identified bearing response restart; stop before any new FE solve until exact response/points/trace state can be restored."
+    }
+  ],
+  "current_work_packages": [
+    {
+      "id": "WP0",
+      "result": "Current entries distinguish EP4 native source, 137 selected tests, local A/KEY studies and exact prior/new publication hosted heads.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "remaining": "Resolve account payment/spending condition and obtain actual runner steps; keep main, PR35 and closed PR25 identities separate."
+    },
+    {
+      "id": "WP1",
+      "result": "The existing formal XT2551-3 partial readback is preserved. A reproduced validator bug was fixed: OEM documents alone cannot establish physical labels, components or terminals.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/reviews/phase4-platform-physical-handoff.md",
+      "remaining": "Obtain same-specimen physical labels, dimensions, heights, exits and terminals for the 10 unknown identity fields, 7 part roles and 12 interfaces."
+    },
+    {
+      "id": "WP2",
+      "result": "EP4 includes 154/154/161 finite bodies; independent readbacks now cover every recorded body metric. A-cell 18-mm3 overlap is absent, but B board/shell and OPEN frame overlaps remain.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/native-summary.json",
+      "remaining": "Freeze actual geometry and redesign B board placement/stack/orientation with RF, heat and cell swelling/tabs. The current b/L-only behind-wall branch has no feasible interval."
+    },
+    {
+      "id": "WP3",
+      "result": "The actual STOW finite FPC has 0.713045601 mm3 Common with the OLED geometric trial; screen/FPC integration is explicitly unfinished.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/native-summary.json",
+      "remaining": "Jointly redesign OLED storage, COF, support and FPC using actual material dimensions and supplier bending conditions."
+    },
+    {
+      "id": "WP4",
+      "result": "EP4 preserves both complete 20-body ends. Selected poses have no material/end or cross-end Common and no outer escape, while all whole-scene states are rejected. A local relief clears the head/web Common.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "remaining": "Change the remaining full endpoint and path arrangement, define fastener retention and actual conductor/material stack, then check continuous forward and return states."
+    },
+    {
+      "id": "WP5",
+      "result": "A head clearance and a KEY closed-end finite capture study provide separate local geometry evidence; original whole-device and current PAWL relocking qualification remain open.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/local-studies/README.md",
+      "remaining": "Select real processes and joining details; incorporate approved local changes into a new common assembly and prove actual ordered assembly, release/hold/skew/return."
+    },
+    {
+      "id": "WP6",
+      "result": "All 12 physical terminal interfaces remain unbound. Source classification is hardened without changing the actual donor record or original protected-chain assumptions.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/reviews/phase4-platform-physical-handoff.md",
+      "remaining": "Bind original protected power/charging, USB, OLED and touch terminals; capture baseline and moving continuity logs from actual hardware."
+    },
+    {
+      "id": "WP7",
+      "result": "An independent bounded constraint study excludes the fixed S+U behind-wall b/L relocation branch; A web material accounting has an analytic/native cross-check. No new FE/QP was launched.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/reviews/ep4-b-anchor-and-a-web-followup.md",
+      "remaining": "Use measured materials, spans and forces for structural study; restore identified PR35 cache before a separately bounded restart."
+    },
+    {
+      "id": "WP8",
+      "result": "Full EP4 STEP/Common artifacts, local A/KEY studies, independent readers and execution receipts are retained. No complete physical opening/closing assembly has been observed.",
+      "path": "engineering/product-integration-20261018/phase4-20261020/README.md",
+      "remaining": "Build dimension/process specimens and unpowered assemblies after the real geometry/joining gates, then flexible samples and original protected electronics; return original calibrated logs."
+    }
+  ],
+  "current_closed_research_prs": [
+    {
+      "number": 25,
+      "url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/pull/25",
+      "head": "44a5830f49af73605d5161efff80e6744b0fb468",
+      "in_main": false,
+      "result": "Old slack-spring API differs from main; all eight historical global cases remain rejected.",
+      "state": "closed",
+      "merged": false,
+      "closed_at": "2026-10-19T02:13:29Z",
+      "superseded_by": 36,
+      "resolution": "Superseded by PR36's separately named slack-spring adapter; old full-body driver not merged; eight historical global failures preserved."
+    }
+  ]
 }

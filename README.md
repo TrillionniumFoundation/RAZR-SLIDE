@@ -1,12 +1,29 @@
 # RAZR SLIDE
 
+<!-- current-product:start -->
+## Current product integration — 2026-10-20
+
+[Current design](CURRENT_DESIGN.md) · [Machine-readable product state](design/current_product.json) · [Implementation and evidence](engineering/product-integration-20261018/README.md)
+
+PR36 now contains EP4 S+U routing and complete endpoints executed on 9a8307f, plus a physical-evidence anchor fix. All three finite assemblies remain rejected, although outer-domain escape and all material/end and A/B-end intersections are absent at these poses. Every assembly body has an independent STEP numeric comparison. A head relief and KEY closed-end studies are separate local candidates. The actual XT2551-3 donor still lacks physical labels, geometry and all 12 terminal-interface bindings. Main remains a1b3cc1; PR35 remains separate draft research; PR25 is closed unmerged.
+
+The active milestone is a common assembly with flat OLED storage, complete terminations, A/B cell reservations and an operable manual cycle. Measured parts, source specifications and project assumptions retain separate identities.
+
+Configured unit validation: **1324 tests / 35 suites** in `tools/test_suites.json`. Completed execution reports retain their exact commit and scope in `design/current_product.json`; a configured count is not an execution result.
+
+On 9a8307f, 137 relevant tests in four suites passed with zero failures/errors/skips and unchanged source bytes; configured 1324 tests / 35 suites are not a full new run. Seven bounded native regression groups passed. PREDOCK and OPEN/STOW ran separately on the same unchanged source, retaining 16266 declared pair evaluations including repeated endpoint-self checks; 15886 unique pose/self pair declarations. STOW/PREDOCK/OPEN have 154/154/161 bodies and 17/12/25 external positive Common pairs, with zero pair/context/containment evaluation errors and no outside-outer-domain parts. Baseline A has one 0.180811856-mm3 screw-head/web self Common; B self, A/B end and all finite-material/end pairs are clear at the selected poses. Independent STEP processes passed all recorded assembly-body metrics plus exported positive Common and local material contexts. These are numeric comparisons, not full material or label equivalence. Separate A head relief removes 0.269207426 mm3, adds zero, clears 190 local self pairs and retains finite side-web/bearing probes. KEY local results and independent readers have their own source/report identities and do not replace the rejected whole-scene baseline. The old 18-mm3 A-cell allocation overlap is absent in EP4; the old PREDOCK outer-domain escape is absent. New B board/shell and OPEN frame intersections, STOW OLED/FPC overlap and other real obstacles remain. The source evidence bug now prevents OEM documents alone from establishing physical donor observations. Actual donor data and terminal states remain unchanged. All prior failed/native/unit records retain their historical commits and scopes. Run 39378151409 on prior publication 90b09f5 settled at 12 new failed jobs, no runner steps and 12 direct payment-or-spending annotations. New publication-head CI is recorded separately in PR36. No physical prototype, material/strength qualification, full phone motion, modified powered phone or new FE/QP solve is claimed.
+
+Accepted numerical evidence: [PR34 installation/service](engineering/installation-control-20261018/DELIVERY_VERIFICATION.json). Bearing research and the older spring experiment retain their own versioned results in the current product state; historical failures remain preserved.
+That FE evidence belongs to the original installation geometry. The newly modified product shells have not been structurally requalified.
+<!-- current-product:end -->
+
 Private engineering research repository. **`candidate_go=false`; `manufacturing_go=false`.**
 
 ## Product constraints
 
 Equal finished A/B dimensions; one approximately 7-inch flexible OLED; no independent rear display; B travels upward 79.75 mm, then seats normally by 8.20 mm; A has priority for the larger battery. 4700 mAh is the unverified TOTAL SYSTEM target; individual A/B cells and capacities are unselected.
 
-## Selected repair branch
+## Historical repair baseline
 
 **R50_20261011 is the integration and rejection-validation base**, original archive SHA256 `86f226f9bce3a3f0659737327c7cc32415eed3b9be3f96f35a746ac32844dfd6`. Its seven routes remain rejected. Selection follows whole-inventory review rather than revision numbering or isolated zero-collision results.
 
@@ -37,9 +54,9 @@ Raw vendor CAD remains on its authorized source machine where the supplied Readm
 
 ## Engineering limits
 
-CAD and software checks can reject a proposal but do not supply actual FPC stackup/fatigue, OEM keep-out permission, BM28 PCB/clamp design, continuous USB SI, battery/BMS short/backfeed/isolation tests, mechanical load/jam/retraction tests, or OLED qualification. STEP exports labelled GHOST are research-only.
+CAD and software checks can reject a proposal but do not supply actual FPC stackup/fatigue, OEM keep-out permission, physical BM28 connector/PCB/clamp fit and retention qualification, continuous USB SI, battery/BMS short/backfeed/isolation tests, mechanical load/jam/retraction tests, or OLED qualification. STEP exports labelled GHOST are research-only.
 
-Current design repairs and production blockers are recorded in [`engineering/PRODUCTION_BLOCKERS_R6.md`](engineering/PRODUCTION_BLOCKERS_R6.md). R3/R4 status files remain historical. The [`second-round status`](engineering/qualification-readiness-20261013-r2/CURRENT_STATUS.md) and earlier [`PRODUCTION_STATUS.md`](engineering/manufacturing-closure-20261013/PRODUCTION_STATUS.md) remain historical baselines. Native CAD/ECAD verification and machine receipts are kept with each artifact.
+Historical R6 design repairs and production blockers are recorded in [`engineering/PRODUCTION_BLOCKERS_R6.md`](engineering/PRODUCTION_BLOCKERS_R6.md). R3/R4 status files remain historical. The [`second-round status`](engineering/qualification-readiness-20261013-r2/CURRENT_STATUS.md) and earlier [`PRODUCTION_STATUS.md`](engineering/manufacturing-closure-20261013/PRODUCTION_STATUS.md) remain historical baselines. Native CAD/ECAD verification and machine receipts are kept with each artifact.
 
 The second round recovers six primary-source documents with variant and OLED conflict records in [`controlled-input-recovery`](engineering/controlled-input-recovery-20261013-r2), and adds an editable hardware return-sensing chain with native terminal verification in [`return-sensing-design`](engineering/return-sensing-design-20261013-r2). It retains conductive PCB bypasses, nonzero healthy parallel return, conditional threshold overlap, zero-load blind spots, and unsafe rearm counterexamples. These are research evidence, not physical qualifications.
 
@@ -56,18 +73,8 @@ R4 历史冻结状态：[PRODUCTION_BLOCKERS_R4.md](engineering/PRODUCTION_BLOCK
 R4 实际[单切断PCB与原生生产格式导出](engineering/pcb-source-repair-20261013-r4/README.md)、[盖紧固与撤钥干涉修复](engineering/mechanical-return-design-20261013-r4/README.md)。两者均是未获实物放行的研究台架。
 
 
-R5/R6 当前实改与证据：[G2 路线与全部拒绝实体](engineering/fpc-g2-route-candidates-20261013-r6/README.md)、[完整材料运动](engineering/fpc-material-motion-20261013-r5/README.md)、[无损 NPZ 恢复](engineering/fpc-material-motion-transport-20261013-r5/README.md)、[初版 OLED 模组规格](engineering/oled-orderable-module-search-20261013-r5/README.md)、[原厂条件叠层](engineering/fpc-layer-stackup-20261013-r5/README.md)、[四相电气自检](engineering/proof-selftest-design-20261013-r5/README.md)、[A 链四块研究 PCB 与实际原生导出](engineering/power-chain-pcba-20261013-r5/README.md)。
+R5/R6 历史实改与证据：[G2 路线与全部拒绝实体](engineering/fpc-g2-route-candidates-20261013-r6/README.md)、[完整材料运动](engineering/fpc-material-motion-20261013-r5/README.md)、[无损 NPZ 恢复](engineering/fpc-material-motion-transport-20261013-r5/README.md)、[初版 OLED 模组规格](engineering/oled-orderable-module-search-20261013-r5/README.md)、[原厂条件叠层](engineering/fpc-layer-stackup-20261013-r5/README.md)、[四相电气自检](engineering/proof-selftest-design-20261013-r5/README.md)、[A 链四块研究 PCB 与实际原生导出](engineering/power-chain-pcba-20261013-r5/README.md)。
 
-单正实体、零 DRC/ERC 和研究 STEP 不等于完整手机可生产。指定 OLED/FPC、真实整机装配、完整 PCB 及机械/双电池/USB/OLED 实物资格仍按 [当前生产门槛](engineering/PRODUCTION_BLOCKERS_R6.md)约束。`manufacturing_go=false`。
+单正实体、零 DRC/ERC 和研究 STEP 不等于完整手机可生产。指定 OLED/FPC、真实整机装配、完整 PCB 及机械/双电池/USB/OLED 实物资格仍按 [R6 历史门槛](engineering/PRODUCTION_BLOCKERS_R6.md)约束。`manufacturing_go=false`。
 
 R6 [实际取得的 39 页 OLED 候选原始规格与来源核验](engineering/controlled-inputs-web-20261013-r6/README.md)保留完整40pin事实和动态资格缺口，未替代指定受控OLED。
-
-## Current execution index — 2026-10-15
-
-Start with CURRENT_DESIGN.md and engineering/endpoint-joint-20261015.
-The current candidate changes only the manual slot datum/rise and the roof
-joint reservation. Old native sources and endpoint failures remain frozen.
-Run the manifest in tools/test_suites.json and inspect actual reports. Nominal
-geometry, ideal slot clearance, thread/force screening and hardware release
-are distinct. The actual joint-load inputs remain unknown, not assumed safe.
-`candidate_go=false`; `fixture_fabrication_go=false`; `manufacturing_go=false`.

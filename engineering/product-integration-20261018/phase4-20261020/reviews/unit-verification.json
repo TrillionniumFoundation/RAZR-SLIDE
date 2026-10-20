@@ -1,0 +1,23 @@
+{
+  "schema": "razr-platform-audit-oem-anchor-verification-v1",
+  "source_ref": "90b09f5",
+  "synthetic_unit_fixture_only": true,
+  "validation_scope": "Scratch Python hardware-import unit suite; not native CAD, a hardware observation, or full-repository test run",
+  "baseline": {
+    "hardware_tests": 16,
+    "passed": 16,
+    "duration_s": 5.572
+  },
+  "patched": {
+    "hardware_tests": 22,
+    "passed": 22,
+    "failures": 0,
+    "errors": 0,
+    "duration_s": 18.689,
+    "command": "python -m unittest discover -s integration/product-study-tests -p test_hardware_evidence.py -q"
+  },
+  "actual_XT2551_3_record_modified": false,
+  "native_execution": false,
+  "manufacturing_go": false,
+  "physical_phone_verified": false
+}

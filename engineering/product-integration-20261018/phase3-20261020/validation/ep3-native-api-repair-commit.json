@@ -1,0 +1,28 @@
+{
+  "schema": "razr-ep3-native-api-repair-v1",
+  "committed_utc": "2026-10-20T03:50:26.786301+00:00",
+  "parent": "bdb1bc19fce49692fd49cd508031bfc456e15208",
+  "source_commit": "a33e58cd555b8d9aff1e3649f79cd0dba378a804",
+  "changed_files": [
+    "integration/product_routing_ep3.py"
+  ],
+  "source_sha256": "dfee909ffe781036fb7cec84a2acabe4aada23409bb3ea721f402831462e90d2",
+  "candidate_configuration_unchanged": true,
+  "candidate_geometry_construction_unchanged": true,
+  "repairs": [
+    "retain strict validated empty material after each domain cut; no cut on an already empty compound",
+    "cast actual NumPy straight length to built-in float only at the strict witness-box entry"
+  ],
+  "does_not_convert_kernel_errors_to_zero": true,
+  "does_not_drop_small_positive_residuals": true,
+  "original_failure_output": "ep3-native-bdb1bc1",
+  "original_native_exit_code": 1,
+  "original_native_completed_poses": [
+    "STOW"
+  ],
+  "original_STOW_true_positive_common_pairs": 6,
+  "original_STOW_empty_second_cut_errors": 20,
+  "diff": "diff --git a/integration/product_routing_ep3.py b/integration/product_routing_ep3.py\nindex c4f690a..9721c7a 100644\n--- a/integration/product_routing_ep3.py\n+++ b/integration/product_routing_ep3.py\n@@ -257,11 +257,17 @@ def containment(parts, domains):\n     for name,body in sorted(parts.items()):\n         try:\n             residual=body\n-            for domain in domains: residual=residual.cut(domain)\n-            outside=p.volume(residual)\n+            remaining,outside=p.whole_material(residual,empty=True)\n+            cuts=0\n+            for domain in domains:\n+                if not remaining: break\n+                residual=residual.cut(domain)\n+                remaining,outside=p.whole_material(residual,empty=True)\n+                cuts+=1\n             if outside>p.volume(body)+TOL: raise ValueError('outside material exceeds original')\n             rows.append({'part':name,'outside_outer_union_mm3':outside,'rejected':outside>TOL,\n-                         'method':'native sequential cuts by both distinct prisms'})\n+                         'method':'validated native cuts by distinct prisms; stop only at valid empty material',\n+                         'native_domain_cuts_executed':cuts})\n         except Exception as exc:\n             rows.append({'part':name,'evaluation_failed':True,'error_type':type(exc).__name__,\n                          'error':str(exc),'rejected':True})\n@@ -361,7 +367,7 @@ def native_report(output, c=None):\n             'all_declared_checks_clear_at_pose':all(v['no_positive_common_or_evaluation_error'] for v in [*internal.values(),external,*local_checks.values()]) and domain_check['all_part_material_inside_outer_union'],\n             'internal_cavity_or_interpose_clearance_accepted':False}\n         if label=='PREDOCK':\n-            r=c['route']; a=r['A_anchor_local_mm']; y0=domain_meta['A_bounds_mm'][3]; y1=a[1]+route['straight_A_mm']\n+            r=c['route']; a=r['A_anchor_local_mm']; y0=domain_meta['A_bounds_mm'][3]; y1=float(a[1]+route['straight_A_mm'])\n             witness=p.box((-6,y0,a[2]-.05),(6,y1,a[2]+.05))\n             common=p.strict_common(witness,material)['common_mm3']; outside=containment({'low_straight_witness':witness},domains)\n             vol=p.volume(witness)",
+  "commit_stdout": "[work/product-integration-20261018 a33e58c] fix: preserve empty containment results and normalize witness scalar\n 1 file changed, 10 insertions(+), 4 deletions(-)\n",
+  "pushed": false
+}

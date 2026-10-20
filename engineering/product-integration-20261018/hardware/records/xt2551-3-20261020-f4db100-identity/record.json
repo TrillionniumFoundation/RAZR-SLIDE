@@ -1,0 +1,144 @@
+{
+  "schema": "razr-observed-donor-identity-v2",
+  "is_template": false,
+  "physical_execution_occurred": true,
+  "specimen_id": "XT2551-3-41ad305f",
+  "recorded_at_utc": "2026-10-20T02:59:59.249960+00:00",
+  "measurement_method": "Actual read-only Android software identity via existing Pocket4 ADB server 127.0.0.1:5061; no physical labels, dimensions, disassembly, fabrication or modified-phone functional test",
+  "operator_or_instrument": "Pocket4 existing adb binary SHA256 00108217733707a40debfc92c86d4232fd6e68870be5966515d74c071193ea90; collector SHA256 b2dada86400ec43ba1ace3a02b657fcf6790744656a4bfb8f322b4bcd091b351",
+  "design_binding": {
+    "git_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+    "files_sha256": {
+      "design/product_geometry.json": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+      "design/product_interfaces.json": "9a713c497439e3c4e8ac3a7f8ed1fe941c71757d2ee7458ab5f9f08564be5f41"
+    },
+    "commit_files_sha256": {
+      "design/product_geometry.json": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+      "design/product_interfaces.json": "9a713c497439e3c4e8ac3a7f8ed1fe941c71757d2ee7458ab5f9f08564be5f41"
+    },
+    "inputs_match_commit": true,
+    "interface_contract_sha256": "eda50142a88f13398ad989dafa2dc4628b18dbc77d2a67c08ffc27171342ded7",
+    "interface_contract_source_sha256": "5b54b06023bcad187400053217babaeb1deadfa6c2f2d48c129b96044c668d89",
+    "complete": true
+  },
+  "importer_sha256": "96cd7b2a1eecaa0ebef9004a70c06e832c1811e974701df2be5ecb676b0fa353",
+  "import_manifest_sha256": "3a5557240bf9e475db1f98ddd923e45378d52993f825c5502d0f1140e65702fd",
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "physical_phone_verified": false,
+  "donor": {
+    "model": "XT2551-3",
+    "region": null,
+    "mainboard_revision": null,
+    "runtime_panel_id": null,
+    "display_module_part": null,
+    "display_module_revision": null,
+    "touch_revision": null,
+    "pack_A_label": null,
+    "pack_B_label": null,
+    "USB_roles": null,
+    "USB_version_rate": null
+  },
+  "field_evidence": {
+    "model": {
+      "value": "XT2551-3",
+      "observation_ids": [
+        "formal_readback"
+      ],
+      "locator": "properties.ro.product.model and successful command_records getprop ro.product.model raw stdout"
+    }
+  },
+  "part_inventory": [],
+  "device_readback_observation": "formal_readback",
+  "selected_serial_sha256": "41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+  "observations": [
+    {
+      "id": "formal_readback",
+      "kind": "device_readback",
+      "path": "engineering/product-integration-20261018/hardware/records/xt2551-3-20261020-f4db100-identity/raw/formal_readback.json",
+      "sha256": "28fb380ee5d992893f248241b8bde70825b62057851d7d956ea060b66fe44702",
+      "specimen_id": "XT2551-3-41ad305f",
+      "original_path": "formal-donor-f4db100.json"
+    },
+    {
+      "id": "runtime_execution",
+      "kind": "instrument_log",
+      "path": "engineering/product-integration-20261018/hardware/records/xt2551-3-20261020-f4db100-identity/raw/runtime_execution.json",
+      "sha256": "b957c4fce155f21dbf0d864e2fb158d222be50e0a9cbe4fe2129a891a16ec5e8",
+      "specimen_id": "XT2551-3-41ad305f",
+      "original_path": "formal-donor-f4db100-execution.json"
+    },
+    {
+      "id": "preflight_parser_failure",
+      "kind": "instrument_log",
+      "path": "engineering/product-integration-20261018/hardware/records/xt2551-3-20261020-f4db100-identity/raw/preflight_parser_failure.json",
+      "sha256": "92b6bc7417f3e9174735ba4ea6b234553d2c8a3f83791a4778dbfc1ff4596494",
+      "specimen_id": "XT2551-3-41ad305f",
+      "original_path": "server-5061-before-f4db100.json"
+    },
+    {
+      "id": "server_preflight",
+      "kind": "instrument_log",
+      "path": "engineering/product-integration-20261018/hardware/records/xt2551-3-20261020-f4db100-identity/raw/server_preflight.json",
+      "sha256": "3bdb8a478d34fe653a963ecab0f3cf397208481223944176524db76bdd04e1b1",
+      "specimen_id": "XT2551-3-41ad305f",
+      "original_path": "server-5061-before-f4db100-v2.json"
+    },
+    {
+      "id": "source_checkout",
+      "kind": "operator_observation",
+      "path": "engineering/product-integration-20261018/hardware/records/xt2551-3-20261020-f4db100-identity/raw/source_checkout.json",
+      "sha256": "068cc52d4a2e7281d09886e29029a9eda061550bad2e06987db05b1c5c1c05f9",
+      "specimen_id": "XT2551-3-41ad305f",
+      "original_path": "source-checkout-f4db100.json"
+    },
+    {
+      "id": "archived_design_0",
+      "kind": "design_input",
+      "input_design_path": "design/product_geometry.json",
+      "path": "engineering/product-integration-20261018/hardware/records/xt2551-3-20261020-f4db100-identity/inputs/product_geometry.json",
+      "sha256": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d"
+    },
+    {
+      "id": "archived_design_1",
+      "kind": "design_input",
+      "input_design_path": "design/product_interfaces.json",
+      "path": "engineering/product-integration-20261018/hardware/records/xt2551-3-20261020-f4db100-identity/inputs/product_interfaces.json",
+      "sha256": "9a713c497439e3c4e8ac3a7f8ed1fe941c71757d2ee7458ab5f9f08564be5f41"
+    },
+    {
+      "id": "archived_import_manifest",
+      "kind": "import_manifest",
+      "specimen_id": "XT2551-3-41ad305f",
+      "path": "engineering/product-integration-20261018/hardware/records/xt2551-3-20261020-f4db100-identity/import-manifest.json",
+      "sha256": "3a5557240bf9e475db1f98ddd923e45378d52993f825c5502d0f1140e65702fd"
+    }
+  ],
+  "summary": {
+    "known_identity_fields": 1,
+    "unknown_identity_fields": [
+      "region",
+      "mainboard_revision",
+      "runtime_panel_id",
+      "display_module_part",
+      "display_module_revision",
+      "touch_revision",
+      "pack_A_label",
+      "pack_B_label",
+      "USB_roles",
+      "USB_version_rate"
+    ],
+    "physical_parts_with_original_labels": 0,
+    "missing_inventory_roles": [
+      "COF",
+      "USB_port_board",
+      "display",
+      "mainboard",
+      "pack_A",
+      "pack_B",
+      "touch"
+    ],
+    "platform_frozen": false
+  }
+}

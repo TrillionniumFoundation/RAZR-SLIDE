@@ -1,0 +1,422 @@
+{
+  "schema": "razr-donor-discovery-summary-v1",
+  "selected_donor_connected": true,
+  "physical_platform_frozen": false,
+  "hardware_geometry_verified": false,
+  "physical_part_labels_verified": false,
+  "terminal_pinout_verified": false,
+  "battery_topology_verified": false,
+  "dynamic_material_qualified": false,
+  "specimen_serial_sha256": "41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+  "specimen_identity_basis": "Matching USB-descriptor serial hash, authorized ADB inventory serial hash, donor property readback and both later probe serial hashes; no physical module-label identity asserted.",
+  "observed_utc": "2026-10-20T01:17:51.920343+00:00",
+  "observation_window_utc": {
+    "first": "2026-10-20T01:12:24.662282+00:00",
+    "last": "2026-10-20T01:25:06.429788+00:00",
+    "not_a_continuous_monitoring_interval": true
+  },
+  "host_alias": "pocket4",
+  "adb_server_port": 5061,
+  "adb_authorized_device_count": 1,
+  "adb_state": "device",
+  "usb_vendor_id": "22b8",
+  "usb_product_id": "2e81",
+  "usb_model": "XT2551-3",
+  "boot_hardware_sku": "XT2551-3",
+  "reported_product_model": "XT2551-3",
+  "USB_ADB_serial_hash_match": true,
+  "model_SKU_USB_consistent": true,
+  "software_identity": {
+    "evidence_class": "software_reported_identity_not_physical_board_or_component_marking",
+    "properties": {
+      "ro.product.manufacturer": "motorola",
+      "ro.product.model": "XT2551-3",
+      "ro.product.device": "leap",
+      "ro.product.board": "leap",
+      "ro.product.name": "trillionnium_leap",
+      "ro.product.vendor.model": "leap",
+      "ro.product.vendor.device": "leap",
+      "ro.boot.hardware.sku": "XT2551-3",
+      "ro.boot.hardware.revision": "",
+      "ro.boot.hwrev": "",
+      "ro.boot.hwc": "",
+      "ro.hardware": "qcom",
+      "ro.board.platform": "sun",
+      "ro.soc.model": "SM8750",
+      "ro.soc.manufacturer": "QTI",
+      "ro.build.fingerprint": "motorola/trillionnium_leap/leap:17/CSV1.260518.010/eng.qq:userdebug/test-keys",
+      "ro.build.version.release": "17",
+      "ro.build.version.security_patch": "2026-05-05",
+      "ro.build.version.incremental": "eng.qq"
+    },
+    "custom_build_fingerprint": "motorola/trillionnium_leap/leap:17/CSV1.260518.010/eng.qq:userdebug/test-keys",
+    "custom_userdebug_test_keys_build_reported": true,
+    "Android_release_reported": "17",
+    "SOC_sysfs_readback": {
+      "soc_model": "SUN",
+      "soc_id": "618",
+      "soc_revision": "2.0"
+    },
+    "OEM_factory_OS_or_component_revision_verified": false,
+    "empty_hardware_revision_properties": [
+      "ro.boot.hardware.revision",
+      "ro.boot.hwrev",
+      "ro.boot.hwc"
+    ],
+    "source_records": [
+      "hardware/pocket4-20261020/donor-identity.json",
+      "hardware/pocket4-20261020/module-readback.json"
+    ]
+  },
+  "display_touch_reported": {
+    "evidence_class": "software_display_and_input_registration",
+    "wm_size_stdout": "Physical size: 1224x2992\n",
+    "wm_size_pixels": [
+      1224,
+      2992
+    ],
+    "wm_Physical_size_label_is_not_a_mm_measurement": true,
+    "surface_display_count_reported": 2,
+    "surface_display_screenPartStatus": "UNSUPPORTED",
+    "panel_part_number_read_back": null,
+    "DRM_DSI_nodes_registered": [
+      "card0-DSI-1",
+      "card0-DSI-2"
+    ],
+    "touch_input_registration": [
+      {
+        "name": "goodix_ts",
+        "IsExternal": false
+      },
+      {
+        "name": "fts_ts",
+        "IsExternal": true
+      }
+    ],
+    "physical_display_and_COF_identified": false,
+    "display_image_or_touch_function_exercised_by_this_probe": false,
+    "new_slide_phone_display_touch_verified": false,
+    "source_records": [
+      "hardware/pocket4-20261020/donor-identity.json",
+      "hardware/pocket4-20261020/module-readback.json",
+      "hardware/pocket4-20261020/available-nodes.json"
+    ]
+  },
+  "battery_reported": {
+    "evidence_class": "software_driver_design_values_and_model_strings_not_measured_cell_capacity",
+    "standard_unit_basis": {
+      "url": "https://docs.kernel.org/power/power_supply_class.html",
+      "section": "Units; CHARGE_*; CHARGE_FULL_DESIGN, CHARGE_EMPTY_DESIGN",
+      "CHARGE_unit": "uAh",
+      "mAh_conversion_divisor": 1000,
+      "driver_unit_conformance_independently_audited": false
+    },
+    "nodes": {
+      "main_battery": {
+        "source_record": "hardware/pocket4-20261020/module-readback.json",
+        "result_key": "power_supply_main_battery",
+        "node": "/sys/class/power_supply/main_battery/uevent",
+        "reported_type": "Mains",
+        "charge_full_design_raw": "3430000",
+        "charge_full_design_uAh": 3430000,
+        "charge_full_design_mAh": 3430.0,
+        "reported_charge_full_raw": "3479000",
+        "reported_model_name": null,
+        "capacity_measured_by_this_project": false,
+        "physical_cell_label_verified": false
+      },
+      "flip_battery": {
+        "source_record": "hardware/pocket4-20261020/module-readback.json",
+        "result_key": "power_supply_flip_battery",
+        "node": "/sys/class/power_supply/flip_battery/uevent",
+        "reported_type": "Mains",
+        "charge_full_design_raw": "1140000",
+        "charge_full_design_uAh": 1140000,
+        "charge_full_design_mAh": 1140.0,
+        "reported_charge_full_raw": "1153000",
+        "reported_model_name": null,
+        "capacity_measured_by_this_project": false,
+        "physical_cell_label_verified": false
+      },
+      "battery": {
+        "source_record": "hardware/pocket4-20261020/module-readback.json",
+        "result_key": "power_supply_battery",
+        "node": "/sys/class/power_supply/battery/uevent",
+        "reported_type": "Battery",
+        "charge_full_design_raw": "4570000",
+        "charge_full_design_uAh": 4570000,
+        "charge_full_design_mAh": 4570.0,
+        "reported_charge_full_raw": "4632000",
+        "reported_model_name": "NFG_ATL_RS35NVT_3520MAH",
+        "capacity_measured_by_this_project": false,
+        "physical_cell_label_verified": false
+      }
+    },
+    "software_design_sum_mAh": 4570.0,
+    "aggregate_design_matches_arithmetic_sum": true,
+    "software_aggregate_minus_OEM_rated_mAh": 30.0,
+    "software_aggregate_minus_OEM_typical_mAh": -130.0,
+    "capacity_difference_status": "Unresolved: software design 4570 mAh differs from OEM rated 4540 mAh by +30 mAh. No correction, averaging or equivalence asserted.",
+    "aggregate_MODEL_NAME_is_not_main_battery_physical_label": true,
+    "main_and_flip_reported_TYPE_Mains_not_corrected": true,
+    "node_names_or_capacity_sum_do_not_establish_series_parallel_or_charge_protection_topology": true,
+    "balance_nodes": {
+      "balance_master": {
+        "raw_uevent_fields": {
+          "POWER_SUPPLY_NAME": "balance_master",
+          "POWER_SUPPLY_TYPE": "Unknown",
+          "POWER_SUPPLY_STATUS": "Full",
+          "POWER_SUPPLY_ONLINE": "0",
+          "POWER_SUPPLY_TEMP": "23",
+          "POWER_SUPPLY_VOLTAGE_NOW": "4466",
+          "POWER_SUPPLY_VOLTAGE_MAX": "4475",
+          "POWER_SUPPLY_CURRENT_NOW": "6",
+          "POWER_SUPPLY_INPUT_CURRENT_LIMIT": "3400"
+        },
+        "units_verified": false,
+        "normalized_values": null,
+        "unit_policy": "Preserve raw values; do not assign a common unit or normalize from the generic power_supply convention without this driver definition."
+      },
+      "balance_slave": {
+        "raw_uevent_fields": {
+          "POWER_SUPPLY_NAME": "balance_slave",
+          "POWER_SUPPLY_TYPE": "Unknown",
+          "POWER_SUPPLY_STATUS": "Unknown",
+          "POWER_SUPPLY_ONLINE": "1",
+          "POWER_SUPPLY_TEMP": "24",
+          "POWER_SUPPLY_VOLTAGE_NOW": "4493",
+          "POWER_SUPPLY_VOLTAGE_MAX": "4480",
+          "POWER_SUPPLY_CURRENT_NOW": "6",
+          "POWER_SUPPLY_INPUT_CURRENT_LIMIT": "950"
+        },
+        "units_verified": false,
+        "normalized_values": null,
+        "unit_policy": "Preserve raw values; do not assign a common unit or normalize from the generic power_supply convention without this driver definition."
+      }
+    },
+    "donor_USB_powered_flag_reported": true,
+    "project_charge_discharge_capacity_test_performed": false,
+    "motion_power_or_USB_continuity_measured": false
+  },
+  "OEM_source": {
+    "publisher": "Motorola / Lenovo China support",
+    "url": "https://www.lenovocare.com.cn/ideaservice/535125b81e2f46eabffa9c1568443961.pdf",
+    "document_number": "SSC8E69755-B",
+    "page_1_based": 2,
+    "marketing_name": "moto razr 60 Ultra",
+    "model": "XT2551-3",
+    "typical_capacity_mAh": 4700,
+    "rated_capacity_mAh": 4540,
+    "source_checked_UTC_date": "2026-10-20",
+    "model_matches_observed_USB_and_boot_SKU": true,
+    "scope": "OEM complete-phone specification for the matching model; not an individual specimen capacity measurement or evidence that its cells fit the RAZR-SLIDE envelope.",
+    "new_slide_envelope_capacity_target_proven": false
+  },
+  "scope_reconciliation": {
+    "Pocket4_default_5037": {
+      "observed_utc": "2026-10-20T01:12:24.662282+00:00",
+      "authorized_motorola_count": 0,
+      "adb_inventory": [],
+      "source_record": "hardware/pocket4-20261020/usb-observation.json",
+      "scope": "Default-server observation only; does not describe the already-running 5061 server."
+    },
+    "two_servers_observed": {
+      "ports": [
+        5037,
+        5061
+      ],
+      "source_record": "hardware/pocket4-20261020/adb-servers.json"
+    },
+    "Pocket4_5061_resolves_donor_connection_unknown": true,
+    "earlier_main_host_empty_inventory_scope": "Earlier main-host observations remain limited to that host; this bundle contains six Pocket4 probes and does not re-probe main or establish a global absence of devices.",
+    "historical_empty_observations_overwritten": false
+  },
+  "read_only_probe_scope": {
+    "probe_count": 6,
+    "actual_file_count": 24,
+    "file_roles_per_probe": [
+      "structured JSON",
+      "raw stdout",
+      "probe source",
+      "provenance"
+    ],
+    "all_probe_capture_exit_codes_zero": true,
+    "all_raw_stdout_hashes_match_provenance": true,
+    "all_raw_stdout_JSON_matches_structured_record": true,
+    "wrapper_exit_zero_does_not_mean_all_inner_reads_succeeded": true,
+    "failed_read_command_count": 9,
+    "failed_read_commands": [
+      {
+        "source_path": "hardware/pocket4-20261020/donor-identity.json#/donor_observations/0/input_devices",
+        "returncode": 1,
+        "error": null,
+        "stderr": "cat: /proc/bus/input/devices: Permission denied\n"
+      },
+      {
+        "source_path": "hardware/pocket4-20261020/donor-identity.json#/donor_observations/0/soc_identity",
+        "returncode": 1,
+        "error": null,
+        "stderr": "/system/bin/sh: syntax error: unexpected 'do'\n"
+      },
+      {
+        "source_path": "hardware/pocket4-20261020/module-readback.json#/results/dt_model",
+        "returncode": 1,
+        "error": null,
+        "stderr": "cat: /sys/firmware/devicetree/base/model: Permission denied\n"
+      },
+      {
+        "source_path": "hardware/pocket4-20261020/module-readback.json#/results/dt_compatible",
+        "returncode": 1,
+        "error": null,
+        "stderr": "cat: /sys/firmware/devicetree/base/compatible: Permission denied\n"
+      },
+      {
+        "source_path": "hardware/pocket4-20261020/module-readback.json#/results/graphics_nodes",
+        "returncode": 1,
+        "error": null,
+        "stderr": "ls: /sys/class/graphics: No such file or directory\n"
+      },
+      {
+        "source_path": "hardware/pocket4-20261020/available-nodes.json#/directories/~1sys~1class~1drm~1card0-DSI-1",
+        "returncode": 1,
+        "error": null,
+        "stderr": "ls: /sys/class/drm/card0-DSI-1: Permission denied\n"
+      },
+      {
+        "source_path": "hardware/pocket4-20261020/available-nodes.json#/directories/~1sys~1class~1drm~1card0-DSI-2",
+        "returncode": 1,
+        "error": null,
+        "stderr": "ls: /sys/class/drm/card0-DSI-2: Permission denied\n"
+      },
+      {
+        "source_path": "hardware/pocket4-20261020/available-nodes.json#/directories/~1sys~1class~1power_supply~1main_battery",
+        "returncode": 1,
+        "error": null,
+        "stderr": "ls: /sys/class/power_supply/main_battery: Permission denied\n"
+      },
+      {
+        "source_path": "hardware/pocket4-20261020/available-nodes.json#/directories/~1sys~1class~1power_supply~1flip_battery",
+        "returncode": 1,
+        "error": null,
+        "stderr": "ls: /sys/class/power_supply/flip_battery: Permission denied\n"
+      }
+    ],
+    "first_SOC_loop_syntax_failure_retained": true,
+    "later_SOC_direct_reads_available": true,
+    "part_of_input_summary_was_filtered": true,
+    "input_summary_filter_scope": "Only hardware device summary lines retained; focused windows and event history excluded",
+    "physical_fabrication_performed": false,
+    "phone_project_acceptance_performed": false,
+    "all_probe_device_commands_read_only": true
+  },
+  "remaining_freeze_requirements": [
+    "Photograph and identify the physical mainboard revision, connector labels and mating parts; measure the board outline, component heights, mounts and cable exit directions.",
+    "Identify the actual OLED/touch module and COF; measure complete material length, inactive clamp allowance and stored envelope; obtain supplier dynamic bend and support conditions.",
+    "Read both physical cell labels and protection/NTC/terminal markings; measure their dimensions, mass, swelling allowance and tab exit envelopes.",
+    "Map actual board-side and terminal endpoints for display, touch, supply, USB, cameras, RF/antennas and every cross-cabin signal.",
+    "Trace the OEM two-battery protection/charge/current-combining topology and allowable reuse from terminal-level evidence; software node names and arithmetic charge sums do not determine the circuit.",
+    "Place verified parts into the common equal-cabin scene, retaining 79.75 mm slide, 8.2 mm seating, flat OLED storage in B, RF and thermal paths; prove cell/layout capacity or explicitly revise that target."
+  ],
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "fabrication_go": false,
+  "manufacturing_go": false,
+  "project_controlled_power_on_go": false,
+  "phone_project_acceptance_go": false,
+  "physical_phone_project_verified": false,
+  "evidence": {
+    "bundle_sha256": "17d6c2bf8b4ff7bfda34af1f7c4fba8a1e7679fa88b442679f72a0a547596c9b",
+    "destination_subtree": "hardware/pocket4-20261020",
+    "relative_paths_are_from_current_progress_README_directory": true,
+    "project_context_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+    "context_commit_is_not_a_hardware_qualification": true,
+    "files_sha256": {
+      "hardware/pocket4-20261020/adb-servers-probe.py": "307c84bec234a0426c06c8066faabc36fd622e0da853381021c6702fd2167330",
+      "hardware/pocket4-20261020/adb-servers-provenance.json": "b4efafd9add5b8318b83b6720652b56158095652c39f8a0e24a64bee816833ff",
+      "hardware/pocket4-20261020/adb-servers-raw-stdout.log": "2bd84dacbee515238f6e153bcff06b8792a8e6f4f33426c49eaba02475c2e514",
+      "hardware/pocket4-20261020/adb-servers.json": "8a5b2115aac5a077a99ed55069d8f5131b9b5b9f630f5bedd29ec6c06795c51f",
+      "hardware/pocket4-20261020/available-nodes-probe.py": "0a28c5adb9df294bf9d9612affc7bed71855f21c1cf18a675d0f1ad0370ab3f8",
+      "hardware/pocket4-20261020/available-nodes-provenance.json": "54a71cecb900c6cf63390c6cd48764672ff9ebcae39cbf186a3c2d245df695aa",
+      "hardware/pocket4-20261020/available-nodes-raw-stdout.log": "00b84099661bb162e2ee4a80720e62b5d22464270bb177e116a65ad5cdca60fa",
+      "hardware/pocket4-20261020/available-nodes.json": "8ca449d14f1eadf7075d31deca9010d76395d8e81947d8ab6bfeb0f33063a362",
+      "hardware/pocket4-20261020/donor-identity-probe.py": "73f4bb0630861adaac26ae8803e4696c8c21dc8589ee759ff7964da35696a9ff",
+      "hardware/pocket4-20261020/donor-identity-provenance.json": "aebca87e0ff814dab11c12ccb54bb6b6163f5b45d7cfb0a5e55a276a2338931f",
+      "hardware/pocket4-20261020/donor-identity-raw-stdout.log": "40602802e839964dd787f733191aafbe5e2580ea3918f414c2c6bcb5018752e6",
+      "hardware/pocket4-20261020/donor-identity.json": "219b5bd76aed5aab33788c3f4b2bf695cc5c2f27cfcd50e5261948ce1f1620ae",
+      "hardware/pocket4-20261020/module-readback-probe.py": "aa33016448e8dee2eb17a20c197753cdbb9bdf098c48c00afbbdabdeacde77f2",
+      "hardware/pocket4-20261020/module-readback-provenance.json": "0e6291196e9f5747699aa4a9b9e54923ea69293d08817d2dfe651c6acbbf877d",
+      "hardware/pocket4-20261020/module-readback-raw-stdout.log": "c810cc8c73667368c657746956d365ab6cfe879c4d63b1d0a0fce27e320daa99",
+      "hardware/pocket4-20261020/module-readback.json": "052f9df2ea7f45d41310ec2bc7d60813b73a8117d7d12ed3085dbcca2496b7f3",
+      "hardware/pocket4-20261020/usb-adb-interfaces-probe.py": "196c28a0a1f1d7ee9dd4cb0f814796865fe0aca316f79e3b84575374253e9d3a",
+      "hardware/pocket4-20261020/usb-adb-interfaces-provenance.json": "b5799dd32ed8f14bfb986b3b46efab486238d3d7741a8453f2f680a9c60d1fca",
+      "hardware/pocket4-20261020/usb-adb-interfaces-raw-stdout.log": "47349ff712da463c9b719314a0e97d8e0ec1ee1bae7077038c58d40d3d8415dd",
+      "hardware/pocket4-20261020/usb-adb-interfaces.json": "ed045a527ef65097da70df04772a1e92272df815cde49037210cf006f650894c",
+      "hardware/pocket4-20261020/usb-observation-probe.py": "e9a33858c63caef738779d5833fa20f14c5f9c25800f0e647a6f457821693991",
+      "hardware/pocket4-20261020/usb-observation-provenance.json": "92335ec7d2a185999353e9705f74f91dc68e68ebe9d138ba96285f1fc395b8c6",
+      "hardware/pocket4-20261020/usb-observation-raw-stdout.log": "87266d63c8b57c658a8adbecbc60c4cb5a3a1c0030546bcfad6df4899af7e170",
+      "hardware/pocket4-20261020/usb-observation.json": "74cd04e7e0612317670045a0937a99f717d67e3cf81dc24c6cb53871873b878a"
+    },
+    "probe_records": [
+      {
+        "name": "usb-observation",
+        "observed_utc": "2026-10-20T01:12:24.662282+00:00",
+        "report": "hardware/pocket4-20261020/usb-observation.json",
+        "probe_source": "hardware/pocket4-20261020/usb-observation-probe.py",
+        "raw_stdout": "hardware/pocket4-20261020/usb-observation-raw-stdout.log",
+        "provenance": "hardware/pocket4-20261020/usb-observation-provenance.json",
+        "source_output_sha256": "87266d63c8b57c658a8adbecbc60c4cb5a3a1c0030546bcfad6df4899af7e170",
+        "capture_exit_code": 0
+      },
+      {
+        "name": "usb-adb-interfaces",
+        "observed_utc": "2026-10-20T01:14:27.229661+00:00",
+        "report": "hardware/pocket4-20261020/usb-adb-interfaces.json",
+        "probe_source": "hardware/pocket4-20261020/usb-adb-interfaces-probe.py",
+        "raw_stdout": "hardware/pocket4-20261020/usb-adb-interfaces-raw-stdout.log",
+        "provenance": "hardware/pocket4-20261020/usb-adb-interfaces-provenance.json",
+        "source_output_sha256": "47349ff712da463c9b719314a0e97d8e0ec1ee1bae7077038c58d40d3d8415dd",
+        "capture_exit_code": 0
+      },
+      {
+        "name": "adb-servers",
+        "observed_utc": "2026-10-20T01:15:28.626851+00:00",
+        "report": "hardware/pocket4-20261020/adb-servers.json",
+        "probe_source": "hardware/pocket4-20261020/adb-servers-probe.py",
+        "raw_stdout": "hardware/pocket4-20261020/adb-servers-raw-stdout.log",
+        "provenance": "hardware/pocket4-20261020/adb-servers-provenance.json",
+        "source_output_sha256": "2bd84dacbee515238f6e153bcff06b8792a8e6f4f33426c49eaba02475c2e514",
+        "capture_exit_code": 0
+      },
+      {
+        "name": "donor-identity",
+        "observed_utc": "2026-10-20T01:17:51.920343+00:00",
+        "report": "hardware/pocket4-20261020/donor-identity.json",
+        "probe_source": "hardware/pocket4-20261020/donor-identity-probe.py",
+        "raw_stdout": "hardware/pocket4-20261020/donor-identity-raw-stdout.log",
+        "provenance": "hardware/pocket4-20261020/donor-identity-provenance.json",
+        "source_output_sha256": "40602802e839964dd787f733191aafbe5e2580ea3918f414c2c6bcb5018752e6",
+        "capture_exit_code": 0
+      },
+      {
+        "name": "module-readback",
+        "observed_utc": "2026-10-20T01:20:32.984519+00:00",
+        "report": "hardware/pocket4-20261020/module-readback.json",
+        "probe_source": "hardware/pocket4-20261020/module-readback-probe.py",
+        "raw_stdout": "hardware/pocket4-20261020/module-readback-raw-stdout.log",
+        "provenance": "hardware/pocket4-20261020/module-readback-provenance.json",
+        "source_output_sha256": "c810cc8c73667368c657746956d365ab6cfe879c4d63b1d0a0fce27e320daa99",
+        "capture_exit_code": 0
+      },
+      {
+        "name": "available-nodes",
+        "observed_utc": "2026-10-20T01:25:06.429788+00:00",
+        "report": "hardware/pocket4-20261020/available-nodes.json",
+        "probe_source": "hardware/pocket4-20261020/available-nodes-probe.py",
+        "raw_stdout": "hardware/pocket4-20261020/available-nodes-raw-stdout.log",
+        "provenance": "hardware/pocket4-20261020/available-nodes-provenance.json",
+        "source_output_sha256": "00b84099661bb162e2ee4a80720e62b5d22464270bb177e116a65ad5cdca60fa",
+        "capture_exit_code": 0
+      }
+    ]
+  }
+}
