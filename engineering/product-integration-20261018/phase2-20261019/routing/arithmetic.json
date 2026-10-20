@@ -1,0 +1,468 @@
+{
+  "schema": "razr-product-routing-arithmetic-v1",
+  "inputs_sha256": {
+    "integration/product_routing_diagnostic.py": "044d6176416e0d4a91fe0b798863e99ed7109671d2f4caa0cfe6abf909418c17",
+    "design/product_routing_followup.json": "27ab044938a78727fab79fefaa07aca22bf68df7794a74cda3a6b56e6966a0e8",
+    "design/product_geometry.json": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+    "design/product_interfaces.json": "9a713c497439e3c4e8ac3a7f8ed1fe941c71757d2ee7458ab5f9f08564be5f41"
+  },
+  "g2_turn": {
+    "integral_sin_theta_approx": 0.4860759672270572,
+    "R_per_delta_Z_approx": 0.4365708348013578,
+    "R_per_delta_Z_conservative_numeric_interval": [
+      0.4365708347114577,
+      0.4365708348912579
+    ],
+    "Simpson_intervals": 4096,
+    "analytic_quadrature_truncation_bound": 9.436739245158632e-14,
+    "additional_arithmetic_allowance": 1e-10,
+    "formal_directed_rounding_certificate": false,
+    "theta": "pi*(3*u^2-2*u^3)",
+    "derivation": "bend_length=delta_Z/integral(sin(theta)); max curvature=1.5*pi/bend_length"
+  },
+  "legacy_endpoint_lanes": {
+    "STOW_delta_Z_mm": 8.7,
+    "OPEN_delta_Z_mm": 0.5,
+    "STOW_minimum_radius_approx_mm": 3.7981662627718125,
+    "OPEN_minimum_radius_approx_mm": 0.2182854174006789,
+    "radius_depends_on_Z_lane_separation_not_total_material_length": true
+  },
+  "OLED_retention": [
+    {
+      "flat_tail_request_mm": 0.0,
+      "request_is_not_measured_COF_or_clamp": true,
+      "whole_motion_material_interval_mm": [
+        187.76880324898116,
+        188.36880324898115
+      ],
+      "lower_limit_is_strict_if_zero_reserve": true,
+      "nonempty_interval": true,
+      "interval_width_mm": 0.5999999999999943,
+      "current_material_length_mm": 187.9,
+      "current_PREDOCK_flat_tail_mm": 0.1311967510188481,
+      "current_material_meets_flat_tail_request": true,
+      "minimum_added_material_to_current_trial_mm": 0.0,
+      "minimum_storage_extension_toward_B_foot_if_turn_unchanged_mm": 0.0,
+      "maximum_B_storage_y_min_if_turn_unchanged_mm": 6.0,
+      "optimistic_maximum_turn_center_y_from_outer_head_mm": 86.22500000000001,
+      "optimistic_turn_forward_allowance_mm": 0.4750000000000085,
+      "minimum_storage_extension_even_with_optimistic_turn_shift_mm": 0.0,
+      "head_bound_is_not_a_free_cavity_or_native_clearance_proof": true,
+      "current_COF_envelope": null,
+      "actual_inactive_edge_available_for_clamp_mm": null,
+      "physical_retention_or_traction_qualified": false,
+      "derivation": "L >= (c-a+slide)+pi*r+reserve; L <= (c-a)+pi*r+(c-y_min)"
+    },
+    {
+      "flat_tail_request_mm": 1.0,
+      "request_is_not_measured_COF_or_clamp": true,
+      "whole_motion_material_interval_mm": [
+        188.76880324898116,
+        188.36880324898115
+      ],
+      "lower_limit_is_strict_if_zero_reserve": false,
+      "nonempty_interval": false,
+      "interval_width_mm": -0.4000000000000057,
+      "current_material_length_mm": 187.9,
+      "current_PREDOCK_flat_tail_mm": 0.1311967510188481,
+      "current_material_meets_flat_tail_request": false,
+      "minimum_added_material_to_current_trial_mm": 0.8688032489811519,
+      "minimum_storage_extension_toward_B_foot_if_turn_unchanged_mm": 0.4000000000000057,
+      "maximum_B_storage_y_min_if_turn_unchanged_mm": 5.0,
+      "optimistic_maximum_turn_center_y_from_outer_head_mm": 86.22500000000001,
+      "optimistic_turn_forward_allowance_mm": 0.4750000000000085,
+      "minimum_storage_extension_even_with_optimistic_turn_shift_mm": 0.0,
+      "head_bound_is_not_a_free_cavity_or_native_clearance_proof": true,
+      "current_COF_envelope": null,
+      "actual_inactive_edge_available_for_clamp_mm": null,
+      "physical_retention_or_traction_qualified": false,
+      "derivation": "L >= (c-a+slide)+pi*r+reserve; L <= (c-a)+pi*r+(c-y_min)"
+    },
+    {
+      "flat_tail_request_mm": 2.0,
+      "request_is_not_measured_COF_or_clamp": true,
+      "whole_motion_material_interval_mm": [
+        189.76880324898116,
+        188.36880324898115
+      ],
+      "lower_limit_is_strict_if_zero_reserve": false,
+      "nonempty_interval": false,
+      "interval_width_mm": -1.4000000000000057,
+      "current_material_length_mm": 187.9,
+      "current_PREDOCK_flat_tail_mm": 0.1311967510188481,
+      "current_material_meets_flat_tail_request": false,
+      "minimum_added_material_to_current_trial_mm": 1.868803248981152,
+      "minimum_storage_extension_toward_B_foot_if_turn_unchanged_mm": 1.4000000000000057,
+      "maximum_B_storage_y_min_if_turn_unchanged_mm": 4.0,
+      "optimistic_maximum_turn_center_y_from_outer_head_mm": 86.22500000000001,
+      "optimistic_turn_forward_allowance_mm": 0.4750000000000085,
+      "minimum_storage_extension_even_with_optimistic_turn_shift_mm": 0.9249999999999972,
+      "head_bound_is_not_a_free_cavity_or_native_clearance_proof": true,
+      "current_COF_envelope": null,
+      "actual_inactive_edge_available_for_clamp_mm": null,
+      "physical_retention_or_traction_qualified": false,
+      "derivation": "L >= (c-a+slide)+pi*r+reserve; L <= (c-a)+pi*r+(c-y_min)"
+    },
+    {
+      "flat_tail_request_mm": 3.0,
+      "request_is_not_measured_COF_or_clamp": true,
+      "whole_motion_material_interval_mm": [
+        190.76880324898116,
+        188.36880324898115
+      ],
+      "lower_limit_is_strict_if_zero_reserve": false,
+      "nonempty_interval": false,
+      "interval_width_mm": -2.4000000000000057,
+      "current_material_length_mm": 187.9,
+      "current_PREDOCK_flat_tail_mm": 0.1311967510188481,
+      "current_material_meets_flat_tail_request": false,
+      "minimum_added_material_to_current_trial_mm": 2.868803248981152,
+      "minimum_storage_extension_toward_B_foot_if_turn_unchanged_mm": 2.4000000000000057,
+      "maximum_B_storage_y_min_if_turn_unchanged_mm": 3.0,
+      "optimistic_maximum_turn_center_y_from_outer_head_mm": 86.22500000000001,
+      "optimistic_turn_forward_allowance_mm": 0.4750000000000085,
+      "minimum_storage_extension_even_with_optimistic_turn_shift_mm": 1.9249999999999972,
+      "head_bound_is_not_a_free_cavity_or_native_clearance_proof": true,
+      "current_COF_envelope": null,
+      "actual_inactive_edge_available_for_clamp_mm": null,
+      "physical_retention_or_traction_qualified": false,
+      "derivation": "L >= (c-a+slide)+pi*r+reserve; L <= (c-a)+pi*r+(c-y_min)"
+    },
+    {
+      "flat_tail_request_mm": 6.0,
+      "request_is_not_measured_COF_or_clamp": true,
+      "whole_motion_material_interval_mm": [
+        193.76880324898116,
+        188.36880324898115
+      ],
+      "lower_limit_is_strict_if_zero_reserve": false,
+      "nonempty_interval": false,
+      "interval_width_mm": -5.400000000000006,
+      "current_material_length_mm": 187.9,
+      "current_PREDOCK_flat_tail_mm": 0.1311967510188481,
+      "current_material_meets_flat_tail_request": false,
+      "minimum_added_material_to_current_trial_mm": 5.868803248981152,
+      "minimum_storage_extension_toward_B_foot_if_turn_unchanged_mm": 5.400000000000006,
+      "maximum_B_storage_y_min_if_turn_unchanged_mm": 0.0,
+      "optimistic_maximum_turn_center_y_from_outer_head_mm": 86.22500000000001,
+      "optimistic_turn_forward_allowance_mm": 0.4750000000000085,
+      "minimum_storage_extension_even_with_optimistic_turn_shift_mm": 4.924999999999997,
+      "head_bound_is_not_a_free_cavity_or_native_clearance_proof": true,
+      "current_COF_envelope": null,
+      "actual_inactive_edge_available_for_clamp_mm": null,
+      "physical_retention_or_traction_qualified": false,
+      "derivation": "L >= (c-a+slide)+pi*r+reserve; L <= (c-a)+pi*r+(c-y_min)"
+    },
+    {
+      "flat_tail_request_mm": 12.0,
+      "request_is_not_measured_COF_or_clamp": true,
+      "whole_motion_material_interval_mm": [
+        199.76880324898116,
+        188.36880324898115
+      ],
+      "lower_limit_is_strict_if_zero_reserve": false,
+      "nonempty_interval": false,
+      "interval_width_mm": -11.400000000000006,
+      "current_material_length_mm": 187.9,
+      "current_PREDOCK_flat_tail_mm": 0.1311967510188481,
+      "current_material_meets_flat_tail_request": false,
+      "minimum_added_material_to_current_trial_mm": 11.868803248981152,
+      "minimum_storage_extension_toward_B_foot_if_turn_unchanged_mm": 11.400000000000006,
+      "maximum_B_storage_y_min_if_turn_unchanged_mm": -6.0,
+      "optimistic_maximum_turn_center_y_from_outer_head_mm": 86.22500000000001,
+      "optimistic_turn_forward_allowance_mm": 0.4750000000000085,
+      "minimum_storage_extension_even_with_optimistic_turn_shift_mm": 10.924999999999997,
+      "head_bound_is_not_a_free_cavity_or_native_clearance_proof": true,
+      "current_COF_envelope": null,
+      "actual_inactive_edge_available_for_clamp_mm": null,
+      "physical_retention_or_traction_qualified": false,
+      "derivation": "L >= (c-a+slide)+pi*r+reserve; L <= (c-a)+pi*r+(c-y_min)"
+    }
+  ],
+  "complete_endpoint_stack_necessary_conditions": {
+    "legacy": [
+      {
+        "variant": "legacy",
+        "flipped": false,
+        "gap_mm": 0.0,
+        "under_B_OLED_return_guide": {
+          "anchor_z_interval_mm": [
+            4.9,
+            4.2
+          ],
+          "necessary_envelope_fit_possible": false,
+          "height_shortfall_mm": 0.7000000000000002,
+          "cavity_is_not_proved_empty": true,
+          "full_endpoint_z_span_mm": 5.7,
+          "normal_clearance_each_face_mm": 0.0
+        },
+        "optimistic_whole_internal_thickness": {
+          "anchor_z_interval_mm": [
+            4.9,
+            5.8999999999999995
+          ],
+          "necessary_envelope_fit_possible": true,
+          "height_shortfall_mm": 0.0,
+          "cavity_is_not_proved_empty": true,
+          "full_endpoint_z_span_mm": 5.7,
+          "normal_clearance_each_face_mm": 0.0
+        }
+      },
+      {
+        "variant": "legacy",
+        "flipped": true,
+        "gap_mm": 0.0,
+        "under_B_OLED_return_guide": {
+          "anchor_z_interval_mm": [
+            2.1,
+            1.4000000000000004
+          ],
+          "necessary_envelope_fit_possible": false,
+          "height_shortfall_mm": 0.6999999999999997,
+          "cavity_is_not_proved_empty": true,
+          "full_endpoint_z_span_mm": 5.7,
+          "normal_clearance_each_face_mm": 0.0
+        },
+        "optimistic_whole_internal_thickness": {
+          "anchor_z_interval_mm": [
+            2.1,
+            3.0999999999999996
+          ],
+          "necessary_envelope_fit_possible": true,
+          "height_shortfall_mm": 0.0,
+          "cavity_is_not_proved_empty": true,
+          "full_endpoint_z_span_mm": 5.7,
+          "normal_clearance_each_face_mm": 0.0
+        }
+      },
+      {
+        "variant": "legacy",
+        "flipped": false,
+        "gap_mm": 0.2,
+        "under_B_OLED_return_guide": {
+          "anchor_z_interval_mm": [
+            5.1,
+            4.0
+          ],
+          "necessary_envelope_fit_possible": false,
+          "height_shortfall_mm": 1.0999999999999996,
+          "cavity_is_not_proved_empty": true,
+          "full_endpoint_z_span_mm": 5.7,
+          "normal_clearance_each_face_mm": 0.2
+        },
+        "optimistic_whole_internal_thickness": {
+          "anchor_z_interval_mm": [
+            5.1,
+            5.699999999999999
+          ],
+          "necessary_envelope_fit_possible": true,
+          "height_shortfall_mm": 0.0,
+          "cavity_is_not_proved_empty": true,
+          "full_endpoint_z_span_mm": 5.7,
+          "normal_clearance_each_face_mm": 0.2
+        }
+      },
+      {
+        "variant": "legacy",
+        "flipped": true,
+        "gap_mm": 0.2,
+        "under_B_OLED_return_guide": {
+          "anchor_z_interval_mm": [
+            2.3,
+            1.2000000000000002
+          ],
+          "necessary_envelope_fit_possible": false,
+          "height_shortfall_mm": 1.0999999999999996,
+          "cavity_is_not_proved_empty": true,
+          "full_endpoint_z_span_mm": 5.7,
+          "normal_clearance_each_face_mm": 0.2
+        },
+        "optimistic_whole_internal_thickness": {
+          "anchor_z_interval_mm": [
+            2.3,
+            2.8999999999999995
+          ],
+          "necessary_envelope_fit_possible": true,
+          "height_shortfall_mm": 0.0,
+          "cavity_is_not_proved_empty": true,
+          "full_endpoint_z_span_mm": 5.7,
+          "normal_clearance_each_face_mm": 0.2
+        }
+      }
+    ],
+    "EP2": [
+      {
+        "variant": "EP2",
+        "flipped": false,
+        "gap_mm": 0.0,
+        "under_B_OLED_return_guide": {
+          "anchor_z_interval_mm": [
+            2.3,
+            2.6500000000000004
+          ],
+          "necessary_envelope_fit_possible": true,
+          "height_shortfall_mm": 0.0,
+          "cavity_is_not_proved_empty": true,
+          "full_endpoint_z_span_mm": 4.65,
+          "normal_clearance_each_face_mm": 0.0
+        },
+        "optimistic_whole_internal_thickness": {
+          "anchor_z_interval_mm": [
+            2.3,
+            4.35
+          ],
+          "necessary_envelope_fit_possible": true,
+          "height_shortfall_mm": 0.0,
+          "cavity_is_not_proved_empty": true,
+          "full_endpoint_z_span_mm": 4.65,
+          "normal_clearance_each_face_mm": 0.0
+        }
+      },
+      {
+        "variant": "EP2",
+        "flipped": true,
+        "gap_mm": 0.0,
+        "under_B_OLED_return_guide": {
+          "anchor_z_interval_mm": [
+            3.65,
+            4.0
+          ],
+          "necessary_envelope_fit_possible": true,
+          "height_shortfall_mm": 0.0,
+          "cavity_is_not_proved_empty": true,
+          "full_endpoint_z_span_mm": 4.65,
+          "normal_clearance_each_face_mm": 0.0
+        },
+        "optimistic_whole_internal_thickness": {
+          "anchor_z_interval_mm": [
+            3.65,
+            5.699999999999999
+          ],
+          "necessary_envelope_fit_possible": true,
+          "height_shortfall_mm": 0.0,
+          "cavity_is_not_proved_empty": true,
+          "full_endpoint_z_span_mm": 4.65,
+          "normal_clearance_each_face_mm": 0.0
+        }
+      },
+      {
+        "variant": "EP2",
+        "flipped": false,
+        "gap_mm": 0.2,
+        "under_B_OLED_return_guide": {
+          "anchor_z_interval_mm": [
+            2.5,
+            2.45
+          ],
+          "necessary_envelope_fit_possible": false,
+          "height_shortfall_mm": 0.04999999999999982,
+          "cavity_is_not_proved_empty": true,
+          "full_endpoint_z_span_mm": 4.65,
+          "normal_clearance_each_face_mm": 0.2
+        },
+        "optimistic_whole_internal_thickness": {
+          "anchor_z_interval_mm": [
+            2.5,
+            4.1499999999999995
+          ],
+          "necessary_envelope_fit_possible": true,
+          "height_shortfall_mm": 0.0,
+          "cavity_is_not_proved_empty": true,
+          "full_endpoint_z_span_mm": 4.65,
+          "normal_clearance_each_face_mm": 0.2
+        }
+      },
+      {
+        "variant": "EP2",
+        "flipped": true,
+        "gap_mm": 0.2,
+        "under_B_OLED_return_guide": {
+          "anchor_z_interval_mm": [
+            3.85,
+            3.8000000000000003
+          ],
+          "necessary_envelope_fit_possible": false,
+          "height_shortfall_mm": 0.04999999999999982,
+          "cavity_is_not_proved_empty": true,
+          "full_endpoint_z_span_mm": 4.65,
+          "normal_clearance_each_face_mm": 0.2
+        },
+        "optimistic_whole_internal_thickness": {
+          "anchor_z_interval_mm": [
+            3.85,
+            5.5
+          ],
+          "necessary_envelope_fit_possible": true,
+          "height_shortfall_mm": 0.0,
+          "cavity_is_not_proved_empty": true,
+          "full_endpoint_z_span_mm": 4.65,
+          "normal_clearance_each_face_mm": 0.2
+        }
+      }
+    ]
+  },
+  "legacy_internal_interference_predictions": [
+    {
+      "end": "A",
+      "a": "lower_jaw",
+      "b": "static_26wire_transfer_reservation",
+      "positive_common_mm3": 71.55000000000001,
+      "native_executed_here": false
+    },
+    {
+      "end": "B",
+      "a": "lower_jaw",
+      "b": "static_26wire_transfer_reservation",
+      "positive_common_mm3": 164.565,
+      "native_executed_here": false
+    }
+  ],
+  "candidate_definition": {
+    "id": "EP2_separate_board_pair_and_clamp",
+    "status": "new_geometric_rearrangement_requiring_native_self_and_phone_scene_checks",
+    "board_pair_unchanged_native_artwork": true,
+    "boards_per_end": 2,
+    "boards_across_both_ends": 4,
+    "board_x_mm": [
+      -6.0,
+      6.0
+    ],
+    "board_y_mm": [
+      -14.0,
+      -2.0
+    ],
+    "DP_z_mm": [
+      0.4,
+      1.2
+    ],
+    "DS_z_mm": [
+      1.8,
+      2.6
+    ],
+    "clamp_y_mm": [
+      7.0,
+      21.0
+    ],
+    "clamp_fastener_y_mm": [
+      15.0,
+      19.0
+    ],
+    "carrier_width_mm": 14.6,
+    "carrier_exceeds_existing_12mm_B_allocation_by_mm": 2.6,
+    "carrier_support": "Connected lower-jaw carrier with side walls outside the complete 12mm moving ribbon and upper ledges supporting both PCB stacks; nominal M1 attachment and thin ledge thread/load capacity remain unqualified",
+    "transfer_kind": "Connected finite 26-wire space reservation around the connector and board fasteners, then clear of the clamp to exposed flex end pads. Individual insulated wires are not yet routed.",
+    "individual_static_conductors_routed": false,
+    "actual_wire_diameter_or_stackup_selected": false,
+    "actual_COF_or_OEM_connector_assigned": false,
+    "coupon_total_length_mm": 164.0,
+    "coupon_free_length_mm": 140.0,
+    "coupon_stiffened_end_length_mm": 12.0,
+    "nominal_hardware_only": true
+  },
+  "native_checks_executed": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "full_cycle_internal_route_accepted": false,
+  "selected_OLED_COF_and_dynamic_stack": false
+}

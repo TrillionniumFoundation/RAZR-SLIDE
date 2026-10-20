@@ -150,12 +150,79 @@
             "report": "engineering/product-integration-20261018/validation/repair-3eae4e7-report.json.gz"
           }
         ]
+      },
+      {
+        "label": "Product branch phase2: full execution FAILED, OPEN collision expectation",
+        "tests": 1297,
+        "suites": 33,
+        "functional_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+        "scope": "all_current_unit_suites",
+        "report": "engineering/product-integration-20261018/phase2-20261019/validation/full-unit-1c970e3-report.json.gz",
+        "uncompressed_report_sha256": "e300c8c2a15c6719d1b36a09f8b33a568b094155c3aa4ec740f6b53d3263f853",
+        "single_full_execution": true,
+        "passed": false,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "result": "FAILED",
+        "in_main": false
+      },
+      {
+        "label": "Product branch phase2: bounded routing test-oracle repair PASS",
+        "functional_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+        "model_native_execution_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+        "scope": "selected_routing_followup_after_test_oracle_correction",
+        "single_full_execution": false,
+        "suites": 1,
+        "tests": 14,
+        "passed": true,
+        "exit_code": 0,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 73.22669722198043,
+        "started_utc": "2026-10-19T05:26:50.084165+00:00",
+        "finished_utc": "2026-10-19T05:28:03.310887+00:00",
+        "source_bytes_unchanged": true,
+        "report": "engineering/product-integration-20261018/phase2-20261019/validation/routing-repair-report.json.gz",
+        "uncompressed_report_sha256": "e50e71ab97518fea85b71e29fb4f0f0ee89e6905885239b5d947ea74a2e0a3b4",
+        "geometry_changed": false,
+        "candidate_go": false,
+        "hardware_qualification": false,
+        "manufacturing_go": false,
+        "result": "PASS",
+        "in_main": false
+      },
+      {
+        "label": "Product branch phase2: disjoint 33-suite selection verified, not one full run",
+        "functional_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+        "native_execution_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+        "scope": "disjoint_passing_suite_selection_from_two_executions",
+        "single_full_execution": false,
+        "full_execution_passed": false,
+        "selected_suite_coverage_passed": true,
+        "suites": 33,
+        "tests": 1297,
+        "full_run_passing_suites": 32,
+        "full_run_passing_tests": 1283,
+        "bounded_repair_suites": 1,
+        "bounded_repair_tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "report": "engineering/product-integration-20261018/phase2-20261019/validation/canonical-selection.json",
+        "report_sha256": "4e706977a7befa03f3334d78104f8b69beb5fed72e6815e17d698045aaa699ed",
+        "not_a_new_execution_of_all_suites": true,
+        "candidate_go": false,
+        "manufacturing_go": false,
+        "result": "PASSING_SELECTION_VERIFIED",
+        "in_main": false
       }
     ],
     "configured_count_is_not_a_pass": true
   },
   "previous_current_execution_summary": "engineering/panel-bearing-web-20261015/DELIVERY_VERIFICATION.json",
-  "current_fresh_verification": "The first canonical execution at b6abcb6326439270ec137cdac00cd6dd7ade4ac7 ran 32 suites / 1220 tests and FAILED; its raw failure remains preserved. The bounded repair at 3eae4e7258814c7f5454937535d6c642dd51662f passed 7 suites / 182 tests. The independently checked canonical selection combines the first run's passing 25 suites / 1058 tests with the repaired 7 suites / 182 tests: 32 suites / 1240 tests, not one fresh full run. The selection report is engineering/product-integration-20261018/validation/canonical-selection.json. This product-branch evidence is published in PR #36 and is not merged into main; accepted main 1187 and PR35 draft 1216 remain separate. New mechanical execution passed 14 targeted tests, 8106 changed/new-part pair checks, 484 OLED enclosures, 9021 added-material non-self comparisons and complete STEP readbacks with 99/99/106 participants. FPC reconstruction rejected all 49 motion plus 15 manual states with zero Boolean-operation errors; the selected-supplier dynamic bend-radius limit is unknown. New electrical/FPC evidence contains 90 files plus its index. The three PCB results reuse retained KiCad v4 zero-DRC/zero-unconnected/zero-footprint-error evidence and were not rerun. Original temporary mechanical/FPC large files were lost; current rebuilt artifacts retain new execution identities. PR25 is closed as superseded by PR36 without merging its old driver; PR35 remains draft. PR36 hosted run 39188719769 failed in all 12 jobs before any step ran; the current platform failure cause is unverified and no hosted test pass is claimed. Follow-up on 2026-10-19 directly retrieved the PR36 497e0da run annotation: GitHub prevented job startup because recent payments failed or a spending limit needs increasing. One full-unit job retry (attempt 2) and its aggregate job again executed zero steps and retained that annotation; ten native results in the attempt are inherited, not new executions. New sequenced assembly, EP2 carrier and evidence-ingestion sources are registered; their configured test count is not a completed result.",
+  "current_fresh_verification": "The full execution on 1c970e34a72f83ac1148ed3dee11e050ed5508dd ran 33 suites / 1297 tests and FAILED: one failure, zero errors/skips, exit 1, unchanged source bytes. A bounded routing-followup repair on 4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c passed 14 tests, zero failures/errors/skips. The only changed file corrects a positive test expectation to preserve three real OPEN B-clamp collisions. Independent disjoint selection verifies 32 passing suites / 1283 tests from the failed full run plus 1 suite / 14 tests from the repair: 33 suites / 1297 tests across two executions, not a single full PASS and not a geometry fix. Report: engineering/product-integration-20261018/phase2-20261019/validation/full-unit-1c970e3-report.json.gz. Independent STEP readback passed 154/154/161 common-assembly solids and 14 individual captured parts plus an 11-solid local assembly. Captured-follower checks reproduced 8 blocked original axial paths, cleared 12 declared continuous local insertion actions, and retained 5 zero-difference local reassemblies plus 7 native source comparisons. EP2 clears 190 internal pairs per end but both old/new endpoint variants remain rejected in all three phone states. The earlier main-host donor readback is empty; 2026-10-20 Pocket4 port 5061 readback now identifies the connected XT2551-3. No new-layout physical cycle or powered phone result exists. Run 39201906846 on native-execution commit 1c970e3 has 12 zero-step jobs, all with directly retrieved billing/payment-or-spend annotations; no hosted tests executed. Earlier b6abcb6 failed full execution, 3eae4e7 bounded repair and their 1240-test disjoint selection remain separate historical records. Accepted main 1187 and PR35 draft 1216 retain their own scope. Previous 8106/484/9021 mechanical checks, 64 FPC rejections and retained KiCad v4 results belong to the previous product execution and were not rerun as those same experiments.",
   "bench_cover_first_candidate": {
     "source": "integration/cover_admission.py",
     "stages": 22,
@@ -531,7 +598,7 @@
     "actual_pressure_or_preload_qualified": false
   },
   "current_product_state": "design/current_product.json",
-  "current_product_stage": "PR #36 continues with sequenced separable captured followers, a full common assembly exporter including the explicitly rejected EP2/FPC candidate, and executable donor/physical-record ingestion. Native and canonical verification of this follow-up are pending at this functional snapshot. Main remains a1b3cc1; PR35 remains a separate draft; PR25 is closed without merging its old driver.",
+  "current_product_stage": "PR36 now includes sequenced separable followers, a complete three-state common assembly with 154/154/161 participants and independent STEP readbacks, a natively checked but still rejected EP2/FPC candidate, and executable raw hardware evidence ingestion. The 1c970e3 full run executed 1297 tests with one failed positive expectation; 4fe96be preserves the actual OPEN B-clamp collision in a 14-test bounded passing rerun. Independent selection verifies 32+1 suites across those two executions, not a single full PASS. Actual donor geometry, fabricated/powered prototypes and hosted execution remain unverified. Main remains a1b3cc1; PR35 is a separate draft; PR25 is closed without merging its old driver.",
   "current_open_research_prs": [
     {
       "number": 35,
@@ -545,57 +612,57 @@
   "current_work_packages": [
     {
       "id": "WP0",
-      "result": "Current entries remain generated from one state file; actual PR36 billing/spend startup failure is now recorded, including one bounded retry with zero executed steps.",
+      "result": "Current entries retain the full 1297-test failure, bounded 14-test repair and independently verified 33-suite disjoint selection. Functional head 1c970e3 has 12 hosted zero-step billing/spend rejections.",
       "path": "tools/inspect_actions_run.py",
-      "remaining": "Restore the owning account payment/budget condition before a real hosted run; functional follow-up verification is pending."
+      "remaining": "Account payment/budget conditions must be restored before an actually executed hosted report can exist."
     },
     {
       "id": "WP1",
-      "result": "Donor v2 records source/design identity and redacted command stdout/stderr; raw physical labels and terminal imports require original attachments and exact design binding. Fresh ADB and USB observations found no donor.",
+      "result": "Pocket4 ADB 5061 now reads one authorized XT2551-3, matched to its USB identity and the Chinese OEM model manual. Raw identity, display/input registration and two-battery software observations are preserved. The old main-host empty observation remains scoped to that host/time.",
       "path": "engineering/product-integration-20261018/hardware/IMPORT_EVIDENCE.md",
-      "remaining": "Connect and identify actual donor, display/touch/COF, mainboard, cells and every physical terminal."
+      "remaining": "Obtain actual board/module labels, revisions, geometry and every board-side terminal. Regional OEM service parts remain candidates until matched to the Chinese donor."
     },
     {
       "id": "WP2",
-      "result": "A separable-follower common scene exporter retains the native whole material and includes all design allocations, trial OLED and complete rejected EP2/FPC. Its native execution/readback is pending.",
+      "result": "Common split assembly actually exported and independently reread at 154/154/161 participants, including all four allocations, OLED, forty complete EP2 endpoint bodies and the finite ribbon.",
       "path": "integration/product_split_assembly.py",
-      "remaining": "Replace allocations with measured donor geometry; resolve B mainboard, EP2 width, real cell/swelling/tab, RF and thermal spaces; 4700 mAh remains unverified."
+      "remaining": "Replace allocations with measured modules; resolve the B 12-mm lane versus 14.6-mm EP2, real cells/tabs/swelling, RF/thermal space and the unverified 4700-mAh target."
     },
     {
       "id": "WP3",
-      "result": "Finite-tail analysis exposes the 0.6 mm total-length window of the existing OLED family and quantifies storage/material changes for explicit clamp-tail requests.",
+      "result": "Executed bounded analysis quantifies the existing 0.6-mm OLED total-length window and finite tail/storage consequences; actual COF remains unknown.",
       "path": "integration/product_routing_diagnostic.py",
-      "remaining": "Obtain actual panel/COF and dynamic data; design full-motion traction, support and retention; no arbitrary tail request is a supplier requirement."
+      "remaining": "Use actual OLED inactive material, COF and dynamic data to design complete traction, retention and support conversion."
     },
     {
       "id": "WP4",
-      "result": "Full endpoint internal-pair checks and a separate EP2 carrier arrangement are implemented. The unchanged G2 route still has the OPEN layer-separation radius limitation. Final EP2 native execution is pending.",
+      "result": "Native EP2 endpoint self-checks have zero rejections in 190 pairs per end. OPEN finite material intersects two B clamp screws and the B lower jaw; the test correction preserves these counterexamples. Both complete endpoint variants remain rejected in all three key phone states.",
       "path": "engineering/product-integration-20261018/routing-followup/README.md",
-      "remaining": "A whole in-phone candidate must clear all solids, retain real static conductors and fastenings, and meet selected dynamic material conditions over the complete return cycle."
+      "remaining": "Redesign endpoint anchoring, static conductors and the complete internal route over the forward and return motion with sourced dynamic material limits."
     },
     {
       "id": "WP5",
-      "result": "A concrete split-floor/retainer sequence removes the original axial assembly traps without changing nominal material; whole-scene repartition and readback are implemented and pending final execution.",
+      "result": "Eight original axial insertion traps are reproduced; twelve new continuous local insertion actions and source/material checks pass. Final individual and common STEP readbacks pass.",
       "path": "engineering/product-integration-20261018/physical-test-followon-20261019/README.md",
-      "remaining": "Qualify real joining processes, retained joints and tool access, complete housing/cartridge installation, holding forces and complete physical cycles."
+      "remaining": "Qualify joining processes and thin retained joints; prove full housing/tool installation and actual complete cycles, holding, skew and relocking."
     },
     {
       "id": "WP6",
-      "result": "Original electrical/KiCad evidence remains versioned. New physical terminal and phone-function record imports bind raw data, specimen and design; no powered measurement is available.",
+      "result": "Physical terminal/phone-function import preserves raw data, specimen and exact design identity; original KiCad v4 evidence remains historical and no new powered result is present.",
       "path": "integration/product_interfaces.py",
-      "remaining": "Identify actual protected dual-cell/charge topology and OEM pins, then verify real display/touch and moving supply/USB continuity."
+      "remaining": "Identify OEM terminals and original protected charge/power topology, then measure display/touch, power and moving USB continuity."
     },
     {
       "id": "WP7",
-      "result": "A calibrated motion/force/continuity log analyser records uncertainty and requires exact Git blobs for physical records; external operating force is not assigned as an internal KEY load.",
+      "result": "Calibrated motion/force/continuity analysis is covered by the full unit run and checks the exact listed design files and Git blobs while rejecting synthetic physical claims; unlisted CAD/EP2 changes are outside that binding. External operator force is not equated to internal KEY load.",
       "path": "engineering/product-integration-20261018/physical-test-followon-20261019/analyse_motion_log.py",
-      "remaining": "Measure real materials, free spans and internal load transfer; no new FE/QP solve is started without those inputs and identified restart state."
+      "remaining": "Measure actual material, spans, joints and internal load transfer. Preserve the PR35 stop until the complete identified response cache can be restored."
     },
     {
       "id": "WP8",
-      "result": "Sequenced captured-follower parts, complete common-scene export and real-data analysis/ingestion are implemented as research deliverables.",
+      "result": "Final research CAD packages, actual readbacks, original-record ingestion and calibrated analysis are delivered; no physical sample has been observed.",
       "path": "engineering/product-integration-20261018/physical-test-followon-20261019/README.md",
-      "remaining": "No physical sample exists in the available evidence; fabrication, ordered build and actual measurements still have to occur."
+      "remaining": "Manufacture qualified unpowered samples, complete ordered build and cycles, then flex coupons and the actual protected electrical chain with raw measurements."
     }
   ],
   "current_closed_research_prs": [
