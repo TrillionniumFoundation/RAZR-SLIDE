@@ -70,3 +70,7 @@ python3 tools/read_donor.py \
 | tools/read_donor.py | b2dada86400ec43ba1ace3a02b657fcf6790744656a4bfb8f322b4bcd091b351 |
 | integration/product-study-tests/test_donor_readback.py | 98f64eab251ca6e8d13549edd6fb97ea01c6f707f4d4c41aa2dc65e47a9bd54d |
 
+
+## 实际正式采集与导入
+
+端口修复及测试适配已在 f4db100cb62c0ac492118bf605b0e9e7ac7cce32 发布。2026-10-20 的实际 17 条只读采集、部分身份导入和保留的失败见 [DONOR_IMPORT.md](hardware/DONOR_IMPORT.md) 及 [第三阶段总览](README.md)。当前仅确认型号，物理平台和全部端子尚未绑定。

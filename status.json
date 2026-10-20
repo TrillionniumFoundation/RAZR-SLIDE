@@ -69,11 +69,11 @@
   ],
   "previous_production_review": "engineering/PRODUCTION_BLOCKERS_R6.md",
   "current_input_registry": "integration/assembly_inputs.json",
-  "current_execution_summary": "engineering/product-integration-20261018/phase2-20261019/SUMMARY.json",
+  "current_execution_summary": "engineering/product-integration-20261018/phase3-20261020/SUMMARY.json",
   "current_unit_tests": {
     "manifest": "tools/test_suites.json",
-    "configured_minimum": 1303,
-    "groups": 33,
+    "configured_minimum": 1310,
+    "groups": 34,
     "completed_runs": [
       {
         "label": "Accepted main baseline",
@@ -217,12 +217,54 @@
         "manufacturing_go": false,
         "result": "PASSING_SELECTION_VERIFIED",
         "in_main": false
+      },
+      {
+        "label": "Product branch phase3: donor collector suite FAILED at legacy mock",
+        "functional_commit": "3e6864ccea6c03a651dd220a0c1510c2ea22dfec",
+        "scope": "selected_product_integration_suite_102_test_identities",
+        "tests": 102,
+        "suites": 1,
+        "single_full_execution": false,
+        "passed": false,
+        "result": "FAILED",
+        "failures": 0,
+        "errors": 13,
+        "skipped": 0,
+        "seconds": 77.11136691,
+        "source_bytes_unchanged": true,
+        "in_main": false,
+        "report": "engineering/product-integration-20261018/phase3-20261020/validation/3e6864c-failed-report.json.gz",
+        "uncompressed_report_sha256": "ae0dee358a853439378dd0057cd069914d331b5e4fcb30d1f83b51d0e5a4a651",
+        "hardware_qualification": false,
+        "candidate_go": false,
+        "manufacturing_go": false
+      },
+      {
+        "label": "Product branch phase3: bounded donor fixture repair PASS",
+        "functional_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+        "scope": "selected_product_integration_suite_102_test_identities",
+        "tests": 102,
+        "suites": 1,
+        "single_full_execution": false,
+        "passed": true,
+        "result": "PASS",
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 72.37533739,
+        "source_bytes_unchanged": true,
+        "in_main": false,
+        "report": "engineering/product-integration-20261018/phase3-20261020/validation/f4db100-passed-report.json.gz",
+        "uncompressed_report_sha256": "b3d63ee335d0b13de656b393de1be874a51ee63b8f9d1669498cfaf8dd4ef910",
+        "hardware_qualification": false,
+        "candidate_go": false,
+        "manufacturing_go": false
       }
     ],
     "configured_count_is_not_a_pass": true
   },
   "previous_current_execution_summary": "engineering/panel-bearing-web-20261015/DELIVERY_VERIFICATION.json",
-  "current_fresh_verification": "The full execution on 1c970e34a72f83ac1148ed3dee11e050ed5508dd ran 33 suites / 1297 tests and FAILED: one failure, zero errors/skips, exit 1, unchanged source bytes. A bounded routing-followup repair on 4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c passed 14 tests, zero failures/errors/skips. The only changed file corrects a positive test expectation to preserve three real OPEN B-clamp collisions. Independent disjoint selection verifies 32 passing suites / 1283 tests from the failed full run plus 1 suite / 14 tests from the repair: 33 suites / 1297 tests across two executions, not a single full PASS and not a geometry fix. Report: engineering/product-integration-20261018/phase2-20261019/validation/full-unit-1c970e3-report.json.gz. Independent STEP readback passed 154/154/161 common-assembly solids and 14 individual captured parts plus an 11-solid local assembly. Captured-follower checks reproduced 8 blocked original axial paths, cleared 12 declared continuous local insertion actions, and retained 5 zero-difference local reassemblies plus 7 native source comparisons. EP2 clears 190 internal pairs per end but both old/new endpoint variants remain rejected in all three phone states. The earlier main-host donor readback is empty; 2026-10-20 Pocket4 port 5061 readback now identifies the connected XT2551-3. No new-layout physical cycle or powered phone result exists. Run 39201906846 on native-execution commit 1c970e3 has 12 zero-step jobs, all with directly retrieved billing/payment-or-spend annotations; no hosted tests executed. Earlier b6abcb6 failed full execution, 3eae4e7 bounded repair and their 1240-test disjoint selection remain separate historical records. Accepted main 1187 and PR35 draft 1216 retain their own scope. Previous 8106/484/9021 mechanical checks, 64 FPC rejections and retained KiCad v4 results belong to the previous product execution and were not rerun as those same experiments.",
+  "current_fresh_verification": "The donor product-integration selection on 3e6864c actually ran 102 tests and failed with 13 errors in the shared legacy query mock. The sole repair on f4db100 accepts and asserts the new server-port argument in that mock; all the same 102 test identities then passed with unchanged source bytes. Both original execution reports and the failure are retained. EP3 adds seven configured arithmetic tests; native three-pose checks and the combined 109-test selection are pending in this source commit. The configured 1310 tests / 34 suites are not a full execution result. Prior phase2 full execution on 1c970e3 ran 1297 tests and FAILED one OPEN collision expectation; 4fe96be passed the bounded 14-test oracle repair while retaining the three actual collisions. Its verified 32+1 disjoint selection spans two executions and remains separate historical evidence. Formal donor import integrity/compatibility checks passed without physical platform or terminal binding. Hosted run 39359899335 on exact f4db100 has 12 new jobs, zero executed steps and 12 directly retrieved payment-or-spending annotations; no hosted tests executed. No new FE/QP, physical fabrication, modified phone power-on or full-motion acceptance is claimed.",
   "bench_cover_first_candidate": {
     "source": "integration/cover_admission.py",
     "stages": 22,
@@ -598,7 +640,7 @@
     "actual_pressure_or_preload_qualified": false
   },
   "current_product_state": "design/current_product.json",
-  "current_product_stage": "PR36 now includes sequenced separable followers, a complete three-state common assembly with 154/154/161 participants and independent STEP readbacks, a natively checked but still rejected EP2/FPC candidate, and executable raw hardware evidence ingestion. The 1c970e3 full run executed 1297 tests with one failed positive expectation; 4fe96be preserves the actual OPEN B-clamp collision in a 14-test bounded passing rerun. Independent selection verifies 32+1 suites across those two executions, not a single full PASS. Actual donor geometry, fabricated/powered prototypes and hosted execution remain unverified. Main remains a1b3cc1; PR35 is a separate draft; PR25 is closed without merging its old driver.",
+  "current_product_stage": "PR36 now includes a formally acquired and imported partial XT2551-3 donor identity from 17 successful read-only commands on exact f4db100, plus a reviewed complete EP3 endpoint/ribbon research candidate. Only the model field is bound to the actual connected specimen: 10 identity fields, seven physical part roles and all 12 terminal interfaces remain unbound. EP3 native three-pose execution is pending in this source commit; the fixed single-U arithmetic already exposes an internal-path counterexample. Physical platform freeze, real-part fit, fabricated/powered prototypes and hosted execution remain open. Main remains a1b3cc1; PR35 is separate draft research; PR25 is closed without merging its old driver.",
   "current_open_research_prs": [
     {
       "number": 35,
@@ -612,57 +654,57 @@
   "current_work_packages": [
     {
       "id": "WP0",
-      "result": "Current entries retain the full 1297-test failure, bounded 14-test repair and independently verified 33-suite disjoint selection. Functional head 1c970e3 has 12 hosted zero-step billing/spend rejections.",
-      "path": "tools/inspect_actions_run.py",
-      "remaining": "Account payment/budget conditions must be restored before an actually executed hosted report can exist."
+      "result": "Current entries preserve the 102-test donor failure and same-selection repair; exact f4db100 has 12 new zero-step hosted jobs and direct payment-or-spend annotations.",
+      "path": "engineering/product-integration-20261018/phase3-20261020/README.md",
+      "remaining": "Restore account payment/budget conditions, then obtain a hosted execution tied to its actual head; retain main and PR35 research boundaries."
     },
     {
       "id": "WP1",
-      "result": "Pocket4 ADB 5061 now reads one authorized XT2551-3, matched to its USB identity and the Chinese OEM model manual. Raw identity, display/input registration and two-battery software observations are preserved. The old main-host empty observation remains scoped to that host/time.",
-      "path": "engineering/product-integration-20261018/hardware/IMPORT_EVIDENCE.md",
-      "remaining": "Obtain actual board/module labels, revisions, geometry and every board-side terminal. Regional OEM service parts remain candidates until matched to the Chinese donor."
+      "result": "Actual 17-command donor readback was imported at exact f4db100; model XT2551-3 is known, 10 fields and seven physical part roles remain unknown. Independent raw-integrity and compatibility checks pass.",
+      "path": "engineering/product-integration-20261018/phase3-20261020/hardware/DONOR_IMPORT.md",
+      "remaining": "Read physical labels, revisions, measured geometry and terminal destinations from this specimen; region-specific service parts cannot freeze unmatched donor parts."
     },
     {
       "id": "WP2",
-      "result": "Common split assembly actually exported and independently reread at 154/154/161 participants, including all four allocations, OLED, forty complete EP2 endpoint bodies and the finite ribbon.",
-      "path": "integration/product_split_assembly.py",
-      "remaining": "Replace allocations with measured modules; resolve the B 12-mm lane versus 14.6-mm EP2, real cells/tabs/swelling, RF/thermal space and the unverified 4700-mAh target."
+      "result": "Prior common STEP readback preserves 154/154/161 participants. EP3 now defines complete new endpoint bodies inside the same split-scene comparison; three-pose execution is pending.",
+      "path": "engineering/product-integration-20261018/phase3-20261020/assembly-followup-review.md",
+      "remaining": "Replace allocations with real parts; resolve occupied B 12-mm bands, real cell/tab/swelling space, RF/thermal routes and the unsupported 4700-mAh fit."
     },
     {
       "id": "WP3",
-      "result": "Executed bounded analysis quantifies the existing 0.6-mm OLED total-length window and finite tail/storage consequences; actual COF remains unknown.",
-      "path": "integration/product_routing_diagnostic.py",
-      "remaining": "Use actual OLED inactive material, COF and dynamic data to design complete traction, retention and support conversion."
+      "result": "Prior OLED study retains the narrow 0.6-mm material-length window and PREDOCK tail deficit. EP3 evaluates complete internal FPC geometry separately without claiming actual OLED/COF material.",
+      "path": "engineering/product-integration-20261018/phase3-20261020/NEXT_PHYSICAL_INPUTS.md",
+      "remaining": "Obtain actual visible/material dimensions, COF, clamp/traction zones, support transition and supplier dynamic conditions in one design."
     },
     {
       "id": "WP4",
-      "result": "Native EP2 endpoint self-checks have zero rejections in 190 pairs per end. OPEN finite material intersects two B clamp screws and the B lower jaw; the test correction preserves these counterexamples. Both complete endpoint variants remain rejected in all three key phone states.",
-      "path": "engineering/product-integration-20261018/routing-followup/README.md",
-      "remaining": "Redesign endpoint anchoring, static conductors and the complete internal route over the forward and return motion with sourced dynamic material limits."
+      "result": "Reviewed EP3 keeps 20 finite bodies per end and 124-mm total material. Independent arithmetic rejects its fixed single-U internal route at PREDOCK; complete native three-pose checks are pending.",
+      "path": "engineering/product-integration-20261018/phase3-20261020/EP3_ROUTING.md",
+      "remaining": "Use the finite counterexample to change anchoring/opening or route topology; qualify actual static conductors, short M2/jaws and complete forward/return motion."
     },
     {
       "id": "WP5",
-      "result": "Eight original axial insertion traps are reproduced; twelve new continuous local insertion actions and source/material checks pass. Final individual and common STEP readbacks pass.",
-      "path": "engineering/product-integration-20261018/physical-test-followon-20261019/README.md",
-      "remaining": "Qualify joining processes and thin retained joints; prove full housing/tool installation and actual complete cycles, holding, skew and relocking."
+      "result": "Prior captured-follower evidence retains 12 locally clear insertion actions and independent STEP reads. Thin joints and complete housing/tool assembly remain unqualified.",
+      "path": "engineering/product-integration-20261018/phase3-20261020/assembly-followup-review.md",
+      "remaining": "Select actual materials/processes/tolerances and demonstrate ordered whole-device assembly, hold/release, skew and reverse relocking."
     },
     {
       "id": "WP6",
-      "result": "Physical terminal/phone-function import preserves raw data, specimen and exact design identity; original KiCad v4 evidence remains historical and no new powered result is present.",
-      "path": "integration/product_interfaces.py",
-      "remaining": "Identify OEM terminals and original protected charge/power topology, then measure display/touch, power and moving USB continuity."
+      "result": "Formal donor identity import is compatible but all 12 physical terminal bindings remain false; the original electrical chain and KiCad evidence keep their own scope.",
+      "path": "engineering/product-integration-20261018/phase3-20261020/hardware/DONOR_IMPORT.md",
+      "remaining": "Bind actual board/line terminals and original protected charging/power topology; measure display/touch and moving power/USB continuity."
     },
     {
       "id": "WP7",
-      "result": "Calibrated motion/force/continuity analysis is covered by the full unit run and checks the exact listed design files and Git blobs while rejecting synthetic physical claims; unlisted CAD/EP2 changes are outside that binding. External operator force is not equated to internal KEY load.",
-      "path": "engineering/product-integration-20261018/physical-test-followon-20261019/analyse_motion_log.py",
-      "remaining": "Measure actual material, spans, joints and internal load transfer. Preserve the PR35 stop until the complete identified response cache can be restored."
+      "result": "No new FE/QP was launched. Existing bounded diagnostics, cache-stop reasons and load-binding boundaries are preserved.",
+      "path": "engineering/product-integration-20261018/phase3-20261020/NEXT_PHYSICAL_INPUTS.md",
+      "remaining": "Measure materials, spans, joints and internal load transfer; restore the full identified PR35 cache before any bounded restart."
     },
     {
       "id": "WP8",
-      "result": "Final research CAD packages, actual readbacks, original-record ingestion and calibrated analysis are delivered; no physical sample has been observed.",
-      "path": "engineering/product-integration-20261018/physical-test-followon-20261019/README.md",
-      "remaining": "Manufacture qualified unpowered samples, complete ordered build and cycles, then flex coupons and the actual protected electrical chain with raw measurements."
+      "result": "Raw specimen records, measured-data import and reviewed research construction/cut patterns are available; no fabricated complete opening/closing prototype has been observed.",
+      "path": "engineering/product-integration-20261018/phase3-20261020/NEXT_PHYSICAL_INPUTS.md",
+      "remaining": "Produce qualified unpowered assemblies, then actual flex specimens and the protected donor chain; return original cycle/force/skew/continuity logs to the same design."
     }
   ],
   "current_closed_research_prs": [

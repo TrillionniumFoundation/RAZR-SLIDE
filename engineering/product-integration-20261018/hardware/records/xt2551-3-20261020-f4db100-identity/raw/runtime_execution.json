@@ -1,0 +1,94 @@
+{
+  "schema": "razr-formal-donor-execution-v1",
+  "host_alias": "pocket4",
+  "source_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+  "command": [
+    "/usr/bin/python3",
+    "-B",
+    "tools/read_donor.py",
+    "--adb",
+    "/home/alex/.local/opt/razr-adb-37/adb",
+    "--adb-server-port",
+    "5061",
+    "--repo-root",
+    "/home/alex/.local/share/razr-slide-evidence/product-followup-20261020/source",
+    "--specimen-id",
+    "XT2551-3-41ad305f",
+    "--output",
+    "/home/alex/.local/share/razr-slide-evidence/product-followup-20261020/formal-donor-f4db100.json"
+  ],
+  "started_utc": "2026-10-20T02:59:58.888028+00:00",
+  "finished_utc": "2026-10-20T02:59:59.259094+00:00",
+  "seconds": 0.3990914219757542,
+  "exit_code": 0,
+  "stdout": "{\"output\": \"/home/alex/.local/share/razr-slide-evidence/product-followup-20261020/formal-donor-f4db100.json\", \"selected_donor_connected\": true}\n",
+  "stderr": "",
+  "server_before": {
+    "command": [
+      "ss",
+      "-ltnp",
+      "sport = :5061"
+    ],
+    "observed_utc": "2026-10-20T02:59:58.887088+00:00",
+    "exit_code": 0,
+    "stdout": "State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                           \nLISTEN 0      128        127.0.0.1:5061      0.0.0.0:*    users:((\"adb\",pid=1846357,fd=11))\n",
+    "stderr": "",
+    "processes": [
+      {
+        "pid": 1846357,
+        "start_ticks": 6434426,
+        "executable": "/home/alex/.local/opt/razr-adb-37/adb"
+      }
+    ],
+    "boot_id": "27a7e955-f068-40dc-9318-d9283fa21282"
+  },
+  "server_after": {
+    "command": [
+      "ss",
+      "-ltnp",
+      "sport = :5061"
+    ],
+    "observed_utc": "2026-10-20T02:59:59.286848+00:00",
+    "exit_code": 0,
+    "stdout": "State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                           \nLISTEN 0      128        127.0.0.1:5061      0.0.0.0:*    users:((\"adb\",pid=1846357,fd=11))\n",
+    "stderr": "",
+    "processes": [
+      {
+        "pid": 1846357,
+        "start_ticks": 6434426,
+        "executable": "/home/alex/.local/opt/razr-adb-37/adb"
+      }
+    ],
+    "boot_id": "27a7e955-f068-40dc-9318-d9283fa21282"
+  },
+  "server_process_unchanged": true,
+  "preflight_parser_revision": "v2 digit class; first v1 preflight failed to parse existing pid and executed no ADB command",
+  "capture": {
+    "path": "/home/alex/.local/share/razr-slide-evidence/product-followup-20261020/formal-donor-f4db100.json",
+    "bytes": 12168,
+    "sha256": "28fb380ee5d992893f248241b8bde70825b62057851d7d956ea060b66fe44702",
+    "capture_status": "complete",
+    "selected_serial_sha256": "41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+    "model": "XT2551-3",
+    "design_inputs_unchanged": true,
+    "inputs_match_commit": true,
+    "adb_transport": {
+      "adb_executable_requested": "/home/alex/.local/opt/razr-adb-37/adb",
+      "adb_executable_path": "/home/alex/.local/opt/razr-adb-37/adb",
+      "adb_executable_sha256": "00108217733707a40debfc92c86d4232fd6e68870be5966515d74c071193ea90",
+      "server_host": "127.0.0.1",
+      "server_port": 5061,
+      "global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "selected_transport_id_before": "37",
+      "selected_transport_id_after": "37",
+      "selected_transport_id_unchanged": true
+    },
+    "command_records": 17
+  },
+  "expected_prior_specimen_unchanged": true
+}
