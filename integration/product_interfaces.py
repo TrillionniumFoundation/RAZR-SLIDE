@@ -149,6 +149,13 @@ def observed_record_compatible(record, data, root=ROOT):
 
 
 def observed_field_bound(field, observations, physical_only=False):
+    """Require an observation of the specimen for a physical identity or row.
+
+    OEM documents can supply specifications and corroborate a measured/labelled
+    part. A document alone does not establish that this specimen contains it;
+    regional service lists must not become an observed physical inventory.
+    The importer/record validator separately checks physical-source specimen IDs.
+    """
     if not isinstance(field, dict) or not identity_value_known(field.get('value')):
         return False
     if not isinstance(field.get('locator'), str) or not field['locator'].strip():
@@ -156,10 +163,13 @@ def observed_field_bound(field, observations, physical_only=False):
     ids = field.get('observation_ids')
     if not isinstance(ids, list) or not ids or not all(isinstance(key, str) for key in ids) or len(ids) != len(set(ids)):
         return False
-    kinds = {'physical_label', 'physical_measurement', 'manufacturer_document'}
+    physical_kinds = {'physical_label', 'physical_measurement'}
+    kinds = physical_kinds | {'manufacturer_document'}
     if not physical_only:
         kinds |= {'device_readback', 'instrument_log'}
-    return all(key in observations and observations[key].get('kind') in kinds for key in ids)
+    if not all(key in observations and observations[key].get('kind') in kinds for key in ids):
+        return False
+    return not physical_only or any(observations[key].get('kind') in physical_kinds for key in ids)
 
 
 def readback_trace_consistent(readback):

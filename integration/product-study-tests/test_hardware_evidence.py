@@ -159,6 +159,61 @@ class HardwareEvidenceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'identity evidence'):
             self.execute(manifest, 'software-revision')
 
+    def test_regional_OEM_document_alone_cannot_establish_observed_donor_parts(self):
+        manifest = self.identity_manifest()
+        catalog = manifest['observations'][1]
+        catalog['kind'] = 'manufacturer_document'
+        catalog.pop('specimen_id')
+        catalog['applicable_skus'] = ['SYNTHETIC-OTHER-REGIONAL-SKU']
+        catalog['physical_match_confirmed'] = False
+        with self.assertRaisesRegex(ValueError, 'identity evidence'):
+            self.execute(manifest, 'regional-catalog-is-not-specimen')
+
+    def test_partial_connected_identity_remains_importable_without_physical_labels(self):
+        manifest = self.identity_manifest()
+        manifest['observations'] = [manifest['observations'][0]]
+        manifest['field_evidence'] = {'model': manifest['field_evidence']['model']}
+        manifest['part_inventory'] = []
+        result = self.apply_identity(manifest)
+        self.assertEqual(result['summary']['known_identity_fields'], 1)
+        self.assertEqual(result['summary']['physical_parts_with_original_labels'], 0)
+        self.assertEqual(len(result['summary']['missing_inventory_roles']), 7)
+        self.assertFalse(result['summary']['platform_frozen'])
+        self.assertFalse(interfaces.donor_identity_bound(self.data, self.root))
+        self.assertFalse(self.data['architecture_decision']['actual_donor_selected'])
+
+    def test_observed_identity_fields_do_not_turn_OEM_catalog_into_part_labels(self):
+        manifest = self.identity_manifest()
+        catalog = self.source('catalog.txt', 'manufacturer_document',
+                              'SYNTHETIC SERVICE CANDIDATE; no observed specimen part')
+        catalog.pop('specimen_id')
+        manifest['observations'].append(catalog)
+        for part in manifest['part_inventory']:
+            part['label']['observation_ids'] = ['catalog']
+        with self.assertRaisesRegex(ValueError, 'part label'):
+            self.execute(manifest, 'catalog-only-inventory')
+
+    def test_OEM_specs_can_corroborate_observed_labels_and_remain_reference_inputs(self):
+        manifest = self.identity_manifest()
+        catalog = self.source('catalog.txt', 'manufacturer_document',
+                              'SYNTHETIC matching specification; not a physical observation')
+        catalog.pop('specimen_id')
+        manifest['observations'].append(catalog)
+        for key, field in manifest['field_evidence'].items():
+            if key != 'model':
+                field['observation_ids'] = ['labels', 'catalog']
+        for part in manifest['part_inventory']:
+            part['label']['observation_ids'] = ['labels', 'catalog']
+        reference = {'value': 'synthetic specification', 'locator': 'synthetic catalog section',
+                     'observation_ids': ['catalog']}
+        sources = {row['id']: row for row in manifest['observations']}
+        self.assertTrue(interfaces.observed_field_bound(reference, sources))
+        self.assertFalse(interfaces.observed_field_bound(reference, sources, True))
+        result = self.apply_identity(manifest)
+        self.assertEqual(result['summary']['physical_parts_with_original_labels'], 4)
+        self.assertTrue(interfaces.donor_identity_bound(self.data, self.root))
+        self.assertFalse(self.data['architecture_decision']['actual_donor_selected'])
+
     def test_readback_claim_must_match_retained_command_output(self):
         manifest = self.identity_manifest()
         capture = json.loads((self.raw/'capture.json').read_text())
@@ -228,6 +283,24 @@ class HardwareEvidenceTests(unittest.TestCase):
         manifest['connectors']['MAIN:J1']['part_id'] = 'UNOBSERVED'
         with self.assertRaisesRegex(ValueError, 'observed donor part'):
             self.execute(manifest, 'wrong-part')
+
+    def test_OEM_document_cannot_alone_identify_an_observed_connector(self):
+        manifest = self.terminal_manifest()
+        manifest['observations'][1]['kind'] = 'manufacturer_document'
+        manifest['observations'][1].pop('specimen_id')
+        with self.assertRaisesRegex(ValueError, 'connector label'):
+            self.execute(manifest, 'catalog-only-connectors')
+
+    def test_OEM_pin_table_requires_observed_terminal_evidence(self):
+        manifest = self.terminal_manifest()
+        catalog = self.source('catalog.txt', 'manufacturer_document',
+                              'SYNTHETIC OEM pin table; not a physical mapping')
+        catalog.pop('specimen_id')
+        manifest['observations'].append(catalog)
+        payload = (self.raw/'pins.csv').read_text().replace(',pinlabels,', ',catalog,')
+        manifest['observations'][0] = self.source('pins.csv', 'physical_measurement', payload)
+        with self.assertRaisesRegex(ValueError, 'physical row'):
+            self.execute(manifest, 'catalog-only-terminal-rows')
 
     def test_cross_role_pin_cannot_acquire_two_different_nets(self):
         rows = [{'net': net, 'source_connector': a, 'source_pin': '1', 'sink_connector': b, 'sink_pin': '1',
