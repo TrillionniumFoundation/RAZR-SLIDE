@@ -59,7 +59,8 @@ class HardwareEvidenceTests(unittest.TestCase):
                 'specimen_id': 'SYNTHETIC-UNITTEST'}
 
     def capture(self):
-        def query(adb, args):
+        def query(adb, args, *, adb_server_port):
+            self.assertEqual(adb_server_port, 5037)
             if args == ['devices', '-l']:
                 return 'List of devices attached\nSYNTHETIC-TEST-SERIAL device\n'
             return {'ro.product.brand': 'motorola', 'ro.product.manufacturer': 'Motorola',
