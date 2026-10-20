@@ -257,11 +257,17 @@ def containment(parts, domains):
     for name,body in sorted(parts.items()):
         try:
             residual=body
-            for domain in domains: residual=residual.cut(domain)
-            outside=p.volume(residual)
+            remaining,outside=p.whole_material(residual,empty=True)
+            cuts=0
+            for domain in domains:
+                if not remaining: break
+                residual=residual.cut(domain)
+                remaining,outside=p.whole_material(residual,empty=True)
+                cuts+=1
             if outside>p.volume(body)+TOL: raise ValueError('outside material exceeds original')
             rows.append({'part':name,'outside_outer_union_mm3':outside,'rejected':outside>TOL,
-                         'method':'native sequential cuts by both distinct prisms'})
+                         'method':'validated native cuts by distinct prisms; stop only at valid empty material',
+                         'native_domain_cuts_executed':cuts})
         except Exception as exc:
             rows.append({'part':name,'evaluation_failed':True,'error_type':type(exc).__name__,
                          'error':str(exc),'rejected':True})
@@ -361,7 +367,7 @@ def native_report(output, c=None):
             'all_declared_checks_clear_at_pose':all(v['no_positive_common_or_evaluation_error'] for v in [*internal.values(),external,*local_checks.values()]) and domain_check['all_part_material_inside_outer_union'],
             'internal_cavity_or_interpose_clearance_accepted':False}
         if label=='PREDOCK':
-            r=c['route']; a=r['A_anchor_local_mm']; y0=domain_meta['A_bounds_mm'][3]; y1=a[1]+route['straight_A_mm']
+            r=c['route']; a=r['A_anchor_local_mm']; y0=domain_meta['A_bounds_mm'][3]; y1=float(a[1]+route['straight_A_mm'])
             witness=p.box((-6,y0,a[2]-.05),(6,y1,a[2]+.05))
             common=p.strict_common(witness,material)['common_mm3']; outside=containment({'low_straight_witness':witness},domains)
             vol=p.volume(witness)
