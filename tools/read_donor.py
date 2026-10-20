@@ -4,7 +4,8 @@
 This does not infer panel labels, connector pinouts, individual cells or CAD
 dimensions from Android properties. Use an explicitly selected serial when
 more than one authorized Motorola device is connected. Raw serials are not
-written to the evidence file.
+written to the evidence file. Select the existing local ADB server explicitly
+with --adb-server-port; this collector sends no server restart or port-scan commands.
 """
 from __future__ import annotations
 import argparse
@@ -21,6 +22,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'integration'))
 from product_interfaces import interface_contract_sha256
 DESIGN_FILES = ('design/product_geometry.json', 'design/product_interfaces.json')
+DEFAULT_ADB_SERVER_PORT = 5037
+ADB_SERVER_HOST = '127.0.0.1'
 
 PROPERTIES = (
     'ro.product.manufacturer', 'ro.product.brand', 'ro.product.model',
@@ -46,11 +49,49 @@ class CommandOutput(str):
         return value
 
 
-def command(adb: str, args: list[str]) -> str:
+def port_number(value) -> int:
+    if isinstance(value, bool) or not isinstance(value, (int, str)) or not str(value).isascii() or not str(value).isdecimal():
+        raise ValueError('ADB server port must be an integer from 1 to 65535')
+    port = int(value)
+    if not 1 <= port <= 65535:
+        raise ValueError('ADB server port must be an integer from 1 to 65535')
+    return port
+
+
+def adb_global_args(adb_server_port: int) -> list[str]:
+    # An explicit host also prevents ANDROID_ADB_SERVER_ADDRESS from silently
+    # sending a requested local port to a different host.
+    return ['-H', ADB_SERVER_HOST, '-P', str(port_number(adb_server_port))]
+
+
+def adb_transport_identity(adb: str, adb_server_port: int) -> dict:
+    resolved = shutil.which(adb)
+    result = {'adb_executable_requested': str(adb), 'adb_executable_path': None,
+              'adb_executable_sha256': None, 'server_host': ADB_SERVER_HOST,
+              'server_port': port_number(adb_server_port),
+              'global_args': adb_global_args(adb_server_port),
+              'selected_transport_id_before': None,
+              'selected_transport_id_after': None,
+              'selected_transport_id_unchanged': None}
+    if resolved is not None:
+        path = Path(resolved).resolve()
+        result['adb_executable_path'] = str(path)
+        try:
+            result['adb_executable_sha256'] = hashlib.sha256(path.read_bytes()).hexdigest()
+        except OSError as exc:
+            result['adb_executable_hash_error'] = type(exc).__name__
+    return result
+
+
+def command(adb: str, args: list[str], *, adb_server_port: int = DEFAULT_ADB_SERVER_PORT) -> str:
     try:
-        proc = subprocess.run([adb, *args], capture_output=True, text=True, timeout=15)
+        proc = subprocess.run([adb, *adb_global_args(adb_server_port), *args],
+                              capture_output=True, text=True, timeout=15)
     except subprocess.TimeoutExpired as exc:
-        raise AdbCommandError(None, timed_out=True) from exc
+        # TimeoutExpired may carry bytes even when subprocess.run used text=True.
+        def text_value(value):
+            return value.decode('utf-8', errors='replace') if isinstance(value, bytes) else (value or '')
+        raise AdbCommandError(None, text_value(exc.stdout), text_value(exc.stderr), timed_out=True) from exc
     if proc.returncode:
         raise AdbCommandError(proc.returncode, proc.stdout, proc.stderr)
     return CommandOutput(proc.stdout, proc.stderr)
@@ -102,8 +143,22 @@ def connected_devices(text: str) -> list[tuple[str, str]]:
     return result
 
 
-def select_donor(adb: str, devices: list[tuple[str, str]], serial: str | None, run=None) -> str | None:
-    run = run or (lambda args: command(adb, args))
+def inventory_transport_ids(text: str) -> dict[str, str | None]:
+    """Retain inventory identifiers as reported, without inferring USB hardware."""
+    result = {}
+    for line in text.splitlines():
+        row = line.split()
+        if len(row) >= 2 and row[0] not in ('List', '*'):
+            ids = [value.split(':', 1)[1] for value in row[2:] if value.startswith('transport_id:')]
+            if len(ids) > 1 or (ids and (not ids[0].isascii() or not ids[0].isdecimal() or int(ids[0]) == 0)):
+                raise ValueError('invalid or repeated ADB transport ID in inventory')
+            result[row[0]] = ids[0] if ids else None
+    return result
+
+
+def select_donor(adb: str, devices: list[tuple[str, str]], serial: str | None, run=None,
+                 *, adb_server_port: int = DEFAULT_ADB_SERVER_PORT) -> str | None:
+    run = run or (lambda args: command(adb, args, adb_server_port=adb_server_port))
     authorized = [item for item, state in devices if state == 'device']
     if serial is not None:
         if serial not in authorized:
@@ -125,15 +180,21 @@ def select_donor(adb: str, devices: list[tuple[str, str]], serial: str | None, r
 
 
 def capture(adb: str, serial: str | None = None, root: Path = ROOT,
-            specimen_id: str | None = None) -> dict:
+            specimen_id: str | None = None,
+            *, adb_server_port: int = DEFAULT_ADB_SERVER_PORT) -> dict:
+    adb_server_port = port_number(adb_server_port)
+    transport = adb_transport_identity(adb, adb_server_port)
     records, devices = [], []
 
     def run(args):
         started = dt.datetime.now(dt.timezone.utc).isoformat()
         tick = time.monotonic()
-        entry = {'args': args, 'started_utc': started}
+        # Keep v2 logical args compatible with the existing evidence importer;
+        # global args document the actual subprocess prefix separately.
+        entry = {'args': args, 'adb_global_args': adb_global_args(adb_server_port),
+                 'started_utc': started}
         try:
-            result = command(adb, args)
+            result = command(adb, args, adb_server_port=adb_server_port)
             entry.update(returncode=0, stdout_text=result, stderr_text=getattr(result, 'stderr', ''), timed_out=False)
             return result
         except (OSError, RuntimeError) as exc:
@@ -153,9 +214,11 @@ def capture(adb: str, serial: str | None = None, root: Path = ROOT,
         'observed_utc': dt.datetime.now(dt.timezone.utc).isoformat(),
         'scope': 'read-only Android software identity, not physical part verification',
         'collector_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        'adb_transport': transport,
         'design_binding': before,
         'specimen_id': specimen_id,
         'device_inventory': [],
+        'device_inventory_after': None,
         'selected_donor_connected': False,
         'software_identity_complete': False,
         'physical_module_identified': False,
@@ -168,24 +231,40 @@ def capture(adb: str, serial: str | None = None, root: Path = ROOT,
     }
     selected = None
     try:
-        devices = connected_devices(run(['devices', '-l']))
+        initial_inventory = run(['devices', '-l'])
+        devices = connected_devices(initial_inventory)
+        initial_transport_ids = inventory_transport_ids(initial_inventory)
         report['device_inventory'] = [
-            {'serial_sha256': hashlib.sha256(s.encode()).hexdigest(), 'state': state}
+            {'serial_sha256': hashlib.sha256(s.encode()).hexdigest(), 'state': state,
+             'transport_id': initial_transport_ids.get(s)}
             for s, state in devices]
-        selected = select_donor(adb, devices, serial, run)
+        selected = select_donor(adb, devices, serial, run, adb_server_port=adb_server_port)
         report['capture_status'] = 'no_authorized_motorola' if selected is None else 'reading'
         if selected is not None:
             report['selected_serial_sha256'] = hashlib.sha256(selected.encode()).hexdigest()
+            transport['selected_transport_id_before'] = initial_transport_ids.get(selected)
             report['properties'] = {}
             for key in PROPERTIES:
                 report['properties'][key] = run(['-s', selected, 'shell', 'getprop', key]).strip() or None
-            final_devices = connected_devices(run(['devices', '-l']))
+            final_inventory = run(['devices', '-l'])
+            final_devices = connected_devices(final_inventory)
+            final_transport_ids = inventory_transport_ids(final_inventory)
+            report['device_inventory_after'] = [
+                {'serial_sha256': hashlib.sha256(s.encode()).hexdigest(), 'state': state,
+                 'transport_id': final_transport_ids.get(s)}
+                for s, state in final_devices]
+            transport['selected_transport_id_after'] = final_transport_ids.get(selected)
+            if transport['selected_transport_id_before'] is not None and transport['selected_transport_id_after'] is not None:
+                transport['selected_transport_id_unchanged'] = (transport['selected_transport_id_before'] == transport['selected_transport_id_after'])
             report['selected_donor_connected'] = (selected, 'device') in final_devices
             # End-of-read inventory must be retained and redacted as well.
             devices = list(dict.fromkeys(devices + final_devices))
-            report['software_identity_complete'] = report['selected_donor_connected'] and all(
+            report['software_identity_complete'] = (report['selected_donor_connected']
+                and transport['selected_transport_id_unchanged'] is not False) and all(
                 report['properties'].get(k) for k in ('ro.product.model', 'ro.build.fingerprint'))
             report['capture_status'] = 'complete' if report['software_identity_complete'] else 'incomplete_or_disconnected'
+            if transport['selected_transport_id_unchanged'] is False:
+                report['capture_status'] = 'transport_changed_during_capture'
     except (OSError, RuntimeError, ValueError) as exc:
         report['capture_status'] = 'capture_error'
         report['error_type'] = type(exc).__name__
@@ -220,6 +299,8 @@ def capture(adb: str, serial: str | None = None, root: Path = ROOT,
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--adb', default=shutil.which('adb'))
+    parser.add_argument('--adb-server-port', type=port_number, default=DEFAULT_ADB_SERVER_PORT,
+                        help='existing local ADB server port; default 5037, no fallback port scan')
     parser.add_argument('--serial')
     parser.add_argument('--repo-root', type=Path, default=ROOT)
     parser.add_argument('--specimen-id', help='operator label for this physical specimen; not a part identity claim')
@@ -229,7 +310,8 @@ def main():
         parser.error('adb is not available; provide its existing executable with --adb')
     if args.output.exists():
         parser.error('use a new output filename to retain previous observations')
-    result = capture(args.adb, args.serial, args.repo_root, args.specimen_id)
+    result = capture(args.adb, args.serial, args.repo_root, args.specimen_id,
+                     adb_server_port=args.adb_server_port)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open('x') as stream:
         json.dump(result, stream, indent=2)
