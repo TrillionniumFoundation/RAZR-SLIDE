@@ -1,0 +1,126 @@
+{
+  "schema": "razr-ep3-native-api-regression-v1",
+  "source_commit": "a33e58cd555b8d9aff1e3649f79cd0dba378a804",
+  "started_utc": "2026-10-20T03:51:40.047746+00:00",
+  "finished_utc": "2026-10-20T03:51:44.717797+00:00",
+  "seconds": 4.670037460979074,
+  "source_sha256": "dfee909ffe781036fb7cec84a2acabe4aada23409bb3ea721f402831462e90d2",
+  "source_bytes_unchanged": true,
+  "unit_tests": 7,
+  "unit_passed": true,
+  "unit_report": "ep3-routing.json",
+  "native_cases": [
+    {
+      "case": "inside_A",
+      "expected_outside_mm3": 0.0,
+      "actual": {
+        "part": "inside_A",
+        "outside_outer_union_mm3": 0.0,
+        "rejected": false,
+        "method": "validated native cuts by distinct prisms; stop only at valid empty material",
+        "native_domain_cuts_executed": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "inside_B",
+      "expected_outside_mm3": 0.0,
+      "actual": {
+        "part": "inside_B",
+        "outside_outer_union_mm3": 0.0,
+        "rejected": false,
+        "method": "validated native cuts by distinct prisms; stop only at valid empty material",
+        "native_domain_cuts_executed": 2
+      },
+      "passed": true
+    },
+    {
+      "case": "spans_touching_A_B",
+      "expected_outside_mm3": 0.0,
+      "actual": {
+        "part": "spans_touching_A_B",
+        "outside_outer_union_mm3": 0.0,
+        "rejected": false,
+        "method": "validated native cuts by distinct prisms; stop only at valid empty material",
+        "native_domain_cuts_executed": 2
+      },
+      "passed": true
+    },
+    {
+      "case": "partly_outside",
+      "expected_outside_mm3": 1.0,
+      "actual": {
+        "part": "partly_outside",
+        "outside_outer_union_mm3": 0.9999999999999998,
+        "rejected": true,
+        "method": "validated native cuts by distinct prisms; stop only at valid empty material",
+        "native_domain_cuts_executed": 2
+      },
+      "passed": true
+    },
+    {
+      "case": "fully_outside",
+      "expected_outside_mm3": 1.0,
+      "actual": {
+        "part": "fully_outside",
+        "outside_outer_union_mm3": 0.9999999999999998,
+        "rejected": true,
+        "method": "validated native cuts by distinct prisms; stop only at valid empty material",
+        "native_domain_cuts_executed": 2
+      },
+      "passed": true
+    },
+    {
+      "case": "gap_between_separate_domains",
+      "expected_outside_mm3": 1.0,
+      "actual": {
+        "part": "gap_between_separate_domains",
+        "outside_outer_union_mm3": 0.9999999999999998,
+        "rejected": true,
+        "method": "validated native cuts by distinct prisms; stop only at valid empty material",
+        "native_domain_cuts_executed": 2
+      },
+      "passed": true
+    },
+    {
+      "case": "small_positive_residual_not_zeroed",
+      "expected_outside_mm3": 1e-08,
+      "actual": {
+        "part": "small_positive_residual_not_zeroed",
+        "outside_outer_union_mm3": 1.0000000000011127e-08,
+        "rejected": false,
+        "method": "validated native cuts by distinct prisms; stop only at valid empty material",
+        "native_domain_cuts_executed": 2
+      },
+      "passed": true
+    },
+    {
+      "case": "free_non_solid_is_not_empty_material",
+      "actual": {
+        "part": "free_face",
+        "evaluation_failed": true,
+        "error_type": "ValueError",
+        "error": "free non-solid topology: Face",
+        "rejected": true
+      },
+      "passed": true
+    }
+  ],
+  "scalar_witness": {
+    "raw_type": "float64",
+    "normalized_type": "float",
+    "native_volume_mm3": 35.03125052611621,
+    "passed": true
+  },
+  "endpoint_construction_text_unchanged": true,
+  "actual_endpoint_positive_solids": {
+    "A": 20,
+    "B": 20
+  },
+  "configuration_sha256": "5ea33c5948b1a46c9317ca4eceb4a290b5419bd8f09baa351b40346f13e5fa3e",
+  "all_declared_regressions_passed": true,
+  "full_109_reexecuted": false,
+  "full_1310_reexecuted": false,
+  "candidate_go": false,
+  "manufacturing_go": false
+}

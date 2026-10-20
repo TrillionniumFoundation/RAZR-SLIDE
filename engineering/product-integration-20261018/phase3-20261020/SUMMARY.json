@@ -1,9 +1,9 @@
 {
   "schema": "razr-product-phase3-summary-v1",
-  "updated_utc": "2026-10-20T03:34:09.737381+00:00",
+  "updated_utc": "2026-10-20T04:13:52.221085+00:00",
   "in_main": false,
   "published_donor_source_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
-  "current_source_commit": "recorded by subsequent execution receipts after source commit",
+  "current_source_commit": "a33e58cd555b8d9aff1e3649f79cd0dba378a804",
   "formal_donor": {
     "schema": "razr-formal-partial-donor-state-v1",
     "source_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
@@ -113,18 +113,79 @@
     }
   ],
   "EP3": {
-    "state": "source_prepared_native_not_yet_executed",
-    "config": "design/product_routing_ep3.json",
-    "implementation": "integration/product_routing_ep3.py",
-    "review": "engineering/product-integration-20261018/phase3-20261020/ep3-constraint-review.md",
-    "documentation": "engineering/product-integration-20261018/phase3-20261020/EP3_ROUTING.md",
-    "native_checks_executed": false,
-    "independent_STEP_readback_executed": false,
+    "state": "native_three_pose_study_completed_candidate_rejected",
+    "source_commit": "a33e58cd555b8d9aff1e3649f79cd0dba378a804",
+    "native_checks_executed": true,
+    "native_execution_receipt": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-native-repaired-execution.json",
+    "native_summary": "engineering/product-integration-20261018/phase3-20261020/native-summary.json",
+    "native_report": "engineering/product-integration-20261018/phase3-20261020/native/native-report.json.gz",
+    "native_report_uncompressed_sha256": "b7a115ab32dcf199ebcd1e89b30542a6785f6a6851ec5803964638598e505bf8",
+    "source_bytes_unchanged": true,
+    "total_pair_checks": 15906,
+    "pair_evaluation_errors": 0,
+    "containment_evaluation_errors": 0,
+    "combined_participants": {
+      "STOW": 154,
+      "PREDOCK": 154,
+      "OPEN": 161
+    },
+    "endpoint_self_checks": {
+      "A": {
+        "pairs": 190,
+        "positive_common_pairs": 0,
+        "evaluation_errors": 0
+      },
+      "B": {
+        "pairs": 190,
+        "positive_common_pairs": 0,
+        "evaluation_errors": 0
+      }
+    },
+    "independent_STEP_readback_executed": true,
+    "independent_readback": {
+      "report": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-independent-readback/report.json.gz",
+      "uncompressed_sha256": "d3f9c00666b748bba2627b068c9981a0ce1d89423cb1345783a6121bb1561ef2",
+      "declared_checks_passed": true,
+      "independent_process_from_generator": true,
+      "all_assembly_geometry_has_generator_metric_baseline": false,
+      "scope": "five STEP files, all expected flat solids valid/positive, and injective bounds/volume matching for 41 recorded candidate bodies per pose; no complete material or label equivalence"
+    },
+    "PREDOCK_finite_low_straight_witness": {
+      "Y_interval_mm": [
+        94.25,
+        123.44270877176348
+      ],
+      "Z_interval_mm": [
+        1.4,
+        1.5
+      ],
+      "width_mm": 12.0,
+      "native_volume_mm3": 35.03125052611621,
+      "native_common_with_finite_material_mm3": 35.031250526116224,
+      "native_volume_outside_both_prisms_mm3": 35.03125052611621
+    },
+    "all_three_poses_rejected": true,
+    "retained_first_native_failure": {
+      "source_commit": "bdb1bc19fce49692fd49cd508031bfc456e15208",
+      "exit_code": 1,
+      "seconds": 427.2756840089569,
+      "completed_poses": [
+        "STOW"
+      ],
+      "final_native_report_exists": false,
+      "record": "engineering/product-integration-20261018/phase3-20261020/native-first-failure/native-execution-failure.json",
+      "old_STOW_containment_evaluation_errors": 20,
+      "old_STOW_positive_external_pairs": 6
+    },
+    "repair_scope": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-native-api-repair-commit.json",
+    "counterexample_comparison": "engineering/product-integration-20261018/phase3-20261020/validation/retained-STOW-counterexamples.json",
+    "full_cycle_internal_route_accepted": false,
+    "actual_OLED_COF_or_dynamic_material_selected": false,
     "candidate_go": false,
     "fixture_fabrication_go": false,
     "manufacturing_go": false,
-    "full_cycle_internal_route_accepted": false,
-    "scope": "fixed complete-endpoint 124-mm material candidate and single-U internal-path counterexample; physical dimensions and dynamic material conditions remain assumptions"
+    "physical_fabrication_executed": false,
+    "scope": "three decisive native poses; all 20 endpoint bodies retained per end, plus finite material and split common scene; no continuous full-motion or physical qualification"
   },
   "hosted_CI": {
     "run_id": 39359899335,
@@ -153,5 +214,53 @@
   "physical_prototype_built": false,
   "physical_phone_verified": false,
   "new_FE_or_QP_executed": false,
-  "next_physical_inputs": "engineering/product-integration-20261018/phase3-20261020/NEXT_PHYSICAL_INPUTS.md"
+  "next_physical_inputs": "engineering/product-integration-20261018/phase3-20261020/NEXT_PHYSICAL_INPUTS.md",
+  "selected_product_unit_execution": {
+    "label": "Product branch phase3: 109-test product and EP3 selection PASS",
+    "functional_commit": "bdb1bc19fce49692fd49cd508031bfc456e15208",
+    "scope": "selected_product_integration_102_and_EP3_arithmetic_7",
+    "tests": 109,
+    "suites": 2,
+    "passed": true,
+    "result": "PASS",
+    "single_full_execution": false,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "in_main": false,
+    "seconds": 70.7197644310072,
+    "source_bytes_unchanged": true,
+    "report": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-unit-bdb1bc1/report.json.gz",
+    "uncompressed_report_sha256": "dbe131f155420ac90ade04c8c71c83c1cf7f3f1320bc93c7ac1028fb85a3cb31",
+    "hardware_qualification": false,
+    "candidate_go": false,
+    "manufacturing_go": false
+  },
+  "bounded_EP3_API_repair_execution": {
+    "label": "Product branch phase3: bounded EP3 API repair regression PASS",
+    "functional_commit": "a33e58cd555b8d9aff1e3649f79cd0dba378a804",
+    "scope": "seven_EP3_arithmetic_tests_plus_separately_recorded_native_API_cases",
+    "tests": 7,
+    "suites": 1,
+    "passed": true,
+    "result": "PASS",
+    "single_full_execution": false,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "in_main": false,
+    "source_bytes_unchanged": true,
+    "source_bytes_unchanged_scope": "EP3 module digest plus clean Git tree; no full-repository before/after snapshot in this bounded controller",
+    "report": "engineering/product-integration-20261018/phase3-20261020/validation/ep3-api-repair/native-api-regression.json",
+    "report_sha256": "ee4640e5aaa2fdc22bf458becb82a627c13e17f2738924d358000351b166bfb3",
+    "native_API_cases": 8,
+    "scalar_witness_cases": 1,
+    "109_tests_reexecuted": false,
+    "1310_tests_reexecuted": false,
+    "candidate_geometry_changed": false,
+    "candidate_go": false,
+    "manufacturing_go": false
+  },
+  "artifact_index": "engineering/product-integration-20261018/phase3-20261020/artifact-index.json",
+  "publication_identity_scope": "executed sources are recorded here; the final publication head and its post-push CI inspection are recorded in PR36"
 }
