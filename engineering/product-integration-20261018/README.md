@@ -1,4 +1,4 @@
-> 当前续轮交付见 [2026-10-20 第三阶段](phase3-20261020/README.md)；[第二阶段](phase2-20261019/README.md) 另保留其原生执行身份。本页正文与 DELIVERY_VERIFICATION.json 是第一阶段历史快照，其中“本轮”“最新”和空 donor 观测均限于原日期，当前状态以第三阶段和根目录生成入口为准。
+> 当前交付见 [2026-10-20 第四阶段](phase4-20261020/README.md)：EP4 三态原生与独立回读、物理证据修复、A/KEY 局部改形。此前[第三阶段](phase3-20261020/README.md)和[第二阶段](phase2-20261019/README.md)保留各自执行身份。本页正文与 DELIVERY_VERIFICATION.json 是第一阶段历史快照，其中“本轮”“最新”和空 donor 观测均限于原日期；当前状态以第四阶段和根目录生成入口为准。
 
 # RAZR-SLIDE：WP0–WP8 产品集成实现与验证
 

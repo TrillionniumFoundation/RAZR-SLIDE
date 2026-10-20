@@ -1,0 +1,112 @@
+{
+  "scope": "put the complete PCB after the B transverse wall; fixed S+U and endpoint orientation; only B anchor Y and free length vary",
+  "native_or_hardware_executed": false,
+  "baseline_EP4_module_sha256": "f8286416e8d4f835b5a280f3c76e7dd69aaebda25ac2217f40f33e19e92251b8",
+  "baseline_EP4_config_sha256": "7504d0714a6a61bf8742d2ab2f69dff245aa32dec449a34158c784803fe4240d",
+  "parent_supplied_native_inputs": {
+    "B_transverse_wall_local_Y_mm": [
+      14.7,
+      15.35
+    ],
+    "requested_board_to_wall_Y_clearance_mm": 0.2,
+    "A_M2_head_1_web_Common_mm3_rounded": 0.1808118563
+  },
+  "fixed_inputs": {
+    "A_anchor_Y_mm": 51.0,
+    "B_board_material_Y_mm": [
+      24.0,
+      36.0
+    ],
+    "S_world_Y_mm": [
+      80.0,
+      90.0
+    ],
+    "slide_mm": 79.75,
+    "stow_rise_mm": 8.2,
+    "U_lane_difference_mm": 3.4,
+    "thickness_mm": 0.1,
+    "STOW_finite_head_limit_mm": 94.0,
+    "PREDOCK_minimum_B_tail_mm": 3.0
+  },
+  "turn": {
+    "I": 0.4860759672270558,
+    "J": 0.37095510227064343,
+    "U_length_mm": 6.994791409655915,
+    "S_STOW_length_mm": 13.656343682694377,
+    "S_excess_mm": 3.656343682694377,
+    "finite_U_head_beyond_turn_start_mm": 2.644753562730728
+  },
+  "B_anchor_length_constraints": {
+    "STOW_head_requires_L_plus_b_at_most_mm": 142.36162796688882,
+    "PREDOCK_tail_requires_L_minus_b_at_least_mm": 45.401135092350295,
+    "therefore_b_at_most_mm": 48.48024643726926,
+    "board_after_wall_requires_b_at_least_mm": 51.550000000000004,
+    "incompatible_b_interval_gap_mm": 3.069753562730746,
+    "at_required_b_L_at_least_mm": 96.9511350923503,
+    "at_required_b_L_at_most_mm": 90.8116279668888,
+    "incompatible_L_interval_gap_mm": 6.139507125461492,
+    "at_required_b_and_head_limited_L_B_tail_mm": -0.06975356273074818,
+    "at_required_b_and_tail_limited_L_STOW_head_Y_mm": 97.06975356273074,
+    "boundary_b_and_L_mm": [
+      48.48024643726926,
+      93.88138152961956
+    ],
+    "decisive_identity": "Y_U(PREDOCK)=Y_U(STOW)+79.75/2; S excess and L cancel",
+    "no_solution_with_only_b_and_L_changed": true,
+    "placing_board_on_other_side_of_wall_evaluated": false,
+    "other_stack_route_or_board_orientation_disproved": false
+  },
+  "A_head_web_and_relief": {
+    "coordinate_frame": "A endpoint local, after factory Y reflection",
+    "web_X_mm": [
+      -6.0,
+      6.0
+    ],
+    "web_Y_mm": [
+      -13.7,
+      -13.25
+    ],
+    "web_Z_mm": [
+      0.8,
+      3.3
+    ],
+    "existing_transfer_window_X_mm": [
+      -5.4,
+      5.4
+    ],
+    "existing_transfer_window_Z_mm": [
+      1.1,
+      1.75
+    ],
+    "head_center_XY_mm": [
+      0.0,
+      -15.0
+    ],
+    "head_radius_mm": 1.75,
+    "head_Z_mm": [
+      0.85,
+      1.45
+    ],
+    "analytic_head_web_Common_mm3": 0.18081185628459456,
+    "relief_radius_mm": 1.95,
+    "root_proposed_relief_Z_mm": [
+      0.85,
+      1.65
+    ],
+    "same_removed_material_for_relief_top_1_45_or_1_65": true,
+    "predicted_removed_carrier_volume_mm3": 0.2692074255366869,
+    "maximum_relief_abs_X_inside_web_mm": 1.4534441853748632,
+    "remaining_lower_web_each_side_min_width_mm": 4.546555814625137,
+    "unaffected_side_column_each_width_mm": 0.6,
+    "unaffected_side_column_each_section_mm2": 0.27,
+    "positive_jaw_web_Z_overlap_mm": 0.05,
+    "positive_web_plate_Z_overlap_mm": 0.4,
+    "proposed_side_probe_each_volume_mm3": 0.09520000000000003,
+    "proposed_bearing_annulus_volume_mm3": 0.2909900195387546,
+    "nominal_radial_head_clearance_mm": 0.2,
+    "both_side_connections_retained_in_declared_geometry": true,
+    "native_validity_or_190_pairs_executed_here": false,
+    "strength_retention_or_manufacturing_proved": false
+  },
+  "witness_source_sha256": "51fa330daed1a2d9dd24faf8758cca4536d5a566db2c6dfe41edabfda87a04f4"
+}

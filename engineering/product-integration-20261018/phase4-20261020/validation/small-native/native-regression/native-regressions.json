@@ -1,0 +1,409 @@
+{
+  "schema": "razr-ep4-small-native-regressions-v1",
+  "runtime": {
+    "started_UTC": "2026-10-20T07:25:14.316922+00:00",
+    "PID": 125320,
+    "PPID": 125111,
+    "python_executable": "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+    "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "packages": {
+      "cadquery": "2.7.0",
+      "cadquery-ocp": "7.8.1.1.post1",
+      "numpy": "2.5.4"
+    },
+    "argv": [
+      "integration/product_routing_ep4.py",
+      "--output",
+      "/home/qian-qi/.local/share/razr-slide-evidence/product-followup-20261020-phase4/small-native-9a8307f",
+      "--native-regression"
+    ],
+    "source_root": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018"
+  },
+  "source_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+  "source_sha256": {
+    "integration/product_routing_ep4.py": "f8286416e8d4f835b5a280f3c76e7dd69aaebda25ac2217f40f33e19e92251b8",
+    "design/product_routing_ep4.json": "7504d0714a6a61bf8742d2ab2f69dff245aa32dec449a34158c784803fe4240d",
+    "integration/product_routing_ep3.py": "dfee909ffe781036fb7cec84a2acabe4aada23409bb3ea721f402831462e90d2",
+    "design/product_routing_ep3.json": "5ea33c5948b1a46c9317ca4eceb4a290b5419bd8f09baa351b40346f13e5fa3e",
+    "integration/product_split_assembly.py": "0f5ed0e9f64e0733f1608dfb9a23418ddf965240ac69ded654a65c0175d5acbb",
+    "integration/product_assembly.py": "695073e313dae45edbb7cf8c305d31c167b4e24e1731bf8be8f1a91a77dbd77b",
+    "integration/product_fpc.py": "fe52b2582a4125090767d68c165a45968cf4d4c8f3191be3e92d9f29d4f2f93e",
+    "integration/product_interfaces.py": "bcf84897de521d9d783e33787c66df807035ca514e3ae4ed450431bf60347019",
+    "integration/oled_storage.py": "04b32718ff6b0f6ee107c56b6aaf58c7f8d4c3b1b64b09b84297b6ff0ab75082",
+    "integration/product_motion.py": "293719a058ec4da4581cb3f45140e0a51f308ff0baf6d1170f57aa3202a5541c",
+    "integration/cam_coupling.py": "4a3bf1d2b86d31fa8e3d60d3412e15548bf42287ed95d756798f3d88c6c4e631",
+    "integration/straight_envelope.py": "5fe5fa2238572123b292a940da9b2e8ec68734ce078a5cdf1c8e84c1e31047bf",
+    "engineering/product-integration-20261018/physical-test-followon-20261019/captured_follower_assembly.py": "d3ccd367ef791b90296ec09011e5368bd17a93da4fc2c6fd999e252133dca259",
+    "design/product_geometry.json": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+    "design/product_interfaces.json": "a5eeba7042ee44d1b8317e5e5d084b0bddbf6609550652a50f721a29af6f1bd7"
+  },
+  "source_bytes_unchanged": true,
+  "cases": [
+    {
+      "case": "A_carrier_connected_after_plate_web_change",
+      "pass": true,
+      "actual": {
+        "bounds_mm": [
+          -6.0,
+          6.0,
+          -36.0,
+          -7.0,
+          0.05,
+          3.3
+        ],
+        "volume_mm3": 276.4635495118064,
+        "positive_valid_solids": 1
+      }
+    },
+    {
+      "case": "B_carrier_connected_after_plate_web_change",
+      "pass": true,
+      "actual": {
+        "bounds_mm": [
+          -6.0,
+          6.0,
+          7.0,
+          36.0,
+          0.05,
+          3.3
+        ],
+        "volume_mm3": 306.22354951180637,
+        "positive_valid_solids": 1
+      }
+    },
+    {
+      "case": "retained_A33_18mm3_negative_and_EP4_A_battery_pair",
+      "old_common_mm3": 17.999999999999993,
+      "new_common_mm3": 0.0,
+      "pass": true,
+      "old_Common_context": {
+        "ROI_bounds_mm": [
+          -8.0,
+          8.0,
+          36.0,
+          46.0,
+          2.5,
+          6.75
+        ],
+        "margin_each_face_mm": 2.0,
+        "scope": "native material clipped by a local review box; not a wall-removal proposal or minimum-thickness certificate",
+        "parts": [
+          {
+            "part": "A33_A_inner_carrier_jaw",
+            "actual_local_wall_thickness_mm": null,
+            "actual_local_wall_thickness_status": "unknown",
+            "reason": "No measured wall or local opposing-face thickness calculation is supplied; inspect the exported finite native neighborhood",
+            "nominal_design_context": {
+              "carrier_plate_mm": 0.4,
+              "jaw_mm": 0.8,
+              "board_ledge_mm": 0.2,
+              "source": "product_routing_ep4.ep4_local_parts; feature values are not a thickness map at the Common"
+            },
+            "thickness_inferred_from_bounds": false,
+            "real_component_or_process_qualified": false,
+            "crop_volume_mm3": 44.4707345778313,
+            "crop_positive_solids": 1,
+            "crop_bounds_mm": [
+              -6.0,
+              6.0,
+              36.0,
+              44.0,
+              2.5,
+              4.75
+            ],
+            "crop_solids": [
+              {
+                "bounds_mm": [
+                  -6.0,
+                  6.0,
+                  36.0,
+                  44.0,
+                  2.5,
+                  4.75
+                ],
+                "volume_mm3": 44.4707345778313,
+                "positive_valid_solids": 1
+              }
+            ]
+          },
+          {
+            "part": "A_BATTERY_ALLOCATION",
+            "actual_local_wall_thickness_mm": null,
+            "actual_local_wall_thickness_status": "unknown",
+            "reason": "No measured wall or local opposing-face thickness calculation is supplied; inspect the exported finite native neighborhood",
+            "nominal_design_context": null,
+            "thickness_inferred_from_bounds": false,
+            "real_component_or_process_qualified": false,
+            "crop_volume_mm3": 288.0,
+            "crop_positive_solids": 1,
+            "crop_bounds_mm": [
+              -8.0,
+              8.0,
+              38.0,
+              46.0,
+              4.5,
+              6.75
+            ],
+            "crop_solids": [
+              {
+                "bounds_mm": [
+                  -8.0,
+                  8.0,
+                  38.0,
+                  46.0,
+                  4.5,
+                  6.75
+                ],
+                "volume_mm3": 288.0,
+                "positive_valid_solids": 1
+              }
+            ]
+          }
+        ],
+        "neighborhood_STEP": {
+          "file": "neighborhood.step",
+          "sha256": "15c78976ff4e5d430360a8e89b69fa9f28203d63e6a0a23cdbf7b73ba1ae56ef",
+          "independent_readback_executed": false
+        },
+        "crop_evaluation_errors": [],
+        "local_material_context_complete": true,
+        "actual_local_wall_thickness_status": "unknown"
+      },
+      "old_Common": {
+        "bounds_mm": [
+          -6.0,
+          6.0,
+          38.0,
+          44.0,
+          4.5,
+          4.75
+        ],
+        "volume_mm3": 17.999999999999993,
+        "positive_valid_solids": 1,
+        "solids": [
+          {
+            "bounds_mm": [
+              -6.0,
+              6.0,
+              38.0,
+              44.0,
+              4.5,
+              4.75
+            ],
+            "volume_mm3": 17.999999999999993,
+            "positive_valid_solids": 1
+          }
+        ],
+        "file": "A33-A-carrier-battery-Common.step",
+        "sha256": "fd035b2fc02f5949648fff4ea0b836a100e9e57696750f40307195f2338a5de6",
+        "independent_process_readback_executed": false
+      }
+    },
+    {
+      "case": "complete_B_board_group_relocation_and_proper_world_frame",
+      "translated_parts": [
+        {
+          "part": "mini_DP_PCB",
+          "reference_minus_EP4_mm3": 0.0,
+          "EP4_minus_reference_mm3": 0.0
+        },
+        {
+          "part": "mini_DS_PCB",
+          "reference_minus_EP4_mm3": 0.0,
+          "EP4_minus_reference_mm3": 0.0
+        },
+        {
+          "part": "mated_BM28_reservation",
+          "reference_minus_EP4_mm3": 0.0,
+          "EP4_minus_reference_mm3": 0.0
+        },
+        {
+          "part": "M1_board_shaft_1",
+          "reference_minus_EP4_mm3": 0.0,
+          "EP4_minus_reference_mm3": 0.0
+        },
+        {
+          "part": "M1_board_shaft_2",
+          "reference_minus_EP4_mm3": 0.0,
+          "EP4_minus_reference_mm3": 0.0
+        },
+        {
+          "part": "M1_board_shaft_3",
+          "reference_minus_EP4_mm3": 0.0,
+          "EP4_minus_reference_mm3": 0.0
+        },
+        {
+          "part": "M1_board_shaft_4",
+          "reference_minus_EP4_mm3": 0.0,
+          "EP4_minus_reference_mm3": 0.0
+        },
+        {
+          "part": "M1_board_head_1",
+          "reference_minus_EP4_mm3": 0.0,
+          "EP4_minus_reference_mm3": 0.0
+        },
+        {
+          "part": "M1_board_head_2",
+          "reference_minus_EP4_mm3": 0.0,
+          "EP4_minus_reference_mm3": 0.0
+        },
+        {
+          "part": "M1_board_head_3",
+          "reference_minus_EP4_mm3": 0.0,
+          "EP4_minus_reference_mm3": 0.0
+        },
+        {
+          "part": "M1_board_head_4",
+          "reference_minus_EP4_mm3": 0.0,
+          "EP4_minus_reference_mm3": 0.0
+        }
+      ],
+      "world_DP_bounds_mm": [
+        -6.0,
+        6.0,
+        83.75,
+        95.75,
+        11.950000000000001,
+        12.750000000000004
+      ],
+      "world_DS_bounds_mm": [
+        -6.0,
+        6.0,
+        83.75,
+        95.75,
+        10.55,
+        11.350000000000003
+      ],
+      "world_board_face_gap_mm": 0.5999999999999979,
+      "pass": true
+    },
+    {
+      "case": "B_complete_static_transfer_connected_and_reaches_tail_and_board_reservations",
+      "transfer": {
+        "bounds_mm": [
+          -5.300000000000024,
+          5.300000000000023,
+          0.0,
+          35.95,
+          0.05,
+          1.7
+        ],
+        "volume_mm3": 168.93090151218001,
+        "positive_valid_solids": 1
+      },
+      "endpoint_volume_probes": [
+        {
+          "probe_mm3": 0.020000000000000018,
+          "transfer_Common_mm3": 0.020000000000000018
+        },
+        {
+          "probe_mm3": 0.0800000000000001,
+          "transfer_Common_mm3": 0.0800000000000001
+        }
+      ],
+      "pass": true,
+      "individual_26_conductors_or_electrical_connection_proved": false
+    },
+    {
+      "case": "finite_S_U_extrusion_preserves_declared_polygon_at_three_poses",
+      "poses": [
+        {
+          "pose": "PREDOCK",
+          "native_volume_mm3": 119.97382161564735,
+          "independent_polygon_volume_mm3": 119.97382161564315,
+          "positive_valid_solids": 1,
+          "pass": true
+        },
+        {
+          "pose": "OPEN",
+          "native_volume_mm3": 119.98432623905092,
+          "independent_polygon_volume_mm3": 119.98432623904864,
+          "positive_valid_solids": 1,
+          "pass": true
+        },
+        {
+          "pose": "STOW",
+          "native_volume_mm3": 119.97444517507724,
+          "independent_polygon_volume_mm3": 119.97444517507392,
+          "positive_valid_solids": 1,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "case": "validated_empty_short_circuit_and_separate_domain_regressions",
+      "subcases": [
+        {
+          "case": "A_inside",
+          "actual": {
+            "part": "A_inside",
+            "outside_outer_union_mm3": 0.0,
+            "native_domain_cuts_executed": 1,
+            "validated_empty_result": true,
+            "rejected": false,
+            "method": "sequential cuts by separate domains; stop only at validated empty material"
+          },
+          "pass": true
+        },
+        {
+          "case": "B_inside",
+          "actual": {
+            "part": "B_inside",
+            "outside_outer_union_mm3": 0.0,
+            "native_domain_cuts_executed": 2,
+            "validated_empty_result": true,
+            "rejected": false,
+            "method": "sequential cuts by separate domains; stop only at validated empty material"
+          },
+          "pass": true
+        },
+        {
+          "case": "cross_two_domains",
+          "actual": {
+            "part": "cross_two_domains",
+            "outside_outer_union_mm3": 0.0,
+            "native_domain_cuts_executed": 2,
+            "validated_empty_result": true,
+            "rejected": false,
+            "method": "sequential cuts by separate domains; stop only at validated empty material"
+          },
+          "pass": true
+        },
+        {
+          "case": "outside",
+          "actual": {
+            "part": "outside",
+            "outside_outer_union_mm3": 0.9999999999999998,
+            "native_domain_cuts_executed": 2,
+            "validated_empty_result": false,
+            "rejected": true,
+            "method": "sequential cuts by separate domains; stop only at validated empty material"
+          },
+          "pass": true
+        },
+        {
+          "case": "real_gap_not_global_enclosing_box",
+          "actual": {
+            "part": "gap",
+            "outside_outer_union_mm3": 0.9999999999999998,
+            "native_domain_cuts_executed": 2,
+            "validated_empty_result": false,
+            "rejected": true,
+            "method": "sequential cuts by separate domains; stop only at validated empty material"
+          },
+          "pass": true
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "native_regressions_passed": true,
+  "complete_phone_scene_or_full_motion_tested": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "supplier_dynamic_qualified": false,
+  "physical_hardware_test_executed": false,
+  "full_cycle_internal_route_accepted": false
+}

@@ -1,0 +1,1244 @@
+{
+  "source_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+  "checks": [
+    {
+      "check": "new-closed-slot-single-valid-solid",
+      "passed": true,
+      "actual": {
+        "empty": false,
+        "bounds_mm": [
+          6.2,
+          21.1,
+          63.65,
+          78.55,
+          1.2,
+          1.6
+        ],
+        "volume_mm3": 10.862813151042943,
+        "valid": true,
+        "solids": [
+          {
+            "bounds_mm": [
+              6.2,
+              21.1,
+              63.65,
+              78.55,
+              1.2,
+              1.6
+            ],
+            "volume_mm3": 10.862813151042943,
+            "valid": true
+          }
+        ],
+        "positive_valid_solids": 1
+      }
+    },
+    {
+      "check": "new-closed-slot-near-outer-X-and-side-gap",
+      "passed": true,
+      "actual_min_X_mm": 6.2,
+      "nominal_gap_to_flex_edge_mm": 0.20000000000000018
+    },
+    {
+      "check": "new-outer-outside-old-outer",
+      "passed": true,
+      "difference": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null,
+        "file": null,
+        "sha256": null
+      }
+    },
+    {
+      "check": "new-closed-slot-inner-void-remains-open",
+      "passed": true,
+      "expected": "zero",
+      "common": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null
+      }
+    },
+    {
+      "check": "actual-native-closed-inner-caps-and-straight-flanks",
+      "passed": true,
+      "inner_cylinder_faces": [
+        {
+          "radius_mm": 0.425,
+          "center_xy_mm": [
+            20.0,
+            64.75
+          ],
+          "area_mm2": 0.534070751110265
+        },
+        {
+          "radius_mm": 0.425,
+          "center_xy_mm": [
+            7.15,
+            77.6
+          ],
+          "area_mm2": 0.534070751110265
+        }
+      ],
+      "straight_inner_planes": [
+        {
+          "normal": [
+            -0.7071067811865474,
+            -0.7071067811865477,
+            0.0
+          ],
+          "point": [
+            13.875520382004284,
+            71.47552038200428,
+            1.4000000000000001
+          ],
+          "centerline_distance_mm": 0.42499999999999916,
+          "area_mm2": 7.269057710597708
+        },
+        {
+          "normal": [
+            0.7071067811865474,
+            0.7071067811865477,
+            0.0
+          ],
+          "point": [
+            13.274479617995718,
+            70.87447961799572,
+            1.4000000000000001
+          ],
+          "centerline_distance_mm": 0.42499999999999666,
+          "area_mm2": 7.269057710597708
+        }
+      ]
+    },
+    {
+      "check": "distal-slot-material-from-E-retained",
+      "passed": true,
+      "first_minus_second": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null,
+        "file": null,
+        "sha256": null
+      },
+      "second_minus_first": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null,
+        "file": null,
+        "sha256": null
+      }
+    },
+    {
+      "check": "old-slot-positive-arm-joint",
+      "passed": true,
+      "expected": "positive",
+      "common": {
+        "empty": false,
+        "bounds_mm": [
+          10.8,
+          11.400000000000011,
+          71.79436508138959,
+          72.6,
+          1.2,
+          1.6
+        ],
+        "volume_mm3": 0.12135238046649616,
+        "valid": true,
+        "solids": [
+          {
+            "bounds_mm": [
+              10.8,
+              11.400000000000011,
+              71.79436508138959,
+              72.6,
+              1.2,
+              1.6
+            ],
+            "volume_mm3": 0.12135238046649616,
+            "valid": true
+          }
+        ],
+        "positive_valid_solids": 1,
+        "file": "shapes/old-slot-positive-arm-joint-Common.step",
+        "sha256": "d3bda789dee78446fb8a0d57ba4750b33ed38d2322464b2e8ba4a505c4308e9b",
+        "independent_readback_executed": false
+      }
+    },
+    {
+      "check": "new-slot-positive-arm-joint",
+      "passed": true,
+      "expected": "positive",
+      "common": {
+        "empty": false,
+        "bounds_mm": [
+          10.8,
+          11.400000000000006,
+          71.79436508138959,
+          72.6,
+          1.2,
+          1.6
+        ],
+        "volume_mm3": 0.12135238046649675,
+        "valid": true,
+        "solids": [
+          {
+            "bounds_mm": [
+              10.8,
+              11.400000000000006,
+              71.79436508138959,
+              72.6,
+              1.2,
+              1.6
+            ],
+            "volume_mm3": 0.12135238046649675,
+            "valid": true
+          }
+        ],
+        "positive_valid_solids": 1,
+        "file": "shapes/new-slot-positive-arm-joint-Common.step",
+        "sha256": "0902ebf566298ed957774973250f8c393c088614baffcac5f98b522247aae409",
+        "independent_readback_executed": false
+      }
+    },
+    {
+      "check": "L-actual-old-KEY-factory-reconstruction",
+      "passed": true,
+      "first_minus_second": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null,
+        "file": null,
+        "sha256": null
+      },
+      "second_minus_first": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null,
+        "file": null,
+        "sha256": null
+      }
+    },
+    {
+      "check": "L-new-complete-KEY-single-valid-solid",
+      "passed": true,
+      "actual": {
+        "empty": false,
+        "bounds_mm": [
+          -30.33,
+          -6.2,
+          13.535,
+          78.55,
+          1.2,
+          4.4
+        ],
+        "volume_mm3": 29.38109608689855,
+        "valid": true,
+        "solids": [
+          {
+            "bounds_mm": [
+              -30.33,
+              -6.2,
+              13.535,
+              78.55,
+              1.2,
+              4.4
+            ],
+            "volume_mm3": 29.38109608689855,
+            "valid": true
+          }
+        ],
+        "positive_valid_solids": 1
+      }
+    },
+    {
+      "check": "L-complete-KEY-central-width-12-nominal-separation",
+      "passed": true,
+      "complete_KEY_bounds_mm": [
+        -30.33,
+        -6.2,
+        13.535,
+        78.55,
+        1.2,
+        4.4
+      ],
+      "complete_KEY_signed_X_inner_edge_mm": 6.2,
+      "central_object_required_X_interval_mm": [
+        -6.0,
+        6.0
+      ],
+      "nominal_minimum_X_gap_mm": 0.20000000000000018,
+      "requested_nominal_gap_mm": 0.2,
+      "preserved_under_ideal_KEY_Y_translation": true,
+      "current_full_external_obstacle_field_checked": false,
+      "manufacturing_tolerance_or_strength_margin_verified": false
+    },
+    {
+      "check": "L-original-KEY-material-lost",
+      "passed": true,
+      "difference": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null,
+        "file": null,
+        "sha256": null
+      }
+    },
+    {
+      "check": "L-unchanged-arm-tab-material-lost",
+      "passed": true,
+      "difference": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null,
+        "file": null,
+        "sha256": null
+      }
+    },
+    {
+      "check": "L-complete-KEY-inner-slot-void-remains-open",
+      "passed": true,
+      "expected": "zero",
+      "common": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null
+      }
+    },
+    {
+      "check": "L-arm-tab-positive-original-KEY-joint",
+      "passed": true,
+      "expected": "positive",
+      "common": {
+        "empty": false,
+        "bounds_mm": [
+          -13.45,
+          -13.2,
+          15.8,
+          15.945,
+          4.05,
+          4.35
+        ],
+        "volume_mm3": 0.01087499999999996,
+        "valid": true,
+        "solids": [
+          {
+            "bounds_mm": [
+              -13.45,
+              -13.2,
+              15.8,
+              15.945,
+              4.05,
+              4.35
+            ],
+            "volume_mm3": 0.01087499999999996,
+            "valid": true
+          }
+        ],
+        "positive_valid_solids": 1,
+        "file": "shapes/L-arm-tab-positive-original-KEY-joint-Common.step",
+        "sha256": "470db5ce43a000766c9c91f45befaee129bcdff2714f8cd52a1100e9f65340f2",
+        "independent_readback_executed": false
+      }
+    },
+    {
+      "check": "L-whole-material-accounting",
+      "passed": true,
+      "removed_mm3": 0.9387412243764557,
+      "added_mm3": 0.19838673060395115,
+      "signed_balance_error_mm3": 3.552713678800501e-15,
+      "added_is_expected_new_closed_cap_material": true
+    },
+    {
+      "check": "L-changed-material-retains-distal-interface",
+      "passed": true,
+      "first_minus_second": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null,
+        "file": null,
+        "sha256": null
+      },
+      "second_minus_first": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null,
+        "file": null,
+        "sha256": null
+      }
+    },
+    {
+      "check": "R-actual-old-KEY-factory-reconstruction",
+      "passed": true,
+      "first_minus_second": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null,
+        "file": null,
+        "sha256": null
+      },
+      "second_minus_first": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null,
+        "file": null,
+        "sha256": null
+      }
+    },
+    {
+      "check": "R-new-complete-KEY-single-valid-solid",
+      "passed": true,
+      "actual": {
+        "empty": false,
+        "bounds_mm": [
+          6.2,
+          30.33,
+          13.535,
+          78.55,
+          1.2,
+          4.4
+        ],
+        "volume_mm3": 29.381096086898197,
+        "valid": true,
+        "solids": [
+          {
+            "bounds_mm": [
+              6.2,
+              30.33,
+              13.535,
+              78.55,
+              1.2,
+              4.4
+            ],
+            "volume_mm3": 29.381096086898197,
+            "valid": true
+          }
+        ],
+        "positive_valid_solids": 1
+      }
+    },
+    {
+      "check": "R-complete-KEY-central-width-12-nominal-separation",
+      "passed": true,
+      "complete_KEY_bounds_mm": [
+        6.2,
+        30.33,
+        13.535,
+        78.55,
+        1.2,
+        4.4
+      ],
+      "complete_KEY_signed_X_inner_edge_mm": 6.2,
+      "central_object_required_X_interval_mm": [
+        -6.0,
+        6.0
+      ],
+      "nominal_minimum_X_gap_mm": 0.20000000000000018,
+      "requested_nominal_gap_mm": 0.2,
+      "preserved_under_ideal_KEY_Y_translation": true,
+      "current_full_external_obstacle_field_checked": false,
+      "manufacturing_tolerance_or_strength_margin_verified": false
+    },
+    {
+      "check": "R-original-KEY-material-lost",
+      "passed": true,
+      "difference": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null,
+        "file": null,
+        "sha256": null
+      }
+    },
+    {
+      "check": "R-unchanged-arm-tab-material-lost",
+      "passed": true,
+      "difference": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null,
+        "file": null,
+        "sha256": null
+      }
+    },
+    {
+      "check": "R-complete-KEY-inner-slot-void-remains-open",
+      "passed": true,
+      "expected": "zero",
+      "common": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null
+      }
+    },
+    {
+      "check": "R-arm-tab-positive-original-KEY-joint",
+      "passed": true,
+      "expected": "positive",
+      "common": {
+        "empty": false,
+        "bounds_mm": [
+          13.2,
+          13.45,
+          15.8,
+          15.945,
+          4.05,
+          4.35
+        ],
+        "volume_mm3": 0.010874999999999961,
+        "valid": true,
+        "solids": [
+          {
+            "bounds_mm": [
+              13.2,
+              13.45,
+              15.8,
+              15.945,
+              4.05,
+              4.35
+            ],
+            "volume_mm3": 0.010874999999999961,
+            "valid": true
+          }
+        ],
+        "positive_valid_solids": 1,
+        "file": "shapes/R-arm-tab-positive-original-KEY-joint-Common.step",
+        "sha256": "79438dc643dfb799db6dfe444f35cfe4943e26c54bb36f7d04a9b5c7bcd778bf",
+        "independent_readback_executed": false
+      }
+    },
+    {
+      "check": "R-whole-material-accounting",
+      "passed": true,
+      "removed_mm3": 0.9387412243764557,
+      "added_mm3": 0.19838673060395112,
+      "signed_balance_error_mm3": 3.197442310920451e-14,
+      "added_is_expected_new_closed_cap_material": true
+    },
+    {
+      "check": "R-changed-material-retains-distal-interface",
+      "passed": true,
+      "first_minus_second": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null,
+        "file": null,
+        "sha256": null
+      },
+      "second_minus_first": {
+        "empty": true,
+        "volume_mm3": 0.0,
+        "solids": [],
+        "bounds_mm": null,
+        "file": null,
+        "sha256": null
+      }
+    }
+  ],
+  "artifacts": {
+    "R-new-closed-slot": {
+      "empty": false,
+      "bounds_mm": [
+        6.2,
+        21.1,
+        63.65,
+        78.55,
+        1.2,
+        1.6
+      ],
+      "volume_mm3": 10.862813151042943,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            6.2,
+            21.1,
+            63.65,
+            78.55,
+            1.2,
+            1.6
+          ],
+          "volume_mm3": 10.862813151042943,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/R-new-closed-slot.step",
+      "sha256": "577d5cde31586cd54ccfd0590a536dac5da86ecc8d4ecb90841605cdb67c44d8",
+      "independent_readback_executed": false
+    },
+    "R-old-closed-slot": {
+      "empty": false,
+      "bounds_mm": [
+        5.4,
+        21.1,
+        63.65,
+        79.35,
+        1.2,
+        1.6
+      ],
+      "volume_mm3": 11.603167644815446,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            5.4,
+            21.1,
+            63.65,
+            79.35,
+            1.2,
+            1.6
+          ],
+          "volume_mm3": 11.603167644815446,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/R-old-closed-slot.step",
+      "sha256": "3174c68f615e0db1d764e9ca220f31d4dca41eef683224c2058e8f4aed93e8e9",
+      "independent_readback_executed": false
+    },
+    "R-new-outer-linear-radius-transition": {
+      "empty": false,
+      "bounds_mm": [
+        6.2,
+        21.1,
+        63.65,
+        78.55,
+        1.2,
+        1.6
+      ],
+      "volume_mm3": 17.26849227427284,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            6.2,
+            21.1,
+            63.65,
+            78.55,
+            1.2,
+            1.6
+          ],
+          "volume_mm3": 17.26849227427284,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/R-new-outer-linear-radius-transition.step",
+      "sha256": "1a3d738cfd3df9248c601cebe23ce9a13637884990ae1c276349600b0c6769a5",
+      "independent_readback_executed": false
+    },
+    "R-new-inner-closed-capsule": {
+      "empty": false,
+      "bounds_mm": [
+        6.7250000000000005,
+        20.425,
+        64.325,
+        78.02499999999999,
+        1.1,
+        1.7
+      ],
+      "volume_mm3": 9.608518684844833,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            6.7250000000000005,
+            20.425,
+            64.325,
+            78.02499999999999,
+            1.1,
+            1.7
+          ],
+          "volume_mm3": 9.608518684844833,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/R-new-inner-closed-capsule.step",
+      "sha256": "dd7f2b230fd1973c118c83674905f59ab125a71a31e4ad7f40af58fccffb1b06",
+      "independent_readback_executed": false
+    },
+    "new-outer-outside-old-outer": {
+      "empty": true,
+      "volume_mm3": 0.0,
+      "solids": [],
+      "bounds_mm": null,
+      "file": null,
+      "sha256": null
+    },
+    "distal-slot-material-from-E-retained-first-minus-second": {
+      "empty": true,
+      "volume_mm3": 0.0,
+      "solids": [],
+      "bounds_mm": null,
+      "file": null,
+      "sha256": null
+    },
+    "distal-slot-material-from-E-retained-second-minus-first": {
+      "empty": true,
+      "volume_mm3": 0.0,
+      "solids": [],
+      "bounds_mm": null,
+      "file": null,
+      "sha256": null
+    },
+    "old-slot-positive-arm-joint-Common": {
+      "empty": false,
+      "bounds_mm": [
+        10.8,
+        11.400000000000011,
+        71.79436508138959,
+        72.6,
+        1.2,
+        1.6
+      ],
+      "volume_mm3": 0.12135238046649616,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            10.8,
+            11.400000000000011,
+            71.79436508138959,
+            72.6,
+            1.2,
+            1.6
+          ],
+          "volume_mm3": 0.12135238046649616,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/old-slot-positive-arm-joint-Common.step",
+      "sha256": "d3bda789dee78446fb8a0d57ba4750b33ed38d2322464b2e8ba4a505c4308e9b",
+      "independent_readback_executed": false
+    },
+    "new-slot-positive-arm-joint-Common": {
+      "empty": false,
+      "bounds_mm": [
+        10.8,
+        11.400000000000006,
+        71.79436508138959,
+        72.6,
+        1.2,
+        1.6
+      ],
+      "volume_mm3": 0.12135238046649675,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            10.8,
+            11.400000000000006,
+            71.79436508138959,
+            72.6,
+            1.2,
+            1.6
+          ],
+          "volume_mm3": 0.12135238046649675,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/new-slot-positive-arm-joint-Common.step",
+      "sha256": "0902ebf566298ed957774973250f8c393c088614baffcac5f98b522247aae409",
+      "independent_readback_executed": false
+    },
+    "L-actual-old-KEY-factory-reconstruction-first-minus-second": {
+      "empty": true,
+      "volume_mm3": 0.0,
+      "solids": [],
+      "bounds_mm": null,
+      "file": null,
+      "sha256": null
+    },
+    "L-actual-old-KEY-factory-reconstruction-second-minus-first": {
+      "empty": true,
+      "volume_mm3": 0.0,
+      "solids": [],
+      "bounds_mm": null,
+      "file": null,
+      "sha256": null
+    },
+    "L-actual-original-KEY-mother": {
+      "empty": false,
+      "bounds_mm": [
+        -30.33,
+        -13.15,
+        13.535,
+        15.945,
+        2.6999999999999993,
+        4.4
+      ],
+      "volume_mm3": 7.942010316322006,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            -30.33,
+            -13.15,
+            13.535,
+            15.945,
+            2.6999999999999993,
+            4.4
+          ],
+          "volume_mm3": 7.942010316322006,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/L-actual-original-KEY-mother.step",
+      "sha256": "3e86da2202d73c7944d3f320d667d40d8fd6b706a62c0dc6a0030c071f2dac54",
+      "independent_readback_executed": false
+    },
+    "L-old-complete-KEY": {
+      "empty": false,
+      "bounds_mm": [
+        -30.33,
+        -5.4,
+        13.535,
+        79.35,
+        1.2,
+        4.4
+      ],
+      "volume_mm3": 30.12145058067106,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            -30.33,
+            -5.4,
+            13.535,
+            79.35,
+            1.2,
+            4.4
+          ],
+          "volume_mm3": 30.12145058067106,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/L-old-complete-KEY.step",
+      "sha256": "5408a2e12462d7ea11c5af72863592614da6baf5ac420cfddcbb2e647760505f",
+      "independent_readback_executed": false
+    },
+    "L-new-complete-KEY": {
+      "empty": false,
+      "bounds_mm": [
+        -30.33,
+        -6.2,
+        13.535,
+        78.55,
+        1.2,
+        4.4
+      ],
+      "volume_mm3": 29.38109608689855,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            -30.33,
+            -6.2,
+            13.535,
+            78.55,
+            1.2,
+            4.4
+          ],
+          "volume_mm3": 29.38109608689855,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/L-new-complete-KEY.step",
+      "sha256": "1daaf64147127b7b9aff61eda38880b7ae2542f1a90bbf17ebeb4c86e9b758e1",
+      "independent_readback_executed": false
+    },
+    "L-original-KEY-material-lost": {
+      "empty": true,
+      "volume_mm3": 0.0,
+      "solids": [],
+      "bounds_mm": null,
+      "file": null,
+      "sha256": null
+    },
+    "L-unchanged-arm-tab-material-lost": {
+      "empty": true,
+      "volume_mm3": 0.0,
+      "solids": [],
+      "bounds_mm": null,
+      "file": null,
+      "sha256": null
+    },
+    "L-arm-tab-positive-original-KEY-joint-Common": {
+      "empty": false,
+      "bounds_mm": [
+        -13.45,
+        -13.2,
+        15.8,
+        15.945,
+        4.05,
+        4.35
+      ],
+      "volume_mm3": 0.01087499999999996,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            -13.45,
+            -13.2,
+            15.8,
+            15.945,
+            4.05,
+            4.35
+          ],
+          "volume_mm3": 0.01087499999999996,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/L-arm-tab-positive-original-KEY-joint-Common.step",
+      "sha256": "470db5ce43a000766c9c91f45befaee129bcdff2714f8cd52a1100e9f65340f2",
+      "independent_readback_executed": false
+    },
+    "L-removed-material": {
+      "empty": false,
+      "bounds_mm": [
+        -8.634924240491758,
+        -5.4,
+        76.11507575950824,
+        79.35,
+        1.2,
+        1.6
+      ],
+      "volume_mm3": 0.9387412243764557,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            -8.634924240491758,
+            -5.4,
+            76.11507575950824,
+            79.35,
+            1.2,
+            1.6
+          ],
+          "volume_mm3": 0.9387412243764557,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/L-removed-material.step",
+      "sha256": "2a6b8c4430342a1ac6837eb59648ca7ee81f8c76f766ef1471a1bc6a49eb1e73",
+      "independent_readback_executed": false
+    },
+    "L-added-material": {
+      "empty": false,
+      "bounds_mm": [
+        -7.450520382004286,
+        -6.248698875960825,
+        77.29947961799571,
+        78.50130112403917,
+        1.2,
+        1.6
+      ],
+      "volume_mm3": 0.19838673060395115,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            -7.450520382004286,
+            -6.248698875960825,
+            77.29947961799571,
+            78.50130112403917,
+            1.2,
+            1.6
+          ],
+          "volume_mm3": 0.19838673060395115,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/L-added-material.step",
+      "sha256": "d4bccbac850981a8819a56c1efb8cae911d802b565a4964ee9fbf4eedb5343e3",
+      "independent_readback_executed": false
+    },
+    "L-changed-material-retains-distal-interface-first-minus-second": {
+      "empty": true,
+      "volume_mm3": 0.0,
+      "solids": [],
+      "bounds_mm": null,
+      "file": null,
+      "sha256": null
+    },
+    "L-changed-material-retains-distal-interface-second-minus-first": {
+      "empty": true,
+      "volume_mm3": 0.0,
+      "solids": [],
+      "bounds_mm": null,
+      "file": null,
+      "sha256": null
+    },
+    "R-actual-old-KEY-factory-reconstruction-first-minus-second": {
+      "empty": true,
+      "volume_mm3": 0.0,
+      "solids": [],
+      "bounds_mm": null,
+      "file": null,
+      "sha256": null
+    },
+    "R-actual-old-KEY-factory-reconstruction-second-minus-first": {
+      "empty": true,
+      "volume_mm3": 0.0,
+      "solids": [],
+      "bounds_mm": null,
+      "file": null,
+      "sha256": null
+    },
+    "R-actual-original-KEY-mother": {
+      "empty": false,
+      "bounds_mm": [
+        13.15,
+        30.33,
+        13.535,
+        15.945,
+        2.6999999999999993,
+        4.4
+      ],
+      "volume_mm3": 7.942010316322053,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            13.15,
+            30.33,
+            13.535,
+            15.945,
+            2.6999999999999993,
+            4.4
+          ],
+          "volume_mm3": 7.942010316322053,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/R-actual-original-KEY-mother.step",
+      "sha256": "b4f03e5bf2a8fca7595ce34cebf2f0e700c62257b358a06c090d6ab338a3cfd0",
+      "independent_readback_executed": false
+    },
+    "R-old-complete-KEY": {
+      "empty": false,
+      "bounds_mm": [
+        5.4,
+        30.33,
+        13.535,
+        79.35,
+        1.2,
+        4.4
+      ],
+      "volume_mm3": 30.121450580670736,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            5.4,
+            30.33,
+            13.535,
+            79.35,
+            1.2,
+            4.4
+          ],
+          "volume_mm3": 30.121450580670736,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/R-old-complete-KEY.step",
+      "sha256": "68f8746592dfc6157a59c5bb3b5d98ce24cb687b4bbcbae5cfc86760784cd7d5",
+      "independent_readback_executed": false
+    },
+    "R-new-complete-KEY": {
+      "empty": false,
+      "bounds_mm": [
+        6.2,
+        30.33,
+        13.535,
+        78.55,
+        1.2,
+        4.4
+      ],
+      "volume_mm3": 29.381096086898197,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            6.2,
+            30.33,
+            13.535,
+            78.55,
+            1.2,
+            4.4
+          ],
+          "volume_mm3": 29.381096086898197,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/R-new-complete-KEY.step",
+      "sha256": "812785ed1d5ebbf689bf8402442319cff7377e1089688da805cd3961e39c7063",
+      "independent_readback_executed": false
+    },
+    "R-original-KEY-material-lost": {
+      "empty": true,
+      "volume_mm3": 0.0,
+      "solids": [],
+      "bounds_mm": null,
+      "file": null,
+      "sha256": null
+    },
+    "R-unchanged-arm-tab-material-lost": {
+      "empty": true,
+      "volume_mm3": 0.0,
+      "solids": [],
+      "bounds_mm": null,
+      "file": null,
+      "sha256": null
+    },
+    "R-arm-tab-positive-original-KEY-joint-Common": {
+      "empty": false,
+      "bounds_mm": [
+        13.2,
+        13.45,
+        15.8,
+        15.945,
+        4.05,
+        4.35
+      ],
+      "volume_mm3": 0.010874999999999961,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            13.2,
+            13.45,
+            15.8,
+            15.945,
+            4.05,
+            4.35
+          ],
+          "volume_mm3": 0.010874999999999961,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/R-arm-tab-positive-original-KEY-joint-Common.step",
+      "sha256": "79438dc643dfb799db6dfe444f35cfe4943e26c54bb36f7d04a9b5c7bcd778bf",
+      "independent_readback_executed": false
+    },
+    "R-removed-material": {
+      "empty": false,
+      "bounds_mm": [
+        5.4,
+        8.634924240491758,
+        76.11507575950824,
+        79.35,
+        1.2,
+        1.6
+      ],
+      "volume_mm3": 0.9387412243764557,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            5.4,
+            8.634924240491758,
+            76.11507575950824,
+            79.35,
+            1.2,
+            1.6
+          ],
+          "volume_mm3": 0.9387412243764557,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/R-removed-material.step",
+      "sha256": "74aa1fc7b6e60b3d795f17a07bae4709485eec63c1ccf6b3e0dff0df0439e0b5",
+      "independent_readback_executed": false
+    },
+    "R-added-material": {
+      "empty": false,
+      "bounds_mm": [
+        6.248698875960825,
+        7.450520382004286,
+        77.29947961799571,
+        78.50130112403917,
+        1.2,
+        1.6
+      ],
+      "volume_mm3": 0.19838673060395112,
+      "valid": true,
+      "solids": [
+        {
+          "bounds_mm": [
+            6.248698875960825,
+            7.450520382004286,
+            77.29947961799571,
+            78.50130112403917,
+            1.2,
+            1.6
+          ],
+          "volume_mm3": 0.19838673060395112,
+          "valid": true
+        }
+      ],
+      "positive_valid_solids": 1,
+      "file": "shapes/R-added-material.step",
+      "sha256": "a0e9dc73226ba6b3485b8c7cd52e03210007406cab710cad1b1bf5c3f6e1c76a",
+      "independent_readback_executed": false
+    },
+    "R-changed-material-retains-distal-interface-first-minus-second": {
+      "empty": true,
+      "volume_mm3": 0.0,
+      "solids": [],
+      "bounds_mm": null,
+      "file": null,
+      "sha256": null
+    },
+    "R-changed-material-retains-distal-interface-second-minus-first": {
+      "empty": true,
+      "volume_mm3": 0.0,
+      "solids": [],
+      "bounds_mm": null,
+      "file": null,
+      "sha256": null
+    }
+  },
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "whole_scene_clearance_accepted": false,
+  "full_phone_motion_accepted": false,
+  "actual_material_or_process_qualified": false,
+  "physical_prototype_executed": false,
+  "current_PAWL_interlock_and_relocking_verified": false
+}

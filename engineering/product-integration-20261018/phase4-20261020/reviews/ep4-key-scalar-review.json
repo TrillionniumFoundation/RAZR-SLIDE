@@ -1,0 +1,71 @@
+{
+  "scope": "Independent scalar construction review, not native CAD or physical qualification",
+  "source_sha256": {
+    "razr_phase4_reference/integration/cam_coupling.py": "4a3bf1d2b86d31fa8e3d60d3412e15548bf42287ed95d756798f3d88c6c4e631",
+    "razr_phase4_reference/integration/product_assembly.py": "695073e313dae45edbb7cf8c305d31c167b4e24e1731bf8be8f1a91a77dbd77b",
+    "razr_phase4_reference/integration/product_split_assembly.py": "0f5ed0e9f64e0733f1608dfb9a23418ddf965240ac69ded654a65c0175d5acbb",
+    "razr_phase4_src/integration/product_routing_ep4.py": "f8286416e8d4f835b5a280f3c76e7dd69aaebda25ac2217f40f33e19e92251b8",
+    "razr_phase4_src/design/product_routing_ep4.json": "7504d0714a6a61bf8742d2ab2f69dff245aa32dec449a34158c784803fe4240d"
+  },
+  "current_right_yoke": {
+    "centerline_inner_end_C_mm": [
+      6.5,
+      78.25
+    ],
+    "centerline_outer_end_D_mm": [
+      20,
+      64.75
+    ],
+    "outer_radius_mm": 1.1,
+    "groove_radius_mm": 0.425,
+    "pin_radius_mm": 0.4,
+    "Z_mm": [
+      1.2,
+      1.6
+    ],
+    "outer_min_X_mm": 5.4,
+    "groove_min_X_mm": 6.075,
+    "cut_at_X_6_residual_endcap_plan_width_mm": 0.075,
+    "cut_at_X_6_2_passes_groove_inner_X_boundary_by_mm": 0.125
+  },
+  "admissible_ideal_clearance_extremes": {
+    "cam_induced_crosshead_delta_X_half_mm": 0.0252814320072192,
+    "KEY_delta_Y_half_mm": 0.06063677106654654,
+    "reversal_lost_motion_mm": 0.12127354213309308,
+    "minimum_STOW_pin_center_projection_from_existing_C_along_slot_mm": 0.9999068277589988,
+    "maximum_C_advance_X_preserving_all_ideal_flanks_with_old_groove_radius_mm": 0.7070408984631171,
+    "maximum_new_C_X_mm": 7.207040898463117,
+    "old_outer_radius_at_that_C_still_extends_inside_required_X_6_2_by_mm": 0.09295910153688336,
+    "scope": "Independent dx=\u00b1c*sqrt(1+k\u00b2), dq=dx\u00b1c*sqrt(2); q in [0,12]; no preload, elastic deflection or manufacturing tolerance added"
+  },
+  "candidate_local_endcap_reconstruction_only": {
+    "not_applied": true,
+    "new_C_mm": [
+      7.15,
+      77.6
+    ],
+    "new_inner_groove_radius_mm": 0.425,
+    "new_outer_radius_at_C_mm": 0.95,
+    "nominal_FPC_side_gap_mm": 0.20000000000000018,
+    "nominal_radial_endcap_wall_mm": 0.5249999999999999,
+    "remaining_ideal_pin_center_projection_to_new_C_min_mm": 0.08066801221648645,
+    "outer_radius_transition": "exact convex hull of disks(Cprime,.95) and (E,1.1), E=Cprime+(1,-1)/sqrt(2), union original-radius1.1 capsule(E,D)",
+    "required_followup": [
+      "actual native Common bounds must identify this closed endcap",
+      "closed groove and both flank contact/overtravel witnesses retained",
+      "old KEY containment and added-arm PAWL return checks",
+      "full connected material and no new fork/arm bottleneck",
+      "new changes accounted independently of old split-scene material-preservation claims",
+      "actual process, strength and tolerance remain unqualified"
+    ],
+    "E_mm": [
+      7.857106781186548,
+      76.89289321881344
+    ],
+    "taper_common_tangent_normals_formula": "n_plus/minus=-.15*t +/- sqrt(1-.15**2)*N; t=(1,-1)/sqrt(2), N=(1,1)/sqrt(2)",
+    "pure_subtraction_assumed": false,
+    "new_closed_end_can_add_material_in_old_inner_groove": true
+  },
+  "candidate_go": false,
+  "manufacturing_go": false
+}
