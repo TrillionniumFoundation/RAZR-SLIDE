@@ -1,0 +1,176 @@
+{
+  "schema": "razr-ep4-arithmetic-v1",
+  "candidate_id": "EP4_fixed_world_S_and_B_local_U_bounded_geometry_study",
+  "source_sha256": {
+    "design/product_routing_ep4.json": "7504d0714a6a61bf8742d2ab2f69dff245aa32dec449a34158c784803fe4240d",
+    "integration/product_routing_ep4.py": "f8286416e8d4f835b5a280f3c76e7dd69aaebda25ac2217f40f33e19e92251b8"
+  },
+  "poses": {
+    "PREDOCK": {
+      "slide_mm": 79.75,
+      "descent_mm": 0.0,
+      "S_rise_mm": 8.2,
+      "A_endpoint_world_mm": [
+        0.0,
+        51.0,
+        1.45
+      ],
+      "B_endpoint_world_mm": [
+        0.0,
+        119.75,
+        13.049999999999999
+      ],
+      "A_straight_mm": 29.0,
+      "S_length_mm": 13.656343682694388,
+      "bridge_straight_mm": 40.04943245382486,
+      "U_length_mm": 6.994791409655892,
+      "B_straight_mm": 10.299432453824863,
+      "U_start_world_Y_mm": 130.04943245382486,
+      "U_B_local_delta_Z_mm": 3.3999999999999995,
+      "U_finite_head_world_Y_mm": 132.6941860165556,
+      "length_sum_mm": 100.0,
+      "target_free_length_mm": 100.0,
+      "U_max_abs_curvature_per_mm": 0.6736997151737103,
+      "S_continuous_abs_curvature_upper_bound_per_mm": 0.47342722073549315,
+      "minimum_centerline_radius_continuous_lower_bound_mm": 1.4843408383246157,
+      "finite_thickness_Jacobian_continuous_lower_bound": 0.9663150142413145,
+      "Gauss_Legendre_order": 96,
+      "formal_directed_rounding_certificate": false,
+      "material_length_derivation": "A_straight+S_length+(U_start-90)+U_length+(U_start-B_world_Y)=100"
+    },
+    "OPEN": {
+      "slide_mm": 79.75,
+      "descent_mm": 8.2,
+      "S_rise_mm": 0.0,
+      "A_endpoint_world_mm": [
+        0.0,
+        51.0,
+        1.45
+      ],
+      "B_endpoint_world_mm": [
+        0.0,
+        119.75,
+        4.85
+      ],
+      "A_straight_mm": 29.0,
+      "S_length_mm": 10.0,
+      "bridge_straight_mm": 41.877604295172034,
+      "U_length_mm": 6.994791409655892,
+      "B_straight_mm": 12.127604295172034,
+      "U_start_world_Y_mm": 131.87760429517203,
+      "U_B_local_delta_Z_mm": 3.3999999999999995,
+      "U_finite_head_world_Y_mm": 134.52235785790276,
+      "length_sum_mm": 99.99999999999996,
+      "target_free_length_mm": 100.0,
+      "U_max_abs_curvature_per_mm": 0.6736997151737103,
+      "S_continuous_abs_curvature_upper_bound_per_mm": 0.0,
+      "minimum_centerline_radius_continuous_lower_bound_mm": 1.4843408383246157,
+      "finite_thickness_Jacobian_continuous_lower_bound": 0.9663150142413145,
+      "Gauss_Legendre_order": 96,
+      "formal_directed_rounding_certificate": false,
+      "material_length_derivation": "A_straight+S_length+(U_start-90)+U_length+(U_start-B_world_Y)=100"
+    },
+    "STOW": {
+      "slide_mm": 0.0,
+      "descent_mm": 0.0,
+      "S_rise_mm": 8.2,
+      "A_endpoint_world_mm": [
+        0.0,
+        51.0,
+        1.45
+      ],
+      "B_endpoint_world_mm": [
+        0.0,
+        40.0,
+        13.049999999999999
+      ],
+      "A_straight_mm": 29.0,
+      "S_length_mm": 13.656343682694388,
+      "bridge_straight_mm": 0.17443245382484918,
+      "U_length_mm": 6.994791409655892,
+      "B_straight_mm": 50.17443245382485,
+      "U_start_world_Y_mm": 90.17443245382485,
+      "U_B_local_delta_Z_mm": 3.3999999999999995,
+      "U_finite_head_world_Y_mm": 92.81918601655556,
+      "length_sum_mm": 99.99999999999997,
+      "target_free_length_mm": 100.0,
+      "U_max_abs_curvature_per_mm": 0.6736997151737103,
+      "S_continuous_abs_curvature_upper_bound_per_mm": 0.47342722073549315,
+      "minimum_centerline_radius_continuous_lower_bound_mm": 1.4843408383246157,
+      "finite_thickness_Jacobian_continuous_lower_bound": 0.9663150142413145,
+      "Gauss_Legendre_order": 96,
+      "formal_directed_rounding_certificate": false,
+      "material_length_derivation": "A_straight+S_length+(U_start-90)+U_length+(U_start-B_world_Y)=100"
+    }
+  },
+  "free_plus_stiffened_material_mm": [
+    100.0,
+    12.0,
+    12.0
+  ],
+  "continuous_necessary_bounds": {
+    "minimum_bridge_straight_mm": 0.17443245382484918,
+    "minimum_B_straight_mm": 10.299432453824863,
+    "STOW_U_finite_head_upper_bound_using_S_chord_mm": 93.18129259377187,
+    "STOW_head_limit_mm": 94.0,
+    "minimum_Jacobian_lower_bound": 0.9663150142413145,
+    "basis": "S length decreases with descent and is constant during slide; U length is fixed; bridge minimum is STOW, B straight minimum is PREDOCK",
+    "S_finite_Y_interval_mm": [
+      80.0,
+      90.0
+    ],
+    "S_Y_monotonicity_basis": "positive (1-eta*kappa)*T_y at both signed thickness offsets; endpoint normal Y is zero",
+    "maximum_STOW_bridge_if_head_limit_is_preserved_mm": 1.3552464372692867,
+    "three_mm_straight_request_applies_to_endpoint_tail_only": true,
+    "three_mm_guide_cannot_fit_the_STOW_S_to_U_bridge": true,
+    "empty_internal_channel_or_clearance_proved": false
+  },
+  "endpoint_changes": {
+    "A_carrier_plate_tail_Y_mm": [
+      13.2,
+      36.0
+    ],
+    "A_web_tail_Y_mm": [
+      13.25,
+      13.7
+    ],
+    "B_board_carrier_transfer_tail_direction_mm": [
+      24.0,
+      36.0
+    ],
+    "unchanged_local_part_names": [
+      "M1_board_head_1",
+      "M1_board_head_2",
+      "M1_board_head_3",
+      "M1_board_head_4",
+      "M1_board_shaft_1",
+      "M1_board_shaft_2",
+      "M1_board_shaft_3",
+      "M1_board_shaft_4",
+      "M2_clamp_head_1",
+      "M2_clamp_head_2",
+      "M2_clamp_screw_1",
+      "M2_clamp_screw_2",
+      "inner_carrier_jaw",
+      "mated_BM28_reservation",
+      "mini_DP_PCB",
+      "mini_DS_PCB",
+      "outer_stiffener_jaw",
+      "static_26wire_transfer_reservation",
+      "stiffener",
+      "tail"
+    ],
+    "nominal_B_low_lane_to_complete_endpoint_Z_gap_mm": 0.05,
+    "nominal_gap_is_not_manufacturing_margin": true
+  },
+  "OPEN_curve_matches_EP3_analytic_OPEN": true,
+  "OPEN_implication": "The S rise vanishes and its collinear stations do not remove old OPEN route-to-mechanism intersections; native Common still decides actual geometric rejection",
+  "native_checks_executed": false,
+  "complete_motion_accepted": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "supplier_dynamic_qualified": false,
+  "physical_hardware_test_executed": false,
+  "full_cycle_internal_route_accepted": false
+}

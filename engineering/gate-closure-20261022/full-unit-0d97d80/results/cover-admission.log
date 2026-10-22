@@ -1,0 +1,27 @@
+setUpClass (test_admission.AdmissionTests) ... ERROR
+
+======================================================================
+ERROR: setUpClass (test_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/cover-admission-tests/test_admission.py", line 10, in setUpClass
+    def setUpClass(cls):cls.d={side:s.design(side) for side in 'LR'}
+                                    ^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/cover_admission.py", line 48, in design
+    frozen,source,previous_report=native_base(side)
+                                  ^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/cover_admission.py", line 25, in native_base
+    if hashlib.sha256(archive.read_bytes()).hexdigest()!=m['archive_sha256']:raise ValueError('canonical native archive changed')
+                      ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/keycover-geometry-20261014/project-owned-geometry.tar.gz'
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.002s
+
+FAILED (errors=1)

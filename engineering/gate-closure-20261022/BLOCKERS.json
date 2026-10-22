@@ -18,13 +18,15 @@
       "priority": "P0",
       "gate": "G0",
       "blocker": "Exact source and native validation chain",
-      "status": "software_fix_targeted_verified",
+      "status": "software_and_EP5_execution_verified_EP4_execution_blocked",
       "required_role": "Engineering",
       "closure_condition": "Run required EP4 and EP5 native drivers on the exact reviewed source with independent STEP readers; preserve rejected geometry as a result.",
-      "current_evidence_boundary": "Targeted native-driver regressions pass; final integrated native execution and hosted CI remain to be recorded.",
+      "current_evidence_boundary": "Exact 0d97d80 EP5 input/native/independent-reader chain passed. EP4 seven native regression groups passed, but its three-pose execution failed before geometry evaluation because the original mounted archive is unavailable.",
       "references": [
         "tools/verify_product_native.py",
-        "tools/verify_product_ep5_native.py"
+        "tools/verify_product_ep5_native.py",
+        "native-0d97d80/ep5/report.json",
+        "native-0d97d80/ep4/report.json"
       ]
     },
     {
@@ -35,10 +37,12 @@
       "status": "blocked_environment_and_transport",
       "required_role": "Project environment / CI owner",
       "closure_condition": "Provide the existing project environment connection or a complete checkout with working locked dependency installation and hosted runner execution.",
-      "current_evidence_boundary": "Six exact tracked native archives are unavailable in this session; Shapely and parts of the locked dependency set are absent; current hosted success is not established.",
+      "current_evidence_boundary": "One exact-source attempt selected all 36 suites: 1251 tests ran, 25 suites passed and 11 failed with 16 missing-input/dependency errors. Six required original archives are unavailable in this session (four reached by the failing traces). Lock reproduction is absent. Actions run39750350316 has 12 failed zero-step jobs and one queued job at the retained observation; no failure-cause annotation body was available.",
       "references": [
         "input-availability/missing-unit-test-inputs.json",
-        "baseline-e25/report.json"
+        "baseline-e25/report.json",
+        "full-unit-0d97d80/summary.json",
+        "full-unit-0d97d80/actions-observation-final.json"
       ]
     },
     {
@@ -85,12 +89,14 @@
       "priority": "P1",
       "gate": "G2",
       "blocker": "Nominal full finite assembly",
-      "status": "research_validation_in_progress",
+      "status": "verified_within_declared_nominal_research_scope",
       "required_role": "Geometry owner",
-      "closure_condition": "Validate the same full participant inventory at STOW, PREDOCK and OPEN, every unordered pair and containment, with all actual input hashes checked before/after and independent readback.",
-      "current_evidence_boundary": "R4 geometry and STEP readback passed, but its top snapshot omitted one consumed gzip JSON; retain that limitation and run the corrected final source.",
+      "closure_condition": "Validate the same declared nominal full inventory at STOW, PREDOCK and OPEN, every unordered pair and outer-domain containment, with actual input hashes checked before/after and independent STEP readback.",
+      "current_evidence_boundary": "Closed for the declared nominal research inventory at 0d97d80: 154/154/161 bodies, 36442 pair rows, 123 optimistic outer-domain containment rows, no positive Common or escape, both independent readers passed, 12 repository payloads and 64 exact original members bound. Actual-part fit, continuous full motion, internal-channel tolerances and G2 acceptance remain outside this subitem.",
       "references": [
-        "engineering/product-integration-20261018/phase5-20261022/README.md"
+        "engineering/product-integration-20261018/phase5-20261022/README.md",
+        "native-0d97d80/ep5/report.json",
+        "native-0d97d80/ep5/full-readback/report.json"
       ]
     },
     {
@@ -127,7 +133,7 @@
       "status": "blocked_original_inputs_and_solve",
       "required_role": "Numerical / mechanical owner",
       "closure_condition": "Resolve physical supports, preload and connector/material inputs; converge the unchanged all-domain contact criteria and independently audit the full field on the selected geometry, with a defined convergence/load envelope.",
-      "current_evidence_boundary": "No original full FE or large QP was executed in this session; 31 bounded continuation regressions do not certify contact or current EP5 solids.",
+      "current_evidence_boundary": "No original full FE or large QP was executed in this session. All 31 continuation regressions passed in targeted and complete-unit execution, with seven separate domain controls; they do not qualify real contact or current EP5 solids.",
       "references": [
         "engineering/bearing-continuation-20261022/verification.json",
         "bearing-continuation-review/report.json",
@@ -175,11 +181,14 @@
     }
   ],
   "execution_order": [
-    "G0-02 and G1-01/G1-02 in parallel; retain software and input-recovery evidence.",
-    "G2-01/G2-02/G2-03 on the frozen common design.",
-    "G3-01 on the identified unpowered specimen.",
-    "G4-01 on that same controlled functional specimen.",
-    "G5-NUM/G5-01 with defined structural/process/endurance criteria."
+    "Restore exact remaining original inputs and the locked project execution/hosted access; freeze same-specimen G1 parts/process in parallel.",
+    "Retain the completed nominal G2-01 result; define realizable G2-02 control relations and verify full forward/reverse motion plus G2-03 assembly and measured tolerances.",
+    "Execute G3 on the identified unpowered specimen.",
+    "Execute G4 supply/charge/USB/display/touch during motion on the controlled functional specimen.",
+    "Complete G5 structural, endurance, process, inspection and traceability criteria."
   ],
-  "manufacturing_go": false
+  "manufacturing_go": false,
+  "functional_source_commit": "0d97d8021dc508a40eb2565f6683c6dfba2659f4",
+  "current_results_summary": "SUMMARY.json",
+  "remaining_condition_details": "remaining-closure-boundaries-0d97d80.json"
 }

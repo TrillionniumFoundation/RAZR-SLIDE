@@ -1,0 +1,31 @@
+{
+  "schema": "razr-github-archive-transport-attempts-v1",
+  "confirmed_uploaded_objects": 0,
+  "archive_bytes_unchanged": true,
+  "attempts": [
+    {
+      "operation": "create_blob",
+      "encoding": "base64",
+      "raw_bytes": 524288,
+      "expected_git_blob_sha": "09c1ffb1d135616ff5f78d338b39f965886e0420",
+      "outcome": "interrupted after approximately 1278 seconds without response",
+      "subsequent_fetch_blob_result": "404 NOT_FOUND"
+    },
+    {
+      "operation": "create_blob",
+      "encoding": "base64",
+      "raw_bytes": 1203,
+      "expected_git_blob_sha": "c59ba645fd011162d7fa17aa752081f66ebb4573",
+      "outcome": "45 second bounded wait timeout; remote result unknown"
+    },
+    {
+      "operation": "create_tree",
+      "entry_count": 1,
+      "content_bytes": 60000,
+      "expected_git_blob_sha": "014abc7c07f47dd3ea78dce0286143c944377f4e",
+      "outcome": "45 second bounded wait timeout; remote result unknown"
+    }
+  ],
+  "commit_or_ref_write_attempted": false,
+  "unreferenced_tree_creation_result": "unknown after bounded wait"
+}

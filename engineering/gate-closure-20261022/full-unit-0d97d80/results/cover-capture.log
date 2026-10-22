@@ -1,0 +1,36 @@
+setUpClass (test_cover_capture.CoverCaptureTests) ... ERROR
+
+======================================================================
+ERROR: setUpClass (test_cover_capture.CoverCaptureTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/capture-tests/test_cover_capture.py", line 9, in setUpClass
+    def setUpClass(cls):cls.designs={side:c.build(side) for side in 'LR'}
+                                          ^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/cover_capture.py", line 50, in build
+    old=baseline(side);new=dict(old);reports=[]
+        ^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/cover_capture.py", line 38, in baseline
+    return {k:read_shape('cover-first/'+side+'_'+k+'.step') for k in PARTS}
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/cover_capture.py", line 27, in read_shape
+    arc,entries=sources()
+                ^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/cover_capture.py", line 22, in sources
+    if sha(arc)!=manifest['archive_sha256']:raise ValueError('baseline archive differs')
+       ^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/cover_capture.py", line 16, in sha
+    def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+                                     ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/cover-assembly-order-20261014/bench-geometry.tar.gz'
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.001s
+
+FAILED (errors=1)

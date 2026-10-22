@@ -1,5 +1,13 @@
 # EP5 — forward B endpoint and double-U routing research
 
+## Latest exact-commit execution — 22 October 2026
+
+The corrected committed source `0d97d8021dc508a40eb2565f6683c6dfba2659f4` completed the required EP5 driver in 152.889 seconds. Local three-pose generation and readback, then full three-pose generation and readback, all passed. The full inventory was 154/154/161 bodies with 36,442 pair rows, 2,333 actual native Common calls, and 123 optimistic outer-union containment rows; no positive Common or outer escape was found. All 1,102 selected source entries, the 12 required repository payload roles and 64 exact recovered original STEP members were bound before/after. The consumed thin-mechanism gzip is included. HEAD and working source bytes remained unchanged.
+
+[Driver receipt](../../gate-closure-20261022/native-0d97d80/ep5/report.json) · [independent full STEP readback](../../gate-closure-20261022/native-0d97d80/ep5/full-readback/report.json) · [current scope and remaining gates](../../gate-closure-20261022/SUMMARY.json).
+
+This executed environment was not reproduced from the lock. It does not recover the original mounted tar container or grant a full-checkout, full-unit, continuous-motion, physical or manufacturing pass. The 36-suite attempt and EP4 missing-archive failure are preserved separately. Later evidence/status publication refers to this exact functional source commit and does not assert another native execution at the publication HEAD. R4 below remains its original limited historical record.
+
 This study starts from repository commit `e25cf001c1b714514d501de4c16d1592fde06b61` and leaves the rejected EP4 fixed B-anchor/free-length family. The EP4 route source is unchanged. The default native archive validation remains unchanged; a separately requested, strictly verified original-member input is supported for local recovery. **Every release, supplier, physical-test and full-cycle acceptance flag remains false.**
 
 ## Geometry changes and retained scope
@@ -65,7 +73,7 @@ The compressed thin-mechanism profile is required before generation and checked 
 | Explicit input closure | `b9e352d38690ac91b2bd3928f9ca7d3f0ecf7b64ba4a00487568accb77df37b2` |
 | Evidence guard tests | `35cf6a173399f45bf452a3ecc216f1219b9a9c98de6d27c98cab2dd8a82d4f63` |
 
-The final **21-case suite** (seven route, nine previous evidence/member guards, five new closure guards) passed on these bytes in 0.435 s unittest / 0.650 s subprocess time. An independent 60-case no-CAD review checked the actual call graph, 3/12/13 data roles, missing-input rejection, compressed-profile mutation/deletion and unchanged module identities. A targeted smoke matched every R4 factory-provenance input to the new declared snapshot and correctly refused default mode without the mounted tar. These are targeted validation results; no new full geometry run is claimed for this final source revision until the final merged-HEAD driver completes.
+The final **21-case suite** (seven route, nine previous evidence/member guards, five new closure guards) passed on these bytes in 0.435 s unittest / 0.650 s subprocess time. An independent 60-case no-CAD review checked the actual call graph, 3/12/13 data roles, missing-input rejection, compressed-profile mutation/deletion and unchanged module identities. A targeted smoke matched every R4 factory-provenance input to the new declared snapshot and correctly refused default mode without the mounted tar. These are targeted validation results recorded before the exact-commit execution above; the later driver receipt provides that separate full execution evidence.
 
 ## Original mounted input recovery
 
@@ -111,4 +119,4 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$EP5_REPO/integration" python3 "$EP5_REPO/
 PYTHONDONTWRITEBYTECODE=1 python3 "$EP5_REPO/engineering/product-integration-20261018/phase5-20261022/read_ep5_step_independent.py" --manifest "$EP5_EVIDENCE/full/native-report.json" --repository-root "$EP5_REPO" --output "$EP5_EVIDENCE/full-readback"
 ```
 
-Only for the explicit local recovery case, append `--verified-mounted-members "$EP5_VERIFIED_MOUNTED_MEMBERS"` to the full native command. The reader revalidates that declared input automatically. CI with a complete Git checkout uses the original archive by default. The final merged HEAD still needs its required driver run; these R4 working-tree results do not substitute for it.
+Only for the explicit local recovery case, append `--verified-mounted-members "$EP5_VERIFIED_MOUNTED_MEMBERS"` to the full native command. The reader revalidates that declared input automatically. CI with a complete Git checkout uses the original archive by default. The exact-commit driver has since completed as recorded above; these older R4 working-tree results remain separate evidence.
