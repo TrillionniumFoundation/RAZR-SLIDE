@@ -1,0 +1,518 @@
+{
+  "schema": "razr-exact-head-full-unit-outcome-v1",
+  "completed_utc": "2026-10-22T09:01:18.091398+00:00",
+  "head": "0d97d8021dc508a40eb2565f6683c6dfba2659f4",
+  "canonical_executions": 1,
+  "scope": "all_current_unit_suites",
+  "suite_count": 36,
+  "passed_suites": 25,
+  "failed_suites": 11,
+  "configured_minimum_tests": 1461,
+  "tests_run": 1251,
+  "difference_from_configured_minimum": 210,
+  "assertion_failures": 0,
+  "errors": 16,
+  "class_initialization_errors": 12,
+  "test_method_errors": 4,
+  "skipped": 0,
+  "expected_failures": 0,
+  "canonical_passed": false,
+  "exit_code": 1,
+  "source_bytes_unchanged": true,
+  "present_tracked_bytes_match_HEAD_and_unchanged": true,
+  "after_head": "0d97d8021dc508a40eb2565f6683c6dfba2659f4",
+  "after_status": "",
+  "copy_method": "shutil.copytree(copy_function=shutil.copy2, symlinks=True), including .git",
+  "shared_regular_file_inodes": 0,
+  "present_tracked_files": 1744,
+  "missing_tracked_paths": 24773,
+  "full_checkout_verified": false,
+  "runtime_lock_reproduced": false,
+  "runtime": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "packages": {
+      "cadquery": "2.7.0",
+      "cadquery-ocp": "7.8.1.1.post1",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "shapely": null,
+      "scikit-fem": null
+    }
+  },
+  "runtime_mismatches": {
+    "NumPy": {
+      "declared": "==2.5.4",
+      "observed": "2.3.5"
+    },
+    "Shapely": {
+      "declared": ">=2.1,<3",
+      "observed": null
+    }
+  },
+  "scikit_fem_missing_but_not_triggering_this_run": true,
+  "directly_observed_missing_inputs": [
+    "engineering/cover-assembly-order-20261014/bench-geometry.tar.gz",
+    "engineering/keycover-geometry-20261014/project-owned-geometry.tar.gz",
+    "engineering/mounted-mechanism-20261015/native-geometry.tar.gz",
+    "engineering/thin-mechanism-20261015/native-geometry.tar.gz"
+  ],
+  "all_observed_errors_are_missing_dependency_or_input": true,
+  "failed_suite_details": [
+    {
+      "id": "material-motion",
+      "tests_run": 0,
+      "minimum_tests": 10,
+      "errors": 1,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 2.824,
+      "log": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/results/material-motion.log",
+      "log_sha256": "b1fd19ef09603a89b3f7090357324fea56522f3138ce0b9f610aff7ccac2df76",
+      "problems": [
+        {
+          "title": "ERROR: setUpClass (test_material_motion.MaterialMotionTests)",
+          "stage": "class_initialization",
+          "exception": "ModuleNotFoundError: No module named 'shapely'",
+          "missing_repository_inputs": []
+        }
+      ]
+    },
+    {
+      "id": "cover-admission",
+      "tests_run": 0,
+      "minimum_tests": 10,
+      "errors": 1,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 1.922,
+      "log": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/results/cover-admission.log",
+      "log_sha256": "4816ca750712a95fcf6439f3e37c67d65f40000b6aa1281dfcd82790974d2cba",
+      "problems": [
+        {
+          "title": "ERROR: setUpClass (test_admission.AdmissionTests)",
+          "stage": "class_initialization",
+          "exception": "FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/keycover-geometry-20261014/project-owned-geometry.tar.gz'",
+          "missing_repository_inputs": [
+            "engineering/keycover-geometry-20261014/project-owned-geometry.tar.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cover-capture",
+      "tests_run": 0,
+      "minimum_tests": 10,
+      "errors": 1,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 1.871,
+      "log": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/results/cover-capture.log",
+      "log_sha256": "a7de36256a2a86afcdf2880c3bb7ba9bd20dc076f261bc10d8f28b9f353dd35e",
+      "problems": [
+        {
+          "title": "ERROR: setUpClass (test_cover_capture.CoverCaptureTests)",
+          "stage": "class_initialization",
+          "exception": "FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/cover-assembly-order-20261014/bench-geometry.tar.gz'",
+          "missing_repository_inputs": [
+            "engineering/cover-assembly-order-20261014/bench-geometry.tar.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thin-mechanism",
+      "tests_run": 0,
+      "minimum_tests": 20,
+      "errors": 1,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 1.97,
+      "log": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/results/thin-mechanism.log",
+      "log_sha256": "806f23f4cdf5497013860275cf81359f03ec997edb74f846f9f7107b723d9c3c",
+      "problems": [
+        {
+          "title": "ERROR: setUpClass (test_thin_mechanism.ThinMechanismTests)",
+          "stage": "class_initialization",
+          "exception": "FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/cover-assembly-order-20261014/bench-geometry.tar.gz'",
+          "missing_repository_inputs": [
+            "engineering/cover-assembly-order-20261014/bench-geometry.tar.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mounted-mechanism",
+      "tests_run": 0,
+      "minimum_tests": 20,
+      "errors": 1,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 1.921,
+      "log": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/results/mounted-mechanism.log",
+      "log_sha256": "5b461f0690f384635739dd40d348f4fd71dbc25dbc37866fcdb140b7b7958d52",
+      "problems": [
+        {
+          "title": "ERROR: setUpClass (test_mounted_mechanism.MountedMechanismTests)",
+          "stage": "class_initialization",
+          "exception": "FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/thin-mechanism-20261015/native-geometry.tar.gz'",
+          "missing_repository_inputs": [
+            "engineering/thin-mechanism-20261015/native-geometry.tar.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cam-coupling",
+      "tests_run": 0,
+      "minimum_tests": 21,
+      "errors": 1,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 2.623,
+      "log": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/results/cam-coupling.log",
+      "log_sha256": "6decbf90e9d073bcaa60b1bc239e3df419b0d07411d5cd7bfc77e2adf2171a7d",
+      "problems": [
+        {
+          "title": "ERROR: setUpClass (test_cam_coupling.CouplingTests)",
+          "stage": "class_initialization",
+          "exception": "FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/mounted-mechanism-20261015/native-geometry.tar.gz'",
+          "missing_repository_inputs": [
+            "engineering/mounted-mechanism-20261015/native-geometry.tar.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pawl-actuator",
+      "tests_run": 0,
+      "minimum_tests": 20,
+      "errors": 1,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 2.02,
+      "log": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/results/pawl-actuator.log",
+      "log_sha256": "e8cb64663ade69fa4051cf14ab5a12f8ef9e68cabb90910f00a8bd9ee3040caa",
+      "problems": [
+        {
+          "title": "ERROR: setUpClass (test_pawl_actuator.PawlActuatorTests)",
+          "stage": "class_initialization",
+          "exception": "FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/mounted-mechanism-20261015/native-geometry.tar.gz'",
+          "missing_repository_inputs": [
+            "engineering/mounted-mechanism-20261015/native-geometry.tar.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "serviceable-pawl",
+      "tests_run": 0,
+      "minimum_tests": 21,
+      "errors": 1,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 3.978,
+      "log": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/results/serviceable-pawl.log",
+      "log_sha256": "6fc3e87dc39e4440915c72b9d38ec7ed9223138b67dcd13f049393a9c46ba781",
+      "problems": [
+        {
+          "title": "ERROR: setUpClass (test_serviceable_pawl.ServiceableControlsTests)",
+          "stage": "class_initialization",
+          "exception": "FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/mounted-mechanism-20261015/native-geometry.tar.gz'",
+          "missing_repository_inputs": [
+            "engineering/mounted-mechanism-20261015/native-geometry.tar.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "endpoint-joint",
+      "tests_run": 14,
+      "minimum_tests": 27,
+      "errors": 1,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 3.779,
+      "log": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/results/endpoint-joint.log",
+      "log_sha256": "67a4fe2f4a669b82a146d904347cbdbe84c4deb2734ea2fbb038034f5bfae732",
+      "problems": [
+        {
+          "title": "ERROR: setUpClass (test_endpoint_joint.EndpointJointGeometryTests)",
+          "stage": "class_initialization",
+          "exception": "FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/mounted-mechanism-20261015/native-geometry.tar.gz'",
+          "missing_repository_inputs": [
+            "engineering/mounted-mechanism-20261015/native-geometry.tar.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "manufacturing-fit",
+      "tests_run": 604,
+      "minimum_tests": 669,
+      "errors": 4,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 14.968,
+      "log": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/results/manufacturing-fit.log",
+      "log_sha256": "7e27f8f9ddbdfa548d9104c3c40c3dd1ef5ad22af8259360ee8246a6fc7f3c4b",
+      "problems": [
+        {
+          "title": "ERROR: test_different_triangle_partitions_recover_same_field (test_contact_patch_audit.ContactPatchAuditTests.test_different_triangle_partitions_recover_same_field)",
+          "stage": "test_method",
+          "exception": "ModuleNotFoundError: No module named 'shapely'",
+          "missing_repository_inputs": []
+        },
+        {
+          "title": "ERROR: setUpClass (test_pawl_box_guide.BodyGuideTests)",
+          "stage": "class_initialization",
+          "exception": "FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/mounted-mechanism-20261015/native-geometry.tar.gz'",
+          "missing_repository_inputs": [
+            "engineering/mounted-mechanism-20261015/native-geometry.tar.gz"
+          ]
+        },
+        {
+          "title": "ERROR: setUpClass (test_pawl_lateral_guide.LateralGuideTests)",
+          "stage": "class_initialization",
+          "exception": "FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/mounted-mechanism-20261015/native-geometry.tar.gz'",
+          "missing_repository_inputs": [
+            "engineering/mounted-mechanism-20261015/native-geometry.tar.gz"
+          ]
+        },
+        {
+          "title": "ERROR: setUpClass (test_root_clearance.RootClearanceTests)",
+          "stage": "class_initialization",
+          "exception": "FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/mounted-mechanism-20261015/native-geometry.tar.gz'",
+          "missing_repository_inputs": [
+            "engineering/mounted-mechanism-20261015/native-geometry.tar.gz"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product-integration",
+      "tests_run": 159,
+      "minimum_tests": 159,
+      "errors": 3,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 28.227,
+      "log": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/results/product-integration.log",
+      "log_sha256": "24bc46598af5251e848be9b119369a279128561a7c93e94f32d7f504d113c2fa",
+      "problems": [
+        {
+          "title": "ERROR: test_complete_split_assembly_restores_actual_native_geometry (test_physical_followon.CapturedFollowerAdmission.test_complete_split_assembly_restores_actual_native_geometry)",
+          "stage": "test_method",
+          "exception": "FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/mounted-mechanism-20261015/native-geometry.tar.gz'",
+          "missing_repository_inputs": [
+            "engineering/mounted-mechanism-20261015/native-geometry.tar.gz"
+          ]
+        },
+        {
+          "title": "ERROR: test_equal_finished_rigid_envelopes_are_native_bounds (test_product_geometry.ProductGeometryTests.test_equal_finished_rigid_envelopes_are_native_bounds)",
+          "stage": "test_method",
+          "exception": "FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/mounted-mechanism-20261015/native-geometry.tar.gz'",
+          "missing_repository_inputs": [
+            "engineering/mounted-mechanism-20261015/native-geometry.tar.gz"
+          ]
+        },
+        {
+          "title": "ERROR: test_wide_B_battery_midpath_collision_is_preserved (test_product_geometry.ProductGeometryTests.test_wide_B_battery_midpath_collision_is_preserved)",
+          "stage": "test_method",
+          "exception": "FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/mounted-mechanism-20261015/native-geometry.tar.gz'",
+          "missing_repository_inputs": [
+            "engineering/mounted-mechanism-20261015/native-geometry.tar.gz"
+          ]
+        }
+      ]
+    }
+  ],
+  "successful_suite_ids": [
+    "repository",
+    "cad",
+    "isolation",
+    "fpc-inputs",
+    "fpc-layers",
+    "bend-axis",
+    "endpoint",
+    "power-usb",
+    "proof-detector",
+    "proof-selftest",
+    "r50-repair",
+    "r50-topology",
+    "return-sensing",
+    "safety",
+    "strict-motion",
+    "g2-geometry",
+    "stow-slots",
+    "stow-continuous",
+    "native-contact",
+    "keycover",
+    "phone-layout",
+    "routing-followup",
+    "ep3-routing",
+    "ep4-routing",
+    "ep5-routing"
+  ],
+  "canonical_report": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/results/report.json",
+  "canonical_report_sha256": "f9e50cf54aaa42238d8ba0b0007551ae322b8b2b3ffed21c94db29dee96440ac",
+  "controller_report": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/controller-report.json",
+  "controller_report_sha256": "d519397c0cb2db3245736185e01504cc59d9ade42a7b902f84efb36f7d140792",
+  "all_suite_logs_directory": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/results",
+  "source_identity_proof": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/git-tree-inventory-before.json",
+  "actions_observation": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/actions-observation-final.json",
+  "physical_or_product_release_granted": false,
+  "independent_required_fixture_inventory": "/dev/shm/razr-slide-1104895ba7b9/evidence/fixture-inventory/configured-suite-fixtures.json",
+  "required_fixture_inventory_sha256": "7a0462604b7f9a64cd6ab491b75544523aedca952c55882448024b76c7e5627b",
+  "required_fixtures_absent_from_isolated_copy": [
+    {
+      "path": "engineering/mounted-mechanism-20261015/native-geometry.tar.gz",
+      "suites": [
+        "cam-coupling",
+        "endpoint-joint",
+        "manufacturing-fit",
+        "pawl-actuator",
+        "product-integration",
+        "serviceable-pawl"
+      ],
+      "remote_blob": {
+        "path": "engineering/mounted-mechanism-20261015/native-geometry.tar.gz",
+        "sha": "b5909317f0c8bb0c99434fec4cfdac124e2b75af",
+        "mode": "100644",
+        "size": 2071241
+      }
+    },
+    {
+      "path": "engineering/contact-motion-20261014/project-owned-native-geometry.tar.gz",
+      "suites": [
+        "cover-admission"
+      ],
+      "remote_blob": {
+        "path": "engineering/contact-motion-20261014/project-owned-native-geometry.tar.gz",
+        "sha": "793d18081a73a80fde9aab661bb48d2399796c2f",
+        "mode": "100644",
+        "size": 4354699
+      }
+    },
+    {
+      "path": "engineering/cover-assembly-order-20261014/bench-geometry.tar.gz",
+      "suites": [
+        "cover-capture",
+        "thin-mechanism"
+      ],
+      "remote_blob": {
+        "path": "engineering/cover-assembly-order-20261014/bench-geometry.tar.gz",
+        "sha": "448d4d9587216cc0e33a2040b12db8a98c7a0ad0",
+        "mode": "100644",
+        "size": 3496294
+      }
+    },
+    {
+      "path": "engineering/cover-retention-and-space-20261015/capture-geometry.tar.gz",
+      "suites": [
+        "thin-mechanism"
+      ],
+      "remote_blob": {
+        "path": "engineering/cover-retention-and-space-20261015/capture-geometry.tar.gz",
+        "sha": "8c6d9515fdf3e81cae1049d7553dba44bec6223d",
+        "mode": "100644",
+        "size": 1311525
+      }
+    },
+    {
+      "path": "engineering/keycover-geometry-20261014/project-owned-geometry.tar.gz",
+      "suites": [
+        "cover-admission"
+      ],
+      "remote_blob": {
+        "path": "engineering/keycover-geometry-20261014/project-owned-geometry.tar.gz",
+        "sha": "026e37379e4438b0b3ed0fd3cee0a622e54c1ac8",
+        "mode": "100644",
+        "size": 4584030
+      }
+    },
+    {
+      "path": "engineering/thin-mechanism-20261015/native-geometry.tar.gz",
+      "suites": [
+        "mounted-mechanism"
+      ],
+      "remote_blob": {
+        "path": "engineering/thin-mechanism-20261015/native-geometry.tar.gz",
+        "sha": "b291a5b7c627e087fdd4e7b1a1b24c4236785602",
+        "mode": "100644",
+        "size": 3290260
+      }
+    }
+  ],
+  "active_required_archives_absent": [
+    "engineering/mounted-mechanism-20261015/native-geometry.tar.gz",
+    "engineering/contact-motion-20261014/project-owned-native-geometry.tar.gz",
+    "engineering/cover-assembly-order-20261014/bench-geometry.tar.gz",
+    "engineering/cover-retention-and-space-20261015/capture-geometry.tar.gz",
+    "engineering/keycover-geometry-20261014/project-owned-geometry.tar.gz",
+    "engineering/thin-mechanism-20261015/native-geometry.tar.gz"
+  ],
+  "required_archives_not_reached_due_to_earlier_errors": [
+    "engineering/contact-motion-20261014/project-owned-native-geometry.tar.gz",
+    "engineering/cover-retention-and-space-20261015/capture-geometry.tar.gz"
+  ],
+  "missing_engineering_tar_paths_count_including_unrelated_historical_evidence": 145,
+  "all_missing_paths_inventory": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/full-unit-0d97d802/git-tree-inventory-before.json",
+  "relevant_new_test_classes_observed_in_this_full_run": {
+    "repository": [
+      {
+        "class": "ProductEP5NativeValidationTests",
+        "outcome": "ok",
+        "identified_tests_run": 19,
+        "single_line_ok_log_rows": 19,
+        "error_or_failure_mentions_in_suite_trace": 0
+      },
+      {
+        "class": "ProductNativeValidationTests",
+        "outcome": "ok",
+        "identified_tests_run": 15,
+        "single_line_ok_log_rows": 15,
+        "error_or_failure_mentions_in_suite_trace": 0
+      }
+    ],
+    "manufacturing-fit": [
+      {
+        "class": "BearingContinuationTests",
+        "outcome": "ok",
+        "identified_tests_run": 31,
+        "single_line_ok_log_rows": 30,
+        "error_or_failure_mentions_in_suite_trace": 0
+      }
+    ],
+    "product-integration": [
+      {
+        "class": "MotionAcquisition",
+        "outcome": "ok",
+        "identified_tests_run": 9,
+        "single_line_ok_log_rows": 9,
+        "error_or_failure_mentions_in_suite_trace": 0
+      },
+      {
+        "class": "QualificationContract",
+        "outcome": "ok",
+        "identified_tests_run": 51,
+        "single_line_ok_log_rows": 51,
+        "error_or_failure_mentions_in_suite_trace": 0
+      }
+    ]
+  },
+  "actions_summary": {
+    "run_id": 39750350316,
+    "run_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/39750350316",
+    "observed_at": "2026-10-22T09:01:08.615Z",
+    "run_status": "queued",
+    "run_conclusion": null,
+    "jobs_observed": 13,
+    "completed_failure_jobs": 12,
+    "queued_jobs": 1,
+    "jobs_with_any_executed_steps": 0,
+    "annotation_text_available": false,
+    "annotation_limitation": "GitHub connector rejects direct check-runs and annotations endpoints with HTTP 400 INVALID_ARGUMENT; the supported commit check-runs subresource exposes counts but no annotation text.",
+    "rerun_performed": false
+  }
+}

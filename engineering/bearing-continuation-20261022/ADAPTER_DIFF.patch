@@ -1,0 +1,99 @@
+--- PR35/reference/rigid_bearing_probe.py
++++ continued_rigid_bearing_probe.py
+@@ -1,3 +1,5 @@
++# Continuation adapter: all numerical operations retain the pinned PR35 driver.
++# Changes are limited to source binding, checkpoint publication, and strict restoration.
+ """Optional original-body rigid-bearing comparison, using the existing exact oracle.
+ 
+ Replaces prescribed head/nut pressure functionals with unknown unilateral point
+@@ -16,14 +18,17 @@
+ from installation_control import force_equalities
+ from contact_dual_active import solve_force_qp
+ 
+-def run(ctx):
++from bearing_checkpoint import save_checkpoint, load_checkpoint
++from continuation_support import source_binding, parameters, seen_from_points, validate_restored_columns, restore_verified
++
++def run(ctx, *, checkpoint_root, resume_checkpoint=None, expected_manifest_sha256=None):
+     a=ctx['a'];out=ctx['out'];root=ctx['ROOT'];dump=ctx['dump'];target=ctx['target']
+     if not ctx['force_mode'] or ctx['external_scale']!=0 or ctx['load_mode']!='consistent':
+         raise ValueError('rigid bearing comparison requires explicit unloaded force targets and consistent external loads')
+     pbody=ctx['P'];fbody=ctx['F'];bodies={'panel':pbody,'frame':fbody};nP=ctx['nP'];n=ctx['n'];R=ctx['R']
+     points=[dict(p) for p in ctx['points']];old_count=len(points);hashes=dict(ctx['hashes'])
+-    for rel in ['integration/bearing_contact.py','engineering/trace-enrichment-20261017/rigid_bearing_probe.py']:
+-        hashes[str(root/rel)]=sha256(root/rel)
++    sources=source_binding(ctx);controls=parameters(ctx)
++    hashes.update(sources['file_sha256'])
+     faces=[];centers=np.empty((4,2));bybearing={k:[] for k in range(8)}
+     for body in ['panel','frame']:
+         source=ctx['surface'].root/(body+'-faces.json');hashes[str(source)]=sha256(source)
+@@ -44,22 +49,38 @@
+         br=bodies[f['body']];w=shape_values(f['triangle_xy'],[p['xy']])[0];ids=list(f['offset']+np.asarray(f['dofs']));vals=list(f['normal_sign']*w[:6])
+         if f['trace_index'] is not None:ids.append(f['offset']+br['N']+3*f['trace_index']+2);vals.append(f['normal_sign']*w[6])
+         return csc_matrix((vals,(ids,np.zeros(len(ids),dtype=int))),shape=(n,1))
+-    # Preserve the exact member-contact block; remove old prescribed bolt columns.
+-    old=ctx['cache'];C=hstack((csc_matrix((n,4)),old.C[:,4:]),format='csc');H=old.H.copy();H[:4,:]=0.;H[:,:4]=0.
++    old=ctx['cache']
+     identity={**old.identity,'bearing_model':'eight free rigid planes, axial-only bolts','bearing_domains':sha256(out/'bearing-domains.json')}
+     cache=ExactResponseCache(n,ctx['response'],identity,response_block=ctx['response'],response_batch_size=8)
+-    check=cache.restore(C,H,identity,probes=5)
+-    seen={p['patch']:[] for p in points[4:]}
+-    for p in points[4:]:seen[p['patch']].append(p['xy'])
+-    new=[]
+-    for bi,fis in bybearing.items():
+-        vertices=[(fi,np.array(v)) for fi in fis for v in faces[fi]['polygon']]
+-        for angle in np.arange(12)*2*np.pi/12:
+-            direction=np.array([np.cos(angle),np.sin(angle)]);fi,xy=max(vertices,key=lambda z:float(z[1]@direction))
+-            label=faces[fi]['label'];seen.setdefault(label,[])
+-            if not any(np.linalg.norm(xy-np.array(q))<1e-10 for q in seen[label]):new.append(descriptor(fi,xy));seen[label].append(xy.tolist())
+-    cache.append(hstack([one_map(p) for p in new],format='csc'));points.extend(new)
+-    dump(out/'bearing-initialization.json',{'old_member_contact_columns':old_count-4,'new_bearing_seed_points':len(new),'prescribed_pressure_columns_removed':4,'exact_body_response_check':vars(check),'rigid_bearing_tilts_free':True,'shaft_bending_torsion_shear_absent':True,'frame_fixture_unchanged':True})
++    if resume_checkpoint is not None:
++        saved=load_checkpoint(resume_checkpoint,expected_manifest_sha256=expected_manifest_sha256,
++            expected_identity=identity,expected_sources=sources,expected_parameters=controls,expected_n_dofs=n)
++        validate_restored_columns(saved,points,one_map,n,faces,ctx['cells'])
++        check=restore_verified(cache,saved.C,saved.H,identity)
++        points=saved.points;seen=seen_from_points(points)
++        history=saved.state['history'];guess=None if saved.state['guess'] is None else np.array(saved.state['guess'])
++        first_iteration=saved.state['next_iteration']
++        dump(out/'bearing-initialization.json',{'resumed_checkpoint':str(resume_checkpoint),
++            'manifest_sha256':saved.manifest_sha256,'restored_columns':len(points),
++            'next_iteration':first_iteration,'exact_body_response_check':vars(check),
++            'rigid_bearing_tilts_free':True,'shaft_bending_torsion_shear_absent':True,'frame_fixture_unchanged':True})
++    else:
++        if expected_manifest_sha256 is not None:raise ValueError('checkpoint digest without resume path')
++        # Preserve the exact member-contact block; remove old prescribed bolt columns.
++        C=hstack((csc_matrix((n,4)),old.C[:,4:]),format='csc');H=old.H.copy();H[:4,:]=0.;H[:,:4]=0.
++        check=restore_verified(cache,C,H,identity)
++        seen={p['patch']:[] for p in points[4:]}
++        for p in points[4:]:seen[p['patch']].append(p['xy'])
++        new=[]
++        for bi,fis in bybearing.items():
++            vertices=[(fi,np.array(v)) for fi in fis for v in faces[fi]['polygon']]
++            for angle in np.arange(12)*2*np.pi/12:
++                direction=np.array([np.cos(angle),np.sin(angle)]);fi,xy=max(vertices,key=lambda z:float(z[1]@direction))
++                label=faces[fi]['label'];seen.setdefault(label,[])
++                if not any(np.linalg.norm(xy-np.array(q))<1e-10 for q in seen[label]):new.append(descriptor(fi,xy));seen[label].append(xy.tolist())
++        cache.append(hstack([one_map(p) for p in new],format='csc'));points.extend(new)
++        dump(out/'bearing-initialization.json',{'old_member_contact_columns':old_count-4,'new_bearing_seed_points':len(new),'prescribed_pressure_columns_removed':4,'exact_body_response_check':vars(check),'rigid_bearing_tilts_free':True,'shaft_bending_torsion_shear_absent':True,'frame_fixture_unchanged':True})
++        history=[];guess=None;first_iteration=0
+     qb=QuadraticGapBatch([f['polygon'] for f in faces],[f['origin'] for f in faces])
+     def surface_values(fi,u,xy):
+         f=faces[fi];br=bodies[f['body']];w=shape_values(f['triangle_xy'],xy);v=w[:,:6]@u[f['offset']+np.array(f['dofs'])]
+@@ -76,8 +97,14 @@
+             r=audit_polygon(f['polygon'],value,gap_tolerance=target);minimum[i]=r['minimum_witness'];where[i]=r['minimum_at'];lower[i]=r.get('covered_lower_bound',r.get('unresolved_lower_bound',minimum[i]));cubic.append({'face':i,**r})
+             if r['status'] not in ('negative_witness','all_subtriangles_bounded'):unresolved.append(i)
+         return {'minimum':minimum,'minimum_at':where,'covered_lower_bounds':lower,'negative_cells':np.flatnonzero(minimum < -target),'unresolved_cells':unresolved,'cubic_checks':cubic}
+-    external=ctx['external'];Uext=ctx['Uext'];control=ctx['control'];history=[];guess=None;success=False
+-    for iteration in range(a.max_exchanges):
++    external=ctx['external'];Uext=ctx['Uext'];control=ctx['control'];success=False
++    for iteration in range(first_iteration,a.max_exchanges):
++        checkpoint_state={'phase':'ready_for_qp','next_iteration':iteration,'history':history,
++            'guess':None if guess is None else guess.tolist()}
++        receipt=save_checkpoint(checkpoint_root,cache.C,cache.H,points,checkpoint_state,
++            identity=identity,sources=sources,parameters=controls)
++        dump(out/'continuation-latest.json',receipt)
++        print('BEARING_CHECKPOINT',receipt,flush=True)
+         start=time.monotonic();physical=np.asarray(cache.C.T@R);G=equilibrium_map(physical,points,centers);load=np.r_[ctx['loadG'],np.zeros(24)]
+         eq,rhs=force_equalities(G,load,control['targets']);S=cache.H.copy();S[np.arange(4),np.arange(4)]+=control['compliance']
+         gap0=np.array([p.get('gap',0.) for p in points]);d=np.asarray(cache.C.T@Uext).ravel()-gap0

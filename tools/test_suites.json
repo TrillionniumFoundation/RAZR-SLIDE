@@ -1,11 +1,11 @@
 {
   "scope": "current unit suites; not archived/rejected experiments or full motion/ECAD/hardware",
-  "minimum_total_tests": 1324,
+  "minimum_total_tests": 1461,
   "suites": [
     {
       "id": "repository",
       "directory": "tests",
-      "minimum_tests": 102,
+      "minimum_tests": 136,
       "timeout_seconds": 900
     },
     {
@@ -188,13 +188,13 @@
     {
       "id": "manufacturing-fit",
       "directory": "integration/manufacturing-tests",
-      "minimum_tests": 638,
+      "minimum_tests": 669,
       "timeout_seconds": 240
     },
     {
       "id": "product-integration",
       "directory": "integration/product-study-tests",
-      "minimum_tests": 108,
+      "minimum_tests": 159,
       "timeout_seconds": 900
     },
     {
@@ -214,6 +214,15 @@
       "directory": "integration/ep4-routing-tests",
       "minimum_tests": 8,
       "timeout_seconds": 180
+    },
+    {
+      "id": "ep5-routing",
+      "directory": "integration/ep5-routing-tests",
+      "minimum_tests": 21,
+      "timeout_seconds": 180,
+      "extra_paths": [
+        "integration"
+      ]
     }
   ]
 }

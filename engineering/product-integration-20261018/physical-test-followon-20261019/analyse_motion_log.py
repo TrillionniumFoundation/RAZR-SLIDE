@@ -13,6 +13,7 @@ import csv
 from datetime import datetime
 import hashlib
 import io
+import importlib.util
 import json
 import math
 from pathlib import Path
@@ -69,15 +70,16 @@ def relative_file(root, ref):
     return data
 
 
-def calibration(root, ref, unit, execution_kind):
-    data = json.loads(relative_file(root, ref))
+def calibration(root, ref, unit, execution_kind, *, read_file=None):
+    read_file = relative_file if read_file is None else read_file
+    data = json.loads(read_file(root, ref))
     if data.get('schema') != 'razr-linear-sensor-calibration-v1':
         raise ValueError('unrecognized calibration record')
     if data.get('execution_kind') != execution_kind:
         raise ValueError('synthetic and physical calibration identities cannot be interchanged')
     if not isinstance(data.get('instrument_id'), str) or not data['instrument_id'].strip():
         raise ValueError('calibration requires its actual instrument identity')
-    stamp(data.get('recorded_at_utc'))
+    calibration_time = stamp(data.get('recorded_at_utc'))
     if data.get('output_unit') != unit:
         raise ValueError('calibration output unit does not match the channel')
     gain = number(data.get('gain'), 'gain')
@@ -97,11 +99,12 @@ def calibration(root, ref, unit, execution_kind):
     if not isinstance(evidence, list) or not evidence:
         raise ValueError('calibration must retain original evidence')
     for item in evidence:
-        relative_file(root, item)
+        read_file(root, item)
     if not isinstance(data.get('calibration_method'), str) or not data['calibration_method'].strip():
         raise ValueError('calibration method required')
     return {'gain': gain, 'offset': offset, 'error': error, 'lo': lo, 'hi': hi,
-            'instrument_id': data['instrument_id'], 'reference': ref}
+            'instrument_id': data['instrument_id'], 'reference': ref,
+            'recorded_at_utc': calibration_time.isoformat()}
 
 
 def extent(rows, key, error):
@@ -136,9 +139,15 @@ def verify_physical_design_commit(repository, commit, files):
     return True
 
 
-def analyse(manifest_path, repository):
+def analyse(manifest_path, repository, *, preregistration_review=None):
     manifest_path, repository = Path(manifest_path).resolve(), Path(repository).resolve()
     root = manifest_path.parent
+    checked_refs = []
+
+    def checked_file(file_root, ref):
+        data = relative_file(file_root, ref)
+        checked_refs.append((Path(file_root), dict(ref)))
+        return data
     manifest_bytes = manifest_path.read_bytes()
     m = json.loads(manifest_bytes)
     if m.get('schema') != 'razr-unpowered-motion-acquisition-v1':
@@ -157,12 +166,12 @@ def analyse(manifest_path, repository):
     if not required_design <= set(files):
         raise ValueError('bind both geometry and electrical interface bytes')
     for path, digest in files.items():
-        relative_file(repository, {'path': path, 'sha256': digest})
-    original_log = relative_file(root, m['raw_csv'])
+        checked_file(repository, {'path': path, 'sha256': digest})
+    original_log = checked_file(root, m['raw_csv'])
     # Both stage labels and observation of hands-off status must be supported
     # by a synchronized source, not inferred from near-zero force alone.
-    relative_file(root, m['phase_and_hand_contact_evidence'])
-    relative_file(root, m['coordinate_frame_evidence'])
+    checked_file(root, m['phase_and_hand_contact_evidence'])
+    checked_file(root, m['coordinate_frame_evidence'])
     timebase = m.get('timebase', {})
     if timebase.get('kind') != 'monotonic' or timebase.get('unit') != 's':
         raise ValueError('one monotonic timebase in seconds is required')
@@ -172,7 +181,7 @@ def analyse(manifest_path, repository):
     if max_gap == 0:
         raise ValueError('sampling-gap threshold must be positive')
     number(timebase.get('alignment_error_bound_s'), 'alignment error bound', 0.)
-    relative_file(root, timebase['synchronization_evidence'])
+    checked_file(root, timebase['synchronization_evidence'])
     expected = m.get('planned_phase_order')
     if not isinstance(expected, list) or len(expected) != len(set(expected)) or not expected:
         raise ValueError('nonempty distinct planned phase order required')
@@ -186,7 +195,7 @@ def analyse(manifest_path, repository):
     units = {**MANDATORY, **OPTIONAL}
     if not set(MANDATORY) <= set(channels) or not set(channels) <= set(units):
         raise ValueError('required motion channels missing or unsupported channel present')
-    calibrations = {name: calibration(root, ref, units[name], kind) for name, ref in channels.items()}
+    calibrations = {name: calibration(root, ref, units[name], kind, read_file=checked_file) for name, ref in channels.items()}
     commit_verified = verify_physical_design_commit(repository, binding['git_commit'], files) if kind == 'physical' else False
     reader = csv.DictReader(io.StringIO(original_log.decode('utf-8-sig')))
     expected_columns = {'t_s', 'cycle', 'phase', 'hand_contact'} | set(channels)
@@ -230,18 +239,28 @@ def analyse(manifest_path, repository):
                 raise ValueError('invalid value '+name+' at row '+str(ordinal)) from exc
             if not cal['lo'] <= v <= cal['hi']:
                 raise ValueError('value outside calibrated range: '+name+' at row '+str(ordinal))
-            row[name] = v*cal['gain']+cal['offset']
+            row[name] = number(v*cal['gain']+cal['offset'], name+' calibrated')
+            # This is a numeric representability check, not a physical scale
+            # limit. A float computation cannot claim a measurement error far
+            # smaller than its own conservative representation/operation error.
+            if kind == 'physical':
+                arithmetic_error = number(
+                    math.ulp(v) * abs(cal['gain']) + math.ulp(cal['gain']) * abs(v)
+                    + math.ulp(cal['offset']) + math.ulp(row[name]),
+                    name+' numerical precision error', 0.)
+                if arithmetic_error > cal['error']:
+                    raise ValueError(name+': numerical precision exceeds the declared measurement error')
             if units[name] == 'ohm' and row[name] < 0:
                 raise ValueError('negative calibrated resistance')
-        row['mean_y_mm'] = (row['left_y_mm']+row['right_y_mm'])/2
-        row['mean_z_mm'] = (row['left_z_mm']+row['right_z_mm'])/2
-        row['left_minus_right_y_mm'] = row['left_y_mm']-row['right_y_mm']
-        row['left_minus_right_z_mm'] = row['left_z_mm']-row['right_z_mm']
+        row['mean_y_mm'] = number(row['left_y_mm']/2+row['right_y_mm']/2, 'mean y')
+        row['mean_z_mm'] = number(row['left_z_mm']/2+row['right_z_mm']/2, 'mean z')
+        row['left_minus_right_y_mm'] = number(row['left_y_mm']-row['right_y_mm'], 'left-right y')
+        row['left_minus_right_z_mm'] = number(row['left_z_mm']-row['right_z_mm'], 'left-right z')
         rows.append(row)
     if len(rows) < 2:
         raise ValueError('at least two actual acquisition rows are required')
-    yerr = calibrations['left_y_mm']['error']+calibrations['right_y_mm']['error']
-    zerr = calibrations['left_z_mm']['error']+calibrations['right_z_mm']['error']
+    yerr = number(calibrations['left_y_mm']['error']+calibrations['right_y_mm']['error'], 'summed y error', 0.)
+    zerr = number(calibrations['left_z_mm']['error']+calibrations['right_z_mm']['error'], 'summed z error', 0.)
     gaps = [{'from_time_s': a['t_s'], 'to_time_s': b['t_s'], 'gap_s': b['t_s']-a['t_s']}
             for a, b in zip(rows, rows[1:]) if b['t_s']-a['t_s'] > max_gap]
     cycles = []
@@ -249,7 +268,7 @@ def analyse(manifest_path, repository):
         selected = [r for r in rows if r['cycle'] == cycle]
         seen = [r['phase'] for i, r in enumerate(selected) if i == 0 or r['phase'] != selected[i-1]['phase']]
         first, last = selected[0], selected[-1]
-        measured_stroke = max(r['mean_y_mm'] for r in selected)-min(r['mean_y_mm'] for r in selected)
+        measured_stroke = number(max(r['mean_y_mm'] for r in selected)-min(r['mean_y_mm'] for r in selected), 'cycle y range', 0.)
         phase_summary = []
         for phase in dict.fromkeys(seen):
             phase_rows = [r for r in selected if r['phase'] == phase]
@@ -271,8 +290,8 @@ def analyse(manifest_path, repository):
             h0 = segment[0]
             hold_summary.append({'first_time_s': h0['t_s'], 'last_time_s': segment[-1]['t_s'],
                 'observed_duration_s': segment[-1]['t_s']-h0['t_s'], 'sample_count': len(segment),
-                'maximum_mean_y_drift_from_first_sample_mm': max(abs(r['mean_y_mm']-h0['mean_y_mm']) for r in segment),
-                'maximum_mean_z_drift_from_first_sample_mm': max(abs(r['mean_z_mm']-h0['mean_z_mm']) for r in segment),
+                'maximum_mean_y_drift_from_first_sample_mm': max(abs(number(r['mean_y_mm']-h0['mean_y_mm'], 'hands-off y drift')) for r in segment),
+                'maximum_mean_z_drift_from_first_sample_mm': max(abs(number(r['mean_z_mm']-h0['mean_z_mm'], 'hands-off z drift')) for r in segment),
                 'conservative_displacement_error_bound_mm': {'y': yerr, 'z': zerr},
                 'retention_capacity_or_lifetime_qualified': False})
         cycles.append({'cycle': cycle, 'observed_phase_order': seen,
@@ -280,8 +299,8 @@ def analyse(manifest_path, repository):
             'observed_sample_count': len(selected),
             'sampled_mean_y_range_mm': measured_stroke,
             'conservative_range_error_bound_mm': yerr,
-            'return_offset_mean_y_mm': last['mean_y_mm']-first['mean_y_mm'],
-            'return_offset_mean_z_mm': last['mean_z_mm']-first['mean_z_mm'],
+            'return_offset_mean_y_mm': number(last['mean_y_mm']-first['mean_y_mm'], 'return y'),
+            'return_offset_mean_z_mm': number(last['mean_z_mm']-first['mean_z_mm'], 'return z'),
             'first_and_last_positions_are_measured_not_assumed_locked': True,
             'phase_results': phase_summary, 'hands_off_segments': hold_summary})
     optionals = {name: None for name in OPTIONAL}
@@ -293,16 +312,18 @@ def analyse(manifest_path, repository):
         threshold = number(thresholds, 'continuity threshold', 0.)
         if threshold == 0:
             raise ValueError('continuity threshold must be positive')
-        relative_file(root, m['continuity_threshold_evidence'])
+        checked_file(root, m['continuity_threshold_evidence'])
         crossings = []
         for row in rows:
             for name in channels:
                 if name.startswith('fpc_c') and row.get(name) is not None:
                     value, err = row[name], calibrations[name]['error']
-                    if value+err > threshold:
+                    high = number(value+err, 'continuity upper bound')
+                    low = number(value-err, 'continuity lower bound')
+                    if high > threshold:
                         crossings.append({'time_s': row['t_s'], 'channel': name, 'value_ohm': value,
                             'absolute_error_bound_ohm': err, 'threshold_ohm': threshold,
-                            'classification': 'above_even_with_error' if value-err > threshold else 'uncertain_at_error_bound'})
+                            'classification': 'above_even_with_error' if low > threshold else 'uncertain_at_error_bound'})
     result = {'schema': 'razr-unpowered-motion-analysis-v1',
         'analysis_source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'manifest_sha256': hashlib.sha256(manifest_bytes).hexdigest(), 'raw_csv': m['raw_csv'],
@@ -328,11 +349,30 @@ def analyse(manifest_path, repository):
             'reason': 'external operating force is not the internal load path; identify force transfer and real supports first'},
         'physical_cycle_acceptance_thresholds_applied': False,
         'manufacturing_go': False, 'physical_phone_verified': False}
+    # Qualification is a separate strict contract. Legacy observational records
+    # remain readable, but cannot receive a PASS without predeclared limits and
+    # complete, same-specimen CAD/EP4/manufacturing/firmware evidence.
+    contract_path = Path(__file__).with_name('qualification_contract.py')
+    spec = importlib.util.spec_from_file_location('razr_motion_qualification_contract', contract_path)
+    contract = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(contract)
+    result['qualification'] = contract.evaluate(
+        m, result, rows, calibrations, root, repository,
+        read_file=checked_file, stamp=stamp, verify_commit=verify_physical_design_commit,
+        preregistration_review=preregistration_review)
+    result['physical_cycle_acceptance_thresholds_applied'] = result['qualification'].get('thresholds_applied', False)
     # Recheck every source byte against its identity after analysis.
-    if manifest_path.read_bytes() != manifest_bytes or relative_file(root, m['raw_csv']) != original_log:
+    if manifest_path.read_bytes() != manifest_bytes or checked_file(root, m['raw_csv']) != original_log:
         raise ValueError('input changed during analysis')
     for path, digest in files.items():
-        relative_file(repository, {'path': path, 'sha256': digest})
+        checked_file(repository, {'path': path, 'sha256': digest})
+    # Include calibration originals, phase/frame/sync/threshold attachments and
+    # qualification inputs, not just CSV and design files. Iterate a snapshot
+    # and bypass registration so the final read cannot extend this loop.
+    for file_root, ref in tuple(checked_refs):
+        relative_file(file_root, ref)
+    # Programmatic callers receive the same finite-value guarantee as the CLI.
+    json.dumps(result, allow_nan=False)
     return result
 
 
@@ -341,13 +381,18 @@ if __name__ == '__main__':
     parser.add_argument('--manifest', type=Path, required=True)
     parser.add_argument('--repository', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--preregistration-review', type=Path,
+                        help='assessor-selected independent verification of this exact plan and acquisition')
     args = parser.parse_args()
     try:
-        result = analyse(args.manifest, args.repository)
+        result = analyse(args.manifest, args.repository, preregistration_review=args.preregistration_review)
+        serialized = json.dumps(result, indent=2, allow_nan=False)+'\n'
     except (ValueError, OSError, KeyError, TypeError, json.JSONDecodeError) as exc:
         parser.exit(2, 'acquisition rejected: '+str(exc)+'\n')
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open('x') as stream:
-        json.dump(result, stream, indent=2, allow_nan=False); stream.write('\n')
+        stream.write(serialized)
     print(json.dumps({'output': str(args.output), 'rows': result['sampling']['rows'],
-                      'execution_kind': result['execution_kind'], 'physical_phone_verified': False}))
+                      'execution_kind': result['execution_kind'],
+                      'qualification_status': result['qualification']['status'], 'physical_phone_verified': False}))
+

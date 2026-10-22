@@ -1,0 +1,288 @@
+{
+  "schema": "razr-ep5-final-closure-independent-guards-v1",
+  "completed_utc": "2026-10-22T08:28:20.397508+00:00",
+  "source_sha256_before": {
+    "/dev/shm/razr-slide-1104895ba7b9/integration_stage/engineering/product-integration-20261018/phase5-20261022/read_ep5_step_independent.py": "f61b7da74481a8f4e4ff4032ce093578743006868d8b7510e8df7a069281e9a1",
+    "/dev/shm/razr-slide-1104895ba7b9/integration_stage/integration/product_routing_ep5.py": "0ca0af99e6e0ba2d54fc5d43956cd6c035dcb330fd2042bdb972b84e5e3700e3",
+    "/dev/shm/razr-slide-1104895ba7b9/integration_stage/integration/ep5_input_closure.py": "b9e352d38690ac91b2bd3928f9ca7d3f0ecf7b64ba4a00487568accb77df37b2",
+    "/dev/shm/razr-slide-1104895ba7b9/repo/engineering/product-integration-20261018/phase3-20261020/read_ep3_step_independent.py": "14b2aa3362aba950a39244b0130021b72231fa2866e15d96e2f34a6dac6798c5",
+    "/dev/shm/razr-slide-1104895ba7b9/evidence/ep5-input-audit/required-input-closure.json": "b694ddf4aee78ad09fc2a5524fef2a0a0a8ec265d719d42ff8419191a3384eb0",
+    "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/ep5-review/final_closure_reader_controls.py": "18f43f207b80b29bf476cb21744530ba071993991349d86e1fb8ddb6a907b204"
+  },
+  "source_sha256_after": {
+    "/dev/shm/razr-slide-1104895ba7b9/integration_stage/engineering/product-integration-20261018/phase5-20261022/read_ep5_step_independent.py": "f61b7da74481a8f4e4ff4032ce093578743006868d8b7510e8df7a069281e9a1",
+    "/dev/shm/razr-slide-1104895ba7b9/integration_stage/integration/product_routing_ep5.py": "0ca0af99e6e0ba2d54fc5d43956cd6c035dcb330fd2042bdb972b84e5e3700e3",
+    "/dev/shm/razr-slide-1104895ba7b9/integration_stage/integration/ep5_input_closure.py": "b9e352d38690ac91b2bd3928f9ca7d3f0ecf7b64ba4a00487568accb77df37b2",
+    "/dev/shm/razr-slide-1104895ba7b9/repo/engineering/product-integration-20261018/phase3-20261020/read_ep3_step_independent.py": "14b2aa3362aba950a39244b0130021b72231fa2866e15d96e2f34a6dac6798c5",
+    "/dev/shm/razr-slide-1104895ba7b9/evidence/ep5-input-audit/required-input-closure.json": "b694ddf4aee78ad09fc2a5524fef2a0a0a8ec265d719d42ff8419191a3384eb0",
+    "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/ep5-review/final_closure_reader_controls.py": "18f43f207b80b29bf476cb21744530ba071993991349d86e1fb8ddb6a907b204"
+  },
+  "source_bytes_unchanged": true,
+  "checks": 43,
+  "passed": 43,
+  "failed": 0,
+  "native_geometry_executed": false,
+  "native_STEP_readback_executed": false,
+  "scope": "Actual final guard functions with validated current closure prefix and positive metrics/pair/123-row containment controls. execute prefix uses synthetic file identities and deliberate missing parts sentinel; no synthetic input is physical or CAD acceptance evidence.",
+  "prior_R4_30_case_record_retained_separately": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/ep5-review/final-reader-negative-controls.json",
+  "rows": [
+    {
+      "case": "positive-current-closure-header-metric-pair-and-123-containment-rows",
+      "expected": "accept",
+      "observed": "accepted",
+      "pass": true
+    },
+    {
+      "case": "closure-matches-independent-consumer-audit-local",
+      "expected": "accept",
+      "observed": "accepted",
+      "pass": true
+    },
+    {
+      "case": "closure-matches-independent-consumer-audit-full_default_tar",
+      "expected": "accept",
+      "observed": "accepted",
+      "pass": true
+    },
+    {
+      "case": "closure-matches-independent-consumer-audit-full_verified_members",
+      "expected": "accept",
+      "observed": "accepted",
+      "pass": true
+    },
+    {
+      "case": "closure-missing-schema",
+      "expected_rejection_contains": "unsupported native input closure schema",
+      "observed": "ValueError: missing or unsupported native input closure schema",
+      "pass": true
+    },
+    {
+      "case": "closure-missing-role",
+      "expected_rejection_contains": "role inventory differs",
+      "observed": "ValueError: native declared input role inventory differs",
+      "pass": true
+    },
+    {
+      "case": "closure-extra-role",
+      "expected_rejection_contains": "role inventory differs",
+      "observed": "ValueError: native declared input role inventory differs",
+      "pass": true
+    },
+    {
+      "case": "closure-invalid-helper-hash",
+      "expected_rejection_contains": "helper identity missing",
+      "observed": "ValueError: native input closure helper identity missing",
+      "pass": true
+    },
+    {
+      "case": "bounds-nan",
+      "expected_rejection_contains": "invalid generator object metrics",
+      "observed": "ValueError: invalid generator object metrics",
+      "pass": true
+    },
+    {
+      "case": "bounds-inf",
+      "expected_rejection_contains": "invalid generator object metrics",
+      "observed": "ValueError: invalid generator object metrics",
+      "pass": true
+    },
+    {
+      "case": "bounds-negative-inf",
+      "expected_rejection_contains": "invalid generator object metrics",
+      "observed": "ValueError: invalid generator object metrics",
+      "pass": true
+    },
+    {
+      "case": "bounds-boolean",
+      "expected_rejection_contains": "invalid generator object metrics",
+      "observed": "ValueError: invalid generator object metrics",
+      "pass": true
+    },
+    {
+      "case": "bounds-flat",
+      "expected_rejection_contains": "invalid generator object metrics",
+      "observed": "ValueError: invalid generator object metrics",
+      "pass": true
+    },
+    {
+      "case": "bounds-reversed",
+      "expected_rejection_contains": "invalid generator object metrics",
+      "observed": "ValueError: invalid generator object metrics",
+      "pass": true
+    },
+    {
+      "case": "volume-nan",
+      "expected_rejection_contains": "invalid generator object metrics",
+      "observed": "ValueError: invalid generator object metrics",
+      "pass": true
+    },
+    {
+      "case": "volume-inf",
+      "expected_rejection_contains": "invalid generator object metrics",
+      "observed": "ValueError: invalid generator object metrics",
+      "pass": true
+    },
+    {
+      "case": "volume-zero",
+      "expected_rejection_contains": "invalid generator object metrics",
+      "observed": "ValueError: invalid generator object metrics",
+      "pass": true
+    },
+    {
+      "case": "volume-negative",
+      "expected_rejection_contains": "invalid generator object metrics",
+      "observed": "ValueError: invalid generator object metrics",
+      "pass": true
+    },
+    {
+      "case": "volume-boolean",
+      "expected_rejection_contains": "invalid generator object metrics",
+      "observed": "ValueError: invalid generator object metrics",
+      "pass": true
+    },
+    {
+      "case": "common-nan",
+      "expected_rejection_contains": "finite nonnegative Common volume required",
+      "observed": "ValueError: finite nonnegative Common volume required",
+      "pass": true
+    },
+    {
+      "case": "common-inf",
+      "expected_rejection_contains": "finite nonnegative Common volume required",
+      "observed": "ValueError: finite nonnegative Common volume required",
+      "pass": true
+    },
+    {
+      "case": "common-negative",
+      "expected_rejection_contains": "finite nonnegative Common volume required",
+      "observed": "ValueError: finite nonnegative Common volume required",
+      "pass": true
+    },
+    {
+      "case": "common-boolean",
+      "expected_rejection_contains": "finite nonnegative Common volume required",
+      "observed": "ValueError: finite nonnegative Common volume required",
+      "pass": true
+    },
+    {
+      "case": "common-none",
+      "expected_rejection_contains": "finite nonnegative Common volume required",
+      "observed": "ValueError: finite nonnegative Common volume required",
+      "pass": true
+    },
+    {
+      "case": "common-above-source",
+      "expected_rejection_contains": "Common exceeds complete source material",
+      "observed": "ValueError: Common exceeds complete source material",
+      "pass": true
+    },
+    {
+      "case": "unjustified-axis-gap",
+      "expected_rejection_contains": "unjustified broad-phase Common omission",
+      "observed": "ValueError: unjustified broad-phase Common omission",
+      "pass": true
+    },
+    {
+      "case": "containment-empty",
+      "expected_rejection_contains": "containment inventory incomplete",
+      "observed": "ValueError: full candidate containment inventory incomplete",
+      "pass": true
+    },
+    {
+      "case": "containment-missing",
+      "expected_rejection_contains": "containment inventory incomplete",
+      "observed": "ValueError: full candidate containment inventory incomplete",
+      "pass": true
+    },
+    {
+      "case": "containment-duplicate",
+      "expected_rejection_contains": "containment inventory incomplete",
+      "observed": "ValueError: full candidate containment inventory incomplete",
+      "pass": true
+    },
+    {
+      "case": "containment-evaluation-failed",
+      "expected_rejection_contains": "native containment evaluation failed",
+      "observed": "ValueError: native containment evaluation failed",
+      "pass": true
+    },
+    {
+      "case": "containment-nan",
+      "expected_rejection_contains": "finite physically bounded outside volume required",
+      "observed": "ValueError: finite physically bounded outside volume required",
+      "pass": true
+    },
+    {
+      "case": "containment-inf",
+      "expected_rejection_contains": "finite physically bounded outside volume required",
+      "observed": "ValueError: finite physically bounded outside volume required",
+      "pass": true
+    },
+    {
+      "case": "containment-negative",
+      "expected_rejection_contains": "finite physically bounded outside volume required",
+      "observed": "ValueError: finite physically bounded outside volume required",
+      "pass": true
+    },
+    {
+      "case": "containment-missing-domain-cut",
+      "expected_rejection_contains": "native domain cut coverage invalid",
+      "observed": "ValueError: native domain cut coverage invalid",
+      "pass": true
+    },
+    {
+      "case": "containment-positive-without-export",
+      "expected_rejection_contains": "positive outside material lacks native export",
+      "observed": "ValueError: positive outside material lacks native export",
+      "pass": true
+    },
+    {
+      "case": "local-containment-is-explicitly-unexecuted",
+      "expected": "accept",
+      "observed": "accepted",
+      "pass": true
+    },
+    {
+      "case": "execute-positive-current-closure-and-file-identity-prefix-reaches-deliberate-missing-parts-sentinel",
+      "expected": "accept",
+      "observed": "accepted",
+      "pass": true
+    },
+    {
+      "case": "execute-empty-pose-manifest-rejected-at-header",
+      "expected": "accept",
+      "observed": "accepted",
+      "pass": true
+    },
+    {
+      "case": "execute-wrong-actual-closure-helper-bytes",
+      "expected": "accept",
+      "observed": "accepted",
+      "pass": true
+    },
+    {
+      "case": "execute-consumed-gzip-missing-from-source-map",
+      "expected": "accept",
+      "observed": "accepted",
+      "pass": true
+    },
+    {
+      "case": "execute-consumed-gzip-bytes-changed-after-report",
+      "expected": "accept",
+      "observed": "accepted",
+      "pass": true
+    },
+    {
+      "case": "real-generator-source-predicate-allows-preloaded-repository-venv",
+      "expected": "accept",
+      "observed": "accepted",
+      "pass": true
+    },
+    {
+      "case": "real-generator-source-predicate-rejects-late-project-file",
+      "expected": "accept",
+      "observed": "accepted",
+      "pass": true
+    }
+  ]
+}

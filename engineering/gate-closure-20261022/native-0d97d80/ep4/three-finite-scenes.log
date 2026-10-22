@@ -1,0 +1,41 @@
+Traceback (most recent call last):
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/product_routing_ep4.py", line 816, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/product_routing_ep4.py", line 798, in main
+    report = native_report(output/'native', args.poses, c)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/product_routing_ep4.py", line 628, in native_report
+    scene, scene_meta = split.split_scene(slide, descent, tab, tab,
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/product_split_assembly.py", line 73, in split_scene
+    scene, meta = p.product_scene(slide_mm, descent_mm, left_tab_mm, right_tab_mm, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/product_assembly.py", line 329, in product_scene
+    state,meta=native_scene(slide_mm,descent_mm,left_tab_mm,right_tab_mm,flanks=flanks,telescope_offsets=telescope_offsets,verified_mounted_members=verified_mounted_members)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/product_assembly.py", line 169, in native_scene
+    parts,parent,prior,old,profiles,slots,provenance=native_inputs(verified_mounted_members)
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/product_assembly.py", line 147, in native_inputs
+    parent,prior,old,profiles=n.e.v.parent_native(hashes, verified_mounted_members=verified_mounted_members)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/verify_serviceable_pawl.py", line 69, in parent_native
+    prior,old,profiles=w.prior_native(h, verified_mounted_members=verified_mounted_members)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/verify_pawl_actuator.py", line 62, in prior_native
+    old=v.source_parts(h, verified_mounted_members=verified_mounted_members)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/verify_cam_coupling.py", line 77, in source_parts
+    if sha(arc)!=m['archive_sha256']:raise ValueError('parent archive differs')
+       ^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/verify_cam_coupling.py", line 32, in sha
+    def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+                                        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/repo/engineering/mounted-mechanism-20261015/native-geometry.tar.gz'

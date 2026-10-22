@@ -1,0 +1,25 @@
+setUpClass (test_material_motion.MaterialMotionTests) ... ERROR
+
+======================================================================
+ERROR: setUpClass (test_material_motion.MaterialMotionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/engineering/fpc-material-motion-20261013-r5/test_material_motion.py", line 8, in setUpClass
+    cls.r50,cls.r47,cls.r,cls.A,cls.B=m.source_modules();cls.c=cls.r.CANDIDATES[2];cls.L=cls.r.target_length(cls.c)
+                                      ^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/engineering/fpc-material-motion-20261013-r5/material_motion.py", line 29, in source_modules
+    r47,r,A,B=r50.get_reference()
+              ^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/engineering/fpc-material-motion-20261013-r5/frozen_input/r50_full_span_finite_ribbon.py", line 118, in get_reference
+    routing=r47.import_R46()
+            ^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/engineering/fpc-material-motion-20261013-r5/frozen_input/R47/src/r47_full_span_and_intake.py", line 53, in import_R46
+    import r46_routing_and_gate as r
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/engineering/fpc-material-motion-20261013-r5/frozen_input/R47/baseline/R46_source/src/r46_routing_and_gate.py", line 15, in <module>
+    from shapely.geometry import LineString
+ModuleNotFoundError: No module named 'shapely'
+
+----------------------------------------------------------------------
+Ran 0 tests in 1.616s
+
+FAILED (errors=1)

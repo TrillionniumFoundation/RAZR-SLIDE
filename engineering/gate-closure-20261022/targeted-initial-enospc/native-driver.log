@@ -1,0 +1,58 @@
+test_assume_unchanged_cannot_bind_modified_source_to_clean_head (test_product_native_validation.ProductNativeValidationTests.test_assume_unchanged_cannot_bind_modified_source_to_clean_head) ... ERROR
+test_boolean_kernel_and_positive_artifact_failures_stop_execution_gate (test_product_native_validation.ProductNativeValidationTests.test_boolean_kernel_and_positive_artifact_failures_stop_execution_gate) ... ok
+test_completed_negative_geometry_is_retained_without_product_release (test_product_native_validation.ProductNativeValidationTests.test_completed_negative_geometry_is_retained_without_product_release) ... ok
+test_containment_omission_and_kernel_error_are_execution_failures (test_product_native_validation.ProductNativeValidationTests.test_containment_omission_and_kernel_error_are_execution_failures) ... ok
+test_fresh_source_identity_is_required (test_product_native_validation.ProductNativeValidationTests.test_fresh_source_identity_is_required) ... ok
+test_missing_or_duplicate_pair_is_not_a_pass_even_if_count_matches_rows (test_product_native_validation.ProductNativeValidationTests.test_missing_or_duplicate_pair_is_not_a_pass_even_if_count_matches_rows) ... ok
+test_nonzero_command_retains_report_and_cannot_pass_execution (test_product_native_validation.ProductNativeValidationTests.test_nonzero_command_retains_report_and_cannot_pass_execution) ... ok
+test_one_pose_default_cannot_be_reported_as_whole_scene_coverage (test_product_native_validation.ProductNativeValidationTests.test_one_pose_default_cannot_be_reported_as_whole_scene_coverage) ... ok
+test_positive_common_and_global_disposition_cannot_be_hidden (test_product_native_validation.ProductNativeValidationTests.test_positive_common_and_global_disposition_cannot_be_hidden) ... ok
+test_positive_common_requires_exported_material_context (test_product_native_validation.ProductNativeValidationTests.test_positive_common_requires_exported_material_context) ... ok
+test_reader_must_compare_every_body_and_positive_common_scope (test_product_native_validation.ProductNativeValidationTests.test_reader_must_compare_every_body_and_positive_common_scope) ... ok
+test_research_cannot_grant_manufacturing_or_hardware_release (test_product_native_validation.ProductNativeValidationTests.test_research_cannot_grant_manufacturing_or_hardware_release) ... ok
+test_seven_regression_groups_and_original_negative_control_are_required (test_product_native_validation.ProductNativeValidationTests.test_seven_regression_groups_and_original_negative_control_are_required) ... ok
+test_skip_worktree_cannot_bind_modified_source_to_clean_head (test_product_native_validation.ProductNativeValidationTests.test_skip_worktree_cannot_bind_modified_source_to_clean_head) ... ERROR
+test_stale_or_failed_reader_cannot_validate_fresh_native_artifacts (test_product_native_validation.ProductNativeValidationTests.test_stale_or_failed_reader_cannot_validate_fresh_native_artifacts) ... ok
+
+======================================================================
+ERROR: test_assume_unchanged_cannot_bind_modified_source_to_clean_head (test_product_native_validation.ProductNativeValidationTests.test_assume_unchanged_cannot_bind_modified_source_to_clean_head)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/tests/test_product_native_validation.py", line 96, in test_assume_unchanged_cannot_bind_modified_source_to_clean_head
+    self.hidden_source_change('--assume-unchanged')
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/tests/test_product_native_validation.py", line 86, in hidden_source_change
+    git('init', '-q'); git('add', '.'); git('commit', '-qm', 'Synthetic identity fixture', '--no-verify')
+    ^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/tests/test_product_native_validation.py", line 82, in git
+    return subprocess.check_output(['git', '-C', str(root),
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', '-C', '/tmp/tmp9p49mymh', '-c', 'user.name=Synthetic identity test', '-c', 'user.email=synthetic@example.invalid', '-c', 'commit.gpgsign=false', 'init', '-q']' returned non-zero exit status 128.
+
+======================================================================
+ERROR: test_skip_worktree_cannot_bind_modified_source_to_clean_head (test_product_native_validation.ProductNativeValidationTests.test_skip_worktree_cannot_bind_modified_source_to_clean_head)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/tests/test_product_native_validation.py", line 99, in test_skip_worktree_cannot_bind_modified_source_to_clean_head
+    self.hidden_source_change('--skip-worktree')
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/tests/test_product_native_validation.py", line 86, in hidden_source_change
+    git('init', '-q'); git('add', '.'); git('commit', '-qm', 'Synthetic identity fixture', '--no-verify')
+    ^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/tests/test_product_native_validation.py", line 82, in git
+    return subprocess.check_output(['git', '-C', str(root),
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', '-C', '/tmp/tmpcdrkuykx', '-c', 'user.name=Synthetic identity test', '-c', 'user.email=synthetic@example.invalid', '-c', 'commit.gpgsign=false', 'init', '-q']' returned non-zero exit status 128.
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.298s
+
+FAILED (errors=2)

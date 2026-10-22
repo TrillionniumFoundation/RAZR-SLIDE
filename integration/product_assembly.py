@@ -126,7 +126,7 @@ def strict_common(a,b):
 
 
 @lru_cache(maxsize=1)
-def native_inputs():
+def native_inputs(verified_mounted_members=None):
     import verify_frame_nut_anchor as n
     cfg=load_config();rec=cfg['native_baseline'];arc=ROOT/rec['archive']
     if sha(arc)!=rec['sha256']:
@@ -144,7 +144,7 @@ def native_inputs():
     if len(parts)!=rec['templates']:
         raise ValueError('current native template count differs')
     hashes={}
-    parent,prior,old,profiles=n.e.v.parent_native(hashes)
+    parent,prior,old,profiles=n.e.v.parent_native(hashes, verified_mounted_members=verified_mounted_members)
     slots={s:n.e.native_slot(parts[s+'_TAB']) for s in 'LR'}
     provenance={'base_commit':cfg['base_commit'],'archive':rec['archive'],
         'archive_sha256':sha(arc),'template_source_sha256':meta['source_sha256'],
@@ -152,17 +152,21 @@ def native_inputs():
                          if Path(p).is_relative_to(ROOT)},
         'templates':34,'expected_scene_participants':83,
         'material_geometry_changed':False}
+    if verified_mounted_members is not None:
+        from verified_native_members import verify_mounted_members
+        provenance['verified_mounted_members'] = verify_mounted_members(verified_mounted_members, ROOT)
+        provenance['external_verified_source_inputs'] = {str(p):h for p,h in hashes.items() if not Path(p).is_relative_to(ROOT)}
     return parts,parent,prior,old,profiles,slots,provenance
 
 
-def native_scene(slide_mm=0.0,descent_mm=0.0,left_tab_mm=0.0,right_tab_mm=0.0,*,flanks=(0,0),telescope_offsets=None):
+def native_scene(slide_mm=0.0,descent_mm=0.0,left_tab_mm=0.0,right_tab_mm=0.0,*,flanks=(0,0),telescope_offsets=None,verified_mounted_members=None):
     import verify_endpoint_joint_pawl as e
     import verify_cam_coupling as cam
     b_transform(slide_mm,descent_mm)
     tabs=(finite(left_tab_mm),finite(right_tab_mm))
     if any(not 0<=x<=3 for x in tabs) or len(flanks)!=2 or any(finite(x) not in (-1,0,1) for x in flanks):
         raise ValueError('invalid independent manual controls or slot flank')
-    parts,parent,prior,old,profiles,slots,provenance=native_inputs()
+    parts,parent,prior,old,profiles,slots,provenance=native_inputs(verified_mounted_members)
     state=e.scene(parts,parent,prior,old,profiles,slots,slide_mm,descent_mm,tabs,flanks=flanks)
     for s in 'LR':
         state[s+'_ROOT_INNER']=parts[s+'_ROOT_INNER']
@@ -202,7 +206,7 @@ def nominal_screw(x,y,shaft_radius,head_radius,z0,head_end,tip):
 
 
 @lru_cache(maxsize=1)
-def product_templates():
+def product_templates(verified_mounted_members=None):
     """Explicit product candidate material, with no edits to frozen templates.
 
     Two replaceable pads keep the existing M0.6 attachment. Each side bridge
@@ -210,7 +214,7 @@ def product_templates():
     manually installed nominal screws; their helical threads are not modeled.
     OLED channel cuts are an investigated geometry, not a strength release.
     """
-    original,_=native_scene();new={};accounts={}
+    original,_=native_scene(verified_mounted_members=verified_mounted_members);new={};accounts={}
     panel=original['A_BACK_PANEL'];frame=original['A_FRAME']
     b=original['B_SHELL'].translate((0,0,-8.2))
     cfg=load_config()['current_product_candidate']
@@ -311,7 +315,7 @@ def product_templates():
                 'machinability_strength_preload_and_screen_support_qualified':False}
 
 
-def product_scene(slide_mm=0.0,descent_mm=0.0,left_tab_mm=0.0,right_tab_mm=0.0,*,flanks=(0,0),telescope_offsets=None,open_hold=False,open_support=False):
+def product_scene(slide_mm=0.0,descent_mm=0.0,left_tab_mm=0.0,right_tab_mm=0.0,*,flanks=(0,0),telescope_offsets=None,open_hold=False,open_support=False,verified_mounted_members=None):
     """The common product candidate obstacle field used by OLED and FPC.
 
     Returns 94 installed mechanical pieces before optional OPEN accessories,
@@ -322,8 +326,8 @@ def product_scene(slide_mm=0.0,descent_mm=0.0,left_tab_mm=0.0,right_tab_mm=0.0,*
     if type(open_hold) is not bool or type(open_support) is not bool:raise ValueError('OPEN accessory state must be explicit')
     if (open_hold or open_support) and (slide_mm!=79.75 or descent_mm!=8.2):
         raise ValueError('OPEN accessories can only be installed at seated OPEN')
-    state,meta=native_scene(slide_mm,descent_mm,left_tab_mm,right_tab_mm,flanks=flanks,telescope_offsets=telescope_offsets)
-    new,changes=product_templates()
+    state,meta=native_scene(slide_mm,descent_mm,left_tab_mm,right_tab_mm,flanks=flanks,telescope_offsets=telescope_offsets,verified_mounted_members=verified_mounted_members)
+    new,changes=product_templates(verified_mounted_members)
     state['A_FRAME']=new['A_FRAME'];state['A_BACK_PANEL']=new['A_BACK_PANEL']
     state['B_SHELL']=new['B_SHELL'].translate(b_transform(slide_mm,descent_mm))
     for side,u in (('L',left_tab_mm),('R',right_tab_mm)):
@@ -351,7 +355,9 @@ def product_scene(slide_mm=0.0,descent_mm=0.0,left_tab_mm=0.0,right_tab_mm=0.0,*
 
 
 def source_unchanged(provenance):
-    return all(sha(ROOT/p)==h for p,h in provenance['source_inputs'].items()) and sha(ROOT/provenance['archive'])==provenance['archive_sha256']
+    return (all(sha(ROOT/p)==h for p,h in provenance['source_inputs'].items())
+            and sha(ROOT/provenance['archive'])==provenance['archive_sha256']
+            and all(sha(Path(p))==h for p,h in provenance.get('external_verified_source_inputs',{}).items()))
 
 
 def export_scene(output,*,slide_mm=0.0,descent_mm=0.0,left_tab_mm=0.0,right_tab_mm=0.0,include_components=True):

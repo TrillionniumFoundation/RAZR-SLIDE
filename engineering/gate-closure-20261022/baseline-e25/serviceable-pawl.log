@@ -1,0 +1,33 @@
+setUpClass (test_serviceable_pawl.ServiceableControlsTests) ... ERROR
+
+======================================================================
+ERROR: setUpClass (test_serviceable_pawl.ServiceableControlsTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/serviceable-tests/test_serviceable_pawl.py", line 14, in setUpClass
+    cls.new,cls.detail=s.build();cls.old=s.parent()
+                       ^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/serviceable_pawl.py", line 70, in build
+    old=parent();parts={};panel=c.housing_study()[0]['A_BACK_PANEL'];details={'sides':{}}
+                                ^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/cam_coupling.py", line 207, in housing_study
+    frame0=parent('A_FRAME');panel0=parent('A_BACK_PANEL');b0=parent('B_SHELL')
+           ^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/cam_coupling.py", line 109, in parent
+    if sha(arc)!=gm['archive_sha256']:raise ValueError('mounted source archive changed')
+       ^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/cam_coupling.py", line 39, in sha
+    def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+                                        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/repo/engineering/mounted-mechanism-20261015/native-geometry.tar.gz'
+
+----------------------------------------------------------------------
+Ran 0 tests in 1.716s
+
+FAILED (errors=1)
