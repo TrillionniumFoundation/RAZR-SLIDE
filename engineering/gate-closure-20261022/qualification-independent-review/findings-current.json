@@ -1,0 +1,326 @@
+{
+  "source_sha256": {
+    "qualification_contract.py": "74c206fec1ae2bf954c5fac4a0d294d43a08eba9c898413c4a3c6e09ad18d433",
+    "analyse_motion_log.py": "e8326711025f7eda83645fcda87850b64f1192ad9d721c27f2694b0e71ad2ebc"
+  },
+  "synthetic_adversarial_review_only": true,
+  "results": [
+    {
+      "case": "known_fpc_failure_plus_missing_other_conductor",
+      "status": "fail",
+      "sampled_criteria_status": "fail",
+      "blockers": [],
+      "criteria": [
+        {
+          "metric": "fpc_resistance_max_ohm",
+          "unit": "ohm",
+          "sampled_intervals": [
+            [
+              7.99,
+              8.01
+            ]
+          ],
+          "limits": {
+            "maximum": 5.0
+          },
+          "status": "fail",
+          "reason": "measured_limit_exceedance_with_incomplete_channel_coverage",
+          "observation_coverage": {
+            "complete": false,
+            "missing_observations": 1,
+            "intervals_complete": [
+              false
+            ]
+          }
+        }
+      ],
+      "preregistration_independently_reviewed": null,
+      "caller_supplied_review_attestation": true,
+      "strict_json_serializable": true,
+      "expected": [
+        "fail"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "known_radius_failure_plus_missing_other_sample",
+      "status": "fail",
+      "sampled_criteria_status": "fail",
+      "blockers": [],
+      "criteria": [
+        {
+          "metric": "oled_radius_min_mm",
+          "unit": "mm",
+          "sampled_intervals": [
+            [
+              1.99,
+              2.01
+            ]
+          ],
+          "limits": {
+            "minimum": 4.0
+          },
+          "status": "fail",
+          "reason": "measured_limit_exceedance_with_incomplete_channel_coverage",
+          "observation_coverage": {
+            "complete": false,
+            "missing_observations": 1,
+            "intervals_complete": [
+              false
+            ]
+          }
+        }
+      ],
+      "preregistration_independently_reviewed": null,
+      "caller_supplied_review_attestation": true,
+      "strict_json_serializable": true,
+      "expected": [
+        "fail"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "finite_channels_overflow_derived_mean",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "left_y_mm: numerical precision exceeds the declared measurement error",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "finite_individual_errors_overflow_sum",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "summed y error: finite number required",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "same_package_review_self_declares_independence",
+      "status": "pass",
+      "sampled_criteria_status": "pass",
+      "blockers": [],
+      "criteria": [],
+      "preregistration_independently_reviewed": null,
+      "caller_supplied_review_attestation": true,
+      "strict_json_serializable": true,
+      "expected": [
+        "pass",
+        "unknown"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "record_timestamp_precedes_acquisition",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "record timestamp predates acquisition end",
+      "expected": [
+        "rejected",
+        "unknown"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "csv_nan",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "invalid value operator_force_N at row 11",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "csv_inf",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "invalid value operator_force_N at row 11",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "csv_-inf",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "invalid value operator_force_N at row 11",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "threshold_nan",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "operator_force_max_N.maximum: finite non-boolean number required",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "threshold_inf",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "operator_force_max_N.maximum: finite non-boolean number required",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "calibration_error_-0.1",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "absolute error bound: value below minimum",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "calibration_error_-0.0",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "physical calibration needs a nonzero stated error bound",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "calibration_error_nan",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "absolute error bound: finite number required",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "calibration_error_inf",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "absolute error bound: finite number required",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "zero_additional_alignment_on_same_clock",
+      "status": "pass",
+      "sampled_criteria_status": "pass",
+      "blockers": [],
+      "criteria": [],
+      "preregistration_independently_reviewed": null,
+      "caller_supplied_review_attestation": true,
+      "strict_json_serializable": true,
+      "expected": [
+        "pass"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "negative_zero_time_origin",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "timestamps must be strictly increasing across the entire log",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "wrong_time_unit",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "one monotonic timebase in seconds is required",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "csv_duration_exceeds_interval",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "CSV duration exceeds the declared acquisition interval",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "absolute_path_escape",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "evidence must be a relative descendant file",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "dotdot_path_escape",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "evidence must be a relative descendant file",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "symlink_path_escape",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "evidence file missing or leaves its declared root",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    },
+    {
+      "case": "calibration_changes_after_initial_read",
+      "status": "rejected",
+      "exception": "ValueError",
+      "message": "evidence bytes changed: operator_force_N.calibration.json",
+      "expected": [
+        "rejected"
+      ],
+      "matches_expectation": true,
+      "proof_scope": "temporary fabricated UNIT TEST only; no physical observation"
+    }
+  ]
+}

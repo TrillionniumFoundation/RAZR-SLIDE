@@ -1,0 +1,405 @@
+{
+  "schema": "razr-pr35-continuation-input-inventory-v1",
+  "snapshot_utc": "2026-10-22T08:04:34.704817+00:00",
+  "pr35_head": "176df31ceb35bb3737d68030e60ba377665de210",
+  "read_only_inventory": true,
+  "no_native_FE_or_large_QP_executed": true,
+  "baseline_observation": {
+    "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/176df31ceb35bb3737d68030e60ba377665de210/engineering/bearing-followup-20261018/retained-corrected-probe-manifest.json",
+    "retained_file_count": 86,
+    "exit_code": 124,
+    "timed_out": true,
+    "large_partial_fields_not_uploaded": true,
+    "field_016": {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/bearing-contact-20261018/rigid-install-v3/bearing-field-016.npz",
+      "bytes": 6326974,
+      "sha256": "770740d620191b8009fafb2daa74545c3708c9ad2d5131452c3f8aef6efc39f2"
+    },
+    "field_016_is_complete_checkpoint": false,
+    "missing_from_original_persistence": [
+      "C sparse force map",
+      "H bearing complementary-energy response",
+      "ordered complete points at each exchange",
+      "ready_for_qp next_iteration/history/warm guess"
+    ],
+    "note": "Original driver only kept C/H in memory and serialized complete ordered points in terminal report. A retained field is not a proven restart cache."
+  },
+  "historical_remote_preflight": {
+    "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/e25cf001c1b714514d501de4c16d1592fde06b61/engineering/product-integration-20261018/numerics/restart-cache-preflight.json",
+    "files_scanned": 3292,
+    "scan_complete": true,
+    "errors": [],
+    "bearing_restart_candidates": [],
+    "decision": "stop_no_identified_bearing_response_restart",
+    "not_rerun_in_this_session": true
+  },
+  "new_checkpoint_protocol": {
+    "member_files": [
+      "C.npz",
+      "H.npz",
+      "points.json",
+      "state.json",
+      "identity.json",
+      "manifest.json"
+    ],
+    "created_by_this_change_on_future_run": true,
+    "migration_from_field_016_supported": false,
+    "actual_PR35_checkpoint_created_or_restored_in_this_session": false
+  },
+  "entries": [
+    {
+      "path": "engineering/nested-contact-20261017/level-2/case-6/report.json.gz",
+      "role": "Ordered original contact seed, matching the legacy base response",
+      "input_class": "original_full_FE_rebuild",
+      "repository_blob": {
+        "path": "engineering/nested-contact-20261017/level-2/case-6/report.json.gz",
+        "sha": "09602d5b347833c25a560f4c3240ba476e09d9eb",
+        "mode": "100644",
+        "size": 189467
+      },
+      "present_in_restored_checkout": false,
+      "expected_sha256": null,
+      "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/e25cf001c1b714514d501de4c16d1592fde06b61/engineering/nested-contact-20261017/level-2/case-6/report.json.gz",
+      "github_fetch_file_over_1MiB": false
+    },
+    {
+      "path": "engineering/contact-field-20261015/common-cell-results.json.gz",
+      "role": "All 5255 original common contact cells",
+      "input_class": "original_full_FE_rebuild",
+      "repository_blob": {
+        "path": "engineering/contact-field-20261015/common-cell-results.json.gz",
+        "sha": "6798ebb28e0e66ea0bf7b562769399591691908a",
+        "mode": "100644",
+        "size": 4025349
+      },
+      "present_in_restored_checkout": false,
+      "expected_sha256": null,
+      "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/e25cf001c1b714514d501de4c16d1592fde06b61/engineering/contact-field-20261015/common-cell-results.json.gz",
+      "github_fetch_file_over_1MiB": true
+    },
+    {
+      "path": "engineering/contact-field-20261015/coupled-field-audit.json.gz",
+      "role": "Original patch identities/gaps/normals",
+      "input_class": "original_full_FE_rebuild",
+      "repository_blob": {
+        "path": "engineering/contact-field-20261015/coupled-field-audit.json.gz",
+        "sha": "2b612015d20f4648aae0796f49f6185b7d38441f",
+        "mode": "100644",
+        "size": 16921
+      },
+      "present_in_restored_checkout": false,
+      "expected_sha256": null,
+      "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/e25cf001c1b714514d501de4c16d1592fde06b61/engineering/contact-field-20261015/coupled-field-audit.json.gz",
+      "github_fetch_file_over_1MiB": false
+    },
+    {
+      "path": "integration/assembly_inputs.json",
+      "role": "Original assembly input",
+      "input_class": "original_full_FE_rebuild",
+      "repository_blob": {
+        "path": "integration/assembly_inputs.json",
+        "sha": "132c151dcb346ba8f6c208f61026d4de0343eedf",
+        "mode": "100644",
+        "size": 7833
+      },
+      "present_in_restored_checkout": true,
+      "expected_sha256": null,
+      "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/e25cf001c1b714514d501de4c16d1592fde06b61/integration/assembly_inputs.json",
+      "github_fetch_file_over_1MiB": false
+    },
+    {
+      "path": "integration/roof_joint_load_inputs.json",
+      "role": "Original roof/load definition",
+      "input_class": "original_full_FE_rebuild",
+      "repository_blob": {
+        "path": "integration/roof_joint_load_inputs.json",
+        "sha": "b114f3b87627a691b181c30fd914a9a2b35598d8",
+        "mode": "100644",
+        "size": 552
+      },
+      "present_in_restored_checkout": true,
+      "expected_sha256": null,
+      "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/e25cf001c1b714514d501de4c16d1592fde06b61/integration/roof_joint_load_inputs.json",
+      "github_fetch_file_over_1MiB": false
+    },
+    {
+      "path": "integration/frame_thread_actual_inputs.json",
+      "role": "Original frame/thread definition",
+      "input_class": "original_full_FE_rebuild",
+      "repository_blob": {
+        "path": "integration/frame_thread_actual_inputs.json",
+        "sha": "5258a07cfa12c0521b6c2197ba4040a350783ba1",
+        "mode": "100644",
+        "size": 878
+      },
+      "present_in_restored_checkout": true,
+      "expected_sha256": null,
+      "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/e25cf001c1b714514d501de4c16d1592fde06b61/integration/frame_thread_actual_inputs.json",
+      "github_fetch_file_over_1MiB": false
+    },
+    {
+      "path": "engineering/joint-sensitivity-20261017/frozen-selection.json",
+      "role": "Frozen selection used by the investigated setup",
+      "input_class": "original_full_FE_rebuild",
+      "repository_blob": {
+        "path": "engineering/joint-sensitivity-20261017/frozen-selection.json",
+        "sha": "c9de8d498f4499f2b002017b0e80052c0fe456c8",
+        "mode": "100644",
+        "size": 31300
+      },
+      "present_in_restored_checkout": true,
+      "expected_sha256": null,
+      "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/e25cf001c1b714514d501de4c16d1592fde06b61/engineering/joint-sensitivity-20261017/frozen-selection.json",
+      "github_fetch_file_over_1MiB": false
+    },
+    {
+      "path": "engineering/installation-control-20261018/force-target-plan.json",
+      "role": "Four research targets 0.0002, compliance 5; physical_measurement=false",
+      "input_class": "original_full_FE_rebuild",
+      "repository_blob": {
+        "path": "engineering/installation-control-20261018/force-target-plan.json",
+        "sha": "d346deaec18c6e8d2bda85e154a39b7a4185f058",
+        "mode": "100644",
+        "size": 669
+      },
+      "present_in_restored_checkout": false,
+      "expected_sha256": null,
+      "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/e25cf001c1b714514d501de4c16d1592fde06b61/engineering/installation-control-20261018/force-target-plan.json",
+      "github_fetch_file_over_1MiB": false
+    },
+    {
+      "path": "engineering/consistent-load-20261017/projection-512/manifest.json",
+      "role": "512-sided consistent load/surface archive manifest",
+      "input_class": "original_full_FE_rebuild",
+      "repository_blob": {
+        "path": "engineering/consistent-load-20261017/projection-512/manifest.json",
+        "sha": "a6c338cf798ce102ae7d2d8263022b3dcbf00aab",
+        "mode": "100644",
+        "size": 11563
+      },
+      "present_in_restored_checkout": false,
+      "expected_sha256": null,
+      "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/e25cf001c1b714514d501de4c16d1592fde06b61/engineering/consistent-load-20261017/projection-512/manifest.json",
+      "github_fetch_file_over_1MiB": false
+    },
+    {
+      "path": "engineering/consistent-load-20261017/projection-512/frame-patches.json",
+      "role": "Verified member of original surface archive",
+      "input_class": "original_full_FE_rebuild",
+      "repository_blob": {
+        "path": "engineering/consistent-load-20261017/projection-512/frame-patches.json",
+        "sha": "cb02df794b2d242b88c4b764f05545db6360e61a",
+        "mode": "100644",
+        "size": 2671
+      },
+      "present_in_restored_checkout": false,
+      "expected_sha256": "c24c2856af31466bc82a147a9df54f7ac291943bbfc7e5383db9f320649b38f2",
+      "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/e25cf001c1b714514d501de4c16d1592fde06b61/engineering/consistent-load-20261017/projection-512/frame-patches.json",
+      "github_fetch_file_over_1MiB": false
+    },
+    {
+      "path": "engineering/consistent-load-20261017/projection-512/frame-faces.json",
+      "role": "Verified member of original surface archive",
+      "input_class": "original_full_FE_rebuild",
+      "repository_blob": {
+        "path": "engineering/consistent-load-20261017/projection-512/frame-faces.json",
+        "sha": "57bc842dfe0e94f6748fa27d8eaf813789328ce6",
+        "mode": "100644",
+        "size": 1233257
+      },
+      "present_in_restored_checkout": false,
+      "expected_sha256": "6f1391cab252100011dc867821919dd56c78e531b6505fa3762bbf0f794c47b8",
+      "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/e25cf001c1b714514d501de4c16d1592fde06b61/engineering/consistent-load-20261017/projection-512/frame-faces.json",
+      "github_fetch_file_over_1MiB": true
+    },
+    {
+      "path": "engineering/consistent-load-20261017/projection-512/panel-faces.json",
+      "role": "Verified member of original surface archive",
+      "input_class": "original_full_FE_rebuild",
+      "repository_blob": {
+        "path": "engineering/consistent-load-20261017/projection-512/panel-faces.json",
+        "sha": "dbb93846bb270956cd05505e7ea4ded383bd2bc1",
+        "mode": "100644",
+        "size": 1377736
+      },
+      "present_in_restored_checkout": false,
+      "expected_sha256": "28a649178d20522b4dd418224cd6f498a8bba03cd209e1a85b86a3485985e2da",
+      "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/e25cf001c1b714514d501de4c16d1592fde06b61/engineering/consistent-load-20261017/projection-512/panel-faces.json",
+      "github_fetch_file_over_1MiB": true
+    },
+    {
+      "path": "engineering/consistent-load-20261017/projection-512/panel.npz",
+      "role": "Verified member of original surface archive",
+      "input_class": "original_full_FE_rebuild",
+      "repository_blob": {
+        "path": "engineering/consistent-load-20261017/projection-512/panel.npz",
+        "sha": "3c006bf05d601cc127d7f0f80439d066fe70540e",
+        "mode": "100644",
+        "size": 36873
+      },
+      "present_in_restored_checkout": false,
+      "expected_sha256": "3bdd7e47a87a392d2df4e5eaa45b6b28818ed612b116917cb1df07dd1ece8f96",
+      "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/e25cf001c1b714514d501de4c16d1592fde06b61/engineering/consistent-load-20261017/projection-512/panel.npz",
+      "github_fetch_file_over_1MiB": false
+    },
+    {
+      "path": "engineering/consistent-load-20261017/projection-512/panel-patches.json",
+      "role": "Verified member of original surface archive",
+      "input_class": "original_full_FE_rebuild",
+      "repository_blob": {
+        "path": "engineering/consistent-load-20261017/projection-512/panel-patches.json",
+        "sha": "1de65eaaf56bba9a8aad8546be1204bbaa9b30c0",
+        "mode": "100644",
+        "size": 5489
+      },
+      "present_in_restored_checkout": false,
+      "expected_sha256": "74001286238b93907bf80def5e2c09f4b50c7987fe85aa92465ed3057dc5104c",
+      "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/e25cf001c1b714514d501de4c16d1592fde06b61/engineering/consistent-load-20261017/projection-512/panel-patches.json",
+      "github_fetch_file_over_1MiB": false
+    },
+    {
+      "path": "engineering/consistent-load-20261017/projection-512/frame.npz",
+      "role": "Verified member of original surface archive",
+      "input_class": "original_full_FE_rebuild",
+      "repository_blob": {
+        "path": "engineering/consistent-load-20261017/projection-512/frame.npz",
+        "sha": "e095840730bdad968e143c1fb27bbd051178d24d",
+        "mode": "100644",
+        "size": 30610
+      },
+      "present_in_restored_checkout": false,
+      "expected_sha256": "56e24e7147ab275df6382fbe74ccf9f9e4c8342da1f6794a8f04ff6405d82413",
+      "source_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/blob/e25cf001c1b714514d501de4c16d1592fde06b61/engineering/consistent-load-20261017/projection-512/frame.npz",
+      "github_fetch_file_over_1MiB": false
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/volume-convergence-20261017/volume-v3/panel/level-2/K.npz",
+      "role": "Original full elastic volume matrix/load/mesh/report; supplied to --volume",
+      "input_class": "external_native_cache_or_rebuild",
+      "repository_blob": null,
+      "present_in_restored_checkout": false,
+      "original_host_not_probed": true,
+      "expected_sha256": null,
+      "hash_source": "must verify against original volume report and legacy state manifest before use",
+      "recovery": "Recover exact owner-retained artifact or explicitly rebuild original source; do not synthesize an accepted receipt."
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/volume-convergence-20261017/volume-v3/panel/level-2/loads.npz",
+      "role": "Original full elastic volume matrix/load/mesh/report; supplied to --volume",
+      "input_class": "external_native_cache_or_rebuild",
+      "repository_blob": null,
+      "present_in_restored_checkout": false,
+      "original_host_not_probed": true,
+      "expected_sha256": "811ba687959bb34dec5ada401b35f07123c917bfc4e68ad982d661fd62fac9a6",
+      "hash_source": "projection-512 manifest input_sha256",
+      "recovery": "Recover exact owner-retained artifact or explicitly rebuild original source; do not synthesize an accepted receipt."
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/volume-convergence-20261017/volume-v3/panel/level-2/mesh.npz",
+      "role": "Original full elastic volume matrix/load/mesh/report; supplied to --volume",
+      "input_class": "external_native_cache_or_rebuild",
+      "repository_blob": null,
+      "present_in_restored_checkout": false,
+      "original_host_not_probed": true,
+      "expected_sha256": "310152fc64af21451cc5ea4be683a73075109ed7e6ec588a6e8bcacf4979ac34",
+      "hash_source": "projection-512 manifest input_sha256",
+      "recovery": "Recover exact owner-retained artifact or explicitly rebuild original source; do not synthesize an accepted receipt."
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/volume-convergence-20261017/volume-v3/panel/level-2/report.json",
+      "role": "Original full elastic volume matrix/load/mesh/report; supplied to --volume",
+      "input_class": "external_native_cache_or_rebuild",
+      "repository_blob": null,
+      "present_in_restored_checkout": false,
+      "original_host_not_probed": true,
+      "expected_sha256": null,
+      "hash_source": "must verify against original volume report and legacy state manifest before use",
+      "recovery": "Recover exact owner-retained artifact or explicitly rebuild original source; do not synthesize an accepted receipt."
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/volume-convergence-20261017/volume-v3/frame/level-2/K.npz",
+      "role": "Original full elastic volume matrix/load/mesh/report; supplied to --volume",
+      "input_class": "external_native_cache_or_rebuild",
+      "repository_blob": null,
+      "present_in_restored_checkout": false,
+      "original_host_not_probed": true,
+      "expected_sha256": null,
+      "hash_source": "must verify against original volume report and legacy state manifest before use",
+      "recovery": "Recover exact owner-retained artifact or explicitly rebuild original source; do not synthesize an accepted receipt."
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/volume-convergence-20261017/volume-v3/frame/level-2/loads.npz",
+      "role": "Original full elastic volume matrix/load/mesh/report; supplied to --volume",
+      "input_class": "external_native_cache_or_rebuild",
+      "repository_blob": null,
+      "present_in_restored_checkout": false,
+      "original_host_not_probed": true,
+      "expected_sha256": "eb2b180696785a77b71412506760df974fbf54c800090e36f027f2aaf70135a3",
+      "hash_source": "projection-512 manifest input_sha256",
+      "recovery": "Recover exact owner-retained artifact or explicitly rebuild original source; do not synthesize an accepted receipt."
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/volume-convergence-20261017/volume-v3/frame/level-2/mesh.npz",
+      "role": "Original full elastic volume matrix/load/mesh/report; supplied to --volume",
+      "input_class": "external_native_cache_or_rebuild",
+      "repository_blob": null,
+      "present_in_restored_checkout": false,
+      "original_host_not_probed": true,
+      "expected_sha256": "fc0eeecf966eda3bf242b0abd90f5603132f47d5235fcf81ea7238c1faf33132",
+      "hash_source": "projection-512 manifest input_sha256",
+      "recovery": "Recover exact owner-retained artifact or explicitly rebuild original source; do not synthesize an accepted receipt."
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/volume-convergence-20261017/volume-v3/frame/level-2/report.json",
+      "role": "Original full elastic volume matrix/load/mesh/report; supplied to --volume",
+      "input_class": "external_native_cache_or_rebuild",
+      "repository_blob": null,
+      "present_in_restored_checkout": false,
+      "original_host_not_probed": true,
+      "expected_sha256": null,
+      "hash_source": "must verify against original volume report and legacy state manifest before use",
+      "recovery": "Recover exact owner-retained artifact or explicitly rebuild original source; do not synthesize an accepted receipt."
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/nested-contact-20261017/level-2/final-case7-state/points.json",
+      "role": "Legacy original-body response seed required by unchanged outer driver; not a bearing restart",
+      "input_class": "external_native_cache_or_rebuild",
+      "repository_blob": null,
+      "present_in_restored_checkout": false,
+      "original_host_not_probed": true,
+      "retained_response_bytes": null,
+      "expected_sha256": null,
+      "recovery": "Recover exact three-file set; outer driver verifies manifest hashes, ordered seed points and complete-operator probes."
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/nested-contact-20261017/level-2/final-case7-state/response.npz",
+      "role": "Legacy original-body response seed required by unchanged outer driver; not a bearing restart",
+      "input_class": "external_native_cache_or_rebuild",
+      "repository_blob": null,
+      "present_in_restored_checkout": false,
+      "original_host_not_probed": true,
+      "retained_response_bytes": 111925245,
+      "expected_sha256": null,
+      "recovery": "Recover exact three-file set; outer driver verifies manifest hashes, ordered seed points and complete-operator probes."
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/nested-contact-20261017/level-2/final-case7-state/manifest.json",
+      "role": "Legacy original-body response seed required by unchanged outer driver; not a bearing restart",
+      "input_class": "external_native_cache_or_rebuild",
+      "repository_blob": null,
+      "present_in_restored_checkout": false,
+      "original_host_not_probed": true,
+      "retained_response_bytes": null,
+      "expected_sha256": null,
+      "recovery": "Recover exact three-file set; outer driver verifies manifest hashes, ordered seed points and complete-operator probes."
+    }
+  ],
+  "cloud_binding": {
+    "known_current_project_entry": ".github/workflows/research-ci.yml (ubuntu-24.04)",
+    "current_SSH_SSM_or_host_binding_identified": false,
+    "project_config_review_by": "ci_governance_audit",
+    "review_scope": "main 5720 nonarchive paths plus PR36 772 changed paths; historical Cloud/X230/Pocket4 receipts do not identify a current execution binding",
+    "phase4_execute_bound": "local clean-git subprocess wrapper",
+    "external_hosts_or_other_projects_probed": false
+  }
+}

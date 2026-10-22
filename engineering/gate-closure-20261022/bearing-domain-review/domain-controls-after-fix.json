@@ -1,0 +1,126 @@
+{
+  "schema": "razr-bearing-independent-domain-controls-v1",
+  "scope": "7 synthetic 12-DOF descriptor controls. Actual adapter bearing one_map and actual payload/descriptor/restore functions; synthetic contact interpolation and identity response. No real FE or QP.",
+  "source_sha256_before": {
+    "/dev/shm/razr-slide-1104895ba7b9/evidence/bearing-continuation/stage/engineering/bearing-continuation-20261022/continuation_support.py": "454bdca799e7d257234a0a618479b77d65bb108f92e44993de8c8f3b8142c963",
+    "/dev/shm/razr-slide-1104895ba7b9/evidence/bearing-continuation/stage/engineering/bearing-continuation-20261022/continued_rigid_bearing_probe.py": "fc483fade6d3d22511d801dcb12791441d31e78e08187fc326cee65f0efa7df9",
+    "/dev/shm/razr-slide-1104895ba7b9/evidence/bearing-continuation/stage/engineering/bearing-continuation-20261022/bearing_checkpoint.py": "135d665d70a2aff2068e340e5d82fe56ce32a5eca00b8348cee331e88f107219",
+    "/dev/shm/razr-slide-1104895ba7b9/repo/integration/contact_exchange.py": "db1f426d89dfba88bb7d7ed6955e8b92a620c0babc9d4036ee3c0ba1d5be6064",
+    "/dev/shm/razr-slide-1104895ba7b9/repo/integration/surface_load_functional.py": "0268865dfab59def441392064586938be3e1a9ac034e300331ba08506ad4637a"
+  },
+  "source_sha256_after": {
+    "/dev/shm/razr-slide-1104895ba7b9/evidence/bearing-continuation/stage/engineering/bearing-continuation-20261022/continuation_support.py": "454bdca799e7d257234a0a618479b77d65bb108f92e44993de8c8f3b8142c963",
+    "/dev/shm/razr-slide-1104895ba7b9/evidence/bearing-continuation/stage/engineering/bearing-continuation-20261022/continued_rigid_bearing_probe.py": "fc483fade6d3d22511d801dcb12791441d31e78e08187fc326cee65f0efa7df9",
+    "/dev/shm/razr-slide-1104895ba7b9/evidence/bearing-continuation/stage/engineering/bearing-continuation-20261022/bearing_checkpoint.py": "135d665d70a2aff2068e340e5d82fe56ce32a5eca00b8348cee331e88f107219",
+    "/dev/shm/razr-slide-1104895ba7b9/repo/integration/contact_exchange.py": "db1f426d89dfba88bb7d7ed6955e8b92a620c0babc9d4036ee3c0ba1d5be6064",
+    "/dev/shm/razr-slide-1104895ba7b9/repo/integration/surface_load_functional.py": "0268865dfab59def441392064586938be3e1a9ac034e300331ba08506ad4637a"
+  },
+  "sources_unchanged": true,
+  "expected_mode": "fixed-reject-domain-extrapolation",
+  "checks": 7,
+  "matched_expected": 7,
+  "rows": [
+    {
+      "case": "bearing-outside-triangle",
+      "domain_member": false,
+      "xy": [
+        2.0,
+        2.0
+      ],
+      "all_8_original_bearing_domains_present": true,
+      "accepted": false,
+      "rejection": "descriptor coordinates outside frozen bearing polygon",
+      "expected_acceptance": false,
+      "expectation_met": true,
+      "targeted_domain_reason": true
+    },
+    {
+      "case": "bearing-inside-triangle-outside-clipped-face",
+      "domain_member": false,
+      "xy": [
+        0.4,
+        0.4
+      ],
+      "all_8_original_bearing_domains_present": true,
+      "accepted": false,
+      "rejection": "descriptor coordinates outside frozen bearing polygon",
+      "expected_acceptance": false,
+      "expectation_met": true,
+      "targeted_domain_reason": true
+    },
+    {
+      "case": "contact-outside-cell",
+      "domain_member": false,
+      "xy": [
+        2.0,
+        2.0
+      ],
+      "all_8_original_bearing_domains_present": true,
+      "accepted": false,
+      "rejection": "descriptor coordinates outside frozen contact polygon",
+      "expected_acceptance": false,
+      "expectation_met": true,
+      "targeted_domain_reason": true
+    },
+    {
+      "case": "bearing-original-corner",
+      "domain_member": true,
+      "xy": [
+        0.0,
+        0.0
+      ],
+      "all_8_original_bearing_domains_present": true,
+      "accepted": true,
+      "response_probes": 5,
+      "response_calls": 5,
+      "largest_relative_error": 3.023483182530382e-16,
+      "expected_acceptance": true,
+      "expectation_met": true
+    },
+    {
+      "case": "bearing-original-edge",
+      "domain_member": true,
+      "xy": [
+        0.5,
+        0.5
+      ],
+      "all_8_original_bearing_domains_present": true,
+      "accepted": true,
+      "response_probes": 5,
+      "response_calls": 5,
+      "largest_relative_error": 3.108127168603461e-16,
+      "expected_acceptance": true,
+      "expectation_met": true
+    },
+    {
+      "case": "contact-original-corner",
+      "domain_member": true,
+      "xy": [
+        1.0,
+        0.0
+      ],
+      "all_8_original_bearing_domains_present": true,
+      "accepted": true,
+      "response_probes": 5,
+      "response_calls": 5,
+      "largest_relative_error": 2.3641887236481183e-16,
+      "expected_acceptance": true,
+      "expectation_met": true
+    },
+    {
+      "case": "contact-original-edge",
+      "domain_member": true,
+      "xy": [
+        0.5,
+        0.5
+      ],
+      "all_8_original_bearing_domains_present": true,
+      "accepted": true,
+      "response_probes": 5,
+      "response_calls": 5,
+      "largest_relative_error": 1.9491275010975357e-16,
+      "expected_acceptance": true,
+      "expectation_met": true
+    }
+  ]
+}

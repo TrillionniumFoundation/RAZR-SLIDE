@@ -45,7 +45,7 @@ def load_new(manifest):
     return meta,p,h
 
 
-def prior_native(h):
+def prior_native(h, *, verified_mounted_members=None):
     folder=ROOT/'engineering/cam-coupling-20261015'
     gm=folder/'geometry-v5-manifest.json';entries=json.loads(gm.read_text());arc=folder/entries['archive']
     if sha(arc)!=entries['archive_sha256']:raise ValueError('prior cam archive changed')
@@ -59,7 +59,7 @@ def prior_native(h):
             if len(data)!=rec['bytes'] or hashlib.sha256(data).hexdigest()!=rec['sha256']:raise ValueError('prior native member changed')
             (directory/name).write_bytes(data)
         (directory/'manifest.json').write_bytes(manifest.read_bytes());_,p,_=v.load(directory/'manifest.json')
-    old=v.source_parts(h)
+    old=v.source_parts(h, verified_mounted_members=verified_mounted_members)
     f=ROOT/'engineering/thin-mechanism-20261015/native-verification.json.gz';h[str(f)]=sha(f)
     data=json.loads(gzip.decompress(f.read_bytes()));fields=('pin_radius','floor_height','floor_corner_q','ramp_slope','pin_q','lower_stop_height','q_max')
     profiles={s:[v.ContactProfile(**{k:c['profile'][k] for k in fields}) for c in data['sides'][s]['contacts']] for s in 'LR'}

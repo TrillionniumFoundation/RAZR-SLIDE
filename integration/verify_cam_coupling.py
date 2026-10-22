@@ -70,17 +70,27 @@ def load(manifest):
     return r,p,hashes
 
 
-def source_parts(hashes):
+def source_parts(hashes, *, verified_mounted_members=None):
     source=ROOT/'engineering/mounted-mechanism-20261015';mp=source/'geometry-manifest.json';m=json.loads(mp.read_text());arc=source/m['archive']
-    if sha(arc)!=m['archive_sha256']:raise ValueError('parent archive differs')
-    hashes[str(mp)]=sha(mp);hashes[str(arc)]=sha(arc)
+    verified = None
+    if verified_mounted_members is None:
+        if sha(arc)!=m['archive_sha256']:raise ValueError('parent archive differs')
+        hashes[str(mp)]=sha(mp);hashes[str(arc)]=sha(arc)
+    else:
+        from verified_native_members import verify_mounted_members
+        verified = verify_mounted_members(verified_mounted_members, ROOT)
+        hashes.update(verified['source_sha256'])
     roles={s+'_'+k for s in 'LR' for k in PARTS}
     roles|={f'{family}_{i}_M1x3_NOMINAL' for family in ('CARTRIDGE','FRAME') for i in range(4)}
     roles|={'A_FRAME','A_BACK_PANEL','B_SHELL','A_OUTER','B_OUTER'}
     p={};entries={x['path']:x for x in m['files']}
-    with tarfile.open(arc,'r:gz') as t,tempfile.TemporaryDirectory(prefix='coupling-independent-') as td:
+    from contextlib import nullcontext
+    archive_context = tarfile.open(arc,'r:gz') if verified is None else nullcontext(None)
+    with archive_context as t,tempfile.TemporaryDirectory(prefix='coupling-independent-') as td:
         for role in sorted(roles):
-            name=role+'.step';data=t.extractfile(name).read();rec=entries[name]
+            name=role+'.step'
+            data=t.extractfile(name).read() if verified is None else Path(verified['members'][name]['path']).read_bytes()
+            rec=entries[name]
             if len(data)!=rec['bytes'] or hashlib.sha256(data).hexdigest()!=rec['sha256']:raise ValueError('parent part changed')
             f=Path(td)/name;f.write_bytes(data);roots=cq.importers.importStep(str(f)).vals()
             if len(roots)!=1:raise ValueError('extra parent root')

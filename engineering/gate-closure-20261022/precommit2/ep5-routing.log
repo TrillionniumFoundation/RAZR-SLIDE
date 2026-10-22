@@ -1,0 +1,28 @@
+test_ep5_evidence_guards (unittest.loader._FailedTest.test_ep5_evidence_guards) ... ERROR
+test_continuous_extrema_include_interior_flat_S (test_product_routing_ep5.EP5RoutingTests.test_continuous_extrema_include_interior_flat_S) ... ok
+test_fixed_total_length_against_independent_quadrature (test_product_routing_ep5.EP5RoutingTests.test_fixed_total_length_against_independent_quadrature) ... ok
+test_global_material_derivatives_in_all_three_curves (test_product_routing_ep5.EP5RoutingTests.test_global_material_derivatives_in_all_three_curves) ... ok
+test_invalid_poses_and_material_labels_fail_closed (test_product_routing_ep5.EP5RoutingTests.test_invalid_poses_and_material_labels_fail_closed) ... ok
+test_joins_remain_G2_with_forward_B_endpoint (test_product_routing_ep5.EP5RoutingTests.test_joins_remain_G2_with_forward_B_endpoint) ... ok
+test_research_identity_cannot_grant_release_or_change_cabins (test_product_routing_ep5.EP5RoutingTests.test_research_identity_cannot_grant_release_or_change_cabins) ... ok
+test_taper_is_fixed_material_cut_and_stays_in_straight_regions (test_product_routing_ep5.EP5RoutingTests.test_taper_is_fixed_material_cut_and_stays_in_straight_regions) ... ok
+
+======================================================================
+ERROR: test_ep5_evidence_guards (unittest.loader._FailedTest.test_ep5_evidence_guards)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_ep5_evidence_guards
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/ep5-routing-tests/test_ep5_evidence_guards.py", line 11, in <module>
+    import ep5_input_closure as closure
+ModuleNotFoundError: No module named 'ep5_input_closure'
+
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.156s
+
+FAILED (errors=1)

@@ -1,0 +1,1080 @@
+{
+  "schema": "razr-ep5-semantic-input-closure-review-v1",
+  "audited_at_utc": "2026-10-22T08:15:54.621382+00:00",
+  "audited_execution_source_root": "/dev/shm/razr-slide-1104895ba7b9/ep5_execution_repo_r4",
+  "audited_stage_root": "/dev/shm/razr-slide-1104895ba7b9/integration_stage",
+  "generator_sha256": "9e881ebf99473f9ee3812747c359743580bd27d0ba113f55cd0046178c22fda3",
+  "method": "read-only exact R4 source call-path review, AST import closure and existing R4 per-scene/source provenance; no CAD generation, FE/QP or network search executed",
+  "scope": "EP5 local_motion_report and native_report for STOW/PREDOCK/OPEN; reader and governance inputs listed separately",
+  "repository_payload_entries": [
+    {
+      "path": "design/product_routing_ep5.json",
+      "role": "EP5 route, finite relief, native scope and reference EP4 content hash",
+      "consumed_at": "product_routing_ep5.py:53-75",
+      "modes": [
+        "local",
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "e229429d287620a173d6ddf3b81a184b2600a5f1e997573f7d01aea68c3a04a5",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "stage_matches_R4": true
+    },
+    {
+      "path": "design/product_routing_ep4.json",
+      "role": "Original 20-body procedural endpoint and fixed constraints",
+      "consumed_at": "product_routing_ep4.py:71-99,324-374",
+      "modes": [
+        "local",
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "7504d0714a6a61bf8742d2ab2f69dff245aa32dec449a34158c784803fe4240d",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true
+    },
+    {
+      "path": "design/product_geometry.json",
+      "role": "Registered component allocations, OLED specification; full mode also template archive/current product material changes",
+      "consumed_at": "product_assembly.py:48-84,129-158,209-315; oled_storage.py:27-35",
+      "modes": [
+        "local",
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true
+    },
+    {
+      "path": "engineering/panel-bearing-web-20261015/native-templates.tar.gz",
+      "role": "34 STEP template bodies plus manifest.json INSIDE this container; outer archive pinned by product_geometry.native_baseline.sha256",
+      "consumed_at": "product_assembly.py:129-146 -> verify_frame_nut_anchor.py:29-44",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "f8e610824c9a3603e12579c43c2169228f3729e4d07d4838c46c3cae0b2673b7",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true
+    },
+    {
+      "path": "engineering/pawl-actuation-20261015/geometry-manifest.json",
+      "role": "Pawl native archive identity and member byte/hash inventory",
+      "consumed_at": "verify_serviceable_pawl.py:56-69",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "284aaa954ea3a1002b890d3fdca9fa35013cdee0c4b4c365da7c25b086e56fb1",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true
+    },
+    {
+      "path": "engineering/pawl-actuation-20261015/native-geometry.tar.gz",
+      "role": "Pawl STEP members; each named member read and checked",
+      "consumed_at": "verify_serviceable_pawl.py:60-68",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "9de3210e6f0e675c71b6652d156021f0b53ea97213845b3276612f00eb598f12",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true
+    },
+    {
+      "path": "engineering/pawl-actuation-20261015/NATIVE_MANIFEST.json",
+      "role": "Pawl native expected roles, per-STEP metrics and hash",
+      "consumed_at": "verify_serviceable_pawl.py:59,68 -> verify_pawl_actuator.py:30-45",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "f70b4e95bde975347776ebd5daaacd774cf39cec04acb09b5ec94441406b306f",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true
+    },
+    {
+      "path": "engineering/cam-coupling-20261015/geometry-v5-manifest.json",
+      "role": "Cam-v5 19-member archive identity; used by parent scene and complete KEY reconstruction",
+      "consumed_at": "verify_pawl_actuator.py:48-61; product_routing_ep5.py:392-428",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "be2624f8b5a4cf51aa69761bb0834756fd6a2c77eb1fa2d619bbb2087d36ba0b",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true
+    },
+    {
+      "path": "engineering/cam-coupling-20261015/native-v5-geometry.tar.gz",
+      "role": "Actual cam-v5 19 STEP members; used twice by parent and KEY factory",
+      "consumed_at": "verify_pawl_actuator.py:53-61; product_routing_ep5.py:407-421",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "249f50dae36b591df189e17ed8f46b1d1e793d481b1d0fb57f0ff1a553dfbd07",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true
+    },
+    {
+      "path": "engineering/cam-coupling-20261015/V5_NATIVE_MANIFEST.json",
+      "role": "Cam-v5 per-part metrics/hash manifest and cam_coupling source pin",
+      "consumed_at": "verify_pawl_actuator.py:52,61; product_routing_ep5.py:398-423",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "26fa650061c10960a862f6bad10ef22fd15c130f127447ac9523c43b7ff4bb3a",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true
+    },
+    {
+      "path": "engineering/mounted-mechanism-20261015/geometry-manifest.json",
+      "role": "Mounted archive metadata and original STEP member inventory; exact pinned manifest for alternative",
+      "consumed_at": "verify_cam_coupling.py:73-98; verified_native_members.py:59-89",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "8ded7e01f06ebcfbb47a2be307cfca3db468b6d6323473e6f2fc661836a26452",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true
+    },
+    {
+      "path": "engineering/thin-mechanism-20261015/native-verification.json.gz",
+      "role": "Actual left/right contact profile numbers (seven fields per contact), NOT unused historical evidence",
+      "consumed_at": "verify_pawl_actuator.py:63-66",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "88a8993fcbf5ee41246df2459725e2784ca84c2eacb720850faf0dd6f7e9c77d",
+      "R4_full_top_source_snapshot_bound": false,
+      "R4_local_top_source_snapshot_bound": false
+    },
+    {
+      "path": "engineering/mounted-mechanism-20261015/native-geometry.tar.gz",
+      "role": "Default original mounted STEP archive; required if no explicit verified-member argument",
+      "consumed_at": "verify_cam_coupling.py:73-98",
+      "modes": [
+        "full_default_tar"
+      ],
+      "current_R4_exists": false,
+      "sha256": null,
+      "R4_full_top_source_snapshot_bound": false,
+      "R4_local_top_source_snapshot_bound": false,
+      "expected_sha256_from_committed_manifest": "684802dbcd35a51170734b16a359e7df40c240f430cd09f1dde7225562c2d933",
+      "missing_in_R4_verified_members_run_is_expected": true
+    }
+  ],
+  "imported_code_entries": [
+    {
+      "path": "integration/cam_contact_native.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "ecd4a0f7f8912f920214a10e982306e3fd4cfa415026ef601d54d6dc1080b9b6",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": [
+        "cam_contact_profile",
+        "straight_envelope"
+      ]
+    },
+    {
+      "path": "integration/cam_contact_profile.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "c894d07e737ffeb927a092235845cf936418c19969b19107f5a6c2675e58ce9d",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": []
+    },
+    {
+      "path": "integration/cam_coupling.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "4a3bf1d2b86d31fa8e3d60d3412e15548bf42287ed95d756798f3d88c6c4e631",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": [
+        "cam_contact_native"
+      ]
+    },
+    {
+      "path": "integration/manufacturing_fit.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "38c49875abc059a2361d03fd90428ae3148abe56564f9d0ccb5af1a56588d5dc",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": []
+    },
+    {
+      "path": "integration/oled_storage.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "local",
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "04b32718ff6b0f6ee107c56b6aaf58c7f8d4c3b1b64b09b84297b6ff0ab75082",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": [
+        "product_assembly",
+        "straight_envelope"
+      ]
+    },
+    {
+      "path": "integration/product_assembly.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "local",
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "dde085fad972cb67691e98115b622f73e0e601f8c2d21e046384adf9ec197a5e",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "stage_matches_R4": true,
+      "top_level_local_imports": [
+        "straight_envelope"
+      ]
+    },
+    {
+      "path": "integration/product_fpc.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "local",
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "fe52b2582a4125090767d68c165a45968cf4d4c8f3191be3e92d9f29d4f2f93e",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": [
+        "product_interfaces"
+      ]
+    },
+    {
+      "path": "integration/product_interfaces.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "local",
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "bcf84897de521d9d783e33787c66df807035ca514e3ae4ed450431bf60347019",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": []
+    },
+    {
+      "path": "integration/product_routing_ep4.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "local",
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "f8286416e8d4f835b5a280f3c76e7dd69aaebda25ac2217f40f33e19e92251b8",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": []
+    },
+    {
+      "path": "integration/product_routing_ep5.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "local",
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "9e881ebf99473f9ee3812747c359743580bd27d0ba113f55cd0046178c22fda3",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "stage_matches_R4": true,
+      "top_level_local_imports": [
+        "product_routing_ep4"
+      ]
+    },
+    {
+      "path": "integration/product_split_assembly.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "0f5ed0e9f64e0733f1608dfb9a23418ddf965240ac69ded654a65c0175d5acbb",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": [
+        "product_assembly"
+      ]
+    },
+    {
+      "path": "integration/straight_envelope.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "local",
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "5fe5fa2238572123b292a940da9b2e8ec68734ce078a5cdf1c8e84c1e31047bf",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": []
+    },
+    {
+      "path": "integration/translation_regions.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "fef9546e43e0a85f37114d0237dcfed614904e0daf2e36e68f90024e44c32116",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": [
+        "straight_envelope"
+      ]
+    },
+    {
+      "path": "integration/verified_native_members.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "114e3613c855bc9688c76a2807f22b67ac299b7f6971433a4e03e7ec5fe174a3",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "stage_matches_R4": true,
+      "top_level_local_imports": []
+    },
+    {
+      "path": "integration/verify_cam_coupling.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "ffe16f403b104bfdf58897ed3ece1313b9bb82863569ba68f60617467b2841f1",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "stage_matches_R4": true,
+      "top_level_local_imports": [
+        "cam_contact_native",
+        "cam_contact_profile",
+        "verify_contact_motion"
+      ]
+    },
+    {
+      "path": "integration/verify_catalogue_roof_joint.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "12453f8e537b1a00225f02c06a8d6f1e31dd134934620b9d0905212438957f10",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": [
+        "manufacturing_fit"
+      ]
+    },
+    {
+      "path": "integration/verify_contact_motion.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "2b36fe7ce320ea3dc73025b145ff8bc62d186215b55ab5b0a958b3ef11232c4f",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": [
+        "cam_contact_native",
+        "straight_envelope"
+      ]
+    },
+    {
+      "path": "integration/verify_cover_backing.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "0b3046c07bc62c96c45e23b027e69d8484b9dd17ab3681aefcc02e4c055e1bd1",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": [
+        "verify_pawl_box_guide",
+        "verify_endpoint_joint_pawl"
+      ]
+    },
+    {
+      "path": "integration/verify_endpoint_joint_pawl.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "cc26e35815229133a3d3f786be175678a6fc03970d0e96af7d3687d65b9d979c",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": [
+        "verify_serviceable_pawl"
+      ]
+    },
+    {
+      "path": "integration/verify_frame_nut_anchor.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "6d97016e36eeb10783f602e14d3905eec2514c8daf78a3f715a35a1e9fb820ee",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": [
+        "verify_panel_shear_key"
+      ]
+    },
+    {
+      "path": "integration/verify_panel_shear_key.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "bb9183ef355c01ffea650179e19bcf796ac9e8595bd20cd51ec77b7d520b7566",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": [
+        "verify_cover_backing"
+      ]
+    },
+    {
+      "path": "integration/verify_pawl_actuator.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "3ee98e636f1ea796aa3e07c3aff7283f23a113e35052d5b9e59718c7a4b771b9",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "stage_matches_R4": true,
+      "top_level_local_imports": [
+        "verify_cam_coupling"
+      ]
+    },
+    {
+      "path": "integration/verify_pawl_box_guide.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "4a6723007b94728d30f3b13ed2caab751fd3f3f2eaa8afb0f5df62d408bf5ff9",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": [
+        "verify_pawl_lateral_guide"
+      ]
+    },
+    {
+      "path": "integration/verify_pawl_lateral_guide.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "a4ffbef6e8d1673d1558e0762b3e07f9617ed3df3bc594b5f5db9219fe3f6cea",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": [
+        "verify_root_clearance"
+      ]
+    },
+    {
+      "path": "integration/verify_root_clearance.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "d7a9985b5666161669c63fc1bf0070dd06d229da8f0f4daa598d5df493dff12b",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "top_level_local_imports": [
+        "verify_catalogue_roof_joint"
+      ]
+    },
+    {
+      "path": "integration/verify_serviceable_pawl.py",
+      "role": "Executed/imported project code; parent factory aliases depend on this complete import chain",
+      "consumed_at": "Static top-level import graph plus explicitly called dynamic imports in full/local entrypoints",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "452363a94139f33773a4d754592af23048ff7d722acc5dd1e17b5a026d72e3ba",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true,
+      "stage_matches_R4": true,
+      "top_level_local_imports": [
+        "verify_pawl_actuator",
+        "translation_regions"
+      ]
+    }
+  ],
+  "additional_source_reference_entries": [
+    {
+      "path": "engineering/product-integration-20261018/physical-test-followon-20261019/captured_follower_assembly.py",
+      "role": "Dynamically executed source_geometry/body construction; cam_coupling.py is separately checked against SOURCE_SHA",
+      "consumed_at": "product_split_assembly.py:23,32-39",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "d3ccd367ef791b90296ec09011e5368bd17a93da4fc2c6fd999e252133dca259",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true
+    },
+    {
+      "path": "engineering/product-integration-20261018/phase4-20261020/local-studies/key-source/key_endcap_local_study.py",
+      "role": "Hash-read provenance reference; historical study is NOT imported/executed, and its old result/archive is not consumed",
+      "consumed_at": "product_routing_ep5.py:451,490-492",
+      "modes": [
+        "full_default_tar",
+        "full_verified_members"
+      ],
+      "current_R4_exists": true,
+      "sha256": "6c6b1fb9b5affd36a6d3d5848ff2dd20c0856409ad599019eabd64653eedaa90",
+      "R4_full_top_source_snapshot_bound": true,
+      "R4_local_top_source_snapshot_bound": true
+    }
+  ],
+  "external_verified_member_input": {
+    "mode": "full_verified_members",
+    "explicit_argument": "--verified-mounted-members",
+    "replaces_only": "engineering/mounted-mechanism-20261015/native-geometry.tar.gz",
+    "member_directory": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members",
+    "required_exact_member_count": 64,
+    "manifest_path": "engineering/mounted-mechanism-20261015/geometry-manifest.json",
+    "manifest_sha256": "8ded7e01f06ebcfbb47a2be307cfca3db468b6d6323473e6f2fc661836a26452",
+    "members": {
+      "A_BACK_PANEL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/A_BACK_PANEL.step",
+        "bytes": 109985,
+        "sha256": "b802b19967b19239c6f3c53dfa76b1f0e2c4d29826bbb9b3e257950014cf17a3"
+      },
+      "A_COMPLETE_MOUNTED.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/A_COMPLETE_MOUNTED.step",
+        "bytes": 6127409,
+        "sha256": "6ce7c5827c2696be4e00288777646e88c0e1c8ef5e9f9ea14bdd3a946493e348"
+      },
+      "A_FRAME.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/A_FRAME.step",
+        "bytes": 118937,
+        "sha256": "095d614fb4668e6a277a2344f06e6007d7534712d4f3bf5167595a57901a5aab"
+      },
+      "A_OUTER.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/A_OUTER.step",
+        "bytes": 22326,
+        "sha256": "1b97d8959cb6821cdc33a96fe69eafcaf241798668b004a11a2e4b859dfadb66"
+      },
+      "A_PARENT_CAVITY.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/A_PARENT_CAVITY.step",
+        "bytes": 15632,
+        "sha256": "08c9696825eb72dcdf2c247693421590818d1143b471fa8f5b7f748825f2a44a"
+      },
+      "A_PARENT_SHELL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/A_PARENT_SHELL.step",
+        "bytes": 36468,
+        "sha256": "3a5787b154f0685ae086aeb2e4ae66dbbd55ecab74da602fa0b189e4939d1e32"
+      },
+      "B_OUTER.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/B_OUTER.step",
+        "bytes": 22308,
+        "sha256": "b281d912df7a41c4978ae98c3a64b1eb35b5b364b662c280eef81dd367105e9f"
+      },
+      "B_SHELL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/B_SHELL.step",
+        "bytes": 36467,
+        "sha256": "9ad081790c869968013748c2990aa5212458309e801e181552d1631b75754938"
+      },
+      "CARTRIDGE_0_M1x3_NOMINAL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/CARTRIDGE_0_M1x3_NOMINAL.step",
+        "bytes": 9525,
+        "sha256": "2ae733cf3888291fba63987728f73416e91f5f88d1c1d1ef38b96c026e31209f"
+      },
+      "CARTRIDGE_1_M1x3_NOMINAL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/CARTRIDGE_1_M1x3_NOMINAL.step",
+        "bytes": 9525,
+        "sha256": "917ca8b1494c0d61be257f2389d96f5398ee6baabf65e2713a52c101373902de"
+      },
+      "CARTRIDGE_2_M1x3_NOMINAL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/CARTRIDGE_2_M1x3_NOMINAL.step",
+        "bytes": 9510,
+        "sha256": "724d36044ff28ea766086aa27fcb171f24d619e1865c777e71631ac0b9e75568"
+      },
+      "CARTRIDGE_3_M1x3_NOMINAL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/CARTRIDGE_3_M1x3_NOMINAL.step",
+        "bytes": 9510,
+        "sha256": "2e9407719dddba42ab79f55a9b26cf2d98e7b78ef364fee14e4807339db26e70"
+      },
+      "FRAME_0_M1x3_NOMINAL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/FRAME_0_M1x3_NOMINAL.step",
+        "bytes": 9510,
+        "sha256": "9e86a3a3a1ac5c3d0199f4e84df33fefc8bbf550b0d42bce3a5027682175e15c"
+      },
+      "FRAME_1_M1x3_NOMINAL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/FRAME_1_M1x3_NOMINAL.step",
+        "bytes": 9495,
+        "sha256": "06f24ca514bf1f0390924661ac23b84b59a3ce772827cb62c2183ee123be171a"
+      },
+      "FRAME_2_M1x3_NOMINAL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/FRAME_2_M1x3_NOMINAL.step",
+        "bytes": 9510,
+        "sha256": "32366024ba7716c397de7de3438d51867c0e87d0752c616c2be706ebefcc932e"
+      },
+      "FRAME_3_M1x3_NOMINAL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/FRAME_3_M1x3_NOMINAL.step",
+        "bytes": 9495,
+        "sha256": "878c7ae3f65b8de001e8acbc51098f26526c55c1b3bedbe04af8209a437b4d02"
+      },
+      "L_CAP_0.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_CAP_0.step",
+        "bytes": 52880,
+        "sha256": "2386a55cb3caec54dc6abd0db99754f46052216ebf760fb9c56fefcfb4e5b6aa"
+      },
+      "L_CAP_1.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_CAP_1.step",
+        "bytes": 62456,
+        "sha256": "035992af19cacc646580df57e8ae203c4875aef7253413cc268de74c7eb30736"
+      },
+      "L_KEY.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_KEY.step",
+        "bytes": 203767,
+        "sha256": "b3b220a85c604664639e460c6133af32bf777693420de7cd775d974ea15ae07c"
+      },
+      "L_OLD_COVER.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_OLD_COVER.step",
+        "bytes": 162207,
+        "sha256": "b8a4d605d455cc19350ccdb7942b2c1ab993b58bea15ea40431e0bd20efdf696"
+      },
+      "L_PARENT_ROOT_INNER.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_PARENT_ROOT_INNER.step",
+        "bytes": 534204,
+        "sha256": "d452a36fc504184b035855d5d0219ab286c30fb064d73e0d5e0be73f85f1f90a"
+      },
+      "L_PAWL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_PAWL.step",
+        "bytes": 82643,
+        "sha256": "942324ee95df08e3ca663b897a309ef6969042afcaee62d6ee31493e9d94dcd9"
+      },
+      "L_ROOT_INNER.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_ROOT_INNER.step",
+        "bytes": 618890,
+        "sha256": "4a0bbd3fb9b1e4188baf3721023143063f17ce15121e4e8615c0124a419941ba"
+      },
+      "L_ROOT_JOIN_SCREW_0_M1x3_NOMINAL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_ROOT_JOIN_SCREW_0_M1x3_NOMINAL.step",
+        "bytes": 10191,
+        "sha256": "63e2fc04fc03b504b23f3944cbce2482759e0a066216fe14dbb20a7d8427c868"
+      },
+      "L_ROOT_JOIN_SCREW_1_M1x3_NOMINAL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_ROOT_JOIN_SCREW_1_M1x3_NOMINAL.step",
+        "bytes": 10191,
+        "sha256": "3eb2498b194f42014af3de8cc84921e7f6eb1fd76f2b02134c317ca6e621fe64"
+      },
+      "L_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS.step",
+        "bytes": 1241537,
+        "sha256": "a71349d55e62bdaada4176df32864aacd4cb997fafc0bc75df634d42eee21bf7"
+      },
+      "L_SCREW_0_0.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_SCREW_0_0.step",
+        "bytes": 10181,
+        "sha256": "ca0ea0840dab0587050ab070cd658e11d7ed4144a784f5def89b3099e85e3ce4"
+      },
+      "L_SCREW_0_1.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_SCREW_0_1.step",
+        "bytes": 10166,
+        "sha256": "ff9b54e09b24a927dffe8e6d85352c2c6823b814d32a3198bb39adcd137daad9"
+      },
+      "L_SCREW_1_0.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_SCREW_1_0.step",
+        "bytes": 10196,
+        "sha256": "a1a88bd3b42802da019844d08cd12da0f25736949e48811b041a0c8ee0d81798"
+      },
+      "L_SCREW_1_1.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_SCREW_1_1.step",
+        "bytes": 10166,
+        "sha256": "e8ff228ad35bb5e6675d426da698e2fa6ba40581edd491723ae80b6b8bb1c186"
+      },
+      "L_SPRING_0_OD_TOL_ENVELOPE.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_SPRING_0_OD_TOL_ENVELOPE.step",
+        "bytes": 6037,
+        "sha256": "11147b40a83b05d7a2e0951ec5079a399bb632117b0f51a438bfd1aa840533af"
+      },
+      "L_SPRING_1_OD_TOL_ENVELOPE.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_SPRING_1_OD_TOL_ENVELOPE.step",
+        "bytes": 6037,
+        "sha256": "e17683df5d55d01e70c5d3f178f08064382aa7756694441c3ff1153fbdce500e"
+      },
+      "L_SPRING_CAP_0.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_SPRING_CAP_0.step",
+        "bytes": 20324,
+        "sha256": "aba0f6ac6a1700e84a3c099b4dcd20c70f901fa817f5f1ab4fb5f043ed9774b7"
+      },
+      "L_SPRING_CAP_1.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_SPRING_CAP_1.step",
+        "bytes": 20326,
+        "sha256": "90bd038b01a42f080f5b0e1a39a8ab787c724601c8fca942ca1bca4a96c5be35"
+      },
+      "L_SPRING_GUIDE_0.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_SPRING_GUIDE_0.step",
+        "bytes": 24745,
+        "sha256": "b899a3cdf3d15368119eabe85e08a99040868bb155229ca89524a0621c1f8037"
+      },
+      "L_SPRING_GUIDE_1.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_SPRING_GUIDE_1.step",
+        "bytes": 24753,
+        "sha256": "6ba8fe9071aa2fa58cbb4df342db56260f09370706c2fe479fee2f87cdd7e0fa"
+      },
+      "L_SPRING_SCREW_0_M1x3_NOMINAL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_SPRING_SCREW_0_M1x3_NOMINAL.step",
+        "bytes": 10184,
+        "sha256": "878a1fc50ef31d3eefcc4eca0d8dfdc59853af94d0cf83f4d58bc64c8e4f89ec"
+      },
+      "L_SPRING_SCREW_1_M1x3_NOMINAL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_SPRING_SCREW_1_M1x3_NOMINAL.step",
+        "bytes": 10184,
+        "sha256": "eb4eb038124432cb17e2ebf5efcde39846a8fb9c7838f7aa6d81c7cb65829285"
+      },
+      "L_STOP_0.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_STOP_0.step",
+        "bytes": 72639,
+        "sha256": "43dca232a79cd0aa0b45b58c027b310a569789c923f4584c71d3dd4ec485c4e4"
+      },
+      "L_STOP_1.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/L_STOP_1.step",
+        "bytes": 72624,
+        "sha256": "a33fe72f443d831388a78b29cf7282c6db7cedff135c307d271f80a756f30405"
+      },
+      "R_CAP_0.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_CAP_0.step",
+        "bytes": 52816,
+        "sha256": "42a735ebe6440d55f68633666160928d1b4206a6b43b24245ea189f89cb4d60c"
+      },
+      "R_CAP_1.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_CAP_1.step",
+        "bytes": 67013,
+        "sha256": "6945d78e724d6d9bb58a476adf7814a765e7d8053c05309b55cd3f4e5e462846"
+      },
+      "R_KEY.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_KEY.step",
+        "bytes": 210429,
+        "sha256": "71ff180ea7090035ec7d347c1fb36551b02760027241a491d613add2c232134c"
+      },
+      "R_OLD_COVER.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_OLD_COVER.step",
+        "bytes": 161344,
+        "sha256": "edd918c0851e78fe242f935c9863cfbd44a3fb03e4f1731916e68fa038588570"
+      },
+      "R_PARENT_ROOT_INNER.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_PARENT_ROOT_INNER.step",
+        "bytes": 545376,
+        "sha256": "01c593fb9982e8e00fe3f687c9cfe903f48a3f91e169f0f1e71f12643d847cd0"
+      },
+      "R_PAWL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_PAWL.step",
+        "bytes": 82667,
+        "sha256": "211db9418f2e8f078d3b4ae04433dc76c9df6c938beff8d39f01639849b65b4a"
+      },
+      "R_ROOT_INNER.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_ROOT_INNER.step",
+        "bytes": 628857,
+        "sha256": "f6450c1b1b0f7d3d5fc3c46ff8ce5c4e026af398fa38e922058e5fba227db608"
+      },
+      "R_ROOT_JOIN_SCREW_0_M1x3_NOMINAL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_ROOT_JOIN_SCREW_0_M1x3_NOMINAL.step",
+        "bytes": 12481,
+        "sha256": "be9dbe0d6ba7e756b139ff3f825042887dbf0f39f7a42da6a17de4c2ac857f4e"
+      },
+      "R_ROOT_JOIN_SCREW_1_M1x3_NOMINAL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_ROOT_JOIN_SCREW_1_M1x3_NOMINAL.step",
+        "bytes": 12481,
+        "sha256": "d0b2b118e7a8c613edb3ccf2543ec9d1287c3467ae0b3b02f4ba8778f220c5ac"
+      },
+      "R_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_ROOT_OUTER_CONNECTED_ALL_FRAGMENTS.step",
+        "bytes": 1241321,
+        "sha256": "018fa8d2190348addbf76b34df3447882d341bf5248bd8a9d435ebd5ee848eb3"
+      },
+      "R_SCREW_0_0.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_SCREW_0_0.step",
+        "bytes": 12469,
+        "sha256": "ce209662751bebb00c28f8652add2793af0bf6b9a3c969a28b3fe8049ac97978"
+      },
+      "R_SCREW_0_1.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_SCREW_0_1.step",
+        "bytes": 12454,
+        "sha256": "75b15db9297fa4b319876804cc6921d18b555ad715ad9853af3ef315d0dc80ba"
+      },
+      "R_SCREW_1_0.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_SCREW_1_0.step",
+        "bytes": 12484,
+        "sha256": "fb687c95231030c4957f1b3df8d2e7f60edaf1cfc49e94116aa3298ed8def5d3"
+      },
+      "R_SCREW_1_1.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_SCREW_1_1.step",
+        "bytes": 12454,
+        "sha256": "c5f4d9d19046ee136866349b8bab1e218f88e7a2f08911835f1c5d3deac7ed95"
+      },
+      "R_SPRING_0_OD_TOL_ENVELOPE.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_SPRING_0_OD_TOL_ENVELOPE.step",
+        "bytes": 6024,
+        "sha256": "6108e447ffba8c87b779838848a8256a641a3d88a3d85f7536c78222e5d976a8"
+      },
+      "R_SPRING_1_OD_TOL_ENVELOPE.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_SPRING_1_OD_TOL_ENVELOPE.step",
+        "bytes": 6024,
+        "sha256": "a2820b9a43cf399773e848e99e83ad40a108a736d35080bb3a2bc47506ac1550"
+      },
+      "R_SPRING_CAP_0.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_SPRING_CAP_0.step",
+        "bytes": 20277,
+        "sha256": "24870c513704ae94c20f445d016295da6768d62d39b40e5d70badd7c33331659"
+      },
+      "R_SPRING_CAP_1.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_SPRING_CAP_1.step",
+        "bytes": 20279,
+        "sha256": "37ec424f53dc540a84146b193a947a308d31f7df378a9e5e28ae7a08f753e5ac"
+      },
+      "R_SPRING_GUIDE_0.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_SPRING_GUIDE_0.step",
+        "bytes": 24683,
+        "sha256": "18c2800f6ccca1f7e8af71bd8dd1c00fbfbb24d73bf5aa86abddf500dbb54933"
+      },
+      "R_SPRING_GUIDE_1.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_SPRING_GUIDE_1.step",
+        "bytes": 24691,
+        "sha256": "1bb1021deacd941df9ac123a11897dc45c6fd3c482d3630dca083cdbef37184f"
+      },
+      "R_SPRING_SCREW_0_M1x3_NOMINAL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_SPRING_SCREW_0_M1x3_NOMINAL.step",
+        "bytes": 10160,
+        "sha256": "f8798b22f51b8f508cae0c242d46c0cc937e2c4f312e5523dff343ec7947e2c1"
+      },
+      "R_SPRING_SCREW_1_M1x3_NOMINAL.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_SPRING_SCREW_1_M1x3_NOMINAL.step",
+        "bytes": 10160,
+        "sha256": "06969d6fc095d595fed55ffe8f2aaa4cf82861c692125d6ce218d030cc2291bb"
+      },
+      "R_STOP_0.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_STOP_0.step",
+        "bytes": 75052,
+        "sha256": "e051b46407eb73caf4200fe0df0d556504e44fb9f1b0b7bd2aa794908cea15b9"
+      },
+      "R_STOP_1.step": {
+        "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/recovered-original-members/R_STOP_1.step",
+        "bytes": 75064,
+        "sha256": "f9a6fd1a0f9a2a8b21f4136f1cc062b9065f870ba403d98ec3dd753b137424e9"
+      }
+    },
+    "receipt_path": "/dev/shm/razr-slide-1104895ba7b9/evidence/integration/mounted-timestamp-forensics/all-members-result.json",
+    "receipt_sha256": "3592ce81543a553b0d4bc9649f773bc7a9fc4e4acdc955634d45f52663361628",
+    "receipt_location_rule": "member directory parent / all-members-result.json",
+    "directory_rule": "all 64 exact regular STEP files; no missing, extra, symlink or traversal members",
+    "comparison_rule": "before/after verifier results and every member/receipt byte hash must match; pin caller-selected receipt explicitly in CI invocation",
+    "original_tar_bytes_recovered": false,
+    "member_archive_substitution_not_implicit": true,
+    "source_file": "integration/verified_native_members.py"
+  },
+  "panel_embedded_manifest": {
+    "archive": "engineering/panel-bearing-web-20261015/native-templates.tar.gz",
+    "member_count": 35,
+    "manifest_member": "manifest.json",
+    "manifest_sha256": "7f648d50baa99f3e72884ea24d4c46d71c850364e441b75109249af71ddd8ed3",
+    "exported_template_count": 34,
+    "external_panel_geometry_manifest_required_by_this_entrypoint": false
+  },
+  "excluded_from_semantic_native_payload_requirements": [
+    {
+      "paths": [
+        "design/product_interfaces.json",
+        "engineering/endpoint-pcba-design-20261013-r2/endpoint_DP.kicad_pcb",
+        "engineering/endpoint-pcba-design-20261013-r2/endpoint_DS.kicad_pcb",
+        "engineering/endpoint-pcba-design-20261013-r2/mating_site_map.json"
+      ],
+      "reason": "product_fpc imports product_interfaces symbols, but EP5 calls only place_endpoint; ep4_local_parts builds geometric reservations directly and never calls bind_endpoint or mini_endpoint_pcb. Source code remains bound."
+    },
+    {
+      "paths": [
+        "engineering/panel-bearing-web-20261015/geometry-manifest.json",
+        "engineering/panel-bearing-web-20261015/NATIVE_MANIFEST.json"
+      ],
+      "reason": "native_inputs reads archive pinned by product_geometry and uses archive-internal manifest.json. External panel manifests are not opened."
+    },
+    {
+      "paths": [
+        "engineering/thin-mechanism-20261015/native-geometry.tar.gz",
+        "engineering/contact-motion-20261014/project-owned-native-geometry.tar.gz",
+        "engineering/cover-assembly-order-20261014/bench-geometry.tar.gz",
+        "engineering/cover-retention-and-space-20261015/capture-geometry.tar.gz",
+        "engineering/keycover-geometry-20261014/project-owned-geometry.tar.gz"
+      ],
+      "reason": "No EP5 invoked path consumes these tar files. thin native-verification.json.gz remains mandatory. These missing tar files remain full-tools/verify failures."
+    },
+    {
+      "paths": [
+        "engineering/serviceable-pawl-20261015/native-v2-geometry.tar.gz",
+        "engineering/serviceable-pawl-20261015/V2_NATIVE_MANIFEST.json"
+      ],
+      "reason": "verify_endpoint_joint_pawl.frozen is not called; native current templates come from the pinned panel-bearing archive. Importing a module does not invoke its unused historical verifier."
+    },
+    {
+      "paths": [
+        "design/product_routing_ep3.json",
+        "integration/product_routing_ep3.py",
+        "integration/product_motion.py"
+      ],
+      "reason": "EP5 does not call EP4 native_regressions, product_fpc current_shared_scene/travel_manual_state or product_assembly CLI motion branch. General tracked-source audit may still bind these, but they are not semantic native inputs here."
+    }
+  ],
+  "R4_identity_gap": {
+    "path": "engineering/thin-mechanism-20261015/native-verification.json.gz",
+    "expected_sha256": "88a8993fcbf5ee41246df2459725e2784ca84c2eacb720850faf0dd6f7e9c77d",
+    "scene_source_inputs_records_hash": true,
+    "top_source_sha256_includes": false,
+    "implication": "R4 does not prove before-after coverage for this consumed gz file. Explicitly bind it before and after future native execution; do not reinterpret the old record as complete."
+  },
+  "strict_roles": {
+    "local_repository_payload_count": 3,
+    "full_default_tar_repository_payload_count": 13,
+    "full_verified_members_repository_payload_count": 12,
+    "local_imported_code_count": 7,
+    "full_verified_imported_code_count": 26
+  },
+  "reader_inputs": {
+    "source_files": [
+      "engineering/product-integration-20261018/phase5-20261022/read_ep5_step_independent.py",
+      "engineering/product-integration-20261018/phase3-20261020/read_ep3_step_independent.py"
+    ],
+    "dynamic_external_validator": "integration/verified_native_members.py when full report declares verified external inputs",
+    "generated_artifacts": "fresh native-report.json plus every report-referenced STEP, pairs/Common/context file; verify exact inventory and hashes from new run"
+  },
+  "driver_governance_inputs": {
+    "entrypoints_check": [
+      "tools/sync_current_design.py",
+      "design/current_product.json",
+      "tools/test_suites.json",
+      "CURRENT_DESIGN.md",
+      "README.md",
+      "status.json"
+    ],
+    "runtime_lock": [
+      "pyproject.toml",
+      "uv.lock",
+      ".python-version"
+    ],
+    "driver_code": [
+      "tools/verify_product_ep5_native.py",
+      "tools/verify_product_native.py"
+    ],
+    "note": "These are explicit driver/version/governance inputs, separate from native payloads. The parent may keep its broader tracked-code audit."
+  },
+  "integration_rules": [
+    "Require every selected-role input to exist, be regular, match checked HEAD blob, and retain its SHA before/after.",
+    "Never implement the explicit required set using if exists: missing required input is failure.",
+    "Verify scene.source_inputs, archive and KEY source hashes against this role set; these are actual consumption records.",
+    "Generator R4 source_sha256 is a broad availability snapshot (1025 full/960 local), not an actual dependency trace. Its extra historical files cannot define mandatory closure.",
+    "If keeping broad before snapshots, separate optional available tracked-source binding from mandatory role completeness; validate claims without requiring every historical engineering blob to be materialized.",
+    "Any newly imported project file or newly consumed dependency outside the declared closure must fail or trigger an explicit reviewed closure update.",
+    "Default mounted tar and explicit all-64-member alternative are mutually exclusive input routes; absence alone must never choose the alternative.",
+    "Do not modify the complete tools/verify suite: its six missing original tar gates remain failures."
+  ]
+}

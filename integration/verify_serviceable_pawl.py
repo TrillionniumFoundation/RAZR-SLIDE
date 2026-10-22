@@ -53,7 +53,7 @@ def load(manifest):
     return r,p,h
 
 
-def parent_native(h):
+def parent_native(h, *, verified_mounted_members=None):
     folder=ROOT/'engineering/pawl-actuation-20261015';gm=folder/'geometry-manifest.json';g=json.loads(gm.read_text());arc=folder/g['archive']
     if sha(arc)!=g['archive_sha256']:raise ValueError('parent native archive differs')
     h[str(gm)]=sha(gm);h[str(arc)]=sha(arc);mp=folder/'NATIVE_MANIFEST.json';h[str(mp)]=sha(mp)
@@ -66,7 +66,7 @@ def parent_native(h):
             if len(raw)!=rec['bytes'] or hashlib.sha256(raw).hexdigest()!=rec['sha256']:raise ValueError('parent member differs')
             (d/name).write_bytes(raw)
         (d/'manifest.json').write_bytes(mp.read_bytes());_,parent,_=w.load_new(d/'manifest.json')
-    prior,old,profiles=w.prior_native(h)
+    prior,old,profiles=w.prior_native(h, verified_mounted_members=verified_mounted_members)
     return parent,prior,old,profiles
 
 
