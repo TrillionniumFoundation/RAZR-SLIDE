@@ -1,0 +1,24 @@
+test_calibrated_force_return_drift_and_resistance_uncertainty (__main__.MotionAcquisition.test_calibrated_force_return_drift_and_resistance_uncertainty) ... ok
+test_changed_design_and_escape_path_are_rejected (__main__.MotionAcquisition.test_changed_design_and_escape_path_are_rejected) ... ok
+test_changed_raw_csv_is_rejected (__main__.MotionAcquisition.test_changed_raw_csv_is_rejected) ... ok
+test_gap_splits_hands_off_records_and_is_retained (__main__.MotionAcquisition.test_gap_splits_hands_off_records_and_is_retained) ... ok
+test_monotonic_clock_and_calibrated_range_are_enforced (__main__.MotionAcquisition.test_monotonic_clock_and_calibrated_range_are_enforced) ... ok
+test_original_calibration_attachment_is_required (__main__.MotionAcquisition.test_original_calibration_attachment_is_required) ... ok
+test_overrange_missing_data_and_contradictory_hands_off_are_not_hidden (__main__.MotionAcquisition.test_overrange_missing_data_and_contradictory_hands_off_are_not_hidden) ... ok
+test_physical_label_cannot_reuse_synthetic_calibration (__main__.MotionAcquisition.test_physical_label_cannot_reuse_synthetic_calibration) ... ok
+test_physical_record_must_bind_real_commit_blob_not_dirty_workspace (__main__.MotionAcquisition.test_physical_record_must_bind_real_commit_blob_not_dirty_workspace) ... ERROR
+
+======================================================================
+ERROR: test_physical_record_must_bind_real_commit_blob_not_dirty_workspace (__main__.MotionAcquisition.test_physical_record_must_bind_real_commit_blob_not_dirty_workspace)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/product-study-tests/test_physical_followon.py", line 152, in test_physical_record_must_bind_real_commit_blob_not_dirty_workspace
+    subprocess.run(['git', 'init', '-q', str(self.repository)], check=True, capture_output=True)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'init', '-q', '/tmp/razr-synthetic-acquisition-vagix1kz/repository']' returned non-zero exit status 128.
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.037s
+
+FAILED (errors=1)

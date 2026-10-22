@@ -23,6 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -119,6 +120,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -146,10 +148,51 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
+  product-native:
+    name: native-product-ep4
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/archive/blobs/
+            !/baselines/**
+            /baselines/**/*.py
+            /baselines/**/*.md
+            /baselines/**/*.json
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: '0.10.10'
+          python-version: '3.12'
+          enable-cache: true
+      - name: Install locked research dependencies
+        run: uv sync --locked
+      - name: Execute all finite product scenes and independent STEP readback
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          uv run --locked python -B tools/verify_product_native.py
+          --expected-head "$EXPECTED_HEAD"
+          --output "$RUNNER_TEMP/razr-product-native"
+          --timeout-seconds 1200
+      - name: Preserve product evidence including geometric rejection and execution failures
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: research-product-native-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/razr-product-native
+          if-no-files-found: warn
+          retention-days: 14
+
   current-suites:
     name: current-suites
     if: always()
-    needs: [unit, native]
+    needs: [unit, native, product-native]
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
@@ -157,6 +200,8 @@ jobs:
         env:
           UNIT_RESULT: ${{ needs.unit.result }}
           NATIVE_RESULT: ${{ needs.native.result }}
+          PRODUCT_NATIVE_RESULT: ${{ needs['product-native'].result }}
         run: |
           test "$UNIT_RESULT" = success
           test "$NATIVE_RESULT" = success
+          test "$PRODUCT_NATIVE_RESULT" = success

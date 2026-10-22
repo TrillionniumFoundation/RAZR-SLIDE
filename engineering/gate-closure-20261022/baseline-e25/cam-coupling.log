@@ -1,0 +1,30 @@
+setUpClass (test_cam_coupling.CouplingTests) ... ERROR
+
+======================================================================
+ERROR: setUpClass (test_cam_coupling.CouplingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/coupling-tests/test_cam_coupling.py", line 15, in setUpClass
+    cls.t=c.templates();cls.h,cls.detail=c.housing_study()
+          ^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/cam_coupling.py", line 157, in templates
+    old=parent(side+'_KEY');extension=one(handed(yoke,side))
+        ^^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/cam_coupling.py", line 109, in parent
+    if sha(arc)!=gm['archive_sha256']:raise ValueError('mounted source archive changed')
+       ^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/integration/cam_coupling.py", line 39, in sha
+    def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+                                        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/repo/engineering/mounted-mechanism-20261015/native-geometry.tar.gz'
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.690s
+
+FAILED (errors=1)

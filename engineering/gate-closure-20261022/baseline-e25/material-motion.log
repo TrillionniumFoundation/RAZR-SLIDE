@@ -1,0 +1,24 @@
+setUpClass (test_material_motion.MaterialMotionTests) ... ERROR
+
+======================================================================
+ERROR: setUpClass (test_material_motion.MaterialMotionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/engineering/fpc-material-motion-20261013-r5/test_material_motion.py", line 8, in setUpClass
+    cls.r50,cls.r47,cls.r,cls.A,cls.B=m.source_modules();cls.c=cls.r.CANDIDATES[2];cls.L=cls.r.target_length(cls.c)
+                                      ^^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/repo/engineering/fpc-material-motion-20261013-r5/material_motion.py", line 23, in source_modules
+    manifest=json.loads((folder/'frozen_source_manifest.json').read_text())
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/repo/engineering/fpc-material-motion-20261013-r5/frozen_source_manifest.json'
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.001s
+
+FAILED (errors=1)

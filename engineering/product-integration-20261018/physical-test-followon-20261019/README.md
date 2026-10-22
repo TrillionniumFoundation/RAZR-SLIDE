@@ -134,3 +134,8 @@ python engineering/product-integration-20261018/physical-test-followon-20261019/
 ```
 
 当前没有在本目录留存虚构的样件记录或已完成的物理循环。真实制造、受载保持、拉脱、OLED 运动、供电和 USB 连续性应由之后采集的原始证据回答。
+
+## 8. 同一试件的预声明资格契约
+
+[QUALIFICATION.md](QUALIFICATION.md) 定义完整 CAD / EP4 / BOM / 图纸 / 材料 / 工艺 / 固件身份绑定、预声明限值、独立验收预登记核验与 `pass/fail/unknown` 判定。旧采集记录仍可输出观测，但缺资格方案不会获得 PASS。资格输出的范围仅为所识别样件的已采样无电程序，整机、电气、寿命与制造放行字段继续为 false。该契约和单元测试的实现不是新的实物试验记录。
+
