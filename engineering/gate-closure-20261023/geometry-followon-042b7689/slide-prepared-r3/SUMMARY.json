@@ -1,0 +1,92 @@
+{
+  "schema": "razr-slide-r3-preparation-delivery-summary",
+  "functional_head": "042b768903cccbd7a0995317c8598401e0318e2a",
+  "state": "prepared_only_no_r3_native_or_preflight_execution",
+  "final_small_contract_tests": {
+    "passed": true,
+    "count": 65,
+    "components": {
+      "test_owned_process": 17,
+      "test_slide_checkpoint": 11,
+      "test_slide_domain": 9,
+      "test_slide_native_contracts": 18,
+      "test_slide_supervisor_lifecycle": 10
+    },
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 6.769801194001047,
+    "peak_RSS_KiB": 155848,
+    "AS_limit_bytes": 536870912,
+    "requested_math_threads": 1,
+    "raw_geometry_fixture_records_are_synthetic": true,
+    "source_bound_receipt": "prepared-r3-final/small-contract-preparation-report.json",
+    "source_bound_receipt_sha256": "c9a18ff5179e6a6cb56f2392d4f3759c39cbdac662e0153ee04b7e0fb3691be5"
+  },
+  "not_added_to_repository_1558_tests": true,
+  "not_additive_with_SEATING_shared_17_helper_tests": true,
+  "historical_test_runs_not_added_again": true,
+  "final_scratch_source_count": 17,
+  "final_source_manifest_sha256": "409602d4a9fab76db861ad26c6672a084840a017446e1c07894f3999d4ca9b16",
+  "additional_preparation_harness_copied": true,
+  "original_v2_sources_and_prepared_copies_unchanged": true,
+  "source_and_43_package_locked_environment_unchanged_during_final_tests": true,
+  "original_math_and_raw_reader_unchanged": true,
+  "original_test_only_explicit_source_count_assertion_updated_11_to_17": true,
+  "concrete_changes": [
+    "post-Popen initial-write and monitor exceptions stop and reap the original owned process",
+    "ready/release identity handshake precedes native work and verifies actual procfs PID before positive RSS sampling",
+    "durable pair-start and completed-pair journal plus independently checked full publication chain",
+    "original report/index digests remain bound across the raw reader; post-validation edits cannot be rebaselined"
+  ],
+  "original_native_limits_unchanged": {
+    "hard_wall_seconds": 1800,
+    "worker_peak_RSS_MiB": 1536,
+    "shared_unreclaimable_GiB": 6.8,
+    "startup_disk_MiB": 200,
+    "runtime_disk_MiB": 100,
+    "startup_incremental_memory_MiB": 1536,
+    "default_maximum_subdivision_depth": 2
+  },
+  "original_joint_test_failure_preserved": {
+    "tests_run": 65,
+    "errors": 1,
+    "failure": "MemoryError in full synthetic pair fixture under 512 MiB AS",
+    "path": "historical/first-joint-small-test-failure",
+    "correction": "only external preparation harness now sets BLAS/math threads to one before imports",
+    "same_AS_limit_retained": true,
+    "native_budget_or_geometry_changed": false
+  },
+  "actual_helper_end_to_end_smoke": {
+    "passed": true,
+    "child_count": 1,
+    "elapsed_seconds": 0.22976586199729354,
+    "worker_native_or_CAD": false,
+    "child_exit_code": 0,
+    "child_reaped": true,
+    "all_parent_channel_FDs_closed": true,
+    "helper_sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25",
+    "repository_reference": "engineering/gate-closure-20261023/geometry-followon-042b7689/owned-process-helper-smoke/result.json"
+  },
+  "actual_original_v2_attempt2": {
+    "worker_started": true,
+    "worker_exit_code": -15,
+    "stop_reason": "original shared 6.8 GiB guard",
+    "completed_construction_probes": 5,
+    "persisted_completed_pair_records": 0,
+    "expected_pair_records": 11781,
+    "in_memory_pair_progress_before_stop": "unknown",
+    "r3_result": false
+  },
+  "r3_preflight_executed": false,
+  "r3_native_started": false,
+  "CAD_or_matrix_executed_by_final_preparation": false,
+  "complete_native_diagnostic_executed": false,
+  "whole_declared_slide_external_pair_domain_clear": false,
+  "canonical_execution_checks_passed": false,
+  "complete_G2_qualification": false,
+  "physical_qualification": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}

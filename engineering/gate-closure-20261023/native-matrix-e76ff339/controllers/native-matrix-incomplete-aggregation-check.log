@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/95cd2986fdf2/ci_audit/audit_native_matrix.py", line 240, in <module>
+    result = audit(args.scan_only)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/95cd2986fdf2/ci_audit/audit_native_matrix.py", line 154, in audit
+    require(record['passed'] is True and record['source_head_after'] == EXPECTED, 'continuation incomplete')
+  File "/workspace/scratch/95cd2986fdf2/ci_audit/audit_native_matrix.py", line 31, in require
+    raise ValueError(message)
+ValueError: continuation incomplete

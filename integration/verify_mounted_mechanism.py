@@ -17,7 +17,7 @@ import cadquery as cq
 import cam_contact_native as n
 from verify_contact_motion import PARTS
 from verify_thin_mechanism import placement
-from translation_regions import regions, checks
+from translation_regions import regions, checks, sum_common_upper_bound
 
 ROOT=Path(__file__).resolve().parents[1]
 TOL=1e-7
@@ -111,7 +111,8 @@ def parent_checks(parts,hashes):
 def verify(manifest,output):
     output=Path(output)
     if output.exists():raise ValueError('new report path required')
-    r,p,hashes=read_all(manifest);parent,old=parent_checks(p,hashes)
+    sources={str(Path(f).resolve()):sha(f) for f in (__file__,sum_common_upper_bound.__code__.co_filename)}
+    r,p,hashes=read_all(manifest);hashes.update(sources);parent,old=parent_checks(p,hashes)
     screws={k:v for k,v in p.items() if k.startswith(('CARTRIDGE_','FRAME_'))}
     mechanism={s+'_'+k:p[s+'_'+k] for s in 'LR' for k in PARTS}
     installed={'A_FRAME':p['A_FRAME'],'A_BACK_PANEL':p['A_BACK_PANEL'],**mechanism,**screws}
@@ -150,7 +151,9 @@ def verify(manifest,output):
         cage=sweep_box(b,(0,0,-20.));v,_=common(cage,p['A_FRAME'])
         insertion.append({'part':k,'sweep_common_mm3':v,'method':'complete_translated_AABB_superset'})
     native_regions,_=regions(p['A_BACK_PANEL'],(0,0,-20.))
-    panel_check=checks(native_regions,p['A_FRAME']);insertion.append({'part':'A_BACK_PANEL','sweep_common_mm3':max(panel_check['region_common_mm3']), 'native_regions':panel_check})
+    panel_check=checks(native_regions,p['A_FRAME']);insertion.append({'part':'A_BACK_PANEL',
+        'sweep_common_mm3':sum_common_upper_bound(panel_check['region_common_mm3']),
+        'common_field_is_sum_upper_bound_not_union_volume':True,'native_regions':panel_check})
     print('INSERTION',len(insertion),'BAD',[x for x in insertion if x['sweep_common_mm3']>TOL],flush=True)
     # Insert mounting screws from the actual back side; modeled tool is only
     # a finite straight shaft, not a chosen drive/socket or complete handle.

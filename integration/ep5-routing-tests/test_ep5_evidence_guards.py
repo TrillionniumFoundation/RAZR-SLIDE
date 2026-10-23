@@ -20,6 +20,74 @@ spec=importlib.util.spec_from_file_location('ep5_independent_reader_test_subject
 reader=importlib.util.module_from_spec(spec);spec.loader.exec_module(reader)
 
 class EvidenceGuardTests(unittest.TestCase):
+    def continuous_fixture(self):
+        metric={'volume_mm3':1.,'bounds_mm':[0.,1.,0.,1.,0.,1.],'positive_valid_solids':1}
+        endpoints={end:{end+'_'+name:copy.deepcopy(metric) for name in reader.ENDPOINT_PART_NAMES}
+                   for end in ('A','B')}
+        rows=[{'a':'U1_ALL_POSES_SMOOTH_ENCLOSURE','b':name,
+               'a_bounds_mm':metric['bounds_mm'],'b_bounds_mm':metric['bounds_mm'],
+               'method':'native_Common','common_mm3':0.,'common_positive_solids':0,'rejected':False}
+              for name in endpoints['B']]
+        return {'schema':'razr-ep5-continuous-complete-endpoint-geometry-v1',
+                'endpoint_metrics':endpoints,'U1_cage':copy.deepcopy(metric),
+                'U1_to_all_20_B_endpoint_parts':{'rows':rows,'failures':[],'pair_count':20,
+                    'native_Common_calls':20,'cached_axis_gap_rejections_of_intersection':0,
+                    'positive_Common_count_including_below_tolerance':0,'rejection_volume_tolerance_mm3':1e-7,
+                    'no_Common_above_tolerance_or_evaluation_error':True},
+                'other_segment_axis_separation_margins':{name:1. for name in reader.ENDPOINT_MARGIN_NAMES},
+                'all_declared_continuous_endpoint_geometric_checks_clear':True,
+                'current_PAWL_or_full_external_field_checked':False,
+                'friction_strain_tolerance_and_physical_qualification_proved':False,
+                'candidate_go':False,'fixture_fabrication_go':False,'manufacturing_go':False}
+
+    def test_full_reader_recomputes_pose_and_report_rejection_from_raw_volumes(self):
+        for scope in ('pair','containment'):
+            pose={'complete_pair_matrix':{'rows':[{'common_mm3':.25 if scope=='pair' else 0.,
+                                                  'rejected':scope=='pair'}]},
+                  'containment':{'rows':[{'outside_outer_union_mm3':.25 if scope=='containment' else 0.,
+                                          'rejected':scope=='containment'}]},
+                  'decisive_geometric_rejection_or_evaluation_failure':True,
+                  'all_declared_finite_pose_checks_clear':False}
+            report={'poses':[pose],'geometric_rejection_found':True}
+            self.assertTrue(reader.validate_disposition(report,False))
+            report['geometric_rejection_found']=False
+            with self.subTest(scope=scope),self.assertRaisesRegex(ValueError,'full disposition'):
+                reader.validate_disposition(report,False)
+            report['geometric_rejection_found']=True
+            pose['all_declared_finite_pose_checks_clear']=True
+            with self.assertRaisesRegex(ValueError,'finite-pose disposition'):
+                reader.validate_disposition(report,False)
+
+    def test_continuous_pair_failure_cannot_hide_in_local_clear_claim(self):
+        continuous=self.continuous_fixture()
+        self.assertFalse(reader.validate_continuous_endpoints(continuous))
+        pair=continuous['U1_to_all_20_B_endpoint_parts'];row=pair['rows'][0]
+        row.update(common_mm3=.25,common_positive_solids=1,rejected=True)
+        pair.update(failures=[row],positive_Common_count_including_below_tolerance=1,
+                    no_Common_above_tolerance_or_evaluation_error=False)
+        continuous['all_declared_continuous_endpoint_geometric_checks_clear']=False
+        report={'poses':[{'complete_pair_matrix':{'rows':[{'common_mm3':0.,'rejected':False}]}}],
+                'continuous_complete_endpoints':continuous,'all_declared_local_geometry_checks_clear':False}
+        self.assertTrue(reader.validate_disposition(report,True))
+        report['all_declared_local_geometry_checks_clear']=True
+        with self.assertRaisesRegex(ValueError,'local disposition'):
+            reader.validate_disposition(report,True)
+        continuous['all_declared_continuous_endpoint_geometric_checks_clear']=True
+        with self.assertRaisesRegex(ValueError,'continuous endpoint disposition'):
+            reader.validate_disposition(report,True)
+
+    def test_continuous_endpoint_inventory_margins_and_pair_coverage_are_required(self):
+        for change in ('missing_part','missing_pair','duplicate_pair','missing_margin','nonpositive_margin','false_release'):
+            continuous=self.continuous_fixture()
+            if change=='missing_part':continuous['endpoint_metrics']['B'].pop(next(iter(continuous['endpoint_metrics']['B'])))
+            elif change=='missing_pair':continuous['U1_to_all_20_B_endpoint_parts']['rows'].pop()
+            elif change=='duplicate_pair':continuous['U1_to_all_20_B_endpoint_parts']['rows'][-1]=copy.deepcopy(continuous['U1_to_all_20_B_endpoint_parts']['rows'][0])
+            elif change=='missing_margin':continuous['other_segment_axis_separation_margins'].pop(next(iter(reader.ENDPOINT_MARGIN_NAMES)))
+            elif change=='nonpositive_margin':continuous['other_segment_axis_separation_margins'][next(iter(reader.ENDPOINT_MARGIN_NAMES))]=0.
+            else:continuous['manufacturing_go']=True
+            with self.subTest(change=change),self.assertRaises(ValueError):
+                reader.validate_continuous_endpoints(continuous)
+
     def test_empty_manifest_is_rejected_by_actual_reader_execute(self):
         with tempfile.TemporaryDirectory() as td:
             root=Path(td);manifest=root/'empty.json'

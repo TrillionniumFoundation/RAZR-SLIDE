@@ -1,0 +1,786 @@
+{
+  "schema": "razr-product-native-independent-summary-v1",
+  "prepared_utc": "2026-10-23T07:54:01.875071+00:00",
+  "functional_source_head": "042b768903cccbd7a0995317c8598401e0318e2a",
+  "review_only": true,
+  "CAD_or_native_geometry_reexecuted_by_reviewer": false,
+  "archives_rewritten": false,
+  "verification": "Existing archives SHA256 checked; selected original generator/reader/regression members verified against the original driver hashes; raw pair rows and numerical dispositions reaggregated without CAD. Original controller performed complete member readback.",
+  "results": {
+    "ep4": {
+      "expected_head": "042b768903cccbd7a0995317c8598401e0318e2a",
+      "execution_checks_passed": true,
+      "source_bytes_unchanged": true,
+      "source_identity_scope": "tracked Python, active design/integration JSON, workflow, lock and product entry points; not archive blobs",
+      "source_snapshot_entries": 1154,
+      "locked_preflight_checked_packages": 43,
+      "all_locked_preflight_packages_match": true,
+      "archive_path": "/tmp/razr-ep4-042b7689/ep4-native.tar.xz",
+      "archive_bytes": 6108048,
+      "archive_sha256": "dacb9380629357270526b51b1d86df7503d25c6fd44275cde7abf659597d07cd",
+      "archive_members": 142,
+      "archive_members_readback_verified_by_controller": true,
+      "controller_elapsed_seconds": 100.04989873899831,
+      "driver_elapsed_seconds": 99.85036048700204,
+      "readback_reports": [
+        {
+          "path": "readback/report.json",
+          "execution_completed": true,
+          "declared_readback_checks_passed": true,
+          "failures": 0,
+          "all_assembly_parts_have_metric_comparison": true
+        }
+      ],
+      "selected_original_report_member_hashes_independently_verified": {
+        "scenes/native/native-report.json": {
+          "bytes": 12385088,
+          "sha256": "98949289fd8ee077dc299788d6640b56184b5def63df7287796a7861e2ba3a73"
+        },
+        "readback/report.json": {
+          "bytes": 808033,
+          "sha256": "6de5ab85264e6e83b6ea7d1c431f84adb577b225e57b6caeeb4b7890fe3b6d38"
+        },
+        "regressions/native-regression/native-regressions.json": {
+          "bytes": 13320,
+          "sha256": "3841bdbe9b7d6e6f541a64c1e34ad0a9f361b5c3b6a96a54e8050d8395c6972b"
+        }
+      },
+      "hosted_execution": false,
+      "physical_qualification": "not_provided",
+      "candidate_go": false,
+      "fixture_fabrication_go": false,
+      "manufacturing_go": false,
+      "full_cycle_internal_route_accepted": false,
+      "finite_geometry": "rejected; retained negative route, not an accepted product route",
+      "poses": [
+        {
+          "pose": "PREDOCK",
+          "complete_participants": 154,
+          "external_pair_rejections": 12,
+          "outside_parts": 0,
+          "finite_geometric_rejected": true
+        },
+        {
+          "pose": "OPEN",
+          "complete_participants": 161,
+          "external_pair_rejections": 25,
+          "outside_parts": 0,
+          "finite_geometric_rejected": true
+        },
+        {
+          "pose": "STOW",
+          "complete_participants": 154,
+          "external_pair_rejections": 17,
+          "outside_parts": 0,
+          "finite_geometric_rejected": true
+        }
+      ],
+      "pair_scopes": [
+        {
+          "scope": "A local self",
+          "declared_pairs": 190,
+          "native_Common_calls": 53,
+          "positive_axis_gap_pairs": 137,
+          "positive_common_including_below_tolerance": 1,
+          "rejected_pairs_above_1e_minus7_mm3": 1,
+          "maximum_common_mm3": 0.18081185628459612,
+          "raw_pair_inventory_unique": true,
+          "raw_numeric_disposition_and_failure_list_consistent": true,
+          "rejections": [
+            {
+              "a": "A_M2_clamp_head_1",
+              "b": "A_inner_carrier_jaw",
+              "common_mm3": 0.18081185628459612,
+              "common_step_sha256": "ddf126f577d78d613b9815661873df7d2483ea9d659b86b4f7405db6e46ebc57"
+            }
+          ]
+        },
+        {
+          "scope": "B local self",
+          "declared_pairs": 190,
+          "native_Common_calls": 53,
+          "positive_axis_gap_pairs": 137,
+          "positive_common_including_below_tolerance": 0,
+          "rejected_pairs_above_1e_minus7_mm3": 0,
+          "maximum_common_mm3": 0.0,
+          "raw_pair_inventory_unique": true,
+          "raw_numeric_disposition_and_failure_list_consistent": true,
+          "rejections": []
+        },
+        {
+          "scope": "PREDOCK external",
+          "declared_pairs": 4633,
+          "native_Common_calls": 124,
+          "positive_axis_gap_pairs": 4509,
+          "positive_common_including_below_tolerance": 12,
+          "rejected_pairs_above_1e_minus7_mm3": 12,
+          "maximum_common_mm3": 60.73824915951124,
+          "raw_pair_inventory_unique": true,
+          "raw_numeric_disposition_and_failure_list_consistent": true,
+          "rejections": [
+            {
+              "a": "B_M1_board_head_1",
+              "b": "B_SHELL",
+              "common_mm3": 0.4233198798224987,
+              "common_step_sha256": "3d5b229089b7db8d818b6dadf212bade09f06a22c1ada1d5a5cecba692ea2bad"
+            },
+            {
+              "a": "B_M1_board_head_2",
+              "b": "B_SHELL",
+              "common_mm3": 0.42331987982249863,
+              "common_step_sha256": "e284229cdb2197806a4aa05335e583fc6cc4fced722d250a8fb6f8e2d1703286"
+            },
+            {
+              "a": "B_M1_board_shaft_1",
+              "b": "B_SHELL",
+              "common_mm3": 1.1977321991811067,
+              "common_step_sha256": "822ffc9509c9bd1d7cb03a93e7e90482aaeb479886bf090ac188b4a3d0d2ba3f"
+            },
+            {
+              "a": "B_M1_board_shaft_2",
+              "b": "B_SHELL",
+              "common_mm3": 1.1977321991811067,
+              "common_step_sha256": "a676217d3776305ac125e71b07f728cd6da6757c55e48efc5bcfdc886ac46a1a"
+            },
+            {
+              "a": "B_M1_board_shaft_3",
+              "b": "B_SHELL",
+              "common_mm3": 0.5105088062083457,
+              "common_step_sha256": "c48b55fad3e7f6397e0e6f17d768743b11b7451318eed7ee1e5b4dbb9a66054a"
+            },
+            {
+              "a": "B_M1_board_shaft_4",
+              "b": "B_SHELL",
+              "common_mm3": 0.5105088062083458,
+              "common_step_sha256": "07beb822af32243aee89d881b48b3b963a7094d82d84ff86c887312414f0b218"
+            },
+            {
+              "a": "B_inner_carrier_jaw",
+              "b": "B_SHELL",
+              "common_mm3": 29.599734577831214,
+              "common_step_sha256": "bf9c43e98dbf5458c3c162f4b1087ac284737ab104933a9320abfdd16b4e37ba"
+            },
+            {
+              "a": "B_mini_DP_PCB",
+              "b": "B_SHELL",
+              "common_mm3": 60.73824915951124,
+              "common_step_sha256": "405e254d342af950fadf9d6daaeba22d2fbfcaae9f8a216f914e8dcc696a22b8"
+            },
+            {
+              "a": "B_mini_DS_PCB",
+              "b": "B_SHELL",
+              "common_mm3": 5.0364126998592385,
+              "common_step_sha256": "e8be9005edcc359044ebe622bdd4c2f2109be790d1289d697387ebf69b5e3c04"
+            },
+            {
+              "a": "B_static_26wire_transfer_reservation",
+              "b": "B_SHELL",
+              "common_mm3": 3.1168617828168683,
+              "common_step_sha256": "20ee3e6052f823f070a090ad9fb1576be1b932f0f3b3edb941f69aacde191c09"
+            },
+            {
+              "a": "EP4_finite_material",
+              "b": "A_FRAME",
+              "common_mm3": 6.061706613455777,
+              "common_step_sha256": "d2b0a21556534d254c593f4a6a5bcc73700673e66786f44a5198160841f01aa7"
+            },
+            {
+              "a": "EP4_finite_material",
+              "b": "B_SHELL",
+              "common_mm3": 0.7800000000000007,
+              "common_step_sha256": "6350086cc930715e86140e12d7e15ffde66b99a4a869d85dfae02334227eda89"
+            }
+          ]
+        },
+        {
+          "scope": "PREDOCK A to B",
+          "declared_pairs": 400,
+          "native_Common_calls": 0,
+          "positive_axis_gap_pairs": 400,
+          "positive_common_including_below_tolerance": 0,
+          "rejected_pairs_above_1e_minus7_mm3": 0,
+          "maximum_common_mm3": 0.0,
+          "raw_pair_inventory_unique": true,
+          "raw_numeric_disposition_and_failure_list_consistent": true,
+          "rejections": []
+        },
+        {
+          "scope": "PREDOCK material to endpoints",
+          "declared_pairs": 40,
+          "native_Common_calls": 22,
+          "positive_axis_gap_pairs": 18,
+          "positive_common_including_below_tolerance": 0,
+          "rejected_pairs_above_1e_minus7_mm3": 0,
+          "maximum_common_mm3": 0.0,
+          "raw_pair_inventory_unique": true,
+          "raw_numeric_disposition_and_failure_list_consistent": true,
+          "rejections": []
+        },
+        {
+          "scope": "OPEN external",
+          "declared_pairs": 4920,
+          "native_Common_calls": 160,
+          "positive_axis_gap_pairs": 4760,
+          "positive_common_including_below_tolerance": 25,
+          "rejected_pairs_above_1e_minus7_mm3": 25,
+          "maximum_common_mm3": 60.738249159511504,
+          "raw_pair_inventory_unique": true,
+          "raw_numeric_disposition_and_failure_list_consistent": true,
+          "rejections": [
+            {
+              "a": "B_M1_board_head_1",
+              "b": "B_SHELL",
+              "common_mm3": 0.4233198798225041,
+              "common_step_sha256": "1cce98adbe6813b0781296f6ad5309c9928d0e59990be84243fcaaa4956af625"
+            },
+            {
+              "a": "B_M1_board_head_2",
+              "b": "B_SHELL",
+              "common_mm3": 0.42331987982250396,
+              "common_step_sha256": "397f9492afde5fcc2e6e726c745c19f46b8d009daae366c55febe526466cadf6"
+            },
+            {
+              "a": "B_M1_board_head_3",
+              "b": "A_FRAME",
+              "common_mm3": 0.9030726756075278,
+              "common_step_sha256": "966c407631add170310502397ea172bc482c80113d894c6f7552331976fda8c8"
+            },
+            {
+              "a": "B_M1_board_head_4",
+              "b": "A_FRAME",
+              "common_mm3": 0.9030726756075284,
+              "common_step_sha256": "909da81da3718e72bf2f0b4c7e9c3c7e8aab749b9ad6b4fb2ef31df499bc5751"
+            },
+            {
+              "a": "B_M1_board_shaft_1",
+              "b": "B_SHELL",
+              "common_mm3": 1.197732199181065,
+              "common_step_sha256": "3a82b24523c606010ff465b6ac2839ab1bc850864898e3f33caa72d9c069f85d"
+            },
+            {
+              "a": "B_M1_board_shaft_2",
+              "b": "B_SHELL",
+              "common_mm3": 1.1977321991810648,
+              "common_step_sha256": "42ffb1b3dd4286d66b6bed0f74cae8a1bf6f7683315f66e2f9cd5b3baf1f1831"
+            },
+            {
+              "a": "B_M1_board_shaft_3",
+              "b": "A_FRAME",
+              "common_mm3": 0.9723898186319818,
+              "common_step_sha256": "f1b22b0b00bf19cbd77ba622705795a205001c5d0642c24f3aa2e1bf116085ec"
+            },
+            {
+              "a": "B_M1_board_shaft_3",
+              "b": "B_SHELL",
+              "common_mm3": 0.5105088062083428,
+              "common_step_sha256": "7a46c483515269c6614f930e0541fb30725c063e9df5eca65ee82290d868a843"
+            },
+            {
+              "a": "B_M1_board_shaft_4",
+              "b": "A_FRAME",
+              "common_mm3": 0.9723898186321426,
+              "common_step_sha256": "3efea87602410263eece0b4bfda611237a9d1656582392d2d0e8d79029e5b0ea"
+            },
+            {
+              "a": "B_M1_board_shaft_4",
+              "b": "B_SHELL",
+              "common_mm3": 0.510508806208343,
+              "common_step_sha256": "9f2aa34155705933c29499608df9eb8b78bc22fa62d90ff6e9a8419315f50c67"
+            },
+            {
+              "a": "B_inner_carrier_jaw",
+              "b": "A_FRAME",
+              "common_mm3": 25.426000000000236,
+              "common_step_sha256": "f5dabf66be84d699c3c038c5db8eeef9970146a041f2d329ea73afa7720123de"
+            },
+            {
+              "a": "B_inner_carrier_jaw",
+              "b": "B_SHELL",
+              "common_mm3": 29.599734577831345,
+              "common_step_sha256": "417e06ada0fef5afddd2aaf9d8e5453945c10ca563a67a39d57a4fa64f4c4953"
+            },
+            {
+              "a": "B_inner_carrier_jaw",
+              "b": "L_KEY",
+              "common_mm3": 0.04236274107142052,
+              "common_step_sha256": "27987d74c6230ba925178dc68df596883eb4e177f62017e37a7c7c2bc1f3e81e"
+            },
+            {
+              "a": "B_inner_carrier_jaw",
+              "b": "R_KEY",
+              "common_mm3": 0.04236274107141974,
+              "common_step_sha256": "bae9dbcbd7666ebff21d7876775839b6e7230cef1855ac115f41f8ab02b023bc"
+            },
+            {
+              "a": "B_mated_BM28_reservation",
+              "b": "A_FRAME",
+              "common_mm3": 2.520000000000195,
+              "common_step_sha256": "c745d92819a6ce7feb142e4a548f9ce7cf83d6ffa3f8aff0f8d8cf89b1f87162"
+            },
+            {
+              "a": "B_mini_DP_PCB",
+              "b": "A_FRAME",
+              "common_mm3": 9.43814834535859,
+              "common_step_sha256": "729ba5040b31383c45fd5e94cb4669c98537bd092cfb6757ea0119726d8a467e"
+            },
+            {
+              "a": "B_mini_DP_PCB",
+              "b": "B_SHELL",
+              "common_mm3": 60.738249159511504,
+              "common_step_sha256": "749140595a812d45d1e141c771bf91a897bf66e6203a48b4999e63e3bec2942b"
+            },
+            {
+              "a": "B_mini_DS_PCB",
+              "b": "A_FRAME",
+              "common_mm3": 50.82144716097988,
+              "common_step_sha256": "5b7a987e53cb54aa58e8181f3b9f85fe041a153a450ec06772b3eef4082fe258"
+            },
+            {
+              "a": "B_mini_DS_PCB",
+              "b": "B_SHELL",
+              "common_mm3": 5.036412699859383,
+              "common_step_sha256": "a524e196bc7dbde761df0883c4733f6fa87bdd53f567d323a2703821f9bfbda0"
+            },
+            {
+              "a": "B_static_26wire_transfer_reservation",
+              "b": "A_FRAME",
+              "common_mm3": 27.76683800009326,
+              "common_step_sha256": "f8dcab148c49b3c9c4c89c5977f88a31d09b453b34de431ee46905985d945c5a"
+            },
+            {
+              "a": "B_static_26wire_transfer_reservation",
+              "b": "B_SHELL",
+              "common_mm3": 3.1168617828169496,
+              "common_step_sha256": "54c768efbe2b0a4275033f91ac4108fb9ae7beaedc897d5fbb50b0e9fae4488b"
+            },
+            {
+              "a": "EP4_finite_material",
+              "b": "A_FRAME",
+              "common_mm3": 10.500000000000014,
+              "common_step_sha256": "27b093cfbe8048caa07052df6b266f99f1817a5cd31ba171562a7b3ba6fddf03"
+            },
+            {
+              "a": "EP4_finite_material",
+              "b": "B_SHELL",
+              "common_mm3": 0.7799999999999905,
+              "common_step_sha256": "1d44b50b6dfefbfed91666c3ec08a009db02bfd17702df13a9fc5c6d119500f9"
+            },
+            {
+              "a": "EP4_finite_material",
+              "b": "L_KEY",
+              "common_mm3": 0.08472548214282918,
+              "common_step_sha256": "6c1f12b00a54eaec694bb7071170c1926b6a5b6c87a59651b084deff00248282"
+            },
+            {
+              "a": "EP4_finite_material",
+              "b": "R_KEY",
+              "common_mm3": 0.0847254821428307,
+              "common_step_sha256": "48d51aee1b5a96785b7fc829265a8d02c5f044776b258a8e9e4a86623e821d93"
+            }
+          ]
+        },
+        {
+          "scope": "OPEN A to B",
+          "declared_pairs": 400,
+          "native_Common_calls": 0,
+          "positive_axis_gap_pairs": 400,
+          "positive_common_including_below_tolerance": 0,
+          "rejected_pairs_above_1e_minus7_mm3": 0,
+          "maximum_common_mm3": 0.0,
+          "raw_pair_inventory_unique": true,
+          "raw_numeric_disposition_and_failure_list_consistent": true,
+          "rejections": []
+        },
+        {
+          "scope": "OPEN material to endpoints",
+          "declared_pairs": 40,
+          "native_Common_calls": 22,
+          "positive_axis_gap_pairs": 18,
+          "positive_common_including_below_tolerance": 0,
+          "rejected_pairs_above_1e_minus7_mm3": 0,
+          "maximum_common_mm3": 0.0,
+          "raw_pair_inventory_unique": true,
+          "raw_numeric_disposition_and_failure_list_consistent": true,
+          "rejections": []
+        },
+        {
+          "scope": "STOW external",
+          "declared_pairs": 4633,
+          "native_Common_calls": 130,
+          "positive_axis_gap_pairs": 4503,
+          "positive_common_including_below_tolerance": 17,
+          "rejected_pairs_above_1e_minus7_mm3": 17,
+          "maximum_common_mm3": 60.73824915951185,
+          "raw_pair_inventory_unique": true,
+          "raw_numeric_disposition_and_failure_list_consistent": true,
+          "rejections": [
+            {
+              "a": "B_M1_board_head_1",
+              "b": "B_SHELL",
+              "common_mm3": 0.4233198798225071,
+              "common_step_sha256": "755b0b362c894eb60e907a31534dd0c129de056a61aa8515f9402925e7661b4b"
+            },
+            {
+              "a": "B_M1_board_head_2",
+              "b": "B_SHELL",
+              "common_mm3": 0.42331987982250696,
+              "common_step_sha256": "aac95950780ff5458118a3318ecc00dcaf4a5a92660a5e2ca7bbccf8c8ac95cb"
+            },
+            {
+              "a": "B_M1_board_shaft_1",
+              "b": "B_SHELL",
+              "common_mm3": 1.197732199181082,
+              "common_step_sha256": "57bf186b225fe60f51e0fb09c3a86ea87cdc3f65336b1d9fac8ff0e7c72a28ca"
+            },
+            {
+              "a": "B_M1_board_shaft_2",
+              "b": "B_SHELL",
+              "common_mm3": 1.197732199181082,
+              "common_step_sha256": "506f96f9a4dd5975e5cd647788a81250ab1be7107a348d43981d3d30c54d1304"
+            },
+            {
+              "a": "B_M1_board_shaft_3",
+              "b": "B_SHELL",
+              "common_mm3": 0.5105088062083443,
+              "common_step_sha256": "94a0e9f9ce59bf9a18237beaa4eb15baa4a6ed4c279f5bf8290ae06293012947"
+            },
+            {
+              "a": "B_M1_board_shaft_4",
+              "b": "B_SHELL",
+              "common_mm3": 0.5105088062083444,
+              "common_step_sha256": "11c36ca45a7317e7f4a53a50a0ff818e0ea083f6f743fc9780bf626940e36e1b"
+            },
+            {
+              "a": "B_inner_carrier_jaw",
+              "b": "B_SHELL",
+              "common_mm3": 29.59973457783133,
+              "common_step_sha256": "59029aa75b2e0b0ce5724dcf5b38fafb2f56d4a7ce7ac48b53d98527c183cc7a"
+            },
+            {
+              "a": "B_mini_DP_PCB",
+              "b": "B_SHELL",
+              "common_mm3": 60.73824915951185,
+              "common_step_sha256": "2bd42646f98ad4ea94a52b8b042e792a18ec8ceb064667610b87eb554d35bff7"
+            },
+            {
+              "a": "B_mini_DS_PCB",
+              "b": "B_SHELL",
+              "common_mm3": 5.036412699859409,
+              "common_step_sha256": "ede0faae5e31fbab929d52a5807d96a6ae61d127bd5c64928c542a42947bd9ea"
+            },
+            {
+              "a": "B_static_26wire_transfer_reservation",
+              "b": "B_SHELL",
+              "common_mm3": 3.1168617828169696,
+              "common_step_sha256": "6e617ca53f9bb315d575fdd00b6aa03eb3f0a16a3502490121cf515514315306"
+            },
+            {
+              "a": "EP4_finite_material",
+              "b": "A_FRAME",
+              "common_mm3": 6.061706613455777,
+              "common_step_sha256": "0cd40e46e248f5b9c00c1fe697767040ef7f38d9fd9badbd9ea88163293d4df7"
+            },
+            {
+              "a": "EP4_finite_material",
+              "b": "B_SHELL",
+              "common_mm3": 1.1142255331230668,
+              "common_step_sha256": "c89812f9ab480d4a43be0b9418f36a0825db7a706ba2b8fb5e17499bbb92937e"
+            },
+            {
+              "a": "EP4_finite_material",
+              "b": "L_CROSSHEAD",
+              "common_mm3": 0.023156736502021807,
+              "common_step_sha256": "34e4949dc3d3225066160a5e2737d286bdaa3c1b3aa380739e2bd7ea700c7e7d"
+            },
+            {
+              "a": "EP4_finite_material",
+              "b": "L_KEY",
+              "common_mm3": 0.08472548214282827,
+              "common_step_sha256": "7b6a1da53cad73acd2f474906699870b8215a5cbb7f25f51a3af3dd21e256d89"
+            },
+            {
+              "a": "EP4_finite_material",
+              "b": "OLED_GEOMETRIC_TRIAL",
+              "common_mm3": 0.7130456006200977,
+              "common_step_sha256": "c891445c16a7948f9b56fefe1b09228b7dc01c668529bb1bb16827d8f4666ab8"
+            },
+            {
+              "a": "EP4_finite_material",
+              "b": "R_CROSSHEAD",
+              "common_mm3": 0.02315673649663271,
+              "common_step_sha256": "79696659f1aa263bc85a32f3c255e09c84536ac9e7bea8bfa7b29213db1355c5"
+            },
+            {
+              "a": "EP4_finite_material",
+              "b": "R_KEY",
+              "common_mm3": 0.08472548214282791,
+              "common_step_sha256": "a144d2482c87accc67ce53344eb784db0aee077489405c12ed4504a49b83eda7"
+            }
+          ]
+        },
+        {
+          "scope": "STOW A to B",
+          "declared_pairs": 400,
+          "native_Common_calls": 0,
+          "positive_axis_gap_pairs": 400,
+          "positive_common_including_below_tolerance": 0,
+          "rejected_pairs_above_1e_minus7_mm3": 0,
+          "maximum_common_mm3": 0.0,
+          "raw_pair_inventory_unique": true,
+          "raw_numeric_disposition_and_failure_list_consistent": true,
+          "rejections": []
+        },
+        {
+          "scope": "STOW material to endpoints",
+          "declared_pairs": 40,
+          "native_Common_calls": 7,
+          "positive_axis_gap_pairs": 33,
+          "positive_common_including_below_tolerance": 0,
+          "rejected_pairs_above_1e_minus7_mm3": 0,
+          "maximum_common_mm3": 0.0,
+          "raw_pair_inventory_unique": true,
+          "raw_numeric_disposition_and_failure_list_consistent": true,
+          "rejections": []
+        }
+      ],
+      "declared_pair_scope_total": 15886,
+      "actual_rejected_pair_scope_total": 55,
+      "seven_native_regressions": [
+        {
+          "case": "A_carrier_connected_after_plate_web_change",
+          "passed": true
+        },
+        {
+          "case": "B_carrier_connected_after_plate_web_change",
+          "passed": true
+        },
+        {
+          "case": "retained_A33_18mm3_negative_and_EP4_A_battery_pair",
+          "passed": true
+        },
+        {
+          "case": "complete_B_board_group_relocation_and_proper_world_frame",
+          "passed": true
+        },
+        {
+          "case": "B_complete_static_transfer_connected_and_reaches_tail_and_board_reservations",
+          "passed": true
+        },
+        {
+          "case": "finite_S_U_extrusion_preserves_declared_polygon_at_three_poses",
+          "passed": true
+        },
+        {
+          "case": "validated_empty_short_circuit_and_separate_domain_regressions",
+          "passed": true
+        }
+      ]
+    },
+    "ep5": {
+      "expected_head": "042b768903cccbd7a0995317c8598401e0318e2a",
+      "execution_checks_passed": true,
+      "source_bytes_unchanged": true,
+      "source_identity_scope": "audited tracked code and entrypoint scope plus the explicit transitive EP5 native input role closure, all bound to actual HEAD blobs",
+      "source_snapshot_entries": 1164,
+      "locked_preflight_checked_packages": 43,
+      "all_locked_preflight_packages_match": true,
+      "archive_path": "/tmp/razr-ep5-042b7689/ep5-native.tar.xz",
+      "archive_bytes": 6535968,
+      "archive_sha256": "2129f870c4c78735bd196d2cc76da1141dd6d5a2e101f628011930c7c353015e",
+      "archive_members": 30,
+      "archive_members_readback_verified_by_controller": true,
+      "controller_elapsed_seconds": 136.04289569700268,
+      "driver_elapsed_seconds": 134.41709337599968,
+      "readback_reports": [
+        {
+          "path": "local-readback/report.json",
+          "execution_completed": true,
+          "declared_readback_checks_passed": true,
+          "failures": 0,
+          "native_geometry_rejected": false,
+          "independent_process_from_generator": true,
+          "geometry_generator_modules_imported": false
+        },
+        {
+          "path": "full-readback/report.json",
+          "execution_completed": true,
+          "declared_readback_checks_passed": true,
+          "failures": 0,
+          "native_geometry_rejected": false,
+          "independent_process_from_generator": true,
+          "geometry_generator_modules_imported": false
+        }
+      ],
+      "selected_original_report_member_hashes_independently_verified": {
+        "local/native-report.json": {
+          "bytes": 2449946,
+          "sha256": "d623dcf49b11195434ad33f23339e694d1f268e29b8dacf5ae958330c7bb9744"
+        },
+        "local-readback/report.json": {
+          "bytes": 237781,
+          "sha256": "0319e35ef0460b3c4da853a293029f1f0ae1e316a037786ab0b607734285cca1"
+        },
+        "full/native-report.json": {
+          "bytes": 25625172,
+          "sha256": "a8455464af9f035eb003cdb95887d2dd96ea4c426c641b650233f2f28ebf3aea"
+        },
+        "full-readback/report.json": {
+          "bytes": 334848,
+          "sha256": "0288d2c9086060cb48c96ee83de575b84e9e86c677ee867cf2e2a1aedc1c5ee0"
+        }
+      },
+      "hosted_execution": false,
+      "physical_qualification": "not_provided",
+      "candidate_go": false,
+      "fixture_fabrication_go": false,
+      "manufacturing_go": false,
+      "full_cycle_internal_route_accepted": false,
+      "research_scopes": {
+        "local": {
+          "poses": [
+            {
+              "pose": "STOW",
+              "complete_participants": 46,
+              "all_unordered_pairs": 1035,
+              "rejected_pairs": 0,
+              "outside_parts": 0,
+              "containment_executed": false
+            },
+            {
+              "pose": "PREDOCK",
+              "complete_participants": 46,
+              "all_unordered_pairs": 1035,
+              "rejected_pairs": 0,
+              "outside_parts": 0,
+              "containment_executed": false
+            },
+            {
+              "pose": "OPEN",
+              "complete_participants": 46,
+              "all_unordered_pairs": 1035,
+              "rejected_pairs": 0,
+              "outside_parts": 0,
+              "containment_executed": false
+            }
+          ],
+          "pair_scopes": [
+            {
+              "scope": "local STOW",
+              "declared_pairs": 1035,
+              "native_Common_calls": 193,
+              "positive_axis_gap_pairs": 842,
+              "positive_common_including_below_tolerance": 0,
+              "rejected_pairs_above_1e_minus7_mm3": 0,
+              "maximum_common_mm3": 0.0,
+              "raw_pair_inventory_unique": true,
+              "raw_numeric_disposition_and_failure_list_consistent": true,
+              "rejections": []
+            },
+            {
+              "scope": "local PREDOCK",
+              "declared_pairs": 1035,
+              "native_Common_calls": 176,
+              "positive_axis_gap_pairs": 859,
+              "positive_common_including_below_tolerance": 0,
+              "rejected_pairs_above_1e_minus7_mm3": 0,
+              "maximum_common_mm3": 0.0,
+              "raw_pair_inventory_unique": true,
+              "raw_numeric_disposition_and_failure_list_consistent": true,
+              "rejections": []
+            },
+            {
+              "scope": "local OPEN",
+              "declared_pairs": 1035,
+              "native_Common_calls": 176,
+              "positive_axis_gap_pairs": 859,
+              "positive_common_including_below_tolerance": 0,
+              "rejected_pairs_above_1e_minus7_mm3": 0,
+              "maximum_common_mm3": 0.0,
+              "raw_pair_inventory_unique": true,
+              "raw_numeric_disposition_and_failure_list_consistent": true,
+              "rejections": []
+            }
+          ],
+          "all_declared_pair_scopes": 3105,
+          "rejected_pairs": 0,
+          "finite_geometry": "clear_at_declared_scope_only"
+        },
+        "full": {
+          "poses": [
+            {
+              "pose": "STOW",
+              "complete_participants": 154,
+              "all_unordered_pairs": 11781,
+              "rejected_pairs": 0,
+              "outside_parts": 0,
+              "containment_executed": true
+            },
+            {
+              "pose": "PREDOCK",
+              "complete_participants": 154,
+              "all_unordered_pairs": 11781,
+              "rejected_pairs": 0,
+              "outside_parts": 0,
+              "containment_executed": true
+            },
+            {
+              "pose": "OPEN",
+              "complete_participants": 161,
+              "all_unordered_pairs": 12880,
+              "rejected_pairs": 0,
+              "outside_parts": 0,
+              "containment_executed": true
+            }
+          ],
+          "pair_scopes": [
+            {
+              "scope": "full STOW",
+              "declared_pairs": 11781,
+              "native_Common_calls": 784,
+              "positive_axis_gap_pairs": 10997,
+              "positive_common_including_below_tolerance": 0,
+              "rejected_pairs_above_1e_minus7_mm3": 0,
+              "maximum_common_mm3": 0.0,
+              "raw_pair_inventory_unique": true,
+              "raw_numeric_disposition_and_failure_list_consistent": true,
+              "rejections": []
+            },
+            {
+              "scope": "full PREDOCK",
+              "declared_pairs": 11781,
+              "native_Common_calls": 736,
+              "positive_axis_gap_pairs": 11045,
+              "positive_common_including_below_tolerance": 0,
+              "rejected_pairs_above_1e_minus7_mm3": 0,
+              "maximum_common_mm3": 0.0,
+              "raw_pair_inventory_unique": true,
+              "raw_numeric_disposition_and_failure_list_consistent": true,
+              "rejections": []
+            },
+            {
+              "scope": "full OPEN",
+              "declared_pairs": 12880,
+              "native_Common_calls": 813,
+              "positive_axis_gap_pairs": 12067,
+              "positive_common_including_below_tolerance": 0,
+              "rejected_pairs_above_1e_minus7_mm3": 0,
+              "maximum_common_mm3": 0.0,
+              "raw_pair_inventory_unique": true,
+              "raw_numeric_disposition_and_failure_list_consistent": true,
+              "rejections": []
+            }
+          ],
+          "all_declared_pair_scopes": 36442,
+          "rejected_pairs": 0,
+          "finite_geometry": "clear_at_declared_scope_only"
+        }
+      },
+      "G2_acceptance_granted_by_this_job": false,
+      "all_configured_unit_suites_executed": false,
+      "full_checkout_verified": false,
+      "original_mounted_archive_container_recovered": false,
+      "archive_available": true
+    }
+  },
+  "scope": "Successful native execution preserves EP4 geometric rejection and establishes only the declared EP5 local/full finite-scene clearances. This does not grant full G2, hosted execution, physical qualification or release."
+}

@@ -15,6 +15,7 @@ import tempfile
 import cadquery as cq
 from OCP.BRepAdaptor import BRepAdaptor_Surface
 import verify_serviceable_pawl as v
+from translation_regions import sum_common_upper_bound
 
 ROOT=Path(__file__).resolve().parents[1]
 TOL=1e-7
@@ -105,7 +106,10 @@ def roof_motion_partition(label,body,base,vector,fixed):
     for name in sorted(fixed):
         rows=[next(r for r in c['checks'] if r['fixed']==name) for c in components]
         values=[x for r in rows for x in r['common_mm3']]
-        combined.append({'fixed':name,'method':'exact_whole_material_partition_then_complete_sweeps','common_mm3':values,'clear':all(x<=TOL for x in values)})
+        upper=sum_common_upper_bound(values)
+        combined.append({'fixed':name,'method':'exact_whole_material_partition_then_complete_sweeps',
+            'common_mm3':values,'common_upper_bound_mm3':upper,
+            'common_upper_bound_is_sum_not_union_volume':True,'clear':upper<=TOL})
     return {'label':label,'translation_mm':vector,'partition_components':3,'whole_material_difference_mm3':difference,
             'component_proofs':components,'checks':combined,'failed':[x for x in combined if not x['clear']]}
 
@@ -113,7 +117,8 @@ def roof_motion_partition(label,body,base,vector,fixed):
 def verify(manifest,output):
     output=Path(output)
     if output.exists():raise ValueError('new result path required')
-    meta,new,h=v.load(manifest);prev=frozen(h);parent,prior,old,profiles=v.parent_native(h)
+    sources={str(Path(f).resolve()):sha(f) for f in (__file__,sum_common_upper_bound.__code__.co_filename)}
+    meta,new,h=v.load(manifest);h.update(sources);prev=frozen(h);parent,prior,old,profiles=v.parent_native(h)
     changed_templates={'A_BACK_PANEL'}|{s+'_'+k for s in 'LR' for k in ('TAB','ROOF','GUIDE_REFERENCE')}
     for name in sorted(set(new)-changed_templates):v.w.v.equal(new[name],prev[name])
     slots={side:native_slot(new[side+'_TAB']) for side in 'LR'}

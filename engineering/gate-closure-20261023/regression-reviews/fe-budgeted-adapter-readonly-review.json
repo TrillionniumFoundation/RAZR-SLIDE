@@ -1,0 +1,30 @@
+{
+  "schema": "razr-fe-budgeted-adapter-readonly-review-v1",
+  "observed_utc": "2026-10-23T07:21:26.478916+00:00",
+  "source_sha256": {
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/rebuild_base_response_mapped.py": "f0a068768ca85e3be71f52fc67aadddf6a5eced09ff5fff01649e4d51fba4731",
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/supervise_response_mapped.py": "cbbc1dc181c9b3fa6663b75e89ef9e803378295747a4ae710e6e461d72401885",
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/rebuild_base_response_budgeted.py": "9f0ef7adbde7201ad505dfabd57f0147577ac7490cd3c47d75255560a81a907e",
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/supervise_response_budgeted.py": "3e7d0e24cda275f11bd998cff238435836a979a6ae733acb665485529b369322"
+  },
+  "reviewed_differences": [
+    "disk budget now uses nonprivileged f_bavail rather than filesystem root-reserved blocks",
+    "supervisor requires panel 1 GiB or frame 1.125 GiB initial available disk",
+    "worker and supervisor retain 500 MiB available-disk reserve",
+    "H absolute maximum reduced in 128-row chunks instead of full dense temporary",
+    "working Kff maps are closed, then its SHA is rechecked before unlink",
+    "old mapped source and its failed/not-started receipt remain unchanged"
+  ],
+  "unchanged": [
+    "original full K, constraints, load maps and ordered contact points",
+    "float64, original MMD_AT_PLUS_A, pivot threshold and solver options",
+    "600-second worker and supervisor budgets and 6.8 GiB cgroup guard",
+    "five genuinely solved full-system actions and SHA-restricted restore replay",
+    "numerical acceptance thresholds and no-QP/no-qualification scope"
+  ],
+  "blocking_findings": [],
+  "new_worker_executed_by_reviewer": false,
+  "large_factorization_or_symbolic_analysis_executed_by_reviewer": false,
+  "resource_feasibility_or_memory_saving_proved": false,
+  "review_scope": "Static diff and lifetime/provenance reasoning only; no data or existing report modified."
+}

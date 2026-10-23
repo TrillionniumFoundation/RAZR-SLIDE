@@ -1,0 +1,29 @@
+# PR35 numerical recovery: source and evidence delivery
+
+This directory contains byte-preserved Python sources, JSON metadata and small logs. It intentionally excludes every K, H, C, mesh, load, trace-block, permutation and field payload. An inventory of a payload is not the payload itself. The larger numerical artifacts remain separately identified by SHA-256 and original/private paths.
+
+## Executed results
+
+Eight of the eleven named historical input files were recovered with their original SHA-256 identities: two meshes, two load files, two original volume reports, legacy points and legacy manifest. The original two K files and original response.npz have not been recovered. The recovered old reports must not be paired with the newly reconstructed matrices.
+
+Both complete L2 stiffness matrices were newly assembled using the recovered original meshes/DOF order/constraints and the existing locked primitive tetrahedral formulas, with normalized E=1 and nu=0.3. Panel has 344,103 original vector DOFs; frame has 474,726. All original surface P2 traces remain unchanged and the added volume DOFs are internally condensed. Full assembly energy and six rigid-mode checks passed. These are five assembly-energy checks, not the five inverse-operator probes.
+
+The first panel inverse attempt hit its explicit 3 GiB address-space limit. The subsequent 4.25 GiB MMD attempt completed 2,560 of 3,885 whole-operator response columns, with maximum full free-DOF residual 2.7066562324762344e-9, before a 6.8 GiB shared-memory guard stopped the worker. The stopped prefix and exact producer/source/input/C/point/progress hashes are frozen. It is a partial linear-response checkpoint, not an accepted finite-QP state or bearing restart. No complete H or original five-probe inverse validation has yet completed, and frame H has not started.
+
+The explicit trace preflight verified the original 46 panel and 40 frame exterior faces, exact parent/local-face order, original trace coefficient order, original DOF coordinates, old energy blocks and zero interaction with the original fixed coordinates. It is a new, named adapter using the existing trace primitives. The original scikit-fem driver was not executed; scikit-fem is absent from the locked environment. The full Schur worker is prepared and its formulas were independently checked on small SPD contracts, but no full trace inverse or QP was run.
+
+Both real sparse graphs were ordered by geometric nested dissection with exact minimum vertex covers and independent no-cross-edge checks. Symbolic elimination shows these permutations are not a justified memory improvement: the frame free system would use 415,297,008 separate L/U entries, about 4,987,355,696 bytes for the simple float64/int32 CSC arrays before factorization overhead. No ND numeric factor was attempted. Older symbolic reports mislabeled the L/U structural union as separate factor storage; the independent correction receipt preserves those reports and gives the corrected two-diagonal counts. These counts are not SuperLU peak-RSS predictions.
+
+## Current resource decision and next executable step
+
+No numerical worker or background observer remains running. The previous observer was stopped before any worker launch when disk margin changed. New task budgets use statvfs.f_bavail; root-reserved filesystem blocks are excluded. The newest prepared budgeted panel supervisor requires 1 GiB available disk at startup, retains 500 MiB during execution, keeps the 4.25 GiB AS and 6.8 GiB shared-memory bounds, and reserves 2.4 GiB incremental memory before launch. The concrete command is in COMMANDS.json. It has not been executed.
+
+This storage-only worker maps the exact original Kff arrays read-only, keeps the original MMD ordering and numerical thresholds, resumes only a hash-verified prefix, and computes all remaining columns. It then genuinely solves the original five deterministic complete-K RHS actions, saves the full fields and RHS hashes, releases LU, and invokes the original restore interface with a callback limited to those five exact RHS values. That callback is not a general solver. The newest prepared version also rehashes derived Kff before deletion and uses chunked H extrema to avoid an unnecessary full-sized temporary array.
+
+After panel completion, frame needs its own bounded measured factor/response run. Only two complete body responses and their full-field checks can be combined and validated by the original five-probe contract. Then the explicit trace Schur adapter may produce a separately identified response and be used to construct a genuine initial bearing state under the unchanged mathematical criteria. A finite QP, all-domain gap audit, force/moment/complementarity checks and independent audit are still required before any research closure. No current EP5 structural, physical, service, fixture or manufacturing qualification is implied.
+
+## Evidence and reproduction
+
+STATUS.json is the snapshot of achieved and pending work. COMMANDS.json separates executed commands from prepared commands. DEPENDENCIES.json records the actual runtime and uv.lock SHA. MANIFEST.json maps each delivered byte to its original source path and SHA. Executed sources are preserved without refactoring, including their original absolute path constants; relocating them is a new source identity and requires a new receipt. Do not overwrite an existing output or a historical receipt.
+
+The frame archive was successfully saved before its redundant local compressed copy was removed; its raw K and inputs remain. The panel archive remains local because automatic approval review blocked its external save. This metadata delivery performs no external upload and provides no alternate upload route. Large payload retention and authorization are separate from this source/metadata submission.

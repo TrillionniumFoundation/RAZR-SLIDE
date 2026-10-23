@@ -17,6 +17,7 @@ import product_assembly as p
 import oled_storage as oled
 import verify_serviceable_pawl as translated
 from straight_envelope import fuse, single
+from translation_regions import sum_common_upper_bound
 
 TOL=1e-7
 
@@ -126,7 +127,7 @@ def path(label,body,vector,fixed):
     return row
 
 
-def verify():
+def _verify_geometry():
     home,meta=p.product_scene();new,changes=p.product_templates();alloc=p.registered_components();strip,_=oled.geometry()
     print('PRODUCT_INITIALIZED',len(home),flush=True)
     changed=set(changes['changed_native_parts'])|set(home)-set(p.native_scene()[0]);states=[];failed=[]
@@ -239,7 +240,8 @@ def verify():
                             upper=[br[2*i+1]+max(shifts[first][i],shifts[last][i]) for i in range(3)]
                             values.append(p.strict_common(p.box(lower,upper),fixed)['common_mm3'])
                         row={**row,'method':'native B material covered by three finite boxes, then complete per-stage translations',
-                             'region_common_mm3':values,'common_mm3':max(values),'common_field_is_max_region_not_union_volume':True,
+                             'region_common_mm3':values,'maximum_region_common_mm3':max(values),
+                             'common_mm3':sum_common_upper_bound(values),'common_field_is_sum_upper_bound_not_union_volume':True,
                              'B_material_not_covered_mm3':shell_uncovered}
                 allocation_paths.append(row)
     allocation_bad=[r for r in allocation_paths if r['common_mm3']>TOL]
@@ -262,6 +264,14 @@ def verify():
             'new_assembly_scope':'candidate pads/bridges/A support on already assembled native cartridge scene, followed by OLED trial and reversible OPEN accessories',
             'selected_OLED_COF_and_following_front_support_installed':False,'physical_hold_and_strength_qualified':False,
             'candidate_go':False,'fixture_fabrication_go':False,'manufacturing_go':False}
+
+
+def verify():
+    sources={str(Path(f).resolve()):p.sha(f) for f in (__file__,sum_common_upper_bound.__code__.co_filename)}
+    result=_verify_geometry()
+    if any(p.sha(path)!=digest for path,digest in sources.items()):
+        raise ValueError('verification or translation-region source changed during computation')
+    return {**result,'executed_verification_source_sha256':sources,'source_bytes_unchanged':True}
 
 
 if __name__=='__main__':

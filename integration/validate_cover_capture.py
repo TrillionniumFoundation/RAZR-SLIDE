@@ -5,7 +5,7 @@ straight uplift, not general 6-DOF form closure, material strength, or phone fit
 from pathlib import Path
 import argparse,hashlib,json,gzip,tarfile,tempfile,itertools,sys,platform,time
 import cam_contact_native as n
-from translation_regions import regions,checks
+from translation_regions import regions,checks,sum_common_upper_bound
 from verify_contact_motion import PARTS
 FIELDS=('xmin','xmax','ymin','ymax','zmin','zmax')
 ROOTS=('ROOT_INNER','ROOT_OUTER_CONNECTED_ALL_FRAGMENTS')
@@ -22,9 +22,10 @@ def main():
     a=ap.parse_args();out=a.output.resolve()
     if out==a.repo.resolve() or a.repo.resolve() in out.parents:raise ValueError('use new external output folder')
     out.mkdir(parents=True,exist_ok=False);start=time.monotonic()
+    sources={str(Path(f).resolve()):sha(f) for f in (__file__,sum_common_upper_bound.__code__.co_filename)}
     phase=a.repo/'engineering/cover-assembly-order-20261014';archive=phase/'bench-geometry.tar.gz'
     gm=json.loads((phase/'geometry-manifest.json').read_text());assert sha(archive)==gm['archive_sha256']
-    files={x['path']:x for x in gm['files']};inputs={str(archive):sha(archive),str(a.candidate/'manifest.json'):sha(a.candidate/'manifest.json')}
+    files={x['path']:x for x in gm['files']};inputs={**sources,str(archive):sha(archive),str(a.candidate/'manifest.json'):sha(a.candidate/'manifest.json')}
     cache={}
     def oldshape(name):
         if name in cache:return cache[name]
@@ -66,7 +67,9 @@ def main():
             swept=travel(side,fixed,tuple(-x for x in vector));targets=components(side,moving)
         else:swept=travel(side,moving,vector);targets=components(side,fixed)
         v=[x for target in targets for x in checks(swept,target)['region_common_mm3']]
-        return {'maximum_region_common_mm3':max(v,default=0.),'positive_region_count':sum(x>1e-7 for x in v),'regions_checked':len(v)}
+        return {'maximum_region_common_mm3':max(v,default=0.),'common_upper_bound_mm3':sum_common_upper_bound(v),
+                'common_upper_bound_is_sum_not_union_volume':True,
+                'positive_region_count':sum(x>1e-7 for x in v),'regions_checked':len(v)}
     orderfile=phase/'native/cover-first-22-stages-130-pairs.json.gz';motionfile=phase/'native/motion130.json.gz'
     inputs[str(orderfile)]=sha(orderfile);inputs[str(motionfile)]=sha(motionfile)
     order=json.loads(gzip.decompress(orderfile.read_bytes()));motion=json.loads(gzip.decompress(motionfile.read_bytes()))
@@ -78,7 +81,10 @@ def main():
             if set(row['fixed_names'])!=installed:raise ValueError('installed participant coverage differs')
             moving=row['moving']
             if moving.startswith('JOIN_DRIVER'):
-                for fixed in sorted(installed):stagechecks.append({'side':side,'stage':row['stage'],'fixed':fixed,'maximum_region_common_mm3':n.common(current(side,moving),current(side,fixed))})
+                for fixed in sorted(installed):
+                    value=n.common(current(side,moving),current(side,fixed))
+                    stagechecks.append({'side':side,'stage':row['stage'],'fixed':fixed,
+                        'maximum_region_common_mm3':value,'common_upper_bound_mm3':sum_common_upper_bound([value])})
             else:
                 vector=row['start_translation_world_mm']
                 for fixed in sorted(installed):stagechecks.append({'side':side,'stage':row['stage'],'fixed':fixed,**path(side,moving,vector,fixed)})
@@ -119,7 +125,7 @@ def main():
         n.cq.exporters.export(assembly,str(out/(side+'_RETAINED_BENCH_ASSEMBLY.step')))
         print(side,'nominal uplift control and new keeper checks complete',flush=True)
     if len(stagechecks)!=130 or len(motionchecks)!=130 or len(static)!=506 or len(release)!=94:raise ValueError('incomplete audit coverage')
-    bad=[x for x in stagechecks+release if x['maximum_region_common_mm3']>1e-7]+[x for x in motionchecks+static if x['common_mm3']>1e-7]
+    bad=[x for x in stagechecks+release if x['common_upper_bound_mm3']>1e-7]+[x for x in motionchecks+static if x['common_mm3']>1e-7]
     if inputs!={p:sha(p) for p in inputs}:raise ValueError('native inputs changed')
     if any(x.startswith(('cover_capture','cover_admission','keycover_bypass')) for x in sys.modules):raise ValueError('candidate generator imported')
     report={'host':platform.node(),'verifier_sha256':sha(__file__),'input_sha256':inputs,'input_bytes_unchanged':True,'material':materials,

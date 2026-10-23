@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 from importlib import metadata, util
+import itertools
 import json
 import math
 import os
@@ -35,6 +36,12 @@ POSES = ('STOW', 'PREDOCK', 'OPEN')
 COUNTS = {'local': (46, 46, 46), 'full': (154, 154, 161)}
 SCHEMAS = {'local': 'razr-ep5-local-motion-native-v1', 'full': 'razr-ep5-full-pair-native-v1'}
 REQUIRED_INPUTS = identity.NATIVE_SOURCE_FILES | {GENERATOR, 'design/product_routing_ep5.json', ROLE_HELPER}
+ENDPOINT_MARGIN_NAMES = frozenset({
+    'A_endpoint_to_B_endpoint_SLIDE_Z_gap_mm', 'A_endpoint_to_B_endpoint_SEAT_Y_gap_mm',
+    'B_endpoint_to_low_bridge_Z_gap_mm', 'B_endpoint_to_S_SLIDE_Z_gap_mm',
+    'B_endpoint_to_S_SEAT_Y_gap_mm', 'B_endpoint_to_high_return_Z_gap_mm',
+    'B_endpoint_to_U2_Y_gap_mm', 'A_endpoint_to_S_bridge_U1_Y_gap_mm',
+    'A_endpoint_to_return_SLIDE_Z_gap_mm', 'A_endpoint_to_return_SEAT_Y_gap_mm'})
 require = identity.require
 sha = identity.sha
 utc = identity.utc
@@ -104,6 +111,78 @@ def bind_running_sources(root, snapshot):
                 'executed validation source is outside the checked commit: '+name)
 
 
+def finite_disposition(report, mode):
+    """Derive rejection from complete measured rows, never a top-level claim."""
+    rejected_poses = []
+    for pose in report['poses']:
+        label = mode+'/'+pose['pose']
+        names = set(pose['parts'])
+        pairs = identity.pair_summary(pose['complete_pair_matrix'],
+            set(itertools.combinations(sorted(names), 2)), label+' complete pairs')
+        rejected = bool(pairs['rejected_pairs'])
+        contained = pose.get('containment', {})
+        rows = contained.get('rows')
+        require(isinstance(rows, list), 'containment rows absent: '+label)
+        if mode == 'local':
+            require(rows == [] and contained.get('executed') is False,
+                    'local containment cannot be relabelled as executed')
+        else:
+            require(contained.get('parts') == 41 and len(rows) == 41
+                    and len({r.get('part') for r in rows}) == 41
+                    and {r.get('part') for r in rows} <= names,
+                    'incomplete containment inventory: '+label)
+            escaped = []
+            for row in rows:
+                require(not row.get('evaluation_failed'), 'containment evaluation failed: '+label)
+                value = row.get('outside_outer_union_mm3')
+                require(type(value) in (int, float) and math.isfinite(value) and value >= 0,
+                        'invalid containment volume: '+label)
+                require(row.get('rejected') is (value > identity.TOL), 'masked containment rejection: '+label)
+                if value > 0:
+                    require(row.get('outside_material'), 'positive outside material lacks export: '+label)
+                if row['rejected']:
+                    escaped.append(row)
+            require(contained.get('failures') == escaped
+                    and contained.get('all_material_inside_optimistic_outer_union') is (not escaped),
+                    'containment summary disagrees with actual rows: '+label)
+            rejected = bool(rejected or escaped)
+            require(pose.get('decisive_geometric_rejection_or_evaluation_failure') is rejected
+                    and pose.get('all_declared_finite_pose_checks_clear') is (not rejected),
+                    'finite-pose disposition disagrees: '+label)
+        rejected_poses.append(rejected)
+    rejected = any(rejected_poses)
+    if mode == 'local':
+        continuous = report.get('continuous_complete_endpoints', {})
+        require(continuous.get('schema') == 'razr-ep5-continuous-complete-endpoint-geometry-v1',
+                'local continuous endpoint evidence absent')
+        endpoints = continuous.get('endpoint_metrics', {})
+        require(set(endpoints) == {'A', 'B'} and all(
+            isinstance(endpoints[end], dict) and len(endpoints[end]) == 20
+            and all(name.startswith(end+'_') for name in endpoints[end])
+            and all(set(endpoints[end]) <= set(p['parts']) for p in report['poses']) for end in ('A', 'B')),
+            'continuous endpoint inventory incomplete')
+        pairs = identity.pair_summary(continuous.get('U1_to_all_20_B_endpoint_parts', {}),
+            {('U1_ALL_POSES_SMOOTH_ENCLOSURE', name) for name in endpoints['B']}, 'continuous U1 endpoint pairs')
+        margins = continuous.get('other_segment_axis_separation_margins', {})
+        require(isinstance(margins, dict) and set(margins) == ENDPOINT_MARGIN_NAMES
+                and all(type(value) in (int, float) and math.isfinite(value) and value > 0
+                        for value in margins.values()), 'continuous endpoint separation margin incomplete or failed')
+        continuous_rejected = bool(pairs['rejected_pairs'])
+        require(continuous.get('all_declared_continuous_endpoint_geometric_checks_clear') is (not continuous_rejected),
+                'continuous endpoint disposition disagrees with actual rows')
+        require(all(continuous.get(key) is False for key in identity.GO_KEYS)
+                and continuous.get('current_PAWL_or_full_external_field_checked') is False
+                and continuous.get('friction_strain_tolerance_and_physical_qualification_proved') is False,
+                'continuous endpoint study overclaims its scope')
+        rejected |= continuous_rejected
+        require(report.get('all_declared_local_geometry_checks_clear') is (not rejected),
+                'local geometric disposition disagrees with actual rows')
+    else:
+        require(report.get('geometric_rejection_found') is rejected,
+                'full geometric disposition disagrees with actual rows')
+    return rejected
+
+
 def validate_native_envelope(report, root, snapshot, mode, required_roles, verified_input=None):
     """Check run scope and commit identity; the reader owns detailed native schema checks."""
     require(report.get('schema') == SCHEMAS[mode] and report.get('native_checks_executed') is True
@@ -142,11 +221,7 @@ def validate_native_envelope(report, root, snapshot, mode, required_roles, verif
         require(report.get('whole_phone_obstacle_field_tested') is False
                 and report.get('shell_channels_generated_or_validated_by_this_mode') is False,
                 'local scene was relabelled as complete-phone validation')
-        require(type(report.get('all_declared_local_geometry_checks_clear')) is bool, 'local disposition absent')
-        rejected = not report['all_declared_local_geometry_checks_clear']
-    else:
-        require(type(report.get('geometric_rejection_found')) is bool, 'complete finite disposition absent')
-        rejected = report['geometric_rejection_found']
+    rejected = finite_disposition(report, mode)
     return {'poses': list(POSES), 'bodies': list(COUNTS[mode]),
             'declared_pairs': sum(n*(n-1)//2 for n in COUNTS[mode]),
             'finite_geometry': 'rejected' if rejected else 'clear_at_declared_scope_only'}
@@ -166,6 +241,12 @@ def validate_readback(report, native_path, snapshot, mode, verified_input=None):
     if mode == 'full':
         require(report.get('verified_original_member_input_rechecked') == verified_input,
                 'independent reader omitted or changed the explicit member identity')
+    else:
+        continuous = report.get('continuous_endpoint_readback', {})
+        require(continuous.get('cage', {}).get('flat_solids') == 1
+                and continuous.get('endpoint_pair_count') == 20
+                and continuous.get('all_endpoint_pairs_present_once') is True,
+                'independent reader omitted the declared continuous endpoint cage or pairs')
     poses = report.get('poses', [])
     require([p.get('pose') for p in poses] == list(POSES), 'independent reader omitted or repeated a finite pose')
     for pose, count in zip(poses, COUNTS[mode]):

@@ -1,0 +1,563 @@
+{
+  "schema": "razr-three-fixed-pose-complete-control-domains-canonical-ledger-v1",
+  "source_commit": "042b768903cccbd7a0995317c8598401e0318e2a",
+  "all_three_named_pose_domains_passed": true,
+  "poses": [
+    {
+      "schema": "razr-canonical-control-ledger-extract-v1",
+      "pose": "STOW",
+      "source_head": "042b768903cccbd7a0995317c8598401e0318e2a",
+      "raw_report_path": "/workspace/scratch/95cd2986fdf2/run-controls-042b7689-retry1/stow-control-domain.json",
+      "raw_report_sha256": "9ac8e25082abd78b830ff3c853ecafdb49bb063bc736da206456964340ab49cb",
+      "participants": 154,
+      "unique_participants": 154,
+      "pair_count": 11781,
+      "all_unique_unordered_pairs_rederived": true,
+      "counts_rederived": {
+        "clear": 11781
+      },
+      "methods_rederived": {
+        "identical_relative_pose": 684,
+        "continuous_relative_axis_gap": 10993,
+        "continuous_relative_axis_translation": 102,
+        "continuous_relative_affine_box_translation_enclosure": 2
+      },
+      "nonzero_common_upper_bound_rows": 0,
+      "maximum_common_upper_bound_mm3": 0.0,
+      "minimum_positive_axis_gap_mm": 0.049999999999998934,
+      "reverse_reference_frame_rows": 10,
+      "evaluation_failure_count": 0,
+      "confirmed_collision_witness_count": 0,
+      "head_bound_executed_source_count": 900,
+      "source_environment_identity_before_after_equal": true,
+      "native_seconds": 361.7289100010021,
+      "all_three_commands_seconds": 366.2849226620019,
+      "domain": {
+        "slide_mm": 0.0,
+        "descent_mm": 0.0,
+        "left_tab_mm": [
+          0.0,
+          3.0
+        ],
+        "right_tab_mm": [
+          0.0,
+          3.0
+        ],
+        "slot_flanks": [
+          [
+            -1.0,
+            1.0
+          ],
+          [
+            -1.0,
+            1.0
+          ]
+        ],
+        "KEY_offsets_mm": [
+          0.0,
+          0.0
+        ],
+        "crosshead_offsets_mm": [
+          0.0,
+          0.0
+        ],
+        "telescope_allocation": {
+          "joint_limits_mm": [
+            0.1,
+            2.9
+          ],
+          "joint_sum_mm": 8.5,
+          "nominal_joint_mm": 2.833333333333333,
+          "vertices_joint_mm": [
+            [
+              2.7,
+              2.9,
+              2.9
+            ],
+            [
+              2.9,
+              2.7,
+              2.9
+            ],
+            [
+              2.9,
+              2.9,
+              2.7
+            ]
+          ],
+          "joint_projection_bounds_mm": [
+            [
+              2.7,
+              2.9
+            ],
+            [
+              2.7,
+              2.9
+            ],
+            [
+              2.7,
+              2.9
+            ]
+          ],
+          "parameter_bounds_delta_j1_delta_j2_mm": [
+            [
+              -0.13333333333333286,
+              0.06666666666666687
+            ],
+            [
+              -0.13333333333333286,
+              0.06666666666666687
+            ]
+          ],
+          "left_right_allocations_independent": true,
+          "third_joint_is_fixed_sum_remainder": true,
+          "full_feasible_fixed_pose_allocation_covered": true
+        },
+        "parameter_order": [
+          "uL",
+          "uR",
+          "flankL",
+          "flankR",
+          "delta_j1L",
+          "delta_j2L",
+          "delta_j1R",
+          "delta_j2R"
+        ],
+        "relative_telescope_domain_reduction": "complete independent polytope linear Z projection"
+      },
+      "construction_check": {
+        "probe_controls": [
+          1.125,
+          2.375,
+          -0.4,
+          0.65
+        ],
+        "probe_parameters": [
+          1.125,
+          2.375,
+          -0.4,
+          0.65,
+          -0.13333333333333286,
+          0.06666666666666687,
+          0.06666666666666687,
+          0.06666666666666687
+        ],
+        "probe_telescope_offsets_by_side_mm": {
+          "L": [
+            2.7,
+            2.9,
+            2.899999999999999
+          ],
+          "R": [
+            2.9,
+            2.9,
+            2.6999999999999993
+          ]
+        },
+        "participants": 154,
+        "maximum_bidirectional_material_difference_mm3": 0.0,
+        "affine_law_is_code_owned_not_inferred_from_samples": true
+      },
+      "producer_execution_checks_passed": true,
+      "producer_whole_declared_domain_clear": true,
+      "independent_postguard_receipt": {
+        "schema": "razr-ep5-control-receipt-postcheck-v1",
+        "pose": "STOW",
+        "source_commit": "042b768903cccbd7a0995317c8598401e0318e2a",
+        "participant_count": 154,
+        "unique_unordered_pairs": 11781,
+        "bounded_control_receipt_checks_passed": true,
+        "geometry_recomputed_by_postcheck": false,
+        "complete_product_motion_proved": false,
+        "physical_qualification": false
+      },
+      "local_execution_command_receipt": "/workspace/scratch/95cd2986fdf2/run-controls-042b7689-retry1/runner-report.json",
+      "local_execution_command_receipt_sha256": "937296294f3e1ccd94d7868358b4489eb0f52a20a4a8de95c31dbaafa44de8f6",
+      "maximum_observed_runner_tree_RSS_bytes": 628883456,
+      "maximum_observed_shared_unreclaimable_bytes": 4502867968,
+      "resource_peaks_are_sampled_not_strict_bounds": true,
+      "complete_G2_or_physical_qualification": false,
+      "new_CAD_executed_by_this_extract": false
+    },
+    {
+      "schema": "razr-canonical-control-ledger-extract-v1",
+      "pose": "PREDOCK",
+      "source_head": "042b768903cccbd7a0995317c8598401e0318e2a",
+      "raw_report_path": "/workspace/scratch/95cd2986fdf2/run-controls-042b7689-retry2/predock-control-domain.json",
+      "raw_report_sha256": "c5ac6b84588a9303bf9e41dcca8352686e0a01130799be2bcf53adffd4d89216",
+      "participants": 154,
+      "unique_participants": 154,
+      "pair_count": 11781,
+      "all_unique_unordered_pairs_rederived": true,
+      "counts_rederived": {
+        "clear": 11781
+      },
+      "methods_rederived": {
+        "identical_relative_pose": 638,
+        "continuous_relative_axis_gap": 11045,
+        "continuous_relative_axis_translation": 96,
+        "continuous_relative_affine_box_translation_enclosure": 2
+      },
+      "nonzero_common_upper_bound_rows": 0,
+      "maximum_common_upper_bound_mm3": 0.0,
+      "minimum_positive_axis_gap_mm": 0.049999999999998934,
+      "reverse_reference_frame_rows": 6,
+      "evaluation_failure_count": 0,
+      "confirmed_collision_witness_count": 0,
+      "head_bound_executed_source_count": 900,
+      "source_environment_identity_before_after_equal": true,
+      "native_seconds": 266.8023989639987,
+      "all_three_commands_seconds": 271.8677706140006,
+      "domain": {
+        "slide_mm": 79.75,
+        "descent_mm": 0.0,
+        "left_tab_mm": [
+          3.0,
+          3.0
+        ],
+        "right_tab_mm": [
+          3.0,
+          3.0
+        ],
+        "slot_flanks": [
+          [
+            -1.0,
+            1.0
+          ],
+          [
+            -1.0,
+            1.0
+          ]
+        ],
+        "KEY_offsets_mm": [
+          0.0,
+          0.0
+        ],
+        "crosshead_offsets_mm": [
+          0.0,
+          0.0
+        ],
+        "telescope_allocation": {
+          "joint_limits_mm": [
+            0.1,
+            2.9
+          ],
+          "joint_sum_mm": 8.5,
+          "nominal_joint_mm": 2.833333333333333,
+          "vertices_joint_mm": [
+            [
+              2.7,
+              2.9,
+              2.9
+            ],
+            [
+              2.9,
+              2.7,
+              2.9
+            ],
+            [
+              2.9,
+              2.9,
+              2.7
+            ]
+          ],
+          "joint_projection_bounds_mm": [
+            [
+              2.7,
+              2.9
+            ],
+            [
+              2.7,
+              2.9
+            ],
+            [
+              2.7,
+              2.9
+            ]
+          ],
+          "parameter_bounds_delta_j1_delta_j2_mm": [
+            [
+              -0.13333333333333286,
+              0.06666666666666687
+            ],
+            [
+              -0.13333333333333286,
+              0.06666666666666687
+            ]
+          ],
+          "left_right_allocations_independent": true,
+          "third_joint_is_fixed_sum_remainder": true,
+          "full_feasible_fixed_pose_allocation_covered": true
+        },
+        "parameter_order": [
+          "uL",
+          "uR",
+          "flankL",
+          "flankR",
+          "delta_j1L",
+          "delta_j2L",
+          "delta_j1R",
+          "delta_j2R"
+        ],
+        "relative_telescope_domain_reduction": "complete independent polytope linear Z projection"
+      },
+      "construction_check": {
+        "probe_controls": [
+          3.0,
+          3.0,
+          -0.4,
+          0.65
+        ],
+        "probe_parameters": [
+          3.0,
+          3.0,
+          -0.4,
+          0.65,
+          -0.13333333333333286,
+          0.06666666666666687,
+          0.06666666666666687,
+          0.06666666666666687
+        ],
+        "probe_telescope_offsets_by_side_mm": {
+          "L": [
+            2.7,
+            2.9,
+            2.899999999999999
+          ],
+          "R": [
+            2.9,
+            2.9,
+            2.6999999999999993
+          ]
+        },
+        "participants": 154,
+        "maximum_bidirectional_material_difference_mm3": 0.0,
+        "affine_law_is_code_owned_not_inferred_from_samples": true
+      },
+      "producer_execution_checks_passed": true,
+      "producer_whole_declared_domain_clear": true,
+      "independent_postguard_receipt": {
+        "schema": "razr-ep5-control-receipt-postcheck-v1",
+        "pose": "PREDOCK",
+        "source_commit": "042b768903cccbd7a0995317c8598401e0318e2a",
+        "participant_count": 154,
+        "unique_unordered_pairs": 11781,
+        "bounded_control_receipt_checks_passed": true,
+        "geometry_recomputed_by_postcheck": false,
+        "complete_product_motion_proved": false,
+        "physical_qualification": false
+      },
+      "local_execution_command_receipt": "/workspace/scratch/95cd2986fdf2/run-controls-042b7689-retry2/runner-report.json",
+      "local_execution_command_receipt_sha256": "8c4ef44e1dab7bebd345227690a57ae83a1c43e64fdb2a64bed2b87fd6325de9",
+      "maximum_observed_runner_tree_RSS_bytes": 607272960,
+      "maximum_observed_shared_unreclaimable_bytes": 6326427648,
+      "resource_peaks_are_sampled_not_strict_bounds": true,
+      "complete_G2_or_physical_qualification": false,
+      "new_CAD_executed_by_this_extract": false
+    },
+    {
+      "schema": "razr-canonical-control-ledger-extract-v1",
+      "pose": "OPEN",
+      "source_head": "042b768903cccbd7a0995317c8598401e0318e2a",
+      "raw_report_path": "/workspace/scratch/95cd2986fdf2/run-controls-042b7689-retry3/open-control-domain.json",
+      "raw_report_sha256": "e81980eb3d36e45ecc7f1e5d5bf1ffd50f0b0ef5de113dfae813264b77a64a2e",
+      "participants": 161,
+      "unique_participants": 161,
+      "pair_count": 12880,
+      "all_unique_unordered_pairs_rederived": true,
+      "counts_rederived": {
+        "clear": 12880
+      },
+      "methods_rederived": {
+        "identical_relative_pose": 753,
+        "continuous_relative_axis_gap": 12071,
+        "continuous_relative_axis_translation": 54,
+        "continuous_relative_affine_box_translation_enclosure": 2
+      },
+      "nonzero_common_upper_bound_rows": 0,
+      "maximum_common_upper_bound_mm3": 0.0,
+      "minimum_positive_axis_gap_mm": 1.1102230246251565e-16,
+      "reverse_reference_frame_rows": 6,
+      "evaluation_failure_count": 0,
+      "confirmed_collision_witness_count": 0,
+      "head_bound_executed_source_count": 900,
+      "source_environment_identity_before_after_equal": true,
+      "native_seconds": 243.2671869959995,
+      "all_three_commands_seconds": 247.67934416199932,
+      "domain": {
+        "slide_mm": 79.75,
+        "descent_mm": 8.2,
+        "left_tab_mm": [
+          3.0,
+          3.0
+        ],
+        "right_tab_mm": [
+          3.0,
+          3.0
+        ],
+        "slot_flanks": [
+          [
+            -1.0,
+            1.0
+          ],
+          [
+            -1.0,
+            1.0
+          ]
+        ],
+        "KEY_offsets_mm": [
+          0.0,
+          0.0
+        ],
+        "crosshead_offsets_mm": [
+          0.0,
+          0.0
+        ],
+        "telescope_allocation": {
+          "joint_limits_mm": [
+            0.1,
+            2.9
+          ],
+          "joint_sum_mm": 0.3,
+          "nominal_joint_mm": 0.1,
+          "vertices_joint_mm": [
+            [
+              0.1,
+              0.1,
+              0.1
+            ]
+          ],
+          "joint_projection_bounds_mm": [
+            [
+              0.1,
+              0.1
+            ],
+            [
+              0.1,
+              0.1
+            ],
+            [
+              0.1,
+              0.1
+            ]
+          ],
+          "parameter_bounds_delta_j1_delta_j2_mm": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "left_right_allocations_independent": true,
+          "third_joint_is_fixed_sum_remainder": true,
+          "full_feasible_fixed_pose_allocation_covered": true
+        },
+        "parameter_order": [
+          "uL",
+          "uR",
+          "flankL",
+          "flankR",
+          "delta_j1L",
+          "delta_j2L",
+          "delta_j1R",
+          "delta_j2R"
+        ],
+        "relative_telescope_domain_reduction": "complete independent polytope linear Z projection"
+      },
+      "construction_check": {
+        "probe_controls": [
+          3.0,
+          3.0,
+          -0.4,
+          0.65
+        ],
+        "probe_parameters": [
+          3.0,
+          3.0,
+          -0.4,
+          0.65,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "probe_telescope_offsets_by_side_mm": {
+          "L": [
+            0.1,
+            0.1,
+            0.1
+          ],
+          "R": [
+            0.1,
+            0.1,
+            0.1
+          ]
+        },
+        "participants": 161,
+        "maximum_bidirectional_material_difference_mm3": 0.0,
+        "affine_law_is_code_owned_not_inferred_from_samples": true
+      },
+      "producer_execution_checks_passed": true,
+      "producer_whole_declared_domain_clear": true,
+      "independent_postguard_receipt": {
+        "schema": "razr-ep5-control-receipt-postcheck-v1",
+        "pose": "OPEN",
+        "source_commit": "042b768903cccbd7a0995317c8598401e0318e2a",
+        "participant_count": 161,
+        "unique_unordered_pairs": 12880,
+        "bounded_control_receipt_checks_passed": true,
+        "geometry_recomputed_by_postcheck": false,
+        "complete_product_motion_proved": false,
+        "physical_qualification": false
+      },
+      "local_execution_command_receipt": "/workspace/scratch/95cd2986fdf2/run-controls-042b7689-retry3/runner-report.json",
+      "local_execution_command_receipt_sha256": "6267f79e715305044fe8cdf2424c3a1208974969249609c2b718efbb3b316675",
+      "maximum_observed_runner_tree_RSS_bytes": 606384128,
+      "maximum_observed_shared_unreclaimable_bytes": 6838235136,
+      "resource_peaks_are_sampled_not_strict_bounds": true,
+      "complete_G2_or_physical_qualification": false,
+      "new_CAD_executed_by_this_extract": false
+    }
+  ],
+  "pose_count": 3,
+  "total_unique_pair_domains": 36442,
+  "all_declared_pair_domains_clear": true,
+  "evaluation_failure_count": 0,
+  "confirmed_collision_witness_count": 0,
+  "all_Common_upper_bounds_zero": true,
+  "locked_package_count": 43,
+  "fresh_independent_postguard_recheck_passed_for_all_three": true,
+  "source_environment_identity_unchanged_during_aggregation": true,
+  "executed_source_count_each": 900,
+  "actual_native_total_seconds": 871.7984959610003,
+  "complete_product_motion_proved": false,
+  "physical_qualification": false,
+  "formal_directed_rounding_certificate": false,
+  "geometry_recomputed_by_aggregation": false,
+  "same_CAD_kernel": true,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "hosted_Actions_execution_claimed": false,
+  "remaining_computational_scope": [
+    "continuous SLIDE",
+    "continuous SEATING",
+    "full-field accessory insertion/removal",
+    "endpoint-outside KEY and correlated crosshead backlash"
+  ],
+  "execution_history": [
+    "First startup stopped before environment execution because uv default cache was read-only; no CAD executed in that attempt.",
+    "uv cache was isolated inside each job temporary directory without changing lock requirements or resource thresholds.",
+    "STOW and PREDOCK each passed their whole domain and independent postguard; the original 2GiB preflight stopped the next pose before CAD when resources were insufficient.",
+    "PREDOCK and OPEN were resumed with explicit pose selections in fresh output directories only after the original resource preflight passed.",
+    "All failed/preflight attempts, executed runner bytes and sampled resource histories are retained."
+  ],
+  "all_pose_start_memory_preflights_bytes": 2147483648,
+  "pose_shared_command_deadline_seconds": 1200,
+  "runtime_disk_reserve_bytes": 104857600,
+  "runtime_shared_unreclaimable_limit_bytes": 7301444403,
+  "no_guard_threshold_lowered": true
+}

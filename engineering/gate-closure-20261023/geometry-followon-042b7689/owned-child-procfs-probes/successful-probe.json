@@ -1,0 +1,161 @@
+{
+  "schema": "razr-own-child-procfs-namespace-probe-v2",
+  "source_sha256": "dd0895a84a37a4959e0b03cbab75dbe8eb8bf778321736721e741da58c89062a",
+  "parent_identity": {
+    "os_getpid": 2,
+    "os_getppid": 1,
+    "proc_self_visible_pid": "423162",
+    "status": {
+      "Pid": 423162,
+      "PPid": 423161,
+      "NSpid": [
+        423162,
+        2
+      ],
+      "VmHWM_bytes": 12242944,
+      "VmRSS_bytes": 12242944
+    },
+    "stat": {
+      "pid": 423162,
+      "comm": "python",
+      "state": "R",
+      "ppid": 423161,
+      "starttime_ticks": 2822290
+    },
+    "pid_namespace": "pid:[4026532277]",
+    "pid_for_children_namespace": "pid:[4026532277]"
+  },
+  "one_child_only": true,
+  "CAD_or_FE_executed": false,
+  "unrelated_proc_entries_opened_or_scanned": false,
+  "privileges_or_access_controls_changed": false,
+  "child_address_space_limit_bytes": 134217728,
+  "child_RSS_target_bytes": 33554432,
+  "child_CPU_seconds_limit": 2,
+  "wall_budget_seconds": 9,
+  "native_guard_modified": false,
+  "mapping_verified": true,
+  "child_started": true,
+  "child_reaped": true,
+  "argv": [
+    "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+    "-I",
+    "-S",
+    "-B",
+    "/workspace/scratch/95cd2986fdf2/gates_audit/process-namespace-probe/v2/probe_child_proc_mapping.py",
+    "--child",
+    "1bf8497743e2c5e76e00a4fc4e62e290",
+    "--handshake-write-fd",
+    "4",
+    "--release-read-fd",
+    "5"
+  ],
+  "Popen_pid": 5,
+  "child_self_report": {
+    "kind": "owned_child_identity",
+    "nonce": "1bf8497743e2c5e76e00a4fc4e62e290",
+    "source_sha256": "dd0895a84a37a4959e0b03cbab75dbe8eb8bf778321736721e741da58c89062a",
+    "isolated_python": true,
+    "no_site": true,
+    "os_getpid": 5,
+    "os_getppid": 2,
+    "proc_self_visible_pid": "423165",
+    "status": {
+      "Pid": 423165,
+      "PPid": 423162,
+      "NSpid": [
+        423165,
+        5
+      ],
+      "VmHWM_bytes": 12242944,
+      "VmRSS_bytes": 12242944
+    },
+    "stat": {
+      "pid": 423165,
+      "comm": "python",
+      "state": "R",
+      "ppid": 423162,
+      "starttime_ticks": 2822296
+    },
+    "pid_namespace": "pid:[4026532277]",
+    "pid_for_children_namespace": "pid:[4026532277]"
+  },
+  "parent_read_child_proc_path": "/proc/423165",
+  "parent_read_child_identity": {
+    "status": {
+      "Pid": 423165,
+      "PPid": 423162,
+      "NSpid": [
+        423165,
+        5
+      ],
+      "VmHWM_bytes": 12324864,
+      "VmRSS_bytes": 12324864
+    },
+    "stat": {
+      "pid": 423165,
+      "comm": "python",
+      "state": "S",
+      "ppid": 423162,
+      "starttime_ticks": 2822296
+    },
+    "pid_namespace": "pid:[4026532277]",
+    "pid_for_children_namespace": "pid:[4026532277]"
+  },
+  "second_parent_read_child_identity": {
+    "status": {
+      "Pid": 423165,
+      "PPid": 423162,
+      "NSpid": [
+        423165,
+        5
+      ],
+      "VmHWM_bytes": 12324864,
+      "VmRSS_bytes": 12324864
+    },
+    "stat": {
+      "pid": 423165,
+      "comm": "python",
+      "state": "S",
+      "ppid": 423162,
+      "starttime_ticks": 2822296
+    },
+    "pid_namespace": "pid:[4026532277]",
+    "pid_for_children_namespace": "pid:[4026532277]"
+  },
+  "identity_checks": {
+    "self_getpid_is_Popen_pid": true,
+    "self_getppid_is_parent_getpid": true,
+    "procfs_status_and_stat_pid_are_visible_pid": true,
+    "procfs_parent_is_this_parent": true,
+    "NSpid_matches_self_report": true,
+    "NSpid_last_is_Popen_pid": true,
+    "NSpid_first_is_procfs_visible_pid": true,
+    "namespace_matches_child_and_parent": true,
+    "pid_for_children_namespace_matches": true,
+    "starttime_matches_child_self_report": true,
+    "positive_RSS_and_HWM": true,
+    "stable_stat_namespace_and_NSpid_after_RSS": true,
+    "child_remains_alive": true
+  },
+  "Popen_pid_differs_from_procfs_visible_pid": true,
+  "naive_Popen_proc_path_opened": false,
+  "child_exit_code": 0,
+  "all_owned_pipe_descriptors_closed": true,
+  "child_stdout_path": "/workspace/scratch/95cd2986fdf2/gates_audit/process-namespace-probe/v2/executed-attempt/child-stdout.log",
+  "child_stdout_sha256": "924e104a1fc03763998507b837a0017cb9799faece8157deba700f2bdae873e3",
+  "child_stdout_bytes": 730,
+  "child_stderr_path": "/workspace/scratch/95cd2986fdf2/gates_audit/process-namespace-probe/v2/executed-attempt/child-stderr.log",
+  "child_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "child_stderr_bytes": 0,
+  "child_finish_record": {
+    "kind": "owned_child_finished",
+    "nonce": "1bf8497743e2c5e76e00a4fc4e62e290",
+    "self_ru_maxrss_bytes": 12189696,
+    "elapsed_seconds": 0.0007936799993331078
+  },
+  "child_self_peak_below_32MiB": true,
+  "elapsed_seconds": 0.037779974001750816,
+  "source_unchanged": true,
+  "diagnostic_passed": true
+}
