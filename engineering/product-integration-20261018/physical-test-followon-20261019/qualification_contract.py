@@ -407,6 +407,40 @@ def evaluate(manifest, analysis, rows, calibrations, evidence_root, repository,
         result['blockers'].append('insufficient_contiguous_hands_off_duration')
 
     observed, coverage = metric_observations(rows, calibrations, analysis)
+    # A range from a partial cycle is only a lower bound on its full range.
+    # Nonmissing channel cells in the surviving rows do not establish that the
+    # planned phases or sampling protocol were actually observed. Keep this
+    # coverage distinct from channel missingness, and retain upper-limit
+    # failures that a partial range can already prove.
+    protocol_coverage = []
+    for cycle in cycles:
+        members = [row for row in rows if row['cycle'] == cycle['cycle']]
+        reasons = []
+        if not cycle['matches_declared_phase_labels']:
+            reasons.append('incomplete_or_misordered_phases')
+        minimum_samples = validated.get('minimum_samples_per_phase')
+        if minimum_samples is None:
+            reasons.append('minimum_samples_per_phase_undeclared')
+        elif any(phase['sample_count'] < minimum_samples for phase in cycle['phase_results']):
+            reasons.append('insufficient_samples_in_phase')
+        maximum_gap = validated.get('maximum_sampling_gap_s')
+        if maximum_gap is None:
+            reasons.append('maximum_sampling_gap_undeclared')
+        elif any(finite(b['t_s'] - a['t_s'] + alignment_span, 'cycle gap including alignment error')
+                 > maximum_gap for a, b in zip(members, members[1:])):
+            reasons.append('sampling_gap_exceeds_predeclared_limit')
+        protocol_coverage.append({'cycle': cycle['cycle'], 'complete': not reasons, 'reasons': reasons})
+    for metric, (_, direction) in METRICS.items():
+        if direction != 'range':
+            continue
+        info = coverage.setdefault(metric, {
+            'complete': True, 'missing_observations': 0,
+            'intervals_complete': [True] * len(cycles)})
+        info['channel_coverage_complete'] = info['complete']
+        info['cycle_protocol_coverage'] = protocol_coverage
+        info['intervals_complete'] = [channel and protocol['complete']
+                                      for channel, protocol in zip(info['intervals_complete'], protocol_coverage)]
+        info['complete'] = all(info['intervals_complete'])
     declarations = plan.get('criteria', {})
     if not isinstance(declarations, dict) or set(declarations) - set(METRICS):
         raise ValueError('unsupported qualification metric')
@@ -450,8 +484,14 @@ def evaluate(manifest, analysis, rows, calibrations, evidence_root, repository,
             states.append(state)
         status = combine(states)
         if not info['complete']:
-            reason = ('measured_limit_exceedance_with_incomplete_channel_coverage' if status == 'fail'
-                      else 'required_channel_missing_incomplete_or_overrange')
+            protocol_incomplete = (direction == 'range'
+                                   and not all(p['complete'] for p in info['cycle_protocol_coverage']))
+            if protocol_incomplete:
+                reason = ('measured_limit_exceedance_with_incomplete_observation_coverage' if status == 'fail'
+                          else 'required_range_observation_coverage_incomplete')
+            else:
+                reason = ('measured_limit_exceedance_with_incomplete_channel_coverage' if status == 'fail'
+                          else 'required_channel_missing_incomplete_or_overrange')
         elif status == 'unknown' and reason is None:
             reason = 'measurement_uncertainty_straddles_acceptance_limit'
         result['criteria'].append({'metric': metric, 'unit': unit, 'sampled_intervals': intervals,

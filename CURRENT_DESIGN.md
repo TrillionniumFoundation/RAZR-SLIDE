@@ -27,7 +27,7 @@ The implementation baseline is `a1b3cc1e0773446f2e36d0a607edf61211dd9919`. The d
 
 ## Validation and research boundaries
 
-Configured unit manifest: **1558 tests / 36 suites**. Run `uv run --locked python -B tools/verify.py`. Run `python3 tools/sync_current_design.py --check` to check these entry points.
+Configured unit manifest: **1564 tests / 36 suites**. Run `uv run --locked python -B tools/verify.py`. Run `python3 tools/sync_current_design.py --check` to check these entry points.
 
 Functional source 042b768903cccbd7a0995317c8598401e0318e2a: 1558 actual tests / 36 suites passed, zero failures/errors/skips, 43 locked packages and required source bytes unchanged. EP4: 15886 pair rows and 55 retained geometry rejections. EP5: 154/154/161 bodies, 36442 finite pair rows, 123 outer-union containments, independent STEP/endpoint readers passed. Three declared fixed-pose control domains: 36442 unique pairs, zero evaluation errors or collision witnesses. Original ten native jobs / 37 commands retain their e76 identity. Follow-on diagnostics record actual passes, numerical rejection, interrupted trials and refused startups separately. Hosted run 39917795794: 18 failed and one skipped job, zero steps/runners/artifacts, current cause unknown. No whole-product or physical/manufacturing acceptance follows.
 

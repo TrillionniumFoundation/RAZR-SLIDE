@@ -410,6 +410,73 @@ class QualificationContract(unittest.TestCase):
         self.assertIn('incomplete_or_misordered_cycle_observations', r['blockers'])
         self.assertIn('sampling_gap_exceeds_predeclared_limit', r['blockers'])
 
+    def set_all_range_channels_constant(self):
+        for row in self.rows:
+            row['left_y_mm'] = row['right_y_mm'] = row['oled_tail_y_mm'] = 0.
+            row['left_z_mm'] = row['right_z_mm'] = 0.
+
+    def assert_incomplete_ranges_unknown(self, report, reason):
+        for metric in ('stroke_y_mm', 'stroke_z_mm', 'oled_tail_travel_mm'):
+            with self.subTest(metric=metric):
+                item = self.criterion(report, metric)
+                self.assertEqual(item['status'], 'unknown')
+                self.assertFalse(item['observation_coverage']['complete'])
+                self.assertTrue(item['observation_coverage']['channel_coverage_complete'])
+                self.assertIn(reason, item['observation_coverage']['cycle_protocol_coverage'][0]['reasons'])
+        self.assertEqual(report['qualification']['status'], 'unknown')
+
+    def test_missing_motion_phases_cannot_prove_short_stroke(self):
+        self.physical_schema_fixture()
+        self.rows = [r for r in self.rows if r['phase'] in ('LOCKED_BASELINE', 'LOCKED_FINAL')]
+        self.write_rows()
+        self.assert_incomplete_ranges_unknown(self.analyse(), 'incomplete_or_misordered_phases')
+
+    def test_sampling_gap_cannot_prove_short_range_from_surviving_channel_cells(self):
+        self.physical_schema_fixture()
+        self.set_all_range_channels_constant()
+        self.rows.pop(10)  # The phase still meets its two-sample minimum.
+        self.write_rows()
+        self.assert_incomplete_ranges_unknown(self.analyse(), 'sampling_gap_exceeds_predeclared_limit')
+
+    def test_undersampled_phase_cannot_prove_short_range(self):
+        self.physical_schema_fixture()
+        self.set_all_range_channels_constant()
+        self.rows.pop(10); self.rows.pop(9)
+        self.plan['measurement_requirements']['maximum_sampling_gap_s'] = .5
+        self.commit_plan(); self.write_rows()
+        self.assert_incomplete_ranges_unknown(self.analyse(), 'insufficient_samples_in_phase')
+
+    def test_incomplete_range_still_proves_upper_limit_violation(self):
+        self.physical_schema_fixture()
+        self.rows = [r for r in self.rows if r['phase'] in ('LOCKED_BASELINE', 'LOCKED_FINAL')]
+        self.rows[-1].update(left_y_mm=100., right_y_mm=100., left_z_mm=20., right_z_mm=20.,
+                             oled_tail_y_mm=100.)
+        self.write_rows()
+        report = self.analyse()
+        for metric in ('stroke_y_mm', 'stroke_z_mm', 'oled_tail_travel_mm'):
+            with self.subTest(metric=metric):
+                item = self.criterion(report, metric)
+                self.assertEqual(item['status'], 'fail')
+                self.assertFalse(item['observation_coverage']['complete'])
+        self.assertEqual(report['qualification']['status'], 'fail')
+
+    def test_real_extremum_failure_survives_incomplete_short_stroke(self):
+        self.physical_schema_fixture()
+        self.rows = [r for r in self.rows if r['phase'] in ('LOCKED_BASELINE', 'LOCKED_FINAL')]
+        self.rows[0]['operator_force_N'] = 8.
+        self.write_rows()
+        report = self.analyse()
+        self.assertEqual(self.criterion(report, 'stroke_y_mm')['status'], 'unknown')
+        self.assertEqual(self.criterion(report, 'operator_force_max_N')['status'], 'fail')
+        self.assertEqual(report['qualification']['status'], 'fail')
+
+    def test_missing_range_sampling_requirement_does_not_prove_lower_limit_failure(self):
+        self.physical_schema_fixture()
+        self.set_all_range_channels_constant()
+        self.plan['measurement_requirements']['minimum_samples_per_phase'] = None
+        self.commit_plan(); self.write_rows()
+        self.assert_incomplete_ranges_unknown(self.analyse(), 'minimum_samples_per_phase_undeclared')
+
     def test_short_hands_off_cannot_pass(self):
         self.physical_schema_fixture()
         holds = [i for i, r in enumerate(self.rows) if r['phase'] == 'HANDS_OFF_OPEN']

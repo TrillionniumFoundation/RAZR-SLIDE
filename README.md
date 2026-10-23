@@ -9,7 +9,7 @@ Exact functional source 042b7689 passed all 1558 actual tests in 36 locked suite
 
 The active milestone is a common assembly with flat OLED storage, complete terminations, A/B cell reservations and an operable manual cycle. Measured parts, source specifications and project assumptions retain separate identities.
 
-Configured unit validation: **1558 tests / 36 suites** in `tools/test_suites.json`. Completed execution reports retain their exact commit and scope in `design/current_product.json`; a configured count is not an execution result.
+Configured unit validation: **1564 tests / 36 suites** in `tools/test_suites.json`. Completed execution reports retain their exact commit and scope in `design/current_product.json`; a configured count is not an execution result.
 
 Functional source 042b768903cccbd7a0995317c8598401e0318e2a: 1558 actual tests / 36 suites passed, zero failures/errors/skips, 43 locked packages and required source bytes unchanged. EP4: 15886 pair rows and 55 retained geometry rejections. EP5: 154/154/161 bodies, 36442 finite pair rows, 123 outer-union containments, independent STEP/endpoint readers passed. Three declared fixed-pose control domains: 36442 unique pairs, zero evaluation errors or collision witnesses. Original ten native jobs / 37 commands retain their e76 identity. Follow-on diagnostics record actual passes, numerical rejection, interrupted trials and refused startups separately. Hosted run 39917795794: 18 failed and one skipped job, zero steps/runners/artifacts, current cause unknown. No whole-product or physical/manufacturing acceptance follows.
 
