@@ -139,13 +139,12 @@ def readback(sources, source_id, specimen, expected_binding):
 
 
 def import_identity(manifest, record, sources, data):
+    interfaces.validate_donor_fields(data.get('donor'))
     fields = manifest.get('field_evidence', {})
-    require(isinstance(fields, dict) and set(fields) <= set(data['donor']), 'unknown donor identity field')
-    donor = {key: None for key in data['donor']}
-    physical = {'mainboard_revision', 'display_module_part', 'display_module_revision',
-                'touch_revision', 'pack_A_label', 'pack_B_label'}
+    require(isinstance(fields, dict) and set(fields) <= set(interfaces.DONOR_FIELDS), 'unknown donor identity field')
+    donor = {key: None for key in interfaces.DONOR_FIELDS}
     for key, field in fields.items():
-        require(interfaces.observed_field_bound(field, sources, key in physical), 'unsupported identity evidence: '+key)
+        require(interfaces.observed_field_bound(field, sources, key in interfaces.PHYSICAL_DONOR_FIELDS), 'unsupported identity evidence: '+key)
         donor[key] = field['value']
     capture_id = manifest.get('device_readback_observation')
     capture = readback(sources, capture_id, record['specimen_id'], record['design_binding'])

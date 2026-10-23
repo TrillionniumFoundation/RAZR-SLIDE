@@ -176,11 +176,69 @@ class HardwareEvidenceTests(unittest.TestCase):
         manifest['part_inventory'] = []
         result = self.apply_identity(manifest)
         self.assertEqual(result['summary']['known_identity_fields'], 1)
+        self.assertEqual(set(result['summary']['unknown_identity_fields']),
+                         set(interfaces.DONOR_FIELDS) - {'model'})
         self.assertEqual(result['summary']['physical_parts_with_original_labels'], 0)
         self.assertEqual(len(result['summary']['missing_inventory_roles']), 7)
         self.assertFalse(result['summary']['platform_frozen'])
         self.assertFalse(interfaces.donor_identity_bound(self.data, self.root))
         self.assertFalse(self.data['architecture_decision']['actual_donor_selected'])
+
+    def test_donor_schema_cannot_drop_unknown_fields_or_add_unreviewed_fields(self):
+        for field in interfaces.DONOR_FIELDS:
+            data = copy.deepcopy(self.data)
+            data['donor'].pop(field)
+            with self.subTest(missing=field), self.assertRaisesRegex(ValueError, 'complete schema-owned'):
+                interfaces.validate_config(data, self.root)
+            self.assertFalse(interfaces.donor_identity_bound(data, self.root))
+        for invalid in (None, [], {}, {'model': 'SYNTHETIC-ADB-MODEL'},
+                        {**self.data['donor'], 'unreviewed_field': 'synthetic'}):
+            data = copy.deepcopy(self.data)
+            data['donor'] = invalid
+            with self.subTest(donor=invalid), self.assertRaisesRegex(ValueError, 'complete schema-owned'):
+                interfaces.validate_config(data, self.root)
+            self.assertFalse(interfaces.donor_identity_bound(data, self.root))
+
+    def test_reduced_donor_import_cannot_report_zero_unknown_identities(self):
+        # Regression: the old importer used the mutable donor keys as the
+        # requirements. Model-only config imported and then bound as complete.
+        self.data['donor'] = {'model': None}
+        self.write_config()
+        manifest = self.identity_manifest()
+        with self.assertRaisesRegex(ValueError, 'complete schema-owned'):
+            self.execute(manifest, 'reduced-identity')
+        self.assertFalse((self.root/'records/reduced-identity').exists())
+        # Direct programmatic imports use the same guard as the file entry.
+        with self.assertRaisesRegex(ValueError, 'complete schema-owned'):
+            hardware.import_identity(manifest, {}, {}, self.data)
+
+    def test_rehashed_matching_record_cannot_bless_deleted_identity_requirements(self):
+        self.apply_identity()
+        self.assertTrue(interfaces.donor_identity_bound(self.data, self.root))
+        reference = self.data['donor_evidence']['identity_record']
+        path = self.root/reference['path']
+        record = json.loads(path.read_text())
+        self.data['donor'].pop('mainboard_revision')
+        record['donor'].pop('mainboard_revision')
+        record['field_evidence'].pop('mainboard_revision')
+        path.write_text(json.dumps(record))
+        reference['sha256'] = interfaces.sha(path)
+        self.write_config()
+        self.assertFalse(interfaces.donor_identity_bound(self.data, self.root))
+        self.data['architecture_decision']['actual_donor_selected'] = True
+        with self.assertRaisesRegex(ValueError, 'complete schema-owned'):
+            interfaces.validate_config(self.data, self.root)
+
+    def test_full_unknown_inventory_is_valid_but_malformed_values_are_rejected(self):
+        self.data['donor'] = dict.fromkeys(interfaces.DONOR_FIELDS)
+        interfaces.validate_config(self.data, self.root)
+        self.assertFalse(interfaces.donor_identity_bound(self.data, self.root))
+        for value in ('', '  ', 1, True, [], ['valid', '']):
+            data = copy.deepcopy(self.data)
+            data['donor']['model'] = value
+            with self.subTest(value=value), self.assertRaisesRegex(ValueError, 'observed text or null'):
+                interfaces.validate_config(data, self.root)
+            self.assertFalse(interfaces.donor_identity_bound(data, self.root))
 
     def test_observed_identity_fields_do_not_turn_OEM_catalog_into_part_labels(self):
         manifest = self.identity_manifest()

@@ -1,6 +1,7 @@
 """CI coverage and provenance regressions; all generated test reports are synthetic."""
 import copy
 import importlib.util
+import itertools
 import json
 from pathlib import Path
 import subprocess
@@ -23,18 +24,63 @@ ROLES = {'local': {'design/product_geometry.json': 'synthetic local config'},
 SOURCES = {name: 'f'*64 for name in ep5.REQUIRED_INPUTS | {ep5.READER, ep5.HELPER, ep5.DRIVER, ep5.IDENTITY, ep5.MEMBER_HELPER} | set(ROLES['full'])}
 
 
+def pair_fixture(pairs):
+    rows = [{'a': a, 'b': b, 'common_mm3': 0., 'rejected': False} for a, b in pairs]
+    return {'rows': rows, 'pair_count': len(rows), 'failures': [],
+            'no_Common_above_tolerance_or_evaluation_error': True,
+            'all_positive_Common_artifact_diagnostics_complete': True}
+
+
+def reject_pair(matrix):
+    row = matrix['rows'][0]
+    row.update(common_mm3=.25, rejected=True, artifact_diagnostics_complete=True,
+               common_material={'file': 'synthetic-Common.step'},
+               local_material_context={'file': 'synthetic-context.step'})
+    matrix['failures'] = [row]
+    matrix['no_Common_above_tolerance_or_evaluation_error'] = False
+
+
+def reject_native_fixture(report, mode):
+    pose = report['poses'][0]
+    reject_pair(pose['complete_pair_matrix'])
+    if mode == 'full':
+        pose['decisive_geometric_rejection_or_evaluation_failure'] = True
+        pose['all_declared_finite_pose_checks_clear'] = False
+        report['geometric_rejection_found'] = True
+    else:
+        report['all_declared_local_geometry_checks_clear'] = False
+
+
 def native_fixture(root, mode):
     counts = ep5.COUNTS[mode]
     result = {'schema': ep5.SCHEMAS[mode], 'native_checks_executed': True, 'source_bytes_unchanged': True,
         'source_sha256': {str(root/name): digest for name, digest in SOURCES.items()},
         'selected_poses': list(ep5.POSES), 'poses': [], 'declared_input_roles': ROLES[mode], **{key: False for key in ep5.identity.NATIVE_GO_KEYS}}
+    endpoint_names = {end: {end+'_part'+str(i) for i in range(20)} for end in ('A', 'B')}
+    candidates = {'EP5_finite_material'} | endpoint_names['A'] | endpoint_names['B']
     for label, count in zip(ep5.POSES, counts):
+        names = candidates | {'external'+str(i) for i in range(count-41)}
+        contained = {'parts': 41, 'rows': [{'part': name, 'outside_outer_union_mm3': 0., 'rejected': False}
+            for name in sorted(candidates)], 'failures': [], 'all_material_inside_optimistic_outer_union': True}
         result['poses'].append({'pose': label, 'combined_participants': count, 'candidate_participants': 41,
-            'external_participants': count-41, 'parts': {str(i): {} for i in range(count)},
-            'complete_pair_matrix': {'pair_count': count*(count-1)//2}})
+            'external_participants': count-41, 'parts': {name: {} for name in names},
+            'complete_pair_matrix': pair_fixture(itertools.combinations(sorted(names), 2)),
+            'containment': {'rows': [], 'executed': False} if mode == 'local' else contained,
+            'decisive_geometric_rejection_or_evaluation_failure': False,
+            'all_declared_finite_pose_checks_clear': True})
     if mode == 'local':
         result.update(whole_phone_obstacle_field_tested=False,
-            shell_channels_generated_or_validated_by_this_mode=False, all_declared_local_geometry_checks_clear=True)
+            shell_channels_generated_or_validated_by_this_mode=False, all_declared_local_geometry_checks_clear=True,
+            continuous_complete_endpoints={
+                'schema': 'razr-ep5-continuous-complete-endpoint-geometry-v1',
+                'endpoint_metrics': {end: {name: {} for name in names} for end, names in endpoint_names.items()},
+                'U1_to_all_20_B_endpoint_parts': pair_fixture(
+                    ('U1_ALL_POSES_SMOOTH_ENCLOSURE', name) for name in sorted(endpoint_names['B'])),
+                'other_segment_axis_separation_margins': {name: 1. for name in ep5.ENDPOINT_MARGIN_NAMES},
+                'all_declared_continuous_endpoint_geometric_checks_clear': True,
+                'current_PAWL_or_full_external_field_checked': False,
+                'friction_strain_tolerance_and_physical_qualification_proved': False,
+                **{key: False for key in ep5.identity.GO_KEYS}})
     else:
         result['geometric_rejection_found'] = False
     return result
@@ -47,6 +93,8 @@ def reader_fixture(native_path, mode):
         'independent_process_from_generator': True, 'geometry_generator_modules_imported': False,
         'full_source_material_equivalence_proved': False, 'STEP_label_identity_proved': False,
         'continuous_interference_clearance_proved': False,
+        'continuous_endpoint_readback': {'cage': {'flat_solids': 1}, 'endpoint_pair_count': 20,
+                                        'all_endpoint_pairs_present_once': True},
         'poses': [{'pose': label, 'assembly': {'flat_solids': count},
             'full_pair_count': count*(count-1)//2, 'all_pairs_present_once': True}
             for label, count in zip(ep5.POSES, ep5.COUNTS[mode])],
@@ -101,13 +149,58 @@ class ProductEP5NativeValidationTests(unittest.TestCase):
                 with self.assertRaises(ValueError): ep5.validate_native_envelope(data, self.root, SOURCES, 'full', ROLES['full'])
 
     def test_geometric_rejection_is_retained_without_product_release(self):
-        data = native_fixture(self.root, 'full'); data['geometric_rejection_found'] = True
+        data = native_fixture(self.root, 'full'); reject_native_fixture(data, 'full')
         result = ep5.validate_native_envelope(data, self.root, SOURCES, 'full', ROLES['full'])
         self.assertEqual(result['finite_geometry'], 'rejected')
         for key in ep5.identity.NATIVE_GO_KEYS:
             altered = copy.deepcopy(data); altered[key] = True
             with self.assertRaisesRegex(ValueError, 'claims release'):
                 ep5.validate_native_envelope(altered, self.root, SOURCES, 'full', ROLES['full'])
+
+    def test_full_pose_and_global_dispositions_cannot_hide_actual_pair_rejection(self):
+        for field in ('geometric_rejection_found', 'decisive_geometric_rejection_or_evaluation_failure',
+                      'all_declared_finite_pose_checks_clear'):
+            data = native_fixture(self.root, 'full'); reject_native_fixture(data, 'full')
+            if field == 'geometric_rejection_found': data[field] = False
+            else: data['poses'][0][field] = field.startswith('all_')
+            with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'disposition'):
+                ep5.validate_native_envelope(data, self.root, SOURCES, 'full', ROLES['full'])
+
+    def test_pair_or_containment_raw_failures_cannot_be_erased_from_summaries(self):
+        for field in ('pair', 'containment'):
+            data = native_fixture(self.root, 'full'); pose = data['poses'][0]
+            if field == 'pair': pose['complete_pair_matrix']['rows'][0]['common_mm3'] = .25
+            else: pose['containment']['rows'][0]['outside_outer_union_mm3'] = .25
+            with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'masked'):
+                ep5.validate_native_envelope(data, self.root, SOURCES, 'full', ROLES['full'])
+
+    def test_local_or_continuous_endpoint_rejections_cannot_be_masked_by_clear_flag(self):
+        for scope in ('finite', 'continuous'):
+            data = native_fixture(self.root, 'local')
+            if scope == 'finite': reject_native_fixture(data, 'local')
+            else:
+                continuous = data['continuous_complete_endpoints']
+                reject_pair(continuous['U1_to_all_20_B_endpoint_parts'])
+                continuous['all_declared_continuous_endpoint_geometric_checks_clear'] = False
+                data['all_declared_local_geometry_checks_clear'] = False
+            self.assertEqual(ep5.validate_native_envelope(data, self.root, SOURCES, 'local', ROLES['local'])['finite_geometry'], 'rejected')
+            data['all_declared_local_geometry_checks_clear'] = True
+            with self.subTest(scope=scope), self.assertRaisesRegex(ValueError, 'disposition'):
+                ep5.validate_native_envelope(data, self.root, SOURCES, 'local', ROLES['local'])
+
+    def test_omitted_endpoint_pair_margin_or_local_readback_cannot_pass(self):
+        for change in ('pair', 'margin', 'nonfinite_margin', 'continuous_flag'):
+            data = native_fixture(self.root, 'local'); continuous = data['continuous_complete_endpoints']
+            if change == 'pair': continuous['U1_to_all_20_B_endpoint_parts']['rows'].pop()
+            elif change == 'margin': continuous['other_segment_axis_separation_margins'].pop(next(iter(ep5.ENDPOINT_MARGIN_NAMES)))
+            elif change == 'nonfinite_margin': continuous['other_segment_axis_separation_margins'][next(iter(ep5.ENDPOINT_MARGIN_NAMES))] = float('nan')
+            else: continuous['all_declared_continuous_endpoint_geometric_checks_clear'] = False
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                ep5.validate_native_envelope(data, self.root, SOURCES, 'local', ROLES['local'])
+        path = self.base/'synthetic-native.json'; path.write_text('{}\n')
+        data = reader_fixture(path, 'local'); data.pop('continuous_endpoint_readback')
+        with self.assertRaisesRegex(ValueError, 'endpoint cage or pairs'):
+            ep5.validate_readback(data, path, SOURCES, 'local')
 
     def test_reader_must_cover_all_bodies_pairs_and_each_pose(self):
         path = self.base/'synthetic-native.json'; path.write_text('{}\n')
@@ -223,7 +316,7 @@ class ProductEP5NativeValidationTests(unittest.TestCase):
                 if command[2] == str(self.root/ep5.GENERATOR):
                     mode = 'local' if '--native-local-motion' in command else 'full'
                     data = native_fixture(self.root, mode)
-                    if mode == 'full': data['geometric_rejection_found'] = True
+                    if mode == 'full': reject_native_fixture(data, mode)
                     (folder/'native-report.json').write_text(json.dumps(data))
                 else:
                     path = Path(command[command.index('--manifest')+1]); mode = path.parent.name

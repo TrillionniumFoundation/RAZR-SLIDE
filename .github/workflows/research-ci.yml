@@ -2,9 +2,9 @@ name: Research validation
 
 on:
   push:
-    branches: [main, work/cover-assembly-order-20261014, work/gate-closure-20261022]
+    branches: [main, 'work/**', 'fix/**']
   pull_request:
-    branches: [main]
+    branches: [main, 'work/**', 'fix/**']
     types: [opened, synchronize, reopened, ready_for_review]
   workflow_dispatch:
 
@@ -16,10 +16,41 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  unit:
-    name: full-unit-suites
-    runs-on: ubuntu-24.04
-    timeout-minutes: 30
+  # ubuntu-slim has a provider-enforced 15 minute job limit. Every suite is
+  # isolated; the aggregate below requires all manifest suites at one exact
+  # source, lock, run and attempt. Heavy native gates remain independent.
+  unit-plan:
+    name: plan-current-unit-suites
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          sparse-checkout: tools
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: '0.10.10'
+          python-version: '3.12'
+          enable-cache: false
+      - id: matrix
+        name: Select every suite from the checked manifest
+        run: |
+          suite_matrix=$(uv run --no-project --python 3.12 python -B tools/aggregate_unit_shards.py --print-matrix)
+          echo "matrix=$suite_matrix" >> "$GITHUB_OUTPUT"
+
+  unit-shard:
+    name: unit-${{ matrix.id }}
+    needs: unit-plan
+    runs-on: ubuntu-slim
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix: ${{ fromJSON(needs.unit-plan.outputs.matrix) }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -37,17 +68,79 @@ jobs:
         with:
           version: '0.10.10'
           python-version: '3.12'
-          enable-cache: true
-      - name: Install locked research dependencies
-        run: uv sync --locked
-      - name: Run every current suite
-        run: uv run --locked python -B tools/verify.py --output "$RUNNER_TEMP/razr-unit"
-      - name: Preserve all unit results
+          enable-cache: false
+      - name: Install exact locked research dependencies
+        run: uv sync --locked --no-cache
+      - name: Execute this suite with interpreter, package and source verification
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          SUITE_ID: ${{ matrix.id }}
+        run: >-
+          uv run --locked python -B tools/verify.py
+          --expected-head "$EXPECTED_HEAD"
+          --suite "$SUITE_ID"
+          --output "$RUNNER_TEMP/razr-unit"
+      - name: Preserve this suite including failure evidence
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: research-unit-${{ github.run_id }}-${{ github.run_attempt }}
+          name: research-unit-shard-${{ matrix.id }}-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/razr-unit
+          if-no-files-found: warn
+          retention-days: 14
+
+  unit:
+    name: full-unit-suites
+    if: always()
+    needs: [unit-plan, unit-shard]
+    runs-on: ubuntu-slim
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/archive/blobs/
+            !/baselines/**
+            /baselines/**/*.py
+            /baselines/**/*.md
+            /baselines/**/*.json
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: '0.10.10'
+          python-version: '3.12'
+          enable-cache: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: research-unit-shard-*-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/razr-unit-shards
+          merge-multiple: false
+      - name: Verify exact complete coverage and raw result identities
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          uv run --no-project --python 3.12 python -B tools/aggregate_unit_shards.py
+          --artifacts "$RUNNER_TEMP/razr-unit-shards"
+          --expected-head "$EXPECTED_HEAD"
+          --run-id "$GITHUB_RUN_ID"
+          --run-attempt "$GITHUB_RUN_ATTEMPT"
+          --output "$RUNNER_TEMP/razr-unit-aggregate.json"
+      - name: Require every shard job to finish successfully
+        env:
+          PLAN_RESULT: ${{ needs.unit-plan.result }}
+          SHARD_RESULT: ${{ needs.unit-shard.result }}
+        run: |
+          test "$PLAN_RESULT" = success
+          test "$SHARD_RESULT" = success
+      - name: Preserve complete unit coverage receipt
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: research-unit-aggregate-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/razr-unit-aggregate.json
           if-no-files-found: warn
           retention-days: 14
 
@@ -137,6 +230,8 @@ jobs:
           enable-cache: true
       - name: Install locked research dependencies
         run: uv sync --locked
+      - name: Verify interpreter and every locked package version
+        run: uv run --locked python -B tools/check_environment.py
       - name: Generate and independently reread this native study
         run: ${{ matrix.commands }}
       - name: Preserve this study including failures
@@ -172,6 +267,8 @@ jobs:
           enable-cache: true
       - name: Install locked research dependencies
         run: uv sync --locked
+      - name: Verify interpreter and every locked package version
+        run: uv run --locked python -B tools/check_environment.py
       - name: Execute all finite product scenes and independent STEP readback
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -213,6 +310,8 @@ jobs:
           enable-cache: true
       - name: Install locked research dependencies
         run: uv sync --locked
+      - name: Verify interpreter and every locked package version
+        run: uv run --locked python -B tools/check_environment.py
       - name: Execute local and complete EP5 scenes with independent STEP readback
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -234,7 +333,7 @@ jobs:
     name: current-suites
     if: always()
     needs: [unit, native, product-native, product-native-ep5]
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     timeout-minutes: 5
     steps:
       - name: Require all independent checks to succeed

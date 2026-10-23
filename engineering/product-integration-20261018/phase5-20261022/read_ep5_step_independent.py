@@ -43,6 +43,12 @@ REQUIRED_SOURCE_ROLES = (
     'integration/product_interfaces.py','design/product_routing_ep4.json',
     'integration/product_assembly.py','design/product_geometry.json',
     'integration/oled_storage.py')
+ENDPOINT_MARGIN_NAMES = {
+    'A_endpoint_to_B_endpoint_SLIDE_Z_gap_mm', 'A_endpoint_to_B_endpoint_SEAT_Y_gap_mm',
+    'B_endpoint_to_low_bridge_Z_gap_mm', 'B_endpoint_to_S_SLIDE_Z_gap_mm',
+    'B_endpoint_to_S_SEAT_Y_gap_mm', 'B_endpoint_to_high_return_Z_gap_mm',
+    'B_endpoint_to_U2_Y_gap_mm', 'A_endpoint_to_S_bridge_U1_Y_gap_mm',
+    'A_endpoint_to_return_SLIDE_Z_gap_mm', 'A_endpoint_to_return_SEAT_Y_gap_mm'}
 
 def finite_nonnegative(value):
     return type(value) in (int,float) and math.isfinite(value) and value>=0
@@ -129,6 +135,72 @@ def validate_containment(contained,parts,local_only):
             'containment summary inconsistent')
 
 
+def validate_continuous_endpoints(continuous):
+    """Check the local enclosure's complete native inventory and disposition."""
+    require(isinstance(continuous,dict)
+            and continuous.get('schema')=='razr-ep5-continuous-complete-endpoint-geometry-v1',
+            'continuous endpoint report missing')
+    endpoints=continuous.get('endpoint_metrics',{})
+    require(isinstance(endpoints,dict) and set(endpoints)=={'A','B'}
+            and all(isinstance(endpoints[end],dict)
+                and set(endpoints[end])=={end+'_'+name for name in ENDPOINT_PART_NAMES}
+                for end in ('A','B')), 'complete continuous endpoint role inventory differs')
+    cage=continuous.get('U1_cage',{})
+    matrix=continuous.get('U1_to_all_20_B_endpoint_parts',{})
+    parts={'U1_ALL_POSES_SMOOTH_ENCLOSURE':cage,**endpoints['B']}
+    validate_pair_rows(matrix,parts)
+    pairs=[(r.get('a'),r.get('b')) for r in matrix['rows']]
+    required={('U1_ALL_POSES_SMOOTH_ENCLOSURE',name) for name in endpoints['B']}
+    require(len(pairs)==len(set(pairs))==matrix.get('pair_count')==20 and set(pairs)==required,
+            'complete continuous endpoint pair inventory differs')
+    margins=continuous.get('other_segment_axis_separation_margins',{})
+    require(isinstance(margins,dict) and set(margins)==ENDPOINT_MARGIN_NAMES
+            and all(finite_nonnegative(value) and value>0 for value in margins.values()),
+            'continuous endpoint positive margin inventory differs')
+    rejected=any(r['common_mm3']>1e-7 for r in matrix['rows'])
+    require(continuous.get('all_declared_continuous_endpoint_geometric_checks_clear') is (not rejected),
+            'continuous endpoint disposition disagrees with actual rows')
+    for key in ('candidate_go','fixture_fabrication_go','manufacturing_go',
+                'current_PAWL_or_full_external_field_checked',
+                'friction_strain_tolerance_and_physical_qualification_proved'):
+        require(continuous.get(key) is False,'continuous endpoint report overclaims its scope')
+    return rejected
+
+
+def validate_disposition(native,local_only):
+    """A retained rejection cannot be overwritten by pose or report booleans."""
+    def rejected_rows(rows,quantity,label):
+        require(isinstance(rows,list),label+' rows absent')
+        for row in rows:
+            value=row.get(quantity)
+            require(finite_nonnegative(value),label+' nonfinite or missing volume')
+            require(not row.get('evaluation_failed') and not row.get('diagnostic_artifact_failure'),
+                    label+' native evaluation failed')
+            require(row.get('rejected') is (value>1e-7),label+' masked rejection')
+        return any(row[quantity]>1e-7 for row in rows)
+    states=[]
+    for pose in native['poses']:
+        pair_rejected=rejected_rows(pose.get('complete_pair_matrix',{}).get('rows'),'common_mm3','pair')
+        if local_only:
+            states.append(pair_rejected)
+        else:
+            outside=rejected_rows(pose.get('containment',{}).get('rows'),'outside_outer_union_mm3','containment')
+            rejected=pair_rejected or outside
+            require(pose.get('decisive_geometric_rejection_or_evaluation_failure') is rejected
+                    and pose.get('all_declared_finite_pose_checks_clear') is (not rejected),
+                    'finite-pose disposition disagrees with actual rows')
+            states.append(rejected)
+    rejected=any(states)
+    if local_only:
+        rejected |= validate_continuous_endpoints(native.get('continuous_complete_endpoints'))
+        require(native.get('all_declared_local_geometry_checks_clear') is (not rejected),
+                'local disposition disagrees with actual rows')
+    else:
+        require(native.get('geometric_rejection_found') is rejected,
+                'full disposition disagrees with actual rows')
+    return rejected
+
+
 def validate_declared_input_roles(native, expected):
     """An explicit complete data-role inventory is mandatory in current reports."""
     require(native.get('input_closure_schema')=='razr-ep5-native-input-closure-v1',
@@ -207,6 +279,7 @@ def execute(manifest_path, repository_root, output):
             require(path.is_relative_to(root) or path.is_relative_to(stage_root) or path in external_allowed,'source input outside declared roots')
             require(path.is_file() and sha(path)==digest,'executed native source identity differs: '+name)
             tracked[str(path)] = digest
+        result['native_geometry_rejected']=validate_disposition(native,local_only)
         def local_path(base,relative):
             require(isinstance(relative,str) and not Path(relative).is_absolute(),'relative export path required')
             path = (base/relative).resolve()
@@ -224,6 +297,28 @@ def execute(manifest_path, repository_root, output):
             tracked[str(path)] = sha(path)
             return {'file':str(path.relative_to(artifact_root)),'sha256':tracked[str(path)],
                 'flat_solids':len(record['flat_solids']),'metric_comparison':matching}
+        def positive_pair_artifacts(matrix,base):
+            positive=[]
+            for row in matrix['rows']:
+                require(not row.get('evaluation_failed'),'native Boolean evaluation failed')
+                if row.get('common_mm3',0.)<=0:continue
+                require(row.get('common_material') and row.get('common_artifact_directory'),'positive Common lacks export')
+                folder_name=row['common_artifact_directory']
+                require(Path(folder_name).name==folder_name,'escaped Common folder')
+                folder=base/folder_name;metadata=row['common_material']
+                common=read(metadata,{str(i):v for i,v in enumerate(metadata['solids'])},folder)
+                context=row['local_material_context'];crop_metrics={}
+                require(context['margin_each_face_mm']==2.,'Common context margin differs')
+                for item in context['parts']:
+                    require(not item.get('crop_evaluation_failed'),'Common context native evaluation failed')
+                    require(item['actual_local_wall_thickness_mm'] is None and item['thickness_inferred_from_bounds'] is False,
+                            'unmeasured wall was relabelled as qualified')
+                    for index,metric in enumerate(item.get('crop_solids',[])):
+                        crop_metrics[item['part']+'/'+str(index)]=metric
+                require(crop_metrics and context['neighborhood_STEP'],'positive Common lacks complete neighborhood')
+                neighborhood=read(context['neighborhood_STEP'],crop_metrics,folder)
+                positive.append({'a':row['a'],'b':row['b'],'common':common,'neighborhood':neighborhood})
+            return positive
         for pose in native['poses']:
             label = pose['pose']; expected = 46 if local_only else EXPECTED[label]; names = set(pose['parts'])
             require(len(names)==expected==pose['combined_participants'],'complete pose inventory differs')
@@ -239,26 +334,7 @@ def execute(manifest_path, repository_root, output):
             require(len(pairs)==len(set(pairs))==matrix['pair_count']==expected*(expected-1)//2,
                     'pair count contains omission or duplicate')
             require(set(pairs)==required_pairs,'unordered full pair inventory differs')
-            base = artifact_root/label/'all-pairs'; positive = []
-            for row in matrix['rows']:
-                require(not row.get('evaluation_failed'),'native Boolean evaluation failed')
-                if row.get('common_mm3',0.) <= 0:continue
-                require(row.get('common_material') and row.get('common_artifact_directory'),'positive Common lacks export')
-                folder_name = row['common_artifact_directory']
-                require(Path(folder_name).name==folder_name,'escaped Common folder')
-                folder = base/folder_name; metadata = row['common_material']
-                common = read(metadata,{str(i):v for i,v in enumerate(metadata['solids'])},folder)
-                context = row['local_material_context']; crop_metrics = {}
-                require(context['margin_each_face_mm']==2.,'Common context margin differs')
-                for item in context['parts']:
-                    require(not item.get('crop_evaluation_failed'),'Common context native evaluation failed')
-                    require(item['actual_local_wall_thickness_mm'] is None and item['thickness_inferred_from_bounds'] is False,
-                            'unmeasured wall was relabelled as qualified')
-                    for index,metric in enumerate(item.get('crop_solids',[])):
-                        crop_metrics[item['part']+'/'+str(index)] = metric
-                require(crop_metrics and context['neighborhood_STEP'],'positive Common lacks complete neighborhood')
-                neighborhood = read(context['neighborhood_STEP'],crop_metrics,folder)
-                positive.append({'a':row['a'],'b':row['b'],'common':common,'neighborhood':neighborhood})
+            positive=positive_pair_artifacts(matrix,artifact_root/label/'all-pairs')
             outside = []
             for row in pose['containment']['rows']:
                 if row.get('outside_material'):
@@ -267,6 +343,18 @@ def execute(manifest_path, repository_root, output):
                                         artifact_root/label/'outside-domain'))
             result['poses'].append({'pose':label,'assembly':assembly,'full_pair_count':len(pairs),
                 'all_pairs_present_once':True,'positive_Common_exports':positive,'outside_exports':outside})
+        if local_only:
+            continuous=native['continuous_complete_endpoints']
+            metadata=continuous['U1_cage'];base=artifact_root/'continuous-endpoints'
+            cage=read(metadata,{str(i):v for i,v in enumerate(metadata['solids'])},base)
+            require(cage['flat_solids']==1,'continuous endpoint cage is not one complete positive solid')
+            result['continuous_endpoint_readback']={
+                'cage':cage,'endpoint_pair_count':20,'all_endpoint_pairs_present_once':True,
+                'positive_Common_exports':positive_pair_artifacts(
+                    continuous['U1_to_all_20_B_endpoint_parts'],base/'U1-to-complete-B'),
+                'reported_positive_margin_inventory_checked':sorted(ENDPOINT_MARGIN_NAMES),
+                'endpoint_metrics_independently_reconstructed':False,
+                'full_product_continuous_motion_proved':False}
         forbidden = [name for name in sys.modules if name.startswith(('product_routing_','product_assembly','product_split_assembly'))]
         require(not forbidden,'geometry generator imported into independent reader')
         require(all(Path(path).is_file() and sha(path)==digest for path,digest in tracked.items()),

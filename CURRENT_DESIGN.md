@@ -27,7 +27,7 @@ The implementation baseline is `a1b3cc1e0773446f2e36d0a607edf61211dd9919`. The d
 
 ## Validation and research boundaries
 
-Configured unit manifest: **1461 tests / 36 suites**. Run `uv run --locked python -B tools/verify.py`. Run `python3 tools/sync_current_design.py --check` to check these entry points.
+Configured unit manifest: **1506 tests / 36 suites**. Run `uv run --locked python -B tools/verify.py`. Run `python3 tools/sync_current_design.py --check` to check these entry points.
 
 On exact functional commit 0d97d8021dc508a40eb2565f6683c6dfba2659f4, the complete 36-suite attempt ran 1251 tests: 25 suites passed, 11 failed, with 16 missing-input/dependency errors and no assertion failures; 1074 Python files parsed without syntax errors and source bytes remained unchanged. This was an unlocked diagnostic environment, not a locked pass. The manifest minimum is 1461 tests. Exact-HEAD EP5 local/full native execution and both independent STEP readers passed in 152.889 seconds: full 154/154/161 bodies, 36442 pair rows and 123 optimistic outer-union containment rows; 1102 selected source entries, 12 required payload roles and 64 exact original STEP members were bound. Source HEAD and working bytes were unchanged. EP4 seven native regression groups passed, but its finite scenes could not load the original mounted tar. At the retained hosted observation, 12 jobs failed before any step and one was queued; annotation text was unavailable. These results do not grant continuous-motion, real-part, physical-test, structural or manufacturing acceptance.
 

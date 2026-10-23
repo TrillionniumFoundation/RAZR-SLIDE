@@ -29,6 +29,15 @@ STAGES = {
 INTERFACES = {'MAIN_DISPLAY', 'MAIN_TOUCH', 'A_PROTECTED_PACK',
               'B_PROTECTED_PACK', 'A_CHARGE', 'B_CHARGE', 'USB_DATA_CROSS',
               'USB_POWER', 'CAMERAS', 'RF_ANTENNA', 'AUDIO_SENSORS', 'MOTION_STATE'}
+# The required identity inventory belongs to this schema, not to a mutable
+# configuration or import manifest. Unknown observations retain a null value;
+# deleting their keys must never make an incomplete donor appear complete.
+DONOR_FIELDS = ('model', 'region', 'mainboard_revision', 'runtime_panel_id',
+                'display_module_part', 'display_module_revision',
+                'touch_revision', 'pack_A_label', 'pack_B_label',
+                'USB_roles', 'USB_version_rate')
+PHYSICAL_DONOR_FIELDS = frozenset({'mainboard_revision', 'display_module_part',
+    'display_module_revision', 'touch_revision', 'pack_A_label', 'pack_B_label'})
 
 
 def sha(path):
@@ -207,8 +216,20 @@ def identity_value_known(value):
     return (isinstance(value,str) and bool(value.strip())) or (isinstance(value,list) and bool(value) and all(isinstance(x,str) and bool(x.strip()) for x in value))
 
 
+def validate_donor_fields(donor):
+    if not isinstance(donor, dict) or set(donor) != set(DONOR_FIELDS):
+        raise ValueError('donor identity must retain the complete schema-owned field inventory')
+    if any(value is not None and not identity_value_known(value) for value in donor.values()):
+        raise ValueError('donor identity values must be observed text or null for unknown')
+    return donor
+
+
 def donor_identity_bound(data,root=ROOT):
-    if any(not identity_value_known(v) for v in data['donor'].values()):return False
+    try:
+        donor = validate_donor_fields(data.get('donor'))
+    except ValueError:
+        return False
+    if any(not identity_value_known(v) for v in donor.values()):return False
     evidence=data.get('donor_evidence')
     if not isinstance(evidence,dict):return False
     # v1 is still readable with evidence_record(..., v1), but has no specimen or
@@ -219,12 +240,10 @@ def donor_identity_bound(data,root=ROOT):
     observations = {r.get('id'): r for r in record['observations']}
     if len(observations) != len(record['observations']):
         return False
-    physical = {'mainboard_revision', 'display_module_part', 'display_module_revision',
-                'touch_revision', 'pack_A_label', 'pack_B_label'}
     fields = record.get('field_evidence', {})
     if not isinstance(fields, dict):
         return False
-    if any(not observed_field_bound(fields.get(key), observations, key in physical)
+    if any(not observed_field_bound(fields.get(key), observations, key in PHYSICAL_DONOR_FIELDS)
            or fields[key]['value'] != value for key, value in data['donor'].items()):
         return False
     capture = next((r for r in record['observations']
@@ -301,6 +320,7 @@ def terminal_evidence_bound(row,data,root=ROOT):
 def validate_config(data, root=ROOT):
     if data.get('schema') != 'razr-product-interfaces-v1':
         raise ValueError('unknown product interface schema')
+    validate_donor_fields(data.get('donor'))
     mode = data.get('architecture_decision', {}).get('mode')
     if mode != 'retain_donor_electronics_first':
         raise ValueError('this implementation implements the donor-reuse architecture')
