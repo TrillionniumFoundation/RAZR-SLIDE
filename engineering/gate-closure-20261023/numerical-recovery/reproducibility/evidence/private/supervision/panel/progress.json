@@ -1,0 +1,50 @@
+{
+  "schema": "razr-full-response-bounded-supervisor-v1",
+  "body": "panel",
+  "worker_source": "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/rebuild_base_response_limited.py",
+  "worker_sha256": "076f0667dcd58253d2bd6b42108cd19eb05800b6a9c1f0e6eae815c0c930f052",
+  "supervisor_sha256": "4925a15038b09003e47696bd50e5b5d10e7db2457bb57ebfcb5bea15bb6a783f",
+  "address_space_limit_GiB": 4.25,
+  "cgroup_unreclaimable_stop_bytes": 7301444403,
+  "wall_time_limit_seconds": 600,
+  "output": "/tmp/razr-fe-20261023/base-response-425/panel",
+  "initial_memory": {
+    "cgroup_current": 6733529088,
+    "cgroup_limit": 8589934592,
+    "anon": 471633920,
+    "shmem": 257265664,
+    "kernel_excluding_reclaimable_slab": 13058432,
+    "estimated_unreclaimable_bytes": 741958016
+  },
+  "finished": false,
+  "numerical_failure_implied_by_resource_stop": false,
+  "command": [
+    "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+    "-B",
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/rebuild_base_response_limited.py",
+    "--body",
+    "panel",
+    "--volume",
+    "/tmp/razr-fe-20261023/volume-rebuild",
+    "--output",
+    "/tmp/razr-fe-20261023/base-response-425/panel",
+    "--seconds",
+    "600",
+    "--batch",
+    "8",
+    "--memory-gib",
+    "4.25"
+  ],
+  "pid": 5,
+  "seconds": 411.19227927999964,
+  "memory": {
+    "cgroup_current": 8553340928,
+    "cgroup_limit": 8589934592,
+    "anon": 5722644480,
+    "shmem": 1635758080,
+    "kernel_excluding_reclaimable_slab": 74301792,
+    "estimated_unreclaimable_bytes": 7432704352
+  },
+  "maximum_unreclaimable_bytes": 7432704352,
+  "resource_stop_reason": "cgroup_unreclaimable_memory_guard"
+}

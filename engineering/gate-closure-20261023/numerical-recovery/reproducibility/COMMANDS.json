@@ -1,0 +1,256 @@
+{
+  "schema": "razr-exact-command-ledger-v1",
+  "commands": [
+    {
+      "id": "panel_full_L2_K",
+      "cwd": "/workspace/scratch/95cd2986fdf2",
+      "environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "argv": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/rebuild_l2_only.py",
+        "--body",
+        "panel",
+        "--output",
+        "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/l2-rebuild/panel"
+      ],
+      "status": "executed",
+      "scope_or_prerequisites": "Original executed panel source preserved; old output already exists; do not rerun in place."
+    },
+    {
+      "id": "frame_full_L2_K",
+      "cwd": "/workspace/scratch/95cd2986fdf2",
+      "environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "argv": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/rebuild_l2_tmp.py",
+        "--body",
+        "frame",
+        "--output",
+        "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/l2-rebuild/frame"
+      ],
+      "status": "executed",
+      "scope_or_prerequisites": "Numerical assembly completed; final publication EXDEV separately repaired from exact finished bytes."
+    },
+    {
+      "id": "frame_delivery_finalization",
+      "cwd": "/workspace/scratch/95cd2986fdf2",
+      "environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "argv": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/finalize_frame_matrix.py"
+      ],
+      "status": "executed",
+      "scope_or_prerequisites": "Publication only; no duplicate FE assembly."
+    },
+    {
+      "id": "panel_original_2560_column_worker",
+      "cwd": "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight",
+      "environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "argv": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/rebuild_base_response_limited.py",
+        "--body",
+        "panel",
+        "--volume",
+        "/tmp/razr-fe-20261023/volume-rebuild",
+        "--output",
+        "/tmp/razr-fe-20261023/base-response-425/panel",
+        "--seconds",
+        "600",
+        "--batch",
+        "8",
+        "--memory-gib",
+        "4.25"
+      ],
+      "status": "executed and resource-stopped",
+      "exact_command_source": "evidence/private/supervision/panel/report.json"
+    },
+    {
+      "id": "freeze_panel_partial",
+      "cwd": "/workspace/scratch/95cd2986fdf2",
+      "environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "argv": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/freeze_partial_response.py",
+        "--supervisor-report",
+        "/tmp/razr-fe-20261023/supervision/panel/report.json"
+      ],
+      "status": "executed",
+      "scope_or_prerequisites": "Hash-binds the supervisor final progress, stopped producer, all inputs/sources/C/points and completed H prefix."
+    },
+    {
+      "id": "trace_interface_preflight",
+      "cwd": "/workspace/scratch/95cd2986fdf2",
+      "environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "argv": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/preflight_trace_interfaces.py",
+        "--output",
+        "/tmp/razr-fe-20261023/trace-interface-preflight"
+      ],
+      "status": "executed",
+      "scope_or_prerequisites": "Exact original 46+40 interfaces and local energy blocks; no full inverse or QP."
+    },
+    {
+      "id": "panel_ND_v2",
+      "cwd": "/workspace/scratch/95cd2986fdf2",
+      "environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "argv": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/build_geometric_nd_v2.py",
+        "--body",
+        "panel",
+        "--output",
+        "/tmp/razr-fe-20261023/ordering-panel-v2-attempt2"
+      ],
+      "status": "executed",
+      "scope_or_prerequisites": "Actual K graph, exact minimum vertex cover and absence of cross-child edges; no numeric factor."
+    },
+    {
+      "id": "panel_ND_symbolic_fill",
+      "cwd": "/workspace/scratch/95cd2986fdf2",
+      "environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "argv": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/predict_nd_fill.py",
+        "--body",
+        "panel",
+        "--ordering-report",
+        "/tmp/razr-fe-20261023/ordering-panel-v2-attempt2/report.json",
+        "--output",
+        "/tmp/razr-fe-20261023/symbolic-panel-v2"
+      ],
+      "status": "executed",
+      "scope_or_prerequisites": "Pure symbolic elimination; read separate accounting correction for the old L/U union labels."
+    },
+    {
+      "id": "frame_ND_v2",
+      "cwd": "/workspace/scratch/95cd2986fdf2",
+      "environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "argv": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/build_geometric_nd_v2.py",
+        "--body",
+        "frame",
+        "--output",
+        "/tmp/razr-fe-20261023/ordering-frame-v2"
+      ],
+      "status": "executed",
+      "scope_or_prerequisites": "Actual K graph, exact minimum vertex cover and absence of cross-child edges; no numeric factor."
+    },
+    {
+      "id": "frame_ND_symbolic_fill",
+      "cwd": "/workspace/scratch/95cd2986fdf2",
+      "environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "argv": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/predict_nd_fill.py",
+        "--body",
+        "frame",
+        "--ordering-report",
+        "/tmp/razr-fe-20261023/ordering-frame-v2/report.json",
+        "--output",
+        "/tmp/razr-fe-20261023/symbolic-frame-v2"
+      ],
+      "status": "executed",
+      "scope_or_prerequisites": "Pure symbolic elimination; read separate accounting correction for the old L/U union labels."
+    },
+    {
+      "id": "frame_ND_symbolic_original_fixed_DOFs",
+      "cwd": "/workspace/scratch/95cd2986fdf2",
+      "environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "argv": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/predict_nd_fill_fixed.py",
+        "--body",
+        "frame",
+        "--ordering-report",
+        "/tmp/razr-fe-20261023/ordering-frame-v2/report.json",
+        "--output",
+        "/tmp/razr-fe-20261023/symbolic-frame-v2-fixed"
+      ],
+      "status": "executed",
+      "scope_or_prerequisites": "Original 777 vector constraints are 259 complete scalar nodes; no partially fixed scalar nodes."
+    },
+    {
+      "id": "panel_next_budgeted_resume",
+      "cwd": "/workspace/scratch/95cd2986fdf2",
+      "environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "argv": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/supervise_response_budgeted.py",
+        "--body",
+        "panel",
+        "--attempt-label",
+        "panel-budgeted-resume1",
+        "--resume-manifest",
+        "/tmp/razr-fe-20261023/base-response-425/panel/partial-linear-response-manifest.json",
+        "--resume-sha256",
+        "e64d3102eff7239a11d1e512c8711c78e4637e2af851fd7efee0aefe2a7a6520"
+      ],
+      "status": "prepared; not executed",
+      "scope_or_prerequisites": "Needs >=1 GiB f_bavail and <=4.4 GiB baseline nonreclaimable memory, plus parent resource coordination. Guard: AS4.25 GiB, wall600s, whole-cgroup6.8 GiB, disk500 MiB. Original MMD, precision, D and tolerances unchanged."
+    }
+  ],
+  "commands_are_not_an_automatic_execution_script": true
+}

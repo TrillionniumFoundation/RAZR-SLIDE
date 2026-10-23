@@ -1,0 +1,144 @@
+{
+  "schema": "razr-original-mesh-bounded-fe-feasibility-v1",
+  "bodies": [
+    {
+      "body": "panel",
+      "original_tetrahedra": 57620,
+      "original_vector_dofs": 344103,
+      "original_scalar_dofs": 114701,
+      "all_original_dofs_mapped": true,
+      "coordinate_mapping_max_error_mm": 2.220446049250313e-16,
+      "bitwise_exact_coordinate_mapping": false,
+      "mapping_seconds": 0.6112680300011561,
+      "vector_structural_nnz": 23646483,
+      "estimated_uncompressed_float64_int32_CSC_K_bytes": 285134212,
+      "original_assembler_COO_triplets_bytes_before_CSC": 1244592000,
+      "levels": [
+        {
+          "level": 0,
+          "sample_elements": 64,
+          "five_directional_energy_probes": true,
+          "assembly_seconds": 0.0026005469990195706,
+          "linear_full_element_count_extrapolation_seconds": 2.341304970054807,
+          "symmetry_absolute_max": 0.0,
+          "direct_strain_energy_relative_error_max": 2.646515998210641e-15,
+          "internal_equilibrium_residual_absolute_max": 0.0,
+          "relative_energy_increase_from_previous_level_max": null
+        },
+        {
+          "level": 1,
+          "sample_elements": 64,
+          "five_directional_energy_probes": true,
+          "assembly_seconds": 0.010180204999414855,
+          "linear_full_element_count_extrapolation_seconds": 9.165365813535686,
+          "symmetry_absolute_max": 0.0,
+          "direct_strain_energy_relative_error_max": 2.6086650661856062e-15,
+          "internal_equilibrium_residual_absolute_max": 1.2434497875801753e-14,
+          "relative_energy_increase_from_previous_level_max": -0.002574260673316092
+        },
+        {
+          "level": 2,
+          "sample_elements": 64,
+          "five_directional_energy_probes": true,
+          "assembly_seconds": 0.038540312998520676,
+          "linear_full_element_count_extrapolation_seconds": 34.698325546480646,
+          "symmetry_absolute_max": 0.0,
+          "direct_strain_energy_relative_error_max": 6.070245303030313e-15,
+          "internal_equilibrium_residual_absolute_max": 2.842170943040401e-14,
+          "relative_energy_increase_from_previous_level_max": -0.00048212846229941724
+        }
+      ],
+      "elapsed_seconds": 1.3516392210003687,
+      "mesh_sha256": "310152fc64af21451cc5ea4be683a73075109ed7e6ec588a6e8bcacf4979ac34",
+      "loads_sha256": "811ba687959bb34dec5ada401b35f07123c917bfc4e68ad982d661fd62fac9a6"
+    },
+    {
+      "body": "frame",
+      "original_tetrahedra": 79628,
+      "original_vector_dofs": 474726,
+      "original_scalar_dofs": 158242,
+      "all_original_dofs_mapped": true,
+      "coordinate_mapping_max_error_mm": 4.440892098500626e-16,
+      "bitwise_exact_coordinate_mapping": false,
+      "mapping_seconds": 0.8016087460000563,
+      "vector_structural_nnz": 32719176,
+      "estimated_uncompressed_float64_int32_CSC_K_bytes": 394529020,
+      "original_assembler_COO_triplets_bytes_before_CSC": 1719964800,
+      "levels": [
+        {
+          "level": 0,
+          "sample_elements": 64,
+          "five_directional_energy_probes": true,
+          "assembly_seconds": 0.0019138339994242415,
+          "linear_full_element_count_extrapolation_seconds": 2.3811683391586485,
+          "symmetry_absolute_max": 0.0,
+          "direct_strain_energy_relative_error_max": 2.3639114886784926e-15,
+          "internal_equilibrium_residual_absolute_max": 0.0,
+          "relative_energy_increase_from_previous_level_max": null
+        },
+        {
+          "level": 1,
+          "sample_elements": 64,
+          "five_directional_energy_probes": true,
+          "assembly_seconds": 0.008452841999314842,
+          "linear_full_element_count_extrapolation_seconds": 10.516920355022535,
+          "symmetry_absolute_max": 0.0,
+          "direct_strain_energy_relative_error_max": 2.9769989884807697e-15,
+          "internal_equilibrium_residual_absolute_max": 1.4210854715202004e-14,
+          "relative_energy_increase_from_previous_level_max": -0.0010679205888662366
+        },
+        {
+          "level": 2,
+          "sample_elements": 64,
+          "five_directional_energy_probes": true,
+          "assembly_seconds": 0.036523291000776226,
+          "linear_full_element_count_extrapolation_seconds": 45.44182212202827,
+          "symmetry_absolute_max": 0.0,
+          "direct_strain_energy_relative_error_max": 6.858878498515399e-15,
+          "internal_equilibrium_residual_absolute_max": 3.8191672047105385e-14,
+          "relative_energy_increase_from_previous_level_max": -0.0001705427757472401
+        }
+      ],
+      "elapsed_seconds": 1.595690090000062,
+      "mesh_sha256": "fc0eeecf966eda3bf242b0abd90f5603132f47d5235fcf81ea7238c1faf33132",
+      "loads_sha256": "eb2b180696785a77b71412506760df974fbf54c800090e36f027f2aaf70135a3"
+    }
+  ],
+  "elapsed_seconds": 3.13769763199889,
+  "peak_rss_kib": 230796,
+  "runtime": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1"
+  },
+  "source_sha256": {
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/real_mesh_bounded_probe.py": "8af88040c49ae049deca583cf6eb796468b4dc2a47f70136fe1a087fadbc7bbe",
+    "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/integration/tetra_bubble_refinement.py": "608d4f3f4781dc6976a12c17b206de3d23f5cc2b0aa27253ab6e1e51e21a24e6",
+    "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/engineering/volume-convergence-20261017/frozen_load_response.py": "2c52bbaf373e4e5a5b10e16eef6bd9ed44bcfa8e6d23840e12f99fc74dafaf17"
+  },
+  "research_material": {
+    "E_normalization": 1.0,
+    "nu": 0.3
+  },
+  "full_FE_assembled": false,
+  "full_inverse_operator_probes_executed": false,
+  "new_QP_executed": false,
+  "checkpoint_created": false,
+  "source_or_repo_files_written": false,
+  "hardware_or_EP5_structural_qualification": false,
+  "extrapolation_limits": "Element assembly only. Excludes sparse matrix conversion, full factorization, trace extension, contact responses, QP, exchange and independent full-field audit.",
+  "independent_contact_map_cross_checks": [
+    {
+      "body": "panel",
+      "minimum_original_scalar_DOF_separation_mm": 0.017081975729313494,
+      "original_contact_cells_cross_checked": 5255,
+      "all_original_contact_P2_indices_match_reconstructed_coordinate_mapping": true
+    },
+    {
+      "body": "frame",
+      "minimum_original_scalar_DOF_separation_mm": 0.019128376474457528,
+      "original_contact_cells_cross_checked": 5255,
+      "all_original_contact_P2_indices_match_reconstructed_coordinate_mapping": true
+    }
+  ]
+}

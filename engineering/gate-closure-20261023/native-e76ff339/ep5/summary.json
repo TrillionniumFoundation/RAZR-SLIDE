@@ -1,0 +1,191 @@
+{
+  "schema": "razr-product-ep5-native-validation-v1",
+  "started_utc": "2026-10-23T05:44:03.803175+00:00",
+  "expected_head": "e76ff339cbd38610b42f550d1d990131233c8f7d",
+  "scope": "EP5 local three-pose study plus complete three-pose assembly, each with independent STEP readback",
+  "source_snapshot_scope": "audited tracked code and entrypoint scope plus the explicit transitive EP5 native input role closure, all bound to actual HEAD blobs",
+  "full_checkout_verified": false,
+  "all_configured_unit_suites_executed": false,
+  "archive_available": true,
+  "verified_original_members": false,
+  "original_mounted_archive_container_recovered": false,
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "execution_checks_passed": true,
+  "physical_qualification": "not_provided",
+  "G2_acceptance_granted_by_this_job": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "supplier_dynamic_qualified": false,
+  "physical_hardware_test_executed": false,
+  "full_cycle_internal_route_accepted": false,
+  "source_bytes_unchanged": true,
+  "source_head_after": "e76ff339cbd38610b42f550d1d990131233c8f7d",
+  "source_worktree_clean_after": true,
+  "finished_utc": "2026-10-23T05:46:14.605931+00:00",
+  "seconds": 130.8027429470003,
+  "research_scopes": {
+    "local": {
+      "poses": [
+        "STOW",
+        "PREDOCK",
+        "OPEN"
+      ],
+      "bodies": [
+        46,
+        46,
+        46
+      ],
+      "declared_pairs": 3105,
+      "finite_geometry": "clear_at_declared_scope_only"
+    },
+    "full": {
+      "poses": [
+        "STOW",
+        "PREDOCK",
+        "OPEN"
+      ],
+      "bodies": [
+        154,
+        154,
+        161
+      ],
+      "declared_pairs": 36442,
+      "finite_geometry": "clear_at_declared_scope_only"
+    }
+  },
+  "reports": {
+    "local/native-report.json": {
+      "bytes": 2438036,
+      "sha256": "1257b5af6f288ace90d879e55de917fcc33fee3b32dfbf2f564164acc7e0b03d"
+    },
+    "local-readback/report.json": {
+      "bytes": 225871,
+      "sha256": "272848ea4e4291b2f278b583df07ea727315a822a0ed4d49f4d1671671fed7d9"
+    },
+    "full/native-report.json": {
+      "bytes": 25612013,
+      "sha256": "5030d39941dcee77a7962946d6cec1529befed651a8dad56dcac50e7b3fd7846"
+    },
+    "full-readback/report.json": {
+      "bytes": 322920,
+      "sha256": "e92c19e02323395fcb135027ffb36c3b8e4d2b8e0dafc4c24c88397da9797b84"
+    }
+  },
+  "commands": [
+    {
+      "stage": "entrypoints",
+      "command": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/tools/sync_current_design.py",
+        "--check"
+      ],
+      "started_utc": "2026-10-23T05:44:03.956052+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "finished_utc": "2026-10-23T05:44:04.020936+00:00",
+      "log": {
+        "file": "entrypoints.log",
+        "bytes": 33,
+        "sha256": "8bc4793b0e31159d0190bd1e5437aded48db059de85d4839c7d2c545bb7f81b0"
+      }
+    },
+    {
+      "stage": "local-native",
+      "command": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/integration/product_routing_ep5.py",
+        "--output",
+        "/workspace/scratch/95cd2986fdf2/run-ep5-e76ff339/local",
+        "--native-local-motion"
+      ],
+      "started_utc": "2026-10-23T05:44:04.022698+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "finished_utc": "2026-10-23T05:44:23.075306+00:00",
+      "log": {
+        "file": "local-native.log",
+        "bytes": 452,
+        "sha256": "51f61fbf7a0d6aedcbb9cbad2d42408cb475be27d568200d315096ffb053703a"
+      }
+    },
+    {
+      "stage": "local-independent-readback",
+      "command": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/engineering/product-integration-20261018/phase5-20261022/read_ep5_step_independent.py",
+        "--repository-root",
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE",
+        "--manifest",
+        "/workspace/scratch/95cd2986fdf2/run-ep5-e76ff339/local/native-report.json",
+        "--output",
+        "/workspace/scratch/95cd2986fdf2/run-ep5-e76ff339/local-readback"
+      ],
+      "started_utc": "2026-10-23T05:44:23.165075+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "finished_utc": "2026-10-23T05:44:28.144517+00:00",
+      "log": {
+        "file": "local-independent-readback.log",
+        "bytes": 87,
+        "sha256": "e5c772cd959fa5ddc4c46c901e786c1aecc5b9c333b8c41255b8b89f82f887a5"
+      }
+    },
+    {
+      "stage": "full-native",
+      "command": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/integration/product_routing_ep5.py",
+        "--output",
+        "/workspace/scratch/95cd2986fdf2/run-ep5-e76ff339/full",
+        "--native",
+        "--poses",
+        "STOW",
+        "PREDOCK",
+        "OPEN"
+      ],
+      "started_utc": "2026-10-23T05:44:28.149251+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "finished_utc": "2026-10-23T05:45:57.681480+00:00",
+      "log": {
+        "file": "full-native.log",
+        "bytes": 825,
+        "sha256": "ee96f35b846c7b1e769505991e39253bc37c4f972acb896613807446c0c90222"
+      }
+    },
+    {
+      "stage": "full-independent-readback",
+      "command": [
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/engineering/product-integration-20261018/phase5-20261022/read_ep5_step_independent.py",
+        "--repository-root",
+        "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE",
+        "--manifest",
+        "/workspace/scratch/95cd2986fdf2/run-ep5-e76ff339/full/native-report.json",
+        "--output",
+        "/workspace/scratch/95cd2986fdf2/run-ep5-e76ff339/full-readback"
+      ],
+      "started_utc": "2026-10-23T05:45:58.038503+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "finished_utc": "2026-10-23T05:46:14.426547+00:00",
+      "log": {
+        "file": "full-independent-readback.log",
+        "bytes": 87,
+        "sha256": "e5c772cd959fa5ddc4c46c901e786c1aecc5b9c333b8c41255b8b89f82f887a5"
+      }
+    }
+  ],
+  "complete_native_bundle": "ep5-native.tar.xz",
+  "complete_native_bundle_scope": "Authoritative complete original logs, reports and STEP bytes; per-member SHA256 readback verified before transient unpacked STEP compaction.",
+  "source_entries_bound": 1109,
+  "source_input_original_mounted_container_recovered_and_consumed": true,
+  "original_container_recovery_evidence": "../../input-recovery-20261023.json",
+  "historical_original_mounted_archive_container_recovered_flag_in_generator_remains_false": true
+}

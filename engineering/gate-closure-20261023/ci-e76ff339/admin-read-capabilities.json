@@ -1,0 +1,25 @@
+{
+  "schema": "razr-actions-admin-read-capability-check-v1",
+  "observed_utc": "2026-10-23T05:51:03.402Z",
+  "repository": "TrillionniumFoundation/RAZR-SLIDE",
+  "read_only": true,
+  "settings_changed": false,
+  "rerun_requested": false,
+  "inspected_capabilities": {
+    "actions_permissions": false,
+    "billing_spending_limits": false,
+    "organization_actions_policy": false,
+    "runner_inventory": false,
+    "workflow_definition_collection": false
+  },
+  "tool_boundary": "The available GitHub fetch capability permits listed repository endpoints, excludes organization and secrets families, and documents that managed installations exclude administration access. No purpose-built Actions permissions, billing/spending, or runner inventory read tool is exposed.",
+  "attempt": {
+    "url": "https://api.github.com/repos/TrillionniumFoundation/RAZR-SLIDE/actions/workflows?per_page=100",
+    "outcome": "rejected_by_connector_endpoint_allowlist",
+    "error_code": "INVALID_ARGUMENT",
+    "message": "HTTPError: 400: GitHub Fetch URL is not an allowed public GitHub repository or search endpoint."
+  },
+  "conclusion": "Cannot determine whether account spending, organization policy, repository Actions policy, or runner availability caused zero-step startup failures through currently exposed approved capabilities.",
+  "billing_cause_confirmed": false,
+  "actions_disabled_confirmed": false
+}

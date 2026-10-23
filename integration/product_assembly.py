@@ -159,13 +159,32 @@ def native_inputs(verified_mounted_members=None):
     return parts,parent,prior,old,profiles,slots,provenance
 
 
-def native_scene(slide_mm=0.0,descent_mm=0.0,left_tab_mm=0.0,right_tab_mm=0.0,*,flanks=(0,0),telescope_offsets=None,verified_mounted_members=None):
+def native_scene(slide_mm=0.0,descent_mm=0.0,left_tab_mm=0.0,right_tab_mm=0.0,*,flanks=(0,0),telescope_offsets=None,key_offsets=(0.,0.),crosshead_offsets=(0.,0.),verified_mounted_members=None):
     import verify_endpoint_joint_pawl as e
     import verify_cam_coupling as cam
     b_transform(slide_mm,descent_mm)
     tabs=(finite(left_tab_mm),finite(right_tab_mm))
-    if any(not 0<=x<=3 for x in tabs) or len(flanks)!=2 or any(finite(x) not in (-1,0,1) for x in flanks):
-        raise ValueError('invalid independent manual controls or slot flank')
+    if any(not 0<=x<=3 for x in tabs) or len(flanks)!=2 or any(not -1<=finite(x)<=1 for x in flanks):
+        raise ValueError('invalid independent manual controls or continuous slot flank')
+    if len(key_offsets)!=2 or len(crosshead_offsets)!=2:
+        raise ValueError('independent left/right KEY and crosshead offsets required')
+    key_offsets=tuple(finite(x) for x in key_offsets)
+    crosshead_offsets=tuple(finite(x) for x in crosshead_offsets)
+    cam_half=(cam.G-cam.R)*math.hypot(1,cam.K)
+    yoke_half=(cam.G-cam.R)*math.sqrt(2)
+    if any(abs(dx)>cam_half+TOL or abs(dx-dq)>yoke_half+TOL
+           for dx,dq in zip(crosshead_offsets,key_offsets)):
+        raise ValueError('offsets violate the two coupled native groove clearance constraints')
+    if isinstance(telescope_offsets,dict):
+        if set(telescope_offsets)!={'L','R'}:
+            raise ValueError('both independent telescope allocations required')
+        allocations={s:tuple(finite(x) for x in telescope_offsets[s]) for s in 'LR'}
+    else:
+        allocations={s:None if telescope_offsets is None else tuple(finite(x) for x in telescope_offsets) for s in 'LR'}
+    for values in allocations.values():
+        if values is not None and (len(values)!=3 or any(not .1-TOL<=x<=2.9+TOL for x in values)
+            or abs(sum(values)-8.5+descent_mm)>TOL):
+            raise ValueError('invalid independent telescope allocation')
     parts,parent,prior,old,profiles,slots,provenance=native_inputs(verified_mounted_members)
     state=e.scene(parts,parent,prior,old,profiles,slots,slide_mm,descent_mm,tabs,flanks=flanks)
     for s in 'LR':
@@ -176,14 +195,30 @@ def native_scene(slide_mm=0.0,descent_mm=0.0,left_tab_mm=0.0,right_tab_mm=0.0,*,
     for i in range(4):
         for role in ('M1x3_NOMINAL','NUT_SHNS_M1_NOMINAL'):
             k=f'FRAME_{i}_{role}';state[k]=parts[k]
-    if telescope_offsets is not None:
-        actual=cam.prototype(prior,slide_mm,descent_mm,offsets=telescope_offsets)
-        for s in 'LR':
-            for i in range(1,4):state[f'{s}_TELESCOPE_{i}']=actual[f'{s}_TELESCOPE_{i}']
+    for side,dq,dx in zip('LR',key_offsets,crosshead_offsets):
+        # The native contact law is finite. Missing endpoint branches are never
+        # fabricated by clamping the KEY coordinate back into [0, q_max].
+        q=cam.K*slide_mm+dq
+        for profile in profiles[side]:
+            profile.evaluate(q)
+        if allocations[side] is not None or dq or dx:
+            actual=cam.prototype(prior,slide_mm,descent_mm,offsets=allocations[side],dx=dx,dq=dq)
+            state[side+'_KEY']=actual[side+'_KEY_YOKE']
+            state[side+'_CROSSHEAD']=actual[side+'_CROSSHEAD']
+            for i in range(1,4):state[f'{side}_TELESCOPE_{i}']=actual[f'{side}_TELESCOPE_{i}']
+            sign=-1 if side=='L' else 1
+            for i,profile in enumerate(profiles[side]):
+                delta=profile.evaluate(q)[0]-profile.evaluate(0)[0]
+                state[f'{side}_STOP_{i}']=old[f'{side}_STOP_{i}'].translate((sign*delta,0,0))
+                role=f'{side}_SPRING_{i}_OD_TOL_ENVELOPE';bb=bounds(old[role])
+                lo=bb[0]+min(0,sign*delta);hi=bb[1]+max(0,sign*delta)
+                state[role]=single(cq.Solid.makeCylinder(.43,hi-lo,cq.Vector(lo,(bb[2]+bb[3])/2,(bb[4]+bb[5])/2),cq.Vector(1,0,0)))
     if len(state)!=83:
         raise ValueError('incomplete current mechanical scene')
     return state,{**provenance,'slide_mm':slide_mm,'descent_mm':descent_mm,
         'left_tab_mm':tabs[0],'right_tab_mm':tabs[1],'slot_flanks':list(flanks),
+        'KEY_offsets_mm':list(key_offsets),'crosshead_offsets_mm':list(crosshead_offsets),
+        'telescope_offsets_by_side_mm':{s:list(v) if v is not None else [.1+(8.2-descent_mm)/3]*3 for s,v in allocations.items()},
         'B_translation_mm':b_transform(slide_mm,descent_mm),
         'telescope_allocation':'nominal equal allocation, not physically enforced' if telescope_offsets is None else 'explicit admissible joint allocation',
         'physical_holding_and_force_qualified':False}
@@ -315,7 +350,7 @@ def product_templates(verified_mounted_members=None):
                 'machinability_strength_preload_and_screen_support_qualified':False}
 
 
-def product_scene(slide_mm=0.0,descent_mm=0.0,left_tab_mm=0.0,right_tab_mm=0.0,*,flanks=(0,0),telescope_offsets=None,open_hold=False,open_support=False,verified_mounted_members=None):
+def product_scene(slide_mm=0.0,descent_mm=0.0,left_tab_mm=0.0,right_tab_mm=0.0,*,flanks=(0,0),telescope_offsets=None,key_offsets=(0.,0.),crosshead_offsets=(0.,0.),open_hold=False,open_support=False,verified_mounted_members=None):
     """The common product candidate obstacle field used by OLED and FPC.
 
     Returns 94 installed mechanical pieces before optional OPEN accessories,
@@ -326,7 +361,7 @@ def product_scene(slide_mm=0.0,descent_mm=0.0,left_tab_mm=0.0,right_tab_mm=0.0,*
     if type(open_hold) is not bool or type(open_support) is not bool:raise ValueError('OPEN accessory state must be explicit')
     if (open_hold or open_support) and (slide_mm!=79.75 or descent_mm!=8.2):
         raise ValueError('OPEN accessories can only be installed at seated OPEN')
-    state,meta=native_scene(slide_mm,descent_mm,left_tab_mm,right_tab_mm,flanks=flanks,telescope_offsets=telescope_offsets,verified_mounted_members=verified_mounted_members)
+    state,meta=native_scene(slide_mm,descent_mm,left_tab_mm,right_tab_mm,flanks=flanks,telescope_offsets=telescope_offsets,key_offsets=key_offsets,crosshead_offsets=crosshead_offsets,verified_mounted_members=verified_mounted_members)
     new,changes=product_templates(verified_mounted_members)
     state['A_FRAME']=new['A_FRAME'];state['A_BACK_PANEL']=new['A_BACK_PANEL']
     state['B_SHELL']=new['B_SHELL'].translate(b_transform(slide_mm,descent_mm))

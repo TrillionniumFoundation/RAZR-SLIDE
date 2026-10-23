@@ -18,34 +18,32 @@
       "priority": "P0",
       "gate": "G0",
       "blocker": "Exact source and native validation chain",
-      "status": "original_inputs_recovered_new_native_execution_pending",
+      "status": "closed_for_declared_EP4_EP5_execution_at_e76",
       "required_role": "Engineering",
       "closure_condition": "Run required EP4 and EP5 native drivers on the exact reviewed source with independent STEP readers; preserve rejected geometry as a result.",
-      "current_evidence_boundary": "Original mounted tar and full 13-role EP5 input closure recovered. New source hardens native result consistency and independent endpoint cage reading; fresh EP4/EP5 exact-source execution is required.",
+      "current_evidence_boundary": "Fresh locked exact-source EP4 and EP5 native runs and independent readers passed. EP4 retains all 55 rejected pair rows; EP5 nominal finite scope is clear. Later implementation changes require their own source-bound validation.",
       "references": [
-        "tools/verify_product_native.py",
-        "tools/verify_product_ep5_native.py",
-        "native-0d97d80/ep5/report.json",
-        "native-0d97d80/ep4/report.json"
+        "engineering/gate-closure-20261023/native-e76ff339/ep4/summary.json",
+        "engineering/gate-closure-20261023/native-e76ff339/ep5/summary.json"
       ],
-      "prior_status": "software_and_EP5_execution_verified_EP4_execution_blocked"
+      "prior_status": "software_and_EP5_execution_verified_EP4_execution_blocked",
+      "prior_status_at_first_publication": "original_inputs_recovered_new_native_execution_pending"
     },
     {
       "id": "G0-02",
       "priority": "P0",
       "gate": "G0",
       "blocker": "Complete reproducible locked execution",
-      "status": "inputs_and_locked_environment_recovered_new_execution_pending",
+      "status": "local_locked_execution_closed_hosted_runner_startup_blocked",
       "required_role": "Project environment / CI owner",
       "closure_condition": "Provide the existing project environment connection or a complete checkout with working locked dependency installation and hosted runner execution.",
-      "current_evidence_boundary": "Six original archives recovered with container/member identities. All 43 locked packages installed by uv sync --locked. Fresh complete unit and hosted execution still pending at first publication.",
+      "current_evidence_boundary": "1506 actual tests / all 36 suites pass with 43 locked packages and unchanged source. Hosted run39907440200 has zero steps/runners/artifacts; no billing/policy root cause is inferred from unavailable annotations.",
       "references": [
-        "input-availability/missing-unit-test-inputs.json",
-        "baseline-e25/report.json",
-        "full-unit-0d97d80/summary.json",
-        "full-unit-0d97d80/actions-observation-final.json"
+        "engineering/gate-closure-20261023/full-unit-e76ff339/summary.json",
+        "engineering/gate-closure-20261023/ci-e76ff339/SUMMARY.json"
       ],
-      "prior_status": "blocked_environment_and_transport"
+      "prior_status": "blocked_environment_and_transport",
+      "prior_status_at_first_publication": "inputs_and_locked_environment_recovered_new_execution_pending"
     },
     {
       "id": "G1-01",
@@ -80,44 +78,47 @@
       "priority": "P0",
       "gate": "G0",
       "blocker": "Original rigid-bearing restart inputs",
-      "status": "repository_inputs_recovered_external_volume_and_seed_missing",
+      "status": "eight_original_external_inputs_recovered_full_K_rebuilt_partial_H_capacity_blocked",
       "required_role": "Numerical / retained-artifact owner",
       "closure_condition": "Recover the original volume and legacy response seed listed in REBUILD_INPUTS.json, or perform an explicitly identified faithful rebuild.",
-      "current_evidence_boundary": "All 11 repository-backed inputs recovered exactly. Eight original owner volume files and three legacy response seed files are not supplied; no original full FE/QP execution or complete historical checkpoint recovered.",
+      "current_evidence_boundary": "All eleven repository inputs and eight of eleven missing external inputs are byte-exact. Both faithful L2 K matrices were assembled with original mapping/constraints under new identities. Panel response2560/3885 columns is hash-bound and resumable; full H and original five inverse-operator probes are still pending. The newly prepared mmap continuation has not executed; current shared memory and ordinary available disk fail explicit startup budgets. No worker is running; root-reserved disk is excluded.",
       "references": [
-        "engineering/bearing-continuation-20261022/REBUILD_INPUTS.json"
+        "engineering/gate-closure-20261023/numerical-recovery/exact-PR35-input-recovery.json",
+        "engineering/gate-closure-20261023/numerical-recovery/panel-partial-response-receipt.json",
+        "engineering/gate-closure-20261023/numerical-recovery/reproducibility/STATUS.json"
       ],
-      "prior_status": "blocked_original_data"
+      "prior_status": "blocked_original_data",
+      "prior_status_at_first_publication": "repository_inputs_recovered_external_volume_and_seed_missing"
     },
     {
       "id": "G2-01",
       "priority": "P1",
       "gate": "G2",
       "blocker": "Nominal full finite assembly",
-      "status": "verified_within_declared_nominal_research_scope",
+      "status": "closed_for_declared_nominal_research_inventory_at_e76",
       "required_role": "Geometry owner",
       "closure_condition": "Validate the same declared nominal full inventory at STOW, PREDOCK and OPEN, every unordered pair and outer-domain containment, with actual input hashes checked before/after and independent STEP readback.",
-      "current_evidence_boundary": "Closed for the declared nominal research inventory at 0d97d80: 154/154/161 bodies, 36442 pair rows, 123 optimistic outer-domain containment rows, no positive Common or escape, both independent readers passed, 12 repository payloads and 64 exact original members bound. Actual-part fit, continuous full motion, internal-channel tolerances and G2 acceptance remain outside this subitem.",
+      "current_evidence_boundary": "Fresh exact e76 EP5 full finite scope: 154/154/161 bodies,36442 pairs,123 outer-domain containments,zero positive Common/escape and both independent readers passed. This does not close actual-part fit, full motion or G2 overall.",
       "references": [
-        "engineering/product-integration-20261018/phase5-20261022/README.md",
-        "native-0d97d80/ep5/report.json",
-        "native-0d97d80/ep5/full-readback/report.json"
+        "engineering/gate-closure-20261023/native-e76ff339/ep5/summary.json"
       ],
-      "prior_status": "verified_within_declared_nominal_research_scope"
+      "prior_status": "verified_within_declared_nominal_research_scope",
+      "prior_status_at_first_publication": "verified_within_declared_nominal_research_scope"
     },
     {
       "id": "G2-02",
       "priority": "P1",
       "gate": "G2",
       "blocker": "Continuous reversible kinematics",
-      "status": "blocked_mechanism_definition",
+      "status": "independent_inputs_and_continuous_fixed_pose_controls_implemented_full_cycle_open",
       "required_role": "Mechanical / geometry owner",
       "closure_condition": "Define realizable couplings and control trajectories for telescope, flank and manual controls; verify the complete shared assembly continuously in both directions, including attachment/install states.",
-      "current_evidence_boundary": "Finite three-pose results and a local U1 cage do not prove the full product motion.",
+      "current_evidence_boundary": "Independent actual flank, KEY, crosshead and telescope interfaces now have explicit input constraints; fixed-pose continuous controls and unequal allocation are being verified. Three-pose diagnostic control passes and finite samples do not prove the whole slide/seat/accessory/return domain.",
       "references": [
-        "engineering/product-integration-20261018/phase5-20261022/README.md"
+        "engineering/gate-closure-20261023/nominal-control-domain-contract.md"
       ],
-      "prior_status": "blocked_mechanism_definition"
+      "prior_status": "blocked_mechanism_definition",
+      "prior_status_at_first_publication": "blocked_mechanism_definition"
     },
     {
       "id": "G2-03",
@@ -138,16 +139,15 @@
       "priority": "P1",
       "gate": "G5",
       "blocker": "Structural/contact qualification",
-      "status": "blocked_original_inputs_and_solve",
+      "status": "full_original_K_rebuilt_response_in_progress_contact_and_changed_geometry_open",
       "required_role": "Numerical / mechanical owner",
       "closure_condition": "Resolve physical supports, preload and connector/material inputs; converge the unchanged all-domain contact criteria and independently audit the full field on the selected geometry, with a defined convergence/load envelope.",
-      "current_evidence_boundary": "No original full FE or large QP was executed in this session. All 31 continuation regressions passed in targeted and complete-unit execution, with seven separate domain controls; they do not qualify real contact or current EP5 solids.",
+      "current_evidence_boundary": "Full faithful L2 K assembly and strict original mapping/energy/rigid-mode checks executed. Complete response, inverse-operator tests, unchanged all-domain contact convergence and current EP5 structural qualification remain distinct unfinished conditions.",
       "references": [
-        "engineering/bearing-continuation-20261022/verification.json",
-        "bearing-continuation-review/report.json",
-        "bearing-domain-review/report.json"
+        "engineering/gate-closure-20261023/numerical-recovery/"
       ],
-      "prior_status": "blocked_original_inputs_and_solve"
+      "prior_status": "blocked_original_inputs_and_solve",
+      "prior_status_at_first_publication": "blocked_original_inputs_and_solve"
     },
     {
       "id": "G3-01",
@@ -193,16 +193,17 @@
     }
   ],
   "execution_order": [
-    "Restore exact remaining original inputs and the locked project execution/hosted access; freeze same-specimen G1 parts/process in parallel.",
-    "Retain the completed nominal G2-01 result; define realizable G2-02 control relations and verify full forward/reverse motion plus G2-03 assembly and measured tolerances.",
-    "Execute G3 on the identified unpowered specimen.",
-    "Execute G4 supply/charge/USB/display/touch during motion on the controlled functional specimen.",
-    "Complete G5 structural, endurance, process, inspection and traceability criteria."
+    "Finish computable independent-control/material-partition changes and their exact-commit complete validation; recover hosted startup with provider evidence.",
+    "Resume preserved full numerical response, pass original inverse probes, and continue unchanged-domain contact/field convergence under explicit resource bounds.",
+    "In parallel freeze the same donor, OLED/COF/FPC and complete protected packs with measured process/interface limits.",
+    "Complete all admissible forward/reverse motion, installation/removal and measured assembly/tolerance conditions.",
+    "Execute identified G3 unpowered assembly, G4 functional motion and G5 structural/endurance/process/inspection acceptance with original calibrated records."
   ],
   "manufacturing_go": false,
   "current_results_summary": "SUMMARY.json",
   "remaining_condition_details": "../gate-closure-20261022/remaining-closure-boundaries-0d97d80.json",
   "prior_ledger": "engineering/gate-closure-20261022/BLOCKERS.json",
   "prior_functional_source_commit": "0d97d8021dc508a40eb2565f6683c6dfba2659f4",
-  "functional_source_commit": null
+  "functional_source_commit": "e76ff339cbd38610b42f550d1d990131233c8f7d",
+  "source_report_scope": "e76 exact execution; subsequent code remains pending its own canonical validation"
 }

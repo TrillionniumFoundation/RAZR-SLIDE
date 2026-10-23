@@ -1,0 +1,97 @@
+{
+  "schema": "razr-raw-partition-scanner-check-v1",
+  "checked_utc": "2026-10-23T06:38:53.751411+00:00",
+  "audit_tool_sha256": "a1b98f1470bab05a49ea7b25a486658c071ec129a95512ac28f3229cad96f7e1",
+  "checks": [
+    {
+      "name": "generic_two_regions_each_below_tolerance_but_union_bound_exceeds",
+      "passed": true,
+      "record": {
+        "pointer": "/region_common_mm3",
+        "group_kind": "retained_region_array",
+        "regions": 2,
+        "maximum_common_mm3": 9e-08,
+        "sum_common_upper_bound_mm3": 1.8e-07,
+        "old_per_region_clear": true,
+        "summed_upper_bound_clear": false,
+        "recorded_all_regions_clear": null,
+        "recorded_clear": null
+      }
+    },
+    {
+      "name": "mounted_screw_plural_alias_is_not_omitted",
+      "passed": true,
+      "record": {
+        "pointer": "/commons_mm3",
+        "group_kind": "retained_region_array",
+        "regions": 2,
+        "maximum_common_mm3": 9e-08,
+        "sum_common_upper_bound_mm3": 1.8e-07,
+        "old_per_region_clear": true,
+        "summed_upper_bound_clear": false,
+        "recorded_all_regions_clear": null,
+        "recorded_clear": null
+      }
+    },
+    {
+      "name": "thin_stop_pin_and_remainder_are_combined",
+      "passed": true,
+      "record": {
+        "pointer": "",
+        "group_kind": "complete_thin_STOP_core_pin_plus_remainder",
+        "regions": 4,
+        "maximum_common_mm3": 9e-08,
+        "sum_common_upper_bound_mm3": 1.8e-07,
+        "old_per_region_clear": true,
+        "summed_upper_bound_clear": false,
+        "stop": 0
+      }
+    },
+    {
+      "name": "whole_pawl_cover_pieces_are_combined",
+      "passed": true,
+      "record": {
+        "pointer": "",
+        "group_kind": "complete_box_guide_pawl_and_pin_cover",
+        "regions": 4,
+        "maximum_common_mm3": 9e-08,
+        "sum_common_upper_bound_mm3": 1.8e-07,
+        "old_per_region_clear": true,
+        "summed_upper_bound_clear": false,
+        "side": "R",
+        "fixed": "R_ROOF",
+        "bound_scope": "Union cover conservatively bounds PAWL and shoulder pin individually."
+      }
+    },
+    {
+      "name": "root_pawl_cover_does_not_lose_positive_distance_guard",
+      "passed": true,
+      "record": {
+        "pointer": "",
+        "group_kind": "complete_root_or_lateral_PAWL_cover",
+        "regions": 4,
+        "maximum_common_mm3": 0.0,
+        "sum_common_upper_bound_mm3": 0.0,
+        "old_per_region_clear": true,
+        "summed_upper_bound_clear": true,
+        "side": "R",
+        "fixed": "ROOT_OUTER",
+        "minimum_recorded_distance_mm": 0.05,
+        "additional_positive_distance_guard": true
+      }
+    },
+    {
+      "name": "different_sequential_nut_route_legs_not_summed_as_material",
+      "passed": true
+    },
+    {
+      "name": "incomplete_material_partition_rejected",
+      "passed": true
+    },
+    {
+      "name": "nonfinite_and_negative_common_rejected",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

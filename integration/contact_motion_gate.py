@@ -6,6 +6,8 @@ import argparse,json,hashlib,time,platform,sys
 import stow_contact_slots as s
 import cam_contact_native as n
 from straight_envelope import envelope
+import material_partition_checks as material_partitions
+import translation_regions
 
 
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -15,6 +17,7 @@ def main():
     if out==s.ROOT or s.ROOT in out.parents:raise ValueError('new external run directory required')
     out.mkdir(parents=True,exist_ok=False);start=time.monotonic();rows=[];exports={}
     own=[Path(__file__),Path(s.__file__),Path(n.__file__),Path(__file__).with_name('cam_contact_profile.py'),Path(__file__).with_name('straight_envelope.py'),Path(s.baseline.__file__)]
+    own.extend((Path(material_partitions.__file__),Path(translation_regions.__file__)))
     before={str(p.relative_to(s.ROOT)):sha(p) for p in own}
     def export(role,body):
         n.single(body);p=out/(role+'.step');n.cq.exporters.export(body,str(p));bb=body.BoundingBox()
@@ -60,16 +63,24 @@ def main():
         rows.append({'side':side,'repair':audit,'contacts':profiles,'full_KEY_path':key_method,'full_KEY_fixed_pairs':key_checks,'synchronous_STOP_pair_common_mm3':sync_common,
                      'synchronous_pair_is_rigid_translation_of_native_pair':True})
         (out/'progress.json').write_text(json.dumps({'rows':rows,'manufacturing_go':False},indent=2)+'\n')
-    after={p:sha(s.ROOT/p) for p in before}
-    if before!=after:raise ValueError('sources changed during native experiment')
     values=[]
     for row in rows:
         values.extend(row['full_KEY_fixed_pairs'].values());values.append(row['synchronous_STOP_pair_common_mm3'])
         for c in row['contacts']:
             values.append(c['complete_pin_KEY_common_mm3']);values.extend(x['whole_common_with_KEY_mm3'] for x in c['nonpin_cages']);values.extend(c['complete_STOP_fixed_pairs'].values())
+    partition_checks=material_partitions.stop_key_partition_checks([
+        {'side':row['side'],'stop':c['stop'],'pin_common_mm3':c['complete_pin_KEY_common_mm3'],
+         'remainder_common_mm3':[x['whole_common_with_KEY_mm3'] for x in c['nonpin_cages']]}
+        for row in rows for c in row['contacts']],n.TOL)
+    unresolved_partitions=[x for x in partition_checks if not x['whole_STOP_KEY_proved_clear']]
+    after={p:sha(s.ROOT/p) for p in before}
+    if before!=after:raise ValueError('sources changed during native experiment')
     report={'host':platform.node(),'source_SHA256':before,'source_bytes_unchanged':True,'rows':rows,'exports':exports,
             'complete_enclosure_pair_count':len(values),'positive_complete_enclosure_pairs':sum(x>n.TOL for x in values),
-            'STOW_nominal_selected_lower_branch_geometrically_clear':not any(x>n.TOL for x in values),
+            'whole_STOP_KEY_material_partition_checks':partition_checks,
+            'unresolved_whole_STOP_KEY_material_partitions':unresolved_partitions,
+            'complete_STOP_KEY_material_partitions_proved_clear':not unresolved_partitions,
+            'STOW_nominal_selected_lower_branch_geometrically_clear':not any(x>n.TOL for x in values) and not unresolved_partitions,
             'full_pin_paths_and_conservative_remainder_cages_not_sample_only':True,
             'q_domain_mm':[0.,12.],'full_STOP_stroke_mm':1.16,'OPEN_coupled_contact_checked':False,
             'lower_restoring_force_assumed_not_verified':True,'engagement_velocity_slope_discontinuous':True,

@@ -16,7 +16,7 @@ import sys
 
 import cam_contact_native as n
 from verify_contact_motion import PARTS
-from translation_regions import regions, checks
+from translation_regions import regions, checks, sum_common_upper_bound
 
 ROOT=Path(__file__).resolve().parents[1]
 ROOT_NAMES=('ROOT_INNER','ROOT_OUTER_CONNECTED_ALL_FRAGMENTS')
@@ -86,6 +86,12 @@ def stage_plan(side):
     return result
 
 
+def contact_rejections(contacts):
+    """The pin and remainder cages cover one complete STOP core per KEY pair."""
+    return [row for row in contacts if sum_common_upper_bound(
+        [row['pin_complete_relative_path_common_mm3'],*row['core_remainder_cage_common_mm3']])>1e-7]
+
+
 def side_checks(side,old,new):
     ex=-1 if side=='L' else 1
     result={'static':[],'motion':[],'assembly':[],'contacts':[],'retention':[],'material':{}}
@@ -116,6 +122,8 @@ def side_checks(side,old,new):
         if e_arm-key_max<=0:raise ValueError('new arm is not separated from full KEY by e')
         result['contacts'].append({'stop':i,'old_native_core_unchanged':True,'pin_complete_relative_path_common_mm3':pin_common,
                                    'core_remainder_cage_common_mm3':cage_common,'new_arm_to_KEY_axis_gap_mm':e_arm-key_max,
+                                   'complete_STOP_core_to_KEY_common_upper_bound_mm3':sum_common_upper_bound([pin_common,*cage_common]),
+                                   'common_upper_bound_is_sum_not_union_volume':True,
                                    'profile':profile.receipt(),'same_kinematic_branch_not_force_proof':True})
         # The maximum spring envelope bounds every selected compressed length.
         ec,qc=2.2,(16.5,10.5)[i];off=5*i
@@ -145,7 +153,7 @@ def side_checks(side,old,new):
     bad_static=[x for x in result['static'] if x['common_mm3']>1e-7]
     bad_motion=[x['label'] for x in result['motion'] if x['positive_pairs']]
     bad_assembly=[x['label'] for x in result['assembly'] if x['positive_pairs']]
-    bad_contacts=[x for x in result['contacts'] if x['pin_complete_relative_path_common_mm3']>1e-7 or any(v>1e-7 for v in x['core_remainder_cage_common_mm3'])]
+    bad_contacts=contact_rejections(result['contacts'])
     bad_capture=[x for x in result['retention'] if (x['uplift_mm']==.09 and x['common_mm3']>1e-7) or (x['uplift_mm']==.12 and x['common_mm3']<=1e-7)]
     result['failures']={'static':bad_static,'motion':bad_motion,'assembly':bad_assembly,'contact':bad_contacts,'retention':bad_capture}
     result['passed']=not any(result['failures'].values())
@@ -155,7 +163,9 @@ def side_checks(side,old,new):
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--manifest',type=Path,required=True);ap.add_argument('--output',type=Path,required=True);a=ap.parse_args()
     if a.output.exists():raise ValueError('new result path required')
+    sources={str(Path(f).resolve()):sha(f) for f in (__file__,sum_common_upper_bound.__code__.co_filename)}
     source,parts,inputs=read_parts(a.manifest);results={};fit=[];combined=[]
+    inputs.update(sources)
     cavity_path=ROOT/'engineering/phone-layout-study-20261015/native/stepped_A_cavity.step'
     shell_path=cavity_path.with_name('stepped_A_shell.step')
     cavity=n.single(n.cq.importers.importStep(str(cavity_path)).val());shell=n.single(n.cq.importers.importStep(str(shell_path)).val())

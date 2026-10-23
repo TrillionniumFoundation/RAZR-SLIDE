@@ -48,6 +48,20 @@ def subtract_regions(shape,parts):
     whole_material(result,empty=True)
     return result
 
+def sum_common_upper_bound(values):
+    """Union overlap is at most the sum of its nonnegative region overlaps.
+
+    This is a conservative upper bound, never the union's measured volume.
+    Applying a tolerance independently to each region can mask a larger total
+    overlap assembled from several individually sub-tolerance intersections.
+    """
+    values=list(values)
+    if not values or any(type(v) not in (int,float) or not math.isfinite(v) or v<0 for v in values):
+        raise ValueError('nonempty finite nonnegative region Common values required')
+    total=math.fsum(values)
+    if not math.isfinite(total):raise ValueError('nonfinite region Common upper bound')
+    return total
+
 def checks(parts,fixed):
     """Each positive region/obstacle common is retained; no cancellation."""
     single(fixed);values=[]
@@ -55,4 +69,7 @@ def checks(parts,fixed):
         common=part.intersect(fixed);_,v=whole_material(common,empty=True)
         if v>min(part.Volume(),fixed.Volume())+1e-7:raise ValueError('impossible common volume')
         values.append(v)
-    return {'region_common_mm3':values,'positive_region_count':sum(x>1e-7 for x in values),'all_regions_clear':not any(x>1e-7 for x in values)}
+    upper=sum_common_upper_bound(values)
+    return {'region_common_mm3':values,'positive_region_count':sum(x>1e-7 for x in values),
+        'common_upper_bound_mm3':upper,'common_upper_bound_is_sum_not_union_volume':True,
+        'all_regions_clear':upper<=1e-7}
