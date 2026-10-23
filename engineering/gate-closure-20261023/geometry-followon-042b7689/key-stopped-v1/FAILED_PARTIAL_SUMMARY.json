@@ -1,0 +1,180 @@
+{
+  "schema": "razr-key-endpoint-resource-stopped-partial-evidence-v1",
+  "utc": "2026-10-23T09:42:59.158822+00:00",
+  "source_commit": "042b768903cccbd7a0995317c8598401e0318e2a",
+  "execution_kind": "real native diagnostic interrupted by original shared resource guard",
+  "completed_six_trials": false,
+  "full_raw_report_present": false,
+  "all_20880_changed_pairs_completed": false,
+  "native_command": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/uv",
+      "run",
+      "--locked",
+      "python",
+      "-B",
+      "/workspace/scratch/95cd2986fdf2/gates_audit/dev/followon/integration/probe_key_endpoint_extension.py",
+      "--root",
+      "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE",
+      "--expected-head",
+      "042b768903cccbd7a0995317c8598401e0318e2a",
+      "--output",
+      "/workspace/scratch/95cd2986fdf2/run-key-endpoint-042b7689-v1/native",
+      "--control-evidence-directory",
+      "/tmp/razr-key-gawno8j4/control-evidence"
+    ],
+    "exit_code": 125,
+    "seconds": 312.1813261919997,
+    "stop_event": {
+      "kind": "shared_runtime_resource_budget",
+      "resources": {
+        "writeable_disk_bytes": 591765504,
+        "effective_memory_headroom_bytes": 229564416,
+        "root_reserved_free_bytes_diagnostic_only": 2326528000,
+        "shared_unreclaimable_memory_bytes": 7326765056,
+        "cgroup_unused_bytes": 31969280,
+        "clean_inactive_file_cache_bytes": 197595136,
+        "uid": 0,
+        "host_MemAvailable_bytes": 2885693440
+      }
+    },
+    "log": "native.log",
+    "log_sha256": "352edf4c39b2da60aea2b10a7ef0374ef5a01aecbcb3cd7ac1415bd71ea2b5fd"
+  },
+  "original_executed_source_sha256": {
+    "/workspace/scratch/95cd2986fdf2/gates_audit/dev/followon/run_followon_diagnostic.py": "ec9bd272fcdf17cb01052e813188e823a35d3c5fbf3cf941f158f620434c8e61",
+    "/workspace/scratch/95cd2986fdf2/gates_audit/dev/followon/run_canonical_controls.py": "049272696e2ef1d5fe246443091f2563b1a6051ccc54127ff71e67b4e6bb7b96",
+    "/workspace/scratch/95cd2986fdf2/gates_audit/dev/followon/integration/probe_key_endpoint_extension.py": "c28f9927467cd1e74165c7d94e5dbcf68df7b00dbd04b5e6fa4ab8181ff7b872",
+    "/workspace/scratch/95cd2986fdf2/gates_audit/dev/followon/PATCH_MANIFEST.json": "757eabbff6196718d22054fd1b734abb6e7ccbf5ce938fe66a8ef7404d4bcb78"
+  },
+  "stdout_completed_trial_rows": [
+    {
+      "trial": "STOW_OUTSIDE_0p001mm",
+      "native_pairs": 3396,
+      "positive_pairs": 0,
+      "errors": 0,
+      "seconds": 163.18391669500124
+    },
+    {
+      "trial": "STOW_OUTSIDE_HALF_BAND",
+      "native_pairs": 3396,
+      "positive_pairs": 4,
+      "errors": 0,
+      "seconds": 264.3670635769995
+    }
+  ],
+  "stdout_reported_completed_pair_count": 6792,
+  "stdout_count_is_not_independent_full_raw_pair_validation": true,
+  "saved_positive_Common_STEPs": [
+    {
+      "path": "native/STOW_OUTSIDE_HALF_BAND-positive-01.step",
+      "bytes": 18255,
+      "sha256": "65e5e1df3f8161eee2d7da0c2358f6a0ee6df9263f174ec7bd618378c3fb7ec3",
+      "ISO10303_file_envelope_present": true,
+      "complete_pair_identity_or_volume_metadata_available": false,
+      "BRep_vertex_count": 8,
+      "actual_vertex_coordinate_extents_mm": [
+        [
+          -27.17,
+          -26.87
+        ],
+        [
+          14.719681614467,
+          14.73
+        ],
+        [
+          2.7,
+          3.1
+        ]
+      ],
+      "vertex_extents_are_not_a_complete_surface_bbox_proof": true,
+      "STEP_native_readback_executed": false
+    },
+    {
+      "path": "native/STOW_OUTSIDE_HALF_BAND-positive-02.step",
+      "bytes": 37767,
+      "sha256": "b8959f567c54bddacd2fa99f405ac8fd150c4f007bbbe9385ef1114dfda82c90",
+      "ISO10303_file_envelope_present": true,
+      "complete_pair_identity_or_volume_metadata_available": false,
+      "BRep_vertex_count": 16,
+      "actual_vertex_coordinate_extents_mm": [
+        [
+          -28.05,
+          -22.85
+        ],
+        [
+          14.719681614467,
+          14.73
+        ],
+        [
+          2.7,
+          3.1
+        ]
+      ],
+      "vertex_extents_are_not_a_complete_surface_bbox_proof": true,
+      "STEP_native_readback_executed": false
+    },
+    {
+      "path": "native/STOW_OUTSIDE_HALF_BAND-positive-03.step",
+      "bytes": 18239,
+      "sha256": "41c5c7f745302d9663f9ea2e28fac98c2bd06cb4aaa38d7311002c359a1fe5ee",
+      "ISO10303_file_envelope_present": true,
+      "complete_pair_identity_or_volume_metadata_available": false,
+      "BRep_vertex_count": 8,
+      "actual_vertex_coordinate_extents_mm": [
+        [
+          26.87,
+          27.17
+        ],
+        [
+          14.719681614467,
+          14.73
+        ],
+        [
+          2.7,
+          3.1
+        ]
+      ],
+      "vertex_extents_are_not_a_complete_surface_bbox_proof": true,
+      "STEP_native_readback_executed": false
+    },
+    {
+      "path": "native/STOW_OUTSIDE_HALF_BAND-positive-04.step",
+      "bytes": 37746,
+      "sha256": "dcde4b9a528c6a4577845151c0b5c1c10902a7fd6b0a3d8ce6bbaed5a908e809",
+      "ISO10303_file_envelope_present": true,
+      "complete_pair_identity_or_volume_metadata_available": false,
+      "BRep_vertex_count": 16,
+      "actual_vertex_coordinate_extents_mm": [
+        [
+          22.85,
+          28.05
+        ],
+        [
+          14.719681614467,
+          14.73
+        ],
+        [
+          2.7,
+          3.1
+        ]
+      ],
+      "vertex_extents_are_not_a_complete_surface_bbox_proof": true,
+      "STEP_native_readback_executed": false
+    }
+  ],
+  "actual_positive_pair_identities_and_numeric_volumes_not_preserved_in_raw_JSON": true,
+  "remaining_unexecuted_or_unfinished_trials": [
+    "STOW_OUTSIDE_FULL_BAND",
+    "OPEN_OUTSIDE_0p001mm",
+    "OPEN_OUTSIDE_HALF_BAND",
+    "OPEN_OUTSIDE_FULL_BAND"
+  ],
+  "source_after_stop_check": "POST_STOP_SOURCE_CHECK.json",
+  "source_unchanged_after_stop": true,
+  "heavy_process_terminated_and_reaped": true,
+  "restart_or_budget_relaxation_performed": false,
+  "complete_G2_or_physical_qualification": false,
+  "canonical_execution_claimed": false,
+  "old_stdout_only_trials_must_not_be_resumed_as_completed": true
+}

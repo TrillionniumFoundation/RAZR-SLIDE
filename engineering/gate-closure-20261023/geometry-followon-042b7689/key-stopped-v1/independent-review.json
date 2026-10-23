@@ -1,0 +1,137 @@
+{
+  "schema": "razr-ci-audit-interrupted-finite-KEY-diagnostic-review-v1",
+  "utc": "2026-10-23T09:40:13.307330+00:00",
+  "source_commit": "042b768903cccbd7a0995317c8598401e0318e2a",
+  "run_directory": "/workspace/scratch/95cd2986fdf2/run-key-endpoint-042b7689-v1",
+  "controller_exit_code": 125,
+  "native_seconds": 312.1813261919997,
+  "stop_event": {
+    "kind": "shared_runtime_resource_budget",
+    "resources": {
+      "writeable_disk_bytes": 591765504,
+      "effective_memory_headroom_bytes": 229564416,
+      "root_reserved_free_bytes_diagnostic_only": 2326528000,
+      "shared_unreclaimable_memory_bytes": 7326765056,
+      "cgroup_unused_bytes": 31969280,
+      "clean_inactive_file_cache_bytes": 197595136,
+      "uid": 0,
+      "host_MemAvailable_bytes": 2885693440
+    }
+  },
+  "original_runtime_limit": {
+    "minimum_writeable_disk_bytes": 104857600,
+    "maximum_shared_unreclaimable_memory_bytes": 7301444403
+  },
+  "actual_runtime_resource_guard_triggered": true,
+  "completed_native_report_present": false,
+  "preserved_stdout_trial_counts": [
+    {
+      "trial": "STOW_OUTSIDE_0p001mm",
+      "native_pairs": 3396,
+      "positive_pairs": 0,
+      "errors": 0,
+      "seconds": 163.18391669500124
+    },
+    {
+      "trial": "STOW_OUTSIDE_HALF_BAND",
+      "native_pairs": 3396,
+      "positive_pairs": 4,
+      "errors": 0,
+      "seconds": 264.3670635769995
+    }
+  ],
+  "expected_finite_trials": 6,
+  "expected_total_changed_pairs": 20880,
+  "stdout_reports_completed_trial_pair_counts": 6792,
+  "full_six_trial_execution_completed": false,
+  "independent_per_pair_numerical_validation_possible": false,
+  "positive_Common_STEP_files_preserved": 4,
+  "STEP_bytes": [
+    {
+      "name": "STOW_OUTSIDE_HALF_BAND-positive-01.step",
+      "bytes": 18255,
+      "sha256": "65e5e1df3f8161eee2d7da0c2358f6a0ee6df9263f174ec7bd618378c3fb7ec3"
+    },
+    {
+      "name": "STOW_OUTSIDE_HALF_BAND-positive-02.step",
+      "bytes": 37767,
+      "sha256": "b8959f567c54bddacd2fa99f405ac8fd150c4f007bbbe9385ef1114dfda82c90"
+    },
+    {
+      "name": "STOW_OUTSIDE_HALF_BAND-positive-03.step",
+      "bytes": 18239,
+      "sha256": "41c5c7f745302d9663f9ea2e28fac98c2bd06cb4aaa38d7311002c359a1fe5ee"
+    },
+    {
+      "name": "STOW_OUTSIDE_HALF_BAND-positive-04.step",
+      "bytes": 37746,
+      "sha256": "dcde4b9a528c6a4577845151c0b5c1c10902a7fd6b0a3d8ce6bbaed5a908e809"
+    }
+  ],
+  "pair_identity_and_positive_Common_numbers_not_persisted_in_this_version": true,
+  "source_copies_match_exact_preflight_digests": true,
+  "canonical_execution_claimed": false,
+  "hosted_execution_claimed": false,
+  "continuous_backlash_domain_proved": false,
+  "global_KEY_hard_stop_proved": false,
+  "complete_G2_or_physical_qualification": false,
+  "CAD_imported_or_executed_in_review": false,
+  "claim_limit": "The two stdout summaries are retained observations by the interrupted producer. The individual pair identities and Common values are absent, so neither full six-trial coverage nor an independently reconstructed per-pair collision/clearance conclusion is asserted.",
+  "evidence": [
+    {
+      "path": "/workspace/scratch/95cd2986fdf2/run-key-endpoint-042b7689-v1/runner-report.json",
+      "bytes": 391102,
+      "sha256": "3ef6b91a5aa58051a705ab644d8002cbc4b3daed712f8c3daa6e0a8d111f2696"
+    },
+    {
+      "path": "/workspace/scratch/95cd2986fdf2/run-key-endpoint-042b7689-v1/native.log",
+      "bytes": 243,
+      "sha256": "352edf4c39b2da60aea2b10a7ef0374ef5a01aecbcb3cd7ac1415bd71ea2b5fd"
+    },
+    {
+      "path": "/workspace/scratch/95cd2986fdf2/run-key-endpoint-042b7689-v1/environment.json",
+      "bytes": 4910,
+      "sha256": "bf4b865fdcc0aa0223cc54d155fd721a27c6241643495c41a593c5587eab22cf"
+    },
+    {
+      "path": "/workspace/scratch/95cd2986fdf2/run-key-endpoint-042b7689-v1/environment.log",
+      "bytes": 4910,
+      "sha256": "bf4b865fdcc0aa0223cc54d155fd721a27c6241643495c41a593c5587eab22cf"
+    },
+    {
+      "path": "/workspace/scratch/95cd2986fdf2/run-key-endpoint-042b7689-v1/runner-source.py",
+      "bytes": 11208,
+      "sha256": "ec9bd272fcdf17cb01052e813188e823a35d3c5fbf3cf941f158f620434c8e61"
+    },
+    {
+      "path": "/workspace/scratch/95cd2986fdf2/run-key-endpoint-042b7689-v1/executed-study-source.py",
+      "bytes": 18697,
+      "sha256": "c28f9927467cd1e74165c7d94e5dbcf68df7b00dbd04b5e6fa4ab8181ff7b872"
+    },
+    {
+      "path": "/workspace/scratch/95cd2986fdf2/run-key-endpoint-042b7689-v1/resource-helper-source.py",
+      "bytes": 10268,
+      "sha256": "049272696e2ef1d5fe246443091f2563b1a6051ccc54127ff71e67b4e6bb7b96"
+    },
+    {
+      "path": "/workspace/scratch/95cd2986fdf2/run-key-endpoint-042b7689-v1/native/STOW_OUTSIDE_HALF_BAND-positive-01.step",
+      "bytes": 18255,
+      "sha256": "65e5e1df3f8161eee2d7da0c2358f6a0ee6df9263f174ec7bd618378c3fb7ec3"
+    },
+    {
+      "path": "/workspace/scratch/95cd2986fdf2/run-key-endpoint-042b7689-v1/native/STOW_OUTSIDE_HALF_BAND-positive-02.step",
+      "bytes": 37767,
+      "sha256": "b8959f567c54bddacd2fa99f405ac8fd150c4f007bbbe9385ef1114dfda82c90"
+    },
+    {
+      "path": "/workspace/scratch/95cd2986fdf2/run-key-endpoint-042b7689-v1/native/STOW_OUTSIDE_HALF_BAND-positive-03.step",
+      "bytes": 18239,
+      "sha256": "41c5c7f745302d9663f9ea2e28fac98c2bd06cb4aaa38d7311002c359a1fe5ee"
+    },
+    {
+      "path": "/workspace/scratch/95cd2986fdf2/run-key-endpoint-042b7689-v1/native/STOW_OUTSIDE_HALF_BAND-positive-04.step",
+      "bytes": 37746,
+      "sha256": "dcde4b9a528c6a4577845151c0b5c1c10902a7fd6b0a3d8ce6bbaed5a908e809"
+    }
+  ]
+}

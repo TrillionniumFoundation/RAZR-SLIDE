@@ -1,0 +1,514 @@
+{
+  "schema": "razr-panel-probe-diagnosis-preparation-result-v1",
+  "passed": true,
+  "new_FE_factor_or_operator_solve_executed": false,
+  "CAD_executed": false,
+  "production_H_or_K_loaded": false,
+  "original_failed_H_candidate_qualified": false,
+  "tests": {
+    "passed": 10,
+    "failed": 0,
+    "seconds": 0.014,
+    "scope": "tiny SPD corrections/finite checks/original five-action API; real short-lived fake-child supervision failures",
+    "address_space_limit_bytes": 536870912,
+    "subprocess_returncode": 0,
+    "command": [
+      "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/.venv/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "-v",
+      "test_probe_diagnosis"
+    ],
+    "log_path": "/workspace/scratch/95cd2986fdf2/input_recovery/fe_probe_prepared-v1/tiny-tests.log",
+    "log_sha256": "c0418b48e0e901645d1ac1999c44b6f4406a9bd1a9b1292bc3b0b503a92e4ff7"
+  },
+  "prepared_manifest_path": "/workspace/scratch/95cd2986fdf2/input_recovery/fe_probe_prepared-v1/prepared-source-manifest.json",
+  "prepared_manifest_sha256": "e520edc01fd360c19a93dbf42e098771d9545b613d472181570c17cf7af02353",
+  "source_sha256_before": {
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/diagnose_panel_probes.py": "cbc53789f9b2c6290ae2357142f62a573de5216684a2c180603d9ac04415e39f",
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/probe_refinement.py": "23ec78d96a023ed50b3b40aaa3bcfb77e6034c8f0ac69e34e9ec85d36e16f81a",
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/supervise_probe_diagnosis.py": "49492ea604d218146653c3acea4c36b12bdce23f117c41a0ea92a16ba2885692",
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/quarantine_probe_rejected_candidate.py": "09f09e04cb4cfa15437ca05659cf29dc94639e94c6bcd1e1dfe5fd0e8b98cc2e",
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/archive_input.py": "56ffeee28c0648738990e9d25f6e6ab23630203187c622a51df07e4a589972ca",
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/test_probe_diagnosis.py": "2e285a2b56faf65f1afb085060434632e402b64f155ce1f489314fc4d22d3c69",
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/run_probe_preparation.py": "b05bfa6d1d3a8cef4da70e355a64723c10fa4417643d25c21ed90f6ab7320cf4",
+    "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/integration/contact_exchange.py": "db1f426d89dfba88bb7d7ed6955e8b92a620c0babc9d4036ee3c0ba1d5be6064",
+    "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/integration/contact_patch_audit.py": "6e6ee08ecf2eac3539edab1f9c18be8cfed8e6dc03f80a3010dc48bc7c612100",
+    "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/tools/check_environment.py": "e3cc01d4126b6c79481ac6bba86e34d81e3e9ec4e0ebef21f9a802a0cb992b29",
+    "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/pyproject.toml": "910226440f950d17dbe702a2c868d5ae2b679f72f044b14d6d5e2a36fd79279b",
+    "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/uv.lock": "b1387fbbfa74e39474818a8a6235ba7ddf1d97d00629babb1d0e53971141fe6a"
+  },
+  "source_sha256_after": {
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/diagnose_panel_probes.py": "cbc53789f9b2c6290ae2357142f62a573de5216684a2c180603d9ac04415e39f",
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/probe_refinement.py": "23ec78d96a023ed50b3b40aaa3bcfb77e6034c8f0ac69e34e9ec85d36e16f81a",
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/supervise_probe_diagnosis.py": "49492ea604d218146653c3acea4c36b12bdce23f117c41a0ea92a16ba2885692",
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/quarantine_probe_rejected_candidate.py": "09f09e04cb4cfa15437ca05659cf29dc94639e94c6bcd1e1dfe5fd0e8b98cc2e",
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/archive_input.py": "56ffeee28c0648738990e9d25f6e6ab23630203187c622a51df07e4a589972ca",
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/test_probe_diagnosis.py": "2e285a2b56faf65f1afb085060434632e402b64f155ce1f489314fc4d22d3c69",
+    "/workspace/scratch/95cd2986fdf2/input_recovery/fe_preflight/run_probe_preparation.py": "b05bfa6d1d3a8cef4da70e355a64723c10fa4417643d25c21ed90f6ab7320cf4",
+    "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/integration/contact_exchange.py": "db1f426d89dfba88bb7d7ed6955e8b92a620c0babc9d4036ee3c0ba1d5be6064",
+    "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/integration/contact_patch_audit.py": "6e6ee08ecf2eac3539edab1f9c18be8cfed8e6dc03f80a3010dc48bc7c612100",
+    "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/tools/check_environment.py": "e3cc01d4126b6c79481ac6bba86e34d81e3e9ec4e0ebef21f9a802a0cb992b29",
+    "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/pyproject.toml": "910226440f950d17dbe702a2c868d5ae2b679f72f044b14d6d5e2a36fd79279b",
+    "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE/uv.lock": "b1387fbbfa74e39474818a8a6235ba7ddf1d97d00629babb1d0e53971141fe6a"
+  },
+  "environment_before": {
+    "schema": "razr-locked-version-check-v1",
+    "passed": true,
+    "python_version": "3.12.14",
+    "checked_packages": {
+      "aiohappyeyeballs": {
+        "expected": "2.7.1",
+        "observed": "2.7.1",
+        "matches": true
+      },
+      "aiohttp": {
+        "expected": "3.14.5",
+        "observed": "3.14.5",
+        "matches": true
+      },
+      "aiosignal": {
+        "expected": "1.4.0",
+        "observed": "1.4.0",
+        "matches": true
+      },
+      "attrs": {
+        "expected": "26.1.0",
+        "observed": "26.1.0",
+        "matches": true
+      },
+      "cadquery": {
+        "expected": "2.7.0",
+        "observed": "2.7.0",
+        "matches": true
+      },
+      "cadquery-ocp": {
+        "expected": "7.8.1.1.post1",
+        "observed": "7.8.1.1.post1",
+        "matches": true
+      },
+      "casadi": {
+        "expected": "3.8.1",
+        "observed": "3.8.1",
+        "matches": true
+      },
+      "contourpy": {
+        "expected": "1.4.0",
+        "observed": "1.4.0",
+        "matches": true
+      },
+      "cycler": {
+        "expected": "0.12.1",
+        "observed": "0.12.1",
+        "matches": true
+      },
+      "ezdxf": {
+        "expected": "1.4.4",
+        "observed": "1.4.4",
+        "matches": true
+      },
+      "fonttools": {
+        "expected": "4.66.1",
+        "observed": "4.66.1",
+        "matches": true
+      },
+      "frozenlist": {
+        "expected": "1.8.0",
+        "observed": "1.8.0",
+        "matches": true
+      },
+      "idna": {
+        "expected": "3.20",
+        "observed": "3.20",
+        "matches": true
+      },
+      "kiwisolver": {
+        "expected": "1.5.1",
+        "observed": "1.5.1",
+        "matches": true
+      },
+      "matplotlib": {
+        "expected": "3.11.2",
+        "observed": "3.11.2",
+        "matches": true
+      },
+      "more-itertools": {
+        "expected": "11.2.0",
+        "observed": "11.2.0",
+        "matches": true
+      },
+      "msgpack": {
+        "expected": "1.2.3",
+        "observed": "1.2.3",
+        "matches": true
+      },
+      "multidict": {
+        "expected": "7.1.0",
+        "observed": "7.1.0",
+        "matches": true
+      },
+      "multimethod": {
+        "expected": "1.12",
+        "observed": "1.12",
+        "matches": true
+      },
+      "nlopt": {
+        "expected": "2.11.0",
+        "observed": "2.11.0",
+        "matches": true
+      },
+      "numpy": {
+        "expected": "2.5.4",
+        "observed": "2.5.4",
+        "matches": true
+      },
+      "packaging": {
+        "expected": "26.3",
+        "observed": "26.3",
+        "matches": true
+      },
+      "path": {
+        "expected": "17.1.1",
+        "observed": "17.1.1",
+        "matches": true
+      },
+      "pillow": {
+        "expected": "12.3.0",
+        "observed": "12.3.0",
+        "matches": true
+      },
+      "propcache": {
+        "expected": "0.5.4",
+        "observed": "0.5.4",
+        "matches": true
+      },
+      "pyparsing": {
+        "expected": "3.3.3",
+        "observed": "3.3.3",
+        "matches": true
+      },
+      "python-dateutil": {
+        "expected": "2.9.0.post0",
+        "observed": "2.9.0.post0",
+        "matches": true
+      },
+      "pyyaml": {
+        "expected": "6.0.3",
+        "observed": "6.0.3",
+        "matches": true
+      },
+      "runtype": {
+        "expected": "0.5.3",
+        "observed": "0.5.3",
+        "matches": true
+      },
+      "scipy": {
+        "expected": "1.18.1",
+        "observed": "1.18.1",
+        "matches": true
+      },
+      "shapely": {
+        "expected": "2.2.0",
+        "observed": "2.2.0",
+        "matches": true
+      },
+      "six": {
+        "expected": "1.17.0",
+        "observed": "1.17.0",
+        "matches": true
+      },
+      "trame": {
+        "expected": "4.0.0",
+        "observed": "4.0.0",
+        "matches": true
+      },
+      "trame-client": {
+        "expected": "4.1.4",
+        "observed": "4.1.4",
+        "matches": true
+      },
+      "trame-common": {
+        "expected": "1.2.9",
+        "observed": "1.2.9",
+        "matches": true
+      },
+      "trame-components": {
+        "expected": "2.5.0",
+        "observed": "2.5.0",
+        "matches": true
+      },
+      "trame-server": {
+        "expected": "4.1.0",
+        "observed": "4.1.0",
+        "matches": true
+      },
+      "trame-vtk": {
+        "expected": "2.11.17",
+        "observed": "2.11.17",
+        "matches": true
+      },
+      "trame-vuetify": {
+        "expected": "3.3.0",
+        "observed": "3.3.0",
+        "matches": true
+      },
+      "typing-extensions": {
+        "expected": "4.16.0",
+        "observed": "4.16.0",
+        "matches": true
+      },
+      "vtk": {
+        "expected": "9.3.1",
+        "observed": "9.3.1",
+        "matches": true
+      },
+      "wslink": {
+        "expected": "2.6.0",
+        "observed": "2.6.0",
+        "matches": true
+      },
+      "yarl": {
+        "expected": "1.25.1",
+        "observed": "1.25.1",
+        "matches": true
+      }
+    },
+    "errors": [],
+    "scope": "interpreter and all registry package versions in the current universal lock",
+    "installation_artifact_provenance_verified": false,
+    "pyproject_sha256": "910226440f950d17dbe702a2c868d5ae2b679f72f044b14d6d5e2a36fd79279b",
+    "uv_lock_sha256": "b1387fbbfa74e39474818a8a6235ba7ddf1d97d00629babb1d0e53971141fe6a",
+    "checked_package_count": 43
+  },
+  "environment_after": {
+    "schema": "razr-locked-version-check-v1",
+    "passed": true,
+    "python_version": "3.12.14",
+    "checked_packages": {
+      "aiohappyeyeballs": {
+        "expected": "2.7.1",
+        "observed": "2.7.1",
+        "matches": true
+      },
+      "aiohttp": {
+        "expected": "3.14.5",
+        "observed": "3.14.5",
+        "matches": true
+      },
+      "aiosignal": {
+        "expected": "1.4.0",
+        "observed": "1.4.0",
+        "matches": true
+      },
+      "attrs": {
+        "expected": "26.1.0",
+        "observed": "26.1.0",
+        "matches": true
+      },
+      "cadquery": {
+        "expected": "2.7.0",
+        "observed": "2.7.0",
+        "matches": true
+      },
+      "cadquery-ocp": {
+        "expected": "7.8.1.1.post1",
+        "observed": "7.8.1.1.post1",
+        "matches": true
+      },
+      "casadi": {
+        "expected": "3.8.1",
+        "observed": "3.8.1",
+        "matches": true
+      },
+      "contourpy": {
+        "expected": "1.4.0",
+        "observed": "1.4.0",
+        "matches": true
+      },
+      "cycler": {
+        "expected": "0.12.1",
+        "observed": "0.12.1",
+        "matches": true
+      },
+      "ezdxf": {
+        "expected": "1.4.4",
+        "observed": "1.4.4",
+        "matches": true
+      },
+      "fonttools": {
+        "expected": "4.66.1",
+        "observed": "4.66.1",
+        "matches": true
+      },
+      "frozenlist": {
+        "expected": "1.8.0",
+        "observed": "1.8.0",
+        "matches": true
+      },
+      "idna": {
+        "expected": "3.20",
+        "observed": "3.20",
+        "matches": true
+      },
+      "kiwisolver": {
+        "expected": "1.5.1",
+        "observed": "1.5.1",
+        "matches": true
+      },
+      "matplotlib": {
+        "expected": "3.11.2",
+        "observed": "3.11.2",
+        "matches": true
+      },
+      "more-itertools": {
+        "expected": "11.2.0",
+        "observed": "11.2.0",
+        "matches": true
+      },
+      "msgpack": {
+        "expected": "1.2.3",
+        "observed": "1.2.3",
+        "matches": true
+      },
+      "multidict": {
+        "expected": "7.1.0",
+        "observed": "7.1.0",
+        "matches": true
+      },
+      "multimethod": {
+        "expected": "1.12",
+        "observed": "1.12",
+        "matches": true
+      },
+      "nlopt": {
+        "expected": "2.11.0",
+        "observed": "2.11.0",
+        "matches": true
+      },
+      "numpy": {
+        "expected": "2.5.4",
+        "observed": "2.5.4",
+        "matches": true
+      },
+      "packaging": {
+        "expected": "26.3",
+        "observed": "26.3",
+        "matches": true
+      },
+      "path": {
+        "expected": "17.1.1",
+        "observed": "17.1.1",
+        "matches": true
+      },
+      "pillow": {
+        "expected": "12.3.0",
+        "observed": "12.3.0",
+        "matches": true
+      },
+      "propcache": {
+        "expected": "0.5.4",
+        "observed": "0.5.4",
+        "matches": true
+      },
+      "pyparsing": {
+        "expected": "3.3.3",
+        "observed": "3.3.3",
+        "matches": true
+      },
+      "python-dateutil": {
+        "expected": "2.9.0.post0",
+        "observed": "2.9.0.post0",
+        "matches": true
+      },
+      "pyyaml": {
+        "expected": "6.0.3",
+        "observed": "6.0.3",
+        "matches": true
+      },
+      "runtype": {
+        "expected": "0.5.3",
+        "observed": "0.5.3",
+        "matches": true
+      },
+      "scipy": {
+        "expected": "1.18.1",
+        "observed": "1.18.1",
+        "matches": true
+      },
+      "shapely": {
+        "expected": "2.2.0",
+        "observed": "2.2.0",
+        "matches": true
+      },
+      "six": {
+        "expected": "1.17.0",
+        "observed": "1.17.0",
+        "matches": true
+      },
+      "trame": {
+        "expected": "4.0.0",
+        "observed": "4.0.0",
+        "matches": true
+      },
+      "trame-client": {
+        "expected": "4.1.4",
+        "observed": "4.1.4",
+        "matches": true
+      },
+      "trame-common": {
+        "expected": "1.2.9",
+        "observed": "1.2.9",
+        "matches": true
+      },
+      "trame-components": {
+        "expected": "2.5.0",
+        "observed": "2.5.0",
+        "matches": true
+      },
+      "trame-server": {
+        "expected": "4.1.0",
+        "observed": "4.1.0",
+        "matches": true
+      },
+      "trame-vtk": {
+        "expected": "2.11.17",
+        "observed": "2.11.17",
+        "matches": true
+      },
+      "trame-vuetify": {
+        "expected": "3.3.0",
+        "observed": "3.3.0",
+        "matches": true
+      },
+      "typing-extensions": {
+        "expected": "4.16.0",
+        "observed": "4.16.0",
+        "matches": true
+      },
+      "vtk": {
+        "expected": "9.3.1",
+        "observed": "9.3.1",
+        "matches": true
+      },
+      "wslink": {
+        "expected": "2.6.0",
+        "observed": "2.6.0",
+        "matches": true
+      },
+      "yarl": {
+        "expected": "1.25.1",
+        "observed": "1.25.1",
+        "matches": true
+      }
+    },
+    "errors": [],
+    "scope": "interpreter and all registry package versions in the current universal lock",
+    "installation_artifact_provenance_verified": false,
+    "pyproject_sha256": "910226440f950d17dbe702a2c868d5ae2b679f72f044b14d6d5e2a36fd79279b",
+    "uv_lock_sha256": "b1387fbbfa74e39474818a8a6235ba7ddf1d97d00629babb1d0e53971141fe6a",
+    "checked_package_count": 43
+  },
+  "seconds": 0.8580890080011159,
+  "children_peak_rss_kib": 51084
+}
