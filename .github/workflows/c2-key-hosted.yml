@@ -1,7 +1,6 @@
-# Diagnostic branch only. The workflow revision is NOT the tested functional SHA.
-# Install as .github/workflows/c2-key-hosted.yml on the named diagnostic branch.
-# No source edits, relaxed validators, local baseline reuse, or implicit CAD resume.
-name: C2 KEY bounded hosted diagnostic
+# D2 capability probe only. Replaces the diagnostic workflow, never C2 sources.
+# No checkout, dependency installation, CAD import, geometry, or qualification.
+name: C2 native runner capability probe D2
 
 'on':
   push:
@@ -15,473 +14,217 @@ concurrency:
   group: c2-key-diagnostic-${{ github.ref }}
   cancel-in-progress: false
 
-env:
-  C2: bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb
-  PYTHONDONTWRITEBYTECODE: '1'
-  OPENBLAS_NUM_THREADS: '1'
-  OMP_NUM_THREADS: '1'
-  MKL_NUM_THREADS: '1'
-  NUMEXPR_NUM_THREADS: '1'
-
 jobs:
-  controls:
-    name: C2-canonical-${{ matrix.pose }}
-    runs-on: ubuntu-slim
-    timeout-minutes: 15
+  capability:
+    name: C2-resource-interface-${{ matrix.runner }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 5
     strategy:
       fail-fast: false
       matrix:
-        pose: [STOW, OPEN]
+        runner: [ubuntu-slim, ubuntu-22.04]
     env:
-      CASE_KIND: controls
-      CASE_KEY: ${{ matrix.pose }}
+      PROBED_RUNNER_LABEL: ${{ matrix.runner }}
+      PYTHONDONTWRITEBYTECODE: '1'
     steps:
-      - &clock
-        name: Start separate hosted deadline and scratch evidence directory
+      - name: Record real proc and cgroup interfaces without installing or running CAD
         shell: bash
         run: |
           set -euo pipefail
-          host_root="$RUNNER_TEMP/razr-c2-key-bec1c8d7"
-          case_dir="$host_root/$CASE_KIND/$CASE_KEY"
-          mkdir -p "$case_dir"
-          echo "HOST_JOB_START=$(date +%s)" >> "$GITHUB_ENV"
-          echo "HOST_ROOT=$host_root" >> "$GITHUB_ENV"
-          echo "CASE_DIR=$case_dir" >> "$GITHUB_ENV"
-      - &checkout
-        name: Checkout immutable functional C2, not this diagnostic branch
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          ref: bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb
-          persist-credentials: false
-          sparse-checkout-cone-mode: false
-          sparse-checkout: |
-            /*
-            !/archive/blobs/
-            !/baselines/**
-            /baselines/**/*.py
-            /baselines/**/*.md
-            /baselines/**/*.json
-      - &prepare
-        name: Extract only the five byte-identical historical sources and record paths
-        shell: bash
-        run: |
-          set -euo pipefail
-          test "$(git rev-parse HEAD)" = "$C2"
-          test -z "$(git status --porcelain --untracked-files=all)"
-          python3 -B - <<'PY'
-          import hashlib, json, os, pathlib, shutil, tarfile
-          root = pathlib.Path(os.environ['GITHUB_WORKSPACE']).resolve()
-          host = pathlib.Path(os.environ['HOST_ROOT']).resolve()
-          case = pathlib.Path(os.environ['CASE_DIR']).resolve()
-          study = host/'original-v4'
-          archive_rel = 'engineering/gate-closure-20261023/geometry-followon-042b7689/key-v4-readback-algebra/results.tar.gz'
-          archive = root/archive_rel
-          archive_sha = 'beef1cf45fb49417c6af092fec51fb266fd6e89f238410c8cf137af4c20ce442'
-          expected = {
-            'integration/probe_key_endpoint_extension.py': 'a2f15dd4c9f41a9235e4c7625da52c9bf81add0260556d841e65c6261123408e',
-            'tools/key_endpoint_resume.py': 'f9fa0e36cfdae30a24eab771c015b260d004573d60a23351bf266d1cb28cfb49',
-            'run_key_endpoint_trials.py': 'ecd57df70e7df83e42083b6019e3b84da261c486c8c9681909a4b192b4505dad',
-            'tests/test_key_endpoint_extension.py': '3fe949b3a0036875946263bc5d6f97fce4d8555cc2c0b7d0686f263bbe99e60b',
-            'tests/test_key_endpoint_resume.py': '6038b8ea4659bb3095f766d75ef54b1d607e1f3096ece816cb887fbaec3d0188',
+          export PROBE_DIR="$RUNNER_TEMP/razr-c2-native-capability"
+          mkdir -p "$PROBE_DIR"
+          cat > "$PROBE_DIR/probe.py" <<'PY'
+          import hashlib, json, math, os, pathlib, platform, sys, time
+          out = pathlib.Path(os.environ['PROBE_DIR'])
+          raw = out/'raw'
+          raw.mkdir(exist_ok=True)
+          records = {}
+          texts = {}
+          targets = {
+            'proc-self-mountinfo.txt': '/proc/self/mountinfo',
+            'proc-self-cgroup.txt': '/proc/self/cgroup',
+            'proc-self-status.txt': '/proc/self/status',
+            'proc-self-stat.txt': '/proc/self/stat',
+            'proc-meminfo.txt': '/proc/meminfo',
+            'cgroup-memory.stat.txt': '/sys/fs/cgroup/memory.stat',
+            'cgroup-memory.current.txt': '/sys/fs/cgroup/memory.current',
+            'cgroup-memory.max.txt': '/sys/fs/cgroup/memory.max',
+            'cgroup-controllers.txt': '/sys/fs/cgroup/cgroup.controllers',
+            'cgroup-type.txt': '/sys/fs/cgroup/cgroup.type',
           }
-          assert not host.is_relative_to(root) and not study.exists()
-          assert not archive.is_symlink()
-          assert hashlib.sha256(archive.read_bytes()).hexdigest() == archive_sha
-          prefix = 'gates_audit/dev/key-endpoint-v4/'
-          with tarfile.open(archive, 'r:gz') as tar:
-              for name, digest in expected.items():
-                  matches = [m for m in tar.getmembers() if m.name == prefix+name]
-                  assert len(matches) == 1 and matches[0].isfile() and 0 < matches[0].size < 1024**2
-                  data = tar.extractfile(matches[0]).read()
-                  assert hashlib.sha256(data).hexdigest() == digest
-                  target = study/name
-                  target.parent.mkdir(parents=True, exist_ok=True)
-                  with target.open('xb') as stream: stream.write(data)
-          receipt = {'functional_source_commit': os.environ['C2'],
-            'historical_archive': archive_rel, 'archive_sha256': archive_sha,
-            'archive_member_prefix': prefix, 'study_source_sha256': expected,
-            'study_directory': str(study), 'source_bytes_modified': False}
-          (case/'source-identity.json').write_text(json.dumps(receipt, indent=2)+'\n')
-          shutil.copytree(study, case/'source'/'original-v4')
-          contract = {'functional_source_commit': os.environ['C2'], 'repository_root': str(root),
-            'runner_temp': str(pathlib.Path(os.environ['RUNNER_TEMP']).resolve()),
-            'host_root': str(host), 'study_root': str(study),
-            'baseline_paths': {p: str(host/'controls'/p/(p+'-report.json')) for p in ('STOW', 'OPEN')}}
-          (case/'path-contract.json').write_text(json.dumps(contract, indent=2)+'\n')
-          (case/'hosted-context.json').write_text(json.dumps({
-            'workflow_revision': os.environ['GITHUB_SHA'], 'workflow_ref': os.environ.get('GITHUB_WORKFLOW_REF'),
-            'functional_source_commit': os.environ['C2'], 'run_id': os.environ['GITHUB_RUN_ID'],
-            'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'], 'job': os.environ['GITHUB_JOB'],
-            'case_kind': os.environ['CASE_KIND'], 'case_key': os.environ['CASE_KEY'],
-            'platform_runner_label': 'ubuntu-slim', 'platform_maximum_job_seconds': 900,
-            'original_trial_budget_seconds_unchanged': 1200,
-            'external_command_deadline_seconds_after_first_step': 780,
-            'external_SIGINT_cleanup_grace_seconds': 20,
-            'hosted_execution_is_new_evidence': True, 'physical_qualification': False,
-            'complete_product_motion_proved': False, 'G2_pass': False}, indent=2)+'\n')
-          PY
-          cat > "$HOST_ROOT/host-cap.py" <<'PY'
-          """Outer hosted cap only; never change a C2/original worker or its gates."""
-          import hashlib, json, os, pathlib, signal, subprocess, sys, time
-          target = pathlib.Path(sys.argv[1])
-          command = sys.argv[2:]
-          target.parent.mkdir(parents=True, exist_ok=True)
-          deadline = float(os.environ['HOST_JOB_START']) + 780
-          def resource():
-              stat = os.statvfs(target.parent)
-              files = {}
-              for name in ('memory.current', 'memory.max', 'memory.stat'):
-                  p = pathlib.Path('/sys/fs/cgroup')/name
-                  files[name] = p.read_text() if p.is_file() else None
-              return {'epoch': time.time(), 'writeable_disk_bytes': stat.f_bavail*stat.f_frsize,
-                      'root_reserved_free_bytes_diagnostic_only': stat.f_bfree*stat.f_frsize,
-                      'cgroup': files}
-          receipt = {'argv': command, 'cwd': os.getcwd(), 'started_epoch': time.time(),
-              'external_deadline_epoch': deadline, 'platform_maximum_job_seconds': 900,
-              'original_trial_budget_seconds_unchanged': 1200,
-              'outer_hosted_cap_reached': False, 'process_started': False,
-              'resource_before': resource(), 'source_sha256': hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest()}
-          child = None
-          code = 2
+          for name, source in targets.items():
+              p = pathlib.Path(source)
+              r = {'source_path': source, 'readable': False, 'is_symlink': p.is_symlink()}
+              try:
+                  data = p.read_bytes()
+                  text = data.decode('utf-8', errors='strict')
+                  (raw/name).write_bytes(data)
+                  texts[name] = text
+                  r.update(readable=True, bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
+              except (OSError, UnicodeError) as exc:
+                  r['error'] = type(exc).__name__+': '+str(exc)
+              records[name] = r
+          links = {}
+          for source in ('/proc/self', '/proc/self/ns/pid', '/proc/self/ns/pid_for_children'):
+              try: links[source] = {'readable': True, 'target': os.readlink(source)}
+              except OSError as exc: links[source] = {'readable': False, 'error': type(exc).__name__+': '+str(exc)}
+          entries = []
           try:
-              if time.time() >= deadline-30:
-                  raise RuntimeError('insufficient hosted time remains; no command started')
-              with target.with_suffix('.log').open('xb') as log, target.with_suffix('.resources.jsonl').open('x') as samples:
-                  child = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
-                  receipt.update(process_started=True, owned_child_pid=child.pid)
-                  while child.poll() is None:
-                      samples.write(json.dumps(resource())+'\n'); samples.flush()
-                      if time.time() >= deadline:
-                          receipt['outer_hosted_cap_reached'] = True
-                          child.send_signal(signal.SIGINT)
-                          try: child.wait(timeout=20)
-                          except subprocess.TimeoutExpired:
-                              receipt['SIGINT_cleanup_timed_out'] = True
-                              os.killpg(child.pid, signal.SIGKILL)
-                              child.wait(timeout=5)
-                          break
-                      try: child.wait(timeout=min(5, max(.05, deadline-time.time())))
-                      except subprocess.TimeoutExpired: pass
-                  receipt['child_exit_code'] = child.returncode
-                  code = 124 if receipt['outer_hosted_cap_reached'] else child.returncode
-          except BaseException as exc:
-              receipt['failure'] = type(exc).__name__+': '+str(exc)
-              if child is not None and child.poll() is None:
-                  child.send_signal(signal.SIGINT)
-                  try: child.wait(timeout=20)
-                  except subprocess.TimeoutExpired:
-                      os.killpg(child.pid, signal.SIGKILL); child.wait(timeout=5)
-          finally:
-              receipt.update(exit_code=code, finished_epoch=time.time(), resource_after=resource())
-              target.with_suffix('.json').write_text(json.dumps(receipt, indent=2)+'\n')
-          raise SystemExit(code)
+              for p in sorted(pathlib.Path('/sys/fs/cgroup').iterdir())[:256]:
+                  entries.append({'name': p.name, 'is_dir': p.is_dir(), 'is_file': p.is_file(), 'is_symlink': p.is_symlink()})
+              directory = {'readable': True, 'entries': entries, 'maximum_entries_recorded': 256}
+          except OSError as exc:
+              directory = {'readable': False, 'error': type(exc).__name__+': '+str(exc)}
+          (out/'cgroup-directory.json').write_text(json.dumps(directory, indent=2)+'\n')
+          stat = os.statvfs(out)
+          disk = stat.f_bavail*stat.f_frsize
+          parse_errors = {}
+          memory_stat = None
+          current = None
+          maximum = None
+          host_available = None
+          try:
+              memory_stat = dict((k, int(v)) for k, v in (line.split() for line in texts['cgroup-memory.stat.txt'].splitlines()))
+              if not memory_stat or any(v < 0 for v in memory_stat.values()): raise ValueError('invalid memory.stat values')
+          except (KeyError, ValueError) as exc:
+              memory_stat = None
+              parse_errors['memory.stat'] = type(exc).__name__+': '+str(exc)
+          try:
+              current = int(texts['cgroup-memory.current.txt'].strip())
+              if current < 0: raise ValueError('negative memory.current')
+          except (KeyError, ValueError) as exc:
+              current = None
+              parse_errors['memory.current'] = type(exc).__name__+': '+str(exc)
+          try:
+              m = texts.get('cgroup-memory.max.txt')
+              if m is None:
+                  if not records['cgroup-memory.max.txt'].get('error', '').startswith('FileNotFoundError:'):
+                      raise ValueError('memory.max exists but is not readable')
+                  maximum = 'max'
+              else:
+                  maximum = 'max' if m.strip() == 'max' else int(m.strip())
+                  if isinstance(maximum, int) and maximum < 0: raise ValueError('negative memory.max')
+          except ValueError as exc:
+              maximum = None
+              parse_errors['memory.max'] = type(exc).__name__+': '+str(exc)
+          try:
+              info = dict(line.split(':', 1) for line in texts['proc-meminfo.txt'].splitlines())
+              parts = info['MemAvailable'].split()
+              if len(parts) != 2 or parts[1] != 'kB': raise ValueError('unexpected MemAvailable units')
+              host_available = int(parts[0])*1024
+              if host_available < 0: raise ValueError('negative MemAvailable')
+          except (KeyError, ValueError) as exc:
+              host_available = None
+              parse_errors['MemAvailable'] = type(exc).__name__+': '+str(exc)
+          source_keys = ('anon', 'shmem', 'kernel_stack', 'pagetables', 'sock', 'slab_unreclaimable')
+          # Missing/unreadable interfaces are UNKNOWN, never synthetic zero.
+          required_ok = memory_stat is not None and current is not None
+          missing_counter_keys = [] if memory_stat is None else [k for k in source_keys if k not in memory_stat]
+          counters_ok = required_ok and not missing_counter_keys
+          original_control_nonreclaimable = sum(memory_stat[k] for k in source_keys) if counters_ok else None
+          v4_keys = ('inactive_file', 'file_dirty', 'file_writeback', 'file', 'shmem')
+          v4_missing = [k for k in v4_keys if memory_stat is None or k not in memory_stat]
+          finite_keys = ('anon', 'shmem', 'kernel', 'slab_reclaimable', 'unevictable')
+          finite_missing = [k for k in finite_keys if memory_stat is None or k not in memory_stat]
+          original_v4 = {'missing_required_counter_keys': v4_missing, 'eligibility': False, 'effective_memory_headroom_bytes': None, 'shared_unreclaimable_memory_bytes': None}
+          if required_ok and not v4_missing and host_available is not None and maximum is not None and not parse_errors:
+              inactive = max(0, memory_stat.get('inactive_file', 0)-memory_stat.get('file_dirty', 0)-memory_stat.get('file_writeback', 0))
+              hard = maximum-current if isinstance(maximum, int) else host_available
+              effective = min(host_available, hard+inactive)
+              clean = max(0, memory_stat.get('file', 0)-memory_stat.get('shmem', 0)-memory_stat.get('file_dirty', 0)-memory_stat.get('file_writeback', 0))
+              original_v4.update(effective_memory_headroom_bytes=effective,
+                shared_unreclaimable_memory_bytes=max(0, current-clean),
+                eligibility=bool(disk >= 256*1024**2 and effective >= 2*1024**3),
+                original_startup_disk_bytes=256*1024**2, original_startup_headroom_bytes=2*1024**3)
+          finite_shared = None if memory_stat is None or finite_missing else (memory_stat.get('anon', 0)+memory_stat.get('shmem', 0)
+            + max(0, memory_stat.get('kernel', 0)-memory_stat.get('slab_reclaimable', 0))+memory_stat.get('unevictable', 0))
+          proc_status = {}
+          for line in texts.get('proc-self-status.txt', '').splitlines():
+              if ':' in line:
+                  k, v = line.split(':', 1); proc_status[k] = v.strip()
+          positive_rss_fields = False
+          try:
+              rss = proc_status['VmRSS'].split(); hwm = proc_status['VmHWM'].split()
+              positive_rss_fields = rss[1] == hwm[1] == 'kB' and 0 < int(rss[0]) <= int(hwm[0])
+          except (KeyError, ValueError, IndexError): pass
+          self_proc_ok = bool(links.get('/proc/self', {}).get('target', '').isdigit()
+              and all(links.get(p, {}).get('readable') for p in ('/proc/self/ns/pid', '/proc/self/ns/pid_for_children'))
+              and all(proc_status.get(k) for k in ('Pid', 'PPid', 'NSpid')) and positive_rss_fields
+              and records['proc-self-stat.txt']['readable'])
+          cgroup_v2_mount = False
+          for line in texts.get('proc-self-mountinfo.txt', '').splitlines():
+              parts = line.split(' - ', 1)
+              if len(parts) == 2 and len(parts[0].split()) >= 5 and parts[1].split():
+                  cgroup_v2_mount |= parts[0].split()[4] == '/sys/fs/cgroup' and parts[1].split()[0] == 'cgroup2'
+          snapshot_eligible = bool(counters_ok and cgroup_v2_mount and disk >= 500*1024**2
+              and original_control_nonreclaimable <= 6.8*1024**3)
+          report = {
+            'schema': 'razr-C2-hosted-resource-interface-probe-v1', 'observed_epoch': time.time(),
+            'workflow_revision': os.environ['GITHUB_SHA'], 'run_id': os.environ['GITHUB_RUN_ID'],
+            'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'], 'runner_label': os.environ['PROBED_RUNNER_LABEL'],
+            'platform': platform.platform(), 'python': sys.version, 'uid': os.geteuid(),
+            'working_directory': str(pathlib.Path.cwd().resolve()), 'task_directory': str(out.resolve()),
+            'functional_candidate_source': 'bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb',
+            'source_contract': {
+              'run_bounded_path': 'engineering/engineering-integration-20261025/numerics/run_bounded.py',
+              'run_bounded_sha256': '901654cdb718a988471a700b01bfbb2e8979a98248c9211fa69d42b25279e56e',
+              'sources_executed_by_this_probe': False,
+              'probe_scope': 'real interface availability and a current resource snapshot only'},
+            'raw_interfaces': records, 'proc_links': links, 'parse_errors': parse_errors,
+            'memory_stat_counters': memory_stat, 'memory_current_bytes': current,
+            'memory_max_bytes_or_max': maximum,
+            'memory_max_absent_original_v4_uses_host_available': records['cgroup-memory.max.txt'].get('error', '').startswith('FileNotFoundError:'),
+            'host_MemAvailable_bytes': host_available, 'ordinary_writeable_disk_bytes': disk,
+            'root_reserved_free_bytes_diagnostic_only': stat.f_bfree*stat.f_frsize,
+            'run_bounded_required_interfaces_readable': required_ok,
+            'real_cgroup_v2_mount_at_required_path_observed': cgroup_v2_mount,
+            'required_control_counter_values': {k: None if memory_stat is None else memory_stat.get(k) for k in source_keys},
+            'missing_original_control_counter_keys': missing_counter_keys,
+            'original_control_nonreclaimable_budget_bytes': original_control_nonreclaimable,
+            'run_bounded_snapshot_eligible': snapshot_eligible,
+            'original_control_limits': {'task_filesystem_reserve_bytes': 500*1024**2, 'shared_nonreclaimable_bytes': 6.8*1024**3},
+            'original_v4_startup_snapshot': original_v4,
+            'finite_missing_required_counter_keys': finite_missing,
+            'finite_shared_unreclaimable_bytes': finite_shared,
+            'finite_startup_resource_snapshot_eligible': bool(finite_shared is not None
+              and disk >= 256*1024**2 and finite_shared+2048*1024**2 <= 6.8*1024**3),
+            'self_proc_namespace_and_RSS_fields_readable': self_proc_ok,
+            'owned_child_nonce_FD_protocol_exercised': False,
+            'platform_advertised_RAM_used_as_measurement': False,
+            'guard_values_fabricated_or_original_sources_modified': False,
+            'dependency_installation_executed': False, 'CAD_import_or_geometry_executed': False,
+            'native_qualification_granted': False, 'G2_pass': False, 'physical_qualification': False,
+            'probe_source_sha256': hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest(),
+            'future_execution_requirement': 'Repeat original source/runtime/resource preflights in every actual job; this snapshot cannot guarantee future capacity or CAD runtime availability.'}
+          (out/'CAPABILITY.json').write_text(json.dumps(report, indent=2, allow_nan=False)+'\n')
+          manifest = {str(p.relative_to(out)): {'bytes': p.stat().st_size, 'sha256': hashlib.sha256(p.read_bytes()).hexdigest()}
+            for p in sorted(out.rglob('*')) if p.is_file() and p.name != 'MEMBER_SHA256.json'}
+          (out/'MEMBER_SHA256.json').write_text(json.dumps({'members': manifest}, indent=2)+'\n')
+          print(json.dumps({k: report[k] for k in ('runner_label', 'run_bounded_required_interfaces_readable',
+            'run_bounded_snapshot_eligible', 'original_v4_startup_snapshot',
+            'finite_startup_resource_snapshot_eligible', 'self_proc_namespace_and_RSS_fields_readable',
+            'CAD_import_or_geometry_executed')}, indent=2))
           PY
-          cp "$HOST_ROOT/host-cap.py" "$CASE_DIR/source/host-cap.py"
-      - &uv
-        name: Set up pinned uv and identical Python patch version in every job
-        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
-        with:
-          version: '0.10.10'
-          python-version: '3.12.14'
-          enable-cache: false
-      - &install
-        name: Install C2 lock and verify all 43 versions
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 -B "$HOST_ROOT/host-cap.py" "$CASE_DIR/install" uv sync --locked --no-cache
-          echo 'UV_NO_SYNC=1' >> "$GITHUB_ENV"
-          .venv/bin/python -B tools/check_environment.py --output "$CASE_DIR/environment-before.json"
-          python3 -B "$HOST_ROOT/host-cap.py" "$CASE_DIR/CAD-runtime-preflight" \
-            .venv/bin/python -B -c 'import cadquery as cq, json, math; s=cq.Workplane("XY").box(1,1,1).val(); v=s.Volume(); ok=s.isValid() and math.isfinite(v) and v>0; print(json.dumps({"cadquery_version":cq.__version__,"box_is_valid":s.isValid(),"box_volume_mm3":v,"passed":ok,"physical_qualification":False})); assert ok'
-      - name: Generate original canonical control and pass original postguard
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p "$CASE_DIR/native-tmp" "$CASE_DIR/source/c2"
-          export TMPDIR="$CASE_DIR/native-tmp"
-          cp engineering/engineering-integration-20261025/numerics/run_bounded.py "$CASE_DIR/source/c2/run_bounded.py"
-          python3 -B "$HOST_ROOT/host-cap.py" "$CASE_DIR/generation" \
-            .venv/bin/python -B engineering/engineering-integration-20261025/numerics/run_bounded.py \
-            --task-directory "$CASE_DIR" --seconds 1200 \
-            --log "$CASE_DIR/generator-native.log" --report "$CASE_DIR/generator-resource.json" -- \
-            .venv/bin/python -B integration/product_nominal_motion.py \
-            --pose "$CASE_KEY" --expected-head "$C2" --output "$CASE_DIR/$CASE_KEY-report.json"
-          python3 -B "$HOST_ROOT/host-cap.py" "$CASE_DIR/postguard" \
-            .venv/bin/python -B tools/validate_product_nominal_report.py \
-            --root "$GITHUB_WORKSPACE" --pose "$CASE_KEY" --expected-head "$C2" \
-            --report "$CASE_DIR/$CASE_KEY-report.json"
-      - &capture
-        name: Preserve current hashes and failure evidence without rewriting raw reports
-        if: always()
-        shell: bash
-        run: |
-          set -euo pipefail
-          environment_exit=0
-          if test -x .venv/bin/python && test -f tools/check_environment.py; then
-            .venv/bin/python -B tools/check_environment.py --output "$CASE_DIR/environment-after.json" || environment_exit=$?
-          fi
-          echo "$environment_exit" > "$CASE_DIR/environment-after.exit-code.txt"
-          python3 -B - <<'PY'
-          import hashlib, json, os, pathlib, subprocess
-          case = pathlib.Path(os.environ['CASE_DIR'])
-          def git(*args):
-              p = subprocess.run(['git', *args], text=True, capture_output=True)
-              return {'exit_code': p.returncode, 'stdout': p.stdout, 'stderr': p.stderr}
-          source = {'head': git('rev-parse', 'HEAD'), 'status': git('status', '--porcelain', '--untracked-files=all')}
-          if (case/'source-identity.json').is_file():
-              r = json.loads((case/'source-identity.json').read_text())
-              source['original_five_sources_unchanged'] = all(
-                (pathlib.Path(r['study_directory'])/name).is_file() and
-                hashlib.sha256((pathlib.Path(r['study_directory'])/name).read_bytes()).hexdigest() == digest
-                for name, digest in r['study_source_sha256'].items())
-          (case/'source-after.json').write_text(json.dumps(source, indent=2)+'\n')
-          members = {str(p.relative_to(case)): {'bytes': p.stat().st_size,
-            'sha256': hashlib.sha256(p.read_bytes()).hexdigest()}
-            for p in sorted(case.rglob('*')) if p.is_file() and p != case/'host-artifact-manifest.json'}
-          (case/'host-artifact-manifest.json').write_text(json.dumps({'members': members}, indent=2)+'\n')
-          assert source['head']['exit_code'] == 0 and source['head']['stdout'].strip() == os.environ['C2']
-          assert source['status']['exit_code'] == 0 and not source['status']['stdout'].strip()
-          assert source.get('original_five_sources_unchanged') is True
-          assert (case/'environment-after.exit-code.txt').read_text().strip() == '0'
-          assert json.loads((case/'environment-after.json').read_text()).get('passed') is True
-          PY
-      - name: Upload this actual canonical control, including failures
+          python3 -B "$PROBE_DIR/probe.py"
+      - name: Preserve original capability records on either outcome
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: c2-key-control-${{ matrix.pose }}-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/razr-c2-key-bec1c8d7/controls/${{ matrix.pose }}
-          if-no-files-found: warn
+          name: c2-key-capability-${{ matrix.runner }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/razr-c2-native-capability
           include-hidden-files: true
+          if-no-files-found: warn
           retention-days: 14
-
-  original-v4:
-    name: Original-v4-${{ matrix.label }}
-    needs: controls
-    runs-on: ubuntu-slim
-    timeout-minutes: 15
-    strategy:
-      fail-fast: false
-      max-parallel: 6
-      matrix:
-        label:
-          - STOW_OUTSIDE_0p001mm
-          - STOW_OUTSIDE_HALF_BAND
-          - STOW_OUTSIDE_FULL_BAND
-          - OPEN_OUTSIDE_0p001mm
-          - OPEN_OUTSIDE_HALF_BAND
-          - OPEN_OUTSIDE_FULL_BAND
-    env:
-      CASE_KIND: trials
-      CASE_KEY: ${{ matrix.label }}
-    steps:
-      - *clock
-      - *checkout
-      - *prepare
-      - *uv
-      - *install
-      - &download-stow
-        name: Restore STOW at producer's required absolute location
-        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
-        with:
-          name: c2-key-control-STOW-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/razr-c2-key-bec1c8d7/controls/STOW
-      - &download-open
-        name: Restore OPEN at producer's required absolute location
-        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
-        with:
-          name: c2-key-control-OPEN-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/razr-c2-key-bec1c8d7/controls/OPEN
-      - &validate-controls
-        name: Refuse changed paths or bytes and freshly run both original postguards
+      - name: Fail closed if the original control resource interface cannot run here
+        if: always()
         shell: bash
         run: |
-          set -euo pipefail
-          python3 -B - <<'PY'
-          import hashlib, json, os, pathlib, shutil
-          case = pathlib.Path(os.environ['CASE_DIR'])
-          host = pathlib.Path(os.environ['HOST_ROOT'])
-          current = json.loads((case/'path-contract.json').read_text())
-          for pose in ('STOW', 'OPEN'):
-              folder = host/'controls'/pose
-              assert json.loads((folder/'path-contract.json').read_text()) == current, 'absolute path contract differs'
-              manifest = json.loads((folder/'host-artifact-manifest.json').read_text())['members']
-              for name, record in manifest.items():
-                  relative = pathlib.PurePosixPath(name)
-                  assert not relative.is_absolute() and '..' not in relative.parts
-                  p = folder/name
-                  assert p.is_file() and not p.is_symlink()
-                  assert p.stat().st_size == record['bytes']
-                  assert hashlib.sha256(p.read_bytes()).hexdigest() == record['sha256']
-              assert pose+'-report.json' in manifest
-              assert json.loads((folder/'postguard.json').read_text())['exit_code'] == 0
-              shutil.copytree(folder, case/'baseline-inputs'/pose)
-          PY
-          for pose in STOW OPEN; do
-            python3 -B "$HOST_ROOT/host-cap.py" "$CASE_DIR/baseline-$pose-postguard" \
-              .venv/bin/python -B tools/validate_product_nominal_report.py \
-              --root "$GITHUB_WORKSPACE" --pose "$pose" --expected-head "$C2" \
-              --report "$HOST_ROOT/controls/$pose/$pose-report.json"
-          done
-      - name: Run one original label with all original 1200-second and resource gates intact
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 -B "$HOST_ROOT/host-cap.py" "$CASE_DIR/original-runner" \
-            .venv/bin/python -B "$HOST_ROOT/original-v4/run_key_endpoint_trials.py" \
-            --root "$GITHUB_WORKSPACE" --expected-head "$C2" \
-            --stow-report "$HOST_ROOT/controls/STOW/STOW-report.json" \
-            --open-report "$HOST_ROOT/controls/OPEN/OPEN-report.json" \
-            --output "$CASE_DIR/run" --trials "$CASE_KEY"
           python3 -B - <<'PY'
           import json, os, pathlib
-          r = json.loads((pathlib.Path(os.environ['CASE_DIR'])/'run/runner-report.json').read_text())
-          assert r.get('all_requested_trials_validated') is True and r.get('requested_trials') == [os.environ['CASE_KEY']]
-          assert len(r.get('trials', [])) == 1
-          j = r['trials'][0]
-          assert j.get('validated') is True and j.get('native_executed_this_invocation') is True
-          assert j.get('reused_completed_raw_bundle') is False
-          PY
-      - *capture
-      - name: Upload complete or partial original bundle, positive STEP, logs and sources
-        if: always()
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: c2-key-original-${{ matrix.label }}-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/razr-c2-key-bec1c8d7/trials/${{ matrix.label }}
-          if-no-files-found: warn
-          include-hidden-files: true
-          retention-days: 14
-
-  orthogonal:
-    name: C2-finite-ORTHOGONAL-candidate-none
-    runs-on: ubuntu-slim
-    timeout-minutes: 15
-    env:
-      CASE_KIND: orthogonal
-      CASE_KEY: STOW_OUTSIDE_ORTHOGONAL
-    steps:
-      - *clock
-      - *checkout
-      - *prepare
-      - *uv
-      - *install
-      - name: Execute the finite C2 trial with no relief candidate
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 -B "$HOST_ROOT/host-cap.py" "$CASE_DIR/finite-runner" \
-            .venv/bin/python -B engineering/engineering-integration-20261025/geometry/key/supervise_key.py \
-            --mode trial --trial STOW_OUTSIDE_ORTHOGONAL --candidate none --output "$CASE_DIR/run"
-          python3 -B "$HOST_ROOT/host-cap.py" "$CASE_DIR/finite-readback" \
-            .venv/bin/python -B engineering/engineering-integration-20261025/geometry/key/supervise_key.py \
-            --mode readback --report "$CASE_DIR/run/trial/report.json" --output "$CASE_DIR/readback"
-      - *capture
-      - name: Upload finite ORTHOGONAL evidence separately from original v4
-        if: always()
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: c2-key-finite-ORTHOGONAL-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/razr-c2-key-bec1c8d7/orthogonal/STOW_OUTSIDE_ORTHOGONAL
-          if-no-files-found: warn
-          include-hidden-files: true
-          retention-days: 14
-
-  original-resume:
-    name: Original-v4-six-bundle-readback-NO-CAD-RECOMPUTE
-    if: always()
-    needs: [controls, original-v4]
-    runs-on: ubuntu-slim
-    timeout-minutes: 15
-    env:
-      CASE_KIND: resume
-      CASE_KEY: six-original-bundles
-    steps:
-      - *clock
-      - *checkout
-      - *prepare
-      - *uv
-      - *install
-      - *download-stow
-      - *download-open
-      - *validate-controls
-      - name: Download the six same-run original artifacts without merging directories
-        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
-        with:
-          pattern: c2-key-original-*-${{ github.run_id }}-${{ github.run_attempt }}
-          merge-multiple: false
-          path: ${{ runner.temp }}/razr-c2-key-original-downloads
-      - name: Require six complete raw bundles before invoking original resume
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 -B - <<'PY'
-          import hashlib, json, os, pathlib, shutil
-          host = pathlib.Path(os.environ['HOST_ROOT'])
-          case = pathlib.Path(os.environ['CASE_DIR'])
-          downloads = pathlib.Path(os.environ['RUNNER_TEMP'])/'razr-c2-key-original-downloads'
-          labels = [p+'_OUTSIDE_'+a for p in ('STOW', 'OPEN') for a in ('0p001mm', 'HALF_BAND', 'FULL_BAND')]
-          rows = []
-          # Complete all six presence/identity checks first. Missing inputs must
-          # never reach the runner's normal fallback-to-new-native branch.
-          for label in labels:
-              folder = downloads/('c2-key-original-'+label+'-'+os.environ['GITHUB_RUN_ID']+'-'+os.environ['GITHUB_RUN_ATTEMPT'])
-              assert folder.is_dir(), 'missing original label artifact: '+label
-              assert json.loads((folder/'path-contract.json').read_text()) == json.loads((case/'path-contract.json').read_text())
-              manifest = json.loads((folder/'host-artifact-manifest.json').read_text())['members']
-              for name, record in manifest.items():
-                  relative = pathlib.PurePosixPath(name)
-                  assert not relative.is_absolute() and '..' not in relative.parts
-                  p = folder/name
-                  assert p.is_file() and not p.is_symlink() and p.stat().st_size == record['bytes']
-                  assert hashlib.sha256(p.read_bytes()).hexdigest() == record['sha256']
-              raw = folder/'run'/label/'native/report.json'
-              assert raw.is_file() and not raw.is_symlink()
-              value = json.loads(raw.read_text())
-              assert value.get('trial_label') == label and value.get('source_commit') == os.environ['C2']
-              assert value.get('status') == 'complete' and value.get('execution_completed') is True
-              runner = json.loads((folder/'run/runner-report.json').read_text())
-              assert runner.get('all_requested_trials_validated') is True
-              assert runner.get('requested_trials') == [label]
-              assert len(runner.get('trials', [])) == 1 and runner['trials'][0].get('validated') is True
-              assert runner['trials'][0].get('native_executed_this_invocation') is True
-              assert runner['trials'][0].get('reused_completed_raw_bundle') is False
-              target = host/'trials'/label
-              assert not target.exists()
-              rows.append({'label': label, 'download': str(folder), 'restore': str(target), 'raw_sha256': hashlib.sha256(raw.read_bytes()).hexdigest()})
-          for row in rows:
-              shutil.copytree(row['download'], row['restore'])
-          (case/'six-bundle-preflight.json').write_text(json.dumps({'bundles': rows,
-            'all_six_present_before_original_resume': True, 'native_recomputation_authorized': False}, indent=2)+'\n')
-          PY
-          labels=(STOW_OUTSIDE_0p001mm STOW_OUTSIDE_HALF_BAND STOW_OUTSIDE_FULL_BAND OPEN_OUTSIDE_0p001mm OPEN_OUTSIDE_HALF_BAND OPEN_OUTSIDE_FULL_BAND)
-          bundles=()
-          for label in "${labels[@]}"; do bundles+=("$HOST_ROOT/trials/$label/run/$label"); done
-          python3 -B "$HOST_ROOT/host-cap.py" "$CASE_DIR/original-resume" \
-            .venv/bin/python -B "$HOST_ROOT/original-v4/run_key_endpoint_trials.py" \
-            --root "$GITHUB_WORKSPACE" --expected-head "$C2" \
-            --stow-report "$HOST_ROOT/controls/STOW/STOW-report.json" \
-            --open-report "$HOST_ROOT/controls/OPEN/OPEN-report.json" \
-            --output "$CASE_DIR/run" --trials "${labels[@]}" --resume-from "${bundles[@]}"
-          python3 -B - <<'PY'
-          import json, os, pathlib
-          p = pathlib.Path(os.environ['CASE_DIR'])/'run/runner-report.json'
+          p = pathlib.Path(os.environ['RUNNER_TEMP'])/'razr-c2-native-capability/CAPABILITY.json'
+          if not p.is_file(): raise SystemExit('missing original capability record')
           r = json.loads(p.read_text())
-          assert r.get('all_six_trials_validated') is True and len(r['trials']) == 6
-          assert all(j.get('validated') is True and j.get('reused_completed_raw_bundle') is True
-                     and j.get('native_executed_this_invocation') is False for j in r['trials'])
-          print(json.dumps({'all_six_original_raw_bundles_validated': True,
-            'native_recomputation_executed': False,
-            'finite_trial_material_clear': {j['trial_label']: j['finite_trial_material_clear'] for j in r['trials']}}, indent=2))
+          if r.get('run_bounded_snapshot_eligible') is not True:
+              raise SystemExit('original C2 run_bounded interfaces/counters/current capacity unavailable; NO CAD executed')
+          print('Resource interface snapshot eligible; no CAD, owned-child handshake, or product qualification claimed.')
           PY
-      - *capture
-      - name: Upload original readback or explicit rejection evidence
-        if: always()
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: c2-key-original-six-readback-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/razr-c2-key-bec1c8d7/resume/six-original-bundles
-          if-no-files-found: warn
-          include-hidden-files: true
-          retention-days: 14
