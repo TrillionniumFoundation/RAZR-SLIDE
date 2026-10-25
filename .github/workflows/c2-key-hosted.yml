@@ -15,13 +15,14 @@ jobs:
     timeout-minutes: 5
     env:
       PYTHONDONTWRITEBYTECODE: '1'
-      PROBE_DIR: ${{ runner.temp }}/razr-c2-service-compatibility-d3
       SOURCE_ROOT: ${{ github.workspace }}/c2-source
     steps:
       - name: Initialize independent probe evidence
         shell: bash
         run: |
           set -euo pipefail
+          export PROBE_DIR="$RUNNER_TEMP/razr-c2-service-compatibility-d3"
+          printf 'PROBE_DIR=%s\n' "$PROBE_DIR" >> "$GITHUB_ENV"
           mkdir "$PROBE_DIR"
           printf '%s\n' 'D3 compatibility probe only; no CAD, no package installation, no qualification.' > "$PROBE_DIR/SCOPE.txt"
       - name: Read exact frozen C2 supervisor and historical original v4 archive
