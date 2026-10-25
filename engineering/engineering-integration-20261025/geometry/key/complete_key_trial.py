@@ -62,7 +62,7 @@ def check_budget(output, started):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--trial', choices=TRIAL_LABELS, required=True)
-    parser.add_argument('--candidate', choices=('none', 'stow_face_relief'), default='none')
+    parser.add_argument('--candidate', choices=('none', 'stow_face_relief', 'stow_two_layer_face_relief'), default='none')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args(argv)
     owned_process.announce_worker_from_environment(Path(__file__))
@@ -147,9 +147,12 @@ def main(argv=None):
         if args.candidate != 'none':
             if opened:
                 raise ValueError('this finite relief candidate is explicitly a STOW study')
-            import stow_face_relief
+            if args.candidate == 'stow_two_layer_face_relief':
+                import stow_two_layer_face_relief as selected_relief
+            else:
+                import stow_face_relief as selected_relief
             report['baseline_nominal_parts'] = report['nominal_parts']
-            parts, candidate = stow_face_relief.apply(parts, p, out/'relief', identity.sha)
+            parts, candidate = selected_relief.apply(parts, p, out/'relief', identity.sha)
             report['candidate'] = candidate
             report['nominal_parts'] = body_inventory.measure(parts, metadata, p)
             save()

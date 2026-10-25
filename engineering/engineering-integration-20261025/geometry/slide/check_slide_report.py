@@ -6,8 +6,8 @@ import json
 from pathlib import Path
 import sys
 
-import slide_evidence as e
 import verify_slide_native as worker
+import slide_evidence as e
 
 
 def check(path, expected_head):

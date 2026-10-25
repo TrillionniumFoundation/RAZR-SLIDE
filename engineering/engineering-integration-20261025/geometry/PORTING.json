@@ -18,8 +18,10 @@
     {
       "path": "engineering/engineering-integration-20261025/geometry/slide/check_slide_report.py",
       "original_source_sha256": "04fdd9b60b61248a4eb94a98e41bfdff0930908d0b254608ef98c303691a4690",
-      "ported_source_sha256": "04fdd9b60b61248a4eb94a98e41bfdff0930908d0b254608ef98c303691a4690",
-      "changed_top_level_definitions": []
+      "ported_source_sha256": "27584c2f0f198c7ede10378d49fe3bd752d5f6ba6571e86e78b56365aeee0915",
+      "changed_top_level_definitions": [],
+      "C2_ported_source_sha256": "04fdd9b60b61248a4eb94a98e41bfdff0930908d0b254608ef98c303691a4690",
+      "import_order_followup": "Import verify_slide_native before slide_evidence so the original own-module source guard resolves SLIDE owned_process."
     },
     {
       "path": "engineering/engineering-integration-20261025/geometry/slide/slide_checkpoint.py",
@@ -66,8 +68,10 @@
     {
       "path": "engineering/engineering-integration-20261025/geometry/slide/check_slide_checkpoint.py",
       "original_source_sha256": "62809124197f221aa2dbe763f6b5532e4f4730e84baa3660b58d6546d139f474",
-      "ported_source_sha256": "62809124197f221aa2dbe763f6b5532e4f4730e84baa3660b58d6546d139f474",
-      "changed_top_level_definitions": []
+      "ported_source_sha256": "0f1a490e6acf98451a4374b6d7dc947444cbfe1853a268a734fc667e67a1969e",
+      "changed_top_level_definitions": [],
+      "C2_ported_source_sha256": "62809124197f221aa2dbe763f6b5532e4f4730e84baa3660b58d6546d139f474",
+      "import_order_followup": "Import verify_slide_native before slide_evidence so the original own-module source guard resolves SLIDE owned_process."
     },
     {
       "path": "engineering/engineering-integration-20261025/geometry/slide/test_slide_domain.py",
@@ -211,5 +215,14 @@
       "ported_source_sha256": "f9fa0e36cfdae30a24eab771c015b260d004573d60a23351bf266d1cb28cfb49",
       "changed_top_level_definitions": []
     }
-  ]
+  ],
+  "reader_import_order_followup": {
+    "functional_baseline": "bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb",
+    "proposed_parent_evidence_commit": "006222404a1dbecb7df6b35514325f6f075e5d3a",
+    "requires_new_functional_candidate": true,
+    "C2_raw_evidence_not_requalified_as_new_source": true,
+    "geometry_resource_and_source_acceptance_checks_changed": false,
+    "canonical_regression": "tests/test_slide_reader_entrypoints.py",
+    "canonical_regression_tests": 4
+  }
 }

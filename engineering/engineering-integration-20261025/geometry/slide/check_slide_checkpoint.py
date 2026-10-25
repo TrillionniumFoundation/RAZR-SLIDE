@@ -13,9 +13,9 @@ import json
 from pathlib import Path
 import sys
 
+import verify_slide_native as worker
 import slide_checkpoint as checkpoint
 import slide_evidence as evidence
-import verify_slide_native as worker
 import check_slide_report as original_reader
 
 

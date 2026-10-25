@@ -1,4 +1,4 @@
-"""Independent persisted-pair and complete STEP reader; no geometry builders.
+"""Independent persisted-pair and complete STEP reader; no product factory rebuild.
 
 Run structural checks without --native. Native readback must be launched by
 supervise_key.py. This uses the same CAD kernel, independently of the builder.
@@ -16,6 +16,7 @@ HERE = Path(__file__).resolve().parent
 sys.path[:0] = [str(HERE.parent), str(HERE.parent/'slide')]
 import execution_identity as identity
 import owned_process
+import stow_two_layer_face_relief as relief_v2
 
 FALSE_FLAGS = ('original_v4_execution_claimed', 'continuous_backlash_domain_proved',
                'complete_product_motion_proved', 'physical_qualification',
@@ -170,10 +171,26 @@ def complete_boolean_volume(body):
     return raw
 
 
+def validate_relief_definition(candidate):
+    """Bind the v2 construction contract before reading any persisted STEP."""
+    if candidate.get('schema') == 'razr-STOW-local-face-relief-research-20261025-v1':
+        return None  # Keep the historical v1 reader scope unchanged.
+    expected = relief_v2.definition()
+    require(candidate.get('schema') == expected['schema'], 'unknown finite relief schema')
+    require(set(expected) <= set(candidate), 'incomplete v2 relief construction contract')
+    require(set(candidate)-set(expected) <= {'material_changes', 'unchanged_participant_names'},
+            'unknown v2 relief claim or parameter')
+    require(all(candidate[key] == value for key, value in expected.items()),
+            'v2 relief cut, motion, domain, or qualification differs from frozen definition')
+    return {row['part']: row['cut_boxes'] for row in expected['parts']}
+
+
 def read_relief(candidate, directory, *, native):
     expected = {side+'_'+role for side in 'LR' for role in ('CAP_0', 'ROOT_INNER')}
+    definition_boxes = validate_relief_definition(candidate)
     changes = candidate['material_changes']
-    require(candidate['schema'] == 'razr-STOW-local-face-relief-research-20261025-v1'
+    require(candidate['schema'] in ('razr-STOW-local-face-relief-research-20261025-v1',
+                                   'razr-STOW-local-two-layer-face-relief-research-20261025-v2')
             and len(changes) == 4 and {row['part'] for row in changes} == expected,
             'complete four-body finite relief required')
     require(candidate['q_or_other_control_domain_removed'] is False
@@ -208,6 +225,20 @@ def read_relief(candidate, directory, *, native):
                 and abs(row['balance_error_mm3']) <= TOL, 'invalid reported relief material balance')
         if native:
             before, after, tool = (shapes[name] for name in ('before', 'after', 'cut_envelope'))
+            if definition_boxes is not None:
+                expected_tools = []
+                for box in definition_boxes[row['part']]:
+                    lo, hi = box['lo_mm'], box['hi_mm']
+                    expected_tools.append(cq.Solid.makeBox(*(hi[i]-lo[i] for i in range(3)),
+                                                         cq.Vector(*lo)))
+                expected_tool = (expected_tools[0] if len(expected_tools) == 1
+                                 else cq.Compound.makeCompound(expected_tools))
+                cut_definition_differences = [
+                    complete_boolean_volume(tool.cut(expected_tool)),
+                    complete_boolean_volume(expected_tool.cut(tool))]
+                require(max(cut_definition_differences) <= TOL,
+                        'persisted v2 cut envelope differs from frozen construction boxes')
+                item['cut_envelope_to_frozen_definition_difference_mm3'] = cut_definition_differences
             removed = complete_boolean_volume(before.cut(after))
             added = complete_boolean_volume(after.cut(before))
             tool_removed = complete_boolean_volume(before.intersect(tool))
@@ -236,7 +267,7 @@ def main(argv=None):
         owned_process.announce_worker_from_environment(Path(__file__))
     require(not args.output.exists(), 'new reader output required')
     source_before = {str(Path(path).resolve()): identity.sha(path)
-                     for path in (__file__, identity.__file__, owned_process.__file__)}
+                     for path in (__file__, identity.__file__, owned_process.__file__, relief_v2.__file__)}
     report_path = args.report.resolve(strict=True)
     before = identity.sha(report_path)
     report = json.loads(report_path.read_text())

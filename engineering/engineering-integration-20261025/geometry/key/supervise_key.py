@@ -46,7 +46,7 @@ def main(argv=None):
     parser.add_argument('--mode', required=True, choices=('trial', 'readback'))
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--trial', default='STOW_OUTSIDE_HALF_BAND')
-    parser.add_argument('--candidate', choices=('none', 'stow_face_relief'), default='none')
+    parser.add_argument('--candidate', choices=('none', 'stow_face_relief', 'stow_two_layer_face_relief'), default='none')
     parser.add_argument('--report', type=Path)
     args = parser.parse_args(argv)
     out = args.output.resolve()
