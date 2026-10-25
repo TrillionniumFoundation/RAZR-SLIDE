@@ -1,60 +1,65 @@
-# 2026-10-25 全量执行：统一候选与工程闭环
+# 2026-10-25 全量执行：候选、实际结果与下一步
 
-工作入口：[PR #39](https://github.com/TrillionniumFoundation/RAZR-SLIDE/pull/39)，分支 `work/engineering-integration-20261025`。
+S4 功能候选已在同一源码版本完成 **36 套、1,654 项实际测试**，两层 KEY 让位研究件的两个有限位置也分别完成 11,781 对全新配对及独立 STEP 读回，均无正 Common；未修改结构的对照保留原四处真实交叠。原版 KEY v4 六组、严格恢复读回及独立正交点已完成。L1 的 89 次精确重放补齐了异常和中间材料，并确认 A_BACK_PANEL 与左右 KEY 在声明名义刚体 pair 域内有四个有限姿态正 Common 见证。完整 SLIDE、全数值求解、真实器件及 G3/G4/G5 实物资格仍未闭合。
 
-本次按软件集成、完整实体运动、原数值模型、真实器件和实物验收五条线执行。完成与否以实际原始回执和输入身份为准；配置中的测试数量、准备好的程序以及空白实物模板均不计作完成的验证。
+- [完整执行报告](EXECUTION_REPORT.md)：结果、失败原因、证据范围与限制。
+- [下一步工作计划](WORK_PLAN.md)：用户十个工作包的现状、职责、依赖和验收条件。
+- [证据索引](COMPLETED_EVIDENCE_INDEX.json)、[机器状态](SUMMARY.json)、[同一实物现场交接单](product/PHYSICAL_HANDOFF.md)。
+- [草稿 PR #39](https://github.com/TrillionniumFoundation/RAZR-SLIDE/pull/39)，工作分支 `work/engineering-integration-20261025`。
 
 ## 版本身份
 
-统一祖先 `363113ffe887b5d09a03b82fdbe948ae92a7f572` 同时包含 PR36 → PR37 → PR38、资格修复 `a9aaf481b1e51caa948f824aa4768af1f5b3d57a` 和主线 `92d80fbef80bef4cde8dc7d759399f19fe8ba7ce`。主线删除根 README 的决定被保留；自动生成入口改为 `docs/RESEARCH_OVERVIEW.md`，并与 `CURRENT_DESIGN.md`、`status.json` 同源。
+当前已通过同版完整软件验证和指定有限几何验证的功能候选为 `dd7def6e6a4de9f47dc91ca2ab336fb1a8828560`（S4），候选引用为 `candidate/engineering-integration-20261025`。它继承 C2 `bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb` 已整合的 PR36 → PR37 → PR38、资格修复 `a9aaf481b1e51caa948f824aa4768af1f5b3d57a` 和主线 `92d80fbef80bef4cde8dc7d759399f19fe8ba7ce`。主线删除根 README 的决定被保留；`docs/RESEARCH_OVERVIEW.md`、`CURRENT_DESIGN.md` 与 `status.json` 均由 `design/current_product.json` 生成。
 
-PR35 `176df31ceb35bb3737d68030e60ba377665de210` 保持独立的归一化 bearing 研究模型身份。其旧正、负证据和本次原 K/C 重建诊断均不构成当前 EP5 壳体结构资格。
+证据、报告和台账后继提交不自动继承“本提交完整测试通过”的身份。C2、S3、S4 的原始运行 SHA、每次实际源码/输入字节、工作流提交与证据提交分别记录，详见 [候选身份](CANDIDATE_IDENTITY.json)。
 
-最终功能候选在源码冻结后以 `candidate/engineering-integration-20261025` 固定。完整测试回执必须记录其实际执行 SHA。随后追加的原始回执和报告有独立提交身份，不得把它们改称已经测试过的功能源码。
+S3 `20dfddfe8497a73b1814623e6320b3a9ac4273d0` 增加显式两层 KEY 让位研究选项、完整材料读回及两个 SLIDE reader 的最小导入修复。其 [D5 运行](https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/40208304041) 三个几何作业完成，同版软件验证因生成文档仍声明 1,641 而失败，原失败完整保留。S4 由原生成器同步三个入口文档后，在 [D6](https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/40210734348) 重新实际完成全部 36 套 / 1,654 项及三个完整有限几何作业，并经过独立复核。D5 原件没有改标成 S4。
 
-首个候选 `8fa8ae2bae5de8808ad8259e04434bdd18d47541` 的完整验证尝试已中止并保留原始记录：本地稀疏检出遗漏了受控原生输入；SLIDE 独立启动还发现同名辅助模块的导入顺序错误，源码身份保护在启动 CAD 前正确拒绝。修复仅改变加载顺序并增加两个独立进程回归，不改变几何算法、材料或原资源门槛。该次尝试不是 36 套通过证据，详见 [原始回执](unit-evidence/first-candidate-aborted/RECEIPT.json)。新候选必须重新运行全部 36 套。
+PR35 `176df31ceb35bb3737d68030e60ba377665de210` 继续是独立的归一化 bearing 研究模型。20261023 的受控 K/C 重建与本次数值诊断不等同于最早 historical-volume-v3 原 K，也不构成当前 EP5 壳体结构资格。三份设计配置保留的 `a1b3cc1e…` 是历史共同实现基线；当前同版验证源码是 S4，不能只修改一份配置的基线标签来伪造新身份。
 
-## 当前执行材料
+首个候选 C1 `8fa8ae2bae5de8808ad8259e04434bdd18d47541` 的中止尝试保留在 [原始回执](unit-evidence/first-candidate-aborted/RECEIPT.json)。修复稀疏输入缺失及 SLIDE worker 导入顺序后，全部 36 套已在 C2 重新实际执行。
 
-| 工作 | 已实际完成的范围 | 仍需满足的条件 |
-|---|---|---|
-| 统一版本 | 完整祖先整合；入口迁移；43 个锁包版本一致；新增 77 项合同、ECAD 和独立进程入口反例回归 | 固定候选后的 36 套完整执行及原始回执；配置的 1,641 项不能先标为通过 |
-| KEY 原实体 | 半带 STOW 的 154 个完整 body、11,781 对全部执行；两侧各两对真实碰撞与 Common STEP 身份恢复；独立原生 STEP 回读 | 完整正交集；有限修复候选的独立验证；实际机构允许域、强度和公差资格 |
-| SLIDE / SEATING | r3 便携后继保留原算法、材料和资源守卫；原 65 / 50 项准备合同实际运行 | 新候选的原生逐对执行；非零偏移、独立伸缩分配和正反程全合法动作域 |
-| 原数值模型 | panel 的 K 与 C 精确重现原字节；定位第 0 探针；保留三轮全部五探针、RHS、初始/最终全场及逐步修正指标 | 原 float64 `1e-7` 判据仍拒绝；不能接受 panel H 或继续原 checkpoint restore |
-| 同版电气 | 独立 188 mm / 164 mm 自由段 EP5 连通图稿；26 路、52 pad、130 track 的实际解析检查；新增原生 KiCad CI 门禁 | 实际原生回执；OEM 端子分配、供应商叠层、阻抗/电流和动态资格 |
-| G3 / G4 / G5 合同 | 当前 EP5 绑定；功能 × 17 阶段 × 原供电模式；寿命原始采样重算与连续 cycle 校验；缺测与失败分开 | 同一 specimen 的实物、来源明确的阈值、校准、预登记和实际顺序采集 |
-| 当前 EP5 结构 | 从本次实际 native scene 提取 154-body 名义体积、边界和来源；独立材料/载荷/支承/公差输入合同 | 真实材料和载荷缺失，尚未建立完整当前 FE 网格，也未给出结构通过结论 |
+## 已执行结果
 
-具体记录：
+| 项目 | 实际结果 | 结论范围 |
+| --- | --- | --- |
+| S4 / D6 完整软件验证 | 36 套 / 1,654 项全部实际通过；43 个锁包版本、Python 3.12.14 和 uv 0.10.10 一致 | 1,654 个唯一 `(suite, test_id)`，裸 test ID 为 1,640；原报告和全部 suite 日志已独立核验。不是物理资格 |
+| C2、S3 软件历史 | C2 原 36 套 / 1,641 项通过；S3/D5 的同版验证因生成文档计数未同步而失败 | 两次原身份、原成功及失败都保留；S4 的新通过不覆盖历史回执 |
+| 固定控制姿态 | C2 STOW 154 bodies / 11,781 clear；OPEN 161 / 12,880 clear | 两个固定姿态，新 C2 PREDOCK 未执行；不外推完整运动 |
+| 原版 KEY v4 / D4 | 六组均实际执行并通过证据验证；STOW HALF/FULL 各保留四个阳性，其余四组 finite clear；原严格 resume 六组只读回、零 native 补算 | 20,880 fresh + 53,103 同源固定对复用；四个 pair 在两个位置形成八次阳性记录。六组原 profile 域外拒绝均保留，不是完整 factory 或连续域资格 |
+| C2 独立正交点 / D4 | `candidate=none`、STOW `dx=+cam, dq=cam-yoke`，11,781 全 fresh、零阳性/求值错误，独立 reader 通过 | 一个有限槽顶点，不等于完整正交组合或独立手动域 |
+| SLIDE r3 / L1 | 原 11,781 条分类保留：11,762 clear / 10 enclosure unresolved / 9 evaluation failure；L1 的 E17/O72 共 89 次实际返回与原件完全相同 | 新增 505 个逐 case 材料记录、1,010 个 STEP/BREP 导出；25 个真实 ValueError 与 272 个正常 GeneratorExit 分开。四个 A_BACK_PANEL/KEY 名义刚体有限姿态有整件正 Common 见证；其余 height/spring 包络不升级为碰撞。完整 SLIDE 仍未通过 |
+| SEATING r3 | 11,781 external pairs 全 clear，独立 reader exit 0 | KEY/crosshead=0、左右独立伸缩分配的原声明外部配对域；不证明连续柔性自有效性或整个 G2 |
+| KEY 原单层让位研究件 | C2 FULL_BAND 重算 11,781 对，仍有左右 KEY×ROOT_INNER 两处各约 0.00649356 mm³ 交集 | 原负证据保留；材料守恒与独立 STEP 读回通过不等于几何通过 |
+| KEY 两层让位研究件 / S4 D6 | FULL_BAND、ORTHOGONAL 各 154 体 / 11,781 全 fresh，均零 Common/求值错误、独立 reader 通过；新 `none` FULL_BAND 对照仍为原四处阳性 | 三作业共 35,343 新配对 / 70,686 journal 事件；四改体仍各一个有效正 solid，14 个 cut-box 和双向重建通过。S3/D5 的先前运行另存；两个负 dq 点不外推正 dq STOP/SPRING factory 域、连续运动、强度或容差 |
+| panel / frame | 三种 panel 有界策略均 4/5；probe 0 原 float64 残差仍超过 1e-7。frame 5/6 GiB 分解均资源失败，0 RHS 求解 | 未取得完整 H、trace/restore 或接触资格；原失败与各运行源码身份均保留 |
+| hosted panel N1 / N2 / N3 | N1 COLAMD / AS 6 GiB、N2 MMD_AT_PLUS_A / AS 6 GiB 均在因子扩容阶段失败；N3 显式 AS 8 GiB 在原 180 秒墙钟到达后终止 | 三次均为五 RHS 已准备、零 solve/field/residual。N3 没有同句 malloc 错误，不能把 AS 认定为唯一原因；原残差门槛 1e-7 与 shared 6.8 GiB 不变 |
+| EP5 188 mm ECAD | 实际 KiCad 9.0.9 原生回读及全 severity DRC：0 项；52 terminals / 130 tracks / 0 unconnected | 26 路自有导通研究网；未执行原理图 ERC，不提供 OEM pinmap、功率、高速或动态资格 |
+| G3/G4/G5 合同与当前结构输入 | 同候选门控、原始采样重算、unknown/fail 区分及 154-body / 13 类载荷输入合同已实现 | 真材料、真实阈值、实际端子和同 specimen 原件仍缺；没有新的 G3/G4/G5 实物结果 |
 
-- [机器状态](SUMMARY.json)、[实际运行环境](EXECUTION_ENVIRONMENT.json)。
-- [几何原始与移植身份](geometry/PORTING.json)，以及 `geometry/evidence/` 中的执行材料。
-- [数值结论](numerics/SUMMARY.json)、[数值方法与运行说明](numerics/README.md)、[原始探针包](numerics/RAW_EVIDENCE_PERSISTENCE.json)。
-- [产品实现与复现](product/README.md)、[新增公开 OLED 来源核对](product/OLED_SOURCE_RECHECK.json)。
-- [当前结构输入合同](structural/CURRENT_EP5_INPUT_CONTRACT.json)、[实际 STOW 实体清单](structural/nominal-STOW-body-inventory.json)。
+工程聚合、原始包 SHA256 和独立复核摘要见 [证据索引](COMPLETED_EVIDENCE_INDEX.json)。[D5](geometry/evidence/source-20dfddfe/D5-finite/SUMMARY.md)、[D6](geometry/evidence/source-dd7def6e/D6-finite/SUMMARY.md) 和 [L1](geometry/evidence/candidate-bec1c8d7/slide-L1/SUMMARY.md) 公版均为明确标注的衍生聚合；完整原 ZIP、材料、运行日志/API 与进程环境记录另行私有保留，未复制进这些公版文件。hosted 的失败、接口探针与原生执行分别归档；短探针成功不能代替 CAD 或未来资源资格。
 
-## 必须保留的工程结论
+## 复现边界
 
-原 KEY 的实际半带碰撞发生在 `L_CAP_0 × L_KEY`、`L_KEY × L_ROOT_INNER` 及其右侧对应体。体积分别约为 `0.001238206264` 与 `0.001650941685 mm³`，超过原 `1e-7 mm³` 门槛。原失败保留。有限端面回切是另一个明确命名的研究候选；在完成材料守恒、完整实体配对和域验证之前不改生产默认值，后续仍需要当前结构与工艺资格。
-
-panel 第 0 个全 1 方向探针的原始相对残差约 `2.3849e-7`；其余四个通过。原 float64 修正、高精度残差修正以及保持 K/b/约束不变的对称均衡对照均没有让五个原检查全部通过。高精度残差更小不能替代原检查器。原始和最终全场已保留；中间迭代保留了残差、最差 DOF、修正范数及 iterate SHA，未保存每一步完整全场数组。
-
-当前环境的历史 ADB 端口不可达且没有 adb 程序。本次没有新增实物测量、器件标签、实际端子或带电测试。十个未知 donor 身份字段、七类实物零件和十二类物理接口不得由公开商品页、名义空间占位或软件单测补写。公开 OLED 的额外筛选也未产生可冻结的当前屏幕 PN / revision / 动态叠层合同。
-
-## 复现与验收次序
-
-在实际功能候选 SHA 上运行：
+复现当前同版软件验证时，在独立的 S4 checkout 中使用锁环境，并为每次执行创建新输出目录：
 
 ```bash
 uv sync --locked --no-cache
 uv run --locked python -B tools/check_environment.py
-uv run --locked python -B tools/verify.py --expected-head <candidate-SHA> --output <new-output>
+uv run --locked python -B tools/verify.py --expected-head dd7def6e6a4de9f47dc91ca2ab336fb1a8828560 --output /path/to/new-output
 python3 tools/sync_current_design.py --check
 ```
 
-本次受限本地环境使用原锁中的 22 个带哈希安装包叠加 21 个版本已精确一致的包；43 版本检查完整通过，未声称重新证明已有 21 个 wheel 的安装来源。原生 KiCad job 独立固定官方 PPA 的 `9.0.9~ubuntu24.04.1` 构建及其 `.deb` SHA256；Ubuntu 默认的 KiCad 7 不提供所需 CLI DRC。KiCad 9 后继回读器明确选择原生封装写入器，保留旧回读器原字节。实际运行完整保留原生读取和 DRC 的所有级别结果，不能用解析器检查代替。
+复现须读取对应原始包内的命令、路径绑定与资源记录。C2 的原 r3、v4 和 L1 证据仍绑定 C2；D5 绑定 S3，D6 绑定 S4。证据后继 HEAD 不能只填旧标签。G3/G4/G5 的严格当前候选检查同样适用；新增功能修改需新候选、新的相关验证和重新冻结的实物计划。
 
-实物按 G3 无电装配/动作 → G4 带电功能与动作 → G5 寿命/环境/工艺执行。模板中的载荷、操作力、偏斜、采样、同步、温度、循环和失效阈值必须填入真实来源后才能冻结；没有用新数字填补未知值。
+本地 43 个包版本检查实际通过。另对 21 个预存包取得原锁 wheel，核对 1,650 个包 payload 文件和 86 个原 metadata 文件，未发现差异；这支持磁盘字节身份，不追溯证明原安装过程或当时每个内存执行字节。[完整环境证据](environment/locked-wheel-payloads-bec1c8d7/SUMMARY.md)
 
-`candidate_go`、`fixture_fabrication_go`、`manufacturing_go` 继续为 false。
+## 当前实物依赖
+
+当前可见环境没有 adb，历史 ADB 端口实际连接被拒绝。本轮没有新增 donor 标签、三维实测、真实端子、实物装配或带电测试。十个未知身份字段、七类实件和十二类接口须来自同一 specimen 原件；四个名义空间占位尚未替换为实测包络。
+
+现场次序为：同 specimen 身份/器件/接口基线 → OLED/FPC 和当前结构/电气输入冻结 → 有来源的 G3/G4/G5 计划 → G3 无电装配与动作 → G4 带电功能与动作 → G5 寿命、环境与工艺。具体采集字段、校准和职责见 [现场交接单](product/PHYSICAL_HANDOFF.md)。
+
+`candidate_go`、`fixture_fabrication_go`、`manufacturing_go` 均继续为 **false**。
+
+Current physical collection templates are in [the S4-bound empty packet](product/qualification-s4/README.md): four unchanged original templates, zero new measurements, G4/G5 unknown, all physical/release flags false. The C2 packet keeps its historical identity.

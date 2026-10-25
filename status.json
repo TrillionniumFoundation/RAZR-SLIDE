@@ -69,7 +69,7 @@
   ],
   "previous_production_review": "engineering/PRODUCTION_BLOCKERS_R6.md",
   "current_input_registry": "integration/assembly_inputs.json",
-  "current_execution_summary": "engineering/engineering-integration-20261025/SUMMARY.json",
+  "current_execution_summary": "engineering/engineering-integration-20261025/COMPLETED_EVIDENCE_INDEX.json",
   "current_unit_tests": {
     "manifest": "tools/test_suites.json",
     "configured_minimum": 1654,
@@ -364,12 +364,94 @@
         "skipped": 0,
         "source_bytes_unchanged": true,
         "source_report_sha256": "e9f5724722dfdfc4d3ff7e5b95c1cbc357c642ca0fb4a0d60aeb395bca80883c"
+      },
+      {
+        "label": "C2 unified candidate: complete local locked execution PASS",
+        "tests": 1641,
+        "suites": 36,
+        "functional_commit": "bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb",
+        "scope": "all_current_unit_suites_local_single_driver",
+        "report": "engineering/engineering-integration-20261025/unit-evidence/candidate-bec1c8d7/INDEPENDENT_REVIEW.json",
+        "complete_receipts": "engineering/engineering-integration-20261025/unit-evidence/candidate-bec1c8d7/C2-full-unit-bec1c8d7-original-evidence.tar.gz",
+        "passed": true,
+        "result": "PASS",
+        "in_main": false,
+        "single_full_execution": true,
+        "locked_environment": true,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "source_bytes_unchanged": true,
+        "source_report_sha256": "0ca51545b8f97683e7afbef00acfc736a8a3e885acff9a1bf72b71a11fc381ea",
+        "evidence_commit": "bf1064b1be153fcd7ca6b96a8465653275518548",
+        "hardware_qualification": false,
+        "complete_G2_qualification": false,
+        "candidate_go": false,
+        "fixture_fabrication_go": false,
+        "manufacturing_go": false
+      },
+      {
+        "source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+        "source_tree": "cdd9e2c41216201b6cd04dd610d45fde80499045",
+        "diagnostic_workflow_commit": "16c500ba26f394023b6f3848f00c38faec3f3682",
+        "run_id": 40210734348,
+        "run_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/40210734348",
+        "execution_mode": "hosted_single_full_driver",
+        "scope": "all_current_unit_suites",
+        "suites": 36,
+        "suites_passed": 36,
+        "suites_failed": 0,
+        "configured_minimum_tests": 1654,
+        "tests_run": 1654,
+        "tests_passed": 1654,
+        "failures": 0,
+        "assertion_failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "skips": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "passed": true,
+        "single_full_execution": true,
+        "execution_completed": true,
+        "unique_suite_test_identities": 1654,
+        "unique_bare_test_identities": 1640,
+        "locked_environment": true,
+        "locked_packages_checked": 43,
+        "Python": "3.12.14",
+        "uv": "0.10.10",
+        "present_source_and_input_paths": 6895,
+        "AST_files": 1208,
+        "source_bytes_unchanged": true,
+        "present_tracked_bytes_match_head": true,
+        "full_checkout_verified": false,
+        "all_13_changed_sources_verified": true,
+        "real_INT_TERM_and_namespace_cleanup_passed": true,
+        "report": "engineering/engineering-integration-20261025/unit-evidence/source-dd7def6e/D6-full-unit/INDEPENDENT_REVIEW.json",
+        "report_kind": "public aggregate of separately retained complete original and independent review",
+        "complete_receipts": "engineering/engineering-integration-20261025/unit-evidence/source-dd7def6e/D6-full-unit/ARCHIVE_REFERENCE.json",
+        "source_report_sha256": "b8903d3f12dde048ea30435fb89430b364be63d7cbfe332ad1da5f27cff8bb13",
+        "original_ZIP_sha256": "ad63c5a24a1aa206d455ad638e918efb52b4f43ac6960f487192f1934cd09b2d",
+        "independent_complete_review_sha256": "928a51618f8c96048bca3a98287462c57030f25896ce9c1d9f268abc544184f1",
+        "historical_runs_relabelled": false,
+        "full_motion_reexecuted_in_unit_driver": false,
+        "native_KiCad_reexecuted_in_unit_driver": false,
+        "hardware_qualification": false,
+        "complete_G2_qualification": false,
+        "candidate_go": false,
+        "fixture_fabrication_go": false,
+        "manufacturing_go": false,
+        "label": "S4 unified candidate: complete hosted single-driver locked execution PASS",
+        "tests": 1654,
+        "functional_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+        "in_main": false,
+        "result": "PASS"
       }
     ],
     "configured_count_is_not_a_pass": true
   },
   "previous_current_execution_summary": "engineering/panel-bearing-web-20261015/DELIVERY_VERIFICATION.json",
-  "current_fresh_verification": "Latest historical full unit execution remains 042b7689: 1558 actual tests / 36 suites. The new integrated source adds 77 qualification/ECAD/standalone-entrypoint regressions and configures 1641 tests / 36 suites; this count is not an execution pass. The new KEY finite baseline completed 11781 unordered pairs, retaining four positive material intersections, with separate source and raw pair identities. Numerical probe receipts retain baseline/refined results, exact RHS identities and unchanged rejection thresholds. Independent native KiCad is now a required hosted research job; actual receipt is pending. No physical or manufacturing acceptance is inferred.",
+  "current_fresh_verification": "S4 actually passed 36 locked suites / 1654 tests in one complete hosted verifier execution, with all failure/error/skip/xfail/xpass counts zero. All 6895 present source/input paths were unchanged and matched S4, 1208 Python files parsed, all 13 changed source identities and 43 locked package versions verified, and real INT/TERM cleanup passed. Three separately executed same-S4 native jobs evaluated 35343 fresh pairs and retained 70686 journal events: two v2 finite points clear, default none four positives. The candidate ref was actually advanced to S4 with an expected-old-SHA guard and independent API readback. S3 D5 failed its generated-entrypoint assertion before the three-line original-generator repair; the failed run is preserved. D4 and L1 completed their declared diagnostics on C2 without granting full motion or physical qualification. The historical C2 research workflow is separately recorded and is not converted into a pass by D4/D6. This containing evidence/ledger successor has generated-entrypoint checks, not a new full software/native qualification. See engineering/engineering-integration-20261025/COMPLETED_EVIDENCE_INDEX.json.",
   "bench_cover_first_candidate": {
     "source": "integration/cover_admission.py",
     "stages": 22,
@@ -745,7 +827,7 @@
     "actual_pressure_or_preload_qualified": false
   },
   "current_product_state": "design/current_product.json",
-  "current_product_stage": "PR36, PR37, PR38 and qualification fix a9aaf481 are integrated with main 92d80fbe in PR39; the root README deletion is preserved and the research overview moved under docs. New 188 mm EP5 continuity artwork, current-candidate G3 binding and raw-sample G4/G5 contracts are implemented, with exact-candidate full validation pending. The new complete half-band KEY trial retains all 11781 pairs and four identified native collisions. Exact original panel K and C bytes were recovered by reconstruction; all three bounded five-probe strategies still reject probe 0 under the original 1e-7 float64 criterion. Physical donor identity, selected OLED/FPC stack, complete legal continuous motion, current EP5 strength/tolerances and actual G3-G5 qualification remain unresolved. Frame K is also byte-exact, but both 5 GiB and 6 GiB factorization attempts stopped before any RHS solve.",
+  "current_product_stage": "The unique candidate ref is S4 dd7def6e, advanced after its actual complete hosted locked run passed all 36 suites and 1654 tests with zero failures, errors, skips, expected failures or unexpected successes. D6 separately completed three fresh same-S4 native finite evaluations: two v2 points clear, unchanged none control retaining four real intersections. C2 36/1641 success and S3 D5 1653/1654 with one generated-entrypoint failure remain separate historical executions. D4 completed all six frozen original-v4 KEY trials, strict resume and a fresh ORTHOGONAL evaluation; STOW half/full retain four intersections each. Original SLIDE r3 retains 11762 clear, 10 conservative unresolved and 9 top-level evaluation failures. L1 completed all 89 exact original calls from 19 nonclear pairs, with 505 per-case materials and 1010 exports. Source-derived interpretation identifies four finite whole-body positive Common states for A_BACK_PANEL against L/R_KEY in the declared nominal rigid SLIDE pair domain; no new full-factory or physical test is claimed. SEATING clears only its stated zero-KEY/crosshead external-pair domain. Older three panel strategies retain 4/5 original probe acceptance; new N1/N2 storage failures and N3 original wall stop precede every recorded solve and residual. C2 native KiCad research artwork passed with 52 terminals and 130 tracks, with no actual OEM binding and no S4 native KiCad rerun claim. Same-specimen 10-field/7-role/12-interface inputs, selected OLED/FPC, current EP5 structure/tolerances and physical G3-G5 remain open. Every product release flag stays false.",
   "current_open_research_prs": [
     {
       "number": 35,
@@ -759,63 +841,63 @@
   "current_work_packages": [
     {
       "id": "WP0",
-      "result": "Complete product ancestry and a9aaf481 are integrated with main; all 43 locked package versions match. Current-source full validation is pending.",
-      "path": "engineering/engineering-integration-20261025/README.md",
-      "remaining": "Freeze one candidate SHA, run all 36 suites with at least 1641 tests, and retain complete raw receipts; separately observe actual hosted jobs."
+      "result": "Unique candidate advanced to S4 after actual D6 36-suite/1654-test locked execution and three finite native jobs passed independent review. C2 36/1641 success and S3 generated-entrypoint failure are retained. PR36/37/38, a9aaf481 and main README ancestry verified; PR35 independent.",
+      "path": "engineering/engineering-integration-20261025/COMPLETED_EVIDENCE_INDEX.json",
+      "remaining": "Keep exact source and containing-evidence identities separate. Any future functional change requires its own complete locked run; software qualification does not grant physical or complete-motion release."
     },
     {
       "id": "WP1",
-      "result": "XT2551-3 partial identity is preserved. Mandatory donor fields are owned by code, preventing field deletion from falsely completing identity.",
-      "path": "engineering/engineering-integration-20261025/README.md",
-      "remaining": "Obtain the ten unknown identity fields, seven part roles and twelve terminal bindings from one identified donor specimen."
+      "result": "The original XT2551-3 partial identity and same-specimen evidence contract remain preserved; the practical physical handoff is delivered. This execution added no physical labels, parts or terminal maps.",
+      "path": "engineering/engineering-integration-20261025/product/PHYSICAL_HANDOFF.md",
+      "remaining": "Obtain the ten unknown identity fields, seven physical roles and twelve interfaces from one actual specimen, with original labels, dimensions, exit directions and baseline functional evidence."
     },
     {
       "id": "WP2",
-      "result": "Exact 042 EP5 nominal full assembly passed 36442 pair rows across 154/154/161 bodies, 123 outer-union containment rows and independent STEP readers. Three complete fixed-pose control domains also cleared all 36442 unique pair domains.",
-      "path": "engineering/engineering-integration-20261025/README.md",
-      "remaining": "Freeze real parts/process dimensions, resolve all permitted continuous motion, and validate actual assembly and worst-case tolerances."
+      "result": "C2 canonical controls cleared all 11781 STOW and 12880 OPEN pair domains with original postguards. These are fresh two-pose results; prior 042 three-pose material/containment evidence retains its original identity.",
+      "path": "engineering/engineering-integration-20261025/COMPLETED_EVIDENCE_INDEX.json",
+      "remaining": "Do not claim a fresh C2 PREDOCK or complete motion pass. Resolve the full legal continuous domain, flexible self-validity, actual assembly and worst-case tolerances using real parts."
     },
     {
       "id": "WP3",
-      "result": "EP5 uses a separate 188 mm total / 164 mm free, 10.8 mm middle-width double-U candidate; local finite and bounded ideal OLED studies passed. The earlier EP4 collision is preserved.",
-      "path": "engineering/engineering-integration-20261025/README.md",
-      "remaining": "Select and freeze actual OLED/COF and FPC stack, conductors, impedance, strain and fatigue limits; validate full-phone motion and tolerances."
+      "result": "EP5 retains the separate 188 mm total / 164 mm free, tapered 10.8-to-12 mm FPC research geometry. The OLED reference recheck retained a 22.088803 mm path-length deficit and 4.94 mm excess trial width; no reference module or finished stack was selected.",
+      "path": "engineering/engineering-integration-20261025/product/OLED_SOURCE_RECHECK.json",
+      "remaining": "Freeze actual OLED/COF/touch and finished FPC PN/revision/stack, dimensions, strain/radius/force and lifetime conditions from controlled sources; then re-evaluate the actual route and tolerances."
     },
     {
       "id": "WP4",
-      "result": "New complete half-band KEY trial executed all 11781 pairs and identified four positive material intersections with original pair IDs and Common STEP. Raw source/runtime identities remain distinct from old v4. SLIDE/SEATING portable r3 successors preserve original algorithms and guards.",
-      "path": "engineering/engineering-integration-20261025/README.md",
-      "remaining": "Complete native r3 runs, all orthogonal KEY trials and independently identified finite relief research; qualify physically enforced legal trajectories, tolerances and strength before adopting any geometry change."
+      "result": "D4 completed all six original v4 trials, strict resume and fresh ORTHOGONAL. STOW half/full retain four intersections each. S3 D5 two v2 finite points are clear with independent STEP/material readback, while the none control retains four. Original SLIDE 19 nonclear pairs now have complete L1 exact-call diagnostics and four derived nominal rigid-pair endpoint witnesses for A_BACK_PANEL against KEY; SEATING scope is still zero KEY/crosshead external-pair clearance. D6 independently repeated all three cases on S4: two v2 clear points and the same four-positive none control, 35343 fresh pairs and 70686 journal events.",
+      "path": "engineering/engineering-integration-20261025/COMPLETED_EVIDENCE_INDEX.json",
+      "remaining": "Prioritize full-factory finite witness reproduction and structural repair of A_BACK_PANEL/KEY at slide approximately 23.142 and 60.881 mm; separately repair exact enclosure-method errors and close 64 correlated height/spring overlap calls. Then close real positive-q contact motion, complete independent/coupled domains, flexible self-validity and physical stop support. Finite v2 points do not qualify the complete mechanism."
     },
     {
       "id": "WP5",
-      "result": "A web relief, finite shell channels and rederived closed KEY ends are included in the new common nominal assembly with material accounting.",
-      "path": "engineering/engineering-integration-20261025/README.md",
-      "remaining": "Qualify actual fasteners, retention, joining and process limits; prove ordered assembly, release/hold/skew/return with actual specimens."
+      "result": "Current finite shell/KEY material accounting is retained. A 154-body current EP5 structural input contract now lists actual material, support, preload, load and process/tolerance requirements; it is not a completed FE qualification.",
+      "path": "engineering/engineering-integration-20261025/structural/CURRENT_EP5_INPUT_CONTRACT.json",
+      "remaining": "Obtain real fasteners/materials/loads and process limits; build and validate current EP5 mesh/contact/tolerance models, ordered assembly, retention, release, skew, return and relock."
     },
     {
       "id": "WP6",
-      "result": "A separate 188 mm EP5 continuity26 artwork is generated and parsed against the current material outline; it has no invented OEM assignments. All twelve actual donor interfaces remain unbound.",
-      "path": "engineering/engineering-integration-20261025/README.md",
-      "remaining": "Execute native KiCad readback and all-severity DRC, then bind real donor terminals, supplier stack, power and signal constraints before physical electrical qualification."
+      "result": "The same-version 188 mm EP5 continuity26 artwork passed actual isolated KiCad 9 native readback and all-severity DRC: 52 terminals, 130 tracks, zero reported items. All twelve OEM interfaces remain unbound.",
+      "path": "engineering/engineering-integration-20261025/product/execution-bec1c8d7/SUMMARY.md",
+      "remaining": "Hosted native KiCad is still queued. Bind actual donor terminals, selected finished stack, power/USB/display electrical limits and dynamic qualification; continuity26 is not an OEM pin assignment."
     },
     {
       "id": "WP7",
-      "result": "Panel K and C reconstructed to the exact original byte identities; original five-probe rejection reproduced and localized to probe 0. Three bounded original-threshold strategies retain 4/5 acceptance and failed probe-0 residuals.",
-      "path": "engineering/engineering-integration-20261025/README.md",
-      "remaining": "Meet the unchanged original float64 1e-7 residual and 2e-7 restore-H action requirements before accepting panel/frame H or restoring contact checkpoints. Build current EP5 structure separately from original normalized bearing research."
+      "result": "Older three panel strategies each solved all five originals and accepted four. New C2 N1/N2 partial-pivot factorizations failed LUSUP expansion before solving; N3 with AS8 stopped on the unchanged 180-second wall limit before any retained factor completion or solve. All actual K/C and five RHS identities are preserved.",
+      "path": "engineering/engineering-integration-20261025/numerics/SUMMARY.json",
+      "remaining": "Require a justified resource/algorithm study and actual completion of all five unchanged float64 1e-7 probes before panel/frame full response, H, trace and unchanged restore. No capacity or conditioning claim substitutes for solved residuals."
     },
     {
       "id": "WP8",
-      "result": "New G3 v2 binds the exact current EP5 route; G4 function-phase and G5 raw-exposure contracts enforce current source, preregistration, uncertainty and consecutive raw coverage. Missing observations remain unknown and observed failures remain failures.",
-      "path": "engineering/engineering-integration-20261025/README.md",
-      "remaining": "Supply sourced physical limits, same-specimen as-built/calibration evidence and actual sequential G3 then G4 then G5 acquisitions; templates alone do not qualify hardware."
+      "result": "G3 v2 binding, G4 function/phase/power coverage and G5 raw-exposure rederivation passed actual S4 36-suite/1654-test regression. Four exact original S4 empty templates have now been generated with 121 source and 13 native-payload bindings independently checked. G3 structural binding passed without physical evaluation; original G4/G5 no-acquisition evaluation remained unknown, zero new measurements and all release flags false. C2 templates retain their historical identity.",
+      "path": "engineering/engineering-integration-20261025/product/qualification-s4/README.md",
+      "remaining": "Provide sourced limits, actual as-built/material/process/firmware identity, calibration and preregistration; execute same-candidate physical G3, then G4, then G5. A filled template is not an acquisition."
     },
     {
       "id": "WP9",
-      "result": "Current integration execution is tracked separately from the accepted 042 historical scopes and all retained negative evidence.",
-      "path": "engineering/engineering-integration-20261025/README.md",
-      "remaining": "Close the current execution ledger without carrying forward obsolete startup or approval explanations; actual remaining physical/numerical/geometric dependencies stay explicit."
+      "result": "D4, D5, D6, N1/N2/N3 and L1 completed their recorded actual executions with separate source/workflow identities. S4 is the tested candidate; complete original archives are privately preserved and new public engineering aggregates carry original hashes. Automatic approval rejected public raw upload; the raw action was stopped.",
+      "path": "engineering/engineering-integration-20261025/COMPLETED_EVIDENCE_INDEX.json",
+      "remaining": "Maintain reproducible originals and exact identities; resolve finite positive witnesses, remaining continuous domains, original numerical acceptance and real physical evidence. All full-motion and physical release flags remain false."
     }
   ],
   "current_closed_research_prs": [
