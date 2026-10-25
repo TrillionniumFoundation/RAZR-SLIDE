@@ -76,7 +76,7 @@ def source_snapshot(root):
         ['git', '-C', str(root), 'ls-tree', '-r', '-z', '--full-tree', 'HEAD'],
         env={**os.environ, 'GIT_NO_REPLACE_OBJECTS': '1'}).split(b'\0')
     fixed = {'uv.lock', 'pyproject.toml', '.python-version', 'CURRENT_DESIGN.md',
-             'README.md', 'status.json', 'tools/test_suites.json'}
+             'docs/RESEARCH_OVERVIEW.md', 'status.json', 'tools/test_suites.json'}
     result = {}
     for entry in entries:
         if not entry:

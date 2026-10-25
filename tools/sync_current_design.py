@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Synchronize the three product entry points from one small current-state file.
+"""Synchronize the research overview, design and status from one current-state file.
 
 Use --check to detect stale generated text. Historical experiments and their
 pass/fail evidence are never rewritten. Unit counts come from the manifest;
@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+OVERVIEW = Path('docs/RESEARCH_OVERVIEW.md')
 START = '<!-- current-product:start -->'
 END = '<!-- current-product:end -->'
 
@@ -41,9 +42,9 @@ def short_index(current: dict, manifest: dict) -> str:
         START,
         '## Current product integration — ' + current.get('last_update_date', '2026-10-18'),
         '',
-        '[Current design](CURRENT_DESIGN.md) · '
-        '[Machine-readable product state](design/current_product.json) · '
-        '[Implementation and evidence](engineering/product-integration-20261018/README.md)',
+        '[Current design](../CURRENT_DESIGN.md) · '
+        '[Machine-readable product state](../design/current_product.json) · '
+        '[Implementation and evidence](../engineering/product-integration-20261018/README.md)',
         '',
         current['stage_summary'],
         '',
@@ -58,7 +59,7 @@ def short_index(current: dict, manifest: dict) -> str:
         current['verification_summary'],
         '',
         'Accepted numerical evidence: [PR34 installation/service]('
-        'engineering/installation-control-20261018/DELIVERY_VERIFICATION.json). '
+        '../engineering/installation-control-20261018/DELIVERY_VERIFICATION.json). '
         'Bearing research and the older spring experiment retain their own versioned '
         'results in the current product state; historical failures remain preserved.',
         'That FE evidence belongs to the original installation geometry. The newly '
@@ -179,14 +180,9 @@ def render_status(status: dict, current: dict, manifest: dict) -> dict:
 
 def expected_files(root: Path) -> dict[Path, str]:
     current, manifest = load_inputs(root)
-    readme = (root / 'README.md').read_text()
-    if readme.count(START) != 1 or readme.count(END) != 1:
-        raise ValueError('README must have exactly one current-product block')
-    before, rest = readme.split(START)
-    _, after = rest.split(END)
     state = render_status(json.loads((root / 'status.json').read_text()), current, manifest)
     return {
-        root / 'README.md': before + short_index(current, manifest) + after,
+        root / OVERVIEW: '# RAZR SLIDE research overview\n\n' + short_index(current, manifest) + '\n',
         root / 'CURRENT_DESIGN.md': current_design(current, manifest),
         root / 'status.json': json.dumps(state, indent=2, ensure_ascii=False) + '\n',
     }
@@ -199,9 +195,10 @@ def main():
     args = parser.parse_args()
     changed = []
     for path, content in expected_files(args.root).items():
-        if path.read_text() != content:
+        if not path.exists() or path.read_text() != content:
             changed.append(path.relative_to(args.root).as_posix())
             if not args.check:
+                path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text(content)
     print(json.dumps({'mode': 'check' if args.check else 'write', 'changed': changed}))
     raise SystemExit(1 if args.check and changed else 0)

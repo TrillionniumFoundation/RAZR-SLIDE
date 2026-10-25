@@ -53,15 +53,15 @@ class ProductStateTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'open research PR'):
                 sync.load_inputs(root)
 
-    def test_stale_readme_text_is_detected_and_repair_is_idempotent(self):
+    def test_stale_overview_is_detected_and_repair_is_idempotent(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
             for relative in ['design/current_product.json', 'tools/test_suites.json',
-                             'README.md', 'CURRENT_DESIGN.md', 'status.json']:
+                             sync.OVERVIEW.as_posix(), 'CURRENT_DESIGN.md', 'status.json']:
                 destination = root / relative
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 destination.write_text((ROOT / relative).read_text())
-            readme = root / 'README.md'
+            readme = root / sync.OVERVIEW
             readme.write_text(readme.read_text().replace('Configured unit validation:', 'Old count:'))
             expected = sync.expected_files(root)
             self.assertNotEqual(readme.read_text(), expected[readme])
