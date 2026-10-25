@@ -387,10 +387,44 @@ jobs:
           retention-days: 14
 
 
+  ep5-ecad:
+    name: native-EP5-188mm-research-ECAD
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          sparse-checkout: |
+            tools
+            integration
+            design
+            engineering/product-integration-20261018/electrical
+      - name: Install native KiCad without optional model libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y kicad
+      - name: Generate current artwork and retain independent native readback and all DRC items
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          /usr/bin/python3 -B tools/verify_ep5_ecad_native.py
+          --expected-head "$EXPECTED_HEAD"
+          --output "$RUNNER_TEMP/razr-ep5-ecad"
+      - name: Preserve complete native ECAD evidence including rejections
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: research-EP5-ECAD-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/razr-ep5-ecad
+          if-no-files-found: warn
+          retention-days: 14
+
   current-suites:
     name: current-suites
     if: always()
-    needs: [unit, native, product-native, product-native-ep5, product-nominal-controls]
+    needs: [unit, native, product-native, product-native-ep5, product-nominal-controls, ep5-ecad]
     runs-on: ubuntu-slim
     timeout-minutes: 5
     steps:
@@ -401,9 +435,11 @@ jobs:
           PRODUCT_NATIVE_RESULT: ${{ needs['product-native'].result }}
           PRODUCT_EP5_RESULT: ${{ needs['product-native-ep5'].result }}
           PRODUCT_CONTROLS_RESULT: ${{ needs['product-nominal-controls'].result }}
+          EP5_ECAD_RESULT: ${{ needs['ep5-ecad'].result }}
         run: |
           test "$UNIT_RESULT" = success
           test "$NATIVE_RESULT" = success
           test "$PRODUCT_NATIVE_RESULT" = success
           test "$PRODUCT_EP5_RESULT" = success
           test "$PRODUCT_CONTROLS_RESULT" = success
+          test "$EP5_ECAD_RESULT" = success

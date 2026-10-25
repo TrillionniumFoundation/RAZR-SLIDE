@@ -1,0 +1,89 @@
+{
+  "schema": "razr-product-integration-local-execution-v1",
+  "git_HEAD_at_execution": "363113ffe887b5d09a03b82fdbe948ae92a7f572",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "sources_sha256": {
+    "integration/product_ep5_ecad.py": "37d0dba1f984e1cde8477c69935f7827c4f1d3a2b56c6c6ca309b79f0f0c458b",
+    "integration/product_qualification.py": "c6a7179dadb9734bd85682c7902ec62da7d62f4575c98af6dff62fd69b1ee8b7",
+    "engineering/product-integration-20261018/physical-test-followon-20261019/qualification_contract.py": "51b3d8c3385fe249ed938418ce5ba69ee8ee41e7b12a901c3c34e9421985c16d",
+    "tests/test_ep5_fpc_ecad.py": "1b794aad1f33291f570d4d35d1ca92172a4909ecdf8722c9d928c4fadbca590c",
+    "tests/test_product_qualification_contracts.py": "2823fc075c9fc4ec554f83ba7c0f57be8631644fa119f1f51741bb3d3a408782",
+    "tests/test_g3_current_candidate.py": "fdd9cfa96de5ef52088494ed8b33d102927fe3e09b476e71a1eda74855478d80",
+    "engineering/engineering-integration-20261025/product/build_product_delivery.py": "fe4e9626899fe3964cc936be933b61232ebbe6d60d02e2abe49d0090eea0033c",
+    "design/product_routing_ep5.json": "e229429d287620a173d6ddf3b81a184b2600a5f1e997573f7d01aea68c3a04a5"
+  },
+  "sources_unchanged_during_execution": true,
+  "runs": [
+    {
+      "name": "new-product-contracts",
+      "command": [
+        "/workspace/scratch/fea78049c104/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "tests.test_ep5_fpc_ecad",
+        "tests.test_product_qualification_contracts",
+        "tests.test_g3_current_candidate",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 2.024311220004165,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "0ed560117fe6dffa40e2cf009a4db517f26bf2fe45e2baa583766a9123009586"
+    },
+    {
+      "name": "legacy-G3-contracts",
+      "command": [
+        "/workspace/scratch/fea78049c104/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "integration/product-study-tests",
+        "-p",
+        "test_qualification_contract.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 5.144161276999512,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "0cd10a00def00f835c5b62885367d529791ffca254f6d9beb96fe2a7398f0ebd"
+    },
+    {
+      "name": "current-EP5-research-artwork",
+      "command": [
+        "/workspace/scratch/fea78049c104/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "integration/product_ep5_ecad.py",
+        "--output",
+        "engineering/engineering-integration-20261025/product/ep5-ecad-r2"
+      ],
+      "exit_code": 0,
+      "seconds": 0.24523790000239387,
+      "stdout_sha256": "dd87de56d0fc8e66d1f77c58bb2643f2ff451a034b298dc6dbc877aa722ff5a0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "template-builder-draft",
+      "command": [
+        "/workspace/scratch/fea78049c104/RAZR-SLIDE/.venv/bin/python",
+        "-B",
+        "engineering/engineering-integration-20261025/product/build_product_delivery.py",
+        "--output",
+        "/workspace/scratch/fea78049c104/product-qualification-draft-20261025"
+      ],
+      "exit_code": 0,
+      "seconds": 0.13737562999449437,
+      "stdout_sha256": "ab79491355a21fb5457f10b5baeaa3a3967810d5bf9a80e22ff118c1de01eb58",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "all_commands_completed_successfully": true,
+  "native_KiCad_executed": false,
+  "hardware_measurement_executed": false,
+  "G4_or_G5_physical_qualification_obtained": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}

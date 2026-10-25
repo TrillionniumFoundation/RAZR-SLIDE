@@ -15,8 +15,11 @@ import re
 
 PLAN_SCHEMA = 'razr-unpowered-motion-qualification-plan-v1'
 SPECIMEN_SCHEMA = 'razr-as-built-qualification-specimen-v1'
+CURRENT_PLAN_SCHEMA = 'razr-unpowered-motion-qualification-plan-v2'
+CURRENT_SPECIMEN_SCHEMA = 'razr-as-built-qualification-specimen-v2'
 REVIEW_SCHEMA = 'razr-preregistration-review-v1'
 REQUIRED_ROLES = ('cad', 'ep4', 'bom', 'drawings', 'material', 'process', 'firmware')
+CURRENT_REQUIRED_ROLES = ('cad', 'routing', 'bom', 'drawings', 'material', 'process', 'firmware')
 # Units and required comparison directions are code-owned. A plan may not omit
 # a failed/missing channel or silently choose a different comparison direction.
 METRICS = {
@@ -159,6 +162,37 @@ def metric_observations(rows, calibrations, analysis):
     return out, coverage
 
 
+def validate_current_routing_binding(binding, repository, read_file):
+    """Bind the exact current EP5 candidate; a role label is not identity.
+
+    Version-one EP4 observations remain readable under their original schema.
+    New version-two observations bind the actual route configuration and source.
+    """
+    candidate = binding.get('routing_candidate')
+    required = {'candidate_id','configuration_path','configuration_sha256',
+                'generator_path','generator_sha256'}
+    if not isinstance(candidate, dict) or set(candidate) != required:
+        raise ValueError('explicit current routing-candidate identity required')
+    config_path = 'design/product_routing_ep5.json'
+    generator_path = 'integration/product_routing_ep5.py'
+    if candidate['configuration_path'] != config_path or candidate['generator_path'] != generator_path:
+        raise ValueError('current v2 qualification requires the EP5 configuration and generator')
+    files = binding.get('files_sha256', {})
+    routing = binding.get('artifact_roles', {}).get('routing', [])
+    if not {config_path, generator_path} <= set(routing):
+        raise ValueError('routing role omits the actual candidate definition or source')
+    for prefix in ('configuration','generator'):
+        path, digest = candidate[prefix+'_path'], candidate[prefix+'_sha256']
+        if files.get(path) != digest:
+            raise ValueError('routing candidate differs from design digest inventory')
+        payload = read_file(Path(repository), {'path':path,'sha256':digest})
+        if prefix == 'configuration':
+            configuration = json.loads(payload)
+    if configuration.get('schema') != 'razr-product-routing-ep5-v1' or configuration.get('candidate_id') != candidate['candidate_id']:
+        raise ValueError('routing candidate label differs from actual EP5 source')
+    return dict(candidate)
+
+
 def evaluate(manifest, analysis, rows, calibrations, evidence_root, repository,
              *, read_file, stamp, verify_commit, preregistration_review=None):
     root, repository = Path(evidence_root), Path(repository)
@@ -171,12 +205,15 @@ def evaluate(manifest, analysis, rows, calibrations, evidence_root, repository,
 
     def record(ref, schema):
         item = json.loads(retained(ref))
-        if not isinstance(item, dict) or item.get('schema') != schema:
+        schemas = schema if isinstance(schema, tuple) else (schema,)
+        if not isinstance(item, dict) or item.get('schema') not in schemas:
             raise ValueError('unrecognized qualification record schema')
         return item
 
     result = {
         'schema': 'razr-unpowered-motion-qualification-decision-v1',
+        'specimen_id': manifest.get('specimen_id'),
+        'execution_kind': manifest.get('execution_kind'),
         'status': 'unknown',
         'scope': 'identified sampled unpowered motion only',
         'criteria': [],
@@ -192,7 +229,12 @@ def evaluate(manifest, analysis, rows, calibrations, evidence_root, repository,
     if ref is None:
         result['blockers'].append('predeclared_qualification_plan_missing')
         return result
-    plan = record(ref, PLAN_SCHEMA)
+    plan = record(ref, (PLAN_SCHEMA, CURRENT_PLAN_SCHEMA))
+    current = plan['schema'] == CURRENT_PLAN_SCHEMA
+    required_roles = CURRENT_REQUIRED_ROLES if current else REQUIRED_ROLES
+    result['qualification_plan_schema'] = plan['schema']
+    result['current_EP5_candidate_bound'] = False
+    result['qualification_candidate_scope'] = 'current_EP5' if current else 'legacy_EP4_record_only'
     result['plan_reference'] = ref
     if plan.get('is_template') is not False:
         result['blockers'].append('qualification_plan_is_template_or_undeclared')
@@ -208,12 +250,15 @@ def evaluate(manifest, analysis, rows, calibrations, evidence_root, repository,
     if plan.get('design_binding') != binding:
         raise ValueError('qualification plan design identity differs from acquisition')
     result['design_binding'] = binding
+    if current:
+        result['routing_candidate'] = validate_current_routing_binding(binding, repository, read_file)
+        result['current_EP5_candidate_bound'] = True
     roles = binding.get('artifact_roles', {})
-    if not isinstance(roles, dict) or set(roles) - set(REQUIRED_ROLES):
+    if not isinstance(roles, dict) or set(roles) - set(required_roles):
         raise ValueError('unsupported artifact role')
     files = binding['files_sha256']
     missing_roles = []
-    for role in REQUIRED_ROLES:
+    for role in required_roles:
         paths = roles.get(role)
         if not isinstance(paths, list) or not paths:
             missing_roles.append(role)
@@ -333,7 +378,7 @@ def evaluate(manifest, analysis, rows, calibrations, evidence_root, repository,
     if specimen_ref is None:
         result['blockers'].append('as_built_specimen_record_missing')
     else:
-        specimen = record(specimen_ref, SPECIMEN_SCHEMA)
+        specimen = record(specimen_ref, CURRENT_SPECIMEN_SCHEMA if current else SPECIMEN_SCHEMA)
         if specimen.get('is_template') is not False:
             result['blockers'].append('as_built_specimen_record_is_template')
         elif specimen.get('specimen_id') != manifest['specimen_id']:
@@ -344,9 +389,9 @@ def evaluate(manifest, analysis, rows, calibrations, evidence_root, repository,
             raise ValueError('as-built specimen differs from the tested design identity')
         else:
             observed = specimen.get('role_observations', {})
-            if not isinstance(observed, dict) or set(observed) - set(REQUIRED_ROLES):
+            if not isinstance(observed, dict) or set(observed) - set(required_roles):
                 raise ValueError('invalid as-built role inventory')
-            for role in REQUIRED_ROLES:
+            for role in required_roles:
                 item = observed.get(role, {})
                 if not isinstance(item, dict):
                     raise ValueError('invalid as-built role observation')
