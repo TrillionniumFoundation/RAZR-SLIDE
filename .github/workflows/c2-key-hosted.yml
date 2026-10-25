@@ -1,230 +1,305 @@
-# D2 capability probe only. Replaces the diagnostic workflow, never C2 sources.
-# No checkout, dependency installation, CAD import, geometry, or qualification.
-name: C2 native runner capability probe D2
-
+# D3: genuine service-cgroup path compatibility only; no CAD or environment install.
+name: C2 real service cgroup compatibility D3
 'on':
   push:
     branches: ['diagnostic/c2-key-hosted-20261025']
   workflow_dispatch:
-
 permissions:
   contents: read
-
 concurrency:
   group: c2-key-diagnostic-${{ github.ref }}
   cancel-in-progress: false
-
 jobs:
-  capability:
-    name: C2-resource-interface-${{ matrix.runner }}
-    runs-on: ${{ matrix.runner }}
+  real-service-compatibility:
+    runs-on: ubuntu-22.04
     timeout-minutes: 5
-    strategy:
-      fail-fast: false
-      matrix:
-        runner: [ubuntu-slim, ubuntu-22.04]
     env:
-      PROBED_RUNNER_LABEL: ${{ matrix.runner }}
       PYTHONDONTWRITEBYTECODE: '1'
+      PROBE_DIR: ${{ runner.temp }}/razr-c2-service-compatibility-d3
+      SOURCE_ROOT: ${{ github.workspace }}/c2-source
     steps:
-      - name: Record real proc and cgroup interfaces without installing or running CAD
+      - name: Initialize independent probe evidence
         shell: bash
         run: |
           set -euo pipefail
-          export PROBE_DIR="$RUNNER_TEMP/razr-c2-native-capability"
-          mkdir -p "$PROBE_DIR"
-          cat > "$PROBE_DIR/probe.py" <<'PY'
-          import hashlib, json, math, os, pathlib, platform, sys, time
-          out = pathlib.Path(os.environ['PROBE_DIR'])
-          raw = out/'raw'
-          raw.mkdir(exist_ok=True)
-          records = {}
-          texts = {}
-          targets = {
-            'proc-self-mountinfo.txt': '/proc/self/mountinfo',
-            'proc-self-cgroup.txt': '/proc/self/cgroup',
-            'proc-self-status.txt': '/proc/self/status',
-            'proc-self-stat.txt': '/proc/self/stat',
-            'proc-meminfo.txt': '/proc/meminfo',
-            'cgroup-memory.stat.txt': '/sys/fs/cgroup/memory.stat',
-            'cgroup-memory.current.txt': '/sys/fs/cgroup/memory.current',
-            'cgroup-memory.max.txt': '/sys/fs/cgroup/memory.max',
-            'cgroup-controllers.txt': '/sys/fs/cgroup/cgroup.controllers',
-            'cgroup-type.txt': '/sys/fs/cgroup/cgroup.type',
-          }
-          for name, source in targets.items():
-              p = pathlib.Path(source)
-              r = {'source_path': source, 'readable': False, 'is_symlink': p.is_symlink()}
-              try:
-                  data = p.read_bytes()
-                  text = data.decode('utf-8', errors='strict')
-                  (raw/name).write_bytes(data)
-                  texts[name] = text
-                  r.update(readable=True, bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
-              except (OSError, UnicodeError) as exc:
-                  r['error'] = type(exc).__name__+': '+str(exc)
-              records[name] = r
-          links = {}
-          for source in ('/proc/self', '/proc/self/ns/pid', '/proc/self/ns/pid_for_children'):
-              try: links[source] = {'readable': True, 'target': os.readlink(source)}
-              except OSError as exc: links[source] = {'readable': False, 'error': type(exc).__name__+': '+str(exc)}
-          entries = []
-          try:
-              for p in sorted(pathlib.Path('/sys/fs/cgroup').iterdir())[:256]:
-                  entries.append({'name': p.name, 'is_dir': p.is_dir(), 'is_file': p.is_file(), 'is_symlink': p.is_symlink()})
-              directory = {'readable': True, 'entries': entries, 'maximum_entries_recorded': 256}
-          except OSError as exc:
-              directory = {'readable': False, 'error': type(exc).__name__+': '+str(exc)}
-          (out/'cgroup-directory.json').write_text(json.dumps(directory, indent=2)+'\n')
-          stat = os.statvfs(out)
-          disk = stat.f_bavail*stat.f_frsize
-          parse_errors = {}
-          memory_stat = None
-          current = None
-          maximum = None
-          host_available = None
-          try:
-              memory_stat = dict((k, int(v)) for k, v in (line.split() for line in texts['cgroup-memory.stat.txt'].splitlines()))
-              if not memory_stat or any(v < 0 for v in memory_stat.values()): raise ValueError('invalid memory.stat values')
-          except (KeyError, ValueError) as exc:
-              memory_stat = None
-              parse_errors['memory.stat'] = type(exc).__name__+': '+str(exc)
-          try:
-              current = int(texts['cgroup-memory.current.txt'].strip())
-              if current < 0: raise ValueError('negative memory.current')
-          except (KeyError, ValueError) as exc:
-              current = None
-              parse_errors['memory.current'] = type(exc).__name__+': '+str(exc)
-          try:
-              m = texts.get('cgroup-memory.max.txt')
-              if m is None:
-                  if not records['cgroup-memory.max.txt'].get('error', '').startswith('FileNotFoundError:'):
-                      raise ValueError('memory.max exists but is not readable')
-                  maximum = 'max'
-              else:
-                  maximum = 'max' if m.strip() == 'max' else int(m.strip())
-                  if isinstance(maximum, int) and maximum < 0: raise ValueError('negative memory.max')
-          except ValueError as exc:
-              maximum = None
-              parse_errors['memory.max'] = type(exc).__name__+': '+str(exc)
-          try:
-              info = dict(line.split(':', 1) for line in texts['proc-meminfo.txt'].splitlines())
-              parts = info['MemAvailable'].split()
-              if len(parts) != 2 or parts[1] != 'kB': raise ValueError('unexpected MemAvailable units')
-              host_available = int(parts[0])*1024
-              if host_available < 0: raise ValueError('negative MemAvailable')
-          except (KeyError, ValueError) as exc:
-              host_available = None
-              parse_errors['MemAvailable'] = type(exc).__name__+': '+str(exc)
-          source_keys = ('anon', 'shmem', 'kernel_stack', 'pagetables', 'sock', 'slab_unreclaimable')
-          # Missing/unreadable interfaces are UNKNOWN, never synthetic zero.
-          required_ok = memory_stat is not None and current is not None
-          missing_counter_keys = [] if memory_stat is None else [k for k in source_keys if k not in memory_stat]
-          counters_ok = required_ok and not missing_counter_keys
-          original_control_nonreclaimable = sum(memory_stat[k] for k in source_keys) if counters_ok else None
-          v4_keys = ('inactive_file', 'file_dirty', 'file_writeback', 'file', 'shmem')
-          v4_missing = [k for k in v4_keys if memory_stat is None or k not in memory_stat]
-          finite_keys = ('anon', 'shmem', 'kernel', 'slab_reclaimable', 'unevictable')
-          finite_missing = [k for k in finite_keys if memory_stat is None or k not in memory_stat]
-          original_v4 = {'missing_required_counter_keys': v4_missing, 'eligibility': False, 'effective_memory_headroom_bytes': None, 'shared_unreclaimable_memory_bytes': None}
-          if required_ok and not v4_missing and host_available is not None and maximum is not None and not parse_errors:
-              inactive = max(0, memory_stat.get('inactive_file', 0)-memory_stat.get('file_dirty', 0)-memory_stat.get('file_writeback', 0))
-              hard = maximum-current if isinstance(maximum, int) else host_available
-              effective = min(host_available, hard+inactive)
-              clean = max(0, memory_stat.get('file', 0)-memory_stat.get('shmem', 0)-memory_stat.get('file_dirty', 0)-memory_stat.get('file_writeback', 0))
-              original_v4.update(effective_memory_headroom_bytes=effective,
-                shared_unreclaimable_memory_bytes=max(0, current-clean),
-                eligibility=bool(disk >= 256*1024**2 and effective >= 2*1024**3),
-                original_startup_disk_bytes=256*1024**2, original_startup_headroom_bytes=2*1024**3)
-          finite_shared = None if memory_stat is None or finite_missing else (memory_stat.get('anon', 0)+memory_stat.get('shmem', 0)
-            + max(0, memory_stat.get('kernel', 0)-memory_stat.get('slab_reclaimable', 0))+memory_stat.get('unevictable', 0))
-          proc_status = {}
-          for line in texts.get('proc-self-status.txt', '').splitlines():
-              if ':' in line:
-                  k, v = line.split(':', 1); proc_status[k] = v.strip()
-          positive_rss_fields = False
-          try:
-              rss = proc_status['VmRSS'].split(); hwm = proc_status['VmHWM'].split()
-              positive_rss_fields = rss[1] == hwm[1] == 'kB' and 0 < int(rss[0]) <= int(hwm[0])
-          except (KeyError, ValueError, IndexError): pass
-          self_proc_ok = bool(links.get('/proc/self', {}).get('target', '').isdigit()
-              and all(links.get(p, {}).get('readable') for p in ('/proc/self/ns/pid', '/proc/self/ns/pid_for_children'))
-              and all(proc_status.get(k) for k in ('Pid', 'PPid', 'NSpid')) and positive_rss_fields
-              and records['proc-self-stat.txt']['readable'])
-          cgroup_v2_mount = False
-          for line in texts.get('proc-self-mountinfo.txt', '').splitlines():
-              parts = line.split(' - ', 1)
-              if len(parts) == 2 and len(parts[0].split()) >= 5 and parts[1].split():
-                  cgroup_v2_mount |= parts[0].split()[4] == '/sys/fs/cgroup' and parts[1].split()[0] == 'cgroup2'
-          snapshot_eligible = bool(counters_ok and cgroup_v2_mount and disk >= 500*1024**2
-              and original_control_nonreclaimable <= 6.8*1024**3)
-          report = {
-            'schema': 'razr-C2-hosted-resource-interface-probe-v1', 'observed_epoch': time.time(),
-            'workflow_revision': os.environ['GITHUB_SHA'], 'run_id': os.environ['GITHUB_RUN_ID'],
-            'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'], 'runner_label': os.environ['PROBED_RUNNER_LABEL'],
-            'platform': platform.platform(), 'python': sys.version, 'uid': os.geteuid(),
-            'working_directory': str(pathlib.Path.cwd().resolve()), 'task_directory': str(out.resolve()),
-            'functional_candidate_source': 'bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb',
-            'source_contract': {
-              'run_bounded_path': 'engineering/engineering-integration-20261025/numerics/run_bounded.py',
-              'run_bounded_sha256': '901654cdb718a988471a700b01bfbb2e8979a98248c9211fa69d42b25279e56e',
-              'sources_executed_by_this_probe': False,
-              'probe_scope': 'real interface availability and a current resource snapshot only'},
-            'raw_interfaces': records, 'proc_links': links, 'parse_errors': parse_errors,
-            'memory_stat_counters': memory_stat, 'memory_current_bytes': current,
-            'memory_max_bytes_or_max': maximum,
-            'memory_max_absent_original_v4_uses_host_available': records['cgroup-memory.max.txt'].get('error', '').startswith('FileNotFoundError:'),
-            'host_MemAvailable_bytes': host_available, 'ordinary_writeable_disk_bytes': disk,
-            'root_reserved_free_bytes_diagnostic_only': stat.f_bfree*stat.f_frsize,
-            'run_bounded_required_interfaces_readable': required_ok,
-            'real_cgroup_v2_mount_at_required_path_observed': cgroup_v2_mount,
-            'required_control_counter_values': {k: None if memory_stat is None else memory_stat.get(k) for k in source_keys},
-            'missing_original_control_counter_keys': missing_counter_keys,
-            'original_control_nonreclaimable_budget_bytes': original_control_nonreclaimable,
-            'run_bounded_snapshot_eligible': snapshot_eligible,
-            'original_control_limits': {'task_filesystem_reserve_bytes': 500*1024**2, 'shared_nonreclaimable_bytes': 6.8*1024**3},
-            'original_v4_startup_snapshot': original_v4,
-            'finite_missing_required_counter_keys': finite_missing,
-            'finite_shared_unreclaimable_bytes': finite_shared,
-            'finite_startup_resource_snapshot_eligible': bool(finite_shared is not None
-              and disk >= 256*1024**2 and finite_shared+2048*1024**2 <= 6.8*1024**3),
-            'self_proc_namespace_and_RSS_fields_readable': self_proc_ok,
-            'owned_child_nonce_FD_protocol_exercised': False,
-            'platform_advertised_RAM_used_as_measurement': False,
-            'guard_values_fabricated_or_original_sources_modified': False,
-            'dependency_installation_executed': False, 'CAD_import_or_geometry_executed': False,
-            'native_qualification_granted': False, 'G2_pass': False, 'physical_qualification': False,
-            'probe_source_sha256': hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest(),
-            'future_execution_requirement': 'Repeat original source/runtime/resource preflights in every actual job; this snapshot cannot guarantee future capacity or CAD runtime availability.'}
-          (out/'CAPABILITY.json').write_text(json.dumps(report, indent=2, allow_nan=False)+'\n')
-          manifest = {str(p.relative_to(out)): {'bytes': p.stat().st_size, 'sha256': hashlib.sha256(p.read_bytes()).hexdigest()}
-            for p in sorted(out.rglob('*')) if p.is_file() and p.name != 'MEMBER_SHA256.json'}
-          (out/'MEMBER_SHA256.json').write_text(json.dumps({'members': manifest}, indent=2)+'\n')
-          print(json.dumps({k: report[k] for k in ('runner_label', 'run_bounded_required_interfaces_readable',
-            'run_bounded_snapshot_eligible', 'original_v4_startup_snapshot',
-            'finite_startup_resource_snapshot_eligible', 'self_proc_namespace_and_RSS_fields_readable',
-            'CAD_import_or_geometry_executed')}, indent=2))
-          PY
-          python3 -B "$PROBE_DIR/probe.py"
-      - name: Preserve original capability records on either outcome
-        if: always()
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+          mkdir "$PROBE_DIR"
+          printf '%s\n' 'D3 compatibility probe only; no CAD, no package installation, no qualification.' > "$PROBE_DIR/SCOPE.txt"
+      - name: Read exact frozen C2 supervisor and historical original v4 archive
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          name: c2-key-capability-${{ matrix.runner }}-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/razr-c2-native-capability
-          include-hidden-files: true
-          if-no-files-found: warn
-          retention-days: 14
-      - name: Fail closed if the original control resource interface cannot run here
+          ref: bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb
+          path: c2-source
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /engineering/engineering-integration-20261025/numerics/run_bounded.py
+            /engineering/gate-closure-20261023/geometry-followon-042b7689/key-v4-readback-algebra/results.tar.gz
+      - name: Exercise genuine readonly service view with original UID and original supervisor
+        shell: bash
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          cat > "$PROBE_DIR/compat_probe.py" <<'PY'
+          import hashlib, importlib.util, json, os, pathlib, re, shutil, signal, subprocess, sys, tarfile, time
+          P = pathlib.Path
+          MODE, OUT, REPO = sys.argv[1], P(sys.argv[2]).resolve(), P(sys.argv[3]).resolve()
+          SCRIPT = P(__file__).resolve()
+          C2 = 'bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb'
+          SUP_REL = 'engineering/engineering-integration-20261025/numerics/run_bounded.py'
+          SUP_SHA = '901654cdb718a988471a700b01bfbb2e8979a98248c9211fa69d42b25279e56e'
+          ARCH_REL = 'engineering/gate-closure-20261023/geometry-followon-042b7689/key-v4-readback-algebra/results.tar.gz'
+          ARCH_SHA = 'beef1cf45fb49417c6af092fec51fb266fd6e89f238410c8cf137af4c20ce442'
+          V4_MEMBER = 'gates_audit/dev/key-endpoint-v4/run_key_endpoint_trials.py'
+          V4_SHA = 'ecd57df70e7df83e42083b6019e3b84da261c486c8c9681909a4b192b4505dad'
+          CONTROL_KEYS = ('anon', 'shmem', 'kernel_stack', 'pagetables', 'sock', 'slab_unreclaimable')
+          V4_KEYS = ('inactive_file', 'file_dirty', 'file_writeback', 'file', 'shmem')
+          NS_KEYS = ('mnt', 'pid', 'pid_for_children', 'user', 'cgroup')
+          RAW = OUT/'raw'
+          RAW.mkdir(exist_ok=True)
+          def require(value, message):
+              if not value: raise RuntimeError(message)
+          def sha(path): return hashlib.sha256(P(path).read_bytes()).hexdigest()
+          def save(name, value): (OUT/name).write_text(json.dumps(value, indent=2, sort_keys=True)+'\n')
+          def ident(path):
+              path = P(path); s = path.stat()
+              return {'path': str(path), 'device': s.st_dev, 'inode': s.st_ino, 'mode': s.st_mode, 'symlink': path.is_symlink()}
+          def same_inode(a, b): return (a['device'], a['inode']) == (b['device'], b['inode'])
+          def capture(label, path):
+              r = {'path': str(path), 'epoch': time.time(), 'readable': False}
+              try:
+                  r['identity'] = ident(path)
+                  data = P(path).read_bytes(); r.update(readable=True, bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
+                  (RAW/(label+'.txt')).write_bytes(data)
+                  r['text'] = data.decode('utf-8', errors='strict')
+              except (OSError, UnicodeError) as e: r['error'] = type(e).__name__+': '+str(e)
+              return r
+          def require_text(r):
+              require(r['readable'], 'required real interface unavailable: '+r['path']+' '+r.get('error', ''))
+              require(not r['identity']['symlink'], 'interface symlink rejected')
+              return r['text']
+          def proc(label, pid='self'):
+              base = P('/proc')/str(pid)
+              records = {k: capture(label+'-'+k, base/k) for k in ('cgroup', 'mountinfo', 'status', 'stat')}
+              status = dict(line.split(':', 1) for line in require_text(records['status']).splitlines() if ':' in line)
+              ns = {k: os.readlink(base/'ns'/k) for k in NS_KEYS}
+              return {'epoch': time.time(), 'pid': os.getpid() if pid == 'self' else int(pid), 'records': records, 'status': status, 'namespaces': ns}
+          def unescape(s): return re.sub(r'\\([0-7]{3})', lambda m: chr(int(m.group(1), 8)), s)
+          def mounts(text):
+              result = []
+              for line in text.splitlines():
+                  a, b = line.split(' - ', 1); left, right = a.split(), b.split()
+                  result.append({'id': int(left[0]), 'root': unescape(left[3]), 'mountpoint': unescape(left[4]), 'options': left[5].split(','), 'optional': left[6:], 'fstype': right[0], 'source': unescape(right[1]), 'super_options': right[2].split(',')})
+              return result
+          def group_path(text):
+              rows = [line.split(':', 2) for line in text.splitlines() if line.startswith('0::')]
+              require(len(rows) == 1, 'one real unified cgroup membership required')
+              path = P(rows[0][2]); require(path.is_absolute() and '..' not in path.parts and str(path) != '/', 'non-root current service cgroup required')
+              return path
+          def measured(label, base):
+              r = {'directory': ident(base), 'epoch': time.time(), 'files': {k: capture(label+'-'+k, P(base)/k) for k in ('memory.stat', 'memory.current', 'memory.max', 'cgroup.type')}}
+              save(label+'.json', r)
+              values = dict((k, int(v)) for k, v in (line.split() for line in require_text(r['files']['memory.stat']).splitlines()))
+              require(all(k in values for k in set(CONTROL_KEYS+V4_KEYS)), 'real memory.stat missing required counters')
+              require(all(v >= 0 for v in values.values()), 'negative memory.stat counter')
+              current = int(require_text(r['files']['memory.current']).strip()); require(current >= 0, 'negative current')
+              cap = require_text(r['files']['memory.max']).strip(); require(cap == 'max' or (cap.isdecimal() and int(cap) >= 0), 'invalid maximum')
+              r.update(values=values, current=current, maximum=cap)
+              save(label+'.json', r)
+              return r
+          def member_identity_matches(old, new):
+              require(same_inode(old['directory'], new['directory']), 'bound directory inode differs from actual service')
+              for k in ('memory.stat', 'memory.current', 'memory.max'):
+                  require(same_inode(old['files'][k]['identity'], new['files'][k]['identity']), 'counter inode changed: '+k)
+              require(old['maximum'] == new['maximum'], 'service memory.max changed')
+          def namespace_checks(snapshot, before, *, private):
+              require((snapshot['namespaces']['mnt'] != before['namespaces']['mnt']) == private, 'unexpected mount namespace identity')
+              require(all(snapshot['namespaces'][k] == before['namespaces'][k] for k in NS_KEYS if k != 'mnt'), 'PID/user/cgroup namespace changed')
+              require(snapshot['records']['cgroup']['text'] == before['records']['cgroup']['text'], 'process moved to a different cgroup')
+          def run_record(label, argv, **kwargs):
+              start = time.time()
+              with (OUT/(label+'.stdout')).open('wb') as stdout, (OUT/(label+'.stderr')).open('wb') as stderr:
+                  r = subprocess.run(argv, stdout=stdout, stderr=stderr, **kwargs)
+              rec = {'argv': argv, 'exit_code': r.returncode, 'seconds': time.time()-start, 'stdout_sha256': sha(OUT/(label+'.stdout')), 'stderr_sha256': sha(OUT/(label+'.stderr'))}
+              save(label+'.json', rec)
+              return r.returncode
+          def inside():
+              p = json.loads((OUT/'prepared.json').read_text()); before = p['before']
+              here = proc('inside'); save('inside-process.json', here); namespace_checks(here, before, private=True)
+              require(os.getuid() == p['uid'] and os.geteuid() == p['uid'] and os.getgid() == p['gid'] and sorted(os.getgroups()) == p['groups'], 'original UID/GID/groups not restored')
+              require(int(here['status']['CapEff'].strip(), 16) & ~int(before['status']['CapEff'].strip(), 16) == 0, 'effective capabilities increased')
+              require(here['status']['NoNewPrivs'].strip() == '1', 'no_new_privs absent after privilege drop')
+              view = measured('inside-service', '/sys/fs/cgroup'); member_identity_matches(p['service'], view)
+              entries = mounts(here['records']['mountinfo']['text'])
+              target = [m for m in entries if m['mountpoint'] == '/sys/fs/cgroup'][-1]
+              require(target['fstype'] == 'cgroup2' and target['root'] == p['hierarchy_path'] and 'ro' in target['options'], 'not a readonly bind of the real service cgroup2 subtree')
+              require(not any(v.startswith(('shared:', 'master:', 'propagate_from:')) for m in entries for v in m['optional']), 'mount propagation is not private')
+              require(sha(REPO/SUP_REL) == SUP_SHA and sha(OUT/'original-v4.py') == V4_SHA, 'original source changed')
+              spec = importlib.util.spec_from_file_location('unchanged_original_v4', OUT/'original-v4.py')
+              mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+              resources = mod.resources(OUT)
+              save('original-v4-resources.json', {'source_sha256': V4_SHA, 'function': 'resources', 'CAD_executed': False, 'resources': resources, 'epoch': time.time(), 'real_interfaces_proven_by_inode': True})
+              require(resources['uid'] == p['uid'], 'resources() UID mismatch')
+              require(resources['effective_memory_headroom_bytes'] == min(resources['host_MemAvailable_bytes'], resources['cgroup_unused_bytes']+resources['clean_inactive_file_cache_bytes']), 'original resources internal arithmetic mismatch')
+              require(resources['writeable_disk_bytes'] >= 500*1024**2, 'original control task filesystem reserve unavailable')
+              require(resources['effective_memory_headroom_bytes'] >= 2*1024**3, 'original v4 startup headroom unavailable')
+              require(resources['shared_unreclaimable_memory_bytes'] <= int(6.8*1024**3), 'original v4 runtime resource bound exceeded')
+              require(sum(view['values'][k] for k in CONTROL_KEYS) <= 6.8*1024**3, 'original control memory bound exceeded')
+              # Non-root ancestor limits are additional observations, not substituted into original source.
+              for a in p['ancestors']:
+                  if a['is_cgroup_root'] or a['path'] == p['service_path']: continue
+                  maximum, current = require_text(a['maximum']).strip(), int(require_text(a['current']).strip())
+                  require(maximum == 'max' or maximum.isdecimal(), 'unknown ancestor maximum')
+                  require(current >= 0, 'negative ancestor current')
+                  if maximum != 'max': require(int(maximum)-current >= resources['effective_memory_headroom_bytes'], 'ancestor finite headroom is tighter than original local-scope estimate; blocked')
+              fresh = measured('inside-fresh-nonatomic-comparison', '/sys/fs/cgroup')
+              mem = capture('inside-meminfo', '/proc/meminfo'); info = dict(line.split(':', 1) for line in require_text(mem).splitlines())
+              host = int(info['MemAvailable'].split()[0])*1024; v = fresh['values']; cur = fresh['current']
+              inactive = max(0, v['inactive_file']-v['file_dirty']-v['file_writeback'])
+              hard = host if fresh['maximum'] == 'max' else int(fresh['maximum'])-cur
+              clean = max(0, v['file']-v['shmem']-v['file_dirty']-v['file_writeback'])
+              save('resource-comparison.json', {'original_function': resources, 'fresh_separate_measurement': {'effective_memory_headroom_bytes': min(host, hard+inactive), 'shared_unreclaimable_memory_bytes': max(0, cur-clean), 'control_nonreclaimable_bytes': sum(v[k] for k in CONTROL_KEYS)}, 'exact_cross_time_value_equality_required': False, 'reason': 'Live kernel counters change between reads; real same-scope inode identity and original-source arithmetic are checked, not synthetic equality.', 'memory_stat_record': 'inside-fresh-nonatomic-comparison.json', 'meminfo': mem})
+              task = OUT/'short-child-task'; task.mkdir()
+              argv = [sys.executable, '-B', str(REPO/SUP_REL), '--task-directory', str(task), '--seconds', '30', '--log', str(OUT/'supervised-child.log'), '--report', str(OUT/'original-supervisor-report.json'), '--', sys.executable, '-B', str(SCRIPT), 'child', str(OUT), str(REPO)]
+              with (OUT/'supervisor.stdout').open('wb') as log, (OUT/'supervisor.stderr').open('wb') as err:
+                  child = subprocess.Popen(argv, stdout=log, stderr=err, start_new_session=True)
+                  sup = proc('owned-supervisor', child.pid); save('owned-supervisor-process.json', sup)
+                  try: code = child.wait(timeout=20)
+                  except subprocess.TimeoutExpired:
+                      os.killpg(child.pid, signal.SIGINT)
+                      try: child.wait(timeout=8)
+                      except subprocess.TimeoutExpired:
+                          os.killpg(child.pid, signal.SIGKILL); child.wait()
+                      raise RuntimeError('short diagnostic supervisor timed out; original SIGINT cleanup requested')
+              save('supervisor-invocation.json', {'argv': argv, 'exit_code': code, 'owned_Popen_pid': child.pid, 'seconds_limit_for_short_nonCAD_probe': 30})
+              require(code == 0, 'original supervisor did not complete successfully')
+              namespace_checks(sup, before, private=True)
+              require(sup['namespaces']['mnt'] == here['namespaces']['mnt'], 'supervisor did not inherit the exact service view')
+              require([int(x) for x in sup['status']['Uid'].split()] == [p['uid']]*4, 'supervisor UID differs')
+              report = json.loads((OUT/'original-supervisor-report.json').read_text())
+              require(report['exit_code'] == 0 and report['resource_stop_reason'] is None and report['supervisor_source_unchanged'] and report['supervisor_source_sha256'] == SUP_SHA and report['supervisor_source_sha256_after'] == SUP_SHA, 'original report failed its original guard')
+              sampled = [r for r in report['samples'] if r.get('VmRSS_bytes', 0) > 0]
+              require(len(sampled) >= 3, 'fewer than three actual child RSS/resource samples')
+              require(all(r['task_filesystem_available_bytes'] >= 500*1024**2 and r['nonreclaimable_budget_bytes'] <= 6.8*1024**3 for r in report['samples']), 'raw samples exceed original resource bounds')
+              done = json.loads((OUT/'child-finished.json').read_text()); namespace_checks(done['process'], before, private=True)
+              require(done['process']['namespaces']['mnt'] == here['namespaces']['mnt'], 'child did not inherit the exact service view')
+              require(done['ppid'] == child.pid and done['uid'] == p['uid'] and done['gid'] == p['gid'] and done['pgid'] == done['pid'] and done['sid'] == done['pid'], 'owned child identity/session mismatch')
+              save('inside-result.json', {'compatibility_probe_passed': True, 'original_supervisor_completed': True, 'original_v4_resources_executed': True, 'positive_RSS_raw_sample_count': len(sampled), 'source_sha256': SUP_SHA, 'accounting_scope': p['hierarchy_path']+' and descendants; narrower than VM root', 'native_CAD_executed': False, 'finite_owned_nonce_protocol_executed': False, 'full_environment_43_verified': False, 'product_qualification': False})
+          def root():
+              p = json.loads((OUT/'prepared.json').read_text()); require(os.geteuid() == 0, 'existing sudo root authority unavailable')
+              prior = proc('private-before-bind'); save('private-before-bind.json', prior); namespace_checks(prior, p['before'], private=True)
+              require(same_inode(ident(p['service_path']), p['service']['directory']), 'real source service inode changed')
+              for label, argv in [('make-rprivate', [p['tools']['mount'], '--make-rprivate', '/']), ('real-service-bind', [p['tools']['mount'], '--bind', p['service_path'], '/sys/fs/cgroup']), ('readonly-bind', [p['tools']['mount'], '-o', 'remount,bind,ro', '/sys/fs/cgroup'])]:
+                  require(run_record(label, argv, timeout=15) == 0, 'private mount operation unavailable: '+label)
+              argv = [p['tools']['setpriv'], '--reuid', str(p['uid']), '--regid', str(p['gid']), '--no-new-privs']
+              argv += ['--groups', ','.join(map(str, p['groups']))] if p['groups'] else ['--clear-groups']
+              argv += [sys.executable, '-B', str(SCRIPT), 'inside', str(OUT), str(REPO)]
+              code = run_record('original-uid-execution', argv, timeout=45)
+              require(code == 0, 'original UID diagnostic failed')
+          def outside():
+              summary = {'schema': 'razr-C2-real-service-cgroup-compatibility-probe-D3', 'functional_candidate': C2, 'compatibility_probe_passed': False, 'native_CAD_executed': False, 'product_qualification': False, 'full_environment_43_verified': False, 'finite_owned_nonce_protocol_executed': False, 'memory_limits_modified': False, 'host_global_mount_modified_by_design': False, 'started_epoch': time.time()}
+              before = proc('host-before'); save('host-before.json', before)
+              try:
+                  require(subprocess.check_output(['git', '-C', str(REPO), 'rev-parse', 'HEAD'], text=True).strip() == C2, 'checkout is not C2')
+                  require(subprocess.check_output(['git', '-C', str(REPO), 'status', '--porcelain'], text=True) == '', 'C2 checkout is dirty')
+                  require(sha(REPO/SUP_REL) == SUP_SHA and sha(REPO/ARCH_REL) == ARCH_SHA, 'original controlled source/archive mismatch')
+                  with tarfile.open(REPO/ARCH_REL, 'r:gz') as tar:
+                      members = [m for m in tar.getmembers() if m.name == V4_MEMBER]
+                      require(len(members) == 1 and members[0].isfile() and not members[0].issym() and not members[0].islnk() and members[0].size <= 1024*1024, 'invalid original runner archive member')
+                      data = tar.extractfile(members[0]).read()
+                  require(hashlib.sha256(data).hexdigest() == V4_SHA, 'original v4 runner byte mismatch')
+                  (OUT/'original-v4.py').write_bytes(data)
+                  membership = group_path(before['records']['cgroup']['text'])
+                  candidates = [m for m in mounts(before['records']['mountinfo']['text']) if m['fstype'] == 'cgroup2' and membership.is_relative_to(P(m['root']))]
+                  require(candidates, 'no real cgroup2 mount covers current membership')
+                  mount = max(candidates, key=lambda m: len(P(m['root']).parts))
+                  service = P(mount['mountpoint'])/membership.relative_to(P(mount['root']))
+                  require(service.resolve() == service and not service.is_symlink(), 'service path resolution changed')
+                  m = measured('host-service-before', service)
+                  root_id = ident('/sys/fs/cgroup')
+                  root_stat = capture('host-cgroup-root-memory.stat', '/sys/fs/cgroup/memory.stat')
+                  mem = capture('host-meminfo', '/proc/meminfo')
+                  ancestors = []; current = service
+                  while True:
+                      item = {'path': str(current), 'identity': ident(current), 'is_cgroup_root': current == P(mount['mountpoint']), 'maximum': capture('ancestor-'+str(len(ancestors))+'-memory.max', current/'memory.max'), 'current': capture('ancestor-'+str(len(ancestors))+'-memory.current', current/'memory.current')}
+                      ancestors.append(item)
+                      if item['is_cgroup_root']: break
+                      require(current.parent != current and current.parent.is_relative_to(P(mount['mountpoint'])), 'invalid real cgroup ancestry')
+                      current = current.parent
+                  tools = {k: shutil.which(k) for k in ('sudo', 'unshare', 'mount', 'setpriv')}
+                  require(all(tools.values()), 'existing sudo/unshare/mount/setpriv required; no installation attempted')
+                  p = {'before': before, 'uid': os.getuid(), 'gid': os.getgid(), 'groups': sorted(os.getgroups()), 'hierarchy_path': str(membership), 'service_path': str(service), 'service': m, 'cgroup2_mount': mount, 'root_directory': root_id, 'root_memory_stat': root_stat, 'host_meminfo': mem, 'ancestors': ancestors, 'tools': tools, 'original_supervisor_sha256': SUP_SHA, 'original_v4_sha256': V4_SHA, 'archive_sha256': ARCH_SHA, 'harness_sha256': sha(SCRIPT)}
+                  require(p['uid'] != 0, 'probe must begin as normal runner UID')
+                  save('prepared.json', p)
+                  require(run_record('sudo-capability', [tools['sudo'], '-n', 'true'], timeout=10) == 0, 'existing passwordless sudo unavailable')
+                  code = run_record('private-namespace', [tools['sudo'], '-n', tools['unshare'], '--mount', '--propagation', 'private', '--', sys.executable, '-B', str(SCRIPT), 'root', str(OUT), str(REPO)], timeout=90)
+                  require(code == 0, 'private namespace diagnostic failed; see raw logs')
+                  after = proc('host-after'); save('host-after.json', after); namespace_checks(after, before, private=False)
+                  require(after['records']['mountinfo']['text'] == before['records']['mountinfo']['text'], 'host mount view differs after probe')
+                  require(same_inode(ident('/sys/fs/cgroup'), root_id), 'host cgroup root inode changed')
+                  post = measured('host-service-after', service); member_identity_matches(m, post)
+                  for i, a in enumerate(ancestors):
+                      post_max = capture('ancestor-'+str(i)+'-memory.max-after', P(a['path'])/'memory.max')
+                      save('ancestor-'+str(i)+'-after.json', post_max)
+                      require(a['maximum']['readable'] == post_max['readable'], 'ancestor limit availability changed')
+                      if post_max['readable']: require(post_max['text'] == a['maximum']['text'] and same_inode(post_max['identity'], a['maximum']['identity']), 'ancestor limit changed')
+                  require(sha(REPO/SUP_REL) == SUP_SHA and sha(OUT/'original-v4.py') == V4_SHA and subprocess.check_output(['git', '-C', str(REPO), 'status', '--porcelain'], text=True) == '', 'controlled sources changed')
+                  result = json.loads((OUT/'inside-result.json').read_text()); require(result.get('compatibility_probe_passed') is True, 'inside probe incomplete')
+                  summary.update(compatibility_probe_passed=True, observed_accounting_scope=str(membership)+' and descendants; NOT whole VM root', original_supervisor_source_sha256=SUP_SHA, original_v4_source_sha256=V4_SHA, positive_RSS_raw_sample_count=result['positive_RSS_raw_sample_count'], host_mount_view_unchanged=True, service_and_ancestor_maxima_unchanged=True, thresholds_unchanged=True)
+              except Exception as exc:
+                  summary['blocked_reason'] = type(exc).__name__+': '+str(exc)
+                  try: save('host-after-blocked.json', proc('host-after-blocked'))
+                  except Exception as secondary: summary['after_snapshot_error'] = repr(secondary)
+              summary['finished_epoch'] = time.time(); save('SUMMARY.json', summary); print(json.dumps(summary, indent=2))
+              return 0 if summary['compatibility_probe_passed'] else 2
+          try:
+              if MODE == 'outside': raise SystemExit(outside())
+              elif MODE == 'root': root()
+              elif MODE == 'inside': inside()
+              elif MODE == 'child':
+                  def child_record(label):
+                      return {'pid': os.getpid(), 'ppid': os.getppid(), 'uid': os.getuid(), 'gid': os.getgid(), 'pgid': os.getpgid(0), 'sid': os.getsid(0), 'epoch': time.time(), 'process': proc(label)}
+                  save('child-started.json', child_record('child-started')); time.sleep(4.2); save('child-finished.json', child_record('child-finished'))
+                  print('short stdlib child completed; no CAD imported')
+              else: raise RuntimeError('unknown probe mode')
+          except Exception as exc:
+              save(MODE+'-ERROR.json', {'error': type(exc).__name__+': '+str(exc), 'epoch': time.time(), 'mode': MODE})
+              raise
+          PY
+          set +e
+          /usr/bin/python3 -B "$PROBE_DIR/compat_probe.py" outside "$PROBE_DIR" "$SOURCE_ROOT" > "$PROBE_DIR/probe.stdout" 2> "$PROBE_DIR/probe.stderr"
+          code=$?
+          printf '%s\n' "$code" > "$PROBE_DIR/probe.exit-code.txt"
+          exit "$code"
+      - name: Preserve manifest even when unavailable or blocked
         if: always()
         shell: bash
         run: |
-          python3 -B - <<'PY'
+          /usr/bin/python3 -B - <<'PY'
+          import hashlib, json, os, pathlib
+          out = pathlib.Path(os.environ['PROBE_DIR'])
+          out.mkdir(exist_ok=True)
+          rows = [{'path': str(p.relative_to(out)), 'bytes': p.stat().st_size, 'sha256': hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(out.rglob('*')) if p.is_file() and not p.is_symlink() and p.name != 'MANIFEST.json']
+          (out/'MANIFEST.json').write_text(json.dumps({'functional_candidate': 'bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb', 'workflow_execution_head': os.environ['GITHUB_SHA'], 'run_id': os.environ['GITHUB_RUN_ID'], 'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'], 'members': rows}, indent=2)+'\n')
+          PY
+      - name: Upload all original compatibility evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: C2-service-compatibility-D3-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.PROBE_DIR }}
+          if-no-files-found: error
+          retention-days: 30
+      - name: Require actual compatibility evidence without promoting product status
+        if: always()
+        shell: bash
+        run: |
+          /usr/bin/python3 -B - <<'PY'
           import json, os, pathlib
-          p = pathlib.Path(os.environ['RUNNER_TEMP'])/'razr-c2-native-capability/CAPABILITY.json'
-          if not p.is_file(): raise SystemExit('missing original capability record')
+          out = pathlib.Path(os.environ['PROBE_DIR'])
+          p = out/'SUMMARY.json'
+          if not p.is_file(): raise SystemExit('BLOCKED: compatibility probe did not produce a complete summary')
           r = json.loads(p.read_text())
-          if r.get('run_bounded_snapshot_eligible') is not True:
-              raise SystemExit('original C2 run_bounded interfaces/counters/current capacity unavailable; NO CAD executed')
-          print('Resource interface snapshot eligible; no CAD, owned-child handshake, or product qualification claimed.')
+          if r.get('compatibility_probe_passed') is not True: raise SystemExit('BLOCKED: '+r.get('blocked_reason', 'unknown or incomplete interfaces'))
+          if r.get('native_CAD_executed') is not False or r.get('product_qualification') is not False: raise SystemExit('Invalid diagnostic scope')
+          print('Real service-cgroup compatibility and short original-supervisor lifecycle observed; CAD and product gates remain untested.')
           PY
