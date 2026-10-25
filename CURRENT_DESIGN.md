@@ -27,7 +27,7 @@ The implementation baseline is `a1b3cc1e0773446f2e36d0a607edf61211dd9919`. The d
 
 ## Validation and research boundaries
 
-Configured unit manifest: **1641 tests / 36 suites**. Run `uv run --locked python -B tools/verify.py`. Run `python3 tools/sync_current_design.py --check` to check these entry points.
+Configured unit manifest: **1654 tests / 36 suites**. Run `uv run --locked python -B tools/verify.py`. Run `python3 tools/sync_current_design.py --check` to check these entry points.
 
 Latest historical full unit execution remains 042b7689: 1558 actual tests / 36 suites. The new integrated source adds 77 qualification/ECAD/standalone-entrypoint regressions and configures 1641 tests / 36 suites; this count is not an execution pass. The new KEY finite baseline completed 11781 unordered pairs, retaining four positive material intersections, with separate source and raw pair identities. Numerical probe receipts retain baseline/refined results, exact RHS identities and unchanged rejection thresholds. Independent native KiCad is now a required hosted research job; actual receipt is pending. No physical or manufacturing acceptance is inferred.
 
