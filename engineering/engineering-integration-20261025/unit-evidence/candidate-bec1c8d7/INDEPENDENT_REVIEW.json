@@ -1,0 +1,457 @@
+{
+  "schema": "razr-independent-complete-unit-receipt-review-v1",
+  "source_commit": "bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb",
+  "source_tree": "0eb5fb6c13645b6ce6ff9aec765d5465007efc13",
+  "passed": true,
+  "suites": 36,
+  "actual_test_invocations": 1641,
+  "unique_suite_qualified_test_identities": 1641,
+  "unique_bare_test_id_strings": 1627,
+  "cross_suite_repeated_bare_ids": {
+    "test_occ_signed_volume.SignedVolumeValidation.test_common_cannot_exceed_body": [
+      "cad",
+      "r50-topology"
+    ],
+    "test_occ_signed_volume.SignedVolumeValidation.test_common_cannot_exceed_cell": [
+      "cad",
+      "r50-topology"
+    ],
+    "test_occ_signed_volume.SignedVolumeValidation.test_multiple_loft_cells_must_not_claim_union_volume": [
+      "cad",
+      "r50-topology"
+    ],
+    "test_occ_signed_volume.SignedVolumeValidation.test_negative_valid_kernel_result_is_rejected": [
+      "cad",
+      "r50-topology"
+    ],
+    "test_occ_signed_volume.SignedVolumeValidation.test_nonfinite_result_rejected": [
+      "cad",
+      "r50-topology"
+    ],
+    "test_occ_signed_volume.SignedVolumeValidation.test_nonpositive_input_rejected": [
+      "cad",
+      "r50-topology"
+    ],
+    "test_occ_signed_volume.SignedVolumeValidation.test_real_containment": [
+      "cad",
+      "r50-topology"
+    ],
+    "test_occ_signed_volume.SignedVolumeValidation.test_real_disjoint_boxes": [
+      "cad",
+      "r50-topology"
+    ],
+    "test_occ_signed_volume.SignedVolumeValidation.test_real_overlapping_boxes": [
+      "cad",
+      "r50-topology"
+    ],
+    "test_occ_signed_volume.SignedVolumeValidation.test_tiny_negative_is_uncertain_never_clearance": [
+      "cad",
+      "r50-topology"
+    ],
+    "test_repaired_intersection.ParticipatingSolidValidation.test_disjoint_valid_body_and_cell": [
+      "r50-repair",
+      "r50-topology"
+    ],
+    "test_repaired_intersection.ParticipatingSolidValidation.test_disjoint_zero_thickness_cell_is_not_a_solid": [
+      "r50-repair",
+      "r50-topology"
+    ],
+    "test_repaired_intersection.ParticipatingSolidValidation.test_reversed_disjoint_cell_is_also_rejected": [
+      "r50-repair",
+      "r50-topology"
+    ],
+    "test_repaired_intersection.ParticipatingSolidValidation.test_reversed_valid_body_cannot_bypass_guard_when_disjoint": [
+      "r50-repair",
+      "r50-topology"
+    ]
+  },
+  "zero_failures_errors_skips_expected_failures_unexpected_successes": true,
+  "all_36_original_log_ordered_test_ids_match_child_and_parent_receipts": true,
+  "all_manifest_worker_commands_and_minima_match": true,
+  "all_final_progress_suite_rows_match": true,
+  "present_source_paths_verified_against_report_and_exact_git_blobs": 4788,
+  "present_source_bytes_rehashed": 303644769,
+  "python_AST_reparsed": 1205,
+  "full_repository_checkout_claimed": false,
+  "locked_packages_rechecked_from_metadata_and_uv_lock": 43,
+  "original_report_sha256": "0ca51545b8f97683e7afbef00acfc736a8a3e885acff9a1bf72b71a11fc381ea",
+  "original_context_sha256": "185933df69c63e7b9c7c65bc750960c9d5e7dbebf29d8811193901b99c0915cd",
+  "original_candidate_identity_sha256": "abee0383da34bebc714485a0c8d11dd1dc058c1fdb0bbc6edcda91525c1eb65f",
+  "required_ancestors_rechecked": {
+    "PR36": "e25cf001c1b714514d501de4c16d1592fde06b61",
+    "PR37": "2a8893743c7e90935b1594e619eab9f2ae46b872",
+    "PR38": "1fb9d35403b7a3d9dda321056c961c4bb2449c54",
+    "qualification_fix": "a9aaf481b1e51caa948f824aa4768af1f5b3d57a",
+    "main_README_change": "92d80fbef80bef4cde8dc7d759399f19fe8ba7ce"
+  },
+  "PR35_not_ancestor_rechecked": true,
+  "sum_suite_seconds": 888.621,
+  "source_code_or_git_index_modified": false,
+  "test_or_geometry_reexecution_performed": false,
+  "candidate_go": false,
+  "manufacturing_go": false,
+  "scope": "independent consistency and current exact-source checks of retained complete C2 unit execution evidence; no hardware or complete motion qualification",
+  "suite_checks": [
+    {
+      "id": "repository",
+      "tests_run": 276,
+      "minimum_tests": 276,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 87.527,
+      "log_sha256": "7214b7e2c084ea1d6eb80c0094148e6f70366b07f0e6b196ed47f491a8bfc659",
+      "json_sha256": "f8e8b9de5b09cfeb4e34f4d9e4d8f00f9056c6e6b7adfdb89279aad183cc26de"
+    },
+    {
+      "id": "cad",
+      "tests_run": 19,
+      "minimum_tests": 19,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 2.173,
+      "log_sha256": "13cf3b5f3ddbf4bc4bf678c70fcf3c9aa36e4e51e59fb9f7de647002a78e8648",
+      "json_sha256": "17d783e31a50043234b676118edc7d3549de701f4e6206c2268effd3da258839"
+    },
+    {
+      "id": "isolation",
+      "tests_run": 12,
+      "minimum_tests": 12,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 0.064,
+      "log_sha256": "061c8ac475d0e95862eadb45f37354a5d211eccdeda14d9e91a5a9a2c2b1f95c",
+      "json_sha256": "5b424c5ad1f49ee26c06c43e0f9184d43dd3896c1aadfeb9c2f46fbb2cbf0d60"
+    },
+    {
+      "id": "fpc-inputs",
+      "tests_run": 13,
+      "minimum_tests": 13,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 0.064,
+      "log_sha256": "5b4436d73b57773fd09242957c19f7f25ceea69b808fe92663eec20de4c885b4",
+      "json_sha256": "e07bba81bcc561cae00784eaba9e7482ed3ba51afc5f413629b9081bfcdb0f03"
+    },
+    {
+      "id": "fpc-layers",
+      "tests_run": 10,
+      "minimum_tests": 10,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 0.064,
+      "log_sha256": "25ef18312f02bf020e835b78c871f108a85177b60d1d95aacf2861ec51c6ee10",
+      "json_sha256": "09b46a68ec225dbb8c184e61cc7aaeaa536dcba1762c3f9b10fa915703a90bee"
+    },
+    {
+      "id": "material-motion",
+      "tests_run": 10,
+      "minimum_tests": 10,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 3.479,
+      "log_sha256": "733e9000ac5403f3779dd098eac151ce92f31e54a51160e8e06d74ae45ce8d13",
+      "json_sha256": "b5de238f7684ac21e460d6f2406ae778f6183c46ad84351bcd6abe2672e4ff21"
+    },
+    {
+      "id": "bend-axis",
+      "tests_run": 6,
+      "minimum_tests": 6,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 0.065,
+      "log_sha256": "12c2bc834dc1fe0ca19e00648b38c3edca6cbd70a86860c9bcd4326b66f39771",
+      "json_sha256": "871939e3c553ced7c3e86dd8b1a3199904ff3d599ac0726be42575a7df615c66"
+    },
+    {
+      "id": "endpoint",
+      "tests_run": 11,
+      "minimum_tests": 11,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 0.064,
+      "log_sha256": "f95a5b308253148f0878876d387a1df6aa755e8cbc9050730f688c41fbcd00bd",
+      "json_sha256": "95e969906dceb1d70a236b15898e12a110249284333bdb6691284ed855e3073a"
+    },
+    {
+      "id": "power-usb",
+      "tests_run": 13,
+      "minimum_tests": 13,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 0.064,
+      "log_sha256": "549ec6fba1f5ffd6cc1e576433ecbbb1d104936c0e8ca698e829d3a350be5cec",
+      "json_sha256": "8826fd517c510c37af88f9a4b12158876c0279d5a314136b4bc31846d892d605"
+    },
+    {
+      "id": "proof-detector",
+      "tests_run": 27,
+      "minimum_tests": 27,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 0.064,
+      "log_sha256": "dbc547993904d51d2021d5a2e347e8347eb19adb502ef69a70dd8ff64c359fcb",
+      "json_sha256": "26da852eae2bb2a52e7f2afd9658086812f62434424b17d790f63671c059efc4"
+    },
+    {
+      "id": "proof-selftest",
+      "tests_run": 34,
+      "minimum_tests": 34,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 0.115,
+      "log_sha256": "a417e3a3c9916f1bc6af873f15b7aa4030488be83d0ca75b90654718f367eb31",
+      "json_sha256": "540ffb2b844c011b452be1d719f0ea82c5c7e17bc3b2506cd70995b352a6c675"
+    },
+    {
+      "id": "r50-repair",
+      "tests_run": 4,
+      "minimum_tests": 4,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 2.072,
+      "log_sha256": "8dfe854de54525e3c71a81eb700c009dc2c4089150149ada2256039fa06e3972",
+      "json_sha256": "aa38637befd18c90137d29795107d17f2dbdf68bac334bea89151010d2800781"
+    },
+    {
+      "id": "r50-topology",
+      "tests_run": 19,
+      "minimum_tests": 19,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 2.225,
+      "log_sha256": "be7c56881de17cce56048cc95ae10276810b7258920b5df2dc63d50559012347",
+      "json_sha256": "aa47695e8e6f0594efc142d5e5ea99b8f1a00a86317f0a012f6dc8b85e618701"
+    },
+    {
+      "id": "return-sensing",
+      "tests_run": 22,
+      "minimum_tests": 22,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 0.115,
+      "log_sha256": "b2fa6e62baa6c2056313d85f8614610402f83ed7743438613b07e4f9e5cc583e",
+      "json_sha256": "f580583bb1af010b1195fd6da0efe77a2ae6bbb17ef81b17ed3ed3bce0f58ac1"
+    },
+    {
+      "id": "safety",
+      "tests_run": 13,
+      "minimum_tests": 13,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 0.066,
+      "log_sha256": "6f8eb5133a265faf6f9baf1a1d7728afc5a19c5c757cef33811cf1c512f705f1",
+      "json_sha256": "191ba19e0fd17d76a3072f2c8b4ba6afa2d89c63c18f999cddd05d9dded06c3b"
+    },
+    {
+      "id": "strict-motion",
+      "tests_run": 17,
+      "minimum_tests": 17,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 2.473,
+      "log_sha256": "c6e7d4491df3ed3e81ae6351932af2082608acfac401df9c8510c741b55f6f0d",
+      "json_sha256": "91b67351aaa8c2f8779ef52becb24acf6674ad6fc4d3ce3ba523761806c752f9"
+    },
+    {
+      "id": "g2-geometry",
+      "tests_run": 12,
+      "minimum_tests": 12,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 4.431,
+      "log_sha256": "089eebcd6ae624a01e633a4d408580cbafc7901fc00d385e8575f234c9adf836",
+      "json_sha256": "90f5f7b97cc32233b03c2d53343c38b5c0579c65532a49eeceb62d606c7e199b"
+    },
+    {
+      "id": "stow-slots",
+      "tests_run": 8,
+      "minimum_tests": 8,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 73.905,
+      "log_sha256": "fb1f550cf365e2ee0177c264f09371bb1d65c5851110cccc0c529f68e3eca985",
+      "json_sha256": "7ed6acd73b475733a32028e0937371756d00aa109420bb32a044e936a6b46621"
+    },
+    {
+      "id": "stow-continuous",
+      "tests_run": 8,
+      "minimum_tests": 8,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 49.973,
+      "log_sha256": "8f556a3b1e7378fb3d0769c036ba8293d98163945bdc7f8888a77d68e9a51f92",
+      "json_sha256": "39c1ceef1fd8432edd03d8208d5e6edaf567907b4ff929a4ec841858f7bb51c6"
+    },
+    {
+      "id": "native-contact",
+      "tests_run": 8,
+      "minimum_tests": 8,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 51.024,
+      "log_sha256": "eff0ccde4453e6cd4fb85c8a5eb4104355ad027f630b3f2e6349f69fa3becca0",
+      "json_sha256": "1dfd31be1ee6b7633580726b7b5a01ff531ff133d76c9baabd889f0da4aec8d8"
+    },
+    {
+      "id": "keycover",
+      "tests_run": 12,
+      "minimum_tests": 12,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 55.782,
+      "log_sha256": "143429fa9aa5f837d42d115a4923a6999fac3eef53ee4e9e3c9c3cc4c978f4b7",
+      "json_sha256": "9e85f03481e0a55151e1fcb305fc8c32ba45b5fa39e04827395aa5dd33b743a5"
+    },
+    {
+      "id": "cover-admission",
+      "tests_run": 10,
+      "minimum_tests": 10,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 101.385,
+      "log_sha256": "cdd4772e1be189d69780beba1588111bf5a9c7e6087018a9ab1f39137607c10c",
+      "json_sha256": "2e56cbf7853934a03df615023fa47665b2a2c3514fc9c0e95b1609c95af222ee"
+    },
+    {
+      "id": "cover-capture",
+      "tests_run": 10,
+      "minimum_tests": 10,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 20.241,
+      "log_sha256": "5af62f5f6a7df5b63c26b16d75f0ba727064e3eec75edc4f0bcb4d3ab1b9dc75",
+      "json_sha256": "3a950455b4d6e2ac1a418d3e48f11d518a853df31966b164811eaa96d98883ba"
+    },
+    {
+      "id": "phone-layout",
+      "tests_run": 20,
+      "minimum_tests": 20,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 2.472,
+      "log_sha256": "c55e7d12dc031b6d879d7ea0cb1e66a06eba74b85a2432449fad2c757c28c3c3",
+      "json_sha256": "54dc7b84c1d15e4977f50f8a82adabe7db1d8cb6c62e5eb91bcbc04cb1107044"
+    },
+    {
+      "id": "thin-mechanism",
+      "tests_run": 20,
+      "minimum_tests": 20,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 36.289,
+      "log_sha256": "f9b242ef55581af8cbda2c1284a0b138f68d219b0cf49e9ffae9b6dcf8e99f2c",
+      "json_sha256": "28619df55fddf3028a00d096e6b734846830f7cb24c488bf019a79321136c710"
+    },
+    {
+      "id": "mounted-mechanism",
+      "tests_run": 20,
+      "minimum_tests": 20,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 12.661,
+      "log_sha256": "b528d7145468ab6e6c740148e00d05edd6276e252ee8a87c083ed66d36a19166",
+      "json_sha256": "b074e834a39b3c5717df7fef604efd1aef565516249909235c0c668e17ee403a"
+    },
+    {
+      "id": "cam-coupling",
+      "tests_run": 21,
+      "minimum_tests": 21,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 12.896,
+      "log_sha256": "684bac4a69e3a9c9853c049909bb8b660c2059006c4757b657f7bf09a3944bd4",
+      "json_sha256": "c542cd48758a3b46dfc664148a19b92ee0eb4eaaf5133c0b060ba0307043ee10"
+    },
+    {
+      "id": "pawl-actuator",
+      "tests_run": 20,
+      "minimum_tests": 20,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 16.488,
+      "log_sha256": "3ee9b70156c9baf2197f1ff2336f8e0ad1ce13baf94922130a83492b690ff49f",
+      "json_sha256": "3595d254f6f9e9cd0f7293e008f2a9ded0b3d8d90a8be46eb01a4ba303e7d1d3"
+    },
+    {
+      "id": "serviceable-pawl",
+      "tests_run": 21,
+      "minimum_tests": 21,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 33.442,
+      "log_sha256": "850128e57eb261be80e747b73a66292cebdb3be50f7f461e5d1c2dee5cee3815",
+      "json_sha256": "39f7c3453c1715384556f3b62d2ed4b77dcfb005fbcf21d80b5024c1b8bbb1e8"
+    },
+    {
+      "id": "endpoint-joint",
+      "tests_run": 27,
+      "minimum_tests": 27,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 29.005,
+      "log_sha256": "36ca83adf48dd92dc00170f156131a0ee3416185cef57557693c1d8a416a58ff",
+      "json_sha256": "87ad8d48fa3e289be04d0b728b10c354859d974b5d2dce7e62e0ff761e1764af"
+    },
+    {
+      "id": "manufacturing-fit",
+      "tests_run": 669,
+      "minimum_tests": 669,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 102.69,
+      "log_sha256": "3a84dcf9a41e32670c2a47e3c10f8fd959684b2664ff1d3c13f94481b4c93c76",
+      "json_sha256": "a50d4321b788f2c7ffa772966671f5a550fb2ee1e3b67bea7f9d434c080ee1e5"
+    },
+    {
+      "id": "product-integration",
+      "tests_run": 196,
+      "minimum_tests": 196,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 145.067,
+      "log_sha256": "dfd48d0e506d7065387f01fc527343e5466bcfb0ff75f162f0a25e489271fad1",
+      "json_sha256": "d5628816933a1adf1dc720bcb061ce3d870fd4a4bc41ed8b8fc2595df6fbc3c8"
+    },
+    {
+      "id": "routing-followup",
+      "tests_run": 14,
+      "minimum_tests": 14,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 38.77,
+      "log_sha256": "ee5abe59b9fbb7829c2984113a86b5e7a5e8d020a9b3dca7f2c1f7caa8829567",
+      "json_sha256": "c19498fa966fbf2e31830050599d947c9e8623ec9aa7b3f3cfc8bfec8b4c00f5"
+    },
+    {
+      "id": "ep3-routing",
+      "tests_run": 7,
+      "minimum_tests": 7,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 0.168,
+      "log_sha256": "d86c0def385b6bb83b2786a0594a97556c0cb90c3393edffeda3e61d4d139dcb",
+      "json_sha256": "a20cee248ae7d941a411005c98cfc76691dc2090e269d84294739f5d8495268c"
+    },
+    {
+      "id": "ep4-routing",
+      "tests_run": 8,
+      "minimum_tests": 8,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 0.467,
+      "log_sha256": "d2e47610d95cbd99ee0b1e1ce013a64ba6d00eef84b1aa5744ea41398aeadc36",
+      "json_sha256": "83ab1901995bd1985283cd43f0369ecea0d47b6c7f9d9c61e71cc5f02f0c11fe"
+    },
+    {
+      "id": "ep5-routing",
+      "tests_run": 24,
+      "minimum_tests": 24,
+      "raw_log_ordered_test_ids_match": true,
+      "raw_log_successful": true,
+      "seconds": 0.771,
+      "log_sha256": "7f1f9f8cb8d5c4a8a1bdf5dfd516c9545b7d93da5641a9c3cfa954dd7e65a2a2",
+      "json_sha256": "7a7190383f409bc31e019737338a4c2651cfea04e04f53498fd7c367769b1222"
+    }
+  ],
+  "review_seconds": 3.7426348969966057
+}
