@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'integration'))
 import product_ep5_ecad as artwork
 
-HELPER = 'engineering/product-integration-20261018/electrical/verify_native_mini.py'
+HELPER = 'tools/read_ep5_ecad_native.py'
 SOURCES = ('tools/verify_ep5_ecad_native.py', 'integration/product_ep5_ecad.py',
            'integration/product_interfaces.py', 'design/product_routing_ep5.json', HELPER)
 
@@ -39,6 +39,10 @@ def validate_drc(document, exit_code, expected_board, expected_version):
         raise ValueError('native DRC belongs to another board')
     if document.get('coordinate_units') != 'mm' or document.get('kicad_version') != expected_version:
         raise ValueError('native DRC units or KiCad version differ')
+    severities = document.get('included_severities')
+    if (not isinstance(severities, list) or len(severities) != 3 or
+            set(severities) != {'error', 'warning', 'exclusion'}):
+        raise ValueError('native DRC did not include every severity class')
     counts = {}
     for key in ('violations', 'unconnected_items'):
         if not isinstance(document.get(key), list):
@@ -151,13 +155,14 @@ def execute(output, expected_head, kicad_python, kicad_cli):
             raise ValueError('native readback producer identity differs')
         report['native_readback'] = validate_readback(native,artwork.route_input(),board_hashes)
         report['kicad_version'] = native['kicad_version']
+        report['kicad_release'] = native['kicad_release']
         drc = output/'native-drc.json'
         code = run('native-drc',[kicad_cli,'pcb','drc','--format','json','--units','mm',
                     '--all-track-errors','--severity-all','--exit-code-violations','--output',str(drc),str(board)],True)
         report['native_DRC_executed'] = True
         if not drc.is_file(): raise ValueError('native DRC produced no JSON')
         report['native_DRC_sha256'] = sha(drc)
-        report['native_DRC_counts'] = validate_drc(json.loads(drc.read_text()),code,board,native['kicad_version'])
+        report['native_DRC_counts'] = validate_drc(json.loads(drc.read_text()),code,board,native['kicad_release'])
         if {p.name:sha(p) for p in (board,project)} != board_hashes:
             raise ValueError('native execution changed original board/project')
         report['input_board_project_bytes_unchanged'] = True

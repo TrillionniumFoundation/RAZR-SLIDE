@@ -23,9 +23,9 @@ import sys
 import time
 
 import slide_domain as d
+import owned_process
 import slide_evidence as evidence
 import slide_checkpoint as checkpoint
-import owned_process
 
 HERE, ROOT = evidence.HERE, evidence.ROOT
 DEFAULT_HEAD = '042b768903cccbd7a0995317c8598401e0318e2a'

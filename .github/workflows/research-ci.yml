@@ -401,10 +401,19 @@ jobs:
             integration
             design
             engineering/product-integration-20261018/electrical
-      - name: Install native KiCad without optional model libraries
+      - name: Install the recorded native KiCad build without optional model libraries
         run: |
+          sudo add-apt-repository --yes ppa:kicad/kicad-9.0-releases
           sudo apt-get update
-          sudo apt-get install --no-install-recommends -y kicad
+          runtime="$RUNNER_TEMP/razr-kicad-runtime"
+          mkdir -p "$runtime"
+          cd "$runtime"
+          apt-get download 'kicad=9.0.9~ubuntu24.04.1'
+          printf '%s  %s\n' 'b7e6d33867631dc44385067b703b4c39eadede2037a260790b19495fe17e43f0' 'kicad_9.0.9~ubuntu24.04.1_amd64.deb' > kicad.sha256
+          sha256sum --check kicad.sha256
+          sudo apt-get install --no-install-recommends -y './kicad_9.0.9~ubuntu24.04.1_amd64.deb'
+          dpkg-query -W > installed-packages.tsv
+          kicad-cli version > version.txt
       - name: Generate current artwork and retain independent native readback and all DRC items
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -417,7 +426,11 @@ jobs:
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: research-EP5-ECAD-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/razr-ep5-ecad
+          path: |
+            ${{ runner.temp }}/razr-ep5-ecad
+            ${{ runner.temp }}/razr-kicad-runtime/kicad.sha256
+            ${{ runner.temp }}/razr-kicad-runtime/installed-packages.tsv
+            ${{ runner.temp }}/razr-kicad-runtime/version.txt
           if-no-files-found: warn
           retention-days: 14
 

@@ -18,7 +18,8 @@ class NativeEvidenceTests(unittest.TestCase):
                        'declared_board_thickness_mm':.1,'native_pad_readback':[],
                        'drc_zero_reported_items':True,'drc_violation_types':{},
                        'drc_sections':[{'count':0,'kind':'DRC violations'}]}
-        self.drc_identity = {'source':'board.kicad_pcb','coordinate_units':'mm','kicad_version':'8.0.9'}
+        self.drc_identity = {'source':'board.kicad_pcb','coordinate_units':'mm','kicad_version':'8.0.9',
+                             'included_severities':['error','warning','exclusion']}
         for row in v.artwork.channels(self.config):
             for reference,index in (('JA',0),('JB',-1)):
                 self.report['native_pad_readback'].append({'reference':reference,'pad':row['pin'],
@@ -65,6 +66,12 @@ class NativeEvidenceTests(unittest.TestCase):
     def test_complete_empty_native_DRC_result(self):
         self.assertEqual(self.drc({'violations':[],'unconnected_items':[],'schematic_parity':[]}),
                          {'violations':0,'unconnected_items':0,'schematic_parity':0})
+
+    def test_missing_severity_classes_cannot_pass_zero_DRC(self):
+        for severities in (None, ['error'], ['error','warning'], ['error','warning','warning']):
+            with self.subTest(severities=severities), self.assertRaises(ValueError):
+                self.drc({'violations':[],'unconnected_items':[],
+                          'included_severities':severities})
 
     def test_readback_DRC_rejection_survives_clean_cli_result(self):
         self.report['drc_sections'] = [{'count':17,'kind':'DRC violations'}]
