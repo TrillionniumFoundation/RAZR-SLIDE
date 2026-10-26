@@ -156,13 +156,15 @@ def verify_zip(path, binding):
         manifest_bytes = z.read(binding["manifest_name"])
         require(sha(manifest_bytes) == binding["manifest_sha256"], "reviewed scientific manifest differs")
         manifest = json.loads(manifest_bytes)
-        material_family = {"F1_members": "F1", "K1_members": "K1"}.get(binding["manifest_layout"])
+        material_family = {"F1_members": "F1", "K1_members": "K1", "K2_members": "K2", "K3_members": "K3"}.get(binding["manifest_layout"])
         if binding["manifest_layout"] == "flat":
             entries = manifest
         elif material_family is not None:
             require(manifest["schema"] == "razr-" + material_family + "-engineering-export-manifest-v1",
                     "frozen geometry engineering manifest schema differs")
             entries = manifest["members"]
+        elif binding["manifest_layout"] == "EC1_files":
+            entries = manifest["files"]
         else:
             entries = manifest["exported_files"]
         require(isinstance(entries, dict) and len(entries) == binding["manifest_entries"], "manifest entry count differs")
@@ -173,6 +175,30 @@ def verify_zip(path, binding):
                     and manifest["producer_originals_modified"] is False
                     and manifest["numerical_arrays_and_mathematical_histories_are_original_bytes"] is True,
                     "numeric original-byte or runtime exclusion contract differs")
+        if binding["manifest_layout"] == "N6_exported_files":
+            require(manifest["schema"] == "razr-N6-engineering-allowlist-export-v1"
+                    and manifest["functional_source_commit"] == S4
+                    and manifest["raw_runtime_records_exported"] is False
+                    and manifest["raw_runtime_records_durable"] is False
+                    and manifest["producer_records_modified"] is False
+                    and manifest["omitted_runtime_remains_on_ephemeral_runner_only"] is True
+                    and manifest["original_input_ZIP_or_field_arrays_duplicated_in_this_export"] is False
+                    and manifest["original_input_fields_durable_release_asset_id"] == 677184053,
+                    "N6 exact original-input and excluded-runtime contract differs")
+            require(all(item.get("original_bytes") is True and entries.get(name) ==
+                        {"bytes": item["bytes"], "sha256": item["sha256"]}
+                        for name, item in manifest["copied"].items()),
+                    "N6 copied scientific identity differs")
+            require(all(set(item) == {"bytes", "sha256", "exported_original_bytes"}
+                        for item in manifest["original_runtime_record_hashes"]),
+                    "N6 runtime inventory contains unlisted fields")
+        if binding["manifest_layout"] == "EC1_files":
+            require(manifest["schema"] == "razr-EC1-engineering-export-v1"
+                    and manifest["source_commit"] == S4
+                    and manifest["raw_runtime_exported"] is False
+                    and manifest["raw_runtime_durable"] is False
+                    and manifest["original_producer_records_modified"] is False,
+                    "EC1 engineering-only original-byte contract differs")
         if material_family is not None:
             scope = json.loads(z.read("EXPORT_SCOPE.json"))
             require(scope["schema"] == "razr-" + material_family + "-engineering-export-scope-v1"
@@ -204,7 +230,7 @@ def validate_binding(binding):
     require(re.fullmatch(r"[A-Za-z0-9._-]+", binding["asset_name"]) and binding["asset_name"].endswith(".zip"), "invalid scientific asset name")
     require(all(type(binding[k]) is int and binding[k] > 0 for k in ("run_id", "artifact_id", "manifest_entries")), "invalid source identifiers or count")
     require(re.fullmatch(r"[A-Za-z0-9._-]+", binding["manifest_name"]), "invalid manifest basename")
-    require(binding["manifest_layout"] in ("flat", "exported_files", "F1_members", "K1_members"), "unsupported reviewed manifest layout")
+    require(binding["manifest_layout"] in ("flat", "exported_files", "F1_members", "K1_members", "K2_members", "K3_members", "N6_exported_files", "EC1_files"), "unsupported reviewed manifest layout")
     require(re.fullmatch(r"[0-9a-f]{40}", binding["head_sha"]), "invalid immutable source identity")
     require(all(re.fullmatch(r"[0-9a-f]{64}", binding[k]) for k in ("zip_sha256", "manifest_sha256")), "invalid SHA binding")
     require(type(binding["zip_bytes"]) is int and 0 < binding["zip_bytes"] <= 768 * 1024**2, "artifact exceeds transfer budget")
