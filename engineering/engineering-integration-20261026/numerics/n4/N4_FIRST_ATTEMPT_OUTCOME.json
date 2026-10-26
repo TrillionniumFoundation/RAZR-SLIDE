@@ -1,0 +1,39 @@
+{
+  "schema": "razr-N4-first-hosted-attempt-outcome-v1",
+  "diagnostic_commit": "7111ed959ccf538b39df31223ea3c1dd3933918d",
+  "functional_source": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "run_id": 40273094829,
+  "job_id": 121409986324,
+  "run_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/40273094829",
+  "provider_conclusion": "failure",
+  "observed_completed_steps": [
+    "exact S4 checkout",
+    "source/resource preparation",
+    "INT and TERM lifecycle check",
+    "Python/uv pin installation",
+    "43-package environment check",
+    "exact original mesh and loads recovery"
+  ],
+  "assembly_worker_wrapper_returned_success": true,
+  "original_matrix_postcheck_failed": true,
+  "failing_assertion": "actual==expected and r['K_sha256']==expected and r['body']=='panel' and r['level']==2",
+  "failing_stdin_line": 8,
+  "required_K_sha256": "80f6f50243d421a3b0ab9eeff1324db029677b63febeaad1f023bf9609e9f1cb",
+  "actual_K_sha256": null,
+  "actual_K_hash_not_printed_or_durably_exported": true,
+  "five_probe_step_skipped": true,
+  "RHS_solves_completed": 0,
+  "residuals_evaluated": 0,
+  "independent_full_field_readback_completed": false,
+  "export_failure": {
+    "type": "AttributeError",
+    "cause": "system Python 3.10 hashlib has no file_digest; introduced engineering exporter used that unavailable method"
+  },
+  "engineering_artifacts_uploaded": 0,
+  "producer_complete_raw_runtime_not_durably_preserved": true,
+  "source_preservation_step_succeeded": true,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "followup": "N4a changes only exporter Python3.10 compatibility and safety-approved assembly proof output; numerical checks unchanged"
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Prospective full SLIDE specification result V4",
+  "description": "A new tagged research record. A correlated continuous result is never represented as an original identical_relative_pose dynamic result. Native full K1 execution is still required.",
+  "type": "object",
+  "required": ["schema", "pair", "q_interval_exact", "source_specification", "reference_frame", "original_volume_gate_mm3", "method_family", "disposition", "physical_qualification", "formal_directed_rounding_certificate", "specification_elapsed_seconds"],
+  "properties": {
+    "schema": {"const": "razr-slide-specification-v4"},
+    "pair": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "string"}},
+    "q_interval_exact": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "string"}},
+    "source_specification": {"type": "object", "description": "Must compare exactly to a fresh immutable S4 Contract.specifications result for this complete physical pair and exact interval."},
+    "reference_frame": {"enum": ["A", "B"]},
+    "original_volume_gate_mm3": {"const": 1e-7},
+    "method_family": {"enum": ["v3_correlated_nominal_contact", "fresh_padded_gap_then_frozen_V2_affine_carriers"]},
+    "disposition": {"enum": ["clear", "unresolved_enclosure_overlap", "unresolved_evaluation"]},
+    "physical_qualification": {"const": false},
+    "formal_directed_rounding_certificate": {"const": false},
+    "factory_material_binding_supplied_by_owning_worker": {"const": true},
+    "specification_elapsed_seconds": {"type": "number", "minimum": 0},
+    "common_upper_bound_mm3": {"type": "number", "minimum": 0},
+    "method_audit": {"type": "object"},
+    "correlated_result": {"type": "object"},
+    "affine_raw": {"type": "object", "description": "Validated recursively by the unchanged original frame postguard, including any error in the other reference frame."},
+    "error": {"type": "string"},
+    "original_postguard_error": {"type": "string"},
+    "original_guard_scope": {"const": "static carrier/obstacle records only; correlated continuous construction has its own method identity"}
+  },
+  "allOf": [
+    {"if": {"properties": {"disposition": {"const": "clear"}}}, "then": {"required": ["common_upper_bound_mm3"], "properties": {"common_upper_bound_mm3": {"maximum": 1e-7}}}},
+    {"if": {"properties": {"method_family": {"const": "v3_correlated_nominal_contact"}}}, "then": {"required": ["method_audit"], "not": {"required": ["affine_raw"]}}},
+    {"if": {"properties": {"method_family": {"const": "fresh_padded_gap_then_frozen_V2_affine_carriers"}}}, "then": {"required": ["affine_raw"], "not": {"required": ["correlated_result"]}}}
+  ],
+  "additionalProperties": false
+}

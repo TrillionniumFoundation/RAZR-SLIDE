@@ -1,0 +1,46 @@
+# L3: correlated KEY/STOP and SPRING/STOP carriers on the actual saved inputs
+
+L3 is a new research method on unchanged S4 predicates and unchanged manufactured material. It follows L2's independent-boundary-carrier study. No L1 result is replaced. The selected originals are the 64 O72 calls involving same-side KEY/STOP or matched SPRING/STOP and the six E17 calls involving those same materials at the preserved epsilon interval. Their original exact rational q endpoints, including the nonzero interval of width `1/2000000000000000 mm`, are preserved in each new record. The immutable binding contains six E17 cases/30 members and 64 O72 cases/320 members.
+
+## Same-side KEY/STOP: preserve the curved contact relation
+
+The complete original KEY and STOP bodies are imported in both BREP and STEP and compared in both directed differences. The actual mounted rigid transform is reversed in its source order: subtract the mounted translation, undo the Z half-turn, undo the handed Y quarter-turn. A forward round trip is independently checked against each whole original body. The inverse transform is not a geometry edit or a manufactured-material decomposition.
+
+The original `cam_contact_native.extract_profile` then identifies the actual native pin cylinder, plateau face and ramp face in these complete bodies. It checks the original finite contact family, native pin containment and conservation of STOP material after partition into the complete pin and complete remainder. No nominal pin replaces a mismatching native pin. The actual factory profile is read from its immutable `native-verification.json.gz` input. Every original q/height interval must match that source profile exactly as binary64 values. The continuous source profile is translated to the observed native pin home: its q coordinate is shifted by the difference of pin homes, and its height by `native_pin_home − source_h(0)`. Consequently its ideal relative motion is the original `source_h(q) − source_h(0)`. A profile refitted after numerical unmounting does not silently replace the factory motion law. The actual native and source disk radii must be identical; all profile values and shifts are retained.
+
+The unchanged source constructs a continuous pin carrier for the plateau, rounded corner, ramp and lower-stop branches on the full `q ∈ [0,12]` domain. Its rounded-corner disk sweep is represented by a radius-2r sector with endpoint cylinders, not a finite set of poses. All three original complete remainder cages are retained, and their volume accounting is checked.
+
+The resulting four carriers are checked against the complete actual KEY, including its added yoke material. Each carrier is then returned to the phone frame and checked against the original whole KEY there. Each frame's Common must agree within the original tolerance. The full-domain carrier contains each original L1 subinterval, but this scope remains the selected lower contact branch for one same-side KEY/STOP pair. It does not establish restoring force, dynamic branch selection, the entire product domain or a mechanically enforced relation among independent sides.
+
+An actual 0.01-mm downward displacement of the complete native STOP at q=0 is a required penetration negative control. The original signed Common must reject it. A failure to reproduce this control remains a failure.
+
+## Matched SPRING/STOP: remove the independent-height overestimate
+
+Let `[a,b]` be the base spring cylinder's X interval and let `d(q)` be the same STOP X displacement used by the factory. The transverse disk and radius remain unchanged. The factory grows one end only:
+
+| Side | Whole spring in the phone frame | Whole spring in the STOP frame |
+|---|---|---|
+| L, `d(q) ≥ 0` | `[a,b+d(q)] × disk` | `[a−d(q),b] × disk` |
+| R, `d(q) ≤ 0` | `[a+d(q),b] × disk` | `[a,b−d(q)] × disk` |
+
+The actual profile height is nonincreasing. Therefore `d(q)` increases on L and decreases on R. In both STOP frames the whole cylinders are nested, and the cylinder at the interval's high-q endpoint contains every earlier cylinder. The outer carrier is exactly the original saved maximal spring cylinder translated by **the negative of the same high-q STOP displacement**. No q or height variable is dropped, independently selected, or clamped. This construction corrects the former product of a maximal spring and an unrelated STOP-height interval.
+
+The source profile is read from the immutable S4 native-verification input, recorded by path/hash, and compared exactly to the original L1 descriptor's home height and interval extrema. The original spring BREP is independently compared in both directions with the complete analytic cylinder described in the record. Whole-cylinder containment and actual moving-pair Common at the interval endpoints and midpoint are additional native crosschecks; the continuous claim relies on the nesting algebra and the bound source law, not on those finite points.
+
+A complete spring cylinder shifted 0.01 mm past the common moving interface must produce a rejected positive native Common. Its BREP and result are retained. This is a negative control on the represented finite OD cylinder, not physical wire, force or fatigue qualification.
+
+## Original predicates and the new schema
+
+Each complete carrier is validated by the unchanged signed-solid/topology checks and `product_assembly.strict_common`. The original postguard checks the resulting **static carrier/obstacle** record using its existing `identical_relative_pose` category. That record is explicitly identified as a static geometric check. It is not labeled as a dynamic-domain certificate or an affine representation of the nonlinear contact path.
+
+L3 separately records the correlated continuous containment construction and sums all relevant nonnegative carrier Common values using the original `sum_common_upper_bound`. The acceptance threshold remains `1e-7 mm³` for the complete represented physical body pair. The four STOP partitions share one tolerance budget, and each frame's full sum must satisfy that gate. No separate per-piece pass is used to hide a larger total. Invalid signed material, impossible Common, failed identity, failed negative control, export failure or any other native exception is retained as `unresolved_evaluation`. Valid positive carrier sums are retained as `unresolved_enclosure_overlap`. A positive finite actual-pair Common also prevents a clear result; if it exceeds the enclosing carrier's Common by more than the original tolerance, the inconsistency is retained as an evaluation failure. Execution completion with any failed original static predicate returns exit 2. A valid conservative overlap is still a negative geometry result even when diagnostic execution succeeds.
+
+All seventy cases import and evaluate their own complete original input bodies. Native witnesses and carriers are not reused merely because two serialized inputs look similar or differ by less than a tolerance. Complete moving/fixed inputs, contact-frame whole bodies, native pin/remainder decomposition, all new proof carriers, finite crosscheck operands and negative-control bodies are saved as BREP with SHA256, byte counts and signed signatures. Each carrier is exported before its Common check. A native exception retains the partial method audit and all preceding exported operands rather than replacing them with an error string alone. Every original material identity and q interval remains traceable. This is the same OCCT kernel, not an independent kernel.
+
+## Numerical and physical limits
+
+Rigid transforms, native face extraction, cylinder dimensions, Boolean calculations and volume integrals remain binary64/OCCT numerical operations. The algebraic nesting and ideal continuous pin construction do not supply formal directed rounding for the native implementation. Frame round trips, bidirectional material differences and finite native containment checks support the implementation but do not convert it into a certified interval proof. Failures and unresolved cases are retained.
+
+The original L1 limits are unchanged: 1800 s per worker, 1536 MiB worker RSS, 6.8 GiB shared unreclaimable memory, 200 MiB startup disk, 1536 MiB additional startup memory and 100 MiB runtime disk. Scientific exports are checked against those limits. There are at most 16 BREP exports per KEY/STOP case and 13 per SPRING/STOP case, including source inputs and diagnostic controls. The anticipated additional evidence is tens of MB, but actual native geometry size is not treated as a proven upper bound; every export is subject to the same live disk/memory/time guards. Runtime collections are not uploaded; only the named scientific BREP/JSON files, source, input hashes and an allowlisted controller outcome are published. The inherited L2 preparation error is corrected here before publication: time fields are changed by name, and static verification binds the real S4 tree plus every source and embedded-harness digest.
+
+This preparation makes no claim that the new native calls have passed. It does not repeat all 11,781 product body pairs, prove complete independent backlash/flex/tolerance domains, qualify physical parts, or alter S4/production geometry or any release flag.

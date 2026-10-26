@@ -1,0 +1,1240 @@
+# Four actual endpoint states only; no full-domain or physical release.
+name: K2 complete finite endpoint factories after dual-clear K1
+'on':
+  push:
+    branches:
+    - diagnostic/s4-key-loop-k2-endpoints-20261026
+  workflow_dispatch: null
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: k2-${{ github.ref }}
+  cancel-in-progress: false
+env:
+  S4: dd7def6e6a4de9f47dc91ca2ab336fb1a8828560
+  PYTHONDONTWRITEBYTECODE: '1'
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+  NUMEXPR_NUM_THREADS: '1'
+jobs:
+  endpoints:
+    name: 'K2 actual full endpoint factory and independent STEP: ${{ matrix.pose }}'
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        pose:
+        - stow_tabs_0
+        - stow_tabs_3
+        - predock
+        - open_installed
+    env:
+      CASE_KIND: factory
+      CASE_KEY: ${{ matrix.pose }}
+      POSE: ${{ matrix.pose }}
+    steps:
+    - name: Start separate hosted deadline and scratch evidence directory
+      shell: bash
+      run: 'set -euo pipefail
+
+        host_root="$RUNNER_TEMP/razr-s4-key-loop-k2-20261026"
+
+        case_dir="$host_root/$CASE_KIND/$CASE_KEY"
+
+        mkdir -p "$case_dir"
+
+        echo "HOST_JOB_START=$(date +%s)" >> "$GITHUB_ENV"
+
+        echo "HOST_ROOT=$host_root" >> "$GITHUB_ENV"
+
+        echo "CASE_DIR=$case_dir" >> "$GITHUB_ENV"
+
+        '
+    - name: Checkout immutable functional S4, not this diagnostic branch
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        ref: dd7def6e6a4de9f47dc91ca2ab336fb1a8828560
+        persist-credentials: false
+        sparse-checkout-cone-mode: false
+        sparse-checkout: '/*
+
+          !/archive/blobs/
+
+          !/baselines/**
+
+          /baselines/**/*.py
+
+          /baselines/**/*.md
+
+          /baselines/**/*.json
+
+          '
+    - name: Bind immutable S4, exact endpoint sources and original hosted lifecycle gates
+      shell: bash
+      run: "set -euo pipefail\ntest \"$(git rev-parse HEAD)\" = \"$S4\"\ntest -z \"$(git status --porcelain --untracked-files=all)\"\
+        \npython3 -B - <<'PY'\nimport hashlib, json, os, pathlib, shutil, tarfile\nroot = pathlib.Path(os.environ['GITHUB_WORKSPACE']).resolve()\n\
+        host = pathlib.Path(os.environ['HOST_ROOT']).resolve()\ncase = pathlib.Path(os.environ['CASE_DIR']).resolve()\n\
+        study = host/'original-v4'\narchive_rel = 'engineering/gate-closure-20261023/geometry-followon-042b7689/key-v4-readback-algebra/results.tar.gz'\n\
+        archive = root/archive_rel\narchive_sha = 'beef1cf45fb49417c6af092fec51fb266fd6e89f238410c8cf137af4c20ce442'\n\
+        expected = {\n  'integration/probe_key_endpoint_extension.py': 'a2f15dd4c9f41a9235e4c7625da52c9bf81add0260556d841e65c6261123408e',\n\
+        \  'tools/key_endpoint_resume.py': 'f9fa0e36cfdae30a24eab771c015b260d004573d60a23351bf266d1cb28cfb49',\n\
+        \  'run_key_endpoint_trials.py': 'ecd57df70e7df83e42083b6019e3b84da261c486c8c9681909a4b192b4505dad',\n \
+        \ 'tests/test_key_endpoint_extension.py': '3fe949b3a0036875946263bc5d6f97fce4d8555cc2c0b7d0686f263bbe99e60b',\n\
+        \  'tests/test_key_endpoint_resume.py': '6038b8ea4659bb3095f766d75ef54b1d607e1f3096ece816cb887fbaec3d0188',\n\
+        }\nassert not host.is_relative_to(root) and not study.exists()\nassert not archive.is_symlink()\nassert\
+        \ hashlib.sha256(archive.read_bytes()).hexdigest() == archive_sha\nprefix = 'gates_audit/dev/key-endpoint-v4/'\n\
+        with tarfile.open(archive, 'r:gz') as tar:\n    for name, digest in expected.items():\n        matches =\
+        \ [m for m in tar.getmembers() if m.name == prefix+name]\n        assert len(matches) == 1 and matches[0].isfile()\
+        \ and 0 < matches[0].size < 1024**2\n        data = tar.extractfile(matches[0]).read()\n        assert hashlib.sha256(data).hexdigest()\
+        \ == digest\n        target = study/name\n        target.parent.mkdir(parents=True, exist_ok=True)\n   \
+        \     with target.open('xb') as stream: stream.write(data)\nreceipt = {'functional_source_commit': os.environ['S4'],\n\
+        \  'historical_archive': archive_rel, 'archive_sha256': archive_sha,\n  'archive_member_prefix': prefix,\
+        \ 'study_source_sha256': expected,\n  'study_directory': str(study), 'source_bytes_modified': False}\n(case/'source-identity.json').write_text(json.dumps(receipt,\
+        \ indent=2)+'\\n')\nshutil.copytree(study, case/'source'/'original-v4')\ncontract = {'functional_source_commit':\
+        \ os.environ['S4'], 'repository_root': str(root),\n  'runner_temp': str(pathlib.Path(os.environ['RUNNER_TEMP']).resolve()),\n\
+        \  'host_root': str(host), 'study_root': str(study),\n  'baseline_paths': {p: str(host/'controls'/p/(p+'-report.json'))\
+        \ for p in ('STOW', 'OPEN')}}\n(case/'path-contract.json').write_text(json.dumps(contract, indent=2)+'\\\
+        n')\n(case/'hosted-context.json').write_text(json.dumps({\n  'workflow_revision': os.environ['GITHUB_SHA'],\
+        \ 'workflow_ref': os.environ.get('GITHUB_WORKFLOW_REF'),\n  'functional_source_commit': os.environ['S4'],\
+        \ 'run_id': os.environ['GITHUB_RUN_ID'],\n  'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'], 'job': os.environ['GITHUB_JOB'],\n\
+        \  'case_kind': os.environ['CASE_KIND'], 'case_key': os.environ['CASE_KEY'],\n  'platform_runner_label':\
+        \ 'ubuntu-22.04', 'platform_maximum_job_seconds': 3600,\n  'original_v4_trial_budget_not_applicable': True,\n\
+        \  'finite_native_trial_budget_seconds_unchanged': 1200,\n  'F1_complete_STEP_readback_budget_seconds':\
+        \ 1200,\n  'original_90_second_positive_only_KEY_reader_used': False,\n  'canonical_unit_suite_timeouts_unchanged':\
+        \ True,\n  'external_command_deadline_seconds_after_first_step': 3240,\n  'external_SIGINT_cleanup_grace_seconds':\
+        \ 20,\n  'hosted_execution_is_new_evidence': True, 'physical_qualification': False,\n  'complete_product_motion_proved':\
+        \ False, 'G2_pass': False}, indent=2)+'\\n')\nPY\ncat > \"$HOST_ROOT/host-cap.py\" <<'PY'\n\"\"\"Outer hosted\
+        \ cap only; never change a S4/original worker or its gates.\"\"\"\nimport hashlib, json, os, pathlib, signal,\
+        \ subprocess, sys, time\ntarget = pathlib.Path(sys.argv[1])\ncommand = sys.argv[2:]\ntarget.parent.mkdir(parents=True,\
+        \ exist_ok=True)\ndeadline = float(os.environ['HOST_JOB_START']) + 3240\ndef resource():\n    stat = os.statvfs(target.parent)\n\
+        \    files = {}\n    for name in ('memory.current', 'memory.max', 'memory.stat'):\n        p = pathlib.Path('/sys/fs/cgroup')/name\n\
+        \        files[name] = p.read_text()\n    return {'epoch': time.time(), 'writeable_disk_bytes': stat.f_bavail*stat.f_frsize,\n\
+        \            'root_reserved_free_bytes_diagnostic_only': stat.f_bfree*stat.f_frsize,\n            'cgroup':\
+        \ files}\nreceipt = {'argv': command, 'cwd': os.getcwd(), 'started_epoch': time.time(),\n    'external_deadline_epoch':\
+        \ deadline, 'platform_maximum_job_seconds': 3600,\n    'finite_native_trial_budget_seconds_unchanged': 1200,\n\
+        \    'F1_complete_STEP_readback_budget_seconds': 1200,\n  'original_90_second_positive_only_KEY_reader_used':\
+        \ False,\n    'canonical_unit_suite_timeouts_unchanged': True,\n    'outer_hosted_cap_reached': False, 'process_started':\
+        \ False,\n    'resource_before': None, 'source_sha256': hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest()}\n\
+        child = None\ncode = 2\ndef external_term(signum, frame):\n    raise KeyboardInterrupt('external SIGTERM\
+        \ mapped to original cleanup')\nsignal.signal(signal.SIGTERM, external_term)\ntry:\n    receipt['resource_before']\
+        \ = resource()\n    if time.time() >= deadline-30:\n        raise RuntimeError('insufficient hosted time\
+        \ remains; no command started')\n    with target.with_suffix('.log').open('xb') as log, target.with_suffix('.resources.jsonl').open('x')\
+        \ as samples:\n        child = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)\n\
+        \        receipt.update(process_started=True, owned_child_pid=child.pid)\n        while child.poll() is\
+        \ None:\n            samples.write(json.dumps(resource())+'\\n'); samples.flush()\n            if time.time()\
+        \ >= deadline:\n                receipt['outer_hosted_cap_reached'] = True\n                child.send_signal(signal.SIGINT)\n\
+        \                try: child.wait(timeout=20)\n                except subprocess.TimeoutExpired:\n      \
+        \              receipt['SIGINT_cleanup_timed_out'] = True\n                    os.killpg(child.pid, signal.SIGKILL)\n\
+        \                    child.wait(timeout=5)\n                break\n            try: child.wait(timeout=min(5,\
+        \ max(.05, deadline-time.time())))\n            except subprocess.TimeoutExpired: pass\n        receipt['child_exit_code']\
+        \ = child.returncode\n        code = 124 if receipt['outer_hosted_cap_reached'] else child.returncode\n\
+        except BaseException as exc:\n    receipt['failure'] = type(exc).__name__+': '+str(exc)\n    if child is\
+        \ not None and child.poll() is None:\n        child.send_signal(signal.SIGINT)\n        try: child.wait(timeout=20)\n\
+        \        except subprocess.TimeoutExpired:\n            os.killpg(child.pid, signal.SIGKILL); child.wait(timeout=5)\n\
+        finally:\n    try: receipt['resource_after'] = resource()\n    except BaseException as exc:\n        receipt['resource_after']\
+        \ = None\n        receipt['resource_after_error'] = type(exc).__name__+': '+str(exc)\n        code = 2\n\
+        \    receipt.update(exit_code=code, finished_epoch=time.time())\n    target.with_suffix('.json').write_text(json.dumps(receipt,\
+        \ indent=2)+'\\n')\nraise SystemExit(code)\nPY\ncp \"$HOST_ROOT/host-cap.py\" \"$CASE_DIR/source/host-cap.py\"\
+        \ncat > \"$HOST_ROOT/service-launch.py\" <<'PY'\n\"\"\"D6 external harness: real readonly service view and\
+        \ owned subreaper lifecycle.\nNo S4/original source edits; all task-owned evidence stays outside the checkout.\n\
+        \"\"\"\nimport ctypes, errno, hashlib, importlib.util, json, os, pathlib, re, select, secrets, shutil, signal,\
+        \ subprocess, sys, time\nP = pathlib.Path\nSCRIPT = P(__file__).resolve()\nINTERNAL = len(sys.argv) > 1\
+        \ and sys.argv[1] in ('--private-root', '--inside', '--signal-check')\nif INTERNAL:\n    MODE = sys.argv[1][2:]\n\
+        \    OUT = P(sys.argv[2]).resolve()\n    REPO = P(sys.argv[3]).resolve() if len(sys.argv) > 3 else P(os.environ['GITHUB_WORKSPACE']).resolve()\n\
+        \    TARGET = None; COMMAND = []\nelse:\n    MODE = 'outside'; TARGET = P(sys.argv[1]).resolve(); COMMAND\
+        \ = sys.argv[2:]\n    OUT = TARGET.with_name(TARGET.name+'.namespace'); REPO = P(os.environ['GITHUB_WORKSPACE']).resolve()\n\
+        if MODE in ('outside', 'signal-check'):\n    OUT.mkdir(parents=True, exist_ok=False)\nRAW = OUT/'raw'; RAW.mkdir(exist_ok=True)\n\
+        S4 = 'dd7def6e6a4de9f47dc91ca2ab336fb1a8828560'\nSUP_REL = 'engineering/engineering-integration-20261025/numerics/run_bounded.py'\n\
+        SUP_SHA = '901654cdb718a988471a700b01bfbb2e8979a98248c9211fa69d42b25279e56e'\nARCH_REL = 'engineering/gate-closure-20261023/geometry-followon-042b7689/key-v4-readback-algebra/results.tar.gz'\n\
+        ARCH_SHA = 'beef1cf45fb49417c6af092fec51fb266fd6e89f238410c8cf137af4c20ce442'\nV4_MEMBER = 'gates_audit/dev/key-endpoint-v4/run_key_endpoint_trials.py'\n\
+        V4_SHA = 'ecd57df70e7df83e42083b6019e3b84da261c486c8c9681909a4b192b4505dad'\nCONTROL_KEYS = ('anon', 'shmem',\
+        \ 'kernel_stack', 'pagetables', 'sock', 'slab_unreclaimable')\nV4_KEYS = ('inactive_file', 'file_dirty',\
+        \ 'file_writeback', 'file', 'shmem')\nFINITE_KEYS = ('anon', 'shmem', 'kernel', 'slab_reclaimable', 'unevictable')\n\
+        NS_KEYS = ('mnt', 'pid', 'pid_for_children', 'user', 'cgroup')\ndef require(value, message):\n    if not\
+        \ value: raise RuntimeError(message)\ndef sha(path): return hashlib.sha256(P(path).read_bytes()).hexdigest()\n\
+        def save(name, value):\n    final=OUT/name; temporary=final.with_name(final.name+'.tmp-'+str(os.getpid()))\n\
+        \    temporary.write_text(json.dumps(value,indent=2,sort_keys=True)+'\\n');os.replace(temporary,final)\n\
+        def ident(path):\n    path = P(path); s = path.stat()\n    return {'path': str(path), 'device': s.st_dev,\
+        \ 'inode': s.st_ino, 'mode': s.st_mode, 'symlink': path.is_symlink()}\ndef same_inode(a, b): return (a['device'],\
+        \ a['inode']) == (b['device'], b['inode'])\ndef capture(label, path):\n    r = {'path': str(path), 'epoch':\
+        \ time.time(), 'readable': False}\n    try:\n        r['identity'] = ident(path)\n        data = P(path).read_bytes();\
+        \ r.update(readable=True, bytes=len(data), sha256=hashlib.sha256(data).hexdigest())\n        (RAW/(label+'.txt')).write_bytes(data)\n\
+        \        r['text'] = data.decode('utf-8', errors='strict')\n    except (OSError, UnicodeError) as e: r['error']\
+        \ = type(e).__name__+': '+str(e)\n    return r\ndef require_text(r):\n    require(r['readable'], 'required\
+        \ real interface unavailable: '+r['path']+' '+r.get('error', ''))\n    require(not r['identity']['symlink'],\
+        \ 'interface symlink rejected')\n    return r['text']\ndef proc(label, pid='self'):\n    base = P('/proc')/str(pid)\n\
+        \    records = {k: capture(label+'-'+k, base/k) for k in ('cgroup', 'mountinfo', 'status', 'stat')}\n  \
+        \  status = dict(line.split(':', 1) for line in require_text(records['status']).splitlines() if ':' in line)\n\
+        \    ns = {k: os.readlink(base/'ns'/k) for k in NS_KEYS}\n    return {'epoch': time.time(), 'pid': os.getpid()\
+        \ if pid == 'self' else int(pid), 'records': records, 'status': status, 'namespaces': ns}\ndef unescape(s):\
+        \ return re.sub(r'\\\\([0-7]{3})', lambda m: chr(int(m.group(1), 8)), s)\ndef mounts(text):\n    result\
+        \ = []\n    for line in text.splitlines():\n        a, b = line.split(' - ', 1); left, right = a.split(),\
+        \ b.split()\n        result.append({'id': int(left[0]), 'root': unescape(left[3]), 'mountpoint': unescape(left[4]),\
+        \ 'options': left[5].split(','), 'optional': left[6:], 'fstype': right[0], 'source': unescape(right[1]),\
+        \ 'super_options': right[2].split(',')})\n    return result\ndef group_path(text):\n    rows = [line.split(':',\
+        \ 2) for line in text.splitlines() if line.startswith('0::')]\n    require(len(rows) == 1, 'one real unified\
+        \ cgroup membership required')\n    path = P(rows[0][2]); require(path.is_absolute() and '..' not in path.parts\
+        \ and str(path) != '/', 'non-root current service cgroup required')\n    return path\ndef measured(label,\
+        \ base):\n    r = {'directory': ident(base), 'epoch': time.time(), 'files': {k: capture(label+'-'+k, P(base)/k)\
+        \ for k in ('memory.stat', 'memory.current', 'memory.max', 'cgroup.type')}}\n    save(label+'.json', r)\n\
+        \    values = dict((k, int(v)) for k, v in (line.split() for line in require_text(r['files']['memory.stat']).splitlines()))\n\
+        \    require(all(k in values for k in set(CONTROL_KEYS+V4_KEYS+FINITE_KEYS)), 'real memory.stat missing\
+        \ required counters')\n    require(all(v >= 0 for v in values.values()), 'negative memory.stat counter')\n\
+        \    current = int(require_text(r['files']['memory.current']).strip()); require(current >= 0, 'negative\
+        \ current')\n    cap = require_text(r['files']['memory.max']).strip(); require(cap == 'max' or (cap.isdecimal()\
+        \ and int(cap) >= 0), 'invalid maximum')\n    r.update(values=values, current=current, maximum=cap)\n  \
+        \  save(label+'.json', r)\n    return r\ndef member_identity_matches(old, new):\n    require(same_inode(old['directory'],\
+        \ new['directory']), 'bound directory inode differs from actual service')\n    for k in ('memory.stat',\
+        \ 'memory.current', 'memory.max'):\n        require(same_inode(old['files'][k]['identity'], new['files'][k]['identity']),\
+        \ 'counter inode changed: '+k)\n    require(old['maximum'] == new['maximum'], 'service memory.max changed')\n\
+        def namespace_checks(snapshot, before, *, private):\n    require((snapshot['namespaces']['mnt'] != before['namespaces']['mnt'])\
+        \ == private, 'unexpected mount namespace identity')\n    require(all(snapshot['namespaces'][k] == before['namespaces'][k]\
+        \ for k in NS_KEYS if k != 'mnt'), 'PID/user/cgroup namespace changed')\n    require(snapshot['records']['cgroup']['text']\
+        \ == before['records']['cgroup']['text'], 'process moved to a different cgroup')\ndef run_record(label,\
+        \ argv, **kwargs):\n    start = time.time()\n    with (OUT/(label+'.stdout')).open('wb') as stdout, (OUT/(label+'.stderr')).open('wb')\
+        \ as stderr:\n        r = subprocess.run(argv, stdout=stdout, stderr=stderr, **kwargs)\n    rec = {'argv':\
+        \ argv, 'exit_code': r.returncode, 'seconds': time.time()-start, 'stdout_sha256': sha(OUT/(label+'.stdout')),\
+        \ 'stderr_sha256': sha(OUT/(label+'.stderr'))}\n    save(label+'.json', rec)\n    return r.returncode\n\n\
+        EXPECTED_FIVE = {\n 'integration/probe_key_endpoint_extension.py': 'a2f15dd4c9f41a9235e4c7625da52c9bf81add0260556d841e65c6261123408e',\n\
+        \ 'tools/key_endpoint_resume.py': 'f9fa0e36cfdae30a24eab771c015b260d004573d60a23351bf266d1cb28cfb49',\n\
+        \ 'run_key_endpoint_trials.py': V4_SHA,\n 'tests/test_key_endpoint_extension.py': '3fe949b3a0036875946263bc5d6f97fce4d8555cc2c0b7d0686f263bbe99e60b',\n\
+        \ 'tests/test_key_endpoint_resume.py': '6038b8ea4659bb3095f766d75ef54b1d607e1f3096ece816cb887fbaec3d0188',\n\
+        }\nSAFE_ENV_NAMES = ('PATH', 'HOME', 'USER', 'LOGNAME', 'SHELL', 'LANG', 'LC_ALL', 'LC_CTYPE', 'TZ',\n 'TMPDIR',\
+        \ 'TMP', 'TEMP', 'LD_LIBRARY_PATH', 'SSL_CERT_FILE', 'SSL_CERT_DIR', 'REQUESTS_CA_BUNDLE',\n 'CI', 'GITHUB_ACTIONS',\
+        \ 'GITHUB_WORKSPACE', 'GITHUB_SHA', 'GITHUB_JOB', 'GITHUB_RUN_ID', 'GITHUB_RUN_ATTEMPT',\n 'RUNNER_TEMP',\
+        \ 'HOST_ROOT', 'HOST_JOB_START', 'CASE_DIR', 'CASE_KIND', 'CASE_KEY', 'S4',\n 'PYTHONDONTWRITEBYTECODE',\
+        \ 'OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS',\n 'UV_PYTHON', 'UV_PYTHON_INSTALL_DIR',\
+        \ 'UV_PYTHON_PREFERENCE', 'UV_PYTHON_DOWNLOADS',\n 'UV_PYTHON_DOWNLOADS_JSON_URL', 'UV_CACHE_DIR', 'UV_NO_SYNC',\
+        \ 'UV_PROJECT_ENVIRONMENT', 'UV_LINK_MODE',\n 'UV_NO_CACHE', 'UV_COMPILE_BYTECODE', 'UV_NO_PROGRESS', 'UV_COLOR',\
+        \ 'UV_HTTP_TIMEOUT', 'UV_HTTP_RETRIES',\n 'UV_MANAGED_PYTHON', 'RAZR_EXPECTED_SIGNAL_PROBE')\ndef proc_identity(pid,\
+        \ full=True):\n    path=P('/proc')/str(pid); text=(path/'stat').read_text(); rest=text[text.rfind(')')+2:].split()\n\
+        \    status=dict(line.split(':',1) for line in (path/'status').read_text().splitlines() if ':' in line)\n\
+        \    result={'pid':int(pid),'ppid':int(rest[1]),'pgid':int(rest[2]),'sid':int(rest[3]),'state':rest[0],'start_ticks':int(rest[19]),'uid':int(status['Uid'].split()[0])}\n\
+        \    if full:\n        result.update(cgroup=(path/'cgroup').read_text(),mnt_namespace=os.readlink(path/'ns/mnt'))\n\
+        \    return result\ndef bound_pidfd(identity, parent=None):\n    require(hasattr(os,'pidfd_open') and hasattr(signal,'pidfd_send_signal'),\
+        \ 'real pidfd signal API unavailable')\n    before=proc_identity(identity['pid'],full=False); require(before['start_ticks']==identity['start_ticks'],\
+        \ 'PID identity changed before pidfd binding')\n    if parent is not None: require(before['ppid']==parent,\
+        \ 'process is not an actual owned child')\n    fd=os.pidfd_open(identity['pid'],0)\n    try:\n        after=proc_identity(identity['pid'],full=False);\
+        \ require(after['start_ticks']==identity['start_ticks'] and after['uid']==os.getuid(), 'PID/UID changed\
+        \ while binding pidfd')\n        if parent is not None: require(after['ppid']==parent, 'child lineage changed\
+        \ while binding pidfd')\n        return fd\n    except BaseException:\n        os.close(fd); raise\ndef\
+        \ exited(fd): return bool(select.select([fd],[],[],0)[0])\ndef lineage_reaches(pid, ancestor):\n    rows=[];\
+        \ seen=set()\n    while pid>1 and pid not in seen and len(rows)<64:\n        seen.add(pid); r=proc_identity(pid,full=False);\
+        \ rows.append(r)\n        if pid==ancestor['pid']:\n            require(r['start_ticks']==ancestor['start_ticks'],\
+        \ 'owned launcher PID reused')\n            return rows\n        pid=r['ppid']\n    raise RuntimeError('ready\
+        \ process is not a descendant of the actual owned launcher')\ndef children():\n    path=P('/proc/self/task')/str(os.getpid())/'children'\n\
+        \    result=[]\n    for value in path.read_text().split():\n        try:\n            r=proc_identity(int(value),full=False);\
+        \ require(r['ppid']==os.getpid(), 'kernel child list parent mismatch'); result.append(r)\n        except\
+        \ FileNotFoundError:\n            require(value not in path.read_text().split(), 'kernel still lists a child\
+        \ whose identity cannot be read; cleanup unknown')\n    return result\ndef original_sources(state):\n  \
+        \  require(subprocess.check_output(['git','-C',str(REPO),'rev-parse','HEAD'],text=True).strip()==S4, 'functional\
+        \ HEAD is not S4')\n    require(subprocess.check_output(['git','-C',str(REPO),'status','--porcelain','--untracked-files=all'],text=True)=='',\
+        \ 'S4 checkout is dirty')\n    require(sha(REPO/SUP_REL)==SUP_SHA, 'S4 original supervisor changed')\n \
+        \   study=P(state['environment']['HOST_ROOT'])/'original-v4'\n    for name,digest in EXPECTED_FIVE.items():\
+        \ require(sha(study/name)==digest, 'original five-source bytes differ: '+name)\n    require(sha(SCRIPT)==state['harness_sha256']\
+        \ and sha(state['host_cap'])==state['host_cap_sha256'], 'external harness source changed')\n    metadata=P(state['environment'].get('UV_PYTHON_DOWNLOADS_JSON_URL',''))\n\
+        \    require(metadata==P(state['environment']['HOST_ROOT'])/'python-downloads.json' and metadata.is_file()\
+        \ and metadata.stat().st_size==552 and sha(metadata)=='a23c006d96b05012706707a5c0fc0bca87c17b4e362d5992a83795db914a5c56',\
+        \ 'official selected Python metadata bytes/path differ')\ndef validate_view(state, label):\n    here=proc(label);\
+        \ save(label+'-process.json',here); namespace_checks(here,state['before'],private=True)\n    require(os.getuid()==state['uid']\
+        \ and os.geteuid()==state['uid'] and os.getgid()==state['gid'] and sorted(os.getgroups())==state['groups'],'original\
+        \ caller credentials not restored')\n    require(here['status']['NoNewPrivs'].strip()=='1','no_new_privs\
+        \ missing')\n    require(int(here['status']['CapEff'].strip(),16)&~int(state['before']['status']['CapEff'].strip(),16)==0,'capabilities\
+        \ increased')\n    current=measured(label+'-service','/sys/fs/cgroup');member_identity_matches(state['service'],current)\n\
+        \    entries=mounts(here['records']['mountinfo']['text']); target=[m for m in entries if m['mountpoint']=='/sys/fs/cgroup'][-1]\n\
+        \    require(target['fstype']=='cgroup2' and target['root']==state['hierarchy_path'] and 'ro' in target['options'],'actual\
+        \ readonly service cgroup2 mount missing')\n    require(not any(v.startswith(('shared:','master:','propagate_from:'))\
+        \ for m in entries for v in m['optional']),'mount propagation is not private')\n    require(all(os.environ.get(k)==v\
+        \ for k,v in state['environment'].items()),'allowlisted original caller environment was not restored')\n\
+        \    actual_uv=shutil.which('uv')\n    require(actual_uv==state['observed_uv_path'],'uv PATH changed across\
+        \ privilege transition')\n    original_sources(state)\n    return here,current\n\ndef private_root():\n\
+        \    state=json.loads((OUT/'prepared.json').read_text());require(os.geteuid()==0,'passwordless sudo root\
+        \ authority unavailable')\n    here=proc('private-root-before-bind');save('private-root-before-bind.json',here);namespace_checks(here,state['before'],private=True)\n\
+        \    require(same_inode(ident(state['service_path']),state['service']['directory']),'real source service\
+        \ inode changed')\n    for label,argv in [('make-rprivate',[state['tools']['mount'],'--make-rprivate','/']),('real-service-bind',[state['tools']['mount'],'--bind',state['service_path'],'/sys/fs/cgroup']),('readonly-bind',[state['tools']['mount'],'-o','remount,bind,ro','/sys/fs/cgroup'])]:\n\
+        \        require(run_record(label,argv,timeout=15)==0,'private mount failed: '+label)\n    args=[state['tools']['setpriv'],'--reuid',str(state['uid']),'--regid',str(state['gid']),'--no-new-privs']\n\
+        \    args+=['--groups',','.join(map(str,state['groups']))] if state['groups'] else ['--clear-groups']\n\
+        \    args+=['/usr/bin/python3','-B',str(SCRIPT),'--inside',str(OUT),str(REPO)]\n    # exec removes the privileged\
+        \ launcher; no root wait/timeout surrounds long CAD.\n    os.execve(state['tools']['setpriv'],args,state['environment'])\n\
+        \ndef inside():\n    state=json.loads((OUT/'prepared.json').read_text());os.chdir(state['cwd'])\n    here,view=validate_view(state,'inside-before')\n\
+        \    spec=importlib.util.spec_from_file_location('original_v4_resources',P(state['environment']['HOST_ROOT'])/'original-v4/run_key_endpoint_trials.py')\n\
+        \    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);res=module.resources(P(state['target']).parent)\n\
+        \    values=view['values']; finite=values['anon']+values['shmem']+max(0,values['kernel']-values['slab_reclaimable'])+values['unevictable']\n\
+        \    save('original-resource-preflight.json',{'original_v4_resources':res,'control_nonreclaimable_bytes':sum(values[k]\
+        \ for k in CONTROL_KEYS),'finite_shared_bytes':finite,'observed_uv_path':shutil.which('uv'),'manager_python_executable':sys.executable,'scope':state['hierarchy_path']+'\
+        \ and descendants; not whole VM root','CAD_executed_by_preflight':False})\n    require(res['writeable_disk_bytes']>=500*1024**2\
+        \ and res['effective_memory_headroom_bytes']>=2*1024**3,'original measured disk/headroom prerequisites unavailable')\n\
+        \    require(res['shared_unreclaimable_memory_bytes']<=int(6.8*1024**3) and sum(values[k] for k in CONTROL_KEYS)<=6.8*1024**3,'original\
+        \ memory budget unavailable')\n    if state['environment'].get('CASE_KIND')=='orthogonal': require(finite+2*1024**3<=6.8*1024**3,'original\
+        \ finite startup memory prerequisite unavailable')\n    for a in state['ancestors']:\n        if a['is_cgroup_root']\
+        \ or a['path']==state['service_path']:continue\n        maximum=require_text(a['maximum']).strip();current=int(require_text(a['current']).strip())\n\
+        \        require(current>=0 and (maximum=='max' or maximum.isdecimal()),'unknown ancestor measurement')\n\
+        \        if maximum!='max':require(int(maximum)-current>=res['effective_memory_headroom_bytes'],'a proper\
+        \ ancestor has tighter finite headroom; blocked')\n    libc=ctypes.CDLL(None,use_errno=True)\n    require(libc.prctl(36,1,0,0,0)==0,'PR_SET_CHILD_SUBREAPER\
+        \ failed')\n    flag=ctypes.c_int();require(libc.prctl(37,ctypes.byref(flag),0,0,0)==0 and flag.value==1,'subreaper\
+        \ flag did not become effective')\n    require(not children(),'manager already owns unexpected children\
+        \ before launch')\n    got=[]\n    def received(signum,frame):got.append({'signal':signum,'epoch':time.time()})\n\
+        \    signal.signal(signal.SIGINT,received);signal.signal(signal.SIGTERM,received)\n    me=proc_identity(os.getpid());ready={'nonce':state['nonce'],'identity':me,'namespace':here['namespaces'],'uid':os.getuid(),'subreaper':True,'harness_sha256':sha(SCRIPT),'epoch':time.time()}\n\
+        \    save('manager-ready.json',ready)\n    wait_end=time.monotonic()+15\n    while not (OUT/'manager-authorized.json').is_file():\n\
+        \        require(not got,'interrupted before owned pidfd authorization');require(time.monotonic()<wait_end,'outer\
+        \ owned pidfd authorization missing');time.sleep(.05)\n    authorized=json.loads((OUT/'manager-authorized.json').read_text());require(authorized['nonce']==state['nonce']\
+        \ and authorized['manager_start_ticks']==me['start_ticks'],'authorization identity mismatch')\n    receipt={'scope':state['hierarchy_path']+'\
+        \ and descendants; not whole VM root','manager_identity':me,'subreaper':True,'received_signals':got,'owned_signals':[],'reaped_children':[],'adopted_descendant_cleanup_required':False,'forced_cleanup':False,'cleanup_verified':False,'normal_command_completed':False,'expected_signal_probe':state['expected_signal_probe'],'started_epoch':time.time()}\n\
+        \    cap=None;cap_fd=None;exit_code=2;signal_sent=False;stop_started=None\n    def send_owned(identity,sig,reason):\n\
+        \        fd=bound_pidfd(identity,parent=os.getpid())\n        try:\n            if not exited(fd):signal.pidfd_send_signal(fd,sig)\n\
+        \            receipt['owned_signals'].append({'identity':identity,'signal':sig,'reason':reason,'epoch':time.time(),'method':'kernel\
+        \ pidfd, actual direct PPid and start_ticks checked'})\n        finally:os.close(fd)\n    def reap_adopted():\n\
+        \        remaining=[]\n        for r in children():\n            if cap is not None and r['pid']==cap.pid:continue\n\
+        \            try:\n                pid,status=os.waitpid(r['pid'],os.WNOHANG)\n                if pid:receipt['reaped_children'].append({'identity':r,'wait_status':status,'epoch':time.time()})\n\
+        \                else:remaining.append(r)\n            except ChildProcessError:pass\n        return remaining\n\
+        \    try:\n        args=['/usr/bin/python3','-B',state['host_cap'],state['target'],*state['command']]\n\
+        \        cap=subprocess.Popen(args,start_new_session=True)\n        owned=proc_identity(cap.pid);require(owned['ppid']==os.getpid()\
+        \ and owned['uid']==state['uid'] and owned['mnt_namespace']==me['mnt_namespace'] and owned['cgroup']==me['cgroup'],'host-cap\
+        \ identity did not inherit exact service/UID namespace')\n        cap_fd=bound_pidfd(owned,parent=os.getpid());receipt['host_cap_identity']=owned;receipt['host_cap_argv']=args\n\
+        \        final_manager_deadline=float(state['environment']['HOST_JOB_START'])+3270\n        while cap.poll()\
+        \ is None:\n            if got or time.time()>=final_manager_deadline:\n                if not signal_sent:\n\
+        \                    signal.pidfd_send_signal(cap_fd,signal.SIGINT);signal_sent=True;stop_started=time.monotonic()\n\
+        \                    receipt['owned_signals'].append({'identity':owned,'signal':signal.SIGINT,'reason':'external\
+        \ INT/TERM or manager deadline mapped to host-cap cleanup','epoch':time.time(),'method':'bound owned Popen\
+        \ pidfd'})\n                elif time.monotonic()-stop_started>30:\n                    receipt['forced_cleanup']=True;signal.pidfd_send_signal(cap_fd,signal.SIGKILL)\n\
+        \                    break\n            time.sleep(.1)\n        if cap.poll() is None:\n            try:cap.wait(timeout=5)\n\
+        \            except subprocess.TimeoutExpired:receipt['host_cap_exit_unknown']=True\n        else:cap.wait()\n\
+        \        receipt['host_cap_exit_code']=cap.returncode\n        adopted=reap_adopted()\n        if adopted:\n\
+        \            receipt['adopted_descendant_cleanup_required']=True\n            # Only actual children adopted\
+        \ by THIS subreaper may be signalled.\n            deadline=time.monotonic()+10;sent={}\n            while\
+        \ adopted and time.monotonic()<deadline:\n                for r in adopted:\n                    key=(r['pid'],r['start_ticks']);first=sent.get(key)\n\
+        \                    if first is None:\n                        send_owned(r,signal.SIGINT,'adopted residual\
+        \ after original cleanup; run fails');sent[key]=time.monotonic()\n                    elif time.monotonic()-first>2:\n\
+        \                        receipt['forced_cleanup']=True;send_owned(r,signal.SIGKILL,'adopted residual did\
+        \ not exit after SIGINT')\n                time.sleep(.1);adopted=reap_adopted()\n            receipt['unexited_owned_children']=adopted\n\
+        \        remaining=children();receipt['remaining_actual_children']=remaining\n        receipt['cleanup_verified']=cap.returncode\
+        \ is not None and exited(cap_fd) and not remaining\n        require(receipt['cleanup_verified'],'owned process\
+        \ cleanup is unknown/incomplete')\n        require(not receipt['adopted_descendant_cleanup_required'] and\
+        \ not receipt['forced_cleanup'],'residual/forced cleanup means failed command, never pass')\n        validate_view(state,'inside-after');original_sources(state)\n\
+        \        receipt['normal_command_completed']=cap.returncode==0 and not got and not signal_sent\n       \
+        \ exit_code=cap.returncode if receipt['normal_command_completed'] else 2\n        if exit_code<0:exit_code=128-exit_code\n\
+        \    except BaseException as exc:\n        receipt['failure']=type(exc).__name__+': '+str(exc)\n       \
+        \ if cap is not None and cap.poll() is None:\n            try:\n                if cap_fd is not None:signal.pidfd_send_signal(cap_fd,signal.SIGINT)\n\
+        \                else:cap.send_signal(signal.SIGINT)\n                cap.wait(timeout=25)\n           \
+        \ except BaseException as cleanup:receipt['exception_cleanup_error']=type(cleanup).__name__+': '+str(cleanup)\n\
+        \        # Do not claim cleanup from a parent exit. Reap/signals are limited to actual direct children.\n\
+        \        end=time.monotonic()+10\n        while children() and time.monotonic()<end:\n            for r\
+        \ in children():\n                if cap is not None and r['pid']==cap.pid:\n                    if cap.poll()\
+        \ is None:\n                        receipt['forced_cleanup']=True\n                        try:send_owned(r,signal.SIGKILL,'exception\
+        \ cleanup of owned host-cap')\n                        except ProcessLookupError:pass\n                \
+        \    continue\n                receipt['adopted_descendant_cleanup_required']=True;receipt['forced_cleanup']=True\n\
+        \                try:send_owned(r,signal.SIGKILL,'exception cleanup of actual adopted descendant')\n   \
+        \             except ProcessLookupError:pass\n            if cap is not None:cap.poll()\n            reap_adopted();time.sleep(.1)\n\
+        \        receipt['remaining_actual_children']=children();receipt['cleanup_verified']=not receipt['remaining_actual_children']\
+        \ and (cap is None or cap.poll() is not None)\n    finally:\n        if cap_fd is not None:os.close(cap_fd)\n\
+        \        receipt.update(exit_code=exit_code,finished_epoch=time.time())\n        save('manager-result.json',receipt)\n\
+        \        unsafe=not receipt['cleanup_verified'] or receipt['forced_cleanup'] or receipt['adopted_descendant_cleanup_required']\n\
+        \        if unsafe or (got and not state['expected_signal_probe']):\n            P(state['environment']['CASE_DIR'],'namespace-lifecycle-block.json').write_text(json.dumps({'blocked':True,'receipt':str(OUT/'manager-result.json'),'reason':'interrupted\
+        \ production command or incomplete/forced/adopted cleanup; later native commands forbidden'},indent=2)+'\\\
+        n')\n    return exit_code\n\ndef outside():\n    before=proc('host-before');save('host-before.json',before)\n\
+        \    summary={'schema':'razr-D6-private-service-launch','functional_candidate':S4,'command':COMMAND,'compatibility_verified':False,'cleanup_verified':False,'command_exit_code':None,'private_root_Python_launcher_execs_original_UID_manager':True,'started_epoch':time.time()}\n\
+        \    child=None;manager_fd=None;requested=[]\n    def handler(signum,frame):requested.append({'signal':signum,'epoch':time.time()})\n\
+        \    signal.signal(signal.SIGINT,handler);signal.signal(signal.SIGTERM,handler)\n    try:\n        require(COMMAND,'command\
+        \ required')\n        env={k:os.environ[k] for k in SAFE_ENV_NAMES if k in os.environ};require(all(k in\
+        \ env for k in ('PATH','HOME','HOST_JOB_START','HOST_ROOT','CASE_DIR','S4')),'required allowlisted caller\
+        \ environment missing')\n        require(not (P(env['CASE_DIR'])/'namespace-lifecycle-block.json').exists(),'previous\
+        \ lifecycle failure blocks this job')\n        expected_signal=env.get('RAZR_EXPECTED_SIGNAL_PROBE')\n \
+        \       require(expected_signal in (None,'SIGINT','SIGTERM'),'unknown lifecycle probe marker')\n       \
+        \ if expected_signal:\n            require(str(REPO/SUP_REL) in COMMAND and '--seconds' in COMMAND and COMMAND[COMMAND.index('--seconds')+1]=='30','signal\
+        \ probe exception only applies to short original supervisor')\n        command=list(COMMAND)\n        if\
+        \ '/' not in command[0]:\n            command[0]=shutil.which(command[0],path=env['PATH']);require(command[0],'executable\
+        \ unavailable on original caller PATH')\n        membership=group_path(before['records']['cgroup']['text']);candidates=[m\
+        \ for m in mounts(before['records']['mountinfo']['text']) if m['fstype']=='cgroup2' and membership.is_relative_to(P(m['root']))]\n\
+        \        require(candidates,'no genuine cgroup2 mount covers this job');mount=max(candidates,key=lambda\
+        \ m:len(P(m['root']).parts))\n        service=P(mount['mountpoint'])/membership.relative_to(P(mount['root']));require(service.resolve()==service\
+        \ and not service.is_symlink(),'service path resolution changed')\n        measured_before=measured('host-service-before',service);ancestors=[];current=service\n\
+        \        while True:\n            item={'path':str(current),'identity':ident(current),'is_cgroup_root':current==P(mount['mountpoint']),'maximum':capture('ancestor-'+str(len(ancestors))+'-memory.max',current/'memory.max'),'current':capture('ancestor-'+str(len(ancestors))+'-memory.current',current/'memory.current')};ancestors.append(item)\n\
+        \            if item['is_cgroup_root']:break\n            require(current.parent!=current and current.parent.is_relative_to(P(mount['mountpoint'])),'invalid\
+        \ real ancestry');current=current.parent\n        tools={k:shutil.which(k) for k in ('sudo','unshare','mount','setpriv')};require(all(tools.values()),'existing\
+        \ namespace/drop tools unavailable; no fallback')\n        state={'nonce':secrets.token_hex(32),'before':before,'uid':os.getuid(),'gid':os.getgid(),'groups':sorted(os.getgroups()),'cwd':os.getcwd(),'hierarchy_path':str(membership),'service_path':str(service),'service':measured_before,'ancestors':ancestors,'root_directory':ident('/sys/fs/cgroup'),'root_memory_stat':capture('host-root-memory.stat','/sys/fs/cgroup/memory.stat'),'host_meminfo':capture('host-meminfo','/proc/meminfo'),'tools':tools,'environment':env,'harness_sha256':sha(SCRIPT),'host_cap':str(P(env['HOST_ROOT'])/'host-cap.py'),'host_cap_sha256':sha(P(env['HOST_ROOT'])/'host-cap.py'),'target':str(TARGET),'command':command,'expected_signal_probe':expected_signal,'observed_uv_path':shutil.which('uv',path=env['PATH'])}\n\
+        \        require(state['uid']!=0,'launcher must begin as original unprivileged runner');original_sources(state);save('prepared.json',state)\n\
+        \        args=[tools['sudo'],'-n',tools['unshare'],'--mount','--propagation','private','--','/usr/bin/python3','-B',str(SCRIPT),'--private-root',str(OUT),str(REPO)]\n\
+        \        with (OUT/'namespace.stdout').open('wb') as log,(OUT/'namespace.stderr').open('wb') as err:\n \
+        \           child=subprocess.Popen(args,stdout=log,stderr=err,start_new_session=True);owned=proc_identity(child.pid,full=False);save('owned-namespace-launcher.json',{'argv':args,'identity':owned})\n\
+        \            sent_count=0;early_sent=False\n            while child.poll() is None:\n                ready=OUT/'manager-ready.json'\n\
+        \                if manager_fd is None and ready.is_file():\n                    r=json.loads(ready.read_text());require(r['nonce']==state['nonce']\
+        \ and r['harness_sha256']==state['harness_sha256'] and r['subreaper'] is True,'manager readiness provenance\
+        \ mismatch')\n                    rows=lineage_reaches(r['identity']['pid'],owned);require(r['uid']==state['uid'],'manager\
+        \ UID mismatch')\n                    manager_fd=bound_pidfd(r['identity']);save('verified-owned-manager-lineage.json',{'lineage':rows,'identity':r['identity'],'signal_method':'pidfd','nonce':state['nonce']})\n\
+        \                    save('manager-authorized.json',{'nonce':state['nonce'],'manager_start_ticks':r['identity']['start_ticks'],'outer_pid':os.getpid(),'epoch':time.time()})\n\
+        \                if requested:\n                    if manager_fd is not None and len(requested)>sent_count:\n\
+        \                        if not exited(manager_fd):signal.pidfd_send_signal(manager_fd,signal.SIGINT)\n\
+        \                        sent_count=len(requested)\n                    elif manager_fd is None and not\
+        \ early_sent:\n                        # No heavy command can start before pidfd authorization. This is\
+        \ only setup cancellation.\n                        child.send_signal(signal.SIGINT);early_sent=True\n \
+        \               time.sleep(.1)\n            code=child.wait();summary['namespace_launcher_exit_code']=code\n\
+        \        require(manager_fd is not None,'manager never reached owned pidfd authorization')\n        require(exited(manager_fd),'manager\
+        \ identity still alive after launcher exit')\n        result=json.loads((OUT/'manager-result.json').read_text());summary['manager_result']=result;summary['cleanup_verified']=result['cleanup_verified'];summary['command_exit_code']=result['host_cap_exit_code']\
+        \ if 'host_cap_exit_code' in result else None\n        after=proc('host-after');save('host-after.json',after);namespace_checks(after,before,private=False)\n\
+        \        require(after['records']['mountinfo']['text']==before['records']['mountinfo']['text'],'host global\
+        \ mount view changed')\n        require(same_inode(ident('/sys/fs/cgroup'),state['root_directory']),'host\
+        \ root inode changed')\n        measured_after=measured('host-service-after',service);member_identity_matches(measured_before,measured_after)\n\
+        \        for i,a in enumerate(ancestors):\n            post=capture('ancestor-'+str(i)+'-memory.max-after',P(a['path'])/'memory.max');save('ancestor-'+str(i)+'-after.json',post)\n\
+        \            require(a['maximum']['readable']==post['readable'],'ancestor maximum availability changed')\n\
+        \            if post['readable']:require(post['text']==a['maximum']['text'] and same_inode(post['identity'],a['maximum']['identity']),'ancestor\
+        \ maximum changed')\n        original_sources(state);summary['compatibility_verified']=True\n        require(result['cleanup_verified']\
+        \ and not result['forced_cleanup'] and not result['adopted_descendant_cleanup_required'],'owned cleanup\
+        \ did not finish through normal original path')\n        summary['normal_command_completed']=result['normal_command_completed'];summary['exit_code']=code\
+        \ if code>=0 else 128-code\n    except BaseException as exc:\n        summary['failure']=type(exc).__name__+':\
+        \ '+str(exc);summary['exit_code']=2\n        if child is not None and child.poll() is None:\n          \
+        \  # Never kill only sudo/namespace parent and claim descendants are gone.\n            if manager_fd is\
+        \ not None and not exited(manager_fd):signal.pidfd_send_signal(manager_fd,signal.SIGINT)\n            else:child.send_signal(signal.SIGINT)\n\
+        \            try:child.wait(timeout=60)\n            except subprocess.TimeoutExpired:summary['cleanup_unknown']=True\n\
+        \        if not summary.get('cleanup_verified'):\n            P(os.environ['CASE_DIR'],'namespace-lifecycle-block.json').write_text(json.dumps({'blocked':True,'receipt':str(OUT/'SUMMARY.json'),'reason':'outer\
+        \ failure or cleanup unknown; later native commands forbidden'},indent=2)+'\\n')\n    finally:\n       \
+        \ if manager_fd is not None:os.close(manager_fd)\n        summary.update(external_signals=requested,finished_epoch=time.time());save('SUMMARY.json',summary)\n\
+        \    return summary['exit_code']\n\ndef signal_check():\n    result={'schema':'razr-D6-nonCAD-signal-chain-check','passed':False,'native_CAD_executed':False,'original_source_sha256':SUP_SHA,'tests':[]}\n\
+        \    sentinel=None;sentinel_fd=None\n    try:\n        require(sha(REPO/SUP_REL)==SUP_SHA,'original supervisor\
+        \ source mismatch')\n        sentinel=subprocess.Popen(['/usr/bin/python3','-B','-c','import time; time.sleep(120)'],start_new_session=True)\n\
+        \        sentinel_identity=proc_identity(sentinel.pid);sentinel_fd=bound_pidfd(sentinel_identity,parent=os.getpid());result['unrelated_to_namespace_branch_sentinel']=sentinel_identity\n\
+        \        worker=OUT/'stdlib-worker.py'\n        worker.write_text(\"import json,os,pathlib,sys,time\\np=pathlib.Path('/proc/self');t=(p/'stat').read_text();r=t[t.rfind(')')+2:].split();record={'pid':os.getpid(),'ppid':os.getppid(),'pgid':os.getpgid(0),'sid':os.getsid(0),'uid':os.getuid(),'start_ticks':int(r[19]),'cgroup':(p/'cgroup').read_text(),'mnt_namespace':os.readlink(p/'ns/mnt')}\\\
+        ntarget=pathlib.Path(sys.argv[1]);temporary=target.with_suffix('.tmp');temporary.write_text(json.dumps(record,indent=2)+'\\\
+        \\n');os.replace(temporary,target)\\ntime.sleep(60)\\n\")\n        for sig in (signal.SIGINT,signal.SIGTERM):\n\
+        \            name=signal.Signals(sig).name;folder=OUT/name;folder.mkdir();task=folder/'task';task.mkdir();identity_file=folder/'worker-ready.json'\n\
+        \            target=folder/'host-cap';cmd=['/usr/bin/python3','-B',str(SCRIPT),str(target),'/usr/bin/python3','-B',str(REPO/SUP_REL),'--task-directory',str(task),'--seconds','30','--log',str(folder/'original-child.log'),'--report',str(folder/'original-supervisor-report.json'),'--','/usr/bin/python3','-B',str(worker),str(identity_file)]\n\
+        \            env=os.environ.copy();env['RAZR_EXPECTED_SIGNAL_PROBE']=name\n            launch=None;worker_fd=None;sup_fd=None;row={'signal_to_outer':name,'passed':False,'cleanup_unknown':False}\n\
+        \            try:\n                with (folder/'outer.stdout').open('wb') as log,(folder/'outer.stderr').open('wb')\
+        \ as err:\n                    launch=subprocess.Popen(cmd,env=env,stdout=log,stderr=err,start_new_session=True);launch_identity=proc_identity(launch.pid,full=False);row['owned_outer_identity']=launch_identity;deadline=time.monotonic()+20\n\
+        \                    while not identity_file.is_file() and launch.poll() is None and time.monotonic()<deadline:time.sleep(.05)\n\
+        \                    require(identity_file.is_file(),'short real signal worker did not start')\n       \
+        \             wi=json.loads(identity_file.read_text());lineage=lineage_reaches(wi['pid'],launch_identity);worker_fd=bound_pidfd(wi);sup_identity=proc_identity(wi['ppid']);sup_fd=bound_pidfd(sup_identity)\n\
+        \                    require(wi['sid']==wi['pid'] and wi['pgid']==wi['pid'],'original supervisor child is\
+        \ not an independent session')\n                    time.sleep(.25);launch.send_signal(sig)\n          \
+        \          try:code=launch.wait(timeout=45)\n                    except subprocess.TimeoutExpired:raise\
+        \ RuntimeError('owned signal chain did not finish; no install/CAD permitted')\n                    require(exited(worker_fd)\
+        \ and exited(sup_fd),'actual original controller/independent-session worker did not exit')\n           \
+        \         require(not exited(sentinel_fd),'signal affected the separate non-namespace branch sentinel')\n\
+        \                    ns=target.with_name(target.name+'.namespace');summ=json.loads((ns/'SUMMARY.json').read_text());mr=json.loads((ns/'manager-result.json').read_text());original=json.loads((folder/'original-supervisor-report.json').read_text());host=json.loads(target.with_suffix('.json').read_text())\n\
+        \                    require(code!=0 and summ['compatibility_verified'] and summ['cleanup_verified'] and\
+        \ mr['cleanup_verified'] and not mr['forced_cleanup'] and not mr['adopted_descendant_cleanup_required'],'expected\
+        \ signal did not take the clean original path')\n                    require(mr['received_signals'] and\
+        \ original['resource_stop_reason']=='supervisor_failure' and original['supervisor_error']['type']=='KeyboardInterrupt'\
+        \ and original['supervisor_source_unchanged'] and original['supervisor_source_sha256']==SUP_SHA,'original\
+        \ supervisor INT/finally receipt is missing')\n                    require(host['failure'].startswith('KeyboardInterrupt'),'host-cap\
+        \ did not enter its original cleanup exception path')\n                    row.update(passed=True,exit_code=code,worker_identity=wi,supervisor_identity=sup_identity,lineage=lineage,both_bound_pidfds_exited=True,unrelated_sentinel_unaffected=True,forced_or_adopted_cleanup=False,original_supervisor_report_sha256=sha(folder/'original-supervisor-report.json'),namespace_summary_sha256=sha(ns/'SUMMARY.json'))\n\
+        \                    result['tests'].append(dict(row))\n            except BaseException as exc:\n     \
+        \           row['failure']=type(exc).__name__+': '+str(exc)\n                raise\n            finally:\n\
+        \                # Every early failure keeps ownership and requests the same cleanup route.\n          \
+        \      if launch is not None and launch.poll() is None:\n                    row['early_failure_cleanup_requested']=True\n\
+        \                    try:\n                        launch.send_signal(signal.SIGINT);launch.wait(timeout=45)\n\
+        \                    except BaseException as cleanup:\n                        row['cleanup_unknown']=True;row['cleanup_error']=type(cleanup).__name__+':\
+        \ '+str(cleanup)\n                if launch is not None:row['actual_outer_exit_code']=launch.poll()\n  \
+        \              for label,fd in (('worker',worker_fd),('original_supervisor',sup_fd)):\n                \
+        \    if fd is not None:\n                        row[label+'_pidfd_exited_at_finally']=exited(fd)\n    \
+        \                    if not row[label+'_pidfd_exited_at_finally']:row['cleanup_unknown']=True\n        \
+        \                os.close(fd)\n                save('signal-'+name+'-final.json',row)\n                if\
+        \ row['cleanup_unknown']:\n                    P(os.environ['CASE_DIR'],'namespace-lifecycle-block.json').write_text(json.dumps({'blocked':True,'reason':'signal\
+        \ probe owned branch cleanup unknown; install/CAD forbidden'},indent=2)+'\\n')\n        require(len(result['tests'])==2,'both\
+        \ INT and TERM chain tests required');result['passed']=True\n    except BaseException as exc:\n        result['failure']=type(exc).__name__+':\
+        \ '+str(exc)\n        P(os.environ['CASE_DIR'],'namespace-lifecycle-block.json').write_text(json.dumps({'blocked':True,'reason':'nonCAD\
+        \ real signal-chain self-check failed; no install/CAD'},indent=2)+'\\n')\n    finally:\n        if sentinel\
+        \ is not None:\n            if sentinel.poll() is None:sentinel.terminate()\n            try:sentinel.wait(timeout=5)\n\
+        \            except subprocess.TimeoutExpired:sentinel.kill();sentinel.wait()\n        if sentinel_fd is\
+        \ not None:os.close(sentinel_fd)\n        result['finished_epoch']=time.time();save('SIGNAL_CHECK.json',result)\n\
+        \    return 0 if result['passed'] else 2\ntry:\n    if MODE=='outside':code=outside()\n    elif MODE=='private-root':private_root();code=2\n\
+        \    elif MODE=='inside':code=inside()\n    elif MODE=='signal-check':code=signal_check()\n    else:raise\
+        \ RuntimeError('unknown mode')\nexcept BaseException as exc:\n    save(MODE+'-ERROR.json',{'error':type(exc).__name__+':\
+        \ '+str(exc),'epoch':time.time()});raise\nraise SystemExit(code)\nPY\ncp \"$HOST_ROOT/service-launch.py\"\
+        \ \"$CASE_DIR/source/service-launch.py\"\ncat > \"$HOST_ROOT/python-downloads.json\" <<'PYTHON_METADATA'\n\
+        {\n  \"cpython-3.12.14-linux-x86_64-gnu\": {\n    \"name\": \"cpython\",\n    \"arch\": {\n      \"family\"\
+        : \"x86_64\",\n      \"variant\": null\n    },\n    \"os\": \"linux\",\n    \"libc\": \"gnu\",\n    \"major\"\
+        : 3,\n    \"minor\": 12,\n    \"patch\": 14,\n    \"prerelease\": \"\",\n    \"url\": \"https://github.com/astral-sh/python-build-standalone/releases/download/20260814/cpython-3.12.14%2B20260814-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz\"\
+        ,\n    \"sha256\": \"5acfa3e9ba26b51ae161c83aff278da915b590d22373a424b2ba55b8afe91fcc\",\n    \"variant\"\
+        : null,\n    \"build\": \"20260814\"\n  }\n}\nPYTHON_METADATA\nprintf 'a23c006d96b05012706707a5c0fc0bca87c17b4e362d5992a83795db914a5c56\
+        \  %s\\n' \"$HOST_ROOT/python-downloads.json\" | sha256sum --check --strict\ncp \"$HOST_ROOT/python-downloads.json\"\
+        \ \"$CASE_DIR/source/python-downloads.json\"\nprintf 'UV_PYTHON_DOWNLOADS_JSON_URL=%s\\n' \"$HOST_ROOT/python-downloads.json\"\
+        \ >> \"$GITHUB_ENV\"\npython3 -B - <<'S4_SOURCE'\nimport hashlib,json,os,pathlib,subprocess\nroot=pathlib.Path(os.environ['GITHUB_WORKSPACE']).resolve();case=pathlib.Path(os.environ['CASE_DIR']);host=pathlib.Path(os.environ['HOST_ROOT'])\n\
+        expected={'engineering/engineering-integration-20261025/geometry/key/complete_key_trial.py': 'de9b9018797c30dd7f38bbc71e58082f7b6f66f2ea5617b30c3e94c895a6988c',\
+        \ 'engineering/engineering-integration-20261025/geometry/key/supervise_key.py': 'c967a426ee68edb0fe4e01b10af7d8e2880dde3d9f93333e7cc89ddb2669ddf8',\
+        \ 'engineering/engineering-integration-20261025/geometry/key/read_key_trial.py': '32f37c30fde098ca900f07ae0c603cfe75b9fad2303852426442a345e0316c0d',\
+        \ 'engineering/engineering-integration-20261025/geometry/key/stow_two_layer_face_relief.py': '71fc20e9cd0dc2035585e863b5351adf36838f6e1ee3fc936762032d263b929e',\
+        \ 'tests/test_key_two_layer_relief_contract.py': 'c453108ac63879afffa2bbd1dd2d3ae2d3e8898fe466e6b691635dcea671d234',\
+        \ 'engineering/engineering-integration-20261025/geometry/PORTING.json': '426df25881c8587b8b56d84c62eb36505d8d487e130d4713e27dcc454f6a74d0',\
+        \ 'engineering/engineering-integration-20261025/geometry/slide/check_slide_checkpoint.py': '0f1a490e6acf98451a4374b6d7dc947444cbfe1853a268a734fc667e67a1969e',\
+        \ 'engineering/engineering-integration-20261025/geometry/slide/check_slide_report.py': '27584c2f0f198c7ede10378d49fe3bd752d5f6ba6571e86e78b56365aeee0915',\
+        \ 'tests/test_slide_reader_entrypoints.py': '1c663f2ebda6b326735858d6cd4644f405e578eaa9c87646ac772dbc8aee0dd4',\
+        \ 'tools/test_suites.json': '4a18768ba9e1512dfbe70bb5ddc076b16f5e478ac751485a58c16c2437092deb', 'docs/RESEARCH_OVERVIEW.md':\
+        \ '3deeac81e3250dbf8f9c513e04ed55ae4c2782d7a9c33e6cc25b7abf77514160', 'CURRENT_DESIGN.md': '02d3bcacfee5ca1f767084b962bac27fd3e0c26e0b76b5aec632b21e47556382',\
+        \ 'status.json': 'b3cddb45d0855859ce86250107d393535495ce77812a41160b36a6cd1c41c4e7'}\nassert len(expected)==13\n\
+        assert subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip()=='cdd9e2c41216201b6cd04dd610d45fde80499045'\n\
+        for rel,digest in expected.items():\n p=root/rel;assert p.is_file() and not p.is_symlink() and hashlib.sha256(p.read_bytes()).hexdigest()==digest\n\
+        \ dst=case/'source/S4-delta'/rel;dst.parent.mkdir(parents=True,exist_ok=True);dst.write_bytes(p.read_bytes())\n\
+        inventory={}\nfor row in subprocess.check_output(['git','ls-tree','-rz','HEAD']).split(b'\\0'):\n if row:\n\
+        \  metadata,name=row.split(b'\\t',1);mode,kind,oid=metadata.split();inventory[os.fsdecode(name)]=(mode,kind,oid.decode())\n\
+        sources={};present_committed=True\nfor raw in subprocess.check_output(['git','ls-files','-z']).split(b'\\\
+        0'):\n if not raw:continue\n rel=os.fsdecode(raw);p=root/rel\n if not p.is_file():continue\n assert not\
+        \ p.is_symlink();data=p.read_bytes();entry=inventory[rel]\n assert entry[0] in (b'100644',b'100755') and\
+        \ entry[1]==b'blob'\n assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\\0'+data).hexdigest()==entry[2]\n\
+        \ sources[rel]=hashlib.sha256(data).hexdigest()\nassert expected.keys()<=sources.keys()\nrecord={'schema':'razr-S4-F1-source-before-v1','source_commit':os.environ['S4'],'source_tree':'cdd9e2c41216201b6cd04dd610d45fde80499045','previous_qualified_candidate':'bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb','present_source_sha256':sources,'all_present_tracked_bytes_match_HEAD':True,'full_checkout_claimed':False,'thirteen_changed_source_sha256':expected,'new_full_test_result_required':False,'previous_C2_test_pass_reused':False,'original_v4_execution_claimed':False,'service_launcher_sha256':hashlib.sha256((host/'service-launch.py').read_bytes()).hexdigest(),'hostcap_sha256':hashlib.sha256((host/'host-cap.py').read_bytes()).hexdigest()}\n\
+        assert record['service_launcher_sha256']=='46a24dc4874aa1945196ccb0415e7ec15c821727db9f506dec8fde49fa8fe189'\
+        \ and record['hostcap_sha256']=='56c53c90a28676f6d35894c887867e03b8ffbfbe409ffe5405f2a75ad324a09b'\n(case/'S4-source-before.json').write_text(json.dumps(record,indent=2)+'\\\
+        n')\nmanifest=json.loads((root/'tools/test_suites.json').read_text())\nassert len(manifest['suites'])==36\
+        \ and manifest['minimum_total_tests']==sum(s['minimum_tests'] for s in manifest['suites'])==1654\nS4_SOURCE\n\
+        \nmkdir -p \"$HOST_ROOT/k2\" \"$CASE_DIR/source/k2\"\ncat > \"$HOST_ROOT/k2/f1_common.py\" <<'K2_SOURCE_F1_COMMON_PY'\n\
+        \"\"\"External F1 finite-pose experiment helpers; never alter S4 geometry or gates.\"\"\"\nfrom __future__\
+        \ import annotations\nfrom fractions import Fraction\nfrom pathlib import Path\nimport hashlib\nimport itertools\n\
+        import json\nimport math\nimport os\nimport resource\nimport signal\nimport sys\nimport time\n\nS4 = 'dd7def6e6a4de9f47dc91ca2ab336fb1a8828560'\n\
+        ROOT = Path(os.environ['GITHUB_WORKSPACE']).resolve()\nGEOMETRY = ROOT/'engineering/engineering-integration-20261025/geometry'\n\
+        sys.path[:0] = [str(GEOMETRY), str(GEOMETRY/'slide'), str(GEOMETRY/'key'), str(ROOT/'integration'), str(ROOT/'tools')]\n\
+        import execution_identity as identity\nimport owned_process\n\nFALSE_FLAGS = ('complete_product_motion_proved',\
+        \ 'continuous_backlash_domain_proved',\n               'physical_qualification', 'candidate_go', 'fixture_fabrication_go',\
+        \ 'manufacturing_go', 'G2_pass')\nQ = {'near': Fraction(1392875388202497,400000000000000),\n     'far':\
+        \ Fraction(3664291796067499,400000000000000)}\n\ndef require(value, message):\n    if not value: raise ValueError(message)\n\
+        \ndef sha(path):\n    with Path(path).open('rb') as stream: return hashlib.file_digest(stream, 'sha256').hexdigest()\n\
+        \ndef atomic(path, value): identity.atomic_json(path, value)\n\ndef signature(body, p):\n    solids, volume\
+        \ = p.whole_material(body)\n    return {'shape_type': body.ShapeType(), 'is_valid': body.isValid(),\n  \
+        \          'signed_volume_mm3': volume, 'solid_count': len(solids),\n            'solid_signed_volumes_mm3':\
+        \ [s.Volume() for s in solids], 'bounds_mm': list(p.bounds(body))}\n\nclass Budget:\n    def __init__(self,\
+        \ out): self.out, self.start = Path(out), time.monotonic()\n    def check(self):\n        stat = os.statvfs(self.out)\n\
+        \        vals = dict(row.split() for row in Path('/sys/fs/cgroup/memory.stat').read_text().splitlines())\n\
+        \        amount = sum(int(vals.get(k,0)) for k in ('anon','shmem')) + max(0,int(vals.get('kernel',0))-int(vals.get('slab_reclaimable',0)))\
+        \ + int(vals.get('unevictable',0))\n        row = {'seconds':time.monotonic()-self.start,'ordinary_available_disk_bytes':stat.f_bavail*stat.f_frsize,\n\
+        \               'finite_worker_shared_unreclaimable_bytes':amount,\n               'worker_peak_RSS_bytes':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024}\n\
+        \        require(row['seconds'] <= 1200, '1200 s finite worker budget exceeded')\n        require(row['ordinary_available_disk_bytes']\
+        \ >= 100*2**20, '100 MiB runtime disk reserve reached')\n        require(amount <= 6.8*2**30, '6.8 GiB finite\
+        \ shared memory guard reached')\n        require(row['worker_peak_RSS_bytes'] <= 1536*2**20, '1536 MiB worker\
+        \ RSS guard reached')\n        return row\n\ndef export(body, stem, p, budget):\n    before = signature(body,p);\
+        \ result={'signature_before':before,'files':{}}\n    for extension,method in [('brep',body.exportBrep),('step',body.exportStep)]:\n\
+        \        budget.check(); path=Path(str(stem)+'.'+extension)\n        require(not path.exists(), 'fresh export\
+        \ path required')\n        status=method(str(path));expected=getattr(type(status),'IFSelect_RetDone',None)\n\
+        \        require(status is True if extension=='brep' else expected is not None and status==expected,\n \
+        \               'native serialization did not report success')\n        require(path.is_file() and path.stat().st_size>0,'missing\
+        \ material export')\n        result['files'][extension]={'path':str(path.relative_to(budget.out)), 'sha256':sha(path),\n\
+        \                                    'bytes':path.stat().st_size,'native_status':str(status)}\n    result['signature_after']=signature(body,p)\n\
+        \    result['serialization_preserved_in_memory_signature']=before==result['signature_after']\n    require(result['serialization_preserved_in_memory_signature'],'export\
+        \ changed in-memory material signature')\n    return result\n\ndef compare_material(a,b,p):\n    values=[p.volume(a.cut(b)),p.volume(b.cut(a))]\n\
+        \    require(all(type(x) in (float,int) and math.isfinite(x) and x>=0 for x in values), 'invalid directed\
+        \ material difference')\n    return {'a_minus_b_mm3':values[0],'b_minus_a_mm3':values[1],\n            'equal_within_original_1e_minus_7_mm3':max(values)<=1e-7}\n\
+        \ndef evaluate_pairs(parts,out,report,p,budget,*,original=None):\n    names=sorted(parts);expected=list(itertools.combinations(names,2));report['pairs']=[]\n\
+        \    report['positive_pairs']=[];report['evaluation_failures']=[];report['mismatches_to_factory']=[]\n \
+        \   report['participant_names']=names;report['expected_pair_count']=len(expected)\n    def save():\n   \
+        \     report['resource']=budget.check();report['persisted_pair_count']=len(report['pairs'])\n        atomic(out/'report.json',report)\n\
+        \    old={} if original is None else {(x['a'],x['b']):x for x in original['pairs']}\n    with (out/'pairs.jsonl').open('x')\
+        \ as stream:\n        for i,(a,b) in enumerate(expected):\n            budget.check();stream.write(json.dumps({'event':'selected','a':a,'b':b})+'\\\
+        n');stream.flush()\n            try:\n                result=p.strict_common(parts[a],parts[b]);v=result['common_mm3']\n\
+        \                require(type(v) in (float,int) and math.isfinite(v) and v>=0,'invalid pair volume')\n \
+        \               row={'a':a,'b':b,**result,'rejected':v>1e-7}\n                report['pairs'].append(row)\n\
+        \                if v>0:\n                    report['positive_pairs'].append(row.copy());save()\n     \
+        \               common=parts[a].intersect(parts[b]);direct=p.volume(common)\n                    require(direct>=0\
+        \ and abs(direct-v)<=1e-7, 'direct Common differs from strict result')\n                    row['positive_Common_export']=export(common,out/('positive-%04d'%(len(report['positive_pairs']))),p,budget)\n\
+        \                    row['direct_Common_mm3']=direct\n                    report['positive_pairs'][-1]=row.copy()\n\
+        \                if original is not None:\n                    previous=old[(a,b)]\n                   \
+        \ consistent=not previous.get('evaluation_failed') and abs(v-previous['common_mm3'])<=1e-7 and row['rejected']==previous['rejected']\n\
+        \                    row['factory_difference_mm3']=None if previous.get('evaluation_failed') else v-previous['common_mm3']\n\
+        \                    row['factory_classification_and_volume_consistent']=consistent\n                  \
+        \  if not consistent:report['mismatches_to_factory'].append({'a':a,'b':b,'factory':previous,'readback':row.copy()})\n\
+        \            except Exception as exc:\n                failure={'a':a,'b':b,'evaluation_failed':True,'error':type(exc).__name__+':\
+        \ '+str(exc)}\n                if not report['pairs'] or (report['pairs'][-1]['a'],report['pairs'][-1]['b'])!=(a,b):\
+        \ report['pairs'].append(failure)\n                else: report['pairs'][-1]['post_evaluation_failure']=failure\n\
+        \                report['evaluation_failures'].append(failure);save()\n            stream.write(json.dumps({'event':'completed','row':report['pairs'][-1]},allow_nan=False)+'\\\
+        n');stream.flush()\n            if (i+1)%16==0:os.fsync(stream.fileno())\n            if (i+1)%256==0:\n\
+        \                save();print(json.dumps({'pairs':i+1,'expected':len(expected),'seconds':time.monotonic()-budget.start}),flush=True)\n\
+        \        os.fsync(stream.fileno())\n    actual=[(r['a'],r['b']) for r in report['pairs']]\n    report['all_unordered_pairs_present_once']=len(actual)==len(set(actual))==len(expected)\
+        \ and set(actual)==set(expected)\n    report['finite_pose_clear']=bool(report['all_unordered_pairs_present_once']\
+        \ and not report['evaluation_failures'] and not any(r.get('rejected') for r in report['pairs']))\n    save()\n\
+        \ndef start(source,out,pose):\n    owned_process.announce_worker_from_environment(Path(source).resolve())\n\
+        \    out=Path(out).resolve();require(not out.exists() and not out.is_relative_to(ROOT),'fresh output outside\
+        \ source required')\n    out.mkdir(parents=True)\n    require(identity.git('rev-parse','HEAD')==S4,'immutable\
+        \ S4 checkout required')\n    require(not identity.git('status','--porcelain'),'clean functional S4 checkout\
+        \ required')\n    report={'schema':'razr-S4-F1-full-factory-witness-20261026-v1','functional_source_commit':S4,\n\
+        \            'pose':pose,'execution_completed':False,'external_source_sha256':{str(Path(x).resolve()):sha(x)\
+        \ for x in (source,__file__)},\n            **{x:False for x in FALSE_FLAGS}}\n    atomic(out/'report.json',report)\n\
+        \    signal.signal(signal.SIGTERM, lambda s,f: (_ for _ in ()).throw(InterruptedError('owned supervisor\
+        \ SIGTERM')))\n    return out,report,Budget(out)\nK2_SOURCE_F1_COMMON_PY\ncp \"$HOST_ROOT/k2/f1_common.py\"\
+        \ \"$CASE_DIR/source/k2/f1_common.py\"\ncat > \"$HOST_ROOT/k2/frozen_key_factory_adapter.py\" <<'K2_SOURCE_FROZEN_KEY_FACTORY_ADAPTER_PY'\n\
+        \"\"\"Post-K1 factory adapter. No adoption before two actual complete clear witnesses.\n\nThe caller must\
+        \ retain the immutable-S4 source/environment audit and original\nowned capacity supervision. This module\
+        \ does not extend ContactProfile or\nreinterpret an unsupported physical motion as admissible.\n\"\"\"\n\
+        from __future__ import annotations\nfrom dataclasses import dataclass\nimport hashlib\nimport itertools\n\
+        import json\nfrom pathlib import Path\n\nS4='dd7def6e6a4de9f47dc91ca2ab336fb1a8828560'\nNAME='key_forward_loop_v1'\n\
+        TOL=1e-7\n\n\ndef require(ok,message):\n    if not ok:raise ValueError(message)\n\n\ndef sha(path):\n  \
+        \  h=hashlib.sha256()\n    with Path(path).open('rb') as f:\n        for block in iter(lambda:f.read(1024*1024),b''):h.update(block)\n\
+        \    return h.hexdigest()\n\n\ndef compare(a,b,p):\n    values=(p.volume(a.cut(b)),p.volume(b.cut(a)))\n\
+        \    require(all(0<=v<=TOL for v in values),'complete material difference exceeds original predicate')\n\
+        \    return {'a_minus_b_mm3':values[0],'b_minus_a_mm3':values[1]}\n\n\n@dataclass(frozen=True)\nclass VerifiedKeys:\n\
+        \    original_q0:dict\n    candidate_q0:dict\n    receipt:dict\n\n\ndef load_keys(artifact_roots,binding,p,cq,budget):\n\
+        \    \"\"\"Load only after externally frozen K1 artifact identities are supplied.\n\n    binding: actual\
+        \ run/source IDs, candidate_source_sha256, contract_sha256 and\n    poses[near/far].engineering_manifest_sha256.\
+        \ No prepared plan is a binding.\n    \"\"\"\n    require(binding.get('actual_two_clear_witnesses_reviewed')\
+        \ is True,'actual dual-pose K1 clearance required')\n    require(set(artifact_roots)==set(binding['poses'])=={'near','far'},'both\
+        \ exact K1 poses required')\n    readback_keys={};receipts={}\n    for pose in ('near','far'):\n       \
+        \ root=Path(artifact_roots[pose]).resolve();manifest=root/'ENGINEERING_MANIFEST.json'\n        require(sha(manifest)==binding['poses'][pose]['engineering_manifest_sha256'],'frozen\
+        \ K1 engineering manifest differs')\n        members=json.loads(manifest.read_text())['members']\n     \
+        \   for rel,entry in members.items():\n            path=(root/rel).resolve()\n            require(path.is_relative_to(root)\
+        \ and path.is_file() and not path.is_symlink(),'unsafe or absent K1 engineering member')\n            require(sha(path)==entry['sha256']\
+        \ and path.stat().st_size==entry['bytes'],'K1 engineering byte identity differs')\n        reports={}\n\
+        \        for kind in ('factory','readback'):\n            wrapper=json.loads((root/kind/'worker/report.engineering.json').read_text())\n\
+        \            require(wrapper.get('derived_projection_not_raw_original') is True,'explicit original-report\
+        \ projection required')\n            r=wrapper['engineering_record'];reports[kind]=(wrapper,r)\n       \
+        \     require(r.get('pose')==pose and r.get('functional_source_commit')==S4 and r.get('candidate_name')==NAME,\n\
+        \                    'K1 source, pose or named candidate differs')\n            require(r.get('execution_completed')\
+        \ is True and r.get('finite_pose_clear') is True\n                    and r.get('all_unordered_pairs_present_once')\
+        \ is True\n                    and not r.get('evaluation_failures') and not r.get('mismatches_to_factory'),\n\
+        \                    'actual complete clear K1 producer and reader required')\n            names=r['participant_names'];actual=[(x['a'],x['b'])\
+        \ for x in r['pairs']]\n            require(len(set(names))==154 and len(actual)==11781 and actual==list(itertools.combinations(sorted(names),2)),\n\
+        \                    'complete K1 body-pair inventory differs')\n            require(not any(x.get('rejected')\
+        \ or x['common_mm3']>TOL for x in r['pairs']),'K1 has a real rejected pair')\n            ident=r['source_identity_projection']\n\
+        \            require(ident['source_commit_before']==ident['source_commit_after']==S4\n                 \
+        \   and ident['worktree_clean_before'] is True\n                    and ident['source_bytes_and_locked_environment_unchanged']\
+        \ is True\n                    and ident['locked_environment_before_passed'] is True\n                 \
+        \   and ident['locked_environment_after_passed'] is True\n                    and ident['checked_package_count_before']==ident['checked_package_count_after']==43,\n\
+        \                    'K1 original source/environment projection incomplete')\n        fw,f=reports['factory'];rw,r=reports['readback']\n\
+        \        require(r['factory_report_sha256']==fw['original']['sha256'],'independent reader bound to different\
+        \ K1 producer')\n        require(f['candidate_application']['source_sha256']==binding['candidate_source_sha256']\n\
+        \                and r['candidate_contract_sha256']==binding['contract_sha256'],'frozen named source/contract\
+        \ differs')\n        require(r['native_STEP_readback_executed'] is True and len(r['body_readbacks'])==154\n\
+        \                and all(x['passed'] for x in r['body_readbacks'].values())\n                and set(r['material_reconstruction'])=={'L_KEY','R_KEY'}\n\
+        \                and all(x['passed'] for x in r['material_reconstruction'].values()),'whole candidate material\
+        \ readback incomplete')\n        shapes={}\n        for side in 'LR':\n            name=side+'_KEY';shapes[side]={}\n\
+        \            for role in ('original_q0','candidate_q0'):\n                budget.check();entry=f['candidate_material_exports'][name][role]['files']['step']\n\
+        \                path=(root/'factory/worker'/entry['path']).resolve()\n                require(path.is_relative_to(root)\
+        \ and sha(path)==entry['sha256'],'frozen KEY material STEP differs')\n                roots=cq.importers.importStep(str(path)).vals();require(len(roots)==1,'one\
+        \ complete KEY STEP root required')\n                shapes[side][role]=p.single(roots[0])\n        readback_keys[pose]=shapes\n\
+        \        receipts[pose]={'engineering_manifest_sha256':sha(manifest),\n            'factory_original_report_sha256':fw['original']['sha256'],\n\
+        \            'reader_original_report_sha256':rw['original']['sha256']}\n    equality={side:{role:compare(readback_keys['near'][side][role],readback_keys['far'][side][role],p)\n\
+        \        for role in ('original_q0','candidate_q0')} for side in 'LR'}\n    return VerifiedKeys({s:readback_keys['near'][s]['original_q0']\
+        \ for s in 'LR'},\n                        {s:readback_keys['near'][s]['candidate_q0'] for s in 'LR'},\n\
+        \                        {'candidate_name':NAME,'functional_source_commit':S4,\n                       \
+        \  'candidate_source_sha256':binding['candidate_source_sha256'],\n                         'actual_K1_run_id':binding['run_id'],'actual_K1_head_sha':binding['head_sha'],\n\
+        \                         'pose_originals':receipts,'near_far_complete_q0_material_agreement':equality,\n\
+        \                         'raw_runtime_report_reconstructed':False})\n\n\ndef full_scene(keys,nominal,cam,p,slide=0.,descent=0.,left_tab=0.,right_tab=0.,**kwargs):\n\
+        \    \"\"\"Preserve every S4 independent input and replace only verified whole KEYs.\n\n    Invalid original\
+        \ input remains invalid. In particular q is never clamped.\n    This is a material factory adapter, not\
+        \ a proof of all resulting motions.\n    \"\"\"\n    require(isinstance(keys,VerifiedKeys),'verified whole\
+        \ material bundle required')\n    parts,metadata=nominal.full_scene(slide,descent,left_tab,right_tab,**kwargs)\n\
+        \    actual=metadata['scene'];offsets=actual['KEY_offsets_mm']\n    comparisons={};out=dict(parts)\n   \
+        \ for side,dq in zip('LR',offsets):\n        q=cam.K*actual['slide_mm']+dq\n        require(0<=q<=12,'no\
+        \ extension of finite native contact law')\n        name=side+'_KEY'\n        comparisons[name]={'actual_q_mm':q,'actual_q_binary64_hex':q.hex(),\n\
+        \            'fresh_original_KEY_to_verified_original_q0':compare(parts[name].translate((0,-q,0)),keys.original_q0[side],p)}\n\
+        \        out[name]=p.single(keys.candidate_q0[side].translate((0,q,0)))\n    require(set(out)==set(parts),'full\
+        \ factory body inventory changed')\n    return out,{**metadata,'named_KEY_candidate':{**keys.receipt,'current_factory_KEY_material_comparisons':comparisons,\n\
+        \        'all_other_factory_participants_retained':sorted(set(parts)-{'L_KEY','R_KEY'}),\n        'independent_controls_or_offsets_reduced':False,'physical_allowed_domain_proved':False,\n\
+        \        'all_pairs_or_continuous_motion_proved_by_adapter':False,'strength_qualified':False,\n        'candidate_go':False,'fixture_fabrication_go':False,'manufacturing_go':False}}\n\
+        K2_SOURCE_FROZEN_KEY_FACTORY_ADAPTER_PY\ncp \"$HOST_ROOT/k2/frozen_key_factory_adapter.py\" \"$CASE_DIR/source/k2/frozen_key_factory_adapter.py\"\
+        \ncat > \"$HOST_ROOT/k2/k2_endpoints.py\" <<'K2_SOURCE_K2_ENDPOINTS_PY'\n\"\"\"Four explicit finite nominal\
+        \ endpoint states; no complete-domain claim.\"\"\"\nENDPOINTS={\n    'stow_tabs_0':{'slide':0.,'descent':0.,'left_tab':0.,'right_tab':0.,'open_hold':False,'open_support':False,'expected_bodies':154},\n\
+        \    'stow_tabs_3':{'slide':0.,'descent':0.,'left_tab':3.,'right_tab':3.,'open_hold':False,'open_support':False,'expected_bodies':154},\n\
+        \    'predock':{'slide':79.75,'descent':0.,'left_tab':3.,'right_tab':3.,'open_hold':False,'open_support':False,'expected_bodies':154},\n\
+        \    'open_installed':{'slide':79.75,'descent':8.2,'left_tab':3.,'right_tab':3.,'open_hold':True,'open_support':True,'expected_bodies':161},\n\
+        }\nREMAINING=('independent left/right manual TAB and slot flank domains',\n    'independent KEY and crosshead\
+        \ offsets with true ContactProfile branches',\n    'independent telescope allocations and seating domain',\n\
+        \    'all intermediate slide and mixed motion laws including FPC/OLED/SPRING',\n    'out-of-profile slot\
+        \ states and actual hard-stop or contact explanation',\n    'reverse path, preload, forces, materials, tolerances\
+        \ and assembly/repair path')\nK2_SOURCE_K2_ENDPOINTS_PY\ncp \"$HOST_ROOT/k2/k2_endpoints.py\" \"$CASE_DIR/source/k2/k2_endpoints.py\"\
+        \ncat > \"$HOST_ROOT/k2/full_factory_endpoint.py\" <<'K2_SOURCE_FULL_FACTORY_ENDPOINT_PY'\n\"\"\"Complete\
+        \ named-candidate endpoint factory, gated by actual dual-clear K1.\"\"\"\nfrom __future__ import annotations\n\
+        import argparse\nimport json\nfrom pathlib import Path\nfrom f1_common import *\nimport frozen_key_factory_adapter\
+        \ as adapter\nimport k2_endpoints as endpoints\n\n\ndef main():\n    ap=argparse.ArgumentParser(description=__doc__)\n\
+        \    ap.add_argument('--pose',choices=tuple(endpoints.ENDPOINTS),required=True)\n    ap.add_argument('--output',type=Path,required=True)\n\
+        \    ap.add_argument('--k1-near',type=Path,required=True)\n    ap.add_argument('--k1-far',type=Path,required=True)\n\
+        \    ap.add_argument('--binding',type=Path,required=True)\n    args=ap.parse_args();out,r,budget=start(__file__,args.output,args.pose)\n\
+        \    r.update(schema='razr-K2-complete-endpoint-factory-v1',candidate_name=adapter.NAME,\n        finite_nominal_endpoint_only=True,remaining_unproved_domains=list(endpoints.REMAINING))\n\
+        \    r['external_source_sha256'].update({str(Path(p).resolve()):sha(p) for p in (adapter.__file__,endpoints.__file__,args.binding)})\n\
+        \    try:\n        before=identity.snapshot();executed=identity.record_executed_project_files();r['identity_before']=before\n\
+        \        import cadquery as cq\n        import product_nominal_motion as nominal\n        import product_routing_ep5\
+        \ as ep5\n        import verify_cam_coupling as cam\n        import body_inventory\n        p=nominal.p;binding=json.loads(args.binding.read_text())\n\
+        \        r['status']='verifying_actual_K1_dual_clear_whole_material';atomic(out/'report.json',r)\n     \
+        \   keys=adapter.load_keys({'near':args.k1_near,'far':args.k1_far},binding,p,cq,budget)\n        spec=dict(endpoints.ENDPOINTS[args.pose]);expected=spec.pop('expected_bodies')\n\
+        \        spec.update(flanks=(0.,0.),key_offsets=(0.,0.),crosshead_offsets=(0.,0.),telescope_offsets=None)\n\
+        \        r['pose_input']=spec;r['status']='building_actual_complete_endpoint_factory';atomic(out/'report.json',r)\n\
+        \        parts,meta=adapter.full_scene(keys,nominal,cam,p,**spec)\n        ep5.validate_factory_input_coverage(meta['scene'],before['available_source_sha256'])\n\
+        \        require(len(parts)==expected,'complete endpoint body inventory differs')\n        inventory=body_inventory.measure(parts,meta,p)\n\
+        \        for side in 'LR':\n            inventory[side+'_KEY']['source_functions'].append('frozen_key_factory_adapter.py:full_scene')\n\
+        \            inventory[side+'_KEY']['named_research_candidate']=adapter.NAME\n            inventory[side+'_KEY']['candidate_source_sha256']=keys.receipt['candidate_source_sha256']\n\
+        \        r.update(actual_complete_factory_called=True,participant_count=len(parts),\n            native_scene_metadata=meta,candidate_inventory=inventory,K1_prerequisite=keys.receipt,\n\
+        \            fixed_pair_certificate_reused=False,geometry_repair_applied=True,whole_motion_claimed=False,\n\
+        \            body_exports={},status='exporting_all_endpoint_bodies')\n        (out/'bodies').mkdir()\n \
+        \       for name,body in sorted(parts.items()):\n            r['body_exports'][name]=export(body,out/'bodies'/name,p,budget)\n\
+        \            if len(r['body_exports'])%16==0:atomic(out/'report.json',r)\n        r['panel_KEY_direct_Common']={}\n\
+        \        for side in 'LR':\n            body=parts['A_BACK_PANEL'].intersect(parts[side+'_KEY']);v=p.volume(body)\n\
+        \            row={'a':'A_BACK_PANEL','b':side+'_KEY','common_mm3':v,'rejected':v>1e-7,\n               \
+        \ 'strict_common':p.strict_common(parts['A_BACK_PANEL'],parts[side+'_KEY'])}\n            if v>0:row['export']=export(body,out/(side+'-panel-KEY-direct-Common'),p,budget)\n\
+        \            r['panel_KEY_direct_Common'][side]=row\n        r['status']='evaluating_all_endpoint_pairs';atomic(out/'report.json',r)\n\
+        \        evaluate_pairs(parts,out,r,p,budget)\n        r['identity_after']=identity.finish(before,[*executed,body_inventory.__file__])\n\
+        \        require(r['identity_after']['source_bytes_and_locked_environment_unchanged'],'S4 source/input/runtime\
+        \ changed')\n        require(all(sha(k)==v for k,v in r['external_source_sha256'].items()),'external endpoint\
+        \ sources changed')\n        r['execution_completed']=bool(r['all_unordered_pairs_present_once'] and not\
+        \ r['evaluation_failures'])\n        r['status']='complete' if r['execution_completed'] else 'completed_with_evaluation_failures'\n\
+        \    except BaseException as exc:\n        r['failure_stage']=r.get('status');r['status']='failed_or_interrupted';r['failure']=type(exc).__name__+':\
+        \ '+str(exc)\n    finally:\n        r['seconds']=time.monotonic()-budget.start;atomic(out/'report.json',r)\n\
+        \    print(json.dumps({k:r.get(k) for k in ('status','execution_completed','finite_pose_clear','persisted_pair_count','failure','seconds')}),flush=True)\n\
+        \    return 0 if r['execution_completed'] else 2\n\n\nif __name__=='__main__':raise SystemExit(main())\n\
+        K2_SOURCE_FULL_FACTORY_ENDPOINT_PY\ncp \"$HOST_ROOT/k2/full_factory_endpoint.py\" \"$CASE_DIR/source/k2/full_factory_endpoint.py\"\
+        \ncat > \"$HOST_ROOT/k2/read_factory_endpoint.py\" <<'K2_SOURCE_READ_FACTORY_ENDPOINT_PY'\n\"\"\"Independent\
+        \ whole STEP/all-pair endpoint reader and frozen KEY comparison.\"\"\"\nfrom __future__ import annotations\n\
+        import argparse\nimport json\nfrom pathlib import Path\nfrom f1_common import *\nimport frozen_key_factory_adapter\
+        \ as adapter\nimport k2_endpoints as endpoints\n\n\ndef main():\n    ap=argparse.ArgumentParser(description=__doc__)\n\
+        \    ap.add_argument('--pose',choices=tuple(endpoints.ENDPOINTS),required=True)\n    ap.add_argument('--output',type=Path,required=True)\n\
+        \    ap.add_argument('--factory-report',type=Path,required=True)\n    ap.add_argument('--k1-near',type=Path,required=True)\n\
+        \    ap.add_argument('--k1-far',type=Path,required=True)\n    ap.add_argument('--binding',type=Path,required=True)\n\
+        \    args=ap.parse_args();out,r,budget=start(__file__,args.output,args.pose)\n    r.update(schema='razr-K2-independent-endpoint-STEP-reader-v1',candidate_name=adapter.NAME,\n\
+        \        finite_nominal_endpoint_only=True,remaining_unproved_domains=list(endpoints.REMAINING))\n    r['external_source_sha256'].update({str(Path(p).resolve()):sha(p)\
+        \ for p in (adapter.__file__,endpoints.__file__,args.binding)})\n    try:\n        original=json.loads(args.factory_report.read_text());base=args.factory_report.parent.resolve()\n\
+        \        expected=endpoints.ENDPOINTS[args.pose]['expected_bodies']\n        require(original['functional_source_commit']==S4\
+        \ and original['candidate_name']==adapter.NAME\n                and original['pose']==args.pose and original['execution_completed']\
+        \ is True\n                and original['participant_count']==expected and original['all_unordered_pairs_present_once'],\n\
+        \                'complete actual endpoint factory required')\n        before=identity.snapshot();executed=identity.record_executed_project_files();r['identity_before']=before\n\
+        \        import cadquery as cq\n        import product_assembly as p\n        import verify_cam_coupling\
+        \ as cam\n        keys=adapter.load_keys({'near':args.k1_near,'far':args.k1_far},json.loads(args.binding.read_text()),p,cq,budget)\n\
+        \        r.update(K1_prerequisite=keys.receipt,factory_report_sha256=sha(args.factory_report),\n       \
+        \     native_STEP_readback_executed=True,separate_process_from_factory=True,independent_CAD_kernel=False,\n\
+        \            body_readbacks={},candidate_q0_material_comparisons={},status='importing_all_endpoint_STEP_bodies')\n\
+        \        parts={}\n        for name,entry in sorted(original['body_exports'].items()):\n            budget.check();ref=entry['files']['step'];path=(base/ref['path']).resolve()\n\
+        \            require(path.is_relative_to(base) and path.is_file() and not path.is_symlink()\n          \
+        \          and sha(path)==ref['sha256'] and path.stat().st_size==ref['bytes'],'complete endpoint STEP identity\
+        \ differs')\n            roots=cq.importers.importStep(str(path)).vals();require(len(roots)==1,'one complete\
+        \ endpoint STEP root required')\n            body=p.single(roots[0]);sig=signature(body,p);previous=entry['signature_before']\n\
+        \            dv=sig['signed_volume_mm3']-previous['signed_volume_mm3'];db=[a-b for a,b in zip(sig['bounds_mm'],previous['bounds_mm'])]\n\
+        \            ok=sig['is_valid'] and sig['solid_count']==previous['solid_count'] and abs(dv)<=1e-7 and max(map(abs,db))<=1e-7\n\
+        \            require(ok,'endpoint STEP whole material signature differs')\n            r['body_readbacks'][name]={'STEP':ref,'signature':sig,'volume_delta_mm3':dv,'bounds_delta_mm':db,'passed':ok};parts[name]=body\n\
+        \        require(len(parts)==expected and set(parts)==set(original['participant_names']),'complete STEP\
+        \ inventory differs')\n        spec=original['pose_input']\n        for side,dq in zip('LR',spec['key_offsets']):\n\
+        \            q=cam.K*spec['slide']+dq\n            r['candidate_q0_material_comparisons'][side]=adapter.compare(parts[side+'_KEY'].translate((0,-q,0)),keys.candidate_q0[side],p)\n\
+        \        r['status']='evaluating_all_imported_endpoint_pairs';atomic(out/'report.json',r)\n        evaluate_pairs(parts,out,r,p,budget,original=original)\n\
+        \        require(not r['mismatches_to_factory'],'independent endpoint all-pair mismatch')\n        r['panel_KEY_direct_Common']={}\n\
+        \        for side in 'LR':\n            common=parts['A_BACK_PANEL'].intersect(parts[side+'_KEY']);v=p.volume(common)\n\
+        \            row={'a':'A_BACK_PANEL','b':side+'_KEY','common_mm3':v,'rejected':v>1e-7,\n               \
+        \ 'strict_common':p.strict_common(parts['A_BACK_PANEL'],parts[side+'_KEY']),\n                'factory_volume_delta_mm3':v-original['panel_KEY_direct_Common'][side]['common_mm3']}\n\
+        \            require(abs(row['factory_volume_delta_mm3'])<=1e-7,'endpoint direct panel/KEY Common differs')\n\
+        \            if v>0:row['export']=export(common,out/(side+'-panel-KEY-direct-Common'),p,budget)\n      \
+        \      r['panel_KEY_direct_Common'][side]=row\n        r['identity_after']=identity.finish(before,[*executed])\n\
+        \        require(r['identity_after']['source_bytes_and_locked_environment_unchanged'],'endpoint reader S4\
+        \ source/input/runtime changed')\n        require(all(sha(k)==v for k,v in r['external_source_sha256'].items()),'endpoint\
+        \ reader sources changed')\n        r['execution_completed']=bool(r['all_unordered_pairs_present_once']\
+        \ and not r['evaluation_failures'] and not r['mismatches_to_factory'])\n        r['status']='complete' if\
+        \ r['execution_completed'] else 'completed_with_readback_failures'\n    except BaseException as exc:\n \
+        \       r['failure_stage']=r.get('status');r['status']='failed_or_interrupted';r['failure']=type(exc).__name__+':\
+        \ '+str(exc)\n    finally:\n        r['seconds']=time.monotonic()-budget.start;atomic(out/'report.json',r)\n\
+        \    print(json.dumps({k:r.get(k) for k in ('status','execution_completed','finite_pose_clear','persisted_pair_count','failure','seconds')}),flush=True)\n\
+        \    return 0 if r['execution_completed'] else 2\n\n\nif __name__=='__main__':raise SystemExit(main())\n\
+        K2_SOURCE_READ_FACTORY_ENDPOINT_PY\ncp \"$HOST_ROOT/k2/read_factory_endpoint.py\" \"$CASE_DIR/source/k2/read_factory_endpoint.py\"\
+        \ncat > \"$HOST_ROOT/k2/supervise_k2.py\" <<'K2_SOURCE_SUPERVISE_K2_PY'\n\"\"\"K2 external owned supervisor;\
+        \ complete factory and complete STEP readback each keep 1200 s / 1536 MiB finite guards. Original 90 s positive-only\
+        \ KEY reader is not used or claimed.\"\"\"\nfrom __future__ import annotations\n\nimport argparse\nimport\
+        \ datetime as dt\nimport json\nimport os\nfrom pathlib import Path\nimport signal\nimport subprocess\nimport\
+        \ sys\nimport time\n\nHERE = Path(__file__).resolve().parent\nfrom f1_common import identity, owned_process,\
+        \ S4\n\n\ndef resources(path):\n    stats = dict((key, int(value)) for key, value in\n                 (line.split()\
+        \ for line in Path('/sys/fs/cgroup/memory.stat').read_text().splitlines()))\n    disk = os.statvfs(path)\n\
+        \    return {'available_disk_bytes': disk.f_bavail*disk.f_frsize,\n            'shared_unreclaimable_bytes':\
+        \ stats.get('anon', 0)+stats.get('shmem', 0)\n                + max(0, stats.get('kernel', 0)-stats.get('slab_reclaimable',\
+        \ 0))+stats.get('unevictable', 0)}\n\n\ndef terminate_group(child):\n    try:\n        os.killpg(child.pid,\
+        \ signal.SIGTERM)\n    except ProcessLookupError:\n        pass\n    try:\n        child.wait(timeout=5)\n\
+        \    except subprocess.TimeoutExpired:\n        try:\n            os.killpg(child.pid, signal.SIGKILL)\n\
+        \        except ProcessLookupError:\n            pass\n        child.wait()\n\n\ndef main(argv=None):\n\
+        \    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument('--mode', required=True,\
+        \ choices=('factory', 'readback'))\n    parser.add_argument('--output', type=Path, required=True)\n    parser.add_argument('--pose',\
+        \ choices=('stow_tabs_0','stow_tabs_3','predock','open_installed'), required=True)\n    parser.add_argument('--k1-near',\
+        \ type=Path, required=True)\n    parser.add_argument('--k1-far', type=Path, required=True)\n    parser.add_argument('--binding',\
+        \ type=Path, required=True)\n    parser.add_argument('--report', type=Path)\n    args = parser.parse_args(argv)\n\
+        \    out = args.output.resolve()\n    if out.exists() or out.is_relative_to(identity.ROOT):\n        raise\
+        \ ValueError('new output outside repository required')\n    if args.mode == 'readback' and args.report is\
+        \ None:\n        raise ValueError('readback requires a report')\n    out.mkdir(parents=True)\n    native\
+        \ = args.mode == 'factory'\n    wall, rss, startup_memory = (1200, 1536, 2048)\n    source = HERE/('full_factory_endpoint.py'\
+        \ if native else 'read_factory_endpoint.py')\n    command = [str(identity.ROOT/'.venv/bin/python'), '-B',\
+        \ str(source)]\n    command += ['--pose', args.pose, '--output', str(out/'worker')]\n    command += ['--k1-near',\
+        \ str(args.k1_near.resolve()), '--k1-far', str(args.k1_far.resolve()), '--binding', str(args.binding.resolve())]\n\
+        \    if not native:\n        command += ['--factory-report', str(args.report.resolve())]\n    own_sources\
+        \ = {str(Path(path).resolve()): identity.sha(path)\n                   for path in (__file__, source, HERE/'f1_common.py',\
+        \ HERE/'frozen_key_factory_adapter.py', HERE/'k2_endpoints.py', args.binding, identity.__file__, owned_process.__file__)}\n\
+        \    receipt = {'schema': 'razr-K2-owned-finite-supervisor-20261026-v1',\n               'started_utc':\
+        \ dt.datetime.now(dt.timezone.utc).isoformat(),\n               'mode': args.mode, 'command': command, 'source_sha256_before':\
+        \ own_sources,\n               'original_v4_execution_claimed': False, 'original_KEY_90_second_reader_used':\
+        \ False,\n               'new_complete_STEP_readback_budget_justification': '154 whole STEP imports and\
+        \ 11781 fresh pairs need the same bounded task as factory; prior positive-only 90 s reader not applicable',\n\
+        \               'worker_started': False, 'completed': False,\n               'owned_child_identity_verified':\
+        \ False, 'procfs_visible_PID_used_for_signals': False,\n               'limits': {'wall_seconds': wall,\
+        \ 'worker_peak_RSS_MiB': rss,\n                          'shared_unreclaimable_GiB': 6.8, 'runtime_disk_reserve_MiB':\
+        \ 100,\n                          'startup_disk_reserve_MiB': 256, 'startup_additional_memory_MiB': startup_memory},\n\
+        \               'resource_observations': []}\n    def save():\n        identity.atomic_json(out/'controller.json',\
+        \ receipt)\n    first = resources(out)\n    receipt['resource_observations'].append(first)\n    save()\n\
+        \    if (first['available_disk_bytes'] < 256*2**20\n            or first['shared_unreclaimable_bytes']+startup_memory*2**20\
+        \ > 6.8*2**30):\n        receipt['resource_start_refused'] = True\n        save()\n        return 3\n  \
+        \  environment = identity.environment()\n    receipt['locked_environment'] = environment\n    env = {**os.environ,\
+        \ 'PYTHONDONTWRITEBYTECODE': '1', 'OPENBLAS_NUM_THREADS': '1',\n           'OMP_NUM_THREADS': '1', 'MKL_NUM_THREADS':\
+        \ '1', 'NUMEXPR_NUM_THREADS': '1'}\n    child = channel = None\n    started = recorded = time.monotonic()\n\
+        \    reason = None\n    def observe(memory=None):\n        nonlocal reason, recorded\n        now = resources(out)\n\
+        \        elapsed = time.monotonic()-started\n        if elapsed > wall:\n            reason = 'hard wall\
+        \ budget exceeded'\n        elif now['available_disk_bytes'] < 100*2**20:\n            reason = 'ordinary-user\
+        \ disk reserve below 100 MiB'\n        elif now['shared_unreclaimable_bytes'] > 6.8*2**30:\n           \
+        \ reason = 'shared estimated unreclaimable memory exceeded 6.8 GiB'\n        elif memory is not None and\
+        \ max(memory.values()) > rss*2**20:\n            reason = 'owned worker RSS exceeded '+str(rss)+' MiB'\n\
+        \        if reason or time.monotonic()-recorded >= 10:\n            receipt['resource_observations'].append({**now,\
+        \ 'elapsed_seconds': elapsed, 'worker_memory': memory})\n            recorded = time.monotonic()\n     \
+        \       save()\n        if reason:\n            receipt['capacity_or_wall_stop'] = reason\n            raise\
+        \ RuntimeError(reason)\n    try:\n        channel = owned_process.OwnedChildChannel(source)\n        with\
+        \ (out/'native.log').open('wb') as log:\n            child = subprocess.Popen(command, cwd=identity.ROOT,\
+        \ env=channel.child_env(env),\n                                     stdout=log, stderr=subprocess.STDOUT,\n\
+        \                                     start_new_session=True, pass_fds=channel.pass_fds)\n            receipt.update(worker_started=True,\
+        \ worker_pid=child.pid)\n            channel.after_spawn()\n            save()\n            receipt['owned_child_handshake']\
+        \ = channel.accept(child, timeout_seconds=10, poll_callback=observe)\n            receipt['owned_child_identity_verified']\
+        \ = True\n            save()\n            while child.poll() is None:\n                try:\n          \
+        \          memory = channel.sample(child)\n                except owned_process.OwnedChildExited:\n    \
+        \                if child.poll() is not None:\n                        break\n                    raise\n\
+        \                observe(memory)\n                time.sleep(1)\n            receipt['worker_exit_code']\
+        \ = child.wait()\n    except BaseException as exc:\n        if child is not None:\n            terminate_group(child)\n\
+        \            receipt['worker_exit_code'] = child.returncode\n        receipt['failure'] = type(exc).__name__+':\
+        \ '+str(exc)\n    finally:\n        if channel is not None:\n            channel.close()\n            receipt['owned_channel_descriptors_closed']\
+        \ = not channel.descriptors\n    result_path = out/'worker/report.json'\n    if result_path.is_file():\n\
+        \        receipt['result_sha256'] = identity.sha(result_path)\n        result = json.loads(result_path.read_text())\n\
+        \        receipt['reported_execution_completed'] = result.get('execution_completed')\n        receipt['finite_trial_clear']\
+        \ = result.get('finite_pose_clear')\n    unchanged = all(identity.sha(path) == digest for path, digest in\
+        \ own_sources.items())\n    receipt.update(source_bytes_unchanged=unchanged, elapsed_seconds=time.monotonic()-started,\n\
+        \                   finished_utc=dt.datetime.now(dt.timezone.utc).isoformat(),\n                   locked_environment_unchanged=identity.environment()\
+        \ == environment)\n    receipt['completed'] = bool(not receipt.get('failure') and not reason and receipt.get('worker_exit_code')\
+        \ == 0\n                                and receipt.get('reported_execution_completed') is True and unchanged\n\
+        \                                and receipt['locked_environment_unchanged']\n                         \
+        \       and receipt['owned_child_identity_verified']\n                                and receipt.get('owned_channel_descriptors_closed')\
+        \ is True)\n    save()\n    print(json.dumps({key: receipt.get(key) for key in ('completed', 'worker_exit_code',\
+        \ 'finite_trial_clear',\n                                                     'failure', 'elapsed_seconds')}),\
+        \ flush=True)\n    return 0 if receipt['completed'] else 2\n\n\nif __name__ == '__main__':\n    raise SystemExit(main())\n\
+        K2_SOURCE_SUPERVISE_K2_PY\ncp \"$HOST_ROOT/k2/supervise_k2.py\" \"$CASE_DIR/source/k2/supervise_k2.py\"\n\
+        cat > \"$HOST_ROOT/k2/K2_K1_BINDING.json\" <<'K2_SOURCE_K2_K1_BINDING_JSON'\n{\n  \"schema\": \"razr-K2-actual-K1-dual-clear-prerequisite-v1\"\
+        ,\n  \"run_id\": 40276423445,\n  \"head_sha\": \"78da3826a1cce029cb36b76555d6be7de2001ba2\",\n  \"functional_source_commit\"\
+        : \"dd7def6e6a4de9f47dc91ca2ab336fb1a8828560\",\n  \"candidate_name\": \"key_forward_loop_v1\",\n  \"candidate_source_sha256\"\
+        : \"3e6ebf17f1e50fd71eeaf294d059566d9361d3d830edc4365ea8763d00259578\",\n  \"contract_sha256\": \"17e1532ed82eff1298e9525456d6953df56437082ef2918f3d04839cff200455\"\
+        ,\n  \"actual_two_clear_witnesses_reviewed\": true,\n  \"all_engineering_member_hashes_and_CRC_checked\"\
+        : true,\n  \"raw_runtime_reports_downloaded_or_reconstructed\": false,\n  \"raw_runtime_durable_preservation_claimed\"\
+        : false,\n  \"artifact_expiry_requires_separate_durable_preservation\": true,\n  \"poses\": {\n    \"near\"\
+        : {\n      \"artifact_id\": 12629939266,\n      \"artifact_name\": \"S4-K1-near-40276423445-1-engineering\"\
+        ,\n      \"artifact_expires_at\": \"2026-11-09T06:00:27Z\",\n      \"official_ZIP_sha256\": \"85d690a363c7afce3f0c4c4da08d6b1d802d654ee025135c7eeda6cf544e3252\"\
+        ,\n      \"official_ZIP_bytes\": 11935710,\n      \"engineering_manifest_sha256\": \"377c0ed16289a35d5326cb767b1c5cebcebb6d00648c9e909a4a976357d6447c\"\
+        ,\n      \"actual_factory_execution_completed\": true,\n      \"actual_reader_execution_completed\": true,\n\
+        \      \"actual_factory_finite_pose_clear\": true,\n      \"actual_reader_finite_pose_clear\": true,\n \
+        \     \"actual_factory_seconds\": 250.85115402099996,\n      \"actual_reader_seconds\": 206.10234372299965,\n\
+        \      \"actual_factory_projection_sha256\": \"79a851255346b94e967305b869ef3b6b19a37184e2623fceb0c8e75aed2ca35d\"\
+        ,\n      \"actual_reader_projection_sha256\": \"73d40226ec75a9bcb2804f556beb7f6c59f4f5a1df960f3fa5cb1ad2440b9078\"\
+        ,\n      \"original_factory_report_sha256\": \"57f55021f523f99cb9602477158f3ab129f505d14ec60a7e3cc3563efedbca7a\"\
+        ,\n      \"original_reader_report_sha256\": \"c4920cba0566bbf7d37edd82a3e4752418c2385b741e08ebaba202ef2a4d8e50\"\
+        ,\n      \"inspection_sha256\": \"9e9474ccd41a2b7ab8f2965010b5f1911f5b5ddddb91517d7a39fb25efb266b2\",\n\
+        \      \"all_154_original_whole_material_comparisons_passed\": true,\n      \"all_154_STEP_readbacks_passed\"\
+        : true,\n      \"independent_material_reconstruction_passed\": true,\n      \"all_original_11781_pairs_and_full_journals_verified_per_worker\"\
+        : true\n    },\n    \"far\": {\n      \"artifact_id\": 12631025559,\n      \"artifact_name\": \"S4-K1-far-40276423445-1-engineering\"\
+        ,\n      \"artifact_expires_at\": \"2026-11-09T06:03:12Z\",\n      \"official_ZIP_sha256\": \"8620d6c27a93d6952fe734041d9c88e4c2a6311a954d407cd7ac6a6478036ee8\"\
+        ,\n      \"official_ZIP_bytes\": 11924783,\n      \"engineering_manifest_sha256\": \"6d53630884a152ee1455e2d2ef412ef7169bdda260f6428713341fcfd71691d7\"\
+        ,\n      \"actual_factory_execution_completed\": true,\n      \"actual_reader_execution_completed\": true,\n\
+        \      \"actual_factory_finite_pose_clear\": true,\n      \"actual_reader_finite_pose_clear\": true,\n \
+        \     \"actual_factory_seconds\": 337.094526135,\n      \"actual_reader_seconds\": 274.86120093299996,\n\
+        \      \"actual_factory_projection_sha256\": \"345bc03e1bb5dc9c21194d764d4eb1fefa1b3f2b380de425fbbb30496be77273\"\
+        ,\n      \"actual_reader_projection_sha256\": \"325ee7fe6455f715f9b2f44a781349f9ed599794c3734ba78a7f97f57c2f6ce7\"\
+        ,\n      \"original_factory_report_sha256\": \"2fd3a83f613f1c2f756768cd48bfda2504c313da5197b570151062a15e4f9282\"\
+        ,\n      \"original_reader_report_sha256\": \"0a4d498500690815a1fe2d7cfaeeca2c68dcf8a6ded3c16664689cdcc0095993\"\
+        ,\n      \"inspection_sha256\": \"533852bd0b9acfcc5cc4bb8fbcd92abfda87c254263be268656a81c6c0c5a5c6\",\n\
+        \      \"all_154_original_whole_material_comparisons_passed\": true,\n      \"all_154_STEP_readbacks_passed\"\
+        : true,\n      \"independent_material_reconstruction_passed\": true,\n      \"all_original_11781_pairs_and_full_journals_verified_per_worker\"\
+        : true\n    }\n  },\n  \"complete_product_motion_proved\": false,\n  \"physical_allowed_domain_proved\"\
+        : false,\n  \"strength_qualified\": false,\n  \"candidate_go\": false,\n  \"fixture_fabrication_go\": false,\n\
+        \  \"manufacturing_go\": false\n}\nK2_SOURCE_K2_K1_BINDING_JSON\ncp \"$HOST_ROOT/k2/K2_K1_BINDING.json\"\
+        \ \"$CASE_DIR/source/k2/K2_K1_BINDING.json\"\ncat > \"$HOST_ROOT/k2/export_k2_engineering.py\" <<'K2_SOURCE_EXPORT_K2_ENGINEERING_PY'\n\
+        \"\"\"Export an explicit engineering evidence allowlist without altering raw results.\n\nThe original runtime\
+        \ remains on the ephemeral runner. Omitted runtime bytes are\nhashed locally; this exporter does not claim\
+        \ their durable preservation.\n\"\"\"\nfrom __future__ import annotations\nimport argparse\nimport hashlib\n\
+        import json\nimport os\nfrom pathlib import Path\nimport re\nimport shutil\n\nS4 = 'dd7def6e6a4de9f47dc91ca2ab336fb1a8828560'\n\
+        OLD_ROOT = '/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/'\n\ndef sha(path):\n    digest = hashlib.sha256()\n\
+        \    with Path(path).open('rb') as f:\n        for chunk in iter(lambda: f.read(1024 * 1024), b''):\n  \
+        \          digest.update(chunk)\n    return digest.hexdigest()\n\ndef main():\n    ap=argparse.ArgumentParser(description=__doc__)\n\
+        \    ap.add_argument('--case',type=Path,required=True)\n    ap.add_argument('--output',type=Path,required=True)\n\
+        \    args=ap.parse_args();case=args.case.resolve();out=args.output.resolve()\n    root=Path(os.environ['GITHUB_WORKSPACE']).resolve()\n\
+        \    if not case.is_dir() or out.exists() or out.is_relative_to(case):\n        raise ValueError('existing\
+        \ raw case and fresh separate export required')\n    out.mkdir(parents=True);copied={};projected={};checks={};known_originals=set()\n\
+        \n    def normal(value):\n        if isinstance(value,str):\n            for prefix in (str(root)+'/',OLD_ROOT):\n\
+        \                value=value.replace(prefix,'repository/')\n            if re.search(r'(?:/home/|/tmp/|/workspace/|oai-library:|library-file:|libfile_|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\
+        .[A-Za-z]{2,})',value):\n                raise ValueError('non-engineering locator in projected evidence')\n\
+        \            return value\n        if isinstance(value,list):return [normal(x) for x in value]\n       \
+        \ if isinstance(value,dict):return {normal(k):normal(v) for k,v in value.items()}\n        return value\n\
+        \n    def write(rel,value):\n        p=out/rel;p.parent.mkdir(parents=True,exist_ok=True)\n        p.write_text(json.dumps(normal(value),indent=2,allow_nan=False)+'\\\
+        n')\n\n    def source_ref(p):\n        return {'sha256':sha(p),'bytes':p.stat().st_size}\n\n    def copy(p,rel=None):\n\
+        \        if p.is_symlink() or not p.is_file() or not p.resolve().is_relative_to(case):\n            raise\
+        \ ValueError('nonregular or escaping engineering input')\n        rel=rel or str(p.relative_to(case));dst=out/rel;dst.parent.mkdir(parents=True,exist_ok=True)\n\
+        \        shutil.copyfile(p,dst)\n        if sha(p)!=sha(dst):raise ValueError('copied engineering evidence\
+        \ changed')\n        copied[rel]=source_ref(p);known_originals.add(p)\n\n    def project(p,rel,data,omitted):\n\
+        \        ref=source_ref(p)\n        write(rel,{'schema':'razr-K2-public-engineering-projection-v1',\n  \
+        \                 'derived_projection_not_raw_original':True,\n                   'original':ref,'original_relative_role':str(p.relative_to(case)),\n\
+        \                   'excluded_runtime_fields':omitted,'engineering_record':data})\n        projected[rel]={'original':ref,'excluded_fields':omitted};known_originals.add(p)\n\
+        \n    # Exact source files were frozen and checked by the workflow; only these\n    # directories contain\
+        \ reviewed source bytes. No logs or arbitrary JSON.\n    source=case/'source'\n    permitted_static={'host-cap.py','service-launch.py','python-downloads.json','f1/export_f1_engineering.py'}\n\
+        \    k2_names={'f1_common.py','frozen_key_factory_adapter.py','k2_endpoints.py','full_factory_endpoint.py',\n\
+        \              'read_factory_endpoint.py','supervise_k2.py','K2_K1_BINDING.json','export_k2_engineering.py','verify_k2_complete.py'}\n\
+        \    k1_names={'f1_common.py','k1_evidence.py','key_forward_loop_v1.py','KEY_FORWARD_LOOP_V1_CONTRACT.json',\n\
+        \              'full_factory_candidate.py','read_factory_candidate.py','supervise_k1.py','K1_F1A_BINDING.json',\n\
+        \              'export_k1_engineering.py','verify_k1_complete.py'}\n    f1_names={'f1_common.py','full_factory_witness.py','read_factory_witness.py',\n\
+        \              'supervise_f1.py','F1_L1_BINDING.json','export_f1_engineering.py'}\n    old_names={'integration/probe_key_endpoint_extension.py','tools/key_endpoint_resume.py',\n\
+        \               'run_key_endpoint_trials.py','tests/test_key_endpoint_extension.py','tests/test_key_endpoint_resume.py'}\n\
+        \    s4_before=case/'S4-source-before.json'\n    delta={}\n    if s4_before.is_file():\n        sr=json.loads(s4_before.read_text());delta=sr.get('thirteen_changed_source_sha256',{})\n\
+        \        checks['S4_all_present_tracked_bytes_match_HEAD']=sr.get('all_present_tracked_bytes_match_HEAD')\n\
+        \        project(s4_before,'S4-source-before.engineering.json',{\n            k:sr[k] for k in ('schema','source_commit','source_tree','present_source_sha256',\n\
+        \                'all_present_tracked_bytes_match_HEAD','full_checkout_claimed','thirteen_changed_source_sha256')\
+        \ if k in sr},\n            sorted(set(sr)-{'schema','source_commit','source_tree','present_source_sha256',\n\
+        \                'all_present_tracked_bytes_match_HEAD','full_checkout_claimed','thirteen_changed_source_sha256'}))\n\
+        \    for p in sorted(source.rglob('*')) if source.is_dir() else []:\n        if not p.is_file():continue\n\
+        \        rel=str(p.relative_to(source));allow=rel in permitted_static\n        if rel.startswith('k2/'):allow=rel[3:]\
+        \ in k2_names\n        elif rel.startswith('k1/'):allow=rel[3:] in k1_names\n        elif rel.startswith('f1/'):allow=rel[3:]\
+        \ in f1_names\n        elif rel.startswith('original-v4/'):allow=rel[12:] in old_names\n        elif rel.startswith('S4-delta/'):\n\
+        \            key=rel[9:];allow=key in delta and sha(p)==delta[key]\n        if allow:copy(p)\n\n    geometry_keys={'schema','functional_source_commit','pose','execution_completed','pose_input','status',\n\
+        \       'actual_complete_factory_called','native_scene_metadata','participant_count','nominal_inventory',\n\
+        \       'fixed_pair_certificate_reused','whole_motion_claimed','geometry_repair_applied',\n       'native_positive_q_STOP_SPRING_profiles','body_exports','panel_KEY_direct_Common','pairs','positive_pairs',\n\
+        \       'evaluation_failures','mismatches_to_factory','participant_names','expected_pair_count','resource',\n\
+        \       'persisted_pair_count','all_unordered_pairs_present_once','finite_pose_clear','seconds',\n     \
+        \  'factory_report_sha256','native_STEP_readback_executed','separate_process_from_factory',\n       'independent_CAD_kernel','body_readbacks','L1_binding_sha256','L1_original_input_members_verified',\n\
+        \       'L1_whole_endpoint_material_comparisons','complete_product_motion_proved','continuous_backlash_domain_proved',\n\
+        \       'physical_qualification','candidate_go','fixture_fabrication_go','manufacturing_go','G2_pass'}\n\
+        \    geometry_keys.update({'candidate_name','F1a_prerequisite','original_S4_scene_metadata','candidate_inventory','failure_stage',\n\
+        \       'original_baseline_material_comparisons','baseline_panel_KEY_direct_Common','candidate_application',\n\
+        \       'candidate_material_exports','candidate_contract_sha256','independent_material_builder_does_not_import_candidate_source',\n\
+        \       'candidate_material_readbacks','material_reconstruction'})\n    geometry_keys.update({'K1_prerequisite','finite_nominal_endpoint_only','remaining_unproved_domains','candidate_q0_material_comparisons'})\n\
+        \    controller_keys={'schema','mode','worker_started','completed','owned_child_identity_verified',\n  \
+        \     'procfs_visible_PID_used_for_signals','limits','resource_observations','resource_start_refused',\n\
+        \       'worker_exit_code','owned_channel_descriptors_closed','result_sha256','reported_execution_completed',\n\
+        \       'finite_trial_clear','source_bytes_unchanged','elapsed_seconds','locked_environment_unchanged','capacity_or_wall_stop'}\n\
+        \    for name in ('factory','readback'):\n        folder=case/name/'worker';rp=folder/'report.json'\n  \
+        \      if rp.is_file():\n            r=json.loads(rp.read_text());d={k:r[k] for k in geometry_keys if k\
+        \ in r}\n            if 'failure' in r:\n                d['original_failure_type']=r['failure'].split(':',1)[0]\n\
+        \                d['original_failure_message_sha256']=hashlib.sha256(r['failure'].encode()).hexdigest()\n\
+        \            before=r.get('identity_before',{});after=r.get('identity_after',{})\n            d['source_identity_projection']={\n\
+        \               'source_commit_before':before.get('repository_head_at_start'),\n               'source_commit_after':after.get('repository_head_at_finish'),\n\
+        \               'worktree_clean_before':before.get('worktree_status_at_start')=='',\n               'native_input_roles':before.get('native_input_roles'),\n\
+        \               'available_source_sha256':before.get('available_source_sha256'),\n               'executed_source_and_input_sha256':after.get('executed_source_and_input_sha256'),\n\
+        \               'changed_or_late_sources':after.get('changed_or_late_sources'),\n               'source_bytes_and_locked_environment_unchanged':after.get('source_bytes_and_locked_environment_unchanged'),\n\
+        \               'locked_environment_before_passed':before.get('environment',{}).get('passed'),\n       \
+        \        'locked_environment_after_passed':after.get('environment_after',{}).get('passed'),\n          \
+        \     'checked_package_count_before':before.get('environment',{}).get('checked_package_count'),\n      \
+        \         'checked_package_count_after':after.get('environment_after',{}).get('checked_package_count')}\n\
+        \            checks[name+'_execution_completed']=r.get('execution_completed')\n            checks[name+'_source_environment_unchanged']=after.get('source_bytes_and_locked_environment_unchanged')\n\
+        \            project(rp,f'{name}/worker/report.engineering.json',d,sorted(set(r)-geometry_keys))\n     \
+        \       for p in sorted(folder.rglob('*')):\n                if p.is_file() and (p.suffix in ('.step','.brep')\
+        \ or p.name=='pairs.jsonl'):copy(p)\n        cp=case/name/'controller.json'\n        if cp.is_file():\n\
+        \            c=json.loads(cp.read_text());project(cp,f'{name}/controller.engineering.json',\n          \
+        \      {k:c[k] for k in controller_keys if k in c},sorted(set(c)-controller_keys))\n\n    # The complete\
+        \ prerequisite is already a frozen engineering-only export.\n    # Every member is verified against the\
+        \ independently frozen manifest first.\n    for pose in ('near','far'):\n        prior=case/('prerequisite-'+pose)\n\
+        \        if not prior.is_dir():continue\n        manifest=prior/'ENGINEERING_MANIFEST.json'\n        binding_path=case/'source/k2/K2_K1_BINDING.json';driver_ref=case/'K2-driver-source.json'\n\
+        \        if manifest.is_file() and binding_path.is_file() and driver_ref.is_file():\n            expected_binding=json.loads(driver_ref.read_text())['K2_K1_BINDING.json']\n\
+        \            if sha(binding_path)!=expected_binding['sha256'] or binding_path.stat().st_size!=expected_binding['bytes']:\n\
+        \                raise ValueError('K1 prerequisite binding changed before export')\n            binding=json.loads(binding_path.read_text());entry=binding['poses'][pose]\n\
+        \            if sha(manifest)!=entry['engineering_manifest_sha256']:\n                raise ValueError('K1\
+        \ prerequisite manifest differs before export')\n            members=json.loads(manifest.read_text())['members'];missing=0\n\
+        \            for rel,ref in members.items():\n                p=prior/rel\n                if not p.is_file():missing+=1;continue\n\
+        \                if not p.resolve().is_relative_to(prior.resolve()) or p.is_symlink():\n               \
+        \     raise ValueError('unsafe K1 engineering member')\n                if sha(p)!=ref['sha256'] or p.stat().st_size!=ref['bytes']:\n\
+        \                    raise ValueError('K1 engineering member changed before export')\n                copy(p)\n\
+        \            copy(manifest);checks[pose+'_prerequisite_original_manifest_verified']=True\n            checks[pose+'_prerequisite_missing_manifest_members']=missing\n\
+        \        else:checks[pose+'_prerequisite_export_incomplete']=True\n\n    # L1 inputs have exact original\
+        \ geometry; result projections keep every\n    # geometric outcome and material record. Runtime traceback\
+        \ capture stays raw.\n    l1=case/'original-L1-inputs'\n    for p in sorted(l1.rglob('*')) if l1.is_dir()\
+        \ else []:\n        if p.is_file() and p.suffix in ('.step','.brep'):copy(p)\n        elif p.is_file() and\
+        \ p.name=='result.json':\n            r=json.loads(p.read_text());omit={'trace','started_monotonic'}\n \
+        \           project(p,str(p.relative_to(case)).replace('result.json','result.engineering.json'),\n     \
+        \               {k:v for k,v in r.items() if k not in omit},sorted(omit))\n\n    for name in ('K2-complete-observation.json','K2-prerequisite-verification.json','K2-driver-source.json'):\n\
+        \        p=case/name\n        if p.is_file():\n            normal(json.loads(p.read_text()));copy(p)\n \
+        \   # Numeric observer results are admitted; environment and /proc contents are not.\n    for label in ('factory-runner','readback-runner','environment-before-check','environment-after-check'):\n\
+        \        p=case/(label+'.namespace')/'SUMMARY.json'\n        if p.is_file():\n            r=json.loads(p.read_text());m=r.get('manager_result',{})\n\
+        \            data={k:r[k] for k in ('compatibility_verified','cleanup_verified','command_exit_code') if\
+        \ k in r}\n            data['manager']={k:m[k] for k in ('cleanup_verified','forced_cleanup','adopted_descendant_cleanup_required','normal_command_completed','host_cap_exit_code')\
+        \ if k in m}\n            checks[label+'_cleanup_verified']=r.get('cleanup_verified')\n            project(p,f'lifecycle/{label}.engineering.json',data,sorted(set(r)-set(data)))\n\
+        \    for name in ('environment-before.json','environment-after.json'):\n        p=case/name\n        if\
+        \ p.is_file():\n            r=json.loads(p.read_text());checks[name+'_passed']=r.get('passed')\n       \
+        \     allowed={'schema','passed','python_version','checked_packages','checked_package_count','pyproject_sha256','uv_lock_sha256','installation_artifact_provenance_verified'}\n\
+        \            project(p,name.replace('.json','.engineering.json'),{k:r[k] for k in allowed if k in r},sorted(set(r)-allowed))\n\
+        \    omitted=[]\n    for p in sorted(case.rglob('*')):\n        if not p.is_file() or p in known_originals:continue\n\
+        \        if p.is_symlink():raise ValueError('raw evidence symlink rejected')\n        rel=str(p.relative_to(case))\n\
+        \        category='runtime_interface_capture' if '/raw/' in rel else 'runtime_log' if p.suffix in ('.log','.stdout','.stderr','.txt','.jsonl')\
+        \ else 'runtime_receipt'\n        omitted.append({'category':category,**source_ref(p)})\n    write('EXPORT_SCOPE.json',{'schema':'razr-K2-engineering-export-scope-v1','functional_source_commit':S4,\n\
+        \          'raw_producer_reader_reports_modified':False,'all_copied_original_bytes_verified':True,\n   \
+        \       'raw_runtime_durable_preservation_claimed':False,'raw_runtime_location':'ephemeral runner only',\n\
+        \          'copied_originals':copied,'derived_projections':projected,'omitted_runtime_file_hashes':omitted,\n\
+        \          'local_runtime_verification_results':checks,\n          'scope':'Explicit source, geometric models,\
+        \ every pair/journal and geometric result; runtime interfaces and caller environment omitted.'})\n    members={str(p.relative_to(out)):source_ref(p)\
+        \ for p in sorted(out.rglob('*')) if p.is_file()}\n    write('ENGINEERING_MANIFEST.json',{'schema':'razr-K2-engineering-export-manifest-v1','members':members})\n\
+        \    print(json.dumps({'export_completed':True,'original_files_copied':len(copied),\n        'derived_reports':len(projected),'runtime_files_omitted':len(omitted),'native_claims':checks},sort_keys=True))\n\
+        \nif __name__=='__main__':main()\nK2_SOURCE_EXPORT_K2_ENGINEERING_PY\ncp \"$HOST_ROOT/k2/export_k2_engineering.py\"\
+        \ \"$CASE_DIR/source/k2/export_k2_engineering.py\"\ncat > \"$HOST_ROOT/k2/verify_k2_complete.py\" <<'K2_SOURCE_VERIFY_K2_COMPLETE_PY'\n\
+        \"\"\"Check complete actual endpoint execution separately from finite clearance.\"\"\"\nfrom __future__\
+        \ import annotations\nimport argparse\nfrom collections import Counter\nimport hashlib\nimport json\nfrom\
+        \ pathlib import Path\nfrom k2_endpoints import ENDPOINTS,REMAINING\n\n\ndef main():\n    ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--case',type=Path,required=True)\n\
+        \    ap.add_argument('--pose',choices=tuple(ENDPOINTS),required=True);a=ap.parse_args()\n    n=ENDPOINTS[a.pose]['expected_bodies'];count=n*(n-1)//2;results={}\n\
+        \    for name in ('factory','readback'):\n        c=json.loads((a.case/name/'controller.json').read_text());path=a.case/name/'worker/report.json';r=json.loads(path.read_text())\n\
+        \        assert c['completed'] is True and c['worker_exit_code']==0\n        assert all(c[k] is True for\
+        \ k in ('owned_child_identity_verified','source_bytes_unchanged','locked_environment_unchanged','owned_channel_descriptors_closed'))\n\
+        \        assert c['limits']['wall_seconds']==1200 and c['limits']['worker_peak_RSS_MiB']==1536 and c['limits']['shared_unreclaimable_GiB']==6.8\n\
+        \        assert c['result_sha256']==hashlib.sha256(path.read_bytes()).hexdigest()\n        assert r['functional_source_commit']=='dd7def6e6a4de9f47dc91ca2ab336fb1a8828560'\
+        \ and r['pose']==a.pose\n        assert r['candidate_name']=='key_forward_loop_v1' and r['execution_completed']\
+        \ is True\n        assert r['all_unordered_pairs_present_once'] and r['expected_pair_count']==r['persisted_pair_count']==len(r['pairs'])==count\n\
+        \        assert len(r['participant_names'])==n and not r['evaluation_failures'] and not r['mismatches_to_factory']\n\
+        \        assert r['identity_before']['repository_head_at_start']==r['identity_after']['repository_head_at_finish']==r['functional_source_commit']\n\
+        \        assert not r['identity_before']['worktree_status_at_start'] and r['identity_after']['source_bytes_and_locked_environment_unchanged']\n\
+        \        assert all(r[k] is False for k in ('complete_product_motion_proved','continuous_backlash_domain_proved','physical_qualification',\n\
+        \            'candidate_go','fixture_fabrication_go','manufacturing_go','G2_pass'))\n        journal=[json.loads(x)\
+        \ for x in (a.case/name/'worker/pairs.jsonl').read_text().splitlines()]\n        assert len(journal)==2*count\
+        \ and [x['row'] for x in journal if x['event']=='completed']==r['pairs']\n        if name=='readback':\n\
+        \            assert len(r['body_readbacks'])==n and all(x['passed'] for x in r['body_readbacks'].values())\n\
+        \            assert set(r['candidate_q0_material_comparisons'])=={'L','R'} and r['native_STEP_readback_executed']\
+        \ is True\n        results[name]={'original_report_sha256':c['result_sha256'],'seconds':r['seconds'],'participants':n,'pairs':count,\n\
+        \            'finite_pose_clear':r['finite_pose_clear'],'panel_KEY_direct_Common':r['panel_KEY_direct_Common'],\n\
+        \            'positive_pairs':[{'a':x['a'],'b':x['b'],'common_mm3':x['common_mm3'],'rejected':x['rejected']}\
+        \ for x in r['positive_pairs']],\n            'method_counts':dict(Counter(x['method'] for x in r['pairs']))}\n\
+        \    summary={'schema':'razr-K2-complete-endpoint-observation-v1','pose':a.pose,'declared_finite_pose':ENDPOINTS[a.pose],\n\
+        \        'results':results,'finite_endpoint_clear':all(x['finite_pose_clear'] for x in results.values()),\n\
+        \        'complete_motion_or_hardware_qualification':False,'remaining_unproved_domains':list(REMAINING),\n\
+        \        'candidate_go':False,'fixture_fabrication_go':False,'manufacturing_go':False}\n    (a.case/'K2-complete-observation.json').write_text(json.dumps(summary,indent=2)+'\\\
+        n');print(json.dumps(summary,sort_keys=True),flush=True)\n\n\nif __name__=='__main__':main()\nK2_SOURCE_VERIFY_K2_COMPLETE_PY\n\
+        cp \"$HOST_ROOT/k2/verify_k2_complete.py\" \"$CASE_DIR/source/k2/verify_k2_complete.py\"\npython3 -B - <<'K2_SOURCE_BIND'\n\
+        import hashlib,json,os,pathlib\np=pathlib.Path(os.environ['HOST_ROOT'])/'k2'\nexpected={'f1_common.py':\
+        \ {'sha256': 'd7a58a06e8fdd7c0b727fc114ef2a9c93e60c61b3e3a3acc886ca19af5e88bb3', 'bytes': 8294}, 'frozen_key_factory_adapter.py':\
+        \ {'sha256': 'b112d97a4bb888e17c0a4c4de75abd322c28c89e274ac6f63ef7c734940f70c6', 'bytes': 8189}, 'k2_endpoints.py':\
+        \ {'sha256': 'a96606fbd7ba9ffd37e87819ed2dfd13d3a1de061124fd9339aac38f744b31ad', 'bytes': 1087}, 'full_factory_endpoint.py':\
+        \ {'sha256': 'c5d8ac7647a18a5d17579118f75a2c4e37c59183f7fddf1295014803ea0a1a8a', 'bytes': 4725}, 'read_factory_endpoint.py':\
+        \ {'sha256': 'a2889fd1de25c2a7ef826869c1fb28872644ef724210d244ac7d4343a09c0e6a', 'bytes': 5769}, 'supervise_k2.py':\
+        \ {'sha256': '4baceeb8a0cfa97ac8d62ed9d3956bd17f19dbcb3c811673e8dcee6fc7aa0347', 'bytes': 8593}, 'K2_K1_BINDING.json':\
+        \ {'sha256': 'cffbd88792fee8acb3406a76120069ae5b65ce37cc9cbd81af9d5fa3b8fd38be', 'bytes': 3914}, 'export_k2_engineering.py':\
+        \ {'sha256': 'a8b04deee7671201071bc8bd4439d23e46d6370084ba50eb7e94468dc25670db', 'bytes': 15316}, 'verify_k2_complete.py':\
+        \ {'sha256': '1271fa5a6bee8e784bfbd591b2e3dab87ca2ac385db386b2108dc1885c5cf3a7', 'bytes': 3633}}\nfor name,r\
+        \ in expected.items():\n data=(p/name).read_bytes();assert len(data)==r['bytes'] and hashlib.sha256(data).hexdigest()==r['sha256']\n\
+        (pathlib.Path(os.environ['CASE_DIR'])/'K2-driver-source.json').write_text(json.dumps(expected,indent=2)+'\\\
+        n')\nK2_SOURCE_BIND\n"
+    - name: Prove INT and TERM cleanup through original supervisor and independent-session stdlib worker
+      shell: bash
+      run: 'set -euo pipefail
+
+        /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" --signal-check "$CASE_DIR/signal-lifecycle" "$GITHUB_WORKSPACE"
+
+        '
+    - name: Set up pinned uv and identical Python patch version in every job
+      uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884
+      with:
+        version: 0.10.10
+        python-version: 3.12.14
+        enable-cache: false
+    - name: Install S4 lock and verify all 43 versions
+      shell: bash
+      run: "set -euo pipefail\n/usr/bin/python3 -B \"$HOST_ROOT/service-launch.py\" \"$CASE_DIR/install\" uv sync\
+        \ --locked --no-cache\necho 'UV_NO_SYNC=1' >> \"$GITHUB_ENV\"\n/usr/bin/python3 -B \"$HOST_ROOT/service-launch.py\"\
+        \ \"$CASE_DIR/Python-uv-runtime-identity\" \\\n  .venv/bin/python -B -c 'import json,os,shutil,subprocess,sys;\
+        \ u=subprocess.check_output([\"uv\",\"--version\"],text=True).strip(); r={\"python_version\":sys.version,\"\
+        python_executable\":sys.executable,\"python_patch\":list(sys.version_info[:3]),\"uv_version\":u,\"uv_path\"\
+        :shutil.which(\"uv\"),\"uid\":os.getuid(),\"gid\":os.getgid()}; print(json.dumps(r)); assert sys.version_info[:3]==(3,12,14)\
+        \ and u==\"uv 0.10.10\"'\n/usr/bin/python3 -B \"$HOST_ROOT/service-launch.py\" \"$CASE_DIR/environment-before-check\"\
+        \ \\\n  .venv/bin/python -B tools/check_environment.py --output \"$CASE_DIR/environment-before.json\"\n\
+        /usr/bin/python3 -B \"$HOST_ROOT/service-launch.py\" \"$CASE_DIR/CAD-runtime-preflight\" \\\n  .venv/bin/python\
+        \ -B -c 'import cadquery as cq, json, math; s=cq.Workplane(\"XY\").box(1,1,1).val(); v=s.Volume(); ok=s.isValid()\
+        \ and math.isfinite(v) and v>0; print(json.dumps({\"cadquery_version\":cq.__version__,\"box_is_valid\":s.isValid(),\"\
+        box_volume_mm3\":v,\"passed\":ok,\"physical_qualification\":False})); assert ok'\n"
+    - name: Download actual reviewed K1 near engineering artifact
+      uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+      with:
+        artifact-ids: '12629939266'
+        run-id: '40276423445'
+        repository: TrillionniumFoundation/RAZR-SLIDE
+        github-token: ${{ github.token }}
+        merge-multiple: true
+        path: ${{ runner.temp }}/razr-s4-key-loop-k2-20261026/K1-download/near
+    - name: Download actual reviewed K1 far engineering artifact
+      uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+      with:
+        artifact-ids: '12631025559'
+        run-id: '40276423445'
+        repository: TrillionniumFoundation/RAZR-SLIDE
+        github-token: ${{ github.token }}
+        merge-multiple: true
+        path: ${{ runner.temp }}/razr-s4-key-loop-k2-20261026/K1-download/far
+    - name: Verify both exact K1 engineering manifests and actual dual-clear report prerequisites
+      shell: bash
+      run: "set -euo pipefail\npython3 -B - <<'K2_PREREQUISITE'\nimport hashlib,json,os,pathlib,shutil\nhost=pathlib.Path(os.environ['HOST_ROOT']);case=pathlib.Path(os.environ['CASE_DIR'])\n\
+        binding=json.loads((host/'k2/K2_K1_BINDING.json').read_text());assert binding['actual_two_clear_witnesses_reviewed']\
+        \ is True\nobserved={}\nfor pose in ('near','far'):\n src=host/'K1-download'/pose;manifest=src/'ENGINEERING_MANIFEST.json'\n\
+        \ assert hashlib.sha256(manifest.read_bytes()).hexdigest()==binding['poses'][pose]['engineering_manifest_sha256']\n\
+        \ members=json.loads(manifest.read_text())['members'];dest=case/('prerequisite-'+pose);dest.mkdir()\n for\
+        \ rel,ref in members.items():\n  p=(src/rel).resolve();assert p.is_relative_to(src.resolve()) and p.is_file()\
+        \ and not p.is_symlink()\n  data=p.read_bytes();assert len(data)==ref['bytes'] and hashlib.sha256(data).hexdigest()==ref['sha256']\n\
+        \  target=dest/rel;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)\n shutil.copyfile(manifest,dest/'ENGINEERING_MANIFEST.json')\n\
+        \ for kind in ('factory','readback'):\n  wrapper=json.loads((dest/kind/'worker/report.engineering.json').read_text());assert\
+        \ wrapper['derived_projection_not_raw_original'] is True\n  r=wrapper['engineering_record'];assert r['execution_completed']\
+        \ is True and r['finite_pose_clear'] is True\n  assert len(r['participant_names'])==154 and len(r['pairs'])==11781\
+        \ and not r['evaluation_failures'] and not r['mismatches_to_factory']\n observed[pose]={'manifest_sha256':binding['poses'][pose]['engineering_manifest_sha256'],'all_engineering_members_verified':len(members),'both_original_complete_clear_reports_observed':True}\n\
+        (case/'K2-prerequisite-verification.json').write_text(json.dumps(observed,indent=2)+'\\n')\nprint(json.dumps(observed,sort_keys=True))\n\
+        K2_PREREQUISITE\n"
+    - name: Build complete actual endpoint and independently read every STEP and all pairs
+      shell: bash
+      run: "set -euo pipefail\n/usr/bin/python3 -B \"$HOST_ROOT/service-launch.py\" \"$CASE_DIR/factory-runner\"\
+        \ \\\n  .venv/bin/python -B \"$HOST_ROOT/k2/supervise_k2.py\" --mode factory --pose \"$POSE\" --output \"\
+        $CASE_DIR/factory\" \\\n  --k1-near \"$CASE_DIR/prerequisite-near\" --k1-far \"$CASE_DIR/prerequisite-far\"\
+        \ --binding \"$HOST_ROOT/k2/K2_K1_BINDING.json\"\n/usr/bin/python3 -B \"$HOST_ROOT/service-launch.py\" \"\
+        $CASE_DIR/readback-runner\" \\\n  .venv/bin/python -B \"$HOST_ROOT/k2/supervise_k2.py\" --mode readback\
+        \ --pose \"$POSE\" --output \"$CASE_DIR/readback\" \\\n  --report \"$CASE_DIR/factory/worker/report.json\"\
+        \ --k1-near \"$CASE_DIR/prerequisite-near\" \\\n  --k1-far \"$CASE_DIR/prerequisite-far\" --binding \"$HOST_ROOT/k2/K2_K1_BINDING.json\"\
+        \npython3 -B \"$HOST_ROOT/k2/verify_k2_complete.py\" --case \"$CASE_DIR\" --pose \"$POSE\"\n"
+    - name: Preserve current hashes and failure evidence without rewriting raw reports
+      if: always()
+      shell: bash
+      run: "set -euo pipefail\nenvironment_exit=not_executed\nif test -x .venv/bin/python && test -f tools/check_environment.py;\
+        \ then\n  environment_exit=0\n  /usr/bin/python3 -B \"$HOST_ROOT/service-launch.py\" \"$CASE_DIR/environment-after-check\"\
+        \ \\\n    .venv/bin/python -B tools/check_environment.py --output \"$CASE_DIR/environment-after.json\" ||\
+        \ environment_exit=$?\nfi\necho \"$environment_exit\" > \"$CASE_DIR/environment-after.exit-code.txt\"\n\
+        python3 -B - <<'PY'\nimport hashlib, json, os, pathlib, subprocess\ncase = pathlib.Path(os.environ['CASE_DIR'])\n\
+        def git(*args):\n    p = subprocess.run(['git', *args], text=True, capture_output=True)\n    return {'exit_code':\
+        \ p.returncode, 'stdout': p.stdout, 'stderr': p.stderr}\nsource = {'head': git('rev-parse', 'HEAD'), 'status':\
+        \ git('status', '--porcelain', '--untracked-files=all')}\nif (case/'source-identity.json').is_file():\n\
+        \    r = json.loads((case/'source-identity.json').read_text())\n    source['original_five_sources_unchanged']\
+        \ = all(\n      (pathlib.Path(r['study_directory'])/name).is_file() and\n      hashlib.sha256((pathlib.Path(r['study_directory'])/name).read_bytes()).hexdigest()\
+        \ == digest\n      for name, digest in r['study_source_sha256'].items())\n(case/'source-after.json').write_text(json.dumps(source,\
+        \ indent=2)+'\\n')\nenvironment_file = case/'environment-after.json'\nenvironment_code = (case/'environment-after.exit-code.txt').read_text().strip()\n\
+        environment_passed = environment_file.is_file() and environment_code == '0' and json.loads(environment_file.read_text()).get('passed')\
+        \ is True\n(case/'environment-after-state.json').write_text(json.dumps({'status': 'passed' if environment_passed\
+        \ else 'failed' if environment_file.is_file() else 'not_executed', 'wrapper_exit_code': environment_code,\
+        \ 'checker_report_exists': environment_file.is_file(), 'passed': environment_passed}, indent=2)+'\\n')\n\
+        if (case/'S4-source-before.json').is_file():\n    before = json.loads((case/'S4-source-before.json').read_text())\n\
+        \    root=pathlib.Path(os.environ['GITHUB_WORKSPACE']).resolve()\n    current={rel:hashlib.sha256((root/rel).read_bytes()).hexdigest()\
+        \ if (root/rel).is_file() and not (root/rel).is_symlink() else None for rel in before['present_source_sha256']}\n\
+        \    unchanged=current==before['present_source_sha256']\n    after={'source_commit':os.environ['S4'],'all_present_source_bytes_unchanged':unchanged,'changed':[rel\
+        \ for rel in current if current[rel]!=before['present_source_sha256'][rel]],'source_sha256_after':current,'previous_C2_test_pass_reused':False}\n\
+        \    (case/'S4-source-after.json').write_text(json.dumps(after,indent=2)+'\\n')\nmembers = {str(p.relative_to(case)):\
+        \ {'bytes': p.stat().st_size,\n  'sha256': hashlib.sha256(p.read_bytes()).hexdigest()}\n  for p in sorted(case.rglob('*'))\
+        \ if p.is_file() and p != case/'host-artifact-manifest.json'}\n(case/'host-artifact-manifest.json').write_text(json.dumps({'members':\
+        \ members}, indent=2)+'\\n')\nassert source['head']['exit_code'] == 0 and source['head']['stdout'].strip()\
+        \ == os.environ['S4']\nassert source['status']['exit_code'] == 0 and not source['status']['stdout'].strip()\n\
+        assert source.get('original_five_sources_unchanged') is True\nassert (case/'environment-after.exit-code.txt').read_text().strip()\
+        \ == '0'\nassert json.loads((case/'environment-after.json').read_text()).get('passed') is True\nPY\ntest\
+        \ -f \"$CASE_DIR/S4-source-after.json\"\npython3 -B -c 'import json,os,pathlib; assert json.loads((pathlib.Path(os.environ[\"\
+        CASE_DIR\"])/\"S4-source-after.json\").read_text())[\"all_present_source_bytes_unchanged\"] is True'\n"
+    - name: Export endpoint engineering originals and marked projections only
+      if: always()
+      shell: bash
+      run: "set -euo pipefail\nmkdir -p \"$CASE_DIR/source/k2\"\ncat > \"$CASE_DIR/source/k2/export_k2_engineering.py\"\
+        \ <<'K2_ENGINEERING_EXPORT'\n\"\"\"Export an explicit engineering evidence allowlist without altering raw\
+        \ results.\n\nThe original runtime remains on the ephemeral runner. Omitted runtime bytes are\nhashed locally;\
+        \ this exporter does not claim their durable preservation.\n\"\"\"\nfrom __future__ import annotations\n\
+        import argparse\nimport hashlib\nimport json\nimport os\nfrom pathlib import Path\nimport re\nimport shutil\n\
+        \nS4 = 'dd7def6e6a4de9f47dc91ca2ab336fb1a8828560'\nOLD_ROOT = '/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/'\n\
+        \ndef sha(path):\n    digest = hashlib.sha256()\n    with Path(path).open('rb') as f:\n        for chunk\
+        \ in iter(lambda: f.read(1024 * 1024), b''):\n            digest.update(chunk)\n    return digest.hexdigest()\n\
+        \ndef main():\n    ap=argparse.ArgumentParser(description=__doc__)\n    ap.add_argument('--case',type=Path,required=True)\n\
+        \    ap.add_argument('--output',type=Path,required=True)\n    args=ap.parse_args();case=args.case.resolve();out=args.output.resolve()\n\
+        \    root=Path(os.environ['GITHUB_WORKSPACE']).resolve()\n    if not case.is_dir() or out.exists() or out.is_relative_to(case):\n\
+        \        raise ValueError('existing raw case and fresh separate export required')\n    out.mkdir(parents=True);copied={};projected={};checks={};known_originals=set()\n\
+        \n    def normal(value):\n        if isinstance(value,str):\n            for prefix in (str(root)+'/',OLD_ROOT):\n\
+        \                value=value.replace(prefix,'repository/')\n            if re.search(r'(?:/home/|/tmp/|/workspace/|oai-library:|library-file:|libfile_|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\
+        .[A-Za-z]{2,})',value):\n                raise ValueError('non-engineering locator in projected evidence')\n\
+        \            return value\n        if isinstance(value,list):return [normal(x) for x in value]\n       \
+        \ if isinstance(value,dict):return {normal(k):normal(v) for k,v in value.items()}\n        return value\n\
+        \n    def write(rel,value):\n        p=out/rel;p.parent.mkdir(parents=True,exist_ok=True)\n        p.write_text(json.dumps(normal(value),indent=2,allow_nan=False)+'\\\
+        n')\n\n    def source_ref(p):\n        return {'sha256':sha(p),'bytes':p.stat().st_size}\n\n    def copy(p,rel=None):\n\
+        \        if p.is_symlink() or not p.is_file() or not p.resolve().is_relative_to(case):\n            raise\
+        \ ValueError('nonregular or escaping engineering input')\n        rel=rel or str(p.relative_to(case));dst=out/rel;dst.parent.mkdir(parents=True,exist_ok=True)\n\
+        \        shutil.copyfile(p,dst)\n        if sha(p)!=sha(dst):raise ValueError('copied engineering evidence\
+        \ changed')\n        copied[rel]=source_ref(p);known_originals.add(p)\n\n    def project(p,rel,data,omitted):\n\
+        \        ref=source_ref(p)\n        write(rel,{'schema':'razr-K2-public-engineering-projection-v1',\n  \
+        \                 'derived_projection_not_raw_original':True,\n                   'original':ref,'original_relative_role':str(p.relative_to(case)),\n\
+        \                   'excluded_runtime_fields':omitted,'engineering_record':data})\n        projected[rel]={'original':ref,'excluded_fields':omitted};known_originals.add(p)\n\
+        \n    # Exact source files were frozen and checked by the workflow; only these\n    # directories contain\
+        \ reviewed source bytes. No logs or arbitrary JSON.\n    source=case/'source'\n    permitted_static={'host-cap.py','service-launch.py','python-downloads.json','f1/export_f1_engineering.py'}\n\
+        \    k2_names={'f1_common.py','frozen_key_factory_adapter.py','k2_endpoints.py','full_factory_endpoint.py',\n\
+        \              'read_factory_endpoint.py','supervise_k2.py','K2_K1_BINDING.json','export_k2_engineering.py','verify_k2_complete.py'}\n\
+        \    k1_names={'f1_common.py','k1_evidence.py','key_forward_loop_v1.py','KEY_FORWARD_LOOP_V1_CONTRACT.json',\n\
+        \              'full_factory_candidate.py','read_factory_candidate.py','supervise_k1.py','K1_F1A_BINDING.json',\n\
+        \              'export_k1_engineering.py','verify_k1_complete.py'}\n    f1_names={'f1_common.py','full_factory_witness.py','read_factory_witness.py',\n\
+        \              'supervise_f1.py','F1_L1_BINDING.json','export_f1_engineering.py'}\n    old_names={'integration/probe_key_endpoint_extension.py','tools/key_endpoint_resume.py',\n\
+        \               'run_key_endpoint_trials.py','tests/test_key_endpoint_extension.py','tests/test_key_endpoint_resume.py'}\n\
+        \    s4_before=case/'S4-source-before.json'\n    delta={}\n    if s4_before.is_file():\n        sr=json.loads(s4_before.read_text());delta=sr.get('thirteen_changed_source_sha256',{})\n\
+        \        checks['S4_all_present_tracked_bytes_match_HEAD']=sr.get('all_present_tracked_bytes_match_HEAD')\n\
+        \        project(s4_before,'S4-source-before.engineering.json',{\n            k:sr[k] for k in ('schema','source_commit','source_tree','present_source_sha256',\n\
+        \                'all_present_tracked_bytes_match_HEAD','full_checkout_claimed','thirteen_changed_source_sha256')\
+        \ if k in sr},\n            sorted(set(sr)-{'schema','source_commit','source_tree','present_source_sha256',\n\
+        \                'all_present_tracked_bytes_match_HEAD','full_checkout_claimed','thirteen_changed_source_sha256'}))\n\
+        \    for p in sorted(source.rglob('*')) if source.is_dir() else []:\n        if not p.is_file():continue\n\
+        \        rel=str(p.relative_to(source));allow=rel in permitted_static\n        if rel.startswith('k2/'):allow=rel[3:]\
+        \ in k2_names\n        elif rel.startswith('k1/'):allow=rel[3:] in k1_names\n        elif rel.startswith('f1/'):allow=rel[3:]\
+        \ in f1_names\n        elif rel.startswith('original-v4/'):allow=rel[12:] in old_names\n        elif rel.startswith('S4-delta/'):\n\
+        \            key=rel[9:];allow=key in delta and sha(p)==delta[key]\n        if allow:copy(p)\n\n    geometry_keys={'schema','functional_source_commit','pose','execution_completed','pose_input','status',\n\
+        \       'actual_complete_factory_called','native_scene_metadata','participant_count','nominal_inventory',\n\
+        \       'fixed_pair_certificate_reused','whole_motion_claimed','geometry_repair_applied',\n       'native_positive_q_STOP_SPRING_profiles','body_exports','panel_KEY_direct_Common','pairs','positive_pairs',\n\
+        \       'evaluation_failures','mismatches_to_factory','participant_names','expected_pair_count','resource',\n\
+        \       'persisted_pair_count','all_unordered_pairs_present_once','finite_pose_clear','seconds',\n     \
+        \  'factory_report_sha256','native_STEP_readback_executed','separate_process_from_factory',\n       'independent_CAD_kernel','body_readbacks','L1_binding_sha256','L1_original_input_members_verified',\n\
+        \       'L1_whole_endpoint_material_comparisons','complete_product_motion_proved','continuous_backlash_domain_proved',\n\
+        \       'physical_qualification','candidate_go','fixture_fabrication_go','manufacturing_go','G2_pass'}\n\
+        \    geometry_keys.update({'candidate_name','F1a_prerequisite','original_S4_scene_metadata','candidate_inventory','failure_stage',\n\
+        \       'original_baseline_material_comparisons','baseline_panel_KEY_direct_Common','candidate_application',\n\
+        \       'candidate_material_exports','candidate_contract_sha256','independent_material_builder_does_not_import_candidate_source',\n\
+        \       'candidate_material_readbacks','material_reconstruction'})\n    geometry_keys.update({'K1_prerequisite','finite_nominal_endpoint_only','remaining_unproved_domains','candidate_q0_material_comparisons'})\n\
+        \    controller_keys={'schema','mode','worker_started','completed','owned_child_identity_verified',\n  \
+        \     'procfs_visible_PID_used_for_signals','limits','resource_observations','resource_start_refused',\n\
+        \       'worker_exit_code','owned_channel_descriptors_closed','result_sha256','reported_execution_completed',\n\
+        \       'finite_trial_clear','source_bytes_unchanged','elapsed_seconds','locked_environment_unchanged','capacity_or_wall_stop'}\n\
+        \    for name in ('factory','readback'):\n        folder=case/name/'worker';rp=folder/'report.json'\n  \
+        \      if rp.is_file():\n            r=json.loads(rp.read_text());d={k:r[k] for k in geometry_keys if k\
+        \ in r}\n            if 'failure' in r:\n                d['original_failure_type']=r['failure'].split(':',1)[0]\n\
+        \                d['original_failure_message_sha256']=hashlib.sha256(r['failure'].encode()).hexdigest()\n\
+        \            before=r.get('identity_before',{});after=r.get('identity_after',{})\n            d['source_identity_projection']={\n\
+        \               'source_commit_before':before.get('repository_head_at_start'),\n               'source_commit_after':after.get('repository_head_at_finish'),\n\
+        \               'worktree_clean_before':before.get('worktree_status_at_start')=='',\n               'native_input_roles':before.get('native_input_roles'),\n\
+        \               'available_source_sha256':before.get('available_source_sha256'),\n               'executed_source_and_input_sha256':after.get('executed_source_and_input_sha256'),\n\
+        \               'changed_or_late_sources':after.get('changed_or_late_sources'),\n               'source_bytes_and_locked_environment_unchanged':after.get('source_bytes_and_locked_environment_unchanged'),\n\
+        \               'locked_environment_before_passed':before.get('environment',{}).get('passed'),\n       \
+        \        'locked_environment_after_passed':after.get('environment_after',{}).get('passed'),\n          \
+        \     'checked_package_count_before':before.get('environment',{}).get('checked_package_count'),\n      \
+        \         'checked_package_count_after':after.get('environment_after',{}).get('checked_package_count')}\n\
+        \            checks[name+'_execution_completed']=r.get('execution_completed')\n            checks[name+'_source_environment_unchanged']=after.get('source_bytes_and_locked_environment_unchanged')\n\
+        \            project(rp,f'{name}/worker/report.engineering.json',d,sorted(set(r)-geometry_keys))\n     \
+        \       for p in sorted(folder.rglob('*')):\n                if p.is_file() and (p.suffix in ('.step','.brep')\
+        \ or p.name=='pairs.jsonl'):copy(p)\n        cp=case/name/'controller.json'\n        if cp.is_file():\n\
+        \            c=json.loads(cp.read_text());project(cp,f'{name}/controller.engineering.json',\n          \
+        \      {k:c[k] for k in controller_keys if k in c},sorted(set(c)-controller_keys))\n\n    # The complete\
+        \ prerequisite is already a frozen engineering-only export.\n    # Every member is verified against the\
+        \ independently frozen manifest first.\n    for pose in ('near','far'):\n        prior=case/('prerequisite-'+pose)\n\
+        \        if not prior.is_dir():continue\n        manifest=prior/'ENGINEERING_MANIFEST.json'\n        binding_path=case/'source/k2/K2_K1_BINDING.json';driver_ref=case/'K2-driver-source.json'\n\
+        \        if manifest.is_file() and binding_path.is_file() and driver_ref.is_file():\n            expected_binding=json.loads(driver_ref.read_text())['K2_K1_BINDING.json']\n\
+        \            if sha(binding_path)!=expected_binding['sha256'] or binding_path.stat().st_size!=expected_binding['bytes']:\n\
+        \                raise ValueError('K1 prerequisite binding changed before export')\n            binding=json.loads(binding_path.read_text());entry=binding['poses'][pose]\n\
+        \            if sha(manifest)!=entry['engineering_manifest_sha256']:\n                raise ValueError('K1\
+        \ prerequisite manifest differs before export')\n            members=json.loads(manifest.read_text())['members'];missing=0\n\
+        \            for rel,ref in members.items():\n                p=prior/rel\n                if not p.is_file():missing+=1;continue\n\
+        \                if not p.resolve().is_relative_to(prior.resolve()) or p.is_symlink():\n               \
+        \     raise ValueError('unsafe K1 engineering member')\n                if sha(p)!=ref['sha256'] or p.stat().st_size!=ref['bytes']:\n\
+        \                    raise ValueError('K1 engineering member changed before export')\n                copy(p)\n\
+        \            copy(manifest);checks[pose+'_prerequisite_original_manifest_verified']=True\n            checks[pose+'_prerequisite_missing_manifest_members']=missing\n\
+        \        else:checks[pose+'_prerequisite_export_incomplete']=True\n\n    # L1 inputs have exact original\
+        \ geometry; result projections keep every\n    # geometric outcome and material record. Runtime traceback\
+        \ capture stays raw.\n    l1=case/'original-L1-inputs'\n    for p in sorted(l1.rglob('*')) if l1.is_dir()\
+        \ else []:\n        if p.is_file() and p.suffix in ('.step','.brep'):copy(p)\n        elif p.is_file() and\
+        \ p.name=='result.json':\n            r=json.loads(p.read_text());omit={'trace','started_monotonic'}\n \
+        \           project(p,str(p.relative_to(case)).replace('result.json','result.engineering.json'),\n     \
+        \               {k:v for k,v in r.items() if k not in omit},sorted(omit))\n\n    for name in ('K2-complete-observation.json','K2-prerequisite-verification.json','K2-driver-source.json'):\n\
+        \        p=case/name\n        if p.is_file():\n            normal(json.loads(p.read_text()));copy(p)\n \
+        \   # Numeric observer results are admitted; environment and /proc contents are not.\n    for label in ('factory-runner','readback-runner','environment-before-check','environment-after-check'):\n\
+        \        p=case/(label+'.namespace')/'SUMMARY.json'\n        if p.is_file():\n            r=json.loads(p.read_text());m=r.get('manager_result',{})\n\
+        \            data={k:r[k] for k in ('compatibility_verified','cleanup_verified','command_exit_code') if\
+        \ k in r}\n            data['manager']={k:m[k] for k in ('cleanup_verified','forced_cleanup','adopted_descendant_cleanup_required','normal_command_completed','host_cap_exit_code')\
+        \ if k in m}\n            checks[label+'_cleanup_verified']=r.get('cleanup_verified')\n            project(p,f'lifecycle/{label}.engineering.json',data,sorted(set(r)-set(data)))\n\
+        \    for name in ('environment-before.json','environment-after.json'):\n        p=case/name\n        if\
+        \ p.is_file():\n            r=json.loads(p.read_text());checks[name+'_passed']=r.get('passed')\n       \
+        \     allowed={'schema','passed','python_version','checked_packages','checked_package_count','pyproject_sha256','uv_lock_sha256','installation_artifact_provenance_verified'}\n\
+        \            project(p,name.replace('.json','.engineering.json'),{k:r[k] for k in allowed if k in r},sorted(set(r)-allowed))\n\
+        \    omitted=[]\n    for p in sorted(case.rglob('*')):\n        if not p.is_file() or p in known_originals:continue\n\
+        \        if p.is_symlink():raise ValueError('raw evidence symlink rejected')\n        rel=str(p.relative_to(case))\n\
+        \        category='runtime_interface_capture' if '/raw/' in rel else 'runtime_log' if p.suffix in ('.log','.stdout','.stderr','.txt','.jsonl')\
+        \ else 'runtime_receipt'\n        omitted.append({'category':category,**source_ref(p)})\n    write('EXPORT_SCOPE.json',{'schema':'razr-K2-engineering-export-scope-v1','functional_source_commit':S4,\n\
+        \          'raw_producer_reader_reports_modified':False,'all_copied_original_bytes_verified':True,\n   \
+        \       'raw_runtime_durable_preservation_claimed':False,'raw_runtime_location':'ephemeral runner only',\n\
+        \          'copied_originals':copied,'derived_projections':projected,'omitted_runtime_file_hashes':omitted,\n\
+        \          'local_runtime_verification_results':checks,\n          'scope':'Explicit source, geometric models,\
+        \ every pair/journal and geometric result; runtime interfaces and caller environment omitted.'})\n    members={str(p.relative_to(out)):source_ref(p)\
+        \ for p in sorted(out.rglob('*')) if p.is_file()}\n    write('ENGINEERING_MANIFEST.json',{'schema':'razr-K2-engineering-export-manifest-v1','members':members})\n\
+        \    print(json.dumps({'export_completed':True,'original_files_copied':len(copied),\n        'derived_reports':len(projected),'runtime_files_omitted':len(omitted),'native_claims':checks},sort_keys=True))\n\
+        \nif __name__=='__main__':main()\nK2_ENGINEERING_EXPORT\npython3 -B \"$CASE_DIR/source/k2/export_k2_engineering.py\"\
+        \ --case \"$CASE_DIR\" --output \"$CASE_DIR-engineering-export\"\n"
+    - name: Preserve only complete endpoint engineering evidence and frozen K1 engineering prerequisites
+      if: always()
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+      with:
+        name: S4-K2-${{ matrix.pose }}-${{ github.run_id }}-${{ github.run_attempt }}-engineering
+        path: ${{ runner.temp }}/razr-s4-key-loop-k2-20261026/factory/${{ matrix.pose }}-engineering-export
+        if-no-files-found: error
+        include-hidden-files: false
+        retention-days: 14

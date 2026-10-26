@@ -1,3 +1,5 @@
+> **2026-10-26 后继实证已更新：** 本文保留 2026-10-25 时点的历史结果。当前完整 factory、具名 KEY 修复、连续方法、数值与归档结果见 [2026-10-26 执行报告](../engineering-integration-20261026/EXECUTION_REPORT.md)。
+
 # 2026-10-25 全量执行：结果、原始证据与下一步
 
 **唯一候选 S4 已实际完成 36 套、1,654 项锁环境测试，全部通过；同版三组有限 KEY 原生对照也已完成。整机运动、当前结构与实物资格仍未完成。** 当前功能源码为 S4 `dd7def6e6a4de9f47dc91ca2ab336fb1a8828560`，tree `cdd9e2c41216201b6cd04dd610d45fde80499045`。完整原始回执已经封存，两位读者完成逐项独立核验后，候选 ref 已以 expected-old-SHA 保护实际快进并经 API 回读。真实器件、材料、阈值和物理试验仍按缺失记录。[同版软件结果](unit-evidence/source-dd7def6e/D6-full-unit/OUTCOME.json) · [候选推进回执](source-followon/S4_CANDIDATE_ADVANCEMENT.json)

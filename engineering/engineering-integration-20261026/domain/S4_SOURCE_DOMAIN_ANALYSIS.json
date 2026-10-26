@@ -1,0 +1,4444 @@
+{
+  "schema": "razr-S4-independent-source-domain-analysis-v1",
+  "functional_source": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "sources": {
+    "integration/product_assembly.py": {
+      "bytes": 31504,
+      "sha256": "fc5391d3be98810ada06ca27e65de9a77d2f599c4d1890bb31a4d87ef14791b4"
+    },
+    "integration/verify_cam_coupling.py": {
+      "bytes": 14560,
+      "sha256": "ffe16f403b104bfdf58897ed3ece1313b9bb82863569ba68f60617467b2841f1"
+    },
+    "integration/cam_coupling.py": {
+      "bytes": 14806,
+      "sha256": "4a3bf1d2b86d31fa8e3d60d3412e15548bf42287ed95d756798f3d88c6c4e631"
+    },
+    "integration/cam_contact_profile.py": {
+      "bytes": 3208,
+      "sha256": "c894d07e737ffeb927a092235845cf936418c19969b19107f5a6c2675e58ce9d"
+    },
+    "integration/product_nominal_motion.py": {
+      "bytes": 30871,
+      "sha256": "ad4c7d04092c7b6e118c0415ce77bdf4ee60ee335317c5da101bd1a98353f271"
+    }
+  },
+  "analyzer_sha256": "d30f61b8bb13faee4f098273bf6bea3c5114563920e459eb3419472fcdb2ca09",
+  "native_constants": {
+    "K": 0.15047021943573669,
+    "cam_halfwidth_mm": 0.0252814320072192,
+    "yoke_halfwidth_mm": 0.035355339059327334,
+    "dq_projection_halfwidth_mm": 0.06063677106654654,
+    "TOL": 1e-07
+  },
+  "models": {
+    "nominal_slot_bounds": {
+      "coordinates": [
+        "slide",
+        "dxL",
+        "dqL",
+        "dxR",
+        "dqR"
+      ],
+      "inequalities": [
+        {
+          "name": "slide_min",
+          "coefficients_exact": [
+            "-1",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "upper_bound_exact": "0"
+        },
+        {
+          "name": "slide_max",
+          "coefficients_exact": [
+            "1",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "upper_bound_exact": "319/4"
+        },
+        {
+          "name": "L_cam_-1",
+          "coefficients_exact": [
+            "0",
+            "-1",
+            "0",
+            "0",
+            "0"
+          ],
+          "upper_bound_exact": "7286876657094715/288230376151711744"
+        },
+        {
+          "name": "L_yoke_-1",
+          "coefficients_exact": [
+            "0",
+            "-1",
+            "1",
+            "0",
+            "0"
+          ],
+          "upper_bound_exact": "1273810334505153/36028797018963968"
+        },
+        {
+          "name": "L_profile_q_-1",
+          "coefficients_exact": [
+            "-1355315248362281/9007199254740992",
+            "0",
+            "-1",
+            "0",
+            "0"
+          ],
+          "upper_bound_exact": "0"
+        },
+        {
+          "name": "L_cam_1",
+          "coefficients_exact": [
+            "0",
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          "upper_bound_exact": "7286876657094715/288230376151711744"
+        },
+        {
+          "name": "L_yoke_1",
+          "coefficients_exact": [
+            "0",
+            "1",
+            "-1",
+            "0",
+            "0"
+          ],
+          "upper_bound_exact": "1273810334505153/36028797018963968"
+        },
+        {
+          "name": "L_profile_q_1",
+          "coefficients_exact": [
+            "1355315248362281/9007199254740992",
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          "upper_bound_exact": "12"
+        },
+        {
+          "name": "R_cam_-1",
+          "coefficients_exact": [
+            "0",
+            "0",
+            "0",
+            "-1",
+            "0"
+          ],
+          "upper_bound_exact": "7286876657094715/288230376151711744"
+        },
+        {
+          "name": "R_yoke_-1",
+          "coefficients_exact": [
+            "0",
+            "0",
+            "0",
+            "-1",
+            "1"
+          ],
+          "upper_bound_exact": "1273810334505153/36028797018963968"
+        },
+        {
+          "name": "R_profile_q_-1",
+          "coefficients_exact": [
+            "-1355315248362281/9007199254740992",
+            "0",
+            "0",
+            "0",
+            "-1"
+          ],
+          "upper_bound_exact": "0"
+        },
+        {
+          "name": "R_cam_1",
+          "coefficients_exact": [
+            "0",
+            "0",
+            "0",
+            "1",
+            "0"
+          ],
+          "upper_bound_exact": "7286876657094715/288230376151711744"
+        },
+        {
+          "name": "R_yoke_1",
+          "coefficients_exact": [
+            "0",
+            "0",
+            "0",
+            "1",
+            "-1"
+          ],
+          "upper_bound_exact": "1273810334505153/36028797018963968"
+        },
+        {
+          "name": "R_profile_q_1",
+          "coefficients_exact": [
+            "1355315248362281/9007199254740992",
+            "0",
+            "0",
+            "0",
+            "1"
+          ],
+          "upper_bound_exact": "12"
+        }
+      ],
+      "vertex_count": 60,
+      "vertices": [
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "-7286876657094715/288230376151711744",
+            "0",
+            "-7286876657094715/288230376151711744",
+            "0"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            -0.0252814320072192,
+            0.0,
+            -0.0252814320072192,
+            0.0
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "R_cam_-1",
+            "R_profile_q_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "-7286876657094715/288230376151711744",
+            "0",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            -0.0252814320072192,
+            0.0,
+            -0.0252814320072192,
+            0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.010073907052108134
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "R_cam_-1",
+            "R_yoke_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "-7286876657094715/288230376151711744",
+            "0",
+            "7286876657094715/288230376151711744",
+            "0"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            -0.0252814320072192,
+            0.0,
+            0.0252814320072192,
+            0.0
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "R_profile_q_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "-7286876657094715/288230376151711744",
+            "0",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            -0.0252814320072192,
+            0.0,
+            0.0252814320072192,
+            0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.06063677106654654
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "R_yoke_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "0"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            -0.0252814320072192,
+            0.010073907052108134,
+            -0.0252814320072192,
+            0.0
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.010073907052108134,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_cam_-1",
+            "L_yoke_-1",
+            "R_cam_-1",
+            "R_profile_q_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            -0.0252814320072192,
+            0.010073907052108134,
+            -0.0252814320072192,
+            0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.010073907052108134,
+            0.010073907052108134
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_cam_-1",
+            "L_yoke_-1",
+            "R_cam_-1",
+            "R_yoke_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "0"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            -0.0252814320072192,
+            0.010073907052108134,
+            0.0252814320072192,
+            0.0
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.010073907052108134,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_cam_-1",
+            "L_yoke_-1",
+            "R_profile_q_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            -0.0252814320072192,
+            0.010073907052108134,
+            0.0252814320072192,
+            0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.010073907052108134,
+            0.06063677106654654
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_cam_-1",
+            "L_yoke_-1",
+            "R_yoke_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "7286876657094715/288230376151711744",
+            "0",
+            "-7286876657094715/288230376151711744",
+            "0"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            0.0252814320072192,
+            0.0,
+            -0.0252814320072192,
+            0.0
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_profile_q_-1",
+            "L_cam_1",
+            "R_cam_-1",
+            "R_profile_q_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "7286876657094715/288230376151711744",
+            "0",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            0.0252814320072192,
+            0.0,
+            -0.0252814320072192,
+            0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.010073907052108134
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_profile_q_-1",
+            "L_cam_1",
+            "R_cam_-1",
+            "R_yoke_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "7286876657094715/288230376151711744",
+            "0",
+            "7286876657094715/288230376151711744",
+            "0"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            0.0252814320072192,
+            0.0,
+            0.0252814320072192,
+            0.0
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_profile_q_-1",
+            "L_cam_1",
+            "R_profile_q_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "7286876657094715/288230376151711744",
+            "0",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            0.0252814320072192,
+            0.0,
+            0.0252814320072192,
+            0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.06063677106654654
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_profile_q_-1",
+            "L_cam_1",
+            "R_yoke_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "0"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            0.0252814320072192,
+            0.06063677106654654,
+            -0.0252814320072192,
+            0.0
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.06063677106654654,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_yoke_-1",
+            "L_cam_1",
+            "R_cam_-1",
+            "R_profile_q_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            0.0252814320072192,
+            0.06063677106654654,
+            -0.0252814320072192,
+            0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.06063677106654654,
+            0.010073907052108134
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_yoke_-1",
+            "L_cam_1",
+            "R_cam_-1",
+            "R_yoke_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "0"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            0.0252814320072192,
+            0.06063677106654654,
+            0.0252814320072192,
+            0.0
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.06063677106654654,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_yoke_-1",
+            "L_cam_1",
+            "R_profile_q_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            0.0252814320072192,
+            0.06063677106654654,
+            0.0252814320072192,
+            0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.06063677106654654,
+            0.06063677106654654
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_yoke_-1",
+            "L_cam_1",
+            "R_yoke_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "2903606018946509/43370087947592992",
+            "-7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.06694950728380197,
+            -0.0252814320072192,
+            -0.010073907052108134,
+            0.0252814320072192,
+            -0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "R_profile_q_-1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "2903606018946509/43370087947592992",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.06694950728380197,
+            -0.0252814320072192,
+            0.010073907052108134,
+            0.0252814320072192,
+            -0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.020147814104216268,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_-1",
+            "R_profile_q_-1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "2903606018946509/43370087947592992",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.06694950728380197,
+            0.0252814320072192,
+            -0.010073907052108134,
+            -0.0252814320072192,
+            -0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_profile_q_-1",
+            "L_cam_1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_profile_q_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "2903606018946509/43370087947592992",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.06694950728380197,
+            0.0252814320072192,
+            -0.010073907052108134,
+            -0.0252814320072192,
+            0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.020147814104216268
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_profile_q_-1",
+            "L_cam_1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_yoke_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "2903606018946509/43370087947592992",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.06694950728380197,
+            0.0252814320072192,
+            -0.010073907052108134,
+            0.0252814320072192,
+            -0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_profile_q_-1",
+            "L_cam_1",
+            "L_yoke_1",
+            "R_profile_q_-1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "2903606018946509/43370087947592992",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.06694950728380197,
+            0.0252814320072192,
+            -0.010073907052108134,
+            0.0252814320072192,
+            0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.07071067811865467
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_profile_q_-1",
+            "L_cam_1",
+            "L_yoke_1",
+            "R_yoke_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "2903606018946509/43370087947592992",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.06694950728380197,
+            0.0252814320072192,
+            0.06063677106654654,
+            0.0252814320072192,
+            -0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.07071067811865467,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_yoke_-1",
+            "L_cam_1",
+            "R_profile_q_-1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "17477359333135939/43370087947592992",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.40298187437975713,
+            -0.0252814320072192,
+            -0.06063677106654654,
+            -0.0252814320072192,
+            -0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            -6.938893903907228e-18,
+            -6.938893903907228e-18
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": false,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_profile_q_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "17477359333135939/43370087947592992",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.40298187437975713,
+            -0.0252814320072192,
+            -0.06063677106654654,
+            -0.0252814320072192,
+            0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            -6.938893903907228e-18,
+            0.07071067811865467
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": false,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_yoke_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "17477359333135939/43370087947592992",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.40298187437975713,
+            -0.0252814320072192,
+            -0.06063677106654654,
+            0.0252814320072192,
+            -0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            -6.938893903907228e-18,
+            0.050562864014438394
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": false,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "L_yoke_1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "17477359333135939/43370087947592992",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.40298187437975713,
+            -0.0252814320072192,
+            -0.06063677106654654,
+            0.0252814320072192,
+            0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            -6.938893903907228e-18,
+            0.12127354213309308
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": false,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "L_yoke_1",
+            "R_yoke_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "17477359333135939/43370087947592992",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.40298187437975713,
+            -0.0252814320072192,
+            0.010073907052108134,
+            -0.0252814320072192,
+            -0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.07071067811865467,
+            -6.938893903907228e-18
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": false,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_-1",
+            "R_cam_-1",
+            "R_profile_q_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "17477359333135939/43370087947592992",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.40298187437975713,
+            0.0252814320072192,
+            -0.010073907052108134,
+            -0.0252814320072192,
+            -0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.050562864014438394,
+            -6.938893903907228e-18
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": false,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_profile_q_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "17477359333135939/43370087947592992",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            0.40298187437975713,
+            0.0252814320072192,
+            0.06063677106654654,
+            -0.0252814320072192,
+            -0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.12127354213309308,
+            -6.938893903907228e-18
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": false,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_yoke_-1",
+            "L_cam_1",
+            "R_cam_-1",
+            "R_profile_q_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "3441287154487404989/43370087947592992",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.34701812562024,
+            -0.0252814320072192,
+            -0.06063677106654654,
+            0.0252814320072192,
+            0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.878726457866907,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_1",
+            "R_yoke_-1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "3441287154487404989/43370087947592992",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.34701812562024,
+            -0.0252814320072192,
+            0.010073907052108134,
+            0.0252814320072192,
+            0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.949437135985562,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_-1",
+            "R_yoke_-1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "3441287154487404989/43370087947592992",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.34701812562024,
+            0.0252814320072192,
+            -0.010073907052108134,
+            0.0252814320072192,
+            0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.929289321881345,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_1",
+            "L_yoke_1",
+            "R_yoke_-1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "3441287154487404989/43370087947592992",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.34701812562024,
+            0.0252814320072192,
+            0.06063677106654654,
+            -0.0252814320072192,
+            -0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.878726457866907
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_yoke_-1",
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "3441287154487404989/43370087947592992",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.34701812562024,
+            0.0252814320072192,
+            0.06063677106654654,
+            -0.0252814320072192,
+            0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.949437135985562
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_yoke_-1",
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_yoke_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "3441287154487404989/43370087947592992",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.34701812562024,
+            0.0252814320072192,
+            0.06063677106654654,
+            0.0252814320072192,
+            -0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.929289321881345
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_yoke_-1",
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "3441287154487404989/43370087947592992",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.34701812562024,
+            0.0252814320072192,
+            0.06063677106654654,
+            0.0252814320072192,
+            0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_yoke_-1",
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_yoke_-1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "3455860907801594419/43370087947592992",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.68305049271619,
+            -0.0252814320072192,
+            -0.06063677106654654,
+            -0.0252814320072192,
+            0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.929289321881345,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_yoke_-1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "3455860907801594419/43370087947592992",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.68305049271619,
+            -0.0252814320072192,
+            0.010073907052108134,
+            -0.0252814320072192,
+            -0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.929289321881345
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_-1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "3455860907801594419/43370087947592992",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.68305049271619,
+            -0.0252814320072192,
+            0.010073907052108134,
+            -0.0252814320072192,
+            0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_-1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_yoke_-1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "3455860907801594419/43370087947592992",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.68305049271619,
+            -0.0252814320072192,
+            0.010073907052108134,
+            0.0252814320072192,
+            -0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.979852185895783
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_-1",
+            "L_profile_q_1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "3455860907801594419/43370087947592992",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.68305049271619,
+            -0.0252814320072192,
+            0.010073907052108134,
+            0.0252814320072192,
+            0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_-1",
+            "L_profile_q_1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "3455860907801594419/43370087947592992",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.68305049271619,
+            0.0252814320072192,
+            -0.010073907052108134,
+            -0.0252814320072192,
+            0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.979852185895783,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_yoke_-1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "3455860907801594419/43370087947592992",
+            "7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.68305049271619,
+            0.0252814320072192,
+            0.010073907052108134,
+            -0.0252814320072192,
+            0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_yoke_-1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            -0.0252814320072192,
+            -0.06063677106654654,
+            -0.0252814320072192,
+            -0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.939363228933454,
+            11.939363228933454
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_-1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "-23/36028797018963968"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            -0.0252814320072192,
+            -0.06063677106654654,
+            -0.0252814320072192,
+            -6.38378239159465e-16
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.939363228933454,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_-1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            -0.0252814320072192,
+            -0.06063677106654654,
+            0.0252814320072192,
+            -0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.939363228933454,
+            11.989926092947892
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_-1",
+            "L_yoke_1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "-23/36028797018963968"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            -0.0252814320072192,
+            -0.06063677106654654,
+            0.0252814320072192,
+            -6.38378239159465e-16
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.939363228933454,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_-1",
+            "L_yoke_1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "-7286876657094715/288230376151711744",
+            "-23/36028797018963968",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            -0.0252814320072192,
+            -6.38378239159465e-16,
+            -0.0252814320072192,
+            -0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.939363228933454
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_-1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "-7286876657094715/288230376151711744",
+            "-23/36028797018963968",
+            "-7286876657094715/288230376151711744",
+            "-23/36028797018963968"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            -0.0252814320072192,
+            -6.38378239159465e-16,
+            -0.0252814320072192,
+            -6.38378239159465e-16
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_-1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "-7286876657094715/288230376151711744",
+            "-23/36028797018963968",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            -0.0252814320072192,
+            -6.38378239159465e-16,
+            0.0252814320072192,
+            -0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.989926092947892
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_-1",
+            "L_profile_q_1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "-7286876657094715/288230376151711744",
+            "-23/36028797018963968",
+            "7286876657094715/288230376151711744",
+            "-23/36028797018963968"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            -0.0252814320072192,
+            -6.38378239159465e-16,
+            0.0252814320072192,
+            -6.38378239159465e-16
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_-1",
+            "L_profile_q_1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            0.0252814320072192,
+            -0.010073907052108134,
+            -0.0252814320072192,
+            -0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.989926092947892,
+            11.939363228933454
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744",
+            "-7286876657094715/288230376151711744",
+            "-23/36028797018963968"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            0.0252814320072192,
+            -0.010073907052108134,
+            -0.0252814320072192,
+            -6.38378239159465e-16
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.989926092947892,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            0.0252814320072192,
+            -0.010073907052108134,
+            0.0252814320072192,
+            -0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.989926092947892,
+            11.989926092947892
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_1",
+            "L_yoke_1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744",
+            "7286876657094715/288230376151711744",
+            "-23/36028797018963968"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            0.0252814320072192,
+            -0.010073907052108134,
+            0.0252814320072192,
+            -6.38378239159465e-16
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.989926092947892,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_1",
+            "L_yoke_1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "7286876657094715/288230376151711744",
+            "-23/36028797018963968",
+            "-7286876657094715/288230376151711744",
+            "-17477359333135939/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            0.0252814320072192,
+            -6.38378239159465e-16,
+            -0.0252814320072192,
+            -0.06063677106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.939363228933454
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "7286876657094715/288230376151711744",
+            "-23/36028797018963968",
+            "-7286876657094715/288230376151711744",
+            "-23/36028797018963968"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            0.0252814320072192,
+            -6.38378239159465e-16,
+            -0.0252814320072192,
+            -6.38378239159465e-16
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "7286876657094715/288230376151711744",
+            "-23/36028797018963968",
+            "7286876657094715/288230376151711744",
+            "-2903606018946509/288230376151711744"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            0.0252814320072192,
+            -6.38378239159465e-16,
+            0.0252814320072192,
+            -0.010073907052108134
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.989926092947892
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "7286876657094715/288230376151711744",
+            "-23/36028797018963968",
+            "7286876657094715/288230376151711744",
+            "-23/36028797018963968"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            0.0252814320072192,
+            -6.38378239159465e-16,
+            0.0252814320072192,
+            -6.38378239159465e-16
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        }
+      ],
+      "independent_fixed_section_product_enumeration_agrees": true,
+      "stroke_strata": [
+        {
+          "slide_exact": "0",
+          "slide_mm": 0.0,
+          "vertices_at_slide": 16
+        },
+        {
+          "slide_exact": "2903606018946509/43370087947592992",
+          "slide_mm": 0.06694950728380197,
+          "vertices_at_slide": 7
+        },
+        {
+          "slide_exact": "17477359333135939/43370087947592992",
+          "slide_mm": 0.40298187437975713,
+          "vertices_at_slide": 7
+        },
+        {
+          "slide_exact": "3441287154487404989/43370087947592992",
+          "slide_mm": 79.34701812562024,
+          "vertices_at_slide": 7
+        },
+        {
+          "slide_exact": "3455860907801594419/43370087947592992",
+          "slide_mm": 79.68305049271619,
+          "vertices_at_slide": 7
+        },
+        {
+          "slide_exact": "319/4",
+          "slide_mm": 79.75,
+          "vertices_at_slide": 16
+        }
+      ],
+      "real_arithmetic_on_recorded_constants_only": true,
+      "equivalent_to_all_binary64_factory_comparisons": false
+    },
+    "with_actual_binary64_comparison_bound_TOL": {
+      "coordinates": [
+        "slide",
+        "dxL",
+        "dqL",
+        "dxR",
+        "dqR"
+      ],
+      "inequalities": [
+        {
+          "name": "slide_min",
+          "coefficients_exact": [
+            "-1",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "upper_bound_exact": "0"
+        },
+        {
+          "name": "slide_max",
+          "coefficients_exact": [
+            "1",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "upper_bound_exact": "319/4"
+        },
+        {
+          "name": "L_cam_-1",
+          "coefficients_exact": [
+            "0",
+            "-1",
+            "0",
+            "0",
+            "0"
+          ],
+          "upper_bound_exact": "3643452740066165/144115188075855872"
+        },
+        {
+          "name": "L_yoke_-1",
+          "coefficients_exact": [
+            "0",
+            "-1",
+            "1",
+            "0",
+            "0"
+          ],
+          "upper_bound_exact": "1273813937384855/36028797018963968"
+        },
+        {
+          "name": "L_profile_q_-1",
+          "coefficients_exact": [
+            "-1355315248362281/9007199254740992",
+            "0",
+            "-1",
+            "0",
+            "0"
+          ],
+          "upper_bound_exact": "0"
+        },
+        {
+          "name": "L_cam_1",
+          "coefficients_exact": [
+            "0",
+            "1",
+            "0",
+            "0",
+            "0"
+          ],
+          "upper_bound_exact": "3643452740066165/144115188075855872"
+        },
+        {
+          "name": "L_yoke_1",
+          "coefficients_exact": [
+            "0",
+            "1",
+            "-1",
+            "0",
+            "0"
+          ],
+          "upper_bound_exact": "1273813937384855/36028797018963968"
+        },
+        {
+          "name": "L_profile_q_1",
+          "coefficients_exact": [
+            "1355315248362281/9007199254740992",
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          "upper_bound_exact": "12"
+        },
+        {
+          "name": "R_cam_-1",
+          "coefficients_exact": [
+            "0",
+            "0",
+            "0",
+            "-1",
+            "0"
+          ],
+          "upper_bound_exact": "3643452740066165/144115188075855872"
+        },
+        {
+          "name": "R_yoke_-1",
+          "coefficients_exact": [
+            "0",
+            "0",
+            "0",
+            "-1",
+            "1"
+          ],
+          "upper_bound_exact": "1273813937384855/36028797018963968"
+        },
+        {
+          "name": "R_profile_q_-1",
+          "coefficients_exact": [
+            "-1355315248362281/9007199254740992",
+            "0",
+            "0",
+            "0",
+            "-1"
+          ],
+          "upper_bound_exact": "0"
+        },
+        {
+          "name": "R_cam_1",
+          "coefficients_exact": [
+            "0",
+            "0",
+            "0",
+            "1",
+            "0"
+          ],
+          "upper_bound_exact": "3643452740066165/144115188075855872"
+        },
+        {
+          "name": "R_yoke_1",
+          "coefficients_exact": [
+            "0",
+            "0",
+            "0",
+            "1",
+            "-1"
+          ],
+          "upper_bound_exact": "1273813937384855/36028797018963968"
+        },
+        {
+          "name": "R_profile_q_1",
+          "coefficients_exact": [
+            "1355315248362281/9007199254740992",
+            "0",
+            "0",
+            "0",
+            "1"
+          ],
+          "upper_bound_exact": "12"
+        }
+      ],
+      "vertex_count": 60,
+      "vertices": [
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "-3643452740066165/144115188075855872",
+            "0",
+            "-3643452740066165/144115188075855872",
+            "0"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            -0.0252815320072192,
+            0.0,
+            -0.0252815320072192,
+            0.0
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "R_cam_-1",
+            "R_profile_q_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "-3643452740066165/144115188075855872",
+            "0",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            -0.0252815320072192,
+            0.0,
+            -0.0252815320072192,
+            0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.010073907052108137
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "R_cam_-1",
+            "R_yoke_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "-3643452740066165/144115188075855872",
+            "0",
+            "3643452740066165/144115188075855872",
+            "0"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            -0.0252815320072192,
+            0.0,
+            0.0252815320072192,
+            0.0
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "R_profile_q_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "-3643452740066165/144115188075855872",
+            "0",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            -0.0252815320072192,
+            0.0,
+            0.0252815320072192,
+            0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.06063697106654654
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "R_yoke_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "0"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            -0.0252815320072192,
+            0.010073907052108137,
+            -0.0252815320072192,
+            0.0
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.010073907052108137,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_cam_-1",
+            "L_yoke_-1",
+            "R_cam_-1",
+            "R_profile_q_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            -0.0252815320072192,
+            0.010073907052108137,
+            -0.0252815320072192,
+            0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.010073907052108137,
+            0.010073907052108137
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_cam_-1",
+            "L_yoke_-1",
+            "R_cam_-1",
+            "R_yoke_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "0"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            -0.0252815320072192,
+            0.010073907052108137,
+            0.0252815320072192,
+            0.0
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.010073907052108137,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_cam_-1",
+            "L_yoke_-1",
+            "R_profile_q_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            -0.0252815320072192,
+            0.010073907052108137,
+            0.0252815320072192,
+            0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.010073907052108137,
+            0.06063697106654654
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_cam_-1",
+            "L_yoke_-1",
+            "R_yoke_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "3643452740066165/144115188075855872",
+            "0",
+            "-3643452740066165/144115188075855872",
+            "0"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            0.0252815320072192,
+            0.0,
+            -0.0252815320072192,
+            0.0
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_profile_q_-1",
+            "L_cam_1",
+            "R_cam_-1",
+            "R_profile_q_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "3643452740066165/144115188075855872",
+            "0",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            0.0252815320072192,
+            0.0,
+            -0.0252815320072192,
+            0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.010073907052108137
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_profile_q_-1",
+            "L_cam_1",
+            "R_cam_-1",
+            "R_yoke_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "3643452740066165/144115188075855872",
+            "0",
+            "3643452740066165/144115188075855872",
+            "0"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            0.0252815320072192,
+            0.0,
+            0.0252815320072192,
+            0.0
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_profile_q_-1",
+            "L_cam_1",
+            "R_profile_q_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "3643452740066165/144115188075855872",
+            "0",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            0.0252815320072192,
+            0.0,
+            0.0252815320072192,
+            0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.06063697106654654
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_profile_q_-1",
+            "L_cam_1",
+            "R_yoke_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "0"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            0.0252815320072192,
+            0.06063697106654654,
+            -0.0252815320072192,
+            0.0
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.06063697106654654,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_yoke_-1",
+            "L_cam_1",
+            "R_cam_-1",
+            "R_profile_q_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            0.0252815320072192,
+            0.06063697106654654,
+            -0.0252815320072192,
+            0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.06063697106654654,
+            0.010073907052108137
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_yoke_-1",
+            "L_cam_1",
+            "R_cam_-1",
+            "R_yoke_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "0"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            0.0252815320072192,
+            0.06063697106654654,
+            0.0252815320072192,
+            0.0
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.06063697106654654,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_yoke_-1",
+            "L_cam_1",
+            "R_profile_q_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "0",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.0,
+            0.0252815320072192,
+            0.06063697106654654,
+            0.0252815320072192,
+            0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.06063697106654654,
+            0.06063697106654654
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_min",
+            "L_yoke_-1",
+            "L_cam_1",
+            "R_yoke_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1451803009473255/21685043973796496",
+            "-3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.06694950728380199,
+            -0.0252815320072192,
+            -0.010073907052108137,
+            0.0252815320072192,
+            -0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "R_profile_q_-1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1451803009473255/21685043973796496",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.06694950728380199,
+            -0.0252815320072192,
+            0.010073907052108137,
+            0.0252815320072192,
+            -0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.020147814104216275,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_-1",
+            "R_profile_q_-1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1451803009473255/21685043973796496",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.06694950728380199,
+            0.0252815320072192,
+            -0.010073907052108137,
+            -0.0252815320072192,
+            -0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_profile_q_-1",
+            "L_cam_1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_profile_q_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1451803009473255/21685043973796496",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.06694950728380199,
+            0.0252815320072192,
+            -0.010073907052108137,
+            -0.0252815320072192,
+            0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.020147814104216275
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_profile_q_-1",
+            "L_cam_1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_yoke_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1451803009473255/21685043973796496",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.06694950728380199,
+            0.0252815320072192,
+            -0.010073907052108137,
+            0.0252815320072192,
+            -0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_profile_q_-1",
+            "L_cam_1",
+            "L_yoke_1",
+            "R_profile_q_-1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1451803009473255/21685043973796496",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.06694950728380199,
+            0.0252815320072192,
+            -0.010073907052108137,
+            0.0252815320072192,
+            0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.0,
+            0.07071087811865467
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_profile_q_-1",
+            "L_cam_1",
+            "L_yoke_1",
+            "R_yoke_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1451803009473255/21685043973796496",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.06694950728380199,
+            0.0252815320072192,
+            0.06063697106654654,
+            0.0252815320072192,
+            -0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.07071087811865467,
+            0.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_yoke_-1",
+            "L_cam_1",
+            "R_profile_q_-1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "8738708489605585/21685043973796496",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.40298320354642386,
+            -0.0252815320072192,
+            -0.06063697106654654,
+            -0.0252815320072192,
+            -0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            6.938893903907228e-18,
+            6.938893903907228e-18
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_profile_q_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "8738708489605585/21685043973796496",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.40298320354642386,
+            -0.0252815320072192,
+            -0.06063697106654654,
+            -0.0252815320072192,
+            0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            6.938893903907228e-18,
+            0.07071087811865467
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_yoke_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "8738708489605585/21685043973796496",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.40298320354642386,
+            -0.0252815320072192,
+            -0.06063697106654654,
+            0.0252815320072192,
+            -0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            6.938893903907228e-18,
+            0.05056306401443841
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "L_yoke_1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "8738708489605585/21685043973796496",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.40298320354642386,
+            -0.0252815320072192,
+            -0.06063697106654654,
+            0.0252815320072192,
+            0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            6.938893903907228e-18,
+            0.12127394213309309
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_profile_q_-1",
+            "L_yoke_1",
+            "R_yoke_-1",
+            "R_cam_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "8738708489605585/21685043973796496",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.40298320354642386,
+            -0.0252815320072192,
+            0.010073907052108137,
+            -0.0252815320072192,
+            -0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.07071087811865467,
+            6.938893903907228e-18
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_-1",
+            "R_cam_-1",
+            "R_profile_q_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "8738708489605585/21685043973796496",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.40298320354642386,
+            0.0252815320072192,
+            -0.010073907052108137,
+            -0.0252815320072192,
+            -0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.05056306401443841,
+            6.938893903907228e-18
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_profile_q_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "8738708489605585/21685043973796496",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            0.40298320354642386,
+            0.0252815320072192,
+            0.06063697106654654,
+            -0.0252815320072192,
+            -0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            0.12127394213309309,
+            6.938893903907228e-18
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_yoke_-1",
+            "L_cam_1",
+            "R_cam_-1",
+            "R_profile_q_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1720643548420664879/21685043973796496",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.34701679645357,
+            -0.0252815320072192,
+            -0.06063697106654654,
+            0.0252815320072192,
+            0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.878726057866906,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_1",
+            "R_yoke_-1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1720643548420664879/21685043973796496",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.34701679645357,
+            -0.0252815320072192,
+            0.010073907052108137,
+            0.0252815320072192,
+            0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.949436935985561,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_-1",
+            "R_yoke_-1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1720643548420664879/21685043973796496",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.34701679645357,
+            0.0252815320072192,
+            -0.010073907052108137,
+            0.0252815320072192,
+            0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.929289121881345,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_1",
+            "L_yoke_1",
+            "R_yoke_-1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1720643548420664879/21685043973796496",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.34701679645357,
+            0.0252815320072192,
+            0.06063697106654654,
+            -0.0252815320072192,
+            -0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.878726057866906
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_yoke_-1",
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1720643548420664879/21685043973796496",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.34701679645357,
+            0.0252815320072192,
+            0.06063697106654654,
+            -0.0252815320072192,
+            0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.949436935985561
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_yoke_-1",
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_yoke_-1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1720643548420664879/21685043973796496",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.34701679645357,
+            0.0252815320072192,
+            0.06063697106654654,
+            0.0252815320072192,
+            -0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.929289121881345
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_yoke_-1",
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1720643548420664879/21685043973796496",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.34701679645357,
+            0.0252815320072192,
+            0.06063697106654654,
+            0.0252815320072192,
+            0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_yoke_-1",
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_yoke_-1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1727930453900797209/21685043973796496",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.68305049271619,
+            -0.0252815320072192,
+            -0.06063697106654654,
+            -0.0252815320072192,
+            0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.929289121881345,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_yoke_-1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1727930453900797209/21685043973796496",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.68305049271619,
+            -0.0252815320072192,
+            0.010073907052108137,
+            -0.0252815320072192,
+            -0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.929289121881345
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_-1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1727930453900797209/21685043973796496",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.68305049271619,
+            -0.0252815320072192,
+            0.010073907052108137,
+            -0.0252815320072192,
+            0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_-1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_yoke_-1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1727930453900797209/21685043973796496",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.68305049271619,
+            -0.0252815320072192,
+            0.010073907052108137,
+            0.0252815320072192,
+            -0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.979852185895783
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_-1",
+            "L_profile_q_1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1727930453900797209/21685043973796496",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.68305049271619,
+            -0.0252815320072192,
+            0.010073907052108137,
+            0.0252815320072192,
+            0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_-1",
+            "L_yoke_-1",
+            "L_profile_q_1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1727930453900797209/21685043973796496",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.68305049271619,
+            0.0252815320072192,
+            -0.010073907052108137,
+            -0.0252815320072192,
+            0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.979852185895783,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_yoke_-1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "1727930453900797209/21685043973796496",
+            "3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.68305049271619,
+            0.0252815320072192,
+            0.010073907052108137,
+            -0.0252815320072192,
+            0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_yoke_-1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            -0.0252815320072192,
+            -0.06063697106654654,
+            -0.0252815320072192,
+            -0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.939363028933453,
+            11.939363028933453
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_-1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "-23/36028797018963968"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            -0.0252815320072192,
+            -0.06063697106654654,
+            -0.0252815320072192,
+            -6.38378239159465e-16
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.939363028933453,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_-1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            -0.0252815320072192,
+            -0.06063697106654654,
+            0.0252815320072192,
+            -0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.939363028933453,
+            11.989926092947892
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_-1",
+            "L_yoke_1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "-23/36028797018963968"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            -0.0252815320072192,
+            -0.06063697106654654,
+            0.0252815320072192,
+            -6.38378239159465e-16
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.939363028933453,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_-1",
+            "L_yoke_1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "-3643452740066165/144115188075855872",
+            "-23/36028797018963968",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            -0.0252815320072192,
+            -6.38378239159465e-16,
+            -0.0252815320072192,
+            -0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.939363028933453
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_-1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "-3643452740066165/144115188075855872",
+            "-23/36028797018963968",
+            "-3643452740066165/144115188075855872",
+            "-23/36028797018963968"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            -0.0252815320072192,
+            -6.38378239159465e-16,
+            -0.0252815320072192,
+            -6.38378239159465e-16
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_-1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "-3643452740066165/144115188075855872",
+            "-23/36028797018963968",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            -0.0252815320072192,
+            -6.38378239159465e-16,
+            0.0252815320072192,
+            -0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.989926092947892
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_-1",
+            "L_profile_q_1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "-3643452740066165/144115188075855872",
+            "-23/36028797018963968",
+            "3643452740066165/144115188075855872",
+            "-23/36028797018963968"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            -0.0252815320072192,
+            -6.38378239159465e-16,
+            0.0252815320072192,
+            -6.38378239159465e-16
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_-1",
+            "L_profile_q_1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            0.0252815320072192,
+            -0.010073907052108137,
+            -0.0252815320072192,
+            -0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.989926092947892,
+            11.939363028933453
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872",
+            "-3643452740066165/144115188075855872",
+            "-23/36028797018963968"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            0.0252815320072192,
+            -0.010073907052108137,
+            -0.0252815320072192,
+            -6.38378239159465e-16
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.989926092947892,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_1",
+            "L_yoke_1",
+            "R_cam_-1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            0.0252815320072192,
+            -0.010073907052108137,
+            0.0252815320072192,
+            -0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.989926092947892,
+            11.989926092947892
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_1",
+            "L_yoke_1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872",
+            "3643452740066165/144115188075855872",
+            "-23/36028797018963968"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            0.0252815320072192,
+            -0.010073907052108137,
+            0.0252815320072192,
+            -6.38378239159465e-16
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            11.989926092947892,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_1",
+            "L_yoke_1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "3643452740066165/144115188075855872",
+            "-23/36028797018963968",
+            "-3643452740066165/144115188075855872",
+            "-8738708489605585/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            0.0252815320072192,
+            -6.38378239159465e-16,
+            -0.0252815320072192,
+            -0.06063697106654654
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.939363028933453
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "3643452740066165/144115188075855872",
+            "-23/36028797018963968",
+            "-3643452740066165/144115188075855872",
+            "-23/36028797018963968"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            0.0252815320072192,
+            -6.38378239159465e-16,
+            -0.0252815320072192,
+            -6.38378239159465e-16
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_cam_-1",
+            "R_profile_q_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "3643452740066165/144115188075855872",
+            "-23/36028797018963968",
+            "3643452740066165/144115188075855872",
+            "-1451803009473255/144115188075855872"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            0.0252815320072192,
+            -6.38378239159465e-16,
+            0.0252815320072192,
+            -0.010073907052108137
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            11.989926092947892
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_cam_1",
+            "R_yoke_1"
+          ]
+        },
+        {
+          "exact_rational_coordinates": [
+            "319/4",
+            "3643452740066165/144115188075855872",
+            "-23/36028797018963968",
+            "3643452740066165/144115188075855872",
+            "-23/36028797018963968"
+          ],
+          "binary64_coordinates": [
+            79.75,
+            0.0252815320072192,
+            -6.38378239159465e-16,
+            0.0252815320072192,
+            -6.38378239159465e-16
+          ],
+          "original_arithmetic_q_after_binary64_vertex_conversion": [
+            12.0,
+            12.0
+          ],
+          "source_slot_predicate_replay": true,
+          "source_q_predicate_replay": true,
+          "full_factory_not_called": true,
+          "active_constraints": [
+            "slide_max",
+            "L_cam_1",
+            "L_profile_q_1",
+            "R_cam_1",
+            "R_profile_q_1"
+          ]
+        }
+      ],
+      "independent_fixed_section_product_enumeration_agrees": true,
+      "stroke_strata": [
+        {
+          "slide_exact": "0",
+          "slide_mm": 0.0,
+          "vertices_at_slide": 16
+        },
+        {
+          "slide_exact": "1451803009473255/21685043973796496",
+          "slide_mm": 0.06694950728380199,
+          "vertices_at_slide": 7
+        },
+        {
+          "slide_exact": "8738708489605585/21685043973796496",
+          "slide_mm": 0.40298320354642386,
+          "vertices_at_slide": 7
+        },
+        {
+          "slide_exact": "1720643548420664879/21685043973796496",
+          "slide_mm": 79.34701679645357,
+          "vertices_at_slide": 7
+        },
+        {
+          "slide_exact": "1727930453900797209/21685043973796496",
+          "slide_mm": 79.68305049271619,
+          "vertices_at_slide": 7
+        },
+        {
+          "slide_exact": "319/4",
+          "slide_mm": 79.75,
+          "vertices_at_slide": 16
+        }
+      ],
+      "real_arithmetic_on_recorded_constants_only": true,
+      "equivalent_to_all_binary64_factory_comparisons": false
+    }
+  },
+  "telescope_decimal_dimension_polytope": {
+    "coordinates": [
+      "descent",
+      "jL1",
+      "jL2",
+      "jR1",
+      "jR2"
+    ],
+    "third_joint": "8.5-descent-j1-j2 independently on each side",
+    "constraints": [
+      {
+        "name": "descent_min",
+        "coefficients_exact": [
+          "-1",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "upper_bound_exact": "0"
+      },
+      {
+        "name": "descent_max",
+        "coefficients_exact": [
+          "1",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "upper_bound_exact": "41/5"
+      },
+      {
+        "name": "L_j1_max",
+        "coefficients_exact": [
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "upper_bound_exact": "29/10"
+      },
+      {
+        "name": "L_j1_min",
+        "coefficients_exact": [
+          "0",
+          "-1",
+          "0",
+          "0",
+          "0"
+        ],
+        "upper_bound_exact": "-1/10"
+      },
+      {
+        "name": "L_j2_max",
+        "coefficients_exact": [
+          "0",
+          "0",
+          "1",
+          "0",
+          "0"
+        ],
+        "upper_bound_exact": "29/10"
+      },
+      {
+        "name": "L_j2_min",
+        "coefficients_exact": [
+          "0",
+          "0",
+          "-1",
+          "0",
+          "0"
+        ],
+        "upper_bound_exact": "-1/10"
+      },
+      {
+        "name": "L_j3_min",
+        "coefficients_exact": [
+          "1",
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "upper_bound_exact": "42/5"
+      },
+      {
+        "name": "L_j3_max",
+        "coefficients_exact": [
+          "-1",
+          "-1",
+          "-1",
+          "0",
+          "0"
+        ],
+        "upper_bound_exact": "-28/5"
+      },
+      {
+        "name": "R_j1_max",
+        "coefficients_exact": [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0"
+        ],
+        "upper_bound_exact": "29/10"
+      },
+      {
+        "name": "R_j1_min",
+        "coefficients_exact": [
+          "0",
+          "0",
+          "0",
+          "-1",
+          "0"
+        ],
+        "upper_bound_exact": "-1/10"
+      },
+      {
+        "name": "R_j2_max",
+        "coefficients_exact": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1"
+        ],
+        "upper_bound_exact": "29/10"
+      },
+      {
+        "name": "R_j2_min",
+        "coefficients_exact": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "-1"
+        ],
+        "upper_bound_exact": "-1/10"
+      },
+      {
+        "name": "R_j3_min",
+        "coefficients_exact": [
+          "1",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "upper_bound_exact": "42/5"
+      },
+      {
+        "name": "R_j3_max",
+        "coefficients_exact": [
+          "-1",
+          "0",
+          "0",
+          "-1",
+          "-1"
+        ],
+        "upper_bound_exact": "-28/5"
+      }
+    ],
+    "vertex_count": 28,
+    "vertices_exact": [
+      [
+        "0",
+        "27/10",
+        "29/10",
+        "27/10",
+        "29/10"
+      ],
+      [
+        "0",
+        "27/10",
+        "29/10",
+        "29/10",
+        "27/10"
+      ],
+      [
+        "0",
+        "27/10",
+        "29/10",
+        "29/10",
+        "29/10"
+      ],
+      [
+        "0",
+        "29/10",
+        "27/10",
+        "27/10",
+        "29/10"
+      ],
+      [
+        "0",
+        "29/10",
+        "27/10",
+        "29/10",
+        "27/10"
+      ],
+      [
+        "0",
+        "29/10",
+        "27/10",
+        "29/10",
+        "29/10"
+      ],
+      [
+        "0",
+        "29/10",
+        "29/10",
+        "27/10",
+        "29/10"
+      ],
+      [
+        "0",
+        "29/10",
+        "29/10",
+        "29/10",
+        "27/10"
+      ],
+      [
+        "0",
+        "29/10",
+        "29/10",
+        "29/10",
+        "29/10"
+      ],
+      [
+        "13/5",
+        "1/10",
+        "29/10",
+        "1/10",
+        "29/10"
+      ],
+      [
+        "13/5",
+        "1/10",
+        "29/10",
+        "29/10",
+        "1/10"
+      ],
+      [
+        "13/5",
+        "1/10",
+        "29/10",
+        "29/10",
+        "29/10"
+      ],
+      [
+        "13/5",
+        "29/10",
+        "1/10",
+        "1/10",
+        "29/10"
+      ],
+      [
+        "13/5",
+        "29/10",
+        "1/10",
+        "29/10",
+        "1/10"
+      ],
+      [
+        "13/5",
+        "29/10",
+        "1/10",
+        "29/10",
+        "29/10"
+      ],
+      [
+        "13/5",
+        "29/10",
+        "29/10",
+        "1/10",
+        "29/10"
+      ],
+      [
+        "13/5",
+        "29/10",
+        "29/10",
+        "29/10",
+        "1/10"
+      ],
+      [
+        "13/5",
+        "29/10",
+        "29/10",
+        "29/10",
+        "29/10"
+      ],
+      [
+        "27/5",
+        "1/10",
+        "1/10",
+        "1/10",
+        "1/10"
+      ],
+      [
+        "27/5",
+        "1/10",
+        "1/10",
+        "1/10",
+        "29/10"
+      ],
+      [
+        "27/5",
+        "1/10",
+        "1/10",
+        "29/10",
+        "1/10"
+      ],
+      [
+        "27/5",
+        "1/10",
+        "29/10",
+        "1/10",
+        "1/10"
+      ],
+      [
+        "27/5",
+        "1/10",
+        "29/10",
+        "1/10",
+        "29/10"
+      ],
+      [
+        "27/5",
+        "1/10",
+        "29/10",
+        "29/10",
+        "1/10"
+      ],
+      [
+        "27/5",
+        "29/10",
+        "1/10",
+        "1/10",
+        "1/10"
+      ],
+      [
+        "27/5",
+        "29/10",
+        "1/10",
+        "1/10",
+        "29/10"
+      ],
+      [
+        "27/5",
+        "29/10",
+        "1/10",
+        "29/10",
+        "1/10"
+      ],
+      [
+        "41/5",
+        "1/10",
+        "1/10",
+        "1/10",
+        "1/10"
+      ]
+    ],
+    "descent_strata_mm": [
+      0.0,
+      2.6,
+      5.4,
+      8.2
+    ],
+    "source_TOL_shell_not_enumerated": true,
+    "not_an_equal_extension_constraint": true
+  },
+  "endpoint_findings": {
+    "STOW_profile_requires_dq_nonnegative": true,
+    "OPEN_profile_requires_dq_nonpositive_at_actual_native_q_center_12": true,
+    "unrestricted_slot_band_exits_finite_profile_travel_near_both_endpoints": true,
+    "inner_nominal_stroke_distance_to_full_offset_band_mm": 0.40298187437975713,
+    "source_rejection_is_not_a_physical_stop": true,
+    "not_a_proposal_to_remove_legal_geometry_without_mechanism_evidence": true
+  },
+  "required_additional_domains": [
+    "independent manual tabs and slot flanks",
+    "positive-q native STOP/SPRING profile branches and correlated motion",
+    "independent telescope allocation through SEATING",
+    "forward/reverse contact and preload selection",
+    "accessory installation/removal and flexible self-validity"
+  ],
+  "full_factory_executed": false,
+  "physical_constraint_support_verified": false,
+  "continuous_collision_domain_proved": false,
+  "full_G2_pass": false,
+  "candidate_go": false,
+  "manufacturing_go": false
+}

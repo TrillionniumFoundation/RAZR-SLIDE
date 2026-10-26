@@ -1,0 +1,109 @@
+{
+  "schema": "razr-F1-first-run-failure-receipt-v1",
+  "retrieved_UTC": "2026-10-26 05:34:17 UTC",
+  "run_id": 40273132915,
+  "head_sha": "f438f2e2ad409b67acb3f5bfc89997036cb756e1",
+  "workflow_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/40273132915",
+  "derived_from_official_job_API_and_logs": true,
+  "raw_runtime_or_complete_scientific_records_recovered": false,
+  "engineering_artifact_count_observed": 0,
+  "report_projection_not_raw_original": true,
+  "jobs": [
+    {
+      "id": 121410103341,
+      "name": "S4 complete factory and independent whole STEP readback: far",
+      "status": "completed",
+      "conclusion": "failure",
+      "started_at": "2026-10-26T05:14:33Z",
+      "completed_at": "2026-10-26T05:31:04Z",
+      "steps": [
+        {
+          "number": 10,
+          "name": "Construct all 154 native bodies, evaluate all pairs, independently import all STEP and repeat every pair",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-26T05:16:22Z",
+          "completed_at": "2026-10-26T05:30:57Z"
+        },
+        {
+          "number": 11,
+          "name": "Preserve current hashes and failure evidence without rewriting raw reports",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-26T05:30:57Z",
+          "completed_at": "2026-10-26T05:31:00Z"
+        },
+        {
+          "number": 12,
+          "name": "Export only explicit engineering originals and marked projections; leave raw runtime on ephemeral runner",
+          "status": "completed",
+          "conclusion": "failure",
+          "started_at": "2026-10-26T05:31:00Z",
+          "completed_at": "2026-10-26T05:31:00Z"
+        },
+        {
+          "number": 13,
+          "name": "Preserve engineering STEP/BREP, all pair records, exact sources and marked report projections",
+          "status": "completed",
+          "conclusion": "failure",
+          "started_at": "2026-10-26T05:31:00Z",
+          "completed_at": "2026-10-26T05:31:00Z"
+        }
+      ],
+      "actual_failure": "AttributeError: module 'hashlib' has no attribute 'file_digest'",
+      "secondary_failure": "No files were found; no artifacts uploaded",
+      "native_stdout_visible_in_job_log": false,
+      "exact_Common_and_pair_records_available": false
+    },
+    {
+      "id": 121410103557,
+      "name": "S4 complete factory and independent whole STEP readback: near",
+      "status": "completed",
+      "conclusion": "failure",
+      "started_at": "2026-10-26T05:14:44Z",
+      "completed_at": "2026-10-26T05:31:01Z",
+      "steps": [
+        {
+          "number": 10,
+          "name": "Construct all 154 native bodies, evaluate all pairs, independently import all STEP and repeat every pair",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-26T05:16:30Z",
+          "completed_at": "2026-10-26T05:30:56Z"
+        },
+        {
+          "number": 11,
+          "name": "Preserve current hashes and failure evidence without rewriting raw reports",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-26T05:30:56Z",
+          "completed_at": "2026-10-26T05:30:58Z"
+        },
+        {
+          "number": 12,
+          "name": "Export only explicit engineering originals and marked projections; leave raw runtime on ephemeral runner",
+          "status": "completed",
+          "conclusion": "failure",
+          "started_at": "2026-10-26T05:30:58Z",
+          "completed_at": "2026-10-26T05:30:59Z"
+        },
+        {
+          "number": 13,
+          "name": "Preserve engineering STEP/BREP, all pair records, exact sources and marked report projections",
+          "status": "completed",
+          "conclusion": "failure",
+          "started_at": "2026-10-26T05:30:59Z",
+          "completed_at": "2026-10-26T05:30:59Z"
+        }
+      ],
+      "actual_failure": "AttributeError: module 'hashlib' has no attribute 'file_digest'",
+      "secondary_failure": "No files were found; no artifacts uploaded",
+      "native_stdout_visible_in_job_log": false,
+      "exact_Common_and_pair_records_available": false
+    }
+  ],
+  "interpretation": "Native complete-factory/readback validation step returned success, but actual detailed scientific reports and body files were not preserved by the failed exporter. Do not substitute step success for retrieved full pair and material evidence.",
+  "replacement_run_id": 40273568199,
+  "old_failure_relabelled_as_pass": false,
+  "candidate_go": false
+}

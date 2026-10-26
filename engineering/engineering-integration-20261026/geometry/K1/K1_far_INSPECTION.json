@@ -1,0 +1,436 @@
+{
+  "schema": "razr-K1-memory-archive-inspection-v1",
+  "pose": "far",
+  "run_id": 40276423445,
+  "head_sha": "78da3826a1cce029cb36b76555d6be7de2001ba2",
+  "artifact_id": 12631025559,
+  "artifact_name": "S4-K1-far-40276423445-1-engineering",
+  "artifact_expires_at": "2026-11-09T06:03:12Z",
+  "official_ZIP_sha256": "8620d6c27a93d6952fe734041d9c88e4c2a6311a954d407cd7ac6a6478036ee8",
+  "official_ZIP_bytes": 11924783,
+  "official_ZIP_digest_and_size_verified": true,
+  "all_ZIP_member_CRC_verified_during_full_reads": true,
+  "all_engineering_member_hashes_verified": 861,
+  "engineering_manifest_sha256": "6d53630884a152ee1455e2d2ef412ef7169bdda260f6428713341fcfd71691d7",
+  "actual_full_F1a_prerequisite_manifest_sha256": "6292406909e2e949496e460eb46d7d9886b902525bfa9c3f41028a9e75651c77",
+  "actual_full_F1a_prerequisite_member_count": 468,
+  "candidate_source_sha256": "3e6ebf17f1e50fd71eeaf294d059566d9361d3d830edc4365ea8763d00259578",
+  "contract_sha256": "17e1532ed82eff1298e9525456d6953df56437082ef2918f3d04839cff200455",
+  "actual_factory_pose_input": {
+    "q_L1_exact_mm": "3664291796067499/400000000000000",
+    "q_L1_binary64_mm": 9.160729490168748,
+    "q_L1_binary64_hex": "0x1.2524b22bf8e18p+3",
+    "slide_exact_from_rational_ratio_mm": "1168909082945532181/19200000000000000",
+    "slide_mm": 60.880681403413135,
+    "slide_binary64_hex": "0x1.e70ba2b10ed6ap+5",
+    "native_cam_K": 0.15047021943573669,
+    "native_q_from_K_times_slide_mm": 9.160729490168748,
+    "native_q_binary64_hex": "0x1.2524b22bf8e18p+3",
+    "native_q_minus_L1_binary64_mm": 0.0,
+    "descent_mm": 0.0,
+    "tabs_mm": [
+      3.0,
+      3.0
+    ],
+    "flanks": [
+      0.0,
+      0.0
+    ],
+    "KEY_offsets_mm": [
+      0.0,
+      0.0
+    ],
+    "crosshead_offsets_mm": [
+      0.0,
+      0.0
+    ],
+    "telescope_allocation": "factory nominal equal allocation; not physically enforced",
+    "open_hold": false,
+    "open_support": false,
+    "same_bit_pattern_as_L1_not_assumed": true
+  },
+  "results": {
+    "factory": {
+      "projection_sha256": "345bc03e1bb5dc9c21194d764d4eb1fefa1b3f2b380de425fbbb30496be77273",
+      "original_report_sha256": "2fd3a83f613f1c2f756768cd48bfda2504c313da5197b570151062a15e4f9282",
+      "original_report_bytes": 3203426,
+      "execution_completed": true,
+      "finite_pose_clear": true,
+      "pair_count": 11781,
+      "journal_rows": 23562,
+      "seconds": 337.094526135,
+      "source_and_43_package_environment_unchanged_observed": true,
+      "panel_KEY_direct_Common": {
+        "L": {
+          "a": "A_BACK_PANEL",
+          "b": "L_KEY",
+          "common_mm3": 0.0,
+          "rejected": false,
+          "strict_common": {
+            "common_mm3": 0.0,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0
+          }
+        },
+        "R": {
+          "a": "A_BACK_PANEL",
+          "b": "R_KEY",
+          "common_mm3": 0.0,
+          "rejected": false,
+          "strict_common": {
+            "common_mm3": 0.0,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0
+          }
+        }
+      },
+      "positive_pairs": [],
+      "method_counts": {
+        "native_common": 747,
+        "positive_axis_gap": 11034
+      }
+    },
+    "readback": {
+      "projection_sha256": "325ee7fe6455f715f9b2f44a781349f9ed599794c3734ba78a7f97f57c2f6ce7",
+      "original_report_sha256": "0a4d498500690815a1fe2d7cfaeeca2c68dcf8a6ded3c16664689cdcc0095993",
+      "original_report_bytes": 3960991,
+      "execution_completed": true,
+      "finite_pose_clear": true,
+      "pair_count": 11781,
+      "journal_rows": 23562,
+      "seconds": 274.86120093299996,
+      "source_and_43_package_environment_unchanged_observed": true,
+      "panel_KEY_direct_Common": {
+        "L": {
+          "common_mm3": 0.0,
+          "rejected": false,
+          "strict_common": {
+            "common_mm3": 0.0,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0
+          },
+          "factory_direct_Common_mm3": 0.0,
+          "factory_volume_delta_mm3": 0.0
+        },
+        "R": {
+          "common_mm3": 0.0,
+          "rejected": false,
+          "strict_common": {
+            "common_mm3": 0.0,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0
+          },
+          "factory_direct_Common_mm3": 0.0,
+          "factory_volume_delta_mm3": 0.0
+        }
+      },
+      "positive_pairs": [],
+      "method_counts": {
+        "native_common": 747,
+        "positive_axis_gap": 11034
+      }
+    }
+  },
+  "controllers": {
+    "factory": {
+      "completed": true,
+      "worker_exit_code": 0,
+      "limits": {
+        "wall_seconds": 1200,
+        "worker_peak_RSS_MiB": 1536,
+        "shared_unreclaimable_GiB": 6.8,
+        "runtime_disk_reserve_MiB": 100,
+        "startup_disk_reserve_MiB": 256,
+        "startup_additional_memory_MiB": 2048
+      },
+      "elapsed_seconds": 338.78766772100005,
+      "source_bytes_unchanged": true,
+      "locked_environment_unchanged": true,
+      "owned_channel_descriptors_closed": true
+    },
+    "readback": {
+      "completed": true,
+      "worker_exit_code": 0,
+      "limits": {
+        "wall_seconds": 1200,
+        "worker_peak_RSS_MiB": 1536,
+        "shared_unreclaimable_GiB": 6.8,
+        "runtime_disk_reserve_MiB": 100,
+        "startup_disk_reserve_MiB": 256,
+        "startup_additional_memory_MiB": 2048
+      },
+      "elapsed_seconds": 276.430007396,
+      "source_bytes_unchanged": true,
+      "locked_environment_unchanged": true,
+      "owned_channel_descriptors_closed": true
+    }
+  },
+  "all_154_whole_baseline_material_comparisons_passed": true,
+  "baseline_panel_KEY_direct_Common": {
+    "L": {
+      "common_mm3": 0.23013738353925134,
+      "method": "native_common",
+      "axis_gap_lower_mm": 0.0,
+      "difference_from_original_F1a_mm3": 0.0
+    },
+    "R": {
+      "common_mm3": 0.23013738353925126,
+      "method": "native_common",
+      "axis_gap_lower_mm": 0.0,
+      "difference_from_original_F1a_mm3": 0.0
+    }
+  },
+  "producer_material_accounts": {
+    "L_KEY": {
+      "original_mm3": 29.38109608689852,
+      "removed_mm3": 0.5940000000000016,
+      "added_mm3": 2.6238239999999955,
+      "new_mm3": 31.41092008689855,
+      "signed_material_balance_error_mm3": -3.552713678800501e-14,
+      "retained_original_material_loss_mm3": 0.0,
+      "unintended_loss_outside_declared_cutter_mm3": 0.0,
+      "material_restored_inside_clearance_cut_mm3": 0.0,
+      "single_positive_valid_solid_required": true,
+      "protected_material_region_comparisons": {
+        "pawl_end_and_inboard_connection": {
+          "before_minus_after_mm3": 0.0,
+          "after_minus_before_mm3": 0.0
+        },
+        "original_outer_cam_and_stop_features": {
+          "before_minus_after_mm3": 0.0,
+          "after_minus_before_mm3": 0.0
+        },
+        "coupling_yoke_and_rear_tab": {
+          "before_minus_after_mm3": 0.0,
+          "after_minus_before_mm3": 0.0
+        }
+      },
+      "panel_direct_Common_at_original_witness": {
+        "common_mm3": 0.0,
+        "method": "native_common",
+        "axis_gap_lower_mm": 0.0
+      }
+    },
+    "R_KEY": {
+      "original_mm3": 29.381096086898168,
+      "removed_mm3": 0.5940000000000016,
+      "added_mm3": 2.6238239999999955,
+      "new_mm3": 31.410920086898294,
+      "signed_material_balance_error_mm3": -1.3145040611561853e-13,
+      "retained_original_material_loss_mm3": 0.0,
+      "unintended_loss_outside_declared_cutter_mm3": 0.0,
+      "material_restored_inside_clearance_cut_mm3": 0.0,
+      "single_positive_valid_solid_required": true,
+      "protected_material_region_comparisons": {
+        "pawl_end_and_inboard_connection": {
+          "before_minus_after_mm3": 0.0,
+          "after_minus_before_mm3": 0.0
+        },
+        "original_outer_cam_and_stop_features": {
+          "before_minus_after_mm3": 0.0,
+          "after_minus_before_mm3": 0.0
+        },
+        "coupling_yoke_and_rear_tab": {
+          "before_minus_after_mm3": 0.0,
+          "after_minus_before_mm3": 0.0
+        }
+      },
+      "panel_direct_Common_at_original_witness": {
+        "common_mm3": 0.0,
+        "method": "native_common",
+        "axis_gap_lower_mm": 0.0
+      }
+    }
+  },
+  "independent_material_reconstruction": {
+    "L_KEY": {
+      "cutter": {
+        "a_minus_b_mm3": 0.0,
+        "b_minus_a_mm3": 0.0,
+        "equal_within_original_1e_minus_7_mm3": true
+      },
+      "added_prisms": {
+        "inboard_leg": {
+          "a_minus_b_mm3": 0.0,
+          "b_minus_a_mm3": 0.0,
+          "equal_within_original_1e_minus_7_mm3": true
+        },
+        "outboard_leg": {
+          "a_minus_b_mm3": 0.0,
+          "b_minus_a_mm3": 0.0,
+          "equal_within_original_1e_minus_7_mm3": true
+        },
+        "front_crossbar": {
+          "a_minus_b_mm3": 0.0,
+          "b_minus_a_mm3": 0.0,
+          "equal_within_original_1e_minus_7_mm3": true
+        }
+      },
+      "whole_reconstructed_candidate": {
+        "a_minus_b_mm3": 0.0,
+        "b_minus_a_mm3": 0.0,
+        "equal_within_original_1e_minus_7_mm3": true
+      },
+      "q0_to_factory_KEY": {
+        "a_minus_b_mm3": 0.0,
+        "b_minus_a_mm3": 0.0,
+        "equal_within_original_1e_minus_7_mm3": true
+      },
+      "saved_candidate_at_witness": {
+        "a_minus_b_mm3": 0.0,
+        "b_minus_a_mm3": 0.0,
+        "equal_within_original_1e_minus_7_mm3": true
+      },
+      "original_KEY_to_F1a": {
+        "a_minus_b_mm3": 0.0,
+        "b_minus_a_mm3": 0.0,
+        "equal_within_original_1e_minus_7_mm3": true
+      },
+      "actual_removed_material": {
+        "a_minus_b_mm3": 0.0,
+        "b_minus_a_mm3": 0.0,
+        "equal_within_original_1e_minus_7_mm3": true
+      },
+      "actual_added_material": {
+        "a_minus_b_mm3": 0.0,
+        "b_minus_a_mm3": 0.0,
+        "equal_within_original_1e_minus_7_mm3": true
+      },
+      "independent_account": {
+        "original_mm3": 29.381096086886487,
+        "removed_mm3": 0.5940000000000013,
+        "added_mm3": 2.6238239999999955,
+        "new_mm3": 31.410920086885636,
+        "signed_material_balance_error_mm3": 8.455458555545192e-13,
+        "retained_original_material_loss_mm3": 0.0,
+        "unintended_loss_outside_declared_cutter_mm3": 0.0,
+        "material_restored_inside_clearance_cut_mm3": 0.0
+      },
+      "protected_original_material": {
+        "pawl_end_and_inboard_connection": {
+          "a_minus_b_mm3": 0.0,
+          "b_minus_a_mm3": 0.0,
+          "equal_within_original_1e_minus_7_mm3": true
+        },
+        "original_outer_cam_and_stop_features": {
+          "a_minus_b_mm3": 0.0,
+          "b_minus_a_mm3": 0.0,
+          "equal_within_original_1e_minus_7_mm3": true
+        },
+        "coupling_yoke_and_rear_tab": {
+          "a_minus_b_mm3": 0.0,
+          "b_minus_a_mm3": 0.0,
+          "equal_within_original_1e_minus_7_mm3": true
+        }
+      },
+      "single_positive_valid_solid_observed": true,
+      "local_section_area_mm2": 0.1368,
+      "local_section_ratio_to_original": 0.25333333333333335,
+      "minimum_whole_KEY_wall_measured": false,
+      "strength_qualified": false,
+      "passed": true
+    },
+    "R_KEY": {
+      "cutter": {
+        "a_minus_b_mm3": 0.0,
+        "b_minus_a_mm3": 0.0,
+        "equal_within_original_1e_minus_7_mm3": true
+      },
+      "added_prisms": {
+        "inboard_leg": {
+          "a_minus_b_mm3": 0.0,
+          "b_minus_a_mm3": 0.0,
+          "equal_within_original_1e_minus_7_mm3": true
+        },
+        "outboard_leg": {
+          "a_minus_b_mm3": 0.0,
+          "b_minus_a_mm3": 0.0,
+          "equal_within_original_1e_minus_7_mm3": true
+        },
+        "front_crossbar": {
+          "a_minus_b_mm3": 0.0,
+          "b_minus_a_mm3": 0.0,
+          "equal_within_original_1e_minus_7_mm3": true
+        }
+      },
+      "whole_reconstructed_candidate": {
+        "a_minus_b_mm3": 0.0,
+        "b_minus_a_mm3": 0.0,
+        "equal_within_original_1e_minus_7_mm3": true
+      },
+      "q0_to_factory_KEY": {
+        "a_minus_b_mm3": 0.0,
+        "b_minus_a_mm3": 0.0,
+        "equal_within_original_1e_minus_7_mm3": true
+      },
+      "saved_candidate_at_witness": {
+        "a_minus_b_mm3": 0.0,
+        "b_minus_a_mm3": 0.0,
+        "equal_within_original_1e_minus_7_mm3": true
+      },
+      "original_KEY_to_F1a": {
+        "a_minus_b_mm3": 0.0,
+        "b_minus_a_mm3": 0.0,
+        "equal_within_original_1e_minus_7_mm3": true
+      },
+      "actual_removed_material": {
+        "a_minus_b_mm3": 0.0,
+        "b_minus_a_mm3": 0.0,
+        "equal_within_original_1e_minus_7_mm3": true
+      },
+      "actual_added_material": {
+        "a_minus_b_mm3": 0.0,
+        "b_minus_a_mm3": 0.0,
+        "equal_within_original_1e_minus_7_mm3": true
+      },
+      "independent_account": {
+        "original_mm3": 29.381096086907498,
+        "removed_mm3": 0.5940000000000013,
+        "added_mm3": 2.6238239999999955,
+        "new_mm3": 31.410920086908224,
+        "signed_material_balance_error_mm3": -7.318590178329032e-13,
+        "retained_original_material_loss_mm3": 0.0,
+        "unintended_loss_outside_declared_cutter_mm3": 0.0,
+        "material_restored_inside_clearance_cut_mm3": 0.0
+      },
+      "protected_original_material": {
+        "pawl_end_and_inboard_connection": {
+          "a_minus_b_mm3": 0.0,
+          "b_minus_a_mm3": 0.0,
+          "equal_within_original_1e_minus_7_mm3": true
+        },
+        "original_outer_cam_and_stop_features": {
+          "a_minus_b_mm3": 0.0,
+          "b_minus_a_mm3": 0.0,
+          "equal_within_original_1e_minus_7_mm3": true
+        },
+        "coupling_yoke_and_rear_tab": {
+          "a_minus_b_mm3": 0.0,
+          "b_minus_a_mm3": 0.0,
+          "equal_within_original_1e_minus_7_mm3": true
+        }
+      },
+      "single_positive_valid_solid_observed": true,
+      "local_section_area_mm2": 0.1368,
+      "local_section_ratio_to_original": 0.25333333333333335,
+      "minimum_whole_KEY_wall_measured": false,
+      "strength_qualified": false,
+      "passed": true
+    }
+  },
+  "complete_STEP_body_count_verified": 154,
+  "all_pairs_and_journals_verified_from_actual_full_projections": true,
+  "finite_witness_clear": true,
+  "actual_export_scope_sha256": "49d52ff659c573970bc230699f4ce94b36215a65c1c7cbb798b26c478b481e0d",
+  "local_new_CAD_execution_claimed": false,
+  "raw_runtime_reports_reconstructed": false,
+  "raw_runtime_durable_preservation_claimed": false,
+  "complete_archive_saved_locally": false,
+  "requires_durable_archiving_beyond_GitHub_artifact_expiry": true,
+  "complete_product_motion_proved": false,
+  "physical_allowed_domain_proved": false,
+  "strength_qualified": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}

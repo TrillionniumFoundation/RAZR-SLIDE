@@ -1,0 +1,115 @@
+{
+  "schema": "razr-N5-original-float64-local-correction-preregistration-v1",
+  "functional_source": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "parent_actual_evidence": {
+    "N4b_run_id": 40274319237,
+    "N4b_engineering_artifact_id": 12629751343,
+    "N4b_engineering_ZIP_sha256": "da01643858154ed4f796f9cde3dbd9ca4c3617c081d5112ac9a4da7f8d4b9a24",
+    "actual_ZIP_bytes_stream_hashed_locally": true,
+    "original_five_final_residuals": [
+      1.7609498572804048e-07,
+      1.990477778047551e-09,
+      7.9778400558745e-09,
+      7.799897850960903e-09,
+      8.043638351779749e-09
+    ],
+    "eight_longdouble_ratios_range": [
+      3.300968536292885e-08,
+      4.420519272943535e-08
+    ],
+    "eight_original_float64_ratios_range": [
+      1.49750066603373e-07,
+      2.8286123691748234e-07
+    ],
+    "GMRES_inner_iterations_each": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "GMRES_info_each": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "worker_seconds": 21.11549261899995,
+    "factorization_seconds": 8.011219099999835,
+    "worker_peak_rss_kib": 2826440
+  },
+  "historical_float64_LU_IR_already_failed": {
+    "four_correction_norms": [
+      1.461565849249081,
+      1.7310230368231274,
+      5.713229806910408,
+      8.074875707841183
+    ],
+    "final_original_float64_ratio": 2.0659962892502386e-07,
+    "repeating_this_method_is_not_claimed_new": true
+  },
+  "hypothesis": "N4b high-precision correction has already lowered diagnostic equation residual while float64 SpMV cancellation remains; local original-float64-residual corrections avoid applying ill-conditioned full LU inverse to rounding noise. This is an experiment, not a convergence or attainable-tolerance guarantee.",
+  "algorithm": {
+    "initial_fields": "exact N4b final five full fields; four passing fields retained byte for byte",
+    "residual": "exact original float64 CSC Kff @ u - rhs; no alternative accumulator for the gate or update RHS",
+    "diagonal": "positive finite diagonal of unchanged Kff",
+    "rho": "max_i(sum_j(abs(Kff_ij))/Kff_ii), inflated by 1+4*nfree*eps64 then nextafter toward +infinity",
+    "omega": "1/rho, fixed once before any iteration",
+    "correction": "(-original_float64_residual / original_diagonal) * omega, in this precise operation order",
+    "update": "float64 u += correction",
+    "stop": "first original gate pass or last of exactly 32 iterations; no best-iterate selection",
+    "all_32_fields_kept_if_rejected": true,
+    "longdouble": "diagnostic residual only, not acceptance or update RHS",
+    "no_new_LU_factorization": true,
+    "SPD_or_convergence_certified": false
+  },
+  "observations_each_update": [
+    "requested nonzero DOFs",
+    "actually changed DOFs",
+    "nonzero correction rounded to no movement",
+    "full actual update vector",
+    "maximum and bins of exact representable ULP distance",
+    "requested and actual update norms",
+    "representational stagnation",
+    "original float64 and diagnostic longdouble residuals"
+  ],
+  "capacity": {
+    "original_probe_wall_seconds": 180,
+    "AS_GiB": 4.5,
+    "shared_nonreclaimable_GiB": 6.8,
+    "filesystem_reserve_MiB": 500,
+    "output_data_reservation_bytes": 1610612736,
+    "registered_exactly_one_initial_failing_probe_required": true,
+    "32_step_all_field_correction_rhs_residual_and_actual_update_payload_bytes": 616626432,
+    "no_LU_factor_storage": true,
+    "Kff_float64_CSC_payload_approx_bytes": 285123124,
+    "longdouble_Kff_payload_approx_bytes": 474287612,
+    "baseline_N4b_8step_total_seconds": 21.11549261899995,
+    "time_basis": "32 local updates use one float64 residual SpMV per update plus saved-field residuals and diagnostic longdouble products, without the eight GMRES inner solves or the 8.01-second LU factorization; retain original 180-second external cap and record any real timeout",
+    "output_bound_requires_initial_pass_pattern": [
+      false,
+      true,
+      true,
+      true,
+      true
+    ],
+    "all_failure_and_partial_fields_retained": true
+  },
+  "original_K_b_C_and_threshold_unchanged": true,
+  "original_float64_limit": 1e-07,
+  "H_frame_restore_requires_actual_five_pass": true,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "method_background_primary_sources": [
+    "https://www-users.cse.umn.edu/~saad/books.html",
+    "https://www.netlib.org/linalg/old_html_templates/section2.6.2.html"
+  ]
+}

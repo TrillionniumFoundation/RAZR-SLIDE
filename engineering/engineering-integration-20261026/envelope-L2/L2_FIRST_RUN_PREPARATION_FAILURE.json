@@ -1,0 +1,25 @@
+{
+  "schema": "razr-L2-hosted-preparation-failure-v1",
+  "run_id": 40273642963,
+  "diagnostic_commit": "4608c7221c5ce2ba1d712bdeb4e031fb2bc2dede",
+  "diagnostic_tree": "df25d2999e93b76bd163405e8563ec4e5a3d1577",
+  "workflow_sha256": "d270da1c7a5c9d3af8cb1a685bdc9548b43055c372d77de36681152d5d4004f4",
+  "source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "actual_source_tree": "cdd9e2c41216201b6cd04dd610d45fde80499045",
+  "erroneous_emitted_source_tree": "cdd9e2c41222201b6cd04dd610d45fde80499045",
+  "jobs": [
+    {"shard": "E17", "job_id": 121411663214, "conclusion": "failure"},
+    {"shard": "O72", "job_id": 121411662525, "conclusion": "failure"}
+  ],
+  "failure_step": "Bind immutable S4 predicates and new V2 carriers with unchanged L1 worker limits",
+  "failure_operation": "S4_SOURCE heredoc line 5: immutable Git tree identity assertion",
+  "cause": "Global replacement of duration digit substrings corrupted a Git tree literal inherited from an earlier template.",
+  "native_worker_started": false,
+  "native_controls_executed": 0,
+  "original_cases_executed": 0,
+  "geometry_failure_claimed": false,
+  "scientific_result_present": false,
+  "runtime_collection_publicly_republished": false,
+  "repair": "Change only explicitly named time fields, bind the actual immutable S4 tree, and statically verify every source and embedded-harness digest before publication.",
+  "native_algorithm_or_acceptance_predicate_changed": false
+}

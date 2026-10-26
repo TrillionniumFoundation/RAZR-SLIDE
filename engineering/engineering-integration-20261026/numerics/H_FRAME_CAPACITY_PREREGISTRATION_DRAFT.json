@@ -1,0 +1,110 @@
+{
+  "schema": "razr-H-frame-restore-capacity-preregistration-draft-v1",
+  "status": "preparation_only_no_H_frame_or_restore_execution",
+  "functional_source": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "historical_source_evidence": {
+    "engineering/engineering-integration-20261025/numerics/evidence/frame-rebuild-and-factorization/FRAME_SUMMARY.json": {
+      "sha256": "d0b6d902283a662392976a595d16935dac131ff897b71b573f2bf152d20f1614",
+      "bytes": 2894
+    },
+    "engineering/gate-closure-20261023/numerical-recovery/reproducibility/evidence/private/base-response-425/panel/progress.json": {
+      "sha256": "c21a40c5754b37e643cd0e612fd973a0f6ebed8bea7cfa249e5c9be1953d8450",
+      "bytes": 2880
+    },
+    "engineering/gate-closure-20261023/numerical-recovery/reproducibility/evidence/private/base-response-425/panel/partial-linear-response-manifest.json": {
+      "sha256": "e64d3102eff7239a11d1e512c8711c78e4637e2af851fd7efee0aefe2a7a6520",
+      "bytes": 3614
+    },
+    "engineering/gate-closure-20261023/numerical-recovery/reproducibility/evidence/local/symbolic-storage-accounting-correction.json": {
+      "sha256": "147ca1955ce9a8971da8de51c6c14cd207962d5591124efd91271f958e1304fd",
+      "bytes": 3348
+    },
+    "integration/contact_exchange.py": {
+      "sha256": "db1f426d89dfba88bb7d7ed6955e8b92a620c0babc9d4036ee3c0ba1d5be6064",
+      "bytes": 17887
+    },
+    "engineering/gate-closure-20261023/numerical-recovery/reproducibility/sources/new/rebuild_base_response.py": {
+      "sha256": "93a862ec037ea83549edcc0c2363fe642cc91e96c828a2e612b5cf332bdfe79f",
+      "bytes": 14869
+    },
+    "engineering/gate-closure-20261023/numerical-recovery/reproducibility/sources/new/combine_base_responses.py": {
+      "sha256": "d53f15eeac301a6d15c3e591dec85141f5c8abf319e3bf01934d2b98407e1a5a",
+      "bytes": 10711
+    }
+  },
+  "prerequisite": {
+    "all_five_original_panel_probes_and_independent_readback_must_pass": true,
+    "current_N4b_run_id": 40274319237,
+    "current_N4b_run_status_at_preparation": "in_progress",
+    "original_float64_residual_limit": 1e-07,
+    "no_gate_inferred_from_GMRES_info": true
+  },
+  "panel_response": {
+    "ordered_original_columns": 3885,
+    "full_dofs": 344103,
+    "free_dofs": 344097,
+    "H_dense_float64_payload_bytes": 120745800,
+    "one_final_full_field_per_column_payload_bytes": 10694721240,
+    "one_free_residual_per_column_payload_bytes": 10694534760,
+    "one_full_field_plus_residual_all_columns_payload_bytes": 21389256000,
+    "eight_corrections_all_columns_vector_payload_upper_bytes": 513340652160,
+    "one_outer_correction_records_payload_bytes": 16516752,
+    "one_original_five_probe_history_upper_bytes": 660670080,
+    "one_32_column_final_field_chunk_payload_bytes": 88090368,
+    "array_headers_JSON_checksums_and_inputs_additional": true,
+    "compression_savings_assumed": false,
+    "chunking_reduces_peak_RAM_not_total_retained_field_bytes": true,
+    "current_1_5_GiB_N4_output_reservation_cannot_cover_complete_fields": true,
+    "proposed_evidence_boundary": {
+      "original_five_probes": "retain original K/C/directions/RHS/baseline/intermediate/final fields/corrections/residuals and all original checks exactly as N4",
+      "response_columns": "retain every accepted column full final field and full free residual in indexed immutable chunks; baseline field retained separately when bytes differ; every executed correction and outer field retained with equation RHS/residual arrays",
+      "unchanged_baseline_and_final": "may reference the same content-hash-bound stored bytes, with duplicate logical role explicit",
+      "H": "retain unsymmetrized C.TU and any postcheck symmetrized H as distinct arrays; retain column index and exact C/point/source identity",
+      "temporary_arrays": "working copies may be released only after SHA/bytes and independent numerical readback plus durable artifact receipt for their permanent originals",
+      "partial_completion": "save complete columns and actual failures; never fill uncomputed columns or mark full H accepted",
+      "resource_ceiling": "stop with retained partial evidence when preregistered disk/time bound would be exceeded; do not discard correction fields to finish"
+    },
+    "historical_timing_evidence": {
+      "completed_columns": 2560,
+      "column_solve_seconds": 388.2406701149994,
+      "factorization_seconds": 14.838245134000317,
+      "all_3885_columns_linear_extrapolation_seconds": 589.1855482018643,
+      "historical_column_max_equation_residual": 2.7066562324762344e-09,
+      "historical_H_complete": false,
+      "historical_five_original_probe_acceptance": false,
+      "timing_only_not_N4_strategy_qualification": true
+    },
+    "next_capacity_measurement": "after actual N4b five-pass, use a new bounded initial column pilot to measure the unchanged accepted solve strategy, byte-exact column residual calculation, field I/O and corrections; choose explicit whole-response time/output ceiling from actual counts before publishing execution",
+    "numeric_time_or_disk_ceiling_for_full_H_yet_authorized_by_this_file": false
+  },
+  "frame": {
+    "original_K_sha256": "e077f8d0176c041041b984b5dbb016e140219b34223d235ac739978b1dddd95d",
+    "original_K_bytes": 394530277,
+    "full_dofs": 474726,
+    "free_dofs": 473949,
+    "fixed_dofs": 777,
+    "original_full_LU_5_GiB_and_6_GiB_AS_attempts_failed_before_any_RHS": true,
+    "original_gate_residuals_observed": 0,
+    "corrected_ND_LU_array_storage_estimate_bytes": 4987355696,
+    "symbolic_storage_is_not_peak_memory_upper_bound": true,
+    "larger_LU_budget_not_justified_by_existing_evidence": true,
+    "new_preconditioner_or_proven_lower_storage_algorithm_requires_separate_capacity_and_time_registration": true,
+    "same_full_K_C_RHS_constraints_and_float64_gate_required": true
+  },
+  "H_and_restore_gates": {
+    "each_column_original_float64_free_DOF_gate": 1e-07,
+    "complete_column_count": 3885,
+    "raw_H_reciprocity_relative_tolerance": 2e-08,
+    "original_restore_H_action_relative_tolerance": 2e-07,
+    "original_restore_probe_seed": 73021,
+    "same_five_direct_full_operator_actions_required": true,
+    "must_call_exact_original_ExactResponseCache_restore": true,
+    "panel_and_frame_combined_full_dofs": 818829,
+    "five_only_callback_replay_is_not_a_general_elastic_solver": true,
+    "historical_volume_v3_H_not_recovered": true,
+    "new_QP_and_physical_qualification_not_inferred": true
+  },
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}

@@ -1,0 +1,1537 @@
+# New method research; production geometry, old L1 results and volume predicates are unchanged.
+name: L2 S4 original counterexamples with conservative V2 carriers
+'on':
+  push:
+    branches:
+    - diagnostic/s4-envelope-l2-20261026
+  workflow_dispatch: null
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: l2-${{ github.ref }}
+  cancel-in-progress: false
+env:
+  S4: dd7def6e6a4de9f47dc91ca2ab336fb1a8828560
+  PYTHONDONTWRITEBYTECODE: '1'
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+  NUMEXPR_NUM_THREADS: '1'
+jobs:
+  replay:
+    name: L2 V2 carriers against original L1 ${{ matrix.shard }} inputs
+    runs-on: ubuntu-22.04
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+        - shard: E17
+          artifact_id: '12605676028'
+        - shard: O72
+          artifact_id: '12605885469'
+    env:
+      CASE_KIND: l2
+      CASE_KEY: ${{ matrix.shard }}
+      SHARD: ${{ matrix.shard }}
+    steps:
+    - name: Start separate hosted deadline and scratch evidence directory
+      shell: bash
+      run: 'set -euo pipefail
+
+        host_root="$RUNNER_TEMP/razr-s4-l2-replay-20261026"
+
+        case_dir="$host_root/$CASE_KIND/$CASE_KEY"
+
+        mkdir -p "$case_dir"
+
+        echo "HOST_JOB_START=$(date +%s)" >> "$GITHUB_ENV"
+
+        echo "HOST_ROOT=$host_root" >> "$GITHUB_ENV"
+
+        echo "CASE_DIR=$case_dir" >> "$GITHUB_ENV"
+
+        '
+    - name: Checkout immutable functional S4, not this diagnostic branch
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        ref: dd7def6e6a4de9f47dc91ca2ab336fb1a8828560
+        persist-credentials: false
+        sparse-checkout-cone-mode: false
+        sparse-checkout: '/*
+
+          !/archive/blobs/
+
+          !/baselines/**
+
+          /baselines/**/*.py
+
+          /baselines/**/*.md
+
+          /baselines/**/*.json
+
+          '
+    - name: Bind immutable S4 predicates and new V2 carriers with unchanged L1 worker limits
+      shell: bash
+      run: "set -euo pipefail\ntest \"$(git rev-parse HEAD)\" = \"$S4\"\ntest -z \"$(git status --porcelain --untracked-files=all)\"\
+        \npython3 -B - <<'PY'\nimport hashlib, json, os, pathlib, shutil, tarfile\nroot = pathlib.Path(os.environ['GITHUB_WORKSPACE']).resolve()\n\
+        host = pathlib.Path(os.environ['HOST_ROOT']).resolve()\ncase = pathlib.Path(os.environ['CASE_DIR']).resolve()\n\
+        study = host/'original-v4'\narchive_rel = 'engineering/gate-closure-20261023/geometry-followon-042b7689/key-v4-readback-algebra/results.tar.gz'\n\
+        archive = root/archive_rel\narchive_sha = 'beef1cf45fb49417c6af092fec51fb266fd6e89f238410c8cf137af4c20ce442'\n\
+        expected = {\n  'integration/probe_key_endpoint_extension.py': 'a2f15dd4c9f41a9235e4c7625da52c9bf81add0260556d841e65c6261123408e',\n\
+        \  'tools/key_endpoint_resume.py': 'f9fa0e36cfdae30a24eab771c015b260d004573d60a23351bf266d1cb28cfb49',\n\
+        \  'run_key_endpoint_trials.py': 'ecd57df70e7df83e42083b6019e3b84da261c486c8c9681909a4b192b4505dad',\n \
+        \ 'tests/test_key_endpoint_extension.py': '3fe949b3a0036875946263bc5d6f97fce4d8555cc2c0b7d0686f263bbe99e60b',\n\
+        \  'tests/test_key_endpoint_resume.py': '6038b8ea4659bb3095f766d75ef54b1d607e1f3096ece816cb887fbaec3d0188',\n\
+        }\nassert not host.is_relative_to(root) and not study.exists()\nassert not archive.is_symlink()\nassert\
+        \ hashlib.sha256(archive.read_bytes()).hexdigest() == archive_sha\nprefix = 'gates_audit/dev/key-endpoint-v4/'\n\
+        with tarfile.open(archive, 'r:gz') as tar:\n    for name, digest in expected.items():\n        matches =\
+        \ [m for m in tar.getmembers() if m.name == prefix+name]\n        assert len(matches) == 1 and matches[0].isfile()\
+        \ and 0 < matches[0].size < 1024**2\n        data = tar.extractfile(matches[0]).read()\n        assert hashlib.sha256(data).hexdigest()\
+        \ == digest\n        target = study/name\n        target.parent.mkdir(parents=True, exist_ok=True)\n   \
+        \     with target.open('xb') as stream: stream.write(data)\nreceipt = {'functional_source_commit': os.environ['S4'],\n\
+        \  'historical_archive': archive_rel, 'archive_sha256': archive_sha,\n  'archive_member_prefix': prefix,\
+        \ 'study_source_sha256': expected,\n  'study_directory': str(study), 'source_bytes_modified': False}\n(case/'source-identity.json').write_text(json.dumps(receipt,\
+        \ indent=2)+'\\n')\nshutil.copytree(study, case/'source'/'original-v4')\ncontract = {'functional_source_commit':\
+        \ os.environ['S4'], 'repository_root': str(root),\n  'runner_temp': str(pathlib.Path(os.environ['RUNNER_TEMP']).resolve()),\n\
+        \  'host_root': str(host), 'study_root': str(study),\n  'baseline_paths': {p: str(host/'controls'/p/(p+'-report.json'))\
+        \ for p in ('STOW', 'OPEN')}}\n(case/'path-contract.json').write_text(json.dumps(contract, indent=2)+'\\\
+        n')\n(case/'hosted-context.json').write_text(json.dumps({\n  'workflow_revision': os.environ['GITHUB_SHA'],\
+        \ 'workflow_ref': os.environ.get('GITHUB_WORKFLOW_REF'),\n  'functional_source_commit': os.environ['S4'],\
+        \ 'run_id': os.environ['GITHUB_RUN_ID'],\n  'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'], 'job': os.environ['GITHUB_JOB'],\n\
+        \  'case_kind': os.environ['CASE_KIND'], 'case_key': os.environ['CASE_KEY'],\n  'platform_runner_label':\
+        \ 'ubuntu-22.04', 'platform_maximum_job_seconds': 2400,\n  'original_v4_trial_budget_not_applicable': True,\n\
+        \  'finite_native_trial_budget_seconds_unchanged': 1200,\n  'L2_original_L1_worker_budget_seconds': 1800,\n\
+        \  'original_90_second_positive_only_KEY_reader_used': False,\n  'canonical_unit_suite_timeouts_unchanged':\
+        \ True,\n  'external_command_deadline_seconds_after_first_step': 2220,\n  'external_SIGINT_cleanup_grace_seconds':\
+        \ 20,\n  'hosted_execution_is_new_evidence': True, 'physical_qualification': False,\n  'complete_product_motion_proved':\
+        \ False, 'G2_pass': False}, indent=2)+'\\n')\nPY\ncat > \"$HOST_ROOT/host-cap.py\" <<'PY'\n\"\"\"Outer hosted\
+        \ cap only; never change a S4/original worker or its gates.\"\"\"\nimport hashlib, json, os, pathlib, signal,\
+        \ subprocess, sys, time\ntarget = pathlib.Path(sys.argv[1])\ncommand = sys.argv[2:]\ntarget.parent.mkdir(parents=True,\
+        \ exist_ok=True)\ndeadline = float(os.environ['HOST_JOB_START']) + 2220\ndef resource():\n    stat = os.statvfs(target.parent)\n\
+        \    files = {}\n    for name in ('memory.current', 'memory.max', 'memory.stat'):\n        p = pathlib.Path('/sys/fs/cgroup')/name\n\
+        \        files[name] = p.read_text()\n    return {'epoch': time.time(), 'writeable_disk_bytes': stat.f_bavail*stat.f_frsize,\n\
+        \            'root_reserved_free_bytes_diagnostic_only': stat.f_bfree*stat.f_frsize,\n            'cgroup':\
+        \ files}\nreceipt = {'argv': command, 'cwd': os.getcwd(), 'started_epoch': time.time(),\n    'external_deadline_epoch':\
+        \ deadline, 'platform_maximum_job_seconds': 2400,\n    'finite_native_trial_budget_seconds_unchanged': 1200,\n\
+        \    'L2_original_L1_worker_budget_seconds': 1800,\n  'original_90_second_positive_only_KEY_reader_used':\
+        \ False,\n    'canonical_unit_suite_timeouts_unchanged': True,\n    'outer_hosted_cap_reached': False, 'process_started':\
+        \ False,\n    'resource_before': None, 'source_sha256': hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest()}\n\
+        child = None\ncode = 2\ndef external_term(signum, frame):\n    raise KeyboardInterrupt('external SIGTERM\
+        \ mapped to original cleanup')\nsignal.signal(signal.SIGTERM, external_term)\ntry:\n    receipt['resource_before']\
+        \ = resource()\n    if time.time() >= deadline-30:\n        raise RuntimeError('insufficient hosted time\
+        \ remains; no command started')\n    with target.with_suffix('.log').open('xb') as log, target.with_suffix('.resources.jsonl').open('x')\
+        \ as samples:\n        child = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)\n\
+        \        receipt.update(process_started=True, owned_child_pid=child.pid)\n        while child.poll() is\
+        \ None:\n            samples.write(json.dumps(resource())+'\\n'); samples.flush()\n            if time.time()\
+        \ >= deadline:\n                receipt['outer_hosted_cap_reached'] = True\n                child.send_signal(signal.SIGINT)\n\
+        \                try: child.wait(timeout=20)\n                except subprocess.TimeoutExpired:\n      \
+        \              receipt['SIGINT_cleanup_timed_out'] = True\n                    os.killpg(child.pid, signal.SIGKILL)\n\
+        \                    child.wait(timeout=5)\n                break\n            try: child.wait(timeout=min(5,\
+        \ max(.05, deadline-time.time())))\n            except subprocess.TimeoutExpired: pass\n        receipt['child_exit_code']\
+        \ = child.returncode\n        code = 124 if receipt['outer_hosted_cap_reached'] else child.returncode\n\
+        except BaseException as exc:\n    receipt['failure'] = type(exc).__name__+': '+str(exc)\n    if child is\
+        \ not None and child.poll() is None:\n        child.send_signal(signal.SIGINT)\n        try: child.wait(timeout=20)\n\
+        \        except subprocess.TimeoutExpired:\n            os.killpg(child.pid, signal.SIGKILL); child.wait(timeout=5)\n\
+        finally:\n    try: receipt['resource_after'] = resource()\n    except BaseException as exc:\n        receipt['resource_after']\
+        \ = None\n        receipt['resource_after_error'] = type(exc).__name__+': '+str(exc)\n        code = 2\n\
+        \    receipt.update(exit_code=code, finished_epoch=time.time())\n    target.with_suffix('.json').write_text(json.dumps(receipt,\
+        \ indent=2)+'\\n')\nraise SystemExit(code)\nPY\ncp \"$HOST_ROOT/host-cap.py\" \"$CASE_DIR/source/host-cap.py\"\
+        \ncat > \"$HOST_ROOT/service-launch.py\" <<'PY'\n\"\"\"D6 external harness: real readonly service view and\
+        \ owned subreaper lifecycle.\nNo S4/original source edits; all task-owned evidence stays outside the checkout.\n\
+        \"\"\"\nimport ctypes, errno, hashlib, importlib.util, json, os, pathlib, re, select, secrets, shutil, signal,\
+        \ subprocess, sys, time\nP = pathlib.Path\nSCRIPT = P(__file__).resolve()\nINTERNAL = len(sys.argv) > 1\
+        \ and sys.argv[1] in ('--private-root', '--inside', '--signal-check')\nif INTERNAL:\n    MODE = sys.argv[1][2:]\n\
+        \    OUT = P(sys.argv[2]).resolve()\n    REPO = P(sys.argv[3]).resolve() if len(sys.argv) > 3 else P(os.environ['GITHUB_WORKSPACE']).resolve()\n\
+        \    TARGET = None; COMMAND = []\nelse:\n    MODE = 'outside'; TARGET = P(sys.argv[1]).resolve(); COMMAND\
+        \ = sys.argv[2:]\n    OUT = TARGET.with_name(TARGET.name+'.namespace'); REPO = P(os.environ['GITHUB_WORKSPACE']).resolve()\n\
+        if MODE in ('outside', 'signal-check'):\n    OUT.mkdir(parents=True, exist_ok=False)\nRAW = OUT/'raw'; RAW.mkdir(exist_ok=True)\n\
+        S4 = 'dd7def6e6a4de9f47dc91ca2ab336fb1a8828560'\nSUP_REL = 'engineering/engineering-integration-20261025/numerics/run_bounded.py'\n\
+        SUP_SHA = '901654cdb718a988471a700b01bfbb2e8979a98248c9211fa69d42b25279e56e'\nARCH_REL = 'engineering/gate-closure-20261023/geometry-followon-042b7689/key-v4-readback-algebra/results.tar.gz'\n\
+        ARCH_SHA = 'beef1cf45fb49417c6af092fec51fb266fd6e89f238410c8cf137af4c20ce442'\nV4_MEMBER = 'gates_audit/dev/key-endpoint-v4/run_key_endpoint_trials.py'\n\
+        V4_SHA = 'ecd57df70e7df83e42083b6019e3b84da261c486c8c9681909a4b192b4505dad'\nCONTROL_KEYS = ('anon', 'shmem',\
+        \ 'kernel_stack', 'pagetables', 'sock', 'slab_unreclaimable')\nV4_KEYS = ('inactive_file', 'file_dirty',\
+        \ 'file_writeback', 'file', 'shmem')\nFINITE_KEYS = ('anon', 'shmem', 'kernel', 'slab_reclaimable', 'unevictable')\n\
+        NS_KEYS = ('mnt', 'pid', 'pid_for_children', 'user', 'cgroup')\ndef require(value, message):\n    if not\
+        \ value: raise RuntimeError(message)\ndef sha(path): return hashlib.sha256(P(path).read_bytes()).hexdigest()\n\
+        def save(name, value):\n    final=OUT/name; temporary=final.with_name(final.name+'.tmp-'+str(os.getpid()))\n\
+        \    temporary.write_text(json.dumps(value,indent=2,sort_keys=True)+'\\n');os.replace(temporary,final)\n\
+        def ident(path):\n    path = P(path); s = path.stat()\n    return {'path': str(path), 'device': s.st_dev,\
+        \ 'inode': s.st_ino, 'mode': s.st_mode, 'symlink': path.is_symlink()}\ndef same_inode(a, b): return (a['device'],\
+        \ a['inode']) == (b['device'], b['inode'])\ndef capture(label, path):\n    r = {'path': str(path), 'epoch':\
+        \ time.time(), 'readable': False}\n    try:\n        r['identity'] = ident(path)\n        data = P(path).read_bytes();\
+        \ r.update(readable=True, bytes=len(data), sha256=hashlib.sha256(data).hexdigest())\n        (RAW/(label+'.txt')).write_bytes(data)\n\
+        \        r['text'] = data.decode('utf-8', errors='strict')\n    except (OSError, UnicodeError) as e: r['error']\
+        \ = type(e).__name__+': '+str(e)\n    return r\ndef require_text(r):\n    require(r['readable'], 'required\
+        \ real interface unavailable: '+r['path']+' '+r.get('error', ''))\n    require(not r['identity']['symlink'],\
+        \ 'interface symlink rejected')\n    return r['text']\ndef proc(label, pid='self'):\n    base = P('/proc')/str(pid)\n\
+        \    records = {k: capture(label+'-'+k, base/k) for k in ('cgroup', 'mountinfo', 'status', 'stat')}\n  \
+        \  status = dict(line.split(':', 1) for line in require_text(records['status']).splitlines() if ':' in line)\n\
+        \    ns = {k: os.readlink(base/'ns'/k) for k in NS_KEYS}\n    return {'epoch': time.time(), 'pid': os.getpid()\
+        \ if pid == 'self' else int(pid), 'records': records, 'status': status, 'namespaces': ns}\ndef unescape(s):\
+        \ return re.sub(r'\\\\([0-7]{3})', lambda m: chr(int(m.group(1), 8)), s)\ndef mounts(text):\n    result\
+        \ = []\n    for line in text.splitlines():\n        a, b = line.split(' - ', 1); left, right = a.split(),\
+        \ b.split()\n        result.append({'id': int(left[0]), 'root': unescape(left[3]), 'mountpoint': unescape(left[4]),\
+        \ 'options': left[5].split(','), 'optional': left[6:], 'fstype': right[0], 'source': unescape(right[1]),\
+        \ 'super_options': right[2].split(',')})\n    return result\ndef group_path(text):\n    rows = [line.split(':',\
+        \ 2) for line in text.splitlines() if line.startswith('0::')]\n    require(len(rows) == 1, 'one real unified\
+        \ cgroup membership required')\n    path = P(rows[0][2]); require(path.is_absolute() and '..' not in path.parts\
+        \ and str(path) != '/', 'non-root current service cgroup required')\n    return path\ndef measured(label,\
+        \ base):\n    r = {'directory': ident(base), 'epoch': time.time(), 'files': {k: capture(label+'-'+k, P(base)/k)\
+        \ for k in ('memory.stat', 'memory.current', 'memory.max', 'cgroup.type')}}\n    save(label+'.json', r)\n\
+        \    values = dict((k, int(v)) for k, v in (line.split() for line in require_text(r['files']['memory.stat']).splitlines()))\n\
+        \    require(all(k in values for k in set(CONTROL_KEYS+V4_KEYS+FINITE_KEYS)), 'real memory.stat missing\
+        \ required counters')\n    require(all(v >= 0 for v in values.values()), 'negative memory.stat counter')\n\
+        \    current = int(require_text(r['files']['memory.current']).strip()); require(current >= 0, 'negative\
+        \ current')\n    cap = require_text(r['files']['memory.max']).strip(); require(cap == 'max' or (cap.isdecimal()\
+        \ and int(cap) >= 0), 'invalid maximum')\n    r.update(values=values, current=current, maximum=cap)\n  \
+        \  save(label+'.json', r)\n    return r\ndef member_identity_matches(old, new):\n    require(same_inode(old['directory'],\
+        \ new['directory']), 'bound directory inode differs from actual service')\n    for k in ('memory.stat',\
+        \ 'memory.current', 'memory.max'):\n        require(same_inode(old['files'][k]['identity'], new['files'][k]['identity']),\
+        \ 'counter inode changed: '+k)\n    require(old['maximum'] == new['maximum'], 'service memory.max changed')\n\
+        def namespace_checks(snapshot, before, *, private):\n    require((snapshot['namespaces']['mnt'] != before['namespaces']['mnt'])\
+        \ == private, 'unexpected mount namespace identity')\n    require(all(snapshot['namespaces'][k] == before['namespaces'][k]\
+        \ for k in NS_KEYS if k != 'mnt'), 'PID/user/cgroup namespace changed')\n    require(snapshot['records']['cgroup']['text']\
+        \ == before['records']['cgroup']['text'], 'process moved to a different cgroup')\ndef run_record(label,\
+        \ argv, **kwargs):\n    start = time.time()\n    with (OUT/(label+'.stdout')).open('wb') as stdout, (OUT/(label+'.stderr')).open('wb')\
+        \ as stderr:\n        r = subprocess.run(argv, stdout=stdout, stderr=stderr, **kwargs)\n    rec = {'argv':\
+        \ argv, 'exit_code': r.returncode, 'seconds': time.time()-start, 'stdout_sha256': sha(OUT/(label+'.stdout')),\
+        \ 'stderr_sha256': sha(OUT/(label+'.stderr'))}\n    save(label+'.json', rec)\n    return r.returncode\n\n\
+        EXPECTED_FIVE = {\n 'integration/probe_key_endpoint_extension.py': 'a2f15dd4c9f41a9235e4c7625da52c9bf81add0260556d841e65c6261123408e',\n\
+        \ 'tools/key_endpoint_resume.py': 'f9fa0e36cfdae30a24eab771c015b260d004573d60a23351bf266d1cb28cfb49',\n\
+        \ 'run_key_endpoint_trials.py': V4_SHA,\n 'tests/test_key_endpoint_extension.py': '3fe949b3a0036875946263bc5d6f97fce4d8555cc2c0b7d0686f263bbe99e60b',\n\
+        \ 'tests/test_key_endpoint_resume.py': '6038b8ea4659bb3095f766d75ef54b1d607e1f3096ece816cb887fbaec3d0188',\n\
+        }\nSAFE_ENV_NAMES = ('PATH', 'HOME', 'USER', 'LOGNAME', 'SHELL', 'LANG', 'LC_ALL', 'LC_CTYPE', 'TZ',\n 'TMPDIR',\
+        \ 'TMP', 'TEMP', 'LD_LIBRARY_PATH', 'SSL_CERT_FILE', 'SSL_CERT_DIR', 'REQUESTS_CA_BUNDLE',\n 'CI', 'GITHUB_ACTIONS',\
+        \ 'GITHUB_WORKSPACE', 'GITHUB_SHA', 'GITHUB_JOB', 'GITHUB_RUN_ID', 'GITHUB_RUN_ATTEMPT',\n 'RUNNER_TEMP',\
+        \ 'HOST_ROOT', 'HOST_JOB_START', 'CASE_DIR', 'CASE_KIND', 'CASE_KEY', 'S4',\n 'PYTHONDONTWRITEBYTECODE',\
+        \ 'OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS',\n 'UV_PYTHON', 'UV_PYTHON_INSTALL_DIR',\
+        \ 'UV_PYTHON_PREFERENCE', 'UV_PYTHON_DOWNLOADS',\n 'UV_PYTHON_DOWNLOADS_JSON_URL', 'UV_CACHE_DIR', 'UV_NO_SYNC',\
+        \ 'UV_PROJECT_ENVIRONMENT', 'UV_LINK_MODE',\n 'UV_NO_CACHE', 'UV_COMPILE_BYTECODE', 'UV_NO_PROGRESS', 'UV_COLOR',\
+        \ 'UV_HTTP_TIMEOUT', 'UV_HTTP_RETRIES',\n 'UV_MANAGED_PYTHON', 'RAZR_EXPECTED_SIGNAL_PROBE')\ndef proc_identity(pid,\
+        \ full=True):\n    path=P('/proc')/str(pid); text=(path/'stat').read_text(); rest=text[text.rfind(')')+2:].split()\n\
+        \    status=dict(line.split(':',1) for line in (path/'status').read_text().splitlines() if ':' in line)\n\
+        \    result={'pid':int(pid),'ppid':int(rest[1]),'pgid':int(rest[2]),'sid':int(rest[3]),'state':rest[0],'start_ticks':int(rest[19]),'uid':int(status['Uid'].split()[0])}\n\
+        \    if full:\n        result.update(cgroup=(path/'cgroup').read_text(),mnt_namespace=os.readlink(path/'ns/mnt'))\n\
+        \    return result\ndef bound_pidfd(identity, parent=None):\n    require(hasattr(os,'pidfd_open') and hasattr(signal,'pidfd_send_signal'),\
+        \ 'real pidfd signal API unavailable')\n    before=proc_identity(identity['pid'],full=False); require(before['start_ticks']==identity['start_ticks'],\
+        \ 'PID identity changed before pidfd binding')\n    if parent is not None: require(before['ppid']==parent,\
+        \ 'process is not an actual owned child')\n    fd=os.pidfd_open(identity['pid'],0)\n    try:\n        after=proc_identity(identity['pid'],full=False);\
+        \ require(after['start_ticks']==identity['start_ticks'] and after['uid']==os.getuid(), 'PID/UID changed\
+        \ while binding pidfd')\n        if parent is not None: require(after['ppid']==parent, 'child lineage changed\
+        \ while binding pidfd')\n        return fd\n    except BaseException:\n        os.close(fd); raise\ndef\
+        \ exited(fd): return bool(select.select([fd],[],[],0)[0])\ndef lineage_reaches(pid, ancestor):\n    rows=[];\
+        \ seen=set()\n    while pid>1 and pid not in seen and len(rows)<64:\n        seen.add(pid); r=proc_identity(pid,full=False);\
+        \ rows.append(r)\n        if pid==ancestor['pid']:\n            require(r['start_ticks']==ancestor['start_ticks'],\
+        \ 'owned launcher PID reused')\n            return rows\n        pid=r['ppid']\n    raise RuntimeError('ready\
+        \ process is not a descendant of the actual owned launcher')\ndef children():\n    path=P('/proc/self/task')/str(os.getpid())/'children'\n\
+        \    result=[]\n    for value in path.read_text().split():\n        try:\n            r=proc_identity(int(value),full=False);\
+        \ require(r['ppid']==os.getpid(), 'kernel child list parent mismatch'); result.append(r)\n        except\
+        \ FileNotFoundError:\n            require(value not in path.read_text().split(), 'kernel still lists a child\
+        \ whose identity cannot be read; cleanup unknown')\n    return result\ndef original_sources(state):\n  \
+        \  require(subprocess.check_output(['git','-C',str(REPO),'rev-parse','HEAD'],text=True).strip()==S4, 'functional\
+        \ HEAD is not S4')\n    require(subprocess.check_output(['git','-C',str(REPO),'status','--porcelain','--untracked-files=all'],text=True)=='',\
+        \ 'S4 checkout is dirty')\n    require(sha(REPO/SUP_REL)==SUP_SHA, 'S4 original supervisor changed')\n \
+        \   study=P(state['environment']['HOST_ROOT'])/'original-v4'\n    for name,digest in EXPECTED_FIVE.items():\
+        \ require(sha(study/name)==digest, 'original five-source bytes differ: '+name)\n    require(sha(SCRIPT)==state['harness_sha256']\
+        \ and sha(state['host_cap'])==state['host_cap_sha256'], 'external harness source changed')\n    metadata=P(state['environment'].get('UV_PYTHON_DOWNLOADS_JSON_URL',''))\n\
+        \    require(metadata==P(state['environment']['HOST_ROOT'])/'python-downloads.json' and metadata.is_file()\
+        \ and metadata.stat().st_size==552 and sha(metadata)=='a23c006d96b05012706707a5c0fc0bca87c17b4e362d5992a83795db914a5c56',\
+        \ 'official selected Python metadata bytes/path differ')\ndef validate_view(state, label):\n    here=proc(label);\
+        \ save(label+'-process.json',here); namespace_checks(here,state['before'],private=True)\n    require(os.getuid()==state['uid']\
+        \ and os.geteuid()==state['uid'] and os.getgid()==state['gid'] and sorted(os.getgroups())==state['groups'],'original\
+        \ caller credentials not restored')\n    require(here['status']['NoNewPrivs'].strip()=='1','no_new_privs\
+        \ missing')\n    require(int(here['status']['CapEff'].strip(),16)&~int(state['before']['status']['CapEff'].strip(),16)==0,'capabilities\
+        \ increased')\n    current=measured(label+'-service','/sys/fs/cgroup');member_identity_matches(state['service'],current)\n\
+        \    entries=mounts(here['records']['mountinfo']['text']); target=[m for m in entries if m['mountpoint']=='/sys/fs/cgroup'][-1]\n\
+        \    require(target['fstype']=='cgroup2' and target['root']==state['hierarchy_path'] and 'ro' in target['options'],'actual\
+        \ readonly service cgroup2 mount missing')\n    require(not any(v.startswith(('shared:','master:','propagate_from:'))\
+        \ for m in entries for v in m['optional']),'mount propagation is not private')\n    require(all(os.environ.get(k)==v\
+        \ for k,v in state['environment'].items()),'allowlisted original caller environment was not restored')\n\
+        \    actual_uv=shutil.which('uv')\n    require(actual_uv==state['observed_uv_path'],'uv PATH changed across\
+        \ privilege transition')\n    original_sources(state)\n    return here,current\n\ndef private_root():\n\
+        \    state=json.loads((OUT/'prepared.json').read_text());require(os.geteuid()==0,'passwordless sudo root\
+        \ authority unavailable')\n    here=proc('private-root-before-bind');save('private-root-before-bind.json',here);namespace_checks(here,state['before'],private=True)\n\
+        \    require(same_inode(ident(state['service_path']),state['service']['directory']),'real source service\
+        \ inode changed')\n    for label,argv in [('make-rprivate',[state['tools']['mount'],'--make-rprivate','/']),('real-service-bind',[state['tools']['mount'],'--bind',state['service_path'],'/sys/fs/cgroup']),('readonly-bind',[state['tools']['mount'],'-o','remount,bind,ro','/sys/fs/cgroup'])]:\n\
+        \        require(run_record(label,argv,timeout=15)==0,'private mount failed: '+label)\n    args=[state['tools']['setpriv'],'--reuid',str(state['uid']),'--regid',str(state['gid']),'--no-new-privs']\n\
+        \    args+=['--groups',','.join(map(str,state['groups']))] if state['groups'] else ['--clear-groups']\n\
+        \    args+=['/usr/bin/python3','-B',str(SCRIPT),'--inside',str(OUT),str(REPO)]\n    # exec removes the privileged\
+        \ launcher; no root wait/timeout surrounds long CAD.\n    os.execve(state['tools']['setpriv'],args,state['environment'])\n\
+        \ndef inside():\n    state=json.loads((OUT/'prepared.json').read_text());os.chdir(state['cwd'])\n    here,view=validate_view(state,'inside-before')\n\
+        \    spec=importlib.util.spec_from_file_location('original_v4_resources',P(state['environment']['HOST_ROOT'])/'original-v4/run_key_endpoint_trials.py')\n\
+        \    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);res=module.resources(P(state['target']).parent)\n\
+        \    values=view['values']; finite=values['anon']+values['shmem']+max(0,values['kernel']-values['slab_reclaimable'])+values['unevictable']\n\
+        \    save('original-resource-preflight.json',{'original_v4_resources':res,'control_nonreclaimable_bytes':sum(values[k]\
+        \ for k in CONTROL_KEYS),'finite_shared_bytes':finite,'observed_uv_path':shutil.which('uv'),'manager_python_executable':sys.executable,'scope':state['hierarchy_path']+'\
+        \ and descendants; not whole VM root','CAD_executed_by_preflight':False})\n    require(res['writeable_disk_bytes']>=500*1024**2\
+        \ and res['effective_memory_headroom_bytes']>=2*1024**3,'original measured disk/headroom prerequisites unavailable')\n\
+        \    require(res['shared_unreclaimable_memory_bytes']<=int(6.8*1024**3) and sum(values[k] for k in CONTROL_KEYS)<=6.8*1024**3,'original\
+        \ memory budget unavailable')\n    if state['environment'].get('CASE_KIND')=='orthogonal': require(finite+2*1024**3<=6.8*1024**3,'original\
+        \ finite startup memory prerequisite unavailable')\n    for a in state['ancestors']:\n        if a['is_cgroup_root']\
+        \ or a['path']==state['service_path']:continue\n        maximum=require_text(a['maximum']).strip();current=int(require_text(a['current']).strip())\n\
+        \        require(current>=0 and (maximum=='max' or maximum.isdecimal()),'unknown ancestor measurement')\n\
+        \        if maximum!='max':require(int(maximum)-current>=res['effective_memory_headroom_bytes'],'a proper\
+        \ ancestor has tighter finite headroom; blocked')\n    libc=ctypes.CDLL(None,use_errno=True)\n    require(libc.prctl(36,1,0,0,0)==0,'PR_SET_CHILD_SUBREAPER\
+        \ failed')\n    flag=ctypes.c_int();require(libc.prctl(37,ctypes.byref(flag),0,0,0)==0 and flag.value==1,'subreaper\
+        \ flag did not become effective')\n    require(not children(),'manager already owns unexpected children\
+        \ before launch')\n    got=[]\n    def received(signum,frame):got.append({'signal':signum,'epoch':time.time()})\n\
+        \    signal.signal(signal.SIGINT,received);signal.signal(signal.SIGTERM,received)\n    me=proc_identity(os.getpid());ready={'nonce':state['nonce'],'identity':me,'namespace':here['namespaces'],'uid':os.getuid(),'subreaper':True,'harness_sha256':sha(SCRIPT),'epoch':time.time()}\n\
+        \    save('manager-ready.json',ready)\n    wait_end=time.monotonic()+15\n    while not (OUT/'manager-authorized.json').is_file():\n\
+        \        require(not got,'interrupted before owned pidfd authorization');require(time.monotonic()<wait_end,'outer\
+        \ owned pidfd authorization missing');time.sleep(.05)\n    authorized=json.loads((OUT/'manager-authorized.json').read_text());require(authorized['nonce']==state['nonce']\
+        \ and authorized['manager_start_ticks']==me['start_ticks'],'authorization identity mismatch')\n    receipt={'scope':state['hierarchy_path']+'\
+        \ and descendants; not whole VM root','manager_identity':me,'subreaper':True,'received_signals':got,'owned_signals':[],'reaped_children':[],'adopted_descendant_cleanup_required':False,'forced_cleanup':False,'cleanup_verified':False,'normal_command_completed':False,'expected_signal_probe':state['expected_signal_probe'],'started_epoch':time.time()}\n\
+        \    cap=None;cap_fd=None;exit_code=2;signal_sent=False;stop_started=None\n    def send_owned(identity,sig,reason):\n\
+        \        fd=bound_pidfd(identity,parent=os.getpid())\n        try:\n            if not exited(fd):signal.pidfd_send_signal(fd,sig)\n\
+        \            receipt['owned_signals'].append({'identity':identity,'signal':sig,'reason':reason,'epoch':time.time(),'method':'kernel\
+        \ pidfd, actual direct PPid and start_ticks checked'})\n        finally:os.close(fd)\n    def reap_adopted():\n\
+        \        remaining=[]\n        for r in children():\n            if cap is not None and r['pid']==cap.pid:continue\n\
+        \            try:\n                pid,status=os.waitpid(r['pid'],os.WNOHANG)\n                if pid:receipt['reaped_children'].append({'identity':r,'wait_status':status,'epoch':time.time()})\n\
+        \                else:remaining.append(r)\n            except ChildProcessError:pass\n        return remaining\n\
+        \    try:\n        args=['/usr/bin/python3','-B',state['host_cap'],state['target'],*state['command']]\n\
+        \        cap=subprocess.Popen(args,start_new_session=True)\n        owned=proc_identity(cap.pid);require(owned['ppid']==os.getpid()\
+        \ and owned['uid']==state['uid'] and owned['mnt_namespace']==me['mnt_namespace'] and owned['cgroup']==me['cgroup'],'host-cap\
+        \ identity did not inherit exact service/UID namespace')\n        cap_fd=bound_pidfd(owned,parent=os.getpid());receipt['host_cap_identity']=owned;receipt['host_cap_argv']=args\n\
+        \        final_manager_deadline=float(state['environment']['HOST_JOB_START'])+2250\n        while cap.poll()\
+        \ is None:\n            if got or time.time()>=final_manager_deadline:\n                if not signal_sent:\n\
+        \                    signal.pidfd_send_signal(cap_fd,signal.SIGINT);signal_sent=True;stop_started=time.monotonic()\n\
+        \                    receipt['owned_signals'].append({'identity':owned,'signal':signal.SIGINT,'reason':'external\
+        \ INT/TERM or manager deadline mapped to host-cap cleanup','epoch':time.time(),'method':'bound owned Popen\
+        \ pidfd'})\n                elif time.monotonic()-stop_started>30:\n                    receipt['forced_cleanup']=True;signal.pidfd_send_signal(cap_fd,signal.SIGKILL)\n\
+        \                    break\n            time.sleep(.1)\n        if cap.poll() is None:\n            try:cap.wait(timeout=5)\n\
+        \            except subprocess.TimeoutExpired:receipt['host_cap_exit_unknown']=True\n        else:cap.wait()\n\
+        \        receipt['host_cap_exit_code']=cap.returncode\n        adopted=reap_adopted()\n        if adopted:\n\
+        \            receipt['adopted_descendant_cleanup_required']=True\n            # Only actual children adopted\
+        \ by THIS subreaper may be signalled.\n            deadline=time.monotonic()+10;sent={}\n            while\
+        \ adopted and time.monotonic()<deadline:\n                for r in adopted:\n                    key=(r['pid'],r['start_ticks']);first=sent.get(key)\n\
+        \                    if first is None:\n                        send_owned(r,signal.SIGINT,'adopted residual\
+        \ after original cleanup; run fails');sent[key]=time.monotonic()\n                    elif time.monotonic()-first>2:\n\
+        \                        receipt['forced_cleanup']=True;send_owned(r,signal.SIGKILL,'adopted residual did\
+        \ not exit after SIGINT')\n                time.sleep(.1);adopted=reap_adopted()\n            receipt['unexited_owned_children']=adopted\n\
+        \        remaining=children();receipt['remaining_actual_children']=remaining\n        receipt['cleanup_verified']=cap.returncode\
+        \ is not None and exited(cap_fd) and not remaining\n        require(receipt['cleanup_verified'],'owned process\
+        \ cleanup is unknown/incomplete')\n        require(not receipt['adopted_descendant_cleanup_required'] and\
+        \ not receipt['forced_cleanup'],'residual/forced cleanup means failed command, never pass')\n        validate_view(state,'inside-after');original_sources(state)\n\
+        \        receipt['normal_command_completed']=cap.returncode==0 and not got and not signal_sent\n       \
+        \ exit_code=cap.returncode if receipt['normal_command_completed'] else 2\n        if exit_code<0:exit_code=128-exit_code\n\
+        \    except BaseException as exc:\n        receipt['failure']=type(exc).__name__+': '+str(exc)\n       \
+        \ if cap is not None and cap.poll() is None:\n            try:\n                if cap_fd is not None:signal.pidfd_send_signal(cap_fd,signal.SIGINT)\n\
+        \                else:cap.send_signal(signal.SIGINT)\n                cap.wait(timeout=25)\n           \
+        \ except BaseException as cleanup:receipt['exception_cleanup_error']=type(cleanup).__name__+': '+str(cleanup)\n\
+        \        # Do not claim cleanup from a parent exit. Reap/signals are limited to actual direct children.\n\
+        \        end=time.monotonic()+10\n        while children() and time.monotonic()<end:\n            for r\
+        \ in children():\n                if cap is not None and r['pid']==cap.pid:\n                    if cap.poll()\
+        \ is None:\n                        receipt['forced_cleanup']=True\n                        try:send_owned(r,signal.SIGKILL,'exception\
+        \ cleanup of owned host-cap')\n                        except ProcessLookupError:pass\n                \
+        \    continue\n                receipt['adopted_descendant_cleanup_required']=True;receipt['forced_cleanup']=True\n\
+        \                try:send_owned(r,signal.SIGKILL,'exception cleanup of actual adopted descendant')\n   \
+        \             except ProcessLookupError:pass\n            if cap is not None:cap.poll()\n            reap_adopted();time.sleep(.1)\n\
+        \        receipt['remaining_actual_children']=children();receipt['cleanup_verified']=not receipt['remaining_actual_children']\
+        \ and (cap is None or cap.poll() is not None)\n    finally:\n        if cap_fd is not None:os.close(cap_fd)\n\
+        \        receipt.update(exit_code=exit_code,finished_epoch=time.time())\n        save('manager-result.json',receipt)\n\
+        \        unsafe=not receipt['cleanup_verified'] or receipt['forced_cleanup'] or receipt['adopted_descendant_cleanup_required']\n\
+        \        if unsafe or (got and not state['expected_signal_probe']):\n            P(state['environment']['CASE_DIR'],'namespace-lifecycle-block.json').write_text(json.dumps({'blocked':True,'receipt':str(OUT/'manager-result.json'),'reason':'interrupted\
+        \ production command or incomplete/forced/adopted cleanup; later native commands forbidden'},indent=2)+'\\\
+        n')\n    return exit_code\n\ndef outside():\n    before=proc('host-before');save('host-before.json',before)\n\
+        \    summary={'schema':'razr-D6-private-service-launch','functional_candidate':S4,'command':COMMAND,'compatibility_verified':False,'cleanup_verified':False,'command_exit_code':None,'private_root_Python_launcher_execs_original_UID_manager':True,'started_epoch':time.time()}\n\
+        \    child=None;manager_fd=None;requested=[]\n    def handler(signum,frame):requested.append({'signal':signum,'epoch':time.time()})\n\
+        \    signal.signal(signal.SIGINT,handler);signal.signal(signal.SIGTERM,handler)\n    try:\n        require(COMMAND,'command\
+        \ required')\n        env={k:os.environ[k] for k in SAFE_ENV_NAMES if k in os.environ};require(all(k in\
+        \ env for k in ('PATH','HOME','HOST_JOB_START','HOST_ROOT','CASE_DIR','S4')),'required allowlisted caller\
+        \ environment missing')\n        require(not (P(env['CASE_DIR'])/'namespace-lifecycle-block.json').exists(),'previous\
+        \ lifecycle failure blocks this job')\n        expected_signal=env.get('RAZR_EXPECTED_SIGNAL_PROBE')\n \
+        \       require(expected_signal in (None,'SIGINT','SIGTERM'),'unknown lifecycle probe marker')\n       \
+        \ if expected_signal:\n            require(str(REPO/SUP_REL) in COMMAND and '--seconds' in COMMAND and COMMAND[COMMAND.index('--seconds')+1]=='30','signal\
+        \ probe exception only applies to short original supervisor')\n        command=list(COMMAND)\n        if\
+        \ '/' not in command[0]:\n            command[0]=shutil.which(command[0],path=env['PATH']);require(command[0],'executable\
+        \ unavailable on original caller PATH')\n        membership=group_path(before['records']['cgroup']['text']);candidates=[m\
+        \ for m in mounts(before['records']['mountinfo']['text']) if m['fstype']=='cgroup2' and membership.is_relative_to(P(m['root']))]\n\
+        \        require(candidates,'no genuine cgroup2 mount covers this job');mount=max(candidates,key=lambda\
+        \ m:len(P(m['root']).parts))\n        service=P(mount['mountpoint'])/membership.relative_to(P(mount['root']));require(service.resolve()==service\
+        \ and not service.is_symlink(),'service path resolution changed')\n        measured_before=measured('host-service-before',service);ancestors=[];current=service\n\
+        \        while True:\n            item={'path':str(current),'identity':ident(current),'is_cgroup_root':current==P(mount['mountpoint']),'maximum':capture('ancestor-'+str(len(ancestors))+'-memory.max',current/'memory.max'),'current':capture('ancestor-'+str(len(ancestors))+'-memory.current',current/'memory.current')};ancestors.append(item)\n\
+        \            if item['is_cgroup_root']:break\n            require(current.parent!=current and current.parent.is_relative_to(P(mount['mountpoint'])),'invalid\
+        \ real ancestry');current=current.parent\n        tools={k:shutil.which(k) for k in ('sudo','unshare','mount','setpriv')};require(all(tools.values()),'existing\
+        \ namespace/drop tools unavailable; no fallback')\n        state={'nonce':secrets.token_hex(32),'before':before,'uid':os.getuid(),'gid':os.getgid(),'groups':sorted(os.getgroups()),'cwd':os.getcwd(),'hierarchy_path':str(membership),'service_path':str(service),'service':measured_before,'ancestors':ancestors,'root_directory':ident('/sys/fs/cgroup'),'root_memory_stat':capture('host-root-memory.stat','/sys/fs/cgroup/memory.stat'),'host_meminfo':capture('host-meminfo','/proc/meminfo'),'tools':tools,'environment':env,'harness_sha256':sha(SCRIPT),'host_cap':str(P(env['HOST_ROOT'])/'host-cap.py'),'host_cap_sha256':sha(P(env['HOST_ROOT'])/'host-cap.py'),'target':str(TARGET),'command':command,'expected_signal_probe':expected_signal,'observed_uv_path':shutil.which('uv',path=env['PATH'])}\n\
+        \        require(state['uid']!=0,'launcher must begin as original unprivileged runner');original_sources(state);save('prepared.json',state)\n\
+        \        args=[tools['sudo'],'-n',tools['unshare'],'--mount','--propagation','private','--','/usr/bin/python3','-B',str(SCRIPT),'--private-root',str(OUT),str(REPO)]\n\
+        \        with (OUT/'namespace.stdout').open('wb') as log,(OUT/'namespace.stderr').open('wb') as err:\n \
+        \           child=subprocess.Popen(args,stdout=log,stderr=err,start_new_session=True);owned=proc_identity(child.pid,full=False);save('owned-namespace-launcher.json',{'argv':args,'identity':owned})\n\
+        \            sent_count=0;early_sent=False\n            while child.poll() is None:\n                ready=OUT/'manager-ready.json'\n\
+        \                if manager_fd is None and ready.is_file():\n                    r=json.loads(ready.read_text());require(r['nonce']==state['nonce']\
+        \ and r['harness_sha256']==state['harness_sha256'] and r['subreaper'] is True,'manager readiness provenance\
+        \ mismatch')\n                    rows=lineage_reaches(r['identity']['pid'],owned);require(r['uid']==state['uid'],'manager\
+        \ UID mismatch')\n                    manager_fd=bound_pidfd(r['identity']);save('verified-owned-manager-lineage.json',{'lineage':rows,'identity':r['identity'],'signal_method':'pidfd','nonce':state['nonce']})\n\
+        \                    save('manager-authorized.json',{'nonce':state['nonce'],'manager_start_ticks':r['identity']['start_ticks'],'outer_pid':os.getpid(),'epoch':time.time()})\n\
+        \                if requested:\n                    if manager_fd is not None and len(requested)>sent_count:\n\
+        \                        if not exited(manager_fd):signal.pidfd_send_signal(manager_fd,signal.SIGINT)\n\
+        \                        sent_count=len(requested)\n                    elif manager_fd is None and not\
+        \ early_sent:\n                        # No heavy command can start before pidfd authorization. This is\
+        \ only setup cancellation.\n                        child.send_signal(signal.SIGINT);early_sent=True\n \
+        \               time.sleep(.1)\n            code=child.wait();summary['namespace_launcher_exit_code']=code\n\
+        \        require(manager_fd is not None,'manager never reached owned pidfd authorization')\n        require(exited(manager_fd),'manager\
+        \ identity still alive after launcher exit')\n        result=json.loads((OUT/'manager-result.json').read_text());summary['manager_result']=result;summary['cleanup_verified']=result['cleanup_verified'];summary['command_exit_code']=result['host_cap_exit_code']\
+        \ if 'host_cap_exit_code' in result else None\n        after=proc('host-after');save('host-after.json',after);namespace_checks(after,before,private=False)\n\
+        \        require(after['records']['mountinfo']['text']==before['records']['mountinfo']['text'],'host global\
+        \ mount view changed')\n        require(same_inode(ident('/sys/fs/cgroup'),state['root_directory']),'host\
+        \ root inode changed')\n        measured_after=measured('host-service-after',service);member_identity_matches(measured_before,measured_after)\n\
+        \        for i,a in enumerate(ancestors):\n            post=capture('ancestor-'+str(i)+'-memory.max-after',P(a['path'])/'memory.max');save('ancestor-'+str(i)+'-after.json',post)\n\
+        \            require(a['maximum']['readable']==post['readable'],'ancestor maximum availability changed')\n\
+        \            if post['readable']:require(post['text']==a['maximum']['text'] and same_inode(post['identity'],a['maximum']['identity']),'ancestor\
+        \ maximum changed')\n        original_sources(state);summary['compatibility_verified']=True\n        require(result['cleanup_verified']\
+        \ and not result['forced_cleanup'] and not result['adopted_descendant_cleanup_required'],'owned cleanup\
+        \ did not finish through normal original path')\n        summary['normal_command_completed']=result['normal_command_completed'];summary['exit_code']=code\
+        \ if code>=0 else 128-code\n    except BaseException as exc:\n        summary['failure']=type(exc).__name__+':\
+        \ '+str(exc);summary['exit_code']=2\n        if child is not None and child.poll() is None:\n          \
+        \  # Never kill only sudo/namespace parent and claim descendants are gone.\n            if manager_fd is\
+        \ not None and not exited(manager_fd):signal.pidfd_send_signal(manager_fd,signal.SIGINT)\n            else:child.send_signal(signal.SIGINT)\n\
+        \            try:child.wait(timeout=60)\n            except subprocess.TimeoutExpired:summary['cleanup_unknown']=True\n\
+        \        if not summary.get('cleanup_verified'):\n            P(os.environ['CASE_DIR'],'namespace-lifecycle-block.json').write_text(json.dumps({'blocked':True,'receipt':str(OUT/'SUMMARY.json'),'reason':'outer\
+        \ failure or cleanup unknown; later native commands forbidden'},indent=2)+'\\n')\n    finally:\n       \
+        \ if manager_fd is not None:os.close(manager_fd)\n        summary.update(external_signals=requested,finished_epoch=time.time());save('SUMMARY.json',summary)\n\
+        \    return summary['exit_code']\n\ndef signal_check():\n    result={'schema':'razr-D6-nonCAD-signal-chain-check','passed':False,'native_CAD_executed':False,'original_source_sha256':SUP_SHA,'tests':[]}\n\
+        \    sentinel=None;sentinel_fd=None\n    try:\n        require(sha(REPO/SUP_REL)==SUP_SHA,'original supervisor\
+        \ source mismatch')\n        sentinel=subprocess.Popen(['/usr/bin/python3','-B','-c','import time; time.sleep(120)'],start_new_session=True)\n\
+        \        sentinel_identity=proc_identity(sentinel.pid);sentinel_fd=bound_pidfd(sentinel_identity,parent=os.getpid());result['unrelated_to_namespace_branch_sentinel']=sentinel_identity\n\
+        \        worker=OUT/'stdlib-worker.py'\n        worker.write_text(\"import json,os,pathlib,sys,time\\np=pathlib.Path('/proc/self');t=(p/'stat').read_text();r=t[t.rfind(')')+2:].split();record={'pid':os.getpid(),'ppid':os.getppid(),'pgid':os.getpgid(0),'sid':os.getsid(0),'uid':os.getuid(),'start_ticks':int(r[19]),'cgroup':(p/'cgroup').read_text(),'mnt_namespace':os.readlink(p/'ns/mnt')}\\\
+        ntarget=pathlib.Path(sys.argv[1]);temporary=target.with_suffix('.tmp');temporary.write_text(json.dumps(record,indent=2)+'\\\
+        \\n');os.replace(temporary,target)\\ntime.sleep(60)\\n\")\n        for sig in (signal.SIGINT,signal.SIGTERM):\n\
+        \            name=signal.Signals(sig).name;folder=OUT/name;folder.mkdir();task=folder/'task';task.mkdir();identity_file=folder/'worker-ready.json'\n\
+        \            target=folder/'host-cap';cmd=['/usr/bin/python3','-B',str(SCRIPT),str(target),'/usr/bin/python3','-B',str(REPO/SUP_REL),'--task-directory',str(task),'--seconds','30','--log',str(folder/'original-child.log'),'--report',str(folder/'original-supervisor-report.json'),'--','/usr/bin/python3','-B',str(worker),str(identity_file)]\n\
+        \            env=os.environ.copy();env['RAZR_EXPECTED_SIGNAL_PROBE']=name\n            launch=None;worker_fd=None;sup_fd=None;row={'signal_to_outer':name,'passed':False,'cleanup_unknown':False}\n\
+        \            try:\n                with (folder/'outer.stdout').open('wb') as log,(folder/'outer.stderr').open('wb')\
+        \ as err:\n                    launch=subprocess.Popen(cmd,env=env,stdout=log,stderr=err,start_new_session=True);launch_identity=proc_identity(launch.pid,full=False);row['owned_outer_identity']=launch_identity;deadline=time.monotonic()+20\n\
+        \                    while not identity_file.is_file() and launch.poll() is None and time.monotonic()<deadline:time.sleep(.05)\n\
+        \                    require(identity_file.is_file(),'short real signal worker did not start')\n       \
+        \             wi=json.loads(identity_file.read_text());lineage=lineage_reaches(wi['pid'],launch_identity);worker_fd=bound_pidfd(wi);sup_identity=proc_identity(wi['ppid']);sup_fd=bound_pidfd(sup_identity)\n\
+        \                    require(wi['sid']==wi['pid'] and wi['pgid']==wi['pid'],'original supervisor child is\
+        \ not an independent session')\n                    time.sleep(.25);launch.send_signal(sig)\n          \
+        \          try:code=launch.wait(timeout=45)\n                    except subprocess.TimeoutExpired:raise\
+        \ RuntimeError('owned signal chain did not finish; no install/CAD permitted')\n                    require(exited(worker_fd)\
+        \ and exited(sup_fd),'actual original controller/independent-session worker did not exit')\n           \
+        \         require(not exited(sentinel_fd),'signal affected the separate non-namespace branch sentinel')\n\
+        \                    ns=target.with_name(target.name+'.namespace');summ=json.loads((ns/'SUMMARY.json').read_text());mr=json.loads((ns/'manager-result.json').read_text());original=json.loads((folder/'original-supervisor-report.json').read_text());host=json.loads(target.with_suffix('.json').read_text())\n\
+        \                    require(code!=0 and summ['compatibility_verified'] and summ['cleanup_verified'] and\
+        \ mr['cleanup_verified'] and not mr['forced_cleanup'] and not mr['adopted_descendant_cleanup_required'],'expected\
+        \ signal did not take the clean original path')\n                    require(mr['received_signals'] and\
+        \ original['resource_stop_reason']=='supervisor_failure' and original['supervisor_error']['type']=='KeyboardInterrupt'\
+        \ and original['supervisor_source_unchanged'] and original['supervisor_source_sha256']==SUP_SHA,'original\
+        \ supervisor INT/finally receipt is missing')\n                    require(host['failure'].startswith('KeyboardInterrupt'),'host-cap\
+        \ did not enter its original cleanup exception path')\n                    row.update(passed=True,exit_code=code,worker_identity=wi,supervisor_identity=sup_identity,lineage=lineage,both_bound_pidfds_exited=True,unrelated_sentinel_unaffected=True,forced_or_adopted_cleanup=False,original_supervisor_report_sha256=sha(folder/'original-supervisor-report.json'),namespace_summary_sha256=sha(ns/'SUMMARY.json'))\n\
+        \                    result['tests'].append(dict(row))\n            except BaseException as exc:\n     \
+        \           row['failure']=type(exc).__name__+': '+str(exc)\n                raise\n            finally:\n\
+        \                # Every early failure keeps ownership and requests the same cleanup route.\n          \
+        \      if launch is not None and launch.poll() is None:\n                    row['early_failure_cleanup_requested']=True\n\
+        \                    try:\n                        launch.send_signal(signal.SIGINT);launch.wait(timeout=45)\n\
+        \                    except BaseException as cleanup:\n                        row['cleanup_unknown']=True;row['cleanup_error']=type(cleanup).__name__+':\
+        \ '+str(cleanup)\n                if launch is not None:row['actual_outer_exit_code']=launch.poll()\n  \
+        \              for label,fd in (('worker',worker_fd),('original_supervisor',sup_fd)):\n                \
+        \    if fd is not None:\n                        row[label+'_pidfd_exited_at_finally']=exited(fd)\n    \
+        \                    if not row[label+'_pidfd_exited_at_finally']:row['cleanup_unknown']=True\n        \
+        \                os.close(fd)\n                save('signal-'+name+'-final.json',row)\n                if\
+        \ row['cleanup_unknown']:\n                    P(os.environ['CASE_DIR'],'namespace-lifecycle-block.json').write_text(json.dumps({'blocked':True,'reason':'signal\
+        \ probe owned branch cleanup unknown; install/CAD forbidden'},indent=2)+'\\n')\n        require(len(result['tests'])==2,'both\
+        \ INT and TERM chain tests required');result['passed']=True\n    except BaseException as exc:\n        result['failure']=type(exc).__name__+':\
+        \ '+str(exc)\n        P(os.environ['CASE_DIR'],'namespace-lifecycle-block.json').write_text(json.dumps({'blocked':True,'reason':'nonCAD\
+        \ real signal-chain self-check failed; no install/CAD'},indent=2)+'\\n')\n    finally:\n        if sentinel\
+        \ is not None:\n            if sentinel.poll() is None:sentinel.terminate()\n            try:sentinel.wait(timeout=5)\n\
+        \            except subprocess.TimeoutExpired:sentinel.kill();sentinel.wait()\n        if sentinel_fd is\
+        \ not None:os.close(sentinel_fd)\n        result['finished_epoch']=time.time();save('SIGNAL_CHECK.json',result)\n\
+        \    return 0 if result['passed'] else 2\ntry:\n    if MODE=='outside':code=outside()\n    elif MODE=='private-root':private_root();code=2\n\
+        \    elif MODE=='inside':code=inside()\n    elif MODE=='signal-check':code=signal_check()\n    else:raise\
+        \ RuntimeError('unknown mode')\nexcept BaseException as exc:\n    save(MODE+'-ERROR.json',{'error':type(exc).__name__+':\
+        \ '+str(exc),'epoch':time.time()});raise\nraise SystemExit(code)\nPY\ncp \"$HOST_ROOT/service-launch.py\"\
+        \ \"$CASE_DIR/source/service-launch.py\"\ncat > \"$HOST_ROOT/python-downloads.json\" <<'PYTHON_METADATA'\n\
+        {\n  \"cpython-3.12.14-linux-x86_64-gnu\": {\n    \"name\": \"cpython\",\n    \"arch\": {\n      \"family\"\
+        : \"x86_64\",\n      \"variant\": null\n    },\n    \"os\": \"linux\",\n    \"libc\": \"gnu\",\n    \"major\"\
+        : 3,\n    \"minor\": 12,\n    \"patch\": 14,\n    \"prerelease\": \"\",\n    \"url\": \"https://github.com/astral-sh/python-build-standalone/releases/download/20260814/cpython-3.12.14%2B20260814-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz\"\
+        ,\n    \"sha256\": \"5acfa3e9ba26b51ae161c83aff278da915b590d22373a424b2ba55b8afe91fcc\",\n    \"variant\"\
+        : null,\n    \"build\": \"20260814\"\n  }\n}\nPYTHON_METADATA\nprintf 'a23c006d96b05012706707a5c0fc0bca87c17b4e362d5992a83795db914a5c56\
+        \  %s\\n' \"$HOST_ROOT/python-downloads.json\" | sha256sum --check --strict\ncp \"$HOST_ROOT/python-downloads.json\"\
+        \ \"$CASE_DIR/source/python-downloads.json\"\nprintf 'UV_PYTHON_DOWNLOADS_JSON_URL=%s\\n' \"$HOST_ROOT/python-downloads.json\"\
+        \ >> \"$GITHUB_ENV\"\npython3 -B - <<'S4_SOURCE'\nimport hashlib,json,os,pathlib,subprocess\nroot=pathlib.Path(os.environ['GITHUB_WORKSPACE']).resolve();case=pathlib.Path(os.environ['CASE_DIR']);host=pathlib.Path(os.environ['HOST_ROOT'])\n\
+        expected={'engineering/engineering-integration-20261025/geometry/key/complete_key_trial.py': 'de9b9018797c30dd7f38bbc71e58082f7b6f66f2ea5617b30c3e94c895a6988c',\
+        \ 'engineering/engineering-integration-20261025/geometry/key/supervise_key.py': 'c967a426ee68edb0fe4e01b10af7d8e2880dde3d9f93333e7cc89ddb2669ddf8',\
+        \ 'engineering/engineering-integration-20261025/geometry/key/read_key_trial.py': '32f37c30fde098ca900f07ae0c603cfe75b9fad2303852426442a345e0316c0d',\
+        \ 'engineering/engineering-integration-20261025/geometry/key/stow_two_layer_face_relief.py': '71fc20e9cd0dc2035585e863b5351adf36838f6e1ee3fc936762032d263b929e',\
+        \ 'tests/test_key_two_layer_relief_contract.py': 'c453108ac63879afffa2bbd1dd2d3ae2d3e8898fe466e6b691635dcea671d234',\
+        \ 'engineering/engineering-integration-20261025/geometry/PORTING.json': '426df25881c8587b8b56d84c62eb36505d8d487e130d4713e27dcc454f6a74d0',\
+        \ 'engineering/engineering-integration-20261025/geometry/slide/check_slide_checkpoint.py': '0f1a490e6acf98451a4374b6d7dc947444cbfe1853a268a734fc667e67a1969e',\
+        \ 'engineering/engineering-integration-20261025/geometry/slide/check_slide_report.py': '27584c2f0f198c7ede10378d49fe3bd752d5f6ba6571e86e78b56365aeee0915',\
+        \ 'tests/test_slide_reader_entrypoints.py': '1c663f2ebda6b326735858d6cd4644f405e578eaa9c87646ac772dbc8aee0dd4',\
+        \ 'tools/test_suites.json': '4a18768ba9e1512dfbe70bb5ddc076b16f5e478ac751485a58c16c2437092deb', 'docs/RESEARCH_OVERVIEW.md':\
+        \ '3deeac81e3250dbf8f9c513e04ed55ae4c2782d7a9c33e6cc25b7abf77514160', 'CURRENT_DESIGN.md': '02d3bcacfee5ca1f767084b962bac27fd3e0c26e0b76b5aec632b21e47556382',\
+        \ 'status.json': 'b3cddb45d0855859ce86250107d393535495ce77812a41160b36a6cd1c41c4e7'}\nassert len(expected)==13\n\
+        assert subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip()=='cdd9e2c41216201b6cd04dd610d45fde80499045'\n\
+        for rel,digest in expected.items():\n p=root/rel;assert p.is_file() and not p.is_symlink() and hashlib.sha256(p.read_bytes()).hexdigest()==digest\n\
+        \ dst=case/'source/S4-delta'/rel;dst.parent.mkdir(parents=True,exist_ok=True);dst.write_bytes(p.read_bytes())\n\
+        inventory={}\nfor row in subprocess.check_output(['git','ls-tree','-rz','HEAD']).split(b'\\0'):\n if row:\n\
+        \  metadata,name=row.split(b'\\t',1);mode,kind,oid=metadata.split();inventory[os.fsdecode(name)]=(mode,kind,oid.decode())\n\
+        sources={};present_committed=True\nfor raw in subprocess.check_output(['git','ls-files','-z']).split(b'\\\
+        0'):\n if not raw:continue\n rel=os.fsdecode(raw);p=root/rel\n if not p.is_file():continue\n assert not\
+        \ p.is_symlink();data=p.read_bytes();entry=inventory[rel]\n assert entry[0] in (b'100644',b'100755') and\
+        \ entry[1]==b'blob'\n assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\\0'+data).hexdigest()==entry[2]\n\
+        \ sources[rel]=hashlib.sha256(data).hexdigest()\nassert expected.keys()<=sources.keys()\nrecord={'schema':'razr-S4-L2-source-before-v1','source_commit':os.environ['S4'],'source_tree':'cdd9e2c41216201b6cd04dd610d45fde80499045','previous_qualified_candidate':'bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb','present_source_sha256':sources,'all_present_tracked_bytes_match_HEAD':True,'full_checkout_claimed':False,'thirteen_changed_source_sha256':expected,'new_full_test_result_required':False,'previous_C2_test_pass_reused':False,'original_v4_execution_claimed':False,'service_launcher_sha256':hashlib.sha256((host/'service-launch.py').read_bytes()).hexdigest(),'hostcap_sha256':hashlib.sha256((host/'host-cap.py').read_bytes()).hexdigest()}\n\
+        assert record['service_launcher_sha256']=='58a6bfa9653a87a1fcb0d40b9f6a737532cbe0fbe6523744c8c6391ebba50e71'\
+        \ and record['hostcap_sha256']=='c2c028f481e38ee1b28fb4c809bf4d4e88c9947e4825dd3c3733c10d5456d94c'\n(case/'S4-source-before.json').write_text(json.dumps(record,indent=2)+'\\\
+        n')\nmanifest=json.loads((root/'tools/test_suites.json').read_text())\nassert len(manifest['suites'])==36\
+        \ and manifest['minimum_total_tests']==sum(s['minimum_tests'] for s in manifest['suites'])==1654\nS4_SOURCE\n\
+        \n\nmkdir -p \"$HOST_ROOT/l2\" \"$CASE_DIR/source/l2\"\ncat > \"$HOST_ROOT/l2/envelope_v2.py\" <<'L2_ENVELOPE_V2_PY'\n\
+        \"\"\"Conservative straight-translation carriers, V2 research implementation.\n\nNo manufactured material\
+        \ is changed. A near-degenerate temporary sweep is\nreplaced by an outward carrier, not reoriented, discarded\
+        \ or assigned abs(V).\nThe original signed-solid and 1e-7 Common predicates remain authoritative.\n\nCoverage:\
+        \ start/end solids and swept boundary faces cover the entire sweep.\nFor an ordinary planar face its native\
+        \ prism is used. For a nearly tangential\nface its entire native bound, in that face's orthogonal frame,\
+        \ is expanded by\nthe complete translation interval and by GUARD. Extrusion/other curved faces\nuse a whole-face\
+        \ native geometric bound with the same interval extension.\nThese are supersets; their positive overlap\
+        \ never proves an actual collision.\nTiny nonzero translations are enlarged in BOTH directions along the\
+        \ same\nline. The original segment is explicitly contained in that longer segment.\nAll returned regions\
+        \ must have valid topology and strictly positive signed\nsolid volume. Bounds use unmeshed OCCT geometry,\
+        \ not sampled vertices.\n\nFloating point BRep bounds and Boolean operations remain numerical. This is\n\
+        not a certified interval-arithmetic or independent-kernel proof.\n\"\"\"\nfrom __future__ import annotations\n\
+        \nimport math\nfrom OCP.BRepPrimAPI import BRepPrimAPI_MakePrism\nfrom OCP.Bnd import Bnd_Box\nfrom OCP.BRepBndLib\
+        \ import BRepBndLib\nfrom OCP.gp import gp_Vec\nimport cadquery as cq\nimport product_assembly as p\nfrom\
+        \ straight_envelope import single, whole_material\nfrom translation_regions import sum_common_upper_bound\n\
+        \nTOL = 1e-7\nGUARD = 1e-5\nMAX_REGIONS = 4096\n\n\ndef geometric_bounds(shape):\n    box = Bnd_Box()\n\
+        \    BRepBndLib.AddOptimal_s(shape.wrapped, box, False, True)\n    a, b, c, d, e, f = box.Get()\n    vals\
+        \ = (a, d, b, e, c, f)\n    if not all(math.isfinite(x) for x in vals):\n        raise ValueError('finite\
+        \ geometric carrier bounds required')\n    return vals\n\n\ndef outward_box(shape, vector, *, plane=None):\n\
+        \    \"\"\"Enclose an entire face/solid sweep by interval extrema in one frame.\"\"\"\n    vector = cq.Vector(vector)\n\
+        \    local = shape if plane is None else plane.toLocalCoords(shape)\n    if plane is not None:\n       \
+        \ vector = cq.Vector(vector.dot(plane.xDir), vector.dot(plane.yDir),\n                           vector.dot(plane.zDir))\n\
+        \    bound = geometric_bounds(local)\n    lo = []; hi = []\n    for i, step in enumerate(vector.toTuple()):\n\
+        \        lo.append(math.nextafter(bound[2*i]+min(0., step)-GUARD, -math.inf))\n        hi.append(math.nextafter(bound[2*i+1]+max(0.,\
+        \ step)+GUARD, math.inf))\n    result = p.box(lo, hi)\n    if plane is not None:\n        result = single(result.transformShape(plane.rG))\n\
+        \    return result, {'bounds_local_mm': [*lo, *hi], 'padding_mm': GUARD,\n                    'native_bounds_include_shape_tolerances':\
+        \ True,\n                    'unmeshed_complete_geometry_bound': True,\n                    'local_frame':\
+        \ plane is not None}\n\n\ndef regions(shape, vector, *, audit=None):\n    single(shape)\n    move = cq.Vector(vector)\n\
+        \    if not all(math.isfinite(x) for x in move.toTuple()):\n        raise ValueError('finite displacement\
+        \ required')\n    records = []\n    if move.Length == 0:\n        return [shape], {'translation_mm': move.toTuple(),\
+        \ 'region_count': 1,\n                         'region_kinds': ['whole_start'], 'exact_zero_path': True}\n\
+        \    source = shape\n    extension = None\n    if move.Length < 2*GUARD:\n        unit = move.normalized()\n\
+        \        source = shape.translate(unit.multiply(-GUARD))\n        original_length = move.Length\n      \
+        \  move = move.add(unit.multiply(2*GUARD))\n        extension = {'original_length_mm': original_length,\n\
+        \                     'outward_each_end_mm': GUARD,\n                     'source_shift_mm': unit.multiply(-GUARD).toTuple(),\n\
+        \                     'extended_translation_mm': move.toTuple(),\n                     'original_segment_parameters_in_extended_segment':\n\
+        \                        [GUARD/(original_length+2*GUARD),\n                         (GUARD+original_length)/(original_length+2*GUARD)]}\n\
+        \    out = [shape, single(shape.translate(cq.Vector(vector)))]\n    kinds = ['whole_start', 'whole_end']\n\
+        \    if extension is not None:\n        out.extend([source, single(source.translate(move))])\n        kinds.extend(['extended_whole_start',\
+        \ 'extended_whole_end'])\n    for index, face in enumerate(source.Faces()):\n        kind = face.geomType()\n\
+        \        row = {'face_index': index, 'surface_type': kind}\n        carrier = None\n        if kind == 'PLANE':\n\
+        \            normal = face.normalAt()\n            projection = normal.dot(move)\n            row['normal_displacement_mm']\
+        \ = projection\n            if abs(projection) >= GUARD:\n                prism = BRepPrimAPI_MakePrism(face.wrapped,\
+        \ gp_Vec(*move.toTuple()), True)\n                try:\n                    if not prism.IsDone():\n   \
+        \                     raise ValueError('native face prism construction failed')\n                    carrier\
+        \ = single(cq.Shape.cast(prism.Shape()))\n                    row['method'] = 'native_complete_planar_face_prism'\n\
+        \                except Exception as exc:\n                    row['native_prism_rejected'] = type(exc).__name__+':\
+        \ '+str(exc)\n                    carrier = None\n            if carrier is None:\n                # Bound\
+        \ the complete trimmed face in its own plane. The padded\n                # normal interval also contains\
+        \ an exactly tangential sweep.\n                plane = cq.Plane(origin=face.Center(), normal=normal)\n\
+        \                carrier, detail = outward_box(face, move, plane=plane)\n                row.update(method='whole_planar_face_local_interval_carrier',\
+        \ **detail)\n        else:\n            # This includes the real EXTRUSION counterexample and cylindrical\n\
+        \            # surfaces. No partial curve sampling or unsupported-face omission.\n            carrier, detail\
+        \ = outward_box(face, move)\n            row.update(method='whole_curved_face_world_interval_carrier', **detail)\n\
+        \        single(carrier)\n        row['signed_volume_mm3'] = float(carrier.Volume())\n        out.append(carrier)\n\
+        \        kinds.append(row['method']+'_'+str(index))\n        records.append(row)\n    if audit is not None:\n\
+        \        audit.append({'original_translation_mm': cq.Vector(vector).toTuple(),\n                      'extended_path':\
+        \ extension, 'faces': records,\n                      'source_signed_volume_mm3': shape.Volume(),\n    \
+        \                  'region_count': len(out)})\n    return out, {'translation_mm': move.toTuple(), 'region_count':\
+        \ len(out),\n                 'region_kinds': kinds, 'complete_boundary_faces_included': True,\n       \
+        \          'extended_path': extension, 'new_method': 'all_boundary_carriers_v2',\n                 'overlaps_allowed_sum_not_union_volume':\
+        \ True,\n                 'complete_translation_not_pose_samples': True}\n\n\ndef translation_bounds(coefficients,\
+        \ domain):\n    if len(coefficients) != len(domain) or not coefficients:\n        raise ValueError('complete\
+        \ nonempty affine domain required')\n    result = []\n    for axis in range(3):\n        terms = [(c[axis]*lo,\
+        \ c[axis]*hi) for c,(lo,hi) in zip(coefficients, domain)]\n        if any(not math.isfinite(x) for pair\
+        \ in terms for x in pair):\n            raise ValueError('finite coefficient/domain required')\n       \
+        \ result.extend((math.fsum(min(t) for t in terms), math.fsum(max(t) for t in terms)))\n    return result\n\
+        \n\ndef enclosure_regions(body, coefficients, domain, *, audit=None):\n    active = [i for i,c in enumerate(coefficients)\
+        \ if any(c) and domain[i][1]>domain[i][0]]\n    start = tuple(math.fsum(c[j]*interval[0] for c,interval\
+        \ in zip(coefficients,domain))\n                  for j in range(3))\n    pieces = [single(body.translate(start))]\n\
+        \    for i in active:\n        c = coefficients[i]; lo,hi = domain[i]\n        move = tuple(x*(hi-lo) for\
+        \ x in c)\n        expanded = []\n        for piece in pieces:\n            expanded.extend(regions(piece,\
+        \ move, audit=audit)[0])\n            if len(expanded)>MAX_REGIONS:\n                raise ValueError('4096-region\
+        \ research cap exceeded')\n        pieces = expanded\n    return pieces\n\n\ndef _frame(a,b,coefficients,domain,*,frame_name,evidence_callback=None):\n\
+        \    \"\"\"Original strict Common and upper-sum acceptance, with new carriers.\"\"\"\n    audit = []; region\
+        \ = None; index = None\n    try:\n        single(a);single(b)\n        boxes = enclosure_regions(a,coefficients,domain,audit=audit)\n\
+        \        values = []; rows = []\n        for index, region in enumerate(boxes):\n            result = p.strict_common(region,b)\n\
+        \            value = result['common_mm3']; values.append(value)\n            rows.append({'region_index':index,\
+        \ **result})\n            upper = sum_common_upper_bound(values)\n            if upper>TOL:\n          \
+        \      evidence = evidence_callback(region,b,{'frame':frame_name,'region_index':index,\n               \
+        \     'strict_common':result,'recomputed_after_failure':False}) if evidence_callback else None\n       \
+        \         return {'disposition':'unresolved_enclosure_overlap',\n                        'method':'continuous_relative_affine_box_translation_enclosure',\n\
+        \                        'positive_enclosure_common_mm3':max(values),\n                        'examined_region_common_sum_mm3':upper,\n\
+        \                        'regions_examined':len(values),'total_region_count':len(boxes),\n             \
+        \           'collision_proved':False,'v2_carrier_audit':audit,\n                        'v2_region_checks':rows,'v2_retained_materials':evidence}\n\
+        \        return {'disposition':'clear','method':'continuous_relative_affine_box_translation_enclosure',\n\
+        \                'region_count':len(boxes),'maximum_region_common_mm3':max(values),\n                'common_upper_bound_mm3':upper,'common_upper_bound_is_sum_not_union_volume':True,\n\
+        \                'v2_carrier_audit':audit,'v2_region_checks':rows}\n    except Exception as exc:\n     \
+        \   retained=None\n        if evidence_callback is not None and region is not None:\n            try:\n\
+        \                retained=evidence_callback(region,b,{'frame':frame_name,'region_index':index,\n       \
+        \             'error':type(exc).__name__+': '+str(exc),'recomputed_after_failure':True})\n            except\
+        \ Exception as export_exc:\n                retained={'retention_failed':type(export_exc).__name__+': '+str(export_exc)}\n\
+        \        return {'disposition':'unresolved_evaluation','error':type(exc).__name__+': '+str(exc),\n     \
+        \           'collision_proved':False,'v2_carrier_audit':audit,'v2_retained_materials':retained}\n\n\ndef\
+        \ continuous_pair(a,b,coefficients,*,domain,evidence_callback=None):\n    first=_frame(a,b,coefficients,domain,frame_name='initial',evidence_callback=evidence_callback)\n\
+        \    if first['disposition']=='clear':return first\n    reverse=_frame(b,a,[[-x for x in v] for v in coefficients],domain,\n\
+        \                   frame_name='opposite',evidence_callback=evidence_callback)\n    if reverse['disposition']=='clear':\n\
+        \        return {**reverse,'relative_reference_frame_reversed':True,\n                'initial_reference_frame_result':first}\n\
+        \    return {**first,'opposite_reference_frame_result':reverse}\nL2_ENVELOPE_V2_PY\ncp \"$HOST_ROOT/l2/envelope_v2.py\"\
+        \ \"$CASE_DIR/source/l2/envelope_v2.py\"\ncat > \"$HOST_ROOT/l2/replay_l2.py\" <<'L2_REPLAY_L2_PY'\n\"\"\
+        \"New V2 method replay of every retained L1 E17/O72 original input pair.\n\nThe unchanged S4 product predicates\
+        \ validate every material and Common.\nThe historical result is retained by hash and never rewritten.\n\"\
+        \"\"\nfrom __future__ import annotations\n\nimport argparse\nfrom collections import Counter\nimport hashlib\n\
+        import json\nimport os\nfrom pathlib import Path\nimport resource\nimport signal\nimport sys\nimport time\n\
+        \nS4 = 'dd7def6e6a4de9f47dc91ca2ab336fb1a8828560'\nROOT = Path(os.environ['GITHUB_WORKSPACE']).resolve()\n\
+        HERE = Path(__file__).resolve().parent\nGEOMETRY = ROOT/'engineering/engineering-integration-20261025/geometry'\n\
+        sys.path[:0] = [str(GEOMETRY/'slide'),str(GEOMETRY/'seating'),str(GEOMETRY),\n               str(ROOT/'integration'),str(ROOT/'tools')]\n\
+        import owned_process\nimport execution_identity as identity\n\nFALSE_FLAGS = ('all_11781_pairs_reexecuted','full_continuous_domain_clear',\n\
+        \               'physical_qualification','candidate_go','fixture_fabrication_go',\n               'manufacturing_go','original_results_replaced','independent_CAD_kernel')\n\
+        \n\ndef require(x, message):\n    if not x: raise ValueError(message)\n\n\ndef sha(path):\n    with Path(path).open('rb')\
+        \ as f: return hashlib.file_digest(f,'sha256').hexdigest()\n\n\ndef resources(out):\n    v = dict((k,int(x))\
+        \ for k,x in (r.split() for r in Path('/sys/fs/cgroup/memory.stat').read_text().splitlines()))\n    d =\
+        \ os.statvfs(out)\n    return {'available_disk_bytes':d.f_bavail*d.f_frsize,\n            'shared_unreclaimable_bytes':v.get('anon',0)+v.get('shmem',0)\n\
+        \             +max(0,v.get('kernel',0)-v.get('slab_reclaimable',0))+v.get('unevictable',0)}\n\n\ndef main():\n\
+        \    ap=argparse.ArgumentParser(description=__doc__)\n    ap.add_argument('--inputs',type=Path,required=True)\n\
+        \    ap.add_argument('--binding',type=Path,required=True)\n    ap.add_argument('--shard',choices=('E17','O72'),required=True)\n\
+        \    ap.add_argument('--output',type=Path,required=True)\n    args=ap.parse_args()\n    owned_process.announce_worker_from_environment(Path(__file__).resolve())\n\
+        \    out=args.output.resolve();require(not out.exists() and not out.is_relative_to(ROOT),'fresh external\
+        \ output required')\n    out.mkdir(parents=True)\n    science=out/'science';science.mkdir()\n    started=time.monotonic()\n\
+        \    signal.signal(signal.SIGTERM,lambda *_:(_ for _ in ()).throw(InterruptedError('owned supervisor SIGTERM')))\n\
+        \    report={'schema':'razr-L2-original-L1-input-replay-v2','functional_predicate_source_commit':S4,\n \
+        \           'new_method':'all_boundary_carriers_v2','shard':args.shard,'execution_completed':False,\n  \
+        \          'original_volume_gate_mm3':1e-7,'case_results':[],**{k:False for k in FALSE_FLAGS}}\n    own={p.name:sha(p)\
+        \ for p in [Path(__file__),HERE/'envelope_v2.py',HERE/'test_l2_native.py',args.binding]}\n    report['external_source_sha256']=own\n\
+        \    def save():identity.atomic_json(science/'report.json',report)\n    def budget():\n        r=resources(out)\n\
+        \        require(time.monotonic()-started<=1800,'original 1800 s L1 wall guard')\n        require(r['available_disk_bytes']>=100*2**20,'original\
+        \ 100 MiB L1 runtime disk reserve')\n        require(r['shared_unreclaimable_bytes']<=6.8*2**30,'original\
+        \ 6.8 GiB L1 shared guard')\n        require(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024<=1536*2**20,'original\
+        \ 1536 MiB L1 RSS guard')\n        return r\n    try:\n        require(identity.git('rev-parse','HEAD')==S4\
+        \ and not identity.git('status','--porcelain'),'clean immutable S4 required')\n        before=identity.snapshot();executed=identity.record_executed_project_files()\n\
+        \        identity.atomic_json(out/'source-before-private.json',before)\n        binding=json.loads(args.binding.read_text());source=args.inputs.resolve()\n\
+        \        shard=binding['shards'][args.shard]\n        for name, entry in shard['members'].items():\n   \
+        \         path=(source/name).resolve()\n            require(path.is_relative_to(source) and path.is_file()\
+        \ and not path.is_symlink(),'unsafe original input')\n            require(path.stat().st_size==entry['bytes']\
+        \ and sha(path)==entry['sha256'],'original L1 byte identity mismatch')\n        import cadquery as cq\n\
+        \        import product_assembly as p\n        import envelope_v2 as v2\n        import test_l2_native\n\
+        \        import validate_product_nominal_report as original_postguard\n        report['new_method_native_controls']=test_l2_native.execute()\n\
+        \        report.update(original_input_members_verified=len(shard['members']),\n                      original_artifact_id=shard['artifact_id'],original_run_id=binding['run_id'],\n\
+        \                      expected_cases=len(shard['cases']))\n        def signature(shape):\n            solids,vol=p.whole_material(shape)\n\
+        \            return {'is_valid':shape.isValid(),'signed_volume_mm3':vol,\n                    'solid_signed_volumes_mm3':[s.Volume()\
+        \ for s in solids],\n                    'bounds_mm':list(p.bounds(shape))}\n        for case_id in shard['cases']:\n\
+        \            budget();case_dir=source/'run'/case_id\n            raw=json.loads((case_dir/'result.json').read_text());target=raw['target'];spec=target['specification']\n\
+        \            entry={'case_id':case_id,'a':target['a'],'b':target['b'],\n                   'original_q_interval_exact':target['q_interval_exact'],\n\
+        \                   'original_result_sha256':sha(case_dir/'result.json'),\n                   'original_disposition':raw['current_original_aggregate_disposition'],\n\
+        \                   'original_specification':spec,'material_readbacks':[]}\n            materials=[]\n \
+        \           for role in ('original-moving-input','original-fixed-input'):\n                m=next(x for\
+        \ x in raw['material_exports'] if any(y['role']==role for y in x['references']))\n                br=case_dir/m['exports']['brep']['path'];st=case_dir/m['exports']['step']['path']\n\
+        \                body=p.single(cq.Shape.importBrep(str(br)))\n                reader=cq.importers.importStep(str(st)).vals();require(len(reader)==1,'one\
+        \ whole STEP root required')\n                step=p.single(reader[0]);delta=[p.volume(body.cut(step)),p.volume(step.cut(body))]\n\
+        \                require(max(delta)<=1e-7,'original BREP/STEP bidirectional material mismatch')\n      \
+        \          entry['material_readbacks'].append({'role':role,'brep_sha256':sha(br),'step_sha256':sha(st),\n\
+        \                    'brep_signature':signature(body),'step_signature':signature(step),\n              \
+        \      'BREP_minus_STEP_mm3':delta[0],'STEP_minus_BREP_mm3':delta[1],\n                    'equal_within_original_volume_gate':True})\n\
+        \                materials.append(body)\n            def retain_carrier(carrier,fixed,detail):\n       \
+        \         budget()\n                name=case_id+'-'+detail['frame']+'-region-'+str(detail['region_index'])\n\
+        \                path=science/(name+'.brep')\n                require(not path.exists(),'new raw carrier\
+        \ path required')\n                status=carrier.exportBrep(str(path));require(status is True and path.stat().st_size>0,'carrier\
+        \ BREP export failed')\n                record={**detail,'carrier':{'path':path.name,'bytes':path.stat().st_size,'sha256':sha(path),\n\
+        \                    'signature':signature(carrier),'native_export_status':str(status)}}\n             \
+        \   try:\n                    common=carrier.intersect(fixed)\n                    cp=science/(name+'-Common.brep')\n\
+        \                    status=common.exportBrep(str(cp));require(status is True and cp.stat().st_size>0,'Common\
+        \ BREP export failed')\n                    cs={'shape_type':common.ShapeType(),'is_valid':common.isValid(),\n\
+        \                        'signed_volume_mm3':float(common.Volume()),'solid_signed_volumes_mm3':[s.Volume()\
+        \ for s in common.Solids()]}\n                    record['recomputed_native_Common']={'path':cp.name,'bytes':cp.stat().st_size,'sha256':sha(cp),\n\
+        \                        'signature':cs,'native_export_status':str(status),\n                        'is_a_new_followup_Common_operation_not_the_saved_failed_object':True}\n\
+        \                    if 'strict_common' in detail:\n                        require(abs(cs['signed_volume_mm3']-detail['strict_common']['common_mm3'])<=1e-7,'retained\
+        \ Common differs from checked Common')\n                except Exception as exc:\n                    record['followup_Common_failure']=type(exc).__name__+':\
+        \ '+str(exc)\n                entry.setdefault('material_retention',[]).append(record)\n               \
+        \ if 'strict_common' in detail:\n                    require('followup_Common_failure' not in record,'retained\
+        \ checked Common failed consistency')\n                budget()\n                return record\n       \
+        \     result=v2.continuous_pair(*materials,spec['coefficients'],\n                domain=tuple(tuple(x)\
+        \ for x in spec['parameter_intervals']),evidence_callback=retain_carrier)\n            entry['new_result']=result\n\
+        \            try:\n                original_postguard.validate_frame(result)\n                entry['unchanged_original_postguard_passed']=True\n\
+        \            except Exception as exc:\n                entry['unchanged_original_postguard_passed']=False\n\
+        \                entry['postguard_failure']=type(exc).__name__+': '+str(exc)\n            report['case_results'].append({k:entry[k]\
+        \ for k in ['case_id','a','b','original_q_interval_exact',\n                'original_disposition','unchanged_original_postguard_passed']})\n\
+        \            report['case_results'][-1]['new_disposition']=result['disposition']\n            path=science/(case_id+'.json');identity.atomic_json(path,entry)\n\
+        \            report['case_results'][-1]['result_sha256']=sha(path)\n            save()\n        after=identity.finish(before,[*executed]);identity.atomic_json(out/'source-after-private.json',after)\n\
+        \        require(after['source_bytes_and_locked_environment_unchanged'],'original predicate or native input\
+        \ bytes changed')\n        require(own=={p.name:sha(p) for p in [Path(__file__),HERE/'envelope_v2.py',HERE/'test_l2_native.py',args.binding]},'external\
+        \ source changed')\n        report.update(execution_completed=len(report['case_results'])==len(shard['cases']),\n\
+        \                      original_source_and_locked_environment_unchanged=True,\n                      original_predicate_source_sha256={str(Path(k).relative_to(ROOT)):v\
+        \ for k,v in after['executed_source_and_input_sha256'].items()},\n                      new_disposition_counts=dict(Counter(x['new_disposition']\
+        \ for x in report['case_results'])),\n                      all_unchanged_original_postguards_passed=all(x['unchanged_original_postguard_passed']\
+        \ for x in report['case_results']))\n    except BaseException as exc:\n        report['failure']=type(exc).__name__+':\
+        \ '+str(exc)\n    finally:\n        report['seconds']=time.monotonic()-started\n        report['peak_RSS_bytes']=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024\n\
+        \        save()\n    print(json.dumps({k:report.get(k) for k in ['execution_completed','shard','new_disposition_counts','failure','seconds']}),flush=True)\n\
+        \    return 0 if report['execution_completed'] and report.get('all_unchanged_original_postguards_passed')\
+        \ is True else 2\n\n\nif __name__=='__main__':raise SystemExit(main())\nL2_REPLAY_L2_PY\ncp \"$HOST_ROOT/l2/replay_l2.py\"\
+        \ \"$CASE_DIR/source/l2/replay_l2.py\"\ncat > \"$HOST_ROOT/l2/supervise_l2.py\" <<'L2_SUPERVISE_L2_PY'\n\
+        \"\"\"L2 replay supervisor retaining original L1 1800 s /1536 MiB/resource guards.\"\"\"\nfrom __future__\
+        \ import annotations\n\nimport argparse\nimport datetime as dt\nimport json\nimport os\nfrom pathlib import\
+        \ Path\nimport signal\nimport subprocess\nimport sys\nimport time\n\nHERE = Path(__file__).resolve().parent\n\
+        from replay_l2 import identity, owned_process, S4\n\n\ndef resources(path):\n    stats = dict((key, int(value))\
+        \ for key, value in\n                 (line.split() for line in Path('/sys/fs/cgroup/memory.stat').read_text().splitlines()))\n\
+        \    disk = os.statvfs(path)\n    return {'available_disk_bytes': disk.f_bavail*disk.f_frsize,\n       \
+        \     'shared_unreclaimable_bytes': stats.get('anon', 0)+stats.get('shmem', 0)\n                + max(0,\
+        \ stats.get('kernel', 0)-stats.get('slab_reclaimable', 0))+stats.get('unevictable', 0)}\n\n\ndef terminate_group(child):\n\
+        \    try:\n        os.killpg(child.pid, signal.SIGTERM)\n    except ProcessLookupError:\n        pass\n\
+        \    try:\n        child.wait(timeout=5)\n    except subprocess.TimeoutExpired:\n        try:\n        \
+        \    os.killpg(child.pid, signal.SIGKILL)\n        except ProcessLookupError:\n            pass\n      \
+        \  child.wait()\n\n\ndef main(argv=None):\n    parser = argparse.ArgumentParser(description=__doc__)\n \
+        \   parser.add_argument('--output', type=Path, required=True)\n    parser.add_argument('--shard', choices=('E17','O72'),\
+        \ required=True)\n    parser.add_argument('--inputs', type=Path, required=True)\n    parser.add_argument('--binding',\
+        \ type=Path, required=True)\n    args = parser.parse_args(argv)\n    out = args.output.resolve()\n    if\
+        \ out.exists() or out.is_relative_to(identity.ROOT):\n        raise ValueError('new output outside repository\
+        \ required')\n    out.mkdir(parents=True)\n    wall, rss, startup_memory = (1800, 1536, 1536)\n    source\
+        \ = HERE/'replay_l2.py'\n    command = [str(identity.ROOT/'.venv/bin/python'), '-B', str(source),\n    \
+        \           '--shard', args.shard, '--output', str(out/'worker'),\n               '--inputs', str(args.inputs.resolve()),\
+        \ '--binding', str(args.binding.resolve())]\n    own_sources = {str(Path(path).resolve()): identity.sha(path)\n\
+        \                   for path in (__file__, source, HERE/'envelope_v2.py', args.binding, identity.__file__,\
+        \ owned_process.__file__)}\n    receipt = {'schema': 'razr-L2-owned-replay-supervisor-20261026-v1',\n  \
+        \             'started_utc': dt.datetime.now(dt.timezone.utc).isoformat(),\n               'shard': args.shard,\
+        \ 'command': command, 'source_sha256_before': own_sources,\n               'original_L1_resource_limits_unchanged':\
+        \ True,\n               'worker_started': False, 'completed': False,\n               'owned_child_identity_verified':\
+        \ False, 'procfs_visible_PID_used_for_signals': False,\n               'limits': {'wall_seconds': wall,\
+        \ 'worker_peak_RSS_MiB': rss,\n                          'shared_unreclaimable_GiB': 6.8, 'runtime_disk_reserve_MiB':\
+        \ 100,\n                          'startup_disk_reserve_MiB': 200, 'startup_additional_memory_MiB': startup_memory},\n\
+        \               'resource_observations': []}\n    def save():\n        identity.atomic_json(out/'controller.json',\
+        \ receipt)\n    first = resources(out)\n    receipt['resource_observations'].append(first)\n    save()\n\
+        \    if (first['available_disk_bytes'] < 200*2**20\n            or first['shared_unreclaimable_bytes']+startup_memory*2**20\
+        \ > 6.8*2**30):\n        receipt['resource_start_refused'] = True\n        save()\n        return 3\n  \
+        \  environment = identity.environment()\n    receipt['locked_environment'] = environment\n    env = {**os.environ,\
+        \ 'PYTHONDONTWRITEBYTECODE': '1', 'OPENBLAS_NUM_THREADS': '1',\n           'OMP_NUM_THREADS': '1', 'MKL_NUM_THREADS':\
+        \ '1', 'NUMEXPR_NUM_THREADS': '1'}\n    child = channel = None\n    started = recorded = time.monotonic()\n\
+        \    reason = None\n    def observe(memory=None):\n        nonlocal reason, recorded\n        now = resources(out)\n\
+        \        elapsed = time.monotonic()-started\n        if elapsed > wall:\n            reason = 'hard wall\
+        \ budget exceeded'\n        elif now['available_disk_bytes'] < 100*2**20:\n            reason = 'ordinary-user\
+        \ disk reserve below 100 MiB'\n        elif now['shared_unreclaimable_bytes'] > 6.8*2**30:\n           \
+        \ reason = 'shared estimated unreclaimable memory exceeded 6.8 GiB'\n        elif memory is not None and\
+        \ max(memory.values()) > rss*2**20:\n            reason = 'owned worker RSS exceeded '+str(rss)+' MiB'\n\
+        \        if reason or time.monotonic()-recorded >= 10:\n            receipt['resource_observations'].append({**now,\
+        \ 'elapsed_seconds': elapsed, 'worker_memory': memory})\n            recorded = time.monotonic()\n     \
+        \       save()\n        if reason:\n            receipt['capacity_or_wall_stop'] = reason\n            raise\
+        \ RuntimeError(reason)\n    try:\n        channel = owned_process.OwnedChildChannel(source)\n        with\
+        \ (out/'native.log').open('wb') as log:\n            child = subprocess.Popen(command, cwd=identity.ROOT,\
+        \ env=channel.child_env(env),\n                                     stdout=log, stderr=subprocess.STDOUT,\n\
+        \                                     start_new_session=True, pass_fds=channel.pass_fds)\n            receipt.update(worker_started=True,\
+        \ worker_pid=child.pid)\n            channel.after_spawn()\n            save()\n            receipt['owned_child_handshake']\
+        \ = channel.accept(child, timeout_seconds=10, poll_callback=observe)\n            receipt['owned_child_identity_verified']\
+        \ = True\n            save()\n            while child.poll() is None:\n                try:\n          \
+        \          memory = channel.sample(child)\n                except owned_process.OwnedChildExited:\n    \
+        \                if child.poll() is not None:\n                        break\n                    raise\n\
+        \                observe(memory)\n                time.sleep(1)\n            receipt['worker_exit_code']\
+        \ = child.wait()\n    except BaseException as exc:\n        if child is not None:\n            terminate_group(child)\n\
+        \            receipt['worker_exit_code'] = child.returncode\n        receipt['failure'] = type(exc).__name__+':\
+        \ '+str(exc)\n    finally:\n        if channel is not None:\n            channel.close()\n            receipt['owned_channel_descriptors_closed']\
+        \ = not channel.descriptors\n    result_path = out/'worker/science/report.json'\n    if result_path.is_file():\n\
+        \        receipt['result_sha256'] = identity.sha(result_path)\n        result = json.loads(result_path.read_text())\n\
+        \        receipt['reported_execution_completed'] = result.get('execution_completed')\n        receipt['all_original_postguards_passed']\
+        \ = result.get('all_unchanged_original_postguards_passed')\n    unchanged = all(identity.sha(path) == digest\
+        \ for path, digest in own_sources.items())\n    receipt.update(source_bytes_unchanged=unchanged, elapsed_seconds=time.monotonic()-started,\n\
+        \                   finished_utc=dt.datetime.now(dt.timezone.utc).isoformat(),\n                   locked_environment_unchanged=identity.environment()\
+        \ == environment)\n    receipt['completed'] = bool(not receipt.get('failure') and not reason and receipt.get('worker_exit_code')\
+        \ == 0\n                                and receipt.get('reported_execution_completed') is True and unchanged\n\
+        \                                and receipt['locked_environment_unchanged']\n                         \
+        \       and receipt['owned_child_identity_verified']\n                                and receipt.get('owned_channel_descriptors_closed')\
+        \ is True)\n    save()\n    print(json.dumps({key: receipt.get(key) for key in ('completed', 'worker_exit_code',\
+        \ 'all_original_postguards_passed',\n                                                     'failure', 'elapsed_seconds')}),\
+        \ flush=True)\n    return 0 if receipt['completed'] else 2\n\n\nif __name__ == '__main__':\n    raise SystemExit(main())\n\
+        L2_SUPERVISE_L2_PY\ncp \"$HOST_ROOT/l2/supervise_l2.py\" \"$CASE_DIR/source/l2/supervise_l2.py\"\ncat >\
+        \ \"$HOST_ROOT/l2/test_l2_native.py\" <<'L2_TEST_L2_NATIVE_PY'\n\"\"\"Native countercontrols for the new\
+        \ carriers; separate from the 89 L1 calls.\"\"\"\nimport math\nimport cadquery as cq\nimport envelope_v2\
+        \ as v2\nfrom straight_envelope import whole_material\nfrom translation_regions import subtract_regions,\
+        \ sum_common_upper_bound\n\n\ndef execute():\n    rows=[]\n    box=cq.Solid.makeBox(1.,1.,1.)\n    for name,move\
+        \ in [('ordinary',(2.,.25,0.)),('tiny',(0.,4.440892098500626e-16,0.)),\n                      ('negative',(-2.,-.25,0.)),('zero',(0.,0.,0.))]:\n\
+        \        pieces,meta=v2.regions(box,move)\n        validations=[whole_material(p)[1] for p in pieces]\n\
+        \        values=[]\n        for t in (0.,.25,.5,.75,1.):\n            sample=box.translate(tuple(t*x for\
+        \ x in move))\n            outside=whole_material(subtract_regions(sample,pieces),empty=True)[1]\n     \
+        \       if outside>1e-7:raise ValueError('carrier loses native whole material: '+name)\n            values.append(outside)\n\
+        \        rows.append({'name':name,'region_count':len(pieces),'signed_region_volumes_mm3':validations,\n\
+        \                     'finite_containment_crosschecks_mm3':values,\n                     'finite_crosschecks_are_not_the_continuous_coverage_argument':True})\n\
+        \    try:v2.regions(box,(math.nan,0.,0.))\n    except ValueError:rows.append({'name':'nonfinite_rejected','passed':True})\n\
+        \    else:raise ValueError('nonfinite displacement accepted')\n    negative=cq.Shape.cast(box.wrapped.Reversed())\n\
+        \    try:v2.regions(negative,(1.,0.,0.))\n    except ValueError:rows.append({'name':'negative_signed_material_rejected','passed':True})\n\
+        \    else:raise ValueError('negative material accepted')\n    upper=sum_common_upper_bound([.6e-7,.6e-7])\n\
+        \    if upper<=1e-7:raise ValueError('original aggregate upper-sum guard weakened')\n    rows.append({'name':'subtolerance_region_sums_still_rejected','upper_mm3':upper})\n\
+        \    return {'native_controls_completed':True,'controls':rows,'original_89_calls_included_in_this_count':False}\n\
+        L2_TEST_L2_NATIVE_PY\ncp \"$HOST_ROOT/l2/test_l2_native.py\" \"$CASE_DIR/source/l2/test_l2_native.py\"\n\
+        cat > \"$HOST_ROOT/l2/L2_BINDING.json\" <<'L2_L2_BINDING_JSON'\n{\n  \"schema\": \"razr-L2-immutable-L1-scientific-input-binding-v1\"\
+        ,\n  \"run_id\": 40210275856,\n  \"source_archive_sha256\": \"58128815aaeee9e9b2ddc2b983f3499bab4b22788bc447c55e037a24016da39a\"\
+        ,\n  \"shards\": {\n    \"E17\": {\n      \"artifact_id\": 12605676028,\n      \"zip_sha256\": \"3d7ca39ceec488ab4e8b4418831b3eb5f921dfad91bb597670fba84aee24160c\"\
+        ,\n      \"cases\": [\n        \"case-001\",\n        \"case-006\",\n        \"case-011\",\n        \"case-012\"\
+        ,\n        \"case-013\",\n        \"case-014\",\n        \"case-015\",\n        \"case-016\",\n        \"\
+        case-017\",\n        \"case-018\",\n        \"case-019\",\n        \"case-028\",\n        \"case-037\",\n\
+        \        \"case-054\",\n        \"case-063\",\n        \"case-072\",\n        \"case-089\"\n      ],\n \
+        \     \"members\": {\n        \"run/case-001/result.json\": {\n          \"bytes\": 30933,\n          \"\
+        sha256\": \"9b2d78e2c9b2484c56df659140c56e554e049ff6b4287c11c406cf8d437f7bd5\"\n        },\n        \"run/case-001/material-001.brep\"\
+        : {\n          \"bytes\": 187275,\n          \"sha256\": \"7f77ca577ce4a593872e44eb2b268bc92b331aa1b84b3ea249655610f35cfc4d\"\
+        \n        },\n        \"run/case-001/material-001.step\": {\n          \"bytes\": 874489,\n          \"\
+        sha256\": \"42cecf0fc6eb83d2a3e476d147eb05be992ab6ea38c45c8494da31832480ae44\"\n        },\n        \"run/case-001/material-002.brep\"\
+        : {\n          \"bytes\": 67523,\n          \"sha256\": \"3ab9224cae1677a318f00c16e57c758cc4ce638deab1f5192a2c96892b7b9927\"\
+        \n        },\n        \"run/case-001/material-002.step\": {\n          \"bytes\": 293269,\n          \"\
+        sha256\": \"344a2b963375df77378ac1647ba67e0e85f0b7f8d257f1afff6700e1cad07299\"\n        },\n        \"run/case-006/result.json\"\
+        : {\n          \"bytes\": 30935,\n          \"sha256\": \"3e395d520d332d91f117636fd1745f3cb7cf08bc73f55dd1013bf91326cf6711\"\
+        \n        },\n        \"run/case-006/material-001.brep\": {\n          \"bytes\": 187275,\n          \"\
+        sha256\": \"bea47a873037a5ad6ad908bb17868187c4b4215d20eb0242bebf109f21e89a81\"\n        },\n        \"run/case-006/material-001.step\"\
+        : {\n          \"bytes\": 874489,\n          \"sha256\": \"ad70cf7105f98538c9651f05d4ae479d50881f87951b2b7af53230d65bc60ff1\"\
+        \n        },\n        \"run/case-006/material-002.brep\": {\n          \"bytes\": 66842,\n          \"sha256\"\
+        : \"f7382ee677ef0f5e13c98bb9c8df2079ae1a571dd501c6b7eb3d320245248131\"\n        },\n        \"run/case-006/material-002.step\"\
+        : {\n          \"bytes\": 299585,\n          \"sha256\": \"b5eea3aaf6d48f9d6eb307cbeee1f661a7938a694a0a425bfe63f25af085a31b\"\
+        \n        },\n        \"run/case-011/result.json\": {\n          \"bytes\": 41649,\n          \"sha256\"\
+        : \"b2a60b398d4dd9c7b7f6511624186cdc40cb736f851cde623f1eaff5904c7d6a\"\n        },\n        \"run/case-011/material-001.brep\"\
+        : {\n          \"bytes\": 86975,\n          \"sha256\": \"7ec7d2a0f4231978d70cbcd586c28af3bc1748a475d36ee6f8f4fd29c3c2a378\"\
+        \n        },\n        \"run/case-011/material-001.step\": {\n          \"bytes\": 349396,\n          \"\
+        sha256\": \"765319c6c843c458136de0bc688cdd9d8830858e6196283288db3c1f3bb50145\"\n        },\n        \"run/case-011/material-002.brep\"\
+        : {\n          \"bytes\": 4601,\n          \"sha256\": \"044e13390bbb52c6f6baacc36f88e2a80153bdbb25e145614f72ae09f1a1f46b\"\
+        \n        },\n        \"run/case-011/material-002.step\": {\n          \"bytes\": 17345,\n          \"sha256\"\
+        : \"9a90d256c53eff92a69c1b3fc262f64b422f32f0e5c13dfc287cbec22edf0861\"\n        },\n        \"run/case-012/result.json\"\
+        : {\n          \"bytes\": 32297,\n          \"sha256\": \"850d2cee8d4062742264b12b60b082b924ff00d8525a015c79c2d3fae1823af9\"\
+        \n        },\n        \"run/case-012/material-001.brep\": {\n          \"bytes\": 91739,\n          \"sha256\"\
+        : \"6fd53f5388620baeab1c33487fa6bc7fb428cdf6b9f32fb08cf58a51d868e4ad\"\n        },\n        \"run/case-012/material-001.step\"\
+        : {\n          \"bytes\": 349398,\n          \"sha256\": \"7cc96aeb8f0c455f7a8515422dbbf6e5968e9689bdf4d23589669d88b5f3ff7f\"\
+        \n        },\n        \"run/case-012/material-002.brep\": {\n          \"bytes\": 2860,\n          \"sha256\"\
+        : \"414e7d08a2f2a9e722bf4a3661353f0a10b95d133d65a56c52ffbe151cd9d9f4\"\n        },\n        \"run/case-012/material-002.step\"\
+        : {\n          \"bytes\": 9559,\n          \"sha256\": \"897591d5c95d9cd192ad26fecc568ad0869dd7d39c40752319af460114648751\"\
+        \n        },\n        \"run/case-013/result.json\": {\n          \"bytes\": 32336,\n          \"sha256\"\
+        : \"819035f784168556ae157cc2e6950619ea02501891389671f2c8b29c153a5c1e\"\n        },\n        \"run/case-013/material-001.brep\"\
+        : {\n          \"bytes\": 92244,\n          \"sha256\": \"38582e10c1fe16c0c406b5c730650b42044409b59515b3cd529c69eee9074220\"\
+        \n        },\n        \"run/case-013/material-001.step\": {\n          \"bytes\": 349398,\n          \"\
+        sha256\": \"992dd4fcfd291b3a0757a0745f5f68b7b9d1316382e4254d20d339c920838436\"\n        },\n        \"run/case-013/material-002.brep\"\
+        : {\n          \"bytes\": 2591,\n          \"sha256\": \"f740dea15225707e0b53c2879df20fd3d21532cebccaa4d048420365f96a4a02\"\
+        \n        },\n        \"run/case-013/material-002.step\": {\n          \"bytes\": 9307,\n          \"sha256\"\
+        : \"e6421cb6aafa38b1a3efceb2b31c0367ba25e88572d985ea81f5f241bc01f8a5\"\n        },\n        \"run/case-014/result.json\"\
+        : {\n          \"bytes\": 32336,\n          \"sha256\": \"4a7b1faa290304bad59827b2525cfd75c63b70c56465f877c84bf2d3104ebe77\"\
+        \n        },\n        \"run/case-014/material-001.brep\": {\n          \"bytes\": 92756,\n          \"sha256\"\
+        : \"ec72b15860ddc7d0e2f2de20267ab2e1e6860dc737044180dbc3ada6853a7285\"\n        },\n        \"run/case-014/material-001.step\"\
+        : {\n          \"bytes\": 349398,\n          \"sha256\": \"2924e7062116ffc7f9e7bc9148f97abc4fcc367ed2909f50eb084a943a2fec4f\"\
+        \n        },\n        \"run/case-014/material-002.brep\": {\n          \"bytes\": 2612,\n          \"sha256\"\
+        : \"99e3c24884da0bc25e5262572cf91d71c831b236eb53851f6b3cdbdb26ab9285\"\n        },\n        \"run/case-014/material-002.step\"\
+        : {\n          \"bytes\": 9298,\n          \"sha256\": \"9841e6dbd42c1308ae337190566860356263378fcc18c196b8a9b615d8e515e7\"\
+        \n        },\n        \"run/case-015/result.json\": {\n          \"bytes\": 32355,\n          \"sha256\"\
+        : \"bae73494de4d2f1af643cd5f9c08c57bf0b4b6a654e25c3757e8724e6dc53815\"\n        },\n        \"run/case-015/material-001.brep\"\
+        : {\n          \"bytes\": 93289,\n          \"sha256\": \"c19946a39f3516bea7330a147fb82c30c10ef67ca48b0b5100e324883c874084\"\
+        \n        },\n        \"run/case-015/material-001.step\": {\n          \"bytes\": 349398,\n          \"\
+        sha256\": \"0bf8f27754a2a59c9e5f268793ccfdbbd382fa4e71656cb92e83f859538f472b\"\n        },\n        \"run/case-015/material-002.brep\"\
+        : {\n          \"bytes\": 2719,\n          \"sha256\": \"e28f930f33f1e207e8552f6acc027fbcc989bfae20e2bed7ed238841e4dc74a6\"\
+        \n        },\n        \"run/case-015/material-002.step\": {\n          \"bytes\": 9293,\n          \"sha256\"\
+        : \"73322e303fe3f9e7c972ff6dd0cacb3c12f3b3d2825181fde9c581a3f4b27c7d\"\n        },\n        \"run/case-016/result.json\"\
+        : {\n          \"bytes\": 34941,\n          \"sha256\": \"6f5c9d16fd21bb19e2248095f319eaa36b1f87993bd2f387e0f5b949efb30fe9\"\
+        \n        },\n        \"run/case-016/material-001.brep\": {\n          \"bytes\": 94195,\n          \"sha256\"\
+        : \"be86fa8a099fea7078ebf6ecad4d9cbde252f6914d7b67ddb19856f88b0c33b9\"\n        },\n        \"run/case-016/material-001.step\"\
+        : {\n          \"bytes\": 349398,\n          \"sha256\": \"4d04d8e09d5caba036bb5325d4dbc0537bdd4f6ef87deff233fc7e0dd33ace49\"\
+        \n        },\n        \"run/case-016/material-002.brep\": {\n          \"bytes\": 4570,\n          \"sha256\"\
+        : \"8cf0b220bb8ec81c05e5abdcab2508e6f80d1c24acbd58dc3560d4bc4c238013\"\n        },\n        \"run/case-016/material-002.step\"\
+        : {\n          \"bytes\": 17317,\n          \"sha256\": \"7f4282d03853ec868a4bc603c4a907a196f6c53642f0050fe5dc6742a5cfc093\"\
+        \n        },\n        \"run/case-017/result.json\": {\n          \"bytes\": 35923,\n          \"sha256\"\
+        : \"5ef7a896bcf328965b53266d15e799270289e2a0c7262b24f8212029f4fdd7e8\"\n        },\n        \"run/case-017/material-001.brep\"\
+        : {\n          \"bytes\": 97091,\n          \"sha256\": \"b3e432572ee8b5c1ff16ab3d266e3b872c3edd20c0cdb83a9d773295eead59c4\"\
+        \n        },\n        \"run/case-017/material-001.step\": {\n          \"bytes\": 349398,\n          \"\
+        sha256\": \"b1a50bcd4170669da1b32756b2f9edced569b81ece46dad8965d37249d40bad0\"\n        },\n        \"run/case-017/material-002.brep\"\
+        : {\n          \"bytes\": 2576,\n          \"sha256\": \"9838f011ad484c2efdcd0020884cd19f2b736f866fa3a9fb31d7a5140b79a421\"\
+        \n        },\n        \"run/case-017/material-002.step\": {\n          \"bytes\": 9293,\n          \"sha256\"\
+        : \"9bb993e160af5fc848f5f96bef83afa920811d8c3a228cca2c5f38936d159999\"\n        },\n        \"run/case-018/result.json\"\
+        : {\n          \"bytes\": 43321,\n          \"sha256\": \"f962423480f63fda01c41628b8206687f93ad9bd82032072a0348e56763972c8\"\
+        \n        },\n        \"run/case-018/material-001.brep\": {\n          \"bytes\": 99448,\n          \"sha256\"\
+        : \"816c720d279d9d952e8d90114554843ea6e3b0ad868dc4157ee9b05208e3ffb1\"\n        },\n        \"run/case-018/material-001.step\"\
+        : {\n          \"bytes\": 349398,\n          \"sha256\": \"f39b2a1a64299bfc2271585d859af8bc5c30721461c91ccb80465ad2e3226782\"\
+        \n        },\n        \"run/case-018/material-002.brep\": {\n          \"bytes\": 2595,\n          \"sha256\"\
+        : \"5d7cfa8d32d3375b92da33ec7121f7b6d85c0079dc4f7e4471f7aee53729d058\"\n        },\n        \"run/case-018/material-002.step\"\
+        : {\n          \"bytes\": 9284,\n          \"sha256\": \"2041c39f1a501e60c99e2a28d478f1538a9cbd89c6b8cc89e3f7ffe8d325bc55\"\
+        \n        },\n        \"run/case-019/result.json\": {\n          \"bytes\": 35970,\n          \"sha256\"\
+        : \"009fc91232a3f0c25f5c2217df0d59427d5edee2953ac150d124d46e153af782\"\n        },\n        \"run/case-019/material-001.brep\"\
+        : {\n          \"bytes\": 99956,\n          \"sha256\": \"ceed3a6326af0839096a40e5f0d7fb1ead4ad659b3420fc0a31891c331f56f0a\"\
+        \n        },\n        \"run/case-019/material-001.step\": {\n          \"bytes\": 349398,\n          \"\
+        sha256\": \"e1681d2676ae6427f8c54782a75b6a210783d6df17ca27ed83330b9fc45974ec\"\n        },\n        \"run/case-019/material-002.brep\"\
+        : {\n          \"bytes\": 2702,\n          \"sha256\": \"4be5998581621dfcee66ad29ea53bd4c9d0a5c2d64100a4d01acb14b1709ded6\"\
+        \n        },\n        \"run/case-019/material-002.step\": {\n          \"bytes\": 9279,\n          \"sha256\"\
+        : \"fd851411ba8607773517fbc6f1c9d3a55ecf5dc090328ee5a552df2d3848137b\"\n        },\n        \"run/case-028/result.json\"\
+        : {\n          \"bytes\": 33059,\n          \"sha256\": \"dcf14ea93d4aea94e0e87d0247179bebfa5ca86ed1af14771621d2bac59a70b4\"\
+        \n        },\n        \"run/case-028/material-001.brep\": {\n          \"bytes\": 74634,\n          \"sha256\"\
+        : \"cb5695d4edee52d0eb19db87c2f81ffeb005c853e3ca64c2c08befc32acd30e7\"\n        },\n        \"run/case-028/material-001.step\"\
+        : {\n          \"bytes\": 293271,\n          \"sha256\": \"df7653efb4763d57296c6d6cb40c410278b50fcbdce84a840f03067bfe70e97e\"\
+        \n        },\n        \"run/case-028/material-002.brep\": {\n          \"bytes\": 18499,\n          \"sha256\"\
+        : \"d9cbe53d70780ebed46c0956b818ceb28f46956cacfdd524b7f24054ba862768\"\n        },\n        \"run/case-028/material-002.step\"\
+        : {\n          \"bytes\": 73609,\n          \"sha256\": \"14dbe53dac693ef784b94d77beebd7c892fe677b983d6f8786a702c40a0c976f\"\
+        \n        },\n        \"run/case-037/result.json\": {\n          \"bytes\": 33389,\n          \"sha256\"\
+        : \"35e9a7d03bc7f7ad0956cba99cdf9b465e9d8786370d9bbbaddb0ef1d3b35eda\"\n        },\n        \"run/case-037/material-001.brep\"\
+        : {\n          \"bytes\": 81829,\n          \"sha256\": \"e75cef12f4ef2e97c5ab27e00316e27c0bedab5a97db84d22cf311e3d4146c09\"\
+        \n        },\n        \"run/case-037/material-001.step\": {\n          \"bytes\": 293271,\n          \"\
+        sha256\": \"d8d934024da35bf2a06dac7e0dac1cefb241e3f3ff1295776a1bee4f02e01671\"\n        },\n        \"run/case-037/material-002.brep\"\
+        : {\n          \"bytes\": 18497,\n          \"sha256\": \"e3c46027ff8b2269bd281041d2a48baf627517e88f93941c38f1397239798234\"\
+        \n        },\n        \"run/case-037/material-002.step\": {\n          \"bytes\": 73605,\n          \"sha256\"\
+        : \"6abe2c67a03be6b7ed6e77b12aa2523719b5f1f84369b7ff60255a917b72042e\"\n        },\n        \"run/case-054/result.json\"\
+        : {\n          \"bytes\": 32801,\n          \"sha256\": \"6c7578fa563e641545bd8768ac9973b8e1bab1a87dea5d17ed18283b0d06dac2\"\
+        \n        },\n        \"run/case-054/material-001.brep\": {\n          \"bytes\": 18497,\n          \"sha256\"\
+        : \"c6993d2752df51e0dd4fc68a2d587ed3f3cf224c5186d4dcdac7870779615720\"\n        },\n        \"run/case-054/material-001.step\"\
+        : {\n          \"bytes\": 73605,\n          \"sha256\": \"a40a20981d7306a516f25108f9895148141cf7675e823e0a2bf2802fe4a46c95\"\
+        \n        },\n        \"run/case-054/material-002.brep\": {\n          \"bytes\": 1424,\n          \"sha256\"\
+        : \"1462457950034df6c57e7bb82802a20333f4785cca9a61ab6e4e1aa3563b32cd\"\n        },\n        \"run/case-054/material-002.step\"\
+        : {\n          \"bytes\": 5674,\n          \"sha256\": \"9ca352686f6f1fc7cdac565ba393f929ab3488597d2e253741ed36783443efef\"\
+        \n        },\n        \"run/case-063/result.json\": {\n          \"bytes\": 33021,\n          \"sha256\"\
+        : \"fbcea85b1d26875fac41b65cfcd63410e3635508efe29d3d471fb22310c3036f\"\n        },\n        \"run/case-063/material-001.brep\"\
+        : {\n          \"bytes\": 66842,\n          \"sha256\": \"57945c086be63b2f0df6246e9c95e908fbb8903eae9c89bf2dea0cad90386984\"\
+        \n        },\n        \"run/case-063/material-001.step\": {\n          \"bytes\": 299587,\n          \"\
+        sha256\": \"ea97a270f5ef6aed598c8cedb2f8ef0bb62395150c5300f259e3fcf0eadfdfa4\"\n        },\n        \"run/case-063/material-002.brep\"\
+        : {\n          \"bytes\": 18490,\n          \"sha256\": \"89be2d0622f067c4c163f03ebefe7d8f230a1fa26cb38f8fc132601b9d04b306\"\
+        \n        },\n        \"run/case-063/material-002.step\": {\n          \"bytes\": 75973,\n          \"sha256\"\
+        : \"09be600936fd277d959086852ec21195f6e1ff4bb8e8ec85dac35038d9248a70\"\n        },\n        \"run/case-072/result.json\"\
+        : {\n          \"bytes\": 33385,\n          \"sha256\": \"197d1779ecb795a3694a4bd5f9f7545ac707d013aef58c30afe1256a45b9ee09\"\
+        \n        },\n        \"run/case-072/material-001.brep\": {\n          \"bytes\": 66842,\n          \"sha256\"\
+        : \"57945c086be63b2f0df6246e9c95e908fbb8903eae9c89bf2dea0cad90386984\"\n        },\n        \"run/case-072/material-001.step\"\
+        : {\n          \"bytes\": 299587,\n          \"sha256\": \"4a279cc2bdc26022b0e8b82c13e5b0170847a5eb838301942ce19860d67986f8\"\
+        \n        },\n        \"run/case-072/material-002.brep\": {\n          \"bytes\": 18515,\n          \"sha256\"\
+        : \"dc3b608f44ea6061ad47e499b61a24af99f6108929676ac1a982d236cfea582a\"\n        },\n        \"run/case-072/material-002.step\"\
+        : {\n          \"bytes\": 75988,\n          \"sha256\": \"a48a9411314f2064df7c50a27847af200c04d0711482fd74e1fd0361e2bd2b0c\"\
+        \n        },\n        \"run/case-089/result.json\": {\n          \"bytes\": 32790,\n          \"sha256\"\
+        : \"7af148b4f4b22c7accbb70d6e0060392fbbc81d6ce49317e41ef9dcc43db27c5\"\n        },\n        \"run/case-089/material-001.brep\"\
+        : {\n          \"bytes\": 18515,\n          \"sha256\": \"3c28e5050058c401abb40b80898b0a56e7f6a2aa7b8ed91e194e428ca0982dcc\"\
+        \n        },\n        \"run/case-089/material-001.step\": {\n          \"bytes\": 75988,\n          \"sha256\"\
+        : \"c7fe0949136bc258214672673e4a8e3a392932e8cd3bc7d51b5b23a41e1cb049\"\n        },\n        \"run/case-089/material-002.brep\"\
+        : {\n          \"bytes\": 1442,\n          \"sha256\": \"44d352a2200f76852d9a2d7252cd348953c1e76422a79207a6141bca41d57787\"\
+        \n        },\n        \"run/case-089/material-002.step\": {\n          \"bytes\": 5666,\n          \"sha256\"\
+        : \"8c66123dfe9087c2ee1618606b22ceafeb4716bd6725fd0c93b2813ce753607c\"\n        }\n      }\n    },\n   \
+        \ \"O72\": {\n      \"artifact_id\": 12605885469,\n      \"zip_sha256\": \"dcf4e013abb3d1fe5c7ccccc5797daa70ce353c18fcc56b6a88a8a95aba3cc4b\"\
+        ,\n      \"cases\": [\n        \"case-002\",\n        \"case-003\",\n        \"case-004\",\n        \"case-005\"\
+        ,\n        \"case-007\",\n        \"case-008\",\n        \"case-009\",\n        \"case-010\",\n        \"\
+        case-020\",\n        \"case-021\",\n        \"case-022\",\n        \"case-023\",\n        \"case-024\",\n\
+        \        \"case-025\",\n        \"case-026\",\n        \"case-027\",\n        \"case-029\",\n        \"\
+        case-030\",\n        \"case-031\",\n        \"case-032\",\n        \"case-033\",\n        \"case-034\",\n\
+        \        \"case-035\",\n        \"case-036\",\n        \"case-038\",\n        \"case-039\",\n        \"\
+        case-040\",\n        \"case-041\",\n        \"case-042\",\n        \"case-043\",\n        \"case-044\",\n\
+        \        \"case-045\",\n        \"case-046\",\n        \"case-047\",\n        \"case-048\",\n        \"\
+        case-049\",\n        \"case-050\",\n        \"case-051\",\n        \"case-052\",\n        \"case-053\",\n\
+        \        \"case-055\",\n        \"case-056\",\n        \"case-057\",\n        \"case-058\",\n        \"\
+        case-059\",\n        \"case-060\",\n        \"case-061\",\n        \"case-062\",\n        \"case-064\",\n\
+        \        \"case-065\",\n        \"case-066\",\n        \"case-067\",\n        \"case-068\",\n        \"\
+        case-069\",\n        \"case-070\",\n        \"case-071\",\n        \"case-073\",\n        \"case-074\",\n\
+        \        \"case-075\",\n        \"case-076\",\n        \"case-077\",\n        \"case-078\",\n        \"\
+        case-079\",\n        \"case-080\",\n        \"case-081\",\n        \"case-082\",\n        \"case-083\",\n\
+        \        \"case-084\",\n        \"case-085\",\n        \"case-086\",\n        \"case-087\",\n        \"\
+        case-088\"\n      ],\n      \"members\": {\n        \"run/case-002/result.json\": {\n          \"bytes\"\
+        : 20967,\n          \"sha256\": \"e381efc5e0c9aa58db867c55a12d82e8d97c66580ed11803b8ead3c4a50ec5bb\"\n \
+        \       },\n        \"run/case-002/material-001.brep\": {\n          \"bytes\": 191391,\n          \"sha256\"\
+        : \"0a4d361ae471cbfc4fe9afdeb992a8b916cc34037f27b4430d50bb26ea8377ab\"\n        },\n        \"run/case-002/material-001.step\"\
+        : {\n          \"bytes\": 874489,\n          \"sha256\": \"edf436d954e2d27954e2c4cbb2de07bd3f785a595ae576f2b564df3aac3170d3\"\
+        \n        },\n        \"run/case-002/material-002.brep\": {\n          \"bytes\": 73261,\n          \"sha256\"\
+        : \"a6b7200806fe0d82ff1ddd7cc90486d469df479b5ce09dadaca10be188c8cdf9\"\n        },\n        \"run/case-002/material-002.step\"\
+        : {\n          \"bytes\": 293269,\n          \"sha256\": \"723bacc991c5bc1d5b59de287fe11b294b4ff07cbf994565d7e747b76dc0d9c1\"\
+        \n        },\n        \"run/case-003/result.json\": {\n          \"bytes\": 20961,\n          \"sha256\"\
+        : \"c48b8ee339a80a158a2b436c3483ed1b0da94416a1f398f3baa5f558ce0b3e6d\"\n        },\n        \"run/case-003/material-001.brep\"\
+        : {\n          \"bytes\": 191391,\n          \"sha256\": \"2ce16303341d2d9ceb97c6afd3a21126078e24d6bc7acc758f067ce9cb62f998\"\
+        \n        },\n        \"run/case-003/material-001.step\": {\n          \"bytes\": 874489,\n          \"\
+        sha256\": \"2e1c0d1b22941c861bb61fd6ccfc0beac8eba7cb7c794205a6074e0d73a3fed3\"\n        },\n        \"run/case-003/material-002.brep\"\
+        : {\n          \"bytes\": 75006,\n          \"sha256\": \"d9e0de3608ee7d076f46ff2c6e1b00778c1fe6e66830d17ae20b88dd25fb151b\"\
+        \n        },\n        \"run/case-003/material-002.step\": {\n          \"bytes\": 293269,\n          \"\
+        sha256\": \"f276953e383d1807fd254bdedcc5110c5da594702d30ac7bb21c88c9da821563\"\n        },\n        \"run/case-004/result.json\"\
+        : {\n          \"bytes\": 20934,\n          \"sha256\": \"1dc9e33e1ae4fecaf92d2f7c8fa867e3050b7eed9e002c168560fefda0227511\"\
+        \n        },\n        \"run/case-004/material-001.brep\": {\n          \"bytes\": 191937,\n          \"\
+        sha256\": \"c107a331a76ef7e593121a546ad827a80ced9bdb4e09bf03db1dc2aa665f98c9\"\n        },\n        \"run/case-004/material-001.step\"\
+        : {\n          \"bytes\": 874491,\n          \"sha256\": \"dcb095d18449b8e15a58b33d744682c7bdc65c406dcaf95914bc1065ffd14efd\"\
+        \n        },\n        \"run/case-004/material-002.brep\": {\n          \"bytes\": 77033,\n          \"sha256\"\
+        : \"2405c54b97fae2eaa786087b5da234380208d8054879f6f273bea2fe6aba2630\"\n        },\n        \"run/case-004/material-002.step\"\
+        : {\n          \"bytes\": 293271,\n          \"sha256\": \"f47098114171f0cdbc340d74b41a5e38b5b6bac9702d761c9b35717a2a3856af\"\
+        \n        },\n        \"run/case-005/result.json\": {\n          \"bytes\": 20850,\n          \"sha256\"\
+        : \"829ddd0f154107d02cfa73bb7d901fd003319994264409c8a12950b1af66753c\"\n        },\n        \"run/case-005/material-001.brep\"\
+        : {\n          \"bytes\": 191937,\n          \"sha256\": \"c107a331a76ef7e593121a546ad827a80ced9bdb4e09bf03db1dc2aa665f98c9\"\
+        \n        },\n        \"run/case-005/material-001.step\": {\n          \"bytes\": 874491,\n          \"\
+        sha256\": \"a4ad13d5cb78cdc5f658ee11186da6eeb6be8cdc1dfe8f363cfd8d47c5651163\"\n        },\n        \"run/case-005/material-002.brep\"\
+        : {\n          \"bytes\": 78777,\n          \"sha256\": \"d977fa8c91fb8ae97dee0b5fb6d453c1ea1a14c1b3f37db98a957431f3550522\"\
+        \n        },\n        \"run/case-005/material-002.step\": {\n          \"bytes\": 293271,\n          \"\
+        sha256\": \"70fe4ebbf0035de7a3752fee031128d40aaf59a15ebdf1dfafc7e4eed9d87c85\"\n        },\n        \"run/case-007/result.json\"\
+        : {\n          \"bytes\": 20977,\n          \"sha256\": \"f9ce3b9c9e9bd5292ca23ce62e7d7767104e91db6d67c7e611cc5c46e8f8ca16\"\
+        \n        },\n        \"run/case-007/material-001.brep\": {\n          \"bytes\": 195974,\n          \"\
+        sha256\": \"451d2850c08443b6d6b5bc9a8d2c91dc84c798b4c6444fa8b2e412fae670d4a6\"\n        },\n        \"run/case-007/material-001.step\"\
+        : {\n          \"bytes\": 874491,\n          \"sha256\": \"86f5d85802367b4f3821dbff8975b70e979a9ddf88d4fe0a34f17d56d24c204d\"\
+        \n        },\n        \"run/case-007/material-002.brep\": {\n          \"bytes\": 72560,\n          \"sha256\"\
+        : \"c578beb8114358f6413cdba4f7e294f4ea32171cb00f33c18e20ec70707ef39c\"\n        },\n        \"run/case-007/material-002.step\"\
+        : {\n          \"bytes\": 299587,\n          \"sha256\": \"260a799e9d425cd518de3ba03213b0761fb166b2b957c323e5081fff56591e72\"\
+        \n        },\n        \"run/case-008/result.json\": {\n          \"bytes\": 20966,\n          \"sha256\"\
+        : \"82ab448be2f63cd292c17885b3c5aedbd8b407bd06dd5676218dc0b798896948\"\n        },\n        \"run/case-008/material-001.brep\"\
+        : {\n          \"bytes\": 195974,\n          \"sha256\": \"451d2850c08443b6d6b5bc9a8d2c91dc84c798b4c6444fa8b2e412fae670d4a6\"\
+        \n        },\n        \"run/case-008/material-001.step\": {\n          \"bytes\": 874491,\n          \"\
+        sha256\": \"6eef997d9b26e109bdabc4580f92ebc52f74c58f584d46f67f0f406589c35230\"\n        },\n        \"run/case-008/material-002.brep\"\
+        : {\n          \"bytes\": 72560,\n          \"sha256\": \"8733baeff47190ecb7ec22468438e3ace3e3480f03590a4c1839eaab6a9235ea\"\
+        \n        },\n        \"run/case-008/material-002.step\": {\n          \"bytes\": 299587,\n          \"\
+        sha256\": \"dd979a3534a85d1fcdc0e9745c7f45bbe2ab016207176dfb052dca85d9c58c2e\"\n        },\n        \"run/case-009/result.json\"\
+        : {\n          \"bytes\": 20955,\n          \"sha256\": \"7212a93f8eb303302d7ba01f7f7dbbf1b42051a1f281c602d09b79224b1e7236\"\
+        \n        },\n        \"run/case-009/material-001.brep\": {\n          \"bytes\": 196507,\n          \"\
+        sha256\": \"00becee359ecab5f0a75edeeff385852c502531cbe95fafded51c5ce0cb02caf\"\n        },\n        \"run/case-009/material-001.step\"\
+        : {\n          \"bytes\": 874491,\n          \"sha256\": \"f80d8e4a5f781c2cd575365cb39a0c99057f6b52eb8dbd07bc6d1b0a12e83d77\"\
+        \n        },\n        \"run/case-009/material-002.brep\": {\n          \"bytes\": 72848,\n          \"sha256\"\
+        : \"8ec45864650052cc878477530f8cc94149ead34144cf2e01e299cb4b75a313ed\"\n        },\n        \"run/case-009/material-002.step\"\
+        : {\n          \"bytes\": 299587,\n          \"sha256\": \"7895f97777cf6c83dd429b4a1b4a51a33dece468fa8c62fb717f3c400385d09f\"\
+        \n        },\n        \"run/case-010/result.json\": {\n          \"bytes\": 20872,\n          \"sha256\"\
+        : \"87006a7303ae7217823a4f04ad3d2253b51749ca039c65e32f88e4c6389c6d69\"\n        },\n        \"run/case-010/material-001.brep\"\
+        : {\n          \"bytes\": 196507,\n          \"sha256\": \"00becee359ecab5f0a75edeeff385852c502531cbe95fafded51c5ce0cb02caf\"\
+        \n        },\n        \"run/case-010/material-001.step\": {\n          \"bytes\": 874491,\n          \"\
+        sha256\": \"509df86abf14c06747cb1e787c34bf1a348575dc4fbde8a705b40f778653be68\"\n        },\n        \"run/case-010/material-002.brep\"\
+        : {\n          \"bytes\": 72848,\n          \"sha256\": \"8ec45864650052cc878477530f8cc94149ead34144cf2e01e299cb4b75a313ed\"\
+        \n        },\n        \"run/case-010/material-002.step\": {\n          \"bytes\": 299587,\n          \"\
+        sha256\": \"03f98507107c8a7e94d338e5040d6950cbf0524d55bddc4c8aebca58e6ab7e24\"\n        },\n        \"run/case-020/result.json\"\
+        : {\n          \"bytes\": 22535,\n          \"sha256\": \"5fc920c2f7321872c257dd1cfe14ad1cb8bc9880cf8f008e9bdd60e7f93b7542\"\
+        \n        },\n        \"run/case-020/material-001.brep\": {\n          \"bytes\": 87062,\n          \"sha256\"\
+        : \"d3f57788b45f6c1a16f42b7103e12749e3fd08e4041ee834f2e5959cb5073219\"\n        },\n        \"run/case-020/material-001.step\"\
+        : {\n          \"bytes\": 293271,\n          \"sha256\": \"a7e4a34365a515324dcbaffe3e270324f1710930b02b5782582451ba995668db\"\
+        \n        },\n        \"run/case-020/material-002.brep\": {\n          \"bytes\": 21498,\n          \"sha256\"\
+        : \"11b415abc9369aa39ec964dd297f89bce49671a72f7f677362b3af75d6121c51\"\n        },\n        \"run/case-020/material-002.step\"\
+        : {\n          \"bytes\": 73609,\n          \"sha256\": \"6f9ae8bcfe1e2e6485033c43e00150f6d4363c5037111f3470ebe812af6c6869\"\
+        \n        },\n        \"run/case-021/result.json\": {\n          \"bytes\": 22554,\n          \"sha256\"\
+        : \"9c80527bfcea70c93061bd728625f9c1e36cbd2838f6746acd1e62f9ba035b35\"\n        },\n        \"run/case-021/material-001.brep\"\
+        : {\n          \"bytes\": 88815,\n          \"sha256\": \"49dcec27c8f55727537baa70be03e605b16aa29257324468443b0988380650c4\"\
+        \n        },\n        \"run/case-021/material-001.step\": {\n          \"bytes\": 293271,\n          \"\
+        sha256\": \"6b314a4e7891d013273199b479ec1b701886a6456e361b32180ddb137fcbd47c\"\n        },\n        \"run/case-021/material-002.brep\"\
+        : {\n          \"bytes\": 21498,\n          \"sha256\": \"add192a7c66d43f7eac8989adf76ee84dfb31507fe141d803a97b64522bf22e1\"\
+        \n        },\n        \"run/case-021/material-002.step\": {\n          \"bytes\": 73609,\n          \"sha256\"\
+        : \"294c04e6d01c71a0ffe5150e7c83d1becbc6fe04cbcd3b7add13011b0a9f003c\"\n        },\n        \"run/case-022/result.json\"\
+        : {\n          \"bytes\": 22552,\n          \"sha256\": \"30171341d1ef5f38510d7608e935834bd1c1bc131f60760b0c096fb2761e10b7\"\
+        \n        },\n        \"run/case-022/material-001.brep\": {\n          \"bytes\": 90568,\n          \"sha256\"\
+        : \"edee644885e9a08b0bf76db4c7afbc03a4d426b56385076d8b6026bfa36c350e\"\n        },\n        \"run/case-022/material-001.step\"\
+        : {\n          \"bytes\": 293271,\n          \"sha256\": \"0e9d1c27a642d3d51d5b849405793bbc5318edce46040a7aeb00f7e8eb16341b\"\
+        \n        },\n        \"run/case-022/material-002.brep\": {\n          \"bytes\": 21498,\n          \"sha256\"\
+        : \"add192a7c66d43f7eac8989adf76ee84dfb31507fe141d803a97b64522bf22e1\"\n        },\n        \"run/case-022/material-002.step\"\
+        : {\n          \"bytes\": 73609,\n          \"sha256\": \"5dad37c248d23b5c1875a27410405bf3cee1706390576b331cc1ff72f5c87e7d\"\
+        \n        },\n        \"run/case-023/result.json\": {\n          \"bytes\": 22535,\n          \"sha256\"\
+        : \"89bfb40ea1ebd53125a3f6202e72ec554a9112f95ab61a8919437031f5a60e15\"\n        },\n        \"run/case-023/material-001.brep\"\
+        : {\n          \"bytes\": 92318,\n          \"sha256\": \"64fb32047102a1919ce1d0ab269b1f105b2819b4b22728cb69e653cc5030cc57\"\
+        \n        },\n        \"run/case-023/material-001.step\": {\n          \"bytes\": 293271,\n          \"\
+        sha256\": \"1099bf9aa0d0822c215635424e8303304831efa22246b3ed2804d683498afdb6\"\n        },\n        \"run/case-023/material-002.brep\"\
+        : {\n          \"bytes\": 21498,\n          \"sha256\": \"add192a7c66d43f7eac8989adf76ee84dfb31507fe141d803a97b64522bf22e1\"\
+        \n        },\n        \"run/case-023/material-002.step\": {\n          \"bytes\": 73609,\n          \"sha256\"\
+        : \"a955f905ca0f49b5441946027c10087e4363b895cadee77856db8762ae2a0bdc\"\n        },\n        \"run/case-024/result.json\"\
+        : {\n          \"bytes\": 22481,\n          \"sha256\": \"a96aef03be5a8c2370ddccb3b28fec0fcb9af73b2a41ba90eb3d30378f8a75e9\"\
+        \n        },\n        \"run/case-024/material-001.brep\": {\n          \"bytes\": 94078,\n          \"sha256\"\
+        : \"d7c4ae91ddb8602aa1b5065985c3877bea2a03ebfdc41e96cc9109007c50b1c4\"\n        },\n        \"run/case-024/material-001.step\"\
+        : {\n          \"bytes\": 293271,\n          \"sha256\": \"df4c42fd485b2d2379aa1900340faa0e29edd733824fc82297ed6dc54c5c047f\"\
+        \n        },\n        \"run/case-024/material-002.brep\": {\n          \"bytes\": 21498,\n          \"sha256\"\
+        : \"add192a7c66d43f7eac8989adf76ee84dfb31507fe141d803a97b64522bf22e1\"\n        },\n        \"run/case-024/material-002.step\"\
+        : {\n          \"bytes\": 73609,\n          \"sha256\": \"8f94fb42547403499537b1983320a61acca4e5fb0bbccd7667f8206a8340f39f\"\
+        \n        },\n        \"run/case-025/result.json\": {\n          \"bytes\": 22475,\n          \"sha256\"\
+        : \"3a62781355cb2d4a9302558fbe5d025c7013526280be2cafa6953950db3f9ce1\"\n        },\n        \"run/case-025/material-001.brep\"\
+        : {\n          \"bytes\": 96308,\n          \"sha256\": \"82aa7dc19ecdea035c5d02d8ac45eefbd984d74da82ca73de9dbbe31077a037b\"\
+        \n        },\n        \"run/case-025/material-001.step\": {\n          \"bytes\": 293271,\n          \"\
+        sha256\": \"438b2fa91a1fa9fa3d26f6d440aea0702108aaff75e5bb72c808fe5963de495a\"\n        },\n        \"run/case-025/material-002.brep\"\
+        : {\n          \"bytes\": 21498,\n          \"sha256\": \"add192a7c66d43f7eac8989adf76ee84dfb31507fe141d803a97b64522bf22e1\"\
+        \n        },\n        \"run/case-025/material-002.step\": {\n          \"bytes\": 73609,\n          \"sha256\"\
+        : \"8f212e86bcca440418103fc2ea09bcc2811150c7bde1a62530bbca5e7b307ece\"\n        },\n        \"run/case-026/result.json\"\
+        : {\n          \"bytes\": 22470,\n          \"sha256\": \"ced1ba44dabc7202cc5d591cb442ce76df5a00da5632b9adf3b35283267a8596\"\
+        \n        },\n        \"run/case-026/material-001.brep\": {\n          \"bytes\": 98075,\n          \"sha256\"\
+        : \"d1684e1601a951c91aa81e9bc735c5d59b4c2ff61d3e035f7759ede3bdbba728\"\n        },\n        \"run/case-026/material-001.step\"\
+        : {\n          \"bytes\": 293271,\n          \"sha256\": \"066464553f80e335ddb240c8d030c7042fd6dc243f73c10a9c17d7c9aea7fb1e\"\
+        \n        },\n        \"run/case-026/material-002.brep\": {\n          \"bytes\": 21498,\n          \"sha256\"\
+        : \"add192a7c66d43f7eac8989adf76ee84dfb31507fe141d803a97b64522bf22e1\"\n        },\n        \"run/case-026/material-002.step\"\
+        : {\n          \"bytes\": 73609,\n          \"sha256\": \"abcebfb35d92bb945bc6185814b01d118f36d037a7802c6a1e2c224d27ba150f\"\
+        \n        },\n        \"run/case-027/result.json\": {\n          \"bytes\": 22428,\n          \"sha256\"\
+        : \"5fec5c7be124ebbec1f44f43c12f388f61e9e09fd0633648281cba83e3c10f65\"\n        },\n        \"run/case-027/material-001.brep\"\
+        : {\n          \"bytes\": 100545,\n          \"sha256\": \"2d06624fdbd3a3f4c84ad4097ff2464bb2ef6c147ca22ae2d1bcce87420588eb\"\
+        \n        },\n        \"run/case-027/material-001.step\": {\n          \"bytes\": 293271,\n          \"\
+        sha256\": \"0a0ab95c7dbb504692605ef236c6f2aee44b6992de79ac71dd31ffea6011a700\"\n        },\n        \"run/case-027/material-002.brep\"\
+        : {\n          \"bytes\": 21730,\n          \"sha256\": \"70eb8077bfe54e98c2c97863b68bd866949258cea295eadc11d4f3a8ccb091d2\"\
+        \n        },\n        \"run/case-027/material-002.step\": {\n          \"bytes\": 73609,\n          \"sha256\"\
+        : \"e521d56633942e09d80c0a9a00d1c6622b88942a5e2441c4c59fe1c3913aa8a5\"\n        },\n        \"run/case-029/result.json\"\
+        : {\n          \"bytes\": 22540,\n          \"sha256\": \"f6e2f714aa02b0a553df1fe153a3ff94ea918528eea71a8105d3d862c06e012d\"\
+        \n        },\n        \"run/case-029/material-001.brep\": {\n          \"bytes\": 106992,\n          \"\
+        sha256\": \"f0c91eb34b0e4c756e1917dda2c49e975160b1dbbf470844f235a08509bb2dfc\"\n        },\n        \"run/case-029/material-001.step\"\
+        : {\n          \"bytes\": 293271,\n          \"sha256\": \"99529fd69d2868f1ea78aa940e68997b43d3bc8e12849b804160097efd69103a\"\
+        \n        },\n        \"run/case-029/material-002.brep\": {\n          \"bytes\": 18497,\n          \"sha256\"\
+        : \"e3c46027ff8b2269bd281041d2a48baf627517e88f93941c38f1397239798234\"\n        },\n        \"run/case-029/material-002.step\"\
+        : {\n          \"bytes\": 73605,\n          \"sha256\": \"c90ff445655d16a87eac995e4d8b3ab8a82779c637ed91fc603b1268e51201ac\"\
+        \n        },\n        \"run/case-030/result.json\": {\n          \"bytes\": 22565,\n          \"sha256\"\
+        : \"3dd4ba791ee016a1b80cfd3fbcba198a0f74d815acdb2138ab7426695e0eccdb\"\n        },\n        \"run/case-030/material-001.brep\"\
+        : {\n          \"bytes\": 108761,\n          \"sha256\": \"6f81a2a50394448724129aea0af50c4398720526dbf7d74dbd224c1bd9a7c6f9\"\
+        \n        },\n        \"run/case-030/material-001.step\": {\n          \"bytes\": 293273,\n          \"\
+        sha256\": \"8acc37c0c82c1f8e12613dca500b923bf7e994faf1619440d69046f62144098f\"\n        },\n        \"run/case-030/material-002.brep\"\
+        : {\n          \"bytes\": 18497,\n          \"sha256\": \"c6993d2752df51e0dd4fc68a2d587ed3f3cf224c5186d4dcdac7870779615720\"\
+        \n        },\n        \"run/case-030/material-002.step\": {\n          \"bytes\": 73607,\n          \"sha256\"\
+        : \"4a7a931ccfd09fd05fe816a7194d1aca3b43e3a34ffa24507b781ee0985dae45\"\n        },\n        \"run/case-031/result.json\"\
+        : {\n          \"bytes\": 22577,\n          \"sha256\": \"439b519d468766720c770060ee6d159394e8f601f05cc5ad2067a06bd457bfd7\"\
+        \n        },\n        \"run/case-031/material-001.brep\": {\n          \"bytes\": 110540,\n          \"\
+        sha256\": \"ccc6300f8c9148ae42677034e317fe6915ddf767a2cf0c94f001794a56a4ff1a\"\n        },\n        \"run/case-031/material-001.step\"\
+        : {\n          \"bytes\": 293273,\n          \"sha256\": \"19fb034735a1e10e965bd7fba647c1927731609515f4304c8b60161644cb69c7\"\
+        \n        },\n        \"run/case-031/material-002.brep\": {\n          \"bytes\": 18497,\n          \"sha256\"\
+        : \"c6993d2752df51e0dd4fc68a2d587ed3f3cf224c5186d4dcdac7870779615720\"\n        },\n        \"run/case-031/material-002.step\"\
+        : {\n          \"bytes\": 73607,\n          \"sha256\": \"25249d6f18f7206ad93171348e9775ed8733067eb1d4803ac61c1074d865b5f8\"\
+        \n        },\n        \"run/case-032/result.json\": {\n          \"bytes\": 22544,\n          \"sha256\"\
+        : \"3cf4ccd3e5c69208fb09b9724158227e45ddcf61ce786c83ccd2dba23f6a914e\"\n        },\n        \"run/case-032/material-001.brep\"\
+        : {\n          \"bytes\": 112313,\n          \"sha256\": \"029b35874fdd6553640cb50499aaa84f61e6bd3a813edf49f69782923642f239\"\
+        \n        },\n        \"run/case-032/material-001.step\": {\n          \"bytes\": 293273,\n          \"\
+        sha256\": \"04c339459806f8a96f950d61fe62ba2e22c32aacc947d238fe6e0914178038c4\"\n        },\n        \"run/case-032/material-002.brep\"\
+        : {\n          \"bytes\": 18497,\n          \"sha256\": \"c6993d2752df51e0dd4fc68a2d587ed3f3cf224c5186d4dcdac7870779615720\"\
+        \n        },\n        \"run/case-032/material-002.step\": {\n          \"bytes\": 73607,\n          \"sha256\"\
+        : \"d2cc51bdea619813ab2abee67e92dfd4bc07cfabcabec1fd8792e375c08751f4\"\n        },\n        \"run/case-033/result.json\"\
+        : {\n          \"bytes\": 22509,\n          \"sha256\": \"25266d7334891a11dbf60821a43431f3b4ccee5fc636d335a663d228499d2000\"\
+        \n        },\n        \"run/case-033/material-001.brep\": {\n          \"bytes\": 114074,\n          \"\
+        sha256\": \"07f2e69d7bfc873414663ce5e5f0cdecf498b760b7c7f66ef116a218d97862ea\"\n        },\n        \"run/case-033/material-001.step\"\
+        : {\n          \"bytes\": 293273,\n          \"sha256\": \"ffdee2a5dd3c54b8b9017068041aaa52c92f5bc72a07701d0652ac2d1ce8b606\"\
+        \n        },\n        \"run/case-033/material-002.brep\": {\n          \"bytes\": 18497,\n          \"sha256\"\
+        : \"c6993d2752df51e0dd4fc68a2d587ed3f3cf224c5186d4dcdac7870779615720\"\n        },\n        \"run/case-033/material-002.step\"\
+        : {\n          \"bytes\": 73607,\n          \"sha256\": \"3b7bc3b75d18c9970244e260d2eebfa5bc43f4f0df5a651bfb2284c975a0ab6c\"\
+        \n        },\n        \"run/case-034/result.json\": {\n          \"bytes\": 22481,\n          \"sha256\"\
+        : \"91037d686b9fa6c1345f3e2ba7171d93b46f19b5be196e851501de289514ae78\"\n        },\n        \"run/case-034/material-001.brep\"\
+        : {\n          \"bytes\": 116299,\n          \"sha256\": \"3f11c2164275c280beb2daa5495dd64616e09b8019e03f5d19f31a3adc27b946\"\
+        \n        },\n        \"run/case-034/material-001.step\": {\n          \"bytes\": 293273,\n          \"\
+        sha256\": \"9301c53afedfcc8d14b80fe12a4b70cc39160c6adc47a34a093a1d4fdc805499\"\n        },\n        \"run/case-034/material-002.brep\"\
+        : {\n          \"bytes\": 18497,\n          \"sha256\": \"c6993d2752df51e0dd4fc68a2d587ed3f3cf224c5186d4dcdac7870779615720\"\
+        \n        },\n        \"run/case-034/material-002.step\": {\n          \"bytes\": 73607,\n          \"sha256\"\
+        : \"5c4c33e2c1195dfd1c4905ca2ae4ce05ee0a1aeeb83d4a9efd6d829e61a0378d\"\n        },\n        \"run/case-035/result.json\"\
+        : {\n          \"bytes\": 22490,\n          \"sha256\": \"2fa58e0a58fd605e2b349768b3097d2b44767b6ead7eefb66554491d1c7ffee2\"\
+        \n        },\n        \"run/case-035/material-001.brep\": {\n          \"bytes\": 118058,\n          \"\
+        sha256\": \"8ce2067410c7212432a59dbd41c47b52d3b36371c0f6ddf1b472a4eea73156d3\"\n        },\n        \"run/case-035/material-001.step\"\
+        : {\n          \"bytes\": 293273,\n          \"sha256\": \"bf471c5d8e48e5b4c5f3f61a8fc8ab9e94e6730d3345d6213da17d201b41f68e\"\
+        \n        },\n        \"run/case-035/material-002.brep\": {\n          \"bytes\": 18497,\n          \"sha256\"\
+        : \"c6993d2752df51e0dd4fc68a2d587ed3f3cf224c5186d4dcdac7870779615720\"\n        },\n        \"run/case-035/material-002.step\"\
+        : {\n          \"bytes\": 73607,\n          \"sha256\": \"cc46551c0bcf848035a90ab5a63c60ae517909ea7b8489c0bd495ff376d36a5e\"\
+        \n        },\n        \"run/case-036/result.json\": {\n          \"bytes\": 22477,\n          \"sha256\"\
+        : \"7b367251509606b8b319c516d544f485868919235760fd8371961b6240ede207\"\n        },\n        \"run/case-036/material-001.brep\"\
+        : {\n          \"bytes\": 120504,\n          \"sha256\": \"57657b18094e301c5b90c1c932cdaf348f2c4daff98a2a4fba1f85eccabbaaae\"\
+        \n        },\n        \"run/case-036/material-001.step\": {\n          \"bytes\": 293273,\n          \"\
+        sha256\": \"a0e4e7c7795c47bd569ab052e4d9d659da9d9a29314162ad46c7456859ee2ec0\"\n        },\n        \"run/case-036/material-002.brep\"\
+        : {\n          \"bytes\": 19314,\n          \"sha256\": \"c2356fd18b487b94a6b3b38bf20e6476cfad1d9ce83ad7cefaaa1755b48f1a7d\"\
+        \n        },\n        \"run/case-036/material-002.step\": {\n          \"bytes\": 73607,\n          \"sha256\"\
+        : \"5e5cdd820ac853154af25580a07413af881dbb197012f6cb472486c99c44a70e\"\n        },\n        \"run/case-038/result.json\"\
+        : {\n          \"bytes\": 22101,\n          \"sha256\": \"66283d3b1393cedda22c33db0056b9fc7e2b1294850d5ca9e22500de7bbe298d\"\
+        \n        },\n        \"run/case-038/material-001.brep\": {\n          \"bytes\": 21730,\n          \"sha256\"\
+        : \"70eb8077bfe54e98c2c97863b68bd866949258cea295eadc11d4f3a8ccb091d2\"\n        },\n        \"run/case-038/material-001.step\"\
+        : {\n          \"bytes\": 73611,\n          \"sha256\": \"2e040c136f008940fb40ce33ef1e33b758f11fbd6e775b653fb34e18f33476ef\"\
+        \n        },\n        \"run/case-038/material-002.brep\": {\n          \"bytes\": 1460,\n          \"sha256\"\
+        : \"9b5882ca50383291d8610a78ae8161b9586d0d1f9ce7d8f49acd73c54ec36761\"\n        },\n        \"run/case-038/material-002.step\"\
+        : {\n          \"bytes\": 5713,\n          \"sha256\": \"37768a3c75a03e172066f52e627de935ac19074e8470732df635d4bfa587f503\"\
+        \n        },\n        \"run/case-039/result.json\": {\n          \"bytes\": 22153,\n          \"sha256\"\
+        : \"b93eaddc97559d535e9f66f0dfc74536e5ad61ad6eb55290d552320b68612983\"\n        },\n        \"run/case-039/material-001.brep\"\
+        : {\n          \"bytes\": 21730,\n          \"sha256\": \"70eb8077bfe54e98c2c97863b68bd866949258cea295eadc11d4f3a8ccb091d2\"\
+        \n        },\n        \"run/case-039/material-001.step\": {\n          \"bytes\": 73611,\n          \"sha256\"\
+        : \"41cd67da40ae0dbf2f34c80bad2abd42f798143da2a55ff472c58c063e8b465c\"\n        },\n        \"run/case-039/material-002.brep\"\
+        : {\n          \"bytes\": 1455,\n          \"sha256\": \"b4c72d744720a9fc097a4a7f47f1f4b8ae0d1d90a887be0f079b8b4169752885\"\
+        \n        },\n        \"run/case-039/material-002.step\": {\n          \"bytes\": 5708,\n          \"sha256\"\
+        : \"ae57fb44a409874b6fd6e4023213bbf8b7cce113cadc09465b4d25ccec0ec588\"\n        },\n        \"run/case-040/result.json\"\
+        : {\n          \"bytes\": 22138,\n          \"sha256\": \"29a0a8e16b2e29ff495a2eda0e40be1185529d61823b93eb0dacc0efb35ebff7\"\
+        \n        },\n        \"run/case-040/material-001.brep\": {\n          \"bytes\": 21730,\n          \"sha256\"\
+        : \"70eb8077bfe54e98c2c97863b68bd866949258cea295eadc11d4f3a8ccb091d2\"\n        },\n        \"run/case-040/material-001.step\"\
+        : {\n          \"bytes\": 73611,\n          \"sha256\": \"3f1b9f9c0a93dc87306b330788616791f5c1572378f0814b9a08d4fb912dbc71\"\
+        \n        },\n        \"run/case-040/material-002.brep\": {\n          \"bytes\": 1458,\n          \"sha256\"\
+        : \"4c2a08cd53b98eba1adddae80e254c16a02a5cd78e39bef494bb8016c3f0483d\"\n        },\n        \"run/case-040/material-002.step\"\
+        : {\n          \"bytes\": 5713,\n          \"sha256\": \"dab4c2f2c10cfb4f571556ca55e7ca815a9305a53d83b8e8eaed6423fca9167e\"\
+        \n        },\n        \"run/case-041/result.json\": {\n          \"bytes\": 22128,\n          \"sha256\"\
+        : \"9daa1c01f7aa43507745ca202e4d48c7f191162404e168d051c7113c96c1ece4\"\n        },\n        \"run/case-041/material-001.brep\"\
+        : {\n          \"bytes\": 21730,\n          \"sha256\": \"70eb8077bfe54e98c2c97863b68bd866949258cea295eadc11d4f3a8ccb091d2\"\
+        \n        },\n        \"run/case-041/material-001.step\": {\n          \"bytes\": 73611,\n          \"sha256\"\
+        : \"96eec70f58fa8e754207be4bab0614c9773d3b6f1c81a8ae8de9a0c091faec8b\"\n        },\n        \"run/case-041/material-002.brep\"\
+        : {\n          \"bytes\": 1458,\n          \"sha256\": \"4a880081919eced4e36d24d5008a623535b7bb7afd8b463f5b8895e7d72a3e96\"\
+        \n        },\n        \"run/case-041/material-002.step\": {\n          \"bytes\": 5712,\n          \"sha256\"\
+        : \"531ad8ad7c7319079dcd7ec7ed7e57d61efea1efa61106a197315a15db3a1690\"\n        },\n        \"run/case-042/result.json\"\
+        : {\n          \"bytes\": 22070,\n          \"sha256\": \"03d435024a441be4303400f82f32530c533c5fe7b0456c4de358f74a54611fb8\"\
+        \n        },\n        \"run/case-042/material-001.brep\": {\n          \"bytes\": 21730,\n          \"sha256\"\
+        : \"70eb8077bfe54e98c2c97863b68bd866949258cea295eadc11d4f3a8ccb091d2\"\n        },\n        \"run/case-042/material-001.step\"\
+        : {\n          \"bytes\": 73611,\n          \"sha256\": \"7e6e5f8349354c9085e2458af7b5c09a38747df4a1e722db1dd8b74a23ef8520\"\
+        \n        },\n        \"run/case-042/material-002.brep\": {\n          \"bytes\": 1458,\n          \"sha256\"\
+        : \"c73d55a08696f8ce86654b022ab6b9792dbd93fef707c72f3281eb7cec0b9664\"\n        },\n        \"run/case-042/material-002.step\"\
+        : {\n          \"bytes\": 5713,\n          \"sha256\": \"52d57e124a9c45e170015bb7af1e6a980b3f81b99bcc569fcb5e99e0bcf861bc\"\
+        \n        },\n        \"run/case-043/result.json\": {\n          \"bytes\": 22071,\n          \"sha256\"\
+        : \"8bd730a402bb13187b3b0aa17d84037fbcd9d3a7935480636876787cba2a18d3\"\n        },\n        \"run/case-043/material-001.brep\"\
+        : {\n          \"bytes\": 21730,\n          \"sha256\": \"70eb8077bfe54e98c2c97863b68bd866949258cea295eadc11d4f3a8ccb091d2\"\
+        \n        },\n        \"run/case-043/material-001.step\": {\n          \"bytes\": 73611,\n          \"sha256\"\
+        : \"8f4fcc4220094c5d3d0136d78587e5be695f5705a69908971ed1578b02027d5e\"\n        },\n        \"run/case-043/material-002.brep\"\
+        : {\n          \"bytes\": 1455,\n          \"sha256\": \"56cb74eeced4aadaf242619c3acb1da0216ff5c4051fa31e0b7142576cfd4f64\"\
+        \n        },\n        \"run/case-043/material-002.step\": {\n          \"bytes\": 5713,\n          \"sha256\"\
+        : \"d4ea41f601eccd7bda6441edceee256e55c6511139bf249db5c1f473a8a6c6a3\"\n        },\n        \"run/case-044/result.json\"\
+        : {\n          \"bytes\": 22068,\n          \"sha256\": \"ca85a969678dafabf4ac4f79d33aa49b476cb3a31c3fff09ddc1603675540f6d\"\
+        \n        },\n        \"run/case-044/material-001.brep\": {\n          \"bytes\": 21730,\n          \"sha256\"\
+        : \"70eb8077bfe54e98c2c97863b68bd866949258cea295eadc11d4f3a8ccb091d2\"\n        },\n        \"run/case-044/material-001.step\"\
+        : {\n          \"bytes\": 73611,\n          \"sha256\": \"a5a4d97710c856838940112717f1e4aa372e7d0150d8e4505f3694b09159f9f9\"\
+        \n        },\n        \"run/case-044/material-002.brep\": {\n          \"bytes\": 1458,\n          \"sha256\"\
+        : \"7afc6678372c021165a2c068329f04219bfa7560a65e52a5a21e6c8e0ef24191\"\n        },\n        \"run/case-044/material-002.step\"\
+        : {\n          \"bytes\": 5713,\n          \"sha256\": \"131eda0d5042a83dbeb12ab8e075291d7d3b8d67991dd6633868a7ee23d1c819\"\
+        \n        },\n        \"run/case-045/result.json\": {\n          \"bytes\": 21998,\n          \"sha256\"\
+        : \"e09e6ca0929f44c13ec0927f14bc0a9903d1de3c114105a1557f1dfb5c514a4d\"\n        },\n        \"run/case-045/material-001.brep\"\
+        : {\n          \"bytes\": 21730,\n          \"sha256\": \"70eb8077bfe54e98c2c97863b68bd866949258cea295eadc11d4f3a8ccb091d2\"\
+        \n        },\n        \"run/case-045/material-001.step\": {\n          \"bytes\": 73611,\n          \"sha256\"\
+        : \"9b4e2af534e40e9414d715d17cd6a56b10d725fbc5090804905cffb119a5aa5b\"\n        },\n        \"run/case-045/material-002.brep\"\
+        : {\n          \"bytes\": 1424,\n          \"sha256\": \"e7c04c2fd4ff69dcfab4b04fb3c700b21cdd3ddc34e973e997ad6ce314d03543\"\
+        \n        },\n        \"run/case-045/material-002.step\": {\n          \"bytes\": 5676,\n          \"sha256\"\
+        : \"ce2758c9da26da35b7352fc6b18f2db7896055fbb1105b0854a29b2fb21b5848\"\n        },\n        \"run/case-046/result.json\"\
+        : {\n          \"bytes\": 22129,\n          \"sha256\": \"a5db2117cd84ef9d304d1ab40f2637a71ce46a68de510850dbb711bc424fdd69\"\
+        \n        },\n        \"run/case-046/material-001.brep\": {\n          \"bytes\": 20348,\n          \"sha256\"\
+        : \"2471594ded7d580394e38604b4c5c999ca63cc134e91f75367942327400860f1\"\n        },\n        \"run/case-046/material-001.step\"\
+        : {\n          \"bytes\": 73607,\n          \"sha256\": \"abc5b75d0919a5b5c43a39d604615e5e8a2056d3f4af6920abb122d5a3cf26a1\"\
+        \n        },\n        \"run/case-046/material-002.brep\": {\n          \"bytes\": 1460,\n          \"sha256\"\
+        : \"aaed7164939a95faf7c9d69aeb00945146a1a27699deee82d983c059bdd4f638\"\n        },\n        \"run/case-046/material-002.step\"\
+        : {\n          \"bytes\": 5713,\n          \"sha256\": \"63fcac4448e0682936bdcd278507b356473f929194ac40f6c7828d64d32f32a0\"\
+        \n        },\n        \"run/case-047/result.json\": {\n          \"bytes\": 22157,\n          \"sha256\"\
+        : \"05a7ead16a19735d6b3f81d6c4352b7556a8489f785f61f2fa608f29df744375\"\n        },\n        \"run/case-047/material-001.brep\"\
+        : {\n          \"bytes\": 20348,\n          \"sha256\": \"2471594ded7d580394e38604b4c5c999ca63cc134e91f75367942327400860f1\"\
+        \n        },\n        \"run/case-047/material-001.step\": {\n          \"bytes\": 73607,\n          \"sha256\"\
+        : \"4c2a642dacf48a9664cc291a9bf596488ae34cd87e9bbeb5adbcbbd5d9049751\"\n        },\n        \"run/case-047/material-002.brep\"\
+        : {\n          \"bytes\": 1455,\n          \"sha256\": \"692db4ae70546eb4caf2be238869adc0db09eee153216ce8f3e52a601c5e6c6b\"\
+        \n        },\n        \"run/case-047/material-002.step\": {\n          \"bytes\": 5708,\n          \"sha256\"\
+        : \"cfa50842621cd3270a4da8421c6528d34a96f960cc0e6956e16ec0b1637f3e01\"\n        },\n        \"run/case-048/result.json\"\
+        : {\n          \"bytes\": 22148,\n          \"sha256\": \"39c14b17217525887280087e71feba5efa918f24ee8c6f5560a0a1fc843666b4\"\
+        \n        },\n        \"run/case-048/material-001.brep\": {\n          \"bytes\": 20348,\n          \"sha256\"\
+        : \"2471594ded7d580394e38604b4c5c999ca63cc134e91f75367942327400860f1\"\n        },\n        \"run/case-048/material-001.step\"\
+        : {\n          \"bytes\": 73607,\n          \"sha256\": \"2919b871df390c57d7eb0f3679aeae0b9216ad646dc073452fcf5ef075f66d6d\"\
+        \n        },\n        \"run/case-048/material-002.brep\": {\n          \"bytes\": 1458,\n          \"sha256\"\
+        : \"44b797d171f580ec96290e0d3c886e7effcc754226b20e765d4865ddaa4ea1bd\"\n        },\n        \"run/case-048/material-002.step\"\
+        : {\n          \"bytes\": 5713,\n          \"sha256\": \"2e05bdd6f1b62cbc66ff5f2d9fec1d51510381ff3d69e6023ba8c38adc2f9e08\"\
+        \n        },\n        \"run/case-049/result.json\": {\n          \"bytes\": 22137,\n          \"sha256\"\
+        : \"5f341206a25b46fb155a5ce8a6c21fd3e9eda6b706b0e9715588819a33849399\"\n        },\n        \"run/case-049/material-001.brep\"\
+        : {\n          \"bytes\": 20348,\n          \"sha256\": \"2471594ded7d580394e38604b4c5c999ca63cc134e91f75367942327400860f1\"\
+        \n        },\n        \"run/case-049/material-001.step\": {\n          \"bytes\": 73607,\n          \"sha256\"\
+        : \"f93c96925ae402d6c25f12e9b5ba09481067a58b5acc50fbb34ca8f9b9864559\"\n        },\n        \"run/case-049/material-002.brep\"\
+        : {\n          \"bytes\": 1458,\n          \"sha256\": \"ca6fc1916434f14d11b3fc2f18d696b56242db12516684cdc8e0d77e819c439e\"\
+        \n        },\n        \"run/case-049/material-002.step\": {\n          \"bytes\": 5712,\n          \"sha256\"\
+        : \"792d301750c2c74b89c61113256e01585a2977bbd9fbfcd1f28d713cc15d4669\"\n        },\n        \"run/case-050/result.json\"\
+        : {\n          \"bytes\": 22077,\n          \"sha256\": \"dd8bdc007a303986da7d6e56db6d2563646465dbd9ec2ac10793eec4b82f8ff7\"\
+        \n        },\n        \"run/case-050/material-001.brep\": {\n          \"bytes\": 20348,\n          \"sha256\"\
+        : \"2471594ded7d580394e38604b4c5c999ca63cc134e91f75367942327400860f1\"\n        },\n        \"run/case-050/material-001.step\"\
+        : {\n          \"bytes\": 73607,\n          \"sha256\": \"21c1742531a2889fc4b7cfc70517b8f5ef5e0b88e135842b21cafd2de60d4f7c\"\
+        \n        },\n        \"run/case-050/material-002.brep\": {\n          \"bytes\": 1458,\n          \"sha256\"\
+        : \"17c70089f686593bbb7ffbda90706863ddc8cfa2dc7e14b34f8f92222a55d831\"\n        },\n        \"run/case-050/material-002.step\"\
+        : {\n          \"bytes\": 5713,\n          \"sha256\": \"3d2732661865589f32cba1a3e68ecfe1e92da9fe4d488cbbdb3cdb048d759b02\"\
+        \n        },\n        \"run/case-051/result.json\": {\n          \"bytes\": 22083,\n          \"sha256\"\
+        : \"a20f4263417547c6911789d75797758fdd2beeb4ec9350fe69610fe9a2ca4df8\"\n        },\n        \"run/case-051/material-001.brep\"\
+        : {\n          \"bytes\": 20348,\n          \"sha256\": \"2471594ded7d580394e38604b4c5c999ca63cc134e91f75367942327400860f1\"\
+        \n        },\n        \"run/case-051/material-001.step\": {\n          \"bytes\": 73607,\n          \"sha256\"\
+        : \"d333de9c7e3ad09a73fc15827ba73fe50317317fea8c21a099dacc4b070c1502\"\n        },\n        \"run/case-051/material-002.brep\"\
+        : {\n          \"bytes\": 1455,\n          \"sha256\": \"a7a7f2d45ab278f839eb5bcd6faf5070b91b4f7bfb705adb40947080e4999ccf\"\
+        \n        },\n        \"run/case-051/material-002.step\": {\n          \"bytes\": 5713,\n          \"sha256\"\
+        : \"f7e03b0297de56ff4e29db491d6d3917af6c01b45633f466dc238346c32de261\"\n        },\n        \"run/case-052/result.json\"\
+        : {\n          \"bytes\": 22063,\n          \"sha256\": \"8bef9d41d6064eb76c8b56b5053eb17801b1c8b58a6b41967027865ed53376e2\"\
+        \n        },\n        \"run/case-052/material-001.brep\": {\n          \"bytes\": 20348,\n          \"sha256\"\
+        : \"2471594ded7d580394e38604b4c5c999ca63cc134e91f75367942327400860f1\"\n        },\n        \"run/case-052/material-001.step\"\
+        : {\n          \"bytes\": 73607,\n          \"sha256\": \"acb077ae44dc9f68ccd5197ea248dfd7747e98889e7ca246c6fffe0ba6bfc4ac\"\
+        \n        },\n        \"run/case-052/material-002.brep\": {\n          \"bytes\": 1458,\n          \"sha256\"\
+        : \"6b4bf2c0a1d0f9db057462eaef9cc108797aa8d23e67350c94da5adecc88fd77\"\n        },\n        \"run/case-052/material-002.step\"\
+        : {\n          \"bytes\": 5713,\n          \"sha256\": \"9d66f7ad704e6a0b0405c7719cea1653fa474f1e04ef63b290f06d5a0bce9416\"\
+        \n        },\n        \"run/case-053/result.json\": {\n          \"bytes\": 22064,\n          \"sha256\"\
+        : \"a72286307a96557249b98c0173d2cb9f8b4820deba4a2e7e25df17db57260347\"\n        },\n        \"run/case-053/material-001.brep\"\
+        : {\n          \"bytes\": 20348,\n          \"sha256\": \"2471594ded7d580394e38604b4c5c999ca63cc134e91f75367942327400860f1\"\
+        \n        },\n        \"run/case-053/material-001.step\": {\n          \"bytes\": 73607,\n          \"sha256\"\
+        : \"705d6ec0b4a4f49c6b38685d99d31cbb2084d6a4c85e2b62fe9353da8c7606c7\"\n        },\n        \"run/case-053/material-002.brep\"\
+        : {\n          \"bytes\": 1424,\n          \"sha256\": \"1462457950034df6c57e7bb82802a20333f4785cca9a61ab6e4e1aa3563b32cd\"\
+        \n        },\n        \"run/case-053/material-002.step\": {\n          \"bytes\": 5676,\n          \"sha256\"\
+        : \"12edaefacac8bd3771158af19b201a7a4dd76f5162eb22a22c3959227d6a004f\"\n        },\n        \"run/case-055/result.json\"\
+        : {\n          \"bytes\": 22517,\n          \"sha256\": \"53d2165c2b323a91cbeb8ae12709d23fefcbf8772b48b19aa00d2bbf91b60526\"\
+        \n        },\n        \"run/case-055/material-001.brep\": {\n          \"bytes\": 79412,\n          \"sha256\"\
+        : \"70a45a36a7c25f4abf524e2513bce641b56e065f6e812e0ba239dd43a1e447e3\"\n        },\n        \"run/case-055/material-001.step\"\
+        : {\n          \"bytes\": 299589,\n          \"sha256\": \"e42dfcc31d0db5081b68775e7551cdc14ed388fc6aabff95425b6a566d5c341b\"\
+        \n        },\n        \"run/case-055/material-002.brep\": {\n          \"bytes\": 21517,\n          \"sha256\"\
+        : \"f5281c9ef1a3a950348470a728ffdbaa45b9ab41517f7bf954c99838d1ce0fd8\"\n        },\n        \"run/case-055/material-002.step\"\
+        : {\n          \"bytes\": 75975,\n          \"sha256\": \"64ca257fbd17177215b168cbbb8be5c2e6062d83a4841d3072782fc9b421e299\"\
+        \n        },\n        \"run/case-056/result.json\": {\n          \"bytes\": 22580,\n          \"sha256\"\
+        : \"9c4cac08f355eecc3e2f7ad0d7793084625794bc172e96bb69d96055dc02bc3f\"\n        },\n        \"run/case-056/material-001.brep\"\
+        : {\n          \"bytes\": 79412,\n          \"sha256\": \"70a45a36a7c25f4abf524e2513bce641b56e065f6e812e0ba239dd43a1e447e3\"\
+        \n        },\n        \"run/case-056/material-001.step\": {\n          \"bytes\": 299589,\n          \"\
+        sha256\": \"4f00cb37c914aeae52ad61b829a711f4598aa9b9ba0f1e0c77e681a2b2a7833f\"\n        },\n        \"run/case-056/material-002.brep\"\
+        : {\n          \"bytes\": 21517,\n          \"sha256\": \"7b137e6015c72d44232cfcf32ac1cf41164833f3198d7e339a8cd3fc1f4c4b82\"\
+        \n        },\n        \"run/case-056/material-002.step\": {\n          \"bytes\": 75975,\n          \"sha256\"\
+        : \"60186fbfe0464b280bde58c8aa4611cef92626a3402094baa29b69a3a967a740\"\n        },\n        \"run/case-057/result.json\"\
+        : {\n          \"bytes\": 22550,\n          \"sha256\": \"53fb03881211036be959fcd141ab1d8c1df9c2ff261699d8f83a0aa755bc26a8\"\
+        \n        },\n        \"run/case-057/material-001.brep\": {\n          \"bytes\": 79412,\n          \"sha256\"\
+        : \"70a45a36a7c25f4abf524e2513bce641b56e065f6e812e0ba239dd43a1e447e3\"\n        },\n        \"run/case-057/material-001.step\"\
+        : {\n          \"bytes\": 299589,\n          \"sha256\": \"745461a64308af177a1ad9147dfac087e1349d507f9783a7340fe11c94323897\"\
+        \n        },\n        \"run/case-057/material-002.brep\": {\n          \"bytes\": 21517,\n          \"sha256\"\
+        : \"7b137e6015c72d44232cfcf32ac1cf41164833f3198d7e339a8cd3fc1f4c4b82\"\n        },\n        \"run/case-057/material-002.step\"\
+        : {\n          \"bytes\": 75975,\n          \"sha256\": \"e0f99f0001fb6b3fe520e2e98e43da1dba2262d7fb3a82c97dda192e097fa662\"\
+        \n        },\n        \"run/case-058/result.json\": {\n          \"bytes\": 22528,\n          \"sha256\"\
+        : \"2506db526d8e859a32a3b3d993e2714d58893f621182cd4f35d4656cce016ce4\"\n        },\n        \"run/case-058/material-001.brep\"\
+        : {\n          \"bytes\": 79412,\n          \"sha256\": \"70a45a36a7c25f4abf524e2513bce641b56e065f6e812e0ba239dd43a1e447e3\"\
+        \n        },\n        \"run/case-058/material-001.step\": {\n          \"bytes\": 299589,\n          \"\
+        sha256\": \"0a47b35eecfd249586678a15eda612e807e5fc38a73085151afd1f9ba6bf91a3\"\n        },\n        \"run/case-058/material-002.brep\"\
+        : {\n          \"bytes\": 21517,\n          \"sha256\": \"7b137e6015c72d44232cfcf32ac1cf41164833f3198d7e339a8cd3fc1f4c4b82\"\
+        \n        },\n        \"run/case-058/material-002.step\": {\n          \"bytes\": 75975,\n          \"sha256\"\
+        : \"98d89742d85c3b76738d59c13173fec26cbb493d645a84a98671ceaaa16a466e\"\n        },\n        \"run/case-059/result.json\"\
+        : {\n          \"bytes\": 22501,\n          \"sha256\": \"fc6ec2842e86890c646200b1c3b955d3a99639118ed06c4073ccbf9831235192\"\
+        \n        },\n        \"run/case-059/material-001.brep\": {\n          \"bytes\": 79412,\n          \"sha256\"\
+        : \"70a45a36a7c25f4abf524e2513bce641b56e065f6e812e0ba239dd43a1e447e3\"\n        },\n        \"run/case-059/material-001.step\"\
+        : {\n          \"bytes\": 299589,\n          \"sha256\": \"77e69746049c542f3e220aad3665eaca7ff30e62ba1d0c82823ec6267bfea773\"\
+        \n        },\n        \"run/case-059/material-002.brep\": {\n          \"bytes\": 21517,\n          \"sha256\"\
+        : \"7b137e6015c72d44232cfcf32ac1cf41164833f3198d7e339a8cd3fc1f4c4b82\"\n        },\n        \"run/case-059/material-002.step\"\
+        : {\n          \"bytes\": 75975,\n          \"sha256\": \"f774b939d7ec512d4099d153f3511733837a2d8c91f4c7d3e32e4d4526b0ea54\"\
+        \n        },\n        \"run/case-060/result.json\": {\n          \"bytes\": 22489,\n          \"sha256\"\
+        : \"fd2beaed8b704be7ebf0cf0d38c5ee8c5024cbc1a512c6ec4acff95a087e0bd4\"\n        },\n        \"run/case-060/material-001.brep\"\
+        : {\n          \"bytes\": 79868,\n          \"sha256\": \"43e38238eff22e81982b6debc4d06d632bd58d5b19eea26f995d727f04cc8f27\"\
+        \n        },\n        \"run/case-060/material-001.step\": {\n          \"bytes\": 299589,\n          \"\
+        sha256\": \"65da168349766fc6d78fc4ad8cb25504efb5ccbecf93ef80ab4e007fdb8d7018\"\n        },\n        \"run/case-060/material-002.brep\"\
+        : {\n          \"bytes\": 21517,\n          \"sha256\": \"7b137e6015c72d44232cfcf32ac1cf41164833f3198d7e339a8cd3fc1f4c4b82\"\
+        \n        },\n        \"run/case-060/material-002.step\": {\n          \"bytes\": 75975,\n          \"sha256\"\
+        : \"ef68594668dece08f9916b153dd6ec1e33478a91b27c5144f5e8e69fb49e3c86\"\n        },\n        \"run/case-061/result.json\"\
+        : {\n          \"bytes\": 22492,\n          \"sha256\": \"9d70f0b36f0f0574d5076ad3d0f099e1142d77a828c9f0fc26c9fb19336b37de\"\
+        \n        },\n        \"run/case-061/material-001.brep\": {\n          \"bytes\": 79868,\n          \"sha256\"\
+        : \"43e38238eff22e81982b6debc4d06d632bd58d5b19eea26f995d727f04cc8f27\"\n        },\n        \"run/case-061/material-001.step\"\
+        : {\n          \"bytes\": 299589,\n          \"sha256\": \"18d90ab1d96e03884f9c2e40452a1c1da1ee77ed93d1cd46bd0e94f2ed03bc1a\"\
+        \n        },\n        \"run/case-061/material-002.brep\": {\n          \"bytes\": 21517,\n          \"sha256\"\
+        : \"7b137e6015c72d44232cfcf32ac1cf41164833f3198d7e339a8cd3fc1f4c4b82\"\n        },\n        \"run/case-061/material-002.step\"\
+        : {\n          \"bytes\": 75975,\n          \"sha256\": \"72d98ed688f06f44afb8a7f7fbe2a633b9438c9ca12dd43409e01825822c1381\"\
+        \n        },\n        \"run/case-062/result.json\": {\n          \"bytes\": 22452,\n          \"sha256\"\
+        : \"e0634a0af22187aebdeb8b22905ea580391bc62f0e2e0340244d6f79d9d88c10\"\n        },\n        \"run/case-062/material-001.brep\"\
+        : {\n          \"bytes\": 80555,\n          \"sha256\": \"1ba1a57b9487faff00f0856c8d48c37831d8337b231f7e13130fb4fb13b301a9\"\
+        \n        },\n        \"run/case-062/material-001.step\": {\n          \"bytes\": 299589,\n          \"\
+        sha256\": \"e2b641432f6d676b1a87399a4e73d6c8350f581d785e41042293f6e02940623e\"\n        },\n        \"run/case-062/material-002.brep\"\
+        : {\n          \"bytes\": 21752,\n          \"sha256\": \"06bbcc54b4a9d35767b9b4f924a009a8e4eca063508d7c3c720f29b6ad7a4c06\"\
+        \n        },\n        \"run/case-062/material-002.step\": {\n          \"bytes\": 75975,\n          \"sha256\"\
+        : \"158cecf72db76e5bcaaf000b51957e4693a51089cd2813a35bb54824ff2c0b9b\"\n        },\n        \"run/case-064/result.json\"\
+        : {\n          \"bytes\": 22551,\n          \"sha256\": \"111381717b624fa62296794bf21d4a3b9f5518730a92f2b3ae92740bd5a895be\"\
+        \n        },\n        \"run/case-064/material-001.brep\": {\n          \"bytes\": 85191,\n          \"sha256\"\
+        : \"0f4a200103360d51e27c4b30ffd985aa3d4ba6d0ecf48cfe2131120417c1b5cb\"\n        },\n        \"run/case-064/material-001.step\"\
+        : {\n          \"bytes\": 299589,\n          \"sha256\": \"bdb13c13d997a9f4505b72e5e709ecfd0865db84f426c663ad1b117ba9faf0b8\"\
+        \n        },\n        \"run/case-064/material-002.brep\": {\n          \"bytes\": 18515,\n          \"sha256\"\
+        : \"dc3b608f44ea6061ad47e499b61a24af99f6108929676ac1a982d236cfea582a\"\n        },\n        \"run/case-064/material-002.step\"\
+        : {\n          \"bytes\": 75990,\n          \"sha256\": \"e686ef55d6fb3ec73321e263d6eb132eff2516f82f0b76fca2c96374d7ffe4d3\"\
+        \n        },\n        \"run/case-065/result.json\": {\n          \"bytes\": 22602,\n          \"sha256\"\
+        : \"7b247f3a9983f87b34ae5525fe9c013d79f0b4a3a59e19574aca3a46aac243e9\"\n        },\n        \"run/case-065/material-001.brep\"\
+        : {\n          \"bytes\": 85191,\n          \"sha256\": \"0f4a200103360d51e27c4b30ffd985aa3d4ba6d0ecf48cfe2131120417c1b5cb\"\
+        \n        },\n        \"run/case-065/material-001.step\": {\n          \"bytes\": 299589,\n          \"\
+        sha256\": \"c2a953a1881c5f8d19087268e2789ef1baaa703ea3b0d790215a0f3e41a33f81\"\n        },\n        \"run/case-065/material-002.brep\"\
+        : {\n          \"bytes\": 18515,\n          \"sha256\": \"3c28e5050058c401abb40b80898b0a56e7f6a2aa7b8ed91e194e428ca0982dcc\"\
+        \n        },\n        \"run/case-065/material-002.step\": {\n          \"bytes\": 75990,\n          \"sha256\"\
+        : \"963b0cc37f09cae0c37ba227b734b9173b976f8adaa2adfd9b143f74f2ce0959\"\n        },\n        \"run/case-066/result.json\"\
+        : {\n          \"bytes\": 22574,\n          \"sha256\": \"2bcff5340f968a591060497b621d72df6b401d65af1837ddbaa565e1fb190a2d\"\
+        \n        },\n        \"run/case-066/material-001.brep\": {\n          \"bytes\": 85191,\n          \"sha256\"\
+        : \"0f4a200103360d51e27c4b30ffd985aa3d4ba6d0ecf48cfe2131120417c1b5cb\"\n        },\n        \"run/case-066/material-001.step\"\
+        : {\n          \"bytes\": 299589,\n          \"sha256\": \"be1f20f09b0775a6d41724da04695edcf80222f68e7cbf17db123346bee57116\"\
+        \n        },\n        \"run/case-066/material-002.brep\": {\n          \"bytes\": 18515,\n          \"sha256\"\
+        : \"3c28e5050058c401abb40b80898b0a56e7f6a2aa7b8ed91e194e428ca0982dcc\"\n        },\n        \"run/case-066/material-002.step\"\
+        : {\n          \"bytes\": 75990,\n          \"sha256\": \"b7eed2e5fe6a1b4990b205f60523770bfd8bec84492221ac54c6c740f1fc9187\"\
+        \n        },\n        \"run/case-067/result.json\": {\n          \"bytes\": 22572,\n          \"sha256\"\
+        : \"09b888491cd26907b87850f2a24e9dc209b7218fce8ffc8f9ffa352049724917\"\n        },\n        \"run/case-067/material-001.brep\"\
+        : {\n          \"bytes\": 85191,\n          \"sha256\": \"0f4a200103360d51e27c4b30ffd985aa3d4ba6d0ecf48cfe2131120417c1b5cb\"\
+        \n        },\n        \"run/case-067/material-001.step\": {\n          \"bytes\": 299589,\n          \"\
+        sha256\": \"dc5705d8d7b3d15327412742e6884b36541517f66484cb717238a5cc88e762b4\"\n        },\n        \"run/case-067/material-002.brep\"\
+        : {\n          \"bytes\": 18515,\n          \"sha256\": \"3c28e5050058c401abb40b80898b0a56e7f6a2aa7b8ed91e194e428ca0982dcc\"\
+        \n        },\n        \"run/case-067/material-002.step\": {\n          \"bytes\": 75990,\n          \"sha256\"\
+        : \"cdc41f90d2729c1a3d7783f2a07d86fef3b5298b0caf4b3fd4b1f7213443c911\"\n        },\n        \"run/case-068/result.json\"\
+        : {\n          \"bytes\": 22507,\n          \"sha256\": \"fdbec27d2367b48f795bf57256f1e94cee11e8ca979477330b85c2a6be6e8028\"\
+        \n        },\n        \"run/case-068/material-001.brep\": {\n          \"bytes\": 85191,\n          \"sha256\"\
+        : \"0f4a200103360d51e27c4b30ffd985aa3d4ba6d0ecf48cfe2131120417c1b5cb\"\n        },\n        \"run/case-068/material-001.step\"\
+        : {\n          \"bytes\": 299589,\n          \"sha256\": \"9aacda1b5e2a0ab78f3baa97f47fe6bd8b21287654078c55c9b46efb2415fcb3\"\
+        \n        },\n        \"run/case-068/material-002.brep\": {\n          \"bytes\": 18515,\n          \"sha256\"\
+        : \"3c28e5050058c401abb40b80898b0a56e7f6a2aa7b8ed91e194e428ca0982dcc\"\n        },\n        \"run/case-068/material-002.step\"\
+        : {\n          \"bytes\": 75990,\n          \"sha256\": \"3cb2de01affbdf0dc0ca84d61141c699e39ea332dc7b06516d7a61b035100f6a\"\
+        \n        },\n        \"run/case-069/result.json\": {\n          \"bytes\": 22483,\n          \"sha256\"\
+        : \"82e289bf29f1c72350c5673316a25dde9aeee03ba75b07c7308188537d2f8461\"\n        },\n        \"run/case-069/material-001.brep\"\
+        : {\n          \"bytes\": 85647,\n          \"sha256\": \"06734b733e9c66343f33295d7b43c8be25ed70d27b8a7badc3766310fe275ac7\"\
+        \n        },\n        \"run/case-069/material-001.step\": {\n          \"bytes\": 299589,\n          \"\
+        sha256\": \"143b8d695d6c28c8f24a4f83c075140d7ee5580c3f65596375899b0bb84e8b1f\"\n        },\n        \"run/case-069/material-002.brep\"\
+        : {\n          \"bytes\": 18515,\n          \"sha256\": \"3c28e5050058c401abb40b80898b0a56e7f6a2aa7b8ed91e194e428ca0982dcc\"\
+        \n        },\n        \"run/case-069/material-002.step\": {\n          \"bytes\": 75990,\n          \"sha256\"\
+        : \"3984a3a6f23cf51744fb3f29e670f4e97083647801156d1077b8aca2b7227e98\"\n        },\n        \"run/case-070/result.json\"\
+        : {\n          \"bytes\": 22505,\n          \"sha256\": \"05ec6d01e7b48d71a8d2a4f694eb9d4fac97201aed36832cf9e1646eeaeda0bf\"\
+        \n        },\n        \"run/case-070/material-001.brep\": {\n          \"bytes\": 85647,\n          \"sha256\"\
+        : \"06734b733e9c66343f33295d7b43c8be25ed70d27b8a7badc3766310fe275ac7\"\n        },\n        \"run/case-070/material-001.step\"\
+        : {\n          \"bytes\": 299589,\n          \"sha256\": \"5995a473e564eb7507315eed147665dfb27f0bace04b2b467576b26157bc540a\"\
+        \n        },\n        \"run/case-070/material-002.brep\": {\n          \"bytes\": 18515,\n          \"sha256\"\
+        : \"3c28e5050058c401abb40b80898b0a56e7f6a2aa7b8ed91e194e428ca0982dcc\"\n        },\n        \"run/case-070/material-002.step\"\
+        : {\n          \"bytes\": 75990,\n          \"sha256\": \"d573a0663f1e371f187e3e226062abf833eac2439dae17d8e010eb2b3a6dfd38\"\
+        \n        },\n        \"run/case-071/result.json\": {\n          \"bytes\": 22453,\n          \"sha256\"\
+        : \"27ea96830701c5267cc99ecc950438bb78860cd44a8ab479621b2e4d462ef6f3\"\n        },\n        \"run/case-071/material-001.brep\"\
+        : {\n          \"bytes\": 86334,\n          \"sha256\": \"21796a808517f663d4b8f4e193deecf128402b83ddf60cb96b5b609e469698c8\"\
+        \n        },\n        \"run/case-071/material-001.step\": {\n          \"bytes\": 299589,\n          \"\
+        sha256\": \"78247f03a811c000f3ba9c47ba29f1800de3cca49db4eb2ea1612ff2b5d97c68\"\n        },\n        \"run/case-071/material-002.brep\"\
+        : {\n          \"bytes\": 19342,\n          \"sha256\": \"5c9d178ec90150466e678abcdb033c4b8d79c4c1139bcbb0ad0191888f1e2d43\"\
+        \n        },\n        \"run/case-071/material-002.step\": {\n          \"bytes\": 75990,\n          \"sha256\"\
+        : \"b0edabe07ef51dba865b31d9ce912a9967b81a2716a283d5422a08cce45e7e00\"\n        },\n        \"run/case-073/result.json\"\
+        : {\n          \"bytes\": 22123,\n          \"sha256\": \"d1408816ecb159d2c7183eccde2b96d845fb205f3b6b75b8f980a4fe03f1138b\"\
+        \n        },\n        \"run/case-073/material-001.brep\": {\n          \"bytes\": 21752,\n          \"sha256\"\
+        : \"06bbcc54b4a9d35767b9b4f924a009a8e4eca063508d7c3c720f29b6ad7a4c06\"\n        },\n        \"run/case-073/material-001.step\"\
+        : {\n          \"bytes\": 75975,\n          \"sha256\": \"f07da3792e493b8e954cbc0e8ee0bebc59d36371eb01950c90f3131a2ff99fee\"\
+        \n        },\n        \"run/case-073/material-002.brep\": {\n          \"bytes\": 1803,\n          \"sha256\"\
+        : \"3feac8322b290b6f4fb74eda587535c6124027e4b3137e254043600f451f18e7\"\n        },\n        \"run/case-073/material-002.step\"\
+        : {\n          \"bytes\": 5728,\n          \"sha256\": \"380e4312299901e1912713734c62d7b9d1adccb54a8712fcac938c49117de735\"\
+        \n        },\n        \"run/case-074/result.json\": {\n          \"bytes\": 22149,\n          \"sha256\"\
+        : \"3a31f55b8ac01df08ed69978e93e8e092935f5934fbab6e4932a81e861d1c23f\"\n        },\n        \"run/case-074/material-001.brep\"\
+        : {\n          \"bytes\": 21752,\n          \"sha256\": \"06bbcc54b4a9d35767b9b4f924a009a8e4eca063508d7c3c720f29b6ad7a4c06\"\
+        \n        },\n        \"run/case-074/material-001.step\": {\n          \"bytes\": 75975,\n          \"sha256\"\
+        : \"fe85a44fd6d4d2f50ff12274fc608b757e7bf36f6000a0830024a7c4ea17e2a7\"\n        },\n        \"run/case-074/material-002.brep\"\
+        : {\n          \"bytes\": 1795,\n          \"sha256\": \"62b349d4698a38274fd17cdeb214715fa3ee1177e65d26794ee7eca66f7bf1e5\"\
+        \n        },\n        \"run/case-074/material-002.step\": {\n          \"bytes\": 5716,\n          \"sha256\"\
+        : \"768dbbf7885eb7541319d19d6094968b4082b3a4ddd54ff6464b3d3b07b65115\"\n        },\n        \"run/case-075/result.json\"\
+        : {\n          \"bytes\": 22112,\n          \"sha256\": \"30319bc939b24c5db3929d7616cbd26e3f48b8d2ae1ff519d66ee7afbb387cf9\"\
+        \n        },\n        \"run/case-075/material-001.brep\": {\n          \"bytes\": 21752,\n          \"sha256\"\
+        : \"06bbcc54b4a9d35767b9b4f924a009a8e4eca063508d7c3c720f29b6ad7a4c06\"\n        },\n        \"run/case-075/material-001.step\"\
+        : {\n          \"bytes\": 75975,\n          \"sha256\": \"bf6ec3547128952aa9d463ccf618b8d28874d24663c2129749ff16ac6a407a2f\"\
+        \n        },\n        \"run/case-075/material-002.brep\": {\n          \"bytes\": 1801,\n          \"sha256\"\
+        : \"263c3eebdfcf0bd78ab112254c4fd6fecb98c8f2d73b14e98b7061602ebc2245\"\n        },\n        \"run/case-075/material-002.step\"\
+        : {\n          \"bytes\": 5728,\n          \"sha256\": \"b7bd22ad54ed4e07f949be52f6e575239e41d079ec49e35793086976fcfb7082\"\
+        \n        },\n        \"run/case-076/result.json\": {\n          \"bytes\": 22108,\n          \"sha256\"\
+        : \"012a1df45e54fa5165c4c78785ea02afe3d8f62c1809b1a733adef3b03a525f8\"\n        },\n        \"run/case-076/material-001.brep\"\
+        : {\n          \"bytes\": 21752,\n          \"sha256\": \"06bbcc54b4a9d35767b9b4f924a009a8e4eca063508d7c3c720f29b6ad7a4c06\"\
+        \n        },\n        \"run/case-076/material-001.step\": {\n          \"bytes\": 75975,\n          \"sha256\"\
+        : \"8d98d694b1d49a73606e193ac4c1a189f8062ad6703cfc0bc9df74f45ebd2a00\"\n        },\n        \"run/case-076/material-002.brep\"\
+        : {\n          \"bytes\": 1801,\n          \"sha256\": \"cd6cb29b0ba43ff4359e5c30c4fa75408ea09d2a7f1321f7874e701c9788d811\"\
+        \n        },\n        \"run/case-076/material-002.step\": {\n          \"bytes\": 5722,\n          \"sha256\"\
+        : \"6df0f855042e8b630544cd19c169f294418e02b4dad1ef3ab6241a2df9e3fa3f\"\n        },\n        \"run/case-077/result.json\"\
+        : {\n          \"bytes\": 22083,\n          \"sha256\": \"947231c727e9e84852c3dfbf1d4a6bb29ad9cd718085424c5915d6d4ee3257ae\"\
+        \n        },\n        \"run/case-077/material-001.brep\": {\n          \"bytes\": 21752,\n          \"sha256\"\
+        : \"06bbcc54b4a9d35767b9b4f924a009a8e4eca063508d7c3c720f29b6ad7a4c06\"\n        },\n        \"run/case-077/material-001.step\"\
+        : {\n          \"bytes\": 75975,\n          \"sha256\": \"6c090e1c65a738e0ef6aebdb52e51807fab425799a2069ba2662ebcff25f2d25\"\
+        \n        },\n        \"run/case-077/material-002.brep\": {\n          \"bytes\": 1801,\n          \"sha256\"\
+        : \"181782247ae75bc41e3e9258d1c7b922a9bd07f273ebee20efd01a5b33e6fdb1\"\n        },\n        \"run/case-077/material-002.step\"\
+        : {\n          \"bytes\": 5728,\n          \"sha256\": \"1d279eb4b394c17a23f972075fede51e3c334585ec807e843952b1ef88a5ad93\"\
+        \n        },\n        \"run/case-078/result.json\": {\n          \"bytes\": 22083,\n          \"sha256\"\
+        : \"97fce1ba75121b3c6988959254436f2e20fbc8710338da618e95f3b8d4dce47f\"\n        },\n        \"run/case-078/material-001.brep\"\
+        : {\n          \"bytes\": 21752,\n          \"sha256\": \"06bbcc54b4a9d35767b9b4f924a009a8e4eca063508d7c3c720f29b6ad7a4c06\"\
+        \n        },\n        \"run/case-078/material-001.step\": {\n          \"bytes\": 75975,\n          \"sha256\"\
+        : \"41b3f63125ab83b378f900cc4bc119b4ea4bc2e8ee4347165f1d7bb42e743e19\"\n        },\n        \"run/case-078/material-002.brep\"\
+        : {\n          \"bytes\": 1798,\n          \"sha256\": \"e80216fc0645c3ed297dd535844d785d1b1be68ea5bea15bdfeb2b209a6eb63e\"\
+        \n        },\n        \"run/case-078/material-002.step\": {\n          \"bytes\": 5728,\n          \"sha256\"\
+        : \"3d5402d2b210e2a69bbac768d97ed288a4afa1689dbd0a2f95a983170b1a428c\"\n        },\n        \"run/case-079/result.json\"\
+        : {\n          \"bytes\": 22076,\n          \"sha256\": \"d412989eb5a3a2d0246d26588700ca8b341cb2efc2feb86a3673a181509b1139\"\
+        \n        },\n        \"run/case-079/material-001.brep\": {\n          \"bytes\": 21752,\n          \"sha256\"\
+        : \"06bbcc54b4a9d35767b9b4f924a009a8e4eca063508d7c3c720f29b6ad7a4c06\"\n        },\n        \"run/case-079/material-001.step\"\
+        : {\n          \"bytes\": 75975,\n          \"sha256\": \"2da61414d1581e6c4a00743526c4326a46f11d7d438b7cd2f023de8bc86374ce\"\
+        \n        },\n        \"run/case-079/material-002.brep\": {\n          \"bytes\": 1801,\n          \"sha256\"\
+        : \"7faa58c105171534246e8df39d3c9fbdfa8d9b704bb597c84920b811a30c49da\"\n        },\n        \"run/case-079/material-002.step\"\
+        : {\n          \"bytes\": 5728,\n          \"sha256\": \"8da8ac610934ab95f7c8edc570cce4e80e551ce538d287d7243986f6dcb31c39\"\
+        \n        },\n        \"run/case-080/result.json\": {\n          \"bytes\": 22018,\n          \"sha256\"\
+        : \"90c1c6020d1de6ed95e78833957c776f1ab8bfe84d28bf58501c37c82fdbf846\"\n        },\n        \"run/case-080/material-001.brep\"\
+        : {\n          \"bytes\": 21752,\n          \"sha256\": \"06bbcc54b4a9d35767b9b4f924a009a8e4eca063508d7c3c720f29b6ad7a4c06\"\
+        \n        },\n        \"run/case-080/material-001.step\": {\n          \"bytes\": 75975,\n          \"sha256\"\
+        : \"799c2ae43ce2363c3e03a9ef540db4bfe3f1d68bceaf47396417b94b8a23bd28\"\n        },\n        \"run/case-080/material-002.brep\"\
+        : {\n          \"bytes\": 1767,\n          \"sha256\": \"7b5fc67e3774c57a616a2174bec2e8889d0b3b46dc6b12d4bdb265b83a2bc88d\"\
+        \n        },\n        \"run/case-080/material-002.step\": {\n          \"bytes\": 5668,\n          \"sha256\"\
+        : \"e51738209b3dd4f8a3cb96eed2fa0d4dcaed55a40eb811f5899c24f84c6e3663\"\n        },\n        \"run/case-081/result.json\"\
+        : {\n          \"bytes\": 22128,\n          \"sha256\": \"98b5b7cc41187fb8f354bd5156f335d651fffc826841e22c669ef05982c46084\"\
+        \n        },\n        \"run/case-081/material-001.brep\": {\n          \"bytes\": 20392,\n          \"sha256\"\
+        : \"c338c75767abdaaaf092230a0b3873d02430aa3cf25907f2273287ae9462799e\"\n        },\n        \"run/case-081/material-001.step\"\
+        : {\n          \"bytes\": 75990,\n          \"sha256\": \"57cfb955143b38e86381dc8a1956d2a624229cb8857e941bf520b31c19debe19\"\
+        \n        },\n        \"run/case-081/material-002.brep\": {\n          \"bytes\": 1803,\n          \"sha256\"\
+        : \"a8149436b3f4f379d2523c1064a33bd6fb24263582b3e942647f344eeb9d4616\"\n        },\n        \"run/case-081/material-002.step\"\
+        : {\n          \"bytes\": 5728,\n          \"sha256\": \"9ee1679880fae180e92b55a06b01fd26ef05e6b5a3806e0f57525e8aad790e81\"\
+        \n        },\n        \"run/case-082/result.json\": {\n          \"bytes\": 22156,\n          \"sha256\"\
+        : \"62c681095addcd3cdaf30c1150884f2d3519724f47df83cb49183da161574a08\"\n        },\n        \"run/case-082/material-001.brep\"\
+        : {\n          \"bytes\": 20392,\n          \"sha256\": \"c338c75767abdaaaf092230a0b3873d02430aa3cf25907f2273287ae9462799e\"\
+        \n        },\n        \"run/case-082/material-001.step\": {\n          \"bytes\": 75990,\n          \"sha256\"\
+        : \"b8ac254fe277fd813b67659e7150ae37c8d27939371879b84d2027761d4875cd\"\n        },\n        \"run/case-082/material-002.brep\"\
+        : {\n          \"bytes\": 1795,\n          \"sha256\": \"9bee8ed1d220fd71f7bcccfe052b40a8a0d79ee88f0e89f46559f51c2e32f1b1\"\
+        \n        },\n        \"run/case-082/material-002.step\": {\n          \"bytes\": 5716,\n          \"sha256\"\
+        : \"0edbd25718a3c0f8c5abb0608e32d1dd2a5b7b75acd43f1e1a9a68573248d195\"\n        },\n        \"run/case-083/result.json\"\
+        : {\n          \"bytes\": 22146,\n          \"sha256\": \"ed44a961219b3de5a319d7c48b3ba70bf0ac21966422d7be2b8c288c842645a3\"\
+        \n        },\n        \"run/case-083/material-001.brep\": {\n          \"bytes\": 20392,\n          \"sha256\"\
+        : \"c338c75767abdaaaf092230a0b3873d02430aa3cf25907f2273287ae9462799e\"\n        },\n        \"run/case-083/material-001.step\"\
+        : {\n          \"bytes\": 75990,\n          \"sha256\": \"78dcea7040a0a25767b7fc89892c267dfa5b913ef5157a76daadb900160eee8b\"\
+        \n        },\n        \"run/case-083/material-002.brep\": {\n          \"bytes\": 1801,\n          \"sha256\"\
+        : \"b3ba06389fe26f32ef26569c422538216112a567a82fb2e78c316a7fb2d518c4\"\n        },\n        \"run/case-083/material-002.step\"\
+        : {\n          \"bytes\": 5728,\n          \"sha256\": \"abd20a23432de72e559849954ddf41f1c5591f1763541e116fe0dfaf4859594a\"\
+        \n        },\n        \"run/case-084/result.json\": {\n          \"bytes\": 22124,\n          \"sha256\"\
+        : \"c64f899203afd307706fdf686cbdf79bb4c872c2cb4e5ac9695ecff0a1e49732\"\n        },\n        \"run/case-084/material-001.brep\"\
+        : {\n          \"bytes\": 20392,\n          \"sha256\": \"c338c75767abdaaaf092230a0b3873d02430aa3cf25907f2273287ae9462799e\"\
+        \n        },\n        \"run/case-084/material-001.step\": {\n          \"bytes\": 75990,\n          \"sha256\"\
+        : \"eb8e94b9cd84d5db7521e8a43c779538ff9dc282a7b9c881ac5b196745a87940\"\n        },\n        \"run/case-084/material-002.brep\"\
+        : {\n          \"bytes\": 1801,\n          \"sha256\": \"da41ba8bec07ceab6d4bb1a94efb65a82f49c415f6cdf6bacc12949a52e8c0e2\"\
+        \n        },\n        \"run/case-084/material-002.step\": {\n          \"bytes\": 5722,\n          \"sha256\"\
+        : \"d6ef34d04f55d3de2197e68b7b0616baf4fcf2f09683751ff7dd2cfe1bbd02e5\"\n        },\n        \"run/case-085/result.json\"\
+        : {\n          \"bytes\": 22092,\n          \"sha256\": \"e9a4676ec78925c32b4fe57943b38ec88e8d5d78765999f4834ce56b5f09a581\"\
+        \n        },\n        \"run/case-085/material-001.brep\": {\n          \"bytes\": 20392,\n          \"sha256\"\
+        : \"c338c75767abdaaaf092230a0b3873d02430aa3cf25907f2273287ae9462799e\"\n        },\n        \"run/case-085/material-001.step\"\
+        : {\n          \"bytes\": 75990,\n          \"sha256\": \"40b78cb45b127f1fb8a52696cb4c340398842b6d7dabd5954acdf20a645a18be\"\
+        \n        },\n        \"run/case-085/material-002.brep\": {\n          \"bytes\": 1801,\n          \"sha256\"\
+        : \"fb13b546818d86ceef4e5067135c756c0879903b1c0cc5c28817cee2a550bb82\"\n        },\n        \"run/case-085/material-002.step\"\
+        : {\n          \"bytes\": 5728,\n          \"sha256\": \"86507c30ebe8fc6dc15fabbd14738f44b18bd93262cea382b418ca102714d707\"\
+        \n        },\n        \"run/case-086/result.json\": {\n          \"bytes\": 22082,\n          \"sha256\"\
+        : \"84ab0ce9f068f08d0ca0dac73d44db8d4a78f1269b9f4d711ac8c3edb800b9f9\"\n        },\n        \"run/case-086/material-001.brep\"\
+        : {\n          \"bytes\": 20392,\n          \"sha256\": \"c338c75767abdaaaf092230a0b3873d02430aa3cf25907f2273287ae9462799e\"\
+        \n        },\n        \"run/case-086/material-001.step\": {\n          \"bytes\": 75990,\n          \"sha256\"\
+        : \"413e6056f97411b733e5391aa1f0ef3901c15f6f9e0abed7068ea72ad0e5b1a2\"\n        },\n        \"run/case-086/material-002.brep\"\
+        : {\n          \"bytes\": 1798,\n          \"sha256\": \"5fd2ed13d4980749a4bccb26f3c82e68bd53675e30d29d61a5f81ec86eac11ed\"\
+        \n        },\n        \"run/case-086/material-002.step\": {\n          \"bytes\": 5728,\n          \"sha256\"\
+        : \"6381fc7d85d555d00daacdb8effbcda1fcdc87ed808e5b544242a4abb4dd9d3f\"\n        },\n        \"run/case-087/result.json\"\
+        : {\n          \"bytes\": 22074,\n          \"sha256\": \"1dc03881182cc9caaf1dff1a76be2b86549bac0fb204b8515553a176589bdd93\"\
+        \n        },\n        \"run/case-087/material-001.brep\": {\n          \"bytes\": 20392,\n          \"sha256\"\
+        : \"c338c75767abdaaaf092230a0b3873d02430aa3cf25907f2273287ae9462799e\"\n        },\n        \"run/case-087/material-001.step\"\
+        : {\n          \"bytes\": 75990,\n          \"sha256\": \"cf7a26bf323d84c31f0d46cad8a6bba6799e4d48648ff6d2f3134a4a4b77676f\"\
+        \n        },\n        \"run/case-087/material-002.brep\": {\n          \"bytes\": 1801,\n          \"sha256\"\
+        : \"7fb70ec2e7cea19bc7bd76a45384d4dc3d3d493401f11613833bca1d75997071\"\n        },\n        \"run/case-087/material-002.step\"\
+        : {\n          \"bytes\": 5728,\n          \"sha256\": \"1b7e36592e53480b1f4dde1b4c832642e7010cc4fda51794be03e54c12c76a9a\"\
+        \n        },\n        \"run/case-088/result.json\": {\n          \"bytes\": 22063,\n          \"sha256\"\
+        : \"50ab80d0d9439e0852a89051e94a3eada9cb6b87558a7db30e6a9bae52a77de1\"\n        },\n        \"run/case-088/material-001.brep\"\
+        : {\n          \"bytes\": 20392,\n          \"sha256\": \"c338c75767abdaaaf092230a0b3873d02430aa3cf25907f2273287ae9462799e\"\
+        \n        },\n        \"run/case-088/material-001.step\": {\n          \"bytes\": 75990,\n          \"sha256\"\
+        : \"3f50eb77a3ef2adf567649d7a43bdda860fc919d319e6be2ff0b55726bf13676\"\n        },\n        \"run/case-088/material-002.brep\"\
+        : {\n          \"bytes\": 1767,\n          \"sha256\": \"0ad024b68cdbdee18e3444d8f90a964675fa159c838a51a2ebf86f2ad9153852\"\
+        \n        },\n        \"run/case-088/material-002.step\": {\n          \"bytes\": 5668,\n          \"sha256\"\
+        : \"a3c184219b666206f10312e96cef6c2ef0edb6be27e2723a3908eab7d729429a\"\n        }\n      }\n    }\n  }\n\
+        }\nL2_L2_BINDING_JSON\ncp \"$HOST_ROOT/l2/L2_BINDING.json\" \"$CASE_DIR/source/l2/L2_BINDING.json\"\npython3\
+        \ -B - <<'L2_SOURCE_CHECK'\nimport hashlib,json,os,pathlib\np=pathlib.Path(os.environ['HOST_ROOT'])/'l2'\n\
+        expected={'envelope_v2.py': {'sha256': '807f346113d48099f35f79749de6bb5c7baa1d76a9e5c4e468578185554958cc',\
+        \ 'bytes': 11001}, 'replay_l2.py': {'sha256': '04af920b31df1c96d2725e9ab92908900393bfdce9ea0af7d4571d34851a8d8b',\
+        \ 'bytes': 11003}, 'supervise_l2.py': {'sha256': 'e97e61dc4cc870bcc88d062ca917be8ea31471202a0cee4ece3483cbc52969fb',\
+        \ 'bytes': 7683}, 'test_l2_native.py': {'sha256': '39301f79b382cd1567711dc6c6e191d8058989e66e13b83718dff2097d891318',\
+        \ 'bytes': 1910}, 'L2_BINDING.json': {'sha256': 'abce0e4e28a1bbbaf60c84a8c81de0944e6fca01f20b57510994cb11c88e6bdb',\
+        \ 'bytes': 76597}}\nfor name,row in expected.items():\n data=(p/name).read_bytes();assert len(data)==row['bytes']\
+        \ and hashlib.sha256(data).hexdigest()==row['sha256']\n(pathlib.Path(os.environ['CASE_DIR'])/'L2_SOURCE_IDENTITY.json').write_text(json.dumps(expected,indent=2)+'\\\
+        n')\nL2_SOURCE_CHECK\n"
+    - name: Prove INT and TERM cleanup through original supervisor and independent-session stdlib worker
+      shell: bash
+      run: 'set -euo pipefail
+
+        /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" --signal-check "$CASE_DIR/signal-lifecycle" "$GITHUB_WORKSPACE"
+
+        '
+    - name: Set up pinned uv and identical Python patch version in every job
+      uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884
+      with:
+        version: 0.10.10
+        python-version: 3.12.14
+        enable-cache: false
+    - name: Install S4 lock and verify all 43 versions
+      shell: bash
+      run: "set -euo pipefail\n/usr/bin/python3 -B \"$HOST_ROOT/service-launch.py\" \"$CASE_DIR/install\" uv sync\
+        \ --locked --no-cache\necho 'UV_NO_SYNC=1' >> \"$GITHUB_ENV\"\n/usr/bin/python3 -B \"$HOST_ROOT/service-launch.py\"\
+        \ \"$CASE_DIR/Python-uv-runtime-identity\" \\\n  .venv/bin/python -B -c 'import json,os,shutil,subprocess,sys;\
+        \ u=subprocess.check_output([\"uv\",\"--version\"],text=True).strip(); r={\"python_version\":sys.version,\"\
+        python_executable\":sys.executable,\"python_patch\":list(sys.version_info[:3]),\"uv_version\":u,\"uv_path\"\
+        :shutil.which(\"uv\"),\"uid\":os.getuid(),\"gid\":os.getgid()}; print(json.dumps(r)); assert sys.version_info[:3]==(3,12,14)\
+        \ and u==\"uv 0.10.10\"'\n/usr/bin/python3 -B \"$HOST_ROOT/service-launch.py\" \"$CASE_DIR/environment-before-check\"\
+        \ \\\n  .venv/bin/python -B tools/check_environment.py --output \"$CASE_DIR/environment-before.json\"\n\
+        /usr/bin/python3 -B \"$HOST_ROOT/service-launch.py\" \"$CASE_DIR/CAD-runtime-preflight\" \\\n  .venv/bin/python\
+        \ -B -c 'import cadquery as cq, json, math; s=cq.Workplane(\"XY\").box(1,1,1).val(); v=s.Volume(); ok=s.isValid()\
+        \ and math.isfinite(v) and v>0; print(json.dumps({\"cadquery_version\":cq.__version__,\"box_is_valid\":s.isValid(),\"\
+        box_volume_mm3\":v,\"passed\":ok,\"physical_qualification\":False})); assert ok'\n"
+    - name: Download the exact original L1 shard by immutable artifact and run identity
+      uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+      with:
+        artifact-ids: ${{ matrix.artifact_id }}
+        run-id: '40210275856'
+        repository: TrillionniumFoundation/RAZR-SLIDE
+        github-token: ${{ github.token }}
+        merge-multiple: true
+        path: ${{ runner.temp }}/razr-s4-l2-replay-20261026/original-L1-download
+    - name: Verify all original scientific input bytes without publishing runtime collections
+      shell: bash
+      run: "set -euo pipefail\npython3 -B - <<'VERIFY'\nimport hashlib,json,os,pathlib\nhost=pathlib.Path(os.environ['HOST_ROOT']);case=pathlib.Path(os.environ['CASE_DIR']);shard=os.environ['SHARD']\n\
+        binding=json.loads((host/'l2/L2_BINDING.json').read_text());src=host/'original-L1-download'\nassert binding['run_id']==40210275856\n\
+        for name,row in binding['shards'][shard]['members'].items():\n p=(src/name).resolve();assert p.is_relative_to(src.resolve())\
+        \ and p.is_file() and not p.is_symlink()\n assert p.stat().st_size==row['bytes'] and hashlib.sha256(p.read_bytes()).hexdigest()==row['sha256']\n\
+        (case/'L2_INPUT_VERIFIED.json').write_text(json.dumps({'shard':shard,'verified_member_count':len(binding['shards'][shard]['members']),'verified':True},indent=2)+'\\\
+        n')\nVERIFY\n"
+    - name: Replay all original pairs through new carriers and original signed Common/postguard
+      shell: bash
+      run: "set -euo pipefail\n/usr/bin/python3 -B \"$HOST_ROOT/service-launch.py\" \"$CASE_DIR/replay-runner\"\
+        \ \\\n .venv/bin/python -B \"$HOST_ROOT/l2/supervise_l2.py\" --shard \"$SHARD\" --output \"$CASE_DIR/replay\"\
+        \ \\\n --inputs \"$HOST_ROOT/original-L1-download\" --binding \"$HOST_ROOT/l2/L2_BINDING.json\"\n"
+    - name: Retain reviewed scientific records and outcome hashes only
+      if: always()
+      shell: bash
+      run: "set -euo pipefail\npython3 -B - <<'SCIENCE'\nimport hashlib,json,os,pathlib,shutil,re\ndef hash_file(path):\n\
+        \ h=hashlib.sha256()\n with path.open('rb') as f:\n  for chunk in iter(lambda:f.read(1024*1024),b''):h.update(chunk)\n\
+        \ return h.hexdigest()\ncase=pathlib.Path(os.environ['CASE_DIR']);out=case/'publish';out.mkdir(exist_ok=True)\n\
+        raw=case/'replay/worker/science'\nif raw.is_dir():\n for p in raw.iterdir():\n  assert p.is_file() and not\
+        \ p.is_symlink()\n  assert p.name=='report.json' or re.fullmatch(r'case-[0-9]{3}([.]json|-(initial|opposite)-region-[0-9]+(-Common)?[.]brep)',p.name)\n\
+        \  shutil.copyfile(p,out/p.name)\nfor name in ['L2_SOURCE_IDENTITY.json','L2_INPUT_VERIFIED.json']:\n p=case/name\n\
+        \ if p.is_file():shutil.copyfile(p,out/name)\nfor p in (case/'source/l2').glob('*'):\n if p.is_file():shutil.copyfile(p,out/p.name)\n\
+        controller=case/'replay/controller.json'\nif controller.is_file():\n j=json.loads(controller.read_text());keys=['completed','worker_started','worker_exit_code','owned_child_identity_verified','source_bytes_unchanged','locked_environment_unchanged','owned_channel_descriptors_closed','reported_execution_completed','all_original_postguards_passed','limits','resource_start_refused','capacity_or_wall_stop','elapsed_seconds']\n\
+        \ record={k:j.get(k) for k in keys};record['original_controller_sha256']=hash_file(controller);record['runtime_collection_publicly_republished']=False\n\
+        \ (out/'CONTROLLER_OUTCOME.json').write_text(json.dumps(record,indent=2)+'\\n')\nrecords={}\nfor p in out.iterdir():\n\
+        \ if p.is_file():records[p.name]={'bytes':p.stat().st_size,'sha256':hash_file(p)}\n(out/'MANIFEST.json').write_text(json.dumps(records,indent=2)+'\\\
+        n')\nSCIENCE\n"
+    - name: Upload scientific V2 geometry evidence allowlist only
+      if: always()
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+      with:
+        name: S4-L2-${{ matrix.shard }}-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/razr-s4-l2-replay-20261026/l2/${{ matrix.shard }}/publish
+        if-no-files-found: error
+        include-hidden-files: true
+        retention-days: 14

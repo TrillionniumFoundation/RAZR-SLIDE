@@ -1,0 +1,241 @@
+{
+  "schema": "razr-20261026-engineering-sprint-result-index-v1",
+  "recorded_utc": "2026-10-26T06:23:17.075636+00:00",
+  "immutable_functional_source": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "immutable_parent_evidence": "133bad5c5dddbf14fe466a23080b6e2e72ea3cb6",
+  "report": "EXECUTION_REPORT.md",
+  "source_and_run_ledger": "SOURCE_AND_RUN_LEDGER.json",
+  "evidence_only_successor": true,
+  "scope_note": "Source tests, exact finite CAD results, conservative method results, numerical failures and physical missing inputs remain distinct. Workflow success does not imply product qualification.",
+  "streams": {
+    "1_complete_midtravel_witness": {
+      "reproduction_acceptance": "pass",
+      "original_geometry": "rejected_actual_interference",
+      "run_id": 40273568199,
+      "full_factories": 2,
+      "bodies_each": 154,
+      "factory_plus_independent_STEP_pairs": 47124,
+      "journal_rows": 94248,
+      "L1_whole_endpoint_frames_matched": 16,
+      "positive_pairs": [
+        {
+          "pose": "near",
+          "slide_mm": 23.142044210239405,
+          "q_mm": 3.482188470506243,
+          "side": "L",
+          "factory_Common_mm3": 0.24558784938224815,
+          "independent_STEP_Common_mm3": 0.24558784938215988,
+          "readback_minus_factory_mm3": -8.826273045769994e-14,
+          "original_rejected": true
+        },
+        {
+          "pose": "near",
+          "slide_mm": 23.142044210239405,
+          "q_mm": 3.482188470506243,
+          "side": "R",
+          "factory_Common_mm3": 0.2455878493822482,
+          "independent_STEP_Common_mm3": 0.24558784938215994,
+          "readback_minus_factory_mm3": -8.826273045769994e-14,
+          "original_rejected": true
+        },
+        {
+          "pose": "far",
+          "slide_mm": 60.880681403413135,
+          "q_mm": 9.160729490168748,
+          "side": "L",
+          "factory_Common_mm3": 0.23013738353925134,
+          "independent_STEP_Common_mm3": 0.2301373835391605,
+          "readback_minus_factory_mm3": -9.084399898995343e-14,
+          "original_rejected": true
+        },
+        {
+          "pose": "far",
+          "slide_mm": 60.880681403413135,
+          "q_mm": 9.160729490168748,
+          "side": "R",
+          "factory_Common_mm3": 0.23013738353925126,
+          "independent_STEP_Common_mm3": 0.23013738353916044,
+          "readback_minus_factory_mm3": -9.08162434143378e-14,
+          "original_rejected": true
+        }
+      ],
+      "maximum_Common_volume_readback_difference_mm3": 9.084399898995343e-14,
+      "evidence": {
+        "path": "geometry/F1a/F1A_WITNESS_ACCEPTANCE.json",
+        "sha256": "e36c35b9a9e742f391e6055dbef4fba2f348f3c87aab49e21e732cd68e4fe7a6",
+        "bytes": 3322
+      }
+    },
+    "2_named_structure_and_allowed_domain": {
+      "candidate": "key_forward_loop_v1",
+      "diagnostic_commit": "78da3826a1cce029cb36b76555d6be7de2001ba2",
+      "source_sha256": "3e6ebf17f1e50fd71eeaf294d059566d9361d3d830edc4365ea8763d00259578",
+      "finite_dual_witness_acceptance": "pass",
+      "full_factory_plus_independent_STEP_pairs": 47124,
+      "positive_pairs": 0,
+      "evaluation_errors": 0,
+      "per_KEY_removed_mm3_approximately": 0.594,
+      "per_KEY_added_mm3_approximately": 2.623824,
+      "per_KEY_net_increase_mm3_approximately": 2.029824,
+      "local_leg_section_mm": [
+        0.38,
+        0.36
+      ],
+      "whole_KEY_minimum_wall_measured": false,
+      "strength_qualified": false,
+      "positive_q_joint_branch_cells": 5,
+      "smallest_nonzero_q_segment_mm_exact": "1/2251799813685248",
+      "left_right_controls_remain_independent": true,
+      "unclipped_slot_domain_vertices": 32,
+      "vertices_outside_q_0_12": 24,
+      "unclipped_q_extrema_mm_approximately": [
+        -0.06063677106654654,
+        12.060636771066546
+      ],
+      "existing_two_slot_endcaps_support_q_0_12_limits": false,
+      "complete_physical_allowed_domain": "unresolved",
+      "K2_finite_endpoints": "separate_execution_in_progress",
+      "evidence": {
+        "path": "geometry/K1/K1_WITNESS_ACCEPTANCE.json",
+        "sha256": "d2ebcbcbedd1fbf70677917381ea511987707aa6055a31147f1222334901bd8f",
+        "bytes": 5134
+      }
+    },
+    "3_continuous_enclosure": {
+      "L2a": {
+        "run_id": 40274339675,
+        "head_sha": "9fdd8d2023dc7cbfbf093cfdbdb6cadc331c19ac",
+        "calls": 89,
+        "distinct_physical_pairs": 19,
+        "clear_calls": 4,
+        "unresolved_carrier_overlap_calls": 85,
+        "evaluation_errors": 0
+      },
+      "L3": {
+        "run_id": 40274745040,
+        "head_sha": "61a1b65556dbd4ffb4a16ae535a8474f313e8c7e",
+        "calls": 70,
+        "distinct_physical_pairs": 8,
+        "clear_calls": 70,
+        "evaluation_errors": 0,
+        "actual_BREP_files_hashed": 1018
+      },
+      "combined_comparison_only": {
+        "remaining_calls": 15,
+        "remaining_distinct_pairs": 9,
+        "L2_report_rewritten": false,
+        "single_combined_native_execution": false,
+        "full_11781_reexecuted": false
+      },
+      "original_L2_report_rewritten": false,
+      "common_sum_gate_mm3": 1e-07,
+      "all_original_signed_topology_postguards_preserved": true,
+      "all_70_L3_penetration_negative_controls_rejected": true,
+      "direct_EXTRUSION_surface_branch_executed": false,
+      "formal_directed_interval_geometry_proof": false,
+      "complete_current_candidate_11781_pairs_reexecuted": false,
+      "V4_capacity_run": 40279094567,
+      "V4_capacity_scope": "17 difficult pairs; full 11781-slot inventory retained; capacity partial does not imply independent partial BREP validation",
+      "evidence": {
+        "path": "envelope-review/SAFE_ENVELOPE_RESULT_INDEX.json",
+        "sha256": "92fae311036747ce46569c6c541c0852e57f5fd532029add5e3f6a1dbee54d8e",
+        "bytes": 17046
+      }
+    },
+    "parallel_original_numerical_qualification": {
+      "original_K_sha256": "80f6f50243d421a3b0ab9eeff1324db029677b63febeaad1f023bf9609e9f1cb",
+      "original_C_sha256": "9f75b00a961ee850857c82942332ebfdd5cb13aa9da55c5266d93337deca436f",
+      "original_float64_gate": 1e-07,
+      "N4b_final_residuals": [
+        1.7609498572804048e-07,
+        1.990477778047551e-09,
+        7.9778400558745e-09,
+        7.799897850960903e-09,
+        8.043638351779749e-09
+      ],
+      "N5a_final_residuals": [
+        1.7540169838265448e-07,
+        1.990477778047551e-09,
+        7.9778400558745e-09,
+        7.799897850960903e-09,
+        8.043638351779749e-09
+      ],
+      "all_original_five_passed": false,
+      "N4b_actual_full_correction_steps": 8,
+      "N5a_actual_full_correction_steps": 32,
+      "longdouble_is_diagnostic_only": true,
+      "reassembled_K_and_C_identity_failures_preserved": true,
+      "N6_first_input_transfer_HTTPError": true,
+      "N6_first_HTTP_status_and_root_cause": "not_retained_and_not_established",
+      "N6_first_new_row_states": 0,
+      "N6a_run_id": 40279329013,
+      "N6a_scope": "read-only exact row rounding and capacity audit using unchanged original archived bytes",
+      "new_full_solver_qualification_claimed": false,
+      "H_frame_restore": "blocked_by_original_five_probe_gate",
+      "evidence_paths": [
+        "numerics/n4/N4B_HOSTED_OUTCOME.json",
+        "numerics/n5/N5A_HOSTED_OUTCOME.json",
+        "numerics/n5/N5A_32_STEP_FLOAT64_ULP_ANALYSIS.json",
+        "numerics/n6/N6_FIRST_ATTEMPT_OUTCOME.json"
+      ]
+    },
+    "parallel_actual_specimen_sources": {
+      "new_physical_observations": 0,
+      "same_specimen_identity_fields_missing": 10,
+      "actual_part_roles_unbound": 7,
+      "OEM_interface_roles_unbound": 12,
+      "actual_OLED_COF_FPC_connector_source_qualified": false,
+      "status": "missing_original_specimen_inputs",
+      "evidence": {
+        "path": "physical/PHYSICAL_INPUT_STATE.json",
+        "sha256": "dfc56ec4033eca1c7f57d52f851a39a4da76689a815fcafacb4f94d6a97cb700",
+        "bytes": 4907
+      }
+    },
+    "6_current_structure_electrical_and_test_contract": {
+      "actual_E3_KiCad_native_research_scope_passed": true,
+      "five_execution_source_files_byte_identical_to_S4": true,
+      "native_terminals": 52,
+      "native_tracks": 130,
+      "research_nets": 26,
+      "native_DRC_items_all_severities": 0,
+      "native_unconnected_items": 0,
+      "EC1_separate_cli_prerequisite_failure_retained": true,
+      "selected_material_rows_missing": 154,
+      "sourced_load_cases_missing": 13,
+      "current_FE_tolerance_OEM_stackup_G3_G5_contract_qualified": false,
+      "evidence": {
+        "path": "ecad/e3-native/INDEPENDENT_REVIEW.json",
+        "sha256": "6fec4715fd2e021b78fb24c4ca9ec50533381baefb2f2ed88c7ed3da7bd5b29f",
+        "bytes": 3035
+      }
+    },
+    "7_real_G3_G4_G5": {
+      "actual_G3_measurements": 0,
+      "actual_G4_measurements": 0,
+      "actual_G5_measurements": 0,
+      "G3": "unknown_missing_real_inputs_and_execution",
+      "G4": "blocked_by_G3_and_OEM_inputs",
+      "G5": "blocked_by_G3_G4_and_life_inputs",
+      "absence_is_not_physical_test_failure": true,
+      "same_candidate_same_specimen_required": true,
+      "handoff": "physical/PHYSICAL_HANDOFF.md"
+    }
+  },
+  "scientific_persistence": {
+    "index": "archive/PERSISTENCE_INDEX.json",
+    "completed_distinct_scientific_ZIPs": 11,
+    "compressed_original_bytes": 1132950067,
+    "raw_runtime_recovered_or_durable": false
+  },
+  "release_flags": {
+    "complete_G2": false,
+    "full_motion_qualified": false,
+    "physical_qualification": false,
+    "candidate_go": false,
+    "fixture_fabrication_go": false,
+    "manufacturing_go": false
+  },
+  "protected_refs_unchanged": true,
+  "historical_1654_tests_not_reassigned_to_new_sources": true
+}
