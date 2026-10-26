@@ -26,6 +26,12 @@ The original L1 worker limits are preserved: 1800 s, 1536 MiB worker RSS, 6.8 Gi
 
 Only reviewed scientific JSON, diagnostic carrier/Common BREP, source, immutable input hashes and an allowlisted controller outcome are uploaded. Runtime collections, environment snapshots, raw shell logs and historical raw traces are not republished. Their digests are references; a digest alone is not described as preservation of the complete runtime object. System Python scripts use Python 3.10-compatible hashing; `hashlib.file_digest` remains confined to the locked Python 3.12 native driver.
 
+## Preserved first hosted preparation failure
+
+Hosted run `40273642963` at diagnostic commit `4608c7221c5ce2ba1d712bdeb4e031fb2bc2dede` failed in both E17 and O72 preparation jobs before the native worker, controls, or any of the 89 original calls started. The inherited workflow template and this workflow generator had replaced time-limit digit strings globally, altering the S4 tree literal. The emitted literal was `cdd9e2c41222201b6cd04dd610d45fde80499045`; the real immutable S4 tree is `cdd9e2c41216201b6cd04dd610d45fde80499045`. The source identity assertion correctly refused that mismatch. This result is a preparation failure, with zero new geometry evidence, and is retained separately in `L2_FIRST_RUN_PREPARATION_FAILURE.json`.
+
+The corrected workflow changes named time fields only and binds both source identity fields to the actual S4 Git object. `validate_workflow_freeze.py` checks the real S4 tree and all 13 inherited source hashes, every embedded driver byte, both system launcher hashes, Python 3.10 compatibility of system scripts, and all shell syntax before publication. This static check does not execute CAD and cannot establish a native result. The V2 method, original material binding, native control source, worker supervisor and acceptance predicates are unchanged by this preparation repair.
+
 ## Scope remaining after a successful replay
 
 Execution completion is distinct from clear geometry. This replay does not repeat all 11,781 product pairs, establish a full SLIDE qualification, validate physical stops, or change release flags. The O72 inputs retain their original independent q/height boxes and maximal spring carriers. Correcting the translation method alone cannot remove that lost correlation. In particular, a positive carrier Common remains unresolved and is not promoted to a whole-entity collision witness. A separate correlated construction and actual native validation are required for KEY/STOP and SPRING/STOP.

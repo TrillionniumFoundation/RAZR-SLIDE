@@ -465,7 +465,7 @@ jobs:
         \ 'tools/test_suites.json': '4a18768ba9e1512dfbe70bb5ddc076b16f5e478ac751485a58c16c2437092deb', 'docs/RESEARCH_OVERVIEW.md':\
         \ '3deeac81e3250dbf8f9c513e04ed55ae4c2782d7a9c33e6cc25b7abf77514160', 'CURRENT_DESIGN.md': '02d3bcacfee5ca1f767084b962bac27fd3e0c26e0b76b5aec632b21e47556382',\
         \ 'status.json': 'b3cddb45d0855859ce86250107d393535495ce77812a41160b36a6cd1c41c4e7'}\nassert len(expected)==13\n\
-        assert subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip()=='cdd9e2c41222201b6cd04dd610d45fde80499045'\n\
+        assert subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip()=='cdd9e2c41216201b6cd04dd610d45fde80499045'\n\
         for rel,digest in expected.items():\n p=root/rel;assert p.is_file() and not p.is_symlink() and hashlib.sha256(p.read_bytes()).hexdigest()==digest\n\
         \ dst=case/'source/S4-delta'/rel;dst.parent.mkdir(parents=True,exist_ok=True);dst.write_bytes(p.read_bytes())\n\
         inventory={}\nfor row in subprocess.check_output(['git','ls-tree','-rz','HEAD']).split(b'\\0'):\n if row:\n\
@@ -474,7 +474,7 @@ jobs:
         0'):\n if not raw:continue\n rel=os.fsdecode(raw);p=root/rel\n if not p.is_file():continue\n assert not\
         \ p.is_symlink();data=p.read_bytes();entry=inventory[rel]\n assert entry[0] in (b'100644',b'100755') and\
         \ entry[1]==b'blob'\n assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\\0'+data).hexdigest()==entry[2]\n\
-        \ sources[rel]=hashlib.sha256(data).hexdigest()\nassert expected.keys()<=sources.keys()\nrecord={'schema':'razr-S4-L2-source-before-v1','source_commit':os.environ['S4'],'source_tree':'cdd9e2c41222201b6cd04dd610d45fde80499045','previous_qualified_candidate':'bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb','present_source_sha256':sources,'all_present_tracked_bytes_match_HEAD':True,'full_checkout_claimed':False,'thirteen_changed_source_sha256':expected,'new_full_test_result_required':False,'previous_C2_test_pass_reused':False,'original_v4_execution_claimed':False,'service_launcher_sha256':hashlib.sha256((host/'service-launch.py').read_bytes()).hexdigest(),'hostcap_sha256':hashlib.sha256((host/'host-cap.py').read_bytes()).hexdigest()}\n\
+        \ sources[rel]=hashlib.sha256(data).hexdigest()\nassert expected.keys()<=sources.keys()\nrecord={'schema':'razr-S4-L2-source-before-v1','source_commit':os.environ['S4'],'source_tree':'cdd9e2c41216201b6cd04dd610d45fde80499045','previous_qualified_candidate':'bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb','present_source_sha256':sources,'all_present_tracked_bytes_match_HEAD':True,'full_checkout_claimed':False,'thirteen_changed_source_sha256':expected,'new_full_test_result_required':False,'previous_C2_test_pass_reused':False,'original_v4_execution_claimed':False,'service_launcher_sha256':hashlib.sha256((host/'service-launch.py').read_bytes()).hexdigest(),'hostcap_sha256':hashlib.sha256((host/'host-cap.py').read_bytes()).hexdigest()}\n\
         assert record['service_launcher_sha256']=='58a6bfa9653a87a1fcb0d40b9f6a737532cbe0fbe6523744c8c6391ebba50e71'\
         \ and record['hostcap_sha256']=='c2c028f481e38ee1b28fb4c809bf4d4e88c9947e4825dd3c3733c10d5456d94c'\n(case/'S4-source-before.json').write_text(json.dumps(record,indent=2)+'\\\
         n')\nmanifest=json.loads((root/'tools/test_suites.json').read_text())\nassert len(manifest['suites'])==36\
