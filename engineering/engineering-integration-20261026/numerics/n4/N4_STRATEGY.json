@@ -1,0 +1,119 @@
+{
+  "schema": "razr-N4-preregistered-bounded-GMRES-IR-strategy-v1",
+  "functional_source_S4": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "original_problem_unchanged": true,
+  "driver_name": "probe_panel_gmres_refinement.py",
+  "driver_sha256": "8a9b4e8db67f001c429e7524612f23cc3325218c085df958437a2f39abf570e5",
+  "original_K_sha256": "80f6f50243d421a3b0ab9eeff1324db029677b63febeaad1f023bf9609e9f1cb",
+  "original_C_sha256": "9f75b00a961ee850857c82942332ebfdd5cb13aa9da55c5266d93337deca436f",
+  "original_helper_sha256": "1f8334a1dda34a4101662ccdbd14c2db0bb77b8a3e080b5f5ec74d918955a2c6",
+  "original_probe_seed": 73021,
+  "probe_count": 5,
+  "residual_threshold": 1e-07,
+  "acceptance": "original float64 max(abs(Kff @ u - rhs_free))/max(max(abs(rhs_free)),1)",
+  "controls_unchanged": [
+    "exact K and C bytes",
+    "all five exact RHS and directions",
+    "free/fixed DOFs",
+    "original residual_record",
+    "matrix sparse representation/order",
+    "original 180 second supervisor",
+    "6.8GiB shared nonreclaimable guard",
+    "500MiB filesystem reserve",
+    "43 locked packages and Python3.12.14/uv0.10.10",
+    "one BLAS/OpenMP thread"
+  ],
+  "frozen_algorithm": {
+    "factorization": "MMD_AT_PLUS_A",
+    "diag_pivot_thresh": 0.0,
+    "SymmetricMode": true,
+    "symmetric_scaling": false,
+    "outer_maximum": 8,
+    "restart": 20,
+    "maximum_restart_cycles": 2,
+    "inner_rtol": 0.0001,
+    "inner_atol": 0.0,
+    "inner_callback": "pr_norm",
+    "preconditioner": "original no-pivot MMD SuperLU solve in float64",
+    "correction_operator": "unchanged Kff values with longdouble accumulation cast to float64",
+    "correction_rhs": "-(Kff_longdouble @ u_longdouble - rhs_longdouble) cast to float64",
+    "field_update": "float64 u += correction",
+    "stop": "first original float64 pass or eight outer updates; GMRES info is separately retained",
+    "all_intermediate_outer_fields_saved": true,
+    "every_inner_pr_norm_saved": true,
+    "no_best_iterate_selection": true
+  },
+  "resource_basis": {
+    "prior_partial_pivot": {
+      "N1": "COLAMD threshold1 AS6GiB allocation failure before solve",
+      "N2": "MMD threshold1 AS6GiB allocation failure before solve",
+      "N3": "MMD threshold1 AS8GiB reached original 180s wall guard; no recorded factor completion",
+      "no_N3_near_completion_or_AS_only_cause_inference": true
+    },
+    "prior_no_pivot_original_runs": {
+      "factor_seconds": [
+        12.655927489999158,
+        13.588769472000422,
+        14.121149840997532
+      ],
+      "factor_nonzeros": 176412608,
+      "peak_RSS_KiB": [
+        2670660,
+        2672184,
+        2954836
+      ],
+      "maximum_sampled_virtual_bytes_unscaled": 3943477248,
+      "complete_run_seconds": [
+        18.78695635999611,
+        22.03636080800061,
+        22.82000077500561
+      ],
+      "all_historical_probe0_failures_retained": true
+    },
+    "N4_address_space_GiB": 4.5,
+    "N4_assembly_address_space_GiB": 3.5,
+    "N4_probe_wall_seconds": 180,
+    "N4_assembly_wall_seconds": 180,
+    "GMRES_basis_bytes_upper_formula": "(restart+1) * 344097 * 8 = 57808296 bytes, excluding a few work vectors and Hessenberg storage",
+    "GMRES_basis_bytes": 57808296,
+    "basis_added_to_old_measured_VM_margin_bytes": 888360960,
+    "output_storage_budget_bytes": 1610612736,
+    "all_original_shared_and_disk_guards_unchanged": true,
+    "bounded_failure_preserved_if_time_or_memory_insufficient": true
+  },
+  "scientific_scope": {
+    "motivation": "original direct refinement still rejects all-ones probe; GMRES may improve the correction solve with the affordable original factors",
+    "extended_residual_only_diagnostic_and_correction": true,
+    "theorem_not_claimed_for_this_FEM_matrix_or_float64_gate": true,
+    "no_convergence_or_five_probe_pass_promised": true,
+    "no_factorization_budget_increase_vs_N3": true,
+    "H_frame_trace_restore_not_authorized_by_four_passes": true
+  },
+  "primary_references": [
+    {
+      "url": "https://eprints.maths.manchester.ac.uk/2604/3/17m1122918.pdf",
+      "title": "Carson and Higham (2017), A New Analysis of Iterative Refinement and its Application to Accurate Solution of Ill-Conditioned Sparse Linear Systems",
+      "scope": "LU-preconditioned GMRES correction equations can improve iterative refinement; our implementation and original float64 infinity gate still require actual verification"
+    },
+    {
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.linalg.gmres.html",
+      "scope": "GMRES left preconditioner, rtol/atol, restart/maxiter and pr_norm semantics"
+    }
+  ],
+  "historical_evidence_refs": [
+    {
+      "path": "engineering/engineering-integration-20261025/numerics/evidence/panel-probes-v1/report.json",
+      "commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560"
+    },
+    {
+      "path": "engineering/engineering-integration-20261025/numerics/evidence/panel-probes-float64/report.json",
+      "commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560"
+    },
+    {
+      "path": "engineering/engineering-integration-20261025/numerics/evidence/panel-probes-scaled/report.json",
+      "commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560"
+    }
+  ],
+  "raw_data_publication_scope": "original Actions artifacts/private durable originals; do not copy raw archives, runtime records or proc/env data into public Git tree",
+  "candidate_or_hardware_release": false
+}
