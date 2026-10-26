@@ -156,7 +156,13 @@ def verify_zip(path, binding):
         manifest_bytes = z.read(binding["manifest_name"])
         require(sha(manifest_bytes) == binding["manifest_sha256"], "reviewed scientific manifest differs")
         manifest = json.loads(manifest_bytes)
-        entries = manifest if binding["manifest_layout"] == "flat" else manifest["exported_files"]
+        if binding["manifest_layout"] == "flat":
+            entries = manifest
+        elif binding["manifest_layout"] == "F1_members":
+            require(manifest["schema"] == "razr-F1-engineering-export-manifest-v1", "F1 engineering manifest schema differs")
+            entries = manifest["members"]
+        else:
+            entries = manifest["exported_files"]
         require(isinstance(entries, dict) and len(entries) == binding["manifest_entries"], "manifest entry count differs")
         require(set(names) == set(entries) | {binding["manifest_name"]}, "ZIP contains unlisted or missing material")
         if binding["manifest_layout"] == "exported_files":
@@ -165,6 +171,19 @@ def verify_zip(path, binding):
                     and manifest["producer_originals_modified"] is False
                     and manifest["numerical_arrays_and_mathematical_histories_are_original_bytes"] is True,
                     "numeric original-byte or runtime exclusion contract differs")
+        if binding["manifest_layout"] == "F1_members":
+            scope = json.loads(z.read("EXPORT_SCOPE.json"))
+            require(scope["schema"] == "razr-F1-engineering-export-scope-v1"
+                    and scope["functional_source_commit"] == S4
+                    and scope["raw_producer_reader_reports_modified"] is False
+                    and scope["all_copied_original_bytes_verified"] is True
+                    and scope["raw_runtime_durable_preservation_claimed"] is False
+                    and scope["raw_runtime_location"] == "ephemeral runner only",
+                    "F1 original-byte or runtime exclusion contract differs")
+            require(all(entries.get(name) == identity for name, identity in scope["copied_originals"].items()),
+                    "F1 copied scientific identity differs")
+            require(all(set(item) == {"bytes", "category", "sha256"} for item in scope["omitted_runtime_file_hashes"]),
+                    "F1 omitted-runtime inventory exposes unlisted fields")
         uncompressed_bytes = 0
         for name, expected in entries.items():
             with z.open(name) as stream:
@@ -183,10 +202,10 @@ def validate_binding(binding):
     require(re.fullmatch(r"[A-Za-z0-9._-]+", binding["asset_name"]) and binding["asset_name"].endswith(".zip"), "invalid scientific asset name")
     require(all(type(binding[k]) is int and binding[k] > 0 for k in ("run_id", "artifact_id", "manifest_entries")), "invalid source identifiers or count")
     require(re.fullmatch(r"[A-Za-z0-9._-]+", binding["manifest_name"]), "invalid manifest basename")
-    require(binding["manifest_layout"] in ("flat", "exported_files"), "unsupported reviewed manifest layout")
+    require(binding["manifest_layout"] in ("flat", "exported_files", "F1_members"), "unsupported reviewed manifest layout")
     require(re.fullmatch(r"[0-9a-f]{40}", binding["head_sha"]), "invalid immutable source identity")
     require(all(re.fullmatch(r"[0-9a-f]{64}", binding[k]) for k in ("zip_sha256", "manifest_sha256")), "invalid SHA binding")
-    require(type(binding["zip_bytes"]) is int and 0 < binding["zip_bytes"] <= 512 * 1024**2, "artifact exceeds transfer budget")
+    require(type(binding["zip_bytes"]) is int and 0 < binding["zip_bytes"] <= 768 * 1024**2, "artifact exceeds transfer budget")
 
 
 def verify_asset(client, asset, size, digest):
