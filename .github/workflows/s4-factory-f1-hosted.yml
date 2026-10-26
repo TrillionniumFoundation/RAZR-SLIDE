@@ -1198,7 +1198,8 @@ jobs:
         \ this exporter does not claim their durable preservation.\n\"\"\"\nfrom __future__ import annotations\n\
         import argparse\nimport hashlib\nimport json\nimport os\nfrom pathlib import Path\nimport re\nimport shutil\n\
         \nS4 = 'dd7def6e6a4de9f47dc91ca2ab336fb1a8828560'\nOLD_ROOT = '/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/'\n\
-        \ndef sha(path):\n    with Path(path).open('rb') as f:\n        return hashlib.file_digest(f, 'sha256').hexdigest()\n\
+        \ndef sha(path):\n    digest = hashlib.sha256()\n    with Path(path).open('rb') as f:\n        for chunk\
+        \ in iter(lambda: f.read(1024 * 1024), b''):\n            digest.update(chunk)\n    return digest.hexdigest()\n\
         \ndef main():\n    ap=argparse.ArgumentParser(description=__doc__)\n    ap.add_argument('--case',type=Path,required=True)\n\
         \    ap.add_argument('--output',type=Path,required=True)\n    args=ap.parse_args();case=args.case.resolve();out=args.output.resolve()\n\
         \    root=Path(os.environ['GITHUB_WORKSPACE']).resolve()\n    if not case.is_dir() or out.exists() or out.is_relative_to(case):\n\

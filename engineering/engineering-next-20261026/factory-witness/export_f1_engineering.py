@@ -16,8 +16,11 @@ S4 = 'dd7def6e6a4de9f47dc91ca2ab336fb1a8828560'
 OLD_ROOT = '/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/'
 
 def sha(path):
+    digest = hashlib.sha256()
     with Path(path).open('rb') as f:
-        return hashlib.file_digest(f, 'sha256').hexdigest()
+        for chunk in iter(lambda: f.read(1024 * 1024), b''):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
