@@ -1,4 +1,8 @@
-"""Read-only, bounded transfer of one already reviewed scientific draft asset."""
+"""Read-only bounded original Actions input, identical to the archived asset.
+
+N6a repairs only transport. The first draft-route HTTPError remains a real
+unresolved metadata/transport failure; no exact permission cause is inferred.
+"""
 from pathlib import Path
 import argparse
 import hashlib
@@ -17,6 +21,10 @@ API = "https://api.github.com/repos/TrillionniumFoundation/RAZR-SLIDE"
 RELEASE = 423900341
 ASSET = 677184053
 ASSET_NAME = "N5a-scientific-40276429821.zip"
+ARTIFACT = 12630841294
+ARTIFACT_NAME = "s4-panel-local-N5a-engineering-40276429821-1"
+ORIGINAL_RUN = 40276429821
+ORIGINAL_HEAD = "9d6dd329b4a7cc03890b9e02492a3b4809c6f783"
 MAX_TRANSFER = 768 * 1024**2
 RESERVE = 500 * 1024**2
 
@@ -32,9 +40,9 @@ class ReadOnlyClient:
         self.opener = urllib.request.build_opener(NoRedirect())
 
     def request(self, suffix, binary=False):
-        require(suffix in ("/releases/" + str(RELEASE), "/releases/assets/" + str(ASSET)), "read_only_API_route")
+        require(suffix in ("/actions/artifacts/" + str(ARTIFACT), "/actions/artifacts/" + str(ARTIFACT) + "/zip"), "read_only_API_route")
         headers = {"Authorization": "Bearer " + self.token,
-                   "Accept": "application/octet-stream" if binary else "application/vnd.github+json",
+                   "Accept": "application/vnd.github+json",
                    "X-GitHub-Api-Version": "2026-03-10", "User-Agent": "RAZR-N6-row-audit-read-only"}
         try:
             return self.opener.open(urllib.request.Request(API + suffix, headers=headers, method="GET"), timeout=60)
@@ -65,7 +73,11 @@ def transfer(args):
                "release_id": RELEASE, "asset_id": ASSET, "asset_name": ASSET_NAME,
                "transport_cap_bytes": MAX_TRANSFER, "native_sparse_solve_executed": False,
                "diagnostic_arithmetic_executed": False, "raw_API_or_credentials_exported": False,
-               "input_asset_modified": False}
+               "input_asset_modified": False,
+               "input_route": "frozen same-repository original Actions artifact",
+               "source_artifact_id": ARTIFACT, "source_run_id": ORIGINAL_RUN,
+               "source_head_sha": ORIGINAL_HEAD, "phase": "validating_transport_capacity",
+               "prior_N6_draft_HTTPError_cause_remains_unconfirmed": True}
     args.output.mkdir(parents=True, exist_ok=False)
     args.receipt.parent.mkdir(parents=True, exist_ok=True)
     def save():
@@ -78,18 +90,21 @@ def transfer(args):
         fs = os.statvfs(args.output)
         require(fs.f_bavail * fs.f_frsize >= RESERVE + ZIP_BYTES + K_BYTES + 32 * CHUNK, "transfer_disk_reserve")
         client = ReadOnlyClient(os.environ["GITHUB_TOKEN"])
-        release = client.json("/releases/" + str(RELEASE))
-        require(release["id"] == RELEASE and release["draft"] is True
-                and release["tag_name"] == "evidence/engineering-sprint-20261026"
-                and release["target_commitish"] == S4, "owned_scientific_draft_identity")
-        asset = client.json("/releases/assets/" + str(ASSET))
-        require(asset["id"] == ASSET and asset["name"] == ASSET_NAME and asset["state"] == "uploaded"
-                and asset["size"] == ZIP_BYTES and asset["digest"] == "sha256:" + ZIP_SHA,
-                "frozen_scientific_asset_identity")
-        require(any(a.get("id") == ASSET for a in release["assets"]), "asset_belongs_to_frozen_draft")
+        receipt["phase"] = "reading_original_Actions_artifact_metadata"
+        save()
+        artifact = client.json("/actions/artifacts/" + str(ARTIFACT))
+        require(artifact["id"] == ARTIFACT and artifact["name"] == ARTIFACT_NAME and artifact["expired"] is False
+                and artifact["size_in_bytes"] == ZIP_BYTES and artifact["digest"] == "sha256:" + ZIP_SHA
+                and artifact["workflow_run"]["id"] == ORIGINAL_RUN
+                and artifact["workflow_run"]["head_sha"] == ORIGINAL_HEAD
+                and artifact["workflow_run"]["repository_id"] == artifact["workflow_run"]["head_repository_id"] == 1416401103,
+                "frozen_original_artifact_run_head_and_byte_identity")
+        receipt["artifact_metadata_HTTP_status"] = 200
+        receipt["phase"] = "reading_frozen_original_ZIP_bytes"
+        save()
         h, count = hashlib.sha256(), 0
         path = args.output / "N5a-scientific.zip"
-        with client.request("/releases/assets/" + str(ASSET), binary=True) as f, path.open("xb") as out:
+        with client.request("/actions/artifacts/" + str(ARTIFACT) + "/zip", binary=True) as f, path.open("xb") as out:
             for block in iter(lambda: f.read(CHUNK), b""):
                 count += len(block)
                 require(count <= ZIP_BYTES <= MAX_TRANSFER, "stream_transport_cap")
@@ -98,6 +113,8 @@ def transfer(args):
                 h.update(block)
         require(count == ZIP_BYTES and h.hexdigest() == ZIP_SHA, "downloaded_asset_exact")
         receipt["original_ZIP"] = {"bytes": count, "sha256": h.hexdigest()}
+        receipt["phase"] = "verifying_scientific_manifest_and_extracting_original_K"
+        save()
         with zipfile.ZipFile(path) as z:
             raw = z.read("EXPORT_MANIFEST.json")
             require(len(raw) == MANIFEST_BYTES and hashlib.sha256(raw).hexdigest() == MANIFEST_SHA, "downloaded_manifest_exact")
@@ -118,13 +135,16 @@ def transfer(args):
         receipt.update(completed=True, original_K={"bytes": count, "sha256": h.hexdigest()},
                        manifest_sha256=MANIFEST_SHA, manifest_bytes=MANIFEST_BYTES,
                        original_ZIP_member_count=372, all_used_members_to_be_checked_by_row_workers=True,
-                       full_archive_member_readback_previously_completed_by_run=40277185712)
+                       full_archive_member_readback_previously_completed_by_run=40277185712,
+                       phase="complete_original_artifact_input_transfer")
         save()
         return 0
     except BaseException as e:
         receipt["failure_type"] = type(e).__name__
         if isinstance(e, AuditGateError):
             receipt["failure_gate"] = str(e)
+        if isinstance(e, urllib.error.HTTPError):
+            receipt["failure_HTTP_status"] = int(e.code)
         save()
         return 2
 
