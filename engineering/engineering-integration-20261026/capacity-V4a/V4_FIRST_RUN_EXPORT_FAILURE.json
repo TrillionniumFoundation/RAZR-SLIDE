@@ -1,0 +1,75 @@
+{
+  "schema": "razr-V4-first-run-export-failure-observed-v1",
+  "run_id": 40279094567,
+  "job_id": 121428167635,
+  "head_sha": "6ff44ea6abe1fef248ccc86396dc0d072e856aef",
+  "head_tree": "1a86baa388af839085c3cbc8ac3f2c8771ad55a2",
+  "overall_workflow_conclusion": "failure",
+  "stages": {
+    "native_capacity_worker": "success",
+    "independent_record_reader": "success",
+    "scientific_export": "failure",
+    "scientific_partial_upload": "success"
+  },
+  "observed_export_failure_class": "AssertionError",
+  "observed_failure_gate": "frozen scientific filename allowlist",
+  "source_defect": "producer retains -Common.brep; original exporter only accepts lowercase suffixes",
+  "retain_v2_only_triggered_for_actual_nonclear_or_error_frame": true,
+  "unknown_bad_basename_from_runtime_exported": false,
+  "raw_logs_or_runtime_collections_exported": false,
+  "artifact": {
+    "id": 12632800102,
+    "name": "S4-V4-capacity17-40279094567-1",
+    "zip_bytes": 2110,
+    "zip_sha256": "1154717d6f1e54fd531ca8a8c9a92d9346913e46216ed651647fab027a013408",
+    "expires_at": "2026-11-09T06:45:59Z",
+    "members": {
+      "INDEPENDENT_CAPACITY_RECORD_CHECK.json": {
+        "bytes": 2366,
+        "sha256": "b959546795a3d570634e5e38c8b619565e9cc2d356770dec8f02d3aaeb73d737"
+      },
+      "call-000001-fixed-input.brep": {
+        "bytes": 4601,
+        "sha256": "044e13390bbb52c6f6baacc36f88e2a80153bdbb25e145614f72ae09f1a1f46b"
+      }
+    },
+    "original_ZIP_and_two_member_bytes_actually_read": true,
+    "MANIFEST_json_present": false,
+    "full_producer_report_present": false,
+    "call_JSON_files_present": false
+  },
+  "original_report_sha256_from_hosted_reader": "9aeebf336f98d197e3a7a87c14f57809210cabbceadbe5266939c58e5dba2018",
+  "retained_independent_reader_sha256": "b959546795a3d570634e5e38c8b619565e9cc2d356770dec8f02d3aaeb73d737",
+  "hosted_independent_reader_report": {
+    "execution_completed": true,
+    "passed": true,
+    "CAD_imported": false,
+    "BREP_geometry_recomputed": false,
+    "verified_call_JSON_files": 262,
+    "verified_BREP_files": 1632,
+    "verified_input_whole_materials": 524,
+    "original_factory_probes_rebuilt": 5,
+    "whole_nonflex_probe_checks": 760,
+    "selected_pairs": 17,
+    "selected_pair_disposition_counts": {
+      "unresolved_enclosure_overlap": 7,
+      "clear": 10
+    },
+    "complete_original_pair_inventory": 11781,
+    "pending_unmeasured_pairs": 11764
+  },
+  "hosted_full_record_checks_happened_before_export_failure": true,
+  "local_full_native_record_readback_possible_from_partial_artifact": false,
+  "per_pair_disposition_identity_available": false,
+  "per_call_region_count_and_timing_available": false,
+  "missing_original_scientific_members_recovered": false,
+  "original_private_worker_files_not_recoverable_through_this_artifact": true,
+  "new_run_needed_to_preserve_full_scientific_records": true,
+  "all_17_pairs_clear": false,
+  "full_11781_execution": false,
+  "complete_G2_qualification": false,
+  "physical_qualification": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}
