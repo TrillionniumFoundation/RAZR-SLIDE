@@ -9,7 +9,8 @@ import shutil
 S4 = "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560"
 N6_SOURCES = ["n6_evidence_io.py", "fetch_n6_inputs.py", "audit_n6_row.py", "readback_n6_row.py",
               "export_n6_engineering.py", "N6_CAPACITY_STRATEGY.json", "N6_FROZEN_INPUTS.json",
-              "N6A_INPUT_TRANSPORT_STRATEGY.json"]
+              "N6A_INPUT_TRANSPORT_STRATEGY.json", "N6B_FIXED_DOMAIN_ORDER_EVIDENCE.json",
+              "test_n6_contract.py"]
 S4_SOURCES = ["engineering/engineering-integration-20261025/numerics/recover_inputs.py",
               "engineering/engineering-integration-20261025/numerics/assemble_l2.py",
               "engineering/engineering-integration-20261025/numerics/run_bounded.py",
@@ -24,6 +25,7 @@ AUDIT_KEYS = """schema completed phase functional_source_commit functional_sourc
 READER_KEYS = """schema completed native_full_SpMV_or_solve_executed new_field_produced original_five_qualification_status states_checked support_update_chains_checked row_only_trials_checked exact_arithmetic original_array_input_parser_shared_with_producer numeric_audit_or_row_extraction_code_shared_with_producer producer_audit_identity all_original_row_bitpatterns_match original_row_support_size original_free_support_proven all_exact_rounding_components_recomputed all_row_only_trials_recomputed used_original_member_identities elapsed_seconds peak_rss_kib failure_type failure_gate""".split()
 TRANSFER_KEYS = """schema completed release_id asset_id asset_name transport_cap_bytes native_sparse_solve_executed diagnostic_arithmetic_executed raw_API_or_credentials_exported input_asset_modified seconds original_ZIP original_K manifest_sha256 manifest_bytes original_ZIP_member_count all_used_members_to_be_checked_by_row_workers full_archive_member_readback_previously_completed_by_run failure_type failure_gate input_route source_artifact_id source_run_id source_head_sha phase prior_N6_draft_HTTPError_cause_remains_unconfirmed artifact_metadata_HTTP_status failure_HTTP_status""".split()
 RECORD_ALLOWLIST = {
+    "N6-small-contracts.json": ("razr-N6-small-contract-results-v1", "schema tests_run failure_count error_count passed historical_S4_test_count_modified real_original_unsorted_fixed_member_counterexample_included test_source_sha256".split()),
     "N6-input-transfer.json": ("razr-N6-reviewed-input-transfer-v1", TRANSFER_KEYS),
     "row-N6/N6_ROW_AUDIT.json": ("razr-N6-original-row-capacity-audit-v1", AUDIT_KEYS),
     "N6-independent-readback.json": ("razr-N6-independent-scalar-row-readback-v1", READER_KEYS),
