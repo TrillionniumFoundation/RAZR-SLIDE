@@ -19,6 +19,7 @@ CHUNK = 1024 * 1024
 ND = 344103
 NF = 344097
 ROW = 87824
+ORIGINAL_FIXED_ORDER = (0, 1, 2, 13, 14, 8)
 LIMIT = 1e-7
 S4 = "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560"
 S4_TREE = "cdd9e2c41216201b6cd04dd610d45fde80499045"
@@ -72,6 +73,21 @@ def ulp_distance(a, b):
         n = struct.unpack(">Q", struct.pack(">d", x))[0]
         return ((~n) & ((1 << 64) - 1)) if n >> 63 else (n | (1 << 63))
     return abs(ordered(a) - ordered(b))
+
+
+def validate_original_domain(free, fixed):
+    """Original fixed order is intentionally unsorted; free is its complement.
+
+The frozen N1/N4b/N5a six-value member has SHA c5253eef... and literal order
+0,1,2,13,14,8. Original force_maps returns loads['D'] unchanged; original free
+construction is np.setdiff1d(np.arange(n), fixed), which sorts only the free set.
+"""
+    require(len(free) == NF and len(fixed) == 6, "original_domain_sizes")
+    require(len(set(fixed)) == 6 and all(0 <= g < ND for g in fixed), "original_fixed_unique_and_in_range")
+    require(tuple(fixed) == ORIGINAL_FIXED_ORDER, "original_fixed_order_preserved")
+    excluded = set(fixed)
+    require(list(free) == [g for g in range(ND) if g not in excluded], "original_free_exact_sorted_complement")
+    require(ROW in free, "audit_row_is_original_free")
 
 
 class HashingReader:
@@ -203,11 +219,7 @@ class Evidence:
     def domain(self):
         free = self.npy("probe-N5/free-original-DOFs.npy", (NF,), "<i8")
         fixed = self.npy("probe-N5/fixed-original-DOFs.npy", (6,), "<i8")
-        require(list(free) == sorted(set(free)) and list(fixed) == sorted(set(fixed)), "original_domain_order")
-        require(set(free).isdisjoint(fixed) and len(free) + len(fixed) == ND
-                and min(free) >= 0 and max(free) < ND and min(fixed) >= 0 and max(fixed) < ND,
-                "original_domain_partition")
-        require(ROW in free, "audit_row_is_original_free")
+        validate_original_domain(free, fixed)
         self.byte_check("probe-N5/C.npz")
         require(self.used["probe-N5/C.npz"]["sha256"] == C_SHA, "original_C_exact")
         self.byte_check("probe-N5/points.json")

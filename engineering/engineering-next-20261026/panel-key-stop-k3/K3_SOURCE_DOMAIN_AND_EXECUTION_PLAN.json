@@ -1,0 +1,565 @@
+{
+  "schema": "razr-K3-prospective-independent-travel-stops-plan-v1",
+  "functional_source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "candidate_name": "panel_key_travel_stops_v1",
+  "candidate_source_sha256": "59946f42f8bff88b0cdb8bcd2ad7f578e22e6f64e65832a6b6087426e282e5a5",
+  "K1_source_sha256": "3e6ebf17f1e50fd71eeaf294d059566d9361d3d830edc4365ea8763d00259578",
+  "K1_contract_sha256": "17e1532ed82eff1298e9525456d6953df56437082ef2918f3d04839cff200455",
+  "pure_analysis_source_sha256": "1fff39ee524073ef973ba783b9c784a527d861f707a2d1ae2255918354aaac08",
+  "original_domain_evidence_sha256": "61039bbb5a030bfb50e47af0d61115db136a5ddff11c42adf4b8272dcfc5f063",
+  "design_contract": {
+    "candidate_name": "panel_key_travel_stops_v1",
+    "functional_source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+    "required_whole_KEY_candidate": "key_forward_loop_v1",
+    "required_K1_source_sha256": "3e6ebf17f1e50fd71eeaf294d059566d9361d3d830edc4365ea8763d00259578",
+    "required_K1_contract_sha256": "17e1532ed82eff1298e9525456d6953df56437082ef2918f3d04839cff200455",
+    "additive_boxes_R_mm": {
+      "lower_post": [
+        [
+          17.48,
+          4.4,
+          0.5
+        ],
+        [
+          18.38,
+          5.0,
+          4.38
+        ]
+      ],
+      "upper_toe": [
+        [
+          17.48,
+          17.38,
+          4.02
+        ],
+        [
+          18.38,
+          18.5,
+          4.38
+        ]
+      ]
+    },
+    "front_crossbar_R_q0_mm": [
+      [
+        16.96,
+        5.0,
+        4.02
+      ],
+      [
+        18.9,
+        5.38,
+        4.38
+      ]
+    ],
+    "original_front_post_R_mm": [
+      [
+        17.43,
+        18.3,
+        0.5
+      ],
+      [
+        18.43,
+        19.5,
+        7.0
+      ]
+    ],
+    "original_rear_post_R_mm": [
+      [
+        17.43,
+        22.35,
+        0.5
+      ],
+      [
+        18.43,
+        23.8,
+        7.0
+      ]
+    ],
+    "declared_stop_contact_planes_Y_mm": {
+      "lower": 5.0,
+      "upper": 17.38
+    },
+    "declared_contact_patch_XZ_R_mm": [
+      [
+        17.48,
+        4.02
+      ],
+      [
+        18.38,
+        4.38
+      ]
+    ],
+    "declared_contact_patch_area_mm2": 0.3239999999999998,
+    "declared_panel_contact_outward_normals": {
+      "lower": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "upper": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "declared_KEY_contact_outward_normals": {
+      "lower": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "upper": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    "upper_toe_original_front_post_overlap_Y_mm": 0.1999999999999993,
+    "lower_post_positive_join_to_actual_panel_required_not_assumed": true,
+    "panel_change_is_addition_only": true,
+    "all_other_participants_and_K1_KEY_material_retained": true,
+    "existing_cover_functional_planes_abs_X_mm": 17.43,
+    "unmodified_existing_cover_patch_Y_mm": {
+      "front": [
+        18.3,
+        19.5
+      ],
+      "rear": [
+        22.35,
+        23.8
+      ]
+    },
+    "unmodified_existing_cover_patch_Z_search_mm": [
+      0.5,
+      7.0
+    ],
+    "local_clearance_prisms_only_not_whole_KEY": true,
+    "negative_control_overtravel_mm": [
+      0.001,
+      0.01
+    ],
+    "negative_controls_are_whole_KEY_panel_tests_not_out_of_profile_factory_motion": true,
+    "new_contact_area_identity_tolerance_mm2": 1e-07,
+    "new_contact_plane_identity_tolerance_mm": 1e-07,
+    "original_all_pair_Common_gate_mm3": 1e-07,
+    "current_S4_or_K1_allowed_domain_reduced": false,
+    "q_limits_are_candidate_constraints_pending_native_and_physical_evidence": true,
+    "physical_stop_added_or_proved_on_real_specimen": false,
+    "material_preload_fatigue_tolerances_known": false,
+    "strength_qualified": false,
+    "candidate_go": false,
+    "fixture_fabrication_go": false,
+    "manufacturing_go": false
+  },
+  "contact_geometry_derivation": {
+    "declared_decimal_contact_area_exact_mm2": "81/250",
+    "binary64_coordinate_contact_area_exact_mm2": "51339849309243255294769414275/158456325028528675187087900672",
+    "nominal_lower_clearance_function_mm": "q_side",
+    "nominal_upper_clearance_function_mm": "12 - q_side",
+    "declared_decimal_candidate_q_bounds_exact_mm": [
+      "0",
+      "12"
+    ],
+    "binary64_scalar_plane_minus_vertex_bounds_exact_mm": [
+      "0",
+      "13510798882111487/1125899906842624"
+    ],
+    "binary64_scalar_upper_limit_minus_12_exact_mm": "-1/1125899906842624",
+    "native_transform_and_boolean_tolerance_not_certified_by_scalar_arithmetic": true,
+    "source_ideal_bounds_do_not_define_current_physical_allowed_domain": true,
+    "KEY_bridge_leg_to_stop_X_gap_nominal_mm": [
+      0.14,
+      0.14
+    ],
+    "retained_split_original_crossbar_to_stop_X_gap_nominal_mm": [
+      0.1,
+      0.1
+    ],
+    "axis_gaps_apply_only_to_declared_local_prisms": true,
+    "upper_toe_original_front_post_expected_overlap_mm3": 0.0648,
+    "upper_toe_new_material_if_original_front_post_is_only_overlap_mm3": 0.29808,
+    "actual_panel_addition_and_lower_anchor_overlap_must_be_native_measured": true,
+    "negative_controls": [
+      {
+        "delta_q_mm": 0.001,
+        "expected_crossbar_stop_penetration_mm3": 0.000324,
+        "larger_whole_KEY_panel_Common_must_be_retained_if_present": true
+      },
+      {
+        "delta_q_mm": 0.01,
+        "expected_crossbar_stop_penetration_mm3": 0.00324,
+        "larger_whole_KEY_panel_Common_must_be_retained_if_present": true
+      }
+    ]
+  },
+  "independent_source_domain": {
+    "variables": [
+      "s",
+      "dx_L",
+      "dq_L",
+      "dx_R",
+      "dq_R"
+    ],
+    "shared_slide_mm": [
+      0.0,
+      79.75
+    ],
+    "slot_crosshead_abs_bound_mm": 0.0252814320072192,
+    "slot_difference_abs_bound_mm": 0.035355339059327334,
+    "side_coordinates": [
+      "q_L=K*s+dq_L",
+      "q_R=K*s+dq_R"
+    ],
+    "prospective_contact_halfspaces": [
+      "q_L>=0",
+      "12-q_L>=0",
+      "q_R>=0",
+      "12-q_R>=0"
+    ],
+    "no_L_R_offset_equality_or_contact_synchronization_added": true,
+    "original_unclipped_slot_32_vertices_and_24_out_of_profile_retained_as_original_evidence": true,
+    "corresponds_to_previous_60_vertex_clipped_nominal_model_only_if_new_contact_constraints_are_validated": true,
+    "actual_reachability_force_branch_selection_and_tolerance_domain_proved": false,
+    "zero_penetration_nominal_contact_is_unilateral_not_a_motion_schedule": true
+  },
+  "ten_finite_full_factory_states": {
+    "stow_tabs_0": {
+      "descent": 0.0,
+      "left_tab": 0.0,
+      "right_tab": 0.0,
+      "flanks": [
+        0.0,
+        0.0
+      ],
+      "key_offsets": [
+        0.0,
+        0.0
+      ],
+      "crosshead_offsets": [
+        0.0,
+        0.0
+      ],
+      "telescope_offsets": null,
+      "open_hold": false,
+      "open_support": false,
+      "expected_bodies": 154,
+      "slide": 0.0,
+      "actual_binary64_q_from_declared_factory_inputs": [
+        0.0,
+        0.0
+      ]
+    },
+    "stow_tabs_3": {
+      "descent": 0.0,
+      "left_tab": 3.0,
+      "right_tab": 3.0,
+      "flanks": [
+        0.0,
+        0.0
+      ],
+      "key_offsets": [
+        0.0,
+        0.0
+      ],
+      "crosshead_offsets": [
+        0.0,
+        0.0
+      ],
+      "telescope_offsets": null,
+      "open_hold": false,
+      "open_support": false,
+      "expected_bodies": 154,
+      "slide": 0.0,
+      "actual_binary64_q_from_declared_factory_inputs": [
+        0.0,
+        0.0
+      ]
+    },
+    "near": {
+      "descent": 0.0,
+      "left_tab": 3.0,
+      "right_tab": 3.0,
+      "flanks": [
+        0.0,
+        0.0
+      ],
+      "key_offsets": [
+        0.0,
+        0.0
+      ],
+      "crosshead_offsets": [
+        0.0,
+        0.0
+      ],
+      "telescope_offsets": null,
+      "open_hold": false,
+      "open_support": false,
+      "expected_bodies": 154,
+      "slide": 23.142044210239405,
+      "actual_binary64_q_from_declared_factory_inputs": [
+        3.482188470506243,
+        3.482188470506243
+      ]
+    },
+    "far": {
+      "descent": 0.0,
+      "left_tab": 3.0,
+      "right_tab": 3.0,
+      "flanks": [
+        0.0,
+        0.0
+      ],
+      "key_offsets": [
+        0.0,
+        0.0
+      ],
+      "crosshead_offsets": [
+        0.0,
+        0.0
+      ],
+      "telescope_offsets": null,
+      "open_hold": false,
+      "open_support": false,
+      "expected_bodies": 154,
+      "slide": 60.880681403413135,
+      "actual_binary64_q_from_declared_factory_inputs": [
+        9.160729490168748,
+        9.160729490168748
+      ]
+    },
+    "predock": {
+      "descent": 0.0,
+      "left_tab": 3.0,
+      "right_tab": 3.0,
+      "flanks": [
+        0.0,
+        0.0
+      ],
+      "key_offsets": [
+        0.0,
+        0.0
+      ],
+      "crosshead_offsets": [
+        0.0,
+        0.0
+      ],
+      "telescope_offsets": null,
+      "open_hold": false,
+      "open_support": false,
+      "expected_bodies": 154,
+      "slide": 79.75,
+      "actual_binary64_q_from_declared_factory_inputs": [
+        12.0,
+        12.0
+      ]
+    },
+    "open_installed": {
+      "descent": 8.2,
+      "left_tab": 3.0,
+      "right_tab": 3.0,
+      "flanks": [
+        0.0,
+        0.0
+      ],
+      "key_offsets": [
+        0.0,
+        0.0
+      ],
+      "crosshead_offsets": [
+        0.0,
+        0.0
+      ],
+      "telescope_offsets": null,
+      "open_hold": true,
+      "open_support": true,
+      "expected_bodies": 161,
+      "slide": 79.75,
+      "actual_binary64_q_from_declared_factory_inputs": [
+        12.0,
+        12.0
+      ]
+    },
+    "lower_L_contact_R_free": {
+      "descent": 0.0,
+      "left_tab": 3.0,
+      "right_tab": 3.0,
+      "flanks": [
+        0.0,
+        0.0
+      ],
+      "key_offsets": [
+        -0.01504702194357367,
+        0.01504702194357367
+      ],
+      "crosshead_offsets": [
+        0.0,
+        0.0
+      ],
+      "telescope_offsets": null,
+      "open_hold": false,
+      "open_support": false,
+      "expected_bodies": 154,
+      "slide": 0.1,
+      "actual_binary64_q_from_declared_factory_inputs": [
+        0.0,
+        0.03009404388714734
+      ]
+    },
+    "lower_R_contact_L_free": {
+      "descent": 0.0,
+      "left_tab": 3.0,
+      "right_tab": 3.0,
+      "flanks": [
+        0.0,
+        0.0
+      ],
+      "key_offsets": [
+        0.01504702194357367,
+        -0.01504702194357367
+      ],
+      "crosshead_offsets": [
+        0.0,
+        0.0
+      ],
+      "telescope_offsets": null,
+      "open_hold": false,
+      "open_support": false,
+      "expected_bodies": 154,
+      "slide": 0.1,
+      "actual_binary64_q_from_declared_factory_inputs": [
+        0.03009404388714734,
+        0.0
+      ]
+    },
+    "upper_L_contact_R_free": {
+      "descent": 0.0,
+      "left_tab": 3.0,
+      "right_tab": 3.0,
+      "flanks": [
+        0.0,
+        0.0
+      ],
+      "key_offsets": [
+        0.015047021943571437,
+        -0.015047021943571437
+      ],
+      "crosshead_offsets": [
+        0.0,
+        0.0
+      ],
+      "telescope_offsets": null,
+      "open_hold": false,
+      "open_support": false,
+      "expected_bodies": 154,
+      "slide": 79.65,
+      "actual_binary64_q_from_declared_factory_inputs": [
+        12.0,
+        11.969905956112857
+      ]
+    },
+    "upper_R_contact_L_free": {
+      "descent": 0.0,
+      "left_tab": 3.0,
+      "right_tab": 3.0,
+      "flanks": [
+        0.0,
+        0.0
+      ],
+      "key_offsets": [
+        -0.015047021943571437,
+        0.015047021943571437
+      ],
+      "crosshead_offsets": [
+        0.0,
+        0.0
+      ],
+      "telescope_offsets": null,
+      "open_hold": false,
+      "open_support": false,
+      "expected_bodies": 154,
+      "slide": 79.65,
+      "actual_binary64_q_from_declared_factory_inputs": [
+        11.969905956112857,
+        12.0
+      ]
+    }
+  },
+  "expected_contact_end_by_side": {
+    "stow_tabs_0": {
+      "L": "lower",
+      "R": "lower"
+    },
+    "stow_tabs_3": {
+      "L": "lower",
+      "R": "lower"
+    },
+    "near": {
+      "L": null,
+      "R": null
+    },
+    "far": {
+      "L": null,
+      "R": null
+    },
+    "predock": {
+      "L": "upper",
+      "R": "upper"
+    },
+    "open_installed": {
+      "L": "upper",
+      "R": "upper"
+    },
+    "lower_L_contact_R_free": {
+      "L": "lower",
+      "R": null
+    },
+    "lower_R_contact_L_free": {
+      "L": null,
+      "R": "lower"
+    },
+    "upper_L_contact_R_free": {
+      "L": "upper",
+      "R": null
+    },
+    "upper_R_contact_L_free": {
+      "L": null,
+      "R": "upper"
+    }
+  },
+  "original_complete_factory_and_STEP_pair_evaluations_planned": 237818,
+  "retained_checks": [
+    "whole original panel and all K1 participants before modification",
+    "four positive stop/panel material joins; upper toes through preserved original front posts",
+    "one valid positive whole candidate panel; zero original material loss and signed volume balance",
+    "four original cover contact patches: outward normals, clipped actual faces, both directed area differences",
+    "actual endpoint KEY/panel contact patches and opposite unit normals, nominal area 0.324 mm2",
+    "whole KEY/panel overtravel penetration at delta 0.001 and 0.01 mm, and inward-release Common",
+    "all 11781 or 12880 pairs with original signed Common <=1e-7 predicate",
+    "separate-process complete STEP readback and independent box reconstruction from frozen contract",
+    "full source/43-package environment/owned lifecycle and original finite resource gates"
+  ],
+  "overtravel_full_factory_outside_ContactProfile_domain_called": false,
+  "runtime_policy": {
+    "worker_seconds": 1200,
+    "worker_RSS_MiB": 1536,
+    "shared_unreclaimable_GiB": 6.8,
+    "startup_disk_MiB": 256,
+    "runtime_disk_MiB": 100,
+    "startup_incremental_memory_MiB": 2048,
+    "max_parallel_jobs": 2,
+    "hard_gates_may_not_be_raised_to_obtain_completion": true
+  },
+  "pre_execution_order": [
+    "review actual K2 finite endpoint results and retain any real failure",
+    "screen proposed boxes against complete actual factory material records without claiming fit from AABBs",
+    "root review of named K3 source/contract/reader/engineering-only export before native work"
+  ],
+  "actual_native_K3_execution": false,
+  "current_S4_or_K1_domain_reduced": false,
+  "full_continuous_domain_clear": false,
+  "physical_allowed_domain_proved": false,
+  "strength_qualified": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}

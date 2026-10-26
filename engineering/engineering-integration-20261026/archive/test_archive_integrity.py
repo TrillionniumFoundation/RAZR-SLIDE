@@ -68,6 +68,55 @@ class IntegrityControls(unittest.TestCase):
             with self.assertRaises(MOD.ArchiveInvariantError):
                 MOD.verify_zip(p, b)
 
+    def test_k2_k3_exact_family_and_cross_family_rejection(self):
+        for family in ("K2", "K3"):
+            with self.subTest(family=family), tempfile.TemporaryDirectory() as d:
+                p, b = self.make_f1(d, family=family)
+                self.assertTrue(MOD.verify_zip(p, b)["all_scientific_members_and_CRC_verified"])
+                b["manifest_layout"] = "K1_members"
+                with self.assertRaises(MOD.ArchiveInvariantError):
+                    MOD.verify_zip(p, b)
+
+    def make_typed_report(self, directory, family, unsafe=False, modified=False):
+        content = b'{"scientific_diagnostic":true}\n'
+        identity = {"bytes": len(content), "sha256": hashlib.sha256(content).hexdigest()}
+        if family == "N6":
+            manifest = {"schema": "razr-N6-engineering-allowlist-export-v1", "functional_source_commit": MOD.S4,
+                "raw_runtime_records_exported": unsafe, "raw_runtime_records_durable": False,
+                "producer_records_modified": modified, "omitted_runtime_remains_on_ephemeral_runner_only": True,
+                "original_input_ZIP_or_field_arrays_duplicated_in_this_export": False,
+                "original_input_fields_durable_release_asset_id": 677184053,
+                "copied": {"scientific.json": {**identity, "original_bytes": True}},
+                "original_runtime_record_hashes": [], "exported_files": {"scientific.json": identity}}
+            layout = "N6_exported_files"
+        else:
+            manifest = {"schema": "razr-EC1-engineering-export-v1", "source_commit": MOD.S4,
+                "raw_runtime_exported": unsafe, "raw_runtime_durable": False,
+                "original_producer_records_modified": modified, "files": {"scientific.json": identity}}
+            layout = "EC1_files"
+        raw = json.dumps(manifest).encode()
+        path = Path(directory) / "typed.zip"
+        with zipfile.ZipFile(path, "w") as z:
+            z.writestr("scientific.json", content)
+            z.writestr("MANIFEST.json", raw)
+        return path, {"zip_bytes": path.stat().st_size, "zip_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+            "manifest_name": "MANIFEST.json", "manifest_sha256": hashlib.sha256(raw).hexdigest(),
+            "manifest_layout": layout, "manifest_entries": 1}
+
+    def test_exact_N6_and_EC1_contracts(self):
+        for family in ("N6", "EC1"):
+            with self.subTest(family=family), tempfile.TemporaryDirectory() as d:
+                p, b = self.make_typed_report(d, family)
+                self.assertTrue(MOD.verify_zip(p, b)["all_scientific_members_and_CRC_verified"])
+
+    def test_N6_and_EC1_raw_runtime_or_modified_producer_rejected(self):
+        for family in ("N6", "EC1"):
+            for unsafe, modified in ((True, False), (False, True)):
+                with self.subTest(family=family,unsafe=unsafe,modified=modified), tempfile.TemporaryDirectory() as d:
+                    p, b = self.make_typed_report(d, family, unsafe, modified)
+                    with self.assertRaises(MOD.ArchiveInvariantError):
+                        MOD.verify_zip(p, b)
+
     def make(self, directory, extra=False, symlink=False):
         content = b"retained engineering bytes\n"
         manifest = json.dumps({"material.brep": {"bytes": len(content), "sha256": hashlib.sha256(content).hexdigest()}}).encode()

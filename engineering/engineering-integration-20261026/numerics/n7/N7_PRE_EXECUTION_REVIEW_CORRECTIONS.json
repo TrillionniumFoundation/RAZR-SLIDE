@@ -1,0 +1,21 @@
+{
+  "schema": "razr-N7-pre-execution-independent-review-corrections-v1",
+  "original_native_candidate_executions_during_preparation": 0,
+  "final_request_sha256": "6ac3d3321b5eefc08a82f54f4edbfa7cc77f1df5900ad6f2852cc30a678c118c",
+  "review_corrections": [
+    {
+      "finding": "Exporter declared all 22 inputs and candidate arrays preserved unconditionally, even if a transfer or write was incomplete.",
+      "resolution": "Replace the blanket claim with a scoped policy and an actual ledger of 22 complete verified identities, missing/partial inputs, complete or partial arrays for each started candidate, and the ten final arrays. Actual copied array sets are compared to actual source enumeration.",
+      "actual_controls": "A partial trial and no original inputs report 22 missing inputs, 12 missing complete candidate arrays, and all completeness flags false."
+    },
+    {
+      "finding": "A partial NPY header retained an old privacy regex without /tmp or numeric /proc paths.",
+      "resolution": "All whole-record and byte-fragment privacy checks use one PRIVATE_PATTERN; explicit partial NPY /tmp and /proc controls reject.",
+      "prior_frozen_request_sha256": "eda0a37cf0391ff2fb84006667473c8405b2f6f6dbb64b85d53ddaf40722f8e4",
+      "prior_request_bytes_preserved_separately": true
+    }
+  ],
+  "mathematical_worker_reader_original_gate_and_resource_limits_unchanged_by_export_review_corrections": true,
+  "final_six_stdlib_controls_passed": true,
+  "historical_S4_test_count_modified": false
+}

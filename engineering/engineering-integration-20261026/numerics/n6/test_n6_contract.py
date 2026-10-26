@@ -4,6 +4,7 @@ from fractions import Fraction
 import hashlib
 import io
 import json
+import os
 from pathlib import Path
 import struct
 import tempfile
@@ -11,7 +12,7 @@ import unittest
 from unittest.mock import patch
 import audit_n6_row as producer
 import readback_n6_row as reader
-from n6_evidence_io import AuditGateError, read_npy
+from n6_evidence_io import AuditGateError, ND, ORIGINAL_FIXED_ORDER, read_npy, validate_original_domain
 from export_n6_engineering import export
 
 
@@ -22,6 +23,24 @@ def npy(descr, shape, payload, fortran=False):
 
 
 class Contracts(unittest.TestCase):
+    def test_real_original_unsorted_fixed_order_counterexample(self):
+        proof = json.loads((Path(__file__).resolve().parent / "N6B_FIXED_DOMAIN_ORDER_EVIDENCE.json").read_text())
+        raw = bytes.fromhex(proof["actual_original_NPY_hex"])
+        self.assertEqual(len(raw), 176)
+        self.assertEqual(hashlib.sha256(raw).hexdigest(), "c5253eefb07da8a1e680eb31d3c6bb5d1d181a44ed1161f50aa6370c84709205")
+        fixed, unused = read_npy(io.BytesIO(raw))
+        self.assertEqual(tuple(fixed), ORIGINAL_FIXED_ORDER)
+        self.assertNotEqual(list(fixed), sorted(fixed))
+        free = array("q", (i for i in range(ND) if i not in set(fixed)))
+        validate_original_domain(free, fixed)
+        with self.assertRaisesRegex(AuditGateError, "original_fixed_order_preserved"):
+            validate_original_domain(free, sorted(fixed))
+        with self.assertRaisesRegex(AuditGateError, "original_fixed_unique_and_in_range"):
+            validate_original_domain(free, [0, 1, 2, 13, 14, 14])
+        free[0], free[1] = free[1], free[0]
+        with self.assertRaisesRegex(AuditGateError, "original_free_exact_sorted_complement"):
+            validate_original_domain(free, fixed)
+
     def test_exact_cancellation_and_independent_replay(self):
         a, u = [1.0, 1.0, 1.0], [1e16, 1.0, -1e16]
         r = producer.dot_audit(a, u, 0.0, trace=True)
@@ -95,4 +114,13 @@ class Contracts(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    suite = unittest.defaultTestLoader.loadTestsFromTestCase(Contracts)
+    result = unittest.TextTestRunner(verbosity=2).run(suite)
+    if os.environ.get("CASE_DIR"):
+        receipt = {"schema": "razr-N6-small-contract-results-v1", "tests_run": result.testsRun,
+                   "failure_count": len(result.failures), "error_count": len(result.errors),
+                   "passed": result.wasSuccessful(), "historical_S4_test_count_modified": False,
+                   "real_original_unsorted_fixed_member_counterexample_included": True,
+                   "test_source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+        (Path(os.environ["CASE_DIR"]) / "N6-small-contracts.json").write_text(json.dumps(receipt, indent=2) + "\n")
+    raise SystemExit(0 if result.wasSuccessful() else 2)

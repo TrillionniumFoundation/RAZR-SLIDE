@@ -1,0 +1,64 @@
+{
+  "schema": "razr-independent-domain-exact-record-readback-v1",
+  "functional_source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "checker_sha256": "2a049769dd473ed001e186368e9bf83f2ee9f4fd69ab5f8276347ad1efbc7b64",
+  "source_records": {
+    "S4_SOURCE_DOMAIN_ANALYSIS.json": {
+      "sha256": "d2d4350be89fbeea3d35ccf09071ee620b4dcc0c1e267002895e1a347e438d1c",
+      "bytes": 131333
+    },
+    "POSITIVE_Q_BRANCH_DOMAIN.json": {
+      "sha256": "3ab197f8157cba6297c39988bffa2385ed009011c72278a7a864fbb61ee17cab",
+      "bytes": 277493
+    },
+    "UNCLIPPED_SLOT_SOURCE_DOMAIN.json": {
+      "sha256": "61039bbb5a030bfb50e47af0d61115db136a5ddff11c42adf4b8272dcfc5f063",
+      "bytes": 22557
+    },
+    "FINITE_GROOVE_ENDCAP_PROJECTION.json": {
+      "sha256": "f5147e7760fe8a0a097e8a78327d0acce0cac5a29682cd70a7000bef191914f5",
+      "bytes": 89855
+    }
+  },
+  "checks": {
+    "nominal_slot_bounds": {
+      "exact_halfspace_vertex_enumeration_agrees": true,
+      "vertices": 60
+    },
+    "with_actual_binary64_comparison_bound_TOL": {
+      "exact_halfspace_vertex_enumeration_agrees": true,
+      "vertices": 60
+    },
+    "telescope_decimal_polytope": {
+      "exact_halfspace_vertex_enumeration_agrees": true,
+      "vertices": 28,
+      "vertices_by_descent": {
+        "0": 9,
+        "13/5": 9,
+        "27/5": 9,
+        "41/5": 1
+      }
+    }
+  },
+  "branch_cell_records": {
+    "declared": 25,
+    "feasible": 17,
+    "empty": 8,
+    "closed_cell_vertex_count_with_duplicates": 548,
+    "maximum_vertices_per_cell": 54,
+    "branch_cell_feasibility_recomputed_by_this_checker": false
+  },
+  "capacity_counts_not_execution_forecasts": {
+    "all_pairs": 11781,
+    "all_pairs_times_17_branch_cells": 200277,
+    "naive_slide_vertex_pose_pair_checks_with_tabs_and_flanks": 929662272,
+    "invalid_global_cartesian_60_motion_times_28_telescope_vertex_checks": 19792080
+  },
+  "new_native_CAD_execution": false,
+  "floating_factory_acceptance_set_certified": false,
+  "continuous_collision_domain_proved": false,
+  "physical_stop_or_preload_qualification": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}

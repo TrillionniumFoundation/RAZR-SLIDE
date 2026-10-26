@@ -1,10 +1,10 @@
 # 2026-10-26 全量推进：真实结果、原件与未决门槛
 
-**S4 的两个中途完整 factory 见证已闭合；具名 `key_forward_loop_v1` 候选在这两个姿态的完整体对和独立 STEP 读回均 clear。连续方法修复已实际完成原 89 次调用和另一个相关方法的 70 次调用。原数值五探针仍有一项拒绝；真实器件、当前结构与实物 G3–G5 尚未取得资格。**
+**两个原中途完整 factory 见证已闭合。K1 具名 KEY 修复连同 K2 四个端点，六个有限姿态共 143,570 次 fresh factory / STEP 体对评估全部 clear。新增实体行程止挡 K3 已完成两个先行姿态的材料、接触、越程与 changed-panel 全对读回；10 姿态完整矩阵另行实跑。原数值五探针仍有一项拒绝；连续包络的剩余交叠、真实器件、当前 FE 与实物 G3–G5 均保持未决。**
 
 功能基准固定为 S4 `dd7def6e6a4de9f47dc91ca2ab336fb1a8828560`，tree `cdd9e2c41216201b6cd04dd610d45fde80499045`。本次是 E3 `133bad5c5dddbf14fe466a23080b6e2e72ea3cb6` 的工程证据后继。具名候选与算法位于独立诊断路径，未替换生产默认 factory；唯一候选 ref 和 main 均保持原值。历史 S4 的 36 套 / 1,654 项测试不被改称本次新源码的完整测试。
 
-[结果索引](SPRINT_RESULT_INDEX.json) · [源码与实际运行台账](SOURCE_AND_RUN_LEDGER.json) · [逐文件合入验证](INTEGRATION_VERIFICATION.json) · [PR #39](https://github.com/TrillionniumFoundation/RAZR-SLIDE/pull/39)
+[结果索引](SPRINT_RESULT_INDEX.json) · [源码与实际运行台账](SOURCE_AND_RUN_LEDGER.json) · [首个证据检查点验证](INTEGRATION_VERIFICATION.json) · [本次逐文件增量验证](CHECKPOINT2_INTEGRATION_VERIFICATION.json) · [PR #39](https://github.com/TrillionniumFoundation/RAZR-SLIDE/pull/39)
 
 ## 1. 两个中途完整几何见证：验收闭合，原几何拒绝
 
@@ -41,6 +41,20 @@ F1a run `40273568199` 实际从 S4 构造两套完整的 154 体 factory，并�
 
 [K1 实际验收](geometry/K1/K1_WITNESS_ACCEPTANCE.json) · [结构与域审查](geometry/STRUCTURE_AND_DOMAIN_REVIEW.md) · [具名源码](../engineering-next-20261026/key-forward-loop-k1/key_forward_loop_v1.py)
 
+### K2 四个端点与 K3 具名实体止挡的新增实际结果
+
+K2 run 40277813145 已完成 stow_tabs_0、stow_tabs_3、predock 与 open_installed 四个完整姿态；前三个各 154 体，OPEN 含全部七个已声明安装附件，共 161 体。factory 与独立 STEP 共 **96,446 次体对评估、192,892 条 journal 记录**，正交集、求值错误及体对结果不一致均为零。OPEN 的轴界分类使 native Common 调用数为 producer 813、reader 817，但全对的体积和拒绝结果一致；此差别原样保留。K1+K2 六个有限姿态合计 **143,570** 次体对评估，并不代表全部运动域已通过。
+
+panel_key_travel_stops_v1 在 panel 上增加下限柱及上限趾，保留 K1 KEY 的原件。K3 run 40281153812 的 STOW-tabs3 与 PREDOCK 双 pilot 已完成：每姿态 producer 与 reader 各 153 个 changed-panel 体对均 clear，每姿态 reader 的 18 项原生材料/接触/越程门均真实求值并通过。双 pilot 合计 612 次 fresh 体对评估、1,224 条 journal 记录。实际 panel 只增加约 **4.62456 mm³**，切除为零；两侧 nominal contact face 各 **0.324 mm²**。whole KEY 越程 0.001 / 0.01 mm 分别产生约 0.000324 / 0.00324 mm³ Common，向内控制为零。原接触功能面、材料守恒及两端完整 panel 身份均经过双向材料核验；不是从 AABB 推断 clear。
+
+这为 q=0/12 的具名 CAD 止挡提供了先行实体证据。它尚不证明全部独立控制状态、实体变形/限位受力、制造公差或真实样件行程。源 binary64 上限接触平面与精确 12 mm 的约 -8.881784197001252e-16 mm 差异也继续记录。
+
+K3FULL 的首轮 run 40283562050 在输入检查脚本编译处失败：10 个 job 均出现同一内嵌 Python 换行 SyntaxError，10 个 native 全对步骤全部 skipped。它是执行入口失败，没有产生几何或容量拒绝结论。修正后的 run 40285103942 仅改两处换行表达式，原首轮 commit 与失败包保留；16 个 runtime 科学源码、材料、十姿态及全部守卫逐字不变，另加入 22 段生成 Python / 7 段实际执行 Python 的语法检查。
+
+跟进仍是六个完整参考姿态加四个左右独立边界接触姿态，计划 **237,818 次 fresh factory / STEP 体对评估**，不复用 pilot 体对结果。每个 worker 原 1,200 s / 1,536 MiB 守卫不变，最多并行两个；基于 K2 完整实测和 K3 pilot 计时，预计 60–105 分钟，另加排队。跟进已实际进入 native。首个 stow_tabs_3 状态已经独立验收：154 体、两进程各 11,781 个完整体对、18 个独立早期门全部通过；factory 252.200734 s、reader 193.500290 s，正交集/错误/不一致均为零。当前只记 1/10 个有限状态通过，其余仍按原 max-parallel=2 队列执行。
+
+[K2 四端点验收](geometry/K2/K2_FOUR_ENDPOINT_ACCEPTANCE.json) · [K3 双 pilot 验收](geometry/K3/K3_TWO_PILOT_ACCEPTANCE.json) · [K3 实际原件绑定](geometry/K3/K3_ACTUAL_DUAL_PILOT_BINDING.json)
+
 ### 正 q 的 STOP / SPRING 分段
 
 从四条原 ContactProfile 得到五个联合分段，原二进制浮点边界对应的精确有理数完整保留：
@@ -61,7 +75,7 @@ F1a run `40273568199` 实际从 S4 构造两套完整的 154 体 factory，并�
 
 **去掉人为 q 截断后，原槽域的 32 个顶点中有 24 个超出 q∈[0,12]，极值约为 −0.0606367711 与 12.0606367711 mm。** 两条有限槽的端帽分析也不能给出 q=0/12 处的实际止挡：已核对的 pin 投影距直段/端帽转换平面的最小距离仍分别约 0.754681、0.999907 mm，大于 0.4 mm 的 pin 半径。这不证明所有外域都物理可达；它说明这两条槽不能作为 q 截断的机构依据。
 
-左右伸缩分配也保持独立：每侧三个关节各在 `[0.1,2.9] mm`，和为 `8.5−descent`；共同 descent 为 `[0,8.2] mm`，该多面体有 28 个顶点及 0 / 2.6 / 5.4 / 8.2 mm 分段。默认均分只是一条路径。
+左右伸缩分配也保持独立：每侧三个关节各在 `[0.1,2.9] mm`，和为 `8.5−descent`；共同 descent 为 `[0,8.2] mm`，该多面体有 28 个顶点及 0 / 2.6 / 5.4 / 8.2 mm 分段。默认均分只是一条路径。 这里的 28 个顶点是理想等式与无容差不等式的精确投影。原 stage_allocation 还接受每关节 ±1e-9 mm、总和 1e-8 mm 的薄层；这些薄层必须另行覆盖，不能把 28 顶点称为完整 binary64 允许集。
 
 新增三个连接棱柱相对两支撑柱另有 18 个精确分离证书；这只覆盖这组新增材料和障碍物。真实全机构允许域、实体行程限制、工艺公差与当前强度仍未闭合。
 
@@ -87,6 +101,16 @@ L3 使用真实位移的共同参考系与完整相关 carrier，保留完整 ST
 
 [原 89 次独立审查](envelope-review/L2a_ALL89_INDEPENDENT_READBACK.json) · [新 70 次相关审查](envelope-review/L3_ALL70_INDEPENDENT_RECORD_AUDIT.json) · [逐调用对照](envelope-review/L2_L3_COMPARISON.json) · [完整执行接口与容量](envelope-review/FULL_SLIDE_INTEGRATION_PLAN.md)
 
+### V4 原运行导出失败与 V4a 新执行
+
+V4 run 40279094567 的 native 与独立记录读取步骤实际完成；但科学 exporter 对 Common 大写文件名的白名单断言失败。原 partial ZIP 只有 **2,110 B、两个文件**：独立记录检查 JSON 和一个原 whole telescope 输入 BREP。这个原 reader 记录支持五次 factory-law probes、262 次调用、1,632 份 BREP 哈希、17 对中 10 clear / 7 conservative overlap；11,764 个完整体对槽位尚未测试。**完整 producer 报告、逐调用身份/计时及其余 BREP 未被该次上传保存，不能从这个 partial 包恢复，也不能据此声称七对的具体身份已读回。**
+
+原两成员与原 ZIP 均保留。V4a run 40282814142 的 native 与独立记录 reader 已完成，原算法和资源限保持不变；科学 exporter 仍返回失败，但这次完整保住 **262 个逐调用 JSON、1,632 份 BREP**，并已实际核完 10,794,846 B ZIP 的哈希、CRC 及 1,912 个 manifest 成员。缺件是 932,252 B 的 producer 总报告（SHA 42797673…）；原 reader 对同 SHA 已成功解析，因而拒收原因可归入 runtime locator 过滤，具体 offending locator 未从科学包恢复。原 V4 / V4a 两次失败与各自保存范围分别记录。L5 正在提出针对完整同轴环形层的相关扫掠，用真实完整 B_SHELL 验证原七例，再验证当前 K1 的全 q 七对；容量依据是每组十二个 primary layer Common，尚不能直接推出实际耗时。这 262 个原调用进一步确认：两个 K1 panel/KEY 全 q 调用的 carrier 总 Common 均为零，八个同侧 KEY/STOP 与 SPRING/STOP 相关对也 clear。七个剩余体对均为 B_SHELL 与伸缩件/法兰，每对 36 调用；七对调用耗时合计 999.066948 s，全部调用合计 1,033.640670 s，控制器 wall 1,166.881252 s。仍有 11,764 个完整体对槽未测试；非零 KEY/crosshead 独立间隙状态也未因此取得资格。
+
+尚未执行的直接 EXTRUSION 分支、严格区间 CAD 包含及独立五维允许域继续保持未决。
+
+[V4a 实际逐对结果](envelope-review/capacity-V4a-actual/V4A_CAPACITY_AND_EXPORT_FINDINGS.json) · [V4 保留下来的原 reader](envelope/V4-first-run/INDEPENDENT_CAPACITY_RECORD_CHECK.json) · [原部分科学 ZIP](envelope/V4-first-run/S4_V4_partial_science_40279094567.zip) · [独立域覆盖计划](envelope-review/independent-domain/INDEPENDENT_DOMAIN_COVERAGE_PLAN.md)
+
 ## 4. 原数值资格：原 K/C 回收，原五探针仍拒绝一项
 
 重装配 K 与 C 出现了真实字节差异，不能以相同源码或极小差值代替原件身份。N4/N4a 的重装配 K 为 `fc21f434…`，不同于原 K 的 `80f6f502…`；N5 首轮重装配 C 为 `da1876a5…`，不同于原 C 的 `9f75b00a…`。这些尝试在输入身份门槛停止，不能记录成新的五探针残差失败。拒绝 K 已单独长期归档，拒绝 C 随 N5a 科学原件保留。
@@ -104,6 +128,12 @@ N4b 恢复原 K、b、C、点序、自由/固定域和方向，执行预注册�
 原判据仍为 float64 `max(abs(Kff @ u − rhs)) / max(max(abs(rhs)),1)`。longdouble 仅为诊断，没有替代原判据。N4b 的 8 步全场/修正链、N5a 的 32 个外层场、32 个修正场、32 个实际更新场、残差和 ULP 链都保留。N5a 第 4 步后最差行的原比值停在 `1.7540169838265448e-7`；其他四项的场数组和文件哈希保持 N4b 原字节。
 
 N4b worker 约 21.12 s、峰 RSS 2,826,440 KiB；N5a 约 21.31 s、峰 RSS 1,061,112 KiB。两次均未触发原资源守卫，不能把增加时间当作已证实的解决方案。后续只读行诊断先核对原 CSC 求和顺序与 float64 bitpattern，再用精确有理乘加分解误差，所得行级候选敏感性不被称为新完整解或原门槛通过。
+
+N6 首轮下载失败只记录 HTTPError，状态码和具体根因未保存。N6a 成功取得原 565,978,451 B ZIP，但额外的“fixed DOF 必须排序”假设拒绝了原文件 [0,1,2,13,14,8]，尚未计算行级试验。N6b 仅修正这一读取假设，保留原 fixed 字节/顺序和原 sorted free complement；实际完成 **38 个行 bitpattern、32 个更新、162 个相邻 ULP 试验**，独立读回一致。
+
+最差行 81 个非零列支持中，有 13 个单 ULP 变化改善这一行，其中 7 个使本行通过且本行精确残差不增。但这些列影响的 264 行只覆盖全场 20 个超门槛行中的 2 个；N6b 没有新全场，也没有新原始五探针资格。N7 run 40285015238 因此预注册最多 32 个完整候选：每个候选保存五个全场/残差和实际更新，重跑原五 float64 门槛，另由独立 reader 逐个重算全部受影响方程的精确残差。只接受受影响精确残差无穷范数不增、全场超门槛行数严格下降、原全场最大比值不增的顺序状态；保留全部被拒候选，原 180 秒等容量守卫不变。该 run 已实际完成并被原资格门拒绝：5 个完整候选、192 次虚拟标量检查，只接受 trial 2；探针 0 从 1.7540169838265448e-7 降为 **1.386574690771972e-7**，超门槛行由 20 减为 19。其余四个原比值和场文件保持原字节。随后当前最坏行 DOF179519 的有限单 ULP 候选耗尽，三个完整候选均不满足全部受影响行的精确范数非增条件；不是 180 秒或 32 候选额度耗尽。独立 reader 实算 35 次原 float64 门、543 个受影响方程的 before/after 精确和，并核 70 个全场/残差/更新数组。worker 9.714064 s、reader 8.930045 s。下一策略将先分析未受影响精确行能否为全局范数提供有效界，原 N7 规则和拒绝结论保持原样。
+
+[N7 实际五探针与拒绝链](numerics/integration-evidence/n7/N7_HOSTED_OUTCOME.json) · [N7 原独立读取记录](numerics/integration-evidence/n7/N7-independent-readback.json)
 
 原五项尚未全部通过，**完整 panel H / frame / trace / restore 仍被前置条件阻断**。panel H 本身为 120,745,800 B；3,885 列全场约 10.695 GB，全场加残差约 21.389 GB，分块减 RAM 不会消除原件保存量。原 restore 还保留独立 `2e-7` H-action 条件，不能由五项门槛推出。
 
@@ -131,4 +161,4 @@ E3 run `40269456951` 的实际 KiCad 9.0.9 native readback / DRC 已取得并独
 
 科学保存使用未发布的同仓库证据 draft `423900341`：每个选定源 artifact 的 run、head、ZIP 大小/SHA、manifest 与每个成员/CRC 都先校验，上传后再次下载全部资产字节复核。原件与失败记录保留原字节，工程投影明确标识；排除的 raw runtime 仍是临时 runner 数据，没有被声称恢复或持久保存。最初 HTTP 415 的传输失败也单独保留，文档媒体类型修复后才取得成功回执。
 
-各阶段确切资产数与完整读取回执见 [归档说明](archive/README.md) 和 [结果索引](SPRINT_RESULT_INDEX.json)。证据 draft 没有发布为产品 release，没有覆盖或删除旧资产。`complete_G2`、`candidate_go`、`fixture_fabrication_go`、`manufacturing_go` 均为 false。
+截至本快照，已完成 22 个不同科学 ZIP、共 1,513,361,228 B 的逐成员与上传后整包回读，其中也包括真实失败原件。V4 的两成员部分 ZIP 另按原字节保存于 Git。各阶段确切资产数与完整读取回执见 [归档说明](archive/README.md) 和 [结果索引](SPRINT_RESULT_INDEX.json)。证据 draft 没有发布为产品 release，没有覆盖或删除旧资产。`complete_G2`、`candidate_go`、`fixture_fabrication_go`、`manufacturing_go` 均为 false。

@@ -1,5 +1,5 @@
-# N6a changes only scientific input transport; native numeric qualification is unchanged.
-name: N6a original Actions input exact CSC row capacity diagnostic only
+# N6b preserves original fixed order and exact free complement; no mathematical input or gate changes.
+name: N6b exact original fixed-domain CSC row capacity diagnostic only
 'on':
   push:
     branches:
@@ -685,6 +685,7 @@ jobs:
         ND = 344103
         NF = 344097
         ROW = 87824
+        ORIGINAL_FIXED_ORDER = (0, 1, 2, 13, 14, 8)
         LIMIT = 1e-7
         S4 = "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560"
         S4_TREE = "cdd9e2c41216201b6cd04dd610d45fde80499045"
@@ -738,6 +739,21 @@ jobs:
                 n = struct.unpack(">Q", struct.pack(">d", x))[0]
                 return ((~n) & ((1 << 64) - 1)) if n >> 63 else (n | (1 << 63))
             return abs(ordered(a) - ordered(b))
+
+
+        def validate_original_domain(free, fixed):
+            """Original fixed order is intentionally unsorted; free is its complement.
+
+        The frozen N1/N4b/N5a six-value member has SHA c5253eef... and literal order
+        0,1,2,13,14,8. Original force_maps returns loads['D'] unchanged; original free
+        construction is np.setdiff1d(np.arange(n), fixed), which sorts only the free set.
+        """
+            require(len(free) == NF and len(fixed) == 6, "original_domain_sizes")
+            require(len(set(fixed)) == 6 and all(0 <= g < ND for g in fixed), "original_fixed_unique_and_in_range")
+            require(tuple(fixed) == ORIGINAL_FIXED_ORDER, "original_fixed_order_preserved")
+            excluded = set(fixed)
+            require(list(free) == [g for g in range(ND) if g not in excluded], "original_free_exact_sorted_complement")
+            require(ROW in free, "audit_row_is_original_free")
 
 
         class HashingReader:
@@ -869,11 +885,7 @@ jobs:
             def domain(self):
                 free = self.npy("probe-N5/free-original-DOFs.npy", (NF,), "<i8")
                 fixed = self.npy("probe-N5/fixed-original-DOFs.npy", (6,), "<i8")
-                require(list(free) == sorted(set(free)) and list(fixed) == sorted(set(fixed)), "original_domain_order")
-                require(set(free).isdisjoint(fixed) and len(free) + len(fixed) == ND
-                        and min(free) >= 0 and max(free) < ND and min(fixed) >= 0 and max(fixed) < ND,
-                        "original_domain_partition")
-                require(ROW in free, "audit_row_is_original_free")
+                validate_original_domain(free, fixed)
                 self.byte_check("probe-N5/C.npz")
                 require(self.used["probe-N5/C.npz"]["sha256"] == C_SHA, "original_C_exact")
                 self.byte_check("probe-N5/points.json")
@@ -884,7 +896,7 @@ jobs:
                 self.z.close()
         N6_SOURCE_0
         cp "$HOST_ROOT/n6_evidence_io.py" "$CASE_DIR/source/n6_evidence_io.py"
-        printf '3d38759cd7cbd909830c8dbbcf5370d52cec7439ae9502fa1522a34a0b6cc605  %s\n' "$HOST_ROOT/n6_evidence_io.py" | sha256sum --check --strict
+        printf 'bd94ba637110540fdd0bca7ab33fb5909fc936637a1bea4f5d9ce6067e0f71b2  %s\n' "$HOST_ROOT/n6_evidence_io.py" | sha256sum --check --strict
         cat > "$HOST_ROOT/fetch_n6_inputs.py" <<'N6_SOURCE_1'
         """Read-only bounded original Actions input, identical to the archived asset.
 
@@ -1687,7 +1699,8 @@ jobs:
         S4 = "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560"
         N6_SOURCES = ["n6_evidence_io.py", "fetch_n6_inputs.py", "audit_n6_row.py", "readback_n6_row.py",
                       "export_n6_engineering.py", "N6_CAPACITY_STRATEGY.json", "N6_FROZEN_INPUTS.json",
-                      "N6A_INPUT_TRANSPORT_STRATEGY.json"]
+                      "N6A_INPUT_TRANSPORT_STRATEGY.json", "N6B_FIXED_DOMAIN_ORDER_EVIDENCE.json",
+                      "test_n6_contract.py"]
         S4_SOURCES = ["engineering/engineering-integration-20261025/numerics/recover_inputs.py",
                       "engineering/engineering-integration-20261025/numerics/assemble_l2.py",
                       "engineering/engineering-integration-20261025/numerics/run_bounded.py",
@@ -1702,6 +1715,7 @@ jobs:
         READER_KEYS = """schema completed native_full_SpMV_or_solve_executed new_field_produced original_five_qualification_status states_checked support_update_chains_checked row_only_trials_checked exact_arithmetic original_array_input_parser_shared_with_producer numeric_audit_or_row_extraction_code_shared_with_producer producer_audit_identity all_original_row_bitpatterns_match original_row_support_size original_free_support_proven all_exact_rounding_components_recomputed all_row_only_trials_recomputed used_original_member_identities elapsed_seconds peak_rss_kib failure_type failure_gate""".split()
         TRANSFER_KEYS = """schema completed release_id asset_id asset_name transport_cap_bytes native_sparse_solve_executed diagnostic_arithmetic_executed raw_API_or_credentials_exported input_asset_modified seconds original_ZIP original_K manifest_sha256 manifest_bytes original_ZIP_member_count all_used_members_to_be_checked_by_row_workers full_archive_member_readback_previously_completed_by_run failure_type failure_gate input_route source_artifact_id source_run_id source_head_sha phase prior_N6_draft_HTTPError_cause_remains_unconfirmed artifact_metadata_HTTP_status failure_HTTP_status""".split()
         RECORD_ALLOWLIST = {
+            "N6-small-contracts.json": ("razr-N6-small-contract-results-v1", "schema tests_run failure_count error_count passed historical_S4_test_count_modified real_original_unsorted_fixed_member_counterexample_included test_source_sha256".split()),
             "N6-input-transfer.json": ("razr-N6-reviewed-input-transfer-v1", TRANSFER_KEYS),
             "row-N6/N6_ROW_AUDIT.json": ("razr-N6-original-row-capacity-audit-v1", AUDIT_KEYS),
             "N6-independent-readback.json": ("razr-N6-independent-scalar-row-readback-v1", READER_KEYS),
@@ -1838,7 +1852,7 @@ jobs:
             export(a.root, a.output)
         N6_SOURCE_4
         cp "$HOST_ROOT/export_n6_engineering.py" "$CASE_DIR/source/export_n6_engineering.py"
-        printf '8d7dfb9319825c0e309a48c0c3e2fe254e85acbcc5e8e9a488051de61b5235c7  %s\n' "$HOST_ROOT/export_n6_engineering.py" | sha256sum --check --strict
+        printf 'ca2ccb903ccd08185d2108080a7bbee313af95148e4efb5242d471916544c38d  %s\n' "$HOST_ROOT/export_n6_engineering.py" | sha256sum --check --strict
         cat > "$HOST_ROOT/N6_CAPACITY_STRATEGY.json" <<'N6_SOURCE_5'
         {
           "schema": "razr-N6-read-only-row-capacity-preregistration-v1",
@@ -2049,6 +2063,190 @@ jobs:
         N6A_INPUT_TRANSPORT
         cp "$HOST_ROOT/N6A_INPUT_TRANSPORT_STRATEGY.json" "$CASE_DIR/source/N6A_INPUT_TRANSPORT_STRATEGY.json"
         printf 'a2c6fe9ef60d7474e6e3f8eedad57bd8c1039110534bf3c5ea31d9c63cc87f96  %s\n' "$HOST_ROOT/N6A_INPUT_TRANSPORT_STRATEGY.json" | sha256sum --check --strict
+        cat > "$HOST_ROOT/N6B_FIXED_DOMAIN_ORDER_EVIDENCE.json" <<'N6B_SOURCE_0'
+        {
+          "schema": "razr-N6b-original-fixed-order-counterexample-evidence-v1",
+          "functional_S4": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+          "original_helper_repository_path": "engineering/engineering-integration-20261025/numerics/probe_original_actions.py",
+          "original_helper_sha256": "1f8334a1dda34a4101662ccdbd14c2db0bb77b8a3e080b5f5ec74d918955a2c6",
+          "original_helper_relevant_statements": [
+            {
+              "source_line": 121,
+              "text": "fixed, xyz, bolts = loads[\"D\"], loads[\"xyz\"], loads[\"C\"]"
+            },
+            {
+              "source_line": 156,
+              "text": "return C, fixed, identities"
+            },
+            {
+              "source_line": 243,
+              "text": "free = np.setdiff1d(np.arange(n), fixed)"
+            }
+          ],
+          "original_N1_run_id": 40206010654,
+          "actual_N1_member": "probe-N1/fixed-original-DOFs.npy",
+          "actual_member_bytes": 176,
+          "actual_member_sha256": "c5253eefb07da8a1e680eb31d3c6bb5d1d181a44ed1161f50aa6370c84709205",
+          "actual_original_fixed_order": [
+            0,
+            1,
+            2,
+            13,
+            14,
+            8
+          ],
+          "original_fixed_list_is_sorted": false,
+          "N4b_and_N5a_fixed_member_has_identical_SHA": true,
+          "actual_original_NPY_hex": "934e554d5059010076007b276465736372273a20273c6938272c2027666f727472616e5f6f72646572273a2046616c73652c20277368617065273a2028362c292c207d2020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020200a0000000000000000010000000000000002000000000000000d000000000000000e000000000000000800000000000000",
+          "new_free_rule": "exact sorted complement of original fixed set; original fixed bytes and original order retained unchanged",
+          "extra_N6_fixed_sorted_requirement_was_not_in_original_helper": true,
+          "new_native_solver_or_original_domain_change": false,
+          "N1_whole_ZIP_rehashed_in_this_small_read": false,
+          "original_N1_whole_ZIP_previously_verified_sha256": "a69e6dc15e81cc750552a062224c0e92e352ec7f29a691d92f148885d7cf8c2c",
+          "prior_N6a_run_id": 40279329013,
+          "prior_N6a_commit": "6fc3e338ce65bc1290519f2fa3ee4628fae77893",
+          "prior_N6a_failure_gate": "original_domain_order",
+          "prior_actual_audited_states": 0,
+          "worker_and_independent_reader_bytes_unchanged": true,
+          "original_float64_gate_limit": 1e-07,
+          "original_row_worker_wall_seconds": 180,
+          "original_row_worker_address_space_bytes": 2147483648,
+          "original_scientific_output_cap_bytes": 33554432,
+          "new_original_counterexample_regression_control": true
+        }
+        N6B_SOURCE_0
+        cp "$HOST_ROOT/N6B_FIXED_DOMAIN_ORDER_EVIDENCE.json" "$CASE_DIR/source/N6B_FIXED_DOMAIN_ORDER_EVIDENCE.json"
+        printf '976fd849b0c8f579c886ac225218e5d634d223ca7b098f2224188fc99c4204f3  %s\n' "$HOST_ROOT/N6B_FIXED_DOMAIN_ORDER_EVIDENCE.json" | sha256sum --check --strict
+        cat > "$HOST_ROOT/test_n6_contract.py" <<'N6B_SOURCE_1'
+        """Small correctness/privacy contracts; never load the large numerical problem."""
+        from array import array
+        from fractions import Fraction
+        import hashlib
+        import io
+        import json
+        import os
+        from pathlib import Path
+        import struct
+        import tempfile
+        import unittest
+        from unittest.mock import patch
+        import audit_n6_row as producer
+        import readback_n6_row as reader
+        from n6_evidence_io import AuditGateError, ND, ORIGINAL_FIXED_ORDER, read_npy, validate_original_domain
+        from export_n6_engineering import export
+
+
+        def npy(descr, shape, payload, fortran=False):
+            h = repr({"descr": descr, "fortran_order": fortran, "shape": shape})
+            h = (h + " " * ((-len(h) - 11) % 64) + "\n").encode("latin1")
+            return b"\x93NUMPY\x01\x00" + struct.pack("<H", len(h)) + h + payload
+
+
+        class Contracts(unittest.TestCase):
+            def test_real_original_unsorted_fixed_order_counterexample(self):
+                proof = json.loads((Path(__file__).resolve().parent / "N6B_FIXED_DOMAIN_ORDER_EVIDENCE.json").read_text())
+                raw = bytes.fromhex(proof["actual_original_NPY_hex"])
+                self.assertEqual(len(raw), 176)
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), "c5253eefb07da8a1e680eb31d3c6bb5d1d181a44ed1161f50aa6370c84709205")
+                fixed, unused = read_npy(io.BytesIO(raw))
+                self.assertEqual(tuple(fixed), ORIGINAL_FIXED_ORDER)
+                self.assertNotEqual(list(fixed), sorted(fixed))
+                free = array("q", (i for i in range(ND) if i not in set(fixed)))
+                validate_original_domain(free, fixed)
+                with self.assertRaisesRegex(AuditGateError, "original_fixed_order_preserved"):
+                    validate_original_domain(free, sorted(fixed))
+                with self.assertRaisesRegex(AuditGateError, "original_fixed_unique_and_in_range"):
+                    validate_original_domain(free, [0, 1, 2, 13, 14, 14])
+                free[0], free[1] = free[1], free[0]
+                with self.assertRaisesRegex(AuditGateError, "original_free_exact_sorted_complement"):
+                    validate_original_domain(free, fixed)
+
+            def test_exact_cancellation_and_independent_replay(self):
+                a, u = [1.0, 1.0, 1.0], [1e16, 1.0, -1e16]
+                r = producer.dot_audit(a, u, 0.0, trace=True)
+                computed, exact = reader.independently_check_arithmetic(r, a, u, 0.0)
+                self.assertEqual((computed, exact), (0.0, Fraction(1)))
+                self.assertEqual(r["accumulation_rounding_error_exact"]["numerator"], "-1")
+                r["accumulation_rounding_error_exact"]["numerator"] = "0"
+                with self.assertRaises(AuditGateError):
+                    reader.independently_check_arithmetic(r, a, u, 0.0)
+
+            def test_product_and_subtraction_errors_are_exact_dyadics(self):
+                a, u, b = [1.1, -7.3, 2.2], [1.3, 0.1, 0.7], 0.8
+                r = producer.dot_audit(a, u, b, trace=True)
+                computed, exact = reader.independently_check_arithmetic(r, a, u, b)
+                reference = sum((Fraction.from_float(x) * Fraction.from_float(y) for x, y in zip(a, u)), Fraction()) - Fraction.from_float(b)
+                self.assertEqual(exact, reference)
+                self.assertNotEqual(r["product_rounding_error_exact"]["numerator"], "0")
+                self.assertEqual(r["sequential_float64_residual"]["float64"], computed)
+
+            def test_npy_dtype_shape_and_payload_binding(self):
+                blob = npy("<f8", (3,), struct.pack("<ddd", 1.0, -0.0, 2.5))
+                a, m = read_npy(io.BytesIO(blob))
+                self.assertEqual(a.tobytes(), struct.pack("<ddd", 1.0, -0.0, 2.5))
+                self.assertEqual(m["sha256"], hashlib.sha256(blob).hexdigest())
+                self.assertEqual(m["bytes"], len(blob))
+                value, unused = read_npy(io.BytesIO(npy("|S3", (), b"csc")))
+                self.assertEqual(value, b"csc")
+                for bad in (blob + b"x", npy("<f8", (3,), b""), npy("|O", (1,), b""), npy("<f8", (1,), b"\0" * 8, True)):
+                    with self.assertRaises(AuditGateError):
+                        read_npy(io.BytesIO(bad))
+
+            def test_original_submatrix_order_and_linear_reader_row_agree(self):
+                # Fixed DOF 1 removes one original row and column; literal expected CSC
+                # buffers independently specify the surviving original column order.
+                matrix = {"indptr": array("i", [0, 2, 3, 6, 8]),
+                          "indices": array("i", [0, 2, 1, 0, 1, 2, 2, 3]),
+                          "data": array("d", [4., 1., 9., 2., 7., 6., 3., 5.])}
+                expected = {"data": hashlib.sha256(array("d", [4., 1., 2., 6., 3., 5.]).tobytes()).hexdigest(),
+                            "indices": hashlib.sha256(array("i", [0, 1, 0, 1, 1, 2]).tobytes()).hexdigest(),
+                            "indptr": hashlib.sha256(array("i", [0, 2, 4, 6]).tobytes()).hexdigest()}
+                with patch.object(producer, "ND", 4), patch.object(producer, "ROW", 2), patch.object(producer, "KFF_COMPONENTS", expected), patch.object(producer, "ORIGINAL_KFF_NNZ", 6):
+                    entries, hashes = producer.frozen_Kff_hashes_and_row(matrix, [0, 2, 3], [1])
+                    self.assertEqual(hashes, expected)
+                    self.assertEqual([(x['original_column_DOF'],x['original_CSC_data_position'],x['coefficient']['float64']) for x in entries], [(0,1,1.),(2,5,6.),(3,6,3.)])
+                    matrix['data'][5] = 6.01
+                    with self.assertRaisesRegex(AuditGateError, "actual_original_Kff_buffer_order_exact"):
+                        producer.frozen_Kff_hashes_and_row(matrix, [0, 2, 3], [1])
+
+            def test_export_omits_unlisted_runtime_and_rejects_private_or_unknown_fields(self):
+                with tempfile.TemporaryDirectory() as tmp:
+                    root, output = Path(tmp) / "case", Path(tmp) / "export"
+                    root.mkdir()
+                    (root / "unlisted-runtime.json").write_text(json.dumps({"private": "/workspace/unused", "author": "hidden@example.test"}))
+                    record = {"schema": "razr-N6-original-row-capacity-audit-v1", "completed": False, "failure_type": "AuditGateError"}
+                    (root / "row-N6").mkdir()
+                    (root / "row-N6/N6_ROW_AUDIT.json").write_text(json.dumps(record))
+                    export(root, output)
+                    self.assertFalse((output / "unlisted-runtime.json").exists())
+                    manifest = json.loads((output / "EXPORT_MANIFEST.json").read_text())
+                    self.assertNotIn("/workspace/", json.dumps(manifest))
+                    self.assertNotIn("@", json.dumps(manifest))
+                    record["failure_gate"] = "private@example.test"
+                    (root / "row-N6/N6_ROW_AUDIT.json").write_text(json.dumps(record))
+                    with self.assertRaisesRegex(ValueError, "private runtime string"):
+                        export(root, Path(tmp) / "private-rejected")
+                    record.pop("failure_gate")
+                    record["unexpected_api_author"] = "name"
+                    (root / "row-N6/N6_ROW_AUDIT.json").write_text(json.dumps(record))
+                    with self.assertRaisesRegex(ValueError, "unexpected diagnostic schema"):
+                        export(root, Path(tmp) / "schema-rejected")
+
+
+        if __name__ == "__main__":
+            suite = unittest.defaultTestLoader.loadTestsFromTestCase(Contracts)
+            result = unittest.TextTestRunner(verbosity=2).run(suite)
+            if os.environ.get("CASE_DIR"):
+                receipt = {"schema": "razr-N6-small-contract-results-v1", "tests_run": result.testsRun,
+                           "failure_count": len(result.failures), "error_count": len(result.errors),
+                           "passed": result.wasSuccessful(), "historical_S4_test_count_modified": False,
+                           "real_original_unsorted_fixed_member_counterexample_included": True,
+                           "test_source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+                (Path(os.environ["CASE_DIR"]) / "N6-small-contracts.json").write_text(json.dumps(receipt, indent=2) + "\n")
+            raise SystemExit(0 if result.wasSuccessful() else 2)
+        N6B_SOURCE_1
+        cp "$HOST_ROOT/test_n6_contract.py" "$CASE_DIR/source/test_n6_contract.py"
+        printf 'f1c25c454c81806170b87231b08c7cc166ffe419e36c2b40e83ab49446c5d3ec  %s\n' "$HOST_ROOT/test_n6_contract.py" | sha256sum --check --strict
     - name: Prove INT and TERM cleanup through original supervisor and independent-session stdlib worker
       shell: bash
       run: |
@@ -2070,6 +2268,11 @@ jobs:
           .venv/bin/python -B -c 'import json,os,shutil,subprocess,sys; u=subprocess.check_output(["uv","--version"],text=True).strip(); r={"python_version":sys.version,"python_executable":sys.executable,"python_patch":list(sys.version_info[:3]),"uv_version":u,"uv_path":shutil.which("uv"),"uid":os.getuid(),"gid":os.getgid()}; print(json.dumps(r)); assert sys.version_info[:3]==(3,12,14) and u=="uv 0.10.10"'
         /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" "$CASE_DIR/environment-before-check" \
           .venv/bin/python -B tools/check_environment.py --output "$CASE_DIR/environment-before.json"
+    - name: Run six small contracts including original unsorted fixed-domain counterexample
+      shell: bash
+      run: |
+        set -euo pipefail
+        /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" "$CASE_DIR/N6-small-contracts-execution" .venv/bin/python -B "$HOST_ROOT/test_n6_contract.py"
     - name: Read frozen original Actions artifact under unchanged read-only transport cap
       shell: bash
       env:
@@ -2143,7 +2346,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
       with:
-        name: s4-panel-row-N6a-engineering-${{ github.run_id }}-${{ github.run_attempt }}
+        name: s4-panel-row-N6b-engineering-${{ github.run_id }}-${{ github.run_attempt }}
         path: ${{ runner.temp }}/razr-s4-panel-n6-dd7def6e/engineering-export
         if-no-files-found: error
         retention-days: 14

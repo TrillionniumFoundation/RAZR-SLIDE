@@ -1,0 +1,68 @@
+{
+  "schema": "razr-N6a-actual-hosted-outcome-v1",
+  "run_id": 40279329013,
+  "job_id": 121428887156,
+  "head_sha": "6fc3e338ce65bc1290519f2fa3ee4628fae77893",
+  "tree": "f3cfbb690ec85b65785ee2eac29cccd9decc0f54",
+  "outcome": "input-domain-parser-rejection-before-row-arithmetic",
+  "original_five_probe_qualification_passed": false,
+  "new_full_native_float64_SpMV_evaluations": 0,
+  "row_states_audited": 0,
+  "ULP_trials_executed": 0,
+  "input_transfer": {
+    "passed": true,
+    "route": "original-actions-artifact",
+    "artifact_id": 12630841294,
+    "metadata_HTTP_status": 200,
+    "elapsed_seconds": 7.249984020999989,
+    "original_ZIP_K_and_manifest_identity_passed": true
+  },
+  "worker": {
+    "reported_error_guard": "original_domain_order",
+    "elapsed_seconds": 0.452937801,
+    "max_rss_KiB": 75052,
+    "source_audit_record_sha256": "03bd5e1de1206d80b5003c70ec5e8582051d4cce279cb22cd93e0e34098d69aa",
+    "source_audit_record_bytes": 1826
+  },
+  "independent_reader": {
+    "completed": false,
+    "reported_error_guard": "producer_audit_complete",
+    "states_verified": 0
+  },
+  "supervisor": {
+    "elapsed_seconds": 1.013374605,
+    "exit_code": 2,
+    "resource_stop": false
+  },
+  "actual_counterexample": {
+    "original_fixed_NPY_sha256": "c5253eefb07da8a1e680eb31d3c6bb5d1d181a44ed1161f50aa6370c84709205",
+    "original_fixed_NPY_bytes": 176,
+    "original_fixed_DOF_order": [
+      0,
+      1,
+      2,
+      13,
+      14,
+      8
+    ],
+    "extra_non_original_assumption": "fixed DOFs required to be sorted",
+    "original_helper_sha256": "1f8334a1dda34a4101662ccdbd14c2db0bb77b8a3e080b5f5ec74d918955a2c6",
+    "original_helper_rule": "fixed D preserved; free=np.setdiff1d(np.arange(n),fixed)",
+    "input_bytes_modified": false
+  },
+  "artifact": {
+    "artifact_id": 12631987511,
+    "ZIP_bytes": 164513,
+    "ZIP_sha256": "cdb540d87f43f098044ea66158d04bc29051ecfe9cf6f2985df0700eb0d8138e",
+    "manifest_bytes": 113444,
+    "manifest_sha256": "7a1aab9f54b0544ee39821c5b264dcbf9725d73348d3b7f20649541bb24a5167",
+    "manifest_entries": 32,
+    "ZIP_members": 33,
+    "all_actual_members_SHA_bytes_CRC_verified": true,
+    "full_ZIP_local_copy_created": false,
+    "complete_ZIP_draft_archival_at_capture": "not_yet_completed"
+  },
+  "N6b_scope": "only reject the extra fixed sorting assumption; preserve original bytes, fixed order, uniqueness, bounds, exact free complement, worker, reader, capacity and original gate",
+  "original_N6_failure_preserved": true,
+  "H_frame_restore_status": "blocked pending actual original five-probe qualification"
+}

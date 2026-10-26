@@ -1,6 +1,6 @@
 {
   "schema": "razr-20261026-engineering-sprint-result-index-v1",
-  "recorded_utc": "2026-10-26T06:23:17.075636+00:00",
+  "recorded_utc": "2026-10-26T07:32:49.532494+00:00",
   "immutable_functional_source": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
   "immutable_parent_evidence": "133bad5c5dddbf14fe466a23080b6e2e72ea3cb6",
   "report": "EXECUTION_REPORT.md",
@@ -94,11 +94,116 @@
       ],
       "existing_two_slot_endcaps_support_q_0_12_limits": false,
       "complete_physical_allowed_domain": "unresolved",
-      "K2_finite_endpoints": "separate_execution_in_progress",
+      "K2_finite_endpoints": "four_complete_endpoints_passed",
       "evidence": {
         "path": "geometry/K1/K1_WITNESS_ACCEPTANCE.json",
         "sha256": "d2ebcbcbedd1fbf70677917381ea511987707aa6055a31147f1222334901bd8f",
         "bytes": 5134
+      },
+      "K2_actual": {
+        "run_id": 40277813145,
+        "head_sha": "c1fa9e7271e0ff7a7146c03b702994b3dae842d4",
+        "states": [
+          "stow_tabs_0",
+          "stow_tabs_3",
+          "predock",
+          "open_installed"
+        ],
+        "factory_plus_independent_STEP_pairs": 96446,
+        "journal_rows": 192892,
+        "positive_pairs": 0,
+        "evaluation_errors": 0,
+        "readback_mismatches": 0,
+        "K1_plus_K2_six_finite_states_pairs": 143570,
+        "OPEN_native_Common_call_counts_differ_but_all_values_agree": [
+          813,
+          817
+        ],
+        "evidence": "geometry/K2/K2_FOUR_ENDPOINT_ACCEPTANCE.json",
+        "full_continuous_domain_proved": false
+      },
+      "K3_actual": {
+        "name": "panel_key_travel_stops_v1",
+        "source_sha256": "59946f42f8bff88b0cdb8bcd2ad7f578e22e6f64e65832a6b6087426e282e5a5",
+        "contract_sha256": "0f3ec4af155a2e92650f49ada7042e6d1fc1f8ad94cb43f6716a77985ecc5b84",
+        "run_id": 40281153812,
+        "head_sha": "4497cfb9726d26d2b1452008ac23b6b0ec9b6223",
+        "dual_pilot_clear": true,
+        "native_independent_gates_each": 18,
+        "changed_panel_pairs_each_worker": 153,
+        "pilot_factory_plus_reader_pairs": 612,
+        "pilot_all_evaluated_geometric_gates_passed": true,
+        "native_evaluation_unresolved": 0,
+        "producer_reader_inconsistencies": 0,
+        "actual_added_only_panel_volume_mm3": 4.624559999999989,
+        "removed_panel_mm3": 0.0,
+        "nominal_endpoint_contact_area_each_mm2": 0.324,
+        "whole_KEY_overtravel_mm": [
+          0.001,
+          0.01
+        ],
+        "actual_overtravel_Common_approximately_mm3": [
+          0.000324,
+          0.00324
+        ],
+        "inward_control_Common_mm3": 0.0,
+        "full_matrix_replaced_by_pilot": false,
+        "full_continuous_or_physical_stop_domain_proved": false,
+        "strength_qualified": false,
+        "evidence": "geometry/K3/K3_TWO_PILOT_ACCEPTANCE.json"
+      },
+      "K3FULL_first_actual": {
+        "run_id": 40283562050,
+        "head_sha": "c356d0e3906e5fd8edac801566568700ca93a1b4",
+        "completed_jobs": 10,
+        "failure": "Python heredoc SyntaxError before any native worker",
+        "native_steps_executed": 0,
+        "geometry_or_capacity_rejection_claimed": false,
+        "failure_artifacts_uploaded": 10,
+        "all_failure_ZIP_bytes_independently_read_back_at_snapshot": true,
+        "all_ten_failure_ZIPs_original_bytes": 4718151
+      },
+      "K3FULL_followup_preregistered": {
+        "head_sha": "566197a97ee137ce4a58097656eb4fd6bc084b05",
+        "parent_preserved": "c356d0e3906e5fd8edac801566568700ca93a1b4",
+        "only_two_workflow_newline_expressions_changed": true,
+        "runtime_scientific_source_count_unchanged": 16,
+        "all_7_executable_Python_heredocs_AST_pass": true,
+        "states": 10,
+        "independent_LR_contact_states": 4,
+        "planned_fresh_factory_plus_reader_pairs": 237818,
+        "new_native_pair_execution_claimed_at_snapshot": true,
+        "planned_minutes_excluding_queue": [
+          60,
+          105
+        ],
+        "worker_wall_seconds": 1200,
+        "worker_RSS_MiB": 1536,
+        "max_parallel": 2,
+        "original_resource_limits_unchanged": true,
+        "run_id": 40285103942,
+        "status_at_snapshot": "in_progress_one_state_independently_verified_clear",
+        "actual_state_results_at_snapshot": {
+          "stow_tabs_3": {
+            "complete_and_independent_STEP_clear": true,
+            "bodies": 154,
+            "factory_pairs": 11781,
+            "independent_STEP_pairs": 11781,
+            "all_18_independent_gates_evaluated_and_passed": true,
+            "positive_pairs": 0,
+            "evaluation_errors": 0,
+            "reader_mismatches": 0,
+            "factory_seconds": 252.200734,
+            "reader_seconds": 193.50029
+          }
+        }
+      },
+      "ideal_telescope_domain_scope": {
+        "vertices": 28,
+        "equalities_and_exact_inequalities_only": true,
+        "native_joint_acceptance_thin_layer_each_mm": 1e-09,
+        "native_sum_acceptance_thin_layer_mm": 1e-08,
+        "complete_native_binary64_domain_covered_by_28_vertices": false
       }
     },
     "3_continuous_enclosure": {
@@ -140,6 +245,486 @@
         "path": "envelope-review/SAFE_ENVELOPE_RESULT_INDEX.json",
         "sha256": "92fae311036747ce46569c6c541c0852e57f5fd532029add5e3f6a1dbee54d8e",
         "bytes": 17046
+      },
+      "V4_actual_partial": {
+        "run_id": 40279094567,
+        "native_and_independent_record_steps_completed": true,
+        "export_failed": true,
+        "retained_original_ZIP_bytes": 2110,
+        "retained_original_ZIP_sha256": "1154717d6f1e54fd531ca8a8c9a92d9346913e46216ed651647fab027a013408",
+        "retained_members": [
+          "INDEPENDENT_CAPACITY_RECORD_CHECK.json",
+          "call-000001-fixed-input.brep"
+        ],
+        "original_record_reader_observed": {
+          "factory_law_probes": 5,
+          "calls": 262,
+          "BREP_hashes": 1632,
+          "whole_input_BREPs": 524,
+          "pairs_completed": 17,
+          "clear": 10,
+          "conservative_overlap": 7,
+          "full_pair_slots_pending": 11764
+        },
+        "full_producer_report_and_call_records_durably_recovered": false,
+        "specific_seven_pair_identities_claimed_from_partial_artifact": false,
+        "old_run_rewritten": false
+      },
+      "V4a_followup": {
+        "run_id": 40282814142,
+        "head_sha": "6e797fa6ba1e6492a09da28ae10c36b7bcb20c70",
+        "actual_native_and_record_reader_completed": true,
+        "export_step_failed": true,
+        "exported_original_call_JSONs": 262,
+        "exported_BREPs": 1632,
+        "actual_ZIP_bytes": 10794846,
+        "actual_ZIP_sha256": "c8b87fbdea5d5095c4ea9de1724cc489721d3e8db6350e587f28870dfee40416",
+        "all_exported_members_SHA_and_CRC_verified": true,
+        "full_producer_report_retained": false,
+        "missing_report_SHA256": "42797673cb782a76845c5ab478ee01891e38cd60bac71d8e7f5fd46536499ac4",
+        "missing_report_bytes": 932252,
+        "specific_runtime_locator_not_recovered": true,
+        "selected_pairs": 17,
+        "clear": 10,
+        "unresolved_enclosure_overlap": 7,
+        "not_evaluated_pairs": 11764,
+        "grouped_pairs": [
+          {
+            "pair": [
+              "B_SHELL",
+              "L_TELESCOPE_2"
+            ],
+            "disposition": "unresolved_enclosure_overlap",
+            "call_count": 36,
+            "whole_call_seconds_sum": 323.367495738001,
+            "native_specification_seconds_sum": 318.9663695969998,
+            "maximum_call_seconds": 11.690407796000045,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "unresolved_enclosure_overlap": 36
+            },
+            "actual_BREP_export_count": 216,
+            "first_full_q_raw_summary": {
+              "disposition": "unresolved_enclosure_overlap",
+              "method": "continuous_relative_affine_box_translation_enclosure",
+              "total_region_count": 1096,
+              "regions_examined": 285,
+              "positive_enclosure_common_mm3": 1.2754866173069208e-05,
+              "examined_region_common_sum_mm3": 1.2754866173069208e-05,
+              "collision_proved": false,
+              "opposite_reference_frame_result": {
+                "disposition": "unresolved_enclosure_overlap",
+                "method": "continuous_relative_affine_box_translation_enclosure",
+                "total_region_count": 84,
+                "regions_examined": 3,
+                "positive_enclosure_common_mm3": 0.0002557937322817738,
+                "examined_region_common_sum_mm3": 0.0002557937322817738,
+                "collision_proved": false
+              }
+            }
+          },
+          {
+            "pair": [
+              "B_SHELL",
+              "L_TELESCOPE_3"
+            ],
+            "disposition": "unresolved_enclosure_overlap",
+            "call_count": 36,
+            "whole_call_seconds_sum": 78.0902403169996,
+            "native_specification_seconds_sum": 74.262863746,
+            "maximum_call_seconds": 2.7963628210000024,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "unresolved_enclosure_overlap": 36
+            },
+            "actual_BREP_export_count": 216,
+            "first_full_q_raw_summary": {
+              "disposition": "unresolved_enclosure_overlap",
+              "method": "continuous_relative_affine_box_translation_enclosure",
+              "total_region_count": 104,
+              "regions_examined": 9,
+              "positive_enclosure_common_mm3": 2.55097323461387e-06,
+              "examined_region_common_sum_mm3": 2.55097323461387e-06,
+              "collision_proved": false,
+              "opposite_reference_frame_result": {
+                "disposition": "unresolved_enclosure_overlap",
+                "method": "continuous_relative_affine_box_translation_enclosure",
+                "total_region_count": 7,
+                "regions_examined": 3,
+                "positive_enclosure_common_mm3": 29.89449134421037,
+                "examined_region_common_sum_mm3": 29.89449134421037,
+                "collision_proved": false
+              }
+            }
+          },
+          {
+            "pair": [
+              "B_SHELL",
+              "L_TELESCOPE_3_CAM_LOWER_FLANGE"
+            ],
+            "disposition": "unresolved_enclosure_overlap",
+            "call_count": 36,
+            "whole_call_seconds_sum": 64.80472657100063,
+            "native_specification_seconds_sum": 61.36035409400006,
+            "maximum_call_seconds": 2.4141502790000686,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "unresolved_enclosure_overlap": 36
+            },
+            "actual_BREP_export_count": 216,
+            "first_full_q_raw_summary": {
+              "disposition": "unresolved_enclosure_overlap",
+              "method": "continuous_relative_affine_box_translation_enclosure",
+              "total_region_count": 104,
+              "regions_examined": 22,
+              "positive_enclosure_common_mm3": 2.8717277777145128e-06,
+              "examined_region_common_sum_mm3": 2.8717277777145128e-06,
+              "collision_proved": false,
+              "opposite_reference_frame_result": {
+                "disposition": "unresolved_enclosure_overlap",
+                "method": "continuous_relative_affine_box_translation_enclosure",
+                "total_region_count": 6,
+                "regions_examined": 3,
+                "positive_enclosure_common_mm3": 34.02978880618735,
+                "examined_region_common_sum_mm3": 34.02978880618735,
+                "collision_proved": false
+              }
+            }
+          },
+          {
+            "pair": [
+              "B_SHELL",
+              "L_TELESCOPE_3_CAM_UPPER_FLANGE"
+            ],
+            "disposition": "unresolved_enclosure_overlap",
+            "call_count": 36,
+            "whole_call_seconds_sum": 70.84278790600024,
+            "native_specification_seconds_sum": 67.0478701069992,
+            "maximum_call_seconds": 2.4853469419999783,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "unresolved_enclosure_overlap": 36
+            },
+            "actual_BREP_export_count": 216,
+            "first_full_q_raw_summary": {
+              "disposition": "unresolved_enclosure_overlap",
+              "method": "continuous_relative_affine_box_translation_enclosure",
+              "total_region_count": 104,
+              "regions_examined": 52,
+              "positive_enclosure_common_mm3": 1.279381194431907e-07,
+              "examined_region_common_sum_mm3": 1.279381194431907e-07,
+              "collision_proved": false,
+              "opposite_reference_frame_result": {
+                "disposition": "unresolved_enclosure_overlap",
+                "method": "continuous_relative_affine_box_translation_enclosure",
+                "total_region_count": 6,
+                "regions_examined": 3,
+                "positive_enclosure_common_mm3": 34.029788806236674,
+                "examined_region_common_sum_mm3": 34.029788806236674,
+                "collision_proved": false
+              }
+            }
+          },
+          {
+            "pair": [
+              "B_SHELL",
+              "R_TELESCOPE_2"
+            ],
+            "disposition": "unresolved_enclosure_overlap",
+            "call_count": 36,
+            "whole_call_seconds_sum": 320.3084414900002,
+            "native_specification_seconds_sum": 316.18928921300085,
+            "maximum_call_seconds": 11.583453065999947,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "unresolved_enclosure_overlap": 36
+            },
+            "actual_BREP_export_count": 216,
+            "first_full_q_raw_summary": {
+              "disposition": "unresolved_enclosure_overlap",
+              "method": "continuous_relative_affine_box_translation_enclosure",
+              "total_region_count": 1096,
+              "regions_examined": 289,
+              "positive_enclosure_common_mm3": 1.2754866173069227e-05,
+              "examined_region_common_sum_mm3": 1.2754866173069227e-05,
+              "collision_proved": false,
+              "opposite_reference_frame_result": {
+                "disposition": "unresolved_enclosure_overlap",
+                "method": "continuous_relative_affine_box_translation_enclosure",
+                "total_region_count": 84,
+                "regions_examined": 3,
+                "positive_enclosure_common_mm3": 0.0002557937362036097,
+                "examined_region_common_sum_mm3": 0.0002557937362036097,
+                "collision_proved": false
+              }
+            }
+          },
+          {
+            "pair": [
+              "B_SHELL",
+              "R_TELESCOPE_3_CAM_LOWER_FLANGE"
+            ],
+            "disposition": "unresolved_enclosure_overlap",
+            "call_count": 36,
+            "whole_call_seconds_sum": 70.53290330699929,
+            "native_specification_seconds_sum": 66.8588763540015,
+            "maximum_call_seconds": 2.48537962599994,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "unresolved_enclosure_overlap": 36
+            },
+            "actual_BREP_export_count": 216,
+            "first_full_q_raw_summary": {
+              "disposition": "unresolved_enclosure_overlap",
+              "method": "continuous_relative_affine_box_translation_enclosure",
+              "total_region_count": 104,
+              "regions_examined": 49,
+              "positive_enclosure_common_mm3": 2.8717277777145128e-06,
+              "examined_region_common_sum_mm3": 2.8717277777145128e-06,
+              "collision_proved": false,
+              "opposite_reference_frame_result": {
+                "disposition": "unresolved_enclosure_overlap",
+                "method": "continuous_relative_affine_box_translation_enclosure",
+                "total_region_count": 6,
+                "regions_examined": 3,
+                "positive_enclosure_common_mm3": 34.029788806224715,
+                "examined_region_common_sum_mm3": 34.029788806224715,
+                "collision_proved": false
+              }
+            }
+          },
+          {
+            "pair": [
+              "B_SHELL",
+              "R_TELESCOPE_3_CAM_UPPER_FLANGE"
+            ],
+            "disposition": "unresolved_enclosure_overlap",
+            "call_count": 36,
+            "whole_call_seconds_sum": 71.12035286999935,
+            "native_specification_seconds_sum": 67.36935363200291,
+            "maximum_call_seconds": 2.603599676000158,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "unresolved_enclosure_overlap": 36
+            },
+            "actual_BREP_export_count": 216,
+            "first_full_q_raw_summary": {
+              "disposition": "unresolved_enclosure_overlap",
+              "method": "continuous_relative_affine_box_translation_enclosure",
+              "total_region_count": 104,
+              "regions_examined": 64,
+              "positive_enclosure_common_mm3": 8.329147523481433e-06,
+              "examined_region_common_sum_mm3": 8.329147523481433e-06,
+              "collision_proved": false,
+              "opposite_reference_frame_result": {
+                "disposition": "unresolved_enclosure_overlap",
+                "method": "continuous_relative_affine_box_translation_enclosure",
+                "total_region_count": 6,
+                "regions_examined": 3,
+                "positive_enclosure_common_mm3": 34.02978880619575,
+                "examined_region_common_sum_mm3": 34.02978880619575,
+                "collision_proved": false
+              }
+            }
+          },
+          {
+            "pair": [
+              "L_KEY",
+              "L_STOP_0"
+            ],
+            "disposition": "clear",
+            "call_count": 1,
+            "whole_call_seconds_sum": 1.7150650869998572,
+            "native_specification_seconds_sum": 1.6404197780002505,
+            "maximum_call_seconds": 1.7150650869998572,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "clear": 1
+            },
+            "actual_BREP_export_count": 16,
+            "first_full_q_raw_summary": {}
+          },
+          {
+            "pair": [
+              "L_SPRING_0_OD_TOL_ENVELOPE",
+              "L_STOP_0"
+            ],
+            "disposition": "clear",
+            "call_count": 1,
+            "whole_call_seconds_sum": 0.2730940249998639,
+            "native_specification_seconds_sum": 0.2534895809999398,
+            "maximum_call_seconds": 0.2730940249998639,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "clear": 1
+            },
+            "actual_BREP_export_count": 13,
+            "first_full_q_raw_summary": {}
+          },
+          {
+            "pair": [
+              "L_KEY",
+              "L_STOP_1"
+            ],
+            "disposition": "clear",
+            "call_count": 1,
+            "whole_call_seconds_sum": 1.743195994999951,
+            "native_specification_seconds_sum": 1.6640900219999821,
+            "maximum_call_seconds": 1.743195994999951,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "clear": 1
+            },
+            "actual_BREP_export_count": 16,
+            "first_full_q_raw_summary": {}
+          },
+          {
+            "pair": [
+              "L_SPRING_1_OD_TOL_ENVELOPE",
+              "L_STOP_1"
+            ],
+            "disposition": "clear",
+            "call_count": 1,
+            "whole_call_seconds_sum": 0.319407265999871,
+            "native_specification_seconds_sum": 0.2999227109999083,
+            "maximum_call_seconds": 0.319407265999871,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "clear": 1
+            },
+            "actual_BREP_export_count": 13,
+            "first_full_q_raw_summary": {}
+          },
+          {
+            "pair": [
+              "R_KEY",
+              "R_STOP_0"
+            ],
+            "disposition": "clear",
+            "call_count": 1,
+            "whole_call_seconds_sum": 1.7282433110003694,
+            "native_specification_seconds_sum": 1.6462069520002842,
+            "maximum_call_seconds": 1.7282433110003694,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "clear": 1
+            },
+            "actual_BREP_export_count": 16,
+            "first_full_q_raw_summary": {}
+          },
+          {
+            "pair": [
+              "R_SPRING_0_OD_TOL_ENVELOPE",
+              "R_STOP_0"
+            ],
+            "disposition": "clear",
+            "call_count": 1,
+            "whole_call_seconds_sum": 0.270335724999768,
+            "native_specification_seconds_sum": 0.2508056920000854,
+            "maximum_call_seconds": 0.270335724999768,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "clear": 1
+            },
+            "actual_BREP_export_count": 13,
+            "first_full_q_raw_summary": {}
+          },
+          {
+            "pair": [
+              "R_KEY",
+              "R_STOP_1"
+            ],
+            "disposition": "clear",
+            "call_count": 1,
+            "whole_call_seconds_sum": 1.721622989000025,
+            "native_specification_seconds_sum": 1.6480730230000518,
+            "maximum_call_seconds": 1.721622989000025,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "clear": 1
+            },
+            "actual_BREP_export_count": 16,
+            "first_full_q_raw_summary": {}
+          },
+          {
+            "pair": [
+              "R_SPRING_1_OD_TOL_ENVELOPE",
+              "R_STOP_1"
+            ],
+            "disposition": "clear",
+            "call_count": 1,
+            "whole_call_seconds_sum": 0.26992730699976164,
+            "native_specification_seconds_sum": 0.25018532800004323,
+            "maximum_call_seconds": 0.26992730699976164,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "clear": 1
+            },
+            "actual_BREP_export_count": 13,
+            "first_full_q_raw_summary": {}
+          },
+          {
+            "pair": [
+              "A_BACK_PANEL",
+              "L_KEY"
+            ],
+            "disposition": "clear",
+            "call_count": 1,
+            "whole_call_seconds_sum": 13.280018363000181,
+            "native_specification_seconds_sum": 12.944475799999964,
+            "maximum_call_seconds": 13.280018363000181,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "clear": 1
+            },
+            "actual_BREP_export_count": 2,
+            "first_full_q_raw_summary": {
+              "disposition": "clear",
+              "method": "continuous_relative_affine_box_translation_enclosure",
+              "region_count": 280,
+              "maximum_region_common_mm3": 0.0,
+              "common_upper_bound_mm3": 0.0,
+              "common_upper_bound_is_sum_not_union_volume": true
+            }
+          },
+          {
+            "pair": [
+              "A_BACK_PANEL",
+              "R_KEY"
+            ],
+            "disposition": "clear",
+            "call_count": 1,
+            "whole_call_seconds_sum": 13.25281130600024,
+            "native_specification_seconds_sum": 12.91729352099992,
+            "maximum_call_seconds": 13.25281130600024,
+            "all_call_completion_and_postguards": true,
+            "call_disposition_counts": {
+              "clear": 1
+            },
+            "actual_BREP_export_count": 2,
+            "first_full_q_raw_summary": {
+              "disposition": "clear",
+              "method": "continuous_relative_affine_box_translation_enclosure",
+              "region_count": 280,
+              "maximum_region_common_mm3": 0.0,
+              "common_upper_bound_mm3": 0.0,
+              "common_upper_bound_is_sum_not_union_volume": true
+            }
+          }
+        ],
+        "telescope_calls_total_seconds": 999.0669481990003,
+        "all_calls_total_seconds": 1033.6406695730002,
+        "controller_seconds": 1166.881251577,
+        "original_limits_and_postguards_unchanged": true,
+        "evidence": "envelope-review/capacity-V4a-actual/V4A_CAPACITY_AND_EXPORT_FINDINGS.json"
+      },
+      "L5_next_strategy": {
+        "scope": "original seven complete telescope-shell inputs first, then seven current K1 complete q-domain pairs",
+        "planned_primary_layer_Commons": 24,
+        "same_original_native_1800_second_guard": true,
+        "formal_interval_CAD_proof_claimed": false,
+        "native_execution_claimed_at_snapshot": false,
+        "independent_domain_plan": "envelope-review/independent-domain/INDEPENDENT_DOMAIN_COVERAGE_PLAN.md"
       }
     },
     "parallel_original_numerical_qualification": {
@@ -169,7 +754,7 @@
       "N6_first_HTTP_status_and_root_cause": "not_retained_and_not_established",
       "N6_first_new_row_states": 0,
       "N6a_run_id": 40279329013,
-      "N6a_scope": "read-only exact row rounding and capacity audit using unchanged original archived bytes",
+      "N6a_scope": "same exact archived bytes transferred; extra sorted-fixed parser assumption rejected original [0,1,2,13,14,8], zero row trials",
       "new_full_solver_qualification_claimed": false,
       "H_frame_restore": "blocked_by_original_five_probe_gate",
       "evidence_paths": [
@@ -177,7 +762,70 @@
         "numerics/n5/N5A_HOSTED_OUTCOME.json",
         "numerics/n5/N5A_32_STEP_FLOAT64_ULP_ANALYSIS.json",
         "numerics/n6/N6_FIRST_ATTEMPT_OUTCOME.json"
-      ]
+      ],
+      "N6b_actual": {
+        "run_id": 40280769011,
+        "head_sha": "c01f38f0968dfd7f9f5b88a2790b28b087331837",
+        "completed_and_independent_readback": true,
+        "states_bit_exact": 38,
+        "updates": 32,
+        "adjacent_ULP_trials": 162,
+        "exact_worst_row_support": 81,
+        "row_only_improvements": 13,
+        "row_only_pass_with_exact_target_nonincrease": 7,
+        "original_probe0_overgate_rows": 20,
+        "candidate_column_union_affected_rows": 264,
+        "original_overgate_rows_touched": 2,
+        "new_full_fields": 0,
+        "new_full_native_gate_evaluations": 0,
+        "original_five_qualification_claimed": false,
+        "worker_seconds": 15.902328554999968,
+        "reader_seconds": 11.352390054,
+        "evidence": "numerics/n6/N6B_HOSTED_OUTCOME.json"
+      },
+      "N7_next_strategy": {
+        "run_id": 40285015238,
+        "head_sha": "7de04d5570ce3fdce2e220a8e0db9eaab2d37812",
+        "status_at_snapshot": "completed_actual_4_of_5_finite_current_target_exhaustion",
+        "maximum_full_candidates": 32,
+        "all_five_native_float64_gates_per_full_candidate": true,
+        "all_rejected_full_fields_retained": true,
+        "all_affected_exact_equation_infinity_norm_nonincrease_required": true,
+        "whole_field_overgate_row_count_must_strictly_decrease": true,
+        "original_180_second_AS_and_output_guards_unchanged": true,
+        "new_native_result_claimed": true
+      },
+      "N7_actual": {
+        "run_id": 40285015238,
+        "head_sha": "7de04d5570ce3fdce2e220a8e0db9eaab2d37812",
+        "final_residuals": [
+          1.386574690771972e-07,
+          1.990477778047551e-09,
+          7.9778400558745e-09,
+          7.799897850960903e-09,
+          8.043638351779749e-09
+        ],
+        "original_five_qualified": false,
+        "worker_completed": true,
+        "independent_reader_completed": true,
+        "complete_candidates": 5,
+        "virtual_screens": 192,
+        "accepted_trial_indices": [
+          2
+        ],
+        "probe0_overgate_rows_before": 20,
+        "probe0_overgate_rows_after": 19,
+        "worker_seconds": 9.714063550999981,
+        "reader_seconds": 8.93004459399998,
+        "independent_full_native_gates_recomputed": 35,
+        "exact_affected_equations_directly_recomputed": 543,
+        "arrays_hashed": 70,
+        "termination": "finite_current_target_candidates_exhausted",
+        "time_or_capacity_stop": false,
+        "field_is_final_sequential_state": true,
+        "evidence": "numerics/integration-evidence/n7/N7_HOSTED_OUTCOME.json"
+      },
+      "next_strategy_under_analysis": "independently recomputed unaffected exact-row anchor may certify true global residual nonincrease; no change to N7 rules or retrospective pass"
     },
     "parallel_actual_specimen_sources": {
       "new_physical_observations": 0,
@@ -224,8 +872,8 @@
   },
   "scientific_persistence": {
     "index": "archive/PERSISTENCE_INDEX.json",
-    "completed_distinct_scientific_ZIPs": 11,
-    "compressed_original_bytes": 1132950067,
+    "completed_distinct_scientific_ZIPs": 22,
+    "compressed_original_bytes": 1513361228,
     "raw_runtime_recovered_or_durable": false
   },
   "release_flags": {
@@ -237,5 +885,6 @@
     "manufacturing_go": false
   },
   "protected_refs_unchanged": true,
-  "historical_1654_tests_not_reassigned_to_new_sources": true
+  "historical_1654_tests_not_reassigned_to_new_sources": true,
+  "previous_evidence_checkpoint": "8d059b57081cfd01cd3bfa08f679cb524e9c4405"
 }
