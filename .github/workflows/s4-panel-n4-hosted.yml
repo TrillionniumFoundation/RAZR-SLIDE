@@ -1355,6 +1355,7 @@ jobs:
         r=json.loads((folder/'report.json').read_text());s=json.loads((root/'panel-assembly-supervisor.json').read_text())
         proof={'actual_K_sha256':actual,'required_original_K_sha256':expected,'equal':actual==expected,'body':r['body'],'assembly_report_K_sha256':r['K_sha256'],'original_supervisor_exit_code':s['exit_code'],'original_supervisor_stop_reason':s['resource_stop_reason'],'probe_authorized_only_if_exact':True}
         (root/'original-K-byte-identity.json').write_text(json.dumps(proof,indent=2)+'\n')
+        print(json.dumps(proof,sort_keys=True),flush=True)
         assert actual==expected and r['K_sha256']==expected and r['body']=='panel' and r['level']==2
         assert s['exit_code']==0 and s['resource_stop_reason'] is None and s['supervisor_source_unchanged'] is True
         PY
@@ -1576,7 +1577,10 @@ jobs:
 
 
         def sha(path: Path) -> str:
-         with path.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
+         digest=hashlib.sha256()
+         with path.open('rb') as f:
+          for block in iter(lambda:f.read(1024*1024),b''):digest.update(block)
+         return digest.hexdigest()
 
 
         def valid_source(root: Path, name: str) -> Path:
@@ -1681,6 +1685,8 @@ jobs:
          (output/'EXPORT_MANIFEST.json').write_text(json.dumps(manifest,indent=2,allow_nan=False)+'\n')
          summary=output.parent/'engineering-summary';summary.mkdir(exist_ok=False)
          for name in ['EXPORT_MANIFEST.json','EXECUTION_CHECKS.engineering.json','N4-independent-field-readback.engineering.json',
+          'original-K-byte-identity.engineering.json','panel-assembly-supervisor.engineering.json',
+          'volume/panel/level-2/report.engineering.json','volume/panel/progress.engineering.json',
           'probe-N4-supervisor.engineering.json','probe-N4/report.engineering.json','probe-N4/progress.engineering.json']:
           p=output/name
           if p.is_file():

@@ -45,7 +45,10 @@ HISTORY_RE = re.compile(r'probe-N4/probe-[0-4]-history/outer-0[1-8]-(?:gmres-ret
 
 
 def sha(path: Path) -> str:
- with path.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
+ digest=hashlib.sha256()
+ with path.open('rb') as f:
+  for block in iter(lambda:f.read(1024*1024),b''):digest.update(block)
+ return digest.hexdigest()
 
 
 def valid_source(root: Path, name: str) -> Path:
@@ -150,6 +153,8 @@ def main(root: Path, output: Path):
  (output/'EXPORT_MANIFEST.json').write_text(json.dumps(manifest,indent=2,allow_nan=False)+'\n')
  summary=output.parent/'engineering-summary';summary.mkdir(exist_ok=False)
  for name in ['EXPORT_MANIFEST.json','EXECUTION_CHECKS.engineering.json','N4-independent-field-readback.engineering.json',
+  'original-K-byte-identity.engineering.json','panel-assembly-supervisor.engineering.json',
+  'volume/panel/level-2/report.engineering.json','volume/panel/progress.engineering.json',
   'probe-N4-supervisor.engineering.json','probe-N4/report.engineering.json','probe-N4/progress.engineering.json']:
   p=output/name
   if p.is_file():
