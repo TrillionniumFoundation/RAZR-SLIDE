@@ -16,18 +16,18 @@ SPEC.loader.exec_module(MOD)
 
 
 class IntegrityControls(unittest.TestCase):
-    def make_f1(self, directory, runtime_claim=False, extra_runtime_field=False):
+    def make_f1(self, directory, runtime_claim=False, extra_runtime_field=False, family="F1"):
         content = b"original STEP engineering material\n"
         identity = {"bytes": len(content), "sha256": hashlib.sha256(content).hexdigest()}
         omitted = {"bytes": 2, "category": "runtime_receipt", "sha256": "0" * 64}
         if extra_runtime_field:
             omitted["path"] = "unlisted-runtime-locator"
-        scope = {"schema": "razr-F1-engineering-export-scope-v1", "functional_source_commit": MOD.S4,
+        scope = {"schema": "razr-" + family + "-engineering-export-scope-v1", "functional_source_commit": MOD.S4,
                  "raw_producer_reader_reports_modified": False, "all_copied_original_bytes_verified": True,
                  "raw_runtime_durable_preservation_claimed": runtime_claim, "raw_runtime_location": "ephemeral runner only",
                  "copied_originals": {"material.step": identity}, "omitted_runtime_file_hashes": [omitted]}
         scope_bytes = json.dumps(scope).encode()
-        manifest = json.dumps({"schema": "razr-F1-engineering-export-manifest-v1", "members": {
+        manifest = json.dumps({"schema": "razr-" + family + "-engineering-export-manifest-v1", "members": {
             "material.step": identity, "EXPORT_SCOPE.json": {"bytes": len(scope_bytes),
             "sha256": hashlib.sha256(scope_bytes).hexdigest()}}}).encode()
         path = Path(directory) / "F1.zip"
@@ -37,7 +37,19 @@ class IntegrityControls(unittest.TestCase):
             z.writestr("ENGINEERING_MANIFEST.json", manifest)
         return path, {"zip_bytes": path.stat().st_size, "zip_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
                       "manifest_name": "ENGINEERING_MANIFEST.json", "manifest_sha256": hashlib.sha256(manifest).hexdigest(),
-                      "manifest_layout": "F1_members", "manifest_entries": 2}
+                      "manifest_layout": family + "_members", "manifest_entries": 2}
+
+    def test_k1_exact_original_scientific_schema(self):
+        with tempfile.TemporaryDirectory() as d:
+            p, b = self.make_f1(d, family="K1")
+            self.assertTrue(MOD.verify_zip(p, b)["all_scientific_members_and_CRC_verified"])
+
+    def test_k1_not_relabelled_as_f1(self):
+        with tempfile.TemporaryDirectory() as d:
+            p, b = self.make_f1(d, family="K1")
+            b["manifest_layout"] = "F1_members"
+            with self.assertRaises(MOD.ArchiveInvariantError):
+                MOD.verify_zip(p, b)
 
     def test_f1_original_science_and_exclusion_contract(self):
         with tempfile.TemporaryDirectory() as d:
