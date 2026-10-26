@@ -20,6 +20,7 @@ SUPERVISOR_KEYS = '''schema exit_code resource_stop_reason seconds peak_worker_R
 SAMPLE_KEYS = '''monotonic task_filesystem_available_bytes task_payload_bytes cgroup_current_bytes cgroup_anon_bytes cgroup_shmem_bytes cgroup_file_bytes nonreclaimable_budget_bytes VmRSS_bytes VmHWM_bytes VmSize_bytes'''.split()
 SOURCE_PATHS = [
  'source/probe_panel_gmres_refinement.py','source/N4_STRATEGY.json',
+ 'source/import_frozen_panel_k.py','source/N4B_INPUT_STRATEGY.json',
  'source/n4_independent_reader.py','source/export_n4_engineering.py',
  'source/host-cap.py','source/service-launch.py','source/python-downloads.json',
  *['source/S4/'+p for p in [
@@ -34,6 +35,7 @@ SOURCE_PATHS = [
   'run_key_endpoint_trials.py','tests/test_key_endpoint_extension.py','tests/test_key_endpoint_resume.py']]
 ]
 PLAIN_NUMERIC = [
+ 'N4B-input-recovery.json',
  'original-inputs/panel/mesh.npz','original-inputs/panel/loads.npz',
  'volume/panel/level-2/K.npz','volume/panel/level-2/mesh.npz','volume/panel/level-2/loads.npz','volume/panel/mapping.npz',
  'probe-N4/C.npz','probe-N4/points.json','probe-N4/fixed-original-DOFs.npy','probe-N4/free-original-DOFs.npy',
@@ -104,7 +106,7 @@ def main(root: Path, output: Path):
   if (root/name).is_file():project(name,REPORT_KEYS)
  for name in ('volume/panel/level-2/report.json','volume/panel/progress.json'):
   if (root/name).is_file():project(name,ASSEMBLY_KEYS)
- for name in ('panel-assembly-supervisor.json','probe-N4-supervisor.json','readback-N4-supervisor.json'):
+ for name in ('panel-assembly-supervisor.json','input-recovery-supervisor.json','probe-N4-supervisor.json','readback-N4-supervisor.json'):
   if (root/name).is_file():
    def numeric_samples(raw,value):
     value['samples']=[{k:r[k] for k in SAMPLE_KEYS if k in r} for r in raw.get('samples',[])]
@@ -153,6 +155,7 @@ def main(root: Path, output: Path):
  (output/'EXPORT_MANIFEST.json').write_text(json.dumps(manifest,indent=2,allow_nan=False)+'\n')
  summary=output.parent/'engineering-summary';summary.mkdir(exist_ok=False)
  for name in ['EXPORT_MANIFEST.json','EXECUTION_CHECKS.engineering.json','N4-independent-field-readback.engineering.json',
+  'N4B-input-recovery.json','input-recovery-supervisor.engineering.json',
   'original-K-byte-identity.engineering.json','panel-assembly-supervisor.engineering.json',
   'volume/panel/level-2/report.engineering.json','volume/panel/progress.engineering.json',
   'probe-N4-supervisor.engineering.json','probe-N4/report.engineering.json','probe-N4/progress.engineering.json']:

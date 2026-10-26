@@ -4,7 +4,7 @@ from scipy.sparse import load_npz
 EXPECTED_PANEL_C_SHA256 = '9f75b00a961ee850857c82942332ebfdd5cb13aa9da55c5266d93337deca436f'
 EXPECTED_RHS_SHA256 = ['abae22600aa78c69bd1ac06e08df22e8a2740f4d5752d04e9f0922d71eeef2e7', 'e47ab9c4cc6707f8f549aeb8c27c099c02d03a5e0e2101de8ea97218d3b7848f', 'cc9ff568a50adf56034282b90e95b37dac1ba64219efaed23e7ca9bcab72e4f8', 'de6fa75d5fd4d63ecc5588e27eb097a31411720e71454b4c5bfe62457080513f', 'ada335a73f4a47813c3d14192adacd242e833155f224f1346bed0a586f1d2adc']
 EXPECTED_DIRECTION_SHA256 = ['4d9dc6cf2bf3be139d0858e5a2ccdd996c5f76eac2fa0ee16f3166223ba2e8cb', 'ed71e39c886f4ff054a8f4a010756a3784ee4f727da5fe23d856b134fdbf92b7', 'f1aad589d38d6667299b5f7eaf934fdad37aebe7612cf03783bb72355280cd8a', '8fb443e916b10eaf2087860b05409a6030f13df620f5a8afd3417a66e405d8cb', '5b2fa88303ef4c095bc1cfa7b6e3ffa4db205527a6bac3b2e5a955c3ec81aaf3']
-root=pathlib.Path(os.environ['N4_ROOT']);folder=root/'probe-N4'
+root=pathlib.Path(os.environ['CASE_DIR']);folder=root/'probe-N4'
 result={'schema':'N4-independent-original-float64-readback-v2','completed':False,'five_original_gates_passed':False,'original_gate_limit':1e-7,'hardware_or_H_restore_qualified':False}
 def sha(p):
  with p.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()

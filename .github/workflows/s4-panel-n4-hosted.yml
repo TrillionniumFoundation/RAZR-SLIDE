@@ -1,5 +1,5 @@
 # N4 new research driver only; immutable S4 checkout, independent diagnostic branch.
-name: N4 panel bounded GMRES iterative refinement diagnostic
+name: N4b frozen original panel bounded GMRES iterative refinement diagnostic
 'on':
   push:
     branches:
@@ -7,6 +7,7 @@ name: N4 panel bounded GMRES iterative refinement diagnostic
   workflow_dispatch: null
 permissions:
   contents: read
+  actions: read
 concurrency:
   group: n4-panel-gmres-${{ github.ref }}
   cancel-in-progress: false
@@ -1312,10 +1313,148 @@ jobs:
         sources={p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in paths}
         for relative in paths:
          target=case/'source'/'S4'/relative;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes((root/relative).read_bytes())
-        r={'schema':'razr-N4-source-and-resource-contract','functional_checkout':os.environ['S4'],'workflow_execution_head':os.environ['GITHUB_SHA'],'new_driver_sha256':'8a9b4e8db67f001c429e7524612f23cc3325218c085df958437a2f39abf570e5','strategy_sha256':'7b272cf6177b5827ae589b023c56ca6dc2aadd89c38a5dc710940220358543a3','original_S4_sources':sources,'service_launcher_sha256':hashlib.sha256((host/'service-launch.py').read_bytes()).hexdigest(),'hostcap_sha256':hashlib.sha256((host/'host-cap.py').read_bytes()).hexdigest(),'new_driver_has_independent_research_identity':True,'new_S4_canonical_qualification_claimed':False,'original_v4_label_budget_not_applicable':True,'assembly_external_seconds':180,'assembly_AS_GiB':3.5,'assembly_storage':'memory','probe_external_seconds':180,'probe_AS_GiB':4.5,'new_resource_budget_identity':True,'previous_N3_AS_GiB':8.0,'original_shared_nonreclaimable_GiB':6.8,'original_task_filesystem_reserve_MiB':500,'original_float64_residual_limit':1e-7,'threads':1,'accounting_scope':'actual service cgroup and descendants, narrower than VM root','H_restore_QP_or_physical_qualification':False}
+        r={'schema':'razr-N4-source-and-resource-contract','functional_checkout':os.environ['S4'],'workflow_execution_head':os.environ['GITHUB_SHA'],'new_driver_sha256':'8a9b4e8db67f001c429e7524612f23cc3325218c085df958437a2f39abf570e5','strategy_sha256':'7b272cf6177b5827ae589b023c56ca6dc2aadd89c38a5dc710940220358543a3','original_S4_sources':sources,'service_launcher_sha256':hashlib.sha256((host/'service-launch.py').read_bytes()).hexdigest(),'hostcap_sha256':hashlib.sha256((host/'host-cap.py').read_bytes()).hexdigest(),'new_driver_has_independent_research_identity':True,'new_S4_canonical_qualification_claimed':False,'original_v4_label_budget_not_applicable':True,'assembly_executed_this_workflow':False,'input_recovery_external_seconds':180,'input_recovery_AS_GiB':3.5,'input_matrix_origin':'byte-exact frozen C2-N1 reconstructed matrix','probe_external_seconds':180,'probe_AS_GiB':4.5,'new_resource_budget_identity':True,'previous_N3_AS_GiB':8.0,'original_shared_nonreclaimable_GiB':6.8,'original_task_filesystem_reserve_MiB':500,'original_float64_residual_limit':1e-7,'threads':1,'accounting_scope':'actual service cgroup and descendants, narrower than VM root','H_restore_QP_or_physical_qualification':False}
         assert r['service_launcher_sha256']=='656f11eb363841ff28d10e60587c609b9f69a5b59edbb5931c95f4987a1bc3b3'
         (case/'N4_SOURCE_IDENTITY.json').write_text(json.dumps(r,indent=2)+'\n')
         PY
+        cat > "$HOST_ROOT/import_frozen_panel_k.py" <<'PY_FROZEN_IMPORT'
+        """N4b: recover the already-frozen original K and diagnose rejected reassembly.
+
+        No numerical values, sparse representation, constraints, C or original acceptance
+        rule are changed. The C2/N1 reconstructed matrix remains a historical input to
+        an S4-bound new solver study; it is not the earlier volume-v3 historical K/H.
+        """
+        from pathlib import Path
+        import argparse,hashlib,json,os,resource,shutil,time
+        import numpy as np
+
+        FROZEN = {
+         'K.npz': (285135469,'80f6f50243d421a3b0ab9eeff1324db029677b63febeaad1f023bf9609e9f1cb'),
+         'loads.npz': (48176390,'811ba687959bb34dec5ada401b35f07123c917bfc4e68ad982d661fd62fac9a6'),
+         'mesh.npz': (744696,'310152fc64af21451cc5ea4be683a73075109ed7e6ec588a6e8bcacf4979ac34'),
+         'report.json': (2807,'a392e019d4cbe0a34c7b163e307dc04a8a1ec4152cd11573dd3c2ff0bdab0a66'),
+        }
+        REJECTED_K = 'fc21f4348328b99e13d0ce1f066172e017565e14606d3c821f2216fef7dc8997'
+
+
+        def sha(path):
+         h=hashlib.sha256()
+         with Path(path).open('rb') as f:
+          for block in iter(lambda:f.read(1024*1024),b''):h.update(block)
+         return h.hexdigest()
+
+
+        def compare_arrays(left,right):
+         result={'shape_equal':left.shape==right.shape,'dtype_equal':left.dtype==right.dtype,
+          'frozen_shape':list(left.shape),'rebuilt_shape':list(right.shape),'frozen_dtype':str(left.dtype),'rebuilt_dtype':str(right.dtype),
+          'frozen_array_sha256':hashlib.sha256(left.tobytes()).hexdigest(),'rebuilt_array_sha256':hashlib.sha256(right.tobytes()).hexdigest()}
+         result['bytes_equal']=result['shape_equal'] and result['dtype_equal'] and result['frozen_array_sha256']==result['rebuilt_array_sha256']
+         if result['shape_equal'] and result['dtype_equal'] and left.dtype.kind in ('f','i','u'):
+          count=0;maximum=0.;scale=0.;squares=np.longdouble(0.)
+          a=left.ravel();b=right.ravel()
+          for i in range(0,len(a),262144):
+           x=a[i:i+262144];y=b[i:i+262144]
+           count+=int(np.count_nonzero(x!=y));d=x.astype(np.longdouble)-y.astype(np.longdouble)
+           maximum=max(maximum,float(np.max(np.abs(d),initial=0)))
+           scale=max(scale,float(np.max(np.abs(x),initial=0)))
+           squares+=np.sum(d*d,dtype=np.longdouble)
+          result.update(changed_entries=count,max_absolute_difference=maximum,frozen_max_absolute=scale,
+           max_difference_over_max_frozen_or_one=maximum/max(scale,1.),difference_l2=float(np.sqrt(squares)))
+         return result
+
+
+        def main(args):
+         if __debug__ is not True:raise RuntimeError('assertions must remain enabled')
+         start=time.monotonic();resource.setrlimit(resource.RLIMIT_AS,(int(3.5*1024**3),int(3.5*1024**3)))
+         frozen=args.frozen.resolve(strict=True);rebuilt=args.rebuilt.resolve(strict=True)
+         target=args.volume.resolve()/'panel'/'level-2';target.mkdir(parents=True,exist_ok=False)
+         result={'schema':'razr-N4b-frozen-input-recovery-and-reassembly-comparison-v1','completed':False,
+          'frozen_input_origin':{'diagnostic_source_C2':'bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb','run_id':40206010654,'artifact_id':12603523689,
+           'artifact_name':'c2-panel-pivot-N1-40206010654-1','prior_independently_verified_ZIP_sha256':'a69e6dc15e81cc750552a062224c0e92e352ec7f29a691d92f148885d7cf8c2c',
+           'downloaded_ZIP_reverified_this_invocation':False,'all_selected_original_member_bytes_checked_this_invocation':False},
+          'rejected_reassembly_origin':{'functional_source_S4':'dd7def6e6a4de9f47dc91ca2ab336fb1a8828560','run_id':40273524820,'artifact_id':12629167410,
+           'artifact_name':'s4-panel-GMRES-N4-engineering-40273524820-1','required_K_sha256':REJECTED_K},
+          'same_original_K_b_C_required':True,'original_five_probe_float64_limit':1e-7,'new_displacement_or_residual_computed_by_this_import':False,
+          'earliest_historical_K_or_H_restored':False,'candidate_go':False,'fixture_fabrication_go':False,'manufacturing_go':False,
+          'capacity_basis':{'wall_seconds':180,'AS_bytes':int(3.5*1024**3),'comparison_largest_arrays_bytes':2*189171864,'block_entries':262144,'no_sparse_factorization':True},
+          'copied_original_members':{},'array_comparisons':{}}
+         try:
+          if os.statvfs(target).f_bavail*os.statvfs(target).f_frsize<500*1024**2:raise RuntimeError('original 500MiB reserve unavailable')
+          for name,(size,digest) in FROZEN.items():
+           src=frozen/'volume/panel/level-2'/name
+           if not src.is_file() or src.is_symlink() or src.stat().st_size!=size or sha(src)!=digest:raise ValueError('frozen original member differs: '+name)
+           if not src.resolve().is_relative_to(frozen):raise ValueError('frozen source path escaped')
+           dst=target/name
+           try:os.link(src,dst)
+           except OSError:shutil.copyfile(src,dst)
+           if sha(dst)!=digest:raise ValueError('frozen byte copy differs: '+name)
+           result['copied_original_members'][name]={'bytes':size,'sha256':digest,'original_bytes_unchanged':True}
+          result['frozen_input_origin']['all_selected_original_member_bytes_checked_this_invocation']=True
+          report=json.loads((target/'report.json').read_text())
+          assert report['body']=='panel' and report['level']==2 and report['dofs']==344103 and report['E_normalization']==1.0 and report['nu']==0.3
+          assert report['original_faces_and_surface_P2_traces_unchanged'] and not report['body_loads_on_added_internal_DOFs']
+          rejected=rebuilt/'volume/panel/level-2/K.npz'
+          assert rejected.is_file() and not rejected.is_symlink() and rejected.resolve().is_relative_to(rebuilt)
+          assert sha(rejected)==REJECTED_K
+          with np.load(target/'K.npz',allow_pickle=False) as left,np.load(rejected,allow_pickle=False) as right:
+           assert set(left.files)==set(right.files)=={'indices','indptr','format','shape','data'}
+           for name in ('indices','indptr','format','shape','data'):
+            result['array_comparisons'][name]=compare_arrays(left[name],right[name])
+          c=result['array_comparisons'];result['sparse_pattern_and_format_identical']=all(c[k]['bytes_equal'] for k in ('indices','indptr','format','shape'))
+          result['numerical_data_identical']=c['data']['bytes_equal']
+          result['only_container_serialization_difference']=all(v['bytes_equal'] for v in c.values())
+          result['difference_cause_not_established']=True
+          result['copied_K_sha256']=sha(target/'K.npz');assert result['copied_K_sha256']==FROZEN['K.npz'][1]
+          result['completed']=True
+         except BaseException as exc:
+          result['error_type']=type(exc).__name__
+          raise
+         finally:
+          result['seconds']=time.monotonic()-start;result['peak_rss_kib']=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+          args.receipt.write_text(json.dumps(result,indent=2,allow_nan=False)+'\n')
+         print(json.dumps({k:result[k] for k in ('completed','copied_K_sha256','sparse_pattern_and_format_identical','numerical_data_identical','only_container_serialization_difference','seconds','peak_rss_kib')},indent=2))
+
+
+        if __name__=='__main__':
+         p=argparse.ArgumentParser();p.add_argument('--frozen',type=Path,required=True);p.add_argument('--rebuilt',type=Path,required=True);p.add_argument('--volume',type=Path,required=True);p.add_argument('--receipt',type=Path,required=True)
+         main(p.parse_args())
+        PY_FROZEN_IMPORT
+        cat > "$HOST_ROOT/N4B_INPUT_STRATEGY.json" <<'N4B_STRATEGY'
+        {
+          "schema": "razr-N4b-frozen-original-input-strategy-v1",
+          "functional_source": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+          "original_N4_algorithm_driver_sha256": "8a9b4e8db67f001c429e7524612f23cc3325218c085df958437a2f39abf570e5",
+          "algorithm_five_directions_K_b_C_constraints_and_float64_gate_unchanged": true,
+          "input_preparation": "recover four byte-exact original members from the retained N1 artifact; compare rejected N4a rebuilt K separately",
+          "frozen_input_artifact": {
+            "run_id": 40206010654,
+            "artifact_id": 12603523689,
+            "K_sha256": "80f6f50243d421a3b0ab9eeff1324db029677b63febeaad1f023bf9609e9f1cb"
+          },
+          "rejected_rebuilt_artifact": {
+            "run_id": 40273524820,
+            "artifact_id": 12629167410,
+            "K_sha256": "fc21f4348328b99e13d0ce1f066172e017565e14606d3c821f2216fef7dc8997"
+          },
+          "N4a_zero_probe_results_retained": true,
+          "mismatched_reassembly_never_used_for_original_probe_qualification": true,
+          "input_comparison_AS_GiB": 3.5,
+          "input_comparison_wall_seconds": 180,
+          "comparison_two_largest_arrays_bytes": 378343728,
+          "probe_AS_GiB": 4.5,
+          "probe_wall_seconds": 180,
+          "shared_nonreclaimable_guard_GiB": 6.8,
+          "disk_reserve_MiB": 500,
+          "five_probe_residual_limit": 1e-07,
+          "H_frame_restore_requires_all_five_original_probes": true,
+          "source_packages_and_environment_checks_unchanged": true,
+          "candidate_or_hardware_release": false,
+          "output_policy": "original numerical arrays and code only plus explicit mathematical/projection allowlist; imported N1 raw runtime never copied into case or exported"
+        }
+        N4B_STRATEGY
+        cp "$HOST_ROOT/import_frozen_panel_k.py" "$CASE_DIR/source/import_frozen_panel_k.py"
+        cp "$HOST_ROOT/N4B_INPUT_STRATEGY.json" "$CASE_DIR/source/N4B_INPUT_STRATEGY.json"
+        printf '04742a891f72fa5487de06d7d71e59cfec319568f0cc86e9cd3d0067054a1694  %s\n' "$HOST_ROOT/import_frozen_panel_k.py" | sha256sum --check --strict
     - name: Prove INT and TERM cleanup through original supervisor and independent-session stdlib worker
       shell: bash
       run: |
@@ -1342,18 +1481,36 @@ jobs:
       run: |
         set -euo pipefail
         /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" "$CASE_DIR/recover-original-inputs" .venv/bin/python -B engineering/engineering-integration-20261025/numerics/recover_inputs.py --body panel --output "$N4_ROOT/original-inputs"
-    - name: Rebuild exact original panel L2 matrix using original 3.5 GiB memory assembly
+    - name: Download retained original N1 inputs under read-only artifact permissions
+      uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+      with:
+        repository: TrillionniumFoundation/RAZR-SLIDE
+        run-id: 40206010654
+        artifact-ids: 12603523689
+        github-token: ${{ github.token }}
+        path: ${{ runner.temp }}/razr-n4b-inputs/N1
+        merge-multiple: true
+    - name: Download separately rejected N4a reassembly for actual array comparison
+      uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+      with:
+        repository: TrillionniumFoundation/RAZR-SLIDE
+        run-id: 40273524820
+        artifact-ids: 12629167410
+        github-token: ${{ github.token }}
+        path: ${{ runner.temp }}/razr-n4b-inputs/N4a
+        merge-multiple: true
+    - name: Import byte-exact frozen original K and compare rejected reassembly
       shell: bash
       run: |
         set -euo pipefail
-        /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" "$CASE_DIR/panel-assembly" .venv/bin/python -B engineering/engineering-integration-20261025/numerics/run_bounded.py --task-directory "$N4_ROOT" --seconds 180 --log "$N4_ROOT/panel-assembly-worker.log" --report "$N4_ROOT/panel-assembly-supervisor.json" -- .venv/bin/python -B engineering/engineering-integration-20261025/numerics/assemble_l2.py --body panel --inputs "$N4_ROOT/original-inputs" --output "$N4_ROOT/volume/panel" --element-storage memory --memory-gib 3.5
+        /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" "$CASE_DIR/frozen-input-import" .venv/bin/python -B engineering/engineering-integration-20261025/numerics/run_bounded.py --task-directory "$N4_ROOT" --seconds 180 --log "$N4_ROOT/input-recovery-worker.log" --report "$N4_ROOT/input-recovery-supervisor.json" -- .venv/bin/python -B "$HOST_ROOT/import_frozen_panel_k.py" --frozen "$RUNNER_TEMP/razr-n4b-inputs/N1" --rebuilt "$RUNNER_TEMP/razr-n4b-inputs/N4a" --volume "$N4_ROOT/volume" --receipt "$N4_ROOT/N4B-input-recovery.json"
         .venv/bin/python -B - <<'PY'
         import hashlib,json,os,pathlib
         root=pathlib.Path(os.environ['N4_ROOT']);folder=root/'volume/panel/level-2'
         with (folder/'K.npz').open('rb') as f:actual=hashlib.file_digest(f,'sha256').hexdigest()
         expected='80f6f50243d421a3b0ab9eeff1324db029677b63febeaad1f023bf9609e9f1cb'
-        r=json.loads((folder/'report.json').read_text());s=json.loads((root/'panel-assembly-supervisor.json').read_text())
-        proof={'actual_K_sha256':actual,'required_original_K_sha256':expected,'equal':actual==expected,'body':r['body'],'assembly_report_K_sha256':r['K_sha256'],'original_supervisor_exit_code':s['exit_code'],'original_supervisor_stop_reason':s['resource_stop_reason'],'probe_authorized_only_if_exact':True}
+        r=json.loads((folder/'report.json').read_text());s=json.loads((root/'input-recovery-supervisor.json').read_text())
+        proof={'actual_K_sha256':actual,'required_original_K_sha256':expected,'equal':actual==expected,'body':r['body'],'assembly_report_K_sha256':r['K_sha256'],'original_supervisor_exit_code':s['exit_code'],'original_supervisor_stop_reason':s['resource_stop_reason'],'probe_authorized_only_if_exact':True,'matrix_origin':'frozen N1 original member imported byte for byte'}
         (root/'original-K-byte-identity.json').write_text(json.dumps(proof,indent=2)+'\n')
         print(json.dumps(proof,sort_keys=True),flush=True)
         assert actual==expected and r['K_sha256']==expected and r['body']=='panel' and r['level']==2
@@ -1382,7 +1539,7 @@ jobs:
         EXPECTED_PANEL_C_SHA256 = '9f75b00a961ee850857c82942332ebfdd5cb13aa9da55c5266d93337deca436f'
         EXPECTED_RHS_SHA256 = ['abae22600aa78c69bd1ac06e08df22e8a2740f4d5752d04e9f0922d71eeef2e7', 'e47ab9c4cc6707f8f549aeb8c27c099c02d03a5e0e2101de8ea97218d3b7848f', 'cc9ff568a50adf56034282b90e95b37dac1ba64219efaed23e7ca9bcab72e4f8', 'de6fa75d5fd4d63ecc5588e27eb097a31411720e71454b4c5bfe62457080513f', 'ada335a73f4a47813c3d14192adacd242e833155f224f1346bed0a586f1d2adc']
         EXPECTED_DIRECTION_SHA256 = ['4d9dc6cf2bf3be139d0858e5a2ccdd996c5f76eac2fa0ee16f3166223ba2e8cb', 'ed71e39c886f4ff054a8f4a010756a3784ee4f727da5fe23d856b134fdbf92b7', 'f1aad589d38d6667299b5f7eaf934fdad37aebe7612cf03783bb72355280cd8a', '8fb443e916b10eaf2087860b05409a6030f13df620f5a8afd3417a66e405d8cb', '5b2fa88303ef4c095bc1cfa7b6e3ffa4db205527a6bac3b2e5a955c3ec81aaf3']
-        root=pathlib.Path(os.environ['N4_ROOT']);folder=root/'probe-N4'
+        root=pathlib.Path(os.environ['CASE_DIR']);folder=root/'probe-N4'
         result={'schema':'N4-independent-original-float64-readback-v2','completed':False,'five_original_gates_passed':False,'original_gate_limit':1e-7,'hardware_or_H_restore_qualified':False}
         def sha(p):
          with p.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
@@ -1552,6 +1709,7 @@ jobs:
         SAMPLE_KEYS = '''monotonic task_filesystem_available_bytes task_payload_bytes cgroup_current_bytes cgroup_anon_bytes cgroup_shmem_bytes cgroup_file_bytes nonreclaimable_budget_bytes VmRSS_bytes VmHWM_bytes VmSize_bytes'''.split()
         SOURCE_PATHS = [
          'source/probe_panel_gmres_refinement.py','source/N4_STRATEGY.json',
+         'source/import_frozen_panel_k.py','source/N4B_INPUT_STRATEGY.json',
          'source/n4_independent_reader.py','source/export_n4_engineering.py',
          'source/host-cap.py','source/service-launch.py','source/python-downloads.json',
          *['source/S4/'+p for p in [
@@ -1566,6 +1724,7 @@ jobs:
           'run_key_endpoint_trials.py','tests/test_key_endpoint_extension.py','tests/test_key_endpoint_resume.py']]
         ]
         PLAIN_NUMERIC = [
+         'N4B-input-recovery.json',
          'original-inputs/panel/mesh.npz','original-inputs/panel/loads.npz',
          'volume/panel/level-2/K.npz','volume/panel/level-2/mesh.npz','volume/panel/level-2/loads.npz','volume/panel/mapping.npz',
          'probe-N4/C.npz','probe-N4/points.json','probe-N4/fixed-original-DOFs.npy','probe-N4/free-original-DOFs.npy',
@@ -1636,7 +1795,7 @@ jobs:
           if (root/name).is_file():project(name,REPORT_KEYS)
          for name in ('volume/panel/level-2/report.json','volume/panel/progress.json'):
           if (root/name).is_file():project(name,ASSEMBLY_KEYS)
-         for name in ('panel-assembly-supervisor.json','probe-N4-supervisor.json','readback-N4-supervisor.json'):
+         for name in ('panel-assembly-supervisor.json','input-recovery-supervisor.json','probe-N4-supervisor.json','readback-N4-supervisor.json'):
           if (root/name).is_file():
            def numeric_samples(raw,value):
             value['samples']=[{k:r[k] for k in SAMPLE_KEYS if k in r} for r in raw.get('samples',[])]
@@ -1685,6 +1844,7 @@ jobs:
          (output/'EXPORT_MANIFEST.json').write_text(json.dumps(manifest,indent=2,allow_nan=False)+'\n')
          summary=output.parent/'engineering-summary';summary.mkdir(exist_ok=False)
          for name in ['EXPORT_MANIFEST.json','EXECUTION_CHECKS.engineering.json','N4-independent-field-readback.engineering.json',
+          'N4B-input-recovery.json','input-recovery-supervisor.engineering.json',
           'original-K-byte-identity.engineering.json','panel-assembly-supervisor.engineering.json',
           'volume/panel/level-2/report.engineering.json','volume/panel/progress.engineering.json',
           'probe-N4-supervisor.engineering.json','probe-N4/report.engineering.json','probe-N4/progress.engineering.json']:
@@ -1705,7 +1865,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
       with:
-        name: s4-panel-GMRES-N4-engineering-${{ github.run_id }}-${{ github.run_attempt }}
+        name: s4-panel-GMRES-N4b-engineering-${{ github.run_id }}-${{ github.run_attempt }}
         path: ${{ runner.temp }}/razr-s4-panel-n4-dd7def6e/engineering-export
         if-no-files-found: error
         retention-days: 14
@@ -1713,7 +1873,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
       with:
-        name: s4-panel-GMRES-N4-summary-${{ github.run_id }}-${{ github.run_attempt }}
+        name: s4-panel-GMRES-N4b-summary-${{ github.run_id }}-${{ github.run_attempt }}
         path: ${{ runner.temp }}/razr-s4-panel-n4-dd7def6e/engineering-summary
         if-no-files-found: error
         retention-days: 14
