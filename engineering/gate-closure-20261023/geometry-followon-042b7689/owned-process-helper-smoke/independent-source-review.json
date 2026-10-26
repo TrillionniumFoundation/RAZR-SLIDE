@@ -1,0 +1,27 @@
+{
+  "CAD_or_FE_executed": false,
+  "actual_helper_smoke_children": 1,
+  "actual_helper_smoke_passed": true,
+  "actual_helper_smoke_result_sha256": "a5b492e2e19149da985218294bee8b04082ebde41ac3ac0f91c2808269e3f577",
+  "blocking_defect_found": false,
+  "checks": [
+    "Packet uses nonce, exact worker source SHA and strict single-line framing on inherited dedicated ready/release pipes.",
+    "Original Popen namespace PID and parent PID are bound to procfs visible PID, PPid, NSpid, starttime and PID namespaces.",
+    "Alive child memory is positive and has unchanged identity before and after each read; missing or invalid observations raise.",
+    "Initial memory and original resource callback execute before nonce release; worker announces before run_native.",
+    "Signals/reaping remain on original Popen handle, never outer procfs-visible PID.",
+    "Supervisor owns finally descriptor closure and exception cleanup, including identity/budget/read/write errors.",
+    "Original 1800s/1536MiB RSS/6.8GiB shared/200MiB start disk/100MiB runtime disk budgets retained."
+  ],
+  "new_pure_tests_run_by_this_review": 0,
+  "r3_native_execution_claimed": false,
+  "reviewed_sources": {
+    "/workspace/scratch/95cd2986fdf2/g2_slide_r3/owned_process.py": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25",
+    "/workspace/scratch/95cd2986fdf2/g2_slide_r3/supervise_slide_native.py": "fdaf67d78de71fc8635db2f006cf77b8a04a483d8313dbb599900283091ee6da",
+    "/workspace/scratch/95cd2986fdf2/g2_slide_r3/test_owned_process.py": "1c68233dc738c4f865a97b0792a71f321e6d7a63fc1f425696a2c51f89af6589",
+    "/workspace/scratch/95cd2986fdf2/g2_slide_r3/verify_slide_native.py": "55b56c87c2640aefa15fa22539f5c628a53089cf94648a733f2dce44ca468654"
+  },
+  "schema": "razr-owned-process-helper-independent-source-review-v1",
+  "scope": "Read-only review plus exactly one authorized real stdlib smoke; no CAD/FE/native run.",
+  "scope_limit": "One lightweight child verifies this helper implementation in this namespace. It does not establish full-duration native memory or geometry qualification."
+}

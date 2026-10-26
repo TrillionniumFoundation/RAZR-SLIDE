@@ -1,0 +1,73 @@
+{
+  "schema": "razr-hardware-import-v1",
+  "record_type": "donor_identity",
+  "is_template": false,
+  "physical_execution_occurred": true,
+  "specimen_id": "XT2551-3-41ad305f",
+  "recorded_at_utc": "2026-10-20T02:59:59.249960+00:00",
+  "measurement_method": "Actual read-only Android software identity via existing Pocket4 ADB server 127.0.0.1:5061; no physical labels, dimensions, disassembly, fabrication or modified-phone functional test",
+  "operator_or_instrument": "Pocket4 existing adb binary SHA256 00108217733707a40debfc92c86d4232fd6e68870be5966515d74c071193ea90; collector SHA256 b2dada86400ec43ba1ace3a02b657fcf6790744656a4bfb8f322b4bcd091b351",
+  "design_binding": {
+    "git_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+    "files_sha256": {
+      "design/product_geometry.json": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+      "design/product_interfaces.json": "9a713c497439e3c4e8ac3a7f8ed1fe941c71757d2ee7458ab5f9f08564be5f41"
+    },
+    "commit_files_sha256": {
+      "design/product_geometry.json": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+      "design/product_interfaces.json": "9a713c497439e3c4e8ac3a7f8ed1fe941c71757d2ee7458ab5f9f08564be5f41"
+    },
+    "inputs_match_commit": true,
+    "interface_contract_sha256": "eda50142a88f13398ad989dafa2dc4628b18dbc77d2a67c08ffc27171342ded7",
+    "interface_contract_source_sha256": "5b54b06023bcad187400053217babaeb1deadfa6c2f2d48c129b96044c668d89",
+    "complete": true
+  },
+  "observations": [
+    {
+      "id": "formal_readback",
+      "kind": "device_readback",
+      "path": "formal-donor-f4db100.json",
+      "sha256": "28fb380ee5d992893f248241b8bde70825b62057851d7d956ea060b66fe44702",
+      "specimen_id": "XT2551-3-41ad305f"
+    },
+    {
+      "id": "runtime_execution",
+      "kind": "instrument_log",
+      "path": "formal-donor-f4db100-execution.json",
+      "sha256": "b957c4fce155f21dbf0d864e2fb158d222be50e0a9cbe4fe2129a891a16ec5e8",
+      "specimen_id": "XT2551-3-41ad305f"
+    },
+    {
+      "id": "preflight_parser_failure",
+      "kind": "instrument_log",
+      "path": "server-5061-before-f4db100.json",
+      "sha256": "92b6bc7417f3e9174735ba4ea6b234553d2c8a3f83791a4778dbfc1ff4596494",
+      "specimen_id": "XT2551-3-41ad305f"
+    },
+    {
+      "id": "server_preflight",
+      "kind": "instrument_log",
+      "path": "server-5061-before-f4db100-v2.json",
+      "sha256": "3bdb8a478d34fe653a963ecab0f3cf397208481223944176524db76bdd04e1b1",
+      "specimen_id": "XT2551-3-41ad305f"
+    },
+    {
+      "id": "source_checkout",
+      "kind": "operator_observation",
+      "path": "source-checkout-f4db100.json",
+      "sha256": "068cc52d4a2e7281d09886e29029a9eda061550bad2e06987db05b1c5c1c05f9",
+      "specimen_id": "XT2551-3-41ad305f"
+    }
+  ],
+  "device_readback_observation": "formal_readback",
+  "field_evidence": {
+    "model": {
+      "value": "XT2551-3",
+      "observation_ids": [
+        "formal_readback"
+      ],
+      "locator": "properties.ro.product.model and successful command_records getprop ro.product.model raw stdout"
+    }
+  },
+  "part_inventory": []
+}

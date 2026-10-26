@@ -1,0 +1,190 @@
+{
+  "schema": "razr-missing-unit-test-inputs-v1",
+  "snapshot_utc": "2026-10-22T08:00:45.562937+00:00",
+  "summary": {
+    "P0": {
+      "files": 225,
+      "missing_files": 1,
+      "missing_remote_bytes": 2071241
+    },
+    "P1": {
+      "files": 36,
+      "missing_files": 5,
+      "missing_remote_bytes": 17036808
+    },
+    "P2": {
+      "files": 3,
+      "missing_files": 3,
+      "missing_remote_bytes": 673296
+    },
+    "P3": {
+      "files": 7,
+      "missing_files": 7,
+      "missing_remote_bytes": 444110
+    }
+  },
+  "entries": [
+    {
+      "path": "engineering/mounted-mechanism-20261015/native-geometry.tar.gz",
+      "classification": "unit_test_required",
+      "priority": "P0",
+      "suites": [
+        "cam-coupling",
+        "endpoint-joint",
+        "manufacturing-fit",
+        "pawl-actuator",
+        "product-integration",
+        "serviceable-pawl"
+      ],
+      "evidence": [
+        {
+          "source": "integration/verify_cam_coupling.py",
+          "line": 73,
+          "reason": "Product native_scene -> parent_native -> prior_native -> source_parts; other mechanical builders call cam_coupling.parent."
+        }
+      ],
+      "exists": false,
+      "local_size": null,
+      "remote_blob": {
+        "path": "engineering/mounted-mechanism-20261015/native-geometry.tar.gz",
+        "sha": "b5909317f0c8bb0c99434fec4cfdac124e2b75af",
+        "mode": "100644",
+        "size": 2071241
+      },
+      "fetch_file_over_1MiB": true,
+      "restore_transport_note": "GitHub file-tool size limit reported by parent; alternate authorized artifact/blob transport required if not already present.",
+      "inventory_status": "missing_tracked_blob"
+    },
+    {
+      "path": "engineering/contact-motion-20261014/project-owned-native-geometry.tar.gz",
+      "classification": "unit_test_required",
+      "priority": "P1",
+      "suites": [
+        "cover-admission"
+      ],
+      "evidence": [
+        {
+          "source": "integration/cover_admission.py",
+          "line": 35,
+          "reason": "native_base() reads original OLD_COVER from previous archive."
+        }
+      ],
+      "exists": false,
+      "local_size": null,
+      "remote_blob": {
+        "path": "engineering/contact-motion-20261014/project-owned-native-geometry.tar.gz",
+        "sha": "793d18081a73a80fde9aab661bb48d2399796c2f",
+        "mode": "100644",
+        "size": 4354699
+      },
+      "fetch_file_over_1MiB": true,
+      "restore_transport_note": "GitHub file-tool size limit reported by parent; alternate authorized artifact/blob transport required if not already present.",
+      "inventory_status": "missing_tracked_blob"
+    },
+    {
+      "path": "engineering/cover-assembly-order-20261014/bench-geometry.tar.gz",
+      "classification": "unit_test_required",
+      "priority": "P1",
+      "suites": [
+        "cover-capture",
+        "thin-mechanism"
+      ],
+      "evidence": [
+        {
+          "source": "integration/cover_capture.py",
+          "line": 19,
+          "reason": "sources/read_shape loads archived bench shapes; thin native_input bench uses same pair."
+        }
+      ],
+      "exists": false,
+      "local_size": null,
+      "remote_blob": {
+        "path": "engineering/cover-assembly-order-20261014/bench-geometry.tar.gz",
+        "sha": "448d4d9587216cc0e33a2040b12db8a98c7a0ad0",
+        "mode": "100644",
+        "size": 3496294
+      },
+      "fetch_file_over_1MiB": true,
+      "restore_transport_note": "GitHub file-tool size limit reported by parent; alternate authorized artifact/blob transport required if not already present.",
+      "inventory_status": "missing_tracked_blob"
+    },
+    {
+      "path": "engineering/cover-retention-and-space-20261015/capture-geometry.tar.gz",
+      "classification": "unit_test_required",
+      "priority": "P1",
+      "suites": [
+        "thin-mechanism"
+      ],
+      "evidence": [
+        {
+          "source": "integration/thin_mechanism.py",
+          "line": 49,
+          "reason": "native_input capture group verifies manifest/archive then STEP member."
+        }
+      ],
+      "exists": false,
+      "local_size": null,
+      "remote_blob": {
+        "path": "engineering/cover-retention-and-space-20261015/capture-geometry.tar.gz",
+        "sha": "8c6d9515fdf3e81cae1049d7553dba44bec6223d",
+        "mode": "100644",
+        "size": 1311525
+      },
+      "fetch_file_over_1MiB": true,
+      "restore_transport_note": "GitHub file-tool size limit reported by parent; alternate authorized artifact/blob transport required if not already present.",
+      "inventory_status": "missing_tracked_blob"
+    },
+    {
+      "path": "engineering/keycover-geometry-20261014/project-owned-geometry.tar.gz",
+      "classification": "unit_test_required",
+      "priority": "P1",
+      "suites": [
+        "cover-admission"
+      ],
+      "evidence": [
+        {
+          "source": "integration/cover_admission.py",
+          "line": 23,
+          "reason": "native_base() reads exact archive members, hashes them, and extracts prior repair record."
+        }
+      ],
+      "exists": false,
+      "local_size": null,
+      "remote_blob": {
+        "path": "engineering/keycover-geometry-20261014/project-owned-geometry.tar.gz",
+        "sha": "026e37379e4438b0b3ed0fd3cee0a622e54c1ac8",
+        "mode": "100644",
+        "size": 4584030
+      },
+      "fetch_file_over_1MiB": true,
+      "restore_transport_note": "GitHub file-tool size limit reported by parent; alternate authorized artifact/blob transport required if not already present.",
+      "inventory_status": "missing_tracked_blob"
+    },
+    {
+      "path": "engineering/thin-mechanism-20261015/native-geometry.tar.gz",
+      "classification": "unit_test_required",
+      "priority": "P1",
+      "suites": [
+        "mounted-mechanism"
+      ],
+      "evidence": [
+        {
+          "source": "integration/mounted_mechanism.py",
+          "line": 63,
+          "reason": "build -> parent_part -> source_entries imports frozen source parts."
+        }
+      ],
+      "exists": false,
+      "local_size": null,
+      "remote_blob": {
+        "path": "engineering/thin-mechanism-20261015/native-geometry.tar.gz",
+        "sha": "b291a5b7c627e087fdd4e7b1a1b24c4236785602",
+        "mode": "100644",
+        "size": 3290260
+      },
+      "fetch_file_over_1MiB": true,
+      "restore_transport_note": "GitHub file-tool size limit reported by parent; alternate authorized artifact/blob transport required if not already present.",
+      "inventory_status": "missing_tracked_blob"
+    }
+  ]
+}

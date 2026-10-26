@@ -1,0 +1,32 @@
+{
+  "scope": "synthetic local end-to-end tool contract; not hosted or product validation",
+  "fixture": "/tmp/razr-shards-contract-v2-yccdb9f2",
+  "positive_passed": true,
+  "duplicate_directory_rejected": true,
+  "commands": [
+    {
+      "stage": "first",
+      "exit_code": 0,
+      "stdout": "first PASS 1\n{\"scope\": \"selected\", \"tests_run\": 1, \"passed\": true, \"source_bytes_unchanged\": true, \"manufacturing_go\": false}\nREPORT /tmp/razr-shards-contract-v2-yccdb9f2/artifacts/first/report.json\n",
+      "stderr": ""
+    },
+    {
+      "stage": "second",
+      "exit_code": 0,
+      "stdout": "second PASS 1\n{\"scope\": \"selected\", \"tests_run\": 1, \"passed\": true, \"source_bytes_unchanged\": true, \"manufacturing_go\": false}\nREPORT /tmp/razr-shards-contract-v2-yccdb9f2/artifacts/second/report.json\n",
+      "stderr": ""
+    },
+    {
+      "stage": "aggregate",
+      "exit_code": 0,
+      "stdout": "{\"passed\": true, \"tests_run\": 2, \"expected_suite_count\": 2, \"errors\": []}\n",
+      "stderr": ""
+    },
+    {
+      "stage": "reject-duplicate-directory",
+      "exit_code": 1,
+      "stdout": "{\"passed\": false, \"tests_run\": 2, \"expected_suite_count\": 2, \"errors\": [\"second: executed worker command differs from manifest suite/path/minimum/report binding\"]}\n",
+      "stderr": ""
+    }
+  ]
+}

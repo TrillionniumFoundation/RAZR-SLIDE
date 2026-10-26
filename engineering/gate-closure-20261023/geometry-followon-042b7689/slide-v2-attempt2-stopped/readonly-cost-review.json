@@ -1,0 +1,94 @@
+{
+  "schema": "razr-slide-attempt2-readonly-cost-review-v1",
+  "reviewed_UTC": "2026-10-23T10:25:09.309612+00:00",
+  "repo_head": "042b768903cccbd7a0995317c8598401e0318e2a",
+  "review_scope": "read-only source/receipt inspection; no CAD import, no test execution, no active-source edit",
+  "controller_path": "/tmp/razr-slide-042b7689-attempt2/controller.json",
+  "controller_sha256": "a3b1eaf7d3a0bb366fec91323e9243f27895c2dec6a18359b712cfecb5ac6f87",
+  "partial_report_sha256": "5a4001b3a15664a4102e2102bb41d9ddabf540c705cf6ffd32179cf27a5c0b22",
+  "frozen_source_count": 11,
+  "all_current_source_sha_match_execution": true,
+  "actual_stop": {
+    "worker_exit_code": -15,
+    "elapsed_seconds": 388.38580101099797,
+    "reason": "shared estimated unreclaimable memory exceeded 6.8 GiB",
+    "observed_shared_bytes": 7330016656,
+    "shared_limit_bytes": 7301444403,
+    "worker_reaped": true
+  },
+  "saved_evidence": {
+    "construction_probe_count": 5,
+    "construction_probes_complete": true,
+    "saved_pair_count": 11781,
+    "saved_dispositions": {
+      "not_evaluated": 11781
+    },
+    "actual_completed_in_memory_pair_count_known": false,
+    "current_pair_at_interrupt_known": false
+  },
+  "source_derived_cost_facts": {
+    "functions_reviewed": [
+      "verify_slide_native.evaluate_interval",
+      "verify_slide_native.BoundedBodies.material",
+      "slide_evidence.Contract.specifications",
+      "slide_domain.Law.enclosure_parameters",
+      "product_nominal_motion.continuous_pair",
+      "product_nominal_motion.enclosure_regions"
+    ],
+    "first_128_ordered_nonflex_pairs_share_a": [
+      "A_BACK_PANEL"
+    ],
+    "first_128_pair_classes": {
+      "rigid_rigid": 126,
+      "spring_rigid": 2
+    },
+    "flex_cage_generation_in_first_128_pair_loop": false,
+    "default_maximum_subdivision_depth_argument": 2,
+    "distinct_source_profile_intervals": [
+      [
+        0.0,
+        0.0011145618000001356
+      ],
+      [
+        0.0011145618000001356,
+        0.09055728089999172
+      ],
+      [
+        0.09055728089999172,
+        0.6429179606749895
+      ],
+      [
+        0.6429179606749895,
+        0.64291796067499
+      ],
+      [
+        0.64291796067499,
+        12.0
+      ]
+    ],
+    "max_interval_nodes_for_default_nonflex_pair_if_all_overlap": 36,
+    "max_continuous_pair_calls_for_first_128_if_all_overlap": 4608,
+    "native_helper_may_try_both_reference_frames": true,
+    "multi_axis_enclosure_region_limit_per_build": 4096,
+    "source_body_cache_maximum": 32,
+    "translation_enclosure_cache_passed_to_continuous_pair": null,
+    "identical_sweep_geometry_may_be_rebuilt_for_different_targets": true,
+    "these_are_source_bounds_not_observed_native_call_counts": true
+  },
+  "conclusions": {
+    "concrete_false_clear_or_unbounded_loop_found": false,
+    "specific_interrupted_boolean_or_pair_identified": false,
+    "current_failure_is_original_shared_capacity_guard": true,
+    "legitimate_bounded_Boolean_work_remains_consistent_with_saved_evidence": true,
+    "cannot_attribute_shared_capacity_growth_to_this_worker_from_saved_RSS": true,
+    "finer_pair_or_operator_checkpoint_would_be_needed_for_specific_cost_attribution": true
+  },
+  "resource_measurement_limit": {
+    "controller_observations_with_nonempty_worker_memory": 0,
+    "last_worker_self_peak_RSS_from_factory_probe_bytes": 588808192,
+    "self_peak_is_only_known_at_saved_factory_probes": true
+  },
+  "no_native_started_by_reviewer": true,
+  "frozen_KEY_delivery_modified": false,
+  "full_G2_or_physical_qualification": false
+}

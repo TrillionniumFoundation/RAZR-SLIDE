@@ -1,0 +1,19 @@
+{
+  "command": [
+    "ss",
+    "-ltnp",
+    "sport = :5061"
+  ],
+  "observed_utc": "2026-10-20T02:59:58.887088+00:00",
+  "exit_code": 0,
+  "stdout": "State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                           \nLISTEN 0      128        127.0.0.1:5061      0.0.0.0:*    users:((\"adb\",pid=1846357,fd=11))\n",
+  "stderr": "",
+  "processes": [
+    {
+      "pid": 1846357,
+      "start_ticks": 6434426,
+      "executable": "/home/alex/.local/opt/razr-adb-37/adb"
+    }
+  ],
+  "boot_id": "27a7e955-f068-40dc-9318-d9283fa21282"
+}

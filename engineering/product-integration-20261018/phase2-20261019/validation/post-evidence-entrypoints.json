@@ -1,0 +1,28 @@
+{
+  "functional_commit": "4fe96be97ee64d1f4f28ba6ea09d7775030b0c6c",
+  "native_execution_commit": "1c970e34a72f83ac1148ed3dee11e050ed5508dd",
+  "post_evidence_metadata_check": true,
+  "sync": {
+    "exit_code": 0,
+    "stdout": "{\"mode\": \"check\", \"changed\": []}\n",
+    "stderr": ""
+  },
+  "state_tests": {
+    "command": [
+      "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "integration/product-study-tests",
+      "-p",
+      "test_product_state.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "test_generated_entrypoints_are_current (test_product_state.ProductStateTests.test_generated_entrypoints_are_current) ... ok\ntest_later_closure_keeps_failed_diagnostic_history (test_product_state.ProductStateTests.test_later_closure_keeps_failed_diagnostic_history) ... ok\ntest_manifest_growth_never_inflates_completed_run (test_product_state.ProductStateTests.test_manifest_growth_never_inflates_completed_run) ... ok\ntest_open_draft_cannot_be_marked_as_main (test_product_state.ProductStateTests.test_open_draft_cannot_be_marked_as_main) ... ok\ntest_stale_readme_text_is_detected_and_repair_is_idempotent (test_product_state.ProductStateTests.test_stale_readme_text_is_detected_and_repair_is_idempotent) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.026s\n\nOK\n"
+  },
+  "observed_utc": "2026-10-20T01:47:44.032378+00:00"
+}

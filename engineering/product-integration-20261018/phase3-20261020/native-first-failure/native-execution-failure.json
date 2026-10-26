@@ -1,0 +1,12 @@
+{
+  "error_type": "ValueError",
+  "error": "finite real value required",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/qian-qi/RAZR-SLIDE-product-integration-20261018/integration/product_routing_ep3.py\", line 416, in main\n    try: result=native_report(out/'native',c)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/qian-qi/RAZR-SLIDE-product-integration-20261018/integration/product_routing_ep3.py\", line 365, in native_report\n    witness=p.box((-6,y0,a[2]-.05),(6,y1,a[2]+.05))\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/qian-qi/RAZR-SLIDE-product-integration-20261018/integration/product_assembly.py\", line 97, in box\n    if len(lo)!=3 or len(hi)!=3 or any(finite(b)<=finite(a) for a,b in zip(lo,hi)):\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/qian-qi/RAZR-SLIDE-product-integration-20261018/integration/product_assembly.py\", line 97, in <genexpr>\n    if len(lo)!=3 or len(hi)!=3 or any(finite(b)<=finite(a) for a,b in zip(lo,hi)):\n                                       ^^^^^^^^^\n  File \"/home/qian-qi/RAZR-SLIDE-product-integration-20261018/integration/product_assembly.py\", line 44, in finite\n    raise ValueError('finite real value required')\nValueError: finite real value required\n",
+  "completed_native_report": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "supplier_dynamic_qualified": false,
+  "physical_hardware_test_executed": false,
+  "full_cycle_internal_route_accepted": false
+}

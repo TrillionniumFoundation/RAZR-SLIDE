@@ -1,0 +1,313 @@
+{
+  "schema": "razr-product-geometry-v1",
+  "base_commit": "a1b3cc1e0773446f2e36d0a607edf61211dd9919",
+  "units": "mm",
+  "coordinate_frame": {
+    "x": "width, existing native scene coordinates",
+    "y": "longitudinal, B slides in positive Y",
+    "z": "thickness, B is initially stacked in positive Z",
+    "A_origin_mm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "B_translation": "[0, slide, normal_seating - descent]",
+    "product_front_for_this_study": "negative Z, so B is behind A when stowed",
+    "legacy_A_BACK_PANEL_name_is_not_relabelled": true
+  },
+  "dimensions": {
+    "width_mm": 73.99,
+    "height_mm": 94.25,
+    "thickness_mm": 8.0,
+    "slide_mm": 79.75,
+    "normal_seating_mm": 8.2,
+    "study_wall_mm": 0.65,
+    "study_clearance_mm": 0.2
+  },
+  "dimension_provenance": {
+    "kind": "project_owned_design_assumption",
+    "source": "integration/phone_layout.py",
+    "measured_OEM_cavity": false,
+    "approved_finished_product_dimensions": false
+  },
+  "constraints": {
+    "equal_finished_cabin_envelopes": true,
+    "one_flexible_display": true,
+    "independent_rear_display": false,
+    "planar_storage_cabin": "B",
+    "larger_battery_priority": "A",
+    "total_system_capacity_target_mAh": 4700
+  },
+  "native_baseline": {
+    "archive": "engineering/panel-bearing-web-20261015/native-templates.tar.gz",
+    "sha256": "f8e610824c9a3603e12579c43c2169228f3729e4d07d4838c46c3cae0b2673b7",
+    "templates": 34,
+    "scene_participants": 83,
+    "same_CAD_kernel": true
+  },
+  "components": [
+    {
+      "name": "A_BATTERY_ALLOCATION",
+      "cabin": "A",
+      "lo_mm": [
+        -32.0,
+        38.0,
+        4.5
+      ],
+      "hi_mm": [
+        32.0,
+        78.0,
+        7.25
+      ],
+      "source_kind": "design_space_allocation",
+      "source": "Revised A upper-deck allocation clears the native KEY height; volume priority only, no selected cell or capacity",
+      "selected_part": null,
+      "capacity_mAh": null,
+      "mass_g": null,
+      "swelling_included": false
+    },
+    {
+      "name": "B_BATTERY_ALLOCATION",
+      "cabin": "B",
+      "lo_mm": [
+        11.0,
+        16.0,
+        0.9
+      ],
+      "hi_mm": [
+        33.0,
+        84.0,
+        5.3
+      ],
+      "source_kind": "design_space_allocation",
+      "source": "Explicit reconstructed 22-mm-wide negative control; not a selected cell and not restored historical r1 bytes.",
+      "selected_part": null,
+      "capacity_mAh": null,
+      "mass_g": null,
+      "swelling_included": false
+    },
+    {
+      "name": "B_ELECTRONICS_ALLOCATION",
+      "cabin": "B",
+      "lo_mm": [
+        -33.0,
+        16.0,
+        0.9
+      ],
+      "hi_mm": [
+        -21.0,
+        84.0,
+        5.3
+      ],
+      "source_kind": "design_space_allocation",
+      "source": "B left outboard 12x68x4.4mm allocation beyond the full cam/follower excursion; no donor board fit is asserted",
+      "selected_part": null,
+      "mass_g": null
+    },
+    {
+      "name": "A_CAMERA_ALLOCATION",
+      "cabin": "A",
+      "lo_mm": [
+        -5.0,
+        2.0,
+        0.9
+      ],
+      "hi_mm": [
+        5.0,
+        12.0,
+        7.0
+      ],
+      "source_kind": "design_space_allocation",
+      "source": "Central A camera-size trial clear of original cartridge footprints; optical aperture and donor camera still unidentified",
+      "selected_part": null,
+      "mass_g": null
+    }
+  ],
+  "oled_storage_study": {
+    "topology": "front straight leg, one semicircular turn, B-local planar return leg",
+    "width_mm": 67.0,
+    "thickness_mm": 0.2,
+    "front_z_mm": -1.25,
+    "front_anchor_y_mm": 2.0,
+    "B_return_z_mm": 6.0,
+    "B_turn_center_y_mm": 85.75,
+    "B_storage_y_min_mm": 5.4,
+    "total_material_length_mm": 187.9,
+    "source_kind": "explicit_geometric_parameter_study_not_a_selected_module",
+    "selected_module": null,
+    "active_area_mm": null,
+    "COF_tail_envelope": null,
+    "dynamic_radius_allowable_mm": null,
+    "thickness_is_not_supplier_finished_stack": true,
+    "original_full_depth_storage_min_mm": 15.35
+  },
+  "missing_functional_geometry": [
+    "Measured donor mainboard and camera modules with connectors and RF keepouts",
+    "Selected A/B cells, tabs, protection and swelling allowances",
+    "Selected full OLED module including inactive edges, COF and touch",
+    "Actual thermal and antenna interfaces",
+    "Load-rated OPEN support and complete telescopic follower assembly",
+    "Supplier-qualified OLED length/COF/touch/neutral axis and motion force",
+    "Onboard storage for OPEN support plate and screws",
+    "Following front support during sliding and seating, with measured contact forces"
+  ],
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "current_product_candidate": {
+    "factory": "product_assembly.product_scene",
+    "variant": "manual_side_tabs_with_OLED_channels_and_optional_OPEN_screws",
+    "baseline_preserved_in": "product_assembly.native_scene",
+    "changed_native_parts": [
+      "A_BACK_PANEL",
+      "A_FRAME",
+      "B_SHELL",
+      "L_THUMB_PAD",
+      "R_THUMB_PAD"
+    ],
+    "nominal_screw_thread_geometry_solved": false,
+    "side_tab_thickness_mm": 0.6,
+    "screen_front_added_depth_mm": 1.35,
+    "guide_screw_bosses": {
+      "centers_xy_mm": [
+        [
+          -34.5,
+          21.6
+        ],
+        [
+          -34.5,
+          30.0
+        ],
+        [
+          34.5,
+          21.6
+        ],
+        [
+          34.5,
+          30.0
+        ]
+      ],
+      "blind_thread_nominal": "M1x0.25"
+    },
+    "open_screws": {
+      "kind": "two separate manually installed study accessories, no onboard storage designed",
+      "centers_world_xy_mm": [
+        [
+          -34.5,
+          87.0
+        ],
+        [
+          34.5,
+          87.0
+        ]
+      ],
+      "thread_nominal": "M1x0.25",
+      "catalogue_part": null,
+      "thread_strength_preload_unproved": true
+    },
+    "OLED_channels": {
+      "B_return_lap_channel_lo_hi_mm": [
+        [
+          -33.7,
+          5.4,
+          5.7
+        ],
+        [
+          33.7,
+          15.5,
+          6.3
+        ]
+      ],
+      "B_front_turn_window_lo_hi_mm": [
+        [
+          -33.7,
+          88.1,
+          -0.05
+        ],
+        [
+          33.7,
+          93.59,
+          0.8
+        ]
+      ],
+      "A_head_turn_window_lo_hi_mm": [
+        [
+          -33.7,
+          89.4,
+          -0.05
+        ],
+        [
+          33.7,
+          94.5,
+          4.2
+        ]
+      ],
+      "study_only_strength_and_support_unqualified": true
+    },
+    "added_parts_without_OPEN_accessories": 11,
+    "installed_parts_without_OPEN_accessories": 94,
+    "installed_parts_with_all_OPEN_accessories": 101,
+    "fixed_body_equal_bounds_target_mm": [
+      73.99,
+      94.25,
+      9.15
+    ],
+    "fixed_A_display_support": "A_DISPLAY_SUPPORT, detachable after 4 nominal M1 screws",
+    "B_OPEN_display_support": "Side-inserted independent accessory, 4 nominal M1 screws, no onboard storage",
+    "B_return_guides_z_intervals_mm": [
+      [
+        5.65,
+        5.85
+      ],
+      [
+        6.15,
+        6.35
+      ]
+    ],
+    "B_positive_rims_and_A_negative_recess": {
+      "B_rim_abs_x_mm": [
+        35.8,
+        36.995
+      ],
+      "B_rim_y_mm": [
+        14.7,
+        94.25
+      ],
+      "B_rim_z_mm": [
+        -1.15,
+        0.1
+      ],
+      "A_recess_abs_x_mm": [
+        35.65,
+        37.1
+      ],
+      "A_recess_z_mm": [
+        6.9,
+        8.1
+      ]
+    },
+    "support_during_slide_seat": "A rigid plate and B return guides modeled; extended front span requires temporary forming support/hand handling; automatic following deck unimplemented",
+    "B_OPEN_support_side_port_lo_hi_mm": [
+      [
+        35.7,
+        14.6,
+        -1.2
+      ],
+      [
+        37.1,
+        85.65,
+        0.05
+      ]
+    ]
+  },
+  "negative_control_provenance": {
+    "created_utc": "2026-10-19T01:07:27.350227+00:00",
+    "basis_path": "design/product_geometry.json",
+    "basis_sha256": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+    "only_geometric_change": "B_BATTERY_ALLOCATION lo_x 21 -> 11 mm; hi_x remains 33 mm; other coordinates and all product geometry unchanged",
+    "purpose": "At slide=40 mm, reject this 22-mm-wide allocation by true common volume against telescope parts while retaining the current 12-mm allocation comparison",
+    "historical_r1_exact_bytes_restored": false,
+    "historical_r1_observed_sha256": "b6ed477ad5fa8e39aaaf79d879c34d4155b021b8c0b6233e32d5af495b61cfdc",
+    "verification": "The existing collision test is retained unchanged and must execute on this new fixture."
+  }
+}

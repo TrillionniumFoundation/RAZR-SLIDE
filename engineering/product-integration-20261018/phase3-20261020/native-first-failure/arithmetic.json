@@ -1,0 +1,103 @@
+{
+  "schema": "razr-ep3-arithmetic-v1",
+  "candidate_id": "EP3_opposed_thin_outer_jaws_single_U_REJECTED_INTERNAL_PATH",
+  "inputs_sha256": {
+    "design/product_routing_ep3.json": "5ea33c5948b1a46c9317ca4eceb4a290b5419bd8f09baa351b40346f13e5fa3e",
+    "integration/product_routing_ep3.py": "adfb7a1ee67e5f057c3b0f217f777638e30fa88efba31cd162d3c0c2e1cdefc4"
+  },
+  "turn": {
+    "I_sin_0_1": 0.4860759672270572,
+    "J_cos_0_half": 0.37095510227064354,
+    "Simpson_intervals": 4096,
+    "formal_directed_rounding_certificate": false
+  },
+  "poses": {
+    "STOW": {
+      "slide_mm": 0.0,
+      "descent_mm": 0.0,
+      "delta_Z_mm": 11.6,
+      "delta_Y_mm": -11.0,
+      "turn_length_mm": 23.86458245647305,
+      "straight_A_mm": 32.56770877176348,
+      "straight_B_mm": 43.56770877176348,
+      "turn_start_world_Y_mm": 83.56770877176348,
+      "finite_head_world_Y_mm": 92.47039739755064,
+      "minimum_centerline_radius_mm": 5.06422168369575,
+      "minimum_finite_jacobian": 0.990126814519006,
+      "length_sum_mm": 100.0
+    },
+    "PREDOCK": {
+      "slide_mm": 79.75,
+      "descent_mm": 0.0,
+      "delta_Z_mm": 11.6,
+      "delta_Y_mm": 68.75,
+      "turn_length_mm": 23.86458245647305,
+      "straight_A_mm": 72.44270877176348,
+      "straight_B_mm": 3.6927087717634777,
+      "turn_start_world_Y_mm": 123.44270877176348,
+      "finite_head_world_Y_mm": 132.34539739755064,
+      "minimum_centerline_radius_mm": 5.06422168369575,
+      "minimum_finite_jacobian": 0.990126814519006,
+      "length_sum_mm": 100.0
+    },
+    "OPEN": {
+      "slide_mm": 79.75,
+      "descent_mm": 8.2,
+      "delta_Z_mm": 3.3999999999999995,
+      "delta_Y_mm": 68.75,
+      "turn_length_mm": 6.994791409655893,
+      "straight_A_mm": 80.87760429517206,
+      "straight_B_mm": 12.127604295172056,
+      "turn_start_world_Y_mm": 131.87760429517206,
+      "finite_head_world_Y_mm": 134.5223578579028,
+      "minimum_centerline_radius_mm": 1.4843408383246162,
+      "minimum_finite_jacobian": 0.9663150142413145,
+      "length_sum_mm": 100.0
+    }
+  },
+  "free_length_necessary_interval_mm": [
+    98.61458245647304,
+    103.05920520489872
+  ],
+  "selected_free_length_in_necessary_interval": true,
+  "length_interval_derivation": "L >= max(bend+abs(B_y+slide-A_y)+2*straight); L <= 2*(STOW_head-t/2-(A_y+B_y)/2-bend*(J-.5))",
+  "length_interval_scope": "ordered full forward/reverse straight-length inequality plus STOW head bound; not internal clearance",
+  "opposed_outer_jaw_reference_cavity": {
+    "usable_height_after_two_normal_clearances_mm": 4.6,
+    "old_outward_stack_each_mm": 1.05,
+    "old_max_lane_difference_mm": 2.4999999999999996,
+    "EP3_outward_stack_each_mm": 0.6,
+    "EP3_max_lane_difference_mm": 3.3999999999999995,
+    "reference_cavity_is_not_proved_empty": true,
+    "requires_shortened_1_4mm_nominal_M2_not_original_2_45mm_shaft": true
+  },
+  "PREDOCK_single_U_internal_counterexample": {
+    "A_low_straight_Z_interval_mm": [
+      1.4,
+      1.5
+    ],
+    "B_outer_prism_min_Z_mm": 7.049999999999999,
+    "A_outer_prism_max_Y_mm": 94.25,
+    "low_straight_end_Y_mm": 123.44270877176348,
+    "outside_low_straight_length_mm": 29.192708771763478,
+    "finite_low_straight_volume_outside_outer_union_mm3": 35.031250526116175,
+    "minimum_turn_start_for_requested_straight_mm": 122.75,
+    "internal_B_anchor_upper_bound_mm": 11.5,
+    "B_endpoint_tail_extent_toward_local_minus_Y_mm": 21.0,
+    "B_anchor_lower_bound_using_outer_prism_only_mm": 21.0,
+    "outer_only_anchor_interval_shortfall_mm": 9.5,
+    "B_anchor_lower_bound_with_wall_and_clearance_request_mm": 21.85,
+    "wall_plus_clearance_request_mm": 0.85,
+    "requested_anchor_interval_shortfall_mm": 10.350000000000001,
+    "scope": "fixed single +Y / -Y U family, retained complete B endpoint orientation and nonnegative physical end straight; alternative multi-turn/opening topologies are not disproved",
+    "native_solid_checks_executed_here": false,
+    "rejects_complete_forward_and_reverse_because_both_include_PREDOCK": true
+  },
+  "native_checks_executed": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "supplier_dynamic_qualified": false,
+  "physical_hardware_test_executed": false,
+  "full_cycle_internal_route_accepted": false
+}

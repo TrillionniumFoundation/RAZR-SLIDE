@@ -1,0 +1,61 @@
+{
+  "schema": "razr-bearing-continuation-root-review-v1",
+  "source_commit_before_integration": "3e9f4af68cd2a2fcce2c0a46e4d6cbdb67a26311",
+  "source_is_staged_change": true,
+  "source_sha256_before": {
+    "engineering/bearing-continuation-20261022/ADAPTER_DIFF.patch": "3eb64edcfab20d95431a9b19a98216fd16f7f0a1ecb9ec6b3dd5449a0f7b30d2",
+    "engineering/bearing-continuation-20261022/README.md": "bde558d251568bd86995c82549e8197c99c9ea0b6c8877e9815d0305c15a189b",
+    "engineering/bearing-continuation-20261022/REBUILD_INPUTS.json": "af823f6b5453f02ea5ca5fd5266b88c1ece6280200b17cce30aafdd7a9e95053",
+    "engineering/bearing-continuation-20261022/bearing_checkpoint.py": "135d665d70a2aff2068e340e5d82fe56ce32a5eca00b8348cee331e88f107219",
+    "engineering/bearing-continuation-20261022/continuation_support.py": "e6fde34aa0057b9621316e121c6c1bb47dcec8d6f2b15ff09962b9e09267a015",
+    "engineering/bearing-continuation-20261022/continuation_test_cases.py": "ed8cdb441bc59e796871aa77c3169b292e997101fab4e76368f01aace3089c3e",
+    "engineering/bearing-continuation-20261022/continued_rigid_bearing_probe.py": "fc483fade6d3d22511d801dcb12791441d31e78e08187fc326cee65f0efa7df9",
+    "engineering/bearing-continuation-20261022/reference/bearing_contact.py": "930a66e177b0c1c778a41c2d6aefd72873316c37059e0e1217e9cf8592f35710",
+    "engineering/bearing-continuation-20261022/reference/rigid_bearing_probe.py": "58db7b129df250b4e4a113c7c6d69ae46669766d2eecc8f490045536f095687b",
+    "engineering/bearing-continuation-20261022/reference/solve_trace_probe.py": "a5eb8c93eb0fb37cdcb3658ed01b09119dd930729d75e365843887745f9ffb7b",
+    "engineering/bearing-continuation-20261022/run_continuation.py": "ab8ef571dc70c45d50abd66ba05e00436561884ae92495c0522eb297ffc16899",
+    "engineering/bearing-continuation-20261022/source-lock.json": "d720308d7209fdb0c82cbe9174e12ffadac62cba615df18a427181a6e22e7e9d",
+    "engineering/bearing-continuation-20261022/verification.json": "2c6c926c350a517eeb842cb0b38a9749e7c198f95f74310e2971de67c7be8a49",
+    "integration/manufacturing-tests/test_bearing_continuation.py": "1113fde94cdb9f98bc528ef4cd0ccb8d70a364e20a44abcc8782a1d4b621ccf4"
+  },
+  "source_sha256_after": {
+    "engineering/bearing-continuation-20261022/ADAPTER_DIFF.patch": "3eb64edcfab20d95431a9b19a98216fd16f7f0a1ecb9ec6b3dd5449a0f7b30d2",
+    "engineering/bearing-continuation-20261022/README.md": "bde558d251568bd86995c82549e8197c99c9ea0b6c8877e9815d0305c15a189b",
+    "engineering/bearing-continuation-20261022/REBUILD_INPUTS.json": "af823f6b5453f02ea5ca5fd5266b88c1ece6280200b17cce30aafdd7a9e95053",
+    "engineering/bearing-continuation-20261022/bearing_checkpoint.py": "135d665d70a2aff2068e340e5d82fe56ce32a5eca00b8348cee331e88f107219",
+    "engineering/bearing-continuation-20261022/continuation_support.py": "e6fde34aa0057b9621316e121c6c1bb47dcec8d6f2b15ff09962b9e09267a015",
+    "engineering/bearing-continuation-20261022/continuation_test_cases.py": "ed8cdb441bc59e796871aa77c3169b292e997101fab4e76368f01aace3089c3e",
+    "engineering/bearing-continuation-20261022/continued_rigid_bearing_probe.py": "fc483fade6d3d22511d801dcb12791441d31e78e08187fc326cee65f0efa7df9",
+    "engineering/bearing-continuation-20261022/reference/bearing_contact.py": "930a66e177b0c1c778a41c2d6aefd72873316c37059e0e1217e9cf8592f35710",
+    "engineering/bearing-continuation-20261022/reference/rigid_bearing_probe.py": "58db7b129df250b4e4a113c7c6d69ae46669766d2eecc8f490045536f095687b",
+    "engineering/bearing-continuation-20261022/reference/solve_trace_probe.py": "a5eb8c93eb0fb37cdcb3658ed01b09119dd930729d75e365843887745f9ffb7b",
+    "engineering/bearing-continuation-20261022/run_continuation.py": "ab8ef571dc70c45d50abd66ba05e00436561884ae92495c0522eb297ffc16899",
+    "engineering/bearing-continuation-20261022/source-lock.json": "d720308d7209fdb0c82cbe9174e12ffadac62cba615df18a427181a6e22e7e9d",
+    "engineering/bearing-continuation-20261022/verification.json": "2c6c926c350a517eeb842cb0b38a9749e7c198f95f74310e2971de67c7be8a49",
+    "integration/manufacturing-tests/test_bearing_continuation.py": "1113fde94cdb9f98bc528ef4cd0ccb8d70a364e20a44abcc8782a1d4b621ccf4"
+  },
+  "command": [
+    "python",
+    "-B",
+    "-m",
+    "unittest",
+    "-v",
+    "continuation_test_cases"
+  ],
+  "tests_run": 21,
+  "exit_code": 0,
+  "seconds": 0.9215153600016492,
+  "passed": true,
+  "reviewed_numerical_diff": "No original QP formula, gap target, contact-selection threshold or stopping rule changed; publication/strict restoration added at pre-QP boundary. Original source bytes pinned to PR35.",
+  "reviewed_checkpoint_integrity": [
+    "Atomic generations and LATEST replacement; previous generation retained on pointer failure.",
+    "Manifest caller-held digest, exact decoded-byte hash, full C/H/ordered descriptors/state and numerical input identity.",
+    "All C columns independently rebuilt and original five operator probes retained; non-finite arithmetic rejected."
+  ],
+  "limitations": [
+    "Bounded author regression cases independently rerun by root; no original full FE or large QP executed.",
+    "No retained complete original bearing checkpoint exists among available evidence.",
+    "Finite probe agreement is not a proof of every H element; original provenance and source/parameter binding remain necessary."
+  ],
+  "manufacturing_go": false
+}

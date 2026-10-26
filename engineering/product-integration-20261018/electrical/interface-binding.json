@@ -1,0 +1,725 @@
+{
+  "schema": "razr-product-interface-binding-v1",
+  "architecture_decision": {
+    "mode": "retain_donor_electronics_first",
+    "applied_to_design": true,
+    "actual_donor_selected": false,
+    "preserve": [
+      "matched mainboard/display/touch pair",
+      "original pack protection and charging topology",
+      "original USB role and data capabilities",
+      "original camera/RF/audio/sensor paths"
+    ],
+    "new_work": [
+      "mechanical rearrangement",
+      "identified passive interconnect extension after pin mapping",
+      "motion sensing only after interface identification"
+    ],
+    "new_phone_mainboard_required": false,
+    "new_phone_mainboard_waives_unknown_interfaces": false,
+    "proposed_locations": {
+      "donor_mainboard_and_original_power_management": "B left side project reservation, actual PCB size unknown",
+      "larger_protected_pack": "A",
+      "smaller_protected_pack": "B right side",
+      "camera_modules": "A front end project reservation",
+      "USB_port_and_original_port_board": "A edge; exact opening and original port-board envelope pending donor",
+      "main_display_material_fixed_end": "A y=2 front -Z; COF/tail envelope unknown",
+      "matched_main_touch": "A fixed display end where physically present",
+      "RF_audio_sensors": "retain donor subassemblies adjacent to B mainboard, moving antenna changes require original path inventory"
+    }
+  },
+  "source_sha256": "024e1423e8d3161335844ccbbf10e5fba25a6ddaf73ee15b9697e164700e62b9",
+  "native_source_sha256": {
+    "engineering/power-chain-pcba-20261013-r5/harness_terminal_schedule.csv": "2555aec726450c17f3bb282bde430ccf4910fa988fccbc52bb4078d209ad4a00",
+    "engineering/power-chain-pcba-20261013-r5/native_pocket_v2/modules/A1/native.xml": "32a17209fdcd6fa125333269d2474d11eb50dbe1e737f2f45691e4275172f50b",
+    "engineering/power-chain-pcba-20261013-r5/modules/A1/cut_reference.kicad_pcb": "bd9f357b6ec52088c9850e5d6621b654a2a950eb8006c92caecbb91518a7169e",
+    "engineering/power-chain-pcba-20261013-r5/native_main/modules/A1/DRC.rpt": "ee170326230b5d8a0cceab66a926052294a54ca08780171987627636903f756e",
+    "engineering/power-chain-pcba-20261013-r5/native_pocket_v2/modules/A1/ERC.json": "a3f2d3bfce511b3a36d398ed0566bb545ce237330317fbdecd6c3bd91a2ca17e",
+    "engineering/power-chain-pcba-20261013-r5/native_pocket_v2/modules/A2/native.xml": "c3891d9e40dd29c788b33757090adc06a685a80bad461e3dfc54b0805ea8a57d",
+    "engineering/power-chain-pcba-20261013-r5/modules/A2/cut_reference.kicad_pcb": "b4eaa010765578f603d3d2d13f7ac6fb1bce797c3797206e79920d79f072b64f",
+    "engineering/power-chain-pcba-20261013-r5/native_main/modules/A2/DRC.rpt": "d946994f73df72e50a177c5ee6686ea55ed0312a0bacd2829bf87d052db13e04",
+    "engineering/power-chain-pcba-20261013-r5/native_pocket_v2/modules/A2/ERC.json": "305601cb48ad24eb7f60780eb0c7bb3554789371e52d1b89f83e5354860a417f",
+    "engineering/power-chain-pcba-20261013-r5/native_pocket_v2/modules/B1/native.xml": "eaa46d04d39a91ef07d7965e40b05a9b322218490111d747277d14ff5f593459",
+    "engineering/power-chain-pcba-20261013-r5/modules/B1/cut_reference.kicad_pcb": "9e846a8e3d03332284a216e4a9d3e3fa991a5b05c4252b6be4886e199458f78e",
+    "engineering/power-chain-pcba-20261013-r5/native_main/modules/B1/DRC.rpt": "0ad623552360c450ea0ff2811f7fdcde2f284a8ea983bed44ebc04c0924f80cf",
+    "engineering/power-chain-pcba-20261013-r5/native_pocket_v2/modules/B1/ERC.json": "c988a13271a5d631770389bfd6ab1d9e7b6c477fe6e7e366058ce961531887cd",
+    "engineering/power-chain-pcba-20261013-r5/native_pocket_v2/modules/B2/native.xml": "7716b71bf9f78bb806e490ae3ece93c94b4793ee328e1d13e7b72d4b74130996",
+    "engineering/power-chain-pcba-20261013-r5/modules/B2/cut_reference.kicad_pcb": "78ba48f85c8f71a61b6c497b3b116271b263087872dafa349c99181fcd5d481a",
+    "engineering/power-chain-pcba-20261013-r5/native_main/modules/B2/DRC.rpt": "a80f9e2263b6ce76b3a5a5c1d12f80c81544fa8f23a6f896fb4a412eebb0ab3b",
+    "engineering/power-chain-pcba-20261013-r5/native_pocket_v2/modules/B2/ERC.json": "39ecac8cb5ff3f497e87807ac792a3e6eb7b22e8226b84304aef162a05e1e636",
+    "engineering/endpoint-pcba-design-20261013-r2/endpoint_DP.kicad_pcb": "7afd1cfc2c60fa3d87b781a28e1973428a08497f5033833dc0818761f8537103",
+    "engineering/endpoint-pcba-design-20261013-r2/endpoint_DS.kicad_pcb": "124aa788def7f5a9c2f67247f7adf26e6dc4705a8a337e235ff90cf762b65f1d",
+    "engineering/endpoint-pcba-design-20261013-r2/endpoint_DP.net": "57c8453f8ce2de25699c6e79ba1de8f62f970176230eef0ceef9ca6d380e4c45",
+    "engineering/endpoint-pcba-design-20261013-r2/endpoint_DS.net": "a43a385dbc321838eb65029f31d5b820fa517da174b92d477ef67f4da0ae1e10",
+    "engineering/endpoint-pcba-design-20261013-r2/mating_site_map.json": "361600fbdadf7f3ed6e403c925197b0b041d519620dc03ef616e2f6517f93955",
+    "engineering/endpoint-pcba-design-20261013-r2/native_pcba_receipt.json": "a9d5ec84d3e970d7f14d33a4da05fd705aefda6ce965864395c830f8f0d2bef3",
+    "engineering/endpoint-pcba-design-20261013-r2/research_BOM.csv": "99385a073623cb2adb63f7763fef2f684ef3c911109467886fec8637465f2d37"
+  },
+  "donor": {
+    "model": null,
+    "region": null,
+    "mainboard_revision": null,
+    "runtime_panel_id": null,
+    "display_module_part": null,
+    "display_module_revision": null,
+    "touch_revision": null,
+    "pack_A_label": null,
+    "pack_B_label": null,
+    "USB_roles": null,
+    "USB_version_rate": null
+  },
+  "donor_evidence": {
+    "connection_check": "engineering/product-integration-20261018/hardware/connection-check.json",
+    "collector_execution": "engineering/product-integration-20261018/hardware/collector-execution.json",
+    "observed_connected_donor": false,
+    "selection_or_identity_inferred": false
+  },
+  "interfaces": [
+    {
+      "id": "MAIN_DISPLAY",
+      "source": "donor_mainboard",
+      "sink": "donor_original_display",
+      "decision": "preserve_original_matched_pair",
+      "function": "DSI + display supplies + reset",
+      "cabin_or_route": "cross",
+      "actual_pinmap": null,
+      "source_kind": "logical_donor_boundary_pending_physical_mapping",
+      "extension_approved": false,
+      "proposed_source_location": "B matched donor mainboard",
+      "proposed_sink_location": "A fixed main OLED material end / actual COF location pending",
+      "design_routing_decision": "preserve matched original electronics; cross-cabin display-tail path is a separate unqualified design requirement, not assigned to continuity26",
+      "routing_decision_evidence": "project design decision, not observed donor terminal mapping",
+      "declared_terminal_map": false,
+      "physical_terminals_bound": false
+    },
+    {
+      "id": "MAIN_TOUCH",
+      "source": "donor_mainboard",
+      "sink": "donor_original_touch",
+      "decision": "preserve_original_matched_pair",
+      "function": "GT9916P SPI is software-family evidence only",
+      "cabin_or_route": "cross",
+      "actual_pinmap": null,
+      "source_kind": "logical_donor_boundary_pending_physical_mapping",
+      "extension_approved": false,
+      "proposed_source_location": "B matched donor mainboard",
+      "proposed_sink_location": "A main display/touch module",
+      "design_routing_decision": "retain original paired touch; record actual OEM harness path before extension",
+      "routing_decision_evidence": "project design decision, not observed donor terminal mapping",
+      "declared_terminal_map": false,
+      "physical_terminals_bound": false
+    },
+    {
+      "id": "A_PROTECTED_PACK",
+      "source": "donor_pack_A_protected_connector",
+      "sink": "donor_power_management",
+      "decision": "preserve_original_pack_protection",
+      "function": "power + thermistor + pack identity/gauge as actually present",
+      "cabin_or_route": "cross",
+      "actual_pinmap": null,
+      "source_kind": "logical_donor_boundary_pending_physical_mapping",
+      "extension_approved": false,
+      "proposed_source_location": "A protected pack connector",
+      "proposed_sink_location": "B original power management",
+      "design_routing_decision": "larger protected pack A to donor power system B; carry actual power, return, thermistor and identity lines only after mapping",
+      "routing_decision_evidence": "project design decision, not observed donor terminal mapping",
+      "declared_terminal_map": false,
+      "physical_terminals_bound": false
+    },
+    {
+      "id": "B_PROTECTED_PACK",
+      "source": "donor_pack_B_protected_connector",
+      "sink": "donor_power_management",
+      "decision": "preserve_original_pack_protection",
+      "function": "power + thermistor + pack identity/gauge as actually present",
+      "cabin_or_route": "B",
+      "actual_pinmap": null,
+      "source_kind": "logical_donor_boundary_pending_physical_mapping",
+      "extension_approved": false,
+      "proposed_source_location": "B protected pack connector",
+      "proposed_sink_location": "B original power management",
+      "design_routing_decision": "short original local pack interconnect",
+      "routing_decision_evidence": "project design decision, not observed donor terminal mapping",
+      "declared_terminal_map": false,
+      "physical_terminals_bound": false
+    },
+    {
+      "id": "A_CHARGE",
+      "source": "donor_power_management",
+      "sink": "donor_pack_A_protected_connector",
+      "decision": "preserve_original_charge_topology",
+      "function": "protected charging path; no raw-cell tap",
+      "cabin_or_route": "cross",
+      "actual_pinmap": null,
+      "source_kind": "logical_donor_boundary_pending_physical_mapping",
+      "extension_approved": false,
+      "proposed_source_location": "B original charging management",
+      "proposed_sink_location": "A protected pack connector",
+      "design_routing_decision": "same original bidirectional protected A-pack harness; not an extra raw-cell charging board",
+      "routing_decision_evidence": "project design decision, not observed donor terminal mapping",
+      "declared_terminal_map": false,
+      "physical_terminals_bound": false
+    },
+    {
+      "id": "B_CHARGE",
+      "source": "donor_power_management",
+      "sink": "donor_pack_B_protected_connector",
+      "decision": "preserve_original_charge_topology",
+      "function": "protected charging path; no raw-cell tap",
+      "cabin_or_route": "B",
+      "actual_pinmap": null,
+      "source_kind": "logical_donor_boundary_pending_physical_mapping",
+      "extension_approved": false,
+      "proposed_source_location": "B original charging management",
+      "proposed_sink_location": "B protected pack connector",
+      "design_routing_decision": "original local protected B-pack charging path",
+      "routing_decision_evidence": "project design decision, not observed donor terminal mapping",
+      "declared_terminal_map": false,
+      "physical_terminals_bound": false
+    },
+    {
+      "id": "USB_DATA_CROSS",
+      "source": "USB_port_side",
+      "sink": "USB_host_side",
+      "decision": "continuous_copper_required",
+      "function": "pairs + references + shield + role control as actually present",
+      "cabin_or_route": "cross",
+      "actual_pinmap": null,
+      "source_kind": "logical_donor_boundary_pending_physical_mapping",
+      "extension_approved": false,
+      "proposed_source_location": "A original USB port and port board",
+      "proposed_sink_location": "B donor mainboard USB controller",
+      "design_routing_decision": "continuous copper across the motion; actual pairs, reference, shield, CC and role mapping require donor readback",
+      "routing_decision_evidence": "project design decision, not observed donor terminal mapping",
+      "declared_terminal_map": false,
+      "physical_terminals_bound": false
+    },
+    {
+      "id": "USB_POWER",
+      "source": "donor_USB_port",
+      "sink": "donor_power_management",
+      "decision": "preserve_original_VBUS_role_control",
+      "function": "VBUS + CC + GND/shield mapping as actually present",
+      "cabin_or_route": "cross",
+      "actual_pinmap": null,
+      "source_kind": "logical_donor_boundary_pending_physical_mapping",
+      "extension_approved": false,
+      "proposed_source_location": "A original USB port and port board",
+      "proposed_sink_location": "B original charging / VBUS role control",
+      "design_routing_decision": "preserve original power topology and protection; no connection to the low-current continuity coupon",
+      "routing_decision_evidence": "project design decision, not observed donor terminal mapping",
+      "declared_terminal_map": false,
+      "physical_terminals_bound": false
+    },
+    {
+      "id": "CAMERAS",
+      "source": "donor_mainboard",
+      "sink": "donor_camera_modules",
+      "decision": "retain_original_interconnect",
+      "function": "original donor interface",
+      "cabin_or_route": "cross",
+      "actual_pinmap": null,
+      "source_kind": "logical_donor_boundary_pending_physical_mapping",
+      "extension_approved": false,
+      "proposed_source_location": "B donor mainboard",
+      "proposed_sink_location": "A original camera modules",
+      "design_routing_decision": "spatial candidate only; original camera link extension needs module cable mapping and high-speed qualification",
+      "routing_decision_evidence": "project design decision, not observed donor terminal mapping",
+      "declared_terminal_map": false,
+      "physical_terminals_bound": false
+    },
+    {
+      "id": "RF_ANTENNA",
+      "source": "donor_mainboard",
+      "sink": "donor_antenna_modules",
+      "decision": "retain_original_RF_path",
+      "function": "coax/antenna feed and ground as actually present",
+      "cabin_or_route": "B",
+      "actual_pinmap": null,
+      "source_kind": "logical_donor_boundary_pending_physical_mapping",
+      "extension_approved": false,
+      "proposed_source_location": "B donor RF front end",
+      "proposed_sink_location": "B retained donor antenna subassembly",
+      "design_routing_decision": "prefer local original coax and ground topology; actual antenna positions and enclosure RF clearances unknown",
+      "routing_decision_evidence": "project design decision, not observed donor terminal mapping",
+      "declared_terminal_map": false,
+      "physical_terminals_bound": false
+    },
+    {
+      "id": "AUDIO_SENSORS",
+      "source": "donor_mainboard",
+      "sink": "donor_audio_and_sensors",
+      "decision": "retain_original_interconnect",
+      "function": "original donor interface",
+      "cabin_or_route": "B",
+      "actual_pinmap": null,
+      "source_kind": "logical_donor_boundary_pending_physical_mapping",
+      "extension_approved": false,
+      "proposed_source_location": "B donor mainboard",
+      "proposed_sink_location": "B retained donor audio and sensor subassemblies",
+      "design_routing_decision": "default local original interconnect; any A-positioned earpiece or sensor becomes an explicit additional crossing after donor inventory",
+      "routing_decision_evidence": "project design decision, not observed donor terminal mapping",
+      "declared_terminal_map": false,
+      "physical_terminals_bound": false
+    },
+    {
+      "id": "MOTION_STATE",
+      "source": "new_mechanical_state_sensor",
+      "sink": "donor_software_or_aux_controller",
+      "decision": "new_readout_only_pending_interface",
+      "function": "no assumed write to OEM GPIO",
+      "cabin_or_route": "A",
+      "actual_pinmap": null,
+      "source_kind": "logical_donor_boundary_pending_physical_mapping",
+      "extension_approved": false,
+      "proposed_source_location": "A new isolated state sensor",
+      "proposed_sink_location": "A isolated bench readout initially",
+      "design_routing_decision": "no assumed OEM GPIO; software bridge requires separately identified supported interface",
+      "routing_decision_evidence": "project design decision, not observed donor terminal mapping",
+      "declared_terminal_map": false,
+      "physical_terminals_bound": false
+    }
+  ],
+  "cell_budget": {
+    "known": false,
+    "missing": [
+      "A_mAh",
+      "B_mAh",
+      "A_nominal_V",
+      "B_nominal_V"
+    ],
+    "sum_of_cell_label_mAh": null,
+    "same_reference_voltage_equivalent_mAh": null,
+    "energy_Wh": null,
+    "actual_system_terminal_capacity_verified": false,
+    "actual_pack_topology": null
+  },
+  "actual_A_chain": {
+    "boards": {
+      "A1": {
+        "role": "A_source_cut",
+        "components": 17,
+        "unique_pins": 42,
+        "input": "A_PACK_P",
+        "output": "A_MID_P",
+        "return": "A_PACK_N",
+        "copper_pad_objects": 46,
+        "track_segments": 68,
+        "vias": 13
+      },
+      "A2": {
+        "role": "A_source_cut",
+        "components": 17,
+        "unique_pins": 42,
+        "input": "A_MID_P",
+        "output": "A_TX_P",
+        "return": "A_PACK_N",
+        "copper_pad_objects": 46,
+        "track_segments": 68,
+        "vias": 13
+      },
+      "B1": {
+        "role": "A_chain_receiver_cut",
+        "components": 17,
+        "unique_pins": 42,
+        "input": "A_RX_P",
+        "output": "A_RX_MID_P",
+        "return": "B_SYS_N",
+        "copper_pad_objects": 46,
+        "track_segments": 68,
+        "vias": 13
+      },
+      "B2": {
+        "role": "A_chain_receiver_cut",
+        "components": 17,
+        "unique_pins": 42,
+        "input": "A_RX_MID_P",
+        "output": "SYS_B_P",
+        "return": "B_SYS_N",
+        "copper_pad_objects": 46,
+        "track_segments": 68,
+        "vias": 13
+      }
+    },
+    "complete_native_pin_comparison": true,
+    "native_unique_pins": 168,
+    "harness": {
+      "conductors": 18,
+      "conductor_ends": 36,
+      "native_board_terminals_bound": 24,
+      "external_boundary_ends": 12,
+      "resolved_wiring": [
+        {
+          "harness": "H_A_LOCAL",
+          "from": "A1.J2.1",
+          "to": "A2.J1.1",
+          "from_native_net": "A_MID_P",
+          "to_native_net": "A_MID_P"
+        },
+        {
+          "harness": "H_A_LOCAL",
+          "from": "A1.J2.2",
+          "to": "A2.J1.2",
+          "from_native_net": "A_PACK_N",
+          "to_native_net": "A_PACK_N"
+        },
+        {
+          "harness": "H_CROSS",
+          "from": "A2.J2.1",
+          "to": "B1.J1.1",
+          "from_native_net": "A_TX_P",
+          "to_native_net": "A_RX_P"
+        },
+        {
+          "harness": "H_CROSS",
+          "from": "A2.J2.2",
+          "to": "B1.J1.2",
+          "from_native_net": "A_PACK_N",
+          "to_native_net": "B_SYS_N"
+        },
+        {
+          "harness": "H_B_LOCAL",
+          "from": "B1.J2.1",
+          "to": "B2.J1.1",
+          "from_native_net": "A_RX_MID_P",
+          "to_native_net": "A_RX_MID_P"
+        },
+        {
+          "harness": "H_B_LOCAL",
+          "from": "B1.J2.2",
+          "to": "B2.J1.2",
+          "from_native_net": "B_SYS_N",
+          "to_native_net": "B_SYS_N"
+        },
+        {
+          "harness": "H_INPUT",
+          "from": "ISOLATED_PROTECTED_SUPPLY_BOUNDARY.1",
+          "to": "A1.J1.1",
+          "from_native_net": null,
+          "to_native_net": "A_PACK_P"
+        },
+        {
+          "harness": "H_INPUT",
+          "from": "ISOLATED_PROTECTED_SUPPLY_BOUNDARY.2",
+          "to": "A1.J1.2",
+          "from_native_net": null,
+          "to_native_net": "A_PACK_N"
+        },
+        {
+          "harness": "H_OUTPUT",
+          "from": "B2.J2.1",
+          "to": "ISOLATED_LOAD_BOUNDARY.1",
+          "from_native_net": "SYS_B_P",
+          "to_native_net": null
+        },
+        {
+          "harness": "H_OUTPUT",
+          "from": "B2.J2.2",
+          "to": "ISOLATED_LOAD_BOUNDARY.2",
+          "from_native_net": "B_SYS_N",
+          "to_native_net": null
+        },
+        {
+          "harness": "CTRL_A1",
+          "from": "FLOATING_DRIVER_A1.1",
+          "to": "A1.J3.1",
+          "from_native_net": null,
+          "to_native_net": "A1_ISO_LED_P"
+        },
+        {
+          "harness": "CTRL_A1",
+          "from": "FLOATING_DRIVER_A1.2",
+          "to": "A1.J3.2",
+          "from_native_net": null,
+          "to_native_net": "A1_ISO_LED_N"
+        },
+        {
+          "harness": "CTRL_A2",
+          "from": "FLOATING_DRIVER_A2.1",
+          "to": "A2.J3.1",
+          "from_native_net": null,
+          "to_native_net": "A2_ISO_LED_P"
+        },
+        {
+          "harness": "CTRL_A2",
+          "from": "FLOATING_DRIVER_A2.2",
+          "to": "A2.J3.2",
+          "from_native_net": null,
+          "to_native_net": "A2_ISO_LED_N"
+        },
+        {
+          "harness": "CTRL_B1",
+          "from": "FLOATING_DRIVER_B1.1",
+          "to": "B1.J3.1",
+          "from_native_net": null,
+          "to_native_net": "B1_ISO_LED_P"
+        },
+        {
+          "harness": "CTRL_B1",
+          "from": "FLOATING_DRIVER_B1.2",
+          "to": "B1.J3.2",
+          "from_native_net": null,
+          "to_native_net": "B1_ISO_LED_N"
+        },
+        {
+          "harness": "CTRL_B2",
+          "from": "FLOATING_DRIVER_B2.1",
+          "to": "B2.J3.1",
+          "from_native_net": null,
+          "to_native_net": "B2_ISO_LED_P"
+        },
+        {
+          "harness": "CTRL_B2",
+          "from": "FLOATING_DRIVER_B2.2",
+          "to": "B2.J3.2",
+          "from_native_net": null,
+          "to_native_net": "B2_ISO_LED_N"
+        }
+      ],
+      "common_main_return_path": [
+        "ISOLATED_PROTECTED_SUPPLY_BOUNDARY.2",
+        "A1.J1.2",
+        "A1.J2.2",
+        "A2.J1.2",
+        "A2.J2.2",
+        "B1.J1.2",
+        "B1.J2.2",
+        "B2.J1.2",
+        "B2.J2.2",
+        "ISOLATED_LOAD_BOUNDARY.2"
+      ],
+      "A_PACK_N_and_B_SYS_N_are_connected_by_scheduled_harness": true,
+      "separate_control_input_pairs": 4,
+      "independent_B_battery_implemented": false,
+      "dry_selftest_connected_to_real_return": false,
+      "native_ERC_DRC_rerun": false,
+      "moving_FPC_qualified": false,
+      "complete_phone_PCB": false,
+      "manufacturing_go": false
+    },
+    "B_battery_or_charger_implemented": false,
+    "new_product_power_circuit": false
+  },
+  "static_endpoint_fixture": {
+    "connector_DP": "BM28B0.6-24DP/2-0.35V(53)",
+    "connector_DS": "BM28B0.6-24DS/2-0.35V(53)",
+    "mapping": [
+      {
+        "net": "C01",
+        "DP_site": "S_NEG_00",
+        "DS_site": "S_POS_00",
+        "DP_testpoint": "TP01",
+        "DS_testpoint": "TP13"
+      },
+      {
+        "net": "C02",
+        "DP_site": "S_NEG_01",
+        "DS_site": "S_POS_01",
+        "DP_testpoint": "TP02",
+        "DS_testpoint": "TP14"
+      },
+      {
+        "net": "C03",
+        "DP_site": "S_NEG_02",
+        "DS_site": "S_POS_02",
+        "DP_testpoint": "TP03",
+        "DS_testpoint": "TP15"
+      },
+      {
+        "net": "C04",
+        "DP_site": "S_NEG_03",
+        "DS_site": "S_POS_03",
+        "DP_testpoint": "TP04",
+        "DS_testpoint": "TP16"
+      },
+      {
+        "net": "C05",
+        "DP_site": "S_NEG_04",
+        "DS_site": "S_POS_04",
+        "DP_testpoint": "TP05",
+        "DS_testpoint": "TP17"
+      },
+      {
+        "net": "C06",
+        "DP_site": "S_NEG_05",
+        "DS_site": "S_POS_05",
+        "DP_testpoint": "TP06",
+        "DS_testpoint": "TP18"
+      },
+      {
+        "net": "C07",
+        "DP_site": "S_NEG_06",
+        "DS_site": "S_POS_06",
+        "DP_testpoint": "TP07",
+        "DS_testpoint": "TP19"
+      },
+      {
+        "net": "C08",
+        "DP_site": "S_NEG_07",
+        "DS_site": "S_POS_07",
+        "DP_testpoint": "TP08",
+        "DS_testpoint": "TP20"
+      },
+      {
+        "net": "C09",
+        "DP_site": "S_NEG_08",
+        "DS_site": "S_POS_08",
+        "DP_testpoint": "TP09",
+        "DS_testpoint": "TP21"
+      },
+      {
+        "net": "C10",
+        "DP_site": "S_NEG_09",
+        "DS_site": "S_POS_09",
+        "DP_testpoint": "TP10",
+        "DS_testpoint": "TP22"
+      },
+      {
+        "net": "C11",
+        "DP_site": "S_NEG_10",
+        "DS_site": "S_POS_10",
+        "DP_testpoint": "TP11",
+        "DS_testpoint": "TP23"
+      },
+      {
+        "net": "C12",
+        "DP_site": "S_NEG_11",
+        "DS_site": "S_POS_11",
+        "DP_testpoint": "TP12",
+        "DS_testpoint": "TP24"
+      },
+      {
+        "net": "C13",
+        "DP_site": "S_POS_00",
+        "DS_site": "S_NEG_00",
+        "DP_testpoint": "TP13",
+        "DS_testpoint": "TP01"
+      },
+      {
+        "net": "C14",
+        "DP_site": "S_POS_01",
+        "DS_site": "S_NEG_01",
+        "DP_testpoint": "TP14",
+        "DS_testpoint": "TP02"
+      },
+      {
+        "net": "C15",
+        "DP_site": "S_POS_02",
+        "DS_site": "S_NEG_02",
+        "DP_testpoint": "TP15",
+        "DS_testpoint": "TP03"
+      },
+      {
+        "net": "C16",
+        "DP_site": "S_POS_03",
+        "DS_site": "S_NEG_03",
+        "DP_testpoint": "TP16",
+        "DS_testpoint": "TP04"
+      },
+      {
+        "net": "C17",
+        "DP_site": "S_POS_04",
+        "DS_site": "S_NEG_04",
+        "DP_testpoint": "TP17",
+        "DS_testpoint": "TP05"
+      },
+      {
+        "net": "C18",
+        "DP_site": "S_POS_05",
+        "DS_site": "S_NEG_05",
+        "DP_testpoint": "TP18",
+        "DS_testpoint": "TP06"
+      },
+      {
+        "net": "C19",
+        "DP_site": "S_POS_06",
+        "DS_site": "S_NEG_06",
+        "DP_testpoint": "TP19",
+        "DS_testpoint": "TP07"
+      },
+      {
+        "net": "C20",
+        "DP_site": "S_POS_07",
+        "DS_site": "S_NEG_07",
+        "DP_testpoint": "TP20",
+        "DS_testpoint": "TP08"
+      },
+      {
+        "net": "C21",
+        "DP_site": "S_POS_08",
+        "DS_site": "S_NEG_08",
+        "DP_testpoint": "TP21",
+        "DS_testpoint": "TP09"
+      },
+      {
+        "net": "C22",
+        "DP_site": "S_POS_09",
+        "DS_site": "S_NEG_09",
+        "DP_testpoint": "TP22",
+        "DS_testpoint": "TP10"
+      },
+      {
+        "net": "C23",
+        "DP_site": "S_POS_10",
+        "DS_site": "S_NEG_10",
+        "DP_testpoint": "TP23",
+        "DS_testpoint": "TP11"
+      },
+      {
+        "net": "C24",
+        "DP_site": "S_POS_11",
+        "DS_site": "S_NEG_11",
+        "DP_testpoint": "TP24",
+        "DS_testpoint": "TP12"
+      },
+      {
+        "net": "C25",
+        "DP_site": "P_L",
+        "DS_site": "P_L",
+        "DP_testpoint": "TP25",
+        "DS_testpoint": "TP25"
+      },
+      {
+        "net": "C26",
+        "DP_site": "P_R",
+        "DS_site": "P_R",
+        "DP_testpoint": "TP26",
+        "DS_testpoint": "TP26"
+      }
+    ],
+    "electrical_net_count": 26,
+    "OEM_terminal_map": null,
+    "mating_verified_on_physical_sample": false,
+    "orientation": {
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "translation_mm": [
+        0,
+        0,
+        0.6
+      ]
+    }
+  },
+  "product_interface_count": 12,
+  "declared_terminal_maps": 0,
+  "product_interfaces_physically_bound": 0,
+  "product_power_or_display_connected": false,
+  "physical_qualification": false,
+  "candidate_go": false,
+  "manufacturing_go": false
+}

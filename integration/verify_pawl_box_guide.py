@@ -9,6 +9,7 @@ import argparse,itertools,json,math,sys
 import numpy as np
 import cadquery as cq
 import verify_pawl_lateral_guide as w
+from translation_regions import sum_common_upper_bound
 v=w.v
 TOL=v.TOL
 
@@ -111,6 +112,23 @@ def carrier_envelope(slot):
     return v.single(body)
 
 
+def whole_material_enclosure_checks(rows):
+    """Aggregate material pieces for each side and fixed target separately."""
+    expected={name for name,_,_ in v.COVERS[:3]}|{'round_carrier'}
+    groups={}
+    for row in rows:groups.setdefault((row['side'],row['fixed']),[]).append(row)
+    if not groups:raise ValueError('complete enclosure comparisons required')
+    result=[]
+    for (side,fixed),pieces in sorted(groups.items()):
+        if len(pieces)!=len(expected) or {row['piece'] for row in pieces}!=expected:
+            raise ValueError('complete enclosure piece inventory required')
+        upper=sum_common_upper_bound(row['common_mm3'] for row in pieces)
+        result.append({'side':side,'fixed':fixed,'pieces':sorted(expected),
+            'common_upper_bound_mm3':upper,'common_upper_bound_is_sum_not_union_volume':True,
+            'whole_material_enclosure_clear':upper<=TOL})
+    return result
+
+
 def complete_envelopes(new):
     rows=[];coverage=[]
     for side in 'LR':
@@ -130,14 +148,20 @@ def complete_envelopes(new):
                 hit=v.common(b,new[target]);distance=b.distance(new[target])
                 if hit>TOL:raise ValueError('full coupled control envelope intersects '+target)
                 rows.append({'side':side,'piece':name,'fixed':target,'common_mm3':hit,'distance_mm':distance})
-    return {'coverage':coverage,'comparisons':rows,'complete_nominal_u_and_Y_and_slot_flanks':True,
+    combined=whole_material_enclosure_checks(rows)
+    if any(not row['whole_material_enclosure_clear'] for row in combined):
+        raise ValueError('complete coupled control material enclosure is not cleared')
+    return {'coverage':coverage,'comparisons':rows,'whole_material_comparisons':combined,
+            'complete_nominal_u_and_Y_and_slot_flanks':True,
             'specified_correlated_translation_family_no_rotation_or_process_errors':True,'intentional_body_contact_included':True}
 
 
 def verify(baseline,manifest,output,*,full=False):
     out=Path(output)
     if out.exists():raise ValueError('new output required')
+    sources={str(Path(f).resolve()):v.sha(f) for f in (__file__,sum_common_upper_bound.__code__.co_filename)}
     _,base,h=w.load_new(baseline);meta,new,h2=w.load_new(manifest);h.update(h2)
+    h.update(sources)
     if meta['baseline_manifest_sha256']!=v.sha(baseline):raise ValueError('wrong baseline')
     changed={'A_BACK_PANEL'}|{s+'_'+r for s in 'LR' for r in ('ROOT_OUTER','ROOF','GUIDE_REFERENCE')}
     for name in set(base)-changed:v.equal(base[name],new[name])

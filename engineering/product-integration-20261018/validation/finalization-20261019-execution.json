@@ -1,0 +1,49 @@
+{
+  "recorded_utc": "2026-10-19T01:41:08.982829+00:00",
+  "documentation_bundle_sha256": "a504d0e4dc1596bf68cf5e3fdb0a98bb1c05bf8736b2af1ad2726bebbac19a10",
+  "declaration_commands": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "tools/sync_current_design.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\"mode\": \"write\", \"changed\": [\"README.md\", \"CURRENT_DESIGN.md\", \"status.json\"]}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "tools/sync_current_design.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "stdout": "{\"mode\": \"check\", \"changed\": []}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "integration/product_contract.py",
+        "--output",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/product-input-binding-final-20261019.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"scope\": \"cross-configuration identity and declared dimensions only\", \"implementation_baseline\": \"a1b3cc1e0773446f2e36d0a607edf61211dd9919\", \"declarations_consistent\": true, \"current_scene_factory\": \"product_assembly.product_scene\", \"slide_mm\": 79.75, \"normal_seating_mm\": 8.2, \"single_display_flat_storage_in_B\": true, \"A_larger_battery_priority\": true, \"capacity_is_a_target_not_a_selected_pair\": true, \"same_coupon_and_route_material_dimensions\": true, \"solid_packing_or_full_motion_evaluated_here\": false, \"actual_donor_or_hardware_qualified_here\": false, \"input_sha256\": {\"design/current_product.json\": \"5158c57fc027b3d36194a052be9cb139009c0bea580877f25ebd6eac7dce52e9\", \"design/product_geometry.json\": \"2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d\", \"design/product_interfaces.json\": \"9a713c497439e3c4e8ac3a7f8ed1fe941c71757d2ee7458ab5f9f08564be5f41\"}, \"source_sha256\": \"65e3df4069bbd38b3d2b266e8481f0b6e1368f67d0d68c57362ae34243aa8f8b\"}\n",
+      "stderr": ""
+    }
+  ],
+  "builder_sha256": "c9d82987e561af079502101b4fa6d2dbf50669bb2e1beea6fda2abc6240403af",
+  "builder_argv": [
+    "/usr/bin/python3",
+    "-B",
+    "/tmp/razr-finalize-delivery-report-20261019.py"
+  ],
+  "builder_returncode": 1,
+  "builder_seconds": 0.5576734030037187,
+  "builder_stdout": "",
+  "builder_stderr": "Traceback (most recent call last):\n  File \"/tmp/razr-finalize-delivery-report-20261019.py\", line 33, in <module>\n    assert extra_py == ['engineering/product-integration-20261018/validation/assemble_canonical_validation.py'], extra_py\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ['engineering/product-integration-20261018/electrical/recover_electrical_evidence.py', 'engineering/product-integration-20261018/validation/assemble_canonical_validation.py']\n"
+}

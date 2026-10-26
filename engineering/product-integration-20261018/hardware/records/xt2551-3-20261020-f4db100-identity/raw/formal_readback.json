@@ -1,0 +1,434 @@
+{
+  "schema": "razr-donor-readback-v2",
+  "observed_utc": "2026-10-20T02:59:58.946837+00:00",
+  "scope": "read-only Android software identity, not physical part verification",
+  "collector_sha256": "b2dada86400ec43ba1ace3a02b657fcf6790744656a4bfb8f322b4bcd091b351",
+  "adb_transport": {
+    "adb_executable_requested": "/home/alex/.local/opt/razr-adb-37/adb",
+    "adb_executable_path": "/home/alex/.local/opt/razr-adb-37/adb",
+    "adb_executable_sha256": "00108217733707a40debfc92c86d4232fd6e68870be5966515d74c071193ea90",
+    "server_host": "127.0.0.1",
+    "server_port": 5061,
+    "global_args": [
+      "-H",
+      "127.0.0.1",
+      "-P",
+      "5061"
+    ],
+    "selected_transport_id_before": "37",
+    "selected_transport_id_after": "37",
+    "selected_transport_id_unchanged": true
+  },
+  "design_binding": {
+    "git_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+    "files_sha256": {
+      "design/product_geometry.json": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+      "design/product_interfaces.json": "9a713c497439e3c4e8ac3a7f8ed1fe941c71757d2ee7458ab5f9f08564be5f41"
+    },
+    "commit_files_sha256": {
+      "design/product_geometry.json": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+      "design/product_interfaces.json": "9a713c497439e3c4e8ac3a7f8ed1fe941c71757d2ee7458ab5f9f08564be5f41"
+    },
+    "inputs_match_commit": true,
+    "interface_contract_sha256": "eda50142a88f13398ad989dafa2dc4628b18dbc77d2a67c08ffc27171342ded7",
+    "interface_contract_source_sha256": "5b54b06023bcad187400053217babaeb1deadfa6c2f2d48c129b96044c668d89",
+    "complete": true
+  },
+  "specimen_id": "XT2551-3-41ad305f",
+  "device_inventory": [
+    {
+      "serial_sha256": "41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+      "state": "device",
+      "transport_id": "37"
+    }
+  ],
+  "device_inventory_after": [
+    {
+      "serial_sha256": "41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+      "state": "device",
+      "transport_id": "37"
+    }
+  ],
+  "selected_donor_connected": true,
+  "software_identity_complete": true,
+  "physical_module_identified": false,
+  "physical_board_revision": null,
+  "physical_panel_label": null,
+  "physical_cell_labels": null,
+  "connector_pinmap": null,
+  "dimensions_measured": false,
+  "phone_function_verified": false,
+  "capture_status": "complete",
+  "selected_serial_sha256": "41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+  "properties": {
+    "ro.product.manufacturer": "motorola",
+    "ro.product.brand": "motorola",
+    "ro.product.model": "XT2551-3",
+    "ro.product.device": "leap",
+    "ro.product.board": "leap",
+    "ro.product.name": "trillionnium_leap",
+    "ro.boot.hardware.sku": "XT2551-3",
+    "ro.boot.hwrev": null,
+    "ro.build.fingerprint": "motorola/trillionnium_leap/leap:17/CSV1.260518.010/eng.qq:userdebug/test-keys",
+    "ro.build.version.release": "17",
+    "ro.build.version.security_patch": "2026-05-05",
+    "sys.usb.config": "adb",
+    "sys.usb.state": "adb"
+  },
+  "design_inputs_unchanged": true,
+  "command_records": [
+    {
+      "args": [
+        "devices",
+        "-l"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:58.946904+00:00",
+      "returncode": 0,
+      "stdout_text": "List of devices attached\nsha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1             device usb:3-2 product:trillionnium_leap model:XT2551_3 device:leap transport_id:37\n\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.0029631350189447403
+    },
+    {
+      "args": [
+        "-s",
+        "sha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+        "shell",
+        "getprop",
+        "ro.product.brand"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:58.949917+00:00",
+      "returncode": 0,
+      "stdout_text": "motorola\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.042027884046547115
+    },
+    {
+      "args": [
+        "-s",
+        "sha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+        "shell",
+        "getprop",
+        "ro.product.manufacturer"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:58.991966+00:00",
+      "returncode": 0,
+      "stdout_text": "motorola\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.013322554994374514
+    },
+    {
+      "args": [
+        "-s",
+        "sha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+        "shell",
+        "getprop",
+        "ro.product.manufacturer"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:59.005344+00:00",
+      "returncode": 0,
+      "stdout_text": "motorola\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.01768672000616789
+    },
+    {
+      "args": [
+        "-s",
+        "sha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+        "shell",
+        "getprop",
+        "ro.product.brand"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:59.023053+00:00",
+      "returncode": 0,
+      "stdout_text": "motorola\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.02331138902809471
+    },
+    {
+      "args": [
+        "-s",
+        "sha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+        "shell",
+        "getprop",
+        "ro.product.model"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:59.046379+00:00",
+      "returncode": 0,
+      "stdout_text": "XT2551-3\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.022131349076516926
+    },
+    {
+      "args": [
+        "-s",
+        "sha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+        "shell",
+        "getprop",
+        "ro.product.device"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:59.068522+00:00",
+      "returncode": 0,
+      "stdout_text": "leap\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.019360749050974846
+    },
+    {
+      "args": [
+        "-s",
+        "sha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+        "shell",
+        "getprop",
+        "ro.product.board"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:59.087905+00:00",
+      "returncode": 0,
+      "stdout_text": "leap\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.024427116964943707
+    },
+    {
+      "args": [
+        "-s",
+        "sha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+        "shell",
+        "getprop",
+        "ro.product.name"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:59.112362+00:00",
+      "returncode": 0,
+      "stdout_text": "trillionnium_leap\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.022319574956782162
+    },
+    {
+      "args": [
+        "-s",
+        "sha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+        "shell",
+        "getprop",
+        "ro.boot.hardware.sku"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:59.134703+00:00",
+      "returncode": 0,
+      "stdout_text": "XT2551-3\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.02297738497145474
+    },
+    {
+      "args": [
+        "-s",
+        "sha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+        "shell",
+        "getprop",
+        "ro.boot.hwrev"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:59.157699+00:00",
+      "returncode": 0,
+      "stdout_text": "\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.02171412599273026
+    },
+    {
+      "args": [
+        "-s",
+        "sha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+        "shell",
+        "getprop",
+        "ro.build.fingerprint"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:59.179432+00:00",
+      "returncode": 0,
+      "stdout_text": "motorola/trillionnium_leap/leap:17/CSV1.260518.010/eng.qq:userdebug/test-keys\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.011620311997830868
+    },
+    {
+      "args": [
+        "-s",
+        "sha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+        "shell",
+        "getprop",
+        "ro.build.version.release"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:59.191070+00:00",
+      "returncode": 0,
+      "stdout_text": "17\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.012872198945842683
+    },
+    {
+      "args": [
+        "-s",
+        "sha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+        "shell",
+        "getprop",
+        "ro.build.version.security_patch"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:59.203957+00:00",
+      "returncode": 0,
+      "stdout_text": "2026-05-05\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.013164344010874629
+    },
+    {
+      "args": [
+        "-s",
+        "sha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+        "shell",
+        "getprop",
+        "sys.usb.config"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:59.217147+00:00",
+      "returncode": 0,
+      "stdout_text": "adb\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.012991986004635692
+    },
+    {
+      "args": [
+        "-s",
+        "sha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1",
+        "shell",
+        "getprop",
+        "sys.usb.state"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:59.230157+00:00",
+      "returncode": 0,
+      "stdout_text": "adb\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.01353496708907187
+    },
+    {
+      "args": [
+        "devices",
+        "-l"
+      ],
+      "adb_global_args": [
+        "-H",
+        "127.0.0.1",
+        "-P",
+        "5061"
+      ],
+      "started_utc": "2026-10-20T02:59:59.243703+00:00",
+      "returncode": 0,
+      "stdout_text": "List of devices attached\nsha256:41ad305f8562a6c47710afe71fabf30cb8692a71d3de1a47ca9949b669bcc6c1             device usb:3-2 product:trillionnium_leap model:XT2551_3 device:leap transport_id:37\n\n",
+      "stderr_text": "",
+      "timed_out": false,
+      "elapsed_seconds": 0.0012808720348402858
+    }
+  ],
+  "transcript_redaction": "ADB serials replaced with SHA256; retained stdout text is otherwise unparsed command output",
+  "completed_utc": "2026-10-20T02:59:59.249960+00:00"
+}

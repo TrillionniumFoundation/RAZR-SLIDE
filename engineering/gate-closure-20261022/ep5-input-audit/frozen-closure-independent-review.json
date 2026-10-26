@@ -1,0 +1,318 @@
+{
+  "schema": "razr-ep5-frozen-closure-independent-review-v1",
+  "started_utc": "2026-10-22T08:21:47.049820+00:00",
+  "finished_utc": "2026-10-22T08:21:47.490143+00:00",
+  "reviewer": "mechanical_audit independent of EP5 author and CI driver author",
+  "source_root": "/dev/shm/razr-slide-1104895ba7b9/integration_stage",
+  "source_sha256_before": {
+    "integration/ep5_input_closure.py": "b9e352d38690ac91b2bd3928f9ca7d3f0ecf7b64ba4a00487568accb77df37b2",
+    "integration/product_routing_ep5.py": "0ca0af99e6e0ba2d54fc5d43956cd6c035dcb330fd2042bdb972b84e5e3700e3",
+    "engineering/product-integration-20261018/phase5-20261022/read_ep5_step_independent.py": "f61b7da74481a8f4e4ff4032ce093578743006868d8b7510e8df7a069281e9a1",
+    "integration/ep5-routing-tests/test_ep5_evidence_guards.py": "35cf6a173399f45bf452a3ecc216f1219b9a9c98de6d27c98cab2dd8a82d4f63"
+  },
+  "source_sha256_after": {
+    "integration/ep5_input_closure.py": "b9e352d38690ac91b2bd3928f9ca7d3f0ecf7b64ba4a00487568accb77df37b2",
+    "integration/product_routing_ep5.py": "0ca0af99e6e0ba2d54fc5d43956cd6c035dcb330fd2042bdb972b84e5e3700e3",
+    "engineering/product-integration-20261018/phase5-20261022/read_ep5_step_independent.py": "f61b7da74481a8f4e4ff4032ce093578743006868d8b7510e8df7a069281e9a1",
+    "integration/ep5-routing-tests/test_ep5_evidence_guards.py": "35cf6a173399f45bf452a3ecc216f1219b9a9c98de6d27c98cab2dd8a82d4f63"
+  },
+  "prior_independent_closure_sha256": "b694ddf4aee78ad09fc2a5524fef2a0a0a8ec265d719d42ff8419191a3384eb0",
+  "method": "read-only source diff plus bounded independent hash/scope/absence adversarial checks using temporary synthetic file bytes; Python AST control-flow check",
+  "code_closure": {
+    "previously_reviewed_imported_modules": 26,
+    "added_no_CAD_closure_module": 1,
+    "extra_engineering_references": 2,
+    "all_snapshotted": true
+  },
+  "checks": [
+    {
+      "case": "local_roles_are_EP5_EP4_geometry_configs",
+      "passed": true
+    },
+    {
+      "case": "full_default_exact_13_roles",
+      "passed": true
+    },
+    {
+      "case": "full_verified_exact_12_roles",
+      "passed": true
+    },
+    {
+      "case": "verified_substitutes_only_mounted_tar",
+      "passed": true
+    },
+    {
+      "case": "invalid_mode_('local', True)",
+      "passed": true
+    },
+    {
+      "case": "invalid_mode_('all', False)",
+      "passed": true
+    },
+    {
+      "case": "invalid_mode_('full', 1)",
+      "passed": true
+    },
+    {
+      "case": "invalid_mode_([], False)",
+      "passed": true
+    },
+    {
+      "case": "invalid_mode_('full', 'false')",
+      "passed": true
+    },
+    {
+      "case": "all_26_original_modules_new_helper_and_2_references_snapshotted",
+      "passed": true
+    },
+    {
+      "case": "thin_gzip_snapshotted_before_execution",
+      "passed": true
+    },
+    {
+      "case": "missing_required_local_False_design/product_geometry.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_local_False_design/product_routing_ep4.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_local_False_design/product_routing_ep5.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_False_design/product_geometry.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_False_design/product_routing_ep4.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_False_design/product_routing_ep5.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_False_engineering/cam-coupling-20261015/V5_NATIVE_MANIFEST.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_False_engineering/cam-coupling-20261015/geometry-v5-manifest.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_False_engineering/cam-coupling-20261015/native-v5-geometry.tar.gz",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_False_engineering/mounted-mechanism-20261015/geometry-manifest.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_False_engineering/mounted-mechanism-20261015/native-geometry.tar.gz",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_False_engineering/panel-bearing-web-20261015/native-templates.tar.gz",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_False_engineering/pawl-actuation-20261015/NATIVE_MANIFEST.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_False_engineering/pawl-actuation-20261015/geometry-manifest.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_False_engineering/pawl-actuation-20261015/native-geometry.tar.gz",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_False_engineering/thin-mechanism-20261015/native-verification.json.gz",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_True_design/product_geometry.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_True_design/product_routing_ep4.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_True_design/product_routing_ep5.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_True_engineering/cam-coupling-20261015/V5_NATIVE_MANIFEST.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_True_engineering/cam-coupling-20261015/geometry-v5-manifest.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_True_engineering/cam-coupling-20261015/native-v5-geometry.tar.gz",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_True_engineering/mounted-mechanism-20261015/geometry-manifest.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_True_engineering/panel-bearing-web-20261015/native-templates.tar.gz",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_True_engineering/pawl-actuation-20261015/NATIVE_MANIFEST.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_True_engineering/pawl-actuation-20261015/geometry-manifest.json",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_True_engineering/pawl-actuation-20261015/native-geometry.tar.gz",
+      "passed": true
+    },
+    {
+      "case": "missing_required_full_True_engineering/thin-mechanism-20261015/native-verification.json.gz",
+      "passed": true
+    },
+    {
+      "case": "default_missing_mounted_tar_fails",
+      "passed": true
+    },
+    {
+      "case": "explicit_verified_without_mounted_tar_succeeds",
+      "passed": true
+    },
+    {
+      "case": "unchanged_identity_is_true",
+      "passed": true
+    },
+    {
+      "case": "thin_gzip_mutation_after_before_snapshot_fails",
+      "passed": true
+    },
+    {
+      "case": "thin_gzip_disappearance_after_before_snapshot_fails",
+      "passed": true
+    },
+    {
+      "case": "symlinked_required_payload_is_rejected",
+      "passed": true
+    },
+    {
+      "case": "factory_declared_bound_inputs_match",
+      "passed": true
+    },
+    {
+      "case": "factory_unbound_new_payload_is_rejected",
+      "passed": true
+    },
+    {
+      "case": "factory_wrong_actual_payload_hash_is_rejected",
+      "passed": true
+    },
+    {
+      "case": "unbound_external_factory_member_is_rejected",
+      "passed": true
+    },
+    {
+      "case": "reader_requires_EP4_configuration_not_unused_interfaces_JSON",
+      "passed": true
+    },
+    {
+      "case": "reader_accepts_exact_declared_roles_local_False",
+      "passed": true
+    },
+    {
+      "case": "reader_rejects_missing_EP4_role_local_False",
+      "passed": true
+    },
+    {
+      "case": "reader_accepts_exact_declared_roles_full_False",
+      "passed": true
+    },
+    {
+      "case": "reader_rejects_missing_EP4_role_full_False",
+      "passed": true
+    },
+    {
+      "case": "reader_accepts_exact_declared_roles_full_True",
+      "passed": true
+    },
+    {
+      "case": "reader_rejects_missing_EP4_role_full_True",
+      "passed": true
+    },
+    {
+      "case": "full_mode_before_factory_post_are_connected",
+      "passed": true
+    },
+    {
+      "case": "local_mode_before_and_post_are_connected",
+      "passed": true
+    },
+    {
+      "case": "no_CAD_module_imported",
+      "passed": true
+    },
+    {
+      "case": "audited_stage_bytes_remained_frozen",
+      "passed": true
+    }
+  ],
+  "tests_run": 60,
+  "failures": 0,
+  "passed": true,
+  "control_flow": {
+    "native_report": [
+      [
+        610,
+        "_snapshot_sources('full', verified_mounted_members is not None)"
+      ],
+      [
+        614,
+        "verify_mounted_members(verified_mounted_members, ep4.ROOT)"
+      ],
+      [
+        629,
+        "validate_factory_input_coverage(scene_meta, before)"
+      ],
+      [
+        676,
+        "source_completion_check(before)"
+      ],
+      [
+        680,
+        "verify_mounted_members(verified_mounted_members, ep4.ROOT)"
+      ]
+    ],
+    "local_motion_report": [
+      [
+        851,
+        "_snapshot_sources()"
+      ],
+      [
+        882,
+        "source_completion_check(before)"
+      ]
+    ]
+  },
+  "historical_initial_issue": {
+    "helper_sha256": "cdc50726373e6b7a1a81ed970f0decb2175173742929f8003dd8d7c632714f61",
+    "finding": "Common roles erroneously required product_interfaces.json and omitted consumed product_routing_ep4.json; same incorrect assumption in author guards and reader. Raised before final acceptance.",
+    "resolved_in_reviewed_source": true
+  },
+  "CAD_generation_executed": false,
+  "large_FE_or_QP_executed": false,
+  "native_geometry_result_recertified": false,
+  "R4_retroactive_identity_closure_claimed": false,
+  "full_tools_verify_missing_tar_requirements_changed": false,
+  "root_repository_or_author_stage_modified": false,
+  "seconds": 0.44040687999950023
+}

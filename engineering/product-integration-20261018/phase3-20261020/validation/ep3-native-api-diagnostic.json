@@ -1,0 +1,61 @@
+{
+  "schema": "razr-ep3-native-api-diagnostic-v1",
+  "observed_utc": "2026-10-20T03:48:56.442567+00:00",
+  "source_commit": "bdb1bc19fce49692fd49cd508031bfc456e15208",
+  "checks": {
+    "empty_after_first_cut": {
+      "shape_type": "Compound",
+      "valid": true,
+      "volume_mm3": 0.0,
+      "solid_count": 0
+    },
+    "old_second_cut_error": {
+      "type": "ValueError",
+      "message": "Null TopoDS_Shape object"
+    },
+    "original_witness_y1_type": "float64",
+    "original_witness_rejected": "finite real value required",
+    "explicit_float_witness_volume_mm3": 35.03125052611621
+  },
+  "guard_cases": [
+    {
+      "case": "inside_A",
+      "expected_outside_mm3": 0.0,
+      "actual_outside_mm3": 0.0,
+      "native_cuts_executed": 1,
+      "passed": true
+    },
+    {
+      "case": "inside_B",
+      "expected_outside_mm3": 0.0,
+      "actual_outside_mm3": 0.0,
+      "native_cuts_executed": 2,
+      "passed": true
+    },
+    {
+      "case": "spans_touching_A_B",
+      "expected_outside_mm3": 0.0,
+      "actual_outside_mm3": 0.0,
+      "native_cuts_executed": 2,
+      "passed": true
+    },
+    {
+      "case": "partly_outside",
+      "expected_outside_mm3": 1.0,
+      "actual_outside_mm3": 0.9999999999999998,
+      "native_cuts_executed": 2,
+      "passed": true
+    },
+    {
+      "case": "fully_outside",
+      "expected_outside_mm3": 1.0,
+      "actual_outside_mm3": 0.9999999999999998,
+      "native_cuts_executed": 2,
+      "passed": true
+    }
+  ],
+  "scope": "small actual native diagnosis of empty sequential cut and NumPy scalar boundary; production source has not yet changed",
+  "candidate_geometry_changed": false,
+  "candidate_go": false,
+  "manufacturing_go": false
+}

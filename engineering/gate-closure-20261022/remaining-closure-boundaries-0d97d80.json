@@ -1,0 +1,364 @@
+{
+  "schema": "razr-pre-delivery-remaining-closure-boundaries-v1",
+  "reviewed_at_utc": "2026-10-22T08:58:08.963400+00:00",
+  "repository_head": "0d97d8021dc508a40eb2565f6683c6dfba2659f4",
+  "scope": "Read-only current-source and existing-evidence boundary review; no test, CAD, FE, QP or remote-host probe executed. Root repo was not modified.",
+  "current_ep5_receipt": {
+    "path": "/dev/shm/razr-slide-1104895ba7b9/evidence/final-ep5-0d97d80/report.json",
+    "sha256": "8588a4d28218104ffae96573cbeabf6c5904215d0a34c94a7f2dc039916759c2",
+    "expected_head": "0d97d8021dc508a40eb2565f6683c6dfba2659f4",
+    "execution_checks_passed": true,
+    "seconds": 152.889150418996,
+    "research_scopes": {
+      "local": {
+        "poses": [
+          "STOW",
+          "PREDOCK",
+          "OPEN"
+        ],
+        "bodies": [
+          46,
+          46,
+          46
+        ],
+        "declared_pairs": 3105,
+        "finite_geometry": "clear_at_declared_scope_only"
+      },
+      "full": {
+        "poses": [
+          "STOW",
+          "PREDOCK",
+          "OPEN"
+        ],
+        "bodies": [
+          154,
+          154,
+          161
+        ],
+        "declared_pairs": 36442,
+        "finite_geometry": "clear_at_declared_scope_only"
+      }
+    },
+    "release_flags": {
+      "G2_acceptance_granted_by_this_job": false,
+      "candidate_go": false,
+      "fixture_fabrication_go": false,
+      "manufacturing_go": false,
+      "supplier_dynamic_qualified": false,
+      "physical_hardware_test_executed": false,
+      "full_cycle_internal_route_accepted": false
+    },
+    "source_bytes_unchanged": true
+  },
+  "closure_conditions": [
+    {
+      "id": "G0-01 / G2-01",
+      "boundary": "可闭合 EP5 精确提交上的名义三态有限总装子项；不得闭合整体 G2。",
+      "closed_evidence": "0d97d8021dc508a40eb2565f6683c6dfba2659f4：full 154/154/161 实体、36442 pairs；local 3105 pairs；两个独立 STEP reader；12 payload 与64原始STEP成员前后绑定；source HEAD与字节不变。",
+      "remaining": "G0 EP4 入口结果以 root 当前执行回执为准；EP4 若正确输出几何拒绝，可构成有效验证执行，不改写为候选通过。"
+    },
+    {
+      "id": "G0-02",
+      "boundary": "云端已能执行现行代码；缺的是特定数据和完整锁定环境，不是所有云计算能力。",
+      "remaining": "6 个原始 tar 仍缺；本轮36套仍在一次执行中。CI已观察 material-motion setUpClass 因缺Shapely报错，最终各套与实际触发文件以本轮原始trace为准。NumPy/SciPy与uv.lock不一致，Shapely缺失；托管required jobs新成功运行仍需独立receipt。",
+      "closure_condition": "保留精确提交、完整原始输入身份和当前锁定依赖，完成全部配置套件与required native入口；使用允许的原成员替代仅限其显式专项，不伪造原tar，也不放宽完整verify。"
+    },
+    {
+      "id": "G0-NUM",
+      "boundary": "continuation 已实现、31小测试与7独立域控制通过；这不能恢复未保存的旧 bearing C/H。",
+      "remaining": "11 个仓库原生输入仍缺；8 个volume文件和3个legacy response seed文件尚未提供。原field-016不是checkpoint。scikit-fem在当前测试环境未安装。",
+      "closure_condition": "恢复REBUILD_INPUTS定义的完整原始FE/seed/表面域/控制参数，或明示忠实重建并验证来源；保留完整C/H/points/state的新检查点。再做实际研究求解及全域判据，不能继承数值收敛或物理资格。"
+    },
+    {
+      "id": "G1-01 / G1-02",
+      "boundary": "必须有同一真实donor/器件与材料工艺依据；OEM资料及尺寸分配不能代替。",
+      "closure_condition": "补10身份字段、7模块角色、12接口端子绑定的原件与带校准实测；冻结实际OLED/COF、FPC、整包电芯/保护/极耳/膨胀、材料层叠与动态限值、加工连接工艺及公差。EP5 188mm总长/164mm自由段/0.1mm研究厚度需按新版本重新适用确认。"
+    },
+    {
+      "id": "G2-02",
+      "boundary": "先定义可实现的控制关系与允许状态域，再计算连续完整正反程；三态与局部包络不能替代。",
+      "closure_condition": [
+        "规定release→SLIDE→SEAT→OPEN附件装入/拆出→return的轨迹、互锁与约束。",
+        "定义左右独立tabs[0,3]、slot flank(-1,0,1)及cam/KEY回差/预载关系。当前模型没有无需预载的唯一输出承诺。",
+        "定义或完整覆盖三节telescope允许分配：每节0.1..2.9mm，总和0.3+(8.2-d)mm；名义均分不是机械强制。",
+        "OPEN的5件支撑总成与2件保持螺钉只允许就位OPEN；设计装拆路径、工具空间和返回互锁，不假定它们随整机退出。",
+        "在同一实际完整参与件集合上生成连续相对运动包络，含全部外部-外部对；无法消解的上包络重叠保持未决。"
+      ]
+    },
+    {
+      "id": "G2-03",
+      "boundary": "真实尺寸、公差、保持结构与工艺输入未完成；名义0.2mm级间隙不等于最坏情况余量。",
+      "closure_condition": "以实测部件/工艺分布替换allocations/OLED试件，补完整保持对端、工装/工具空间及装配路径，评估新增shell/KEY/A-web relief的最小壁厚与强度；冻结后复核连续域及最坏公差。"
+    },
+    {
+      "id": "G3-01",
+      "boundary": "必须实际装配与无电运动试验。现合同只评同一试件预声明程序和实际采样范围。",
+      "closure_condition": "同一CAD/EP4(及所选EP5)/BOM/drawings/material/process/firmware配置身份，真实as-built原件、预声明阈值与核验；采集完整装配/保持/操作力/偏摆/松手/返回/复锁、OLED和26路FPC数据，含35路、同步/校准/采样空隙/视频或等价原件。已证FAIL优先，缺测UNKNOWN；该分析PASS本身不授予整机或制造资格。"
+    },
+    {
+      "id": "G4-01",
+      "boundary": "必须真实带电功能试验，26路隔离通断样片或ADB身份读回不能替代。",
+      "closure_condition": "在已核实原受保护接口与同一实物版本上，记录静止及全程运动供电、充电、USB、显示和触控的原始结果、掉线/失效；高速信号与短于采样间隔中断另需适用测量。"
+    },
+    {
+      "id": "G5-NUM / G5-01",
+      "boundary": "原PR35研究与当前EP5产品资格不同；新名义relief/薄件不能继承旧算例。",
+      "closure_condition": "先取得真实材料、截面/接头/螺纹对端、支承、预载与载荷传递关系，再对所选几何收敛全域接触/结构判据及独立场审计；以受控样件完成耐久、保持、工艺稳定性、检查与追溯。外部操作力不直接当KEY内部载荷；实物循环、失效与制造过程数据不可由软件生成。"
+    }
+  ],
+  "six_required_archives": [
+    {
+      "path": "engineering/mounted-mechanism-20261015/native-geometry.tar.gz",
+      "present_now": false,
+      "observed_missing_input_not_automatically_a_suite_failure": true
+    },
+    {
+      "path": "engineering/contact-motion-20261014/project-owned-native-geometry.tar.gz",
+      "present_now": false,
+      "observed_missing_input_not_automatically_a_suite_failure": true
+    },
+    {
+      "path": "engineering/cover-assembly-order-20261014/bench-geometry.tar.gz",
+      "present_now": false,
+      "observed_missing_input_not_automatically_a_suite_failure": true
+    },
+    {
+      "path": "engineering/cover-retention-and-space-20261015/capture-geometry.tar.gz",
+      "present_now": false,
+      "observed_missing_input_not_automatically_a_suite_failure": true
+    },
+    {
+      "path": "engineering/keycover-geometry-20261014/project-owned-geometry.tar.gz",
+      "present_now": false,
+      "observed_missing_input_not_automatically_a_suite_failure": true
+    },
+    {
+      "path": "engineering/thin-mechanism-20261015/native-geometry.tar.gz",
+      "present_now": false,
+      "observed_missing_input_not_automatically_a_suite_failure": true
+    }
+  ],
+  "PR35_repository_inputs_missing_now": [
+    {
+      "path": "engineering/nested-contact-20261017/level-2/case-6/report.json.gz",
+      "role": "Ordered original contact seed, matching the legacy base response",
+      "input_class": "original_full_FE_rebuild",
+      "expected_sha256": null,
+      "repository_blob": "09602d5b347833c25a560f4c3240ba476e09d9eb",
+      "repository_bytes": 189467
+    },
+    {
+      "path": "engineering/contact-field-20261015/common-cell-results.json.gz",
+      "role": "All 5255 original common contact cells",
+      "input_class": "original_full_FE_rebuild",
+      "expected_sha256": null,
+      "repository_blob": "6798ebb28e0e66ea0bf7b562769399591691908a",
+      "repository_bytes": 4025349
+    },
+    {
+      "path": "engineering/contact-field-20261015/coupled-field-audit.json.gz",
+      "role": "Original patch identities/gaps/normals",
+      "input_class": "original_full_FE_rebuild",
+      "expected_sha256": null,
+      "repository_blob": "2b612015d20f4648aae0796f49f6185b7d38441f",
+      "repository_bytes": 16921
+    },
+    {
+      "path": "engineering/installation-control-20261018/force-target-plan.json",
+      "role": "Four research targets 0.0002, compliance 5; physical_measurement=false",
+      "input_class": "original_full_FE_rebuild",
+      "expected_sha256": null,
+      "repository_blob": "d346deaec18c6e8d2bda85e154a39b7a4185f058",
+      "repository_bytes": 669
+    },
+    {
+      "path": "engineering/consistent-load-20261017/projection-512/manifest.json",
+      "role": "512-sided consistent load/surface archive manifest",
+      "input_class": "original_full_FE_rebuild",
+      "expected_sha256": null,
+      "repository_blob": "a6c338cf798ce102ae7d2d8263022b3dcbf00aab",
+      "repository_bytes": 11563
+    },
+    {
+      "path": "engineering/consistent-load-20261017/projection-512/frame-patches.json",
+      "role": "Verified member of original surface archive",
+      "input_class": "original_full_FE_rebuild",
+      "expected_sha256": "c24c2856af31466bc82a147a9df54f7ac291943bbfc7e5383db9f320649b38f2",
+      "repository_blob": "cb02df794b2d242b88c4b764f05545db6360e61a",
+      "repository_bytes": 2671
+    },
+    {
+      "path": "engineering/consistent-load-20261017/projection-512/frame-faces.json",
+      "role": "Verified member of original surface archive",
+      "input_class": "original_full_FE_rebuild",
+      "expected_sha256": "6f1391cab252100011dc867821919dd56c78e531b6505fa3762bbf0f794c47b8",
+      "repository_blob": "57bc842dfe0e94f6748fa27d8eaf813789328ce6",
+      "repository_bytes": 1233257
+    },
+    {
+      "path": "engineering/consistent-load-20261017/projection-512/panel-faces.json",
+      "role": "Verified member of original surface archive",
+      "input_class": "original_full_FE_rebuild",
+      "expected_sha256": "28a649178d20522b4dd418224cd6f498a8bba03cd209e1a85b86a3485985e2da",
+      "repository_blob": "dbb93846bb270956cd05505e7ea4ded383bd2bc1",
+      "repository_bytes": 1377736
+    },
+    {
+      "path": "engineering/consistent-load-20261017/projection-512/panel.npz",
+      "role": "Verified member of original surface archive",
+      "input_class": "original_full_FE_rebuild",
+      "expected_sha256": "3bdd7e47a87a392d2df4e5eaa45b6b28818ed612b116917cb1df07dd1ece8f96",
+      "repository_blob": "3c006bf05d601cc127d7f0f80439d066fe70540e",
+      "repository_bytes": 36873
+    },
+    {
+      "path": "engineering/consistent-load-20261017/projection-512/panel-patches.json",
+      "role": "Verified member of original surface archive",
+      "input_class": "original_full_FE_rebuild",
+      "expected_sha256": "74001286238b93907bf80def5e2c09f4b50c7987fe85aa92465ed3057dc5104c",
+      "repository_blob": "1de65eaaf56bba9a8aad8546be1204bbaa9b30c0",
+      "repository_bytes": 5489
+    },
+    {
+      "path": "engineering/consistent-load-20261017/projection-512/frame.npz",
+      "role": "Verified member of original surface archive",
+      "input_class": "original_full_FE_rebuild",
+      "expected_sha256": "56e24e7147ab275df6382fbe74ccf9f9e4c8342da1f6794a8f04ff6405d82413",
+      "repository_blob": "e095840730bdad968e143c1fb27bbd051178d24d",
+      "repository_bytes": 30610
+    }
+  ],
+  "PR35_repository_inputs_present_now": [
+    {
+      "path": "integration/assembly_inputs.json",
+      "role": "Original assembly input",
+      "input_class": "original_full_FE_rebuild",
+      "expected_sha256": null
+    },
+    {
+      "path": "integration/roof_joint_load_inputs.json",
+      "role": "Original roof/load definition",
+      "input_class": "original_full_FE_rebuild",
+      "expected_sha256": null
+    },
+    {
+      "path": "integration/frame_thread_actual_inputs.json",
+      "role": "Original frame/thread definition",
+      "input_class": "original_full_FE_rebuild",
+      "expected_sha256": null
+    },
+    {
+      "path": "engineering/joint-sensitivity-20261017/frozen-selection.json",
+      "role": "Frozen selection used by the investigated setup",
+      "input_class": "original_full_FE_rebuild",
+      "expected_sha256": null
+    }
+  ],
+  "PR35_owner_artifacts_not_supplied_or_probed": [
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/volume-convergence-20261017/volume-v3/panel/level-2/K.npz",
+      "role": "Original full elastic volume matrix/load/mesh/report; supplied to --volume",
+      "input_class": "external_native_cache_or_rebuild",
+      "expected_sha256": null,
+      "current_owner_host_not_probed": true
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/volume-convergence-20261017/volume-v3/panel/level-2/loads.npz",
+      "role": "Original full elastic volume matrix/load/mesh/report; supplied to --volume",
+      "input_class": "external_native_cache_or_rebuild",
+      "expected_sha256": "811ba687959bb34dec5ada401b35f07123c917bfc4e68ad982d661fd62fac9a6",
+      "current_owner_host_not_probed": true
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/volume-convergence-20261017/volume-v3/panel/level-2/mesh.npz",
+      "role": "Original full elastic volume matrix/load/mesh/report; supplied to --volume",
+      "input_class": "external_native_cache_or_rebuild",
+      "expected_sha256": "310152fc64af21451cc5ea4be683a73075109ed7e6ec588a6e8bcacf4979ac34",
+      "current_owner_host_not_probed": true
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/volume-convergence-20261017/volume-v3/panel/level-2/report.json",
+      "role": "Original full elastic volume matrix/load/mesh/report; supplied to --volume",
+      "input_class": "external_native_cache_or_rebuild",
+      "expected_sha256": null,
+      "current_owner_host_not_probed": true
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/volume-convergence-20261017/volume-v3/frame/level-2/K.npz",
+      "role": "Original full elastic volume matrix/load/mesh/report; supplied to --volume",
+      "input_class": "external_native_cache_or_rebuild",
+      "expected_sha256": null,
+      "current_owner_host_not_probed": true
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/volume-convergence-20261017/volume-v3/frame/level-2/loads.npz",
+      "role": "Original full elastic volume matrix/load/mesh/report; supplied to --volume",
+      "input_class": "external_native_cache_or_rebuild",
+      "expected_sha256": "eb2b180696785a77b71412506760df974fbf54c800090e36f027f2aaf70135a3",
+      "current_owner_host_not_probed": true
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/volume-convergence-20261017/volume-v3/frame/level-2/mesh.npz",
+      "role": "Original full elastic volume matrix/load/mesh/report; supplied to --volume",
+      "input_class": "external_native_cache_or_rebuild",
+      "expected_sha256": "fc0eeecf966eda3bf242b0abd90f5603132f47d5235fcf81ea7238c1faf33132",
+      "current_owner_host_not_probed": true
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/volume-convergence-20261017/volume-v3/frame/level-2/report.json",
+      "role": "Original full elastic volume matrix/load/mesh/report; supplied to --volume",
+      "input_class": "external_native_cache_or_rebuild",
+      "expected_sha256": null,
+      "current_owner_host_not_probed": true
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/nested-contact-20261017/level-2/final-case7-state/points.json",
+      "role": "Legacy original-body response seed required by unchanged outer driver; not a bearing restart",
+      "input_class": "external_native_cache_or_rebuild",
+      "expected_sha256": null,
+      "current_owner_host_not_probed": true
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/nested-contact-20261017/level-2/final-case7-state/response.npz",
+      "role": "Legacy original-body response seed required by unchanged outer driver; not a bearing restart",
+      "input_class": "external_native_cache_or_rebuild",
+      "expected_sha256": null,
+      "current_owner_host_not_probed": true
+    },
+    {
+      "path": "/home/qian-qi/.local/share/razr-slide-evidence/nested-contact-20261017/level-2/final-case7-state/manifest.json",
+      "role": "Legacy original-body response seed required by unchanged outer driver; not a bearing restart",
+      "input_class": "external_native_cache_or_rebuild",
+      "expected_sha256": null,
+      "current_owner_host_not_probed": true
+    }
+  ],
+  "runtime_boundary": {
+    "ep5_observed_packages": {
+      "cadquery": "2.7.0",
+      "cadquery-ocp": "7.8.1.1.post1",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "shapely": null
+    },
+    "locked_packages": {
+      "cadquery": "2.7.0",
+      "cadquery-ocp": "7.8.1.1.post1",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "shapely": "2.2.0"
+    },
+    "complete_suite_results_pending_at_review": true
+  },
+  "source_sha256": {
+    "engineering/gate-closure-20261022/BLOCKERS.json": "3ee8e13a715bdc89c4dc07fbca4871b99b41780f6211bc0700161fc2e3f61ce4",
+    "engineering/product-integration-20261018/phase5-20261022/README.md": "a82d49f00f2b8f209eb6c41ffd4d3a915b37bd428840c30d941691f2bd349aa2",
+    "integration/product_assembly.py": "dde085fad972cb67691e98115b622f73e0e601f8c2d21e046384adf9ec197a5e",
+    "integration/cam_coupling.py": "4a3bf1d2b86d31fa8e3d60d3412e15548bf42287ed95d756798f3d88c6c4e631",
+    "engineering/product-integration-20261018/physical-test-followon-20261019/QUALIFICATION.md": "be0ccacb65cb999c342733b0f7a68cf224bf3d7ca9272be94993398e0122106d",
+    "engineering/product-integration-20261018/phase4-20261020/reviews/phase4-platform-physical-handoff.md": "26465f1a0bde31902641bf5250b6af5217e28d3afe2dd86ba55f60d1cf841ac0",
+    "engineering/bearing-continuation-20261022/REBUILD_INPUTS.json": "af823f6b5453f02ea5ca5fd5266b88c1ece6280200b17cce30aafdd7a9e95053",
+    "uv.lock": "b1387fbbfa74e39474818a8a6235ba7ddf1d97d00629babb1d0e53971141fe6a"
+  },
+  "old_ledger_freshness_note": "G0-01/G2-01 wording predates the exact-HEAD 0d97d80 receipt and should be reconciled from that receipt; original R4 coverage limitation remains historical fact. Do not mark all G2 closed."
+}

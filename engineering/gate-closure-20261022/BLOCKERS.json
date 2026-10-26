@@ -1,0 +1,194 @@
+{
+  "schema": "razr-gate-blocker-ledger-v1",
+  "created_utc_date": "2026-10-22",
+  "scope": "Continuation of the comprehensive repository audit; labels group work without superseding original historical records.",
+  "software_fixes_are_not_gate_acceptance": true,
+  "all_gates_closed": false,
+  "gate_status": {
+    "G0": "blocked",
+    "G1": "blocked",
+    "G2": "blocked",
+    "G3": "blocked",
+    "G4": "blocked",
+    "G5": "blocked"
+  },
+  "records": [
+    {
+      "id": "G0-01",
+      "priority": "P0",
+      "gate": "G0",
+      "blocker": "Exact source and native validation chain",
+      "status": "software_and_EP5_execution_verified_EP4_execution_blocked",
+      "required_role": "Engineering",
+      "closure_condition": "Run required EP4 and EP5 native drivers on the exact reviewed source with independent STEP readers; preserve rejected geometry as a result.",
+      "current_evidence_boundary": "Exact 0d97d80 EP5 input/native/independent-reader chain passed. EP4 seven native regression groups passed, but its three-pose execution failed before geometry evaluation because the original mounted archive is unavailable.",
+      "references": [
+        "tools/verify_product_native.py",
+        "tools/verify_product_ep5_native.py",
+        "native-0d97d80/ep5/report.json",
+        "native-0d97d80/ep4/report.json"
+      ]
+    },
+    {
+      "id": "G0-02",
+      "priority": "P0",
+      "gate": "G0",
+      "blocker": "Complete reproducible locked execution",
+      "status": "blocked_environment_and_transport",
+      "required_role": "Project environment / CI owner",
+      "closure_condition": "Provide the existing project environment connection or a complete checkout with working locked dependency installation and hosted runner execution.",
+      "current_evidence_boundary": "One exact-source attempt selected all 36 suites: 1251 tests ran, 25 suites passed and 11 failed with 16 missing-input/dependency errors. Six required original archives are unavailable in this session (four reached by the failing traces). Lock reproduction is absent. Actions run39750350316 has 12 failed zero-step jobs and one queued job at the retained observation; no failure-cause annotation body was available.",
+      "references": [
+        "input-availability/missing-unit-test-inputs.json",
+        "baseline-e25/report.json",
+        "full-unit-0d97d80/summary.json",
+        "full-unit-0d97d80/actions-observation-final.json"
+      ]
+    },
+    {
+      "id": "G1-01",
+      "priority": "P0",
+      "gate": "G1",
+      "blocker": "Same-specimen physical inputs",
+      "status": "blocked_physical_input",
+      "required_role": "Hardware / integration owner",
+      "closure_condition": "Return original labels, calibrated dimensions, height/exit envelopes and twelve terminal bindings for the same donor specimen. Freeze OLED/COF, FPC and complete battery pack revisions.",
+      "current_evidence_boundary": "XT2551-3 identity exists; ten physical identity fields, seven part roles and twelve terminal interfaces remain unresolved.",
+      "references": [
+        "design/product_interfaces.json"
+      ]
+    },
+    {
+      "id": "G1-02",
+      "priority": "P0",
+      "gate": "G1",
+      "blocker": "Process and interface limits",
+      "status": "blocked_physical_input",
+      "required_role": "Mechanical / process owner",
+      "closure_condition": "Freeze actual material stack, bend and torsion limits, swelling/tabs, joining details, tolerances and complete-pack capacity/energy criteria with provenance.",
+      "current_evidence_boundary": "EP5 is a new 188 mm total / 164 mm free candidate; earlier material qualification cannot be transferred to it.",
+      "references": [
+        "design/product_routing_ep5.json"
+      ]
+    },
+    {
+      "id": "G0-NUM",
+      "priority": "P0",
+      "gate": "G0",
+      "blocker": "Original rigid-bearing restart inputs",
+      "status": "blocked_original_data",
+      "required_role": "Numerical / retained-artifact owner",
+      "closure_condition": "Recover the original volume and legacy response seed listed in REBUILD_INPUTS.json, or perform an explicitly identified faithful rebuild.",
+      "current_evidence_boundary": "A retained displacement field is not a complete C/H/ordered-points checkpoint; new continuation software prevents repeat loss but cannot recover nonexistent old state.",
+      "references": [
+        "engineering/bearing-continuation-20261022/REBUILD_INPUTS.json"
+      ]
+    },
+    {
+      "id": "G2-01",
+      "priority": "P1",
+      "gate": "G2",
+      "blocker": "Nominal full finite assembly",
+      "status": "verified_within_declared_nominal_research_scope",
+      "required_role": "Geometry owner",
+      "closure_condition": "Validate the same declared nominal full inventory at STOW, PREDOCK and OPEN, every unordered pair and outer-domain containment, with actual input hashes checked before/after and independent STEP readback.",
+      "current_evidence_boundary": "Closed for the declared nominal research inventory at 0d97d80: 154/154/161 bodies, 36442 pair rows, 123 optimistic outer-domain containment rows, no positive Common or escape, both independent readers passed, 12 repository payloads and 64 exact original members bound. Actual-part fit, continuous full motion, internal-channel tolerances and G2 acceptance remain outside this subitem.",
+      "references": [
+        "engineering/product-integration-20261018/phase5-20261022/README.md",
+        "native-0d97d80/ep5/report.json",
+        "native-0d97d80/ep5/full-readback/report.json"
+      ]
+    },
+    {
+      "id": "G2-02",
+      "priority": "P1",
+      "gate": "G2",
+      "blocker": "Continuous reversible kinematics",
+      "status": "blocked_mechanism_definition",
+      "required_role": "Mechanical / geometry owner",
+      "closure_condition": "Define realizable couplings and control trajectories for telescope, flank and manual controls; verify the complete shared assembly continuously in both directions, including attachment/install states.",
+      "current_evidence_boundary": "Finite three-pose results and a local U1 cage do not prove the full product motion.",
+      "references": [
+        "engineering/product-integration-20261018/phase5-20261022/README.md"
+      ]
+    },
+    {
+      "id": "G2-03",
+      "priority": "P1",
+      "gate": "G2",
+      "blocker": "Assembly and tolerance budget",
+      "status": "blocked_real_dimensions",
+      "required_role": "Mechanical / process owner",
+      "closure_condition": "Use measured part/process distributions for assembly access, retention hardware, tolerances, tool access and minimum clearances; preserve all material and obstacle bodies.",
+      "current_evidence_boundary": "Nominal 0.2 mm-class clearances are not a measured worst-case tolerance margin.",
+      "references": [
+        "engineering/product-integration-20261018/phase5-20261022/README.md"
+      ]
+    },
+    {
+      "id": "G5-NUM",
+      "priority": "P1",
+      "gate": "G5",
+      "blocker": "Structural/contact qualification",
+      "status": "blocked_original_inputs_and_solve",
+      "required_role": "Numerical / mechanical owner",
+      "closure_condition": "Resolve physical supports, preload and connector/material inputs; converge the unchanged all-domain contact criteria and independently audit the full field on the selected geometry, with a defined convergence/load envelope.",
+      "current_evidence_boundary": "No original full FE or large QP was executed in this session. All 31 continuation regressions passed in targeted and complete-unit execution, with seven separate domain controls; they do not qualify real contact or current EP5 solids.",
+      "references": [
+        "engineering/bearing-continuation-20261022/verification.json",
+        "bearing-continuation-review/report.json",
+        "bearing-domain-review/report.json"
+      ]
+    },
+    {
+      "id": "G3-01",
+      "priority": "P2",
+      "gate": "G3",
+      "blocker": "Unpowered physical assembly",
+      "status": "blocked_specimen_and_measurements",
+      "required_role": "Prototype / test owner",
+      "closure_condition": "Build the identified specimen and execute preregistered complete assembly, retention, open/close, skew, release, jam and relock tests with original calibrated logs.",
+      "current_evidence_boundary": "No complete physical assembly trial is supplied.",
+      "references": [
+        "engineering/product-integration-20261018/physical-test-followon-20261019/QUALIFICATION.md"
+      ]
+    },
+    {
+      "id": "G4-01",
+      "priority": "P2",
+      "gate": "G4",
+      "blocker": "Functional prototype under motion",
+      "status": "blocked_specimen_and_measurements",
+      "required_role": "Electrical / test owner",
+      "closure_condition": "With frozen original protected interfaces, test supply, charging, USB, display and touch at rest and throughout motion; preserve original timestamped observations and failures.",
+      "current_evidence_boundary": "Qualification software is implemented; actual hardware records are absent.",
+      "references": [
+        "engineering/product-integration-20261018/physical-test-followon-20261019/qualification-plan.template.json"
+      ]
+    },
+    {
+      "id": "G5-01",
+      "priority": "P2",
+      "gate": "G5",
+      "blocker": "Durability and manufacturing release",
+      "status": "blocked_defined_acceptance_and_measurements",
+      "required_role": "Manufacturing / quality owner",
+      "closure_condition": "Complete defined structural, endurance, process stability, inspection and traceability acceptance using controlled specimens and uncertainty-aware original measurements.",
+      "current_evidence_boundary": "No manufacturing release or hardware qualification is granted by software or nominal CAD checks.",
+      "references": [
+        "engineering/product-integration-20261018/physical-test-followon-20261019/as-built-specimen.template.json"
+      ]
+    }
+  ],
+  "execution_order": [
+    "Restore exact remaining original inputs and the locked project execution/hosted access; freeze same-specimen G1 parts/process in parallel.",
+    "Retain the completed nominal G2-01 result; define realizable G2-02 control relations and verify full forward/reverse motion plus G2-03 assembly and measured tolerances.",
+    "Execute G3 on the identified unpowered specimen.",
+    "Execute G4 supply/charge/USB/display/touch during motion on the controlled functional specimen.",
+    "Complete G5 structural, endurance, process, inspection and traceability criteria."
+  ],
+  "manufacturing_go": false,
+  "functional_source_commit": "0d97d8021dc508a40eb2565f6683c6dfba2659f4",
+  "current_results_summary": "SUMMARY.json",
+  "remaining_condition_details": "remaining-closure-boundaries-0d97d80.json"
+}

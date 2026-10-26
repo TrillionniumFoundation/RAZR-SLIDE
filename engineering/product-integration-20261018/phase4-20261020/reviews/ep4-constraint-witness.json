@@ -1,0 +1,204 @@
+{
+  "scope": "independent mathematical necessary conditions; no CAD or hardware executed",
+  "declared_inputs": {
+    "A_YZ_mm": [
+      51.0,
+      1.45
+    ],
+    "B_local_YZ_mm": [
+      40.0,
+      4.85
+    ],
+    "S_world_Y_mm": [
+      80.0,
+      90.0
+    ],
+    "L_mm": 100.0,
+    "W_mm": 12.0,
+    "t_mm": 0.1,
+    "ordered_slide_mm": [
+      0.0,
+      79.75
+    ],
+    "ordered_descent_at_full_slide_mm": [
+      0.0,
+      8.2
+    ]
+  },
+  "quadrature": {
+    "method": "stdlib composite Simpson, 4096 panels",
+    "I": 0.4860759672270572,
+    "J": 0.37095510227064354,
+    "U_length_mm": 6.994791409655894,
+    "S_length_difference_4096_vs_8192_mm": 0.0,
+    "U_I_trapezoidal_4096_estimate": 0.48607596722705537,
+    "U_I_analytic_trapezoidal_truncation_bound": 2.0392818164820381e-07,
+    "U_length_interval_from_truncation_bound_mm": [
+      6.9947884750642295,
+      6.994794344250075
+    ],
+    "machine_directed_rounding_used": false
+  },
+  "poses": {
+    "STOW": {
+      "slide_mm": 0.0,
+      "descent_mm": 0.0,
+      "S_rise_mm": 8.2,
+      "S_length_mm": 13.656343682694377,
+      "U_length_mm": 6.994791409655894,
+      "U_start_world_Y_mm": 90.17443245382486,
+      "bridge_straight_mm": 0.1744324538248634,
+      "B_straight_mm": 50.17443245382486,
+      "U_finite_head_world_Y_mm": 92.81918601655558,
+      "length_sum_mm": 100.0
+    },
+    "PREDOCK": {
+      "slide_mm": 79.75,
+      "descent_mm": 0.0,
+      "S_rise_mm": 8.2,
+      "S_length_mm": 13.656343682694377,
+      "U_length_mm": 6.994791409655894,
+      "U_start_world_Y_mm": 130.04943245382486,
+      "bridge_straight_mm": 40.04943245382486,
+      "B_straight_mm": 10.299432453824863,
+      "U_finite_head_world_Y_mm": 132.6941860165556,
+      "length_sum_mm": 99.99999999999999
+    },
+    "OPEN": {
+      "slide_mm": 79.75,
+      "descent_mm": 8.2,
+      "S_rise_mm": 0.0,
+      "S_length_mm": 10.0,
+      "U_length_mm": 6.994791409655894,
+      "U_start_world_Y_mm": 131.87760429517206,
+      "bridge_straight_mm": 41.87760429517206,
+      "B_straight_mm": 12.127604295172063,
+      "U_finite_head_world_Y_mm": 134.5223578579028,
+      "length_sum_mm": 100.00000000000001
+    }
+  },
+  "continuous_bounds": {
+    "basis": "monotonicity in ordered motion, Jensen/chord, polynomial derivative bounds",
+    "S_length_at_h8_2_chord_lower_mm": 12.932130528261768,
+    "S_length_at_h8_2_Jensen_upper_mm": 14.002040667600664,
+    "middle_straight_lower_including_U_truncation_budget_mm": 0.0015824940746398397,
+    "B_tail_lower_using_Jensen_mm": 10.126582494074626,
+    "STOW_finite_head_upper_using_S_chord_mm": 93.18129259377187,
+    "S_max_abs_curvature_upper_per_mm": 0.47342722073549315,
+    "S_radius_lower_mm": 2.1122570824010696,
+    "U_max_abs_curvature_per_mm": 0.6736997151737101,
+    "U_min_radius_mm": 1.4843408383246162,
+    "finite_offset_Jacobian_lower": 0.9663150142413145,
+    "S_finite_Y_range_mm": [
+      80.0,
+      90.0
+    ],
+    "S_to_return_lane_min_Z_separation_mm": 3.3,
+    "max_middle_with_S_end90_and_head94_independent_of_L_mm": 1.355246437269279,
+    "reverse_uses_same_geometric_parameter_set": true,
+    "continuous_external_obstacle_clearance_proved": false
+  },
+  "endpoint_bounds": {
+    "old_A_plate_battery_overlap_mm3": 18.0,
+    "new_A_plate_world_Y_mm": [
+      15.0,
+      37.8
+    ],
+    "new_A_plate_battery_nominal_Y_gap_mm": 0.2,
+    "new_A_web_world_Y_mm": [
+      37.3,
+      37.75
+    ],
+    "new_A_web_M2_hole_nominal_Y_gap_mm": 0.2,
+    "B_low_lane_to_endpoint_nominal_Z_gap_mm": 0.05,
+    "A_endpoint_to_OPEN_return_lane_nominal_Z_gap_mm": 0.05
+  },
+  "OPEN_comparison": {
+    "S_is_straight_at_h_zero": true,
+    "single_U_straight_A_mm": 80.87760429517206,
+    "S_plus_U_accumulated_straight_A_mm": 80.87760429517206,
+    "same_analytic_free_material_path_as_frozen_EP3_OPEN": true,
+    "implication": "OPEN obstacle intersections are not eliminated merely by adding S or changing endpoints"
+  },
+  "unresolved": [
+    "real stack and fatigue",
+    "finite guides/support and their occupied volume",
+    "actual shell crossings",
+    "continuous clearance from all external parts",
+    "manufacturing tolerance and loads",
+    "physical motion and reverse forces"
+  ],
+  "witness_source_sha256": "83df2f930218003c884e6ea13de8c684202284b65f21007ed27961dda673613b",
+  "implementation_comparison": {
+    "scope": "pure arithmetic implementation comparison; no native functions called",
+    "source_sha256": {
+      "design/product_routing_ep4.json": "7504d0714a6a61bf8742d2ab2f69dff245aa32dec449a34158c784803fe4240d",
+      "integration/product_routing_ep4.py": "f8286416e8d4f835b5a280f3c76e7dd69aaebda25ac2217f40f33e19e92251b8"
+    },
+    "pose_numeric_difference_from_independent_Simpson": {
+      "STOW": {
+        "S_length_mm": 1.0658141036401503e-14,
+        "U_length_mm": -2.6645352591003757e-15,
+        "U_start_world_Y_mm": -1.4210854715202004e-14,
+        "bridge_straight_mm": -1.4210854715202004e-14,
+        "B_straight_mm": -1.4210854715202004e-14,
+        "U_finite_head_world_Y_mm": -1.4210854715202004e-14,
+        "length_sum_mm": -2.842170943040401e-14
+      },
+      "PREDOCK": {
+        "S_length_mm": 1.0658141036401503e-14,
+        "U_length_mm": -2.6645352591003757e-15,
+        "U_start_world_Y_mm": 0.0,
+        "bridge_straight_mm": 0.0,
+        "B_straight_mm": 0.0,
+        "U_finite_head_world_Y_mm": 0.0,
+        "length_sum_mm": 1.4210854715202004e-14
+      },
+      "OPEN": {
+        "S_length_mm": 0.0,
+        "U_length_mm": -2.6645352591003757e-15,
+        "U_start_world_Y_mm": -2.842170943040401e-14,
+        "bridge_straight_mm": -2.842170943040401e-14,
+        "B_straight_mm": -2.842170943040401e-14,
+        "U_finite_head_world_Y_mm": -2.842170943040401e-14,
+        "length_sum_mm": -5.684341886080802e-14
+      },
+      "SLIDE_MID": {
+        "S_length_mm": 1.0658141036401503e-14,
+        "U_length_mm": -2.6645352591003757e-15,
+        "U_start_world_Y_mm": -1.4210854715202004e-14,
+        "bridge_straight_mm": -1.4210854715202004e-14,
+        "B_straight_mm": -1.4210854715202004e-14,
+        "U_finite_head_world_Y_mm": -1.4210854715202004e-14,
+        "length_sum_mm": -2.842170943040401e-14
+      },
+      "SEAT_MID": {
+        "S_length_mm": 3.552713678800501e-15,
+        "U_length_mm": -2.6645352591003757e-15,
+        "U_start_world_Y_mm": -2.842170943040401e-14,
+        "bridge_straight_mm": -2.842170943040401e-14,
+        "B_straight_mm": -2.842170943040401e-14,
+        "U_finite_head_world_Y_mm": -2.842170943040401e-14,
+        "length_sum_mm": -5.684341886080802e-14
+      }
+    },
+    "S_inverse_at_17_independent_arc_labels_each_pose": {
+      "max_point_error_mm": 1.9895196601282805e-13,
+      "max_unit_tangent_error": 2.530506439892003e-14,
+      "max_unit_normal_error": 2.530506439892003e-14,
+      "max_curvature_error_per_mm": 3.1558089474970075e-14
+    },
+    "max_exact_join_position_error_mm": 4.263256414560601e-14,
+    "max_exact_join_abs_curvature_per_mm": 0.0,
+    "minimum_distinct_station_spacing_in_checked_poses_mm": 0.006496448082572215,
+    "finite_centerline_polygon_lengths_mm": {
+      "STOW": 99.9946719421742,
+      "PREDOCK": 99.99454189139804,
+      "OPEN": 99.99673207006526,
+      "SLIDE_MID": 99.9945082900231,
+      "SEAT_MID": 99.99611002241511
+    },
+    "all_requested_arithmetic_comparisons_passed": true,
+    "native_or_hardware_executed": false
+  }
+}

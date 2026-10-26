@@ -1,0 +1,1033 @@
+{
+  "schema": "razr-captured-follower-assembly-study-v1",
+  "construction_source": "integration/cam_coupling.py",
+  "construction_source_sha256": "4a3bf1d2b86d31fa8e3d60d3412e15548bf42287ed95d756798f3d88c6c4e631",
+  "study_source_sha256": "d3ccd367ef791b90296ec09011e5368bd17a93da4fc2c6fd999e252133dca259",
+  "runtime": {
+    "python": "3.12.3",
+    "cadquery": "2.7.0"
+  },
+  "source_template_comparisons": [
+    {
+      "part": "TUBE_0",
+      "first_minus_second_mm3": 0,
+      "second_minus_first_mm3": 0
+    },
+    {
+      "part": "TUBE_1",
+      "first_minus_second_mm3": 0,
+      "second_minus_first_mm3": 0
+    },
+    {
+      "part": "TUBE_2",
+      "first_minus_second_mm3": 0,
+      "second_minus_first_mm3": 0
+    },
+    {
+      "part": "CORE",
+      "first_minus_second_mm3": 0,
+      "second_minus_first_mm3": 0
+    },
+    {
+      "part": "CAM_SLOT_REFERENCE",
+      "first_minus_second_mm3": 0,
+      "second_minus_first_mm3": 0
+    },
+    {
+      "part": "KEY_FOLLOWER",
+      "actual_native_container": "R_CROSSHEAD",
+      "local_material_not_in_actual_native_part_mm3": 0,
+      "comparison_kind": "contained source primitive, not the entire native part"
+    },
+    {
+      "part": "KEY_SLOT_REFERENCE",
+      "actual_native_container": "R_KEY_YOKE",
+      "local_material_not_in_actual_native_part_mm3": 0,
+      "comparison_kind": "contained source primitive, not the entire native part"
+    }
+  ],
+  "native_builder_comparison_executed": true,
+  "original_axial_insertion_negative_controls": [
+    {
+      "parent": "TUBE_0",
+      "child": "TUBE_1",
+      "entry": "bottom",
+      "complete_axial_translation_mm": [
+        -6.0,
+        0.0
+      ],
+      "common_mm3": 0.41547562843724906,
+      "blocked": true
+    },
+    {
+      "parent": "TUBE_0",
+      "child": "TUBE_1",
+      "entry": "top",
+      "complete_axial_translation_mm": [
+        6.0,
+        0.0
+      ],
+      "common_mm3": 0.0691150383789754,
+      "blocked": true
+    },
+    {
+      "parent": "TUBE_1",
+      "child": "TUBE_2",
+      "entry": "bottom",
+      "complete_axial_translation_mm": [
+        -6.0,
+        0.0
+      ],
+      "common_mm3": 0.17671458676442545,
+      "blocked": true
+    },
+    {
+      "parent": "TUBE_1",
+      "child": "TUBE_2",
+      "entry": "top",
+      "complete_axial_translation_mm": [
+        6.0,
+        0.0
+      ],
+      "common_mm3": 0.04398229715025717,
+      "blocked": true
+    },
+    {
+      "parent": "TUBE_2",
+      "child": "CORE",
+      "entry": "bottom",
+      "complete_axial_translation_mm": [
+        -6.0,
+        0.0
+      ],
+      "common_mm3": 2.1307852172972765,
+      "blocked": true
+    },
+    {
+      "parent": "TUBE_2",
+      "child": "CORE",
+      "entry": "top",
+      "complete_axial_translation_mm": [
+        6.0,
+        0.0
+      ],
+      "common_mm3": 0.018849555921538766,
+      "blocked": true
+    },
+    {
+      "parent": "complete integral core top heads",
+      "child": "finite B cam strip",
+      "entry": "axial from top",
+      "common_mm3": 0.06141826790840725,
+      "blocked": true
+    },
+    {
+      "parent": "complete integral KEY follower heads",
+      "child": "finite KEY groove strip",
+      "entry": "axial from bottom",
+      "common_mm3": 0.0614182679084067,
+      "blocked": true
+    }
+  ],
+  "split_part_reassembly_material_differences": [
+    {
+      "part": "TUBE_0",
+      "first_minus_second_mm3": 0,
+      "second_minus_first_mm3": 0
+    },
+    {
+      "part": "TUBE_1",
+      "first_minus_second_mm3": 0,
+      "second_minus_first_mm3": 0
+    },
+    {
+      "part": "TUBE_2",
+      "first_minus_second_mm3": 0,
+      "second_minus_first_mm3": 0
+    },
+    {
+      "part": "CORE",
+      "first_minus_second_mm3": 0,
+      "second_minus_first_mm3": 0
+    },
+    {
+      "part": "KEY_FOLLOWER",
+      "first_minus_second_mm3": 0,
+      "second_minus_first_mm3": 0
+    }
+  ],
+  "split_parts_added_per_hand": 7,
+  "original_nominal_geometry_changes_mm3": {
+    "added": 0.0,
+    "removed": 0.0
+  },
+  "assembly_actions": [
+    {
+      "action": "1 insert bare core from top into open tube 2",
+      "moving_final_shift_z_mm": 0.1,
+      "withdrawal_z_mm": 6.0,
+      "sweep_method": "exact union of axially translated annular intervals",
+      "moving_annular_sections_r_outer_r_inner_z_lo_z_hi_mm": [
+        [
+          0.2,
+          0.0,
+          0.0,
+          3.15
+        ],
+        [
+          0.4,
+          0.0,
+          3.15,
+          4.0
+        ]
+      ],
+      "all_obstacles": [
+        {
+          "fixed": "TUBE_2_OPEN_BOTTOM",
+          "common_mm3": 0
+        }
+      ],
+      "rejected": [],
+      "joining_strength_or_process_verified": false
+    },
+    {
+      "action": "2 install core bottom shoulder through open base",
+      "moving_final_shift_z_mm": 0.1,
+      "withdrawal_z_mm": -6.0,
+      "sweep_method": "exact union of axially translated annular intervals",
+      "moving_annular_sections_r_outer_r_inner_z_lo_z_hi_mm": [
+        [
+          0.35,
+          0.2,
+          0.0,
+          0.2
+        ]
+      ],
+      "all_obstacles": [
+        {
+          "fixed": "TUBE_2_OPEN_BOTTOM",
+          "common_mm3": 0
+        },
+        {
+          "fixed": "CORE_STEM",
+          "common_mm3": 0
+        }
+      ],
+      "rejected": [],
+      "joining_strength_or_process_verified": false
+    },
+    {
+      "action": "3 close tube 2 bottom before next nesting",
+      "moving_final_shift_z_mm": 0.0,
+      "withdrawal_z_mm": -6.0,
+      "sweep_method": "exact union of axially translated annular intervals",
+      "moving_annular_sections_r_outer_r_inner_z_lo_z_hi_mm": [
+        [
+          0.4,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "all_obstacles": [
+        {
+          "fixed": "TUBE_2_OPEN_BOTTOM",
+          "common_mm3": 0
+        },
+        {
+          "fixed": "CORE_STEM",
+          "common_mm3": 0
+        },
+        {
+          "fixed": "CORE_BOTTOM_SHOULDER",
+          "common_mm3": 0
+        }
+      ],
+      "rejected": [],
+      "joining_strength_or_process_verified": false
+    },
+    {
+      "action": "4 insert closed inner unit from tube 1 bottom",
+      "moving_final_shift_z_mm": 0.1,
+      "withdrawal_z_mm": -8.0,
+      "sweep_method": "exact union of axially translated annular intervals",
+      "moving_annular_sections_r_outer_r_inner_z_lo_z_hi_mm": [
+        [
+          0.75,
+          0.4,
+          0.0,
+          0.2
+        ],
+        [
+          0.6,
+          0.4,
+          0.2,
+          3.1
+        ],
+        [
+          0.6,
+          0.25,
+          3.1,
+          3.2
+        ],
+        [
+          0.4,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          0.2,
+          0.0,
+          0.1,
+          3.25
+        ],
+        [
+          0.4,
+          0.0,
+          3.25,
+          4.1
+        ],
+        [
+          0.35,
+          0.2,
+          0.1,
+          0.30000000000000004
+        ]
+      ],
+      "all_obstacles": [
+        {
+          "fixed": "TUBE_1_OPEN_BOTTOM",
+          "common_mm3": 0
+        }
+      ],
+      "rejected": [],
+      "joining_strength_or_process_verified": false
+    },
+    {
+      "action": "5 close tube 1 bottom before outer nesting",
+      "moving_final_shift_z_mm": 0.0,
+      "withdrawal_z_mm": -6.0,
+      "sweep_method": "exact union of axially translated annular intervals",
+      "moving_annular_sections_r_outer_r_inner_z_lo_z_hi_mm": [
+        [
+          0.8,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "all_obstacles": [
+        {
+          "fixed": "TUBE_1_OPEN_BOTTOM",
+          "common_mm3": 0
+        },
+        {
+          "fixed": "INNER_UNIT",
+          "common_mm3": 0
+        }
+      ],
+      "rejected": [],
+      "joining_strength_or_process_verified": false
+    },
+    {
+      "action": "6 insert middle/inner unit from outer bottom",
+      "moving_final_shift_z_mm": 0.1,
+      "withdrawal_z_mm": -10.0,
+      "sweep_method": "exact union of axially translated annular intervals",
+      "moving_annular_sections_r_outer_r_inner_z_lo_z_hi_mm": [
+        [
+          1.15,
+          0.8,
+          0.0,
+          0.2
+        ],
+        [
+          1.0,
+          0.8,
+          0.2,
+          3.1
+        ],
+        [
+          1.0,
+          0.65,
+          3.1,
+          3.2
+        ],
+        [
+          0.8,
+          0.0,
+          0.0,
+          0.1
+        ],
+        [
+          0.75,
+          0.4,
+          0.1,
+          0.30000000000000004
+        ],
+        [
+          0.6,
+          0.4,
+          0.30000000000000004,
+          3.2
+        ],
+        [
+          0.6,
+          0.25,
+          3.2,
+          3.3000000000000003
+        ],
+        [
+          0.4,
+          0.0,
+          0.1,
+          0.2
+        ],
+        [
+          0.2,
+          0.0,
+          0.2,
+          3.35
+        ],
+        [
+          0.4,
+          0.0,
+          3.35,
+          4.199999999999999
+        ],
+        [
+          0.35,
+          0.2,
+          0.2,
+          0.4
+        ]
+      ],
+      "all_obstacles": [
+        {
+          "fixed": "TUBE_0_OPEN_BOTTOM",
+          "common_mm3": 0
+        }
+      ],
+      "rejected": [],
+      "joining_strength_or_process_verified": false
+    },
+    {
+      "action": "7 close crosshead outer bottom before housing installation",
+      "moving_final_shift_z_mm": 0.0,
+      "withdrawal_z_mm": -6.0,
+      "sweep_method": "exact union of axially translated annular intervals",
+      "moving_annular_sections_r_outer_r_inner_z_lo_z_hi_mm": [
+        [
+          1.2,
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "all_obstacles": [
+        {
+          "fixed": "TUBE_0_OPEN_BOTTOM",
+          "common_mm3": 0
+        },
+        {
+          "fixed": "MIDDLE_AND_INNER_UNIT",
+          "common_mm3": 0
+        }
+      ],
+      "rejected": [],
+      "joining_strength_or_process_verified": false
+    },
+    {
+      "action": "8 install lower cam flange over bare top stem",
+      "moving_final_shift_z_mm": 0.3,
+      "withdrawal_z_mm": 6.0,
+      "sweep_method": "exact union of axially translated annular intervals",
+      "moving_annular_sections_r_outer_r_inner_z_lo_z_hi_mm": [
+        [
+          0.65,
+          0.4,
+          3.3,
+          3.5
+        ]
+      ],
+      "all_obstacles": [
+        {
+          "fixed": "TUBE_0_OPEN_BOTTOM",
+          "common_mm3": 0
+        },
+        {
+          "fixed": "MIDDLE_AND_INNER_UNIT",
+          "common_mm3": 0
+        },
+        {
+          "fixed": "TUBE_0_BOTTOM_CAP",
+          "common_mm3": 0
+        }
+      ],
+      "rejected": [],
+      "joining_strength_or_process_verified": false
+    },
+    {
+      "action": "9 lower finite B cam strip over bare upper neck",
+      "withdrawal_z_mm": 6.0,
+      "sweep_method": "exact constant cross-section slot extrusion",
+      "all_obstacles": [
+        {
+          "fixed": "TUBE_0_OPEN_BOTTOM",
+          "common_mm3": 0
+        },
+        {
+          "fixed": "MIDDLE_AND_INNER_UNIT",
+          "common_mm3": 0
+        },
+        {
+          "fixed": "TUBE_0_BOTTOM_CAP",
+          "common_mm3": 0
+        },
+        {
+          "fixed": "CAM_LOWER_FLANGE",
+          "common_mm3": 0
+        }
+      ],
+      "rejected": [],
+      "whole_B_shell_insertion_verified": false
+    },
+    {
+      "action": "10 install upper cam flange after slot strip",
+      "moving_final_shift_z_mm": 0.3,
+      "withdrawal_z_mm": 6.0,
+      "sweep_method": "exact union of axially translated annular intervals",
+      "moving_annular_sections_r_outer_r_inner_z_lo_z_hi_mm": [
+        [
+          0.65,
+          0.4,
+          3.8,
+          4.0
+        ]
+      ],
+      "all_obstacles": [
+        {
+          "fixed": "TUBE_0_OPEN_BOTTOM",
+          "common_mm3": 0
+        },
+        {
+          "fixed": "MIDDLE_AND_INNER_UNIT",
+          "common_mm3": 0
+        },
+        {
+          "fixed": "TUBE_0_BOTTOM_CAP",
+          "common_mm3": 0
+        },
+        {
+          "fixed": "CAM_LOWER_FLANGE",
+          "common_mm3": 0
+        },
+        {
+          "fixed": "CAM_SLOT_REFERENCE",
+          "common_mm3": 0
+        }
+      ],
+      "rejected": [],
+      "joining_strength_or_process_verified": false
+    },
+    {
+      "action": "11 raise finite KEY groove strip over bare lower follower neck",
+      "withdrawal_z_mm": -6.0,
+      "sweep_method": "exact constant cross-section slot extrusion",
+      "all_obstacles": [
+        {
+          "fixed": "KEY_FOLLOWER_WITHOUT_LOWER_FLANGE",
+          "common_mm3": 0
+        }
+      ],
+      "rejected": [],
+      "whole_KEY_yoke_and_housing_insertion_verified": false
+    },
+    {
+      "action": "12 install KEY lower flange after groove strip",
+      "moving_final_shift_z_mm": 0.0,
+      "withdrawal_z_mm": -6.0,
+      "sweep_method": "exact union of axially translated annular intervals",
+      "moving_annular_sections_r_outer_r_inner_z_lo_z_hi_mm": [
+        [
+          0.65,
+          0.4,
+          1.0,
+          1.2
+        ]
+      ],
+      "all_obstacles": [
+        {
+          "fixed": "KEY_FOLLOWER",
+          "common_mm3": 0
+        },
+        {
+          "fixed": "KEY_SLOT_REFERENCE",
+          "common_mm3": 0
+        }
+      ],
+      "rejected": [],
+      "joining_strength_or_process_verified": false
+    }
+  ],
+  "original_axial_limits_rechecked": [
+    {
+      "joint": 1,
+      "offset_mm": 0.1,
+      "common_mm3": 0,
+      "at_permitted_limit": true
+    },
+    {
+      "joint": 1,
+      "offset_mm": 2.9,
+      "common_mm3": 0,
+      "at_permitted_limit": true
+    },
+    {
+      "joint": 1,
+      "offset_mm": 0.09,
+      "common_mm3": 0.04154756284372504,
+      "at_permitted_limit": false
+    },
+    {
+      "joint": 1,
+      "offset_mm": 2.91,
+      "common_mm3": 0.006911503837897237,
+      "at_permitted_limit": false
+    },
+    {
+      "joint": 2,
+      "offset_mm": 0.1,
+      "common_mm3": 0,
+      "at_permitted_limit": true
+    },
+    {
+      "joint": 2,
+      "offset_mm": 2.9,
+      "common_mm3": 0,
+      "at_permitted_limit": true
+    },
+    {
+      "joint": 2,
+      "offset_mm": 0.09,
+      "common_mm3": 0.0176714586764426,
+      "at_permitted_limit": false
+    },
+    {
+      "joint": 2,
+      "offset_mm": 2.91,
+      "common_mm3": 0.004398229715025615,
+      "at_permitted_limit": false
+    },
+    {
+      "joint": 3,
+      "offset_mm": 0.1,
+      "common_mm3": 0,
+      "at_permitted_limit": true
+    },
+    {
+      "joint": 3,
+      "offset_mm": 2.9,
+      "common_mm3": 0,
+      "at_permitted_limit": true
+    },
+    {
+      "joint": 3,
+      "offset_mm": 0.09,
+      "common_mm3": 0.0038484510006474995,
+      "at_permitted_limit": false
+    },
+    {
+      "joint": 3,
+      "offset_mm": 2.91,
+      "common_mm3": 0.001884955592153876,
+      "at_permitted_limit": false
+    }
+  ],
+  "subassembly_members": {
+    "INNER_UNIT_relative_to_tube_2": {
+      "TUBE_2_OPEN_BOTTOM": 0.0,
+      "TUBE_2_BOTTOM_CAP": 0.0,
+      "CORE_STEM": 0.1,
+      "CORE_BOTTOM_SHOULDER": 0.1
+    },
+    "MIDDLE_AND_INNER_UNIT_relative_to_tube_1": {
+      "TUBE_1_OPEN_BOTTOM": 0.0,
+      "TUBE_1_BOTTOM_CAP": 0.0,
+      "TUBE_2_OPEN_BOTTOM": 0.1,
+      "TUBE_2_BOTTOM_CAP": 0.1,
+      "CORE_STEM": 0.2,
+      "CORE_BOTTOM_SHOULDER": 0.2
+    },
+    "placement_values_are_axial_translation_mm": true,
+    "all_CAM_flanges_left_off_until_nested_tube_assembly_complete": true
+  },
+  "parts": [
+    {
+      "part": "CAM_LOWER_FLANGE",
+      "file": "CAM_LOWER_FLANGE.step",
+      "sha256": "2b8a1e4a8650fa2c669fc294b5c9781116e896f67b174db0b54c4e674b37b3cc",
+      "bounds_mm": [
+        -0.65,
+        0.65,
+        -0.65,
+        0.65,
+        3.3,
+        3.5
+      ],
+      "volume_mm3": 0.16493361431346426,
+      "valid_solids": 1,
+      "process_features": {
+        "nominal_axial_thickness_mm": 0.2,
+        "nominal_ring_radial_width_mm": 0.25,
+        "nominal_shaft_join_diameter_mm": 0.8
+      },
+      "measured_as_built_features_mm": null
+    },
+    {
+      "part": "CAM_SLOT_REFERENCE",
+      "file": "CAM_SLOT_REFERENCE.step",
+      "sha256": "3df8b1e240badffdffc5837004830e259d8692f972c25dedd059cb20d93babbb",
+      "bounds_mm": [
+        -1.0628526645768024,
+        13.062852664576802,
+        -81.45,
+        1.7,
+        3.8,
+        4.1
+      ],
+      "volume_mm3": 26.562217176433695,
+      "valid_solids": 1,
+      "process_features": {
+        "nominal_pin_diameter_mm": 0.8,
+        "nominal_closed_slot_width_mm": 0.85,
+        "applies_to": "pin or slot according to this part role"
+      },
+      "measured_as_built_features_mm": null
+    },
+    {
+      "part": "CAM_UPPER_FLANGE",
+      "file": "CAM_UPPER_FLANGE.step",
+      "sha256": "597e6f71ca301ce5903b5b29c40a0b87104c31ab876965bca33b4ec7a517d340",
+      "bounds_mm": [
+        -0.65,
+        0.65,
+        -0.65,
+        0.65,
+        3.8,
+        4.0
+      ],
+      "volume_mm3": 0.16493361431346426,
+      "valid_solids": 1,
+      "process_features": {
+        "nominal_axial_thickness_mm": 0.2,
+        "nominal_ring_radial_width_mm": 0.25,
+        "nominal_shaft_join_diameter_mm": 0.8
+      },
+      "measured_as_built_features_mm": null
+    },
+    {
+      "part": "CORE_BOTTOM_SHOULDER",
+      "file": "CORE_BOTTOM_SHOULDER.step",
+      "sha256": "4ab57e7f05264229fce78e569f531f8433f16d0af1ba48496ed65a83a0aa460c",
+      "bounds_mm": [
+        -0.35,
+        0.35,
+        -0.35,
+        0.35,
+        0.0,
+        0.2
+      ],
+      "volume_mm3": 0.05183627878423158,
+      "valid_solids": 1,
+      "process_features": {
+        "nominal_axial_thickness_mm": 0.2,
+        "nominal_ring_radial_width_mm": 0.15,
+        "nominal_shaft_join_diameter_mm": 0.4
+      },
+      "measured_as_built_features_mm": null
+    },
+    {
+      "part": "CORE_STEM",
+      "file": "CORE_STEM.step",
+      "sha256": "0e9073a9b41b9dc12f4430ab99e9d8cfd1204d2c7e9b4a06555ec7f7778261bf",
+      "bounds_mm": [
+        -0.4,
+        0.4,
+        -0.4,
+        0.4,
+        0.0,
+        4.0
+      ],
+      "volume_mm3": 0.8230972752405257,
+      "valid_solids": 1,
+      "process_features": {
+        "nominal_minimum_stem_diameter_mm": 0.4,
+        "nominal_top_neck_diameter_mm": 0.8,
+        "joint_transition_fillet_specified": false
+      },
+      "measured_as_built_features_mm": null
+    },
+    {
+      "part": "KEY_FOLLOWER_WITHOUT_LOWER_FLANGE",
+      "file": "KEY_FOLLOWER_WITHOUT_LOWER_FLANGE.step",
+      "sha256": "15bbe5e679cf96cd9a8c5cdf0c4681a2f1db719c51f8303f3af4efc0e3482f3e",
+      "bounds_mm": [
+        -0.65,
+        0.65,
+        -0.65,
+        0.65,
+        1.0,
+        2.1
+      ],
+      "volume_mm3": 0.7178539213452677,
+      "valid_solids": 1,
+      "process_features": {
+        "nominal_axial_thickness_mm": 0.2,
+        "nominal_ring_radial_width_mm": 0.25,
+        "nominal_shaft_join_diameter_mm": 0.8
+      },
+      "measured_as_built_features_mm": null
+    },
+    {
+      "part": "KEY_LOWER_FLANGE",
+      "file": "KEY_LOWER_FLANGE.step",
+      "sha256": "3e32454e95a0a79f076c244c3f4ce00e4c4245d14dd56e8529f4751753d7b0f9",
+      "bounds_mm": [
+        -0.65,
+        0.65,
+        -0.65,
+        0.65,
+        1.0,
+        1.2
+      ],
+      "volume_mm3": 0.1649336143134641,
+      "valid_solids": 1,
+      "process_features": {
+        "nominal_axial_thickness_mm": 0.2,
+        "nominal_ring_radial_width_mm": 0.25,
+        "nominal_shaft_join_diameter_mm": 0.8
+      },
+      "measured_as_built_features_mm": null
+    },
+    {
+      "part": "KEY_SLOT_REFERENCE",
+      "file": "KEY_SLOT_REFERENCE.step",
+      "sha256": "3d7d7d5b0bf75f1f9dc62263b06db90e4476fdd3f4bd7e35e54c4e4a50f6131f",
+      "bounds_mm": [
+        -1.85,
+        13.85,
+        -13.85,
+        1.85,
+        1.2,
+        1.6
+      ],
+      "volume_mm3": 11.60316764481547,
+      "valid_solids": 1,
+      "process_features": {
+        "nominal_pin_diameter_mm": 0.8,
+        "nominal_closed_slot_width_mm": 0.85,
+        "applies_to": "pin or slot according to this part role"
+      },
+      "measured_as_built_features_mm": null
+    },
+    {
+      "part": "TUBE_0_BOTTOM_CAP",
+      "file": "TUBE_0_BOTTOM_CAP.step",
+      "sha256": "c501a291ebbadf38fbf2aac18f24c14d42df6fbf60b6f69bb684e6fc29d989e3",
+      "bounds_mm": [
+        -1.2,
+        1.2,
+        -1.2,
+        1.2,
+        0.0,
+        0.1
+      ],
+      "volume_mm3": 0.45238934211693027,
+      "valid_solids": 1,
+      "process_features": {
+        "nominal_disk_thickness_mm": 0.1,
+        "nominal_disk_diameter_mm": 2.4,
+        "nominal_seam_diameter_mm": 2.4
+      },
+      "measured_as_built_features_mm": null
+    },
+    {
+      "part": "TUBE_0_OPEN_BOTTOM",
+      "file": "TUBE_0_OPEN_BOTTOM.step",
+      "sha256": "d4cdb5d5b8d51d7a6e5907d7403172cfcd2003975f534d129910cba04a2aa8e7",
+      "bounds_mm": [
+        -1.4,
+        1.4,
+        -1.4,
+        1.4,
+        0.0,
+        3.2
+      ],
+      "volume_mm3": 5.333638927632069,
+      "valid_solids": 1,
+      "process_features": {
+        "nominal_minimum_axial_wall_or_lip_mm": 0.1,
+        "nominal_main_barrel_radial_wall_mm": 0.19999999999999996,
+        "nominal_bottom_join_diameter_mm": 2.4,
+        "nominal_maximum_outside_diameter_mm": 2.8
+      },
+      "measured_as_built_features_mm": null
+    },
+    {
+      "part": "TUBE_1_BOTTOM_CAP",
+      "file": "TUBE_1_BOTTOM_CAP.step",
+      "sha256": "979056a13735143eb54c600c5d0678a213950867086c12d4c7f83fa85bf9e780",
+      "bounds_mm": [
+        -0.8,
+        0.8,
+        -0.8,
+        0.8,
+        0.0,
+        0.1
+      ],
+      "volume_mm3": 0.20106192982974677,
+      "valid_solids": 1,
+      "process_features": {
+        "nominal_disk_thickness_mm": 0.1,
+        "nominal_disk_diameter_mm": 1.6,
+        "nominal_seam_diameter_mm": 1.6
+      },
+      "measured_as_built_features_mm": null
+    },
+    {
+      "part": "TUBE_1_OPEN_BOTTOM",
+      "file": "TUBE_1_OPEN_BOTTOM.step",
+      "sha256": "6c43c31576bbdca667b4fa0f691f29f9b12deac06e4bad7ddc0e8e77307b7f36",
+      "bounds_mm": [
+        -1.15,
+        1.15,
+        -1.15,
+        1.15,
+        0.0,
+        3.2
+      ],
+      "volume_mm3": 3.8900771033075605,
+      "valid_solids": 1,
+      "process_features": {
+        "nominal_minimum_axial_wall_or_lip_mm": 0.1,
+        "nominal_main_barrel_radial_wall_mm": 0.19999999999999996,
+        "nominal_bottom_join_diameter_mm": 1.6,
+        "nominal_maximum_outside_diameter_mm": 2.3
+      },
+      "measured_as_built_features_mm": null
+    },
+    {
+      "part": "TUBE_2_BOTTOM_CAP",
+      "file": "TUBE_2_BOTTOM_CAP.step",
+      "sha256": "0724209091b94562ab3de97f97230169aa340e9ea9a5b5dcfbae3e97ec88986f",
+      "bounds_mm": [
+        -0.4,
+        0.4,
+        -0.4,
+        0.4,
+        0.0,
+        0.1
+      ],
+      "volume_mm3": 0.05026548245743669,
+      "valid_solids": 1,
+      "process_features": {
+        "nominal_disk_thickness_mm": 0.1,
+        "nominal_disk_diameter_mm": 0.8,
+        "nominal_seam_diameter_mm": 0.8
+      },
+      "measured_as_built_features_mm": null
+    },
+    {
+      "part": "TUBE_2_OPEN_BOTTOM",
+      "file": "TUBE_2_OPEN_BOTTOM.step",
+      "sha256": "7149d44a99dfd2e826c59f6dc4d884694148af22c0a7646ab466c632b1261605",
+      "bounds_mm": [
+        -0.75,
+        0.75,
+        -0.75,
+        0.75,
+        0.0,
+        3.2
+      ],
+      "volume_mm3": 2.1684843291403544,
+      "valid_solids": 1,
+      "process_features": {
+        "nominal_minimum_axial_wall_or_lip_mm": 0.1,
+        "nominal_main_barrel_radial_wall_mm": 0.19999999999999996,
+        "nominal_bottom_join_diameter_mm": 0.8,
+        "nominal_maximum_outside_diameter_mm": 1.5
+      },
+      "measured_as_built_features_mm": null
+    }
+  ],
+  "combined": {
+    "file": "isolated-cam-telescope-assembly.step",
+    "sha256": "97b0f5843b2cda1f8e63187dcf4ce00dc766fb385cf5f077de1199ef65a405db",
+    "expected_solids": 11
+  },
+  "joining": {
+    "selected_material": null,
+    "selected_process": null,
+    "qualified_process_tolerance_mm": null,
+    "joint_load_capacity_N": null,
+    "bottom_caps": [
+      {
+        "tube": 0,
+        "plug_diameter_mm": 2.4,
+        "plug_thickness_mm": 0.1,
+        "nominal_circular_seam_radius_mm": 1.2,
+        "seam_face_local_z_mm": 0.0,
+        "access_direction": "-Z, before this unit is nested into the next larger tube",
+        "bottom_face_unobstructed_in_isolated_assembly": true
+      },
+      {
+        "tube": 1,
+        "plug_diameter_mm": 1.6,
+        "plug_thickness_mm": 0.1,
+        "nominal_circular_seam_radius_mm": 0.8,
+        "seam_face_local_z_mm": 0.0,
+        "access_direction": "-Z, before this unit is nested into the next larger tube",
+        "bottom_face_unobstructed_in_isolated_assembly": true
+      },
+      {
+        "tube": 2,
+        "plug_diameter_mm": 0.8,
+        "plug_thickness_mm": 0.1,
+        "nominal_circular_seam_radius_mm": 0.4,
+        "seam_face_local_z_mm": 0.0,
+        "access_direction": "-Z, before this unit is nested into the next larger tube",
+        "bottom_face_unobstructed_in_isolated_assembly": true
+      }
+    ],
+    "core_shoulder": {
+      "outer_diameter_mm": 0.7,
+      "inner_diameter_mm": 0.4,
+      "thickness_mm": 0.2,
+      "access": "through open tube 2 base before installing its bottom cap"
+    },
+    "cam_and_KEY_flanges": {
+      "outer_diameter_mm": 1.3,
+      "inner_diameter_mm": 0.8,
+      "thickness_mm": 0.2,
+      "cam_access": "isolated strip only; whole B shell access remains unverified",
+      "KEY_access": "isolated strip only; whole KEY/housing installation remains unverified"
+    },
+    "CAD_interface": "nominal touching cylinder surfaces; no thread, weld bead, fillet, adhesive thickness, or interference fit is invented",
+    "minimum_remaining_work": "select real material/process, define joint prep and distortion allowances, prove accessible joining in full housing, measure retention and repeat insertion after redesign"
+  },
+  "limitations": [
+    "straight axial insertion demonstrated for isolated stages and finite groove strips",
+    "original finished integral bodies rejected only for the declared axial paths, not all fabrication processes",
+    "no complete 94-part assembly order or whole-shell insertion proof",
+    "split seams require actual joining design before this is a manufacturable mechanism",
+    "zero material change assumes mathematically rejoined surfaces; physical bond lines need their own geometry",
+    "no material, actual force, preload, fatigue, process yield, or physical fabrication results"
+  ],
+  "new_product_candidate_selected": false,
+  "full_product_assembly_proved": false,
+  "physical_fabrication_occurred": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}

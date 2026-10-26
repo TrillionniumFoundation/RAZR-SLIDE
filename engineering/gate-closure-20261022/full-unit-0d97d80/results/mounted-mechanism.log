@@ -1,0 +1,33 @@
+setUpClass (test_mounted_mechanism.MountedMechanismTests) ... ERROR
+
+======================================================================
+ERROR: setUpClass (test_mounted_mechanism.MountedMechanismTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/mount-tests/test_mounted_mechanism.py", line 10, in setUpClass
+    cls.refs,cls.parts,cls.frame,cls.panel,cls.screws,cls.details=m.build()
+                                                                  ^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/mounted_mechanism.py", line 97, in build
+    refs={f'{s}_{k}':mounted(parent_part(s,k),s) for s in 'LR' for k in sorted(PARTS)}
+                             ^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/mounted_mechanism.py", line 72, in parent_part
+    arc,entries=source_entries();member=f'{side}_candidate_{name}.step'
+                ^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/mounted_mechanism.py", line 65, in source_entries
+    if sha(arc)!=gm['archive_sha256']:raise ValueError('parent native archive changed')
+       ^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/mounted_mechanism.py", line 32, in sha
+    def sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+                                         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/thin-mechanism-20261015/native-geometry.tar.gz'
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.001s
+
+FAILED (errors=1)

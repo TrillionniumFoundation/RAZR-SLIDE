@@ -1,0 +1,720 @@
+{
+  "schema": "razr-current-blocker-ledger-v3",
+  "created_utc_date": "2026-10-23",
+  "scope": "New audit and execution ledger; original 2026-10-22 history remains unchanged.",
+  "software_fixes_are_not_gate_acceptance": true,
+  "all_gates_closed": false,
+  "gate_status": {
+    "G0": "blocked",
+    "G1": "blocked",
+    "G2": "blocked",
+    "G3": "blocked",
+    "G4": "blocked",
+    "G5": "blocked"
+  },
+  "records": [
+    {
+      "id": "G0-01",
+      "priority": "P0",
+      "gate": "G0",
+      "blocker": "Exact source and native validation chain",
+      "status": "closed_for_declared_EP4_EP5_execution_at_042",
+      "required_role": "Engineering",
+      "closure_condition": "Run required EP4 and EP5 native drivers on the exact reviewed source with independent STEP readers; preserve rejected geometry as a result.",
+      "current_evidence_boundary": "Exact 042 locked EP4/EP5 native execution and independent STEP readers completed; all 55 EP4 geometric rejections remain recorded. This closes execution of these declared jobs, not rejected geometry or all-motion acceptance.",
+      "references": [
+        "engineering/gate-closure-20261023/native-042b7689/ep4/summary.json",
+        "engineering/gate-closure-20261023/native-042b7689/ep5/summary.json"
+      ],
+      "prior_status": "software_and_EP5_execution_verified_EP4_execution_blocked",
+      "prior_status_at_first_publication": "original_inputs_recovered_new_native_execution_pending",
+      "previous_status_at_e76_publication": "closed_for_declared_EP4_EP5_execution_at_e76"
+    },
+    {
+      "id": "G0-02",
+      "priority": "P0",
+      "gate": "G0",
+      "blocker": "Complete reproducible locked execution",
+      "status": "local_locked_execution_closed_hosted_runner_startup_blocked",
+      "required_role": "Project environment / CI owner",
+      "closure_condition": "Provide the existing project environment connection or a complete checkout with working locked dependency installation and hosted runner execution.",
+      "current_evidence_boundary": "1558 actual tests / 36 unique suites passed at exact 042 with zero failure/error/skip and 43 locked packages. Hosted run39917795794 has 18 failed and one skipped job, zero steps/runners/artifacts. Current provider cause is unknown.",
+      "references": [
+        "engineering/gate-closure-20261023/full-unit-042b7689/summary.json",
+        "engineering/gate-closure-20261023/ci-042b7689/SUMMARY.json"
+      ],
+      "prior_status": "blocked_environment_and_transport",
+      "prior_status_at_first_publication": "inputs_and_locked_environment_recovered_new_execution_pending",
+      "previous_status_at_e76_publication": "local_locked_execution_closed_hosted_runner_startup_blocked"
+    },
+    {
+      "id": "G1-01",
+      "priority": "P0",
+      "gate": "G1",
+      "blocker": "Same-specimen physical inputs",
+      "status": "blocked_physical_input",
+      "required_role": "Hardware / integration owner",
+      "closure_condition": "Return original labels, calibrated dimensions, height/exit envelopes and twelve terminal bindings for the same donor specimen. Freeze OLED/COF, FPC and complete battery pack revisions.",
+      "current_evidence_boundary": "XT2551-3 identity exists; ten physical identity fields, seven part roles and twelve terminal interfaces remain unresolved. Field-deletion false-pass is repaired with code-owned mandatory fields; actual unknowns are unchanged.",
+      "references": [
+        "design/product_interfaces.json"
+      ],
+      "prior_status": "blocked_physical_input"
+    },
+    {
+      "id": "G1-02",
+      "priority": "P0",
+      "gate": "G1",
+      "blocker": "Process and interface limits",
+      "status": "blocked_physical_input",
+      "required_role": "Mechanical / process owner",
+      "closure_condition": "Freeze actual material stack, bend and torsion limits, swelling/tabs, joining details, tolerances and complete-pack capacity/energy criteria with provenance.",
+      "current_evidence_boundary": "EP5 is a new 188 mm total / 164 mm free candidate; earlier material qualification cannot be transferred to it.",
+      "references": [
+        "design/product_routing_ep5.json"
+      ],
+      "prior_status": "blocked_physical_input"
+    },
+    {
+      "id": "G0-NUM",
+      "priority": "P0",
+      "gate": "G0",
+      "blocker": "Original rigid-bearing restart inputs",
+      "status": "full_K_rebuilt_all_panel_columns_completed_original_five_probe_residual_rejected_diagnostic_resource_blocked",
+      "required_role": "Numerical / retained-artifact owner",
+      "closure_condition": "Recover the original mapped volume, K and response seed with exact identities, or complete an explicitly identified faithful rebuild of the full mapped operators and response. Retain all original five-probe free-DOF residual and ExactResponseCache.restore H-action criteria before using the response as a restart input.",
+      "current_evidence_boundary": "Eleven repository inputs and eight missing external inputs are byte-exact; both full original L2 K operators were faithfully rebuilt with distinct identities. The actual panel archive continuation completed 3885/3885 columns, then the unchanged original five-probe free-DOF residual guard raised before recording probe index or ratio. Original ExactResponseCache.restore was not reached. Complete H is quarantined, not qualified. A separately frozen five-probe diagnostic passed 10 small tests but its only actual startup was refused for ordinary disk and memory budget. Frame response, full restart and all-domain convergence remain open; no numeric worker is running.",
+      "references": [
+        "engineering/gate-closure-20261023/numerical-recovery/exact-PR35-input-recovery.json",
+        "engineering/gate-closure-20261023/numerical-recovery/followon-042b7689/quarantine-manifest.json",
+        "engineering/gate-closure-20261023/numerical-recovery/followon-042b7689/panel-actual-failure-independent-review.json",
+        "engineering/gate-closure-20261023/numerical-recovery/followon-042b7689/probe-attempt-1-summary.json",
+        "engineering/gate-closure-20261023/numerical-recovery/PERSISTENCE_STATUS.json"
+      ],
+      "prior_status": "blocked_original_data",
+      "prior_status_at_first_publication": "repository_inputs_recovered_external_volume_and_seed_missing",
+      "previous_status_at_e76_publication": "eight_original_external_inputs_recovered_full_K_rebuilt_partial_H_capacity_blocked",
+      "previous_closure_condition_at_e76_publication": "Recover the original volume and legacy response seed listed in REBUILD_INPUTS.json, or perform an explicitly identified faithful rebuild."
+    },
+    {
+      "id": "G2-01",
+      "priority": "P1",
+      "gate": "G2",
+      "blocker": "Nominal full finite assembly",
+      "status": "closed_for_declared_nominal_research_inventory_at_042",
+      "required_role": "Geometry owner",
+      "closure_condition": "Validate the same declared nominal full inventory at STOW, PREDOCK and OPEN, every unordered pair and outer-domain containment, with actual input hashes checked before/after and independent STEP readback.",
+      "current_evidence_boundary": "Exact 042 EP5 full finite assembly has 154/154/161 bodies, 36442 pairs, 123 outer-union containment rows and two independent readers with no positive Common/escape. Complete measured hardware fit and motion are outside this finite scope.",
+      "references": [
+        "engineering/gate-closure-20261023/native-042b7689/ep5/summary.json"
+      ],
+      "prior_status": "verified_within_declared_nominal_research_scope",
+      "prior_status_at_first_publication": "verified_within_declared_nominal_research_scope",
+      "previous_status_at_e76_publication": "closed_for_declared_nominal_research_inventory_at_e76"
+    },
+    {
+      "id": "G2-02",
+      "priority": "P1",
+      "gate": "G2",
+      "blocker": "Continuous reversible kinematics",
+      "status": "fixed_pose_controls_and_accessory_paths_clear_KEY_saved_positive_verified_SLIDE_native_interrupted_SEATING_resource_blocked",
+      "required_role": "Mechanical / geometry owner",
+      "closure_condition": "Define realizable couplings and control trajectories for telescope, flank and manual controls; verify the complete shared assembly continuously in both directions, including attachment/install states.",
+      "current_evidence_boundary": "Exact 042 fixed-pose control domains cover 36442 unique pair domains, all clear. A separately identified accessory diagnostic completed all 1099 continuous pair domains over seven geometric paths, independently checked. KEY endpoint v1 was stopped by its unchanged shared-memory guard after two stdout-only trials reported four positives; four saved STEP witnesses now have complete native readback with unchanged SHA, valid solids and volumes 0.0012382–0.00165094 mm3 above the original 1e-7 threshold, but original pair IDs and a complete raw trial report remain absent. Endpoint finite-plane analysis retains the whole coupled slot domain and does not prove a global physical hard stop. Original SLIDE v2 actually completed five factory-law probes, then its original shared-memory guard stopped the native attempt after 388.385801 seconds; saved 11781 inventory rows are all not_evaluated, with zero recoverable completed pair rows and unknown in-memory progress. SEATING r2 passed 25 pure tests but neither of two original-budget invocations started a worker (first disk, later memory). Separate successor execution-safety/checkpoint preparation is labelled with its own source identity. These scopes do not close complete reversible motion, physical control constraints or tolerance qualification. Final r3 preparations passed 65 SLIDE and 50 SEATING pure tests (shared 17 helper tests overlap), and the exact common monitor passed one real small stdlib child smoke. No r3 supervisor/native invocation occurred; the final budget observation left all four pending task startup conditions unsatisfied.",
+      "references": [
+        "engineering/gate-closure-20261023/canonical-controls-042b7689/SUMMARY.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/accessory/SUMMARY.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/key-stopped-v1/FAILED_PARTIAL_SUMMARY.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/slide-prepared-v2/SUMMARY.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/seating-prepared-r2/SUMMARY.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/key-v4-readback-algebra/DELIVERY.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/seating-attempt2/SUMMARY.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/slide-v2-attempt2-stopped/SUMMARY.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/slide-v2-attempt2-stopped/EVIDENCE_INDEX.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/seating-attempt2/independent-review.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/owned-child-procfs-probes/successful-probe.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/owned-child-procfs-probes/EVIDENCE_INDEX.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/owned-process-helper-smoke/result.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/owned-process-helper-smoke/EVIDENCE_INDEX.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/slide-prepared-r3/SUMMARY.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/slide-prepared-r3/EVIDENCE_INDEX.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/seating-prepared-r3/SUMMARY.json",
+        "engineering/gate-closure-20261023/geometry-followon-042b7689/seating-prepared-r3/EVIDENCE_INDEX.json"
+      ],
+      "prior_status": "blocked_mechanism_definition",
+      "prior_status_at_first_publication": "blocked_mechanism_definition",
+      "previous_status_at_e76_publication": "independent_inputs_and_continuous_fixed_pose_controls_implemented_full_cycle_open"
+    },
+    {
+      "id": "G2-03",
+      "priority": "P1",
+      "gate": "G2",
+      "blocker": "Assembly and tolerance budget",
+      "status": "blocked_real_dimensions",
+      "required_role": "Mechanical / process owner",
+      "closure_condition": "Use measured part/process distributions for assembly access, retention hardware, tolerances, tool access and minimum clearances; preserve all material and obstacle bodies.",
+      "current_evidence_boundary": "Nominal 0.2 mm-class clearances are not a measured worst-case tolerance margin.",
+      "references": [
+        "engineering/product-integration-20261018/phase5-20261022/README.md"
+      ],
+      "prior_status": "blocked_real_dimensions"
+    },
+    {
+      "id": "G5-NUM",
+      "priority": "P1",
+      "gate": "G5",
+      "blocker": "Structural/contact qualification",
+      "status": "faithful_K_rebuilt_linear_response_and_full_contact_qualification_open",
+      "required_role": "Numerical / mechanical owner",
+      "closure_condition": "Resolve physical supports, preload and connector/material inputs; converge the unchanged all-domain contact criteria and independently audit the full field on the selected geometry, with a defined convergence/load envelope.",
+      "current_evidence_boundary": "Both complete original L2 stiffness operators were faithfully rebuilt. Completed panel columns do not by themselves qualify the full response. Frame response, original restore, unchanged-domain QP/field convergence and separate current EP5 structural qualification remain required.",
+      "references": [
+        "engineering/gate-closure-20261023/numerical-recovery/exact-PR35-input-recovery.json",
+        "engineering/gate-closure-20261023/numerical-recovery/followon-042b7689/quarantine-manifest.json",
+        "engineering/gate-closure-20261023/numerical-recovery/followon-042b7689/panel-actual-failure-independent-review.json",
+        "engineering/gate-closure-20261023/numerical-recovery/followon-042b7689/probe-attempt-1-summary.json",
+        "engineering/gate-closure-20261023/numerical-recovery/PERSISTENCE_STATUS.json"
+      ],
+      "prior_status": "blocked_original_inputs_and_solve",
+      "prior_status_at_first_publication": "blocked_original_inputs_and_solve",
+      "previous_status_at_e76_publication": "full_original_K_rebuilt_response_in_progress_contact_and_changed_geometry_open"
+    },
+    {
+      "id": "G3-01",
+      "priority": "P2",
+      "gate": "G3",
+      "blocker": "Unpowered physical assembly",
+      "status": "blocked_specimen_and_measurements",
+      "required_role": "Prototype / test owner",
+      "closure_condition": "Build the identified specimen and execute preregistered complete assembly, retention, open/close, skew, release, jam and relock tests with original calibrated logs.",
+      "current_evidence_boundary": "No complete physical assembly trial is supplied.",
+      "references": [
+        "engineering/product-integration-20261018/physical-test-followon-20261019/QUALIFICATION.md"
+      ],
+      "prior_status": "blocked_specimen_and_measurements"
+    },
+    {
+      "id": "G4-01",
+      "priority": "P2",
+      "gate": "G4",
+      "blocker": "Functional prototype under motion",
+      "status": "blocked_specimen_and_measurements",
+      "required_role": "Electrical / test owner",
+      "closure_condition": "With frozen original protected interfaces, test supply, charging, USB, display and touch at rest and throughout motion; preserve original timestamped observations and failures.",
+      "current_evidence_boundary": "Qualification software is implemented; actual hardware records are absent.",
+      "references": [
+        "engineering/product-integration-20261018/physical-test-followon-20261019/qualification-plan.template.json"
+      ],
+      "prior_status": "blocked_specimen_and_measurements"
+    },
+    {
+      "id": "G5-01",
+      "priority": "P2",
+      "gate": "G5",
+      "blocker": "Durability and manufacturing release",
+      "status": "blocked_defined_acceptance_and_measurements",
+      "required_role": "Manufacturing / quality owner",
+      "closure_condition": "Complete defined structural, endurance, process stability, inspection and traceability acceptance using controlled specimens and uncertainty-aware original measurements.",
+      "current_evidence_boundary": "No manufacturing release or hardware qualification is granted by software or nominal CAD checks.",
+      "references": [
+        "engineering/product-integration-20261018/physical-test-followon-20261019/as-built-specimen.template.json"
+      ],
+      "prior_status": "blocked_defined_acceptance_and_measurements"
+    }
+  ],
+  "execution_order": [
+    "Resolve actual hosted runner startup using current provider evidence; exact 042 local full unit, EP4/EP5 and three fixed-pose control executions are already complete.",
+    "In a resource window satisfying the unchanged declared guards, diagnose the original panel five-probe residual failure, qualify both complete responses and restore, then continue unchanged-domain contact/field convergence.",
+    "Complete preserved KEY endpoint evidence and prepared continuous SLIDE/SEATING domains; use real geometry and realizable controls to resolve positives and unresolved bounds.",
+    "In parallel freeze the same donor, OLED/COF/FPC and complete protected packs with measured process/interface limits.",
+    "Complete real-part assembly, forward/reverse motion, installation/removal and worst-case tolerance conditions, then identified G3/G4/G5 physical acceptance."
+  ],
+  "manufacturing_go": false,
+  "current_results_summary": {
+    "complete_unit_tests": 1558,
+    "suites": 36,
+    "failures_errors_skips": 0,
+    "canonical_fixed_pose_pair_domains_clear": 36442,
+    "local_EP5_finite_pair_rows_clear": 36442,
+    "EP4_original_positive_pairs_retained": 55,
+    "hosted_steps": 0,
+    "hosted_runners": 0,
+    "followon_geometry": {
+      "accessory_paths": {
+        "state": "declared_continuous_geometry_paths_completed_and_independently_checked",
+        "fixed_functional_base": "042b768903cccbd7a0995317c8598401e0318e2a",
+        "attachment_stages": 7,
+        "directed_install_remove_paths": 14,
+        "distinct_geometric_path_sets": 7,
+        "unique_continuous_material_obstacle_pair_domains": 1099,
+        "axis_gap_clear_domains": 1082,
+        "full_translation_clear_domains": 17,
+        "evaluation_failures": 0,
+        "collision_witnesses": 0,
+        "all_Common_upper_bounds_zero": true,
+        "actual_elapsed_seconds": 56.768744,
+        "KEY_crosshead_offsets_mm": [
+          0,
+          0
+        ],
+        "canonical_execution_checks_passed": false,
+        "complete_G2_qualification": false,
+        "physical_tool_or_hand_access_qualified": false,
+        "summary": "engineering/gate-closure-20261023/geometry-followon-042b7689/accessory/SUMMARY.json"
+      },
+      "KEY_endpoint_v1": {
+        "state": "actual_full_native_attempt_stopped_by_original_shared_memory_guard",
+        "elapsed_seconds": 312.1813,
+        "exit_code": 125,
+        "complete_raw_report_exists": false,
+        "stdout_only_completed_trials": 2,
+        "stdout_only_reported_pair_rows": 6792,
+        "stdout_only_reported_positive_pairs": 4,
+        "saved_Common_STEP_files": 4,
+        "complete_six_trial_pair_rows_required": 20880,
+        "old_stdout_only_trials_are_resume_eligible": false,
+        "independently_reconstructed_complete_pair_inventory": false,
+        "continuous_endpoint_domain_proved": false,
+        "summary": "engineering/gate-closure-20261023/geometry-followon-042b7689/key-stopped-v1/FAILED_PARTIAL_SUMMARY.json"
+      },
+      "KEY_v4_preparation_and_saved_witness": {
+        "state": "v4_and_endpoint_algebra_prepared_saved_four_Common_STEPs_readback_complete",
+        "v4_pure_tests_passed": 50,
+        "endpoint_algebra_pure_tests_passed": 11,
+        "counts_toward_repository_1558_tests": false,
+        "v4_native_executed": false,
+        "small_saved_STEP_attempts": 2,
+        "first_saved_STEP_attempt_started": false,
+        "second_saved_STEP_attempt_completed": true,
+        "actual_saved_STEP_readback_seconds": 2.3515269870003976,
+        "saved_STEP_solid_counts": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "saved_Common_volumes_mm3": [
+          0.0012382062639602538,
+          0.0016509416852802346,
+          0.0012382062639599693,
+          0.0016509416852800477
+        ],
+        "all_four_saved_Common_volumes_above_original_1e_minus_7": true,
+        "original_pair_identity_recovered": false,
+        "original_trial_completion_recovered": false,
+        "new_Common_computed": false,
+        "same_CAD_kernel": true,
+        "nominal_opposed_face_patches": 6,
+        "nominal_opposed_face_gap_mm": 0.02,
+        "whole_original_coupled_slot_domain_preserved": true,
+        "original_profile_modified": false,
+        "global_KEY_hard_stop_proved": false,
+        "whole_pin_KEY_clear_proved": false,
+        "physical_qualification": false,
+        "complete_G2_qualification": false,
+        "summary": "engineering/gate-closure-20261023/geometry-followon-042b7689/key-v4-readback-algebra/DELIVERY.json"
+      },
+      "seating_v2": {
+        "state": "prepared_r2_reviewed_two_resource_refusals_no_native_worker",
+        "active_adapter": "v2-r2",
+        "pure_tests_passed": 25,
+        "counts_toward_repository_1558_tests": false,
+        "prepared_source_manifest_sha256": "1024dc5aa4e8cc2011b4201ea73f84abe78f6695ed27e5b70e517d6e56af867c",
+        "complete_materials": 154,
+        "declared_unique_pairs": 11781,
+        "shared_descent_mm": [
+          0,
+          8.2
+        ],
+        "slide_mm": 79.75,
+        "KEY_crosshead_offsets_mm": [
+          0,
+          0
+        ],
+        "actual_preflight_count": 2,
+        "worker_started": false,
+        "native_completed_pairs": 0,
+        "complete_G2_qualification": false,
+        "partial_journal_is_native_resume": false,
+        "summary": "engineering/gate-closure-20261023/geometry-followon-042b7689/seating-prepared-r2/SUMMARY.json",
+        "actual_controller_invocations": 2,
+        "preflight_only_invocations": 1,
+        "native_requested_invocations": 1,
+        "current_attempt_summary": "engineering/gate-closure-20261023/geometry-followon-042b7689/seating-attempt2/SUMMARY.json",
+        "latest_start_refusal": {
+          "ordinary_disk_bytes": 481591296,
+          "disk_start_margin_passed": true,
+          "shared_unreclaimable_bytes": 6417796352,
+          "additional_memory_reserve_bytes": 1610612736,
+          "memory_start_margin_passed": false,
+          "worker_started": false,
+          "required_start_disk_bytes": 419430400,
+          "independent_review": "engineering/gate-closure-20261023/geometry-followon-042b7689/seating-attempt2/independent-review.json"
+        },
+        "first_preflight_only_refusal": {
+          "ordinary_available_disk_bytes": 267284480,
+          "required_start_disk_bytes": 419430400,
+          "disk_shortfall_bytes": 152145920,
+          "memory_preflight_passed_at_that_observation": true,
+          "worker_started": false
+        },
+        "worker_RSS_monitor_limitation_discovered_after_refusals": "Old r2 maps namespace-local Popen.pid directly into the outer procfs and can return an empty sample. Both actual attempts refused before spawning; no observed SEATING worker RSS or native result exists.",
+        "native_entrypoint_recommendation": "Historical preparation only; use the separately reviewed r3 successor with verified owned-child namespace mapping for future monitored native attempts."
+      },
+      "slide_v2": {
+        "state": "original_v2_native_attempt2_interrupted_by_original_shared_memory_guard",
+        "pure_tests_passed": 27,
+        "counts_toward_repository_1558_tests": false,
+        "complete_materials": 154,
+        "declared_unique_pairs": 11781,
+        "q_mm": [
+          0,
+          12
+        ],
+        "slide_mm": [
+          0,
+          79.75
+        ],
+        "KEY_crosshead_offsets_mm": [
+          0,
+          0
+        ],
+        "actual_controller_attempt_count": 2,
+        "worker_started": true,
+        "failure_cause": "shared_estimated_unreclaimable_memory_exceeded_original_6.8_GiB_during_real_native_execution",
+        "complete_G2_qualification": false,
+        "summary": "engineering/gate-closure-20261023/geometry-followon-042b7689/slide-v2-attempt2-stopped/SUMMARY.json",
+        "first_attempt_worker_started": false,
+        "actual_native_attempt_count": 1,
+        "active_native_worker": false,
+        "actual_native_elapsed_seconds": 388.38580101099797,
+        "worker_exit_code": -15,
+        "parent_exit_code": 2,
+        "construction_factory_probes_completed": 5,
+        "construction_probes_complete": true,
+        "declared_inventory_rows_saved": 11781,
+        "recoverable_completed_pair_rows": 0,
+        "native_completed_pairs_not_persisted": "unknown",
+        "last_saved_pair_dispositions": {
+          "not_evaluated": 11781
+        },
+        "pre_stop_shared_unreclaimable_bytes": 7330016656,
+        "original_shared_unreclaimable_limit_bytes": 7301444403,
+        "execution_completed": false,
+        "external_worker_RSS_observation_available": false,
+        "last_construction_worker_self_reported_peak_RSS_bytes": 588808192,
+        "worker_peak_after_construction_known": false,
+        "reported_complete_native_diagnostic_executed": null,
+        "original_v2_sources_unchanged": true,
+        "preparation_summary": "engineering/gate-closure-20261023/geometry-followon-042b7689/slide-prepared-v2/SUMMARY.json",
+        "actual_attempt_evidence_index": "engineering/gate-closure-20261023/geometry-followon-042b7689/slide-v2-attempt2-stopped/EVIDENCE_INDEX.json",
+        "slide_mapping": "s = (79.75 / 12) * q; q and slide are coupled, not independent coordinates"
+      },
+      "process_namespace_diagnostic": {
+        "state": "separate_small_stdlib_process_namespace_mapping_probe_completed",
+        "original_failed_probe_preserved": true,
+        "first_child_exit_code": -6,
+        "first_child_failure_cause_verified": false,
+        "second_child_exit_code": 0,
+        "second_probe_elapsed_seconds": 0.037779974001750816,
+        "namespace_Popen_PID_differed_from_procfs_visible_PID": true,
+        "parent_verified_own_child_RSS_bytes": 12324864,
+        "nonce_pipe_Pid_PPid_NSpid_starttime_namespace_checks_passed": true,
+        "owned_child_reaped": true,
+        "all_owned_pipe_descriptors_closed": true,
+        "source_sha256": "dd0895a84a37a4959e0b03cbab75dbe8eb8bf778321736721e741da58c89062a",
+        "counts_toward_repository_1558_tests": false,
+        "CAD_or_FE_executed": false,
+        "native_guard_modified": false,
+        "summary": "engineering/gate-closure-20261023/geometry-followon-042b7689/owned-child-procfs-probes/successful-probe.json",
+        "scope": "Tests process mapping capability. The successor runtime helper requires its separately recorded implementation review and source-bound smoke; no old native run is retroactively RSS-qualified."
+      },
+      "successor_monitor_implementation_smoke": {
+        "state": "exact_new_shared_helper_actual_small_child_end_to_end_passed",
+        "helper_sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25",
+        "actual_children": 1,
+        "elapsed_seconds": 0.22976586199729354,
+        "exit_code": 0,
+        "pre_release_external_RSS_bytes": 13803520,
+        "post_release_external_RSS_bytes": 13828096,
+        "child_self_reported_peak_RSS_bytes": 13762560,
+        "child_reaped": true,
+        "all_owned_parent_and_child_pipe_FDs_closed": true,
+        "native_or_FE_executed": false,
+        "old_native_RSS_guards_retroactively_verified": false,
+        "counts_toward_repository_1558_tests": false,
+        "summary": "engineering/gate-closure-20261023/geometry-followon-042b7689/owned-process-helper-smoke/result.json",
+        "independent_review": "engineering/gate-closure-20261023/geometry-followon-042b7689/owned-process-helper-smoke/independent-source-review.json"
+      },
+      "slide_r3_preparation": {
+        "schema": "razr-slide-r3-preparation-delivery-summary",
+        "functional_head": "042b768903cccbd7a0995317c8598401e0318e2a",
+        "state": "prepared_only_no_r3_native_or_preflight_execution",
+        "final_small_contract_tests": {
+          "passed": true,
+          "count": 65,
+          "components": {
+            "test_owned_process": 17,
+            "test_slide_checkpoint": 11,
+            "test_slide_domain": 9,
+            "test_slide_native_contracts": 18,
+            "test_slide_supervisor_lifecycle": 10
+          },
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "seconds": 6.769801194001047,
+          "peak_RSS_KiB": 155848,
+          "AS_limit_bytes": 536870912,
+          "requested_math_threads": 1,
+          "raw_geometry_fixture_records_are_synthetic": true,
+          "source_bound_receipt": "prepared-r3-final/small-contract-preparation-report.json",
+          "source_bound_receipt_sha256": "c9a18ff5179e6a6cb56f2392d4f3759c39cbdac662e0153ee04b7e0fb3691be5"
+        },
+        "not_added_to_repository_1558_tests": true,
+        "not_additive_with_SEATING_shared_17_helper_tests": true,
+        "historical_test_runs_not_added_again": true,
+        "final_scratch_source_count": 17,
+        "final_source_manifest_sha256": "409602d4a9fab76db861ad26c6672a084840a017446e1c07894f3999d4ca9b16",
+        "additional_preparation_harness_copied": true,
+        "original_v2_sources_and_prepared_copies_unchanged": true,
+        "source_and_43_package_locked_environment_unchanged_during_final_tests": true,
+        "original_math_and_raw_reader_unchanged": true,
+        "original_test_only_explicit_source_count_assertion_updated_11_to_17": true,
+        "concrete_changes": [
+          "post-Popen initial-write and monitor exceptions stop and reap the original owned process",
+          "ready/release identity handshake precedes native work and verifies actual procfs PID before positive RSS sampling",
+          "durable pair-start and completed-pair journal plus independently checked full publication chain",
+          "original report/index digests remain bound across the raw reader; post-validation edits cannot be rebaselined"
+        ],
+        "original_native_limits_unchanged": {
+          "hard_wall_seconds": 1800,
+          "worker_peak_RSS_MiB": 1536,
+          "shared_unreclaimable_GiB": 6.8,
+          "startup_disk_MiB": 200,
+          "runtime_disk_MiB": 100,
+          "startup_incremental_memory_MiB": 1536,
+          "default_maximum_subdivision_depth": 2
+        },
+        "original_joint_test_failure_preserved": {
+          "tests_run": 65,
+          "errors": 1,
+          "failure": "MemoryError in full synthetic pair fixture under 512 MiB AS",
+          "path": "historical/first-joint-small-test-failure",
+          "correction": "only external preparation harness now sets BLAS/math threads to one before imports",
+          "same_AS_limit_retained": true,
+          "native_budget_or_geometry_changed": false
+        },
+        "actual_helper_end_to_end_smoke": {
+          "passed": true,
+          "child_count": 1,
+          "elapsed_seconds": 0.22976586199729354,
+          "worker_native_or_CAD": false,
+          "child_exit_code": 0,
+          "child_reaped": true,
+          "all_parent_channel_FDs_closed": true,
+          "helper_sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25",
+          "repository_reference": "engineering/gate-closure-20261023/geometry-followon-042b7689/owned-process-helper-smoke/result.json"
+        },
+        "actual_original_v2_attempt2": {
+          "worker_started": true,
+          "worker_exit_code": -15,
+          "stop_reason": "original shared 6.8 GiB guard",
+          "completed_construction_probes": 5,
+          "persisted_completed_pair_records": 0,
+          "expected_pair_records": 11781,
+          "in_memory_pair_progress_before_stop": "unknown",
+          "r3_result": false
+        },
+        "r3_preflight_executed": false,
+        "r3_native_started": false,
+        "CAD_or_matrix_executed_by_final_preparation": false,
+        "complete_native_diagnostic_executed": false,
+        "whole_declared_slide_external_pair_domain_clear": false,
+        "canonical_execution_checks_passed": false,
+        "complete_G2_qualification": false,
+        "physical_qualification": false,
+        "candidate_go": false,
+        "fixture_fabrication_go": false,
+        "manufacturing_go": false,
+        "summary": "engineering/gate-closure-20261023/geometry-followon-042b7689/slide-prepared-r3/SUMMARY.json"
+      },
+      "seating_r3_preparation": {
+        "CAD_imported": false,
+        "active_worker_owned_by_this_delivery": false,
+        "candidate_go": false,
+        "canonical_execution_checks_passed": false,
+        "complete_G2_qualification": false,
+        "complete_native_diagnostic_executed": false,
+        "contains_large_numeric_or_geometry_payload": false,
+        "created_utc": "2026-10-23T10:53:18.158460+00:00",
+        "functional_head": "042b768903cccbd7a0995317c8598401e0318e2a",
+        "historical_r2_refusal_not_retagged_as_r3": true,
+        "independent_review_sha256": "cc9fc8f698292fc6d0f00500e2f48d4fa6734daea2f27674401d0d573d282847",
+        "locked_package_count": 43,
+        "native_limits_relaxed": false,
+        "next_action": "Only an independently scheduled guarded r3 preflight/native attempt with the exact prepared manifest can produce new native evidence.",
+        "numerical_solver_executed": false,
+        "pure_tests_passed": true,
+        "r3_native_executed": false,
+        "r3_preflight_executed": false,
+        "schema": "razr-seating-r3-reviewed-preparation-delivery-v1",
+        "shared_helper_actual_smoke_sha256": "a5b492e2e19149da985218294bee8b04082ebde41ac3ac0f91c2808269e3f577",
+        "small_test_components": {
+          "original": 25,
+          "seating_lifecycle": 8,
+          "shared_owned_process": 17
+        },
+        "small_test_count": 50,
+        "small_test_report_sha256": "8046f55160fb87af78d838737caa5890ad2f6246909554397bc344810a393f1b",
+        "source_count": 13,
+        "source_manifest_sha256": "1c0c613e8f44b7488c5f7a02fa6cb4d570d5ae3721bfd24e5568b0d1a17a5d44",
+        "summary": "engineering/gate-closure-20261023/geometry-followon-042b7689/seating-prepared-r3/SUMMARY.json",
+        "small_test_seconds": 6.093588929,
+        "small_test_peak_RSS_KiB": 48812
+      }
+    },
+    "numerical": {
+      "panel_completed_linear_response_columns_at_this_receipt": 3885,
+      "panel_original_partial_prefix_columns_preserved": 2560,
+      "panel_new_columns_completed_in_archive_continuation": 1325,
+      "panel_complete_candidate_H_qualified": false,
+      "panel_complete_candidate_H_sha256": "696f3f7efcf5eee381461824e90e5d89ea506e218d197fe30e190b67a4b6f8ae",
+      "panel_complete_candidate_H_bytes": 120745928,
+      "panel_actual_continuation_elapsed_seconds": 185.2103757,
+      "panel_actual_continuation_exit_code": 1,
+      "panel_actual_failure": "ValueError: five-probe full free-DOF residual exceeded",
+      "panel_actual_failure_scope": "After all 3885 columns, the original five-probe response() guard rejected a nonfinite or greater-than-1e-7 free-DOF relative residual. The original source raised before recording the probe index or ratio, so both remain unknown.",
+      "panel_max_recorded_single_column_true_free_DOF_residual": 2.7066562324762344e-09,
+      "original_ExactResponseCache_restore_reached": false,
+      "full_response_and_original_inverse_operator_probes_complete": false,
+      "panel_original_residual_threshold": 1e-07,
+      "original_restore_H_action_relative_threshold": 2e-07,
+      "current_response_execution_state": "all_panel_columns_completed_original_five_probe_residual_rejected_new_diagnostic_startup_refused",
+      "new_mapped_worker_executed": false,
+      "full_numeric_workers_running": false,
+      "frame_response_columns_completed": 0,
+      "probe_only_diagnostic": {
+        "prepared_source_manifest_sha256": "e520edc01fd360c19a93dbf42e098771d9545b613d472181570c17cf7af02353",
+        "small_tests_passed": 10,
+        "counts_toward_repository_1558_tests": false,
+        "actual_attempt_count": 1,
+        "worker_started": false,
+        "state": "not_started_resource_preflight_refused",
+        "factorization_executed": false,
+        "ordinary_available_disk_bytes": 574775296,
+        "minimum_start_disk_bytes": 629145600,
+        "additional_memory_reserve_GiB": 2.9,
+        "original_shared_memory_limit_GiB": 6.8,
+        "numerical_thresholds_relaxed": false,
+        "receipt": "engineering/gate-closure-20261023/numerical-recovery/followon-042b7689/probe-attempt-1-not-started.json"
+      },
+      "large_QP_converged": false,
+      "physical_qualification": false,
+      "EP5_modified_geometry_structurally_qualified": false,
+      "quarantine_manifest": "engineering/gate-closure-20261023/numerical-recovery/followon-042b7689/quarantine-manifest.json",
+      "current_followon_evidence": "engineering/gate-closure-20261023/numerical-recovery/followon-042b7689/EVIDENCE_INDEX.json",
+      "persistence_status": "engineering/gate-closure-20261023/numerical-recovery/PERSISTENCE_STATUS.json",
+      "archive_input_continuation_worker_executed": true,
+      "archive_input_continuation_evidence": "engineering/gate-closure-20261023/numerical-recovery/followon-042b7689/panel-actual-failure-independent-review.json",
+      "frame_local_downloaded_archive_currently_materialized": false,
+      "frame_raw_K_currently_materialized": false,
+      "frame_future_compute_requires_archive_retrieval_and_exact_SHA_verification": true
+    }
+  },
+  "remaining_condition_details": [
+    "Hosted CI still needs the current provider annotation and an actual successful runner/step/artifact execution; current failure cause is unknown.",
+    "All panel response columns exist but the unchanged original five-probe residual guard rejected them; diagnose and qualify the response, complete frame response and original restore, then unchanged-domain contact and independent field convergence.",
+    "Complete continuous SLIDE and SEATING whole-material domains under unchanged resource budgets. Original SLIDE v2 stopped after factory probes and old SEATING r2 twice refused startup. Reviewed r3 monitoring/journal successors passed 65 and 50 pure tests respectively but have not run native; the final read-only resource observation satisfied no complete startup budget. Resolve every actual positive or conservative unresolved result.",
+    "Reproduce complete KEY endpoint pair evidence, resolve its saved positive witnesses, and establish physically enforced control trajectories and permitted endpoint branches.",
+    "Supply ten missing same-donor identity fields, seven part roles, twelve interfaces, actual OLED/COF/FPC and pack/process/tolerance limits.",
+    "Complete real-part fit, assembly and tool access, worst-case tolerances, and separately qualify the current EP5 structure with actual loads/supports/materials.",
+    "Execute identified G3 unpowered, G4 powered motion and G5 endurance/process/inspection qualification with original calibrated measurements.",
+    "Explicit user authorization is required by automatic approval review before saving the protected panel numerical archive to the external file-saving destination; that payload has not been uploaded elsewhere."
+  ],
+  "prior_ledger": "engineering/gate-closure-20261023/history/BLOCKERS-e76-publication.json",
+  "prior_functional_source_commit": "e76ff339cbd38610b42f550d1d990131233c8f7d",
+  "functional_source_commit": "042b768903cccbd7a0995317c8598401e0318e2a",
+  "source_report_scope": "Evidence-only follow-on: each run retains its actual executed functional commit and any separately identified diagnostic overlay; no report is relabelled as an execution of the later evidence commit.",
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "latest_resource_observation": {
+    "observed_at_utc": "2026-10-23T10:50:44.832780+00:00",
+    "receipt": "engineering/gate-closure-20261023/publication-receipts/final042-resource-observation.json",
+    "all_four_pending_task_startup_resource_conditions_satisfied": false,
+    "native_or_FE_executed": false,
+    "this_is_not_an_additional_supervisor_invocation": true,
+    "evaluations": {
+      "SLIDE_r3": {
+        "snapshot": {
+          "f_bavail_bytes": 181960704,
+          "estimated_unreclaimable_bytes": 5188061888,
+          "peak_RSS_bytes": 13500416
+        },
+        "startup_disk_requirement_bytes": 209715200,
+        "startup_memory_increment_bytes": 1610612736,
+        "disk_pass": false,
+        "memory_pass": true,
+        "startup_resource_conditions_satisfied_at_observation": false
+      },
+      "SEATING_r3": {
+        "snapshot": {
+          "f_bavail_bytes": 181960704,
+          "estimated_unreclaimable_bytes": 5188176576
+        },
+        "startup_disk_requirement_bytes": 419430400,
+        "startup_memory_increment_bytes": 1610612736,
+        "disk_pass": false,
+        "memory_pass": true,
+        "startup_resource_conditions_satisfied_at_observation": false
+      },
+      "KEY_v4": {
+        "snapshot": {
+          "writeable_disk_bytes": 181960704,
+          "effective_memory_headroom_bytes": 1388417024,
+          "root_reserved_free_bytes_diagnostic_only": 1916723200,
+          "shared_unreclaimable_memory_bytes": 6086524928,
+          "cgroup_unused_bytes": 1290403840,
+          "clean_inactive_file_cache_bytes": 98013184,
+          "uid": 0,
+          "host_MemAvailable_bytes": 4496117760
+        },
+        "startup_disk_requirement_bytes": 268435456,
+        "startup_effective_headroom_requirement_bytes": 2147483648,
+        "disk_pass": false,
+        "memory_pass": false,
+        "runtime_shared_memory_below_original_limit": true,
+        "startup_resource_conditions_satisfied_at_observation": false
+      },
+      "panel_probe_only": {
+        "snapshot": {
+          "cgroup_current": 7299571712,
+          "cgroup_limit": 8589934592,
+          "anon": 111517696,
+          "shmem": 4999507968,
+          "kernel_excluding_reclaimable_slab": 77363904,
+          "estimated_unreclaimable_bytes": 5188389568,
+          "f_bavail_bytes": 181960704
+        },
+        "startup_disk_requirement_bytes": 629145600,
+        "startup_memory_increment_bytes": 3113851289,
+        "disk_pass": false,
+        "memory_pass": false,
+        "startup_resource_conditions_satisfied_at_observation": false
+      }
+    },
+    "eligible_tasks_at_observation": [],
+    "known_owned_duplicate_reclamation_review": "engineering/gate-closure-20261023/numerical-recovery/resource-compaction/final-known-owned-duplicates-readonly.json"
+  },
+  "ledger_counts": {
+    "total_records": 12,
+    "closed_within_explicit_declared_scope": 2,
+    "closed_scope_ids": [
+      "G0-01",
+      "G2-01"
+    ],
+    "not_fully_closed_records": 10,
+    "top_level_gates_closed": 0,
+    "scope_note": "Scoped execution/inventory closures do not close the parent G0 or G2 gate. G0-02 remains open for hosted execution despite local completion."
+  }
+}

@@ -18,7 +18,7 @@ import tarfile
 import tempfile
 import cadquery as cq
 import verify_pawl_actuator as w
-from translation_regions import regions,checks
+from translation_regions import regions,checks,sum_common_upper_bound
 
 ROOT=Path(__file__).resolve().parents[1]
 TOL=1e-7
@@ -53,7 +53,7 @@ def load(manifest):
     return r,p,h
 
 
-def parent_native(h):
+def parent_native(h, *, verified_mounted_members=None):
     folder=ROOT/'engineering/pawl-actuation-20261015';gm=folder/'geometry-manifest.json';g=json.loads(gm.read_text());arc=folder/g['archive']
     if sha(arc)!=g['archive_sha256']:raise ValueError('parent native archive differs')
     h[str(gm)]=sha(gm);h[str(arc)]=sha(arc);mp=folder/'NATIVE_MANIFEST.json';h[str(mp)]=sha(mp)
@@ -66,7 +66,7 @@ def parent_native(h):
             if len(raw)!=rec['bytes'] or hashlib.sha256(raw).hexdigest()!=rec['sha256']:raise ValueError('parent member differs')
             (d/name).write_bytes(raw)
         (d/'manifest.json').write_bytes(mp.read_bytes());_,parent,_=w.load_new(d/'manifest.json')
-    prior,old,profiles=w.prior_native(h)
+    prior,old,profiles=w.prior_native(h, verified_mounted_members=verified_mounted_members)
     return parent,prior,old,profiles
 
 
@@ -96,7 +96,9 @@ def motion(label,body,vector,fixed):
         else:
             if enclosure is None:enclosure=regions(body,vector)[0]
             c=checks(enclosure,obstacle);values=c['region_common_mm3'];method='complete_native_translation_regions'
-        rows.append({'fixed':name,'method':method,'common_mm3':values,'clear':all(v<=TOL for v in values)})
+        upper=sum_common_upper_bound(values)
+        rows.append({'fixed':name,'method':method,'common_mm3':values,'common_upper_bound_mm3':upper,
+                     'common_upper_bound_is_sum_not_union_volume':True,'clear':upper<=TOL})
     return {'label':label,'translation_mm':vector,'checks':rows,'failed':[r for r in rows if not r['clear']]}
 
 
@@ -135,7 +137,8 @@ def root_closure_check(new,side):
 def verify(manifest,output):
     output=Path(output)
     if output.exists():raise ValueError('new result path required')
-    meta,new,h=load(manifest);parent,prior,old,profiles=parent_native(h)
+    sources={str(Path(f).resolve()):sha(f) for f in (__file__,sum_common_upper_bound.__code__.co_filename)}
+    meta,new,h=load(manifest);h.update(sources);parent,prior,old,profiles=parent_native(h)
     accounting={}
     for side in 'LR':
         original=parent[side+'_ORIGINAL_PAWL'];modified=new[side+'_PAWL']

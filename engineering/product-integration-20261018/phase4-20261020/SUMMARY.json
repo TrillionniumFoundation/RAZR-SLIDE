@@ -1,0 +1,141 @@
+{
+  "schema": "razr-phase4-summary-v1",
+  "updated_utc": "2026-10-20T07:46:32.506004+00:00",
+  "functional_source_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+  "previous_publication_commit": "90b09f5ef7c25aafd812909101b3d7d80081ba05",
+  "EP4": {
+    "state": "three_pose_native_completed_rejected_local_followups_separate",
+    "source_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+    "native_summary": "engineering/product-integration-20261018/phase4-20261020/native-summary.json",
+    "raw_reports": [
+      {
+        "path": "engineering/product-integration-20261018/phase4-20261020/native/predock/native-report.json.gz",
+        "uncompressed_sha256": "b27e4bdfea2355e1ce47f66dc56a752456b91fd4f01c8a63d058741722ccb377"
+      },
+      {
+        "path": "engineering/product-integration-20261018/phase4-20261020/native/open-stow/native-report.json.gz",
+        "uncompressed_sha256": "6f7a701f20273784f48ae459eae1e8f72a929e434252c589208725a067d633f3"
+      }
+    ],
+    "all_three_poses_rejected": true,
+    "unique_declared_pairs": 15886,
+    "actual_declared_pairs_across_two_executions": 16266,
+    "pair_evaluation_errors": 0,
+    "containment_evaluation_errors": 0,
+    "independent_STEP_readback_executed": true,
+    "all_assembly_parts_have_metric_comparison": true,
+    "independent_readbacks": [
+      {
+        "path": "engineering/product-integration-20261018/phase4-20261020/validation/readback-predock/report.json.gz",
+        "uncompressed_sha256": "f05ba364ea76792258ae0d84e0d4b663485c6f86079587d6b333dee503761282",
+        "all_assembly_parts_have_metric_comparison": true,
+        "passed": true,
+        "seconds": 36.44220123800915,
+        "scope": "all endpoint/assembly numeric metrics plus positive Common and 2 mm context exports; no full material or label equivalence"
+      },
+      {
+        "path": "engineering/product-integration-20261018/phase4-20261020/validation/readback-open-stow/report.json.gz",
+        "uncompressed_sha256": "51128874b390b09d4e50fa4b42d1f1eb9f5bbf3bfc40416e2f1be6f98bf77393",
+        "all_assembly_parts_have_metric_comparison": true,
+        "passed": true,
+        "seconds": 29.31016793602612,
+        "scope": "all endpoint/assembly numeric metrics plus positive Common and 2 mm context exports; no full material or label equivalence"
+      }
+    ],
+    "local_studies": {
+      "A_head_relief": {
+        "script": "engineering/product-integration-20261018/phase4-20261020/local-studies/ep4_a_head_relief.py",
+        "report": "engineering/product-integration-20261018/phase4-20261020/local-studies/A-head-relief/report.json.gz",
+        "checks_passed": true,
+        "removed_mm3": 0.26920742553668914,
+        "added_mm3": 0.0,
+        "head_common_before_mm3": 0.18081185628459612,
+        "head_common_after_mm3": 0.0,
+        "self_pairs": 190
+      },
+      "KEY_closed_end": {
+        "script": "engineering/product-integration-20261018/phase4-20261020/local-studies/key-source/key_endcap_local_study.py",
+        "report": "engineering/product-integration-20261018/phase4-20261020/local-studies/KEY/native/native-report.json.gz",
+        "checks_passed": true,
+        "checks": 199,
+        "failure_count": 0,
+        "source_bytes_unchanged": true,
+        "nominal_side_gap_request_mm": 0.2,
+        "manufacturing_tolerance_or_strength_qualified": false
+      },
+      "baseline_three_pose_assemblies_modified": false,
+      "whole_scene_recomputed_with_local_changes": false,
+      "current_PAWL_interlock_and_relocking_verified": false,
+      "physical_parts_built": false,
+      "candidate_go": false,
+      "fixture_fabrication_go": false,
+      "manufacturing_go": false,
+      "a-head-relief_independent_readback": {
+        "passed": true,
+        "report": "engineering/product-integration-20261018/phase4-20261020/validation/readback-a-head-relief/report.json.gz",
+        "uncompressed_sha256": "05925f0bc3760b012292562cad19974d1c03f54d1fea3841658574f7a86e520d",
+        "scope": "all declared nonempty artifact solid counts, validity and injective bounds/volume; no topological or label identity proof"
+      },
+      "key-local_independent_readback": {
+        "passed": true,
+        "report": "engineering/product-integration-20261018/phase4-20261020/validation/readback-key-local/report.json.gz",
+        "uncompressed_sha256": "a8b66755e140da6446cf0736fbafc9a4f2c862e716178c907ec12c5220ffd826",
+        "scope": "all declared nonempty artifact solid counts, validity and injective bounds/volume; no topological or label identity proof"
+      }
+    },
+    "full_cycle_internal_route_accepted": false,
+    "physical_fabrication_executed": false,
+    "candidate_go": false,
+    "fixture_fabrication_go": false,
+    "manufacturing_go": false
+  },
+  "selected_unit_execution": {
+    "label": "Product branch phase4: 137 relevant tests PASS",
+    "functional_commit": "9a8307fe4bd4163b53515698fb12cfc0a8cc27e7",
+    "scope": "product108_routing14_EP3_7_EP4_8",
+    "tests": 137,
+    "suites": 4,
+    "passed": true,
+    "result": "PASS",
+    "single_full_execution": false,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "in_main": false,
+    "seconds": 146.26281374401879,
+    "source_bytes_unchanged": true,
+    "report": "engineering/product-integration-20261018/phase4-20261020/validation/unit/report.json.gz",
+    "uncompressed_report_sha256": "34d683f60337eef3fc0e079685c0d073941b3937c07af7c704bcc2a66321f29e",
+    "hardware_qualification": false,
+    "candidate_go": false,
+    "manufacturing_go": false
+  },
+  "configured_tests": 1324,
+  "configured_suites": 35,
+  "full_registry_rerun": false,
+  "hosted_prior_publication": {
+    "run_id": 39378151409,
+    "run_attempt": 1,
+    "head_sha": "90b09f5ef7c25aafd812909101b3d7d80081ba05",
+    "url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/39378151409",
+    "conclusion": "failure",
+    "job_records": 12,
+    "newly_attempted_jobs": 12,
+    "inherited_job_results": 0,
+    "steps_executed": 0,
+    "billing_block_jobs": 12,
+    "current_failure_cause_verified": true,
+    "cause": "direct provider annotation: account payments failed or spending limit needs increasing; account settings not read",
+    "successful_hosted_report": false,
+    "evidence": "engineering/product-integration-20261018/phase4-20261020/actions/90b09f5-run39378151409-final.json",
+    "report_sha256": "ffc565e3e9206605b54b0ae99544c5bb7612d641e30f82b03bdc77501062eb73"
+  },
+  "physical_platform_frozen": false,
+  "physical_phone_verified": false,
+  "physical_prototype_built": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "artifact_index": "engineering/product-integration-20261018/phase4-20261020/artifact-index.json",
+  "publication_identity_scope": "containing Git commit and PR36; executed sources retain N"
+}

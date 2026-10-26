@@ -1,0 +1,82 @@
+{
+  "schema": "razr-known-owned-reclaim-candidates-readonly-v1",
+  "utc": "2026-10-23T10:54:47.547398+00:00",
+  "scope": "direct stat of nine previously known owned paths only; no recursive, repository-wide or global scan",
+  "minimum_requested_reclaim_bytes": 41943040,
+  "known_paths": [
+    {
+      "path": "/tmp/razr-fe-20261023/archives/frame-full-L2-rebuild-20261023.tar.xz",
+      "role": "previously saved original frame archive cache; previously reclaimed",
+      "exists": false,
+      "payload_bytes_reread_or_hashed": false
+    },
+    {
+      "path": "/workspace/scratch/95cd2986fdf2/frame-compute-archive-20261023/frame-full-L2-rebuild-20261023.tar.xz",
+      "role": "exact downloaded frame archive duplicate; already reclaimed with explicit approval",
+      "exists": false,
+      "payload_bytes_reread_or_hashed": false
+    },
+    {
+      "path": "/tmp/razr-fe-20261023/volume-rebuild/panel/level-2/K.npz",
+      "role": "raw panel K; already compacted into protected original archive",
+      "exists": false,
+      "payload_bytes_reread_or_hashed": false
+    },
+    {
+      "path": "/tmp/razr-fe-20261023/volume-rebuild/frame/level-2/K.npz",
+      "role": "raw frame K; already reclaimed after exact downloaded archive validation",
+      "exists": false,
+      "payload_bytes_reread_or_hashed": false
+    },
+    {
+      "path": "/tmp/razr-fe-20261023/archives/panel-full-L2-rebuild-20261023.tar.xz",
+      "role": "protected unique local panel archive; upload rejected; excluded",
+      "exists": true,
+      "payload_bytes_reread_or_hashed": false,
+      "bytes": 174121632,
+      "nlink": 1,
+      "allocated_bytes": 174129152
+    },
+    {
+      "path": "/tmp/razr-fe-20261023/panel-response-j9g87mcz/H.partial.npy",
+      "role": "protected original 2560-column partial H; excluded",
+      "exists": true,
+      "payload_bytes_reread_or_hashed": false,
+      "bytes": 120745928,
+      "nlink": 1,
+      "allocated_bytes": 95887360
+    },
+    {
+      "path": "/tmp/razr-fe-20261023/panel-archive-response-i1gq0rse/H.partial.npy",
+      "role": "protected 3885-column unqualified H and actual residual-failure evidence; excluded",
+      "exists": true,
+      "payload_bytes_reread_or_hashed": false,
+      "bytes": 120745928,
+      "nlink": 1,
+      "allocated_bytes": 120750080
+    },
+    {
+      "path": "/workspace/scratch/95cd2986fdf2/input_recovery/seating-r3-owned-process-delivery-042b7689/seating-r3-reviewed-owned-process-preparation-042b7689.tar.gz",
+      "role": "new small reviewed code/evidence deliverable; far below 40 MiB",
+      "exists": true,
+      "payload_bytes_reread_or_hashed": false,
+      "bytes": 354629,
+      "nlink": 1,
+      "allocated_bytes": 356352
+    },
+    {
+      "path": "/workspace/scratch/95cd2986fdf2/input_recovery/seating-checkpoint-delivery-042b7689-r2/seating-v1-v2-prepared-and-preflight-042b7689.tar.gz",
+      "role": "old small source/evidence archive; far below 40 MiB",
+      "exists": true,
+      "payload_bytes_reread_or_hashed": false,
+      "bytes": 217017,
+      "nlink": 2,
+      "allocated_bytes": 217088
+    }
+  ],
+  "verified_safe_reclaim_candidates": [],
+  "conclusion": "No currently identified >=40 MiB archived-and-verified duplicate without a remaining dependency. Previously authorized frame/panel raw duplicates have already been reclaimed; remaining known large files are expressly protected. This does not assert a global absence of files outside the limited scope.",
+  "no_files_deleted_or_modified_except_this_small_receipt": true,
+  "native_or_solver_started": false,
+  "resource_budgets_polled_or_relaxed": false
+}

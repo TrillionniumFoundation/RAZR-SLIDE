@@ -1,0 +1,33 @@
+setUpClass (test_pawl_actuator.PawlActuatorTests) ... ERROR
+
+======================================================================
+ERROR: setUpClass (test_pawl_actuator.PawlActuatorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/pawl-tests/test_pawl_actuator.py", line 14, in setUpClass
+    def setUpClass(cls):cls.p,cls.report=a.build()
+                                         ^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/pawl_actuator.py", line 57, in build
+    shapes={};joints=[];panels=c.housing_study()[0];panel=panels['A_BACK_PANEL']
+                               ^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/cam_coupling.py", line 207, in housing_study
+    frame0=parent('A_FRAME');panel0=parent('A_BACK_PANEL');b0=parent('B_SHELL')
+           ^^^^^^^^^^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/cam_coupling.py", line 109, in parent
+    if sha(arc)!=gm['archive_sha256']:raise ValueError('mounted source archive changed')
+       ^^^^^^^^
+  File "/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/integration/cam_coupling.py", line 39, in sha
+    def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+                                        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/dev/shm/razr-slide-1104895ba7b9/final_unit_repo_0d97d802/engineering/mounted-mechanism-20261015/native-geometry.tar.gz'
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.001s
+
+FAILED (errors=1)

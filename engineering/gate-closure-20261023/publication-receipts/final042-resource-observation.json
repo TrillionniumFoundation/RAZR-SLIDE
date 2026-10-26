@@ -1,0 +1,97 @@
+{
+  "schema": "razr-fresh-frozen-formula-resource-observation-v1",
+  "observed_at_utc": "2026-10-23T10:50:44.832780+00:00",
+  "source_functional_commit": "042b768903cccbd7a0995317c8598401e0318e2a",
+  "observer_source_sha256": "43fd0ca776c2d2ee48d5c7cd299418e9486eaf2940413667e83f04ee294cf2ce",
+  "source_functions": [
+    {
+      "source": "/workspace/scratch/95cd2986fdf2/g2_slide_r3/verify_slide_native.py",
+      "source_sha256": "55b56c87c2640aefa15fa22539f5c628a53089cf94648a733f2dce44ca468654",
+      "function": "resource_snapshot",
+      "execution_scope": "only the original pure resource-reading function; no module entrypoint or native import"
+    },
+    {
+      "source": "/workspace/scratch/95cd2986fdf2/input_recovery/g2_seating_v3/supervise_seating_native.py",
+      "source_sha256": "97024ecfffc6621484a3115c195d49910959de828302c3a2350e09c2d69bbb29",
+      "function": "snapshot",
+      "execution_scope": "only the original pure resource-reading function; no module entrypoint or native import"
+    },
+    {
+      "source": "/workspace/scratch/95cd2986fdf2/gates_audit/dev/key-endpoint-v4/run_key_endpoint_trials.py",
+      "source_sha256": "ecd57df70e7df83e42083b6019e3b84da261c486c8c9681909a4b192b4505dad",
+      "function": "resources",
+      "execution_scope": "only the original pure resource-reading function; no module entrypoint or native import"
+    },
+    {
+      "source": "/workspace/scratch/95cd2986fdf2/input_recovery/fe_probe_prepared-v1/prepared-source-bytes/02-supervise_probe_diagnosis.py",
+      "source_sha256": "49492ea604d218146653c3acea4c36b12bdce23f117c41a0ea92a16ba2885692",
+      "function": "memory",
+      "execution_scope": "only the original pure resource-reading function; no module entrypoint or native import"
+    }
+  ],
+  "evaluations": {
+    "SLIDE_r3": {
+      "snapshot": {
+        "f_bavail_bytes": 181960704,
+        "estimated_unreclaimable_bytes": 5188061888,
+        "peak_RSS_bytes": 13500416
+      },
+      "startup_disk_requirement_bytes": 209715200,
+      "startup_memory_increment_bytes": 1610612736,
+      "disk_pass": false,
+      "memory_pass": true,
+      "startup_resource_conditions_satisfied_at_observation": false
+    },
+    "SEATING_r3": {
+      "snapshot": {
+        "f_bavail_bytes": 181960704,
+        "estimated_unreclaimable_bytes": 5188176576
+      },
+      "startup_disk_requirement_bytes": 419430400,
+      "startup_memory_increment_bytes": 1610612736,
+      "disk_pass": false,
+      "memory_pass": true,
+      "startup_resource_conditions_satisfied_at_observation": false
+    },
+    "KEY_v4": {
+      "snapshot": {
+        "writeable_disk_bytes": 181960704,
+        "effective_memory_headroom_bytes": 1388417024,
+        "root_reserved_free_bytes_diagnostic_only": 1916723200,
+        "shared_unreclaimable_memory_bytes": 6086524928,
+        "cgroup_unused_bytes": 1290403840,
+        "clean_inactive_file_cache_bytes": 98013184,
+        "uid": 0,
+        "host_MemAvailable_bytes": 4496117760
+      },
+      "startup_disk_requirement_bytes": 268435456,
+      "startup_effective_headroom_requirement_bytes": 2147483648,
+      "disk_pass": false,
+      "memory_pass": false,
+      "runtime_shared_memory_below_original_limit": true,
+      "startup_resource_conditions_satisfied_at_observation": false
+    },
+    "panel_probe_only": {
+      "snapshot": {
+        "cgroup_current": 7299571712,
+        "cgroup_limit": 8589934592,
+        "anon": 111517696,
+        "shmem": 4999507968,
+        "kernel_excluding_reclaimable_slab": 77363904,
+        "estimated_unreclaimable_bytes": 5188389568,
+        "f_bavail_bytes": 181960704
+      },
+      "startup_disk_requirement_bytes": 629145600,
+      "startup_memory_increment_bytes": 3113851289,
+      "disk_pass": false,
+      "memory_pass": false,
+      "startup_resource_conditions_satisfied_at_observation": false
+    }
+  },
+  "original_resource_thresholds_changed": false,
+  "uses_ordinary_available_disk_blocks": true,
+  "workers_started_by_this_observation": 0,
+  "native_or_FE_executed": false,
+  "is_a_supervisor_invocation_or_source_environment_preflight": false,
+  "scope": "One read-only observation of exact frozen resource formulas, not permission to bypass a later supervisor gate. If any task starts later its original supervisor must recheck all original source/environment/resource conditions."
+}

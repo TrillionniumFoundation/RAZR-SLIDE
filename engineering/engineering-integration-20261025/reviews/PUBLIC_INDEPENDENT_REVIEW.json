@@ -1,0 +1,1052 @@
+{
+  "schema": "razr-public-independent-engineering-review-v1",
+  "derived_public_summary": true,
+  "snapshot_utc": "2026-10-25T16:37:36.481146+00:00",
+  "publication_scope": {
+    "allowlisted_engineering_aggregates_only": true,
+    "original_evidence_unmodified": true,
+    "original_evidence_kept_private": true,
+    "contains_raw_API_joblog_process_environment_or_private_locator_payloads": false,
+    "archive_references_are_content_SHA256_not_unpublished_Git_blob_addresses": true,
+    "independent_review_means_readonly_original_byte_identity_and_result_audit_not_new_CAD_or_FE_run": true,
+    "public_summary_does_not_replace_complete_original_evidence": true
+  },
+  "source_identity": {
+    "C2": {
+      "commit": "bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb",
+      "tree": "0eb5fb6c13645b6ce6ff9aec765d5465007efc13"
+    },
+    "E1": {
+      "commit": "bf1064b1be153fcd7ca6b96a8465653275518548",
+      "parent": "bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb",
+      "role": "Evidence only; not a new functional test source."
+    },
+    "E2": {
+      "commit": "006222404a1dbecb7df6b35514325f6f075e5d3a",
+      "parent": "bf1064b1be153fcd7ca6b96a8465653275518548",
+      "role": "Evidence only; not a new functional test source."
+    },
+    "S3": {
+      "commit": "20dfddfe8497a73b1814623e6320b3a9ac4273d0",
+      "tree": "346eb145bd243ef829b9a540b36dfc830d7298f3",
+      "parent": "006222404a1dbecb7df6b35514325f6f075e5d3a",
+      "changed_files": 10
+    },
+    "S4": {
+      "commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+      "tree": "cdd9e2c41216201b6cd04dd610d45fde80499045",
+      "parent": "20dfddfe8497a73b1814623e6320b3a9ac4273d0",
+      "changed_files": 3
+    },
+    "evidence_commit_is_not_substituted_for_executed_source": true,
+    "latest_functional_source_with_named_gates_independently_verified": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+    "candidate_reference_publication_performed_by_this_review": false
+  },
+  "C2_historical_complete_unit": {
+    "functional_source_commit": "bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb",
+    "actual_suites": 36,
+    "actual_test_invocations": 1641,
+    "passed_test_invocations": 1641,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "identity_is_suite_plus_test_id": true,
+    "cross_suite_repeated_bare_id_count": 14,
+    "before_after_present_source_paths": 4788,
+    "Python_AST_files": 1205,
+    "locked_package_versions_verified": 43,
+    "original_archive_bytes": 879301,
+    "original_archive_sha256": "36173d5057fe7e91a101486d166b24b5ae858a9593b9fbf9910366f6cd5e9761",
+    "later_S3_or_S4_qualification_inferred": false
+  },
+  "C2_hosted_CI_historical_snapshot": {
+    "unit_run_id": 40193410938,
+    "unit_run_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/40193410938",
+    "successful_unit_jobs": 36,
+    "successful_plan_and_aggregate_jobs": 2,
+    "native_jobs_queued_at_observed_snapshot": 16,
+    "CodeQL_run_id": 40193407732,
+    "CodeQL_run_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/40193407732",
+    "Python_and_Actions_CodeQL_success": true,
+    "all_required_native_hosted_jobs_passed_at_that_snapshot": false,
+    "historical_snapshot_not_live_status": true
+  },
+  "D4_original_six_label_execution": {
+    "functional_source_commit": "bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb",
+    "workflow_commit": "3f82204b944b08ec471e33b4f2a492884462aa67",
+    "run_id": 40204613951,
+    "run_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/40204613951",
+    "successful_hosted_jobs": 10,
+    "independently_verified_artifacts": 10,
+    "controls": [
+      {
+        "pose": "STOW",
+        "participants": 154,
+        "all_unordered_pairs": 11781,
+        "positive_pairs": 0,
+        "original_postguard_passed": true
+      },
+      {
+        "pose": "OPEN",
+        "participants": 161,
+        "all_unordered_pairs": 12880,
+        "positive_pairs": 0,
+        "original_postguard_passed": true
+      }
+    ],
+    "six_producers": [
+      {
+        "label": "STOW_OUTSIDE_0p001mm",
+        "participants": 154,
+        "actual_changed_pairs": 3396,
+        "exact_baseline_reused_unchanged_pairs": 8385,
+        "complete_unique_unordered_pairs": 11781,
+        "positive_actual_Common_pairs": 0,
+        "finite_trial_material_clear": true,
+        "evaluation_failures": 0,
+        "pending_changed_pairs": 0,
+        "profile_rejection_count": 4,
+        "producer_native_executed": true,
+        "producer_reused_raw": false,
+        "strict_resume_native_executed": false,
+        "strict_resume_reused_raw": true,
+        "raw_report_sha256": "29a38edfd237f6543f300aa69fbabe3d26435fbab2d2ca3df58deebcf16ef05e",
+        "positive_material": []
+      },
+      {
+        "label": "STOW_OUTSIDE_HALF_BAND",
+        "participants": 154,
+        "actual_changed_pairs": 3396,
+        "exact_baseline_reused_unchanged_pairs": 8385,
+        "complete_unique_unordered_pairs": 11781,
+        "positive_actual_Common_pairs": 4,
+        "finite_trial_material_clear": false,
+        "evaluation_failures": 0,
+        "pending_changed_pairs": 0,
+        "profile_rejection_count": 4,
+        "producer_native_executed": true,
+        "producer_reused_raw": false,
+        "strict_resume_native_executed": false,
+        "strict_resume_reused_raw": true,
+        "raw_report_sha256": "43c742bf57647a493d7e750708bd7f580f25affabffd67f46edf03cd202df7d1",
+        "positive_material": [
+          {
+            "a": "L_CAP_0",
+            "b": "L_KEY",
+            "common_mm3": 0.0012382062639930927
+          },
+          {
+            "a": "L_KEY",
+            "b": "L_ROOT_INNER",
+            "common_mm3": 0.001650941685324038
+          },
+          {
+            "a": "R_CAP_0",
+            "b": "R_KEY",
+            "common_mm3": 0.0012382062639928076
+          },
+          {
+            "a": "R_KEY",
+            "b": "R_ROOT_INNER",
+            "common_mm3": 0.0016509416853238358
+          }
+        ]
+      },
+      {
+        "label": "STOW_OUTSIDE_FULL_BAND",
+        "participants": 154,
+        "actual_changed_pairs": 3396,
+        "exact_baseline_reused_unchanged_pairs": 8385,
+        "complete_unique_unordered_pairs": 11781,
+        "positive_actual_Common_pairs": 4,
+        "finite_trial_material_clear": false,
+        "evaluation_failures": 0,
+        "pending_changed_pairs": 0,
+        "profile_rejection_count": 4,
+        "producer_native_executed": true,
+        "producer_reused_raw": false,
+        "strict_resume_native_executed": false,
+        "strict_resume_reused_raw": true,
+        "raw_report_sha256": "8b8d9cfeca41f668d5c7407218ca133460fa7b56cd1890dc239a68929ca4cbd3",
+        "positive_material": [
+          {
+            "a": "L_CAP_0",
+            "b": "L_KEY",
+            "common_mm3": 0.004876412527985787
+          },
+          {
+            "a": "L_KEY",
+            "b": "L_ROOT_INNER",
+            "common_mm3": 0.012995443639309764
+          },
+          {
+            "a": "R_CAP_0",
+            "b": "R_KEY",
+            "common_mm3": 0.004876412527985475
+          },
+          {
+            "a": "R_KEY",
+            "b": "R_ROOT_INNER",
+            "common_mm3": 0.012995443639308627
+          }
+        ]
+      },
+      {
+        "label": "OPEN_OUTSIDE_0p001mm",
+        "participants": 161,
+        "actual_changed_pairs": 3564,
+        "exact_baseline_reused_unchanged_pairs": 9316,
+        "complete_unique_unordered_pairs": 12880,
+        "positive_actual_Common_pairs": 0,
+        "finite_trial_material_clear": true,
+        "evaluation_failures": 0,
+        "pending_changed_pairs": 0,
+        "profile_rejection_count": 4,
+        "producer_native_executed": true,
+        "producer_reused_raw": false,
+        "strict_resume_native_executed": false,
+        "strict_resume_reused_raw": true,
+        "raw_report_sha256": "366775a9772fc34aa0c2f06d78fac6083ee88c511f594df30acdf6ffa1a0bbc3",
+        "positive_material": []
+      },
+      {
+        "label": "OPEN_OUTSIDE_HALF_BAND",
+        "participants": 161,
+        "actual_changed_pairs": 3564,
+        "exact_baseline_reused_unchanged_pairs": 9316,
+        "complete_unique_unordered_pairs": 12880,
+        "positive_actual_Common_pairs": 0,
+        "finite_trial_material_clear": true,
+        "evaluation_failures": 0,
+        "pending_changed_pairs": 0,
+        "profile_rejection_count": 4,
+        "producer_native_executed": true,
+        "producer_reused_raw": false,
+        "strict_resume_native_executed": false,
+        "strict_resume_reused_raw": true,
+        "raw_report_sha256": "5ffad6a37f334a21f252436713dde5b311bda4b33592ad08dc2382a222e1a721",
+        "positive_material": []
+      },
+      {
+        "label": "OPEN_OUTSIDE_FULL_BAND",
+        "participants": 161,
+        "actual_changed_pairs": 3564,
+        "exact_baseline_reused_unchanged_pairs": 9316,
+        "complete_unique_unordered_pairs": 12880,
+        "positive_actual_Common_pairs": 0,
+        "finite_trial_material_clear": true,
+        "evaluation_failures": 0,
+        "pending_changed_pairs": 0,
+        "profile_rejection_count": 4,
+        "producer_native_executed": true,
+        "producer_reused_raw": false,
+        "strict_resume_native_executed": false,
+        "strict_resume_reused_raw": true,
+        "raw_report_sha256": "6aba6ea66f24774f3b3bd071ab7919ea83b516179f703d65403a6516cb22b19d",
+        "positive_material": []
+      }
+    ],
+    "strict_resume": {
+      "six_completed_original_trials_validated": true,
+      "trial_native_recomputations_in_resume": 0,
+      "raw_bundles_reused": 6,
+      "all_six_clear": false,
+      "original_false_scope_flags_preserved": true
+    },
+    "separate_candidate_none_finite_ORTHOGONAL": {
+      "participants": 154,
+      "fresh_pairs": 11781,
+      "journal_events": 23562,
+      "positive_pairs": 0,
+      "finite_trial_clear": true,
+      "native_reader_passed": true,
+      "independent_CAD_kernel": false,
+      "raw_exact_commit_execution_claimed": false,
+      "supplemental_exact_C2_source_input_bindings": 51
+    },
+    "interpretation": "Successful evidence execution and strict readback retain STOW HALF_BAND and FULL_BAND four-positive failures; six validated labels do not mean six clear labels or a continuous backlash proof.",
+    "actual_Python_patch": "3.12.14",
+    "actual_uv_version": "0.10.10",
+    "locked_package_versions": 43,
+    "actual_INT_and_TERM_owned_cleanup_tests_verified": true,
+    "runtime_scope": "Version pins verified inside the separately identified service-cgroup adapter; not a claim that the historic host or whole-VM accounting is unchanged.",
+    "independent_review_sha256": "428cc369c4552d1625fbb43fd14f7bd64207feabb1f1062277d5d74daf8e43a6"
+  },
+  "S3_D5_complete_unit": {
+    "functional_source_commit": "20dfddfe8497a73b1814623e6320b3a9ac4273d0",
+    "workflow_commit": "b76ea33b9cc892e46698755a0b4be64da3ce0468",
+    "run_id": 40208304041,
+    "run_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/40208304041",
+    "ZIP_bytes": 2289211,
+    "ZIP_sha256": "0ad2c037da2791ba3f01c47196c34f858e10906555966201128030a17e3af26f",
+    "ZIP_member_count": 741,
+    "actual_test_invocations": 1654,
+    "passed_test_invocations": 1653,
+    "unique_suite_qualified_test_identities": 1654,
+    "unique_bare_test_id_strings": 1640,
+    "passing_suites": 35,
+    "before_after_present_paths": 6895,
+    "runtime_Python_AST_parsed": 1208,
+    "sum_suite_seconds": 881.643,
+    "all_suites_completed": 36,
+    "manifest_content_members": 740,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "full_unit_passed": false,
+    "original_verify_exit_code": 1,
+    "failed_test": "test_product_state.ProductStateTests.test_generated_entrypoints_are_current",
+    "failed_suite": "product-integration",
+    "first_observed_stale_generated_file": "docs/RESEARCH_OVERVIEW.md",
+    "configured_count_found": 1641,
+    "configured_count_required": 1654,
+    "first_failing_assertion_does_not_prove_other_generated_entrypoints_synced": true,
+    "all_13_added_canonical_tests_actually_passed": true,
+    "all_36_raw_JSON_log_ID_orders_and_totals_verified": true,
+    "all_original_archive_members_verified": true,
+    "all_10_S3_changed_source_bytes_verified": true,
+    "source_and_43_versions_valid_despite_test_failure": true,
+    "old_result_relabelled_as_S4": false,
+    "independent_review_sha256": "d296e8978e9a8638ca2db3620da1d9482cfa8d076ca716c88cf046e64b8068bf"
+  },
+  "S3_D5_finite_geometry": {
+    "functional_source_commit": "20dfddfe8497a73b1814623e6320b3a9ac4273d0",
+    "run_id": 40208304041,
+    "artifacts": [
+      {
+        "label": "v2-STOW-FULL-BAND",
+        "artifact_id": 12604728380,
+        "zip_bytes": 2114716,
+        "zip_sha256": "b3288710c96ca652c9820a45a6291ed3e21eca7b7b5b0a5f37f46ce242de9bb4",
+        "member_count": 765,
+        "participants": 154,
+        "actual_pairs": 11781,
+        "journal_events": 23562,
+        "fresh_native_pairs": true,
+        "evaluation_failures": 0,
+        "finite_trial_clear": true,
+        "raw_report_sha256": "aacb720f4c4ffc75ade6993c70507a602e4cfa716a39c1b9b0e2e55694de51ec",
+        "native_readback_passed": true,
+        "independent_CAD_kernel": false,
+        "readback_elapsed_seconds": 6.180546573000015,
+        "executed_source_input_paths_bound_to_before_after_S3_maps": 52,
+        "manifest_content_members": 764,
+        "positive_pair_count": 0,
+        "all_original_members_hash_size_and_CRC_verified": true,
+        "raw_exact_commit_execution_claimed": false,
+        "native_supervisor_elapsed_seconds": 369.874899677
+      },
+      {
+        "label": "v2-STOW-ORTHOGONAL",
+        "artifact_id": 12604718809,
+        "zip_bytes": 2116800,
+        "zip_sha256": "11d2506920d6421815134574c5342b1fcef12597e838a5f334894feb5c03f785",
+        "member_count": 765,
+        "participants": 154,
+        "actual_pairs": 11781,
+        "journal_events": 23562,
+        "fresh_native_pairs": true,
+        "evaluation_failures": 0,
+        "finite_trial_clear": true,
+        "raw_report_sha256": "666a3cfc03b43ec99a2198eca9673acc9bf95ef44b644457c2c4956b756cd7b2",
+        "native_readback_passed": true,
+        "independent_CAD_kernel": false,
+        "readback_elapsed_seconds": 8.176152888000047,
+        "executed_source_input_paths_bound_to_before_after_S3_maps": 52,
+        "manifest_content_members": 764,
+        "positive_pair_count": 0,
+        "all_original_members_hash_size_and_CRC_verified": true,
+        "raw_exact_commit_execution_claimed": false,
+        "native_supervisor_elapsed_seconds": 504.71790042
+      },
+      {
+        "label": "none-STOW-FULL-BAND",
+        "artifact_id": 12605127687,
+        "zip_bytes": 1593974,
+        "zip_sha256": "d493d2e21232d7f6c88c5dc4bf7cb33947766246a958c4170758ee6cbabe9df2",
+        "member_count": 757,
+        "participants": 154,
+        "actual_pairs": 11781,
+        "journal_events": 23562,
+        "fresh_native_pairs": true,
+        "evaluation_failures": 0,
+        "finite_trial_clear": false,
+        "raw_report_sha256": "c98ba84dcad87cbebd76aba9314d85a3550de579b35e89aada0d3f3e624c2452",
+        "native_readback_passed": true,
+        "independent_CAD_kernel": false,
+        "readback_elapsed_seconds": 3.172037688000046,
+        "executed_source_input_paths_bound_to_before_after_S3_maps": 51,
+        "manifest_content_members": 756,
+        "positive_pair_count": 4,
+        "all_original_members_hash_size_and_CRC_verified": true,
+        "raw_exact_commit_execution_claimed": false,
+        "native_supervisor_elapsed_seconds": 470.698362998
+      }
+    ],
+    "v2_definition": {
+      "default_candidate_unchanged": "none",
+      "explicit_v2_cut_count": 14,
+      "bodies_changed": 4,
+      "original_positive_Common_threshold_mm3": 1e-07,
+      "cut_reconstruction_and_bidirectional_material_balance_verified": true,
+      "domain_cropped": false
+    },
+    "none_positive_pair_identities": [
+      [
+        "L_CAP_0",
+        "L_KEY"
+      ],
+      [
+        "L_KEY",
+        "L_ROOT_INNER"
+      ],
+      [
+        "R_CAP_0",
+        "R_KEY"
+      ],
+      [
+        "R_KEY",
+        "R_ROOT_INNER"
+      ]
+    ],
+    "scope": "Two finite v2 points clear with fresh complete pairs and same-kernel independent readers; none FULL_BAND retains four valid positive Common pairs. Does not repair the failed full unit run or prove continuous motion, strength or physical qualification.",
+    "independent_review_sha256": "90a43cd7667be0fafe93fcb2403828dd2712b9318bc19181284917a27093dd44"
+  },
+  "numerical_N1_N2_N3": {
+    "common_contract": {
+      "functional_source_commit": "bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb",
+      "original_relative_residual_threshold": 1e-07,
+      "original_K_b_C_constraints_unchanged": true,
+      "original_float64_residual_calculation_unchanged": true,
+      "K_sha256": "80f6f50243d421a3b0ab9eeff1324db029677b63febeaad1f023bf9609e9f1cb",
+      "C_sha256": "9f75b00a961ee850857c82942332ebfdd5cb13aa9da55c5266d93337deca436f",
+      "mesh_sha256": "310152fc64af21451cc5ea4be683a73075109ed7e6ec588a6e8bcacf4979ac34",
+      "loads_sha256": "811ba687959bb34dec5ada401b35f07123c917bfc4e68ad982d661fd62fac9a6",
+      "points_sha256": "682a157686b06b4d8a1c8f431eab3453b9a43594801df148c03594435c4bf796",
+      "five_RHS_array_sha256": "c78a9fe77aadfa65b46d56a5ec2085122d46306872ae57e05e5701a0428e8bd1",
+      "five_directions_array_sha256": "abe862cf2823c8511358e34c884957eae26e30ec381a605a594f91f4ad114861",
+      "all_three_fresh_K_assemblies_and_input_column_bytes_verified": true,
+      "DOFs": 344103,
+      "fixed_DOFs": 6,
+      "response_columns_required": 3885,
+      "diag_pivot_thresh": 1.0,
+      "SymmetricMode": false,
+      "symmetric_scaling": false,
+      "iterative_refinement_steps": 0,
+      "original_supervisor_wall_seconds": 180,
+      "original_shared_nonreclaimable_limit_GiB": 6.8,
+      "original_task_filesystem_reserve_MiB": 500,
+      "threads": 1,
+      "accounting_scope": "Actual service and descendants; not the whole VM.",
+      "all_five_original_RHS_saved_each_run": true,
+      "recorded_factorization_completions_each_run": 0,
+      "recorded_solves_each_run": 0,
+      "saved_fields_each_run": 0,
+      "evaluated_original_residuals_each_run": 0,
+      "H_H_action_restore_or_QP_qualified": false
+    },
+    "attempts": [
+      {
+        "label": "N1",
+        "workflow_commit": "e9da80b501d7294268ffbe6b944f8033e205f3b0",
+        "run_id": 40206010654,
+        "permc_spec": "COLAMD",
+        "address_space_limit_GiB": 6,
+        "ZIP_bytes": 201582664,
+        "ZIP_sha256": "a69e6dc15e81cc750552a062224c0e92e352ec7f29a691d92f148885d7cf8c2c",
+        "ZIP_members": 767,
+        "manifest_content_members": 766,
+        "driver_sha256": "5f59b7e916eae3a1881d71f9dc656b337ade6a87870e3da429e3666e10bdd1ad",
+        "observed_failure": "SuperLU LUSUP expansion failure at jcol 234701, followed by SystemError: gstrf was called with invalid arguments.",
+        "original_supervisor_seconds": 27.11337356499996,
+        "worker_exit_code": 1,
+        "original_resource_stop_reason": null,
+        "sampled_peak_VmSize_bytes": 5010903040,
+        "sampled_peak_RSS_bytes": 3757465600,
+        "driver_ru_maxrss_bytes": 5207220224,
+        "residual_failure_claimed": false,
+        "independent_review_sha256": "1fced8f1e0ac3d4b978690735f36258c12df2e3fe54fd3ad0e269886fcbd2da9",
+        "run_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/40206010654",
+        "all_original_members_SHA_size_CRC_independently_verified": true
+      },
+      {
+        "label": "N2",
+        "workflow_commit": "160f17d2ca7aa68ff8a6ee7b06be892c612c2cbc",
+        "run_id": 40207901134,
+        "permc_spec": "MMD_AT_PLUS_A",
+        "address_space_limit_GiB": 6,
+        "ZIP_bytes": 201585678,
+        "ZIP_sha256": "9091b4cd0091bc9c7120772003a53fa2dc56eca392f0617d9bae7f8770a787fd",
+        "ZIP_members": 767,
+        "manifest_content_members": 766,
+        "driver_sha256": "e0c63cc660dafb4b238081aee37d8424fdf0674422c2474fb79ac842a77808a8",
+        "observed_failure": "SuperLU LUSUP expansion failure at jcol 312868, followed by SystemError: gstrf was called with invalid arguments.",
+        "original_supervisor_seconds": 45.344804350000004,
+        "worker_exit_code": 1,
+        "original_resource_stop_reason": null,
+        "sampled_peak_VmSize_bytes": 6440398848,
+        "sampled_VmSize_margin_below_AS_bytes": 2052096,
+        "sampled_peak_RSS_bytes": 3051606016,
+        "driver_ru_maxrss_bytes": 4203212800,
+        "sampled_peak_nonreclaimable_bytes": 3254762976,
+        "residual_failure_claimed": false,
+        "independent_review_sha256": "87d937c935c44e6b979285df9edfa7d2a296b0ad5b735ae4454a3aea3e3c0b43",
+        "run_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/40207901134",
+        "all_original_members_SHA_size_CRC_independently_verified": true
+      },
+      {
+        "label": "N3",
+        "workflow_commit": "b7e53d181ab65338e651eb8d8ecc167dadeb1dfd",
+        "run_id": 40209098454,
+        "permc_spec": "MMD_AT_PLUS_A",
+        "address_space_limit_GiB": 8,
+        "new_capacity_budget_identity": true,
+        "readonly_phase_memory_observations_added": true,
+        "ZIP_bytes": 201592456,
+        "ZIP_sha256": "8e1bdb8cff00d73550f9a6b472cc261b1bdaf688588fc2ef3ec84fca9927c97e",
+        "ZIP_members": 766,
+        "manifest_content_members": 765,
+        "driver_sha256": "4f6242e1265a6441cf7812d665c031f38d1d24d60a37fdbd294889d855649092",
+        "observed_failure": "Original worker wall-time limit reached before a factorization completion or any solve was recorded.",
+        "original_supervisor_seconds": 181.076409721,
+        "worker_exit_code": -15,
+        "outer_child_exit_code": 143,
+        "original_resource_stop_reason": "wall_time_limit",
+        "outer_host_cap_triggered": false,
+        "final_driver_report_present": false,
+        "all_five_retained_probe_statuses": "not_started",
+        "sampled_peak_VmSize_bytes": 8380502016,
+        "sampled_peak_RSS_bytes": 5694496768,
+        "observed_kernel_VmHWM_bytes": 6530998272,
+        "sampled_peak_nonreclaimable_bytes": 5935220968,
+        "whole_factorization_VmPeak_or_final_ru_maxrss_recorded": false,
+        "residual_failure_claimed": false,
+        "independent_review_sha256": "68a25c3c9032395dc839df34327e9a1c293272867c5402b9905d2b80fdb277fa",
+        "run_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/40209098454",
+        "all_original_members_SHA_size_CRC_independently_verified": true
+      }
+    ],
+    "allocation_diagnosis_scope": "Locked SciPy/SuperLU source identifies MemType 0 as LUSUP expansion. Actual allocation request, errno and backend info value were not observed; AS pressure is supported, not proved to be the unique cause. N3 timeout does not resolve that causal uncertainty.",
+    "N3_after_N2": "One explicitly approved 6-to-8-GiB capacity comparison, retaining the algorithm, all physical inputs, original residual calculation and original time/shared/disk limits. No further budget increase is inferred or authorized by this review.",
+    "earlier_three_strategies_distinct": {
+      "actual_completed_probes_each": 5,
+      "original_float64_passes_each": 4,
+      "original_threshold": 1e-07,
+      "scaled_failed_original_residual": 3.161390294960096e-07,
+      "extended_precision_value_is_diagnostic_only": true,
+      "new_N1_N2_N3_no_solves_not_combined_as_residual_failures": true
+    },
+    "recovered_matrix_identity_scope": "Reconstructed controlled panel L2 K matches the 20261023 failed K bytes; the historical_volume_v3 K has not been restored.",
+    "frame_prior_5_and_6_GiB_attempts": "Resource failures before any RHS solve; not a qualified frame response."
+  },
+  "L1_original_SLIDE_diagnostic_replay": {
+    "functional_source_commit": "bec1c8d79a37b4ba387d606cd7ea1c5867f3f9eb",
+    "workflow_commit": "8d8f766c3079e537e380017421710776aaf7c8ac",
+    "run_id": 40210275856,
+    "run_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/40210275856",
+    "original_top_level_unresolved_pairs": 19,
+    "original_top_level_evaluation_failures": 9,
+    "original_top_level_enclosure_overlaps": 10,
+    "selected_original_calls": 89,
+    "all_89_raw_results_equal_original": true,
+    "whole_11781_pair_r3_reexecution_claimed": false,
+    "original_59_recursive_records_are_not_59_pairs": true,
+    "shards": [
+      {
+        "shard": "E17",
+        "artifact_id": 12605676028,
+        "ZIP_bytes": 7379877,
+        "ZIP_sha256": "3d7ca39ceec488ab4e8b4418831b3eb5f921dfad91bb597670fba84aee24160c",
+        "ZIP_members": 925,
+        "manifest_entries": 924,
+        "actual_diagnostic_elapsed_seconds": 84.0821105,
+        "actual_original_calls": 17,
+        "all_raw_values_equal_original": true,
+        "raw_dispositions": {
+          "unresolved_evaluation": 8,
+          "clear": 9
+        },
+        "original_aggregate_dispositions": {
+          "unresolved_evaluation": 17
+        },
+        "distinct_trace_exception_types": {
+          "GeneratorExit": 64,
+          "ValueError": 25
+        },
+        "retained_method_error_records": 25,
+        "actual_strict_Common_calls": 127,
+        "captured_material_count": 73,
+        "successful_native_BREP_STEP_file_count": 146,
+        "native_report_sha256": "c7521c4d46f1cca65bcb1f56436bfb856084e1b9b00d716feac366848d3ad550",
+        "native_STEP_independent_readback_executed": false,
+        "source_and_guards_passed": true
+      },
+      {
+        "shard": "O72",
+        "artifact_id": 12605885469,
+        "ZIP_bytes": 15471084,
+        "ZIP_sha256": "dcf4e013abb3d1fe5c7ccccc5797daa70ce353c18fcc56b6a88a8a95aba3cc4b",
+        "ZIP_members": 1698,
+        "manifest_entries": 1697,
+        "actual_diagnostic_elapsed_seconds": 253.01731532000008,
+        "actual_original_calls": 72,
+        "all_raw_values_equal_original": true,
+        "raw_dispositions": {
+          "unresolved_enclosure_overlap": 72
+        },
+        "original_aggregate_dispositions": {
+          "unresolved_enclosure_overlap": 72
+        },
+        "distinct_trace_exception_types": {
+          "GeneratorExit": 208
+        },
+        "retained_method_error_records": 0,
+        "actual_strict_Common_calls": 184,
+        "captured_material_count": 432,
+        "successful_native_BREP_STEP_file_count": 864,
+        "native_report_sha256": "bbfbf8af4922c45dddc8f26bb0deeb760a1a758fb9aebe7eb28ca25fbaa2afcc",
+        "native_STEP_independent_readback_executed": false,
+        "source_and_guards_passed": true
+      }
+    ],
+    "real_method_ValueErrors": 25,
+    "real_method_failure_categories": {
+      "finite nonzero displacement required": 16,
+      "nonpositive signed solid": 5,
+      "unsupported advancing surface EXTRUSION": 1,
+      "invalid signed common volume": 3
+    },
+    "normal_GeneratorExit_trace_events": 272,
+    "GeneratorExit_is_not_a_new_method_failure": true,
+    "negative_signed_prism_observations": 5,
+    "impossible_Common_observations": 3,
+    "material_records": 505,
+    "material_records_are_per_case_not_globally_unique_bodies": true,
+    "writer_success_BREP_STEP_files": 1010,
+    "independent_native_STEP_readback_performed": false,
+    "byte_identity_and_recorded_writer_status_verified": true,
+    "source_bindings": {
+      "original_helpers": 17,
+      "native_source_input_paths": 963,
+      "participants": 154,
+      "all_verified": true
+    },
+    "classification_changed": false,
+    "original_aggregate_keeps_all_17_E17_calls_unresolved": true,
+    "original_aggregate_keeps_all_72_O72_calls_overlap": true,
+    "tolerance_or_domain_changed": false,
+    "diagnostic_material_is_not_qualified_material": true,
+    "independent_review_sha256": "d534a6366473a5a8ab472e909c069099ac88a147fcd74cfcc1ecb024aa8e0888",
+    "new_source_derived_finite_witness_interpretation": {
+      "derived_from_retained_actual_Common_not_new_CAD_execution": true,
+      "accepted_claim": "Within the declared C2 nominal rigid SLIDE pair model, these actual accepted whole-body endpoint Common observations are finite positive-intersection witnesses at four side/q states. This is a new source-derived interpretation of retained actual material, not a new full-factory run.",
+      "actual_whole_endpoint_frame_observations": 16,
+      "side_q_states": [
+        {
+          "pair": [
+            "A_BACK_PANEL",
+            "L_KEY"
+          ],
+          "q_exact_mm": "1392875388202497/400000000000000",
+          "q_approx_mm": 3.4821884705062427,
+          "slide_exact_mm": "148109082945532181/6400000000000000",
+          "slide_approx_mm": 23.142044210239405,
+          "actual_positive_Common_mm3_range": [
+            0.24558784938224687,
+            0.24558784938224812
+          ],
+          "native_endpoint_observations": 4
+        },
+        {
+          "pair": [
+            "A_BACK_PANEL",
+            "L_KEY"
+          ],
+          "q_exact_mm": "3664291796067499/400000000000000",
+          "q_approx_mm": 9.160729490168748,
+          "slide_exact_mm": "1168909082945532181/19200000000000000",
+          "slide_approx_mm": 60.880681403413135,
+          "actual_positive_Common_mm3_range": [
+            0.2301373835392513,
+            0.23013738353925134
+          ],
+          "native_endpoint_observations": 4
+        },
+        {
+          "pair": [
+            "A_BACK_PANEL",
+            "R_KEY"
+          ],
+          "q_exact_mm": "1392875388202497/400000000000000",
+          "q_approx_mm": 3.4821884705062427,
+          "slide_exact_mm": "148109082945532181/6400000000000000",
+          "slide_approx_mm": 23.142044210239405,
+          "actual_positive_Common_mm3_range": [
+            0.24558784938224693,
+            0.2455878493822482
+          ],
+          "native_endpoint_observations": 4
+        },
+        {
+          "pair": [
+            "A_BACK_PANEL",
+            "R_KEY"
+          ],
+          "q_exact_mm": "3664291796067499/400000000000000",
+          "q_approx_mm": 9.160729490168748,
+          "slide_exact_mm": "1168909082945532181/19200000000000000",
+          "slide_approx_mm": 60.880681403413135,
+          "actual_positive_Common_mm3_range": [
+            0.23013738353925126,
+            0.23013738353925128
+          ],
+          "native_endpoint_observations": 4
+        }
+      ],
+      "executed_source_paths_verified": 11,
+      "Common_and_whole_endpoint_export_files_independently_rehashed": 64,
+      "one_shared_q_with_no_independent_height_joint_flank_spring_parameters": true,
+      "original_generic_overlap_and_collision_proved_false_preserved": true,
+      "other_64_overlap_calls_promoted_to_physical_collision": false,
+      "new_factory_scene_or_independent_STEP_reimport_executed": false,
+      "exact_rational_endpoint_equals_new_factory_binary64_recipe_claimed": false,
+      "limits": [
+        "Original unresolved_enclosure_overlap and collision_proved=false fields remain unchanged; no original result or classifier was rewritten.",
+        "Binary64 translation recipes are retained. Rational source endpoints and ideal slide coordinates are not asserted to be exactly representable or bit-identical to a newly run factory at the ideal slide.",
+        "No full factory scene at these new coordinates, no new full all-pair execution and no independent native STEP/BREP reimport were run by this derivation or review.",
+        "The 64 other KEY/STOP or SPRING/STOP overlap calls retain independent-parameter enlargement/correlation limitations and are not promoted to physical collision witnesses.",
+        "The findings support prioritizing complete panel/KEY material localization and actual-pose validation; they do not establish forces, tolerances, strength, physical operating collision or hardware release."
+      ],
+      "derived_analysis_sha256": "fc7a7ce785d971cce09b1e91ad6d08c319040895a722fc768c90052ac1bc2bcb",
+      "independent_review_sha256": "e4015e0d9eae21840dc4dd1143cc6d23c590ebdb24fbf3902cddc080fd89d267"
+    }
+  },
+  "S4_generated_entrypoint_repair": {
+    "functional_source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+    "parent": "20dfddfe8497a73b1814623e6320b3a9ac4273d0",
+    "published_exact_delta_verified": true,
+    "changed_repository_paths": [
+      "docs/RESEARCH_OVERVIEW.md",
+      "CURRENT_DESIGN.md",
+      "status.json"
+    ],
+    "change": "Exactly one configured test-count line per file, 1641 to 1654.",
+    "functional_code_or_design_fact_ledger_changed": false,
+    "original_generator_byte_identity_unchanged": true,
+    "independent_original_generator_check_executed": true,
+    "independent_check_exit_code": 0,
+    "independent_check_changed_files": [],
+    "author_original_check_write_check_and_idempotence_receipts_verified": true,
+    "new_S4_full_execution_required": true,
+    "independent_review_sha256": "759db393c92c4d1860ba2d8440bba060b315e54b9d13c241fc489d9eea891a45"
+  },
+  "global_claim_limits": [
+    "Every result remains attached to its executed functional source SHA and distinct workflow or solver identity.",
+    "Complete archive integrity, reader acceptance and hosted success are distinct from collision freedom, residual acceptance and product qualification.",
+    "Unit identities are suite-qualified; historical repeated bare test names are not duplicate identity failures.",
+    "Sampled process and service memory counters are not exact whole-run VmPeak or whole-VM measurements.",
+    "Finite clear points, selected diagnostic replays and unit tests do not establish full continuous product motion, physical G2, fatigue, strength, tolerance, fixture or manufacturing release.",
+    "Public summaries omit operational and personal metadata. Complete private originals remain the authority for detailed reproduction; their content hashes are references, not public-download or disclosure authorization."
+  ],
+  "S4_D6_workflow_and_actual_execution": {
+    "functional_source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+    "run_id": 40210734348,
+    "run_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/40210734348",
+    "prepared_workflow_sha256": "2454088e7e1a6928cbcb3c738948f47e5c79fd2d3771cd114092a6df172d877e",
+    "source_files_exactly_bound": 13,
+    "required_actual_suites": 36,
+    "required_actual_minimum_tests": 1654,
+    "required_same_source_geometry": [
+      "v2-STOW-FULL-BAND",
+      "v2-STOW-ORTHOGONAL",
+      "none-STOW-FULL-BAND"
+    ],
+    "original_none_four_positive_control_required": true,
+    "old_C2_or_S3_results_reused_as_S4": false,
+    "independent_static_bash_blocks": 12,
+    "independent_static_Python_blocks": 12,
+    "independent_static_JSON_payloads": 2,
+    "Actions_context_and_same_source_runtime_gates_reviewed": true,
+    "actual_complete_independent_evidence_review_status": "completed",
+    "actual_full_run_success_claimed": true,
+    "candidate_promotion_claimed": false,
+    "static_review_sha256": "b200cb98fb86dc604ffa3333b82bd3e41f534f4d0dffccb7586cd9a0b1263883",
+    "workflow_commit": "16c500ba26f394023b6f3848f00c38faec3f3682",
+    "named_source_unit_and_finite_geometry_gates_passed": true,
+    "actual_hosted_jobs_completed_success": 4,
+    "G2_hardware_or_manufacturing_qualification": false
+  },
+  "S4_D6_complete_unit": {
+    "source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+    "source_tree": "cdd9e2c41216201b6cd04dd610d45fde80499045",
+    "workflow_commit": "16c500ba26f394023b6f3848f00c38faec3f3682",
+    "run_id": 40210734348,
+    "job_id": 121221197268,
+    "artifact_id": 12606361550,
+    "ZIP_bytes": 2307037,
+    "ZIP_sha256": "ad63c5a24a1aa206d455ad638e918efb52b4f43ac6960f487192f1934cd09b2d",
+    "ZIP_member_count": 745,
+    "manifest_content_count": 744,
+    "actual_test_invocations": 1654,
+    "passed_test_invocations": 1654,
+    "unique_suite_qualified_test_identities": 1654,
+    "unique_bare_test_id_strings": 1640,
+    "result_totals": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "unexpected_successes": 0
+    },
+    "passing_suites": 36,
+    "failing_suites": 0,
+    "before_after_present_paths": 6895,
+    "runtime_Python_AST_parsed": 1208,
+    "environment_43_package_versions_verified": true,
+    "Python_patch": "3.12.14",
+    "uv_version": "0.10.10",
+    "actual_SIGINT_and_SIGTERM_owned_cleanup_gates_verified": true,
+    "outer_host_cap_triggered": false,
+    "original_verify_child_exit_code": 0,
+    "original_report_sha256": "b8903d3f12dde048ea30435fb89430b364be63d7cbfe332ad1da5f27cff8bb13",
+    "original_progress_sha256": "5b84d9170418b12dc45b5f699d76fe9c4bf6245938f5ef41260d487498d6e624",
+    "sum_suite_seconds": 826.062,
+    "formerly_failing_generated_entrypoints_test_actually_executed_and_passed": true,
+    "all_36_original_JSON_log_test_ID_orders_and_terminal_counts_verified": true,
+    "all_13_actual_S4_delta_files_match_published_preparation": true,
+    "all_original_members_SHA_size_CRC_and_extracted_bytes_verified": true,
+    "13_added_canonical_tests_actually_passed": true,
+    "source_identity_verified": true,
+    "S3_failure_history_rewritten": false,
+    "independent_review_sha256": "928a51618f8c96048bca3a98287462c57030f25896ce9c1d9f268abc544184f1"
+  },
+  "S4_D6_finite_geometry": {
+    "functional_source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+    "workflow_commit": "16c500ba26f394023b6f3848f00c38faec3f3682",
+    "run_id": 40210734348,
+    "run_url": "https://github.com/TrillionniumFoundation/RAZR-SLIDE/actions/runs/40210734348",
+    "artifacts": [
+      {
+        "label": "v2-STOW-FULL-BAND",
+        "artifact_id": 12605238982,
+        "zip_bytes": 2134896,
+        "zip_sha256": "e8e17f68b3fa3062184139f2352dc4b01c1e5615437f516e0e6333533c560390",
+        "member_count": 768,
+        "participants": 154,
+        "actual_pairs": 11781,
+        "journal_events": 23562,
+        "fresh_native_pairs": true,
+        "evaluation_failures": 0,
+        "finite_trial_clear": true,
+        "raw_report_sha256": "d2ef0ccf711e4a6ec7e19daf65de7021b9f520cba3f7918493e9bd80691c5145",
+        "native_readback_passed": true,
+        "independent_CAD_kernel": false,
+        "readback_elapsed_seconds": 8.18379568599994,
+        "executed_source_input_paths_bound_to_before_after_S4_maps": 52,
+        "manifest_content_members": 767,
+        "positive_pairs": [],
+        "native_supervisor_elapsed_seconds": 480.71359252199994,
+        "raw_worker_seconds": 479.002674546,
+        "raw_exact_commit_execution_claimed": false,
+        "supplemental_exact_S4_source_input_bindings_verified": true,
+        "all_original_members_SHA_size_CRC_and_extracted_bytes_verified": true,
+        "four_body_material_readback": [
+          {
+            "part": "L_CAP_0",
+            "removed_mm3": 0.007312794590680491,
+            "added_mm3": 0.0,
+            "balance_error_mm3": 5.329070518200751e-15,
+            "cut_definition_bidirectional_difference_mm3": [
+              0.0,
+              0.0
+            ],
+            "reconstruction_bidirectional_difference_mm3": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "part": "L_ROOT_INNER",
+            "removed_mm3": 0.0395141899873966,
+            "added_mm3": 0.0,
+            "balance_error_mm3": -9.094947017729282e-13,
+            "cut_definition_bidirectional_difference_mm3": [
+              0.0,
+              0.0
+            ],
+            "reconstruction_bidirectional_difference_mm3": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "part": "R_CAP_0",
+            "removed_mm3": 0.007312794590680205,
+            "added_mm3": 0.0,
+            "balance_error_mm3": -1.7763568394002505e-15,
+            "cut_definition_bidirectional_difference_mm3": [
+              0.0,
+              0.0
+            ],
+            "reconstruction_bidirectional_difference_mm3": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "part": "R_ROOT_INNER",
+            "removed_mm3": 0.03951418998739654,
+            "added_mm3": 0.0,
+            "balance_error_mm3": 3.325340003357269e-12,
+            "cut_definition_bidirectional_difference_mm3": [
+              0.0,
+              0.0
+            ],
+            "reconstruction_bidirectional_difference_mm3": [
+              0.0,
+              0.0
+            ]
+          }
+        ]
+      },
+      {
+        "label": "v2-STOW-ORTHOGONAL",
+        "artifact_id": 12606226209,
+        "zip_bytes": 2135344,
+        "zip_sha256": "364adbaaac6af6cbcba3ab9b482d351e27a7258c4678fb2f15d00d004e3a5b0a",
+        "member_count": 768,
+        "participants": 154,
+        "actual_pairs": 11781,
+        "journal_events": 23562,
+        "fresh_native_pairs": true,
+        "evaluation_failures": 0,
+        "finite_trial_clear": true,
+        "raw_report_sha256": "d1d70190a57c93d5ee03817ed45f034813554911c9cd73b0aa6ea6aee8a20965",
+        "native_readback_passed": true,
+        "independent_CAD_kernel": false,
+        "readback_elapsed_seconds": 8.184702247000018,
+        "executed_source_input_paths_bound_to_before_after_S4_maps": 52,
+        "manifest_content_members": 767,
+        "positive_pairs": [],
+        "native_supervisor_elapsed_seconds": 479.69586031000006,
+        "raw_worker_seconds": 478.02849608900004,
+        "raw_exact_commit_execution_claimed": false,
+        "supplemental_exact_S4_source_input_bindings_verified": true,
+        "all_original_members_SHA_size_CRC_and_extracted_bytes_verified": true,
+        "four_body_material_readback": [
+          {
+            "part": "L_CAP_0",
+            "removed_mm3": 0.007312794590680491,
+            "added_mm3": 0.0,
+            "balance_error_mm3": 5.329070518200751e-15,
+            "cut_definition_bidirectional_difference_mm3": [
+              0.0,
+              0.0
+            ],
+            "reconstruction_bidirectional_difference_mm3": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "part": "L_ROOT_INNER",
+            "removed_mm3": 0.0395141899873966,
+            "added_mm3": 0.0,
+            "balance_error_mm3": -9.094947017729282e-13,
+            "cut_definition_bidirectional_difference_mm3": [
+              0.0,
+              0.0
+            ],
+            "reconstruction_bidirectional_difference_mm3": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "part": "R_CAP_0",
+            "removed_mm3": 0.007312794590680205,
+            "added_mm3": 0.0,
+            "balance_error_mm3": -1.7763568394002505e-15,
+            "cut_definition_bidirectional_difference_mm3": [
+              0.0,
+              0.0
+            ],
+            "reconstruction_bidirectional_difference_mm3": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "part": "R_ROOT_INNER",
+            "removed_mm3": 0.03951418998739654,
+            "added_mm3": 0.0,
+            "balance_error_mm3": 3.325340003357269e-12,
+            "cut_definition_bidirectional_difference_mm3": [
+              0.0,
+              0.0
+            ],
+            "reconstruction_bidirectional_difference_mm3": [
+              0.0,
+              0.0
+            ]
+          }
+        ]
+      },
+      {
+        "label": "none-STOW-FULL-BAND",
+        "artifact_id": 12606246128,
+        "zip_bytes": 1612236,
+        "zip_sha256": "3a5b7d7c25ceb1e3ac46542cfdb0153b10e272b3f08f6d94cf4dc06716eca96f",
+        "member_count": 760,
+        "participants": 154,
+        "actual_pairs": 11781,
+        "journal_events": 23562,
+        "fresh_native_pairs": true,
+        "evaluation_failures": 0,
+        "finite_trial_clear": false,
+        "raw_report_sha256": "7e7a8d212fa312a255bea14532c984f4e4ddb69e05c988f251506703b9a5c5bd",
+        "native_readback_passed": true,
+        "independent_CAD_kernel": false,
+        "readback_elapsed_seconds": 3.1711149449999994,
+        "executed_source_input_paths_bound_to_before_after_S4_maps": 51,
+        "manifest_content_members": 759,
+        "positive_pairs": [
+          {
+            "a": "L_CAP_0",
+            "b": "L_KEY",
+            "common_mm3": 0.004876412527985787
+          },
+          {
+            "a": "L_KEY",
+            "b": "L_ROOT_INNER",
+            "common_mm3": 0.012995443639309764
+          },
+          {
+            "a": "R_CAP_0",
+            "b": "R_KEY",
+            "common_mm3": 0.004876412527985475
+          },
+          {
+            "a": "R_KEY",
+            "b": "R_ROOT_INNER",
+            "common_mm3": 0.012995443639308627
+          }
+        ],
+        "native_supervisor_elapsed_seconds": 458.658882671,
+        "raw_worker_seconds": 457.37688314800005,
+        "raw_exact_commit_execution_claimed": false,
+        "supplemental_exact_S4_source_input_bindings_verified": true,
+        "all_original_members_SHA_size_CRC_and_extracted_bytes_verified": true
+      }
+    ],
+    "all_three_fresh_native_executions_and_original_independent_readers_verified": true,
+    "all_three_finite_clear": false,
+    "two_v2_trials_clear": true,
+    "none_control_exact_four_original_positive_pairs_retained": true,
+    "all_original_thresholds_and_scope_flags_preserved": true,
+    "default_candidate_unchanged": "none",
+    "domain_cropped": false,
+    "continuous_motion_or_full_backlash_domain_or_physical_qualification": false,
+    "independent_review_sha256": "9d71b25f65b6c4e9cbad459b5cf3f3b5196e41bad8eb1d1e30c5dd8a23d70e70"
+  }
+}

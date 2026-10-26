@@ -1,0 +1,47 @@
+{
+  "schema": "razr-ep5-ci-driver-stage-verification-v2",
+  "completed_utc": "2026-10-22T08:29:06.149027+00:00",
+  "synthetic_contract_tests_only": true,
+  "native_geometry_run_by_this_validation": false,
+  "unit_command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/ep5-stage/tests",
+    "-p",
+    "test_product_ep5_native_validation.py",
+    "-v"
+  ],
+  "unit_exit_code": 0,
+  "tests": 19,
+  "seconds": 0.3166670310019981,
+  "workflow_jobs_after_matrix_expansion": 14,
+  "required_EP4_and_EP5": true,
+  "checkout_exact_head": true,
+  "artifacts_retained_on_failure": true,
+  "workflow_uses_locked_uv_environment": true,
+  "subprocesses_keep_sys_executable": true,
+  "CI_has_no_explicit_member_override": true,
+  "explicit_member_mode_requires_initial_and_final_complete_proof": true,
+  "original_EP4_identity_source_unchanged": true,
+  "original_EP4_identity_sha256": "aa9402a2451a3f86d867faa34711044cc9d69cec3bfb83053101490c69670daf",
+  "required_native_input_counts": {
+    "local": 3,
+    "full_default_tar": 13,
+    "full_explicit_verified_members": 12
+  },
+  "unrelated_historical_payloads_do_not_define_scoped_native_inputs": true,
+  "full_checkout_and_all_unit_suites_are_not_claimed": true,
+  "files_sha256": {
+    "tools/verify_product_ep5_native.py": "092172b42c311b0acc3ff15c2ac9c4a5a379c91446edc6da78b68f572e76eba8",
+    "tests/test_product_ep5_native_validation.py": "14a100c49150304bcb4b6b89c404a499980db88e87b7fbb542fdbda47904178a",
+    "tools/PRODUCT_EP5_NATIVE_VALIDATION.md": "0684c4ae78e1562a5e895f5846f68ee5e08ed97fffbce0e4408c4f87ddeb01c6",
+    ".github/workflows/research-ci.yml": "91cd100c09d78f5e25bb9f8e2fc4add44984327fe302ef2bbcd7b56935eeb3ee"
+  },
+  "independent_final_reader_review": "/dev/shm/razr-slide-1104895ba7b9/evidence/ci/ep5-review/final-closure-reader-controls.json",
+  "independent_final_reader_guard_controls": 43,
+  "unit_log_sha256": "56672e6743ae699a11e72031d95c34a45c9b3a9d7dbfe64cea36faaa1444d75c"
+}

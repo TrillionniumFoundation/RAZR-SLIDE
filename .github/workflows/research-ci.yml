@@ -2,9 +2,9 @@ name: Research validation
 
 on:
   push:
-    branches: [main, work/cover-assembly-order-20261014]
+    branches: [main, 'work/**', 'fix/**']
   pull_request:
-    branches: [main]
+    branches: [main, 'work/**', 'fix/**']
     types: [opened, synchronize, reopened, ready_for_review]
   workflow_dispatch:
 
@@ -16,13 +16,45 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  unit:
-    name: full-unit-suites
-    runs-on: ubuntu-24.04
-    timeout-minutes: 30
+  # ubuntu-slim has a provider-enforced 15 minute job limit. Every suite is
+  # isolated; the aggregate below requires all manifest suites at one exact
+  # source, lock, run and attempt. Heavy native gates remain independent.
+  unit-plan:
+    name: plan-current-unit-suites
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          sparse-checkout: tools
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: '0.10.10'
+          python-version: '3.12'
+          enable-cache: false
+      - id: matrix
+        name: Select every suite from the checked manifest
+        run: |
+          suite_matrix=$(uv run --no-project --python 3.12 python -B tools/aggregate_unit_shards.py --print-matrix)
+          echo "matrix=$suite_matrix" >> "$GITHUB_OUTPUT"
+
+  unit-shard:
+    name: unit-${{ matrix.id }}
+    needs: unit-plan
+    runs-on: ubuntu-slim
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix: ${{ fromJSON(needs.unit-plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -36,17 +68,79 @@ jobs:
         with:
           version: '0.10.10'
           python-version: '3.12'
-          enable-cache: true
-      - name: Install locked research dependencies
-        run: uv sync --locked
-      - name: Run every current suite
-        run: uv run --locked python -B tools/verify.py --output "$RUNNER_TEMP/razr-unit"
-      - name: Preserve all unit results
+          enable-cache: false
+      - name: Install exact locked research dependencies
+        run: uv sync --locked --no-cache
+      - name: Execute this suite with interpreter, package and source verification
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          SUITE_ID: ${{ matrix.id }}
+        run: >-
+          uv run --locked python -B tools/verify.py
+          --expected-head "$EXPECTED_HEAD"
+          --suite "$SUITE_ID"
+          --output "$RUNNER_TEMP/razr-unit"
+      - name: Preserve this suite including failure evidence
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: research-unit-${{ github.run_id }}-${{ github.run_attempt }}
+          name: research-unit-shard-${{ matrix.id }}-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/razr-unit
+          if-no-files-found: warn
+          retention-days: 14
+
+  unit:
+    name: full-unit-suites
+    if: always()
+    needs: [unit-plan, unit-shard]
+    runs-on: ubuntu-slim
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/archive/blobs/
+            !/baselines/**
+            /baselines/**/*.py
+            /baselines/**/*.md
+            /baselines/**/*.json
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: '0.10.10'
+          python-version: '3.12'
+          enable-cache: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: research-unit-shard-*-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/razr-unit-shards
+          merge-multiple: false
+      - name: Verify exact complete coverage and raw result identities
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          uv run --no-project --python 3.12 python -B tools/aggregate_unit_shards.py
+          --artifacts "$RUNNER_TEMP/razr-unit-shards"
+          --expected-head "$EXPECTED_HEAD"
+          --run-id "$GITHUB_RUN_ID"
+          --run-attempt "$GITHUB_RUN_ATTEMPT"
+          --output "$RUNNER_TEMP/razr-unit-aggregate.json"
+      - name: Require every shard job to finish successfully
+        env:
+          PLAN_RESULT: ${{ needs.unit-plan.result }}
+          SHARD_RESULT: ${{ needs.unit-shard.result }}
+        run: |
+          test "$PLAN_RESULT" = success
+          test "$SHARD_RESULT" = success
+      - name: Preserve complete unit coverage receipt
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: research-unit-aggregate-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/razr-unit-aggregate.json
           if-no-files-found: warn
           retention-days: 14
 
@@ -119,6 +213,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -135,6 +230,8 @@ jobs:
           enable-cache: true
       - name: Install locked research dependencies
         run: uv sync --locked
+      - name: Verify interpreter and every locked package version
+        run: uv run --locked python -B tools/check_environment.py
       - name: Generate and independently reread this native study
         run: ${{ matrix.commands }}
       - name: Preserve this study including failures
@@ -146,17 +243,216 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
+  product-native:
+    name: native-product-ep4
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/archive/blobs/
+            !/baselines/**
+            /baselines/**/*.py
+            /baselines/**/*.md
+            /baselines/**/*.json
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: '0.10.10'
+          python-version: '3.12'
+          enable-cache: true
+      - name: Install locked research dependencies
+        run: uv sync --locked
+      - name: Verify interpreter and every locked package version
+        run: uv run --locked python -B tools/check_environment.py
+      - name: Execute all finite product scenes and independent STEP readback
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          uv run --locked python -B tools/verify_product_native.py
+          --expected-head "$EXPECTED_HEAD"
+          --output "$RUNNER_TEMP/razr-product-native"
+          --timeout-seconds 1200
+      - name: Preserve product evidence including geometric rejection and execution failures
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: research-product-native-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/razr-product-native
+          if-no-files-found: warn
+          retention-days: 14
+
+  product-native-ep5:
+    name: native-product-ep5
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/archive/blobs/
+            !/baselines/**
+            /baselines/**/*.py
+            /baselines/**/*.md
+            /baselines/**/*.json
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: '0.10.10'
+          python-version: '3.12'
+          enable-cache: true
+      - name: Install locked research dependencies
+        run: uv sync --locked
+      - name: Verify interpreter and every locked package version
+        run: uv run --locked python -B tools/check_environment.py
+      - name: Execute local and complete EP5 scenes with independent STEP readback
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          uv run --locked python -B tools/verify_product_ep5_native.py
+          --expected-head "$EXPECTED_HEAD"
+          --output "$RUNNER_TEMP/razr-product-ep5-native"
+          --timeout-seconds 3000
+      - name: Preserve product evidence including geometric rejection and execution failures
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: research-product-ep5-native-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/razr-product-ep5-native
+          if-no-files-found: warn
+          retention-days: 14
+
+  product-nominal-controls:
+    name: native-product-controls-${{ matrix.pose }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        pose: [STOW, PREDOCK, OPEN]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/archive/blobs/
+            !/baselines/**
+            /baselines/**/*.py
+            /baselines/**/*.md
+            /baselines/**/*.json
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: '0.10.10'
+          python-version: '3.12'
+          enable-cache: true
+      - name: Install locked research dependencies
+        run: uv sync --locked
+      - name: Verify interpreter and every locked package version
+        run: >-
+          uv run --locked python -B tools/check_environment.py
+          --output "$RUNNER_TEMP/razr-controls-environment.json"
+      - name: Check the complete declared control and telescope domain
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          CONTROL_POSE: ${{ matrix.pose }}
+        run: >-
+          uv run --locked python -B integration/product_nominal_motion.py
+          --pose "$CONTROL_POSE" --expected-head "$EXPECTED_HEAD"
+          --output "$RUNNER_TEMP/razr-controls.json"
+      - name: Require the bounded geometric clearance to remain established
+        env:
+          CONTROL_REPORT: ${{ runner.temp }}/razr-controls.json
+          CONTROL_POSE: ${{ matrix.pose }}
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          uv run --locked python -B tools/validate_product_nominal_report.py
+          --report "$CONTROL_REPORT" --pose "$CONTROL_POSE" --expected-head "$EXPECTED_HEAD"
+      - name: Preserve continuous control evidence including all failures
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: research-product-controls-${{ matrix.pose }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/razr-controls*.json
+          if-no-files-found: warn
+          retention-days: 14
+
+
+  ep5-ecad:
+    name: native-EP5-188mm-research-ECAD
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          sparse-checkout: |
+            tools
+            integration
+            design
+            engineering/product-integration-20261018/electrical
+      - name: Install the recorded native KiCad build without optional model libraries
+        run: |
+          sudo add-apt-repository --yes ppa:kicad/kicad-9.0-releases
+          sudo apt-get update
+          runtime="$RUNNER_TEMP/razr-kicad-runtime"
+          mkdir -p "$runtime"
+          cd "$runtime"
+          apt-get download 'kicad=9.0.9~ubuntu24.04.1'
+          printf '%s  %s\n' 'b7e6d33867631dc44385067b703b4c39eadede2037a260790b19495fe17e43f0' 'kicad_9.0.9~ubuntu24.04.1_amd64.deb' > kicad.sha256
+          sha256sum --check kicad.sha256
+          sudo apt-get install --no-install-recommends -y './kicad_9.0.9~ubuntu24.04.1_amd64.deb'
+          dpkg-query -W > installed-packages.tsv
+          kicad-cli version > version.txt
+      - name: Generate current artwork and retain independent native readback and all DRC items
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          /usr/bin/python3 -B tools/verify_ep5_ecad_native.py
+          --expected-head "$EXPECTED_HEAD"
+          --output "$RUNNER_TEMP/razr-ep5-ecad"
+      - name: Preserve complete native ECAD evidence including rejections
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: research-EP5-ECAD-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/razr-ep5-ecad
+            ${{ runner.temp }}/razr-kicad-runtime/kicad.sha256
+            ${{ runner.temp }}/razr-kicad-runtime/installed-packages.tsv
+            ${{ runner.temp }}/razr-kicad-runtime/version.txt
+          if-no-files-found: warn
+          retention-days: 14
+
   current-suites:
     name: current-suites
     if: always()
-    needs: [unit, native]
-    runs-on: ubuntu-24.04
+    needs: [unit, native, product-native, product-native-ep5, product-nominal-controls, ep5-ecad]
+    runs-on: ubuntu-slim
     timeout-minutes: 5
     steps:
       - name: Require all independent checks to succeed
         env:
           UNIT_RESULT: ${{ needs.unit.result }}
           NATIVE_RESULT: ${{ needs.native.result }}
+          PRODUCT_NATIVE_RESULT: ${{ needs['product-native'].result }}
+          PRODUCT_EP5_RESULT: ${{ needs['product-native-ep5'].result }}
+          PRODUCT_CONTROLS_RESULT: ${{ needs['product-nominal-controls'].result }}
+          EP5_ECAD_RESULT: ${{ needs['ep5-ecad'].result }}
         run: |
           test "$UNIT_RESULT" = success
           test "$NATIVE_RESULT" = success
+          test "$PRODUCT_NATIVE_RESULT" = success
+          test "$PRODUCT_EP5_RESULT" = success
+          test "$PRODUCT_CONTROLS_RESULT" = success
+          test "$EP5_ECAD_RESULT" = success

@@ -1,0 +1,198 @@
+{
+  "schema": "razr-mechanical-reconstruction-execution-plan-v1",
+  "planned_on": "2026-10-19",
+  "remote_execution_performed_by_this_agent": false,
+  "geometry_changed_by_preparation": false,
+  "path_binding": "Use the actual frozen checkout if root chooses another worktree; update cwd only. Use a new base for retries; do not overwrite a prior primary directory.",
+  "primary_directory": "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary",
+  "evidence_directory": "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed",
+  "commands": [
+    {
+      "name": "prepare_evidence_directory",
+      "executable": "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+      "cwd": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018",
+      "args": [
+        "-c",
+        "from pathlib import Path; import sys; p=Path(sys.argv[1]); e=Path(sys.argv[2]); assert not p.exists(), \"primary output must be new\"; e.mkdir(parents=True, exist_ok=True)",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed"
+      ],
+      "requires": [],
+      "outputs": [
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed"
+      ]
+    },
+    {
+      "name": "primary_study",
+      "executable": "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+      "cwd": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018",
+      "args": [
+        "-u",
+        "engineering/product-integration-20261018/mechanical/run_product_study.py",
+        "--output",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary"
+      ],
+      "requires": [
+        "frozen product_motion.verify points to geometry-wide-B-negative-control.json",
+        "new output path"
+      ],
+      "outputs": [
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary/targeted-tests.txt",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary/targeted-tests.json",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary/product-motion-report.json",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary/oled-motion-report.json",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary/STOW/manifest.json",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary/PREDOCK/manifest.json",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary/OPEN/manifest.json",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary/run-summary.json"
+      ]
+    },
+    {
+      "name": "added_material",
+      "executable": "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+      "cwd": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018",
+      "args": [
+        "-u",
+        "engineering/product-integration-20261018/mechanical/verify_added_material_motion.py",
+        "--output",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/added-material-motion-report.json"
+      ],
+      "requires": [
+        "evidence directory exists",
+        "same frozen source as primary; may run independently"
+      ],
+      "outputs": [
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/added-material-motion-report.json"
+      ]
+    },
+    {
+      "name": "readback_STOW",
+      "executable": "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+      "cwd": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018",
+      "args": [
+        "-u",
+        "engineering/product-integration-20261018/mechanical/verify_product_exports.py",
+        "--manifest",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary/STOW/manifest.json",
+        "--output",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/readback-STOW.json"
+      ],
+      "requires": [
+        "corresponding native export completed and source stays frozen"
+      ],
+      "outputs": [
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/readback-STOW.json"
+      ]
+    },
+    {
+      "name": "readback_PREDOCK",
+      "executable": "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+      "cwd": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018",
+      "args": [
+        "-u",
+        "engineering/product-integration-20261018/mechanical/verify_product_exports.py",
+        "--manifest",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary/PREDOCK/manifest.json",
+        "--output",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/readback-PREDOCK.json"
+      ],
+      "requires": [
+        "corresponding native export completed and source stays frozen"
+      ],
+      "outputs": [
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/readback-PREDOCK.json"
+      ]
+    },
+    {
+      "name": "readback_OPEN",
+      "executable": "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+      "cwd": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018",
+      "args": [
+        "-u",
+        "engineering/product-integration-20261018/mechanical/verify_product_exports.py",
+        "--manifest",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary/OPEN/manifest.json",
+        "--output",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/readback-OPEN.json"
+      ],
+      "requires": [
+        "corresponding native export completed and source stays frozen"
+      ],
+      "outputs": [
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/readback-OPEN.json"
+      ]
+    },
+    {
+      "name": "seal",
+      "executable": "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/venv-recheck-20261019/bin/python",
+      "cwd": "/home/qian-qi/RAZR-SLIDE-product-integration-20261018",
+      "args": [
+        "-u",
+        "engineering/product-integration-20261018/mechanical/seal_product_study.py",
+        "--input",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/primary",
+        "--evidence-dir",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed",
+        "--reconstruction"
+      ],
+      "requires": [
+        "primary study exit 0",
+        "added material receipt exists",
+        "all three complete independent readbacks passed",
+        "current corrected metadata; all report-bound source hashes unchanged"
+      ],
+      "outputs": [
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/native-STOW.tar.gz",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/native-PREDOCK.tar.gz",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/native-OPEN.tar.gz",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/sealing-runtime.json",
+        "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/final-delivery.json"
+      ]
+    }
+  ],
+  "optional_execution_record": [
+    "--execution-record",
+    "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/execution-record.json"
+  ],
+  "optional_runtime_observation_argv": [
+    "-u",
+    "engineering/product-integration-20261018/mechanical/seal_product_study.py",
+    "--runtime-report",
+    "/home/qian-qi/.local/share/razr-slide-evidence/product-integration-20261018/mechanical-rebuild-20261019/sealed/runtime-observation.json"
+  ],
+  "runtime_scope": "--runtime-report observes only its process. Record each actual job executable, source commit and SHA, start/end, exit status and relevant runtime observations in the external execution record; do not infer generation runtime from the sealing process alone.",
+  "expected_export_participants": {
+    "STOW": 99,
+    "PREDOCK": 99,
+    "OPEN": 106
+  },
+  "expected_current_mechanical_metadata": {
+    "STOW": 94,
+    "PREDOCK": 94,
+    "OPEN": 101,
+    "material_geometry_changed": true,
+    "native_baseline_expected_scene_participants": 83,
+    "native_baseline_material_geometry_changed": false
+  },
+  "checks_not_execution_results": {
+    "targeted_test_method_count": 14,
+    "historical_archive_hashes_must_not_be_reused": true,
+    "physical_hardware_cycle_completed": false,
+    "candidate_go": false,
+    "fixture_fabrication_go": false,
+    "manufacturing_go": false
+  },
+  "prepared_source_sha256": {
+    "integration/product_assembly.py": "695073e313dae45edbb7cf8c305d31c167b4e24e1731bf8be8f1a91a77dbd77b",
+    "integration/product_motion.py": "293719a058ec4da4581cb3f45140e0a51f308ff0baf6d1170f57aa3202a5541c",
+    "integration/oled_storage.py": "04b32718ff6b0f6ee107c56b6aaf58c7f8d4c3b1b64b09b84297b6ff0ab75082",
+    "design/product_geometry.json": "2e056bc4242324e79c7226f48b83d9186194a8f5a47b8ba148cfe15ef5b30b0d",
+    "integration/product-study-tests/test_product_geometry.py": "2f116057679bb5cbfd1adcca191b8c96d5e817a34ed51f7c4905c4a1db99b6a7",
+    "engineering/product-integration-20261018/mechanical/run_product_study.py": "efedf06d83d41def82433e49b49df6ea7259447f5b2b660577b76a59532fb459",
+    "engineering/product-integration-20261018/mechanical/verify_added_material_motion.py": "8538d4f4a2ef87fc1015a6c6a0ce4ad36fa42795499eafd1ebc087f3c2036f5e",
+    "engineering/product-integration-20261018/mechanical/verify_product_exports.py": "c73bf071845e0c3b02cf7459578da727b0e554d7e1bb8ab80ca11340cde309d1",
+    "engineering/product-integration-20261018/mechanical/seal_product_study.py": "b303a244b3b1b4f8293090e8fe21197223f8df6501d3353ff24f4e3f240559a5",
+    "engineering/product-integration-20261018/mechanical/geometry-wide-B-negative-control.json": "ae689a4e89fb1254822df7f834fdba9e9969b1aad515f2ad8d9a81a9be3639e1",
+    "engineering/product-integration-20261018/mechanical/README.md": "e677deb5cf78d3cd55f59fbb54c2ecd5cad6b414a623dab375c2a586cbce6553"
+  }
+}

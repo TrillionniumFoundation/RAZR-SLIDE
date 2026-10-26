@@ -1,0 +1,32 @@
+{
+  "schema": "razr-bounded-unit-repair-v1",
+  "verified_utc": "2026-10-20T03:10:20.251985+00:00",
+  "scope": "one product-integration suite, 102 identical test identities in both executions; no new full 1303-test run",
+  "first_execution": {
+    "source_commit": "3e6864ccea6c03a651dd220a0c1510c2ea22dfec",
+    "tests": 102,
+    "passed": false,
+    "errors": 13,
+    "failures": 0,
+    "source_bytes_unchanged": true,
+    "report": "3e6864c-failed-report.json.gz"
+  },
+  "repair_execution": {
+    "source_commit": "f4db100cb62c0ac492118bf605b0e9e7ac7cce32",
+    "tests": 102,
+    "passed": true,
+    "errors": 0,
+    "failures": 0,
+    "source_bytes_unchanged": true,
+    "report": "f4db100-passed-report.json.gz"
+  },
+  "source_diff": [
+    "integration/product-study-tests/test_hardware_evidence.py"
+  ],
+  "repair": "shared synthetic query fixture accepts and asserts adb_server_port=5037; product collector source unchanged between these two commits",
+  "test_id_sets_equal": true,
+  "full_validation_passed": false,
+  "hardware_qualification": false,
+  "candidate_go": false,
+  "manufacturing_go": false
+}

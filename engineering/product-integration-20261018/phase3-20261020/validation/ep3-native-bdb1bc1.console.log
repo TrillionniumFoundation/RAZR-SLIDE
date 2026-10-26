@@ -1,0 +1,20 @@
+{"pose": "STOW", "external_pairs": 4633, "external_rejections": 6, "outside_domain_parts": 20, "all_declared_checks_clear": false}
+Traceback (most recent call last):
+  File "/home/qian-qi/RAZR-SLIDE-product-integration-20261018/integration/product_routing_ep3.py", line 427, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-product-integration-20261018/integration/product_routing_ep3.py", line 416, in main
+    try: result=native_report(out/'native',c)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-product-integration-20261018/integration/product_routing_ep3.py", line 365, in native_report
+    witness=p.box((-6,y0,a[2]-.05),(6,y1,a[2]+.05))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-product-integration-20261018/integration/product_assembly.py", line 97, in box
+    if len(lo)!=3 or len(hi)!=3 or any(finite(b)<=finite(a) for a,b in zip(lo,hi)):
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-product-integration-20261018/integration/product_assembly.py", line 97, in <genexpr>
+    if len(lo)!=3 or len(hi)!=3 or any(finite(b)<=finite(a) for a,b in zip(lo,hi)):
+                                       ^^^^^^^^^
+  File "/home/qian-qi/RAZR-SLIDE-product-integration-20261018/integration/product_assembly.py", line 44, in finite
+    raise ValueError('finite real value required')
+ValueError: finite real value required

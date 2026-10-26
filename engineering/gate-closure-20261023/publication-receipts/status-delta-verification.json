@@ -1,0 +1,56 @@
+{
+  "schema": "razr-evidence-status-delta-verification-v1",
+  "completed_utc": "2026-10-23 11:04:33 UTC",
+  "functional_base_commit": "042b768903cccbd7a0995317c8598401e0318e2a",
+  "scope": "Only evidence/current-status files changed since the completed functional execution. Five existing product-state tests, the unchanged sync producer and artifact/source-scope/linkage checks verify this delta; the canonical 1558-suite execution was not rerun or inflated.",
+  "all_checks_passed": true,
+  "additional_existing_product_state_tests_run": 5,
+  "additional_tests_added_to_canonical_1558_count": false,
+  "production_python_workflow_geometry_numeric_modules_changed": false,
+  "results": [
+    {
+      "label": "existing_product_state_regressions",
+      "cwd": "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE",
+      "argv": [
+        ".venv/bin/python",
+        "-B",
+        "integration/product-study-tests/test_product_state.py"
+      ],
+      "chunk_id": "18689b",
+      "wall_time_seconds": 0.000048173,
+      "exit_code": 0,
+      "original_token_count": 26,
+      "output": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.021s\n\nOK\n"
+    },
+    {
+      "label": "unchanged_sync_producer_check",
+      "cwd": "/workspace/scratch/95cd2986fdf2/RAZR-SLIDE",
+      "argv": [
+        ".venv/bin/python",
+        "-B",
+        "tools/sync_current_design.py",
+        "--check"
+      ],
+      "chunk_id": "ccc281",
+      "wall_time_seconds": 0.000040802,
+      "exit_code": 0,
+      "original_token_count": 9,
+      "output": "{\"mode\": \"check\", \"changed\": []}\n"
+    },
+    {
+      "label": "applied_evidence_identity_scope_and_links",
+      "cwd": "/workspace/scratch/95cd2986fdf2",
+      "argv": [
+        "python",
+        "-B",
+        "verify_042_publication.py",
+        "--worktree"
+      ],
+      "chunk_id": "b7187a",
+      "wall_time_seconds": 0.000026841,
+      "exit_code": 0,
+      "original_token_count": 156,
+      "output": "{\"schema\": \"razr-evidence-publication-review-v1\", \"scope\": \"Artifact identity, current status invariants and referenced repository paths; no native or numerical recomputation.\", \"source_functional_commit\": \"042b768903cccbd7a0995317c8598401e0318e2a\", \"reviewed_location\": \"applied_worktree\", \"all_assertions_passed\": true, \"archive_count\": 15, \"relative_markdown_link_count\": 65, \"broken_relative_links\": [], \"all_blocker_reference_paths_present_in_delivery_or_tracked_repository\": true, \"go_flags_remain_false\": true, \"current_numerical_failure_not_promoted_to_qualification\": true, \"full_history_checkout_verified\": false}\n"
+    }
+  ]
+}
