@@ -1,0 +1,91 @@
+{
+  "schema": "razr-N6-read-only-row-capacity-preregistration-v1",
+  "functional_source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "functional_source_tree": "cdd9e2c41216201b6cd04dd610d45fde80499045",
+  "identity": "N6 capacity evidence only; no iterative solver or full-field candidate",
+  "original_float64_gate_limit": 1e-07,
+  "prior_actual_N5a_result": {
+    "run_id": 40276429821,
+    "worker_seconds": 21.312313765,
+    "worker_peak_rss_kib": 1061112,
+    "original_final_ratios": [
+      1.7540169838265448e-07,
+      1.990477778047551e-09,
+      7.9778400558745e-09,
+      7.799897850960903e-09,
+      8.043638351779749e-09
+    ],
+    "actual_updates": 32,
+    "all_five_passed": false,
+    "max_original_DOF": 87824
+  },
+  "diagnostic_scope": {
+    "original_K_b_C_free_fixed_and_field_bytes_unchanged": true,
+    "exact_original_Kff_buffer_order_verified_by_original_data_indices_indptr_SHA256": true,
+    "states": 38,
+    "state_definition": "probe-0 baseline + 32 actual sequential histories + final five original fields",
+    "row_order_gate": "separate binary64 multiply/add in original CSC free-column order must reproduce every stored native row residual bitpattern",
+    "exact_arithmetic": "Fraction.from_float / float.as_integer_ratio; arbitrary-size integer dyadic arithmetic, no unchecked Decimal precision",
+    "exact_error_terms": [
+      "product rounding",
+      "sequential accumulation rounding",
+      "final subtraction rounding"
+    ],
+    "support_quantization": "every support DOF requested/actual update and ULP distance across all 32 steps; source arrays independently reread",
+    "row_sensitivity": "both adjacent +/-1 ULP at every original free support column; all trials retained in deterministic column/direction order",
+    "trial_bound": "exactly twice original row-support count, support hard cap 4096; disabled on any replay mismatch",
+    "no_full_field_candidate_written": true,
+    "no_full_native_SpMV_executed": true,
+    "no_sparse_factorization_executed": true,
+    "row_pass_is_not_full_original_gate_pass": true,
+    "true_equation_diagnostic_preserved": true,
+    "longdouble_based_global_change_estimate_is_not_certified_bound": true,
+    "next_iterative_strategy_not_authorized_or_executed_by_this_workflow": true
+  },
+  "capacity_before_execution": {
+    "transport": {
+      "readonly_same_repository_draft_asset_id": 677184053,
+      "asset_bytes": 565978451,
+      "asset_limit_bytes": 805306368,
+      "extracted_K_bytes": 285135469,
+      "address_space_bytes": 268435456,
+      "wall_seconds": 180,
+      "ordinary_disk_reserve_bytes": 524288000
+    },
+    "worker": {
+      "original_wall_seconds": 180,
+      "address_space_bytes": 2147483648,
+      "shared_nonreclaimable_bytes": 7301444403,
+      "ordinary_disk_reserve_bytes": 524288000,
+      "output_reservation_bytes": 33554432,
+      "K_CSC_array_payload_bytes": 285134212,
+      "largest_input_scalar_field_bytes": 2752824,
+      "five_RHS_payload_bytes": 13764120,
+      "memory_basis": "stream NPY into typed arrays; original CSC about 285 MB; Kff hashed columnwise without storing a second full matrix; four field vectors, RHS, domain mapping and JSON packet; expected peak below 1 GiB, enforced 2 GiB AS",
+      "time_basis": "one 23.65M-entry Python filter/hash pass, 38 retained residual-vector reductions (~13.08M entries), sequential decompression of original arrays, exact dyadic arithmetic only on one sparse row; no factorization or full sparse matvec",
+      "estimated_worker_seconds_range": [
+        20,
+        120
+      ],
+      "timing_is_algorithmic_estimate_not_measurement": true
+    },
+    "independent_reader": {
+      "wall_seconds": 180,
+      "address_space_bytes": 2147483648,
+      "basis": "one independent linear scan of original CSC indices and all 38 original field/residual reads; separate scalar/Fraction replay; shares typed input I/O only"
+    },
+    "original_numerical_solver_limits_not_increased": true,
+    "scientific_inputs_retained_in_prior_draft_asset_not_duplicated_in_small_diagnostic_export": true
+  },
+  "output_policy": {
+    "strict_engineering_allowlist_only": true,
+    "raw_runtime_environment_proc_namespace_API_or_email_exported": false,
+    "raw_runtime_durable": false,
+    "original_raw_reports_modified": false,
+    "projection_identifies_original_SHA_and_bytes": true
+  },
+  "H_frame_restore_executed": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}

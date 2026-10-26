@@ -1,0 +1,2078 @@
+# N6 scalar capacity evidence only. Original numerical qualification remains unchanged.
+name: N6 exact original CSC row capacity diagnostic only
+'on':
+  push:
+    branches:
+    - diagnostic/panel-row-capacity-n6-20261026
+  workflow_dispatch: null
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: n6-panel-row-capacity-${{ github.ref }}
+  cancel-in-progress: false
+env:
+  S4: dd7def6e6a4de9f47dc91ca2ab336fb1a8828560
+  PYTHONDONTWRITEBYTECODE: '1'
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+  NUMEXPR_NUM_THREADS: '1'
+jobs:
+  panel-N6-capacity:
+    name: N6-original-row-87824-read-only-capacity
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    env:
+      CASE_KIND: numerics
+      CASE_KEY: panel-N6-row-capacity
+    steps:
+    - name: Start separate hosted deadline and scratch evidence directory
+      shell: bash
+      run: |
+        set -euo pipefail
+        host_root="$RUNNER_TEMP/razr-s4-panel-n6-dd7def6e"
+        case_dir="$host_root/$CASE_KIND/$CASE_KEY"
+        mkdir -p "$case_dir"
+        echo "HOST_JOB_START=$(date +%s)" >> "$GITHUB_ENV"
+        echo "HOST_ROOT=$host_root" >> "$GITHUB_ENV"
+        echo "CASE_DIR=$case_dir" >> "$GITHUB_ENV"
+        echo "N6_ROOT=$case_dir" >> "$GITHUB_ENV"
+    - name: Checkout immutable functional S4, not this diagnostic branch
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        ref: dd7def6e6a4de9f47dc91ca2ab336fb1a8828560
+        persist-credentials: false
+        sparse-checkout-cone-mode: false
+        sparse-checkout: |
+          /*
+          !/archive/blobs/
+          !/baselines/**
+          /baselines/**/*.py
+          /baselines/**/*.md
+          /baselines/**/*.json
+    - name: Prepare exact S4 harness and preregister read-only N6 row capacity
+      shell: bash
+      run: |
+        set -euo pipefail
+        test "$(git rev-parse HEAD)" = "$S4"
+        test -z "$(git status --porcelain --untracked-files=all)"
+        python3 -B - <<'PY'
+        import hashlib, json, os, pathlib, shutil, tarfile
+        root = pathlib.Path(os.environ['GITHUB_WORKSPACE']).resolve()
+        host = pathlib.Path(os.environ['HOST_ROOT']).resolve()
+        case = pathlib.Path(os.environ['CASE_DIR']).resolve()
+        study = host/'original-v4'
+        archive_rel = 'engineering/gate-closure-20261023/geometry-followon-042b7689/key-v4-readback-algebra/results.tar.gz'
+        archive = root/archive_rel
+        archive_sha = 'beef1cf45fb49417c6af092fec51fb266fd6e89f238410c8cf137af4c20ce442'
+        expected = {
+          'integration/probe_key_endpoint_extension.py': 'a2f15dd4c9f41a9235e4c7625da52c9bf81add0260556d841e65c6261123408e',
+          'tools/key_endpoint_resume.py': 'f9fa0e36cfdae30a24eab771c015b260d004573d60a23351bf266d1cb28cfb49',
+          'run_key_endpoint_trials.py': 'ecd57df70e7df83e42083b6019e3b84da261c486c8c9681909a4b192b4505dad',
+          'tests/test_key_endpoint_extension.py': '3fe949b3a0036875946263bc5d6f97fce4d8555cc2c0b7d0686f263bbe99e60b',
+          'tests/test_key_endpoint_resume.py': '6038b8ea4659bb3095f766d75ef54b1d607e1f3096ece816cb887fbaec3d0188',
+        }
+        assert not host.is_relative_to(root) and not study.exists()
+        assert not archive.is_symlink()
+        assert hashlib.sha256(archive.read_bytes()).hexdigest() == archive_sha
+        prefix = 'gates_audit/dev/key-endpoint-v4/'
+        with tarfile.open(archive, 'r:gz') as tar:
+            for name, digest in expected.items():
+                matches = [m for m in tar.getmembers() if m.name == prefix+name]
+                assert len(matches) == 1 and matches[0].isfile() and 0 < matches[0].size < 1024**2
+                data = tar.extractfile(matches[0]).read()
+                assert hashlib.sha256(data).hexdigest() == digest
+                target = study/name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                with target.open('xb') as stream: stream.write(data)
+        receipt = {'functional_source_commit': os.environ['S4'],
+          'historical_archive': archive_rel, 'archive_sha256': archive_sha,
+          'archive_member_prefix': prefix, 'study_source_sha256': expected,
+          'study_directory': str(study), 'source_bytes_modified': False}
+        (case/'source-identity.json').write_text(json.dumps(receipt, indent=2)+'\n')
+        shutil.copytree(study, case/'source'/'original-v4')
+        contract = {'functional_source_commit': os.environ['S4'], 'repository_root': str(root),
+          'runner_temp': str(pathlib.Path(os.environ['RUNNER_TEMP']).resolve()),
+          'host_root': str(host), 'study_root': str(study),
+          'baseline_paths': {p: str(host/'controls'/p/(p+'-report.json')) for p in ('STOW', 'OPEN')}}
+        (case/'path-contract.json').write_text(json.dumps(contract, indent=2)+'\n')
+        (case/'hosted-context.json').write_text(json.dumps({
+          'workflow_revision': os.environ['GITHUB_SHA'], 'workflow_ref': os.environ.get('GITHUB_WORKFLOW_REF'),
+          'functional_source_commit': os.environ['S4'], 'run_id': os.environ['GITHUB_RUN_ID'],
+          'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'], 'job': os.environ['GITHUB_JOB'],
+          'case_kind': os.environ['CASE_KIND'], 'case_key': os.environ['CASE_KEY'],
+          'platform_runner_label': 'ubuntu-22.04', 'platform_maximum_job_seconds': 1800,
+          'original_v4_trial_budget_seconds_not_applicable': None,
+          'N4_numeric_probe_wall_seconds': 180, 'N4_assembly_wall_seconds': 180,
+          'external_command_deadline_seconds_after_first_step': 1620,
+          'external_SIGINT_cleanup_grace_seconds': 20,
+          'hosted_execution_is_new_evidence': True, 'physical_qualification': False,
+          'complete_product_motion_proved': False, 'G2_pass': False}, indent=2)+'\n')
+        PY
+        cat > "$HOST_ROOT/host-cap.py" <<'PY'
+        """Outer hosted cap only; never change a S4/original worker or its gates."""
+        import hashlib, json, os, pathlib, signal, subprocess, sys, time
+        target = pathlib.Path(sys.argv[1])
+        command = sys.argv[2:]
+        target.parent.mkdir(parents=True, exist_ok=True)
+        deadline = float(os.environ['HOST_JOB_START']) + 1620
+        def resource():
+            stat = os.statvfs(target.parent)
+            files = {}
+            for name in ('memory.current', 'memory.max', 'memory.stat'):
+                p = pathlib.Path('/sys/fs/cgroup')/name
+                files[name] = p.read_text()
+            return {'epoch': time.time(), 'writeable_disk_bytes': stat.f_bavail*stat.f_frsize,
+                    'root_reserved_free_bytes_diagnostic_only': stat.f_bfree*stat.f_frsize,
+                    'cgroup': files}
+        receipt = {'argv': command, 'cwd': os.getcwd(), 'started_epoch': time.time(),
+            'external_deadline_epoch': deadline, 'platform_maximum_job_seconds': 1800,
+            'original_v4_trial_budget_seconds_not_applicable': None,
+            'N4_numeric_probe_wall_seconds': 180, 'N4_assembly_wall_seconds': 180,
+            'outer_hosted_cap_reached': False, 'process_started': False,
+            'resource_before': None, 'source_sha256': hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest()}
+        child = None
+        code = 2
+        def external_term(signum, frame):
+            raise KeyboardInterrupt('external SIGTERM mapped to original cleanup')
+        signal.signal(signal.SIGTERM, external_term)
+        try:
+            receipt['resource_before'] = resource()
+            if time.time() >= deadline-30:
+                raise RuntimeError('insufficient hosted time remains; no command started')
+            with target.with_suffix('.log').open('xb') as log, target.with_suffix('.resources.jsonl').open('x') as samples:
+                child = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+                receipt.update(process_started=True, owned_child_pid=child.pid)
+                while child.poll() is None:
+                    samples.write(json.dumps(resource())+'\n'); samples.flush()
+                    if time.time() >= deadline:
+                        receipt['outer_hosted_cap_reached'] = True
+                        child.send_signal(signal.SIGINT)
+                        try: child.wait(timeout=20)
+                        except subprocess.TimeoutExpired:
+                            receipt['SIGINT_cleanup_timed_out'] = True
+                            os.killpg(child.pid, signal.SIGKILL)
+                            child.wait(timeout=5)
+                        break
+                    try: child.wait(timeout=min(5, max(.05, deadline-time.time())))
+                    except subprocess.TimeoutExpired: pass
+                receipt['child_exit_code'] = child.returncode
+                code = 124 if receipt['outer_hosted_cap_reached'] else child.returncode
+        except BaseException as exc:
+            receipt['failure'] = type(exc).__name__+': '+str(exc)
+            if child is not None and child.poll() is None:
+                child.send_signal(signal.SIGINT)
+                try: child.wait(timeout=20)
+                except subprocess.TimeoutExpired:
+                    os.killpg(child.pid, signal.SIGKILL); child.wait(timeout=5)
+        finally:
+            try: receipt['resource_after'] = resource()
+            except BaseException as exc:
+                receipt['resource_after'] = None
+                receipt['resource_after_error'] = type(exc).__name__+': '+str(exc)
+                code = 2
+            receipt.update(exit_code=code, finished_epoch=time.time())
+            target.with_suffix('.json').write_text(json.dumps(receipt, indent=2)+'\n')
+        raise SystemExit(code)
+        PY
+        cp "$HOST_ROOT/host-cap.py" "$CASE_DIR/source/host-cap.py"
+        cat > "$HOST_ROOT/service-launch.py" <<'PY'
+        """D4 external harness: real readonly service view and owned subreaper lifecycle.
+        No S4/original source edits; all task-owned evidence stays outside the checkout.
+        """
+        import ctypes, errno, hashlib, importlib.util, json, os, pathlib, re, select, secrets, shutil, signal, subprocess, sys, time
+        P = pathlib.Path
+        SCRIPT = P(__file__).resolve()
+        INTERNAL = len(sys.argv) > 1 and sys.argv[1] in ('--private-root', '--inside', '--signal-check')
+        if INTERNAL:
+            MODE = sys.argv[1][2:]
+            OUT = P(sys.argv[2]).resolve()
+            REPO = P(sys.argv[3]).resolve() if len(sys.argv) > 3 else P(os.environ['GITHUB_WORKSPACE']).resolve()
+            TARGET = None; COMMAND = []
+        else:
+            MODE = 'outside'; TARGET = P(sys.argv[1]).resolve(); COMMAND = sys.argv[2:]
+            OUT = TARGET.with_name(TARGET.name+'.namespace'); REPO = P(os.environ['GITHUB_WORKSPACE']).resolve()
+        if MODE in ('outside', 'signal-check'):
+            OUT.mkdir(parents=True, exist_ok=False)
+        RAW = OUT/'raw'; RAW.mkdir(exist_ok=True)
+        S4 = 'dd7def6e6a4de9f47dc91ca2ab336fb1a8828560'
+        SUP_REL = 'engineering/engineering-integration-20261025/numerics/run_bounded.py'
+        SUP_SHA = '901654cdb718a988471a700b01bfbb2e8979a98248c9211fa69d42b25279e56e'
+        ARCH_REL = 'engineering/gate-closure-20261023/geometry-followon-042b7689/key-v4-readback-algebra/results.tar.gz'
+        ARCH_SHA = 'beef1cf45fb49417c6af092fec51fb266fd6e89f238410c8cf137af4c20ce442'
+        V4_MEMBER = 'gates_audit/dev/key-endpoint-v4/run_key_endpoint_trials.py'
+        V4_SHA = 'ecd57df70e7df83e42083b6019e3b84da261c486c8c9681909a4b192b4505dad'
+        CONTROL_KEYS = ('anon', 'shmem', 'kernel_stack', 'pagetables', 'sock', 'slab_unreclaimable')
+        V4_KEYS = ('inactive_file', 'file_dirty', 'file_writeback', 'file', 'shmem')
+        FINITE_KEYS = ('anon', 'shmem', 'kernel', 'slab_reclaimable', 'unevictable')
+        NS_KEYS = ('mnt', 'pid', 'pid_for_children', 'user', 'cgroup')
+        def require(value, message):
+            if not value: raise RuntimeError(message)
+        def sha(path): return hashlib.sha256(P(path).read_bytes()).hexdigest()
+        def save(name, value):
+            final=OUT/name; temporary=final.with_name(final.name+'.tmp-'+str(os.getpid()))
+            temporary.write_text(json.dumps(value,indent=2,sort_keys=True)+'\n');os.replace(temporary,final)
+        def ident(path):
+            path = P(path); s = path.stat()
+            return {'path': str(path), 'device': s.st_dev, 'inode': s.st_ino, 'mode': s.st_mode, 'symlink': path.is_symlink()}
+        def same_inode(a, b): return (a['device'], a['inode']) == (b['device'], b['inode'])
+        def capture(label, path):
+            r = {'path': str(path), 'epoch': time.time(), 'readable': False}
+            try:
+                r['identity'] = ident(path)
+                data = P(path).read_bytes(); r.update(readable=True, bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
+                (RAW/(label+'.txt')).write_bytes(data)
+                r['text'] = data.decode('utf-8', errors='strict')
+            except (OSError, UnicodeError) as e: r['error'] = type(e).__name__+': '+str(e)
+            return r
+        def require_text(r):
+            require(r['readable'], 'required real interface unavailable: '+r['path']+' '+r.get('error', ''))
+            require(not r['identity']['symlink'], 'interface symlink rejected')
+            return r['text']
+        def proc(label, pid='self'):
+            base = P('/proc')/str(pid)
+            records = {k: capture(label+'-'+k, base/k) for k in ('cgroup', 'mountinfo', 'status', 'stat')}
+            status = dict(line.split(':', 1) for line in require_text(records['status']).splitlines() if ':' in line)
+            ns = {k: os.readlink(base/'ns'/k) for k in NS_KEYS}
+            return {'epoch': time.time(), 'pid': os.getpid() if pid == 'self' else int(pid), 'records': records, 'status': status, 'namespaces': ns}
+        def unescape(s): return re.sub(r'\\([0-7]{3})', lambda m: chr(int(m.group(1), 8)), s)
+        def mounts(text):
+            result = []
+            for line in text.splitlines():
+                a, b = line.split(' - ', 1); left, right = a.split(), b.split()
+                result.append({'id': int(left[0]), 'root': unescape(left[3]), 'mountpoint': unescape(left[4]), 'options': left[5].split(','), 'optional': left[6:], 'fstype': right[0], 'source': unescape(right[1]), 'super_options': right[2].split(',')})
+            return result
+        def group_path(text):
+            rows = [line.split(':', 2) for line in text.splitlines() if line.startswith('0::')]
+            require(len(rows) == 1, 'one real unified cgroup membership required')
+            path = P(rows[0][2]); require(path.is_absolute() and '..' not in path.parts and str(path) != '/', 'non-root current service cgroup required')
+            return path
+        def measured(label, base):
+            r = {'directory': ident(base), 'epoch': time.time(), 'files': {k: capture(label+'-'+k, P(base)/k) for k in ('memory.stat', 'memory.current', 'memory.max', 'cgroup.type')}}
+            save(label+'.json', r)
+            values = dict((k, int(v)) for k, v in (line.split() for line in require_text(r['files']['memory.stat']).splitlines()))
+            require(all(k in values for k in set(CONTROL_KEYS+V4_KEYS+FINITE_KEYS)), 'real memory.stat missing required counters')
+            require(all(v >= 0 for v in values.values()), 'negative memory.stat counter')
+            current = int(require_text(r['files']['memory.current']).strip()); require(current >= 0, 'negative current')
+            cap = require_text(r['files']['memory.max']).strip(); require(cap == 'max' or (cap.isdecimal() and int(cap) >= 0), 'invalid maximum')
+            r.update(values=values, current=current, maximum=cap)
+            save(label+'.json', r)
+            return r
+        def member_identity_matches(old, new):
+            require(same_inode(old['directory'], new['directory']), 'bound directory inode differs from actual service')
+            for k in ('memory.stat', 'memory.current', 'memory.max'):
+                require(same_inode(old['files'][k]['identity'], new['files'][k]['identity']), 'counter inode changed: '+k)
+            require(old['maximum'] == new['maximum'], 'service memory.max changed')
+        def namespace_checks(snapshot, before, *, private):
+            require((snapshot['namespaces']['mnt'] != before['namespaces']['mnt']) == private, 'unexpected mount namespace identity')
+            require(all(snapshot['namespaces'][k] == before['namespaces'][k] for k in NS_KEYS if k != 'mnt'), 'PID/user/cgroup namespace changed')
+            require(snapshot['records']['cgroup']['text'] == before['records']['cgroup']['text'], 'process moved to a different cgroup')
+        def run_record(label, argv, **kwargs):
+            start = time.time()
+            with (OUT/(label+'.stdout')).open('wb') as stdout, (OUT/(label+'.stderr')).open('wb') as stderr:
+                r = subprocess.run(argv, stdout=stdout, stderr=stderr, **kwargs)
+            rec = {'argv': argv, 'exit_code': r.returncode, 'seconds': time.time()-start, 'stdout_sha256': sha(OUT/(label+'.stdout')), 'stderr_sha256': sha(OUT/(label+'.stderr'))}
+            save(label+'.json', rec)
+            return r.returncode
+
+        EXPECTED_FIVE = {
+         'integration/probe_key_endpoint_extension.py': 'a2f15dd4c9f41a9235e4c7625da52c9bf81add0260556d841e65c6261123408e',
+         'tools/key_endpoint_resume.py': 'f9fa0e36cfdae30a24eab771c015b260d004573d60a23351bf266d1cb28cfb49',
+         'run_key_endpoint_trials.py': V4_SHA,
+         'tests/test_key_endpoint_extension.py': '3fe949b3a0036875946263bc5d6f97fce4d8555cc2c0b7d0686f263bbe99e60b',
+         'tests/test_key_endpoint_resume.py': '6038b8ea4659bb3095f766d75ef54b1d607e1f3096ece816cb887fbaec3d0188',
+        }
+        SAFE_ENV_NAMES = ('PATH', 'HOME', 'USER', 'LOGNAME', 'SHELL', 'LANG', 'LC_ALL', 'LC_CTYPE', 'TZ',
+         'TMPDIR', 'TMP', 'TEMP', 'LD_LIBRARY_PATH', 'SSL_CERT_FILE', 'SSL_CERT_DIR', 'REQUESTS_CA_BUNDLE',
+         'CI', 'GITHUB_ACTIONS', 'GITHUB_WORKSPACE', 'GITHUB_SHA', 'GITHUB_JOB', 'GITHUB_RUN_ID', 'GITHUB_RUN_ATTEMPT',
+         'RUNNER_TEMP', 'HOST_ROOT', 'HOST_JOB_START', 'CASE_DIR', 'CASE_KIND', 'CASE_KEY', 'S4',
+         'PYTHONDONTWRITEBYTECODE', 'OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS',
+         'UV_PYTHON', 'UV_PYTHON_INSTALL_DIR', 'UV_PYTHON_PREFERENCE', 'UV_PYTHON_DOWNLOADS',
+         'UV_PYTHON_DOWNLOADS_JSON_URL', 'UV_CACHE_DIR', 'UV_NO_SYNC', 'UV_PROJECT_ENVIRONMENT', 'UV_LINK_MODE',
+         'UV_NO_CACHE', 'UV_COMPILE_BYTECODE', 'UV_NO_PROGRESS', 'UV_COLOR', 'UV_HTTP_TIMEOUT', 'UV_HTTP_RETRIES',
+         'UV_MANAGED_PYTHON', 'RAZR_EXPECTED_SIGNAL_PROBE')
+        def proc_identity(pid, full=True):
+            path=P('/proc')/str(pid); text=(path/'stat').read_text(); rest=text[text.rfind(')')+2:].split()
+            status=dict(line.split(':',1) for line in (path/'status').read_text().splitlines() if ':' in line)
+            result={'pid':int(pid),'ppid':int(rest[1]),'pgid':int(rest[2]),'sid':int(rest[3]),'state':rest[0],'start_ticks':int(rest[19]),'uid':int(status['Uid'].split()[0])}
+            if full:
+                result.update(cgroup=(path/'cgroup').read_text(),mnt_namespace=os.readlink(path/'ns/mnt'))
+            return result
+        def bound_pidfd(identity, parent=None):
+            require(hasattr(os,'pidfd_open') and hasattr(signal,'pidfd_send_signal'), 'real pidfd signal API unavailable')
+            before=proc_identity(identity['pid'],full=False); require(before['start_ticks']==identity['start_ticks'], 'PID identity changed before pidfd binding')
+            if parent is not None: require(before['ppid']==parent, 'process is not an actual owned child')
+            fd=os.pidfd_open(identity['pid'],0)
+            try:
+                after=proc_identity(identity['pid'],full=False); require(after['start_ticks']==identity['start_ticks'] and after['uid']==os.getuid(), 'PID/UID changed while binding pidfd')
+                if parent is not None: require(after['ppid']==parent, 'child lineage changed while binding pidfd')
+                return fd
+            except BaseException:
+                os.close(fd); raise
+        def exited(fd): return bool(select.select([fd],[],[],0)[0])
+        def lineage_reaches(pid, ancestor):
+            rows=[]; seen=set()
+            while pid>1 and pid not in seen and len(rows)<64:
+                seen.add(pid); r=proc_identity(pid,full=False); rows.append(r)
+                if pid==ancestor['pid']:
+                    require(r['start_ticks']==ancestor['start_ticks'], 'owned launcher PID reused')
+                    return rows
+                pid=r['ppid']
+            raise RuntimeError('ready process is not a descendant of the actual owned launcher')
+        def children():
+            path=P('/proc/self/task')/str(os.getpid())/'children'
+            result=[]
+            for value in path.read_text().split():
+                try:
+                    r=proc_identity(int(value),full=False); require(r['ppid']==os.getpid(), 'kernel child list parent mismatch'); result.append(r)
+                except FileNotFoundError:
+                    require(value not in path.read_text().split(), 'kernel still lists a child whose identity cannot be read; cleanup unknown')
+            return result
+        def original_sources(state):
+            require(subprocess.check_output(['git','-C',str(REPO),'rev-parse','HEAD'],text=True).strip()==S4, 'functional HEAD is not S4')
+            require(subprocess.check_output(['git','-C',str(REPO),'status','--porcelain','--untracked-files=all'],text=True)=='', 'S4 checkout is dirty')
+            require(sha(REPO/SUP_REL)==SUP_SHA, 'S4 original supervisor changed')
+            study=P(state['environment']['HOST_ROOT'])/'original-v4'
+            for name,digest in EXPECTED_FIVE.items(): require(sha(study/name)==digest, 'original five-source bytes differ: '+name)
+            require(sha(SCRIPT)==state['harness_sha256'] and sha(state['host_cap'])==state['host_cap_sha256'], 'external harness source changed')
+            metadata=P(state['environment'].get('UV_PYTHON_DOWNLOADS_JSON_URL',''))
+            require(metadata==P(state['environment']['HOST_ROOT'])/'python-downloads.json' and metadata.is_file() and metadata.stat().st_size==552 and sha(metadata)=='a23c006d96b05012706707a5c0fc0bca87c17b4e362d5992a83795db914a5c56', 'official selected Python metadata bytes/path differ')
+        def validate_view(state, label):
+            here=proc(label); save(label+'-process.json',here); namespace_checks(here,state['before'],private=True)
+            require(os.getuid()==state['uid'] and os.geteuid()==state['uid'] and os.getgid()==state['gid'] and sorted(os.getgroups())==state['groups'],'original caller credentials not restored')
+            require(here['status']['NoNewPrivs'].strip()=='1','no_new_privs missing')
+            require(int(here['status']['CapEff'].strip(),16)&~int(state['before']['status']['CapEff'].strip(),16)==0,'capabilities increased')
+            current=measured(label+'-service','/sys/fs/cgroup');member_identity_matches(state['service'],current)
+            entries=mounts(here['records']['mountinfo']['text']); target=[m for m in entries if m['mountpoint']=='/sys/fs/cgroup'][-1]
+            require(target['fstype']=='cgroup2' and target['root']==state['hierarchy_path'] and 'ro' in target['options'],'actual readonly service cgroup2 mount missing')
+            require(not any(v.startswith(('shared:','master:','propagate_from:')) for m in entries for v in m['optional']),'mount propagation is not private')
+            require(all(os.environ.get(k)==v for k,v in state['environment'].items()),'allowlisted original caller environment was not restored')
+            actual_uv=shutil.which('uv')
+            require(actual_uv==state['observed_uv_path'],'uv PATH changed across privilege transition')
+            original_sources(state)
+            return here,current
+
+        def private_root():
+            state=json.loads((OUT/'prepared.json').read_text());require(os.geteuid()==0,'passwordless sudo root authority unavailable')
+            here=proc('private-root-before-bind');save('private-root-before-bind.json',here);namespace_checks(here,state['before'],private=True)
+            require(same_inode(ident(state['service_path']),state['service']['directory']),'real source service inode changed')
+            for label,argv in [('make-rprivate',[state['tools']['mount'],'--make-rprivate','/']),('real-service-bind',[state['tools']['mount'],'--bind',state['service_path'],'/sys/fs/cgroup']),('readonly-bind',[state['tools']['mount'],'-o','remount,bind,ro','/sys/fs/cgroup'])]:
+                require(run_record(label,argv,timeout=15)==0,'private mount failed: '+label)
+            args=[state['tools']['setpriv'],'--reuid',str(state['uid']),'--regid',str(state['gid']),'--no-new-privs']
+            args+=['--groups',','.join(map(str,state['groups']))] if state['groups'] else ['--clear-groups']
+            args+=['/usr/bin/python3','-B',str(SCRIPT),'--inside',str(OUT),str(REPO)]
+            # exec removes the privileged launcher; no root wait/timeout surrounds long CAD.
+            os.execve(state['tools']['setpriv'],args,state['environment'])
+
+        def inside():
+            state=json.loads((OUT/'prepared.json').read_text());os.chdir(state['cwd'])
+            here,view=validate_view(state,'inside-before')
+            spec=importlib.util.spec_from_file_location('original_v4_resources',P(state['environment']['HOST_ROOT'])/'original-v4/run_key_endpoint_trials.py')
+            module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);res=module.resources(P(state['target']).parent)
+            values=view['values']; finite=values['anon']+values['shmem']+max(0,values['kernel']-values['slab_reclaimable'])+values['unevictable']
+            save('original-resource-preflight.json',{'original_v4_resources':res,'control_nonreclaimable_bytes':sum(values[k] for k in CONTROL_KEYS),'finite_shared_bytes':finite,'observed_uv_path':shutil.which('uv'),'manager_python_executable':sys.executable,'scope':state['hierarchy_path']+' and descendants; not whole VM root','CAD_executed_by_preflight':False})
+            require(res['writeable_disk_bytes']>=500*1024**2 and res['effective_memory_headroom_bytes']>=2*1024**3,'original measured disk/headroom prerequisites unavailable')
+            require(res['shared_unreclaimable_memory_bytes']<=int(6.8*1024**3) and sum(values[k] for k in CONTROL_KEYS)<=6.8*1024**3,'original memory budget unavailable')
+            if state['environment'].get('CASE_KIND')=='orthogonal': require(finite+2*1024**3<=6.8*1024**3,'original finite startup memory prerequisite unavailable')
+            for a in state['ancestors']:
+                if a['is_cgroup_root'] or a['path']==state['service_path']:continue
+                maximum=require_text(a['maximum']).strip();current=int(require_text(a['current']).strip())
+                require(current>=0 and (maximum=='max' or maximum.isdecimal()),'unknown ancestor measurement')
+                if maximum!='max':require(int(maximum)-current>=res['effective_memory_headroom_bytes'],'a proper ancestor has tighter finite headroom; blocked')
+            libc=ctypes.CDLL(None,use_errno=True)
+            require(libc.prctl(36,1,0,0,0)==0,'PR_SET_CHILD_SUBREAPER failed')
+            flag=ctypes.c_int();require(libc.prctl(37,ctypes.byref(flag),0,0,0)==0 and flag.value==1,'subreaper flag did not become effective')
+            require(not children(),'manager already owns unexpected children before launch')
+            got=[]
+            def received(signum,frame):got.append({'signal':signum,'epoch':time.time()})
+            signal.signal(signal.SIGINT,received);signal.signal(signal.SIGTERM,received)
+            me=proc_identity(os.getpid());ready={'nonce':state['nonce'],'identity':me,'namespace':here['namespaces'],'uid':os.getuid(),'subreaper':True,'harness_sha256':sha(SCRIPT),'epoch':time.time()}
+            save('manager-ready.json',ready)
+            wait_end=time.monotonic()+15
+            while not (OUT/'manager-authorized.json').is_file():
+                require(not got,'interrupted before owned pidfd authorization');require(time.monotonic()<wait_end,'outer owned pidfd authorization missing');time.sleep(.05)
+            authorized=json.loads((OUT/'manager-authorized.json').read_text());require(authorized['nonce']==state['nonce'] and authorized['manager_start_ticks']==me['start_ticks'],'authorization identity mismatch')
+            receipt={'scope':state['hierarchy_path']+' and descendants; not whole VM root','manager_identity':me,'subreaper':True,'received_signals':got,'owned_signals':[],'reaped_children':[],'adopted_descendant_cleanup_required':False,'forced_cleanup':False,'cleanup_verified':False,'normal_command_completed':False,'expected_signal_probe':state['expected_signal_probe'],'started_epoch':time.time()}
+            cap=None;cap_fd=None;exit_code=2;signal_sent=False;stop_started=None
+            def send_owned(identity,sig,reason):
+                fd=bound_pidfd(identity,parent=os.getpid())
+                try:
+                    if not exited(fd):signal.pidfd_send_signal(fd,sig)
+                    receipt['owned_signals'].append({'identity':identity,'signal':sig,'reason':reason,'epoch':time.time(),'method':'kernel pidfd, actual direct PPid and start_ticks checked'})
+                finally:os.close(fd)
+            def reap_adopted():
+                remaining=[]
+                for r in children():
+                    if cap is not None and r['pid']==cap.pid:continue
+                    try:
+                        pid,status=os.waitpid(r['pid'],os.WNOHANG)
+                        if pid:receipt['reaped_children'].append({'identity':r,'wait_status':status,'epoch':time.time()})
+                        else:remaining.append(r)
+                    except ChildProcessError:pass
+                return remaining
+            try:
+                args=['/usr/bin/python3','-B',state['host_cap'],state['target'],*state['command']]
+                cap=subprocess.Popen(args,start_new_session=True)
+                owned=proc_identity(cap.pid);require(owned['ppid']==os.getpid() and owned['uid']==state['uid'] and owned['mnt_namespace']==me['mnt_namespace'] and owned['cgroup']==me['cgroup'],'host-cap identity did not inherit exact service/UID namespace')
+                cap_fd=bound_pidfd(owned,parent=os.getpid());receipt['host_cap_identity']=owned;receipt['host_cap_argv']=args
+                final_manager_deadline=float(state['environment']['HOST_JOB_START'])+1650
+                while cap.poll() is None:
+                    if got or time.time()>=final_manager_deadline:
+                        if not signal_sent:
+                            signal.pidfd_send_signal(cap_fd,signal.SIGINT);signal_sent=True;stop_started=time.monotonic()
+                            receipt['owned_signals'].append({'identity':owned,'signal':signal.SIGINT,'reason':'external INT/TERM or manager deadline mapped to host-cap cleanup','epoch':time.time(),'method':'bound owned Popen pidfd'})
+                        elif time.monotonic()-stop_started>30:
+                            receipt['forced_cleanup']=True;signal.pidfd_send_signal(cap_fd,signal.SIGKILL)
+                            break
+                    time.sleep(.1)
+                if cap.poll() is None:
+                    try:cap.wait(timeout=5)
+                    except subprocess.TimeoutExpired:receipt['host_cap_exit_unknown']=True
+                else:cap.wait()
+                receipt['host_cap_exit_code']=cap.returncode
+                adopted=reap_adopted()
+                if adopted:
+                    receipt['adopted_descendant_cleanup_required']=True
+                    # Only actual children adopted by THIS subreaper may be signalled.
+                    deadline=time.monotonic()+10;sent={}
+                    while adopted and time.monotonic()<deadline:
+                        for r in adopted:
+                            key=(r['pid'],r['start_ticks']);first=sent.get(key)
+                            if first is None:
+                                send_owned(r,signal.SIGINT,'adopted residual after original cleanup; run fails');sent[key]=time.monotonic()
+                            elif time.monotonic()-first>2:
+                                receipt['forced_cleanup']=True;send_owned(r,signal.SIGKILL,'adopted residual did not exit after SIGINT')
+                        time.sleep(.1);adopted=reap_adopted()
+                    receipt['unexited_owned_children']=adopted
+                remaining=children();receipt['remaining_actual_children']=remaining
+                receipt['cleanup_verified']=cap.returncode is not None and exited(cap_fd) and not remaining
+                require(receipt['cleanup_verified'],'owned process cleanup is unknown/incomplete')
+                require(not receipt['adopted_descendant_cleanup_required'] and not receipt['forced_cleanup'],'residual/forced cleanup means failed command, never pass')
+                validate_view(state,'inside-after');original_sources(state)
+                receipt['normal_command_completed']=cap.returncode==0 and not got and not signal_sent
+                exit_code=cap.returncode if receipt['normal_command_completed'] else 2
+                if exit_code<0:exit_code=128-exit_code
+            except BaseException as exc:
+                receipt['failure']=type(exc).__name__+': '+str(exc)
+                if cap is not None and cap.poll() is None:
+                    try:
+                        if cap_fd is not None:signal.pidfd_send_signal(cap_fd,signal.SIGINT)
+                        else:cap.send_signal(signal.SIGINT)
+                        cap.wait(timeout=25)
+                    except BaseException as cleanup:receipt['exception_cleanup_error']=type(cleanup).__name__+': '+str(cleanup)
+                # Do not claim cleanup from a parent exit. Reap/signals are limited to actual direct children.
+                end=time.monotonic()+10
+                while children() and time.monotonic()<end:
+                    for r in children():
+                        if cap is not None and r['pid']==cap.pid:
+                            if cap.poll() is None:
+                                receipt['forced_cleanup']=True
+                                try:send_owned(r,signal.SIGKILL,'exception cleanup of owned host-cap')
+                                except ProcessLookupError:pass
+                            continue
+                        receipt['adopted_descendant_cleanup_required']=True;receipt['forced_cleanup']=True
+                        try:send_owned(r,signal.SIGKILL,'exception cleanup of actual adopted descendant')
+                        except ProcessLookupError:pass
+                    if cap is not None:cap.poll()
+                    reap_adopted();time.sleep(.1)
+                receipt['remaining_actual_children']=children();receipt['cleanup_verified']=not receipt['remaining_actual_children'] and (cap is None or cap.poll() is not None)
+            finally:
+                if cap_fd is not None:os.close(cap_fd)
+                receipt.update(exit_code=exit_code,finished_epoch=time.time())
+                save('manager-result.json',receipt)
+                unsafe=not receipt['cleanup_verified'] or receipt['forced_cleanup'] or receipt['adopted_descendant_cleanup_required']
+                if unsafe or (got and not state['expected_signal_probe']):
+                    P(state['environment']['CASE_DIR'],'namespace-lifecycle-block.json').write_text(json.dumps({'blocked':True,'receipt':str(OUT/'manager-result.json'),'reason':'interrupted production command or incomplete/forced/adopted cleanup; later native commands forbidden'},indent=2)+'\n')
+            return exit_code
+
+        def outside():
+            before=proc('host-before');save('host-before.json',before)
+            summary={'schema':'razr-D4-private-service-launch','functional_candidate':S4,'command':COMMAND,'compatibility_verified':False,'cleanup_verified':False,'command_exit_code':None,'private_root_Python_launcher_execs_original_UID_manager':True,'started_epoch':time.time()}
+            child=None;manager_fd=None;requested=[]
+            def handler(signum,frame):requested.append({'signal':signum,'epoch':time.time()})
+            signal.signal(signal.SIGINT,handler);signal.signal(signal.SIGTERM,handler)
+            try:
+                require(COMMAND,'command required')
+                env={k:os.environ[k] for k in SAFE_ENV_NAMES if k in os.environ};require(all(k in env for k in ('PATH','HOME','HOST_JOB_START','HOST_ROOT','CASE_DIR','S4')),'required allowlisted caller environment missing')
+                require(not (P(env['CASE_DIR'])/'namespace-lifecycle-block.json').exists(),'previous lifecycle failure blocks this job')
+                expected_signal=env.get('RAZR_EXPECTED_SIGNAL_PROBE')
+                require(expected_signal in (None,'SIGINT','SIGTERM'),'unknown lifecycle probe marker')
+                if expected_signal:
+                    require(str(REPO/SUP_REL) in COMMAND and '--seconds' in COMMAND and COMMAND[COMMAND.index('--seconds')+1]=='30','signal probe exception only applies to short original supervisor')
+                command=list(COMMAND)
+                if '/' not in command[0]:
+                    command[0]=shutil.which(command[0],path=env['PATH']);require(command[0],'executable unavailable on original caller PATH')
+                membership=group_path(before['records']['cgroup']['text']);candidates=[m for m in mounts(before['records']['mountinfo']['text']) if m['fstype']=='cgroup2' and membership.is_relative_to(P(m['root']))]
+                require(candidates,'no genuine cgroup2 mount covers this job');mount=max(candidates,key=lambda m:len(P(m['root']).parts))
+                service=P(mount['mountpoint'])/membership.relative_to(P(mount['root']));require(service.resolve()==service and not service.is_symlink(),'service path resolution changed')
+                measured_before=measured('host-service-before',service);ancestors=[];current=service
+                while True:
+                    item={'path':str(current),'identity':ident(current),'is_cgroup_root':current==P(mount['mountpoint']),'maximum':capture('ancestor-'+str(len(ancestors))+'-memory.max',current/'memory.max'),'current':capture('ancestor-'+str(len(ancestors))+'-memory.current',current/'memory.current')};ancestors.append(item)
+                    if item['is_cgroup_root']:break
+                    require(current.parent!=current and current.parent.is_relative_to(P(mount['mountpoint'])),'invalid real ancestry');current=current.parent
+                tools={k:shutil.which(k) for k in ('sudo','unshare','mount','setpriv')};require(all(tools.values()),'existing namespace/drop tools unavailable; no fallback')
+                state={'nonce':secrets.token_hex(32),'before':before,'uid':os.getuid(),'gid':os.getgid(),'groups':sorted(os.getgroups()),'cwd':os.getcwd(),'hierarchy_path':str(membership),'service_path':str(service),'service':measured_before,'ancestors':ancestors,'root_directory':ident('/sys/fs/cgroup'),'root_memory_stat':capture('host-root-memory.stat','/sys/fs/cgroup/memory.stat'),'host_meminfo':capture('host-meminfo','/proc/meminfo'),'tools':tools,'environment':env,'harness_sha256':sha(SCRIPT),'host_cap':str(P(env['HOST_ROOT'])/'host-cap.py'),'host_cap_sha256':sha(P(env['HOST_ROOT'])/'host-cap.py'),'target':str(TARGET),'command':command,'expected_signal_probe':expected_signal,'observed_uv_path':shutil.which('uv',path=env['PATH'])}
+                require(state['uid']!=0,'launcher must begin as original unprivileged runner');original_sources(state);save('prepared.json',state)
+                args=[tools['sudo'],'-n',tools['unshare'],'--mount','--propagation','private','--','/usr/bin/python3','-B',str(SCRIPT),'--private-root',str(OUT),str(REPO)]
+                with (OUT/'namespace.stdout').open('wb') as log,(OUT/'namespace.stderr').open('wb') as err:
+                    child=subprocess.Popen(args,stdout=log,stderr=err,start_new_session=True);owned=proc_identity(child.pid,full=False);save('owned-namespace-launcher.json',{'argv':args,'identity':owned})
+                    sent_count=0;early_sent=False
+                    while child.poll() is None:
+                        ready=OUT/'manager-ready.json'
+                        if manager_fd is None and ready.is_file():
+                            r=json.loads(ready.read_text());require(r['nonce']==state['nonce'] and r['harness_sha256']==state['harness_sha256'] and r['subreaper'] is True,'manager readiness provenance mismatch')
+                            rows=lineage_reaches(r['identity']['pid'],owned);require(r['uid']==state['uid'],'manager UID mismatch')
+                            manager_fd=bound_pidfd(r['identity']);save('verified-owned-manager-lineage.json',{'lineage':rows,'identity':r['identity'],'signal_method':'pidfd','nonce':state['nonce']})
+                            save('manager-authorized.json',{'nonce':state['nonce'],'manager_start_ticks':r['identity']['start_ticks'],'outer_pid':os.getpid(),'epoch':time.time()})
+                        if requested:
+                            if manager_fd is not None and len(requested)>sent_count:
+                                if not exited(manager_fd):signal.pidfd_send_signal(manager_fd,signal.SIGINT)
+                                sent_count=len(requested)
+                            elif manager_fd is None and not early_sent:
+                                # No heavy command can start before pidfd authorization. This is only setup cancellation.
+                                child.send_signal(signal.SIGINT);early_sent=True
+                        time.sleep(.1)
+                    code=child.wait();summary['namespace_launcher_exit_code']=code
+                require(manager_fd is not None,'manager never reached owned pidfd authorization')
+                require(exited(manager_fd),'manager identity still alive after launcher exit')
+                result=json.loads((OUT/'manager-result.json').read_text());summary['manager_result']=result;summary['cleanup_verified']=result['cleanup_verified'];summary['command_exit_code']=result['host_cap_exit_code'] if 'host_cap_exit_code' in result else None
+                after=proc('host-after');save('host-after.json',after);namespace_checks(after,before,private=False)
+                require(after['records']['mountinfo']['text']==before['records']['mountinfo']['text'],'host global mount view changed')
+                require(same_inode(ident('/sys/fs/cgroup'),state['root_directory']),'host root inode changed')
+                measured_after=measured('host-service-after',service);member_identity_matches(measured_before,measured_after)
+                for i,a in enumerate(ancestors):
+                    post=capture('ancestor-'+str(i)+'-memory.max-after',P(a['path'])/'memory.max');save('ancestor-'+str(i)+'-after.json',post)
+                    require(a['maximum']['readable']==post['readable'],'ancestor maximum availability changed')
+                    if post['readable']:require(post['text']==a['maximum']['text'] and same_inode(post['identity'],a['maximum']['identity']),'ancestor maximum changed')
+                original_sources(state);summary['compatibility_verified']=True
+                require(result['cleanup_verified'] and not result['forced_cleanup'] and not result['adopted_descendant_cleanup_required'],'owned cleanup did not finish through normal original path')
+                summary['normal_command_completed']=result['normal_command_completed'];summary['exit_code']=code if code>=0 else 128-code
+            except BaseException as exc:
+                summary['failure']=type(exc).__name__+': '+str(exc);summary['exit_code']=2
+                if child is not None and child.poll() is None:
+                    # Never kill only sudo/namespace parent and claim descendants are gone.
+                    if manager_fd is not None and not exited(manager_fd):signal.pidfd_send_signal(manager_fd,signal.SIGINT)
+                    else:child.send_signal(signal.SIGINT)
+                    try:child.wait(timeout=60)
+                    except subprocess.TimeoutExpired:summary['cleanup_unknown']=True
+                if not summary.get('cleanup_verified'):
+                    P(os.environ['CASE_DIR'],'namespace-lifecycle-block.json').write_text(json.dumps({'blocked':True,'receipt':str(OUT/'SUMMARY.json'),'reason':'outer failure or cleanup unknown; later native commands forbidden'},indent=2)+'\n')
+            finally:
+                if manager_fd is not None:os.close(manager_fd)
+                summary.update(external_signals=requested,finished_epoch=time.time());save('SUMMARY.json',summary)
+            return summary['exit_code']
+
+        def signal_check():
+            result={'schema':'razr-D4-nonCAD-signal-chain-check','passed':False,'native_CAD_executed':False,'original_source_sha256':SUP_SHA,'tests':[]}
+            sentinel=None;sentinel_fd=None
+            try:
+                require(sha(REPO/SUP_REL)==SUP_SHA,'original supervisor source mismatch')
+                sentinel=subprocess.Popen(['/usr/bin/python3','-B','-c','import time; time.sleep(120)'],start_new_session=True)
+                sentinel_identity=proc_identity(sentinel.pid);sentinel_fd=bound_pidfd(sentinel_identity,parent=os.getpid());result['unrelated_to_namespace_branch_sentinel']=sentinel_identity
+                worker=OUT/'stdlib-worker.py'
+                worker.write_text("import json,os,pathlib,sys,time\np=pathlib.Path('/proc/self');t=(p/'stat').read_text();r=t[t.rfind(')')+2:].split();record={'pid':os.getpid(),'ppid':os.getppid(),'pgid':os.getpgid(0),'sid':os.getsid(0),'uid':os.getuid(),'start_ticks':int(r[19]),'cgroup':(p/'cgroup').read_text(),'mnt_namespace':os.readlink(p/'ns/mnt')}\ntarget=pathlib.Path(sys.argv[1]);temporary=target.with_suffix('.tmp');temporary.write_text(json.dumps(record,indent=2)+'\\n');os.replace(temporary,target)\ntime.sleep(60)\n")
+                for sig in (signal.SIGINT,signal.SIGTERM):
+                    name=signal.Signals(sig).name;folder=OUT/name;folder.mkdir();task=folder/'task';task.mkdir();identity_file=folder/'worker-ready.json'
+                    target=folder/'host-cap';cmd=['/usr/bin/python3','-B',str(SCRIPT),str(target),'/usr/bin/python3','-B',str(REPO/SUP_REL),'--task-directory',str(task),'--seconds','30','--log',str(folder/'original-child.log'),'--report',str(folder/'original-supervisor-report.json'),'--','/usr/bin/python3','-B',str(worker),str(identity_file)]
+                    env=os.environ.copy();env['RAZR_EXPECTED_SIGNAL_PROBE']=name
+                    launch=None;worker_fd=None;sup_fd=None;row={'signal_to_outer':name,'passed':False,'cleanup_unknown':False}
+                    try:
+                        with (folder/'outer.stdout').open('wb') as log,(folder/'outer.stderr').open('wb') as err:
+                            launch=subprocess.Popen(cmd,env=env,stdout=log,stderr=err,start_new_session=True);launch_identity=proc_identity(launch.pid,full=False);row['owned_outer_identity']=launch_identity;deadline=time.monotonic()+20
+                            while not identity_file.is_file() and launch.poll() is None and time.monotonic()<deadline:time.sleep(.05)
+                            require(identity_file.is_file(),'short real signal worker did not start')
+                            wi=json.loads(identity_file.read_text());lineage=lineage_reaches(wi['pid'],launch_identity);worker_fd=bound_pidfd(wi);sup_identity=proc_identity(wi['ppid']);sup_fd=bound_pidfd(sup_identity)
+                            require(wi['sid']==wi['pid'] and wi['pgid']==wi['pid'],'original supervisor child is not an independent session')
+                            time.sleep(.25);launch.send_signal(sig)
+                            try:code=launch.wait(timeout=45)
+                            except subprocess.TimeoutExpired:raise RuntimeError('owned signal chain did not finish; no install/CAD permitted')
+                            require(exited(worker_fd) and exited(sup_fd),'actual original controller/independent-session worker did not exit')
+                            require(not exited(sentinel_fd),'signal affected the separate non-namespace branch sentinel')
+                            ns=target.with_name(target.name+'.namespace');summ=json.loads((ns/'SUMMARY.json').read_text());mr=json.loads((ns/'manager-result.json').read_text());original=json.loads((folder/'original-supervisor-report.json').read_text());host=json.loads(target.with_suffix('.json').read_text())
+                            require(code!=0 and summ['compatibility_verified'] and summ['cleanup_verified'] and mr['cleanup_verified'] and not mr['forced_cleanup'] and not mr['adopted_descendant_cleanup_required'],'expected signal did not take the clean original path')
+                            require(mr['received_signals'] and original['resource_stop_reason']=='supervisor_failure' and original['supervisor_error']['type']=='KeyboardInterrupt' and original['supervisor_source_unchanged'] and original['supervisor_source_sha256']==SUP_SHA,'original supervisor INT/finally receipt is missing')
+                            require(host['failure'].startswith('KeyboardInterrupt'),'host-cap did not enter its original cleanup exception path')
+                            row.update(passed=True,exit_code=code,worker_identity=wi,supervisor_identity=sup_identity,lineage=lineage,both_bound_pidfds_exited=True,unrelated_sentinel_unaffected=True,forced_or_adopted_cleanup=False,original_supervisor_report_sha256=sha(folder/'original-supervisor-report.json'),namespace_summary_sha256=sha(ns/'SUMMARY.json'))
+                            result['tests'].append(dict(row))
+                    except BaseException as exc:
+                        row['failure']=type(exc).__name__+': '+str(exc)
+                        raise
+                    finally:
+                        # Every early failure keeps ownership and requests the same cleanup route.
+                        if launch is not None and launch.poll() is None:
+                            row['early_failure_cleanup_requested']=True
+                            try:
+                                launch.send_signal(signal.SIGINT);launch.wait(timeout=45)
+                            except BaseException as cleanup:
+                                row['cleanup_unknown']=True;row['cleanup_error']=type(cleanup).__name__+': '+str(cleanup)
+                        if launch is not None:row['actual_outer_exit_code']=launch.poll()
+                        for label,fd in (('worker',worker_fd),('original_supervisor',sup_fd)):
+                            if fd is not None:
+                                row[label+'_pidfd_exited_at_finally']=exited(fd)
+                                if not row[label+'_pidfd_exited_at_finally']:row['cleanup_unknown']=True
+                                os.close(fd)
+                        save('signal-'+name+'-final.json',row)
+                        if row['cleanup_unknown']:
+                            P(os.environ['CASE_DIR'],'namespace-lifecycle-block.json').write_text(json.dumps({'blocked':True,'reason':'signal probe owned branch cleanup unknown; install/CAD forbidden'},indent=2)+'\n')
+                require(len(result['tests'])==2,'both INT and TERM chain tests required');result['passed']=True
+            except BaseException as exc:
+                result['failure']=type(exc).__name__+': '+str(exc)
+                P(os.environ['CASE_DIR'],'namespace-lifecycle-block.json').write_text(json.dumps({'blocked':True,'reason':'nonCAD real signal-chain self-check failed; no install/CAD'},indent=2)+'\n')
+            finally:
+                if sentinel is not None:
+                    if sentinel.poll() is None:sentinel.terminate()
+                    try:sentinel.wait(timeout=5)
+                    except subprocess.TimeoutExpired:sentinel.kill();sentinel.wait()
+                if sentinel_fd is not None:os.close(sentinel_fd)
+                result['finished_epoch']=time.time();save('SIGNAL_CHECK.json',result)
+            return 0 if result['passed'] else 2
+        try:
+            if MODE=='outside':code=outside()
+            elif MODE=='private-root':private_root();code=2
+            elif MODE=='inside':code=inside()
+            elif MODE=='signal-check':code=signal_check()
+            else:raise RuntimeError('unknown mode')
+        except BaseException as exc:
+            save(MODE+'-ERROR.json',{'error':type(exc).__name__+': '+str(exc),'epoch':time.time()});raise
+        raise SystemExit(code)
+        PY
+        cp "$HOST_ROOT/service-launch.py" "$CASE_DIR/source/service-launch.py"
+        cat > "$HOST_ROOT/python-downloads.json" <<'PYTHON_METADATA'
+        {
+          "cpython-3.12.14-linux-x86_64-gnu": {
+            "name": "cpython",
+            "arch": {
+              "family": "x86_64",
+              "variant": null
+            },
+            "os": "linux",
+            "libc": "gnu",
+            "major": 3,
+            "minor": 12,
+            "patch": 14,
+            "prerelease": "",
+            "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20260814/cpython-3.12.14%2B20260814-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz",
+            "sha256": "5acfa3e9ba26b51ae161c83aff278da915b590d22373a424b2ba55b8afe91fcc",
+            "variant": null,
+            "build": "20260814"
+          }
+        }
+        PYTHON_METADATA
+        printf 'a23c006d96b05012706707a5c0fc0bca87c17b4e362d5992a83795db914a5c56  %s\n' "$HOST_ROOT/python-downloads.json" | sha256sum --check --strict
+        cp "$HOST_ROOT/python-downloads.json" "$CASE_DIR/source/python-downloads.json"
+        printf 'UV_PYTHON_DOWNLOADS_JSON_URL=%s\n' "$HOST_ROOT/python-downloads.json" >> "$GITHUB_ENV"
+
+        cat > "$HOST_ROOT/n6_evidence_io.py" <<'N6_SOURCE_0'
+        """Bounded stdlib reads of the frozen, reviewed N5a scientific archive.
+
+        This module does no sparse solve, sparse matvec, field update or gate evaluation.
+        Numeric audit and independent readback share only typed, hash-checked input I/O.
+        """
+        from __future__ import annotations
+        from array import array
+        import ast
+        import hashlib
+        import json
+        import math
+        from pathlib import Path, PurePosixPath
+        import stat
+        import struct
+        import sys
+        import zipfile
+
+        CHUNK = 1024 * 1024
+        ND = 344103
+        NF = 344097
+        ROW = 87824
+        LIMIT = 1e-7
+        S4 = "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560"
+        S4_TREE = "cdd9e2c41216201b6cd04dd610d45fde80499045"
+        ZIP_SHA = "46440881a264e6749d9c2ffd77676185bc8af219a536cb19e4b21132a1ee7a10"
+        ZIP_BYTES = 565978451
+        MANIFEST_SHA = "158b19afd6dd1a822d1609f954edb1b1eec6427460a32b9c2e7d7a91c484b9fa"
+        MANIFEST_BYTES = 323415
+        K_SHA = "80f6f50243d421a3b0ab9eeff1324db029677b63febeaad1f023bf9609e9f1cb"
+        K_BYTES = 285135469
+        C_SHA = "9f75b00a961ee850857c82942332ebfdd5cb13aa9da55c5266d93337deca436f"
+        K_COMPONENTS = {
+            "data": "c82485750257344a64e3f60cf4d03b826f38e067fc8e52e8a44a23e54bf058fc",
+            "indices": "6d1119bbb2c8e32d79b4e6e84f773619263bb917ca417237e7c1831170d899f7",
+            "indptr": "e49d96fff51663d4af693bd733515b5e7eb720a9d0e765d06e67db1c2581aa44",
+            "shape": "c94902777e906187a797b881b94d59c7a86d40894ae865d5858367628eeece8e",
+            "format": "cc0f38ba8c4acb904fd27131c2e8612a0832b2fc37fca5db2ccae35143f69db7",
+        }
+        KFF_COMPONENTS = {
+            "data": "6e3a53865fa86c99aa1ce0feb3025a7b3b27a0a88406e83c2d471b441b6834fa",
+            "indices": "0f03b4b97ec9ff2e47f1edb31799e927c1259377e317483ed635e1e7d8ded44d",
+            "indptr": "50b9c2af8e95b8cb83abce3bfa697e90f9aa133a26a8defe6797b3de6ef3ac39",
+        }
+
+
+        class AuditGateError(ValueError):
+            """The message is a fixed source-controlled gate code, never a runtime path."""
+            pass
+
+
+        def require(condition, gate):
+            if not condition:
+                raise AuditGateError(gate)
+
+
+        def sha_file(path):
+            h = hashlib.sha256()
+            count = 0
+            with Path(path).open("rb") as f:
+                for b in iter(lambda: f.read(CHUNK), b""):
+                    count += len(b)
+                    h.update(b)
+            return {"bytes": count, "sha256": h.hexdigest()}
+
+
+        def float_bits(value):
+            return struct.pack(">d", value).hex()
+
+
+        def ulp_distance(a, b):
+            def ordered(x):
+                n = struct.unpack(">Q", struct.pack(">d", x))[0]
+                return ((~n) & ((1 << 64) - 1)) if n >> 63 else (n | (1 << 63))
+            return abs(ordered(a) - ordered(b))
+
+
+        class HashingReader:
+            def __init__(self, raw):
+                self.raw, self.h, self.count = raw, hashlib.sha256(), 0
+
+            def read(self, n):
+                b = self.raw.read(n)
+                self.h.update(b)
+                self.count += len(b)
+                return b
+
+
+        def read_npy(raw, max_elements=24_000_000):
+            """Read a bounded unpickled C-order little-endian NPY with no NumPy import."""
+            r = HashingReader(raw)
+            require(r.read(6) == b"\x93NUMPY", "npy_magic")
+            version = r.read(2)
+            require(version in (b"\x01\x00", b"\x02\x00", b"\x03\x00"), "npy_version")
+            width = 2 if version[0] == 1 else 4
+            size_bytes = r.read(width)
+            require(len(size_bytes) == width, "npy_header_size")
+            nheader = int.from_bytes(size_bytes, "little")
+            require(0 < nheader <= 65536, "npy_header_budget")
+            encoded = r.read(nheader)
+            require(len(encoded) == nheader, "npy_header_complete")
+            header = ast.literal_eval(encoded.decode("utf8" if version[0] == 3 else "latin1"))
+            require(set(header) == {"descr", "fortran_order", "shape"}, "npy_header_fields")
+            require(header["fortran_order"] is False and isinstance(header["shape"], tuple), "npy_C_order")
+            shape = header["shape"]
+            require(all(type(n) is int and n >= 0 for n in shape), "npy_shape_integers")
+            count = math.prod(shape)
+            require(count <= max_elements, "npy_element_budget")
+            descr = header["descr"]
+            types = {"<f8": ("d", 8), "<i4": ("i", 4), "<i8": ("q", 8), "|S3": (None, 3)}
+            require(descr in types and sys.byteorder == "little", "npy_dtype_and_endian")
+            kind, width = types[descr]
+            payload_sha = hashlib.sha256()
+            remaining = count * width
+            result = array(kind) if kind else bytearray()
+            require(kind is None or result.itemsize == width, "native_array_itemsize")
+            while remaining:
+                block = r.read(min(CHUNK, remaining))
+                require(block and len(block) % width == 0, "npy_payload_truncated_or_misaligned")
+                remaining -= len(block)
+                payload_sha.update(block)
+                if kind:
+                    result.frombytes(block)
+                else:
+                    result.extend(block)
+            require(r.read(1) == b"", "npy_trailing_bytes")
+            return result, {"shape": list(shape), "descr": descr, "payload_sha256": payload_sha.hexdigest(),
+                            "sha256": r.h.hexdigest(), "bytes": r.count}
+
+
+        class Evidence:
+            def __init__(self, archive, matrix):
+                self.archive, self.matrix = Path(archive), Path(matrix)
+                require(self.archive.is_file() and not self.archive.is_symlink(), "input_zip_regular")
+                require(self.matrix.is_file() and not self.matrix.is_symlink(), "input_K_regular")
+                require(sha_file(self.archive) == {"sha256": ZIP_SHA, "bytes": ZIP_BYTES}, "input_zip_exact")
+                self.z = zipfile.ZipFile(self.archive)
+                names = self.z.namelist()
+                require(len(names) == len(set(names)) == 372, "input_zip_member_count")
+                for i in self.z.infolist():
+                    p = PurePosixPath(i.filename)
+                    require(not p.is_absolute() and ".." not in p.parts and "\\" not in i.filename
+                            and not i.is_dir() and not stat.S_ISLNK(i.external_attr >> 16), "input_zip_paths")
+                raw = self.z.read("EXPORT_MANIFEST.json")
+                require(len(raw) == MANIFEST_BYTES and hashlib.sha256(raw).hexdigest() == MANIFEST_SHA,
+                        "input_manifest_exact")
+                self.manifest = json.loads(raw)
+                self.members = self.manifest["exported_files"]
+                require(len(self.members) == 371 and set(names) == set(self.members) | {"EXPORT_MANIFEST.json"},
+                        "input_zip_exact_member_set")
+                require(self.manifest["raw_runtime_records_durable"] is False
+                        and self.manifest["complete_original_runtime_collection_exported"] is False
+                        and self.manifest["producer_originals_modified"] is False,
+                        "input_scientific_export_contract")
+                self.used = {}
+
+            def check(self, name, size, digest):
+                require(self.members.get(name) == {"bytes": size, "sha256": digest}, "used_member_exact")
+                self.used[name] = {"bytes": size, "sha256": digest}
+
+            def byte_check(self, name):
+                h, count = hashlib.sha256(), 0
+                with self.z.open(name) as f:
+                    for b in iter(lambda: f.read(CHUNK), b""):
+                        count += len(b)
+                        h.update(b)
+                self.check(name, count, h.hexdigest())
+                return self.used[name]
+
+            def read_json(self, name):
+                require(self.members[name]["bytes"] < 2 * CHUNK, "json_input_budget")
+                raw = self.z.read(name)
+                self.check(name, len(raw), hashlib.sha256(raw).hexdigest())
+                return json.loads(raw)
+
+            def npy(self, name, shape=None, descr="<f8"):
+                with self.z.open(name) as f:
+                    value, meta = read_npy(f)
+                self.check(name, meta["bytes"], meta["sha256"])
+                require(meta["descr"] == descr and (shape is None or meta["shape"] == list(shape)), "npy_expected_layout")
+                return value
+
+            def original_matrix(self):
+                identity = sha_file(self.matrix)
+                require(identity == {"bytes": K_BYTES, "sha256": K_SHA}, "original_K_file_exact")
+                self.check("volume/panel/level-2/K.npz", identity["bytes"], identity["sha256"])
+                result, meta = {}, {}
+                with zipfile.ZipFile(self.matrix) as z:
+                    require(set(z.namelist()) == {k + ".npy" for k in K_COMPONENTS}, "original_K_npz_layout")
+                    for key in ("shape", "format", "indptr", "indices", "data"):
+                        with z.open(key + ".npy") as f:
+                            value, m = read_npy(f)
+                        require(m["payload_sha256"] == K_COMPONENTS[key], "original_K_component_exact")
+                        result[key], meta[key] = value, m
+                require(list(result["shape"]) == [ND, ND] and result["format"] == b"csc", "original_K_CSC_shape")
+                require(len(result["indices"]) == len(result["data"]) == 23646483
+                        and len(result["indptr"]) == ND + 1, "original_K_component_lengths")
+                require(meta["data"]["descr"] == "<f8" and meta["indices"]["descr"] == "<i4"
+                        and meta["indptr"]["descr"] == "<i4", "original_K_component_dtypes")
+                require(result["indptr"][0] == 0 and result["indptr"][-1] == 23646483
+                        and all(a <= b for a, b in zip(result["indptr"], result["indptr"][1:])), "CSC_indptr_valid")
+                return result, meta
+
+            def domain(self):
+                free = self.npy("probe-N5/free-original-DOFs.npy", (NF,), "<i8")
+                fixed = self.npy("probe-N5/fixed-original-DOFs.npy", (6,), "<i8")
+                require(list(free) == sorted(set(free)) and list(fixed) == sorted(set(fixed)), "original_domain_order")
+                require(set(free).isdisjoint(fixed) and len(free) + len(fixed) == ND
+                        and min(free) >= 0 and max(free) < ND and min(fixed) >= 0 and max(fixed) < ND,
+                        "original_domain_partition")
+                require(ROW in free, "audit_row_is_original_free")
+                self.byte_check("probe-N5/C.npz")
+                require(self.used["probe-N5/C.npz"]["sha256"] == C_SHA, "original_C_exact")
+                self.byte_check("probe-N5/points.json")
+                self.byte_check("probe-N5/five-probe-directions.npy")
+                return free, fixed
+
+            def close(self):
+                self.z.close()
+        N6_SOURCE_0
+        cp "$HOST_ROOT/n6_evidence_io.py" "$CASE_DIR/source/n6_evidence_io.py"
+        printf '3d38759cd7cbd909830c8dbbcf5370d52cec7439ae9502fa1522a34a0b6cc605  %s\n' "$HOST_ROOT/n6_evidence_io.py" | sha256sum --check --strict
+        cat > "$HOST_ROOT/fetch_n6_inputs.py" <<'N6_SOURCE_1'
+        """Read-only, bounded transfer of one already reviewed scientific draft asset."""
+        from pathlib import Path
+        import argparse
+        import hashlib
+        import json
+        import os
+        import resource
+        import time
+        import urllib.error
+        import urllib.parse
+        import urllib.request
+        import zipfile
+        from n6_evidence_io import (AuditGateError, CHUNK, K_BYTES, K_SHA, MANIFEST_BYTES,
+                                    MANIFEST_SHA, S4, ZIP_BYTES, ZIP_SHA, require)
+
+        API = "https://api.github.com/repos/TrillionniumFoundation/RAZR-SLIDE"
+        RELEASE = 423900341
+        ASSET = 677184053
+        ASSET_NAME = "N5a-scientific-40276429821.zip"
+        MAX_TRANSFER = 768 * 1024**2
+        RESERVE = 500 * 1024**2
+
+
+        class NoRedirect(urllib.request.HTTPRedirectHandler):
+            def redirect_request(self, request, fp, code, message, headers, newurl):
+                return None
+
+
+        class ReadOnlyClient:
+            def __init__(self, token):
+                self.token = token
+                self.opener = urllib.request.build_opener(NoRedirect())
+
+            def request(self, suffix, binary=False):
+                require(suffix in ("/releases/" + str(RELEASE), "/releases/assets/" + str(ASSET)), "read_only_API_route")
+                headers = {"Authorization": "Bearer " + self.token,
+                           "Accept": "application/octet-stream" if binary else "application/vnd.github+json",
+                           "X-GitHub-Api-Version": "2026-03-10", "User-Agent": "RAZR-N6-row-audit-read-only"}
+                try:
+                    return self.opener.open(urllib.request.Request(API + suffix, headers=headers, method="GET"), timeout=60)
+                except urllib.error.HTTPError as e:
+                    if not binary or e.code not in (301, 302, 303, 307, 308):
+                        raise
+                    destination = e.headers.get("Location")
+                    e.close()
+                    require(isinstance(destination, str), "binary_redirect_present")
+                    parsed = urllib.parse.urlsplit(destination)
+                    host = parsed.hostname or ""
+                    require(parsed.scheme == "https" and parsed.username is None and parsed.password is None
+                            and (host.endswith(".githubusercontent.com") or host.endswith(".blob.core.windows.net")),
+                            "binary_redirect_host")
+                    # The scoped credential is never sent to the transfer host.
+                    return self.opener.open(urllib.request.Request(destination, headers={"User-Agent": "RAZR-N6-row-audit-read-only"}), timeout=60)
+
+            def json(self, suffix):
+                with self.request(suffix) as f:
+                    raw = f.read(2 * CHUNK + 1)
+                require(len(raw) <= 2 * CHUNK, "API_response_budget")
+                return json.loads(raw)
+
+
+        def transfer(args):
+            start = time.monotonic()
+            receipt = {"schema": "razr-N6-reviewed-input-transfer-v1", "completed": False,
+                       "release_id": RELEASE, "asset_id": ASSET, "asset_name": ASSET_NAME,
+                       "transport_cap_bytes": MAX_TRANSFER, "native_sparse_solve_executed": False,
+                       "diagnostic_arithmetic_executed": False, "raw_API_or_credentials_exported": False,
+                       "input_asset_modified": False}
+            args.output.mkdir(parents=True, exist_ok=False)
+            args.receipt.parent.mkdir(parents=True, exist_ok=True)
+            def save():
+                receipt["seconds"] = time.monotonic() - start
+                args.receipt.write_text(json.dumps(receipt, indent=2, allow_nan=False) + "\n")
+            try:
+                require(os.environ.get("GITHUB_REPOSITORY") == "TrillionniumFoundation/RAZR-SLIDE", "same_repository_required")
+                resource.setrlimit(resource.RLIMIT_AS, (256 * 1024**2, 256 * 1024**2))
+                require(ZIP_BYTES <= MAX_TRANSFER, "registered_transport_size")
+                fs = os.statvfs(args.output)
+                require(fs.f_bavail * fs.f_frsize >= RESERVE + ZIP_BYTES + K_BYTES + 32 * CHUNK, "transfer_disk_reserve")
+                client = ReadOnlyClient(os.environ["GITHUB_TOKEN"])
+                release = client.json("/releases/" + str(RELEASE))
+                require(release["id"] == RELEASE and release["draft"] is True
+                        and release["tag_name"] == "evidence/engineering-sprint-20261026"
+                        and release["target_commitish"] == S4, "owned_scientific_draft_identity")
+                asset = client.json("/releases/assets/" + str(ASSET))
+                require(asset["id"] == ASSET and asset["name"] == ASSET_NAME and asset["state"] == "uploaded"
+                        and asset["size"] == ZIP_BYTES and asset["digest"] == "sha256:" + ZIP_SHA,
+                        "frozen_scientific_asset_identity")
+                require(any(a.get("id") == ASSET for a in release["assets"]), "asset_belongs_to_frozen_draft")
+                h, count = hashlib.sha256(), 0
+                path = args.output / "N5a-scientific.zip"
+                with client.request("/releases/assets/" + str(ASSET), binary=True) as f, path.open("xb") as out:
+                    for block in iter(lambda: f.read(CHUNK), b""):
+                        count += len(block)
+                        require(count <= ZIP_BYTES <= MAX_TRANSFER, "stream_transport_cap")
+                        require(time.monotonic() - start < 180, "transport_wall_limit")
+                        out.write(block)
+                        h.update(block)
+                require(count == ZIP_BYTES and h.hexdigest() == ZIP_SHA, "downloaded_asset_exact")
+                receipt["original_ZIP"] = {"bytes": count, "sha256": h.hexdigest()}
+                with zipfile.ZipFile(path) as z:
+                    raw = z.read("EXPORT_MANIFEST.json")
+                    require(len(raw) == MANIFEST_BYTES and hashlib.sha256(raw).hexdigest() == MANIFEST_SHA, "downloaded_manifest_exact")
+                    manifest = json.loads(raw)
+                    require(len(manifest["exported_files"]) == 371 and len(z.namelist()) == 372
+                            and len(set(z.namelist())) == 372
+                            and set(z.namelist()) == set(manifest["exported_files"]) | {"EXPORT_MANIFEST.json"}, "downloaded_member_set")
+                    name = "volume/panel/level-2/K.npz"
+                    require(manifest["exported_files"][name] == {"bytes": K_BYTES, "sha256": K_SHA}, "downloaded_K_manifest")
+                    h, count = hashlib.sha256(), 0
+                    with z.open(name) as f, (args.output / "original-K.npz").open("xb") as out:
+                        for block in iter(lambda: f.read(CHUNK), b""):
+                            count += len(block)
+                            require(count <= K_BYTES, "extracted_K_cap")
+                            out.write(block)
+                            h.update(block)
+                    require(count == K_BYTES and h.hexdigest() == K_SHA, "extracted_K_exact_and_CRC")
+                receipt.update(completed=True, original_K={"bytes": count, "sha256": h.hexdigest()},
+                               manifest_sha256=MANIFEST_SHA, manifest_bytes=MANIFEST_BYTES,
+                               original_ZIP_member_count=372, all_used_members_to_be_checked_by_row_workers=True,
+                               full_archive_member_readback_previously_completed_by_run=40277185712)
+                save()
+                return 0
+            except BaseException as e:
+                receipt["failure_type"] = type(e).__name__
+                if isinstance(e, AuditGateError):
+                    receipt["failure_gate"] = str(e)
+                save()
+                return 2
+
+
+        if __name__ == "__main__":
+            p = argparse.ArgumentParser()
+            p.add_argument("--output", type=Path, required=True)
+            p.add_argument("--receipt", type=Path, required=True)
+            raise SystemExit(transfer(p.parse_args()))
+        N6_SOURCE_1
+        cp "$HOST_ROOT/fetch_n6_inputs.py" "$CASE_DIR/source/fetch_n6_inputs.py"
+        printf '083043e950af87b98a9fb80eb671890a76ded4f64ecec6abf0ccf3768d4ac620  %s\n' "$HOST_ROOT/fetch_n6_inputs.py" | sha256sum --check --strict
+        cat > "$HOST_ROOT/audit_n6_row.py" <<'N6_SOURCE_2'
+        """N6 capacity evidence: exact dyadic audit of one frozen CSC residual row.
+
+        Read-only diagnosis, not a new iterative solver. All source fields remain byte
+        identical. No sparse factorization or full-field candidate is produced. The
+        original float64 gate is never replaced by this scalar or exact arithmetic.
+        """
+        from __future__ import annotations
+        from array import array
+        import argparse
+        from bisect import bisect_left
+        from fractions import Fraction
+        import hashlib
+        import heapq
+        import json
+        import math
+        import os
+        from pathlib import Path
+        import resource
+        import sys
+        import time
+        from n6_evidence_io import (AuditGateError, Evidence, KFF_COMPONENTS, K_COMPONENTS,
+                                    K_SHA, C_SHA, LIMIT, MANIFEST_SHA, ND, NF, ROW, S4,
+                                    S4_TREE, ZIP_BYTES, ZIP_SHA, float_bits, require,
+                                    sha_file, ulp_distance)
+
+        OUTPUT_CAP = 32 * 1024**2
+        AS_CAP = 2 * 1024**3
+        RESERVE = 500 * 1024**2
+        ORIGINAL_KFF_NNZ = 23645561
+
+
+        def dyadic(value):
+            return Fraction.from_float(value)
+
+
+        def rational(value):
+            return {"numerator": str(value.numerator), "denominator": str(value.denominator),
+                    "nearest_float64": float(value), "nearest_float64_hex": float(value).hex()}
+
+
+        def scalar(value):
+            return {"float64": value, "hex": value.hex(), "bits": float_bits(value)}
+
+
+        def dot_audit(coefficients, values, rhs, trace=False):
+            exact_sum = Fraction(0)
+            rounded_product_sum = Fraction(0)
+            sequential = 0.0
+            terms = []
+            for i, (a, u) in enumerate(zip(coefficients, values)):
+                exact_product = dyadic(a) * dyadic(u)
+                product = a * u
+                before = sequential
+                sequential = sequential + product
+                exact_sum += exact_product
+                rounded_product_sum += dyadic(product)
+                if trace:
+                    terms.append({"term_index": i, "rounded_product": scalar(product),
+                                  "accumulator_before": scalar(before), "accumulator_after": scalar(sequential),
+                                  "product_rounding_error_exact": rational(dyadic(product) - exact_product),
+                                  "addition_rounding_error_exact": rational(dyadic(sequential) - dyadic(before) - dyadic(product))})
+            exact_residual = exact_sum - dyadic(rhs)
+            residual = sequential - rhs
+            product_error = rounded_product_sum - exact_sum
+            sum_error = dyadic(sequential) - rounded_product_sum
+            subtraction_error = dyadic(residual) - (dyadic(sequential) - dyadic(rhs))
+            total_error = dyadic(residual) - exact_residual
+            require(product_error + sum_error + subtraction_error == total_error, "exact_rounding_decomposition")
+            result = {"sequential_float64_dot": scalar(sequential), "sequential_float64_residual": scalar(residual),
+                      "exact_real_residual_of_original_binary64_K_u_b": rational(exact_residual),
+                      "exact_real_dot_of_original_binary64_K_u": rational(exact_sum),
+                      "exact_sum_of_rounded_products": rational(rounded_product_sum),
+                      "product_rounding_error_exact": rational(product_error),
+                      "accumulation_rounding_error_exact": rational(sum_error),
+                      "subtraction_rounding_error_exact": rational(subtraction_error),
+                      "total_float64_minus_exact_residual": rational(total_error),
+                      "all_exact_arithmetic_uses_Fraction_of_binary64": True}
+            if trace:
+                result["all_ordered_terms"] = terms
+            return result
+
+
+        def frozen_Kff_hashes_and_row(matrix, free, fixed):
+            """Preserve the literal K[free][:,free].tocsc() column and row ordering.
+
+        No coefficient is recomputed. Stream-hash the resulting buffers against the
+        actual original Kff hashes retained by both N4b and N5a before interpreting a row.
+        """
+            mapping = array("i", [-1]) * ND
+            for i, g in enumerate(free):
+                mapping[g] = i
+            data, indices, indptr = matrix["data"], matrix["indices"], matrix["indptr"]
+            dh, ih = hashlib.sha256(), hashlib.sha256()
+            pointers = array("i", [0])
+            entries = []
+            count = 0
+            for j, global_col in enumerate(free):
+                a, b = indptr[global_col], indptr[global_col + 1]
+                col_data, col_indices = array("d"), array("i")
+                last = -1
+                for pos in range(a, b):
+                    global_row = indices[pos]
+                    require(last < global_row < ND, "original_CSC_sorted_unique_rows")
+                    last = global_row
+                    r = mapping[global_row]
+                    if r >= 0:
+                        col_indices.append(r)
+                        col_data.append(data[pos])
+                        if global_row == ROW:
+                            entries.append({"original_column_DOF": int(global_col), "free_column_index": j,
+                                            "original_CSC_data_position": pos, "coefficient": scalar(data[pos])})
+                dh.update(col_data.tobytes())
+                ih.update(col_indices.tobytes())
+                count += len(col_data)
+                pointers.append(count)
+            identities = {"data": dh.hexdigest(), "indices": ih.hexdigest(),
+                          "indptr": hashlib.sha256(pointers.tobytes()).hexdigest()}
+            require(count == ORIGINAL_KFF_NNZ and identities == KFF_COMPONENTS, "actual_original_Kff_buffer_order_exact")
+            require(0 < len(entries) <= 4096, "bounded_original_row_support")
+            for e in entries:
+                col = e["original_column_DOF"]
+                a, b = indptr[col], indptr[col + 1]
+                affected = [(int(indices[p]), data[p]) for p in range(a, b) if mapping[indices[p]] >= 0]
+                e["affected_free_rows_in_original_column"] = len(affected)
+                e["maximum_absolute_free_column_coefficient"] = max(abs(v) for _, v in affected)
+                e["affected_original_free_row_DOFs"] = [r for r, _ in affected]
+            return entries, identities
+
+
+        def stored_residual_summary(residual, free, denominator):
+            require(len(residual) == NF and all(math.isfinite(x) for x in residual), "finite_stored_original_residual")
+            at = max(range(NF), key=lambda i: abs(residual[i]))
+            top = heapq.nlargest(32, range(NF), key=lambda i: abs(residual[i]))
+            above = sum(abs(v) / denominator > LIMIT for v in residual)
+            return {"numerator": abs(residual[at]), "denominator": denominator,
+                    "ratio": abs(residual[at]) / denominator, "max_original_DOF": int(free[at]),
+                    "signed_maximum": residual[at], "above_original_gate_row_count": above,
+                    "top_32_rows": [{"original_DOF": int(free[i]), "signed_residual": residual[i],
+                                     "ratio": abs(residual[i]) / denominator} for i in top],
+                    "scope": "reduction of retained native full residual vector; no new full native SpMV"}
+
+
+        def main(args):
+            started = time.monotonic()
+            args.output.mkdir(parents=True, exist_ok=False)
+            result = {"schema": "razr-N6-original-row-capacity-audit-v1", "completed": False,
+                      "phase": "validating_frozen_evidence", "functional_source_commit": S4, "functional_source_tree": S4_TREE,
+                      "source_N5a_run_id": 40276429821, "source_release_asset_id": 677184053,
+                      "source_ZIP_sha256": ZIP_SHA, "source_ZIP_bytes": ZIP_BYTES, "source_manifest_sha256": MANIFEST_SHA,
+                      "original_K_sha256": K_SHA, "original_C_sha256": C_SHA, "original_float64_gate": LIMIT,
+                      "original_row_DOF": ROW, "new_solver_executed": False, "new_full_field_candidate_produced": False,
+                      "new_full_native_SpMV_executed": False, "original_input_fields_modified": False,
+                      "row_only_sensitivity_is_not_full_gate_acceptance": True,
+                      "H_action_restore_executed": False, "frame_inverse_executed": False,
+                      "candidate_go": False, "fixture_fabrication_go": False, "manufacturing_go": False,
+                      "address_space_limit_bytes": AS_CAP, "output_limit_bytes": OUTPUT_CAP,
+                      "states": [], "five_original_final_stored_residuals": []}
+            evidence = None
+            def save():
+                result["elapsed_seconds"] = time.monotonic() - started
+                result["peak_rss_kib"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+                raw = (json.dumps(result, indent=2, allow_nan=False) + "\n").encode()
+                require(len(raw) <= OUTPUT_CAP, "row_audit_output_budget")
+                temporary = args.output / "N6_ROW_AUDIT.json.writing"
+                temporary.write_bytes(raw)
+                os.replace(temporary, args.output / "N6_ROW_AUDIT.json")
+            try:
+                resource.setrlimit(resource.RLIMIT_AS, (AS_CAP, AS_CAP))
+                require(sys.float_info.mant_dig == 53 and sys.float_info.radix == 2
+                        and float.__getformat__("double") == "IEEE, little-endian", "binary64_runtime")
+                fs = os.statvfs(args.output)
+                require(fs.f_bavail * fs.f_frsize >= RESERVE + OUTPUT_CAP, "audit_disk_reserve")
+                evidence = Evidence(args.archive, args.matrix)
+                free, fixed = evidence.domain()
+                matrix, component_meta = evidence.original_matrix()
+                result["original_K_components"] = {k: m["payload_sha256"] for k, m in component_meta.items()}
+                row_index = bisect_left(free, ROW)
+                result["original_row_free_index"] = row_index
+                entries, Kff_identity = frozen_Kff_hashes_and_row(matrix, free, fixed)
+                result["original_Kff_buffer_hashes_verified"] = Kff_identity
+                result["ordered_original_free_row_entries"] = entries
+                result["ordered_support_size"] = len(entries)
+                report = evidence.read_json("probe-N5/report.engineering.json")["selected_engineering_fields"]
+                readback = evidence.read_json("N5-independent-field-readback.engineering.json")["selected_engineering_fields"]
+                require(readback["completed"] is True and readback["five_original_gates_passed"] is False
+                        and readback["outer_fields_checked"] == readback["correction_fields_checked"]
+                        == readback["actual_update_fields_checked"] == 32, "prior_independent_readback_complete")
+                require(report["original_Kff_identity_before"] == report["original_Kff_identity_after"], "prior_Kff_unchanged")
+                require({k: report["original_Kff_identity_before"][k]["sha256"] for k in Kff_identity} == Kff_identity,
+                        "current_filter_matches_actual_original_submatrix")
+                rhs = evidence.npy("probe-N5/five-probe-rhs.npy", (ND, 5))
+                diagonal = evidence.npy("probe-N5/original-diagonal.npy", (NF,))
+                omega = report["damping"]["omega"]
+                coefficients = [e["coefficient"]["float64"] for e in entries]
+                cols = [e["original_column_DOF"] for e in entries]
+                free_cols = [e["free_column_index"] for e in entries]
+                row_matches = []
+                states = []
+
+                def read_state(label, field_name, residual_name, probe, expected, trace=False, update=None, previous=None):
+                    field = evidence.npy(field_name, (ND,))
+                    require(all(math.isfinite(v) for v in field) and all(field[g] == 0.0 for g in fixed), "full_field_finite_fixed_zero")
+                    residual = evidence.npy(residual_name, (NF,))
+                    denominator = max(max(abs(rhs[g * 5 + probe]) for g in free), 1.0)
+                    summary = stored_residual_summary(residual, free, denominator)
+                    require(summary["ratio"] == expected["free_dof_residual_infinity_ratio"]
+                            and summary["max_original_DOF"] == expected["max_residual_original_dof"]
+                            and denominator == expected["normalization_denominator"], "stored_full_residual_matches_original_report")
+                    values = [field[g] for g in cols]
+                    b = rhs[ROW * 5 + probe]
+                    audit = dot_audit(coefficients, values, b, trace)
+                    matched = audit["sequential_float64_residual"]["bits"] == float_bits(residual[row_index])
+                    row_matches.append(matched)
+                    row = {"label": label, "probe_index": probe, "field_member": field_name, "residual_member": residual_name,
+                           "original_row_RHS": scalar(b), "ordered_support_values_hex": [v.hex() for v in values],
+                           "stored_original_native_row_residual": scalar(residual[row_index]),
+                           "sequential_row_replays_stored_native_bitpattern": matched,
+                           "full_stored_residual_reduction": summary, "row_arithmetic": audit}
+                    if update is not None:
+                        requested = evidence.npy(update["requested"], (ND,))
+                        actual = evidence.npy(update["actual"], (ND,))
+                        changes = []
+                        for j, g in enumerate(cols):
+                            old, new, wanted = previous[j], values[j], requested[g]
+                            require(float_bits(old + wanted) == float_bits(new)
+                                    and float_bits(new - old) == float_bits(actual[g]), "support_update_chain_exact")
+                            prior_row = update["prior_residual"][free_cols[j]]
+                            required_correction = (-prior_row / diagonal[free_cols[j]]) * omega
+                            require(float_bits(required_correction) == float_bits(wanted), "support_original_float64_correction_order")
+                            changes.append({"original_DOF": g, "before_hex": old.hex(), "requested_hex": wanted.hex(),
+                                            "after_hex": new.hex(), "actual_update_hex": actual[g].hex(),
+                                            "ULP_distance": ulp_distance(old, new), "changed": old != new,
+                                            "nonzero_request_rounded_to_no_change": wanted != 0.0 and old == new})
+                        row["support_updates"] = changes
+                        row["changed_support_DOFs"] = sum(x["changed"] for x in changes)
+                        row["rounded_away_nonzero_support_requests"] = sum(x["nonzero_request_rounded_to_no_change"] for x in changes)
+                    return row, values, residual
+
+                result["phase"] = "replaying_baseline_and_all_32_original_history_states"
+                baseline = report["baseline_probes"][0]
+                state, previous, previous_residual = read_state("probe-0-baseline", "probe-N5/probe-0-baseline-field.npy",
+                    "probe-N5/probe-0-baseline-residual.npy", 0, baseline, trace=True)
+                states.append(state)
+                result["states"] = states
+                save()
+                history = report["refined_probes"][0]["iterations"]
+                require(len(history) == 32, "frozen_32_actual_updates")
+                for i, item in enumerate(history, 1):
+                    require(item["outer_iteration"] == i, "history_original_order")
+                    state, previous, previous_residual = read_state(f"probe-0-outer-{i:02d}",
+                        "probe-N5/" + item["field_file"], "probe-N5/" + item["residual_file"], 0,
+                        item["equation_residual"], update={"requested": "probe-N5/" + item["local_return"]["field_file"],
+                            "actual": "probe-N5/" + item["actual_update_file"], "prior_residual": previous_residual}, previous=previous)
+                    state["recorded_longdouble_ratio_diagnostic_only"] = item["longdouble_equation_residual_ratio_diagnostic_only"]
+                    states.append(state)
+                    if i % 8 == 0:
+                        save()
+                final_values = None
+                for probe in range(5):
+                    entry = report["refined_probes"][probe]
+                    state, values, unused = read_state(f"probe-{probe}-final", f"probe-N5/probe-{probe}-final-field.npy",
+                        f"probe-N5/probe-{probe}-final-residual.npy", probe, entry["final_original_residual"], trace=(probe == 0))
+                    if probe == 0:
+                        final_values = values
+                        require(state["ordered_support_values_hex"] == states[-1]["ordered_support_values_hex"], "final_is_step_32_support")
+                    else:
+                        a = evidence.byte_check(f"probe-N5/probe-{probe}-baseline-field.npy")
+                        require(a == evidence.used[f"probe-N5/probe-{probe}-final-field.npy"], "four_passing_original_field_files_unchanged")
+                    states.append(state)
+                    result["five_original_final_stored_residuals"].append(state["full_stored_residual_reduction"])
+                result["all_38_retained_states_replay_original_row_bitpattern"] = all(row_matches)
+                result["row_state_count"] = len(states)
+                require(len(states) == 38, "all_original_states_recorded")
+                result["phase"] = "bounded_row_only_ULP_sensitivity"
+                trials = []
+                if all(row_matches):
+                    denominator = report["refined_probes"][0]["final_original_residual"]["normalization_denominator"]
+                    b = rhs[ROW * 5]
+                    baseline_exact = sum((dyadic(a) * dyadic(u) for a, u in zip(coefficients, final_values)), Fraction()) - dyadic(b)
+                    baseline_row = states[33]["stored_original_native_row_residual"]["float64"]
+                    ld_ratio = history[-1]["longdouble_equation_residual_ratio_diagnostic_only"]
+                    for j, (e, u) in enumerate(zip(entries, final_values)):
+                        for direction in (-1, 1):
+                            adjacent = math.nextafter(u, -math.inf if direction < 0 else math.inf)
+                            require(math.isfinite(adjacent) and ulp_distance(u, adjacent) == 1, "finite_adjacent_ULP")
+                            values = list(final_values)
+                            values[j] = adjacent
+                            sequential = 0.0
+                            for a, x in zip(coefficients, values):
+                                sequential = sequential + a * x
+                            residual = sequential - b
+                            exact_delta = dyadic(e["coefficient"]["float64"]) * (dyadic(adjacent) - dyadic(u))
+                            exact_residual = baseline_exact + exact_delta
+                            delta = adjacent - u
+                            heuristic = ld_ratio + e["maximum_absolute_free_column_coefficient"] * abs(delta) / denominator
+                            trials.append({"trial_index": len(trials), "original_free_column_DOF": e["original_column_DOF"],
+                                "support_index": j, "direction": direction, "old_value_hex": u.hex(), "adjacent_value_hex": adjacent.hex(),
+                                "actual_ULP_distance": 1, "delta_hex": delta.hex(), "row_float64_residual": scalar(residual),
+                                "row_ratio": abs(residual) / denominator, "row_only_original_gate_passes": abs(residual) / denominator <= LIMIT,
+                                "row_absolute_float64_residual_improves": abs(residual) < abs(baseline_row),
+                                "exact_original_equation_row_residual": rational(exact_residual),
+                                "exact_row_error_does_not_increase": abs(exact_residual) <= abs(baseline_exact),
+                                "exact_row_residual_change": rational(exact_delta),
+                                "recorded_longdouble_plus_column_delta_ratio_estimate": heuristic,
+                                "estimate_is_not_certified_bound_or_acceptance": True,
+                                "full_native_float64_gate_evaluated": False, "candidate_field_created_or_accepted": False})
+                result["all_row_only_adjacent_ULP_trials"] = trials
+                result["sensitivity"] = {"finite_registered_trial_count": 2 * len(entries), "actual_trial_count": len(trials),
+                    "disabled_if_original_row_replay_mismatch": not all(row_matches),
+                    "row_only_float64_improvement_count": sum(t["row_absolute_float64_residual_improves"] for t in trials),
+                    "row_only_float64_pass_count": sum(t["row_only_original_gate_passes"] for t in trials),
+                    "row_only_pass_and_exact_row_error_nonincrease_count": sum(t["row_only_original_gate_passes"] and t["exact_row_error_does_not_increase"] for t in trials),
+                    "full_five_probe_qualification_conclusion": "not executed; prior original qualification remains rejected",
+                    "new_iteration_or_search_strategy_execution_authorized_by_this_audit": False}
+                result["used_original_member_identities"] = evidence.used
+                result["source_file_identity"] = sha_file(__file__)
+                result["completed"] = True
+                result["phase"] = "complete_read_only_capacity_evidence"
+                save()
+                print(json.dumps({k: result[k] for k in ("completed", "row_state_count", "ordered_support_size", "all_38_retained_states_replay_original_row_bitpattern", "sensitivity", "elapsed_seconds", "peak_rss_kib")}, indent=2))
+                return 0 if all(row_matches) else 2
+            except BaseException as e:
+                result["failure_type"] = type(e).__name__
+                if isinstance(e, AuditGateError):
+                    result["failure_gate"] = str(e)
+                if evidence is not None:
+                    result["used_original_member_identities"] = evidence.used
+                save()
+                return 2
+            finally:
+                if evidence is not None:
+                    evidence.close()
+
+
+        if __name__ == "__main__":
+            parser = argparse.ArgumentParser()
+            parser.add_argument("--archive", type=Path, required=True)
+            parser.add_argument("--matrix", type=Path, required=True)
+            parser.add_argument("--output", type=Path, required=True)
+            raise SystemExit(main(parser.parse_args()))
+        N6_SOURCE_2
+        cp "$HOST_ROOT/audit_n6_row.py" "$CASE_DIR/source/audit_n6_row.py"
+        printf '0dfdb5bf1283bde6886cdabceef14b6b668fb1088a516ee35872a890ca96b25a  %s\n' "$HOST_ROOT/audit_n6_row.py" | sha256sum --check --strict
+        cat > "$HOST_ROOT/readback_n6_row.py" <<'N6_SOURCE_3'
+        """Independent scalar readback from original archive arrays, not producer rows.
+
+        Shares only hash-checked stdlib input I/O. Extracts the row by a linear scan of
+        original CSC row indices (producer streams filtered columns); independently
+        replays every retained state and exact dyadic identity. No full sparse solve or
+        new native full-matrix residual evaluation is performed.
+        """
+        from __future__ import annotations
+        import argparse
+        from bisect import bisect_left, bisect_right
+        from fractions import Fraction
+        import json
+        import math
+        from pathlib import Path
+        import resource
+        import struct
+        import time
+        from n6_evidence_io import (AuditGateError, Evidence, KFF_COMPONENTS, LIMIT, ND, NF,
+                                    ROW, require, sha_file)
+
+
+        def bits(x):
+            return struct.pack("<d", x)
+
+
+        def F(x):
+            a, b = x.as_integer_ratio()
+            return Fraction(a, b)
+
+
+        def equal_rational(record, value):
+            require(int(record["numerator"]) == value.numerator and int(record["denominator"]) == value.denominator
+                    and bits(record["nearest_float64"]) == bits(float(value))
+                    and record["nearest_float64_hex"] == float(value).hex(), "independent_exact_dyadic_identity")
+
+
+        def check_scalar(record, value):
+            require(record == {"float64": value, "hex": value.hex(), "bits": struct.pack(">d", value).hex()}, "independent_scalar_bits")
+
+
+        def ulps(a, b):
+            def key(x):
+                raw = int.from_bytes(struct.pack(">d", x), "big")
+                return (2**64 - 1 - raw) if raw >= 2**63 else raw + 2**63
+            return abs(key(a) - key(b))
+
+
+        def independently_check_arithmetic(record, coefficients, values, rhs):
+            exact_products = [F(a) * F(u) for a, u in zip(coefficients, values)]
+            rounded_products = [a * u for a, u in zip(coefficients, values)]
+            total = 0.0
+            if "all_ordered_terms" in record:
+                require(len(record["all_ordered_terms"]) == len(coefficients), "independent_all_term_count")
+            for index, p in enumerate(rounded_products):
+                old = total
+                total += p
+                if "all_ordered_terms" in record:
+                    trace = record["all_ordered_terms"][index]
+                    require(trace["term_index"] == index, "independent_trace_order")
+                    check_scalar(trace["rounded_product"], p)
+                    check_scalar(trace["accumulator_before"], old)
+                    check_scalar(trace["accumulator_after"], total)
+                    equal_rational(trace["product_rounding_error_exact"], F(p) - exact_products[index])
+                    equal_rational(trace["addition_rounding_error_exact"], F(total) - F(old) - F(p))
+            original_residual = total - rhs
+            exact_dot = sum(exact_products, Fraction())
+            rounded_sum = sum((F(p) for p in rounded_products), Fraction())
+            exact_residual = exact_dot - F(rhs)
+            check_scalar(record["sequential_float64_dot"], total)
+            check_scalar(record["sequential_float64_residual"], original_residual)
+            equal_rational(record["exact_real_residual_of_original_binary64_K_u_b"], exact_residual)
+            equal_rational(record["exact_real_dot_of_original_binary64_K_u"], exact_dot)
+            equal_rational(record["exact_sum_of_rounded_products"], rounded_sum)
+            equal_rational(record["product_rounding_error_exact"], rounded_sum - exact_dot)
+            equal_rational(record["accumulation_rounding_error_exact"], F(total) - rounded_sum)
+            equal_rational(record["subtraction_rounding_error_exact"], F(original_residual) - F(total) + F(rhs))
+            equal_rational(record["total_float64_minus_exact_residual"], F(original_residual) - exact_residual)
+            require(record["all_exact_arithmetic_uses_Fraction_of_binary64"] is True, "independent_exact_arithmetic_scope")
+            return original_residual, exact_residual
+
+
+        def run(args):
+            started = time.monotonic()
+            result = {"schema": "razr-N6-independent-scalar-row-readback-v1", "completed": False,
+                      "native_full_SpMV_or_solve_executed": False, "new_field_produced": False,
+                      "original_five_qualification_status": "rejected by retained N5a native evidence",
+                      "states_checked": 0, "support_update_chains_checked": 0, "row_only_trials_checked": 0,
+                      "exact_arithmetic": "integer-ratio Fraction; no decimal precision assumption",
+                      "original_array_input_parser_shared_with_producer": True,
+                      "numeric_audit_or_row_extraction_code_shared_with_producer": False}
+            evidence = None
+            try:
+                resource.setrlimit(resource.RLIMIT_AS, (2 * 1024**3, 2 * 1024**3))
+                require(args.audit.stat().st_size <= 32 * 1024**2, "bounded_row_packet")
+                packet = json.loads(args.audit.read_text())
+                result["producer_audit_identity"] = sha_file(args.audit)
+                require(packet["schema"] == "razr-N6-original-row-capacity-audit-v1" and packet["completed"] is True, "producer_audit_complete")
+                require(packet["source_file_identity"] == sha_file(args.worker), "producer_source_byte_identity")
+                for key in ("new_solver_executed", "new_full_field_candidate_produced", "new_full_native_SpMV_executed",
+                            "original_input_fields_modified", "H_action_restore_executed", "frame_inverse_executed",
+                            "candidate_go", "fixture_fabrication_go", "manufacturing_go"):
+                    require(packet[key] is False, "producer_read_only_scope")
+                evidence = Evidence(args.archive, args.matrix)
+                free, fixed = evidence.domain()
+                matrix, unused = evidence.original_matrix()
+                indices, data, pointers = matrix["indices"], matrix["data"], matrix["indptr"]
+                fixed_set = set(fixed)
+                original_positions = [p for p, row in enumerate(indices) if row == ROW]
+                independent = []
+                for pos in original_positions:
+                    col = bisect_right(pointers, pos) - 1
+                    if col in fixed_set:
+                        continue
+                    fcol = bisect_left(free, col)
+                    require(free[fcol] == col, "independent_column_in_original_free_domain")
+                    independent.append((col, fcol, pos, data[pos]))
+                actual = packet["ordered_original_free_row_entries"]
+                require(len(actual) == len(independent) == packet["ordered_support_size"], "independent_original_row_support")
+                require(packet["original_Kff_buffer_hashes_verified"] == KFF_COMPONENTS, "producer_Kff_hashes_match_original_record")
+                for item, (col, fcol, pos, coefficient) in zip(actual, independent):
+                    require(item["original_column_DOF"] == col and item["free_column_index"] == fcol
+                            and item["original_CSC_data_position"] == pos, "independent_CSC_column_position")
+                    check_scalar(item["coefficient"], coefficient)
+                    affected = [p for p in range(pointers[col], pointers[col + 1]) if indices[p] not in fixed_set]
+                    require(item["affected_original_free_row_DOFs"] == [indices[p] for p in affected]
+                            and item["affected_free_rows_in_original_column"] == len(affected)
+                            and item["maximum_absolute_free_column_coefficient"] == max(abs(data[p]) for p in affected),
+                            "independent_original_column_effective_rows")
+                coefficients = [x[3] for x in independent]
+                cols = [x[0] for x in independent]
+                fcols = [x[1] for x in independent]
+                at = bisect_left(free, ROW)
+                require(at == packet["original_row_free_index"], "independent_target_free_index")
+                report = evidence.read_json("probe-N5/report.engineering.json")["selected_engineering_fields"]
+                rhs = evidence.npy("probe-N5/five-probe-rhs.npy", (ND, 5))
+                diagonal = evidence.npy("probe-N5/original-diagonal.npy", (NF,))
+                require(len(packet["states"]) == 38, "independent_38_states")
+                matched = []
+                previous = previous_residual = final_values = final_exact = None
+                final_float = None
+                for index, state in enumerate(packet["states"]):
+                    probe = state["probe_index"]
+                    if index == 0:
+                        expected_field = "probe-N5/probe-0-baseline-field.npy"
+                        expected_residual = "probe-N5/probe-0-baseline-residual.npy"
+                        expected_report = report["baseline_probes"][0]
+                        require(probe == 0 and state["label"] == "probe-0-baseline", "independent_baseline_order")
+                    elif index <= 32:
+                        history = report["refined_probes"][0]["iterations"][index - 1]
+                        expected_field = "probe-N5/" + history["field_file"]
+                        expected_residual = "probe-N5/" + history["residual_file"]
+                        expected_report = history["equation_residual"]
+                        require(probe == 0 and state["label"] == f"probe-0-outer-{index:02d}", "independent_history_order")
+                    else:
+                        require(probe == index - 33 and state["label"] == f"probe-{probe}-final", "independent_final_order")
+                        expected_field = f"probe-N5/probe-{probe}-final-field.npy"
+                        expected_residual = f"probe-N5/probe-{probe}-final-residual.npy"
+                        expected_report = report["refined_probes"][probe]["final_original_residual"]
+                    require(state["field_member"] == expected_field and state["residual_member"] == expected_residual, "independent_original_member_binding")
+                    field = evidence.npy(expected_field, (ND,))
+                    residual = evidence.npy(expected_residual, (NF,))
+                    values = [field[g] for g in cols]
+                    require(state["ordered_support_values_hex"] == [x.hex() for x in values], "independent_full_field_row_values")
+                    b = rhs[ROW * 5 + probe]
+                    check_scalar(state["original_row_RHS"], b)
+                    check_scalar(state["stored_original_native_row_residual"], residual[at])
+                    computed, exact = independently_check_arithmetic(state["row_arithmetic"], coefficients, values, b)
+                    same = bits(computed) == bits(residual[at])
+                    matched.append(same)
+                    require(state["sequential_row_replays_stored_native_bitpattern"] is same, "independent_actual_order_match_boolean")
+                    denominator = max(max(abs(rhs[g * 5 + probe]) for g in free), 1.0)
+                    maximum_index, maximum = max(enumerate(residual), key=lambda pair: abs(pair[1]))
+                    row = state["full_stored_residual_reduction"]
+                    require(row["numerator"] == abs(maximum) and row["denominator"] == denominator
+                            and row["ratio"] == abs(maximum) / denominator == expected_report["free_dof_residual_infinity_ratio"]
+                            and row["max_original_DOF"] == free[maximum_index] == expected_report["max_residual_original_dof"]
+                            and row["signed_maximum"] == maximum
+                            and row["above_original_gate_row_count"] == sum(abs(x) / denominator > LIMIT for x in residual),
+                            "independent_whole_stored_residual_reduction")
+                    top = sorted(range(NF), key=lambda i: abs(residual[i]), reverse=True)[:32]
+                    require(row["top_32_rows"] == [{"original_DOF": int(free[i]), "signed_residual": residual[i],
+                                                    "ratio": abs(residual[i]) / denominator} for i in top], "independent_top_stored_rows")
+                    if 1 <= index <= 32:
+                        requested = evidence.npy("probe-N5/" + history["local_return"]["field_file"], (ND,))
+                        actual_delta = evidence.npy("probe-N5/" + history["actual_update_file"], (ND,))
+                        require(len(state["support_updates"]) == len(cols), "independent_all_support_updates")
+                        for j, rec in enumerate(state["support_updates"]):
+                            g, old, new, correction = cols[j], previous[j], values[j], requested[cols[j]]
+                            require(rec["original_DOF"] == g and rec["before_hex"] == old.hex()
+                                    and rec["after_hex"] == new.hex() and rec["requested_hex"] == correction.hex()
+                                    and rec["actual_update_hex"] == actual_delta[g].hex(), "independent_update_source_values")
+                            require(bits(old + correction) == bits(new) and bits(new - old) == bits(actual_delta[g])
+                                    and bits((-previous_residual[fcols[j]] / diagonal[fcols[j]]) * report["damping"]["omega"]) == bits(correction),
+                                    "independent_exact_support_correction_and_actual_update")
+                            require(rec["ULP_distance"] == ulps(old, new) and rec["changed"] is (old != new)
+                                    and rec["nonzero_request_rounded_to_no_change"] is (correction != 0.0 and old == new), "independent_ULP_quantization")
+                        require(state["changed_support_DOFs"] == sum(x["changed"] for x in state["support_updates"])
+                                and state["rounded_away_nonzero_support_requests"] == sum(x["nonzero_request_rounded_to_no_change"] for x in state["support_updates"]),
+                                "independent_support_change_counts")
+                        result["support_update_chains_checked"] += 1
+                    if index == 33:
+                        require(values == previous, "independent_final_is_original_step_32")
+                        final_values, final_exact, final_float = values, exact, computed
+                    if index >= 33:
+                        require(packet["five_original_final_stored_residuals"][probe] == row, "independent_five_stored_summary_binding")
+                        if probe > 0:
+                            baseline_identity = evidence.byte_check(f"probe-N5/probe-{probe}-baseline-field.npy")
+                            require(baseline_identity == evidence.used[expected_field], "independent_four_passing_files_unchanged")
+                    previous, previous_residual = values, residual
+                    result["states_checked"] += 1
+                require(packet["all_38_retained_states_replay_original_row_bitpattern"] is all(matched), "independent_all_row_replay_state")
+                trials = packet["all_row_only_adjacent_ULP_trials"]
+                require(len(trials) == (2 * len(cols) if all(matched) else 0), "independent_finite_trial_count")
+                denominator = report["refined_probes"][0]["final_original_residual"]["normalization_denominator"]
+                b = rhs[ROW * 5]
+                ld = report["refined_probes"][0]["iterations"][-1]["longdouble_equation_residual_ratio_diagnostic_only"]
+                for t in trials:
+                    i = result["row_only_trials_checked"]
+                    j, direction = i // 2, (-1 if i % 2 == 0 else 1)
+                    u = final_values[j]
+                    value = math.nextafter(u, -math.inf if direction < 0 else math.inf)
+                    require(t["trial_index"] == i and t["support_index"] == j and t["direction"] == direction
+                            and t["original_free_column_DOF"] == cols[j] and t["old_value_hex"] == u.hex()
+                            and t["adjacent_value_hex"] == value.hex() and t["delta_hex"] == (value - u).hex()
+                            and t["actual_ULP_distance"] == ulps(value, u) == 1, "independent_adjacent_trial")
+                    accum = 0.0
+                    for k, a in enumerate(coefficients):
+                        accum += a * (value if k == j else final_values[k])
+                    r = accum - b
+                    exact_delta = F(coefficients[j]) * (F(value) - F(u))
+                    ex = final_exact + exact_delta
+                    check_scalar(t["row_float64_residual"], r)
+                    equal_rational(t["exact_original_equation_row_residual"], ex)
+                    equal_rational(t["exact_row_residual_change"], exact_delta)
+                    require(t["row_ratio"] == abs(r) / denominator
+                            and t["row_only_original_gate_passes"] is (abs(r) / denominator <= LIMIT)
+                            and t["row_absolute_float64_residual_improves"] is (abs(r) < abs(final_float))
+                            and t["exact_row_error_does_not_increase"] is (abs(ex) <= abs(final_exact)), "independent_row_only_trial_criteria")
+                    require(t["recorded_longdouble_plus_column_delta_ratio_estimate"] == ld + actual[j]["maximum_absolute_free_column_coefficient"] * abs(value - u) / denominator
+                            and t["estimate_is_not_certified_bound_or_acceptance"] is True
+                            and t["full_native_float64_gate_evaluated"] is False
+                            and t["candidate_field_created_or_accepted"] is False, "independent_no_full_gate_claim")
+                    result["row_only_trials_checked"] += 1
+                sensitivity = packet["sensitivity"]
+                require(sensitivity["finite_registered_trial_count"] == 2 * len(cols)
+                        and sensitivity["actual_trial_count"] == len(trials)
+                        and sensitivity["disabled_if_original_row_replay_mismatch"] is (not all(matched))
+                        and sensitivity["row_only_float64_improvement_count"] == sum(t["row_absolute_float64_residual_improves"] for t in trials)
+                        and sensitivity["row_only_float64_pass_count"] == sum(t["row_only_original_gate_passes"] for t in trials)
+                        and sensitivity["row_only_pass_and_exact_row_error_nonincrease_count"] == sum(t["row_only_original_gate_passes"] and t["exact_row_error_does_not_increase"] for t in trials)
+                        and sensitivity["new_iteration_or_search_strategy_execution_authorized_by_this_audit"] is False,
+                        "independent_sensitivity_summary_counts")
+                require(all(evidence.members.get(n) == identity for n, identity in packet["used_original_member_identities"].items()), "producer_used_member_bindings")
+                require(all(packet["used_original_member_identities"].get(n) == identity for n, identity in evidence.used.items()), "reader_used_member_bindings")
+                result.update(completed=True, all_original_row_bitpatterns_match=all(matched),
+                              original_row_support_size=len(cols), original_free_support_proven=True,
+                              all_exact_rounding_components_recomputed=True, all_row_only_trials_recomputed=True,
+                              used_original_member_identities=evidence.used)
+                return_code = 0
+            except BaseException as e:
+                result["failure_type"] = type(e).__name__
+                if isinstance(e, AuditGateError):
+                    result["failure_gate"] = str(e)
+                return_code = 2
+            finally:
+                if evidence is not None:
+                    evidence.close()
+                result["elapsed_seconds"] = time.monotonic() - started
+                result["peak_rss_kib"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+                args.output.write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
+            print(json.dumps({k: v for k, v in result.items() if k != "used_original_member_identities"}, indent=2))
+            return return_code
+
+
+        if __name__ == "__main__":
+            p = argparse.ArgumentParser()
+            p.add_argument("--archive", type=Path, required=True)
+            p.add_argument("--matrix", type=Path, required=True)
+            p.add_argument("--audit", type=Path, required=True)
+            p.add_argument("--worker", type=Path, required=True)
+            p.add_argument("--output", type=Path, required=True)
+            raise SystemExit(run(p.parse_args()))
+        N6_SOURCE_3
+        cp "$HOST_ROOT/readback_n6_row.py" "$CASE_DIR/source/readback_n6_row.py"
+        printf '9a22d658c0caaf3e576bc8ae02bde73ea7b2466adf98c606fd9e3a6d2ba68e4f  %s\n' "$HOST_ROOT/readback_n6_row.py" | sha256sum --check --strict
+        cat > "$HOST_ROOT/export_n6_engineering.py" <<'N6_SOURCE_4'
+        """Strict N6 scientific allowlist; never export raw runtime or input ZIP trees."""
+        from pathlib import Path
+        import argparse
+        import hashlib
+        import json
+        import re
+        import shutil
+
+        S4 = "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560"
+        N6_SOURCES = ["n6_evidence_io.py", "fetch_n6_inputs.py", "audit_n6_row.py", "readback_n6_row.py",
+                      "export_n6_engineering.py", "N6_CAPACITY_STRATEGY.json", "N6_FROZEN_INPUTS.json"]
+        S4_SOURCES = ["engineering/engineering-integration-20261025/numerics/recover_inputs.py",
+                      "engineering/engineering-integration-20261025/numerics/assemble_l2.py",
+                      "engineering/engineering-integration-20261025/numerics/run_bounded.py",
+                      "engineering/engineering-integration-20261025/numerics/probe_original_actions.py",
+                      "integration/tetra_bubble_refinement.py", "integration/contact_patch_audit.py",
+                      "integration/contact_exchange.py", "tools/check_environment.py", "pyproject.toml", "uv.lock"]
+        V4_SOURCES = ["integration/probe_key_endpoint_extension.py", "tools/key_endpoint_resume.py",
+                      "run_key_endpoint_trials.py", "tests/test_key_endpoint_extension.py", "tests/test_key_endpoint_resume.py"]
+        SOURCE_ALLOWLIST = ["source/" + n for n in N6_SOURCES + ["host-cap.py", "service-launch.py", "python-downloads.json"]]
+        SOURCE_ALLOWLIST += ["source/S4/" + n for n in S4_SOURCES] + ["source/original-v4/" + n for n in V4_SOURCES]
+        AUDIT_KEYS = """schema completed phase functional_source_commit functional_source_tree source_N5a_run_id source_release_asset_id source_ZIP_sha256 source_ZIP_bytes source_manifest_sha256 original_K_sha256 original_C_sha256 original_float64_gate original_row_DOF new_solver_executed new_full_field_candidate_produced new_full_native_SpMV_executed original_input_fields_modified row_only_sensitivity_is_not_full_gate_acceptance H_action_restore_executed frame_inverse_executed candidate_go fixture_fabrication_go manufacturing_go address_space_limit_bytes output_limit_bytes states five_original_final_stored_residuals elapsed_seconds peak_rss_kib original_K_components original_row_free_index original_Kff_buffer_hashes_verified ordered_original_free_row_entries ordered_support_size all_38_retained_states_replay_original_row_bitpattern row_state_count all_row_only_adjacent_ULP_trials sensitivity used_original_member_identities source_file_identity failure_type failure_gate""".split()
+        READER_KEYS = """schema completed native_full_SpMV_or_solve_executed new_field_produced original_five_qualification_status states_checked support_update_chains_checked row_only_trials_checked exact_arithmetic original_array_input_parser_shared_with_producer numeric_audit_or_row_extraction_code_shared_with_producer producer_audit_identity all_original_row_bitpatterns_match original_row_support_size original_free_support_proven all_exact_rounding_components_recomputed all_row_only_trials_recomputed used_original_member_identities elapsed_seconds peak_rss_kib failure_type failure_gate""".split()
+        TRANSFER_KEYS = """schema completed release_id asset_id asset_name transport_cap_bytes native_sparse_solve_executed diagnostic_arithmetic_executed raw_API_or_credentials_exported input_asset_modified seconds original_ZIP original_K manifest_sha256 manifest_bytes original_ZIP_member_count all_used_members_to_be_checked_by_row_workers full_archive_member_readback_previously_completed_by_run failure_type failure_gate""".split()
+        RECORD_ALLOWLIST = {
+            "N6-input-transfer.json": ("razr-N6-reviewed-input-transfer-v1", TRANSFER_KEYS),
+            "row-N6/N6_ROW_AUDIT.json": ("razr-N6-original-row-capacity-audit-v1", AUDIT_KEYS),
+            "N6-independent-readback.json": ("razr-N6-independent-scalar-row-readback-v1", READER_KEYS),
+        }
+        SUP_KEYS = """schema exit_code resource_stop_reason seconds peak_worker_RSS_bytes peak_worker_high_water_RSS_bytes peak_worker_virtual_bytes sampled_peak_cgroup_current_bytes sampled_peak_cgroup_shmem_bytes sampled_peak_nonreclaimable_budget_bytes peak_task_payload_bytes minimum_filesystem_available_bytes file_cache_counted_separately_from_nonreclaimable_budget memory_budget_definition supervisor_source_sha256 supervisor_source_sha256_after supervisor_source_unchanged log_sha256 samples""".split()
+        SAMPLE_KEYS = """monotonic task_filesystem_available_bytes task_payload_bytes cgroup_current_bytes cgroup_anon_bytes cgroup_shmem_bytes cgroup_file_bytes nonreclaimable_budget_bytes VmRSS_bytes VmHWM_bytes VmSize_bytes""".split()
+
+
+        def sha(path):
+            h = hashlib.sha256()
+            with path.open("rb") as f:
+                for block in iter(lambda: f.read(1024**2), b""):
+                    h.update(block)
+            return h.hexdigest()
+
+
+        def private_strings_forbidden(value):
+            if isinstance(value, dict):
+                for k, v in value.items():
+                    private_strings_forbidden(k)
+                    private_strings_forbidden(v)
+            elif isinstance(value, list):
+                for v in value:
+                    private_strings_forbidden(v)
+            elif isinstance(value, str):
+                if re.search(r"(?:/home/|/workspace/|/tmp/|/proc/[0-9]|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})", value):
+                    raise ValueError("private runtime string in selected engineering record")
+
+
+        def export(root, output):
+            root = root.resolve(strict=True)
+            output = output.resolve()
+            if output == root or root in output.parents:
+                raise ValueError("export must be separate from original case")
+            output.mkdir(parents=True, exist_ok=False)
+            manifest = {"schema": "razr-N6-engineering-allowlist-export-v1", "functional_source_commit": S4,
+                        "raw_runtime_records_exported": False, "raw_runtime_records_durable": False,
+                        "producer_records_modified": False, "omitted_runtime_remains_on_ephemeral_runner_only": True,
+                        "original_input_ZIP_or_field_arrays_duplicated_in_this_export": False,
+                        "original_input_fields_durable_release_asset_id": 677184053,
+                        "copied": {}, "projections": {}, "original_runtime_record_hashes": []}
+            def source(name):
+                p = root / name
+                if not p.is_file() or p.is_symlink() or not p.resolve().is_relative_to(root):
+                    raise ValueError("nonregular or missing allowlisted source")
+                return p
+            def copy(name):
+                p = source(name)
+                destination = output / name
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                before = sha(p)
+                shutil.copyfile(p, destination)
+                if sha(p) != before or sha(destination) != before:
+                    raise ValueError("copied source changed")
+                manifest["copied"][name] = {"bytes": p.stat().st_size, "sha256": before, "original_bytes": True}
+            def projection(name, selected):
+                p = source(name)
+                private_strings_forbidden(selected)
+                record = {"schema": "razr-derived-engineering-projection-v1", "original_record_sha256": sha(p),
+                          "original_record_bytes": p.stat().st_size, "is_original_record": False,
+                          "omitted_runtime_record_durable": False, "selected_engineering_fields": selected}
+                destination_name = name.removesuffix(".json") + ".engineering.json"
+                destination = output / destination_name
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_text(json.dumps(record, indent=2, allow_nan=False) + "\n")
+                manifest["projections"][destination_name] = {"bytes": destination.stat().st_size, "sha256": sha(destination),
+                                                            "original_sha256": record["original_record_sha256"]}
+            for name in SOURCE_ALLOWLIST:
+                if (root / name).exists():
+                    copy(name)
+            for name, (schema, allowed) in RECORD_ALLOWLIST.items():
+                if (root / name).exists():
+                    p = source(name)
+                    if p.stat().st_size > 32 * 1024**2:
+                        raise ValueError("diagnostic record exceeds declared export budget")
+                    r = json.loads(p.read_text())
+                    if r.get("schema") != schema or not set(r).issubset(allowed):
+                        raise ValueError("unexpected diagnostic schema or top-level field")
+                    private_strings_forbidden(r)
+                    copy(name)
+            for name in ("row-N6-supervisor.json", "readback-N6-supervisor.json"):
+                if (root / name).exists():
+                    raw = json.loads(source(name).read_text())
+                    selected = {k: raw[k] for k in SUP_KEYS if k in raw}
+                    selected["samples"] = [{k: row[k] for k in SAMPLE_KEYS if k in row} for row in raw.get("samples", [])]
+                    if raw.get("supervisor_error"):
+                        selected["supervisor_error_type"] = raw["supervisor_error"].get("type")
+                    projection(name, selected)
+            checks = {}
+            for name in ("environment-before.json", "environment-after.json"):
+                if (root / name).exists():
+                    p = source(name)
+                    raw = json.loads(p.read_text())
+                    checks[name] = {"original_sha256": sha(p), "original_bytes": p.stat().st_size,
+                                    **{k: raw.get(k) for k in ("passed", "python_version", "checked_package_count", "checked_packages", "pyproject_sha256", "uv_lock_sha256")}}
+            if (root / "source-after.json").exists():
+                p = source("source-after.json")
+                raw = json.loads(p.read_text())
+                checks["functional_source_after"] = {"original_sha256": sha(p), "original_bytes": p.stat().st_size,
+                    "head_equals_S4": raw.get("head", {}).get("exit_code") == 0 and raw.get("head", {}).get("stdout", "").strip() == S4,
+                    "git_status_empty": raw.get("status", {}).get("exit_code") == 0 and not raw.get("status", {}).get("stdout", "").strip(),
+                    "original_five_sources_unchanged": raw.get("original_five_sources_unchanged")}
+            checks["execution_harness"] = []
+            for p in sorted(root.rglob("SUMMARY.json")):
+                raw = json.loads(p.read_text())
+                if raw.get("schema") != "razr-D4-private-service-launch":
+                    continue
+                manager = raw.get("manager_result", {})
+                checks["execution_harness"].append({"original_sha256": sha(p), "original_bytes": p.stat().st_size,
+                    **{k: raw.get(k) for k in ("compatibility_verified", "cleanup_verified", "normal_command_completed", "command_exit_code", "exit_code")},
+                    **{k: manager.get(k) for k in ("forced_cleanup", "adopted_descendant_cleanup_required")}})
+            private_strings_forbidden(checks)
+            (output / "EXECUTION_CHECKS.engineering.json").write_text(json.dumps({"schema": "razr-N6-projected-execution-checks-v1",
+                "raw_runtime_records_exported": False, "raw_runtime_records_durable": False, "checks": checks}, indent=2, allow_nan=False) + "\n")
+            for p in sorted(root.rglob("*")):
+                if p.is_file() and not p.is_symlink():
+                    name = str(p.relative_to(root))
+                    if name not in manifest["copied"]:
+                        manifest["original_runtime_record_hashes"].append({"bytes": p.stat().st_size, "sha256": sha(p), "exported_original_bytes": False})
+            manifest["exported_files"] = {str(p.relative_to(output)): {"bytes": p.stat().st_size, "sha256": sha(p)}
+                                          for p in sorted(output.rglob("*")) if p.is_file()}
+            if sum(x["bytes"] for x in manifest["exported_files"].values()) > 32 * 1024**2:
+                raise ValueError("complete export exceeds registered scientific output reservation")
+            (output / "EXPORT_MANIFEST.json").write_text(json.dumps(manifest, indent=2, allow_nan=False) + "\n")
+            print(json.dumps({"copied_files": len(manifest["copied"]), "projected_records": len(manifest["projections"]),
+                              "raw_runtime_records_exported": False}, indent=2))
+
+
+        if __name__ == "__main__":
+            p = argparse.ArgumentParser()
+            p.add_argument("--root", type=Path, required=True)
+            p.add_argument("--output", type=Path, required=True)
+            a = p.parse_args()
+            export(a.root, a.output)
+        N6_SOURCE_4
+        cp "$HOST_ROOT/export_n6_engineering.py" "$CASE_DIR/source/export_n6_engineering.py"
+        printf '167233544dd64b46112867fa7c90e1227e3c2c5e525efef537a8c6e6187b1305  %s\n' "$HOST_ROOT/export_n6_engineering.py" | sha256sum --check --strict
+        cat > "$HOST_ROOT/N6_CAPACITY_STRATEGY.json" <<'N6_SOURCE_5'
+        {
+          "schema": "razr-N6-read-only-row-capacity-preregistration-v1",
+          "functional_source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+          "functional_source_tree": "cdd9e2c41216201b6cd04dd610d45fde80499045",
+          "identity": "N6 capacity evidence only; no iterative solver or full-field candidate",
+          "original_float64_gate_limit": 1e-07,
+          "prior_actual_N5a_result": {
+            "run_id": 40276429821,
+            "worker_seconds": 21.312313765,
+            "worker_peak_rss_kib": 1061112,
+            "original_final_ratios": [
+              1.7540169838265448e-07,
+              1.990477778047551e-09,
+              7.9778400558745e-09,
+              7.799897850960903e-09,
+              8.043638351779749e-09
+            ],
+            "actual_updates": 32,
+            "all_five_passed": false,
+            "max_original_DOF": 87824
+          },
+          "diagnostic_scope": {
+            "original_K_b_C_free_fixed_and_field_bytes_unchanged": true,
+            "exact_original_Kff_buffer_order_verified_by_original_data_indices_indptr_SHA256": true,
+            "states": 38,
+            "state_definition": "probe-0 baseline + 32 actual sequential histories + final five original fields",
+            "row_order_gate": "separate binary64 multiply/add in original CSC free-column order must reproduce every stored native row residual bitpattern",
+            "exact_arithmetic": "Fraction.from_float / float.as_integer_ratio; arbitrary-size integer dyadic arithmetic, no unchecked Decimal precision",
+            "exact_error_terms": [
+              "product rounding",
+              "sequential accumulation rounding",
+              "final subtraction rounding"
+            ],
+            "support_quantization": "every support DOF requested/actual update and ULP distance across all 32 steps; source arrays independently reread",
+            "row_sensitivity": "both adjacent +/-1 ULP at every original free support column; all trials retained in deterministic column/direction order",
+            "trial_bound": "exactly twice original row-support count, support hard cap 4096; disabled on any replay mismatch",
+            "no_full_field_candidate_written": true,
+            "no_full_native_SpMV_executed": true,
+            "no_sparse_factorization_executed": true,
+            "row_pass_is_not_full_original_gate_pass": true,
+            "true_equation_diagnostic_preserved": true,
+            "longdouble_based_global_change_estimate_is_not_certified_bound": true,
+            "next_iterative_strategy_not_authorized_or_executed_by_this_workflow": true
+          },
+          "capacity_before_execution": {
+            "transport": {
+              "readonly_same_repository_draft_asset_id": 677184053,
+              "asset_bytes": 565978451,
+              "asset_limit_bytes": 805306368,
+              "extracted_K_bytes": 285135469,
+              "address_space_bytes": 268435456,
+              "wall_seconds": 180,
+              "ordinary_disk_reserve_bytes": 524288000
+            },
+            "worker": {
+              "original_wall_seconds": 180,
+              "address_space_bytes": 2147483648,
+              "shared_nonreclaimable_bytes": 7301444403,
+              "ordinary_disk_reserve_bytes": 524288000,
+              "output_reservation_bytes": 33554432,
+              "K_CSC_array_payload_bytes": 285134212,
+              "largest_input_scalar_field_bytes": 2752824,
+              "five_RHS_payload_bytes": 13764120,
+              "memory_basis": "stream NPY into typed arrays; original CSC about 285 MB; Kff hashed columnwise without storing a second full matrix; four field vectors, RHS, domain mapping and JSON packet; expected peak below 1 GiB, enforced 2 GiB AS",
+              "time_basis": "one 23.65M-entry Python filter/hash pass, 38 retained residual-vector reductions (~13.08M entries), sequential decompression of original arrays, exact dyadic arithmetic only on one sparse row; no factorization or full sparse matvec",
+              "estimated_worker_seconds_range": [
+                20,
+                120
+              ],
+              "timing_is_algorithmic_estimate_not_measurement": true
+            },
+            "independent_reader": {
+              "wall_seconds": 180,
+              "address_space_bytes": 2147483648,
+              "basis": "one independent linear scan of original CSC indices and all 38 original field/residual reads; separate scalar/Fraction replay; shares typed input I/O only"
+            },
+            "original_numerical_solver_limits_not_increased": true,
+            "scientific_inputs_retained_in_prior_draft_asset_not_duplicated_in_small_diagnostic_export": true
+          },
+          "output_policy": {
+            "strict_engineering_allowlist_only": true,
+            "raw_runtime_environment_proc_namespace_API_or_email_exported": false,
+            "raw_runtime_durable": false,
+            "original_raw_reports_modified": false,
+            "projection_identifies_original_SHA_and_bytes": true
+          },
+          "H_frame_restore_executed": false,
+          "candidate_go": false,
+          "fixture_fabrication_go": false,
+          "manufacturing_go": false
+        }
+        N6_SOURCE_5
+        cp "$HOST_ROOT/N6_CAPACITY_STRATEGY.json" "$CASE_DIR/source/N6_CAPACITY_STRATEGY.json"
+        printf 'ea30187dfcc0ce154430172be200c7eae098e71fc5dda181d3c48f018548a634  %s\n' "$HOST_ROOT/N6_CAPACITY_STRATEGY.json" | sha256sum --check --strict
+        cat > "$HOST_ROOT/N6_FROZEN_INPUTS.json" <<'N6_SOURCE_6'
+        {
+          "schema": "razr-N6-frozen-scientific-input-binding-v1",
+          "repository_full_name": "TrillionniumFoundation/RAZR-SLIDE",
+          "release_id": 423900341,
+          "draft": true,
+          "archive_verification_run_id": 40277185712,
+          "source_artifact": {
+            "label": "N5a",
+            "run_id": 40276429821,
+            "head_sha": "9d6dd329b4a7cc03890b9e02492a3b4809c6f783",
+            "artifact_id": 12630841294,
+            "artifact_name": "s4-panel-local-N5a-engineering-40276429821-1",
+            "zip_bytes": 565978451,
+            "zip_sha256": "46440881a264e6749d9c2ffd77676185bc8af219a536cb19e4b21132a1ee7a10",
+            "manifest_name": "EXPORT_MANIFEST.json",
+            "manifest_sha256": "158b19afd6dd1a822d1609f954edb1b1eec6427460a32b9c2e7d7a91c484b9fa",
+            "manifest_layout": "exported_files",
+            "manifest_entries": 371,
+            "asset_name": "N5a-scientific-40276429821.zip"
+          },
+          "source_verification": {
+            "original_ZIP_sha256": "46440881a264e6749d9c2ffd77676185bc8af219a536cb19e4b21132a1ee7a10",
+            "original_ZIP_bytes": 565978451,
+            "reviewed_manifest_sha256": "158b19afd6dd1a822d1609f954edb1b1eec6427460a32b9c2e7d7a91c484b9fa",
+            "all_scientific_members_and_CRC_verified": true,
+            "verified_manifest_entries": 371,
+            "verified_uncompressed_member_bytes": 1138398024
+          },
+          "release_asset": {
+            "asset_id": 677184053,
+            "name": "N5a-scientific-40276429821.zip",
+            "bytes": 565978451,
+            "sha256": "46440881a264e6749d9c2ffd77676185bc8af219a536cb19e4b21132a1ee7a10",
+            "complete_uploaded_asset_bytes_read_back_and_verified": true
+          },
+          "original_input_fields_must_not_be_modified": true,
+          "raw_runtime_collection_not_included": true
+        }
+        N6_SOURCE_6
+        cp "$HOST_ROOT/N6_FROZEN_INPUTS.json" "$CASE_DIR/source/N6_FROZEN_INPUTS.json"
+        printf '3fbad56c03c00404ac0bfe0d0b60aa79745de7f1e0c436f9898201529be96123  %s\n' "$HOST_ROOT/N6_FROZEN_INPUTS.json" | sha256sum --check --strict
+        python3 -B - <<'N6_S4_SOURCE_COPY'
+        import hashlib,json,os,pathlib,subprocess
+        root=pathlib.Path(os.environ['GITHUB_WORKSPACE']);case=pathlib.Path(os.environ['CASE_DIR'])
+        assert subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip()=='cdd9e2c41216201b6cd04dd610d45fde80499045'
+        paths=['engineering/engineering-integration-20261025/numerics/recover_inputs.py',
+         'engineering/engineering-integration-20261025/numerics/assemble_l2.py',
+         'engineering/engineering-integration-20261025/numerics/run_bounded.py',
+         'engineering/engineering-integration-20261025/numerics/probe_original_actions.py',
+         'integration/tetra_bubble_refinement.py','integration/contact_patch_audit.py',
+         'integration/contact_exchange.py','tools/check_environment.py','pyproject.toml','uv.lock']
+        identities={}
+        for name in paths:
+         p=root/name;data=p.read_bytes();target=case/'source'/'S4'/name
+         target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)
+         identities[name]={'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
+        assert identities[paths[2]]['sha256']=='901654cdb718a988471a700b01bfbb2e8979a98248c9211fa69d42b25279e56e'
+        assert identities[paths[3]]['sha256']=='1f8334a1dda34a4101662ccdbd14c2db0bb77b8a3e080b5f5ec74d918955a2c6'
+        (case/'N6-source-and-resource-contract.json').write_text(json.dumps({'functional_source_commit':os.environ['S4'],
+         'functional_source_tree':'cdd9e2c41216201b6cd04dd610d45fde80499045','original_source_files':identities,
+         'N6_worker_scope':'read-only exact dyadic row capacity evidence','original_numeric_worker_limits_increased':False,
+         'legacy_N4_labels_retained_in_byte_unchanged_host_harness':True,
+         'native_sparse_solve_executed':False,'original_float64_gate_limit':1e-7},indent=2)+'\n')
+        N6_S4_SOURCE_COPY
+    - name: Prove INT and TERM cleanup through original supervisor and independent-session stdlib worker
+      shell: bash
+      run: |
+        set -euo pipefail
+        /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" --signal-check "$CASE_DIR/signal-lifecycle" "$GITHUB_WORKSPACE"
+    - name: Set up pinned uv and identical Python patch version in every job
+      uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884
+      with:
+        version: 0.10.10
+        python-version: 3.12.14
+        enable-cache: false
+    - name: Install exact S4 lock and verify actual Python, uv and all 43 package versions
+      shell: bash
+      run: |
+        set -euo pipefail
+        /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" "$CASE_DIR/install" uv sync --locked --no-cache
+        echo 'UV_NO_SYNC=1' >> "$GITHUB_ENV"
+        /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" "$CASE_DIR/Python-uv-runtime-identity" \
+          .venv/bin/python -B -c 'import json,os,shutil,subprocess,sys; u=subprocess.check_output(["uv","--version"],text=True).strip(); r={"python_version":sys.version,"python_executable":sys.executable,"python_patch":list(sys.version_info[:3]),"uv_version":u,"uv_path":shutil.which("uv"),"uid":os.getuid(),"gid":os.getgid()}; print(json.dumps(r)); assert sys.version_info[:3]==(3,12,14) and u=="uv 0.10.10"'
+        /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" "$CASE_DIR/environment-before-check" \
+          .venv/bin/python -B tools/check_environment.py --output "$CASE_DIR/environment-before.json"
+    - name: Read one frozen reviewed scientific draft asset under separate transport cap
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      run: |
+        set -euo pipefail
+        timeout --signal=TERM --kill-after=20s 180s .venv/bin/python -B "$HOST_ROOT/fetch_n6_inputs.py" --output "$RUNNER_TEMP/razr-n6-inputs" --receipt "$CASE_DIR/N6-input-transfer.json"
+    - name: Audit original CSC row and all retained states under original 180 second supervisor
+      shell: bash
+      run: |
+        set -euo pipefail
+        set +e
+        /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" "$CASE_DIR/row-N6-execution" .venv/bin/python -B engineering/engineering-integration-20261025/numerics/run_bounded.py --task-directory "$CASE_DIR" --seconds 180 --log "$CASE_DIR/row-N6-worker.log" --report "$CASE_DIR/row-N6-supervisor.json" -- .venv/bin/python -B "$HOST_ROOT/audit_n6_row.py" --archive "$RUNNER_TEMP/razr-n6-inputs/N5a-scientific.zip" --matrix "$RUNNER_TEMP/razr-n6-inputs/original-K.npz" --output "$CASE_DIR/row-N6"
+        row_code=$?
+        set -e
+        echo "$row_code" > "$CASE_DIR/row-N6-shell-exit-code.txt"
+        test "$row_code" -eq 0 -o "$row_code" -eq 2
+    - name: Independently reread original arrays and exact row arithmetic
+      if: always()
+      shell: bash
+      run: |
+        set -euo pipefail
+        /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" "$CASE_DIR/readback-N6-execution" .venv/bin/python -B engineering/engineering-integration-20261025/numerics/run_bounded.py --task-directory "$CASE_DIR" --seconds 180 --log "$CASE_DIR/readback-N6-worker.log" --report "$CASE_DIR/readback-N6-supervisor.json" -- .venv/bin/python -B "$HOST_ROOT/readback_n6_row.py" --archive "$RUNNER_TEMP/razr-n6-inputs/N5a-scientific.zip" --matrix "$RUNNER_TEMP/razr-n6-inputs/original-K.npz" --audit "$CASE_DIR/row-N6/N6_ROW_AUDIT.json" --worker "$HOST_ROOT/audit_n6_row.py" --output "$CASE_DIR/N6-independent-readback.json"
+    - name: Preserve current hashes and failure evidence without rewriting raw reports
+      if: always()
+      shell: bash
+      run: |
+        set -euo pipefail
+        environment_exit=not_executed
+        if test -x .venv/bin/python && test -f tools/check_environment.py; then
+          environment_exit=0
+          /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" "$CASE_DIR/environment-after-check" \
+            .venv/bin/python -B tools/check_environment.py --output "$CASE_DIR/environment-after.json" || environment_exit=$?
+        fi
+        echo "$environment_exit" > "$CASE_DIR/environment-after.exit-code.txt"
+        python3 -B - <<'PY'
+        import hashlib, json, os, pathlib, subprocess
+        case = pathlib.Path(os.environ['CASE_DIR'])
+        def git(*args):
+            p = subprocess.run(['git', *args], text=True, capture_output=True)
+            return {'exit_code': p.returncode, 'stdout': p.stdout, 'stderr': p.stderr}
+        source = {'head': git('rev-parse', 'HEAD'), 'status': git('status', '--porcelain', '--untracked-files=all')}
+        if (case/'source-identity.json').is_file():
+            r = json.loads((case/'source-identity.json').read_text())
+            source['original_five_sources_unchanged'] = all(
+              (pathlib.Path(r['study_directory'])/name).is_file() and
+              hashlib.sha256((pathlib.Path(r['study_directory'])/name).read_bytes()).hexdigest() == digest
+              for name, digest in r['study_source_sha256'].items())
+        (case/'source-after.json').write_text(json.dumps(source, indent=2)+'\n')
+        environment_file = case/'environment-after.json'
+        environment_code = (case/'environment-after.exit-code.txt').read_text().strip()
+        environment_passed = environment_file.is_file() and environment_code == '0' and json.loads(environment_file.read_text()).get('passed') is True
+        (case/'environment-after-state.json').write_text(json.dumps({'status': 'passed' if environment_passed else 'failed' if environment_file.is_file() else 'not_executed', 'wrapper_exit_code': environment_code, 'checker_report_exists': environment_file.is_file(), 'passed': environment_passed}, indent=2)+'\n')
+        members = {str(p.relative_to(case)): {'bytes': p.stat().st_size,
+          'sha256': hashlib.sha256(p.read_bytes()).hexdigest()}
+          for p in sorted(case.rglob('*')) if p.is_file() and p != case/'host-artifact-manifest.json'}
+        (case/'host-artifact-manifest.json').write_text(json.dumps({'members': members}, indent=2)+'\n')
+        assert source['head']['exit_code'] == 0 and source['head']['stdout'].strip() == os.environ['S4']
+        assert source['status']['exit_code'] == 0 and not source['status']['stdout'].strip()
+        assert source.get('original_five_sources_unchanged') is True
+        assert (case/'environment-after.exit-code.txt').read_text().strip() == '0'
+        assert json.loads((case/'environment-after.json').read_text()).get('passed') is True
+        PY
+    - name: Export strict scientific source and scalar evidence allowlist
+      if: always()
+      shell: bash
+      run: |
+        set -euo pipefail
+        python3 -B "$HOST_ROOT/export_n6_engineering.py" --root "$CASE_DIR" --output "$HOST_ROOT/engineering-export"
+    - name: Upload bounded N6 scientific diagnostic evidence
+      if: always()
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+      with:
+        name: s4-panel-row-N6-engineering-${{ github.run_id }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/razr-s4-panel-n6-dd7def6e/engineering-export
+        if-no-files-found: error
+        retention-days: 14
