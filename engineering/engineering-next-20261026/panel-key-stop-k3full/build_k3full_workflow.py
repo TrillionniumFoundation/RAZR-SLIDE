@@ -4,6 +4,7 @@ import argparse,ast,hashlib,json,re,subprocess
 from pathlib import Path
 import yaml
 from full_stop_states import STATES,EXPECTED_CONTACT_ENDS
+from verify_embedded_python import inspect as inspect_embedded_python
 
 HERE=Path(__file__).resolve().parent
 S4='dd7def6e6a4de9f47dc91ca2ab336fb1a8828560';TREE='cdd9e2c41216201b6cd04dd610d45fde80499045'
@@ -60,7 +61,7 @@ host=pathlib.Path(os.environ['HOST_ROOT']);case=pathlib.Path(os.environ['CASE_DI
 binding=json.loads((host/'k3full/K3FULL_K3_BINDING.json').read_text());assert binding['actual_two_complete_pilots_reviewed_clear'] is True
 v=os.statvfs(case);available=v.f_bavail*v.f_frsize
 capacity={'ordinary_available_bytes_before_second_copy':available,'additional_input_and_export_reserve_bytes':1536*2**20,'observed_actual_two_input_unpacked_bytes':408408534,'original_native_startup_256MiB_runtime_100MiB_guards_unchanged':True}
-(case/'K3FULL-input-capacity.json').write_text(json.dumps(capacity,indent=2)+'\n')
+(case/'K3FULL-input-capacity.json').write_text(json.dumps(capacity,indent=2)+chr(10))
 assert available>=1536*2**20,'extra input/export ordinary disk reserve unavailable; original native gate is not relaxed'
 observed={}
 for pose in ('stow_tabs_3','predock'):
@@ -83,7 +84,7 @@ for pose in ('stow_tabs_3','predock'):
    assert len(r['independent_early_gate_records'])==18 and all(x['evaluated'] is True and x['passed'] is True for x in r['independent_early_gate_records'].values())
    assert not r['independent_native_evaluation_failures'] and r['producer_reader_precondition_classification_consistent'] is True
  observed[pose]={'manifest_sha256':hashlib.sha256(raw).hexdigest(),'all_engineering_members_verified':len(members),'actual_complete_clear_pilot_verified':True}
-(case/'K3FULL-prerequisite-verification.json').write_text(json.dumps(observed,indent=2)+'\n')
+(case/'K3FULL-prerequisite-verification.json').write_text(json.dumps(observed,indent=2)+chr(10))
 print(json.dumps(observed,sort_keys=True))
 K3FULL_PREREQUISITE
 '''}
@@ -104,6 +105,8 @@ K3FULL_PREREQUISITE
    c=subprocess.run(['bash','-n'],input=step['run'],text=True,capture_output=True);assert c.returncode==0,(step['name'],c.stderr);shells.append(step['name'])
  workflow='# Ten exact finite factories after actual dual K3 pilot; no continuous or physical qualification.\n'+yaml.safe_dump(w,sort_keys=False,width=110)
  (HERE/'s4-panel-key-stop-k3full-hosted.yml').write_text(workflow)
+ embedded=inspect_embedded_python(HERE/'s4-panel-key-stop-k3full-hosted.yml')
+ assert embedded['all_embedded_and_generated_Python_AST_passed'],embedded['failures']
  plan={'schema':'razr-K3FULL-ten-factory-preexecution-capacity-plan-v1','functional_source_commit':S4,'source_tree':TREE,
   'branch':'diagnostic/s4-panel-key-stop-k3full-20261026','actual_dual_pilot_run_id':binding['run_id'],'actual_dual_pilot_head_sha':binding['head_sha'],
   'actual_dual_pilot_binding_sha256':sha(sources['K3FULL_K3_BINDING.json'].encode()),'candidate_source_sha256':binding['candidate_source_sha256'],
@@ -119,11 +122,12 @@ K3FULL_PREREQUISITE
   'actual_pilot_max_sampled_factory_RSS_bytes':563232768,'actual_pilot_max_sampled_reader_RSS_bytes':543293440,
   'planned_factory_seconds_range':[350,600],'planned_reader_seconds_range':[270,480],'setup_download_export_seconds_range':[90,180],
   'planned_five_two_job_waves_minutes_range':[60,105],'queue_time_included':False,'completion_guaranteed_by_estimate':False,
+  'all_embedded_and_generated_Python_AST_passed':True,'Python_heredoc_count':embedded['Python_heredoc_count'],'executable_inline_Python_count':embedded['executable_inline_Python_count'],
   'original_resource_gates_not_relaxed':True,'all_shell_blocks_parse':True,'shell_blocks':shells,'new_native_full_campaign_executed':False,
   'current_S4_or_K1_domain_reduced':False,'full_continuous_motion_proved':False,'physical_allowed_domain_proved':False,'strength_qualified':False,
   'candidate_go':False,'fixture_fabrication_go':False,'manufacturing_go':False,'raw_runtime_durable_preservation_claimed':False}
  plan_text=json.dumps(plan,indent=2)+'\n';(HERE/'K3FULL_EXECUTION_PLAN.json').write_text(plan_text)
- public={**sources,'build_k3full_workflow.py':Path(__file__).read_text(),'README.md':(HERE/'README.md').read_text(),'K3FULL_EXECUTION_PLAN.json':plan_text}
+ public={**sources,'verify_embedded_python.py':(HERE/'verify_embedded_python.py').read_text(),'build_k3full_workflow.py':Path(__file__).read_text(),'README.md':(HERE/'README.md').read_text(),'K3FULL_EXECUTION_PLAN.json':plan_text}
  elements=[{'path':'engineering/engineering-next-20261026/panel-key-stop-k3full/'+name,'mode':'100644','type':'blob','content':s} for name,s in public.items()]
  elements.append({'path':'.github/workflows/s4-panel-key-stop-k3full-hosted.yml','mode':'100644','type':'blob','content':workflow})
  (HERE/'K3FULL_PUBLIC_TREE_REQUEST.json').write_text(json.dumps({'repository_full_name':'TrillionniumFoundation/RAZR-SLIDE','base_tree_sha':TREE,'tree_elements':elements},indent=2)+'\n')

@@ -1620,7 +1620,7 @@ jobs:
       run: "set -euo pipefail\npython3 -B - <<'K3FULL_PREREQUISITE'\nimport hashlib,json,os,pathlib,shutil\nhost=pathlib.Path(os.environ['HOST_ROOT']);case=pathlib.Path(os.environ['CASE_DIR'])\n\
         binding=json.loads((host/'k3full/K3FULL_K3_BINDING.json').read_text());assert binding['actual_two_complete_pilots_reviewed_clear']\
         \ is True\nv=os.statvfs(case);available=v.f_bavail*v.f_frsize\ncapacity={'ordinary_available_bytes_before_second_copy':available,'additional_input_and_export_reserve_bytes':1536*2**20,'observed_actual_two_input_unpacked_bytes':408408534,'original_native_startup_256MiB_runtime_100MiB_guards_unchanged':True}\n\
-        (case/'K3FULL-input-capacity.json').write_text(json.dumps(capacity,indent=2)+'\n')\nassert available>=1536*2**20,'extra\
+        (case/'K3FULL-input-capacity.json').write_text(json.dumps(capacity,indent=2)+chr(10))\nassert available>=1536*2**20,'extra\
         \ input/export ordinary disk reserve unavailable; original native gate is not relaxed'\nobserved={}\nfor\
         \ pose in ('stow_tabs_3','predock'):\n src=host/'K3-download'/pose;manifest=src/'ENGINEERING_MANIFEST.json';raw=manifest.read_bytes()\n\
         \ assert hashlib.sha256(raw).hexdigest()==binding['poses'][pose]['engineering_manifest_sha256']\n m=json.loads(raw);assert\
@@ -1637,7 +1637,7 @@ jobs:
         \   assert len(r['independent_early_gate_records'])==18 and all(x['evaluated'] is True and x['passed'] is\
         \ True for x in r['independent_early_gate_records'].values())\n   assert not r['independent_native_evaluation_failures']\
         \ and r['producer_reader_precondition_classification_consistent'] is True\n observed[pose]={'manifest_sha256':hashlib.sha256(raw).hexdigest(),'all_engineering_members_verified':len(members),'actual_complete_clear_pilot_verified':True}\n\
-        (case/'K3FULL-prerequisite-verification.json').write_text(json.dumps(observed,indent=2)+'\n')\nprint(json.dumps(observed,sort_keys=True))\n\
+        (case/'K3FULL-prerequisite-verification.json').write_text(json.dumps(observed,indent=2)+chr(10))\nprint(json.dumps(observed,sort_keys=True))\n\
         K3FULL_PREREQUISITE\n"
     - name: Fresh complete factory and independent full STEP matrix at the preregistered state
       shell: bash
