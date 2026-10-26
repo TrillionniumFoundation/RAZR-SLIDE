@@ -1,0 +1,199 @@
+{
+  "schema": "razr-EC1b-official-package-and-ELF-readback-v1",
+  "source_index_record_sha256": "acf40575be26633ddc14b4f77678972ffb8ccfeb67b66d27f0d3ba5a886515aa",
+  "observed_EC1a_run_id": 40277280890,
+  "observed_missing_SONAMEs": [
+    "libGLEW.so.2.2",
+    "libjxrglue.so.0",
+    "libmbedcrypto.so.7"
+  ],
+  "new_package_count": 3,
+  "total_new_download_bytes": 578006,
+  "total_new_data_tar_bytes": 1699840,
+  "new_package_bytes_match_official_signed_index": true,
+  "every_new_NEEDED_resolved_by_pinned_new_provider_or_observed_prior_resolved_provider": true,
+  "actual_EC1b_linker_closure_not_yet_executed": true,
+  "none_of_the_new_libraries_executed": true,
+  "no_deb_or_runtime_collection_saved": true,
+  "packages": [
+    {
+      "package": "libglew2.2",
+      "version": "2.2.0-4build1",
+      "architecture": "amd64",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/g/glew/libglew2.2_2.2.0-4build1_amd64.deb",
+      "bytes": 187350,
+      "sha256": "ffef730aac883b1cb1641eae6149da4091a890330d786916f29ea10de362ba9e",
+      "dpkg_declared_depends": "libgl1",
+      "control_member_sha256": "46a168f8b6bc7204fa294c72a6a278362dc77e989ece0c1b487e91ecefc0dbd6",
+      "data_tar_bytes": 768000,
+      "ELF_libraries": [
+        {
+          "member": "./usr/lib/x86_64-linux-gnu/libGLEW.so.2.2.0",
+          "bytes": 751632,
+          "sha256": "77ddd745ef50f5c2205c0029051354418f370c51f4e22621c511b28256d6c282",
+          "soname": "libGLEW.so.2.2",
+          "NEEDED": [
+            "libGL.so.1"
+          ],
+          "required_standard_ABI_versions": [],
+          "ELF_class": "ELF64",
+          "ELF_machine": "AMD64",
+          "readelf_exit_code": 0,
+          "readelf_raw_output_sha256": "e5f6287c185d5afce972c2a7f360fe5af8843cd2f3fc872a2d72216b94b34a71",
+          "library_executed": false
+        }
+      ],
+      "library_symlinks": [
+        {
+          "member": "./usr/lib/x86_64-linux-gnu/libGLEW.so.2.2",
+          "target": "libGLEW.so.2.2.0"
+        }
+      ]
+    },
+    {
+      "package": "libjxr0t64",
+      "version": "1.2~git20170615.f752187-5.1ubuntu2",
+      "architecture": "amd64",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/j/jxrlib/libjxr0t64_1.2~git20170615.f752187-5.1ubuntu2_amd64.deb",
+      "bytes": 181394,
+      "sha256": "9de792bc7484e00b1251f4deaf4b49c7c653397eeef3c78e389607f3fffdc6e2",
+      "dpkg_declared_depends": "libc6 (>= 2.29)",
+      "control_member_sha256": "7167509134a1953493c723618b473f4de79418d486a71098e8570993cf833332",
+      "data_tar_bytes": 419840,
+      "ELF_libraries": [
+        {
+          "member": "./usr/lib/x86_64-linux-gnu/libjpegxr.so.1.2",
+          "bytes": 235888,
+          "sha256": "219db28d7db7fbfddef44a6a1a90e0d4eb16079c10ad7ae9ed7f7a5f53f6d7ad",
+          "soname": "libjpegxr.so.0",
+          "NEEDED": [
+            "libc.so.6"
+          ],
+          "required_standard_ABI_versions": [
+            "GLIBC_2.14",
+            "GLIBC_2.2.5",
+            "GLIBC_2.3.4",
+            "GLIBC_2.4"
+          ],
+          "ELF_class": "ELF64",
+          "ELF_machine": "AMD64",
+          "readelf_exit_code": 0,
+          "readelf_raw_output_sha256": "f1db789b687acb8345d15ee2d337ddc86e70b0bce6ee117f7d73fec143a96645",
+          "library_executed": false
+        },
+        {
+          "member": "./usr/lib/x86_64-linux-gnu/libjxrglue.so.1.2",
+          "bytes": 139688,
+          "sha256": "787e9f9f4e57a115938c0cae1b75b8f23e9a0e29e609479a0c43493429a09a21",
+          "soname": "libjxrglue.so.0",
+          "NEEDED": [
+            "libjpegxr.so.0",
+            "libm.so.6",
+            "libc.so.6"
+          ],
+          "required_standard_ABI_versions": [
+            "GLIBC_2.14",
+            "GLIBC_2.2.5",
+            "GLIBC_2.29",
+            "GLIBC_2.3",
+            "GLIBC_2.3.4",
+            "GLIBC_2.4",
+            "GLIBC_2.7"
+          ],
+          "ELF_class": "ELF64",
+          "ELF_machine": "AMD64",
+          "readelf_exit_code": 0,
+          "readelf_raw_output_sha256": "c32a4c15c8fbd53c1eed03668561f93b2de952756e28c1fc189bd2328923792e",
+          "library_executed": false
+        }
+      ],
+      "library_symlinks": [
+        {
+          "member": "./usr/lib/x86_64-linux-gnu/libjpegxr.so.0",
+          "target": "libjpegxr.so.1.2"
+        },
+        {
+          "member": "./usr/lib/x86_64-linux-gnu/libjxrglue.so.0",
+          "target": "libjxrglue.so.1.2"
+        }
+      ]
+    },
+    {
+      "package": "libmbedcrypto7t64",
+      "version": "2.28.8-1",
+      "architecture": "amd64",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/m/mbedtls/libmbedcrypto7t64_2.28.8-1_amd64.deb",
+      "bytes": 209262,
+      "sha256": "1f0b795a2274f68edddaf2567d738fcee43383c2c4ba802d54ba3b710bbb3228",
+      "dpkg_declared_depends": "libc6 (>= 2.14)",
+      "control_member_sha256": "6abebca2b6b195d7ce45a7499fa498158ad78ed00275b0c4c94b2b7aa114bc18",
+      "data_tar_bytes": 512000,
+      "ELF_libraries": [
+        {
+          "member": "./usr/lib/x86_64-linux-gnu/libmbedcrypto.so.2.28.8",
+          "bytes": 489648,
+          "sha256": "6a8310e17b6825987ba3b95fbb57b1c23f8098d5887c62ed813bc723e2b1d55b",
+          "soname": "libmbedcrypto.so.7",
+          "NEEDED": [
+            "libc.so.6"
+          ],
+          "required_standard_ABI_versions": [
+            "GLIBC_2.14",
+            "GLIBC_2.2.5",
+            "GLIBC_2.3.4",
+            "GLIBC_2.4"
+          ],
+          "ELF_class": "ELF64",
+          "ELF_machine": "AMD64",
+          "readelf_exit_code": 0,
+          "readelf_raw_output_sha256": "181914f3b4257fbf81fcbe5f62b7a44d0f51baae641fb350233b4eca0c2973f3",
+          "library_executed": false
+        }
+      ],
+      "library_symlinks": [
+        {
+          "member": "./usr/lib/x86_64-linux-gnu/libmbedcrypto.so.7",
+          "target": "libmbedcrypto.so.2.28.8"
+        }
+      ]
+    }
+  ],
+  "dependency_edges": [
+    {
+      "library": "libGLEW.so.2.2",
+      "needed": "libGL.so.1",
+      "provider_class": "actual_EC1a_ldd_resolved_platform_or_existing_runtime",
+      "new_package": null
+    },
+    {
+      "library": "libjpegxr.so.0",
+      "needed": "libc.so.6",
+      "provider_class": "actual_EC1a_ldd_resolved_platform_or_existing_runtime",
+      "new_package": null
+    },
+    {
+      "library": "libjxrglue.so.0",
+      "needed": "libjpegxr.so.0",
+      "provider_class": "new_pinned_package",
+      "new_package": "libjxr0t64"
+    },
+    {
+      "library": "libjxrglue.so.0",
+      "needed": "libm.so.6",
+      "provider_class": "actual_EC1a_ldd_resolved_platform_or_existing_runtime",
+      "new_package": null
+    },
+    {
+      "library": "libjxrglue.so.0",
+      "needed": "libc.so.6",
+      "provider_class": "actual_EC1a_ldd_resolved_platform_or_existing_runtime",
+      "new_package": null
+    },
+    {
+      "library": "libmbedcrypto.so.7",
+      "needed": "libc.so.6",
+      "provider_class": "actual_EC1a_ldd_resolved_platform_or_existing_runtime",
+      "new_package": null
+    }
+  ]
+}
