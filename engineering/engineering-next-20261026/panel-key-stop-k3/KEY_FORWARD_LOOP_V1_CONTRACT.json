@@ -1,0 +1,364 @@
+{
+  "schema": "razr-K1-independent-frozen-material-contract-v1",
+  "candidate_source_sha256": "3e6ebf17f1e50fd71eeaf294d059566d9361d3d830edc4365ea8763d00259578",
+  "design_contract": {
+    "candidate_name": "key_forward_loop_v1",
+    "functional_baseline": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+    "cut_box_R_local_q0_mm": [
+      [
+        17.38,
+        13.99,
+        4.01
+      ],
+      [
+        18.48,
+        15.51,
+        4.39
+      ]
+    ],
+    "added_boxes_R_local_q0_mm": {
+      "inboard_leg": [
+        [
+          16.96,
+          5.0,
+          4.02
+        ],
+        [
+          17.34,
+          15.5,
+          4.38
+        ]
+      ],
+      "outboard_leg": [
+        [
+          18.52,
+          5.0,
+          4.02
+        ],
+        [
+          18.9,
+          15.5,
+          4.38
+        ]
+      ],
+      "front_crossbar": [
+        [
+          16.96,
+          5.0,
+          4.02
+        ],
+        [
+          18.9,
+          5.38,
+          4.38
+        ]
+      ]
+    },
+    "defined_native_ContactProfile_q_mm": [
+      0.0,
+      12.0
+    ],
+    "source_slot_domain_clipped_by_this_candidate": false,
+    "physical_stop_added_or_proved": false,
+    "declared_new_prisms_vs_backing_posts_continuous_axis_certificates": [
+      {
+        "source_projection": "defined_ContactProfile",
+        "new_prism": "inboard_leg",
+        "fixed_post": "front",
+        "q_projection_exact_mm": [
+          "0",
+          "12"
+        ],
+        "separating_axis": "X",
+        "exact_axis_gap_mm": "25332747903959/281474976710656",
+        "axis_gap_float_rounded_down_mm": 0.08999999999999986,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "defined_ContactProfile",
+        "new_prism": "inboard_leg",
+        "fixed_post": "rear",
+        "q_projection_exact_mm": [
+          "0",
+          "12"
+        ],
+        "separating_axis": "X",
+        "exact_axis_gap_mm": "25332747903959/281474976710656",
+        "axis_gap_float_rounded_down_mm": 0.08999999999999986,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "defined_ContactProfile",
+        "new_prism": "outboard_leg",
+        "fixed_post": "front",
+        "q_projection_exact_mm": [
+          "0",
+          "12"
+        ],
+        "separating_axis": "X",
+        "exact_axis_gap_mm": "25332747903959/281474976710656",
+        "axis_gap_float_rounded_down_mm": 0.08999999999999986,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "defined_ContactProfile",
+        "new_prism": "outboard_leg",
+        "fixed_post": "rear",
+        "q_projection_exact_mm": [
+          "0",
+          "12"
+        ],
+        "separating_axis": "X",
+        "exact_axis_gap_mm": "25332747903959/281474976710656",
+        "axis_gap_float_rounded_down_mm": 0.08999999999999986,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "defined_ContactProfile",
+        "new_prism": "front_crossbar",
+        "fixed_post": "front",
+        "q_projection_exact_mm": [
+          "0",
+          "12"
+        ],
+        "separating_axis": "Y",
+        "exact_axis_gap_mm": "1035827914295215/1125899906842624",
+        "axis_gap_float_rounded_down_mm": 0.9200000000000008,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "defined_ContactProfile",
+        "new_prism": "front_crossbar",
+        "fixed_post": "rear",
+        "q_projection_exact_mm": [
+          "0",
+          "12"
+        ],
+        "separating_axis": "Y",
+        "exact_axis_gap_mm": "5595722537007843/1125899906842624",
+        "axis_gap_float_rounded_down_mm": 4.9700000000000015,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "unclipped_nominal_slot_projection",
+        "new_prism": "inboard_leg",
+        "fixed_post": "front",
+        "q_projection_exact_mm": [
+          "-17477359333135939/288230376151711744",
+          "3476241873153677051/288230376151711744"
+        ],
+        "separating_axis": "X",
+        "exact_axis_gap_mm": "25332747903959/281474976710656",
+        "axis_gap_float_rounded_down_mm": 0.08999999999999986,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "unclipped_nominal_slot_projection",
+        "new_prism": "inboard_leg",
+        "fixed_post": "rear",
+        "q_projection_exact_mm": [
+          "-17477359333135939/288230376151711744",
+          "3476241873153677051/288230376151711744"
+        ],
+        "separating_axis": "X",
+        "exact_axis_gap_mm": "25332747903959/281474976710656",
+        "axis_gap_float_rounded_down_mm": 0.08999999999999986,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "unclipped_nominal_slot_projection",
+        "new_prism": "outboard_leg",
+        "fixed_post": "front",
+        "q_projection_exact_mm": [
+          "-17477359333135939/288230376151711744",
+          "3476241873153677051/288230376151711744"
+        ],
+        "separating_axis": "X",
+        "exact_axis_gap_mm": "25332747903959/281474976710656",
+        "axis_gap_float_rounded_down_mm": 0.08999999999999986,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "unclipped_nominal_slot_projection",
+        "new_prism": "outboard_leg",
+        "fixed_post": "rear",
+        "q_projection_exact_mm": [
+          "-17477359333135939/288230376151711744",
+          "3476241873153677051/288230376151711744"
+        ],
+        "separating_axis": "X",
+        "exact_axis_gap_mm": "25332747903959/281474976710656",
+        "axis_gap_float_rounded_down_mm": 0.08999999999999986,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "unclipped_nominal_slot_projection",
+        "new_prism": "front_crossbar",
+        "fixed_post": "front",
+        "q_projection_exact_mm": [
+          "-17477359333135939/288230376151711744",
+          "3476241873153677051/288230376151711744"
+        ],
+        "separating_axis": "Y",
+        "exact_axis_gap_mm": "247694586726438917/288230376151711744",
+        "axis_gap_float_rounded_down_mm": 0.8593632289334536,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "unclipped_nominal_slot_projection",
+        "new_prism": "front_crossbar",
+        "fixed_post": "rear",
+        "q_projection_exact_mm": [
+          "-17477359333135939/288230376151711744",
+          "3476241873153677051/288230376151711744"
+        ],
+        "separating_axis": "Y",
+        "exact_axis_gap_mm": "1415027610140871685/288230376151711744",
+        "axis_gap_float_rounded_down_mm": 4.909363228933454,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "unclipped_real_slot_comparison_TOL_model",
+        "new_prism": "inboard_leg",
+        "fixed_post": "front",
+        "q_projection_exact_mm": [
+          "-8738708489605585/144115188075855872",
+          "1738120965399876141/144115188075855872"
+        ],
+        "separating_axis": "X",
+        "exact_axis_gap_mm": "25332747903959/281474976710656",
+        "axis_gap_float_rounded_down_mm": 0.08999999999999986,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "unclipped_real_slot_comparison_TOL_model",
+        "new_prism": "inboard_leg",
+        "fixed_post": "rear",
+        "q_projection_exact_mm": [
+          "-8738708489605585/144115188075855872",
+          "1738120965399876141/144115188075855872"
+        ],
+        "separating_axis": "X",
+        "exact_axis_gap_mm": "25332747903959/281474976710656",
+        "axis_gap_float_rounded_down_mm": 0.08999999999999986,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "unclipped_real_slot_comparison_TOL_model",
+        "new_prism": "outboard_leg",
+        "fixed_post": "front",
+        "q_projection_exact_mm": [
+          "-8738708489605585/144115188075855872",
+          "1738120965399876141/144115188075855872"
+        ],
+        "separating_axis": "X",
+        "exact_axis_gap_mm": "25332747903959/281474976710656",
+        "axis_gap_float_rounded_down_mm": 0.08999999999999986,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "unclipped_real_slot_comparison_TOL_model",
+        "new_prism": "outboard_leg",
+        "fixed_post": "rear",
+        "q_projection_exact_mm": [
+          "-8738708489605585/144115188075855872",
+          "1738120965399876141/144115188075855872"
+        ],
+        "separating_axis": "X",
+        "exact_axis_gap_mm": "25332747903959/281474976710656",
+        "axis_gap_float_rounded_down_mm": 0.08999999999999986,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "unclipped_real_slot_comparison_TOL_model",
+        "new_prism": "front_crossbar",
+        "fixed_post": "front",
+        "q_projection_exact_mm": [
+          "-8738708489605585/144115188075855872",
+          "1738120965399876141/144115188075855872"
+        ],
+        "separating_axis": "Y",
+        "exact_axis_gap_mm": "123847264540181843/144115188075855872",
+        "axis_gap_float_rounded_down_mm": 0.8593630289334536,
+        "applies_to_declared_source_prisms_only": true
+      },
+      {
+        "source_projection": "unclipped_real_slot_comparison_TOL_model",
+        "new_prism": "front_crossbar",
+        "fixed_post": "rear",
+        "q_projection_exact_mm": [
+          "-8738708489605585/144115188075855872",
+          "1738120965399876141/144115188075855872"
+        ],
+        "separating_axis": "Y",
+        "exact_axis_gap_mm": "707513776247398227/144115188075855872",
+        "axis_gap_float_rounded_down_mm": 4.909363028933454,
+        "applies_to_declared_source_prisms_only": true
+      }
+    ],
+    "axis_certificates_cover_only_three_new_prisms_and_two_source_posts": true,
+    "unclipped_slot_projection_is_not_physical_motion_permission": true,
+    "cam_profile_extended_outside_declared_q_domain": false,
+    "floating_point_slot_acceptance_set_proved_equal_to_real_projection": false,
+    "inboard_and_outboard_leg_cross_sections_mm": [
+      0.38,
+      0.36
+    ],
+    "local_leg_section_area_mm2": 0.1368,
+    "original_transverse_bar_section_mm2": 0.54,
+    "section_area_ratio_for_declared_sections_only": 0.25333333333333335,
+    "minimum_whole_KEY_section_or_strength_qualified": false,
+    "protected_old_material_masks_R_mm": {
+      "pawl_end_and_inboard_connection": [
+        [
+          5.0,
+          0.0,
+          0.0
+        ],
+        [
+          16.9,
+          95.0,
+          8.0
+        ]
+      ],
+      "original_outer_cam_and_stop_features": [
+        [
+          20.6,
+          0.0,
+          0.0
+        ],
+        [
+          32.0,
+          95.0,
+          8.0
+        ]
+      ],
+      "coupling_yoke_and_rear_tab": [
+        [
+          5.0,
+          16.0,
+          0.0
+        ],
+        [
+          32.0,
+          95.0,
+          8.0
+        ]
+      ]
+    },
+    "old_panel_and_cover_contact_geometry_changed": false,
+    "real_material_process_preload_tolerances_and_loads_known": false,
+    "required_followon": [
+      "native single-solid topology and exact material budget",
+      "complete factory and independent STEP readback at both original witnesses",
+      "STOW/OPEN and all real independent offset, STOP/SPRING and telescope domains",
+      "actual wall and section measurements on resulting geometry",
+      "original functional contact extraction and assembly/repair-path checks",
+      "new current-geometry FE/tolerance qualification"
+    ],
+    "candidate_go": false,
+    "fixture_fabrication_go": false,
+    "manufacturing_go": false
+  },
+  "new_native_execution_completed": false
+}
