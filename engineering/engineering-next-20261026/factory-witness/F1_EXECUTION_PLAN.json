@@ -1,0 +1,64 @@
+{
+  "schema": "razr-S4-F1-preparation-v1",
+  "functional_source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "diagnostic_parent": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "new_branch": "diagnostic/s4-factory-f1-20261026",
+  "workflow_sha256": "bc89c842172ebd52c4343206c81a7bada58dda11aa653dd65c44099b042867fa",
+  "workflow_bytes": 166917,
+  "driver_files": {
+    "f1_common.py": {
+      "sha256": "d7a58a06e8fdd7c0b727fc114ef2a9c93e60c61b3e3a3acc886ca19af5e88bb3",
+      "bytes": 8294
+    },
+    "full_factory_witness.py": {
+      "sha256": "6518a76af2b579ff5eeb1249f854b0b195a2c69e63df1da4bb55852acf315fe0",
+      "bytes": 5441
+    },
+    "read_factory_witness.py": {
+      "sha256": "ca2a881787e93b59f31e388ffc0e7a665b1c7cc2b129b4cce9ba8108200a83b8",
+      "bytes": 9351
+    },
+    "supervise_f1.py": {
+      "sha256": "9234afa67c4e2f4543450a7165a6a658f04e307328eb1cf15102ee2340a3330b",
+      "bytes": 8450
+    },
+    "F1_L1_BINDING.json": {
+      "sha256": "cc4d09cf54d7b92cadd626051b11ebe7451f369bd0811f6c238717133f4178a2",
+      "bytes": 38572
+    },
+    "export_f1_engineering.py": {
+      "sha256": "8afcc9af06945336d0c994afdc5ef4324dce9896b6132a3fc87de732b6e4b773",
+      "bytes": 12200
+    }
+  },
+  "hosted_harness": {
+    "host-cap.py": "56c53c90a28676f6d35894c887867e03b8ffbfbe409ffe5405f2a75ad324a09b",
+    "service-launch.py": "46a24dc4874aa1945196ccb0415e7ec15c821727db9f506dec8fde49fa8fe189"
+  },
+  "two_complete_factories": true,
+  "pairs_per_factory": 11781,
+  "independent_readback_pairs_per_factory": 11781,
+  "all_pair_operations_planned": 47124,
+  "finite_worker_limits": {
+    "each_factory_seconds": 1200,
+    "each_all_STEP_reader_seconds": 1200,
+    "worker_RSS_MiB": 1536,
+    "shared_GiB": 6.8,
+    "startup_disk_MiB": 256,
+    "runtime_disk_MiB": 100,
+    "additional_startup_memory_MiB": 2048
+  },
+  "capacity_basis": "D6 full 154-body finite studies took 457-479 s each. F1 reserves the existing 1200 s / 1536 MiB finite budget independently for actual factory and all-STEP/all-pair reader; old 90 s positive-only reader does not perform these 11781 extra pair operations. Outer 3240 s and 3600 s job allow both finite tasks plus install, original INT/TERM checks, 104 L1 inputs and preservation without changing their gates.",
+  "old_v4_or_90_second_reader_claimed": false,
+  "original_geometry_or_numeric_gate_changed": false,
+  "new_native_execution_completed": false,
+  "all_go_flags": false,
+  "public_artifact_scope": "Explicit engineering originals and marked projections; no raw runtime/environment/API payloads",
+  "raw_runtime_durable_preservation_claimed": false,
+  "preparation_bug_fixed": {
+    "kind": "global numeric string replacement corrupted S4 source tree",
+    "old_declared_tree": "cdd9e2c41232401b6cd04dd610d45fde80499045",
+    "actual_git_tree": "cdd9e2c41216201b6cd04dd610d45fde80499045",
+    "all_13_changed_source_hashes_independently_verified": true
+  }
+}
