@@ -11,3 +11,9 @@ The workload performs no CAD, FE, solve or qualification calculation. It runs on
 A successful receipt establishes preservation and byte identity of the selected assets at the recorded time. It is not a new native execution, an independent geometry kernel, a physical test or a release decision. All candidate, fabrication and manufacturing flags remain false. This draft requires repository push access to view; it is not published to repository release followers.
 
 Official API references: https://docs.github.com/en/rest/releases/releases and https://docs.github.com/en/rest/releases/assets.
+
+## First actual transfer failure and media-type correction
+
+Run 40276434886 reached source N4b and received HTTP 415 before any release or asset write. Its bounded original receipt is retained in ARCHIVE_FIRST_RUN_RECEIPT.json. The first binary helper incorrectly used the release-asset media type for the Actions artifact route. Official GitHub artifact download documentation specifies application/vnd.github+json; release binary readback uses application/octet-stream. An anonymous read-only control also observed octet-stream rejected with 415 while the documented JSON media type reached the access check. The followup selects the media type by an exact allowlisted route and checkpoints metadata, ZIP transfer and member verification separately. API version and all scientific bindings are unchanged. Ten integrity controls pass, including both route media types, unexpected-route rejection, dropped credentials on redirect and owned draft rechecks.
+
+Documentation: https://docs.github.com/en/rest/actions/artifacts#download-an-artifact and https://docs.github.com/en/rest/releases/assets#get-a-release-asset .

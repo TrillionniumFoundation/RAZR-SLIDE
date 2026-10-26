@@ -71,7 +71,26 @@ class IntegrityControls(unittest.TestCase):
         with client.binary("/actions/artifacts/1/zip") as stream:
             self.assertEqual(stream.read(), b"artifact")
         self.assertIsNotNone(seen[0].get_header("Authorization"))
+        self.assertEqual(seen[0].get_header("Accept"), "application/vnd.github+json")
         self.assertIsNone(seen[1].get_header("Authorization"))
+
+    def test_release_asset_binary_media_type(self):
+        client = MOD.Client("synthetic-test-token")
+        seen = []
+        class Opener:
+            def open(self, request, timeout):
+                seen.append(request)
+                response = io.BytesIO(b"asset")
+                response.status = 200
+                return response
+        client.opener = Opener()
+        with client.binary("/releases/assets/1") as stream:
+            self.assertEqual(stream.read(), b"asset")
+        self.assertEqual(seen[0].get_header("Accept"), "application/octet-stream")
+
+    def test_unrecognized_binary_route_rejected(self):
+        with self.assertRaises(MOD.ArchiveInvariantError):
+            MOD.Client("synthetic-test-token").binary("/unlisted/route")
 
     def test_unrecognized_redirect_host_rejected(self):
         client = MOD.Client("synthetic-test-token")

@@ -100,7 +100,13 @@ class Client:
     def binary(self, suffix):
         # An authorization header is sent only to api.github.com. Redirected
         # signed transfer URLs are followed without any authorization header.
-        request = urllib.request.Request(API + suffix, headers=self.headers("application/octet-stream"))
+        if re.fullmatch(r"/actions/artifacts/[0-9]+/zip", suffix):
+            accept = "application/vnd.github+json"
+        elif re.fullmatch(r"/releases/assets/[0-9]+", suffix):
+            accept = "application/octet-stream"
+        else:
+            raise ArchiveInvariantError("unrecognized binary API route")
+        request = urllib.request.Request(API + suffix, headers=self.headers(accept))
         try:
             response = self.opener.open(request, timeout=60)
         except urllib.error.HTTPError as error:
@@ -239,6 +245,8 @@ def main(args):
                     and meta["digest"] == "sha256:" + binding["zip_sha256"]
                     and meta["workflow_run"]["id"] == binding["run_id"]
                     and meta["workflow_run"]["head_sha"] == binding["head_sha"], "source artifact metadata differs")
+            result["phase"] = "downloading_reviewed_source_" + binding["label"]
+            checkpoint()
             path = args.output / binding["asset_name"]
             total = 0
             with client.binary("/actions/artifacts/" + str(binding["artifact_id"]) + "/zip") as source, path.open("xb") as target:
@@ -248,6 +256,8 @@ def main(args):
                     fs = os.statvfs(args.output)
                     require(fs.f_bavail * fs.f_frsize >= RESERVE + len(block), "ordinary disk floor reached during transfer")
                     target.write(block)
+            result["phase"] = "verifying_original_members_" + binding["label"]
+            checkpoint()
             verified.append((binding, path, verify_zip(path, binding)))
         result["phase"] = "all_selected_originals_verified_before_external_archive_write"
         checkpoint()
