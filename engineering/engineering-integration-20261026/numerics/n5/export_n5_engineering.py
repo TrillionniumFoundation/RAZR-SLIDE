@@ -14,13 +14,13 @@ from pathlib import Path
 import re
 import shutil
 
-REPORT_KEYS = '''schema source_candidate source_baseline_helper_sha256 new_solver_research_identity new_resource_budget_identity diagnostic_completed historical_K_or_H_recovered H_action_restore_executed complete_body_response_accepted new_QP_executed candidate_go fixture_fabrication_go manufacturing_go original_probe_seed original_probe_count original_residual_threshold original_residual_denominator original_gate_matvec_precision all_five_rhs_prepared baseline_probes refined_probes probe_execution solver_strategy source_base_commit output_data_budget_bytes address_space_limit_bytes C_sha256 prepared_input_arrays_sha256 original_Kff_identity_before original_Kff_shape original_Kff_nnz factorization baseline_all_five_passed longdouble_finfo refined_all_five_passed five_probe_residuals_passed_after_optional_refinement original_Kff_identity_after runtime files_sha256 phase seconds peak_rss_kib disk_free_bytes probe_index outer_iteration residual_ratio passes_original_threshold outer_iterations error_type initial_field_origin damping actually_changed_DOFs representational_stagnation'''.split()
+REPORT_KEYS = '''schema source_candidate source_baseline_helper_sha256 new_solver_research_identity new_resource_budget_identity diagnostic_completed historical_K_or_H_recovered H_action_restore_executed complete_body_response_accepted new_QP_executed candidate_go fixture_fabrication_go manufacturing_go original_probe_seed original_probe_count original_residual_threshold original_residual_denominator original_gate_matvec_precision all_five_rhs_prepared baseline_probes refined_probes probe_execution solver_strategy source_base_commit output_data_budget_bytes address_space_limit_bytes C_sha256 prepared_input_arrays_sha256 original_Kff_identity_before original_Kff_shape original_Kff_nnz factorization baseline_all_five_passed longdouble_finfo refined_all_five_passed five_probe_residuals_passed_after_optional_refinement original_Kff_identity_after runtime files_sha256 phase seconds peak_rss_kib disk_free_bytes probe_index outer_iteration residual_ratio passes_original_threshold outer_iterations error_type initial_field_origin damping actually_changed_DOFs representational_stagnation force_map_origin force_map_regenerated_by_this_worker rejected_N5_rebuilt_force_map_retained_separately'''.split()
 ASSEMBLY_KEYS = '''schema body level original_tetrahedra subtetrahedra dofs condensed_dofs full_uncondensed_dofs E_normalization nu body_loads_on_added_internal_DOFs original_faces_and_surface_P2_traces_unchanged K_sha256 loads_sha256 mesh_sha256 mapping_sha256 K_bytes K_nnz K_symmetry_absolute_max global_directional_energy_probes global_energy_relative_error_max rigid_modes_checked rigid_mode_action_max coordinate_mapping_max_error_mm minimum_scalar_DOF_separation_mm runtime element_assembly_seconds seconds peak_rss_kib new_rebuild_identity original_historical_artifact_restored full_inverse_operator_probes_executed new_QP_executed contact_or_mesh_convergence_qualified candidate_go fixture_fabrication_go manufacturing_go completed phase elapsed_seconds original_vector_dofs coordinate_mapping_error_mm minimum_scalar_dof_separation_mm original_mesh_and_load_bytes_exact material_E material_nu volume_level element_storage assembled_elements total_elements five_global_assembly_energy_probes_relative_error six_rigid_modes_action_absolute_max numerical_primitive_unchanged original_artifact_restored full_inverse_solved contact_solved disk_free_bytes error_type'''.split()
 SUPERVISOR_KEYS = '''schema exit_code resource_stop_reason seconds peak_worker_RSS_bytes peak_worker_high_water_RSS_bytes peak_worker_virtual_bytes sampled_peak_cgroup_current_bytes sampled_peak_cgroup_shmem_bytes sampled_peak_nonreclaimable_budget_bytes peak_task_payload_bytes minimum_filesystem_available_bytes file_cache_counted_separately_from_nonreclaimable_budget memory_budget_definition supervisor_source_sha256 supervisor_source_sha256_after supervisor_source_unchanged log_sha256 samples'''.split()
 SAMPLE_KEYS = '''monotonic task_filesystem_available_bytes task_payload_bytes cgroup_current_bytes cgroup_anon_bytes cgroup_shmem_bytes cgroup_file_bytes nonreclaimable_budget_bytes VmRSS_bytes VmHWM_bytes VmSize_bytes'''.split()
 SOURCE_PATHS = [
  'source/probe_panel_float64_local_refinement.py','source/N5_STRATEGY.json',
- 'source/import_n5_inputs.py','source/N5_FROZEN_N4B_INPUTS.json',
+ 'source/import_n5_inputs.py','source/N5_FROZEN_N4B_INPUTS.json','source/N5A_INPUT_STRATEGY.json',
  'source/n5_independent_reader.py','source/export_n5_engineering.py',
  'source/host-cap.py','source/service-launch.py','source/python-downloads.json',
  *['source/S4/'+p for p in [
@@ -35,6 +35,7 @@ SOURCE_PATHS = [
   'run_key_endpoint_trials.py','tests/test_key_endpoint_extension.py','tests/test_key_endpoint_resume.py']]
 ]
 PLAIN_NUMERIC = [
+ 'N5a-C-reassembly-comparison.json','rejected-N5-force-map/C.npz',
  'seed-N4b/probe-N4/C.npz',
  'seed-N4b/probe-N4/points.json',
  'seed-N4b/probe-N4/five-probe-rhs.npy',
@@ -166,7 +167,7 @@ def main(root: Path, output: Path):
  manifest['exported_files']={str(p.relative_to(output)):{'sha256':sha(p),'bytes':p.stat().st_size} for p in sorted(output.rglob('*')) if p.is_file()}
  (output/'EXPORT_MANIFEST.json').write_text(json.dumps(manifest,indent=2,allow_nan=False)+'\n')
  summary=output.parent/'engineering-summary';summary.mkdir(exist_ok=False)
- for name in ['EXPORT_MANIFEST.json','EXECUTION_CHECKS.engineering.json','N5-independent-field-readback.engineering.json',
+ for name in ['N5a-C-reassembly-comparison.json','EXPORT_MANIFEST.json','EXECUTION_CHECKS.engineering.json','N5-independent-field-readback.engineering.json',
   'N5-input-recovery.json','input-recovery-supervisor.engineering.json',
   'original-K-byte-identity.engineering.json','panel-assembly-supervisor.engineering.json',
   'volume/panel/level-2/report.engineering.json','volume/panel/progress.engineering.json',

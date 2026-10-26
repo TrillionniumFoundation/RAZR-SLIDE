@@ -240,6 +240,54 @@ N4B_PROJECTED_REPORT_SHA256 = '4c0e3d6aa9750f6f5d7a93290d715e9192bb036bbc56833ab
 N4B_PROJECTED_READER_SHA256 = '0f57ea2509b4a53f698294776d21f74398fc162e6cc6d9c804cf6c2e3f9d2dd6'
 
 
+def frozen_force_maps(body, folder, seed, output):
+    """Bind the original C bytes and point order without redoing platform-sensitive interpolation."""
+    if body != 'panel':
+        raise ValueError('N5a original panel domain only')
+    report_path=folder/'report.json'
+    report=json.loads(report_path.read_text())
+    if (report['body']!='panel' or report['level']!=2 or report['E_normalization']!=1.0
+            or report['nu']!=0.3 or report['original_faces_and_surface_P2_traces_unchanged'] is not True
+            or report['body_loads_on_added_internal_DOFs'] is not False):
+        raise ValueError('original model identity differs')
+    identities={str(report_path):sha(report_path)}
+    for name,key in [('K.npz','K_sha256'),('mesh.npz','mesh_sha256'),('loads.npz','loads_sha256')]:
+        digest=sha(folder/name)
+        if digest!=report[key] or name!='K.npz' and digest!=EXPECTED['panel'][name]:
+            raise ValueError('original volume input differs')
+        identities[str(folder/name)]=digest
+    for name,expected in CONTACT_INPUTS.items():
+        path=ROOT/name
+        if sha(path)!=expected:raise ValueError('original contact domain input differs')
+        identities[str(path)]=expected
+    original_seed=json.loads(gzip.decompress((ROOT/next(iter(CONTACT_INPUTS))).read_bytes()))
+    if original_seed['case']!=6 or original_seed['volume_level']!=2:
+        raise ValueError('original point case differs')
+    points_path=seed/'probe-N4/points.json'
+    if sha(points_path)!=EXPECTED_POINTS_SHA256:raise ValueError('original point bytes differ')
+    points=json.loads(points_path.read_text())
+    if points!=original_seed['contact_points'] or len(points)!=3885 or points[:4]!=[{'kind':'bolt','index':i} for i in range(4)]:
+        raise ValueError('original ordered point domain differs')
+    for name,expected in [('C.npz',EXPECTED_PANEL_C_SHA256),('points.json',EXPECTED_POINTS_SHA256)]:
+        source=seed/'probe-N4'/name
+        if sha(source)!=expected:raise ValueError('frozen force-map member differs')
+        (output/name).write_bytes(source.read_bytes())
+        if sha(output/name)!=expected:raise ValueError('frozen force-map copy differs')
+        identities[str(source)]=expected
+    C=load_npz(output/'C.npz').tocsc()
+    if C.shape!=(344103,3885) or C.dtype!=np.float64 or C.nnz!=24518 or not C.has_canonical_format:
+        raise ValueError('original force-map structure differs')
+    with np.load(folder/'loads.npz',allow_pickle=False) as loads:fixed=loads['D']
+    free=np.setdiff1d(np.arange(344103),fixed)
+    if len(fixed)!=6 or len(free)!=344097:
+        raise ValueError('original constrained domain differs')
+    if not np.array_equal(fixed,np.load(seed/'probe-N4/fixed-original-DOFs.npy',allow_pickle=False)):
+        raise ValueError('N4b fixed domain differs')
+    if not np.array_equal(free,np.load(seed/'probe-N4/free-original-DOFs.npy',allow_pickle=False)):
+        raise ValueError('N4b free domain differs')
+    return C,fixed,identities
+
+
 def damping_from_original_matrix(K):
     """A fixed conservative row-sum bound; this does not certify SPD or convergence."""
     diagonal = np.asarray(K.diagonal(), dtype=np.float64)
@@ -409,7 +457,10 @@ def main(args):
         prior_reader = json.loads((seed/'N4-independent-field-readback.engineering.json').read_text())['selected_engineering_fields']
         if not prior['diagnostic_completed'] or not prior_reader['completed'] or prior_reader['five_original_gates_passed']:
             raise ValueError('N4b frozen starting state is not the required actual diagnostic rejection')
-        C, fixed, inputs = force_maps('panel', folder, output)
+        C, fixed, inputs = frozen_force_maps('panel', folder, seed, output)
+        state['force_map_origin']='byte-exact original N4b C and original ordered points'
+        state['force_map_regenerated_by_this_worker']=False
+        state['rejected_N5_rebuilt_force_map_retained_separately']=True
         for name in ('probe-N4/refined-five-probe-fields.npy',
                 'probe-N4/report.engineering.json','N4-independent-field-readback.engineering.json'):
             inputs[str(seed/name)] = sha(seed/name)

@@ -1,5 +1,5 @@
 """Independent byte/field/update-chain readback of the bounded N5 experiment."""
-import hashlib,json,os,pathlib
+import gzip,hashlib,json,os,pathlib
 import numpy as np
 from scipy.sparse import load_npz
 
@@ -49,6 +49,13 @@ try:
  extended=A.astype(np.longdouble);assert np.finfo(np.longdouble).eps<np.finfo(np.float64).eps
  C=load_npz(folder/'C.npz').tocsc();assert C.shape==(344103,3885)
  assert sha(folder/'C.npz')=='9f75b00a961ee850857c82942332ebfdd5cb13aa9da55c5266d93337deca436f'
+ assert sha(folder/'points.json')==sha(seed/'probe-N4/points.json')=='682a157686b06b4d8a1c8f431eab3453b9a43594801df148c03594435c4bf796'
+ original_point_seed=pathlib.Path(os.environ['GITHUB_WORKSPACE'])/'engineering/nested-contact-20261017/level-2/case-6/report.json.gz'
+ assert sha(original_point_seed)=='3e0177c8405ddeb27af68325ea65793d5eedb8a5aaf3680a3bfc5b1305fc2d06'
+ source_points=json.loads(gzip.decompress(original_point_seed.read_bytes()))
+ assert source_points['case']==6 and source_points['volume_level']==2
+ assert json.loads((folder/'points.json').read_text())==source_points['contact_points']
+ assert report['force_map_regenerated_by_this_worker'] is False and report['rejected_N5_rebuilt_force_map_retained_separately'] is True
  directions=np.load(folder/'five-probe-directions.npy',allow_pickle=False);rhs=np.load(folder/'five-probe-rhs.npy',allow_pickle=False)
  assert directions.shape==(3885,5) and directions.dtype==rhs.dtype==np.float64 and rhs.shape==(344103,5)
  assert sha(folder/'five-probe-directions.npy')=='abe862cf2823c8511358e34c884957eae26e30ec381a605a594f91f4ad114861'

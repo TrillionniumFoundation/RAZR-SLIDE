@@ -1,5 +1,5 @@
-# N5 bounded continuation of exact N4b fields; independent diagnostic only.
-name: N5 original float64 residual bounded local refinement diagnostic
+# N5a preserves the N5 algorithm and repairs only original C input recovery.
+name: N5a frozen original C bounded local refinement diagnostic
 'on':
   push:
     branches:
@@ -906,6 +906,54 @@ jobs:
         N4B_PROJECTED_READER_SHA256 = '0f57ea2509b4a53f698294776d21f74398fc162e6cc6d9c804cf6c2e3f9d2dd6'
 
 
+        def frozen_force_maps(body, folder, seed, output):
+            """Bind the original C bytes and point order without redoing platform-sensitive interpolation."""
+            if body != 'panel':
+                raise ValueError('N5a original panel domain only')
+            report_path=folder/'report.json'
+            report=json.loads(report_path.read_text())
+            if (report['body']!='panel' or report['level']!=2 or report['E_normalization']!=1.0
+                    or report['nu']!=0.3 or report['original_faces_and_surface_P2_traces_unchanged'] is not True
+                    or report['body_loads_on_added_internal_DOFs'] is not False):
+                raise ValueError('original model identity differs')
+            identities={str(report_path):sha(report_path)}
+            for name,key in [('K.npz','K_sha256'),('mesh.npz','mesh_sha256'),('loads.npz','loads_sha256')]:
+                digest=sha(folder/name)
+                if digest!=report[key] or name!='K.npz' and digest!=EXPECTED['panel'][name]:
+                    raise ValueError('original volume input differs')
+                identities[str(folder/name)]=digest
+            for name,expected in CONTACT_INPUTS.items():
+                path=ROOT/name
+                if sha(path)!=expected:raise ValueError('original contact domain input differs')
+                identities[str(path)]=expected
+            original_seed=json.loads(gzip.decompress((ROOT/next(iter(CONTACT_INPUTS))).read_bytes()))
+            if original_seed['case']!=6 or original_seed['volume_level']!=2:
+                raise ValueError('original point case differs')
+            points_path=seed/'probe-N4/points.json'
+            if sha(points_path)!=EXPECTED_POINTS_SHA256:raise ValueError('original point bytes differ')
+            points=json.loads(points_path.read_text())
+            if points!=original_seed['contact_points'] or len(points)!=3885 or points[:4]!=[{'kind':'bolt','index':i} for i in range(4)]:
+                raise ValueError('original ordered point domain differs')
+            for name,expected in [('C.npz',EXPECTED_PANEL_C_SHA256),('points.json',EXPECTED_POINTS_SHA256)]:
+                source=seed/'probe-N4'/name
+                if sha(source)!=expected:raise ValueError('frozen force-map member differs')
+                (output/name).write_bytes(source.read_bytes())
+                if sha(output/name)!=expected:raise ValueError('frozen force-map copy differs')
+                identities[str(source)]=expected
+            C=load_npz(output/'C.npz').tocsc()
+            if C.shape!=(344103,3885) or C.dtype!=np.float64 or C.nnz!=24518 or not C.has_canonical_format:
+                raise ValueError('original force-map structure differs')
+            with np.load(folder/'loads.npz',allow_pickle=False) as loads:fixed=loads['D']
+            free=np.setdiff1d(np.arange(344103),fixed)
+            if len(fixed)!=6 or len(free)!=344097:
+                raise ValueError('original constrained domain differs')
+            if not np.array_equal(fixed,np.load(seed/'probe-N4/fixed-original-DOFs.npy',allow_pickle=False)):
+                raise ValueError('N4b fixed domain differs')
+            if not np.array_equal(free,np.load(seed/'probe-N4/free-original-DOFs.npy',allow_pickle=False)):
+                raise ValueError('N4b free domain differs')
+            return C,fixed,identities
+
+
         def damping_from_original_matrix(K):
             """A fixed conservative row-sum bound; this does not certify SPD or convergence."""
             diagonal = np.asarray(K.diagonal(), dtype=np.float64)
@@ -1075,7 +1123,10 @@ jobs:
                 prior_reader = json.loads((seed/'N4-independent-field-readback.engineering.json').read_text())['selected_engineering_fields']
                 if not prior['diagnostic_completed'] or not prior_reader['completed'] or prior_reader['five_original_gates_passed']:
                     raise ValueError('N4b frozen starting state is not the required actual diagnostic rejection')
-                C, fixed, inputs = force_maps('panel', folder, output)
+                C, fixed, inputs = frozen_force_maps('panel', folder, seed, output)
+                state['force_map_origin']='byte-exact original N4b C and original ordered points'
+                state['force_map_regenerated_by_this_worker']=False
+                state['rejected_N5_rebuilt_force_map_retained_separately']=True
                 for name in ('probe-N4/refined-five-probe-fields.npy',
                         'probe-N4/report.engineering.json','N4-independent-field-readback.engineering.json'):
                     inputs[str(seed/name)] = sha(seed/name)
@@ -1344,7 +1395,7 @@ jobs:
           ]
         }
         N4_STRATEGY
-        printf '0ed7cf2ac9e01ad56d7b99a8fb372d1e1eb9207008146904e86eb83406f464fc  %s\n' "$HOST_ROOT/probe_panel_float64_local_refinement.py" | sha256sum --check --strict
+        printf '05efa348842df3f434ab017c89030bcbfca3a14863d21dd3794c5f5b3395ba74  %s\n' "$HOST_ROOT/probe_panel_float64_local_refinement.py" | sha256sum --check --strict
         printf '6beeeb7ac19d38ba1c1cce5a6df0dd99aa75931b1f7f3212a9e707f1209e7350  %s\n' "$HOST_ROOT/N5_STRATEGY.json" | sha256sum --check --strict
         cp "$HOST_ROOT/probe_panel_float64_local_refinement.py" "$CASE_DIR/source/probe_panel_float64_local_refinement.py"
         cp "$HOST_ROOT/N5_STRATEGY.json" "$CASE_DIR/source/N5_STRATEGY.json"
@@ -1355,7 +1406,7 @@ jobs:
         sources={p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in paths}
         for relative in paths:
          target=case/'source'/'S4'/relative;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes((root/relative).read_bytes())
-        r={'schema':'razr-N5-source-and-resource-contract','functional_checkout':os.environ['S4'],'workflow_execution_head':os.environ['GITHUB_SHA'],'new_driver_sha256':'0ed7cf2ac9e01ad56d7b99a8fb372d1e1eb9207008146904e86eb83406f464fc','strategy_sha256':'6beeeb7ac19d38ba1c1cce5a6df0dd99aa75931b1f7f3212a9e707f1209e7350','original_S4_sources':sources,'service_launcher_sha256':hashlib.sha256((host/'service-launch.py').read_bytes()).hexdigest(),'hostcap_sha256':hashlib.sha256((host/'host-cap.py').read_bytes()).hexdigest(),'new_driver_has_independent_research_identity':True,'new_S4_canonical_qualification_claimed':False,'original_v4_label_budget_not_applicable':True,'assembly_executed_this_workflow':False,'input_recovery_external_seconds':180,'input_recovery_AS_GiB':3.5,'input_matrix_origin':'byte-exact frozen C2-N1 reconstructed matrix','probe_external_seconds':180,'probe_AS_GiB':4.5,'new_resource_budget_identity':False,'parent_N4b_run_id':40274319237,'initial_fields_are_frozen_N4b_final':True,'previous_N3_AS_GiB':8.0,'original_shared_nonreclaimable_GiB':6.8,'original_task_filesystem_reserve_MiB':500,'original_float64_residual_limit':1e-7,'threads':1,'accounting_scope':'actual service cgroup and descendants, narrower than VM root','H_restore_QP_or_physical_qualification':False}
+        r={'schema':'razr-N5-source-and-resource-contract','functional_checkout':os.environ['S4'],'workflow_execution_head':os.environ['GITHUB_SHA'],'new_driver_sha256':'05efa348842df3f434ab017c89030bcbfca3a14863d21dd3794c5f5b3395ba74','strategy_sha256':'6beeeb7ac19d38ba1c1cce5a6df0dd99aa75931b1f7f3212a9e707f1209e7350','original_S4_sources':sources,'service_launcher_sha256':hashlib.sha256((host/'service-launch.py').read_bytes()).hexdigest(),'hostcap_sha256':hashlib.sha256((host/'host-cap.py').read_bytes()).hexdigest(),'new_driver_has_independent_research_identity':True,'new_S4_canonical_qualification_claimed':False,'original_v4_label_budget_not_applicable':True,'assembly_executed_this_workflow':False,'input_recovery_external_seconds':180,'input_recovery_AS_GiB':3.5,'input_matrix_origin':'byte-exact frozen C2-N1 reconstructed matrix','probe_external_seconds':180,'probe_AS_GiB':4.5,'new_resource_budget_identity':False,'parent_N4b_run_id':40274319237,'initial_fields_are_frozen_N4b_final':True,'previous_N3_AS_GiB':8.0,'original_shared_nonreclaimable_GiB':6.8,'original_task_filesystem_reserve_MiB':500,'original_float64_residual_limit':1e-7,'threads':1,'accounting_scope':'actual service cgroup and descendants, narrower than VM root','H_restore_QP_or_physical_qualification':False}
         assert r['service_launcher_sha256']=='656f11eb363841ff28d10e60587c609b9f69a5b59edbb5931c95f4987a1bc3b3'
         (case/'N4_SOURCE_IDENTITY.json').write_text(json.dumps(r,indent=2)+'\n')
         PY
@@ -1363,6 +1414,8 @@ jobs:
         """Copy only SHA-bound original N1 inputs and selected safe N4b math evidence."""
         from pathlib import Path
         import argparse,hashlib,json,os,resource,shutil,time
+        import numpy as np
+        from scipy.sparse import load_npz
 
         FROZEN = {
          'K.npz': (285135469,'80f6f50243d421a3b0ab9eeff1324db029677b63febeaad1f023bf9609e9f1cb'),
@@ -1392,10 +1445,37 @@ jobs:
          return {'bytes':size,'sha256':digest,'original_bytes_unchanged':True}
 
 
+        def compare_force_maps(original,rebuilt):
+         result={'schema':'razr-N5a-rejected-force-map-component-comparison-v1',
+          'frozen_original_C_sha256':sha(original),'rejected_rebuilt_C_sha256':sha(rebuilt),
+          'difference_cause_not_established':True,'components':{}}
+         with np.load(original,allow_pickle=False) as a,np.load(rebuilt,allow_pickle=False) as b:
+          assert set(a.files)==set(b.files)=={'indices','indptr','format','shape','data'}
+          for name in a.files:
+           x=a[name];y=b[name]
+           row={'shape_equal':x.shape==y.shape,'dtype_equal':x.dtype==y.dtype,
+            'frozen_shape':list(x.shape),'rebuilt_shape':list(y.shape),
+            'frozen_dtype':str(x.dtype),'rebuilt_dtype':str(y.dtype),
+            'frozen_array_sha256':hashlib.sha256(x.tobytes()).hexdigest(),
+            'rebuilt_array_sha256':hashlib.sha256(y.tobytes()).hexdigest()}
+           row['bytes_equal']=row['shape_equal'] and row['dtype_equal'] and row['frozen_array_sha256']==row['rebuilt_array_sha256']
+           if row['shape_equal'] and row['dtype_equal'] and x.dtype.kind in 'fiu':
+            delta=x.astype(np.longdouble)-y.astype(np.longdouble)
+            row.update(changed_entries=int(np.count_nonzero(x!=y)),max_absolute_difference=float(np.max(np.abs(delta),initial=0)),difference_l2=float(np.sqrt(np.sum(delta*delta))))
+           result['components'][name]=row
+         a=load_npz(original).tocsc();b=load_npz(rebuilt).tocsc();delta=(a-b).tocsc();delta.eliminate_zeros()
+         result['aligned_sparse_matrix_comparison']={'frozen_shape':list(a.shape),'rebuilt_shape':list(b.shape),
+          'frozen_nnz':int(a.nnz),'rebuilt_nnz':int(b.nnz),'aligned_nonzero_difference_entries':int(delta.nnz),
+          'aligned_max_absolute_difference':float(np.max(np.abs(delta.data),initial=0.)),
+          'aligned_difference_l2':float(np.sqrt(np.sum(delta.data.astype(np.longdouble)**2)))}
+         result['only_container_serialization_difference']=all(x['bytes_equal'] for x in result['components'].values())
+         return result
+
+
         def main(args):
          if __debug__ is not True:raise RuntimeError('assertions must remain enabled')
          start=time.monotonic();resource.setrlimit(resource.RLIMIT_AS,(int(3.5*1024**3),int(3.5*1024**3)))
-         original=args.original.resolve(strict=True);n4b=args.n4b.resolve(strict=True)
+         original=args.original.resolve(strict=True);n4b=args.n4b.resolve(strict=True);rejected=args.rejected.resolve(strict=True)
          root=args.case.resolve(strict=True);volume=root/'volume/panel/level-2';seed=root/'seed-N4b'
          if volume.exists() or seed.exists():raise ValueError('fresh import destinations required')
          selected=json.loads(args.manifest.read_text())
@@ -1409,6 +1489,8 @@ jobs:
           'copied_N4b_scientific_members':{},'raw_N1_runtime_copied_or_exported':False,
           'N4b_full_8_step_history_remains_in_original_artifact':True,
           'all_original_N4b_102_field_math_hashes_retained_in_imported_manifest':True,
+          'N5_first_attempt_origin':{'run_id':40275635311,'artifact_id':12630570499,
+           'original_probe_evaluation_count':0,'local_correction_count':0,'rejection_stage':'rebuilt C byte identity before numerical iteration'},
           'original_K_b_C_constraints_and_acceptance_unchanged':True,
           'new_sparse_factorization_executed':False,'new_probe_results_created_by_import':False,
           'candidate_go':False,'fixture_fabrication_go':False,'manufacturing_go':False}
@@ -1419,6 +1501,13 @@ jobs:
           for name,info in selected.items():
            if Path(name).is_absolute() or '..' in Path(name).parts:raise ValueError('invalid selected relative member')
            result['copied_N4b_scientific_members'][name]=copied(n4b,name,seed/name,info['bytes'],info['sha256'])
+          result['copied_rejected_C_original_bytes']=copied(rejected,'probe-N5/C.npz',root/'rejected-N5-force-map/C.npz',185962,'da1876a57d1bd49aab91955f684dc87202c21895095486420a11f43ee1f1d184')
+          comparison=compare_force_maps(seed/'probe-N4/C.npz',root/'rejected-N5-force-map/C.npz')
+          comparison_path=root/'N5a-C-reassembly-comparison.json'
+          comparison_path.write_text(json.dumps(comparison,indent=2,allow_nan=False)+'\n')
+          result['rejected_C_comparison_sha256']=sha(comparison_path)
+          result['original_frozen_C_is_authoritative_input']=True
+          result['rejected_rebuilt_C_not_used_in_probe']=True
           report=json.loads((seed/'probe-N4/report.engineering.json').read_text())
           readback=json.loads((seed/'N4-independent-field-readback.engineering.json').read_text())
           assert report['is_original_record'] is False and readback['is_original_record'] is False
@@ -1442,7 +1531,7 @@ jobs:
 
 
         if __name__=='__main__':
-         p=argparse.ArgumentParser();p.add_argument('--original',type=Path,required=True);p.add_argument('--n4b',type=Path,required=True)
+         p=argparse.ArgumentParser();p.add_argument('--original',type=Path,required=True);p.add_argument('--n4b',type=Path,required=True);p.add_argument('--rejected',type=Path,required=True)
          p.add_argument('--case',type=Path,required=True);p.add_argument('--manifest',type=Path,required=True);p.add_argument('--receipt',type=Path,required=True)
          main(p.parse_args())
         PY_FROZEN_IMPORT
@@ -1496,8 +1585,50 @@ jobs:
         N4B_STRATEGY
         cp "$HOST_ROOT/import_n5_inputs.py" "$CASE_DIR/source/import_n5_inputs.py"
         cp "$HOST_ROOT/N5_FROZEN_N4B_INPUTS.json" "$CASE_DIR/source/N5_FROZEN_N4B_INPUTS.json"
-        printf '62a45757e72e3001d43cf62ab3ae50e24dbf0d30409047d268b3cfb380fb1f6a  %s\n' "$HOST_ROOT/import_n5_inputs.py" | sha256sum --check --strict
+        printf '81561fbab5351cd5ab5fcc4b6b6e5bfaece6bed6792315ddee420834962a7ba3  %s\n' "$HOST_ROOT/import_n5_inputs.py" | sha256sum --check --strict
         printf 'b37a5187429c3431a2528049bc37b350e65847a95f1de48769adce27de1e69de  %s\n' "$HOST_ROOT/N5_FROZEN_N4B_INPUTS.json" | sha256sum --check --strict
+        cat > "$HOST_ROOT/N5A_INPUT_STRATEGY.json" <<'N5A_INPUT_STRATEGY'
+        {
+          "schema": "razr-N5a-frozen-original-C-input-repair-v1",
+          "parent_N5_strategy_algorithm_unchanged": true,
+          "N5_local_correction_algorithm_execution_count_before_repair": 0,
+          "N5_first_attempt_run_id": 40275635311,
+          "N5_rejected_C_artifact_id": 12630570499,
+          "N5_rejected_C_sha256": "da1876a57d1bd49aab91955f684dc87202c21895095486420a11f43ee1f1d184",
+          "original_C_sha256": "9f75b00a961ee850857c82942332ebfdd5cb13aa9da55c5266d93337deca436f",
+          "original_C_origin_N4b_run_id": 40274319237,
+          "original_C_origin_N4b_artifact_id": 12629751343,
+          "same_original_K_b_C_is_required": true,
+          "interpolation_not_regenerated_for_numerical_input": true,
+          "original_point_order_checks_against_exact_S4_seed_retained": true,
+          "original_free_fixed_domain_from_original_loads_retained": true,
+          "all_five_original_directions_and_RHS_hashes_retained": true,
+          "independent_reader_does_not_reconstruct_C": true,
+          "rejected_C_original_file_and_component_and_aligned_differences_retained": true,
+          "local_actual_small_C_member_readback": {
+            "both_member_SHA_bytes_and_CRC_checked": true,
+            "frozen_nnz": 24518,
+            "rebuilt_nnz": 24267,
+            "aligned_nonzero_difference_entries": 17612,
+            "aligned_max_absolute_difference": 1.3572095301660208e-13,
+            "aligned_difference_l2": 1.2402668468331064e-12,
+            "difference_cause_not_established": true
+          },
+          "algorithm_driver_local_iteration_functions_unchanged": true,
+          "first_pass_or_32_outer_updates_unchanged": true,
+          "original_float64_gate_limit": 1e-07,
+          "AS_GiB": 4.5,
+          "original_wall_seconds": 180,
+          "shared_nonreclaimable_GiB": 6.8,
+          "reserve_MiB": 500,
+          "output_reservation_bytes": 1610612736,
+          "candidate_go": false,
+          "fixture_fabrication_go": false,
+          "manufacturing_go": false
+        }
+        N5A_INPUT_STRATEGY
+        cp "$HOST_ROOT/N5A_INPUT_STRATEGY.json" "$CASE_DIR/source/N5A_INPUT_STRATEGY.json"
+        printf 'd1c1eaeeabfd0cb8e7a381737da60190789a47fc9cc4133edba00f09d54ff763  %s\n' "$HOST_ROOT/N5A_INPUT_STRATEGY.json" | sha256sum --check --strict
     - name: Prove INT and TERM cleanup through original supervisor and independent-session stdlib worker
       shell: bash
       run: |
@@ -1542,11 +1673,20 @@ jobs:
         github-token: ${{ github.token }}
         path: ${{ runner.temp }}/razr-n5-inputs/N4b
         merge-multiple: true
+    - name: Download rejected first N5 force map for separate component diagnosis
+      uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+      with:
+        repository: TrillionniumFoundation/RAZR-SLIDE
+        run-id: 40275635311
+        artifact-ids: 12630570499
+        github-token: ${{ github.token }}
+        path: ${{ runner.temp }}/razr-n5-inputs/N5-first
+        merge-multiple: true
     - name: Import byte-exact original K and independently verified N4b final fields
       shell: bash
       run: |
         set -euo pipefail
-        /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" "$CASE_DIR/frozen-input-import" .venv/bin/python -B engineering/engineering-integration-20261025/numerics/run_bounded.py --task-directory "$N5_ROOT" --seconds 180 --log "$N5_ROOT/input-recovery-worker.log" --report "$N5_ROOT/input-recovery-supervisor.json" -- .venv/bin/python -B "$HOST_ROOT/import_n5_inputs.py" --original "$RUNNER_TEMP/razr-n5-inputs/N1" --n4b "$RUNNER_TEMP/razr-n5-inputs/N4b" --case "$CASE_DIR" --manifest "$HOST_ROOT/N5_FROZEN_N4B_INPUTS.json" --receipt "$N5_ROOT/N5-input-recovery.json"
+        /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" "$CASE_DIR/frozen-input-import" .venv/bin/python -B engineering/engineering-integration-20261025/numerics/run_bounded.py --task-directory "$N5_ROOT" --seconds 180 --log "$N5_ROOT/input-recovery-worker.log" --report "$N5_ROOT/input-recovery-supervisor.json" -- .venv/bin/python -B "$HOST_ROOT/import_n5_inputs.py" --original "$RUNNER_TEMP/razr-n5-inputs/N1" --n4b "$RUNNER_TEMP/razr-n5-inputs/N4b" --rejected "$RUNNER_TEMP/razr-n5-inputs/N5-first" --case "$CASE_DIR" --manifest "$HOST_ROOT/N5_FROZEN_N4B_INPUTS.json" --receipt "$N5_ROOT/N5-input-recovery.json"
         .venv/bin/python -B - <<'PY'
         import hashlib,json,os,pathlib
         root=pathlib.Path(os.environ['N5_ROOT']);folder=root/'volume/panel/level-2'
@@ -1563,7 +1703,7 @@ jobs:
       shell: bash
       run: |
         set -euo pipefail
-        printf '0ed7cf2ac9e01ad56d7b99a8fb372d1e1eb9207008146904e86eb83406f464fc  %s
+        printf '05efa348842df3f434ab017c89030bcbfca3a14863d21dd3794c5f5b3395ba74  %s
         ' "$HOST_ROOT/probe_panel_float64_local_refinement.py" | sha256sum --check --strict
         set +e
         /usr/bin/python3 -B "$HOST_ROOT/service-launch.py" "$CASE_DIR/probe-N5-execution" .venv/bin/python -B engineering/engineering-integration-20261025/numerics/run_bounded.py --task-directory "$N5_ROOT" --seconds 180 --log "$N5_ROOT/probe-N5-worker.log" --report "$N5_ROOT/probe-N5-supervisor.json" -- .venv/bin/python -B "$HOST_ROOT/probe_panel_float64_local_refinement.py" --root "$GITHUB_WORKSPACE" --volume "$N5_ROOT/volume" --seed "$N5_ROOT/seed-N4b" --output "$N5_ROOT/probe-N5"
@@ -1578,7 +1718,7 @@ jobs:
         set -euo pipefail
         cat > "$HOST_ROOT/n5_independent_reader.py" <<'PY_READER'
         """Independent byte/field/update-chain readback of the bounded N5 experiment."""
-        import hashlib,json,os,pathlib
+        import gzip,hashlib,json,os,pathlib
         import numpy as np
         from scipy.sparse import load_npz
 
@@ -1628,6 +1768,13 @@ jobs:
          extended=A.astype(np.longdouble);assert np.finfo(np.longdouble).eps<np.finfo(np.float64).eps
          C=load_npz(folder/'C.npz').tocsc();assert C.shape==(344103,3885)
          assert sha(folder/'C.npz')=='9f75b00a961ee850857c82942332ebfdd5cb13aa9da55c5266d93337deca436f'
+         assert sha(folder/'points.json')==sha(seed/'probe-N4/points.json')=='682a157686b06b4d8a1c8f431eab3453b9a43594801df148c03594435c4bf796'
+         original_point_seed=pathlib.Path(os.environ['GITHUB_WORKSPACE'])/'engineering/nested-contact-20261017/level-2/case-6/report.json.gz'
+         assert sha(original_point_seed)=='3e0177c8405ddeb27af68325ea65793d5eedb8a5aaf3680a3bfc5b1305fc2d06'
+         source_points=json.loads(gzip.decompress(original_point_seed.read_bytes()))
+         assert source_points['case']==6 and source_points['volume_level']==2
+         assert json.loads((folder/'points.json').read_text())==source_points['contact_points']
+         assert report['force_map_regenerated_by_this_worker'] is False and report['rejected_N5_rebuilt_force_map_retained_separately'] is True
          directions=np.load(folder/'five-probe-directions.npy',allow_pickle=False);rhs=np.load(folder/'five-probe-rhs.npy',allow_pickle=False)
          assert directions.shape==(3885,5) and directions.dtype==rhs.dtype==np.float64 and rhs.shape==(344103,5)
          assert sha(folder/'five-probe-directions.npy')=='abe862cf2823c8511358e34c884957eae26e30ec381a605a594f91f4ad114861'
@@ -1796,13 +1943,13 @@ jobs:
         import re
         import shutil
 
-        REPORT_KEYS = '''schema source_candidate source_baseline_helper_sha256 new_solver_research_identity new_resource_budget_identity diagnostic_completed historical_K_or_H_recovered H_action_restore_executed complete_body_response_accepted new_QP_executed candidate_go fixture_fabrication_go manufacturing_go original_probe_seed original_probe_count original_residual_threshold original_residual_denominator original_gate_matvec_precision all_five_rhs_prepared baseline_probes refined_probes probe_execution solver_strategy source_base_commit output_data_budget_bytes address_space_limit_bytes C_sha256 prepared_input_arrays_sha256 original_Kff_identity_before original_Kff_shape original_Kff_nnz factorization baseline_all_five_passed longdouble_finfo refined_all_five_passed five_probe_residuals_passed_after_optional_refinement original_Kff_identity_after runtime files_sha256 phase seconds peak_rss_kib disk_free_bytes probe_index outer_iteration residual_ratio passes_original_threshold outer_iterations error_type initial_field_origin damping actually_changed_DOFs representational_stagnation'''.split()
+        REPORT_KEYS = '''schema source_candidate source_baseline_helper_sha256 new_solver_research_identity new_resource_budget_identity diagnostic_completed historical_K_or_H_recovered H_action_restore_executed complete_body_response_accepted new_QP_executed candidate_go fixture_fabrication_go manufacturing_go original_probe_seed original_probe_count original_residual_threshold original_residual_denominator original_gate_matvec_precision all_five_rhs_prepared baseline_probes refined_probes probe_execution solver_strategy source_base_commit output_data_budget_bytes address_space_limit_bytes C_sha256 prepared_input_arrays_sha256 original_Kff_identity_before original_Kff_shape original_Kff_nnz factorization baseline_all_five_passed longdouble_finfo refined_all_five_passed five_probe_residuals_passed_after_optional_refinement original_Kff_identity_after runtime files_sha256 phase seconds peak_rss_kib disk_free_bytes probe_index outer_iteration residual_ratio passes_original_threshold outer_iterations error_type initial_field_origin damping actually_changed_DOFs representational_stagnation force_map_origin force_map_regenerated_by_this_worker rejected_N5_rebuilt_force_map_retained_separately'''.split()
         ASSEMBLY_KEYS = '''schema body level original_tetrahedra subtetrahedra dofs condensed_dofs full_uncondensed_dofs E_normalization nu body_loads_on_added_internal_DOFs original_faces_and_surface_P2_traces_unchanged K_sha256 loads_sha256 mesh_sha256 mapping_sha256 K_bytes K_nnz K_symmetry_absolute_max global_directional_energy_probes global_energy_relative_error_max rigid_modes_checked rigid_mode_action_max coordinate_mapping_max_error_mm minimum_scalar_DOF_separation_mm runtime element_assembly_seconds seconds peak_rss_kib new_rebuild_identity original_historical_artifact_restored full_inverse_operator_probes_executed new_QP_executed contact_or_mesh_convergence_qualified candidate_go fixture_fabrication_go manufacturing_go completed phase elapsed_seconds original_vector_dofs coordinate_mapping_error_mm minimum_scalar_dof_separation_mm original_mesh_and_load_bytes_exact material_E material_nu volume_level element_storage assembled_elements total_elements five_global_assembly_energy_probes_relative_error six_rigid_modes_action_absolute_max numerical_primitive_unchanged original_artifact_restored full_inverse_solved contact_solved disk_free_bytes error_type'''.split()
         SUPERVISOR_KEYS = '''schema exit_code resource_stop_reason seconds peak_worker_RSS_bytes peak_worker_high_water_RSS_bytes peak_worker_virtual_bytes sampled_peak_cgroup_current_bytes sampled_peak_cgroup_shmem_bytes sampled_peak_nonreclaimable_budget_bytes peak_task_payload_bytes minimum_filesystem_available_bytes file_cache_counted_separately_from_nonreclaimable_budget memory_budget_definition supervisor_source_sha256 supervisor_source_sha256_after supervisor_source_unchanged log_sha256 samples'''.split()
         SAMPLE_KEYS = '''monotonic task_filesystem_available_bytes task_payload_bytes cgroup_current_bytes cgroup_anon_bytes cgroup_shmem_bytes cgroup_file_bytes nonreclaimable_budget_bytes VmRSS_bytes VmHWM_bytes VmSize_bytes'''.split()
         SOURCE_PATHS = [
          'source/probe_panel_float64_local_refinement.py','source/N5_STRATEGY.json',
-         'source/import_n5_inputs.py','source/N5_FROZEN_N4B_INPUTS.json',
+         'source/import_n5_inputs.py','source/N5_FROZEN_N4B_INPUTS.json','source/N5A_INPUT_STRATEGY.json',
          'source/n5_independent_reader.py','source/export_n5_engineering.py',
          'source/host-cap.py','source/service-launch.py','source/python-downloads.json',
          *['source/S4/'+p for p in [
@@ -1817,6 +1964,7 @@ jobs:
           'run_key_endpoint_trials.py','tests/test_key_endpoint_extension.py','tests/test_key_endpoint_resume.py']]
         ]
         PLAIN_NUMERIC = [
+         'N5a-C-reassembly-comparison.json','rejected-N5-force-map/C.npz',
          'seed-N4b/probe-N4/C.npz',
          'seed-N4b/probe-N4/points.json',
          'seed-N4b/probe-N4/five-probe-rhs.npy',
@@ -1948,7 +2096,7 @@ jobs:
          manifest['exported_files']={str(p.relative_to(output)):{'sha256':sha(p),'bytes':p.stat().st_size} for p in sorted(output.rglob('*')) if p.is_file()}
          (output/'EXPORT_MANIFEST.json').write_text(json.dumps(manifest,indent=2,allow_nan=False)+'\n')
          summary=output.parent/'engineering-summary';summary.mkdir(exist_ok=False)
-         for name in ['EXPORT_MANIFEST.json','EXECUTION_CHECKS.engineering.json','N5-independent-field-readback.engineering.json',
+         for name in ['N5a-C-reassembly-comparison.json','EXPORT_MANIFEST.json','EXECUTION_CHECKS.engineering.json','N5-independent-field-readback.engineering.json',
           'N5-input-recovery.json','input-recovery-supervisor.engineering.json',
           'original-K-byte-identity.engineering.json','panel-assembly-supervisor.engineering.json',
           'volume/panel/level-2/report.engineering.json','volume/panel/progress.engineering.json',
@@ -1970,7 +2118,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
       with:
-        name: s4-panel-local-N5-engineering-${{ github.run_id }}-${{ github.run_attempt }}
+        name: s4-panel-local-N5a-engineering-${{ github.run_id }}-${{ github.run_attempt }}
         path: ${{ runner.temp }}/razr-s4-panel-n5-dd7def6e/engineering-export
         if-no-files-found: error
         retention-days: 14
@@ -1978,7 +2126,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
       with:
-        name: s4-panel-local-N5-summary-${{ github.run_id }}-${{ github.run_attempt }}
+        name: s4-panel-local-N5a-summary-${{ github.run_id }}-${{ github.run_attempt }}
         path: ${{ runner.temp }}/razr-s4-panel-n5-dd7def6e/engineering-summary
         if-no-files-found: error
         retention-days: 14
