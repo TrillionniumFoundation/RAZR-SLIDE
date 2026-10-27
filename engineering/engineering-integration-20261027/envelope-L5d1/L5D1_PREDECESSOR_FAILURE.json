@@ -1,0 +1,140 @@
+{
+  "schema": "razr-L5d1-actual-predecessor-failure-preserved-v1",
+  "original_record": {
+    "path": "engineering/engineering-integration-20261027/envelope-L5d-actual/L5D_ACTUAL_FAILURE_LOCALIZATION.json",
+    "sha256": "7963a92f52d2bca1e94d56712136de111beac5a2b96148327841136b6c1f52da"
+  },
+  "actual_predecessor_failure": {
+    "schema": "razr-L5d-actual-binding-interface-failure-localization-v1",
+    "run_id": 40470232086,
+    "run_attempt": 1,
+    "workflow_head": "40a4357903b63051578940d14ff8ee6426c04388",
+    "artifact_id": 12717643870,
+    "original_report": {
+      "path": "originals/report.json",
+      "bytes": 19704,
+      "sha256": "06d64564c0f96dd50f39cb8dec72b6b4ecb24a30cf147a480007a1274ebbc0c0"
+    },
+    "complete_memory_readback_receipt_sha256": "00bf6bd6c62f6c72304e5a284ffa4f399844bc3be45439b1b9a824c98f93ec1a",
+    "native_started": true,
+    "execution_completed": false,
+    "diagnostic_observations_completed": false,
+    "Boolean_build_calls_started": 2,
+    "registered_maximum_Boolean_build_calls": 6,
+    "actual_original_CadQuery_null_failure_reproduced": true,
+    "actual_first_raw_Cut": {
+      "probe": "actual-cut",
+      "operation": "CUT",
+      "completed": false,
+      "classification": "unresolved",
+      "is_material_acceptance": false,
+      "wrapper_null_was_not_converted_to_empty": true,
+      "inputs_before": {
+        "a": {
+          "raw_mass_accessor_is_not_material_volume_acceptance": true,
+          "shape_type": "Solid",
+          "native_is_valid": true,
+          "native_is_null": false,
+          "raw_signed_volume_mm3": 4.4532222655781617e-10,
+          "solid_count": 1,
+          "raw_solid_signed_volumes_mm3": [
+            4.4532222655781617e-10
+          ],
+          "face_count": 10
+        },
+        "b": {
+          "raw_mass_accessor_is_not_material_volume_acceptance": true,
+          "shape_type": "Solid",
+          "native_is_valid": true,
+          "native_is_null": false,
+          "raw_signed_volume_mm3": 4.453452962600495e-10,
+          "solid_count": 1,
+          "raw_solid_signed_volumes_mm3": [
+            4.453452962600495e-10
+          ],
+          "face_count": 10
+        }
+      },
+      "same_original_wrapper_parameters": true,
+      "new_fuzzy_or_tolerance_or_nondestructive_option_set": false,
+      "actual_native_parameters": {
+        "RunParallel": true,
+        "FuzzyValue": 1e-07,
+        "NonDestructive": false,
+        "CheckInverted": true
+      },
+      "Build_returned": true
+    },
+    "failure": {
+      "failure_type": "AttributeError",
+      "exception_message_utf8_sha256": "0d165a7bfff2eda8cf99c280369ddd2d8e168339998513e9320546305e752797",
+      "exception_message_utf8_bytes": 73,
+      "raw_exception_text_exported": false,
+      "controlled_source_traceback": [
+        {
+          "source_family": "frozen_external_diagnostic",
+          "source_name": "run_l5d.py",
+          "function": "main",
+          "line": 381,
+          "source_sha256": "b205ed726ead19c194ea5971374a9936e7ea327c57ab7959b30a0e474bf90928"
+        },
+        {
+          "source_family": "frozen_external_diagnostic",
+          "source_name": "run_l5d.py",
+          "function": "raw_boolean_status_l5d",
+          "line": 313,
+          "source_sha256": "b205ed726ead19c194ea5971374a9936e7ea327c57ab7959b30a0e474bf90928"
+        }
+      ]
+    },
+    "precise_new_failure_classification": "new diagnostic Python binding attribute access before checkpoint; not a new geometry pass/fail",
+    "known_public_attribute_lookup_confirmation": {
+      "public_type_name": "OCP.OCP.BRepAlgoAPI.BRepAlgoAPI_Cut",
+      "source_attribute": "HasErrors",
+      "known_Python_attribute_error_format_bytes": 73,
+      "known_format_SHA256_matches_actual_record": true,
+      "raw_private_exception_text_recovered_or_exported": false
+    },
+    "new_diagnostic_source_issue": "A tuple eagerly evaluates op.HasErrors before the loop enters attempt(). Hence even preceding IsDone was not called.",
+    "actual_raw_native_status_unobserved": [
+      "IsDone",
+      "HasErrors",
+      "HasWarnings",
+      "GetReport",
+      "Shape",
+      "Shape.IsNull"
+    ],
+    "native_default_FuzzyValue_unit": "mm; this 1e-7 length parameter is distinct from the original 1e-7 mm3 Common-volume gate",
+    "unstarted_registered_probes": [
+      "actual-common",
+      "actual-reverse-cut",
+      "control-empty",
+      "control-nonempty"
+    ],
+    "original_input_whole_material_gate_passed_for_each_actual_fresh_import": true,
+    "prior_STEP_failures_and_report_original_bytes_preserved": true,
+    "new_result_BREP_unavailable_because_Shape_was_never_observed": true,
+    "scientific_export": {
+      "complete": true,
+      "manifest_entries": 39,
+      "BREP_count": 6,
+      "STEP_count": 2,
+      "rejected_items": []
+    },
+    "elapsed_seconds": 3.58290156999999,
+    "peak_RSS_bytes": 506241024,
+    "source_runtime_unchanged": true,
+    "external_source_unchanged": true,
+    "worker_exit_code": 2,
+    "source_fix_candidate": "Move every optional attribute lookup inside its checkpointed lambda and preserve unavailable fields; observe Shape and remaining independent probes despite a missing method. Child Builder/DSFiller status, if exposed, must be labelled child-only and cannot replace unobserved wrapper status.",
+    "original_seven_pair_calls": 0,
+    "current_seven_pair_calls": 0,
+    "conservative_continuous_containment_proved": false,
+    "old_failure_repaired": false,
+    "full_15D_or_11781_qualified": false,
+    "new_local_CAD_execution": false
+  },
+  "prior_source_and_original_reports_not_modified": true,
+  "new_binding_byte_identical_to_L5d": true,
+  "new_observation_route_does_not_reclassify_previous_attempt": true
+}
