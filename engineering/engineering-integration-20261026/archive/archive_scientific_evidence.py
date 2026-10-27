@@ -688,7 +688,7 @@ def l5d_scientific_name(name):
 
 def verify_l5_diagnostic_scope(z, entries, family):
     """Retain narrow original failures without requiring a native diagnostic pass."""
-    require(family in ("L5c","L5d","L5d1"), "unreviewed L5 diagnostic family")
+    require(family in ("L5c","L5d","L5d1","L5d2"), "unreviewed L5 diagnostic family")
     upper=family.upper()
     lower=family.lower()
     scope=json.loads(z.read("EXPORT_SCOPE.json"))
@@ -696,7 +696,7 @@ def verify_l5_diagnostic_scope(z, entries, family):
               "raw_runtime_exported":False,"raw_private_runtime_preservation_claimed":False,
               "rejected_items":[],"failed_original_operations_not_reclassified":True,
               "original_seven_reexecuted":False,"complete_product_qualification":False}
-    if family in ("L5d","L5d1"):
+    if family in ("L5d","L5d1","L5d2"):
         expected.update(old_failed_STEP_originals_not_replaced=True,null_result_not_replaced_by_empty=True)
     require(scope==expected, "L5 diagnostic exact excluded-runtime scope differs")
     binding=json.loads(z.read("source-"+upper+"_INPUT_BINDING.json"))
@@ -728,7 +728,8 @@ def verify_l5_diagnostic_scope(z, entries, family):
         require(binding["schema"]=="razr-L5d-frozen-L5c-null-Boolean-input-v1"
                 and binding["source_workflow_commit"]=="f544f33c563ef4a44e8baa38c3e1225ad6e60b9e"
                 and ((family=="L5d" and identity.get("parent_L5c_workflow_commit")=="f544f33c563ef4a44e8baa38c3e1225ad6e60b9e")
-                     or (family=="L5d1" and identity.get("parent_L5d_workflow_commit")=="40a4357903b63051578940d14ff8ee6426c04388"))
+                     or (family=="L5d1" and identity.get("parent_L5d_workflow_commit")=="40a4357903b63051578940d14ff8ee6426c04388")
+                     or (family=="L5d2" and identity.get("parent_L5d1_workflow_commit")=="4927944f9ece18e0b5f67083ee9d8fb1da5d81a8"))
                 and binding["source_zip_sha256"]=="71f96228c6f8f5e3cbcb5ddb1f44d76ecb3cbf635bcd6e71eac7ba4c36aaa49a",
                 "L5d original input predecessor differs")
         originals=[(r["output_path"],{k:r[k] for k in ("bytes","sha256")}) for r in binding["preserved_originals"]]
@@ -838,7 +839,7 @@ def verify_zip(path, binding):
         require(sha(manifest_bytes) == binding["manifest_sha256"], "reviewed scientific manifest differs")
         manifest = json.loads(manifest_bytes)
         material_family = {"F1_members": "F1", "K1_members": "K1", "K2_members": "K2", "K3_members": "K3", "K3FULL_members": "K3FULL"}.get(binding["manifest_layout"])
-        if binding["manifest_layout"] in ("flat", "V4a_flat", "L5_failed_control_flat", "L5c_diagnostic_flat", "L5d_diagnostic_flat", "L5d1_diagnostic_flat"):
+        if binding["manifest_layout"] in ("flat", "V4a_flat", "L5_failed_control_flat", "L5c_diagnostic_flat", "L5d_diagnostic_flat", "L5d1_diagnostic_flat", "L5d2_diagnostic_flat"):
             entries = manifest
         elif material_family is not None:
             require(manifest["schema"] == "razr-" + material_family + "-engineering-export-manifest-v1",
@@ -888,7 +889,7 @@ def verify_zip(path, binding):
             verify_k4_scope(z, manifest, entries)
         if binding["manifest_layout"] == "N10_exported_files":
             verify_n10_scope(z, manifest, entries)
-        if binding["manifest_layout"] in ("L5c_diagnostic_flat", "L5d_diagnostic_flat", "L5d1_diagnostic_flat"):
+        if binding["manifest_layout"] in ("L5c_diagnostic_flat", "L5d_diagnostic_flat", "L5d1_diagnostic_flat", "L5d2_diagnostic_flat"):
             verify_l5_diagnostic_scope(z, entries, binding["manifest_layout"].split("_")[0])
         if binding["manifest_layout"] == "V4a_flat":
             verify_v4a_scope(z, entries)
@@ -930,7 +931,7 @@ def validate_binding(binding):
     require(re.fullmatch(r"[A-Za-z0-9._-]+", binding["asset_name"]) and binding["asset_name"].endswith(".zip"), "invalid scientific asset name")
     require(all(type(binding[k]) is int and binding[k] > 0 for k in ("run_id", "artifact_id", "manifest_entries")), "invalid source identifiers or count")
     require(re.fullmatch(r"[A-Za-z0-9._-]+", binding["manifest_name"]), "invalid manifest basename")
-    require(binding["manifest_layout"] in ("flat", "exported_files", "F1_members", "K1_members", "K2_members", "K3_members", "K3FULL_members", "N6_exported_files", "N7_exported_files", "N8_exported_files", "EC1_files", "V4a_flat", "N9_exported_files", "L5_failed_control_flat", "N10_exported_files", "L5c_diagnostic_flat", "L5d_diagnostic_flat", "L5d1_diagnostic_flat", "K4_members"), "unsupported reviewed manifest layout")
+    require(binding["manifest_layout"] in ("flat", "exported_files", "F1_members", "K1_members", "K2_members", "K3_members", "K3FULL_members", "N6_exported_files", "N7_exported_files", "N8_exported_files", "EC1_files", "V4a_flat", "N9_exported_files", "L5_failed_control_flat", "N10_exported_files", "L5c_diagnostic_flat", "L5d_diagnostic_flat", "L5d1_diagnostic_flat", "L5d2_diagnostic_flat", "K4_members"), "unsupported reviewed manifest layout")
     require(re.fullmatch(r"[0-9a-f]{40}", binding["head_sha"]), "invalid immutable source identity")
     require(all(re.fullmatch(r"[0-9a-f]{64}", binding[k]) for k in ("zip_sha256", "manifest_sha256")), "invalid SHA binding")
     require(type(binding["zip_bytes"]) is int and 0 < binding["zip_bytes"] <= 768 * 1024**2, "artifact exceeds transfer budget")

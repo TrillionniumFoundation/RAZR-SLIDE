@@ -35,9 +35,9 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           test -z "$(git status --porcelain)"
           sha256sum --check --strict <<'HASHES'
-          a95a56624d6b235d7a486f6dc0593e1abd9a3abae47dd92e0930257e4756951b  engineering/engineering-integration-20261026/archive/archive_scientific_evidence.py
-          f8e6f636ecc868f153588b011c26a0d21cb4786c51dca6bb1e4cae8f27ec4fda  engineering/engineering-integration-20261026/archive/SCIENTIFIC_ARCHIVE_INPUTS.json
-          ed912a7d26fe92a939453038c67291cb8c37dfef3868e04a5e73a6d8ae296740  engineering/engineering-integration-20261026/archive/test_archive_integrity.py
+          764f85ac95d7fcbef256bc7d017c9d6be2928ba1aeddc4f28f15ef79eae242e4  engineering/engineering-integration-20261026/archive/archive_scientific_evidence.py
+          098e193d3fc6715334c48525afdd20f24c1184feb29f49b5a5aeaf1abe00e7ce  engineering/engineering-integration-20261026/archive/SCIENTIFIC_ARCHIVE_INPUTS.json
+          4546db9b5e7c70774ee97f2fb41e1f06ac3a8761b470618de0187018052926e5  engineering/engineering-integration-20261026/archive/test_archive_integrity.py
           a47d25f20951f387ece8ec0df62a57a02325a9427f7749d6cbd52738103d4751  engineering/engineering-integration-20261026/archive/verify_k4_scope.py
           HASHES
           /usr/bin/python3 -B engineering/engineering-integration-20261026/archive/test_archive_integrity.py
