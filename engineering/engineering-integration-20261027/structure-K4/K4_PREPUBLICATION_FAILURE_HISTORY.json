@@ -1,0 +1,29 @@
+{
+  "schema": "razr-K4-prepublication-static-attempt-history-v1",
+  "attempts": [
+    {
+      "phase": "pre_native_Python_AST_callsite_inventory",
+      "result": "failed",
+      "exception_type": "AssertionError",
+      "check_source_sha256": "2e2228b0d71aaf2e8d991ef10e55033d0b54c3be604502e1af2165c34573eb3c",
+      "incorrect_expected_distinct_Boolean_call_sites": 14,
+      "actual_AST_distinct_Boolean_call_sites": 12,
+      "native_38_and_190_loop_budgets_changed": false,
+      "CAD_native_operations": 0,
+      "cause": "static verification expected-count typo; 4 producer and 8 reader call sites implement the frozen loop counts"
+    },
+    {
+      "phase": "independent_source_semantic_review",
+      "reviewer_role": "envelope_agent",
+      "source_sha256_before_fix": "d536e840801af76a05558ff04f742a8de2a73d281316b5f1102a097342dad3e6",
+      "result": "potential_misclassification_found_before_native",
+      "cause": "validated empty Common could enter native empty difference, return null and become unresolved instead of a computed target mismatch",
+      "fix": "apply exact A\\B set identity only after original whole_material validates an operand as zero solids and exact zero volume; record the identity separately, no catch-and-treat-empty path",
+      "original_native_call_upper_bounds_unchanged": [
+        38,
+        190
+      ],
+      "CAD_native_operations": 0
+    }
+  ]
+}

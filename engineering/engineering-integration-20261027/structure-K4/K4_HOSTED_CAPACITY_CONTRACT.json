@@ -1,0 +1,86 @@
+{
+  "schema": "razr-K4-hosted-local-section-capacity-contract-v1",
+  "pilot_spec": {
+    "bytes": 10795,
+    "sha256": "a267cc50eeae4d59e96bfd1ebb61d8d14b81a856edb622e383565f2b722288dd"
+  },
+  "state": "frozen_hosted_source_preparation_native_not_started",
+  "measured_inputs": {
+    "whole_STEP_bytes": 1617829,
+    "whole_bodies": 3,
+    "total_boundary_faces": 482,
+    "total_within_body_face_pairs_if_naively_expanded": 52625,
+    "current_pure_STEP_inventory_seconds": 0.28451358299935237
+  },
+  "bounded_native_work": {
+    "each_worker_whole_STEP_imports": 3,
+    "each_worker_local_window_probes": 12,
+    "producer_core_volume_Boolean_calls": 36,
+    "producer_oversize_reference_negative_control_cuts": 2,
+    "reader_repeated_core_and_controls_and_saved_actual_material_comparisons": 62,
+    "reader_maximum_additional_STEP_BREP_directed_comparison_calls": 128,
+    "reader_maximum_total_volume_Boolean_calls": 190,
+    "reader_maximum_saved_BREP_imports": 64,
+    "reader_maximum_saved_STEP_imports": 64,
+    "complete_continuous_motion_calls": 0,
+    "full_pair_reruns": 0,
+    "FE_solves": 0,
+    "each_worker_expected_whole_face_inventory_entries": 482
+  },
+  "basis": "Current actual inputs contain only three previously imported complete bodies, with fixed twelve windows. Producer has thirty-eight diagnostic Booleans; reader has sixty-two plus at most 128 full STEP/BREP directed comparisons. This does not justify a full 52,625-face-pair wall search.",
+  "runtime_estimate_seconds_per_worker": [
+    60,
+    300
+  ],
+  "estimate_is_not_a_measured_native_time_or_completion_guarantee": true,
+  "hard_limits_not_relaxed": {
+    "wall_seconds_per_worker": 1200,
+    "worker_peak_RSS_MiB": 1536,
+    "shared_unreclaimable_GiB": 6.8,
+    "startup_additional_memory_MiB": 2048,
+    "startup_disk_reserve_MiB": 256,
+    "runtime_disk_reserve_MiB": 100
+  },
+  "launch_policy": {
+    "remote_owned_supervisor_required": true,
+    "local_native_launch_allowed": false,
+    "max_parallel": 1,
+    "source_and_43_package_locked_environment_checks_before_after_required": true,
+    "dependent_reader_after_producer_always_retains_partial_results": true,
+    "resource_guard_failure_does_not_mean_geometry_rejection": true,
+    "one_job_producer_then_reader": true
+  },
+  "expansion_policy": {
+    "no_automatic_all_face_pair_sweep": true,
+    "minimum_wall_metric_and_manufacturing_rule_required_first": true,
+    "pilot_measurements_required_before_further_native_capacity_registration": true,
+    "no_automatic_window_expansion": true
+  },
+  "public_artifact_scope": "engineering source, frozen input identity, all local Common/difference BREP/STEP where nonempty, full face inventory, journals, native report and independent reader; no raw runtime, environment, procfs or API identity data",
+  "native_execution_authorized_by_this_preparation": false,
+  "actual_prior_capacity_observations": {
+    "source": "original K3FULL stow_tabs_3 engineering controller projections",
+    "producer_seconds": 253.317231384,
+    "producer_peak_RSS_bytes": 574365696,
+    "reader_seconds": 194.26243259199998,
+    "reader_peak_RSS_bytes": 563609600,
+    "original_complete_factory_and_full_pairs": 11781,
+    "these_are_different_complete_factory_workers_not_measured_K4_times": true,
+    "inspection_sha256": "9ab136d5e02bc11ad9db4d85fdef97696db50e460f223de692af05e59f599492"
+  },
+  "additional_stricter_limits": {
+    "single_scientific_file_MiB": 16,
+    "per_worker_science_directory_MiB": 128,
+    "per_worker_total_output_MiB": 160,
+    "engineering_export_total_MiB": 384,
+    "input_ZIP_bytes": 63227765,
+    "input_uncompressed_streamed_bytes": 449301019,
+    "only_three_STEP_bytes_extracted": 1617829,
+    "hosted_pre_download_ordinary_free_GiB": 2,
+    "hosted_command_outer_seconds": 3240,
+    "job_maximum_seconds": 3600,
+    "per_file_RLIMIT_FSIZE_bytes": 16777216,
+    "Boolean_call_count_guard_producer": 38,
+    "Boolean_call_count_guard_reader": 190
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "razr-K4-independent-limited-source-review-v1",
+  "reviewer_role": "envelope_agent",
+  "scope": [
+    "k4_local_section_native_api.py",
+    "k4_worker.py",
+    "supervise_k4.py"
+  ],
+  "CAD_native_operations": 0,
+  "network_or_Git_mutations": 0,
+  "findings": [
+    {
+      "topic": "valid_empty_Common_downstream_Boolean",
+      "observation": "Original empty Compound can yield null under subtraction; do not relabel unknown null or ValueError as empty.",
+      "resolution": "Only original whole_material-validated zero-solid exact-zero-volume operands permit exact A\\B identity; explicit journal records preserve skipped native calls and unchanged left operand."
+    },
+    {
+      "topic": "diagnostic_exit_vs_actual_local_pass",
+      "observation": "Worker execution_completed can describe all rows visited while evaluations are unresolved.",
+      "resolution": "Worker/controller diagnostic completion retained. Independent stdlib observation separately lists calculated local rejections, unresolved evaluations and producer-reader disagreement. Both workflow verifier and final gate require all actual local evaluations and readbacks to pass."
+    },
+    {
+      "topic": "traceback_source_family",
+      "observation": "Locked .venv dependency is not immutable S4 Git source.",
+      "resolution": "Actual dependency path relative to environment and source SHA are observed under a distinct source_family; immutable_Git_source_claimed false. S4 project frames require membership in the verified before-source map."
+    }
+  ],
+  "review_conclusion_before_runtime": "No other visible gate reduction in original whole imports, twelve masks, directed material differences, full STEP/BREP comparisons, fresh reader, two controls, source/43-package/owned-resource checks. This is source review, not native evidence.",
+  "global_minimum_wall_qualified": false,
+  "full_15D_proved": false
+}
