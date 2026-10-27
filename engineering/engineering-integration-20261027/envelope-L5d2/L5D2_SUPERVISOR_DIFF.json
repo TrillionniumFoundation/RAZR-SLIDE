@@ -1,0 +1,58 @@
+{
+  "schema": "razr-L5d2-original-supervisor-limits-preserved-v1",
+  "original_L5d1_supervisor_sha256": "db8acece9a762585a511c5c3c0f09119699346c0252342045906d5a8742ef457",
+  "new_L5d2_supervisor_sha256": "d169d541716103315e92854a1e052d4e87f6728484424e28c999ce500f7002c9",
+  "only_text_replacements": [
+    {
+      "from": "L5d1",
+      "to": "L5d2"
+    },
+    {
+      "from": "L5D1",
+      "to": "L5D2"
+    },
+    {
+      "from": "l5d1",
+      "to": "l5d2"
+    }
+  ],
+  "exact_replacement_equality_verified": true,
+  "all_original_child_lifecycle_and_resource_guards_unchanged": true,
+  "diff": [
+    "--- supervise_l5d1.py",
+    "+++ supervise_l5d2.py",
+    "@@ -1,4 +1,4 @@",
+    "-\"\"\"L5d1 named diagnostic supervisor; original SLIDE 1800 s/1536 MiB/resource/ownership guards retained.\"\"\"",
+    "+\"\"\"L5d2 named diagnostic supervisor; original SLIDE 1800 s/1536 MiB/resource/ownership guards retained.\"\"\"",
+    " from __future__ import annotations",
+    " ",
+    " import argparse",
+    "@@ -13,7 +13,7 @@",
+    " ",
+    " HERE = Path(__file__).resolve().parent",
+    " from run_l5 import identity, owned_process, S4, SOURCES",
+    "-from run_l5d1 import C_SOURCES",
+    "+from run_l5d2 import C_SOURCES",
+    " ",
+    " ",
+    " def resources(path):",
+    "@@ -55,7 +55,7 @@",
+    "         raise ValueError('new output outside repository required')",
+    "     out.mkdir(parents=True)",
+    "     wall, rss, startup_memory = (1800, 1536, 1536)",
+    "-    source = HERE/'run_l5d1.py'",
+    "+    source = HERE/'run_l5d2.py'",
+    "     command = [str(identity.ROOT/'.venv/bin/python'),'-B',str(source),'--output',str(out/'worker'),",
+    "                '--inputs',str(args.inputs.resolve())]",
+    "     if args.mode=='producer':",
+    "@@ -68,7 +68,7 @@",
+    "         command.extend(['--producer',str(args.producer.resolve())])",
+    "     own_sources = {str(Path(path).resolve()): identity.sha(path)",
+    "                    for path in (__file__, *(HERE/n for n in (*SOURCES,*C_SOURCES)), identity.__file__, owned_process.__file__)}",
+    "-    receipt = {'schema': 'razr-L5d1-owned-diagnostic-supervisor-v1',",
+    "+    receipt = {'schema': 'razr-L5d2-owned-diagnostic-supervisor-v1',",
+    "                'started_utc': dt.datetime.now(dt.timezone.utc).isoformat(),",
+    "                'scope': args.scope, 'worker_mode':args.mode, 'command': command, 'source_sha256_before': own_sources,",
+    "                'original_L1_resource_limits_unchanged': True,"
+  ]
+}

@@ -1,0 +1,419 @@
+{
+  "schema": "razr-L5d2-actual-predecessor-partial-preserved-v1",
+  "original_record": {
+    "repository_path": "engineering/engineering-integration-20261027/envelope-L5d1-actual/L5D1_ACTUAL_FAILURE_LOCALIZATION.json",
+    "sha256": "732097fbce52415f6a940422080371265dbb7912da16ce958a1636913f416b29"
+  },
+  "actual_predecessor_partial": {
+    "schema": "razr-L5d1-actual-native-partial-and-signal-failure-v1",
+    "run_id": 40471621804,
+    "run_attempt": 1,
+    "head_sha": "4927944f9ece18e0b5f67083ee9d8fb1da5d81a8",
+    "artifact_id": 12718389519,
+    "original_report": {
+      "path": "originals/report.json",
+      "bytes": 37593,
+      "sha256": "803289646c3ec1c71824f6685c1e84e740cfac1e7e903e3dc1606dec2e5d2a37"
+    },
+    "original_controller_projection_sha256": "60ba170c1b8aac7bac67e53ed70ee1a42c00619ac527b69330cf83be51ce84f7",
+    "complete_memory_readback_sha256": "ba79453b95608c5a4f6ab17f401028e29ac9731618614e9f9017b6b67010901f",
+    "worker_exit_code": -11,
+    "signal_interpretation": "SIGSEGV (11) reported as owned child return code -11",
+    "exact_crash_site_or_cause_proved": false,
+    "DSFiller_ownership_cause_proved": false,
+    "actual_original_cut_null_reproduced": true,
+    "actual_Boolean_build_calls_started": 2,
+    "registered_builds": 6,
+    "first_raw_probe_saved_completed": true,
+    "worker_execution_completed": false,
+    "first_raw_probe": {
+      "probe": "actual-cut",
+      "operation": "CUT",
+      "completed": true,
+      "classification": "null_result_not_accepted",
+      "is_material_acceptance": false,
+      "wrapper_null_was_not_converted_to_empty": true,
+      "inputs_before": {
+        "a": {
+          "raw_mass_accessor_is_not_material_volume_acceptance": true,
+          "shape_type": "Solid",
+          "native_is_valid": true,
+          "native_is_null": false,
+          "raw_mass_accessor_value": 4.4532222655781617e-10,
+          "solid_count": 1,
+          "raw_solid_signed_volumes_mm3": [
+            4.4532222655781617e-10
+          ],
+          "face_count": 10,
+          "raw_mass_accessor_unit_for_mm_geometry": "mm3",
+          "raw_mass_accessor_unit_is_not_a_material_acceptance": true
+        },
+        "b": {
+          "raw_mass_accessor_is_not_material_volume_acceptance": true,
+          "shape_type": "Solid",
+          "native_is_valid": true,
+          "native_is_null": false,
+          "raw_mass_accessor_value": 4.453452962600495e-10,
+          "solid_count": 1,
+          "raw_solid_signed_volumes_mm3": [
+            4.453452962600495e-10
+          ],
+          "face_count": 10,
+          "raw_mass_accessor_unit_for_mm_geometry": "mm3",
+          "raw_mass_accessor_unit_is_not_a_material_acceptance": true
+        }
+      },
+      "same_original_wrapper_parameters": true,
+      "new_fuzzy_or_tolerance_or_nondestructive_option_set": false,
+      "actual_Python_wrapper_capabilities": {
+        "known_public_method_capabilities": [
+          {
+            "name": "RunParallel",
+            "observation_returned": true,
+            "exists": true,
+            "callable": true
+          },
+          {
+            "name": "FuzzyValue",
+            "observation_returned": true,
+            "exists": true,
+            "callable": true
+          },
+          {
+            "name": "NonDestructive",
+            "observation_returned": true,
+            "exists": true,
+            "callable": true
+          },
+          {
+            "name": "CheckInverted",
+            "observation_returned": true,
+            "exists": true,
+            "callable": true
+          },
+          {
+            "name": "Build",
+            "observation_returned": true,
+            "exists": true,
+            "callable": true
+          },
+          {
+            "name": "IsDone",
+            "observation_returned": true,
+            "exists": true,
+            "callable": true
+          },
+          {
+            "name": "HasErrors",
+            "observation_returned": true,
+            "exists": false,
+            "callable": false
+          },
+          {
+            "name": "HasWarnings",
+            "observation_returned": true,
+            "exists": false,
+            "callable": false
+          },
+          {
+            "name": "GetReport",
+            "observation_returned": true,
+            "exists": false,
+            "callable": false
+          },
+          {
+            "name": "Shape",
+            "observation_returned": true,
+            "exists": true,
+            "callable": true
+          },
+          {
+            "name": "Builder",
+            "observation_returned": true,
+            "exists": false,
+            "callable": false
+          },
+          {
+            "name": "DSFiller",
+            "observation_returned": true,
+            "exists": true,
+            "callable": true
+          }
+        ],
+        "method_absence_is_not_a_native_status_value": true,
+        "public_type": "OCP.OCP.BRepAlgoAPI.BRepAlgoAPI_Cut"
+      },
+      "actual_native_parameters": {
+        "RunParallel": true,
+        "FuzzyValue": 1e-07,
+        "NonDestructive": false,
+        "CheckInverted": true
+      },
+      "Build_returned": true,
+      "IsDone": false,
+      "HasErrors": null,
+      "HasWarnings": null,
+      "GetReport_returned": false,
+      "child_algorithm_observations": [
+        {
+          "interface": "Builder",
+          "child_status_not_wrapper_status": true,
+          "substituted_for_missing_wrapper_fields": false,
+          "returned_non_null_tool": false
+        },
+        {
+          "interface": "DSFiller",
+          "child_status_not_wrapper_status": true,
+          "substituted_for_missing_wrapper_fields": false,
+          "returned_non_null_tool": true,
+          "actual_Python_child_capabilities": {
+            "known_public_method_capabilities": [
+              {
+                "name": "HasErrors",
+                "observation_returned": true,
+                "exists": true,
+                "callable": true
+              },
+              {
+                "name": "HasWarnings",
+                "observation_returned": true,
+                "exists": true,
+                "callable": true
+              },
+              {
+                "name": "GetReport",
+                "observation_returned": true,
+                "exists": true,
+                "callable": true
+              }
+            ],
+            "method_absence_is_not_a_native_status_value": true,
+            "public_type": "OCP.OCP.BOPAlgo.BOPAlgo_PaveFiller"
+          },
+          "HasErrors": false,
+          "HasWarnings": true,
+          "GetReport_returned": true,
+          "native_alert_types": {
+            "Message_Fail": {
+              "count": 0,
+              "type_names": [],
+              "raw_alert_message_exported": false
+            },
+            "Message_Warning": {
+              "complete": false
+            }
+          }
+        }
+      ],
+      "raw_Shape_returned": true,
+      "raw_Shape_IsNull": true,
+      "null_result_has_no_serializable_material_shape": true,
+      "original_material_guard_passed": false,
+      "legitimate_empty_material_proved": false,
+      "inputs_after": {
+        "a": {
+          "raw_mass_accessor_is_not_material_volume_acceptance": true,
+          "shape_type": "Solid",
+          "native_is_valid": true,
+          "native_is_null": false,
+          "raw_mass_accessor_value": 4.4532222655781617e-10,
+          "solid_count": 1,
+          "raw_solid_signed_volumes_mm3": [
+            4.4532222655781617e-10
+          ],
+          "face_count": 10,
+          "raw_mass_accessor_unit_for_mm_geometry": "mm3",
+          "raw_mass_accessor_unit_is_not_a_material_acceptance": true
+        },
+        "b": {
+          "raw_mass_accessor_is_not_material_volume_acceptance": true,
+          "shape_type": "Solid",
+          "native_is_valid": true,
+          "native_is_null": false,
+          "raw_mass_accessor_value": 4.453452962600495e-10,
+          "solid_count": 1,
+          "raw_solid_signed_volumes_mm3": [
+            4.453452962600495e-10
+          ],
+          "face_count": 10,
+          "raw_mass_accessor_unit_for_mm_geometry": "mm3",
+          "raw_mass_accessor_unit_is_not_a_material_acceptance": true
+        }
+      },
+      "post_operation_input_BREPs": {
+        "a": {
+          "path": "actual-cut-after-a.brep",
+          "source": "new_native_diagnostic_observation",
+          "signature": {
+            "raw_mass_accessor_is_not_material_volume_acceptance": true,
+            "shape_type": "Solid",
+            "native_is_valid": true,
+            "native_is_null": false,
+            "raw_mass_accessor_value": 4.4532222655781617e-10,
+            "solid_count": 1,
+            "raw_solid_signed_volumes_mm3": [
+              4.4532222655781617e-10
+            ],
+            "face_count": 10,
+            "raw_mass_accessor_unit_for_mm_geometry": "mm3",
+            "raw_mass_accessor_unit_is_not_a_material_acceptance": true
+          },
+          "native_export_status": "True",
+          "bytes": 11441,
+          "sha256": "570f783d5c59616d4a8b7b660d51dad62eede2f66801d859c5c848a2c51538e3",
+          "export_completed": true
+        },
+        "b": {
+          "path": "actual-cut-after-b.brep",
+          "source": "new_native_diagnostic_observation",
+          "signature": {
+            "raw_mass_accessor_is_not_material_volume_acceptance": true,
+            "shape_type": "Solid",
+            "native_is_valid": true,
+            "native_is_null": false,
+            "raw_mass_accessor_value": 4.453452962600495e-10,
+            "solid_count": 1,
+            "raw_solid_signed_volumes_mm3": [
+              4.453452962600495e-10
+            ],
+            "face_count": 10,
+            "raw_mass_accessor_unit_for_mm_geometry": "mm3",
+            "raw_mass_accessor_unit_is_not_a_material_acceptance": true
+          },
+          "native_export_status": "True",
+          "bytes": 11444,
+          "sha256": "7fa7ce5c17d45bde63bad1f23508f2eed106d6c7bcf7ef372d09e956250054e9",
+          "export_completed": true
+        }
+      },
+      "status_observation_complete": false
+    },
+    "actual_selected_tail": [
+      {
+        "gate": "original-cq-cut.unchanged_cut",
+        "passed": false
+      },
+      {
+        "gate": "actual-cut.a.original_positive_material",
+        "passed": true
+      },
+      {
+        "gate": "actual-cut.b.original_positive_material",
+        "passed": true
+      },
+      {
+        "gate": "actual-cut.Build_IsDone_without_errors",
+        "passed": false
+      },
+      {
+        "gate": "actual-cut.nonnull_original_material_result",
+        "passed": false
+      },
+      {
+        "gate": "actual-cut.complete_status_and_alert_observations",
+        "passed": false
+      }
+    ],
+    "unstarted_registered_probes": [
+      "actual-common",
+      "actual-reverse-cut",
+      "control-empty",
+      "control-nonempty"
+    ],
+    "clear_native_conclusion": "Raw Cut Build returned, IsDone is false, Shape returned a null TopoDS. This is not a validated empty material result.",
+    "wrapper_missing_methods_actual": [
+      "HasErrors",
+      "HasWarnings",
+      "GetReport",
+      "Builder"
+    ],
+    "source_closure_evidence_limits": {
+      "worker_source_runtime_unchanged_field": false,
+      "worker_external_source_unchanged_field": false,
+      "these_worker_fields_remain_initial_false_without_finally_completion": true,
+      "worker_scientific_retention_complete_field_present": false,
+      "controller_external_source_bytes_unchanged": true,
+      "controller_locked_environment_unchanged": true,
+      "controller_owned_child_identity_verified": true,
+      "controller_owned_channel_descriptors_closed": true,
+      "exported_24_source_members_match_frozen_bytes_independently": true,
+      "controller_proves_all_worker_postflight_material_guards": false
+    },
+    "partial_timing": {
+      "last_report_elapsed_seconds": 3.3118854919999876,
+      "last_report_peak_RSS_bytes": 508076032,
+      "complete_worker_final_peak_or_duration_observed": false,
+      "controller_elapsed_seconds": 6.2342852140000105,
+      "capacity_or_wall_stop": null
+    },
+    "science": {
+      "manifest_entries": 41,
+      "regular_files": 42,
+      "BREP_count": 8,
+      "STEP_count": 2,
+      "rejected_items": [],
+      "new_post_input_BREPs": [
+        {
+          "path": "actual-cut-after-a.brep",
+          "source": "new_native_diagnostic_observation",
+          "signature": {
+            "raw_mass_accessor_is_not_material_volume_acceptance": true,
+            "shape_type": "Solid",
+            "native_is_valid": true,
+            "native_is_null": false,
+            "raw_mass_accessor_value": 4.4532222655781617e-10,
+            "solid_count": 1,
+            "raw_solid_signed_volumes_mm3": [
+              4.4532222655781617e-10
+            ],
+            "face_count": 10,
+            "raw_mass_accessor_unit_for_mm_geometry": "mm3",
+            "raw_mass_accessor_unit_is_not_a_material_acceptance": true
+          },
+          "native_export_status": "True",
+          "bytes": 11441,
+          "sha256": "570f783d5c59616d4a8b7b660d51dad62eede2f66801d859c5c848a2c51538e3",
+          "export_completed": true
+        },
+        {
+          "path": "actual-cut-after-b.brep",
+          "source": "new_native_diagnostic_observation",
+          "signature": {
+            "raw_mass_accessor_is_not_material_volume_acceptance": true,
+            "shape_type": "Solid",
+            "native_is_valid": true,
+            "native_is_null": false,
+            "raw_mass_accessor_value": 4.453452962600495e-10,
+            "solid_count": 1,
+            "raw_solid_signed_volumes_mm3": [
+              4.453452962600495e-10
+            ],
+            "face_count": 10,
+            "raw_mass_accessor_unit_for_mm_geometry": "mm3",
+            "raw_mass_accessor_unit_is_not_a_material_acceptance": true
+          },
+          "native_export_status": "True",
+          "bytes": 11444,
+          "sha256": "7fa7ce5c17d45bde63bad1f23508f2eed106d6c7bcf7ef372d09e956250054e9",
+          "export_completed": true
+        }
+      ],
+      "post_input_BREP_bytes_differ_from_originals": true,
+      "material_difference_or_mutation_proved_by_hash_difference_alone": false
+    },
+    "original_and_current_seven_pair_calls": 0,
+    "all_full_domain_or_pair_qualifications": false,
+    "small_readback_no_local_CAD_no_ZIP_or_geometry_disk_write": true,
+    "child_DSFiller_only_observation": {
+      "actual_type": "OCP.OCP.BOPAlgo.BOPAlgo_PaveFiller",
+      "HasErrors": false,
+      "HasWarnings": true,
+      "Fail_alert_count": 0,
+      "Warning_alert_types_complete": false,
+      "Warning_guard_failure": "Original bounded native alert list predicate failed; actual size was not saved before the predicate, so no exact count or exclusive reason is inferred.",
+      "not_substituted_for_missing_wrapper_status": true
+    }
+  },
+  "original_reports_and_prior_observer_sources_not_changed": true,
+  "observation_isolation_is_not_crash_root_cause_proof": true
+}
