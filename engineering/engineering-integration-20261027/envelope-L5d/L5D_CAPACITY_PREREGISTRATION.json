@@ -1,0 +1,39 @@
+{
+  "schema": "razr-L5d-six-build-capacity-preregistration-v1",
+  "measured_predecessor": {
+    "run_id": 40468054101,
+    "worker_seconds": 4.1149082919999955,
+    "peak_RSS_bytes": 517107712,
+    "first_failed_cut_seconds": 0.08618388600007165,
+    "source_report_sha256": "7ed716e0abd918b977fca1cbaa270c0e4873dc88e8d626397203c9c5e40b82fb"
+  },
+  "registered_scientific_work": {
+    "maximum_Boolean_Build_calls": 6,
+    "exact_original_CadQuery_cut": 1,
+    "raw_actual_Cut_Common_reverse_Cut": 3,
+    "raw_known_empty_and_nonempty_box_Cut_controls": 2,
+    "each_actual_operation_fresh_BREP_inputs": true,
+    "maximum_scientific_shape_files": 32,
+    "shape_bytes_after_native_export_stop_limit": 8388608,
+    "single_native_export_overshoot_not_excluded": true,
+    "maximum_report_JSON_bytes": 4194304,
+    "maximum_alerts_per_gravity": 32,
+    "whole_input_manifest_members": 52,
+    "native_pair_calls": 0,
+    "STEP_repair_or_replacement": false
+  },
+  "original_limits_unchanged": {
+    "worker_wall_seconds": 1800,
+    "worker_RSS_MiB": 1536,
+    "shared_unreclaimable_GiB": 6.8,
+    "startup_additional_memory_MiB": 1536,
+    "startup_disk_reserve_MiB": 200,
+    "runtime_disk_reserve_MiB": 100,
+    "hosted_wall_seconds": 2220,
+    "job_timeout_minutes": 40
+  },
+  "capacity_reasoning": "The prior exact same tiny operands reached the failed cut in 0.086 seconds and complete operation diagnosis used 4.115 seconds and 517107712 bytes. This new investigation bounds Boolean builds to six and output to 32 shape files with a post-export 8MiB stop. Those measurements support a small finite diagnostic; they are not a promise that unmeasured kernel operations will finish within any smaller time. Original owned finite guards remain decisive.",
+  "local_native_execution_permitted": false,
+  "null_result_can_never_be_replaced_by_empty": true,
+  "diagnostic_completion_does_not_reclassify_prior_failure": true
+}
