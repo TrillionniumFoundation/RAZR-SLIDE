@@ -35,9 +35,10 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           test -z "$(git status --porcelain)"
           sha256sum --check --strict <<'HASHES'
-          8c13ac916654c617793aa5a8bb56b15a1609d2ac889f4dc1b2ecb3c0c0bd6da0  engineering/engineering-integration-20261026/archive/archive_scientific_evidence.py
-          5c2122aa56e2b9a02484e0f4a04da48869324274c38edb2f6319852c5d04d762  engineering/engineering-integration-20261026/archive/SCIENTIFIC_ARCHIVE_INPUTS.json
-          71865019afbf050abf5fb89988c9da0faa604cf78886f0e006b5f0c683084f37  engineering/engineering-integration-20261026/archive/test_archive_integrity.py
+          a95a56624d6b235d7a486f6dc0593e1abd9a3abae47dd92e0930257e4756951b  engineering/engineering-integration-20261026/archive/archive_scientific_evidence.py
+          f8e6f636ecc868f153588b011c26a0d21cb4786c51dca6bb1e4cae8f27ec4fda  engineering/engineering-integration-20261026/archive/SCIENTIFIC_ARCHIVE_INPUTS.json
+          ed912a7d26fe92a939453038c67291cb8c37dfef3868e04a5e73a6d8ae296740  engineering/engineering-integration-20261026/archive/test_archive_integrity.py
+          a47d25f20951f387ece8ec0df62a57a02325a9427f7749d6cbd52738103d4751  engineering/engineering-integration-20261026/archive/verify_k4_scope.py
           HASHES
           /usr/bin/python3 -B engineering/engineering-integration-20261026/archive/test_archive_integrity.py
       - name: Verify all original archive members then retain exact ZIP bytes in a draft
