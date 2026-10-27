@@ -1,0 +1,217 @@
+{
+  "schema": "razr-N9-export-manifest-binding-correction-v1",
+  "completed": true,
+  "recorded_at_UTC": "2026-10-27T02:02:23.618251+00:00",
+  "status": "corrected_local_request_not_published_or_executed",
+  "blocking_finding": "N9_EXPORT_FROZEN_MANIFEST_STILL_N7",
+  "independent_original_failed_review": {
+    "bytes": 6044,
+    "sha256": "e47c26d9e912a82373b76096fe9c2631a9c1d5f66b936b68d7cb9fd7f9c66860"
+  },
+  "old_request_preserved": {
+    "bytes": 680704,
+    "sha256": "b8f4d47bf9173cce528d3db6614756bab15e4b99edd894ee1d2f95253562e4e3"
+  },
+  "old_exporter_preserved": {
+    "bytes": 25375,
+    "sha256": "724840ff06c03c19cd368b37704de7aa5be5fed9f2341600dbaaa587cc0577da"
+  },
+  "prior_static_review_limitation": "Syntax, embedded byte identity, pure numerical controls and scalar eligibility checks did not exercise the actual input-manifest gate. Its earlier validation does not remove this later semantic block.",
+  "old_binding": {
+    "bytes": 167280,
+    "sha256": "f911ecc8f08fe78526af1be49ea2292f94ee49e64789f514359196d7875d01b2"
+  },
+  "correct_binding": {
+    "bytes": 166609,
+    "sha256": "aa84d34b26847f308296809ff83002d32535a56a92eb09adcc7e42b571e88ee7"
+  },
+  "exact_source_expression_before": "if p.stat().st_size != 167280 or sha(p) != \"f911ecc8f08fe78526af1be49ea2292f94ee49e64789f514359196d7875d01b2\":",
+  "exact_source_expression_after": "if p.stat().st_size != 166609 or sha(p) != \"aa84d34b26847f308296809ff83002d32535a56a92eb09adcc7e42b571e88ee7\":",
+  "changed_repository_paths": [
+    "engineering/engineering-integration-20261026/numerics/n9/export_n9_engineering.py",
+    ".github/workflows/s4-panel-n9-hosted.yml"
+  ],
+  "all_source_identities": [
+    {
+      "path": "engineering/engineering-integration-20261026/numerics/n9/n9_contract.py",
+      "before": {
+        "bytes": 4068,
+        "sha256": "3e0195cc248733d6cde63a540a961c86fcdbfde0cd402d06764b97c57494b385"
+      },
+      "after": {
+        "bytes": 4068,
+        "sha256": "3e0195cc248733d6cde63a540a961c86fcdbfde0cd402d06764b97c57494b385"
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": "engineering/engineering-integration-20261026/numerics/n9/fetch_n9_inputs.py",
+      "before": {
+        "bytes": 8560,
+        "sha256": "94ea77c82c8201e9f68aed074d7dc6f2a68f76a5b3fa4dd8a365487f7c6a9fb1"
+      },
+      "after": {
+        "bytes": 8560,
+        "sha256": "94ea77c82c8201e9f68aed074d7dc6f2a68f76a5b3fa4dd8a365487f7c6a9fb1"
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": "engineering/engineering-integration-20261026/numerics/n9/probe_n9_coordinates.py",
+      "before": {
+        "bytes": 31029,
+        "sha256": "013801678e9bbc3125469d4a6b18e57996eb3498cd2a0912bc584b170d04a933"
+      },
+      "after": {
+        "bytes": 31029,
+        "sha256": "013801678e9bbc3125469d4a6b18e57996eb3498cd2a0912bc584b170d04a933"
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": "engineering/engineering-integration-20261026/numerics/n9/readback_n9_coordinates.py",
+      "before": {
+        "bytes": 33784,
+        "sha256": "3be80de01e78f6ecd326616b0c6d1ccfffc1ca367fdd3e8f488b1c0ffbea045e"
+      },
+      "after": {
+        "bytes": 33784,
+        "sha256": "3be80de01e78f6ecd326616b0c6d1ccfffc1ca367fdd3e8f488b1c0ffbea045e"
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": "engineering/engineering-integration-20261026/numerics/n9/export_n9_engineering.py",
+      "before": {
+        "bytes": 25375,
+        "sha256": "724840ff06c03c19cd368b37704de7aa5be5fed9f2341600dbaaa587cc0577da"
+      },
+      "after": {
+        "bytes": 25375,
+        "sha256": "df7336bf394f41c850cc199817aa1160848f80ec124f51bc7e391f35da9486e2"
+      },
+      "bytes_unchanged": false
+    },
+    {
+      "path": "engineering/engineering-integration-20261026/numerics/n9/N9_STRATEGY.json",
+      "before": {
+        "bytes": 16320,
+        "sha256": "3871da0d05166b94fe719c8d293c30fe21a37e0cb526c8eb00b9669b7c89f499"
+      },
+      "after": {
+        "bytes": 16320,
+        "sha256": "3871da0d05166b94fe719c8d293c30fe21a37e0cb526c8eb00b9669b7c89f499"
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": "engineering/engineering-integration-20261026/numerics/n9/N9_FROZEN_INPUTS.json",
+      "before": {
+        "bytes": 4868,
+        "sha256": "83eee2a51d60d4ccd60b3dac5095dc3cf9f6b3bcef9e42efa9ca10fc72a0f681"
+      },
+      "after": {
+        "bytes": 4868,
+        "sha256": "83eee2a51d60d4ccd60b3dac5095dc3cf9f6b3bcef9e42efa9ca10fc72a0f681"
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": "engineering/engineering-integration-20261026/numerics/n9/N7_ROW_SCREEN_CONTROL.json",
+      "before": {
+        "bytes": 62138,
+        "sha256": "2f2c831d6f375d00f6dfc8ba1a81c5963fbab6220ed81ca181013f82d7eff462"
+      },
+      "after": {
+        "bytes": 62138,
+        "sha256": "2f2c831d6f375d00f6dfc8ba1a81c5963fbab6220ed81ca181013f82d7eff462"
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": "engineering/engineering-integration-20261026/numerics/n9/N7_SCALAR_CAPACITY_SAMPLE.json",
+      "before": {
+        "bytes": 1027,
+        "sha256": "44fadedb7a0dfd75c8c979273c1bde77a30ae0880e91e906b4d2d9d4e8641f61"
+      },
+      "after": {
+        "bytes": 1027,
+        "sha256": "44fadedb7a0dfd75c8c979273c1bde77a30ae0880e91e906b4d2d9d4e8641f61"
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": "engineering/engineering-integration-20261026/numerics/n9/N8_ANCHOR_CONTROL.json",
+      "before": {
+        "bytes": 14826,
+        "sha256": "9bc59025d418f0eec086f4cabd6c9d868393fc7060b1e2b3676b5401931ad35f"
+      },
+      "after": {
+        "bytes": 14826,
+        "sha256": "9bc59025d418f0eec086f4cabd6c9d868393fc7060b1e2b3676b5401931ad35f"
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": "engineering/engineering-integration-20261026/numerics/n9/N9_N8_LAST_STAGE_CONTROL.json",
+      "before": {
+        "bytes": 45389,
+        "sha256": "ab8f7a89d8113c4151e6b654328814e9545fdc72fe7316109d07986e1e002aef"
+      },
+      "after": {
+        "bytes": 45389,
+        "sha256": "ab8f7a89d8113c4151e6b654328814e9545fdc72fe7316109d07986e1e002aef"
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": "engineering/engineering-integration-20261026/numerics/n9/test_n9_contract.py",
+      "before": {
+        "bytes": 16742,
+        "sha256": "954600656a16acdd0a5b5774770c1589ab406b6227e3178a417a257ad11527c5"
+      },
+      "after": {
+        "bytes": 16742,
+        "sha256": "954600656a16acdd0a5b5774770c1589ab406b6227e3178a417a257ad11527c5"
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": ".github/workflows/s4-panel-n9-hosted.yml",
+      "before": {
+        "bytes": 376997,
+        "sha256": "596240794f140cdc55b947a472aa90a1e6782c95e2557f6c65f26015d346af36"
+      },
+      "after": {
+        "bytes": 376997,
+        "sha256": "793c8dbd5cb45594003487f6271de9ecb96241ba7446e4461feaa6ad0013b8f2"
+      },
+      "bytes_unchanged": false
+    }
+  ],
+  "new_request_identity": {
+    "bytes": 680704,
+    "sha256": "4048278413596e5c401e78daa2dfa42869c44815a8fd3678368f423aa7bcd4d6"
+  },
+  "new_gzip_request_identity": {
+    "bytes": 127753,
+    "sha256": "4c53eafb9f06fb9ad30445f6e37aea876643285e22843181eaaf1cd6157e492f"
+  },
+  "actual_regression_receipt": {
+    "bytes": 4687,
+    "sha256": "918539870afc269595321e8efe6f7ce840d996213432bfc07dd7da9a55cbb857"
+  },
+  "workflow_change_only_exporter_literal_binding_and_corresponding_embedded_source_hash": true,
+  "worker_reader_strategy_contract_tests_or_original_acceptance_changed": false,
+  "all_11_other_published_files_byte_identical": true,
+  "original_180s_AS_shared_memory_output_and_finite_limits_unchanged": true,
+  "bash_syntax_steps_checked": 12,
+  "embedded_source_files_byte_checked": 12,
+  "inline_Python_AST_checked": 5,
+  "native_execution": false,
+  "large_array_read": false,
+  "Git_write_or_Actions_start": false,
+  "original_numerical_five_passed": false,
+  "H_frame_restore_executed": false,
+  "elapsed_seconds": 0.3068989099992905
+}

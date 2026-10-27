@@ -1,0 +1,522 @@
+name: EC1b original S4 KiCad checks with three authenticated missing-library providers
+'on':
+  push:
+    branches:
+    - diagnostic/s4-ecad-ec1b-20261026
+  workflow_dispatch: null
+permissions:
+  contents: read
+concurrency:
+  group: ec1b-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  ecad:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+    - name: Checkout immutable functional S4
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        ref: dd7def6e6a4de9f47dc91ca2ab336fb1a8828560
+        persist-credentials: false
+        sparse-checkout-cone-mode: false
+        sparse-checkout: '/tools/verify_ep5_ecad_native.py
+
+          /tools/read_ep5_ecad_native.py
+
+          /integration/product_ep5_ecad.py
+
+          /integration/product_interfaces.py
+
+          /design/product_routing_ep5.json
+
+          '
+    - name: Prepare byte-identical EC1 driver and bounded diagnostic projection
+      shell: bash
+      run: "set -euo pipefail\nmkdir -p \"$RUNNER_TEMP/razr-ec1-source\"\ncat > \"$RUNNER_TEMP/razr-ec1-source/run_ec1.py\"\
+        \ <<'RAZR_EC1_SOURCE'\n\"\"\"Execute the unmodified S4 native KiCad verifier with pinned isolated packages.\"\
+        \"\"\nfrom pathlib import Path\nimport concurrent.futures\nimport hashlib\nimport json\nimport os\nimport\
+        \ subprocess\nimport sys\nimport time\nimport urllib.request\n\nS4 = 'dd7def6e6a4de9f47dc91ca2ab336fb1a8828560'\n\
+        SOURCES = ('tools/verify_ep5_ecad_native.py', 'tools/read_ep5_ecad_native.py',\n           'integration/product_ep5_ecad.py',\
+        \ 'integration/product_interfaces.py',\n           'design/product_routing_ep5.json')\n\ndef sha(path):\n\
+        \    with Path(path).open('rb') as stream:\n        digest = hashlib.sha256()\n        for block in iter(lambda:\
+        \ stream.read(1024 * 1024), b''):\n            digest.update(block)\n        return digest.hexdigest()\n\
+        \ndef main():\n    repo = Path(os.environ['GITHUB_WORKSPACE']).resolve()\n    base = Path(os.environ['RUNNER_TEMP'])\
+        \ / 'razr-ec1-s4'\n    base.mkdir(exist_ok=False)\n    output = base / 'result'\n    packages = json.loads(Path(sys.argv[1]).read_text())['packages']\n\
+        \    receipt = {'schema': 'razr-S4-EC1-launch-v1', 'source_commit': S4,\n               'started': time.time(),\
+        \ 'completed': False, 'passed': False,\n               'new_native_execution': False, 'source_sha256': {},\
+        \ 'packages': [],\n               'candidate_go': False, 'fixture_fabrication_go': False,\n            \
+        \   'manufacturing_go': False}\n    try:\n        assert subprocess.check_output(['git', 'rev-parse', 'HEAD'],\
+        \ cwd=repo, text=True).strip() == S4\n        assert not subprocess.check_output(['git', 'status', '--porcelain',\
+        \ '--untracked-files=all'], cwd=repo, text=True)\n        for name in SOURCES:\n            actual = (repo\
+        \ / name).read_bytes()\n            assert actual == subprocess.check_output(['git', 'show', S4 + ':' +\
+        \ name], cwd=repo)\n            receipt['source_sha256'][name] = hashlib.sha256(actual).hexdigest()\n  \
+        \      cache = base / 'downloads'\n        cache.mkdir()\n        def fetch(row):\n            target =\
+        \ cache / row['name']\n            assert Path(row['name']).name == row['name']\n            assert row['url'].startswith(('https://archive.ubuntu.com/ubuntu/',\
+        \ 'https://ppa.launchpadcontent.net/kicad/'))\n            with urllib.request.urlopen(row['url'], timeout=90)\
+        \ as source, target.open('xb') as dest:\n                while block := source.read(1024 * 1024):\n    \
+        \                dest.write(block)\n            if target.stat().st_size != row['bytes'] or sha(target)\
+        \ != row['sha256']:\n                raise ValueError('pinned package bytes differ: ' + row['name'])\n \
+        \           return {**row, 'verified': True}\n        with concurrent.futures.ThreadPoolExecutor(max_workers=4)\
+        \ as pool:\n            receipt['packages'] = list(pool.map(fetch, packages))\n        runtime = base /\
+        \ 'runtime'\n        runtime.mkdir()\n        for row in packages:\n            subprocess.run(['dpkg-deb',\
+        \ '-x', str(cache / row['name']), str(runtime)], check=True, timeout=60)\n        env = os.environ.copy()\n\
+        \        env['PYTHONDONTWRITEBYTECODE'] = '1'\n        env['LD_LIBRARY_PATH'] = ':'.join(str(runtime / p)\
+        \ for p in ('usr/lib/x86_64-linux-gnu', 'usr/lib'))\n        env['PYTHONPATH'] = str(runtime / 'usr/lib/python3/dist-packages')\n\
+        \        env['KICAD_STOCK_DATA_HOME'] = str(runtime / 'usr/share/kicad')\n        for name, folder in [('KICAD_CONFIG_HOME',\
+        \ 'config'), ('KICAD_DOCUMENTS_HOME', 'documents'),\n                             ('XDG_CONFIG_HOME', 'xdg-config'),\
+        \ ('XDG_CACHE_HOME', 'xdg-cache'),\n                             ('XDG_DATA_HOME', 'xdg-data')]:\n     \
+        \       directory = base / folder\n            directory.mkdir()\n            env[name] = str(directory)\n\
+        \        command = ['/usr/bin/python3', '-B', str(repo / SOURCES[0]), '--output', str(output),\n       \
+        \            '--expected-head', S4, '--kicad-python', '/usr/bin/python3',\n                   '--kicad-cli',\
+        \ str(runtime / 'usr/bin/kicad-cli')]\n        with (base / 'verifier.log').open('x') as log:\n        \
+        \    result = subprocess.run(command, cwd=repo, env=env, stdout=log,\n                                 \
+        \   stderr=subprocess.STDOUT, timeout=930)\n        receipt['verifier_exit_code'] = result.returncode\n\
+        \        receipt['verifier_report_produced'] = (output / 'report.json').is_file()\n        if receipt['verifier_report_produced']:\n\
+        \            report = json.loads((output / 'report.json').read_text())\n            receipt['new_native_execution']\
+        \ = any(c.get('label') in ('native-readback', 'native-drc')\n                and isinstance(c.get('exit_code'),\
+        \ int) for c in report.get('commands', []))\n            receipt['native_DRC_executed'] = report.get('native_DRC_executed',\
+        \ False)\n            receipt['passed'] = result.returncode == 0 and report.get('passed') is True\n    \
+        \    receipt['completed'] = True\n    except Exception as exc:\n        receipt['error_type'] = type(exc).__name__\n\
+        \        receipt['error_message'] = str(exc)\n    finally:\n        receipt['elapsed_seconds'] = time.time()\
+        \ - receipt['started']\n        receipt['source_bytes_unchanged'] = all(sha(repo / n) == h for n, h in receipt['source_sha256'].items())\n\
+        \        receipt['passed'] = receipt['passed'] and receipt['source_bytes_unchanged']\n        (base / 'execution.json').write_text(json.dumps(receipt,\
+        \ indent=2) + '\\n')\n    return 0 if receipt['passed'] else 1\n\nif __name__ == '__main__':\n    raise\
+        \ SystemExit(main())\nRAZR_EC1_SOURCE\ncat > \"$RUNNER_TEMP/razr-ec1-source/export_ec1.py\" <<'RAZR_EC1_SOURCE'\n\
+        \"\"\"Retain scientific ECAD outputs and explicit engineering projections only.\"\"\"\nfrom pathlib import\
+        \ Path\nimport hashlib\nimport json\nimport os\nimport re\nimport shutil\n\ndef sha(path):\n    with Path(path).open('rb')\
+        \ as f:\n        digest = hashlib.sha256()\n        for block in iter(lambda: f.read(1024 * 1024), b''):\n\
+        \            digest.update(block)\n        return digest.hexdigest()\n\nALLOWED = {\n    'execution.json':\
+        \ '''schema source_commit completed passed new_native_execution verifier_report_produced\n        source_sha256\
+        \ packages candidate_go fixture_fabrication_go manufacturing_go verifier_exit_code\n        native_DRC_executed\
+        \ elapsed_seconds source_bytes_unchanged error_type'''.split(),\n    'result/report.json': '''schema expected_head\
+        \ passed native_DRC_executed schematic_ERC_executed\n        schematic_parity_requested OEM_assignment_qualified\
+        \ signal_integrity_or_power_qualified\n        dynamic_FPC_qualified supplier_stackup_selected candidate_go\
+        \ fixture_fabrication_go manufacturing_go\n        scope source_sha256_before artwork_report_sha256 candidate_id\
+        \ native_readback kicad_version kicad_release\n        native_DRC_sha256 native_DRC_counts input_board_project_bytes_unchanged\
+        \ source_sha256_after\n        source_bytes_unchanged source_head_after files_sha256 seconds'''.split(),\n\
+        \    'result/native-drc.json': '''$schema coordinate_units date included_severities kicad_version\n    \
+        \    schematic_parity source unconnected_items violations'''.split(),\n    'result/native-readback/readback.json':\
+        \ '''scope kicad_version kicad_release source_sha256 inputs_sha256\n        project_loaded input_bytes_unchanged\
+        \ seconds tracks declared_board_thickness_mm footprints native_pad_objects\n        unique_connected_terminals\
+        \ electrical_nets drc_sections drc_violation_types drc_zero_reported_items\n        drc_report_sha256 exported_footprints\
+        \ native_pad_readback product_motion_or_OEM_qualification'''.split(),\n}\n\ndef main():\n    base = Path(os.environ['RUNNER_TEMP'])\
+        \ / 'razr-ec1-s4'\n    root = Path(os.environ['GITHUB_WORKSPACE']).resolve()\n    out = Path(os.environ['RUNNER_TEMP'])\
+        \ / 'razr-ec1-engineering'\n    out.mkdir(exist_ok=False)\n    manifest = {'schema': 'razr-EC1-engineering-export-v1',\
+        \ 'raw_runtime_exported': False,\n                'raw_runtime_durable': False, 'original_producer_records_modified':\
+        \ False,\n                'source_commit': 'dd7def6e6a4de9f47dc91ca2ab336fb1a8828560', 'files': {}}\n  \
+        \  for name in ['artwork/ep5_continuity26.kicad_pcb', 'artwork/ep5_continuity26.kicad_pro',\n          \
+        \       'artwork/conductor-schedule.csv', 'artwork/flat-material-outline.json', 'artwork/fp-lib-table']:\n\
+        \        source = base / 'result' / name\n        if source.is_file() and not source.is_symlink():\n   \
+        \         target = out / name\n            target.parent.mkdir(parents=True, exist_ok=True)\n          \
+        \  shutil.copyfile(source, target)\n            manifest['files'][name] = {'sha256': sha(source), 'bytes':\
+        \ source.stat().st_size, 'original_bytes': True}\n    def normalize(value):\n        if isinstance(value,\
+        \ str):\n            value = value.replace(str(root), 'repository').replace(str(base), 'task-evidence')\n\
+        \            if (any(p in value for p in ('/home/', '/workspace/', '/tmp/', 'libfile_', 'oai-library:'))\n\
+        \                    or re.search(r'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}', value)):\n       \
+        \         raise ValueError('unexpected runtime locator in engineering projection')\n            return value\n\
+        \        if isinstance(value, list):\n            return [normalize(v) for v in value]\n        if isinstance(value,\
+        \ dict):\n            return {normalize(k): normalize(v) for k, v in value.items()}\n        return value\n\
+        \    for name in ['execution.json', 'result/report.json', 'result/native-drc.json', 'result/native-readback/readback.json']:\n\
+        \        source = base / name\n        if not source.is_file():\n            continue\n        record =\
+        \ json.loads(source.read_text())\n        selected = {k: record[k] for k in ALLOWED[name] if k in record}\n\
+        \        if isinstance(record.get('error'), dict):\n            selected['error_type'] = record['error'].get('type')\n\
+        \        payload = {'schema': 'razr-EC1-derived-engineering-projection-v1', 'is_original_record': False,\n\
+        \                   'original_sha256': sha(source), 'original_bytes': source.stat().st_size,\n         \
+        \          'raw_runtime_durable': False, 'engineering_record': normalize(selected)}\n        destname =\
+        \ name.replace('.json', '.engineering.json')\n        target = out / destname\n        target.parent.mkdir(parents=True,\
+        \ exist_ok=True)\n        target.write_text(json.dumps(payload, indent=2) + '\\n')\n        manifest['files'][destname]\
+        \ = {'sha256': sha(target), 'bytes': target.stat().st_size, 'original_bytes': False}\n    (out / 'MANIFEST.json').write_text(json.dumps(manifest,\
+        \ indent=2) + '\\n')\n\nif __name__ == '__main__':\n    main()\nRAZR_EC1_SOURCE\ncat > \"$RUNNER_TEMP/razr-ec1-source/EC1_PINNED_PACKAGES.json\"\
+        \ <<'RAZR_EC1_SOURCE'\n{\n  \"schema\": \"razr-EC1-pinned-KiCad9-downloads-v1\",\n  \"scope\": \"same official\
+        \ packages independently authenticated in the prior native ECAD setup; bytes rechecked on this run\",\n\
+        \  \"packages\": [\n    {\n      \"name\": \"libfreeimage3_3.18.0+ds2-10build4_amd64.deb\",\n      \"bytes\"\
+        : 297370,\n      \"sha256\": \"c33fcf63a027ac6acca76d2e3ba969d0d9540a7a600cdd47e570026194339d44\",\n   \
+        \   \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/f/freeimage/libfreeimage3_3.18.0+ds2-10build4_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libgit2-1.7_1.7.2+ds-1ubuntu3.3_amd64.deb\",\n      \"bytes\": 529932,\n\
+        \      \"sha256\": \"f3efef28fa7d8c0bd0b92cc4ab1a7e504de9f0bf382c2a5596f6cb9f84267da4\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/main/libg/libgit2/libgit2-1.7_1.7.2+ds-1ubuntu3.3_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libhttp-parser2.9_2.9.4-6build1_amd64.deb\",\n      \"bytes\": 22258,\n\
+        \      \"sha256\": \"e2e970c931277795609d6163f94cba38cd30945f1035195a00b934bb042e90aa\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/main/h/http-parser/libhttp-parser2.9_2.9.4-6build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libhwloc15_2.10.0-1build1_amd64.deb\",\n      \"bytes\": 172340,\n  \
+        \    \"sha256\": \"45acb4e6676f968d0f32ff1c5115cad0b61165931afa1a59282bda6f00d13c3b\",\n      \"url\": \"\
+        https://archive.ubuntu.com/ubuntu/pool/universe/h/hwloc/libhwloc15_2.10.0-1build1_amd64.deb\"\n    },\n\
+        \    {\n      \"name\": \"libimath-3-1-29t64_3.1.9-3.1ubuntu2_amd64.deb\",\n      \"bytes\": 72248,\n  \
+        \    \"sha256\": \"7b62292db74bab20ccea4db0039b5c7e720aec36aeed4a405d8da4c2c60b29c8\",\n      \"url\": \"\
+        https://archive.ubuntu.com/ubuntu/pool/universe/i/imath/libimath-3-1-29t64_3.1.9-3.1ubuntu2_amd64.deb\"\n\
+        \    },\n    {\n      \"name\": \"libmbedtls14t64_2.28.8-1_amd64.deb\",\n      \"bytes\": 82224,\n     \
+        \ \"sha256\": \"64a732580a3b58ddc574a819505cf0e2de150da3d2fbf37b7e60e305de7b50bd\",\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/m/mbedtls/libmbedtls14t64_2.28.8-1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libmbedx509-1t64_2.28.8-1_amd64.deb\",\n      \"bytes\": 46564,\n   \
+        \   \"sha256\": \"12362c7ac8693dadbb9e0aa1e0a5a5eaba1d5d47034c1624725e82c2a486813e\",\n      \"url\": \"\
+        https://archive.ubuntu.com/ubuntu/pool/universe/m/mbedtls/libmbedx509-1t64_2.28.8-1_amd64.deb\"\n    },\n\
+        \    {\n      \"name\": \"libngspice0_42+ds-3build1_amd64.deb\",\n      \"bytes\": 2531432,\n      \"sha256\"\
+        : \"967d5c0c83ab264f344504fa40d8475b7bc4e80abac4395e43ac04fec1b0de98\",\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/n/ngspice/libngspice0_42+ds-3build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libnng1_1.7.2-1build2_amd64.deb\",\n      \"bytes\": 163404,\n      \"\
+        sha256\": \"92b7f377f7874bec3b9c8eae9be1ae37baa5616a58438462cb18b7af3a9baee6\",\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/n/nng/libnng1_1.7.2-1build2_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libnotify4_0.8.3-1build2_amd64.deb\",\n      \"bytes\": 25650,\n    \
+        \  \"sha256\": \"4d856e960ac0ec137e9908b6df0fa295e04c175b0be239450de2243be49524df\",\n      \"url\": \"\
+        https://archive.ubuntu.com/ubuntu/pool/main/libn/libnotify/libnotify4_0.8.3-1build2_amd64.deb\"\n    },\n\
+        \    {\n      \"name\": \"libocct-data-exchange-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\",\n      \"bytes\"\
+        : 4230846,\n      \"sha256\": \"21c17adb272fcc7add7b8bdc39e62f23374f0c8e382b9a1087363ebdb40c534c\",\n  \
+        \    \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/o/opencascade/libocct-data-exchange-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libocct-draw-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\",\n      \"bytes\"\
+        : 2277984,\n      \"sha256\": \"f2d66e29b275b98daec38120fc3402c55f477c123964cb8ff5b3b2ef6dfdd2bc\",\n  \
+        \    \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/o/opencascade/libocct-draw-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libocct-foundation-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\",\n      \"\
+        bytes\": 1435094,\n      \"sha256\": \"46312fb4f4fb40212062f52133862f2e6735a327c2c9f2f3713ac73e7dbfeb95\"\
+        ,\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/o/opencascade/libocct-foundation-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libocct-modeling-algorithms-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\"\
+        ,\n      \"bytes\": 7002476,\n      \"sha256\": \"81e62a1d403e88dbd3ec169f25d92f5d3aca150757930d1912820c6cbf047dae\"\
+        ,\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/o/opencascade/libocct-modeling-algorithms-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libocct-modeling-data-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\",\n   \
+        \   \"bytes\": 2634984,\n      \"sha256\": \"700e7b8fd6d362282c9f096d0059c3d25cc7c105b7e069b959c779754024bc90\"\
+        ,\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/o/opencascade/libocct-modeling-data-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libocct-ocaf-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\",\n      \"bytes\"\
+        : 1137732,\n      \"sha256\": \"251fa15cb8bebfc761460bb49779ca04d8c402057a3bae7e5499d91a4113c1fa\",\n  \
+        \    \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/o/opencascade/libocct-ocaf-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libocct-visualization-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\",\n   \
+        \   \"bytes\": 1988398,\n      \"sha256\": \"a36721dbed06ca720877579f5ec2915492caca4c4db0976a7cd487a7f6cb19c5\"\
+        ,\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/o/opencascade/libocct-visualization-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libodbc2_2.3.12-1ubuntu0.24.04.1_amd64.deb\",\n      \"bytes\": 158090,\n\
+        \      \"sha256\": \"95eac9d12c9fe50ed3a8a7bc32ffeb22060d41b224be1e960829baa03faa82a8\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/main/u/unixodbc/libodbc2_2.3.12-1ubuntu0.24.04.1_amd64.deb\"\n\
+        \    },\n    {\n      \"name\": \"libopenexr-3-1-30_3.1.5-5.1build3_amd64.deb\",\n      \"bytes\": 1004380,\n\
+        \      \"sha256\": \"646d78a860e71d02414df08644f70125e670fb90e8f5d834a7cefd732a9eadfe\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/universe/o/openexr/libopenexr-3-1-30_3.1.5-5.1build3_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libprotobuf32t64_3.21.12-8.2ubuntu0.4_amd64.deb\",\n      \"bytes\":\
+        \ 922780,\n      \"sha256\": \"765aec7fc6c7c14aea8d10677c17617d71acc5103ad580f0e97bff903acccdaf\",\n   \
+        \   \"url\": \"https://archive.ubuntu.com/ubuntu/pool/main/p/protobuf/libprotobuf32t64_3.21.12-8.2ubuntu0.4_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libssh2-1t64_1.11.0-4.1ubuntu0.24.04.4_amd64.deb\",\n      \"bytes\"\
+        : 121264,\n      \"sha256\": \"c3008467513498b6db729b142ea01d766379797e67f9b9348c131d132678253c\",\n   \
+        \   \"url\": \"https://archive.ubuntu.com/ubuntu/pool/main/libs/libssh2/libssh2-1t64_1.11.0-4.1ubuntu0.24.04.4_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libtbb12_2021.11.0-2ubuntu2_amd64.deb\",\n      \"bytes\": 106374,\n\
+        \      \"sha256\": \"78e2c79f5749fc5c55b32f9745e07d5c3480be574fd4d64bb0325cbec4206b06\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/universe/o/onetbb/libtbb12_2021.11.0-2ubuntu2_amd64.deb\"\n \
+        \   },\n    {\n      \"name\": \"libtbbbind-2-5_2021.11.0-2ubuntu2_amd64.deb\",\n      \"bytes\": 16442,\n\
+        \      \"sha256\": \"09c4fa1f12983554b345c9c4d462c8cf14d707c3406a4bb35f81522edd492562\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/universe/o/onetbb/libtbbbind-2-5_2021.11.0-2ubuntu2_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libtbbmalloc2_2021.11.0-2ubuntu2_amd64.deb\",\n      \"bytes\": 60542,\n\
+        \      \"sha256\": \"3de9b639d4abe5d8f0e0adbb7e26e32bf9de9473b19155d76a3a24c88b62cfea\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/universe/o/onetbb/libtbbmalloc2_2021.11.0-2ubuntu2_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libtcl8.6_8.6.14+dfsg-1build1_amd64.deb\",\n      \"bytes\": 987614,\n\
+        \      \"sha256\": \"7534eb825f6317514d747ce53b4d6c23bf24df1dc1785f9599610ece5515e685\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/main/t/tcl8.6/libtcl8.6_8.6.14+dfsg-1build1_amd64.deb\"\n   \
+        \ },\n    {\n      \"name\": \"libtk8.6_8.6.14-1build1_amd64.deb\",\n      \"bytes\": 778878,\n      \"\
+        sha256\": \"c5edb6c79c91a9f4c25cf0ad68c3341467a6604cb97789b2ac36c6d3de352725\",\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/main/t/tk8.6/libtk8.6_8.6.14-1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libwxbase3.2-1t64_3.2.4+dfsg-4build1_amd64.deb\",\n      \"bytes\": 899362,\n\
+        \      \"sha256\": \"8471b3d93c74fa46fe6144ecbb4adfd5743134116dad8457c622ed72e2b99399\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/universe/w/wxwidgets3.2/libwxbase3.2-1t64_3.2.4+dfsg-4build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libwxgtk-gl3.2-1t64_3.2.4+dfsg-4build1_amd64.deb\",\n      \"bytes\"\
+        : 52322,\n      \"sha256\": \"4d0f9bc9e361d26f53aaa51ff222aa77606fb7a63dc49732aca6065ddb049c3f\",\n    \
+        \  \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/w/wxwidgets3.2/libwxgtk-gl3.2-1t64_3.2.4+dfsg-4build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libwxgtk3.2-1t64_3.2.4+dfsg-4build1_amd64.deb\",\n      \"bytes\": 4535408,\n\
+        \      \"sha256\": \"2376d3d3bc4c41f5cf10a75492f4e88d5e97b3448504da790d7ce6e6e05487c8\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/universe/w/wxwidgets3.2/libwxgtk3.2-1t64_3.2.4+dfsg-4build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libxft2_2.3.6-1build1_amd64.deb\",\n      \"bytes\": 45280,\n      \"\
+        sha256\": \"b4f4f3255c0b8773b260c61cbe20ee7c63799cfc0e4e389fa58375dd480b093a\",\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/main/x/xft/libxft2_2.3.6-1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libxtst6_1.2.3-1.1build1_amd64.deb\",\n      \"bytes\": 12642,\n    \
+        \  \"sha256\": \"632d74c760f0a4e844c499e7bc1eca4c709aa096fde783a7a6807604aef77545\",\n      \"url\": \"\
+        https://archive.ubuntu.com/ubuntu/pool/main/libx/libxtst/libxtst6_1.2.3-1.1build1_amd64.deb\"\n    },\n\
+        \    {\n      \"name\": \"occt-misc_7.6.3+dfsg1-7.1build1_all.deb\",\n      \"bytes\": 11523042,\n     \
+        \ \"sha256\": \"ccaf2c68b318c262c956379b86f2dc1cec73f9bdd64cc711003fb22fdd32e62f\",\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/o/opencascade/occt-misc_7.6.3+dfsg1-7.1build1_all.deb\"\
+        \n    },\n    {\n      \"name\": \"python3-wxgtk4.0_4.2.1+dfsg-3build2_amd64.deb\",\n      \"bytes\": 7653466,\n\
+        \      \"sha256\": \"5bcb6f59634ce9dfcea164d806301b13b20d7e08d06a07fdeb62e20d4b8cc586\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/universe/w/wxpython4.0/python3-wxgtk4.0_4.2.1+dfsg-3build2_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"kicad_9.0.9~ubuntu24.04.1_amd64.deb\",\n      \"bytes\": 37045412,\n\
+        \      \"sha256\": \"b7e6d33867631dc44385067b703b4c39eadede2037a260790b19495fe17e43f0\",\n      \"url\"\
+        : \"https://ppa.launchpadcontent.net/kicad/kicad-9.0-releases/ubuntu/pool/main/k/kicad/kicad_9.0.9~ubuntu24.04.1_amd64.deb\"\
+        \n    }\n  ]\n}\nRAZR_EC1_SOURCE\n\ncat > \"$RUNNER_TEMP/razr-ec1-source/diagnose_ec1.py\" <<'RAZR_EC1A_SOURCE'\n\
+        \"\"\"Project isolated KiCad loader failures without exporting runtime text or paths.\n\nThis runs after\
+        \ the byte-identical EC1 launcher. It neither installs a package\nnor changes an S4 check. Raw diagnostics\
+        \ remain in the ephemeral private task\ndirectory; only hashes, numeric versions, library SONAMEs and fixed\
+        \ enums leave\nthat directory. Unknown text stays unknown.\n\"\"\"\nfrom pathlib import Path\nimport hashlib\n\
+        import json\nimport math\nimport os\nimport re\nimport subprocess\nimport time\n\nSCHEMA = 'razr-EC1a-isolated-linkage-projection-v1'\n\
+        S4 = 'dd7def6e6a4de9f47dc91ca2ab336fb1a8828560'\nLIBRARY = r'(?:lib[A-Za-z0-9_+.-]+|ld-linux[A-Za-z0-9_+.-]*|linux-vdso)\\\
+        .so(?:\\.[0-9A-Za-z_+.-]+)*'\nSONAME = re.compile(LIBRARY + r'\\Z')\nHEX = re.compile(r'[0-9a-f]{64}\\Z')\n\
+        LABELS = ('kicad-version', 'native-readback', 'native-drc')\nLIMIT_BYTES = 1024 * 1024\n\n\ndef digest(data):\n\
+        \    return hashlib.sha256(data).hexdigest()\n\n\ndef describe(data):\n    return {'bytes': len(data), 'sha256':\
+        \ digest(data)}\n\n\ndef finite_number(value):\n    return type(value) in (int, float) and math.isfinite(value)\n\
+        \n\ndef classify_version(data, exit_code):\n    \"\"\"Extract narrowly specified loader syntax; never export\
+        \ arbitrary tokens.\"\"\"\n    text = data.decode('utf-8', 'replace')\n    missing = sorted(set(re.findall(\n\
+        \        r'error while loading shared libraries: (' + LIBRARY + r'):'\n        r' cannot open shared object\
+        \ file: No such file or directory', text)))\n    versions = sorted(set(re.findall(r'(?m)^([0-9]{1,3}\\.[0-9]{1,3}\\\
+        .[0-9]{1,3})\\r?$', text)))\n    abi = sorted(set(re.findall(\n        r\"version [`']((?:GLIBC|GLIBCXX|CXXABI|GCC|OPENSSL)_[0-9][0-9.]*)['`]\
+        \ not found\", text)))\n    if missing:\n        category = 'loader_missing_library'\n    elif abi:\n  \
+        \      category = 'loader_missing_symbol_version'\n    elif 'symbol lookup error:' in text or 'undefined\
+        \ symbol:' in text:\n        category = 'loader_undefined_symbol'\n    elif exit_code == 0 and len(versions)\
+        \ == 1:\n        category = 'version_executed'\n    elif type(exit_code) is int and exit_code < 0:\n   \
+        \     category = 'process_signal'\n    elif exit_code == 0:\n        category = 'unrecognized_success_output'\n\
+        \    else:\n        category = 'unclassified_version_failure'\n    return {'classification': category, 'exit_code':\
+        \ exit_code,\n            'numeric_versions': versions, 'missing_libraries': missing,\n            'missing_ABI_versions':\
+        \ abi, 'raw_record': describe(data),\n            'raw_text_exported': False}\n\n\ndef project_ldd(data,\
+        \ exit_code):\n    text = data.decode('utf-8', 'replace')\n    dependencies = {}\n    unknown = 0\n    non_dynamic\
+        \ = False\n    for line in text.splitlines():\n        line = line.strip()\n        if not line:\n     \
+        \       continue\n        if line in ('not a dynamic executable', 'statically linked'):\n            non_dynamic\
+        \ = True\n            continue\n        missing = re.fullmatch('(' + LIBRARY + r')\\s+=>\\s+not found',\
+        \ line)\n        resolved = re.fullmatch('(' + LIBRARY + r')\\s+=>\\s+/[^\\r\\n]+\\s+\\(0x[0-9a-fA-F]+\\\
+        )', line)\n        direct = re.fullmatch(r'(?:/[^\\r\\n]+/)?(' + LIBRARY + r')\\s+\\(0x[0-9a-fA-F]+\\)',\
+        \ line)\n        match = missing or resolved or direct\n        if not match:\n            unknown += 1\n\
+        \            continue\n        name = match.group(1)\n        assert SONAME.fullmatch(name)\n        state\
+        \ = 'missing' if missing else 'resolved'\n        if name in dependencies and dependencies[name] != state:\n\
+        \            state = 'conflicting_observations'\n        dependencies[name] = state\n    return {'exit_code':\
+        \ exit_code,\n            'dependencies': [{'soname': k, 'state': v} for k, v in sorted(dependencies.items())],\n\
+        \            'unrecognized_line_count': unknown, 'not_dynamic_observed': non_dynamic,\n            'complete_recognized_listing':\
+        \ exit_code == 0 and unknown == 0 and not non_dynamic,\n            'raw_record': describe(data), 'raw_text_exported':\
+        \ False}\n\n\ndef commands_projection(report):\n    commands = []\n    for item in report.get('commands',\
+        \ []):\n        if not isinstance(item, dict) or item.get('label') not in LABELS:\n            continue\n\
+        \        row = {'label': item['label']}\n        if type(item.get('exit_code')) is int:\n            row['exit_code']\
+        \ = item['exit_code']\n        if finite_number(item.get('seconds')):\n            row['seconds'] = item['seconds']\n\
+        \        if isinstance(item.get('log_sha256'), str) and HEX.fullmatch(item['log_sha256']):\n           \
+        \ row['log_sha256'] = item['log_sha256']\n        commands.append(row)\n    return commands\n\n\ndef capture(command,\
+        \ env, directory, label):\n    output = directory / (label + '.log')\n    start = time.monotonic()\n   \
+        \ code = None\n    status = 'completed'\n    with output.open('xb') as stream:\n        try:\n         \
+        \   proc = subprocess.run(command, env=env, stdout=stream, stderr=subprocess.STDOUT, timeout=15)\n     \
+        \       code = proc.returncode\n        except subprocess.TimeoutExpired:\n            status = 'timeout'\n\
+        \        except OSError:\n            status = 'process_start_failed'\n    length = output.stat().st_size\n\
+        \    if length > LIMIT_BYTES:\n        # Unknown output is never summarized from a silently truncated prefix.\n\
+        \        return None, {'state': 'output_limit_exceeded', 'exit_code': code,\n                      'seconds':\
+        \ time.monotonic() - start, 'bytes': length}\n    data = output.read_bytes()\n    return data, {'state':\
+        \ status, 'exit_code': code, 'seconds': time.monotonic() - start}\n\n\ndef diagnose(base):\n    result =\
+        \ {'schema': SCHEMA, 'source_commit': S4,\n              'is_original_record': False, 'raw_runtime_exported':\
+        \ False,\n              'raw_runtime_durable': False, 'native_result_changed': False,\n              'dependency_packages_added':\
+        \ False, 'original_commands': [],\n              'new_native_DRC_executed_by_diagnostic': False,\n     \
+        \         'candidate_go': False, 'fixture_fabrication_go': False,\n              'manufacturing_go': False}\n\
+        \    report_path = base / 'result/report.json'\n    if report_path.is_file() and not report_path.is_symlink():\n\
+        \        raw = report_path.read_bytes()\n        report = json.loads(raw)\n        result['original_report']\
+        \ = describe(raw)\n        result['original_commands'] = commands_projection(report)\n        result['original_verifier_passed']\
+        \ = report.get('passed') is True\n        result['original_native_DRC_executed'] = report.get('native_DRC_executed')\
+        \ is True\n        result['original_source_bytes_unchanged'] = report.get('source_bytes_unchanged') is True\n\
+        \    version_path = base / 'result/kicad-version.log'\n    version_command = next((c for c in result['original_commands']\
+        \ if c['label'] == 'kicad-version'), None)\n    if version_path.is_file() and not version_path.is_symlink():\n\
+        \        raw = version_path.read_bytes()\n        if len(raw) <= LIMIT_BYTES:\n            result['original_version']\
+        \ = classify_version(raw, (version_command or {}).get('exit_code'))\n            result['original_version_matches_command_hash']\
+        \ = (version_command or {}).get('log_sha256') == digest(raw)\n    runtime = base / 'runtime'\n    cli =\
+        \ runtime / 'usr/bin/kicad-cli'\n    if not cli.is_file():\n        result['diagnostic_state'] = 'runtime_not_prepared'\n\
+        \        return result\n    env = os.environ.copy()\n    env['PYTHONDONTWRITEBYTECODE'] = '1'\n    env['LD_LIBRARY_PATH']\
+        \ = ':'.join(str(runtime / p) for p in ('usr/lib/x86_64-linux-gnu', 'usr/lib'))\n    env['PYTHONPATH'] =\
+        \ str(runtime / 'usr/lib/python3/dist-packages')\n    env['KICAD_STOCK_DATA_HOME'] = str(runtime / 'usr/share/kicad')\n\
+        \    for name, folder in [('KICAD_CONFIG_HOME', 'config'), ('KICAD_DOCUMENTS_HOME', 'documents'),\n    \
+        \                     ('XDG_CONFIG_HOME', 'xdg-config'), ('XDG_CACHE_HOME', 'xdg-cache'),\n            \
+        \             ('XDG_DATA_HOME', 'xdg-data')]:\n        env[name] = str(base / folder)\n    private = base\
+        \ / 'diagnostic-private'\n    private.mkdir(exist_ok=False)\n    result['diagnostic_state'] = 'completed'\n\
+        \    result['ldd'] = []\n    modules = sorted((runtime / 'usr/lib/python3/dist-packages').glob('_pcbnew*.so'))\n\
+        \    result['pcbnew_extension_count'] = len(modules)\n    targets = [('kicad_cli', cli)]\n    if len(modules)\
+        \ == 1:\n        targets.append(('pcbnew_extension', modules[0]))\n    # These are same verified, official\
+        \ binaries used by the unchanged verifier.\n    for label, path in targets:\n        raw, status = capture(['/usr/bin/ldd',\
+        \ str(path)], env, private, 'ldd-' + label)\n        row = {'target': label, 'capture': status}\n      \
+        \  if raw is not None:\n            row.update(project_ldd(raw, status['exit_code']))\n        result['ldd'].append(row)\n\
+        \    raw, status = capture([str(cli), 'version'], env, private, 'repeat-version')\n    result['repeat_version_capture']\
+        \ = status\n    if raw is not None:\n        result['repeat_version'] = classify_version(raw, status['exit_code'])\n\
+        \    return result\n\n\ndef main():\n    base = Path(os.environ['RUNNER_TEMP']) / 'razr-ec1-s4'\n    output\
+        \ = Path(os.environ['RUNNER_TEMP']) / 'razr-ec1-engineering'\n    manifest_path = output / 'MANIFEST.json'\n\
+        \    if not output.is_dir() or not manifest_path.is_file():\n        # The original exporter must finish\
+        \ before this allowlisted addition.\n        return 2\n    record = diagnose(base)\n    data = (json.dumps(record,\
+        \ indent=2, allow_nan=False) + '\\n').encode()\n    filename = 'isolated-linkage.engineering.json'\n   \
+        \ with (output / filename).open('xb') as stream:\n        stream.write(data)\n    manifest = json.loads(manifest_path.read_text())\n\
+        \    assert manifest['raw_runtime_exported'] is False\n    assert filename not in manifest['files']\n  \
+        \  manifest['files'][filename] = {**describe(data), 'original_bytes': False}\n    manifest_path.write_text(json.dumps(manifest,\
+        \ indent=2, allow_nan=False) + '\\n')\n    print(json.dumps({'diagnostic_state': record['diagnostic_state'],\
+        \ 'runtime_text_exported': False}))\n    return 0 if record['diagnostic_state'] == 'completed' else 2\n\n\
+        \nif __name__ == '__main__':\n    raise SystemExit(main())\nRAZR_EC1A_SOURCE\n\ncat > \"$RUNNER_TEMP/razr-ec1-source/test_diagnose_ec1.py\"\
+        \ <<'RAZR_EC1A_SOURCE'\n\"\"\"Privacy and failure-classification checks; no KiCad/native qualification.\"\
+        \"\"\nimport json\nimport unittest\nfrom diagnose_ec1 import classify_version, project_ldd, commands_projection\n\
+        \n\nclass ProjectionChecks(unittest.TestCase):\n    def test_loader_missing(self):\n        value = classify_version(b'/private/Alice/kicad-cli:\
+        \ error while loading shared libraries: libexample.so.8: cannot open shared object file: No such file or\
+        \ directory\\n', 127)\n        self.assertEqual(value['classification'], 'loader_missing_library')\n   \
+        \     self.assertEqual(value['missing_libraries'], ['libexample.so.8'])\n        self.assertNotIn('Alice',\
+        \ json.dumps(value))\n        self.assertNotIn('/private', json.dumps(value))\n\n    def test_ldd_needed_names_only(self):\n\
+        \        value = project_ldd(b' linux-vdso.so.1 (0x7fff)\\n libexample.so.8 => not found\\n libother.so.1\
+        \ => /private/Alice/libother.so.1 (0x123abc)\\n /private/Alice/ld-linux-x86-64.so.2 (0x123abc)\\n', 0)\n\
+        \        self.assertEqual([x for x in value['dependencies'] if x['state'] == 'missing'], [{'soname': 'libexample.so.8',\
+        \ 'state': 'missing'}])\n        self.assertEqual(len(value['dependencies']), 4)\n        self.assertTrue(value['complete_recognized_listing'])\n\
+        \        self.assertNotIn('Alice', json.dumps(value))\n        self.assertNotIn('/private', json.dumps(value))\n\
+        \n    def test_abi_and_symbol(self):\n        value = classify_version(b\"private: /private/Alice/libstdc++.so.6:\
+        \ version `GLIBCXX_3.4.33' not found (required by private)\\n\", 1)\n        self.assertEqual(value['classification'],\
+        \ 'loader_missing_symbol_version')\n        self.assertEqual(value['missing_ABI_versions'], ['GLIBCXX_3.4.33'])\n\
+        \        value = classify_version(b'private: symbol lookup error: secret_symbol\\n', 127)\n        self.assertEqual(value['classification'],\
+        \ 'loader_undefined_symbol')\n        self.assertNotIn('secret_symbol', json.dumps(value))\n\n    def test_version_does_not_invent_pass(self):\n\
+        \        self.assertEqual(classify_version(b'9.0.9\\n', 0)['classification'], 'version_executed')\n    \
+        \    self.assertEqual(classify_version(b'9.0.9\\n', 1)['classification'], 'unclassified_version_failure')\n\
+        \        self.assertEqual(classify_version(b'/private/Alice 9.0.9\\n', 0)['numeric_versions'], [])\n\n \
+        \   def test_unknown_stays_unknown(self):\n        value = project_ldd(b'private@example.org runtime path\
+        \ /private/Alice\\n', 1)\n        self.assertEqual(value['unrecognized_line_count'], 1)\n        self.assertFalse(value['complete_recognized_listing'])\n\
+        \        self.assertEqual(value['dependencies'], [])\n        self.assertNotIn('private', json.dumps(value))\n\
+        \n    def test_command_allowlist(self):\n        value = commands_projection({'commands': [\n          \
+        \  {'label': 'kicad-version', 'argv': ['/private/Alice/bin'], 'exit_code': 127, 'seconds': 0.1, 'log_sha256':\
+        \ '1' * 64},\n            {'label': '/private/Alice', 'exit_code': 0},\n            {'label': 'native-drc',\
+        \ 'seconds': float('nan'), 'log_sha256': '/private/Alice'}]})\n        self.assertEqual(len(value), 2)\n\
+        \        self.assertEqual(value[1], {'label': 'native-drc'})\n        self.assertNotIn('private', json.dumps(value))\n\
+        \n\nif __name__ == '__main__':\n    unittest.main()\nRAZR_EC1A_SOURCE\n\npython3 -B - <<'EC1A_SOURCE_CHECK'\n\
+        from pathlib import Path\nimport hashlib,json,os\nsource=Path(os.environ['RUNNER_TEMP'])/'razr-ec1-source'\n\
+        expected={'run_ec1.py': {'bytes': 5257, 'sha256': '656870d0f474695accf5745f7a24e5e2535ca517a6267295838d62cdcce837b2'},\
+        \ 'export_ec1.py': {'bytes': 4840, 'sha256': '0e6c47c059252bef16d5f8391be219085bef32b479460579fbc1504389fbc5f4'},\
+        \ 'EC1_PINNED_PACKAGES.json': {'bytes': 10404, 'sha256': '79c2f2038066a0d6d692fbad46ddf7a6304a6fba703926a168514baf946d24c1'},\
+        \ 'diagnose_ec1.py': {'bytes': 9846, 'sha256': '5373317ee2524351217e2aca2d2d267c3ab271e6b26fdcff1e11d760f828a2a5'},\
+        \ 'test_diagnose_ec1.py': {'bytes': 3167, 'sha256': 'b2789f1bdea6eb0eba2d52e57abba0e2f562224be10ab185882d4cec2cdccaa5'}}\n\
+        for name, record in expected.items():\n    raw=(source/name).read_bytes()\n    assert len(raw)==record['bytes']\
+        \ and hashlib.sha256(raw).hexdigest()==record['sha256']\nEC1A_SOURCE_CHECK\npython3 -B \"$RUNNER_TEMP/razr-ec1-source/test_diagnose_ec1.py\"\
+        \n\ncat > \"$RUNNER_TEMP/razr-ec1-source/EC1B_PINNED_PACKAGES.json\" <<'RAZR_EC1B_PACKAGES'\n{\n  \"schema\"\
+        : \"razr-EC1b-original-pins-plus-observed-SONAME-providers-v1\",\n  \"scope\": \"Original 34 pinned package\
+        \ rows unchanged; append only three officially authenticated providers observed missing in EC1a.\",\n  \"\
+        original_package_manifest_sha256\": \"79c2f2038066a0d6d692fbad46ddf7a6304a6fba703926a168514baf946d24c1\"\
+        ,\n  \"original_package_count\": 34,\n  \"additional_package_count\": 3,\n  \"packages\": [\n    {\n   \
+        \   \"name\": \"libfreeimage3_3.18.0+ds2-10build4_amd64.deb\",\n      \"bytes\": 297370,\n      \"sha256\"\
+        : \"c33fcf63a027ac6acca76d2e3ba969d0d9540a7a600cdd47e570026194339d44\",\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/f/freeimage/libfreeimage3_3.18.0+ds2-10build4_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libgit2-1.7_1.7.2+ds-1ubuntu3.3_amd64.deb\",\n      \"bytes\": 529932,\n\
+        \      \"sha256\": \"f3efef28fa7d8c0bd0b92cc4ab1a7e504de9f0bf382c2a5596f6cb9f84267da4\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/main/libg/libgit2/libgit2-1.7_1.7.2+ds-1ubuntu3.3_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libhttp-parser2.9_2.9.4-6build1_amd64.deb\",\n      \"bytes\": 22258,\n\
+        \      \"sha256\": \"e2e970c931277795609d6163f94cba38cd30945f1035195a00b934bb042e90aa\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/main/h/http-parser/libhttp-parser2.9_2.9.4-6build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libhwloc15_2.10.0-1build1_amd64.deb\",\n      \"bytes\": 172340,\n  \
+        \    \"sha256\": \"45acb4e6676f968d0f32ff1c5115cad0b61165931afa1a59282bda6f00d13c3b\",\n      \"url\": \"\
+        https://archive.ubuntu.com/ubuntu/pool/universe/h/hwloc/libhwloc15_2.10.0-1build1_amd64.deb\"\n    },\n\
+        \    {\n      \"name\": \"libimath-3-1-29t64_3.1.9-3.1ubuntu2_amd64.deb\",\n      \"bytes\": 72248,\n  \
+        \    \"sha256\": \"7b62292db74bab20ccea4db0039b5c7e720aec36aeed4a405d8da4c2c60b29c8\",\n      \"url\": \"\
+        https://archive.ubuntu.com/ubuntu/pool/universe/i/imath/libimath-3-1-29t64_3.1.9-3.1ubuntu2_amd64.deb\"\n\
+        \    },\n    {\n      \"name\": \"libmbedtls14t64_2.28.8-1_amd64.deb\",\n      \"bytes\": 82224,\n     \
+        \ \"sha256\": \"64a732580a3b58ddc574a819505cf0e2de150da3d2fbf37b7e60e305de7b50bd\",\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/m/mbedtls/libmbedtls14t64_2.28.8-1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libmbedx509-1t64_2.28.8-1_amd64.deb\",\n      \"bytes\": 46564,\n   \
+        \   \"sha256\": \"12362c7ac8693dadbb9e0aa1e0a5a5eaba1d5d47034c1624725e82c2a486813e\",\n      \"url\": \"\
+        https://archive.ubuntu.com/ubuntu/pool/universe/m/mbedtls/libmbedx509-1t64_2.28.8-1_amd64.deb\"\n    },\n\
+        \    {\n      \"name\": \"libngspice0_42+ds-3build1_amd64.deb\",\n      \"bytes\": 2531432,\n      \"sha256\"\
+        : \"967d5c0c83ab264f344504fa40d8475b7bc4e80abac4395e43ac04fec1b0de98\",\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/n/ngspice/libngspice0_42+ds-3build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libnng1_1.7.2-1build2_amd64.deb\",\n      \"bytes\": 163404,\n      \"\
+        sha256\": \"92b7f377f7874bec3b9c8eae9be1ae37baa5616a58438462cb18b7af3a9baee6\",\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/n/nng/libnng1_1.7.2-1build2_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libnotify4_0.8.3-1build2_amd64.deb\",\n      \"bytes\": 25650,\n    \
+        \  \"sha256\": \"4d856e960ac0ec137e9908b6df0fa295e04c175b0be239450de2243be49524df\",\n      \"url\": \"\
+        https://archive.ubuntu.com/ubuntu/pool/main/libn/libnotify/libnotify4_0.8.3-1build2_amd64.deb\"\n    },\n\
+        \    {\n      \"name\": \"libocct-data-exchange-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\",\n      \"bytes\"\
+        : 4230846,\n      \"sha256\": \"21c17adb272fcc7add7b8bdc39e62f23374f0c8e382b9a1087363ebdb40c534c\",\n  \
+        \    \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/o/opencascade/libocct-data-exchange-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libocct-draw-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\",\n      \"bytes\"\
+        : 2277984,\n      \"sha256\": \"f2d66e29b275b98daec38120fc3402c55f477c123964cb8ff5b3b2ef6dfdd2bc\",\n  \
+        \    \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/o/opencascade/libocct-draw-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libocct-foundation-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\",\n      \"\
+        bytes\": 1435094,\n      \"sha256\": \"46312fb4f4fb40212062f52133862f2e6735a327c2c9f2f3713ac73e7dbfeb95\"\
+        ,\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/o/opencascade/libocct-foundation-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libocct-modeling-algorithms-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\"\
+        ,\n      \"bytes\": 7002476,\n      \"sha256\": \"81e62a1d403e88dbd3ec169f25d92f5d3aca150757930d1912820c6cbf047dae\"\
+        ,\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/o/opencascade/libocct-modeling-algorithms-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libocct-modeling-data-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\",\n   \
+        \   \"bytes\": 2634984,\n      \"sha256\": \"700e7b8fd6d362282c9f096d0059c3d25cc7c105b7e069b959c779754024bc90\"\
+        ,\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/o/opencascade/libocct-modeling-data-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libocct-ocaf-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\",\n      \"bytes\"\
+        : 1137732,\n      \"sha256\": \"251fa15cb8bebfc761460bb49779ca04d8c402057a3bae7e5499d91a4113c1fa\",\n  \
+        \    \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/o/opencascade/libocct-ocaf-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libocct-visualization-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\",\n   \
+        \   \"bytes\": 1988398,\n      \"sha256\": \"a36721dbed06ca720877579f5ec2915492caca4c4db0976a7cd487a7f6cb19c5\"\
+        ,\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/o/opencascade/libocct-visualization-7.6t64_7.6.3+dfsg1-7.1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libodbc2_2.3.12-1ubuntu0.24.04.1_amd64.deb\",\n      \"bytes\": 158090,\n\
+        \      \"sha256\": \"95eac9d12c9fe50ed3a8a7bc32ffeb22060d41b224be1e960829baa03faa82a8\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/main/u/unixodbc/libodbc2_2.3.12-1ubuntu0.24.04.1_amd64.deb\"\n\
+        \    },\n    {\n      \"name\": \"libopenexr-3-1-30_3.1.5-5.1build3_amd64.deb\",\n      \"bytes\": 1004380,\n\
+        \      \"sha256\": \"646d78a860e71d02414df08644f70125e670fb90e8f5d834a7cefd732a9eadfe\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/universe/o/openexr/libopenexr-3-1-30_3.1.5-5.1build3_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libprotobuf32t64_3.21.12-8.2ubuntu0.4_amd64.deb\",\n      \"bytes\":\
+        \ 922780,\n      \"sha256\": \"765aec7fc6c7c14aea8d10677c17617d71acc5103ad580f0e97bff903acccdaf\",\n   \
+        \   \"url\": \"https://archive.ubuntu.com/ubuntu/pool/main/p/protobuf/libprotobuf32t64_3.21.12-8.2ubuntu0.4_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libssh2-1t64_1.11.0-4.1ubuntu0.24.04.4_amd64.deb\",\n      \"bytes\"\
+        : 121264,\n      \"sha256\": \"c3008467513498b6db729b142ea01d766379797e67f9b9348c131d132678253c\",\n   \
+        \   \"url\": \"https://archive.ubuntu.com/ubuntu/pool/main/libs/libssh2/libssh2-1t64_1.11.0-4.1ubuntu0.24.04.4_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libtbb12_2021.11.0-2ubuntu2_amd64.deb\",\n      \"bytes\": 106374,\n\
+        \      \"sha256\": \"78e2c79f5749fc5c55b32f9745e07d5c3480be574fd4d64bb0325cbec4206b06\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/universe/o/onetbb/libtbb12_2021.11.0-2ubuntu2_amd64.deb\"\n \
+        \   },\n    {\n      \"name\": \"libtbbbind-2-5_2021.11.0-2ubuntu2_amd64.deb\",\n      \"bytes\": 16442,\n\
+        \      \"sha256\": \"09c4fa1f12983554b345c9c4d462c8cf14d707c3406a4bb35f81522edd492562\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/universe/o/onetbb/libtbbbind-2-5_2021.11.0-2ubuntu2_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libtbbmalloc2_2021.11.0-2ubuntu2_amd64.deb\",\n      \"bytes\": 60542,\n\
+        \      \"sha256\": \"3de9b639d4abe5d8f0e0adbb7e26e32bf9de9473b19155d76a3a24c88b62cfea\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/universe/o/onetbb/libtbbmalloc2_2021.11.0-2ubuntu2_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libtcl8.6_8.6.14+dfsg-1build1_amd64.deb\",\n      \"bytes\": 987614,\n\
+        \      \"sha256\": \"7534eb825f6317514d747ce53b4d6c23bf24df1dc1785f9599610ece5515e685\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/main/t/tcl8.6/libtcl8.6_8.6.14+dfsg-1build1_amd64.deb\"\n   \
+        \ },\n    {\n      \"name\": \"libtk8.6_8.6.14-1build1_amd64.deb\",\n      \"bytes\": 778878,\n      \"\
+        sha256\": \"c5edb6c79c91a9f4c25cf0ad68c3341467a6604cb97789b2ac36c6d3de352725\",\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/main/t/tk8.6/libtk8.6_8.6.14-1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libwxbase3.2-1t64_3.2.4+dfsg-4build1_amd64.deb\",\n      \"bytes\": 899362,\n\
+        \      \"sha256\": \"8471b3d93c74fa46fe6144ecbb4adfd5743134116dad8457c622ed72e2b99399\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/universe/w/wxwidgets3.2/libwxbase3.2-1t64_3.2.4+dfsg-4build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libwxgtk-gl3.2-1t64_3.2.4+dfsg-4build1_amd64.deb\",\n      \"bytes\"\
+        : 52322,\n      \"sha256\": \"4d0f9bc9e361d26f53aaa51ff222aa77606fb7a63dc49732aca6065ddb049c3f\",\n    \
+        \  \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/w/wxwidgets3.2/libwxgtk-gl3.2-1t64_3.2.4+dfsg-4build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libwxgtk3.2-1t64_3.2.4+dfsg-4build1_amd64.deb\",\n      \"bytes\": 4535408,\n\
+        \      \"sha256\": \"2376d3d3bc4c41f5cf10a75492f4e88d5e97b3448504da790d7ce6e6e05487c8\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/universe/w/wxwidgets3.2/libwxgtk3.2-1t64_3.2.4+dfsg-4build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libxft2_2.3.6-1build1_amd64.deb\",\n      \"bytes\": 45280,\n      \"\
+        sha256\": \"b4f4f3255c0b8773b260c61cbe20ee7c63799cfc0e4e389fa58375dd480b093a\",\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/main/x/xft/libxft2_2.3.6-1build1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libxtst6_1.2.3-1.1build1_amd64.deb\",\n      \"bytes\": 12642,\n    \
+        \  \"sha256\": \"632d74c760f0a4e844c499e7bc1eca4c709aa096fde783a7a6807604aef77545\",\n      \"url\": \"\
+        https://archive.ubuntu.com/ubuntu/pool/main/libx/libxtst/libxtst6_1.2.3-1.1build1_amd64.deb\"\n    },\n\
+        \    {\n      \"name\": \"occt-misc_7.6.3+dfsg1-7.1build1_all.deb\",\n      \"bytes\": 11523042,\n     \
+        \ \"sha256\": \"ccaf2c68b318c262c956379b86f2dc1cec73f9bdd64cc711003fb22fdd32e62f\",\n      \"url\": \"https://archive.ubuntu.com/ubuntu/pool/universe/o/opencascade/occt-misc_7.6.3+dfsg1-7.1build1_all.deb\"\
+        \n    },\n    {\n      \"name\": \"python3-wxgtk4.0_4.2.1+dfsg-3build2_amd64.deb\",\n      \"bytes\": 7653466,\n\
+        \      \"sha256\": \"5bcb6f59634ce9dfcea164d806301b13b20d7e08d06a07fdeb62e20d4b8cc586\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/universe/w/wxpython4.0/python3-wxgtk4.0_4.2.1+dfsg-3build2_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"kicad_9.0.9~ubuntu24.04.1_amd64.deb\",\n      \"bytes\": 37045412,\n\
+        \      \"sha256\": \"b7e6d33867631dc44385067b703b4c39eadede2037a260790b19495fe17e43f0\",\n      \"url\"\
+        : \"https://ppa.launchpadcontent.net/kicad/kicad-9.0-releases/ubuntu/pool/main/k/kicad/kicad_9.0.9~ubuntu24.04.1_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libglew2.2_2.2.0-4build1_amd64.deb\",\n      \"bytes\": 187350,\n   \
+        \   \"sha256\": \"ffef730aac883b1cb1641eae6149da4091a890330d786916f29ea10de362ba9e\",\n      \"url\": \"\
+        https://archive.ubuntu.com/ubuntu/pool/universe/g/glew/libglew2.2_2.2.0-4build1_amd64.deb\"\n    },\n  \
+        \  {\n      \"name\": \"libjxr0t64_1.2~git20170615.f752187-5.1ubuntu2_amd64.deb\",\n      \"bytes\": 181394,\n\
+        \      \"sha256\": \"9de792bc7484e00b1251f4deaf4b49c7c653397eeef3c78e389607f3fffdc6e2\",\n      \"url\"\
+        : \"https://archive.ubuntu.com/ubuntu/pool/universe/j/jxrlib/libjxr0t64_1.2~git20170615.f752187-5.1ubuntu2_amd64.deb\"\
+        \n    },\n    {\n      \"name\": \"libmbedcrypto7t64_2.28.8-1_amd64.deb\",\n      \"bytes\": 209262,\n \
+        \     \"sha256\": \"1f0b795a2274f68edddaf2567d738fcee43383c2c4ba802d54ba3b710bbb3228\",\n      \"url\":\
+        \ \"https://archive.ubuntu.com/ubuntu/pool/universe/m/mbedtls/libmbedcrypto7t64_2.28.8-1_amd64.deb\"\n \
+        \   }\n  ]\n}\nRAZR_EC1B_PACKAGES\npython3 -B - <<'EC1B_PACKAGE_CHECK'\nfrom pathlib import Path\nimport\
+        \ hashlib,json,os\nsource=Path(os.environ['RUNNER_TEMP'])/'razr-ec1-source'\nold=source/'EC1_PINNED_PACKAGES.json'\n\
+        new=source/'EC1B_PINNED_PACKAGES.json'\nassert hashlib.sha256(old.read_bytes()).hexdigest()=='79c2f2038066a0d6d692fbad46ddf7a6304a6fba703926a168514baf946d24c1'\n\
+        assert hashlib.sha256(new.read_bytes()).hexdigest()=='2cdfec6ff2e107f0d3348796ebe37d65c2d1533090796f9e70c3394716f4f7b3'\n\
+        original=json.loads(old.read_text())['packages']\nextended=json.loads(new.read_text())['packages']\nassert\
+        \ len(original)==34 and len(extended)==37 and extended[:34]==original\nassert extended[34:]==[{'name': 'libglew2.2_2.2.0-4build1_amd64.deb',\
+        \ 'bytes': 187350, 'sha256': 'ffef730aac883b1cb1641eae6149da4091a890330d786916f29ea10de362ba9e', 'url':\
+        \ 'https://archive.ubuntu.com/ubuntu/pool/universe/g/glew/libglew2.2_2.2.0-4build1_amd64.deb'}, {'name':\
+        \ 'libjxr0t64_1.2~git20170615.f752187-5.1ubuntu2_amd64.deb', 'bytes': 181394, 'sha256': '9de792bc7484e00b1251f4deaf4b49c7c653397eeef3c78e389607f3fffdc6e2',\
+        \ 'url': 'https://archive.ubuntu.com/ubuntu/pool/universe/j/jxrlib/libjxr0t64_1.2~git20170615.f752187-5.1ubuntu2_amd64.deb'},\
+        \ {'name': 'libmbedcrypto7t64_2.28.8-1_amd64.deb', 'bytes': 209262, 'sha256': '1f0b795a2274f68edddaf2567d738fcee43383c2c4ba802d54ba3b710bbb3228',\
+        \ 'url': 'https://archive.ubuntu.com/ubuntu/pool/universe/m/mbedtls/libmbedcrypto7t64_2.28.8-1_amd64.deb'}]\n\
+        assert sum(r['bytes'] for r in extended[34:])==578006\nassert len({r['name'] for r in extended})==37\nEC1B_PACKAGE_CHECK\n"
+    - name: Ensure platform graphical shared-library prerequisites
+      shell: bash
+      run: 'set -euo pipefail
+
+        sudo apt-get update -qq
+
+        sudo apt-get install -y --no-install-recommends libgtk-3-0t64 libglu1-mesa libgomp1 libfontconfig1 libegl1
+        libopengl0
+
+        '
+    - name: Run original S4 verifier with pinned KiCad 9 bytes
+      shell: bash
+      run: 'set -euo pipefail
+
+        python3 -B "$RUNNER_TEMP/razr-ec1-source/run_ec1.py" "$RUNNER_TEMP/razr-ec1-source/EC1B_PINNED_PACKAGES.json"
+
+        '
+    - name: Export scientific originals and labelled engineering projections
+      if: ${{ always() }}
+      shell: bash
+      run: 'set -euo pipefail
+
+        python3 -B "$RUNNER_TEMP/razr-ec1-source/export_ec1.py"
+
+        '
+    - name: Project actual version failure and required library names only
+      if: ${{ always() }}
+      shell: bash
+      run: 'set -euo pipefail
+
+        python3 -B "$RUNNER_TEMP/razr-ec1-source/diagnose_ec1.py"
+
+        '
+    - name: Preserve bounded ECAD engineering evidence
+      if: ${{ always() }}
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+      with:
+        name: s4-ec1b-engineering
+        path: ${{ runner.temp }}/razr-ec1-engineering
+        include-hidden-files: false
+        if-no-files-found: error
+        retention-days: 90

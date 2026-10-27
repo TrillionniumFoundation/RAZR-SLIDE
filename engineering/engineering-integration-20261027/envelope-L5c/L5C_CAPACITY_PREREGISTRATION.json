@@ -1,0 +1,44 @@
+{
+  "schema": "razr-L5c-operation-diagnostic-capacity-preregistration-v1",
+  "scientific_purpose": "Localize the actual preserved EXTRUSION t=0.25 operation failure and the original-shape STEP import/root/single failure; no seven-pair rerun.",
+  "actual_basis": {
+    "run_id": 40465353232,
+    "producer_seconds": 5.608743999000126,
+    "producer_peak_RSS_bytes": 521879552,
+    "native_reader_seconds": 3.4611198899999636,
+    "native_reader_peak_RSS_bytes": 503541760,
+    "not_a_bound_on_unmeasured_operations": true
+  },
+  "unchanged_original_resource_guards": {
+    "worker_wall_seconds": 1800,
+    "worker_peak_RSS_MiB": 1536,
+    "shared_unreclaimable_GiB": 6.8,
+    "startup_ordinary_disk_MiB": 200,
+    "runtime_ordinary_disk_MiB": 100,
+    "startup_additional_memory_MiB": 1536,
+    "host_deadline_seconds": 2220,
+    "job_timeout_minutes": 40,
+    "owned_child_channel_and_source_environment_closure_required": true
+  },
+  "new_diagnostic_bounds": {
+    "input_BREP_imports": 14,
+    "input_STEP_imports": 2,
+    "maximum_retained_STEP_roots_per_input": 8,
+    "direct_original_unsupported_regions_attempts": 1,
+    "direct_original_subtract_parameter_count": 2,
+    "observed_operand_regions": 12,
+    "maximum_direct_cut_clean_pairs": 24,
+    "one_separate_traced_original_loop_cut_clean_pairs": 12,
+    "original_dynamic_region_limit": 4096,
+    "maximum_saved_shape_files_including_copied_operands": 96,
+    "maximum_new_scientific_shape_bytes": 67108864,
+    "maximum_report_JSON_bytes": 4194304,
+    "no_original_seven_or_current_seven_pair_calls": true
+  },
+  "termination_semantics": "Every original operation keeps its original predicate. Failures are checkpointed with source-relative traceback identity and message hash only. Independent diagnostic attempts may continue to localize other operators, but any failed selected original acceptance guard keeps exit 2 and never clears the original L5b result.",
+  "native_execution_of_this_new_driver_started": false,
+  "no_claimed_1800_second_completion": true,
+  "no_absolute_signed_volume_or_negative_clamping": true,
+  "no_skipped_EXTRUSION_or_tiny_material": true,
+  "no_full_15D_or_full_pair_or_physical_qualification": true
+}

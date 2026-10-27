@@ -1,0 +1,57 @@
+name: Reviewed scientific originals to unpublished evidence archive
+on:
+  push:
+    branches: [diagnostic/scientific-archive-20261026]
+    paths:
+      - .github/workflows/s4-scientific-archive.yml
+      - engineering/engineering-integration-20261026/archive/**
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: razr-reviewed-scientific-draft-archive-20261026
+  cancel-in-progress: false
+jobs:
+  archive:
+    if: github.repository == 'TrillionniumFoundation/RAZR-SLIDE'
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            .github/workflows/s4-scientific-archive.yml
+            engineering/engineering-integration-20261026/archive
+      - name: Bind exact reviewed transfer code and all scientific input digests
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test -z "$(git status --porcelain)"
+          sha256sum --check --strict <<'HASHES'
+          8c13ac916654c617793aa5a8bb56b15a1609d2ac889f4dc1b2ecb3c0c0bd6da0  engineering/engineering-integration-20261026/archive/archive_scientific_evidence.py
+          5c2122aa56e2b9a02484e0f4a04da48869324274c38edb2f6319852c5d04d762  engineering/engineering-integration-20261026/archive/SCIENTIFIC_ARCHIVE_INPUTS.json
+          71865019afbf050abf5fb89988c9da0faa604cf78886f0e006b5f0c683084f37  engineering/engineering-integration-20261026/archive/test_archive_integrity.py
+          HASHES
+          /usr/bin/python3 -B engineering/engineering-integration-20261026/archive/test_archive_integrity.py
+      - name: Verify all original archive members then retain exact ZIP bytes in a draft
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          /usr/bin/python3 -B engineering/engineering-integration-20261026/archive/archive_scientific_evidence.py --manifest engineering/engineering-integration-20261026/archive/SCIENTIFIC_ARCHIVE_INPUTS.json --output "$RUNNER_TEMP/razr-scientific-archive"
+      - name: Preserve only the bounded engineering transfer receipt
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: scientific-archive-receipt-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/razr-scientific-archive/ARCHIVE_RECEIPT.json
+          if-no-files-found: error
+          retention-days: 14

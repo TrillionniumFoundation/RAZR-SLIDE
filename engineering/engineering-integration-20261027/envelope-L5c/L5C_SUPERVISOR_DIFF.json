@@ -1,0 +1,56 @@
+{
+  "schema": "razr-L5c-supervisor-routing-diff-v1",
+  "original_supervisor_sha256": "5cdb452e4cb14313e65767d292e0434908da830bbc4a4dadf50ec1b6d94762f4",
+  "new_supervisor_sha256": "e2bc7998cc46ab751804c6b5c2f42d8a88b3c0273c12cf4e40a8341dd9e66910",
+  "only_explicit_literal_replacements": [
+    {
+      "old_literal": "\"\"\"L5 separate producer/native-reader supervisor: unchanged original SLIDE 1800 s /1536 MiB/resource guards.\"\"\"",
+      "new_literal": "\"\"\"L5c named diagnostic supervisor; original SLIDE 1800 s/1536 MiB/resource/ownership guards retained.\"\"\"",
+      "replacements": 1
+    },
+    {
+      "old_literal": "from run_l5 import identity, owned_process, S4, SOURCES",
+      "new_literal": "from run_l5 import identity, owned_process, S4, SOURCES\nfrom run_l5c import C_SOURCES",
+      "replacements": 1
+    },
+    {
+      "old_literal": "choices=('producer','reader')",
+      "new_literal": "choices=('producer',)",
+      "replacements": 1
+    },
+    {
+      "old_literal": "choices=('original','current')",
+      "new_literal": "choices=('original',)",
+      "replacements": 1
+    },
+    {
+      "old_literal": "source = HERE/('run_l5.py' if args.mode=='producer' else 'read_l5_native.py')",
+      "new_literal": "source = HERE/'run_l5c.py'",
+      "replacements": 1
+    },
+    {
+      "old_literal": "*(HERE/n for n in SOURCES)",
+      "new_literal": "*(HERE/n for n in (*SOURCES,*C_SOURCES))",
+      "replacements": 1
+    },
+    {
+      "old_literal": "'razr-L5-owned-worker-supervisor-20261026-v1'",
+      "new_literal": "'razr-L5c-owned-diagnostic-supervisor-v1'",
+      "replacements": 1
+    },
+    {
+      "old_literal": "out/'worker/science'/('report.json' if args.mode=='producer' else 'NATIVE_READBACK.json')",
+      "new_literal": "out/'worker/science/report.json'",
+      "replacements": 1
+    },
+    {
+      "old_literal": "all_original_postguards_passed",
+      "new_literal": "all_selected_original_operation_guards_passed",
+      "replacements": 4
+    }
+  ],
+  "resources_and_owned_process_termination_function_ASTs_identical": true,
+  "worker_limits_or_observe_gates_changed": false,
+  "same_original_wall_RSS_memory_disk_and_child_ownership_gates": true,
+  "new_result_field_is_only_selected_operations_not_full_L5_pass": true
+}

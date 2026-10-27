@@ -1,0 +1,515 @@
+{
+  "schema": "razr-rebuilt-S4-telescope-binary64-source-domain-v1",
+  "functional_source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "analysis_source_sha256": "0f08dcf066203d664fd50923213fe1efee9b809de25009213d55eff5fe3c4735",
+  "source_identities": [
+    {
+      "name": "cam_coupling.py",
+      "sha256": "4a3bf1d2b86d31fa8e3d60d3412e15548bf42287ed95d756798f3d88c6c4e631",
+      "bytes": 14806
+    },
+    {
+      "name": "product_assembly.py",
+      "sha256": "fc5391d3be98810ada06ca27e65de9a77d2f599c4d1890bb31a4d87ef14791b4",
+      "bytes": 31504
+    },
+    {
+      "name": "verify_cam_coupling.py",
+      "sha256": "ffe16f403b104bfdf58897ed3ece1313b9bb82863569ba68f60617467b2841f1",
+      "bytes": 14560
+    },
+    {
+      "name": "product_nominal_motion.py",
+      "sha256": "ad4c7d04092c7b6e118c0415ce77bdf4ee60ee335317c5da101bd1a98353f271",
+      "bytes": 30871
+    },
+    {
+      "name": "cpython_3_12_14_bltinmodule.c",
+      "sha256": "368b677db85bd846fc85271d6e7170ee8e529230bd1ea352d16ccef0a75787e0",
+      "bytes": 93974
+    }
+  ],
+  "runtime_CPython_version": "3.12.14",
+  "original_AST_global_constants_verified": {
+    "cam_coupling.py": {
+      "STROKE": 79.75,
+      "SEATING": 8.2,
+      "STAGE_MIN": 0.1,
+      "STAGE_MAX": 2.9
+    },
+    "product_assembly.py": {
+      "TOL": 1e-07
+    },
+    "verify_cam_coupling.py": {
+      "TOL": 1e-07
+    }
+  },
+  "original_guard_AST_expressions": {
+    "native_scene": {
+      "source_expression": "values is not None and (len(values)!=3 or any(not .1-TOL<=x<=2.9+TOL for x in values)\n            or abs(sum(values)-8.5+descent_mm)>TOL)",
+      "line": 185
+    },
+    "prototype": {
+      "source_expression": "len(j)!=3 or any(v<.1-TOL or v>2.9+TOL for v in j) or abs(sum(j)-.3-z)>1e-7",
+      "line": 118
+    },
+    "stage_allocation_joint": {
+      "source_expression": "any(x<STAGE_MIN-1e-9 or x>STAGE_MAX+1e-9 for x in q)",
+      "line": 72
+    },
+    "stage_allocation_sum": {
+      "source_expression": "abs(sum(q)-3*STAGE_MIN-p['B_Z_mm'])>1e-8",
+      "line": 73
+    }
+  },
+  "three_distinct_contracts": {
+    "standalone_stage_allocation": {
+      "joint_tolerance_mm": 1e-09,
+      "sum_tolerance_mm": 1e-08,
+      "exact_sum_expression": "sum(q)-3*STAGE_MIN-p['B_Z_mm']"
+    },
+    "ideal_planner": {
+      "uses_exact_decimal_fixed_sum_polytope": true,
+      "allocation_reconstruction": "[nominal+first, nominal+second, nominal-first-second]",
+      "joint_only_tolerance_mm": 1e-09,
+      "explicit_sum_residual_guard_in_reconstruction": false
+    },
+    "explicit_joint_full_source_route": {
+      "route": [
+        "product_scene",
+        "native_scene scalar predicate",
+        "cam.prototype scalar predicate"
+      ],
+      "telescope_offsets_are_passed_as_full_independent_three_joint_arrays": true,
+      "standalone_stage_allocation_is_not_called_on_explicit_joint_array": true,
+      "both_original_scalar_evaluation_orders_retained": true,
+      "native_and_prototype_joint_tolerance_mm": 1e-07,
+      "source_scalar_acceptance_is_not_whole_native_construction_or_physical_acceptance": true
+    }
+  },
+  "actual_original_scalar_examples": [
+    {
+      "name": "nominal_predock",
+      "descent_mm": 0.0,
+      "joints_mm": [
+        2.833333333333333,
+        2.833333333333333,
+        2.833333333333333
+      ],
+      "joint_binary64_hex": [
+        "0x1.6aaaaaaaaaaaap+1",
+        "0x1.6aaaaaaaaaaaap+1",
+        "0x1.6aaaaaaaaaaaap+1"
+      ],
+      "native_scene_scalar_guard_pass": true,
+      "prototype_scalar_guard_pass": true,
+      "stage_allocation_joint_guard_pass": true,
+      "stage_allocation_sum_guard_pass": true,
+      "stage_allocation_scalar_guards_pass": true,
+      "native_residual_mm": 0.0,
+      "prototype_residual_mm": 0.0,
+      "stage_allocation_residual_mm": 0.0,
+      "exact_real_sum_residual": "-1/1125899906842624",
+      "inside_conservative_outer": true,
+      "full_factory_native_construction_executed": false
+    },
+    {
+      "name": "nominal_seated",
+      "descent_mm": 8.2,
+      "joints_mm": [
+        0.1,
+        0.1,
+        0.1
+      ],
+      "joint_binary64_hex": [
+        "0x1.999999999999ap-4",
+        "0x1.999999999999ap-4",
+        "0x1.999999999999ap-4"
+      ],
+      "native_scene_scalar_guard_pass": true,
+      "prototype_scalar_guard_pass": true,
+      "stage_allocation_joint_guard_pass": true,
+      "stage_allocation_sum_guard_pass": true,
+      "stage_allocation_scalar_guards_pass": true,
+      "native_residual_mm": 0.0,
+      "prototype_residual_mm": 5.551115123125783e-17,
+      "stage_allocation_residual_mm": 0.0,
+      "exact_real_sum_residual": "-25/36028797018963968",
+      "inside_conservative_outer": true,
+      "full_factory_native_construction_executed": false
+    },
+    {
+      "name": "lower_joint_thin_layer",
+      "descent_mm": 8.2,
+      "joints_mm": [
+        0.09999995,
+        0.10000005000000001,
+        0.1
+      ],
+      "joint_binary64_hex": [
+        "0x1.99998c2da04c4p-4",
+        "0x1.9999a70592e70p-4",
+        "0x1.999999999999ap-4"
+      ],
+      "native_scene_scalar_guard_pass": true,
+      "prototype_scalar_guard_pass": true,
+      "stage_allocation_joint_guard_pass": false,
+      "stage_allocation_sum_guard_pass": true,
+      "stage_allocation_scalar_guards_pass": false,
+      "native_residual_mm": 0.0,
+      "prototype_residual_mm": 5.551115123125783e-17,
+      "stage_allocation_residual_mm": 0.0,
+      "exact_real_sum_residual": "-25/36028797018963968",
+      "inside_conservative_outer": true,
+      "full_factory_native_construction_executed": false
+    },
+    {
+      "name": "upper_joint_thin_layer",
+      "descent_mm": 0.0,
+      "joints_mm": [
+        2.90000005,
+        2.7999999499999997,
+        2.8
+      ],
+      "joint_binary64_hex": [
+        "0x1.7333339e92fdap+1",
+        "0x1.666665fb069bfp+1",
+        "0x1.6666666666666p+1"
+      ],
+      "native_scene_scalar_guard_pass": true,
+      "prototype_scalar_guard_pass": true,
+      "stage_allocation_joint_guard_pass": false,
+      "stage_allocation_sum_guard_pass": true,
+      "stage_allocation_scalar_guards_pass": false,
+      "native_residual_mm": 0.0,
+      "prototype_residual_mm": 0.0,
+      "stage_allocation_residual_mm": 0.0,
+      "exact_real_sum_residual": "-1/2251799813685248",
+      "inside_conservative_outer": true,
+      "full_factory_native_construction_executed": false
+    },
+    {
+      "name": "positive_sum_thin_layer",
+      "descent_mm": 1.0,
+      "joints_mm": [
+        2.5,
+        2.5,
+        2.50000002
+      ],
+      "joint_binary64_hex": [
+        "0x1.4000000000000p+1",
+        "0x1.4000000000000p+1",
+        "0x1.4000002af31dcp+1"
+      ],
+      "native_scene_scalar_guard_pass": true,
+      "prototype_scalar_guard_pass": true,
+      "stage_allocation_joint_guard_pass": true,
+      "stage_allocation_sum_guard_pass": false,
+      "stage_allocation_scalar_guards_pass": false,
+      "native_residual_mm": 1.999999987845058e-08,
+      "prototype_residual_mm": 2.0000000766629e-08,
+      "stage_allocation_residual_mm": 2.0000000766629e-08,
+      "exact_real_sum_residual": "11258999/562949953421312",
+      "inside_conservative_outer": true,
+      "full_factory_native_construction_executed": false
+    },
+    {
+      "name": "negative_sum_thin_layer",
+      "descent_mm": 1.0,
+      "joints_mm": [
+        2.5,
+        2.5,
+        2.49999998
+      ],
+      "joint_binary64_hex": [
+        "0x1.4000000000000p+1",
+        "0x1.4000000000000p+1",
+        "0x1.3fffffd50ce24p+1"
+      ],
+      "native_scene_scalar_guard_pass": true,
+      "prototype_scalar_guard_pass": true,
+      "stage_allocation_joint_guard_pass": true,
+      "stage_allocation_sum_guard_pass": false,
+      "stage_allocation_scalar_guards_pass": false,
+      "native_residual_mm": -1.999999987845058e-08,
+      "prototype_residual_mm": -1.999999899027216e-08,
+      "stage_allocation_residual_mm": -1.999999899027216e-08,
+      "exact_real_sum_residual": "-11258999/562949953421312",
+      "inside_conservative_outer": true,
+      "full_factory_native_construction_executed": false
+    },
+    {
+      "name": "native_pass_prototype_reject",
+      "descent_mm": 1.0,
+      "joints_mm": [
+        2.5,
+        2.5,
+        2.500000099999999
+      ],
+      "joint_binary64_hex": [
+        "0x1.4000000000000p+1",
+        "0x1.4000000000000p+1",
+        "0x1.400000d6bf94bp+1"
+      ],
+      "native_scene_scalar_guard_pass": true,
+      "prototype_scalar_guard_pass": false,
+      "stage_allocation_joint_guard_pass": true,
+      "stage_allocation_sum_guard_pass": false,
+      "stage_allocation_scalar_guards_pass": false,
+      "native_residual_mm": 9.99999993922529e-08,
+      "prototype_residual_mm": 1.0000000028043132e-07,
+      "stage_allocation_residual_mm": 1.0000000028043132e-07,
+      "exact_real_sum_residual": "225179979/2251799813685248",
+      "inside_conservative_outer": true,
+      "full_factory_native_construction_executed": false
+    },
+    {
+      "name": "native_reject_prototype_would_pass",
+      "descent_mm": 1.0,
+      "joints_mm": [
+        2.5,
+        2.5,
+        2.4999998999999997
+      ],
+      "joint_binary64_hex": [
+        "0x1.4000000000000p+1",
+        "0x1.4000000000000p+1",
+        "0x1.3fffff29406b2p+1"
+      ],
+      "native_scene_scalar_guard_pass": false,
+      "prototype_scalar_guard_pass": true,
+      "stage_allocation_joint_guard_pass": true,
+      "stage_allocation_sum_guard_pass": false,
+      "stage_allocation_scalar_guards_pass": false,
+      "native_residual_mm": -1.0000000028043132e-07,
+      "prototype_residual_mm": -9.99999993922529e-08,
+      "stage_allocation_residual_mm": -9.99999993922529e-08,
+      "exact_real_sum_residual": "-112589991/1125899906842624",
+      "inside_conservative_outer": true,
+      "full_factory_native_construction_executed": false
+    },
+    {
+      "name": "upper_joint_outside",
+      "descent_mm": 0.0,
+      "joints_mm": [
+        2.9000002,
+        2.7999998,
+        2.8
+      ],
+      "joint_binary64_hex": [
+        "0x1.733334e0b25cep+1",
+        "0x1.666664b8e73ccp+1",
+        "0x1.6666666666666p+1"
+      ],
+      "native_scene_scalar_guard_pass": false,
+      "prototype_scalar_guard_pass": false,
+      "stage_allocation_joint_guard_pass": false,
+      "stage_allocation_sum_guard_pass": true,
+      "stage_allocation_scalar_guards_pass": false,
+      "native_residual_mm": 0.0,
+      "prototype_residual_mm": 0.0,
+      "stage_allocation_residual_mm": 0.0,
+      "exact_real_sum_residual": "0",
+      "inside_conservative_outer": false,
+      "full_factory_native_construction_executed": false
+    },
+    {
+      "name": "lower_joint_outside",
+      "descent_mm": 8.2,
+      "joints_mm": [
+        0.0999998,
+        0.1000002,
+        0.1
+      ],
+      "joint_binary64_hex": [
+        "0x1.999963e9b4642p-4",
+        "0x1.9999cf497ecf1p-4",
+        "0x1.999999999999ap-4"
+      ],
+      "native_scene_scalar_guard_pass": false,
+      "prototype_scalar_guard_pass": false,
+      "stage_allocation_joint_guard_pass": false,
+      "stage_allocation_sum_guard_pass": true,
+      "stage_allocation_scalar_guards_pass": false,
+      "native_residual_mm": 0.0,
+      "prototype_residual_mm": 0.0,
+      "stage_allocation_residual_mm": -5.551115123125783e-17,
+      "exact_real_sum_residual": "-51/72057594037927936",
+      "inside_conservative_outer": false,
+      "full_factory_native_construction_executed": false
+    },
+    {
+      "name": "positive_sum_outside",
+      "descent_mm": 1.0,
+      "joints_mm": [
+        2.5,
+        2.5,
+        2.5000002
+      ],
+      "joint_binary64_hex": [
+        "0x1.4000000000000p+1",
+        "0x1.4000000000000p+1",
+        "0x1.400001ad7f29bp+1"
+      ],
+      "native_scene_scalar_guard_pass": false,
+      "prototype_scalar_guard_pass": false,
+      "stage_allocation_joint_guard_pass": true,
+      "stage_allocation_sum_guard_pass": false,
+      "stage_allocation_scalar_guards_pass": false,
+      "native_residual_mm": 2.0000000056086265e-07,
+      "prototype_residual_mm": 2.0000000144904106e-07,
+      "stage_allocation_residual_mm": 2.0000000144904106e-07,
+      "exact_real_sum_residual": "450359963/2251799813685248",
+      "inside_conservative_outer": false,
+      "full_factory_native_construction_executed": false
+    },
+    {
+      "name": "negative_sum_outside",
+      "descent_mm": 1.0,
+      "joints_mm": [
+        2.5,
+        2.5,
+        2.4999998
+      ],
+      "joint_binary64_hex": [
+        "0x1.4000000000000p+1",
+        "0x1.4000000000000p+1",
+        "0x1.3ffffe5280d65p+1"
+      ],
+      "native_scene_scalar_guard_pass": false,
+      "prototype_scalar_guard_pass": false,
+      "stage_allocation_joint_guard_pass": true,
+      "stage_allocation_sum_guard_pass": false,
+      "stage_allocation_scalar_guards_pass": false,
+      "native_residual_mm": -2.0000000056086265e-07,
+      "prototype_residual_mm": -1.9999999967268423e-07,
+      "stage_allocation_residual_mm": -1.9999999967268423e-07,
+      "exact_real_sum_residual": "-450359963/2251799813685248",
+      "inside_conservative_outer": false,
+      "full_factory_native_construction_executed": false
+    },
+    {
+      "name": "exact_native_upper_joint_boundary",
+      "descent_mm": 0.0,
+      "joints_mm": [
+        2.9000000999999997,
+        2.7999999,
+        2.8
+      ],
+      "joint_binary64_hex": [
+        "0x1.73333409f2c80p+1",
+        "0x1.6666658fa6d19p+1",
+        "0x1.6666666666666p+1"
+      ],
+      "native_scene_scalar_guard_pass": true,
+      "prototype_scalar_guard_pass": true,
+      "stage_allocation_joint_guard_pass": false,
+      "stage_allocation_sum_guard_pass": true,
+      "stage_allocation_scalar_guards_pass": false,
+      "native_residual_mm": 0.0,
+      "prototype_residual_mm": 0.0,
+      "stage_allocation_residual_mm": 0.0,
+      "exact_real_sum_residual": "-1/2251799813685248",
+      "inside_conservative_outer": true,
+      "full_factory_native_construction_executed": false
+    },
+    {
+      "name": "exact_native_lower_joint_boundary",
+      "descent_mm": 8.2,
+      "joints_mm": [
+        0.0999999,
+        0.10000010000000001,
+        0.1
+      ],
+      "joint_binary64_hex": [
+        "0x1.99997ec1a6feep-4",
+        "0x1.9999b4718c346p-4",
+        "0x1.999999999999ap-4"
+      ],
+      "native_scene_scalar_guard_pass": true,
+      "prototype_scalar_guard_pass": true,
+      "stage_allocation_joint_guard_pass": false,
+      "stage_allocation_sum_guard_pass": true,
+      "stage_allocation_scalar_guards_pass": false,
+      "native_residual_mm": 0.0,
+      "prototype_residual_mm": 5.551115123125783e-17,
+      "stage_allocation_residual_mm": 0.0,
+      "exact_real_sum_residual": "-25/36028797018963968",
+      "inside_conservative_outer": true,
+      "full_factory_native_construction_executed": false
+    }
+  ],
+  "outer": {
+    "variables": [
+      "d",
+      "jL1",
+      "jL2",
+      "jL3",
+      "jR1",
+      "jR2",
+      "jR3"
+    ],
+    "continuous_dimension": 7,
+    "halfspace_count": 18,
+    "descent_limits": [
+      "0",
+      "2308094809027379/281474976710656"
+    ],
+    "joint_limits": [
+      "3602876099016695/36028797018963968",
+      "51017341288025/17592186044416"
+    ],
+    "exact_sum_center": "17/2",
+    "exact_sum_halfwidth": {
+      "exact": "944473766335977/9444732965739290427392",
+      "float": 1.000000497379915e-07
+    },
+    "side_sum_constraint": "abs(d+jS1+jS2+jS3-17/2)<=H independently for S=L,R"
+  },
+  "conservative_arithmetic_basis": {
+    "binary64_each_operation_absolute_error_bound_E": "1/281474976710656",
+    "all_relevant_arithmetic_intermediates_have_abs_less_than": 32,
+    "CPython_three_float_sum_running_total_error_at_most_E": 2,
+    "per_compensation_update_term_magnitude_at_most_E": 3,
+    "two_compensation_accumulations_magnitude_at_most_E": 8,
+    "final_compensated_sum_absolute_error_at_most_E": 11,
+    "native_residual_two_additional_operations_total_at_most_E": 13,
+    "strict_closed_outer_uses_extra_E": 14,
+    "native_outer_is_conservative_before_later_prototype_guard": true,
+    "prototype_and_any_later_constructor_can_only_reduce_accepted_set": true,
+    "CPython_C_source_was_read_and_hashed_not_executed": true,
+    "CPython_source_URL": "https://raw.githubusercontent.com/python/cpython/v3.12.14/Python/bltinmodule.c",
+    "prefix_Z_final_addition_and_strict_margin_absolute_error_at_most_E": 13,
+    "exact_prefix_sum_bounds_for_m": [
+      "max(m*lo,17/2-d-H-(3-m)*hi)",
+      "min(m*hi,17/2-d+H-(3-m)*lo)"
+    ]
+  },
+  "dimensions_and_limits": {
+    "ideal_zero_width_joint_projection_dimension": 5,
+    "ideal_zero_width_joint_projection_vertices": 28,
+    "conservative_joint_outer_vertices": 216,
+    "full_independent_SLIDE_continuous_control_relaxation_dimension": 15,
+    "full_independent_SEATING_continuous_control_relaxation_dimension": 15,
+    "full_control_count_basis": "one phase coordinate + two tabs + two flanks + two KEY offsets + two crosshead offsets + six joints",
+    "binary64_accepted_input_set_itself_is_discrete": true,
+    "216_vertices_are_not_native_accepted_witnesses": true,
+    "source_outer_is_not_a_physical_allowed_domain": true,
+    "K3_ten_finite_state_passes_do_not_certify_this_outer": true
+  },
+  "recovery": {
+    "original_pinned_source_bytes_recovered": true,
+    "old_unpublished_analysis_and_vertex_reports_recovered_exactly": false,
+    "new_pure_original_AST_evaluation_and_two_exact_enumerations_executed": true,
+    "prior_domain_report_sha256_from_session_history": "e7f9362d5019d05c97c07f24dea8bdaf645b07f7e0f71860b5bf36ef78f1101c",
+    "prior_vertex_report_sha256_from_session_history": "59baf98633f9a3d77b11b2e77d6d482058304885a7e604613a3543b0a16560ea"
+  },
+  "native_CAD_or_solver_executed": false,
+  "complete_product_motion_proved": false,
+  "physical_allowed_domain_proved": false,
+  "strength_qualified": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "recomputed_at_UTC": "2026-10-26T17:39:05.949756+00:00"
+}
