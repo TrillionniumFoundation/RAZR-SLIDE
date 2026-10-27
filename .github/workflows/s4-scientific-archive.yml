@@ -35,9 +35,9 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           test -z "$(git status --porcelain)"
           sha256sum --check --strict <<'HASHES'
-          b2d89e988d653168844d533db454b5a2bc45d7845e4ec0665a822243a634507f  engineering/engineering-integration-20261026/archive/archive_scientific_evidence.py
-          b5fb7cd792a4901a29e4f52fcccff7f8bd38f8720029ec64f8bbfda1c7ce7854  engineering/engineering-integration-20261026/archive/SCIENTIFIC_ARCHIVE_INPUTS.json
-          f19cd7196cddc12e588b6eeb170fb5e040f5dadc4d591ca511c13467671d4aca  engineering/engineering-integration-20261026/archive/test_archive_integrity.py
+          8c13ac916654c617793aa5a8bb56b15a1609d2ac889f4dc1b2ecb3c0c0bd6da0  engineering/engineering-integration-20261026/archive/archive_scientific_evidence.py
+          5c2122aa56e2b9a02484e0f4a04da48869324274c38edb2f6319852c5d04d762  engineering/engineering-integration-20261026/archive/SCIENTIFIC_ARCHIVE_INPUTS.json
+          71865019afbf050abf5fb89988c9da0faa604cf78886f0e006b5f0c683084f37  engineering/engineering-integration-20261026/archive/test_archive_integrity.py
           HASHES
           /usr/bin/python3 -B engineering/engineering-integration-20261026/archive/test_archive_integrity.py
       - name: Verify all original archive members then retain exact ZIP bytes in a draft

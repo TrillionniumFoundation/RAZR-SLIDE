@@ -300,6 +300,185 @@ def verify_n8_scope(z, manifest, entries):
             "complete_final_arrays": 10 - len(missing_finals), "qualification_required": False}
 
 
+
+def verify_n9_scope(z, manifest, entries):
+    """Verify the original N9 storage ledger; numerical qualification is not an archive gate."""
+    require(manifest["schema"] == "razr-N9-engineering-allowlist-export-v1"
+            and manifest["functional_source_commit"] == S4
+            and manifest["raw_runtime_records_exported"] is False
+            and manifest["raw_runtime_records_durable"] is False
+            and manifest["producer_records_modified"] is False
+            and manifest["omitted_runtime_remains_on_ephemeral_runner_only"] is True
+            and manifest["original_input_ZIP_included"] is False
+            and manifest["original_input_fields_durable_release_asset_id"] is None
+            and manifest["original_input_fields_source_artifact_id"] == 12634369890
+            and manifest["source_N8_long_term_archive_status_at_registration"] == "pending",
+            "N9 exact original-input and excluded-runtime contract differs")
+    copied, projections = manifest["copied"], manifest["projections"]
+    require(set(entries) == set(copied) | set(projections) | {"EXECUTION_CHECKS.engineering.json"},
+            "N9 unaccounted or missing engineering export member")
+    require(not set(copied) & set(projections), "N9 original and projection identities overlap")
+    require(all(set(item) == {"bytes", "sha256", "original_bytes"} and item["original_bytes"] is True
+                and entries.get(name) == {"bytes": item["bytes"], "sha256": item["sha256"]}
+                for name, item in copied.items()), "N9 copied original scientific identity differs")
+    require(all(set(item) == {"bytes", "sha256", "original_sha256"}
+                and entries.get(name) == {"bytes": item["bytes"], "sha256": item["sha256"]}
+                and re.fullmatch(r"[0-9a-f]{64}", item["original_sha256"])
+                for name, item in projections.items()), "N9 marked projection identity differs")
+    require(all(set(item) == {"bytes", "sha256", "exported_original_bytes"}
+                and item["exported_original_bytes"] is False
+                for item in manifest["original_runtime_record_hashes"]),
+            "N9 runtime inventory contains an unlisted or exported field")
+    fragments = manifest["scientific_fragments"]
+    require(isinstance(fragments, list) and len(fragments) == len(set(fragments))
+            and all(name in copied for name in fragments), "N9 scientific fragment inventory differs")
+    frozen = json.loads(z.read("source/N9_FROZEN_INPUTS.json"))
+    require(frozen["schema"] == "razr-N9-frozen-original-inputs-v1"
+            and frozen["functional_source_commit"] == S4
+            and frozen["functional_source_tree"] == "cdd9e2c41216201b6cd04dd610d45fde80499045"
+            and frozen["source_artifact_id"] == 12634369890
+            and frozen["source_ZIP_sha256"] == "ac747737b52960596c6a35be47ba3d924f6276227d22a98be8fd3b1fde0d9d0e",
+            "N9 original source contract identity differs")
+    identities = frozen["members"]
+    require(len(identities) == 22, "N9 frozen original input inventory differs")
+    complete_inputs = ["frozen/" + name for name in identities if "frozen/" + name in copied]
+    missing_inputs = ["frozen/" + name for name in identities if "frozen/" + name not in copied]
+    require(all(entries[name] == identities[name.removeprefix("frozen/")] for name in complete_inputs),
+            "N9 retained frozen original input differs")
+    if "frozen/EXPORT_MANIFEST.json" in copied:
+        require(entries["frozen/EXPORT_MANIFEST.json"] ==
+                {"bytes": frozen["source_manifest_bytes"], "sha256": frozen["source_manifest_sha256"]},
+                "N9 original source manifest identity differs")
+    p = manifest["scientific_preservation_actual"]
+    require(p["selected_complete_inputs_expected"] == 22
+            and p["selected_complete_input_identities_verified"] == len(complete_inputs)
+            and set(p["missing_selected_complete_inputs"]) == set(missing_inputs)
+            and p["all_22_selected_complete_inputs_identity_verified"] ==
+                (len(complete_inputs) == 22 and not missing_inputs)
+            and p["original_source_manifest_identity_verified"] == ("frozen/EXPORT_MANIFEST.json" in copied)
+            and set(p["partial_original_input_files"]) == {name for name in fragments if name.startswith("frozen/")},
+            "N9 original input preservation claims differ")
+    trial_pattern = re.compile(r"probe-N9/trial-(?:0[1-9]|[1-8][0-9]|9[0-6])/(?:probe-[0-4]-(?:field|residual)|requested-update|actual-update)\.npy(?:\.writing)?$")
+    final_pattern = re.compile(r"probe-N9/final/probe-[0-4]-(?:field|residual)\.npy(?:\.writing)?$")
+    actual_arrays = {name for name in copied if trial_pattern.fullmatch(name) or final_pattern.fullmatch(name)}
+    started = {int(name.split("/")[1].removeprefix("trial-")) for name in actual_arrays
+               if name.startswith("probe-N9/trial-")}
+    report_name = "probe-N9/N9_REPORT.json"
+    producer = json.loads(z.read(report_name)) if report_name in copied else {}
+    if producer:
+        require(producer["schema"] == "razr-N9-finite-original-five-probe-v1"
+                and producer["functional_source_commit"] == S4
+                and producer["functional_source_tree"] == "cdd9e2c41216201b6cd04dd610d45fde80499045",
+                "N9 original producer identity differs")
+    trials = producer.get("trials", [])
+    require(isinstance(trials, list) and all(type(t.get("trial_index")) is int and
+            1 <= t["trial_index"] <= 96 for t in trials), "N9 producer started candidate index differs")
+    require(len({t["trial_index"] for t in trials}) == len(trials), "N9 duplicate producer trial index")
+    started.update(t["trial_index"] for t in trials)
+    require(p["started_full_candidate_indices"] == sorted(started), "N9 started candidate union differs")
+    expected = []
+    for index in sorted(started):
+        prefix = f"probe-N9/trial-{index:02d}/"
+        expected += [prefix + f"probe-0-{kind}.npy" for kind in ("field", "residual")]
+        expected += [prefix + "requested-update.npy", prefix + "actual-update.npy"]
+    missing = [name for name in expected if name not in copied]
+    partial = {name for name in actual_arrays if name.endswith(".writing")}
+    trial_by_index = {t["trial_index"]: t for t in trials}
+    records, unresolved = [], []
+    for index in sorted(started):
+        probes = trial_by_index.get(index, {}).get("probes", [])
+        for j in range(1, 5):
+            rec = probes[j] if len(probes) == 5 and isinstance(probes[j], dict) else {}
+            for kind in ("field", "residual"):
+                original = f"probe-N8/final/probe-{j}-{kind}.npy"
+                relative, identity = "frozen/" + original, identities[original]
+                entry = copied.get(relative, {})
+                present = rec.get(kind + "_file") == relative and rec.get(kind + "_identity") == identity
+                source_checked = all(entry.get(k) == v for k, v in identity.items()) and entry.get("original_bytes") is True
+                storage_ok = (rec.get("scientific_storage") == "explicit_frozen_original_field_and_residual_reference"
+                              and rec.get("new_native_residual_equals_frozen_original_array_bytes") is True)
+                record = {"trial_index": index, "probe_index": j, "kind": kind,
+                          "expected_original_file": relative, "expected_original_identity": identity,
+                          "explicit_report_reference_matches": present,
+                          "referenced_original_bytes_present_and_hash_verified": source_checked,
+                          "explicit_actual_native_equality_record_present": storage_ok,
+                          "complete_reference": bool(present and source_checked and storage_ok)}
+                records.append(record)
+                if not record["complete_reference"]:
+                    unresolved.append(record)
+    finals = [f"probe-N9/final/probe-{j}-{kind}.npy" for j in range(5) for kind in ("field", "residual")]
+    missing_finals = [name for name in finals if name not in copied]
+    duplicates = {name for name in actual_arrays
+                  if re.fullmatch(r"probe-N9/trial-[0-9]{2}/probe-[1-4]-(?:field|residual)\.npy(?:\.writing)?", name)}
+    require(p["expected_complete_candidate_array_count"] == len(expected)
+            and p["complete_candidate_arrays_present"] == len(expected) - len(missing)
+            and set(p["missing_complete_candidate_arrays"]) == set(missing)
+            and set(p["partial_scientific_candidate_or_final_array_files"]) == partial
+            and p["all_started_full_candidate_new_arrays_complete"] ==
+                bool(started and not missing and not any(n.startswith("probe-N9/trial-") for n in partial))
+            and p["expected_per_candidate_frozen_reference_count"] == len(records)
+            and p["complete_per_candidate_frozen_reference_count"] == len(records) - len(unresolved)
+            and p["per_candidate_frozen_references"] == records
+            and p["missing_or_incomplete_candidate_frozen_references"] == unresolved
+            and p["all_started_full_candidates_all5_fields_and_residuals_recoverable"] ==
+                bool(started and not missing and not unresolved and not any(n.startswith("probe-N9/trial-") for n in partial))
+            and set(p["unexpected_retained_duplicate_candidate_arrays"]) == duplicates
+            and p["final_complete_array_count"] == 10 - len(missing_finals)
+            and set(p["missing_final_arrays"]) == set(missing_finals)
+            and p["all_ten_final_arrays_present"] == (not missing_finals),
+            "N9 new arrays, frozen references or truthful partial claims differ")
+    existing = p["actual_existing_allowlisted_array_files"]
+    require(isinstance(existing, list) and len(existing) == len(set(existing))
+            and all(trial_pattern.fullmatch(n) or final_pattern.fullmatch(n) for n in existing)
+            and set(p["actual_allowlisted_array_files_copied"]) == actual_arrays
+            and p["all_actual_allowlisted_array_bytes_copied_and_hash_verified"] == (set(existing) == actual_arrays),
+            "N9 enumerated original array-byte claim differs")
+    return {"started_candidates": len(started), "complete_new_arrays": len(expected) - len(missing),
+            "complete_frozen_references": len(records) - len(unresolved),
+            "unresolved_frozen_references": len(unresolved), "complete_frozen_inputs": len(complete_inputs),
+            "complete_final_arrays": 10 - len(missing_finals), "qualification_required": False}
+
+def l5_scientific_filename(name):
+    if name in ('report.json','NATIVE_READBACK.json','INDEPENDENT_RECORD_CHECK.json'):
+        return True
+    case=r'(?:original|current)-case-(?:011|012|013|014|016|017|018)'
+    if re.fullmatch(case+r'\.json',name):return True
+    labels=(r'(?:moving-input|fixed-input|layer-[0-2]|actual-layer-[0-2]|whole-reconstructed|'
+        r'carrier-[0-2]|layer-[0-2]-(?:bridge(?:-difference)?|endpoint-[01](?:-difference)?|short-disk|assembled-union|Common)|inner-lens-[0-2]|'
+        r'carrier-union|whole-source-omission|negative-intruding-complete-input)')
+    if re.fullmatch(case+'-'+labels+r'\.brep',name):return True
+    if re.fullmatch(case+r'-(?:moving-input|fixed-input)\.step',name):return True
+    if re.fullmatch(r'control-(?:ordinary|reversed|zero|tiny)-(?:capsule-(?:bridge(?:-difference)?|endpoint-[01](?:-difference)?|short-disk|assembled-union)|whole-carrier|source-disk|sample-[0-4])\.brep',name):return True
+    if re.fullmatch(r'control-original-extrusion-(?:original-shape|original-face)\.(?:brep|step)',name):return True
+    return re.fullmatch(r'control-original-extrusion-v2-region-[0-9]+\.brep',name) is not None
+
+L5_CONTROL_SOURCE_NAMES = ('run_l5.py', 'supervise_l5.py', 'cylindrical_sweep_l5.py', 'exact_xy_support_l5.py', 'test_l5_native.py', 'check_l5_plan.py', 'l5_science_contract.py', 'read_l5_native.py', 'read_l5_records.py', 'export_l5.py', 'test_export_l5.py', 'capacity_stage_v4.py', 'full_slide_api_v4.py', 'envelope_v2.py', 'correlated_v3.py', 'test_l2_native.py', 'frozen_key_factory_adapter.py', 'K1_BINDING.json', 'L5_ORIGINAL_SEVEN_BINDING.json')
+
+def verify_l5_failed_control_scope(z, entries):
+    """Retain exact failed controls and their original frozen source identities."""
+    scope = json.loads(z.read("EXPORT_SCOPE.json"))
+    require(set(scope) == {"schema", "raw_runtime_exported", "private_runtime_durable_preservation_claimed",
+            "rejected_items", "derived_producer_projections", "complete_product_qualification",
+            "unknown_filename_or_link_never_exported"}
+            and scope["schema"] == "razr-L5-science-export-v1"
+            and scope["raw_runtime_exported"] is False
+            and scope["private_runtime_durable_preservation_claimed"] is False
+            and scope["complete_product_qualification"] is False
+            and scope["unknown_filename_or_link_never_exported"] is True
+            and scope["rejected_items"] == [] and scope["derived_producer_projections"] == [],
+            "L5 exact original control export and excluded-runtime scope differs")
+    sources = L5_CONTROL_SOURCE_NAMES
+    identity = json.loads(z.read("L5_SOURCE_IDENTITY.json"))
+    require(all(name in identity and entries.get("source-" + name) == identity[name] for name in sources),
+            "L5 frozen source bytes or source inventory differ")
+    metadata = {"EXPORT_SCOPE.json", "L5_SOURCE_IDENTITY.json", "L5_INPUT_VERIFIED.json",
+                "L5_SOURCE_PLAN_RECHECK.json", "l5-CONTROLLER_OUTCOME.json", "native-reader-CONTROLLER_OUTCOME.json"}
+    allowed_sources = {"source-" + name for name in sources}
+    require(all(name in metadata or name in allowed_sources or l5_scientific_filename(name) for name in entries),
+            "L5 unreviewed filename or private runtime member")
+    return {"frozen_source_files": len(sources), "qualification_required": False}
+
+
 def verify_n7_scope(z, manifest, entries):
     require(manifest["schema"] == "razr-N7-engineering-allowlist-export-v1"
             and manifest["functional_source_commit"] == S4
@@ -391,7 +570,7 @@ def verify_zip(path, binding):
         require(sha(manifest_bytes) == binding["manifest_sha256"], "reviewed scientific manifest differs")
         manifest = json.loads(manifest_bytes)
         material_family = {"F1_members": "F1", "K1_members": "K1", "K2_members": "K2", "K3_members": "K3", "K3FULL_members": "K3FULL"}.get(binding["manifest_layout"])
-        if binding["manifest_layout"] in ("flat", "V4a_flat"):
+        if binding["manifest_layout"] in ("flat", "V4a_flat", "L5_failed_control_flat"):
             entries = manifest
         elif material_family is not None:
             require(manifest["schema"] == "razr-" + material_family + "-engineering-export-manifest-v1",
@@ -430,6 +609,10 @@ def verify_zip(path, binding):
             verify_n7_scope(z, manifest, entries)
         if binding["manifest_layout"] == "N8_exported_files":
             verify_n8_scope(z, manifest, entries)
+        if binding["manifest_layout"] == "N9_exported_files":
+            verify_n9_scope(z, manifest, entries)
+        if binding["manifest_layout"] == "L5_failed_control_flat":
+            verify_l5_failed_control_scope(z, entries)
         if binding["manifest_layout"] == "V4a_flat":
             verify_v4a_scope(z, entries)
         if binding["manifest_layout"] == "EC1_files":
@@ -470,7 +653,7 @@ def validate_binding(binding):
     require(re.fullmatch(r"[A-Za-z0-9._-]+", binding["asset_name"]) and binding["asset_name"].endswith(".zip"), "invalid scientific asset name")
     require(all(type(binding[k]) is int and binding[k] > 0 for k in ("run_id", "artifact_id", "manifest_entries")), "invalid source identifiers or count")
     require(re.fullmatch(r"[A-Za-z0-9._-]+", binding["manifest_name"]), "invalid manifest basename")
-    require(binding["manifest_layout"] in ("flat", "exported_files", "F1_members", "K1_members", "K2_members", "K3_members", "K3FULL_members", "N6_exported_files", "N7_exported_files", "N8_exported_files", "EC1_files", "V4a_flat"), "unsupported reviewed manifest layout")
+    require(binding["manifest_layout"] in ("flat", "exported_files", "F1_members", "K1_members", "K2_members", "K3_members", "K3FULL_members", "N6_exported_files", "N7_exported_files", "N8_exported_files", "EC1_files", "V4a_flat", "N9_exported_files", "L5_failed_control_flat"), "unsupported reviewed manifest layout")
     require(re.fullmatch(r"[0-9a-f]{40}", binding["head_sha"]), "invalid immutable source identity")
     require(all(re.fullmatch(r"[0-9a-f]{64}", binding[k]) for k in ("zip_sha256", "manifest_sha256")), "invalid SHA binding")
     require(type(binding["zip_bytes"]) is int and 0 < binding["zip_bytes"] <= 768 * 1024**2, "artifact exceeds transfer budget")

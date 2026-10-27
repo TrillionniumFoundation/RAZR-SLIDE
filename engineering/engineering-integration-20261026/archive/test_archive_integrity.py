@@ -527,5 +527,216 @@ class N8TypedControls(unittest.TestCase):
         self.assertEqual(self.check(payload, m, e)["unresolved_frozen_references"], 8)
 
 
+class N9TypedControls(unittest.TestCase):
+    """Small synthetic storage records; no native arithmetic or network."""
+
+    def make_n9(self):
+        def ident(data):
+            return {"bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()}
+        payload = {}
+        members = {}
+        for j in range(1, 5):
+            for kind in ("field", "residual"):
+                name = f"probe-N8/final/probe-{j}-{kind}.npy"
+                data = ("synthetic-original-" + name).encode()
+                payload["frozen/" + name] = data
+                members[name] = ident(data)
+        for j in range(14):
+            name = f"input-{j}.npy"
+            data = ("synthetic-input-" + str(j)).encode()
+            payload["frozen/" + name] = data
+            members[name] = ident(data)
+        payload["frozen/EXPORT_MANIFEST.json"] = b'{"synthetic_source_manifest":true}'
+        original_manifest = ident(payload["frozen/EXPORT_MANIFEST.json"])
+        frozen = {"schema": "razr-N9-frozen-original-inputs-v1", "functional_source_commit": MOD.S4,
+                  "functional_source_tree": "cdd9e2c41216201b6cd04dd610d45fde80499045",
+                  "source_artifact_id": 12634369890,
+                  "source_ZIP_sha256": "ac747737b52960596c6a35be47ba3d924f6276227d22a98be8fd3b1fde0d9d0e",
+                  "source_manifest_bytes": original_manifest["bytes"],
+                  "source_manifest_sha256": original_manifest["sha256"], "members": members}
+        payload["source/N9_FROZEN_INPUTS.json"] = json.dumps(frozen).encode()
+        probes = [{}]
+        references = []
+        for j in range(1, 5):
+            rec = {"scientific_storage": "explicit_frozen_original_field_and_residual_reference",
+                   "new_native_residual_equals_frozen_original_array_bytes": True}
+            for kind in ("field", "residual"):
+                source = f"probe-N8/final/probe-{j}-{kind}.npy"
+                relative = "frozen/" + source
+                rec[kind + "_file"] = relative
+                rec[kind + "_identity"] = dict(members[source])
+                references.append({"trial_index": 1, "probe_index": j, "kind": kind,
+                                   "expected_original_file": relative,
+                                   "expected_original_identity": dict(members[source]),
+                                   "explicit_report_reference_matches": True,
+                                   "referenced_original_bytes_present_and_hash_verified": True,
+                                   "explicit_actual_native_equality_record_present": True,
+                                   "complete_reference": True})
+            probes.append(rec)
+        producer = {"schema": "razr-N9-finite-original-five-probe-v1", "functional_source_commit": MOD.S4,
+                    "functional_source_tree": "cdd9e2c41216201b6cd04dd610d45fde80499045",
+                    "trials": [{"trial_index": 1, "probes": probes}], "original_five_passed": False}
+        payload["probe-N9/N9_REPORT.json"] = json.dumps(producer).encode()
+        candidate = ["probe-N9/trial-01/" + name for name in
+                     ("probe-0-field.npy", "probe-0-residual.npy", "requested-update.npy", "actual-update.npy")]
+        final = [f"probe-N9/final/probe-{j}-{kind}.npy" for j in range(5) for kind in ("field", "residual")]
+        for name in candidate + final:
+            payload[name] = ("synthetic-scientific-" + name).encode()
+        copied = {name: {**ident(data), "original_bytes": True} for name, data in payload.items()}
+        payload["EXECUTION_CHECKS.engineering.json"] = b"{}"
+        entries = {name: ident(data) for name, data in payload.items()}
+        arrays = sorted(candidate + final)
+        p = {"selected_complete_inputs_expected": 22, "selected_complete_input_identities_verified": 22,
+             "missing_selected_complete_inputs": [], "partial_original_input_files": [],
+             "all_22_selected_complete_inputs_identity_verified": True, "original_source_manifest_identity_verified": True,
+             "started_full_candidate_indices": [1], "expected_complete_candidate_array_count": 4,
+             "complete_candidate_arrays_present": 4, "missing_complete_candidate_arrays": [],
+             "partial_scientific_candidate_or_final_array_files": [], "all_started_full_candidate_new_arrays_complete": True,
+             "expected_per_candidate_frozen_reference_count": 8, "complete_per_candidate_frozen_reference_count": 8,
+             "per_candidate_frozen_references": references, "missing_or_incomplete_candidate_frozen_references": [],
+             "all_started_full_candidates_all5_fields_and_residuals_recoverable": True,
+             "unexpected_retained_duplicate_candidate_arrays": [], "final_complete_array_count": 10,
+             "missing_final_arrays": [], "all_ten_final_arrays_present": True,
+             "all_actual_allowlisted_array_bytes_copied_and_hash_verified": True,
+             "actual_existing_allowlisted_array_files": arrays[:], "actual_allowlisted_array_files_copied": arrays[:]}
+        manifest = {"schema": "razr-N9-engineering-allowlist-export-v1", "functional_source_commit": MOD.S4,
+                    "raw_runtime_records_exported": False, "raw_runtime_records_durable": False,
+                    "producer_records_modified": False, "omitted_runtime_remains_on_ephemeral_runner_only": True,
+                    "original_input_ZIP_included": False, "original_input_fields_durable_release_asset_id": None,
+                    "original_input_fields_source_artifact_id": 12634369890,
+                    "source_N8_long_term_archive_status_at_registration": "pending", "copied": copied,
+                    "projections": {}, "original_runtime_record_hashes": [], "scientific_fragments": [],
+                    "scientific_preservation_actual": p, "exported_files": entries}
+        return payload, manifest, entries
+
+    def check(self, payload, manifest, entries):
+        class Reader:
+            def read(self, name):
+                return payload[name]
+        return MOD.verify_n9_scope(Reader(), manifest, entries)
+
+    def test_n9_failed_numeric_originals_are_archivable(self):
+        payload, m, e = self.make_n9()
+        result = self.check(payload, m, e)
+        self.assertEqual(result["complete_new_arrays"], 4)
+        self.assertEqual(result["complete_frozen_references"], 8)
+        self.assertFalse(result["qualification_required"])
+
+    def test_n9_unknown_schema_rejected(self):
+        payload, m, e = self.make_n9()
+        m["schema"] = "unknown-new-format"
+        with self.assertRaises(MOD.ArchiveInvariantError):
+            self.check(payload, m, e)
+
+    def test_n9_runtime_claim_and_private_inventory_rejected(self):
+        for extra in (False, True):
+            with self.subTest(extra=extra):
+                payload, m, e = self.make_n9()
+                if extra:
+                    m["original_runtime_record_hashes"] = [{"bytes": 1, "sha256": "0" * 64,
+                                                            "exported_original_bytes": False, "path": "unlisted"}]
+                else:
+                    m["raw_runtime_records_exported"] = True
+                with self.assertRaises(MOD.ArchiveInvariantError):
+                    self.check(payload, m, e)
+
+    def test_n9_frozen_reference_identity_tamper_rejected(self):
+        payload, m, e = self.make_n9()
+        name = "probe-N9/N9_REPORT.json"
+        report = json.loads(payload[name])
+        report["trials"][0]["probes"][1]["field_identity"]["sha256"] = "0" * 64
+        payload[name] = json.dumps(report).encode()
+        e[name] = {"bytes": len(payload[name]), "sha256": hashlib.sha256(payload[name]).hexdigest()}
+        m["copied"][name] = {**e[name], "original_bytes": True}
+        with self.assertRaises(MOD.ArchiveInvariantError):
+            self.check(payload, m, e)
+
+    def test_n9_missing_frozen_bytes_cannot_claim_complete(self):
+        payload, m, e = self.make_n9()
+        name = "frozen/probe-N8/final/probe-1-field.npy"
+        del payload[name], m["copied"][name], e[name]
+        with self.assertRaises(MOD.ArchiveInvariantError):
+            self.check(payload, m, e)
+
+    def test_n9_four_new_arrays_cannot_be_reported_as_twelve(self):
+        payload, m, e = self.make_n9()
+        m["scientific_preservation_actual"]["expected_complete_candidate_array_count"] = 12
+        with self.assertRaises(MOD.ArchiveInvariantError):
+            self.check(payload, m, e)
+
+    def test_n9_truthful_partial_new_array_is_preserved(self):
+        payload, m, e = self.make_n9()
+        name = "probe-N9/trial-01/probe-0-field.npy"
+        partial = name + ".writing"
+        payload[partial] = payload.pop(name)
+        m["copied"][partial] = m["copied"].pop(name)
+        e[partial] = e.pop(name)
+        m["scientific_fragments"] = [partial]
+        p = m["scientific_preservation_actual"]
+        p["complete_candidate_arrays_present"] = 3
+        p["missing_complete_candidate_arrays"] = [name]
+        p["partial_scientific_candidate_or_final_array_files"] = [partial]
+        p["all_started_full_candidate_new_arrays_complete"] = False
+        p["all_started_full_candidates_all5_fields_and_residuals_recoverable"] = False
+        for key in ("actual_existing_allowlisted_array_files", "actual_allowlisted_array_files_copied"):
+            p[key] = sorted(partial if v == name else v for v in p[key])
+        self.assertEqual(self.check(payload, m, e)["complete_new_arrays"], 3)
+
+    def test_n9_truthful_unresolved_report_references_are_preserved(self):
+        payload, m, e = self.make_n9()
+        name = "probe-N9/N9_REPORT.json"
+        del payload[name], m["copied"][name], e[name]
+        p = m["scientific_preservation_actual"]
+        for row in p["per_candidate_frozen_references"]:
+            row["explicit_report_reference_matches"] = False
+            row["explicit_actual_native_equality_record_present"] = False
+            row["complete_reference"] = False
+        p["complete_per_candidate_frozen_reference_count"] = 0
+        p["missing_or_incomplete_candidate_frozen_references"] = p["per_candidate_frozen_references"][:]
+        p["all_started_full_candidates_all5_fields_and_residuals_recoverable"] = False
+        self.assertEqual(self.check(payload, m, e)["unresolved_frozen_references"], 8)
+
+class L5FailedControlTypedControls(unittest.TestCase):
+    def fixture(self):
+        payload = {"source-"+name: ("synthetic-frozen-"+name).encode() for name in MOD.L5_CONTROL_SOURCE_NAMES}
+        identity = {name: {"bytes":len(payload["source-"+name]), "sha256":hashlib.sha256(payload["source-"+name]).hexdigest()}
+                    for name in MOD.L5_CONTROL_SOURCE_NAMES}
+        scope = {"schema":"razr-L5-science-export-v1", "raw_runtime_exported":False,
+                 "private_runtime_durable_preservation_claimed":False,"rejected_items":[],
+                 "derived_producer_projections":[], "complete_product_qualification":False,
+                 "unknown_filename_or_link_never_exported":True}
+        payload["EXPORT_SCOPE.json"] = json.dumps(scope).encode()
+        payload["L5_SOURCE_IDENTITY.json"] = json.dumps(identity).encode()
+        payload["report.json"] = b'{"completed":false,"exception_type":"ValueError"}'
+        entries={name:{"bytes":len(value), "sha256":hashlib.sha256(value).hexdigest()} for name,value in payload.items()}
+        return payload,entries
+
+    def check(self,payload,entries):
+        class Reader:
+            def read(self,name): return payload[name]
+        return MOD.verify_l5_failed_control_scope(Reader(),entries)
+
+    def test_l5_failed_original_control_is_archivable(self):
+        p,e=self.fixture()
+        self.assertEqual(self.check(p,e),{"frozen_source_files":19,"qualification_required":False})
+
+    def test_l5_runtime_claim_or_cross_family_rejected(self):
+        for key,value in [("raw_runtime_exported",True),("schema","razr-V4a-science-export-v1"),
+                          ("complete_product_qualification",True)]:
+            p,e=self.fixture();scope=json.loads(p["EXPORT_SCOPE.json"]);scope[key]=value
+            p["EXPORT_SCOPE.json"]=json.dumps(scope).encode()
+            with self.assertRaises(MOD.ArchiveInvariantError):self.check(p,e)
+
+    def test_l5_missing_source_or_source_identity_tamper_rejected(self):
+        for mutate in [lambda e:e.pop("source-run_l5.py"),
+                       lambda e:e["source-run_l5.py"].update(sha256="0"*64)]:
+            p,e=self.fixture();mutate(e)
+            with self.assertRaises(MOD.ArchiveInvariantError):self.check(p,e)
+
+    def test_l5_unreviewed_runtime_filename_rejected(self):
+        p,e=self.fixture();e["unreviewed-runtime.json"]={"bytes":2,"sha256":hashlib.sha256(b"{}").hexdigest()}
+        with self.assertRaises(MOD.ArchiveInvariantError):self.check(p,e)
+
+
 if __name__ == "__main__":
     unittest.main()
