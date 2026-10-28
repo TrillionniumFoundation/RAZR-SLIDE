@@ -1,4 +1,4 @@
-name: R5 exact exterior-channel certificates
+name: R5 exact endpoint-refinement certificates
 
 on:
   push:
@@ -36,17 +36,17 @@ jobs:
           python3 -I -S -B - <<'PY'
           import hashlib
           from pathlib import Path
-          p = Path('engineering/engineering-followup-20261028-r5/compute/R5E_PORTABLE_SOURCE_LOCK.json')
-          assert hashlib.sha256(p.read_bytes()).hexdigest() == '0c2c867ac8d644341d5d6f0b5596ae2e346061a23cacdab7be6ab18f75eb0a2c'
+          p = Path('engineering/engineering-followup-20261028-r5/compute/R5E_PORTABLE_SOURCE_LOCK_V4.json')
+          assert hashlib.sha256(p.read_bytes()).hexdigest() == '9068291e6684299604d489fbf175cf781c0d1a1648cf690a2f5c337dec139c20'
           PY
-          python3 -I -S -B engineering/engineering-followup-20261028-r5/compute/run_portable_exterior_r5e_v3.py \
+          python3 -I -S -B engineering/engineering-followup-20261028-r5/compute/run_portable_refinement_r5e_v4.py \
             --r4-root "$GITHUB_WORKSPACE/engineering/engineering-followup-20261027-r4/envelope" \
-            --output "$RUNNER_TEMP/razr-r5-exterior"
+            --output "$RUNNER_TEMP/razr-r5-refinement-v4"
       - name: Preserve complete actual outputs including failures
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
-          name: R5-exterior-channel-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/razr-r5-exterior
+          name: R5-refinement-v4-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/razr-r5-refinement-v4
           if-no-files-found: error
           retention-days: 14
