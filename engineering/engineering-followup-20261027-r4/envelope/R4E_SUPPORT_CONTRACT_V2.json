@@ -1,0 +1,97 @@
+{
+  "schema": "razr-r4e-independent-support-contract-v2",
+  "registered_utc": "2026-10-28T00:18:07.697571+00:00",
+  "producer_sha256": "b3ed6859a2a29a30d27823be7fced7add78a5a72eb671e9c0d4732fb0e75724d",
+  "input_identities": [
+    {
+      "path": "native-and-math/producer/worker/report.json",
+      "bytes": 65374048,
+      "sha256": "f1c6bcb76d32f9dead19296ff37a64805eff59a8bcc4f696f99cc5821c370c5d"
+    },
+    {
+      "path": "native-and-math/reader/worker/report.json",
+      "bytes": 65385052,
+      "sha256": "83e527ccbc849701f5d99c4e4b4ddbd099370ee52c7f10a1e11923c27b8742ce"
+    },
+    {
+      "path": "native-and-math/bspline-producer/worker/report.json",
+      "bytes": 131686,
+      "sha256": "92eec40b607e5dff58d74b940ac706132421952bfa4234e5582c5c18cf2466ab"
+    },
+    {
+      "path": "native-and-math/bspline-reader/worker/report.json",
+      "bytes": 131867,
+      "sha256": "b4e3b8f27fe4600723c47cf9924cd2f4b6bd29e9ca5fa987f5636bf8ba9c93d7"
+    },
+    {
+      "path": "source-and-inputs/R3E_INPUT_BINDING.json",
+      "bytes": 245364,
+      "sha256": "1c13bc2dbc41fcbc1957327f5ecfb98b318a9d00b322dc3107d4a6412eaa42ac"
+    },
+    {
+      "path": "source-and-inputs/R3E_LINEAR_BSPLINE_SOURCE_SPECIALIZATION.json",
+      "bytes": 64963,
+      "sha256": "f1071a4a46d4e3f78a68bc30925edfd2ec4e1f7f5b014f28b1e210059e07de89"
+    },
+    {
+      "path": "source-and-inputs/R3E_EXECUTED_SUMMARY.json",
+      "bytes": 76591,
+      "sha256": "1a25c02de8aca87a1c19e5009efdf5f9205c7bc682d6afb1dea2721574d57a90"
+    },
+    {
+      "path": "native-and-math/exact-math-v3a/report.json",
+      "bytes": 159081,
+      "sha256": "a554c97d137b022f854199bb83973b919e8c3180a0d96ae8d9c7473dcf871c22"
+    }
+  ],
+  "original_archive": {
+    "name": "RAZR-R3E-COMPLETE-SCIENTIFIC-EVIDENCE-20261027.zip",
+    "bytes": 10755745,
+    "sha256": "ebb5231bb6418a1da79b56f810d7759a947ec90cb07cefcb727910f924321fb5"
+  },
+  "capacity": {
+    "wall_seconds": 600,
+    "RSS_limit_bytes": 805306368
+  },
+  "maximum_candidate_directions_per_frame": 1500,
+  "original_clearance_threshold_float64": 1e-07,
+  "algorithm_basis": "Finite exact support directions: three axes and cross-products of all stored plane tangent pairs. Each direction encloses every complete face trim, every 3D edge and every vertex. Full-period circle/cylinder support uses integer-certified dyadic square-root bounds. Each candidate has three independent rational linear coordinates; intersection volume is product of interval widths divided by absolute coordinate determinant. Selected cells are independently checked for corner maps, closed oriented triangles, convexity, Euler identity and directed volume. No Common or native geometry operation. A separate diagnostic inflates each material by its maximum stored tolerance; this is a declared uncertainty model, not a newly proven OCCT semantic contract.",
+  "estimate": {
+    "expected_wall_seconds": 120,
+    "expected_peak_RSS_bytes": 402653184,
+    "expected_maximum_output_bytes": 41943040,
+    "input_JSON_bytes": 131568652
+  },
+  "unchanged_native_hard_gates": {
+    "wall_seconds": 1200,
+    "RSS_limit_bytes": 1610612736,
+    "shared_ceiling_bytes": 7301444403,
+    "startup_disk_minimum_bytes": 268435456,
+    "startup_extra_shared_bytes": 2147483648,
+    "runtime_disk_minimum_bytes": 104857600
+  },
+  "native_geometry_or_solver_invoked": false,
+  "preserved_original_failures": true,
+  "scope": "Conditional complete stored-boundary support enclosure; native material semantics and compiled source/binary/rounding correspondence remain explicitly unproved.",
+  "additional_native_reports": {
+    "producer": {
+      "path": "r4-envelope/additional-bspline-v1/producer-attempt2/worker/report.json",
+      "bytes": 135649,
+      "sha256": "7603f88821c6e050afc289af2758d407805b377374c25a896fd0c7853931e27a",
+      "supervision_completed": true,
+      "qualified_runtime_completed": true
+    },
+    "reader": {
+      "path": "r4-envelope/additional-bspline-v1/reader/worker/report.json",
+      "bytes": 135831,
+      "sha256": "2d9e969f45e24666d7a228c2dd6d60185d66f9d2abda0943357df9222283d85b",
+      "supervision_completed": true,
+      "qualified_runtime_completed": true
+    }
+  },
+  "old_v1_execution_remains_failed": true,
+  "old_v1_actual_events": [
+    "first whole bound 5020.19824 fails original 1e-7 gate",
+    "fixed-side omitted old pcurve supplement raises KeyError bspline; completed false"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "razr-r4e-public-projection-attempt1-actual-failure-v1",
+  "recorded_utc": "2026-10-28T00:36:05.963036+00:00",
+  "finalizer_source_sha256": "b313a7ed9156783268cebf4d4b9a63f7720adddfb47855b0c9cdf4203341e9c9",
+  "exit_code": 1,
+  "completed": false,
+  "scientific_computation_invalidated": false,
+  "error": "ValueError: absolute workspace path remained in public projection: finalize_r4e_evidence.py",
+  "cause": "The public scanner matched its own literal slash-workspace-slash pattern string, rather than an actual workspace path. Existing successful summary and partial projection retained unchanged.",
+  "partial_public_retained": "publication-attempt1/partial-public",
+  "new_scanner_requirement": "Match an actual workspace path component after the slash-workspace-slash prefix; literal scanner patterns are not private paths."
+}

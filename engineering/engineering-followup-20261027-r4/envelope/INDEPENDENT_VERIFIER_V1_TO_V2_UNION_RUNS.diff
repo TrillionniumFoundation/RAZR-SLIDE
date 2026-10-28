@@ -1,0 +1,48 @@
+--- verify_exact_material_bounds_r4e.py
++++ verify_exact_material_bounds_r4e_v2.py
+@@ -274,7 +274,26 @@
+         check(Q(cover['sum_positive_volume_exact']) == subtotal, 'axis cover total')
+         positive.append(rows)
+     check(len(positive) == 3, 'all three independent coordinate coverings required')
+-    supplied = {tuple(c['slab_index_xyz']): c for c in proof['combined']['positive_cells']}
++    key_field = 'slab_index_xyz'
++    if 'exact_positive_slab_box_union_runs' in proof['combined']:
++        compressed = []
++        run_lists = proof['combined']['exact_positive_slab_box_union_runs']
++        check(len(run_lists) == 3 and proof['combined']['all_fine_boundary_cuts_retained'] and Q(proof['combined']['unit_cube_template_directed_volume_exact']) == 1, 'fine cut planes or affine unit-cube template lost')
++        for axis, runs in enumerate(run_lists):
++            accumulated = []; mapped = {}
++            for index, run in enumerate(runs):
++                check(run['axis'] == axis and run['run_index'] == index and run['fine_slab_indices'], 'exact union run identity')
++                fine_ids = run['fine_slab_indices']; boxes = [positive[axis][i] for i in fine_ids]
++                check(fine_ids == sorted(fine_ids) and len(fine_ids) == len(set(fine_ids)), 'fine slab duplicate or reorder')
++                check(all(boxes[j][axis][1] == boxes[j+1][axis][0] for j in range(len(boxes)-1)), 'merged run contains positive-width gap')
++                check(all(all(box[k] == boxes[0][k] for k in range(3) if k != axis) for box in boxes), 'merged transverse bounds changed')
++                union = list(boxes[0]); union[axis] = boxes[0][axis][0], boxes[-1][axis][1]
++                check(box_decode(run['box_exact']) == tuple(union), 'run not exact original positive-box union')
++                accumulated += fine_ids; mapped[index] = tuple(union)
++            check(accumulated == sorted(positive[axis]), 'some positive fine slabs omitted or duplicated')
++            compressed.append(mapped)
++        positive = compressed; key_field = 'slab_run_index_xyz'
++    supplied = {tuple(c[key_field]): c for c in proof['combined']['positive_cells']}
+     check(len(supplied) == len(proof['combined']['positive_cells']), 'duplicate positive cell')
+     found = set(); total = Q(0); enumeration_checks = 0
+     # Independent exhaustive order is always X/Y/Z, not the producer's
+@@ -295,6 +314,8 @@
+                 # Positive diagonal affine image of the outward unit cube:
+                 # exact determinant equals product of the three positive widths.
+                 check(all(a < b for a, b in cell), 'nonpositive affine cell determinant')
++                if key_field == 'slab_run_index_xyz':
++                    check(list(map(Q, saved['affine_diagonal_exact'])) == [b-a for a,b in cell], 'registered positive affine cell map')
+                 found.add(key); total += volume
+     check(found == supplied.keys() and Q(proof['combined']['sum_directed_volume_exact']) == total and proof['combined']['all_partition_boundary_planes_retained'], 'complete cell enumeration or exact total')
+     return total
+@@ -307,7 +328,7 @@
+     args = parser.parse_args(); args.output.mkdir(parents=True, exist_ok=False)
+     contract = json.loads(args.contract.read_text())
+     check(digest(__file__) == contract['verifier_sha256'], 'verifier registration')
+-    started = time.monotonic(); report = {'schema': 'razr-r4e-independent-exact-material-certificate-verification-v1', 'execution_completed': False, 'frames': [], 'native_Common_called': False, 'producer_code_imported': False, 'native_boundary_semantics_verified': False, 'compiled_error_bound_verified': False, 'full_continuous_G2': False}
++    started = time.monotonic(); report = {'schema': 'razr-r4e-independent-exact-material-certificate-verification-v2-union-runs', 'execution_completed': False, 'frames': [], 'native_Common_called': False, 'producer_code_imported': False, 'native_boundary_semantics_verified': False, 'compiled_error_bound_verified': False, 'full_continuous_G2': False}
+     def save():
+         report['seconds'] = time.monotonic()-started; report['peak_RSS_bytes'] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024
+         (args.output/'report.json').write_text(json.dumps(report, indent=2)+'\n')

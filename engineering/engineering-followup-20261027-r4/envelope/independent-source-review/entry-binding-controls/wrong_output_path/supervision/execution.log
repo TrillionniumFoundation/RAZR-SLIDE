@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "r4-envelope/run_owned_pure_math_r4e_v2.py", line 74, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "r4-envelope/run_owned_pure_math_r4e_v2.py", line 48, in main
+    require(bindings['--output'] == Path(contract['worker_output_directory']).resolve(), 'actual worker output differs from supervised directory')
+  File "r4-envelope/run_owned_pure_math_r4e_v2.py", line 19, in require
+    raise ValueError(message)
+ValueError: actual worker output differs from supervised directory

@@ -1,0 +1,114 @@
+{
+  "schema": "razr-r4e-independent-canonical-entry-negative-controls-v1",
+  "started_utc": "2026-10-28T00:25:45.951516+00:00",
+  "source_identity": {
+    "bytes": 5866,
+    "sha256": "4909986cbb63e9d7438f23b152e2344449e8547acee923236074a79fa968b172"
+  },
+  "entry_identity": {
+    "bytes": 5457,
+    "sha256": "012da59133c15550b1bb4adac969edeb65f335ddb9c22d5ae4c321318f147823"
+  },
+  "supervisor_identity": {
+    "bytes": 8104,
+    "sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900"
+  },
+  "original_supervision_identity": {
+    "bytes": 2240,
+    "sha256": "495544142dbbad371e4e23f484d2ac7d00cbd3d9f8a44d44a054eb63b8ebf73c"
+  },
+  "controls": [
+    {
+      "name": "observed_appended_abbreviation_bypass",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "r4-envelope/supervise_owned_pure_math_r4e_v2.py",
+        "--contract",
+        "r4-envelope/independent-source-review/canonical-entry-controls/observed_appended_abbreviation_bypass/supervision-contract.json",
+        "--out",
+        "r4-envelope/independent-source-review/canonical-entry-controls/observed_appended_abbreviation_bypass/supervision",
+        "--",
+        "--original",
+        "recovered-inputs/RAZR-R3E-COMPLETE-SCIENTIFIC-EVIDENCE-20261027",
+        "--contract",
+        "r4-envelope/R4E_SUPPORT_CONTRACT_V2.json",
+        "--output",
+        "r4-envelope/independent-source-review/canonical-entry-controls/observed_appended_abbreviation_bypass/registered-output",
+        "--additional-producer",
+        "r4-envelope/additional-bspline-v1/producer-attempt2/worker/report.json",
+        "--additional-reader",
+        "r4-envelope/additional-bspline-v1/reader/worker/report.json",
+        "--out",
+        "r4-envelope/independent-source-review/canonical-entry-controls/observed_appended_abbreviation_bypass/unregistered-output"
+      ],
+      "seconds": 0.3297226100003172,
+      "supervisor_exit_code": 2,
+      "owned_entry_exit_code": 1,
+      "expected_rejection": "exact one-value argument pairs required",
+      "expected_rejection_observed": true,
+      "math_outputs_and_payload_receipt_absent": true,
+      "original_numeric_gates_unchanged": true,
+      "owned_handshake_and_cleanup_verified": true,
+      "controller": {
+        "path": "r4-envelope/independent-source-review/canonical-entry-controls/observed_appended_abbreviation_bypass/supervision/controller.json",
+        "bytes": 6522,
+        "sha256": "0a5d4213276c929f136ef6edd7a7e128ae2b493c5f76fe624bfae1e24a8bd66e"
+      },
+      "execution_log": {
+        "path": "r4-envelope/independent-source-review/canonical-entry-controls/observed_appended_abbreviation_bypass/supervision/execution.log",
+        "bytes": 586,
+        "sha256": "edb1261fabde6ff1d7f9246b56c3623887954d6641aeba03f967242ca978bf4b"
+      }
+    },
+    {
+      "name": "duplicate_option_same_arity",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "r4-envelope/supervise_owned_pure_math_r4e_v2.py",
+        "--contract",
+        "r4-envelope/independent-source-review/canonical-entry-controls/duplicate_option_same_arity/supervision-contract.json",
+        "--out",
+        "r4-envelope/independent-source-review/canonical-entry-controls/duplicate_option_same_arity/supervision",
+        "--",
+        "--original",
+        "recovered-inputs/RAZR-R3E-COMPLETE-SCIENTIFIC-EVIDENCE-20261027",
+        "--contract",
+        "r4-envelope/R4E_SUPPORT_CONTRACT_V2.json",
+        "--output",
+        "r4-envelope/independent-source-review/canonical-entry-controls/duplicate_option_same_arity/registered-output",
+        "--additional-producer",
+        "r4-envelope/additional-bspline-v1/producer-attempt2/worker/report.json",
+        "--output",
+        "r4-envelope/independent-source-review/canonical-entry-controls/duplicate_option_same_arity/unregistered-output"
+      ],
+      "seconds": 0.3499056630025734,
+      "supervisor_exit_code": 2,
+      "owned_entry_exit_code": 1,
+      "expected_rejection": "abbreviated, unexpected, equals-form, or duplicate worker option rejected",
+      "expected_rejection_observed": true,
+      "math_outputs_and_payload_receipt_absent": true,
+      "original_numeric_gates_unchanged": true,
+      "owned_handshake_and_cleanup_verified": true,
+      "controller": {
+        "path": "r4-envelope/independent-source-review/canonical-entry-controls/duplicate_option_same_arity/supervision/controller.json",
+        "bytes": 6349,
+        "sha256": "150f722ec6cfd7a5ebddc2a1461c41f28870865f9c4dfe509a8e0598163f428a"
+      },
+      "execution_log": {
+        "path": "r4-envelope/independent-source-review/canonical-entry-controls/duplicate_option_same_arity/supervision/execution.log",
+        "bytes": 662,
+        "sha256": "92c244841696029395bcea75cd18094a83883b22488808d05e0cdc655fe3e418"
+      }
+    }
+  ],
+  "completed": true,
+  "expensive_mathematical_runs": 0,
+  "new_native_geometry_runs": 0,
+  "finished_utc": "2026-10-28T00:25:46.634339+00:00"
+}

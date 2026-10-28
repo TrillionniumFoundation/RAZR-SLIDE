@@ -1,0 +1,39 @@
+--- run_independent_support_r4e_v3.py
++++ run_independent_support_r4e_v4.py
+@@ -336,15 +336,16 @@
+     args.output.mkdir(parents=True)
+     contract = json.loads(args.contract.read_text())
+     require(sha(Path(__file__)) == contract['producer_sha256'], 'registered producer source changed')
+-    module_path = Path(__file__).with_name('slab_enclosure_r4e_v3.py')
++    module_path = Path(__file__).with_name('slab_enclosure_r4e_v4.py')
+     require(sha(module_path) == contract['slab_module_sha256'], 'registered slab source changed')
+     spec = importlib.util.spec_from_file_location('r4e_registered_slab_v3', module_path)
+     slab = importlib.util.module_from_spec(spec); spec.loader.exec_module(slab)
+     started = time.monotonic()
+-    result = {'schema': 'razr-r4e-independent-complete-support-and-boundary-slab-execution-v3', 'started_utc': datetime.now(timezone.utc).isoformat(),
++    result = {'schema': 'razr-r4e-independent-complete-support-and-boundary-slab-execution-v4-exact-union-runs', 'started_utc': datetime.now(timezone.utc).isoformat(),
+               'contract_sha256': sha(args.contract), 'execution_completed': False, 'controls': [], 'frames': [],
+               'input_identities': contract['input_identities'], 'native_Common_called': False, 'native_Common_value_used_as_acceptance_premise': False,
+               'native_material_boundary_semantics_verified': False, 'compiled_curve_or_transform_rounding_verified': False,
++              'diagnostic_common_uncertainty_model': 'Euclidean L2 ball at each material maximum stored tolerance; slab coordinate cube is an outer approximation only',
+               'full_continuous_G2': False, 'all_blockers_closed': False, 'old_actual_failures_reclassified': False}
+     def save():
+         result['seconds'] = time.monotonic() - started
+@@ -458,7 +459,7 @@
+             save()
+             self_slab = slab.build_covering(zero_boundary, zero_boundary, contract['maximum_exact_slab_intersection_checks_per_cover'])
+             require(F(self_slab['combined']['sum_directed_volume_exact']) > TOL, 'complete boundary-slab whole-self negative control falsely accepted')
+-            proof = {'schema': 'razr-r4e-complete-support-and-boundary-slab-frame-proof-v3', 'case_id': case, 'frame': frame,
++            proof = {'schema': 'razr-r4e-complete-support-and-boundary-slab-frame-proof-v4-exact-union-runs', 'case_id': case, 'frame': frame,
+                      'original_pair': [cases[case]['target']['a'], cases[case]['target']['b']],
+                      'moving_input': moving.input, 'fixed_input': fixed.input,
+                      'full_remaining_displacement_box_exact': record['full_remaining_displacement_box_exact'],
+@@ -490,6 +491,8 @@
+                    'coarse_whole_support_original_gate_passed': best['original_clearance_gate_passed'],
+                    'boundary_slab_raw_upper_exact_mm3': str(raw_slab_upper),
+                    'boundary_slab_positive_cell_count': raw_slab['combined']['positive_cell_count'],
++                   'boundary_slab_merged_axis_run_counts': raw_slab['combined'].get('merged_positive_box_counts', [0,0,0]),
++                   'boundary_slab_actual_box_checks': raw_slab['combined'].get('actual_exact_box_intersection_checks', 0),
+                    'boundary_slab_declared_tolerance_upper_exact_mm3': str(inflated_slab_upper),
+                    'boundary_slab_whole_self_negative_control_upper_exact_mm3': self_slab['combined']['sum_directed_volume_exact'],
+                    'base_Common_soundness_needed_for_this_certificate': False,

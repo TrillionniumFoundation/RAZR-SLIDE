@@ -1,0 +1,64 @@
+--- run_independent_support_r4e_v1.py
++++ run_independent_support_r4e_v2.py
+@@ -328,13 +328,15 @@
+     parser.add_argument('--original', type=Path, required=True)
+     parser.add_argument('--contract', type=Path, required=True)
+     parser.add_argument('--output', type=Path, required=True)
++    parser.add_argument('--additional-producer', type=Path, required=True)
++    parser.add_argument('--additional-reader', type=Path, required=True)
+     args = parser.parse_args()
+     require(not args.output.exists(), 'new output required')
+     args.output.mkdir(parents=True)
+     contract = json.loads(args.contract.read_text())
+     require(sha(Path(__file__)) == contract['producer_sha256'], 'registered producer source changed')
+     started = time.monotonic()
+-    result = {'schema': 'razr-r4e-independent-complete-support-execution-v1', 'started_utc': datetime.now(timezone.utc).isoformat(),
++    result = {'schema': 'razr-r4e-independent-complete-support-execution-v2', 'started_utc': datetime.now(timezone.utc).isoformat(),
+               'contract_sha256': sha(args.contract), 'execution_completed': False, 'controls': [], 'frames': [],
+               'input_identities': contract['input_identities'], 'native_Common_called': False, 'native_Common_value_used_as_acceptance_premise': False,
+               'native_material_boundary_semantics_verified': False, 'compiled_curve_or_transform_rounding_verified': False,
+@@ -366,7 +368,34 @@
+                 target['pcurve'] = full
+                 patches += 1
+         require(patches == 44, 'all 44 original missing pcurves required')
+-        result['actual_pcurve_supplements_used'] = patches
++        original_patch_keys = {(r['input']['case_id'], r['input']['material_id']) for r in supplement['records']}
++        additional = {}
++        for key, path in [('producer', args.additional_producer), ('reader', args.additional_reader)]:
++            expected = contract['additional_native_reports'][key]
++            require(path.stat().st_size == expected['bytes'] and sha(path) == expected['sha256'], 'additional full native supplement identity differs')
++            additional[key] = json.loads(path.read_text())
++            require(additional[key]['execution_completed'], 'additional native supplement incomplete')
++        require(additional['reader']['independent_reader']['all_complete_curve_records_bitwise_equal'], 'additional native reader differs')
++        require(additional['producer']['records'] == additional['reader']['records'], 'complete additional producer/reader values differ')
++        new_patch_count = 0
++        for record in additional['producer']['records']:
++            key = record['input']['case_id'], record['input']['material_id']
++            require(key not in original_patch_keys, 'additional supplement repeats old moving-side coverage')
++            original = by[key]['boundary']
++            require(hashlib.sha256(json.dumps(original, sort_keys=True, separators=(',', ':')).encode()).hexdigest() == record['original_complete_boundary_canonical_sha256'], 'additional original complete baseline differs')
++            for curve in record['complete_pcurves']:
++                target = original['faces'][curve['face_index']]['wires'][curve['wire_index']]['edge_occurrences'][curve['occurrence_index']]
++                require(target['edge_index'] == curve['edge_index'] and target['pcurve'] == curve['old_pcurve_record'], 'additional pcurve mapping differs')
++                full = curve['complete_pcurve_record']
++                require({k: v for k, v in full.items() if k not in ['bspline', 'complete_supported_representation']} == curve['old_pcurve_record'], 'additional supplement changed old fields')
++                target['pcurve'] = full
++                new_patch_count += 1
++        require(len(additional['producer']['records']) == 8 and new_patch_count == 44, 'complete additional fixed8/44 coverage required')
++        result['actual_pcurve_supplements_used'] = patches + new_patch_count
++        result['original_moving_pcurves'] = patches
++        result['additional_fixed_pcurves'] = new_patch_count
++        result['additional_native_reader_equal'] = True
++        result['additional_native_reports'] = contract['additional_native_reports']
+         result['controls'] = controls()
+         binding = json.loads((args.original/'source-and-inputs/R3E_INPUT_BINDING.json').read_text())
+         cases = {x['case_id']: x for x in binding['cases']}
+@@ -442,7 +471,7 @@
+         result['conditional_clearance_passes'] = sum(x['original_clearance_gate_passed'] for x in result['frames'])
+         result['conditional_upper_bound_gate_failures'] = sum(not x['original_clearance_gate_passed'] for x in result['frames'])
+         result['declared_tolerance_diagnostic_passes'] = sum(x['declared_tolerance_diagnostic_gate_passed'] for x in result['frames'])
+-        result['input_and_source_hashes_unchanged'] = sha(Path(__file__)) == contract['producer_sha256'] and all(sha(args.original/x['path']) == x['sha256'] for x in contract['input_identities'])
++        result['input_and_source_hashes_unchanged'] = sha(Path(__file__)) == contract['producer_sha256'] and all(sha(args.original/x['path']) == x['sha256'] for x in contract['input_identities']) and all(sha(path) == contract['additional_native_reports'][key]['sha256'] for key, path in [('producer', args.additional_producer), ('reader', args.additional_reader)])
+         require(result['input_and_source_hashes_unchanged'], 'input or source identity changed during execution')
+         result['execution_completed'] = True
+     except Exception as error:

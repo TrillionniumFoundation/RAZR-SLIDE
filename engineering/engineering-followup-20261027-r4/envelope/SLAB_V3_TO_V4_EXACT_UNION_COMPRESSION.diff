@@ -1,0 +1,104 @@
+--- slab_enclosure_r4e_v3.py
++++ slab_enclosure_r4e_v4.py
+@@ -13,6 +13,7 @@
+ """
+ from fractions import Fraction as F
+ from itertools import product
++from bisect import bisect_left, bisect_right
+ 
+ 
+ def require(condition, message):
+@@ -119,44 +120,73 @@
+     return directed
+ 
+ 
++def merge_unchanged_transverse_boxes(cover):
++    """Exact union of adjacent positive boxes, retaining every fine cut plane."""
++    axis=cover['axis']; runs=[]
++    for row in cover['positive_boxes']:
++        box=row['box']
++        if runs and runs[-1]['box'][axis][1]==box[axis][0] and all(runs[-1]['box'][k]==box[k] for k in range(3) if k!=axis):
++            previous=runs[-1]; previous['box'][axis]=(previous['box'][axis][0],box[axis][1]); previous['fine_slab_indices'].append(row['slab_index'])
++        else:
++            runs.append({'axis':axis,'run_index':len(runs),'fine_slab_indices':[row['slab_index']],'box':list(box)})
++    require(sum(len(r['fine_slab_indices']) for r in runs)==len(cover['positive_boxes']),'positive slab missing during exact union')
++    return runs
++
++
+ def intersect_three_coverings(covers, maximum_pair_checks):
+-    order=sorted(range(3),key=lambda k:len(covers[k]['positive_boxes']))
++    runs=[merge_unchanged_transverse_boxes(c) for c in covers]
++    order=sorted(range(3),key=lambda k:len(runs[k]))
++    # A single outward unit-cube topology is checked exactly. Every positive
++    # cell is its injective positive-diagonal affine image; determinant equals
++    # the exact interval product. This carries closure, orientation and volume
++    # without rebuilding and integrating twelve identical-topology triangles
++    # for every rational cell.
++    require(validate_cell_topology([(F(0),F(1))]*3)==1,'exact unit-cube template')
++    middle_axis,last_axis=order[1],order[2]
++    middle_starts=[r['box'][middle_axis][0] for r in runs[middle_axis]]
++    middle_ends=[r['box'][middle_axis][1] for r in runs[middle_axis]]
++    last_starts=[r['box'][last_axis][0] for r in runs[last_axis]]
++    last_ends=[r['box'][last_axis][1] for r in runs[last_axis]]
+     checks=0;cells=[];total=F(0)
+-    for a in covers[order[0]]['positive_boxes']:
+-        for b in covers[order[1]]['positive_boxes']:
+-            checks+=1
+-            require(checks<=maximum_pair_checks,'registered exact intersection enumeration capacity')
++    for a in runs[order[0]]:
++        first=bisect_right(middle_ends,a['box'][middle_axis][0])
++        finish=bisect_left(middle_starts,a['box'][middle_axis][1])
++        for b in runs[middle_axis][first:finish]:
++            checks+=1;require(checks<=maximum_pair_checks,'registered exact intersection enumeration capacity')
+             pair=intersection(a['box'],b['box'])
+             if not volume(pair):continue
+-            for c in covers[order[2]]['positive_boxes']:
+-                checks+=1
+-                require(checks<=maximum_pair_checks,'registered exact intersection enumeration capacity')
++            first_z=bisect_right(last_ends,pair[last_axis][0]);finish_z=bisect_left(last_starts,pair[last_axis][1])
++            for c in runs[last_axis][first_z:finish_z]:
++                checks+=1;require(checks<=maximum_pair_checks,'registered exact intersection enumeration capacity')
+                 box=intersection(pair,c['box']);value=volume(box)
+                 if value:
+                     indices=[None]*3
+-                    for item in (a,b,c):indices[item['axis']]=item['slab_index']
+-                    directed=validate_cell_topology(box)
+-                    require(directed==value,'directed cell volume differs')
+-                    cells.append({'slab_index_xyz':indices,'box_exact':encode_box(box),'positive_directed_volume_exact':str(value),
+-                                  'closed_oriented_box_topology_verified':True})
++                    for item in (a,b,c):indices[item['axis']]=item['run_index']
++                    require(all(lo<hi for lo,hi in box),'positive diagonal affine transform')
++                    cells.append({'slab_run_index_xyz':indices,'box_exact':encode_box(box),'positive_directed_volume_exact':str(value),
++                                  'closed_oriented_box_topology_verified':True,'topology_proof':'injective positive-diagonal affine image of checked outward unit cube',
++                                  'affine_diagonal_exact':[str(hi-lo) for lo,hi in box]})
+                     total+=value
+-    keys=[tuple(x['slab_index_xyz']) for x in cells]
+-    require(len(keys)==len(set(keys)),'duplicate partition cell would double count volume')
++    keys=[tuple(x['slab_run_index_xyz']) for x in cells]
++    require(len(keys)==len(set(keys)),'duplicate merged partition cell')
+     for cell in cells:
+         box=[tuple(map(F,x)) for x in cell['box_exact']]
+-        for axis,index in enumerate(cell['slab_index_xyz']):
+-            cuts=list(map(F,covers[axis]['cuts_exact']))
+-            require(cuts[index]<=box[axis][0]<box[axis][1]<=cuts[index+1],'cell escapes unique axis partition interval')
++        for axis,index in enumerate(cell['slab_run_index_xyz']):
++            lo,hi=runs[axis][index]['box'][axis]
++            require(lo<=box[axis][0]<box[axis][1]<=hi,'cell escapes unique merged axis interval')
+     return {'enumeration_order':order,'actual_exact_box_intersection_checks':checks,'positive_cells':cells,
+             'positive_cell_count':len(cells),'sum_directed_volume_exact':str(total),
+-            'pairwise_disjoint_interiors_proof':'Each cell is contained in its indexed X, Y and Z partition intervals; distinct triples differ in at least one disjoint open interval.',
++            'exact_positive_slab_box_union_runs':[[{'axis':axis,'run_index':r['run_index'],'fine_slab_indices':r['fine_slab_indices'],'box_exact':encode_box(r['box'])} for r in runs[axis]] for axis in range(3)],
++            'fine_positive_box_counts':[len(c['positive_boxes']) for c in covers],'merged_positive_box_counts':[len(r) for r in runs],
++            'all_fine_boundary_cuts_retained':True,'unit_cube_template_directed_volume_exact':'1',
++            'pairwise_disjoint_interiors_proof':'Each merged run is an exact union of adjacent original boxes with identical transverse ranges. Distinct runs have disjoint interiors in their axis. Each cell lies in its uniquely indexed X/Y/Z run intervals.',
+             'all_partition_boundary_planes_retained':True,'zero_volume_boundary_planes_not_discarded':True}
+ 
+ 
+ def build_covering(first,second,maximum_pair_checks):
+     domain=intersection(first['whole'],second['whole'])
+     source_boxes=lambda source:[{'kind':p['kind'],'index':p['index'],'box_exact':encode_box(p['box'])} for p in source['pieces']]
+-    proof={'schema':'razr-r4e-compact-material-boundary-slab-cover-v1','first_complete_boundary_boxes':source_boxes(first),
++    proof={'schema':'razr-r4e-compact-material-boundary-slab-cover-v2-exact-union-runs','first_complete_boundary_boxes':source_boxes(first),
+            'second_complete_boundary_boxes':source_boxes(second),'first_whole_support_box_exact':encode_box(first['whole']),
+            'second_whole_support_box_exact':encode_box(second['whole']),'global_intersection_box_exact':encode_box(domain),
+            'declared_uncertainty_inflation_exact_mm':[str(first['inflation']),str(second['inflation'])],

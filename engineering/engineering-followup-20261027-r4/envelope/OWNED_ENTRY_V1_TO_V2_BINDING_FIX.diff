@@ -1,0 +1,22 @@
+--- run_owned_pure_math_r4e.py
++++ run_owned_pure_math_r4e_v2.py
+@@ -36,9 +36,18 @@
+     owned.announce_worker_from_environment(Path(__file__).resolve())
+     worker = Path(contract['worker']['path'])
+     require(sha(worker) == contract['worker']['sha256'], 'mathematical worker source differs')
+-    report = {'schema': 'razr-r4e-owned-pure-math-entry-v1', 'worker_started': False,
++    report = {'schema': 'razr-r4e-owned-pure-math-entry-v2-bound-arguments', 'worker_started': False,
+               'worker_exit_code': None, 'native_geometry_imported': False}
+     actual_args = args.worker_arguments[1:] if args.worker_arguments[:1] == ['--'] else args.worker_arguments
++    bindings = {}
++    for option in ('--contract', '--output'):
++        require(not any(value.startswith(option+'=') for value in actual_args), 'use one explicit separated registered '+option)
++        indices = [i for i, value in enumerate(actual_args) if value == option]
++        require(len(indices) == 1 and indices[0]+1 < len(actual_args), 'exactly one registered '+option+' argument required')
++        bindings[option] = Path(actual_args[indices[0]+1]).resolve()
++    require(bindings['--output'] == Path(contract['worker_output_directory']).resolve(), 'actual worker output differs from supervised directory')
++    require(bindings['--contract'].is_file() and sha(bindings['--contract']) == contract['registered_math_contract_sha256'], 'actual mathematical contract differs from preregistered digest')
++    report['actual_argument_bindings'] = {'worker_output_directory': str(bindings['--output']), 'mathematical_contract_path': str(bindings['--contract']), 'mathematical_contract_sha256': contract['registered_math_contract_sha256']}
+     sys.argv[:] = [str(worker.resolve()), *actual_args]
+     try:
+         report['worker_started'] = True

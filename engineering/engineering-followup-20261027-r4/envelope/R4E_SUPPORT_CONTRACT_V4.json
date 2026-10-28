@@ -1,0 +1,127 @@
+{
+  "schema": "razr-r4e-independent-complete-slab-exact-union-contract-v4",
+  "registered_utc": "2026-10-28T00:28:03.286120+00:00",
+  "producer_sha256": "47dc40cfe464e78790fd2dd93f7ebaf27505e9adcfac6ff3ae957a1b2ee331db",
+  "input_identities": [
+    {
+      "path": "native-and-math/producer/worker/report.json",
+      "bytes": 65374048,
+      "sha256": "f1c6bcb76d32f9dead19296ff37a64805eff59a8bcc4f696f99cc5821c370c5d"
+    },
+    {
+      "path": "native-and-math/reader/worker/report.json",
+      "bytes": 65385052,
+      "sha256": "83e527ccbc849701f5d99c4e4b4ddbd099370ee52c7f10a1e11923c27b8742ce"
+    },
+    {
+      "path": "native-and-math/bspline-producer/worker/report.json",
+      "bytes": 131686,
+      "sha256": "92eec40b607e5dff58d74b940ac706132421952bfa4234e5582c5c18cf2466ab"
+    },
+    {
+      "path": "native-and-math/bspline-reader/worker/report.json",
+      "bytes": 131867,
+      "sha256": "b4e3b8f27fe4600723c47cf9924cd2f4b6bd29e9ca5fa987f5636bf8ba9c93d7"
+    },
+    {
+      "path": "source-and-inputs/R3E_INPUT_BINDING.json",
+      "bytes": 245364,
+      "sha256": "1c13bc2dbc41fcbc1957327f5ecfb98b318a9d00b322dc3107d4a6412eaa42ac"
+    },
+    {
+      "path": "source-and-inputs/R3E_LINEAR_BSPLINE_SOURCE_SPECIALIZATION.json",
+      "bytes": 64963,
+      "sha256": "f1071a4a46d4e3f78a68bc30925edfd2ec4e1f7f5b014f28b1e210059e07de89"
+    },
+    {
+      "path": "source-and-inputs/R3E_EXECUTED_SUMMARY.json",
+      "bytes": 76591,
+      "sha256": "1a25c02de8aca87a1c19e5009efdf5f9205c7bc682d6afb1dea2721574d57a90"
+    },
+    {
+      "path": "native-and-math/exact-math-v3a/report.json",
+      "bytes": 159081,
+      "sha256": "a554c97d137b022f854199bb83973b919e8c3180a0d96ae8d9c7473dcf871c22"
+    }
+  ],
+  "original_archive": {
+    "name": "RAZR-R3E-COMPLETE-SCIENTIFIC-EVIDENCE-20261027.zip",
+    "bytes": 10755745,
+    "sha256": "ebb5231bb6418a1da79b56f810d7759a947ec90cb07cefcb727910f924321fb5"
+  },
+  "capacity": {
+    "wall_seconds": 600,
+    "RSS_limit_bytes": 805306368
+  },
+  "maximum_candidate_directions_per_frame": 1500,
+  "original_clearance_threshold_float64": 1e-07,
+  "algorithm_basis": "Finite exact support directions: three axes and cross-products of all stored plane tangent pairs. Each direction encloses every complete face trim, every 3D edge and every vertex. Full-period circle/cylinder support uses integer-certified dyadic square-root bounds. Each candidate has three independent rational linear coordinates; intersection volume is product of interval widths divided by absolute coordinate determinant. Selected cells are independently checked for corner maps, closed oriented triangles, convexity, Euler identity and directed volume. No Common or native geometry operation. A separate diagnostic inflates each material by its maximum stored tolerance; this is a declared uncertainty model, not a newly proven OCCT semantic contract. Then use the proved compact-section boundary lemma on each of three complete coordinate slab covers, including every cut plane as a closed zero-volume carrier. Intersect all three covers with exact disjoint-cell sums and oriented-box topology, with at most 10,000,000 pair/triple box checks per cover. All curved boundary pieces remain conservatively bounded. Original complete moving material whole-self negative controls are run through the same slab algorithm. Base Common soundness is not assumed. V4 merges only axis-adjacent positive slab boxes with exactly equal transverse intervals, preserving every original fine cut plane. Exact union-run overlap is filtered by ordered interval endpoints; each positive cell has a positive-diagonal affine mapping from one independently checked outward unit cube, preserving valid topology and exact directed volume. Real preflight over all16*3 covers gives at most30,276 checks per cover and295,804 total before interval filtering.",
+  "estimate": {
+    "expected_wall_seconds": 180,
+    "expected_peak_RSS_bytes": 402653184,
+    "expected_maximum_output_bytes": 41943040,
+    "input_JSON_bytes": 131568652
+  },
+  "unchanged_native_hard_gates": {
+    "wall_seconds": 1200,
+    "RSS_limit_bytes": 1610612736,
+    "shared_ceiling_bytes": 7301444403,
+    "startup_disk_minimum_bytes": 268435456,
+    "startup_extra_shared_bytes": 2147483648,
+    "runtime_disk_minimum_bytes": 104857600
+  },
+  "native_geometry_or_solver_invoked": false,
+  "preserved_original_failures": true,
+  "scope": "Conditional complete stored-boundary support enclosure; native material semantics and compiled source/binary/rounding correspondence remain explicitly unproved.",
+  "additional_native_reports": {
+    "producer": {
+      "path": "r4-envelope/additional-bspline-v1/producer-attempt2/worker/report.json",
+      "bytes": 135649,
+      "sha256": "7603f88821c6e050afc289af2758d407805b377374c25a896fd0c7853931e27a",
+      "supervision_completed": true,
+      "qualified_runtime_completed": true
+    },
+    "reader": {
+      "path": "r4-envelope/additional-bspline-v1/reader/worker/report.json",
+      "bytes": 135831,
+      "sha256": "2d9e969f45e24666d7a228c2dd6d60185d66f9d2abda0943357df9222283d85b",
+      "supervision_completed": true,
+      "qualified_runtime_completed": true
+    }
+  },
+  "old_v1_execution_remains_failed": true,
+  "old_v1_actual_events": [
+    "first whole bound 5020.19824 fails original 1e-7 gate",
+    "fixed-side omitted old pcurve supplement raises KeyError bspline; completed false"
+  ],
+  "slab_module_sha256": "30abcee5a0dd21da7257e3b1986c87c147d2afd65fedcbd0b65354f5e6e88637",
+  "maximum_exact_slab_intersection_checks_per_cover": 40000,
+  "capacity_basis": {
+    "executed_original16_times_three_covers_preflight": {
+      "path": "r4-envelope/slab-capacity-v4/report.json",
+      "bytes": 33455,
+      "sha256": "78380db394fe9f9f06763e19cc19a77c5bf8dd1df734bb1a885b000e5896442b"
+    },
+    "preflight_supervisor": {
+      "path": "r4-envelope/slab-capacity-v4-supervision/controller.json",
+      "bytes": 20431,
+      "sha256": "1f09fcb4a60654019228c91058626de6441ddca9f01e4ad661e5c06e0a6e8599"
+    },
+    "preflight_seconds": 55.860335335000855,
+    "uncompressed_all_cover_static_box_check_bound": 149710667,
+    "merged_all_cover_static_box_check_bound": 295804,
+    "maximum_any_cover_static_box_check_bound": 30276,
+    "new_stricter_exact_box_check_limit_per_cover": 40000,
+    "original_all_fine_boundary_cut_planes_retained": true,
+    "exact_merged_box_union_not_material_simplification": true
+  },
+  "preserved_v2_actual_report": {
+    "path": "r4-envelope/support-v2/report.json",
+    "bytes": 136892,
+    "sha256": "8ef9ef843e04b54f0607a5721fb70eb230f13c07f187f9d2fa9cfe43dd1501ea",
+    "conditional_clearance_passes": 4,
+    "conditional_upper_bound_gate_failures": 12,
+    "declared_tolerance_diagnostic_passes": 0
+  },
+  "diagnostic_common_uncertainty_model": "Euclidean L2 ball at each material maximum stored tolerance; slab coordinate cube is an outer approximation and min is not a qualification of the whole Linfinity cube."
+}

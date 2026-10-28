@@ -1,0 +1,133 @@
+{
+  "schema": "razr-r4e-independent-new-entry-binding-negative-controls-v1",
+  "started_utc": "2026-10-28T00:23:59.140299+00:00",
+  "source_identity": {
+    "bytes": 6650,
+    "sha256": "c7f8ba5daa308a5e2c9757f0dc529d88d88220eaf8590e9297eb4efd39ec90bb"
+  },
+  "immutable_input_identities": {
+    "r4-envelope/R4E_SUPPORT_SUPERVISION_V2_OWNED.json": {
+      "bytes": 2240,
+      "sha256": "495544142dbbad371e4e23f484d2ac7d00cbd3d9f8a44d44a054eb63b8ebf73c"
+    },
+    "r4-envelope/R4E_SUPPORT_CONTRACT_V2.json": {
+      "bytes": 4421,
+      "sha256": "35aed42b8947eda5e86a8b5213b178e0936320181743ed59f10d30291bc790e7"
+    },
+    "r4-envelope/supervise_owned_pure_math_r4e_v2.py": {
+      "bytes": 8104,
+      "sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900"
+    },
+    "r4-envelope/run_owned_pure_math_r4e_v2.py": {
+      "bytes": 4201,
+      "sha256": "a0fdac59c213e3e5bc5f9cfe77314a6f7cd658999a397527fe90a9ed5fb343f1"
+    }
+  },
+  "controls": [
+    {
+      "name": "wrong_contract_sha",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "r4-envelope/supervise_owned_pure_math_r4e_v2.py",
+        "--contract",
+        "r4-envelope/independent-source-review/entry-binding-controls/wrong_contract_sha/supervision-contract.json",
+        "--out",
+        "r4-envelope/independent-source-review/entry-binding-controls/wrong_contract_sha/supervision",
+        "--",
+        "--original",
+        "recovered-inputs/RAZR-R3E-COMPLETE-SCIENTIFIC-EVIDENCE-20261027",
+        "--contract",
+        "r4-envelope/independent-source-review/entry-binding-controls/wrong-mathematical-contract.json",
+        "--output",
+        "r4-envelope/independent-source-review/entry-binding-controls/wrong_contract_sha/registered-worker-output",
+        "--additional-producer",
+        "r4-envelope/additional-bspline-v1/producer-attempt2/worker/report.json",
+        "--additional-reader",
+        "r4-envelope/additional-bspline-v1/reader/worker/report.json"
+      ],
+      "elapsed_seconds": 0.3775874959992507,
+      "parent_exit_code": 2,
+      "owned_entry_exit_code": 1,
+      "expected_rejection": "actual mathematical contract differs from preregistered digest",
+      "expected_rejection_observed": true,
+      "original_numeric_gates_unchanged": true,
+      "mathematical_worker_output_absent": true,
+      "entry_receipt_absent_before_payload_stage": true,
+      "owned_entry_handshake_verified": true,
+      "descriptors_closed": true,
+      "controller": {
+        "path": "r4-envelope/independent-source-review/entry-binding-controls/wrong_contract_sha/supervision/controller.json",
+        "bytes": 6171,
+        "sha256": "435a45d9e618124cd9fbbf9c865a4fc0c3563cb0b3f9792c45c306de30130c64"
+      },
+      "execution_log": {
+        "path": "r4-envelope/independent-source-review/entry-binding-controls/wrong_contract_sha/supervision/execution.log",
+        "bytes": 698,
+        "sha256": "0a620b180e4124fc4647300720ec458d435444d7b59430467261e28ff51445a5"
+      },
+      "contract": {
+        "path": "r4-envelope/independent-source-review/entry-binding-controls/wrong_contract_sha/supervision-contract.json",
+        "bytes": 2329,
+        "sha256": "ccc98a29825e162347c06c50255ebd9c9be2cd30b0015300a898c4794be418a7"
+      }
+    },
+    {
+      "name": "wrong_output_path",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "r4-envelope/supervise_owned_pure_math_r4e_v2.py",
+        "--contract",
+        "r4-envelope/independent-source-review/entry-binding-controls/wrong_output_path/supervision-contract.json",
+        "--out",
+        "r4-envelope/independent-source-review/entry-binding-controls/wrong_output_path/supervision",
+        "--",
+        "--original",
+        "recovered-inputs/RAZR-R3E-COMPLETE-SCIENTIFIC-EVIDENCE-20261027",
+        "--contract",
+        "r4-envelope/R4E_SUPPORT_CONTRACT_V2.json",
+        "--output",
+        "r4-envelope/independent-source-review/entry-binding-controls/wrong_output_path/incorrect-worker-output",
+        "--additional-producer",
+        "r4-envelope/additional-bspline-v1/producer-attempt2/worker/report.json",
+        "--additional-reader",
+        "r4-envelope/additional-bspline-v1/reader/worker/report.json"
+      ],
+      "elapsed_seconds": 0.610462066000764,
+      "parent_exit_code": 2,
+      "owned_entry_exit_code": 1,
+      "expected_rejection": "actual worker output differs from supervised directory",
+      "expected_rejection_observed": true,
+      "original_numeric_gates_unchanged": true,
+      "mathematical_worker_output_absent": true,
+      "entry_receipt_absent_before_payload_stage": true,
+      "owned_entry_handshake_verified": true,
+      "descriptors_closed": true,
+      "controller": {
+        "path": "r4-envelope/independent-source-review/entry-binding-controls/wrong_output_path/supervision/controller.json",
+        "bytes": 6111,
+        "sha256": "7fb0de53b6778cb6b5fa4ecd864ac733ee9bfcbb94e52d5be5f34bbace47c76c"
+      },
+      "execution_log": {
+        "path": "r4-envelope/independent-source-review/entry-binding-controls/wrong_output_path/supervision/execution.log",
+        "bytes": 646,
+        "sha256": "af2360dbdb8f085907d191be0751e3f236196ffb07c352279a8ad8d58747720f"
+      },
+      "contract": {
+        "path": "r4-envelope/independent-source-review/entry-binding-controls/wrong_output_path/supervision-contract.json",
+        "bytes": 2328,
+        "sha256": "ca9551bcaf7bee81320ec01b7918d3518b09d6b51d569c3f5c01a58836f197e5"
+      }
+    }
+  ],
+  "completed": true,
+  "expensive_mathematical_worker_runs": 0,
+  "original_mathematical_results_requalified_by_controls": false,
+  "physical_or_native_semantic_qualification": false,
+  "finished_utc": "2026-10-28T00:24:00.133856+00:00"
+}

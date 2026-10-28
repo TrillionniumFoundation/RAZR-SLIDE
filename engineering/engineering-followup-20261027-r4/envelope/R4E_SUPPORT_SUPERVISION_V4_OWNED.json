@@ -1,0 +1,35 @@
+{
+  "wall_seconds": 600,
+  "RSS_limit_bytes": 805306368,
+  "shared_ceiling_bytes": 7301444403,
+  "disk_floor_bytes": 104857600,
+  "expected_output_bytes": 41943040,
+  "algorithm_basis": "Finite exact support directions: three axes and cross-products of all stored plane tangent pairs. Each direction encloses every complete face trim, every 3D edge and every vertex. Full-period circle/cylinder support uses integer-certified dyadic square-root bounds. Each candidate has three independent rational linear coordinates; intersection volume is product of interval widths divided by absolute coordinate determinant. Selected cells are independently checked for corner maps, closed oriented triangles, convexity, Euler identity and directed volume. No Common or native geometry operation. A separate diagnostic inflates each material by its maximum stored tolerance; this is a declared uncertainty model, not a newly proven OCCT semantic contract. Then use the proved compact-section boundary lemma on each of three complete coordinate slab covers, including every cut plane as a closed zero-volume carrier. Intersect all three covers with exact disjoint-cell sums and oriented-box topology, with at most 10,000,000 pair/triple box checks per cover. All curved boundary pieces remain conservatively bounded. Original complete moving material whole-self negative controls are run through the same slab algorithm. Base Common soundness is not assumed. V4 merges only axis-adjacent positive slab boxes with exactly equal transverse intervals, preserving every original fine cut plane. Exact union-run overlap is filtered by ordered interval endpoints; each positive cell has a positive-diagonal affine mapping from one independently checked outward unit cube, preserving valid topology and exact directed volume. Real preflight over all16*3 covers gives at most30,276 checks per cover and295,804 total before interval filtering.",
+  "maximum_output_bytes": 41943040,
+  "metadata_margin_bytes": 4194304,
+  "registered_math_contract_sha256": "f68f3aef5bda02547da9a5374747c7614793ae6bf8c1ced4da41035e5f5c608e",
+  "schema": "razr-r4e-owned-complete-slab-exact-union-supervision-v4",
+  "registered_utc": "2026-10-28T00:28:03.287078+00:00",
+  "original_supervisor_retained": "fef9290fc47d5abca0937a9e42f568ffe5b0d68a80c01cfdc1d11a242e1a21db",
+  "supervisor_sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900",
+  "worker_entry": "r4-envelope/run_owned_pure_math_r4e_v3.py",
+  "worker_entry_sha256": "012da59133c15550b1bb4adac969edeb65f335ddb9c22d5ae4c321318f147823",
+  "owned_process": {
+    "path": "r4-envelope/additional-bspline-v1/source/source-original/owned_process.py",
+    "sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25"
+  },
+  "worker": {
+    "path": "r4-envelope/run_independent_support_r4e_v4.py",
+    "sha256": "47dc40cfe464e78790fd2dd93f7ebaf27505e9adcfac6ff3ae957a1b2ee331db"
+  },
+  "worker_output_directory": "r4-envelope/support-v4",
+  "zero_RSS_missing_observations_allowed": false,
+  "old_v1_supervision_PID_namespace_not_requalified": true,
+  "canonical_worker_options": [
+    "--original",
+    "--contract",
+    "--output",
+    "--additional-producer",
+    "--additional-reader"
+  ]
+}

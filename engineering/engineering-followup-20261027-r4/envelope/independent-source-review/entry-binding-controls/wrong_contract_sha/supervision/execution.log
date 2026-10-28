@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "r4-envelope/run_owned_pure_math_r4e_v2.py", line 74, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "r4-envelope/run_owned_pure_math_r4e_v2.py", line 49, in main
+    require(bindings['--contract'].is_file() and sha(bindings['--contract']) == contract['registered_math_contract_sha256'], 'actual mathematical contract differs from preregistered digest')
+  File "r4-envelope/run_owned_pure_math_r4e_v2.py", line 19, in require
+    raise ValueError(message)
+ValueError: actual mathematical contract differs from preregistered digest

@@ -1,0 +1,4007 @@
+{
+  "schema": "R3E-complete-original-BSpline-pcurve-supplement-v1",
+  "contract_sha256": "132688ed3cd91e65a6f2cf1de8c526eb7d7d866cd9ae9aa09162cc56ed825e0e",
+  "index_sha256": "3865b1fe66963ba8e2986a0dc3e5e7f4fb6e5281b09fb2452fbead4095481da6",
+  "source_sha256": {
+    "extract_bspline_r3e.py": "bd89e86b00f84d6b1788ef6237756b8e5ee19ad8fa4fbff38c449fbb2e6d5bb1",
+    "supervise_bspline_r3e.py": "5e9f08da5dc4f82b017acdf1136de3cdd5c284130b6b55f28ed6eda4ecb26c99",
+    "source-original/boundary_inventory_l8.py": "3c3a032f8de030bfd1396eadb3af781d7b07611ccbb97990593b0b235bd25ac9",
+    "source-original/extend_boundary_inventory_r3.py": "51467633f849f110b0bbdf4f698d808a2ac1c78471bfa354616b3ebf2a1f1112",
+    "source-original/product_assembly.py": "fc5391d3be98810ada06ca27e65de9a77d2f599c4d1890bb31a4d87ef14791b4",
+    "source-original/straight_envelope.py": "5fe5fa2238572123b292a940da9b2e8ec68734ce078a5cdf1c8e84c1e31047bf",
+    "source-original/owned_process.py": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25",
+    "qualified_python_r4e.sh": "f42ac6c3099be18dc5b0cc41ef63857e45c301cf73efd99a86cda8fdc50acef1"
+  },
+  "execution_completed": true,
+  "records": [
+    {
+      "input": {
+        "case_id": "case-001",
+        "material_id": 1,
+        "relative_path": "inputs/case-001/material-001.brep",
+        "bytes": 187275,
+        "sha256": "7f77ca577ce4a593872e44eb2b268bc92b331aa1b84b3ea249655610f35cfc4d",
+        "original_in_memory_signature": {
+          "is_valid": true,
+          "shape_type": "Compound",
+          "signed_volume_mm3": 4522.156813063013,
+          "solid_signed_volumes_mm3": [
+            4522.156813063013
+          ],
+          "top_level_children_types": [
+            "Solid"
+          ]
+        },
+        "original_references": [
+          {
+            "role": "original-moving-input",
+            "specification_sha256": "b759da5a4004377eb3cc68607da8c52eda5566a7dca66f5dee1ce716175b0a71"
+          },
+          {
+            "function": "enclosure_regions",
+            "line": 229,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-body",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-a",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-b",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      },
+      "original_complete_boundary_canonical_sha256": "74cb39d528821ca5a73d4de4e8cfe87b1031d22d67f91b1d63b3a81cd5f138d4",
+      "fresh_complete_original_inventory_bitwise_equal": true,
+      "original_counts": {
+        "solids": 1,
+        "shells": 1,
+        "faces": 278,
+        "edges": 696,
+        "vertices": 464
+      },
+      "complete_pcurves": [
+        {
+          "face_index": 220,
+          "wire_index": 0,
+          "occurrence_index": 0,
+          "edge_index": 457,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "5738470606616205/1125899906842624",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "5738470606616205/1125899906842624",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 224,
+          "wire_index": 0,
+          "occurrence_index": 0,
+          "edge_index": 461,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "5738470606616205/1125899906842624",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "5738470606616205/1125899906842624",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 231,
+          "wire_index": 0,
+          "occurrence_index": 0,
+          "edge_index": 494,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "5343068581650803/4503599627370496",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "5343068581650803/4503599627370496",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 240,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 491,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "5343068581650803/4503599627370496",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "5343068581650803/4503599627370496",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 245,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 653,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "3537118876012201/2251799813685248",
+                  "0"
+                ],
+                [
+                  "3537118876012201/2251799813685248",
+                  "4728779608739021/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "4728779608739021/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 2.1,
+                "hex": "0x1.0cccccccccccdp+1",
+                "exact": "4728779608739021/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 245,
+          "wire_index": 0,
+          "occurrence_index": 3,
+          "edge_index": 502,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "1335767145411575/1125899906842624",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "1335767145411575/1125899906842624",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 246,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 655,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "3537118876012201/2251799813685248",
+                  "0"
+                ],
+                [
+                  "3537118876012201/2251799813685248",
+                  "4728779608739021/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "4728779608739021/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 2.1,
+                "hex": "0x1.0cccccccccccdp+1",
+                "exact": "4728779608739021/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 246,
+          "wire_index": 0,
+          "occurrence_index": 3,
+          "edge_index": 505,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "1335767145411575/1125899906842624",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "1335767145411575/1125899906842624",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 249,
+          "wire_index": 0,
+          "occurrence_index": 0,
+          "edge_index": 668,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "5305678314021679/1125899906842624",
+                  "0"
+                ],
+                [
+                  "5305678314021679/1125899906842624",
+                  "4728779608739021/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "4728779608739021/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 2.1,
+                "hex": "0x1.0cccccccccccdp+1",
+                "exact": "4728779608739021/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 249,
+          "wire_index": 0,
+          "occurrence_index": 2,
+          "edge_index": 538,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "5738470606616205/1125899906842624",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "5738470606616205/1125899906842624",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 251,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 670,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "1002905096565503/281474976710656",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "1002905096565503/281474976710656",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 253,
+          "wire_index": 0,
+          "occurrence_index": 3,
+          "edge_index": 671,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "6125234731531535/2251799813685248",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "6125234731531535/2251799813685248",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 258,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 684,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "5305678314021679/1125899906842624",
+                  "0"
+                ],
+                [
+                  "5305678314021679/1125899906842624",
+                  "4728779608739021/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "4728779608739021/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 2.1,
+                "hex": "0x1.0cccccccccccdp+1",
+                "exact": "4728779608739021/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 258,
+          "wire_index": 0,
+          "occurrence_index": 3,
+          "edge_index": 542,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "5738470606616205/1125899906842624",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "5738470606616205/1125899906842624",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 260,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 686,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "1002905096565503/281474976710656",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "1002905096565503/281474976710656",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 262,
+          "wire_index": 0,
+          "occurrence_index": 3,
+          "edge_index": 687,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "6125234731531535/2251799813685248",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "6125234731531535/2251799813685248",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        }
+      ]
+    },
+    {
+      "input": {
+        "case_id": "case-006",
+        "material_id": 1,
+        "relative_path": "inputs/case-006/material-001.brep",
+        "bytes": 187275,
+        "sha256": "bea47a873037a5ad6ad908bb17868187c4b4215d20eb0242bebf109f21e89a81",
+        "original_in_memory_signature": {
+          "is_valid": true,
+          "shape_type": "Compound",
+          "signed_volume_mm3": 4522.156813063013,
+          "solid_signed_volumes_mm3": [
+            4522.156813063013
+          ],
+          "top_level_children_types": [
+            "Solid"
+          ]
+        },
+        "original_references": [
+          {
+            "role": "original-moving-input",
+            "specification_sha256": "e4f6843a72d497cbe53e6f050bd245d6407cd7c79b43fb0155357cc1fd491ce3"
+          },
+          {
+            "function": "enclosure_regions",
+            "line": 229,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-body",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-a",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-b",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      },
+      "original_complete_boundary_canonical_sha256": "74cb39d528821ca5a73d4de4e8cfe87b1031d22d67f91b1d63b3a81cd5f138d4",
+      "fresh_complete_original_inventory_bitwise_equal": true,
+      "original_counts": {
+        "solids": 1,
+        "shells": 1,
+        "faces": 278,
+        "edges": 696,
+        "vertices": 464
+      },
+      "complete_pcurves": [
+        {
+          "face_index": 220,
+          "wire_index": 0,
+          "occurrence_index": 0,
+          "edge_index": 457,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "5738470606616205/1125899906842624",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "5738470606616205/1125899906842624",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 224,
+          "wire_index": 0,
+          "occurrence_index": 0,
+          "edge_index": 461,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "5738470606616205/1125899906842624",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "5738470606616205/1125899906842624",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 231,
+          "wire_index": 0,
+          "occurrence_index": 0,
+          "edge_index": 494,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "5343068581650803/4503599627370496",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "5343068581650803/4503599627370496",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 240,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 491,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "5343068581650803/4503599627370496",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "5343068581650803/4503599627370496",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 245,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 653,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "3537118876012201/2251799813685248",
+                  "0"
+                ],
+                [
+                  "3537118876012201/2251799813685248",
+                  "4728779608739021/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "4728779608739021/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 2.1,
+                "hex": "0x1.0cccccccccccdp+1",
+                "exact": "4728779608739021/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 245,
+          "wire_index": 0,
+          "occurrence_index": 3,
+          "edge_index": 502,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "1335767145411575/1125899906842624",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "1335767145411575/1125899906842624",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 246,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 655,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "3537118876012201/2251799813685248",
+                  "0"
+                ],
+                [
+                  "3537118876012201/2251799813685248",
+                  "4728779608739021/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "4728779608739021/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 2.1,
+                "hex": "0x1.0cccccccccccdp+1",
+                "exact": "4728779608739021/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 246,
+          "wire_index": 0,
+          "occurrence_index": 3,
+          "edge_index": 505,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "1335767145411575/1125899906842624",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "1335767145411575/1125899906842624",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 249,
+          "wire_index": 0,
+          "occurrence_index": 0,
+          "edge_index": 668,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "5305678314021679/1125899906842624",
+                  "0"
+                ],
+                [
+                  "5305678314021679/1125899906842624",
+                  "4728779608739021/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "4728779608739021/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 2.1,
+                "hex": "0x1.0cccccccccccdp+1",
+                "exact": "4728779608739021/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 249,
+          "wire_index": 0,
+          "occurrence_index": 2,
+          "edge_index": 538,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "5738470606616205/1125899906842624",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "5738470606616205/1125899906842624",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 251,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 670,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "1002905096565503/281474976710656",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "1002905096565503/281474976710656",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 253,
+          "wire_index": 0,
+          "occurrence_index": 3,
+          "edge_index": 671,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.25,
+              "hex": "0x1.0000000000000p-2",
+              "exact": "1/4"
+            },
+            "last_parameter": {
+              "float": 0.550000000000001,
+              "hex": "0x1.19999999999a3p-1",
+              "exact": "4953959590107555/9007199254740992"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "6125234731531535/2251799813685248",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "6125234731531535/2251799813685248",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 258,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 684,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "5305678314021679/1125899906842624",
+                  "0"
+                ],
+                [
+                  "5305678314021679/1125899906842624",
+                  "4728779608739021/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "4728779608739021/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 2.1,
+                "hex": "0x1.0cccccccccccdp+1",
+                "exact": "4728779608739021/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 258,
+          "wire_index": 0,
+          "occurrence_index": 3,
+          "edge_index": 542,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "5738470606616205/1125899906842624",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "5738470606616205/1125899906842624",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 260,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 686,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "1002905096565503/281474976710656",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "1002905096565503/281474976710656",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 262,
+          "wire_index": 0,
+          "occurrence_index": 3,
+          "edge_index": 687,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 1.65,
+              "hex": "0x1.a666666666666p+0",
+              "exact": "3715469692580659/2251799813685248"
+            },
+            "last_parameter": {
+              "float": 1.95,
+              "hex": "0x1.f333333333333p+0",
+              "exact": "8782019273372467/4503599627370496"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 2.1000012,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "6125234731531535/2251799813685248",
+                  "-2833419889278829/4722366482869645213696"
+                ],
+                [
+                  "6125234731531535/2251799813685248",
+                  "4728780959818909/2251799813685248"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "-2833419889278829/4722366482869645213696",
+                "4728780959818909/2251799813685248"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": -5.999999999062e-07,
+                "hex": "-0x1.421f5f3fffedap-21",
+                "exact": "-2833419889278829/4722366482869645213696"
+              },
+              "defined_last_parameter": {
+                "float": 2.1000006,
+                "hex": "0x1.0cccd1d54a49dp+1",
+                "exact": "4728780959818909/2251799813685248"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        }
+      ]
+    },
+    {
+      "input": {
+        "case_id": "case-028",
+        "material_id": 2,
+        "relative_path": "inputs/case-028/material-002.brep",
+        "bytes": 18499,
+        "sha256": "d9cbe53d70780ebed46c0956b818ceb28f46956cacfdd524b7f24054ba862768",
+        "original_in_memory_signature": {
+          "is_valid": true,
+          "shape_type": "Solid",
+          "signed_volume_mm3": 2.264312746314067,
+          "solid_signed_volumes_mm3": [
+            2.264312746314067
+          ],
+          "top_level_children_types": []
+        },
+        "original_references": [
+          {
+            "role": "original-fixed-input",
+            "specification_sha256": "3c3a6aef7c7c3afafe05f6fddc2604e81716db24ddbb183dbbaf19f8a105ce6f"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-b",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "enclosure_regions",
+            "line": 240,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-body",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-a",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      },
+      "original_complete_boundary_canonical_sha256": "b422670c178c3d51469406e1dfde65ff6d99f7fa530afa0bddd27bf8b85de1b3",
+      "fresh_complete_original_inventory_bitwise_equal": true,
+      "original_counts": {
+        "solids": 1,
+        "shells": 1,
+        "faces": 21,
+        "edges": 57,
+        "vertices": 38
+      },
+      "complete_pcurves": [
+        {
+          "face_index": 19,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 56,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "4421398595017503/562949953421312",
+                  "0"
+                ],
+                [
+                  "4421398595017503/562949953421312",
+                  "5404319552844595/18014398509481984"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "5404319552844595/18014398509481984"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 0.3,
+                "hex": "0x1.3333333333333p-2",
+                "exact": "5404319552844595/18014398509481984"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 19,
+          "wire_index": 0,
+          "occurrence_index": 3,
+          "edge_index": 55,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "4836252771726057/2251799813685248",
+                  "0"
+                ],
+                [
+                  "4836252771726057/2251799813685248",
+                  "5404319552844595/18014398509481984"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "5404319552844595/18014398509481984"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 0.3,
+                "hex": "0x1.3333333333333p-2",
+                "exact": "5404319552844595/18014398509481984"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        }
+      ]
+    },
+    {
+      "input": {
+        "case_id": "case-037",
+        "material_id": 2,
+        "relative_path": "inputs/case-037/material-002.brep",
+        "bytes": 18497,
+        "sha256": "e3c46027ff8b2269bd281041d2a48baf627517e88f93941c38f1397239798234",
+        "original_in_memory_signature": {
+          "is_valid": true,
+          "shape_type": "Solid",
+          "signed_volume_mm3": 1.7243127463175836,
+          "solid_signed_volumes_mm3": [
+            1.7243127463175836
+          ],
+          "top_level_children_types": []
+        },
+        "original_references": [
+          {
+            "role": "original-fixed-input",
+            "specification_sha256": "3f7de694d2b868b12f4fcfa525476289da0edc5b0d87c02def7fc434130983a0"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-b",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "enclosure_regions",
+            "line": 240,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-body",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-a",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      },
+      "original_complete_boundary_canonical_sha256": "a28c0b27e0b857f4bbf82f3a109bde36e91200260427bb6dece94f65a9cbc507",
+      "fresh_complete_original_inventory_bitwise_equal": true,
+      "original_counts": {
+        "solids": 1,
+        "shells": 1,
+        "faces": 21,
+        "edges": 57,
+        "vertices": 38
+      },
+      "complete_pcurves": [
+        {
+          "face_index": 19,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 56,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "4421398595017503/562949953421312",
+                  "0"
+                ],
+                [
+                  "4421398595017503/562949953421312",
+                  "5404319552844595/18014398509481984"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "5404319552844595/18014398509481984"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 0.3,
+                "hex": "0x1.3333333333333p-2",
+                "exact": "5404319552844595/18014398509481984"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 19,
+          "wire_index": 0,
+          "occurrence_index": 3,
+          "edge_index": 55,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "4836252771726057/2251799813685248",
+                  "0"
+                ],
+                [
+                  "4836252771726057/2251799813685248",
+                  "5404319552844595/18014398509481984"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "5404319552844595/18014398509481984"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 0.3,
+                "hex": "0x1.3333333333333p-2",
+                "exact": "5404319552844595/18014398509481984"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        }
+      ]
+    },
+    {
+      "input": {
+        "case_id": "case-054",
+        "material_id": 1,
+        "relative_path": "inputs/case-054/material-001.brep",
+        "bytes": 18497,
+        "sha256": "c6993d2752df51e0dd4fc68a2d587ed3f3cf224c5186d4dcdac7870779615720",
+        "original_in_memory_signature": {
+          "is_valid": true,
+          "shape_type": "Solid",
+          "signed_volume_mm3": 1.7243127463175836,
+          "solid_signed_volumes_mm3": [
+            1.7243127463175836
+          ],
+          "top_level_children_types": []
+        },
+        "original_references": [
+          {
+            "role": "original-moving-input",
+            "specification_sha256": "73eda385246d4e211f782b4aa18ccd992dd18fe98d205f2ba444d2c223119f94"
+          },
+          {
+            "function": "enclosure_regions",
+            "line": 229,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-body",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-a",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-b",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      },
+      "original_complete_boundary_canonical_sha256": "a28c0b27e0b857f4bbf82f3a109bde36e91200260427bb6dece94f65a9cbc507",
+      "fresh_complete_original_inventory_bitwise_equal": true,
+      "original_counts": {
+        "solids": 1,
+        "shells": 1,
+        "faces": 21,
+        "edges": 57,
+        "vertices": 38
+      },
+      "complete_pcurves": [
+        {
+          "face_index": 19,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 56,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "4421398595017503/562949953421312",
+                  "0"
+                ],
+                [
+                  "4421398595017503/562949953421312",
+                  "5404319552844595/18014398509481984"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "5404319552844595/18014398509481984"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 0.3,
+                "hex": "0x1.3333333333333p-2",
+                "exact": "5404319552844595/18014398509481984"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 19,
+          "wire_index": 0,
+          "occurrence_index": 3,
+          "edge_index": 55,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "4836252771726057/2251799813685248",
+                  "0"
+                ],
+                [
+                  "4836252771726057/2251799813685248",
+                  "5404319552844595/18014398509481984"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "5404319552844595/18014398509481984"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 0.3,
+                "hex": "0x1.3333333333333p-2",
+                "exact": "5404319552844595/18014398509481984"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        }
+      ]
+    },
+    {
+      "input": {
+        "case_id": "case-063",
+        "material_id": 2,
+        "relative_path": "inputs/case-063/material-002.brep",
+        "bytes": 18490,
+        "sha256": "89be2d0622f067c4c163f03ebefe7d8f230a1fa26cb38f8fc132601b9d04b306",
+        "original_in_memory_signature": {
+          "is_valid": true,
+          "shape_type": "Solid",
+          "signed_volume_mm3": 2.264312746317334,
+          "solid_signed_volumes_mm3": [
+            2.264312746317334
+          ],
+          "top_level_children_types": []
+        },
+        "original_references": [
+          {
+            "role": "original-fixed-input",
+            "specification_sha256": "35ba11437d2108ece72d6fd28abf1df0b920daf43b7155e1fa1fd94fdc1cc545"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-b",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "enclosure_regions",
+            "line": 240,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-body",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-a",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      },
+      "original_complete_boundary_canonical_sha256": "1002f2d0035548a139383778714e9b844964b970492d386f8bf418d4ddc1cab2",
+      "fresh_complete_original_inventory_bitwise_equal": true,
+      "original_counts": {
+        "solids": 1,
+        "shells": 1,
+        "faces": 21,
+        "edges": 57,
+        "vertices": 38
+      },
+      "complete_pcurves": [
+        {
+          "face_index": 19,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 55,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "2048307560544801/281474976710656",
+                  "0"
+                ],
+                [
+                  "2048307560544801/281474976710656",
+                  "5404319552844595/18014398509481984"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "5404319552844595/18014398509481984"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 0.3,
+                "hex": "0x1.3333333333333p-2",
+                "exact": "5404319552844595/18014398509481984"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 19,
+          "wire_index": 0,
+          "occurrence_index": 3,
+          "edge_index": 56,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "3537118876014453/2251799813685248",
+                  "0"
+                ],
+                [
+                  "3537118876014453/2251799813685248",
+                  "5404319552844595/18014398509481984"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "5404319552844595/18014398509481984"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 0.3,
+                "hex": "0x1.3333333333333p-2",
+                "exact": "5404319552844595/18014398509481984"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        }
+      ]
+    },
+    {
+      "input": {
+        "case_id": "case-072",
+        "material_id": 2,
+        "relative_path": "inputs/case-072/material-002.brep",
+        "bytes": 18515,
+        "sha256": "dc3b608f44ea6061ad47e499b61a24af99f6108929676ac1a982d236cfea582a",
+        "original_in_memory_signature": {
+          "is_valid": true,
+          "shape_type": "Solid",
+          "signed_volume_mm3": 1.7243127463183343,
+          "solid_signed_volumes_mm3": [
+            1.7243127463183343
+          ],
+          "top_level_children_types": []
+        },
+        "original_references": [
+          {
+            "role": "original-fixed-input",
+            "specification_sha256": "817b8ec16f1d5fead3af3e2729ec9b63e233d102f8e471588f47eac5875a5ebf"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-b",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "enclosure_regions",
+            "line": 240,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-body",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-a",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      },
+      "original_complete_boundary_canonical_sha256": "620aec24bec195a4c17b0cf693fac46225d33883e9c290d25fe31e2518988101",
+      "fresh_complete_original_inventory_bitwise_equal": true,
+      "original_counts": {
+        "solids": 1,
+        "shells": 1,
+        "faces": 21,
+        "edges": 57,
+        "vertices": 38
+      },
+      "complete_pcurves": [
+        {
+          "face_index": 19,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 55,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "2048307560544801/281474976710656",
+                  "0"
+                ],
+                [
+                  "2048307560544801/281474976710656",
+                  "5404319552844595/18014398509481984"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "5404319552844595/18014398509481984"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 0.3,
+                "hex": "0x1.3333333333333p-2",
+                "exact": "5404319552844595/18014398509481984"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 19,
+          "wire_index": 0,
+          "occurrence_index": 3,
+          "edge_index": 56,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "3537118876014453/2251799813685248",
+                  "0"
+                ],
+                [
+                  "3537118876014453/2251799813685248",
+                  "5404319552844595/18014398509481984"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "5404319552844595/18014398509481984"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 0.3,
+                "hex": "0x1.3333333333333p-2",
+                "exact": "5404319552844595/18014398509481984"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        }
+      ]
+    },
+    {
+      "input": {
+        "case_id": "case-089",
+        "material_id": 1,
+        "relative_path": "inputs/case-089/material-001.brep",
+        "bytes": 18515,
+        "sha256": "3c28e5050058c401abb40b80898b0a56e7f6a2aa7b8ed91e194e428ca0982dcc",
+        "original_in_memory_signature": {
+          "is_valid": true,
+          "shape_type": "Solid",
+          "signed_volume_mm3": 1.7243127463183343,
+          "solid_signed_volumes_mm3": [
+            1.7243127463183343
+          ],
+          "top_level_children_types": []
+        },
+        "original_references": [
+          {
+            "role": "original-moving-input",
+            "specification_sha256": "54891ba216fcf16def72b6aef83ea74cf22ef1ffd3b9005a3a39e16527ac8c96"
+          },
+          {
+            "function": "enclosure_regions",
+            "line": 229,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-body",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-a",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-b",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      },
+      "original_complete_boundary_canonical_sha256": "620aec24bec195a4c17b0cf693fac46225d33883e9c290d25fe31e2518988101",
+      "fresh_complete_original_inventory_bitwise_equal": true,
+      "original_counts": {
+        "solids": 1,
+        "shells": 1,
+        "faces": 21,
+        "edges": 57,
+        "vertices": 38
+      },
+      "complete_pcurves": [
+        {
+          "face_index": 19,
+          "wire_index": 0,
+          "occurrence_index": 1,
+          "edge_index": 55,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "2048307560544801/281474976710656",
+                  "0"
+                ],
+                [
+                  "2048307560544801/281474976710656",
+                  "5404319552844595/18014398509481984"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "5404319552844595/18014398509481984"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 0.3,
+                "hex": "0x1.3333333333333p-2",
+                "exact": "5404319552844595/18014398509481984"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        },
+        {
+          "face_index": 19,
+          "wire_index": 0,
+          "occurrence_index": 3,
+          "edge_index": 56,
+          "old_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3
+          },
+          "complete_pcurve_record": {
+            "type": "GeomAbs_CurveType.GeomAbs_BSplineCurve",
+            "first_parameter": {
+              "float": 0.0,
+              "hex": "0x0.0p+0",
+              "exact": "0"
+            },
+            "last_parameter": {
+              "float": 0.300000000000001,
+              "hex": "0x1.3333333333345p-2",
+              "exact": "5404319552844613/18014398509481984"
+            },
+            "IsClosed": false,
+            "IsPeriodic": false,
+            "Period": 0.3,
+            "bspline": {
+              "degree": 1,
+              "dimension": 2,
+              "is_rational": false,
+              "is_periodic": false,
+              "poles_exact": [
+                [
+                  "3537118876014453/2251799813685248",
+                  "0"
+                ],
+                [
+                  "3537118876014453/2251799813685248",
+                  "5404319552844595/18014398509481984"
+                ]
+              ],
+              "weights_exact": [
+                "1",
+                "1"
+              ],
+              "knots_exact": [
+                "0",
+                "5404319552844595/18014398509481984"
+              ],
+              "multiplicities": [
+                2,
+                2
+              ],
+              "all_weights_strictly_positive": true,
+              "convex_hull_bounds_whole_curve_on_its_defined_knot_domain": true,
+              "defined_first_parameter": {
+                "float": 0.0,
+                "hex": "0x0.0p+0",
+                "exact": "0"
+              },
+              "defined_last_parameter": {
+                "float": 0.3,
+                "hex": "0x1.3333333333333p-2",
+                "exact": "5404319552844595/18014398509481984"
+              },
+              "native_is_closed": false
+            },
+            "complete_supported_representation": true
+          }
+        }
+      ]
+    }
+  ],
+  "new_Boolean_calls": 0,
+  "native_geometry_or_tolerances_modified": false,
+  "runtime": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "OCP": "7.8.1.1",
+    "packages": {
+      "cadquery": "2.7.0",
+      "cadquery-ocp": "7.8.1.1.post1",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    }
+  },
+  "elapsed_seconds": 9.843639399001404,
+  "peak_RSS_bytes": 456966144,
+  "actual_original_shape_count": 8,
+  "actual_original_BSpline_pcurve_count": 44,
+  "all_sources_unchanged": true
+}

@@ -1,0 +1,225 @@
+{
+  "schema": "R3E-original-CAD-guard-owned-supervision-v1",
+  "started_utc": "2026-10-28T00:17:25.008540+00:00",
+  "contract_sha256": "132688ed3cd91e65a6f2cf1de8c526eb7d7d866cd9ae9aa09162cc56ed825e0e",
+  "supervisor_sha256": "5e9f08da5dc4f82b017acdf1136de3cdd5c284130b6b55f28ed6eda4ecb26c99",
+  "worker_sha256": "bd89e86b00f84d6b1788ef6237756b8e5ee19ad8fa4fbff38c449fbb2e6d5bb1",
+  "command": [
+    "r4-envelope/additional-bspline-v1/source/qualified_python_r4e.sh",
+    "-B",
+    "r4-envelope/additional-bspline-v1/source/extract_bspline_r3e.py",
+    "--contract",
+    "r4-envelope/additional-bspline-v1/source/R4E_ADDITIONAL_BSPLINE_CONTRACT_V1.json",
+    "--output",
+    "r4-envelope/additional-bspline-v1/reader/worker",
+    "--reader-of",
+    "r4-envelope/additional-bspline-v1/producer-attempt2/worker/report.json"
+  ],
+  "limits": {
+    "schema": "R4E-additional-fixed44-original-source-native-supplement-contract-v1",
+    "registered_utc": "2026-10-28T00:15:45.556035+00:00",
+    "input_binding_sha256": "1c13bc2dbc41fcbc1957327f5ecfb98b318a9d00b322dc3107d4a6412eaa42ac",
+    "source_sha256": {
+      "extract_bspline_r3e.py": "bd89e86b00f84d6b1788ef6237756b8e5ee19ad8fa4fbff38c449fbb2e6d5bb1",
+      "supervise_bspline_r3e.py": "5e9f08da5dc4f82b017acdf1136de3cdd5c284130b6b55f28ed6eda4ecb26c99",
+      "source-original/boundary_inventory_l8.py": "3c3a032f8de030bfd1396eadb3af781d7b07611ccbb97990593b0b235bd25ac9",
+      "source-original/extend_boundary_inventory_r3.py": "51467633f849f110b0bbdf4f698d808a2ac1c78471bfa354616b3ebf2a1f1112",
+      "source-original/product_assembly.py": "fc5391d3be98810ada06ca27e65de9a77d2f599c4d1890bb31a4d87ef14791b4",
+      "source-original/straight_envelope.py": "5fe5fa2238572123b292a940da9b2e8ec68734ce078a5cdf1c8e84c1e31047bf",
+      "source-original/owned_process.py": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25",
+      "qualified_python_r4e.sh": "f42ac6c3099be18dc5b0cc41ef63857e45c301cf73efd99a86cda8fdc50acef1"
+    },
+    "wall_seconds": 1200,
+    "RSS_limit_bytes": 1610612736,
+    "shared_ceiling_bytes": 7301444403,
+    "startup_disk_floor_bytes": 268435456,
+    "runtime_disk_floor_bytes": 104857600,
+    "startup_additional_memory_bytes": 2147483648,
+    "expected_wall_seconds": 30,
+    "expected_RSS_bytes": 629145600,
+    "maximum_expected_output_bytes": 2097152,
+    "algorithm_basis": "Eight additional original fixed-side BREP inputs (44 pcurve occurrences) using unchanged archived R3 extractor, boundary inventory, extension and owned supervisor bytes. Every fresh complete inventory must equal the exact original R3 canonical boundary before supplement. Two separate processes must agree on all full curve records. No Boolean, geometry change, tolerance adjustment, or native material semantic qualification.",
+    "new_boolean_calls_planned": 0,
+    "independent_reader_new_process_same_kernel": true,
+    "all_old_native_failures_preserved": true,
+    "new_material_coherence_or_full_G2_claimed": false,
+    "index_sha256": "3865b1fe66963ba8e2986a0dc3e5e7f4fb6e5281b09fb2452fbead4095481da6",
+    "runtime_binding_pending": false,
+    "new_whole16_support_input_coverage": true,
+    "runtime_binding": {
+      "runtime_contract": {
+        "path": "r4-runtime/R4_PROJECTION_CONTRACT_V3.json",
+        "bytes": 5118,
+        "sha256": "2852a885f6f13e48ef6b3518dd01ac8a30482f1766532269ff38fec9676986b8"
+      },
+      "qualification": {
+        "path": "r4-runtime/validation-worker-attempt3/R3_PROJECTION_VALIDATION_EXECUTED.json",
+        "bytes": 4485186,
+        "sha256": "ca812a633d5a2f813e17a3efa4e17129d65eb9bb047e5596aa1ec3c63ee4beca"
+      },
+      "launcher": {
+        "path": "r4-runtime/run_qualified_script_r4.py",
+        "bytes": 7840,
+        "sha256": "1da31ba1c2eedee7c9a6c6c631a9aa66e0ac7ce92aca644a34ecc5e37dbc103b"
+      },
+      "full_pre_and_post_8112_payload_and_43_RECORD_checks_required": true,
+      "wrapper_is_exec_only_same_owned_process": true
+    }
+  },
+  "worker_started": true,
+  "completed": true,
+  "observations": [
+    {
+      "disk_available_bytes": 9333538816,
+      "shared_unreclaimable_bytes": 973601128
+    },
+    {
+      "disk_available_bytes": 9333391360,
+      "shared_unreclaimable_bytes": 911862344,
+      "elapsed_seconds": 2.0089653779996297,
+      "owned_worker_memory": null
+    },
+    {
+      "disk_available_bytes": 9323933696,
+      "shared_unreclaimable_bytes": 1461345896,
+      "elapsed_seconds": 4.089059912999801,
+      "owned_worker_memory": {
+        "VmRSS": 309518336,
+        "VmHWM": 309518336
+      }
+    },
+    {
+      "disk_available_bytes": 9309847552,
+      "shared_unreclaimable_bytes": 1174600440,
+      "elapsed_seconds": 6.170069527999658,
+      "owned_worker_memory": {
+        "VmRSS": 396619776,
+        "VmHWM": 396619776
+      }
+    },
+    {
+      "disk_available_bytes": 9306025984,
+      "shared_unreclaimable_bytes": 1268109584,
+      "elapsed_seconds": 8.205801648000488,
+      "owned_worker_memory": {
+        "VmRSS": 435757056,
+        "VmHWM": 435757056
+      }
+    },
+    {
+      "disk_available_bytes": 9302540288,
+      "shared_unreclaimable_bytes": 1487926688,
+      "elapsed_seconds": 10.217894702000194,
+      "owned_worker_memory": {
+        "VmRSS": 446521344,
+        "VmHWM": 446521344
+      }
+    },
+    {
+      "disk_available_bytes": 9293651968,
+      "shared_unreclaimable_bytes": 1288271768,
+      "elapsed_seconds": 12.228477161999763,
+      "owned_worker_memory": {
+        "VmRSS": 456069120,
+        "VmHWM": 456069120
+      }
+    },
+    {
+      "disk_available_bytes": 9290133504,
+      "shared_unreclaimable_bytes": 1391869560,
+      "elapsed_seconds": 14.249826293000297,
+      "owned_worker_memory": {
+        "VmRSS": 457650176,
+        "VmHWM": 457650176
+      }
+    },
+    {
+      "disk_available_bytes": 9287725056,
+      "shared_unreclaimable_bytes": 1368853800,
+      "elapsed_seconds": 16.267401142999006,
+      "owned_worker_memory": {
+        "VmRSS": 444063744,
+        "VmHWM": 471011328
+      }
+    },
+    {
+      "disk_available_bytes": 9287725056,
+      "shared_unreclaimable_bytes": 1122639144
+    }
+  ],
+  "worker_pid": 3,
+  "owned_child_handshake": {
+    "packet": {
+      "kind": "razr_owned_child_identity_v1",
+      "nonce": "ae2dac9e56075bcd90e162e8da4f93e057d48f24e2ebf8addde97fd34034cc32",
+      "source_sha256": "bd89e86b00f84d6b1788ef6237756b8e5ee19ad8fa4fbff38c449fbb2e6d5bb1",
+      "os_getpid": 3,
+      "os_getppid": 2,
+      "proc_self_visible_pid": "58051",
+      "status": {
+        "Pid": 58051,
+        "PPid": 58050,
+        "NSpid": [
+          58051,
+          3
+        ]
+      },
+      "stat": {
+        "pid": 58051,
+        "ppid": 58050,
+        "starttime_ticks": 1596702
+      },
+      "pid_namespace": "pid:[4026532485]",
+      "pid_for_children_namespace": "pid:[4026532485]"
+    },
+    "parent_identity": {
+      "os_getpid": 2,
+      "os_getppid": 1,
+      "proc_self_visible_pid": "58050",
+      "status": {
+        "Pid": 58050,
+        "PPid": 58049,
+        "NSpid": [
+          58050,
+          2
+        ]
+      },
+      "stat": {
+        "pid": 58050,
+        "ppid": 58049,
+        "starttime_ticks": 1596698
+      },
+      "pid_namespace": "pid:[4026532485]",
+      "pid_for_children_namespace": "pid:[4026532485]"
+    },
+    "verified_binding": {
+      "status": {
+        "Pid": 58051,
+        "PPid": 58050,
+        "NSpid": [
+          58051,
+          3
+        ]
+      },
+      "stat": {
+        "pid": 58051,
+        "ppid": 58050,
+        "starttime_ticks": 1596702
+      },
+      "pid_namespace": "pid:[4026532485]",
+      "pid_for_children_namespace": "pid:[4026532485]"
+    },
+    "initial_memory": {
+      "VmRSS": 56246272,
+      "VmHWM": 93790208
+    }
+  },
+  "owned_child_identity_verified": true,
+  "worker_exit_code": 0,
+  "owned_channel_descriptors_closed": true,
+  "resource_stop": null,
+  "elapsed_seconds": 16.46883732400056,
+  "finished_utc": "2026-10-28T00:17:41.477701+00:00",
+  "result_sha256": "2d9e969f45e24666d7a228c2dd6d60185d66f9d2abda0943357df9222283d85b",
+  "worker_report_completed": true
+}

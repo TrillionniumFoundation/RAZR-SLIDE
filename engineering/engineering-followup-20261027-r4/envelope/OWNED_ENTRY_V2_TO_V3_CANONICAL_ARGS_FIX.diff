@@ -1,0 +1,26 @@
+--- run_owned_pure_math_r4e_v2.py
++++ run_owned_pure_math_r4e_v3.py
+@@ -36,9 +36,22 @@
+     owned.announce_worker_from_environment(Path(__file__).resolve())
+     worker = Path(contract['worker']['path'])
+     require(sha(worker) == contract['worker']['sha256'], 'mathematical worker source differs')
+-    report = {'schema': 'razr-r4e-owned-pure-math-entry-v2-bound-arguments', 'worker_started': False,
++    report = {'schema': 'razr-r4e-owned-pure-math-entry-v3-canonical-arguments', 'worker_started': False,
+               'worker_exit_code': None, 'native_geometry_imported': False}
+     actual_args = args.worker_arguments[1:] if args.worker_arguments[:1] == ['--'] else args.worker_arguments
++    registered_options = contract['canonical_worker_options']
++    require(isinstance(registered_options, list) and registered_options and len(registered_options) == len(set(registered_options)), 'unique registered full worker option schema required')
++    require(all(isinstance(value, str) and value.startswith('--') and '=' not in value for value in registered_options), 'registered full long options required')
++    require('--contract' in registered_options and '--output' in registered_options, 'registered contract/output options required')
++    require(len(actual_args) == 2*len(registered_options), 'exact one-value argument pairs required')
++    values = {}
++    for option, value in zip(actual_args[::2], actual_args[1::2]):
++        require(option in registered_options and option not in values, 'abbreviated, unexpected, equals-form, or duplicate worker option rejected')
++        require(not value.startswith('--'), 'explicit option value required')
++        values[option] = value
++    require(set(values) == set(registered_options), 'complete registered worker argument schema required')
++    actual_args = [argument for option in registered_options for argument in (option, values[option])]
++    report['canonical_worker_arguments'] = actual_args
+     bindings = {}
+     for option in ('--contract', '--output'):
+         require(not any(value.startswith(option+'=') for value in actual_args), 'use one explicit separated registered '+option)

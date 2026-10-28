@@ -1,0 +1,62 @@
+{
+  "schema": "razr-r4-public-record-projection-v1",
+  "canonical_scientific_record": {
+    "archive_member": "RAZR-R4-current-native-structure-domain-science-20261028/R4_INDEPENDENT_SOURCE_REVIEW.json",
+    "identity": {
+      "bytes": 1812,
+      "sha256": "ce1bce9b1016d54424d14d85a7900db535885df7dafcca07ab81a60f4ee86b4c"
+    }
+  },
+  "complete_scientific_archive": {
+    "filename": "RAZR-R4-current-native-structure-domain-science-20261028.zip",
+    "bytes": 15931402,
+    "sha256": "a780ae352219fb131ca621f7cfad88865c513790146ade6b466f3470ea9bbaad",
+    "member_count": 1195,
+    "uncompressed_bytes": 82292807,
+    "all_member_SHA256_and_ZIP_CRC_checked": true
+  },
+  "projection_changes": "Absolute workspace paths are represented by archive member or identity-reference names. This projection is not the executed raw contract or raw report. Numeric results, input identities, classifications and unresolved scope are retained.",
+  "record": {
+    "schema": "razr-r4-peer-source-review-v1",
+    "reviewed_utc": "2026-10-28T00:29:58.112367+00:00",
+    "reviewer_role": "independent continuous-envelope agent; read-only source review; no CAD executed for this review",
+    "reviewed_source": {
+      "path": "analyze_contact_domain_r4.py",
+      "identity": {
+        "bytes": 12379,
+        "sha256": "d1c3a0f46157d763da8d51f11115627daeaba544efdc670a9c616850313b9665"
+      }
+    },
+    "reviewed_result": {
+      "path": "domain-analysis/R4_CURRENT_STRUCTURE_DOMAIN_RESULT.json",
+      "identity": {
+        "bytes": 55770,
+        "sha256": "f289308c37197f0fc8cfa42a621226f0b4057b6be17ffb9bd07ef6a400e00584"
+      }
+    },
+    "findings": [
+      {
+        "topic": "uniform subset face margins",
+        "result": "KEY lower qhi/upper qlo and PAWL lower zhi/upper zlo directions correct"
+      },
+      {
+        "topic": "conditional defect robustness",
+        "result": "V_fixed-2*TOL follows union bound on two omitted material sets and rigid-motion measure invariance, conditional on true volume premises"
+      },
+      {
+        "topic": "whole pair source support release",
+        "result": "q only along KEY Y so the source Z separation condition is independent of q"
+      },
+      {
+        "topic": "scalar versus real affine extrema",
+        "result": "zlo/zhi are endpoints of the actual Python binary64 expression; do not relabel them as exact arbitrary-real affine extrema without directed-rounding proof"
+      },
+      {
+        "topic": "declared exact source box versus native box constructor",
+        "result": "Exact source coordinate/corner-to-native p.box semantics remain part of unresolved exact-native correspondence; finite native cut evidence does not alone prove that identity"
+      }
+    ],
+    "necessary_native_reruns_from_review": 0,
+    "exact_native_and_compiled_semantics_remain_open": true
+  }
+}

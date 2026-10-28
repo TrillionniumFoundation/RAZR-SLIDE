@@ -1,0 +1,1200 @@
+{
+  "schema": "razr-r4e-owned-pure-math-supervision-v2-bound-entry",
+  "started_utc": "2026-10-28T00:28:03.759032+00:00",
+  "contract_sha256": "e2153f98a56f9814cf35851828d2b349225e06383a3f37d07fa1f49049806798",
+  "source_sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-I",
+    "-S",
+    "-B",
+    "r4-envelope/run_owned_pure_math_r4e_v3.py",
+    "--supervision-contract",
+    "r4-envelope/R4E_SUPPORT_SUPERVISION_V4_OWNED.json",
+    "--receipt",
+    "r4-envelope/support-v4-supervision/entry-receipt.json",
+    "--",
+    "--original",
+    "recovered-inputs/RAZR-R3E-COMPLETE-SCIENTIFIC-EVIDENCE-20261027",
+    "--contract",
+    "r4-envelope/R4E_SUPPORT_CONTRACT_V4.json",
+    "--output",
+    "r4-envelope/support-v4",
+    "--additional-producer",
+    "r4-envelope/additional-bspline-v1/producer-attempt2/worker/report.json",
+    "--additional-reader",
+    "r4-envelope/additional-bspline-v1/reader/worker/report.json"
+  ],
+  "worker_started": true,
+  "completed": true,
+  "limits": {
+    "wall_seconds": 600,
+    "RSS_limit_bytes": 805306368,
+    "shared_ceiling_bytes": 7301444403,
+    "disk_floor_bytes": 104857600,
+    "expected_output_bytes": 41943040,
+    "algorithm_basis": "Finite exact support directions: three axes and cross-products of all stored plane tangent pairs. Each direction encloses every complete face trim, every 3D edge and every vertex. Full-period circle/cylinder support uses integer-certified dyadic square-root bounds. Each candidate has three independent rational linear coordinates; intersection volume is product of interval widths divided by absolute coordinate determinant. Selected cells are independently checked for corner maps, closed oriented triangles, convexity, Euler identity and directed volume. No Common or native geometry operation. A separate diagnostic inflates each material by its maximum stored tolerance; this is a declared uncertainty model, not a newly proven OCCT semantic contract. Then use the proved compact-section boundary lemma on each of three complete coordinate slab covers, including every cut plane as a closed zero-volume carrier. Intersect all three covers with exact disjoint-cell sums and oriented-box topology, with at most 10,000,000 pair/triple box checks per cover. All curved boundary pieces remain conservatively bounded. Original complete moving material whole-self negative controls are run through the same slab algorithm. Base Common soundness is not assumed. V4 merges only axis-adjacent positive slab boxes with exactly equal transverse intervals, preserving every original fine cut plane. Exact union-run overlap is filtered by ordered interval endpoints; each positive cell has a positive-diagonal affine mapping from one independently checked outward unit cube, preserving valid topology and exact directed volume. Real preflight over all16*3 covers gives at most30,276 checks per cover and295,804 total before interval filtering.",
+    "maximum_output_bytes": 41943040,
+    "metadata_margin_bytes": 4194304,
+    "registered_math_contract_sha256": "f68f3aef5bda02547da9a5374747c7614793ae6bf8c1ced4da41035e5f5c608e",
+    "schema": "razr-r4e-owned-complete-slab-exact-union-supervision-v4",
+    "registered_utc": "2026-10-28T00:28:03.287078+00:00",
+    "original_supervisor_retained": "fef9290fc47d5abca0937a9e42f568ffe5b0d68a80c01cfdc1d11a242e1a21db",
+    "supervisor_sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900",
+    "worker_entry": "r4-envelope/run_owned_pure_math_r4e_v3.py",
+    "worker_entry_sha256": "012da59133c15550b1bb4adac969edeb65f335ddb9c22d5ae4c321318f147823",
+    "owned_process": {
+      "path": "r4-envelope/additional-bspline-v1/source/source-original/owned_process.py",
+      "sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25"
+    },
+    "worker": {
+      "path": "r4-envelope/run_independent_support_r4e_v4.py",
+      "sha256": "47dc40cfe464e78790fd2dd93f7ebaf27505e9adcfac6ff3ae957a1b2ee331db"
+    },
+    "worker_output_directory": "r4-envelope/support-v4",
+    "zero_RSS_missing_observations_allowed": false,
+    "old_v1_supervision_PID_namespace_not_requalified": true,
+    "canonical_worker_options": [
+      "--original",
+      "--contract",
+      "--output",
+      "--additional-producer",
+      "--additional-reader"
+    ]
+  },
+  "observations": [
+    {
+      "disk_available_bytes": 8782131200,
+      "shared_unreclaimable_bytes": 2115554152
+    },
+    {
+      "disk_available_bytes": 8770215936,
+      "shared_unreclaimable_bytes": 2224677344,
+      "elapsed_seconds": 1.0544317319981928,
+      "owned_worker_memory": {
+        "VmRSS": 116822016,
+        "VmHWM": 178790400
+      },
+      "actual_output_bytes": 0
+    },
+    {
+      "disk_available_bytes": 8758693888,
+      "shared_unreclaimable_bytes": 2278190512,
+      "elapsed_seconds": 2.0648245269985637,
+      "owned_worker_memory": {
+        "VmRSS": 118820864,
+        "VmHWM": 178790400
+      },
+      "actual_output_bytes": 99443
+    },
+    {
+      "disk_available_bytes": 8744718336,
+      "shared_unreclaimable_bytes": 2377438528,
+      "elapsed_seconds": 3.073703583999304,
+      "owned_worker_memory": {
+        "VmRSS": 119357440,
+        "VmHWM": 178790400
+      },
+      "actual_output_bytes": 99443
+    },
+    {
+      "disk_available_bytes": 8729989120,
+      "shared_unreclaimable_bytes": 2426539136,
+      "elapsed_seconds": 4.082993282998359,
+      "owned_worker_memory": {
+        "VmRSS": 123506688,
+        "VmHWM": 178790400
+      },
+      "actual_output_bytes": 99553
+    },
+    {
+      "disk_available_bytes": 8718254080,
+      "shared_unreclaimable_bytes": 2439131424,
+      "elapsed_seconds": 5.0972495899986825,
+      "owned_worker_memory": {
+        "VmRSS": 125542400,
+        "VmHWM": 178790400
+      },
+      "actual_output_bytes": 99553
+    },
+    {
+      "disk_available_bytes": 8684523520,
+      "shared_unreclaimable_bytes": 2529507448,
+      "elapsed_seconds": 6.105151489999116,
+      "owned_worker_memory": {
+        "VmRSS": 126959616,
+        "VmHWM": 178790400
+      },
+      "actual_output_bytes": 99553
+    },
+    {
+      "disk_available_bytes": 8671842304,
+      "shared_unreclaimable_bytes": 2495436768,
+      "elapsed_seconds": 7.115784248999262,
+      "owned_worker_memory": {
+        "VmRSS": 130174976,
+        "VmHWM": 178790400
+      },
+      "actual_output_bytes": 99553
+    },
+    {
+      "disk_available_bytes": 8662962176,
+      "shared_unreclaimable_bytes": 2501197232,
+      "elapsed_seconds": 8.126046426998073,
+      "owned_worker_memory": {
+        "VmRSS": 134656000,
+        "VmHWM": 178790400
+      },
+      "actual_output_bytes": 100041
+    },
+    {
+      "disk_available_bytes": 8655233024,
+      "shared_unreclaimable_bytes": 2223528032,
+      "elapsed_seconds": 9.136503702997288,
+      "owned_worker_memory": {
+        "VmRSS": 136617984,
+        "VmHWM": 178790400
+      },
+      "actual_output_bytes": 100041
+    },
+    {
+      "disk_available_bytes": 8634478592,
+      "shared_unreclaimable_bytes": 1529462872,
+      "elapsed_seconds": 10.142160584997328,
+      "owned_worker_memory": {
+        "VmRSS": 138952704,
+        "VmHWM": 178790400
+      },
+      "actual_output_bytes": 100041
+    },
+    {
+      "disk_available_bytes": 8629452800,
+      "shared_unreclaimable_bytes": 1630649024,
+      "elapsed_seconds": 11.158255554997595,
+      "owned_worker_memory": {
+        "VmRSS": 146280448,
+        "VmHWM": 178790400
+      },
+      "actual_output_bytes": 100573
+    },
+    {
+      "disk_available_bytes": 8622215168,
+      "shared_unreclaimable_bytes": 1641347456,
+      "elapsed_seconds": 12.169808485999965,
+      "owned_worker_memory": {
+        "VmRSS": 147689472,
+        "VmHWM": 178790400
+      },
+      "actual_output_bytes": 100573
+    },
+    {
+      "disk_available_bytes": 8612270080,
+      "shared_unreclaimable_bytes": 1671342800,
+      "elapsed_seconds": 13.177486033997411,
+      "owned_worker_memory": {
+        "VmRSS": 158547968,
+        "VmHWM": 178790400
+      },
+      "actual_output_bytes": 100573
+    },
+    {
+      "disk_available_bytes": 8611827712,
+      "shared_unreclaimable_bytes": 1792163616,
+      "elapsed_seconds": 14.189606172996719,
+      "owned_worker_memory": {
+        "VmRSS": 179830784,
+        "VmHWM": 194392064
+      },
+      "actual_output_bytes": 100573
+    },
+    {
+      "disk_available_bytes": 8607666176,
+      "shared_unreclaimable_bytes": 1852281672,
+      "elapsed_seconds": 15.202939089998836,
+      "owned_worker_memory": {
+        "VmRSS": 166240256,
+        "VmHWM": 194392064
+      },
+      "actual_output_bytes": 1222395
+    },
+    {
+      "disk_available_bytes": 8607309824,
+      "shared_unreclaimable_bytes": 1865532008,
+      "elapsed_seconds": 16.210906050997437,
+      "owned_worker_memory": {
+        "VmRSS": 166789120,
+        "VmHWM": 194392064
+      },
+      "actual_output_bytes": 1222395
+    },
+    {
+      "disk_available_bytes": 8603844608,
+      "shared_unreclaimable_bytes": 1910922640,
+      "elapsed_seconds": 17.607927935998305,
+      "owned_worker_memory": {
+        "VmRSS": 170151936,
+        "VmHWM": 194392064
+      },
+      "actual_output_bytes": 1221373
+    },
+    {
+      "disk_available_bytes": 8599474176,
+      "shared_unreclaimable_bytes": 1913561784,
+      "elapsed_seconds": 18.723730136996892,
+      "owned_worker_memory": {
+        "VmRSS": 170176512,
+        "VmHWM": 194392064
+      },
+      "actual_output_bytes": 1221373
+    },
+    {
+      "disk_available_bytes": 8591855616,
+      "shared_unreclaimable_bytes": 1661067888,
+      "elapsed_seconds": 19.777388277998398,
+      "owned_worker_memory": {
+        "VmRSS": 172097536,
+        "VmHWM": 194392064
+      },
+      "actual_output_bytes": 1221373
+    },
+    {
+      "disk_available_bytes": 8588894208,
+      "shared_unreclaimable_bytes": 1692369432,
+      "elapsed_seconds": 20.783974665999267,
+      "owned_worker_memory": {
+        "VmRSS": 175009792,
+        "VmHWM": 194392064
+      },
+      "actual_output_bytes": 1221373
+    },
+    {
+      "disk_available_bytes": 8585363456,
+      "shared_unreclaimable_bytes": 1724945248,
+      "elapsed_seconds": 21.795848724999814,
+      "owned_worker_memory": {
+        "VmRSS": 178397184,
+        "VmHWM": 194392064
+      },
+      "actual_output_bytes": 1221862
+    },
+    {
+      "disk_available_bytes": 8582549504,
+      "shared_unreclaimable_bytes": 1687159576,
+      "elapsed_seconds": 22.80589873200006,
+      "owned_worker_memory": {
+        "VmRSS": 180465664,
+        "VmHWM": 194392064
+      },
+      "actual_output_bytes": 1221862
+    },
+    {
+      "disk_available_bytes": 8581877760,
+      "shared_unreclaimable_bytes": 1726959616,
+      "elapsed_seconds": 23.8217424329996,
+      "owned_worker_memory": {
+        "VmRSS": 181755904,
+        "VmHWM": 194392064
+      },
+      "actual_output_bytes": 1221862
+    },
+    {
+      "disk_available_bytes": 8578560000,
+      "shared_unreclaimable_bytes": 1710833944,
+      "elapsed_seconds": 24.83076609499767,
+      "owned_worker_memory": {
+        "VmRSS": 185090048,
+        "VmHWM": 194392064
+      },
+      "actual_output_bytes": 1222395
+    },
+    {
+      "disk_available_bytes": 8577376256,
+      "shared_unreclaimable_bytes": 1770665392,
+      "elapsed_seconds": 25.914520714999526,
+      "owned_worker_memory": {
+        "VmRSS": 187535360,
+        "VmHWM": 194392064
+      },
+      "actual_output_bytes": 1222395
+    },
+    {
+      "disk_available_bytes": 8577019904,
+      "shared_unreclaimable_bytes": 1812038912,
+      "elapsed_seconds": 26.921878867997293,
+      "owned_worker_memory": {
+        "VmRSS": 199282688,
+        "VmHWM": 199282688
+      },
+      "actual_output_bytes": 1222395
+    },
+    {
+      "disk_available_bytes": 8724910080,
+      "shared_unreclaimable_bytes": 1767097472,
+      "elapsed_seconds": 27.92806297399875,
+      "owned_worker_memory": {
+        "VmRSS": 224387072,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 1222395
+    },
+    {
+      "disk_available_bytes": 8721063936,
+      "shared_unreclaimable_bytes": 1771552040,
+      "elapsed_seconds": 28.93611936399975,
+      "owned_worker_memory": {
+        "VmRSS": 205922304,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 3177937
+    },
+    {
+      "disk_available_bytes": 8720539648,
+      "shared_unreclaimable_bytes": 1770039536,
+      "elapsed_seconds": 29.945204674997512,
+      "owned_worker_memory": {
+        "VmRSS": 205946880,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 3177937
+    },
+    {
+      "disk_available_bytes": 8714858496,
+      "shared_unreclaimable_bytes": 1729118864,
+      "elapsed_seconds": 30.956552150997595,
+      "owned_worker_memory": {
+        "VmRSS": 205967360,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 3176915
+    },
+    {
+      "disk_available_bytes": 8714743808,
+      "shared_unreclaimable_bytes": 1848528392,
+      "elapsed_seconds": 32.00911969299705,
+      "owned_worker_memory": {
+        "VmRSS": 205983744,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 3176915
+    },
+    {
+      "disk_available_bytes": 8712790016,
+      "shared_unreclaimable_bytes": 1890693960,
+      "elapsed_seconds": 33.018757094996545,
+      "owned_worker_memory": {
+        "VmRSS": 205991936,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 3176915
+    },
+    {
+      "disk_available_bytes": 8711577600,
+      "shared_unreclaimable_bytes": 1895137176,
+      "elapsed_seconds": 34.028806079997594,
+      "owned_worker_memory": {
+        "VmRSS": 205991936,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 3176915
+    },
+    {
+      "disk_available_bytes": 8712642560,
+      "shared_unreclaimable_bytes": 1897823544,
+      "elapsed_seconds": 35.06443413199668,
+      "owned_worker_memory": {
+        "VmRSS": 206000128,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 3177426
+    },
+    {
+      "disk_available_bytes": 8712257536,
+      "shared_unreclaimable_bytes": 1902947408,
+      "elapsed_seconds": 36.22184770599779,
+      "owned_worker_memory": {
+        "VmRSS": 206000128,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 3177426
+    },
+    {
+      "disk_available_bytes": 8712253440,
+      "shared_unreclaimable_bytes": 1907399216,
+      "elapsed_seconds": 38.71063937799772,
+      "owned_worker_memory": {
+        "VmRSS": 206000128,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 3177426
+    },
+    {
+      "disk_available_bytes": 8711258112,
+      "shared_unreclaimable_bytes": 1909728624,
+      "elapsed_seconds": 39.90447493999818,
+      "owned_worker_memory": {
+        "VmRSS": 206000128,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 3177426
+    },
+    {
+      "disk_available_bytes": 8708448256,
+      "shared_unreclaimable_bytes": 1856704840,
+      "elapsed_seconds": 42.528566406999744,
+      "owned_worker_memory": {
+        "VmRSS": 206000128,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 3177426
+    },
+    {
+      "disk_available_bytes": 8706711552,
+      "shared_unreclaimable_bytes": 1788165376,
+      "elapsed_seconds": 43.561843299998145,
+      "owned_worker_memory": {
+        "VmRSS": 206000128,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 3177426
+    },
+    {
+      "disk_available_bytes": 8653750272,
+      "shared_unreclaimable_bytes": 1787425752,
+      "elapsed_seconds": 44.575621216998115,
+      "owned_worker_memory": {
+        "VmRSS": 206000128,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 3177426
+    },
+    {
+      "disk_available_bytes": 8550137856,
+      "shared_unreclaimable_bytes": 1807758440,
+      "elapsed_seconds": 45.60366107699883,
+      "owned_worker_memory": {
+        "VmRSS": 206000128,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 3177981
+    },
+    {
+      "disk_available_bytes": 8389189632,
+      "shared_unreclaimable_bytes": 1772193008,
+      "elapsed_seconds": 46.615385034998326,
+      "owned_worker_memory": {
+        "VmRSS": 206000128,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 3177981
+    },
+    {
+      "disk_available_bytes": 8389009408,
+      "shared_unreclaimable_bytes": 1762174256,
+      "elapsed_seconds": 47.63236554499963,
+      "owned_worker_memory": {
+        "VmRSS": 214261760,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 3177981
+    },
+    {
+      "disk_available_bytes": 8388046848,
+      "shared_unreclaimable_bytes": 1777717256,
+      "elapsed_seconds": 48.64667964899854,
+      "owned_worker_memory": {
+        "VmRSS": 222658560,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4140628
+    },
+    {
+      "disk_available_bytes": 8388046848,
+      "shared_unreclaimable_bytes": 1792046016,
+      "elapsed_seconds": 49.67851662599787,
+      "owned_worker_memory": {
+        "VmRSS": 222699520,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4140628
+    },
+    {
+      "disk_available_bytes": 8388046848,
+      "shared_unreclaimable_bytes": 1802941376,
+      "elapsed_seconds": 50.69630093499654,
+      "owned_worker_memory": {
+        "VmRSS": 222699520,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4140628
+    },
+    {
+      "disk_available_bytes": 8388046848,
+      "shared_unreclaimable_bytes": 1814430656,
+      "elapsed_seconds": 51.71123709999665,
+      "owned_worker_memory": {
+        "VmRSS": 222699520,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4140628
+    },
+    {
+      "disk_available_bytes": 8388026368,
+      "shared_unreclaimable_bytes": 1741642304,
+      "elapsed_seconds": 52.72660665799776,
+      "owned_worker_memory": {
+        "VmRSS": 222728192,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4140628
+    },
+    {
+      "disk_available_bytes": 8387735552,
+      "shared_unreclaimable_bytes": 1786458624,
+      "elapsed_seconds": 53.87809543599724,
+      "owned_worker_memory": {
+        "VmRSS": 222732288,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4139561
+    },
+    {
+      "disk_available_bytes": 8385064960,
+      "shared_unreclaimable_bytes": 1710058992,
+      "elapsed_seconds": 54.90856360499674,
+      "owned_worker_memory": {
+        "VmRSS": 222748672,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4139561
+    },
+    {
+      "disk_available_bytes": 8378228736,
+      "shared_unreclaimable_bytes": 1703869128,
+      "elapsed_seconds": 55.92324608599665,
+      "owned_worker_memory": {
+        "VmRSS": 222752768,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4139561
+    },
+    {
+      "disk_available_bytes": 8376881152,
+      "shared_unreclaimable_bytes": 1744417808,
+      "elapsed_seconds": 56.93453868399956,
+      "owned_worker_memory": {
+        "VmRSS": 222752768,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4139561
+    },
+    {
+      "disk_available_bytes": 8374882304,
+      "shared_unreclaimable_bytes": 1713890752,
+      "elapsed_seconds": 57.94837076899785,
+      "owned_worker_memory": {
+        "VmRSS": 222760960,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4139561
+    },
+    {
+      "disk_available_bytes": 8369070080,
+      "shared_unreclaimable_bytes": 1813671512,
+      "elapsed_seconds": 58.97434879699722,
+      "owned_worker_memory": {
+        "VmRSS": 222760960,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4139561
+    },
+    {
+      "disk_available_bytes": 8363986944,
+      "shared_unreclaimable_bytes": 1845088728,
+      "elapsed_seconds": 60.03853985499882,
+      "owned_worker_memory": {
+        "VmRSS": 222769152,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4140073
+    },
+    {
+      "disk_available_bytes": 8358162432,
+      "shared_unreclaimable_bytes": 1961211152,
+      "elapsed_seconds": 61.075474201999896,
+      "owned_worker_memory": {
+        "VmRSS": 222769152,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4140073
+    },
+    {
+      "disk_available_bytes": 8355434496,
+      "shared_unreclaimable_bytes": 1984205952,
+      "elapsed_seconds": 62.127761779996945,
+      "owned_worker_memory": {
+        "VmRSS": 222769152,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4140073
+    },
+    {
+      "disk_available_bytes": 8406831104,
+      "shared_unreclaimable_bytes": 2160919568,
+      "elapsed_seconds": 63.14852730699931,
+      "owned_worker_memory": {
+        "VmRSS": 222769152,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4140073
+    },
+    {
+      "disk_available_bytes": 8583970816,
+      "shared_unreclaimable_bytes": 2307410152,
+      "elapsed_seconds": 64.1589102149992,
+      "owned_worker_memory": {
+        "VmRSS": 222769152,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4140073
+    },
+    {
+      "disk_available_bytes": 8573374464,
+      "shared_unreclaimable_bytes": 2289554264,
+      "elapsed_seconds": 65.1692757819983,
+      "owned_worker_memory": {
+        "VmRSS": 223703040,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4140627
+    },
+    {
+      "disk_available_bytes": 8561369088,
+      "shared_unreclaimable_bytes": 2330653968,
+      "elapsed_seconds": 66.17586467699948,
+      "owned_worker_memory": {
+        "VmRSS": 223719424,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4140627
+    },
+    {
+      "disk_available_bytes": 8544628736,
+      "shared_unreclaimable_bytes": 2335107240,
+      "elapsed_seconds": 67.31226503399739,
+      "owned_worker_memory": {
+        "VmRSS": 234106880,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4140627
+    },
+    {
+      "disk_available_bytes": 8535834624,
+      "shared_unreclaimable_bytes": 2421698904,
+      "elapsed_seconds": 68.32519223700001,
+      "owned_worker_memory": {
+        "VmRSS": 233406464,
+        "VmHWM": 242864128
+      },
+      "actual_output_bytes": 4140627
+    },
+    {
+      "disk_available_bytes": 8519172096,
+      "shared_unreclaimable_bytes": 2457307320,
+      "elapsed_seconds": 69.33422299799713,
+      "owned_worker_memory": {
+        "VmRSS": 233406464,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 6604802
+    },
+    {
+      "disk_available_bytes": 8505819136,
+      "shared_unreclaimable_bytes": 2439199824,
+      "elapsed_seconds": 70.33945507199678,
+      "owned_worker_memory": {
+        "VmRSS": 233476096,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 6603735
+    },
+    {
+      "disk_available_bytes": 8493379584,
+      "shared_unreclaimable_bytes": 2483576368,
+      "elapsed_seconds": 71.38316371399924,
+      "owned_worker_memory": {
+        "VmRSS": 233504768,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 6604386
+    },
+    {
+      "disk_available_bytes": 8484491264,
+      "shared_unreclaimable_bytes": 2384358984,
+      "elapsed_seconds": 72.42116341299698,
+      "owned_worker_memory": {
+        "VmRSS": 234024960,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 6605036
+    },
+    {
+      "disk_available_bytes": 8477020160,
+      "shared_unreclaimable_bytes": 2447713896,
+      "elapsed_seconds": 73.43621639199773,
+      "owned_worker_memory": {
+        "VmRSS": 234041344,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 6605036
+    },
+    {
+      "disk_available_bytes": 8468656128,
+      "shared_unreclaimable_bytes": 2492740216,
+      "elapsed_seconds": 74.56664787399859,
+      "owned_worker_memory": {
+        "VmRSS": 230330368,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 6605036
+    },
+    {
+      "disk_available_bytes": 8455229440,
+      "shared_unreclaimable_bytes": 2510761624,
+      "elapsed_seconds": 75.70219806299792,
+      "owned_worker_memory": {
+        "VmRSS": 233172992,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 8308890
+    },
+    {
+      "disk_available_bytes": 8446545920,
+      "shared_unreclaimable_bytes": 2380061720,
+      "elapsed_seconds": 76.71610586299721,
+      "owned_worker_memory": {
+        "VmRSS": 233172992,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 8307590
+    },
+    {
+      "disk_available_bytes": 8435326976,
+      "shared_unreclaimable_bytes": 1896055704,
+      "elapsed_seconds": 77.72778930599816,
+      "owned_worker_memory": {
+        "VmRSS": 233172992,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 8308240
+    },
+    {
+      "disk_available_bytes": 8411828224,
+      "shared_unreclaimable_bytes": 1630613632,
+      "elapsed_seconds": 78.73438117899786,
+      "owned_worker_memory": {
+        "VmRSS": 233172992,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 8308890
+    },
+    {
+      "disk_available_bytes": 8392556544,
+      "shared_unreclaimable_bytes": 1703057120,
+      "elapsed_seconds": 79.74041669099825,
+      "owned_worker_memory": {
+        "VmRSS": 233172992,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 9371996
+    },
+    {
+      "disk_available_bytes": 8376193024,
+      "shared_unreclaimable_bytes": 1758858208,
+      "elapsed_seconds": 80.74905832599688,
+      "owned_worker_memory": {
+        "VmRSS": 233172992,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 9371332
+    },
+    {
+      "disk_available_bytes": 8362291200,
+      "shared_unreclaimable_bytes": 1755579896,
+      "elapsed_seconds": 81.76364681699852,
+      "owned_worker_memory": {
+        "VmRSS": 233172992,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 9371968
+    },
+    {
+      "disk_available_bytes": 8353419264,
+      "shared_unreclaimable_bytes": 1690054408,
+      "elapsed_seconds": 82.77102653199836,
+      "owned_worker_memory": {
+        "VmRSS": 233172992,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 9371968
+    },
+    {
+      "disk_available_bytes": 8348024832,
+      "shared_unreclaimable_bytes": 1739699528,
+      "elapsed_seconds": 83.8020444199974,
+      "owned_worker_memory": {
+        "VmRSS": 233172992,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 9371968
+    },
+    {
+      "disk_available_bytes": 8338673664,
+      "shared_unreclaimable_bytes": 1735928304,
+      "elapsed_seconds": 84.81593725599669,
+      "owned_worker_memory": {
+        "VmRSS": 233172992,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 11062882
+    },
+    {
+      "disk_available_bytes": 8331546624,
+      "shared_unreclaimable_bytes": 1791550416,
+      "elapsed_seconds": 85.83261459200003,
+      "owned_worker_memory": {
+        "VmRSS": 233172992,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 11061610
+    },
+    {
+      "disk_available_bytes": 8320241664,
+      "shared_unreclaimable_bytes": 1757601496,
+      "elapsed_seconds": 86.83901814699857,
+      "owned_worker_memory": {
+        "VmRSS": 233172992,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 11062246
+    },
+    {
+      "disk_available_bytes": 8309649408,
+      "shared_unreclaimable_bytes": 1794034224,
+      "elapsed_seconds": 87.8449696289972,
+      "owned_worker_memory": {
+        "VmRSS": 233172992,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 11947233
+    },
+    {
+      "disk_available_bytes": 8296955904,
+      "shared_unreclaimable_bytes": 1650617768,
+      "elapsed_seconds": 88.85132610899745,
+      "owned_worker_memory": {
+        "VmRSS": 228012032,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 12439875
+    },
+    {
+      "disk_available_bytes": 8287412224,
+      "shared_unreclaimable_bytes": 1676524552,
+      "elapsed_seconds": 89.8592211239993,
+      "owned_worker_memory": {
+        "VmRSS": 228012032,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 12439427
+    },
+    {
+      "disk_available_bytes": 8259121152,
+      "shared_unreclaimable_bytes": 1661996688,
+      "elapsed_seconds": 90.87196358599977,
+      "owned_worker_memory": {
+        "VmRSS": 228012032,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 12440096
+    },
+    {
+      "disk_available_bytes": 8252604416,
+      "shared_unreclaimable_bytes": 1759865720,
+      "elapsed_seconds": 91.897130516998,
+      "owned_worker_memory": {
+        "VmRSS": 228012032,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 12440763
+    },
+    {
+      "disk_available_bytes": 8247316480,
+      "shared_unreclaimable_bytes": 1928703600,
+      "elapsed_seconds": 92.90686153599745,
+      "owned_worker_memory": {
+        "VmRSS": 228012032,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 12440763
+    },
+    {
+      "disk_available_bytes": 8239771648,
+      "shared_unreclaimable_bytes": 2473441736,
+      "elapsed_seconds": 93.91554175899728,
+      "owned_worker_memory": {
+        "VmRSS": 238723072,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 12440763
+    },
+    {
+      "disk_available_bytes": 8226033664,
+      "shared_unreclaimable_bytes": 2310223648,
+      "elapsed_seconds": 94.92381011699763,
+      "owned_worker_memory": {
+        "VmRSS": 238723072,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 14872585
+    },
+    {
+      "disk_available_bytes": 8222240768,
+      "shared_unreclaimable_bytes": 2122740288,
+      "elapsed_seconds": 95.93820043699816,
+      "owned_worker_memory": {
+        "VmRSS": 238723072,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 14872585
+    },
+    {
+      "disk_available_bytes": 8216870912,
+      "shared_unreclaimable_bytes": 1719184728,
+      "elapsed_seconds": 96.9970068879993,
+      "owned_worker_memory": {
+        "VmRSS": 238723072,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 14872585
+    },
+    {
+      "disk_available_bytes": 8212561920,
+      "shared_unreclaimable_bytes": 1703860240,
+      "elapsed_seconds": 98.01807455099697,
+      "owned_worker_memory": {
+        "VmRSS": 238723072,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 14872585
+    },
+    {
+      "disk_available_bytes": 8207261696,
+      "shared_unreclaimable_bytes": 1687135184,
+      "elapsed_seconds": 99.03165164799793,
+      "owned_worker_memory": {
+        "VmRSS": 238723072,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 14873253
+    },
+    {
+      "disk_available_bytes": 8204185600,
+      "shared_unreclaimable_bytes": 1734745976,
+      "elapsed_seconds": 100.0435819489976,
+      "owned_worker_memory": {
+        "VmRSS": 238723072,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 14873921
+    },
+    {
+      "disk_available_bytes": 8200650752,
+      "shared_unreclaimable_bytes": 1752950536,
+      "elapsed_seconds": 101.0509858109981,
+      "owned_worker_memory": {
+        "VmRSS": 238723072,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 14873921
+    },
+    {
+      "disk_available_bytes": 8192139264,
+      "shared_unreclaimable_bytes": 1799564488,
+      "elapsed_seconds": 102.05659755799934,
+      "owned_worker_memory": {
+        "VmRSS": 238723072,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 16101523
+    },
+    {
+      "disk_available_bytes": 8182820864,
+      "shared_unreclaimable_bytes": 1791154440,
+      "elapsed_seconds": 103.0678810679965,
+      "owned_worker_memory": {
+        "VmRSS": 238723072,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 16100187
+    },
+    {
+      "disk_available_bytes": 8172253184,
+      "shared_unreclaimable_bytes": 1657112400,
+      "elapsed_seconds": 104.08365445199888,
+      "owned_worker_memory": {
+        "VmRSS": 238723072,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 16100861
+    },
+    {
+      "disk_available_bytes": 8161775616,
+      "shared_unreclaimable_bytes": 1621987280,
+      "elapsed_seconds": 105.09676968599888,
+      "owned_worker_memory": {
+        "VmRSS": 238723072,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 16101535
+    },
+    {
+      "disk_available_bytes": 8155738112,
+      "shared_unreclaimable_bytes": 1641645304,
+      "elapsed_seconds": 106.10781934699844,
+      "owned_worker_memory": {
+        "VmRSS": 238723072,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 16101535
+    },
+    {
+      "disk_available_bytes": 8134410240,
+      "shared_unreclaimable_bytes": 1645075672,
+      "elapsed_seconds": 107.11822054299773,
+      "owned_worker_memory": {
+        "VmRSS": 238862336,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 16101535
+    },
+    {
+      "disk_available_bytes": 8121225216,
+      "shared_unreclaimable_bytes": 1747639952,
+      "elapsed_seconds": 108.12864901199646,
+      "owned_worker_memory": {
+        "VmRSS": 238862336,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 18545500
+    },
+    {
+      "disk_available_bytes": 8259063808,
+      "shared_unreclaimable_bytes": 1737940536,
+      "elapsed_seconds": 109.13629725200008,
+      "owned_worker_memory": {
+        "VmRSS": 238862336,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 18544826
+    },
+    {
+      "disk_available_bytes": 8220217344,
+      "shared_unreclaimable_bytes": 1676292584,
+      "elapsed_seconds": 110.14402717799749,
+      "owned_worker_memory": {
+        "VmRSS": 238862336,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 18545499
+    },
+    {
+      "disk_available_bytes": 8217063424,
+      "shared_unreclaimable_bytes": 1726985776,
+      "elapsed_seconds": 111.15208907399938,
+      "owned_worker_memory": {
+        "VmRSS": 238862336,
+        "VmHWM": 255623168
+      },
+      "actual_output_bytes": 20757829
+    }
+  ],
+  "resource_stop": null,
+  "worker_exit_code": 0,
+  "missing_RSS_zero_substitutions": 0,
+  "owned_child_handshake": {
+    "packet": {
+      "kind": "razr_owned_child_identity_v1",
+      "nonce": "54b7d373f1a0e21fc34dbf0684bdcaf6cfb62f65ce9d4222e0f3665563415e07",
+      "source_sha256": "012da59133c15550b1bb4adac969edeb65f335ddb9c22d5ae4c321318f147823",
+      "os_getpid": 3,
+      "os_getppid": 2,
+      "proc_self_visible_pid": "79095",
+      "status": {
+        "Pid": 79095,
+        "PPid": 79094,
+        "NSpid": [
+          79095,
+          3
+        ]
+      },
+      "stat": {
+        "pid": 79095,
+        "ppid": 79094,
+        "starttime_ticks": 1660577
+      },
+      "pid_namespace": "pid:[4026532557]",
+      "pid_for_children_namespace": "pid:[4026532557]"
+    },
+    "parent_identity": {
+      "os_getpid": 2,
+      "os_getppid": 1,
+      "proc_self_visible_pid": "79094",
+      "status": {
+        "Pid": 79094,
+        "PPid": 79093,
+        "NSpid": [
+          79094,
+          2
+        ]
+      },
+      "stat": {
+        "pid": 79094,
+        "ppid": 79093,
+        "starttime_ticks": 1660572
+      },
+      "pid_namespace": "pid:[4026532557]",
+      "pid_for_children_namespace": "pid:[4026532557]"
+    },
+    "verified_binding": {
+      "status": {
+        "Pid": 79095,
+        "PPid": 79094,
+        "NSpid": [
+          79095,
+          3
+        ]
+      },
+      "stat": {
+        "pid": 79095,
+        "ppid": 79094,
+        "starttime_ticks": 1660577
+      },
+      "pid_namespace": "pid:[4026532557]",
+      "pid_for_children_namespace": "pid:[4026532557]"
+    },
+    "initial_memory": {
+      "VmRSS": 12476416,
+      "VmHWM": 12476416
+    }
+  },
+  "owned_child_identity_verified": true,
+  "owned_channel_descriptors_closed": true,
+  "entry_completed": true,
+  "source_and_contract_unchanged": true,
+  "elapsed_seconds": 111.35686285399788,
+  "finished_utc": "2026-10-28T00:29:55.115823+00:00",
+  "final_resources": {
+    "disk_available_bytes": 8217059328,
+    "shared_unreclaimable_bytes": 1502934544
+  }
+}

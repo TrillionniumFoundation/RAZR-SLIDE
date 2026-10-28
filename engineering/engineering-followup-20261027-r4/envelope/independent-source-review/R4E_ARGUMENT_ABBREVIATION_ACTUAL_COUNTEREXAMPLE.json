@@ -1,0 +1,63 @@
+{
+  "schema": "razr-r4e-independent-argument-abbreviation-counterexample-v1",
+  "method": "Executed only the exact argparse-construction AST prefix from actual mathematical-worker main; no worker payload, files, imports or geometry code executed.",
+  "worker_source": {
+    "path": "r4-envelope/run_independent_support_r4e_v3.py",
+    "bytes": 36326,
+    "sha256": "bb17521697027feb9aa209e9791213aa31e7864b907b31013a49ee0bfdd10668"
+  },
+  "entry_reviewed": {
+    "path": "r4-envelope/run_owned_pure_math_r4e_v2.py",
+    "sha256": "a0fdac59c213e3e5bc5f9cfe77314a6f7cd658999a397527fe90a9ed5fb343f1"
+  },
+  "actual_parser_allow_abbrev": true,
+  "counterexamples": [
+    {
+      "full_registered_option": "--output",
+      "appended_abbreviation": "--out",
+      "entry_count_of_full_option": 1,
+      "entry_would_check": "/registered/output",
+      "actual_worker_parser_effective_value": "/unregistered/output",
+      "mismatch_observed": true,
+      "argv": [
+        "--original",
+        "/registered/original",
+        "--contract",
+        "/registered/math.json",
+        "--output",
+        "/registered/output",
+        "--additional-producer",
+        "/registered/producer.json",
+        "--additional-reader",
+        "/registered/reader.json",
+        "--out",
+        "/unregistered/output"
+      ]
+    },
+    {
+      "full_registered_option": "--contract",
+      "appended_abbreviation": "--contr",
+      "entry_count_of_full_option": 1,
+      "entry_would_check": "/registered/math.json",
+      "actual_worker_parser_effective_value": "/unregistered/math.json",
+      "mismatch_observed": true,
+      "argv": [
+        "--original",
+        "/registered/original",
+        "--contract",
+        "/registered/math.json",
+        "--output",
+        "/registered/output",
+        "--additional-producer",
+        "/registered/producer.json",
+        "--additional-reader",
+        "/registered/reader.json",
+        "--contr",
+        "/unregistered/math.json"
+      ]
+    }
+  ],
+  "expensive_mathematical_runs": 0,
+  "original_sources_modified": false,
+  "counterexample_confirmed": true
+}

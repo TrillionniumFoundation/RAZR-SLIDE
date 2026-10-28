@@ -1,0 +1,163 @@
+{
+  "schema": "razr-r4e-independent-supervisor-and-slab-review-v1",
+  "recorded_utc": "2026-10-28T00:31:31.709270+00:00",
+  "reviewer": "/root/r4_real_sources",
+  "independent_of_reviewed_author": true,
+  "review_completed": true,
+  "reviewed_sources": [
+    {
+      "path": "r4-envelope/supervise_owned_pure_math_r4e.py",
+      "bytes": 8092,
+      "sha256": "83d205b5c68808af5ac219485543a4105624abc2df2823645fd16ba212936bcd"
+    },
+    {
+      "path": "r4-envelope/run_owned_pure_math_r4e.py",
+      "bytes": 3147,
+      "sha256": "faaf165c9660485ff2cfb9bae931b3a68b583ed94f7eba55c56594a104ae5c3f"
+    },
+    {
+      "path": "r4-envelope/supervise_owned_pure_math_r4e_v2.py",
+      "bytes": 8104,
+      "sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900"
+    },
+    {
+      "path": "r4-envelope/run_owned_pure_math_r4e_v2.py",
+      "bytes": 4201,
+      "sha256": "a0fdac59c213e3e5bc5f9cfe77314a6f7cd658999a397527fe90a9ed5fb343f1"
+    },
+    {
+      "path": "r4-envelope/run_owned_pure_math_r4e_v3.py",
+      "bytes": 5457,
+      "sha256": "012da59133c15550b1bb4adac969edeb65f335ddb9c22d5ae4c321318f147823"
+    },
+    {
+      "path": "r4-envelope/slab_enclosure_r4e_v3.py",
+      "bytes": 12181,
+      "sha256": "63680ab89b4e47234870e73e3b64cea449250d4ef19a73a4268811ca5d8529c9"
+    },
+    {
+      "path": "r4-envelope/run_independent_support_r4e_v2.py",
+      "bytes": 32714,
+      "sha256": "b3ed6859a2a29a30d27823be7fced7add78a5a72eb671e9c0d4732fb0e75724d"
+    },
+    {
+      "path": "r4-envelope/run_independent_support_r4e_v3.py",
+      "bytes": 36326,
+      "sha256": "bb17521697027feb9aa209e9791213aa31e7864b907b31013a49ee0bfdd10668"
+    },
+    {
+      "path": "r4-envelope/R4E_BOUNDARY_SLAB_PROOF_AND_SCOPE.md",
+      "bytes": 7727,
+      "sha256": "b55a4f8a2f77e6c8a4d5387ba2fd32916d1e0eb56530edcd03ceea6669565fe9"
+    },
+    {
+      "path": "r4-envelope/R4E_DIAGNOSTIC_SCOPE_CORRECTION.md",
+      "bytes": 1807,
+      "sha256": "80b280fd2ea3d90202dda5a26e6b971b0095885f04c112f7df9336cb57c3b7e0"
+    },
+    {
+      "path": "r4-envelope/R4E_SUPPORT_CONTRACT_V2.json",
+      "bytes": 4421,
+      "sha256": "35aed42b8947eda5e86a8b5213b178e0936320181743ed59f10d30291bc790e7"
+    },
+    {
+      "path": "r4-envelope/R4E_SUPPORT_CONTRACT_V3.json",
+      "bytes": 5948,
+      "sha256": "37d04724645e35e7a31afe980cbbba61f6760abcd12aae9ebd1befca33839acc"
+    },
+    {
+      "path": "r4-envelope/R4E_SUPPORT_SUPERVISION_V2_OWNED.json",
+      "bytes": 2240,
+      "sha256": "495544142dbbad371e4e23f484d2ac7d00cbd3d9f8a44d44a054eb63b8ebf73c"
+    },
+    {
+      "path": "r4-envelope/R4E_SUPPORT_SUPERVISION_V3_OWNED.json",
+      "bytes": 2742,
+      "sha256": "5dd70b9f9c4a439342224c0e55ab66b3bccee30abd60a0fb35acb96644c0ffff"
+    },
+    {
+      "path": "r4-envelope/additional-bspline-v1/source/source-original/owned_process.py",
+      "bytes": 13400,
+      "sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25"
+    }
+  ],
+  "actual_review_execution_artifacts": [
+    {
+      "path": "entry-binding-controls/R4E_ENTRY_BINDING_NEGATIVE_CONTROLS.json",
+      "bytes": 6746,
+      "sha256": "9ce154eba0a8ae5abfae5fed41de0a1e2d01b4e820cb068a4b4edc3e67e1f0ed"
+    },
+    {
+      "path": "canonical-entry-controls/R4E_CANONICAL_ENTRY_NEGATIVE_CONTROLS.json",
+      "bytes": 5817,
+      "sha256": "2fca53887acb42b86e2e90181e81645fa6458b6cc4dbc8115e8a23c3854d131e"
+    },
+    {
+      "path": "R4E_EXISTING_SUPPORT_CERTIFICATES_INDEPENDENT_READBACK.json",
+      "bytes": 43354,
+      "sha256": "0599eedcc19bf4759779d878200915557ff1f9798cfa43880353f1da3a8f6349"
+    },
+    {
+      "path": "R4E_ARGUMENT_ABBREVIATION_ACTUAL_COUNTEREXAMPLE.json",
+      "bytes": 2167,
+      "sha256": "e4ca1084ce68b268c4b045a14b48d1a70ab4b09c8f77b68a111e5a509a0acaf2"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "finding": "Original actual contract/output not bound to supervision contract",
+      "status": "fixed_in_new_entry_v2_and_retained_in_canonical_v3",
+      "old_actual_V2_V3_command_bindings_match": true,
+      "actual_targeted_negative_controls": 2
+    },
+    {
+      "id": "F2",
+      "finding": "V2 entry complete-option checks bypassable by actual worker argparse abbreviations",
+      "status": "fixed_in_new_canonical_v3",
+      "actual_parser_only_counterexamples": 2,
+      "actual_targeted_negative_controls": 2,
+      "expensive_math_reruns": 0
+    },
+    {
+      "id": "F3",
+      "finding": "L2 coarse support versus coordinate-cube slab uncertainty wording",
+      "status": "clarified_by_new_scope_correction_as_common_L2_model",
+      "old_numbers_or_failures_changed": false,
+      "L_infinity_model_qualified": false
+    }
+  ],
+  "mathematical_source_review": {
+    "compact_section_lemma_valid_under_stated_premises": true,
+    "concavity_holes_and_disconnected_components_do_not_break_lemma": true,
+    "entire_remaining_displacement_preserved": true,
+    "zero_volume_carriers_must_be_reconstructed_from_all_cuts_and_global_domain": true,
+    "independent_XYZ_cover_intersection_is_conservative": true,
+    "positive_cells_have_disjoint_interiors_by_partition_index": true,
+    "complete_curve_parameter_support_not_finite_sampling": true,
+    "native_boundary_semantics_remains_unproved": true,
+    "compiled_error_bound_remains_unproved": true
+  },
+  "PID_and_RSS_review": {
+    "original_Popen_identity_required_for_exit_exception": true,
+    "still_running_unobservable_child_fails": true,
+    "zero_RSS_substitutions": false,
+    "actual_entry_peak_RSS_required_for_success": true,
+    "new_deliberate_RSS_fault_tests": 0,
+    "all_scheduling_interleavings_formally_verified": false
+  },
+  "actual_result_scope": {
+    "V2_frames_independently_read": 16,
+    "V2_raw_conditional_passes": 4,
+    "V2_raw_conditional_failures": 12,
+    "V2_declared_diagnostic_passes": 0,
+    "V3_snapshot_was_incomplete": true,
+    "V4_source_or_results_reviewed_by_this_audit": false
+  },
+  "new_math_producer_runs": 0,
+  "new_native_geometry_runs": 0,
+  "historical_execution_requalified": false,
+  "full_continuous_G2": false,
+  "physical_qualification": false,
+  "all_blockers_closed": false
+}
