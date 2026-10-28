@@ -1,4 +1,4 @@
-name: R5 trim-realization-conditioned certificates
+name: R5 planar-exterior-conditioned certificates
 
 on:
   push:
@@ -28,6 +28,8 @@ jobs:
           sparse-checkout: |
             engineering/engineering-followup-20261027-r4/envelope
             engineering/engineering-followup-20261028-r5/compute
+            engineering/engineering-followup-20261028-r5/envelope/actions/run-40645988108
+            engineering/engineering-followup-20261028-r5/envelope/local/attempt-v6-1
       - name: Verify reviewed source lock and execute sequential original gates
         env:
           EXPECTED_HEAD: ${{ github.sha }}
@@ -36,17 +38,19 @@ jobs:
           python3 -I -S -B - <<'PY'
           import hashlib
           from pathlib import Path
-          p = Path('engineering/engineering-followup-20261028-r5/compute/R5E_PORTABLE_SOURCE_LOCK_V5.json')
-          assert hashlib.sha256(p.read_bytes()).hexdigest() == 'd05a6f6a69ac5eb627d3d1180ff543c4f9b70c7c424c972dfab2b305b8a21211'
+          p = Path('engineering/engineering-followup-20261028-r5/compute/R5E_PORTABLE_SOURCE_LOCK_V7.json')
+          assert hashlib.sha256(p.read_bytes()).hexdigest() == 'da61d0c1af1b6ac7ca2013990bf6cda43d1e8309a859b7bbfd7ec51abbf9971f'
           PY
-          python3 -I -S -B engineering/engineering-followup-20261028-r5/compute/run_portable_trim_r5e_v5.py \
+          python3 -I -S -B engineering/engineering-followup-20261028-r5/compute/run_portable_planar_r5e_v7.py \
             --r4-root "$GITHUB_WORKSPACE/engineering/engineering-followup-20261027-r4/envelope" \
-            --output "$RUNNER_TEMP/razr-r5-trim-model-v5"
+            --base-v5-root "$GITHUB_WORKSPACE/engineering/engineering-followup-20261028-r5/envelope/actions/run-40645988108" \
+            --base-v6-root "$GITHUB_WORKSPACE/engineering/engineering-followup-20261028-r5/envelope/local/attempt-v6-1" \
+            --output "$RUNNER_TEMP/razr-r5-planar-exterior-v7"
       - name: Preserve complete actual outputs including failures
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
-          name: R5-trim-model-v5-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/razr-r5-trim-model-v5
+          name: R5-planar-exterior-v7-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/razr-r5-planar-exterior-v7
           if-no-files-found: error
           retention-days: 14

@@ -1,0 +1,188 @@
+{
+  "schema": "razr-r4e-owned-pure-math-supervision-v2-bound-entry",
+  "started_utc": "2026-10-28T16:44:53.291876+00:00",
+  "contract_sha256": "2bbdf288d427473afcf0fc1eaea98ad685cbe047751f335527644299de437f17",
+  "source_sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-I",
+    "-S",
+    "-B",
+    "/workspace/scratch/34f8fcac2ab1/r5-local-v6/input-snapshot-v1/r4/run_owned_pure_math_r4e_v3.py",
+    "--supervision-contract",
+    "/workspace/scratch/34f8fcac2ab1/r5-local-v6/attempt-1/preflight-primitive-support-supervision-contract.json",
+    "--receipt",
+    "/workspace/scratch/34f8fcac2ab1/r5-local-v6/attempt-1/preflight-primitive-support-supervision/entry-receipt.json",
+    "--",
+    "--contract",
+    "/workspace/scratch/34f8fcac2ab1/r5-local-v6/attempt-1/preflight-primitive-support-contract.json",
+    "--output",
+    "/workspace/scratch/34f8fcac2ab1/r5-local-v6/attempt-1/preflight-primitive-support"
+  ],
+  "worker_started": true,
+  "completed": true,
+  "limits": {
+    "wall_seconds": 600,
+    "RSS_limit_bytes": 805306368,
+    "shared_ceiling_bytes": 7301444403,
+    "disk_floor_bytes": 104857600,
+    "expected_output_bytes": 41943040,
+    "maximum_output_bytes": 41943040,
+    "metadata_margin_bytes": 4194304,
+    "zero_RSS_missing_observations_allowed": false,
+    "supervisor_sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900",
+    "worker_entry": "/workspace/scratch/34f8fcac2ab1/r5-local-v6/input-snapshot-v1/r4/run_owned_pure_math_r4e_v3.py",
+    "worker_entry_sha256": "012da59133c15550b1bb4adac969edeb65f335ddb9c22d5ae4c321318f147823",
+    "owned_process": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r5-local-v6/input-snapshot-v1/r4/additional-bspline-v1/source/source-original/owned_process.py",
+      "bytes": 13400,
+      "sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25"
+    },
+    "canonical_worker_options": [
+      "--contract",
+      "--output"
+    ],
+    "schema": "razr-r5e-portable-owned-primitive-support-supervision-v6",
+    "registered_utc": "2026-10-28T16:44:53.223369+00:00",
+    "registered_math_contract_sha256": "91f5b308a75078c3f63f59b520f4f24dbe13fc730a75fd8508d62311fb368a0a",
+    "worker": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r5-local-v6/input-snapshot-v1/source/primitive_refinement_r5e_v6.py",
+      "bytes": 37735,
+      "sha256": "11d0f8f72ba7e1db2936a7d7f2fcb9906f7f3eb426b4ad362e430ec41793bb57"
+    },
+    "worker_output_directory": "/workspace/scratch/34f8fcac2ab1/r5-local-v6/attempt-1/preflight-primitive-support",
+    "algorithm_basis": "New primitive-support refinement of immutable actual V5 retained leaves only. Fixed64 closed angular patches, rational Taylor remainder and one exact source slab per targeted piece; full original D and all edges/vertices remain. Actual selected V5 leaf pass plus independent analytic/actual controls precedes measured all16 preflight and bounded refinement. All original and pending thin leaves retain exact volume. Native membership remains open; original gates are unchanged."
+  },
+  "observations": [
+    {
+      "disk_available_bytes": 13107351552,
+      "shared_unreclaimable_bytes": 4958744608
+    },
+    {
+      "disk_available_bytes": 13107212288,
+      "shared_unreclaimable_bytes": 5044097448,
+      "elapsed_seconds": 1.0742785180045757,
+      "owned_worker_memory": {
+        "VmRSS": 38219776,
+        "VmHWM": 38219776
+      },
+      "actual_output_bytes": 58099
+    },
+    {
+      "disk_available_bytes": 13107220480,
+      "shared_unreclaimable_bytes": 5039435064,
+      "elapsed_seconds": 2.103257010006928,
+      "owned_worker_memory": {
+        "VmRSS": 41615360,
+        "VmHWM": 41615360
+      },
+      "actual_output_bytes": 77522
+    },
+    {
+      "disk_available_bytes": 13107245056,
+      "shared_unreclaimable_bytes": 4995835784,
+      "elapsed_seconds": 3.111869400003343,
+      "owned_worker_memory": {
+        "VmRSS": 41746432,
+        "VmHWM": 41746432
+      },
+      "actual_output_bytes": 91632
+    },
+    {
+      "disk_available_bytes": 13107220480,
+      "shared_unreclaimable_bytes": 4982712200,
+      "elapsed_seconds": 4.122697533995961,
+      "owned_worker_memory": {
+        "VmRSS": 42881024,
+        "VmHWM": 42881024
+      },
+      "actual_output_bytes": 114756
+    },
+    {
+      "disk_available_bytes": 13107179520,
+      "shared_unreclaimable_bytes": 4916463576,
+      "elapsed_seconds": 5.128632057007053,
+      "owned_worker_memory": null,
+      "actual_output_bytes": 147916
+    }
+  ],
+  "resource_stop": null,
+  "worker_exit_code": 0,
+  "missing_RSS_zero_substitutions": 0,
+  "owned_child_handshake": {
+    "packet": {
+      "kind": "razr_owned_child_identity_v1",
+      "nonce": "222fdbeb39c9e27261bfda8cf87d8fb1847741efca886ebc03fcd51efad12bae",
+      "source_sha256": "012da59133c15550b1bb4adac969edeb65f335ddb9c22d5ae4c321318f147823",
+      "os_getpid": 9,
+      "os_getppid": 8,
+      "proc_self_visible_pid": "1490706",
+      "status": {
+        "Pid": 1490706,
+        "PPid": 1490705,
+        "NSpid": [
+          1490706,
+          9
+        ]
+      },
+      "stat": {
+        "pid": 1490706,
+        "ppid": 1490705,
+        "starttime_ticks": 7521531
+      },
+      "pid_namespace": "pid:[4026532309]",
+      "pid_for_children_namespace": "pid:[4026532309]"
+    },
+    "parent_identity": {
+      "os_getpid": 8,
+      "os_getppid": 3,
+      "proc_self_visible_pid": "1490705",
+      "status": {
+        "Pid": 1490705,
+        "PPid": 1490570,
+        "NSpid": [
+          1490705,
+          8
+        ]
+      },
+      "stat": {
+        "pid": 1490705,
+        "ppid": 1490570,
+        "starttime_ticks": 7521525
+      },
+      "pid_namespace": "pid:[4026532309]",
+      "pid_for_children_namespace": "pid:[4026532309]"
+    },
+    "verified_binding": {
+      "status": {
+        "Pid": 1490706,
+        "PPid": 1490705,
+        "NSpid": [
+          1490706,
+          9
+        ]
+      },
+      "stat": {
+        "pid": 1490706,
+        "ppid": 1490705,
+        "starttime_ticks": 7521531
+      },
+      "pid_namespace": "pid:[4026532309]",
+      "pid_for_children_namespace": "pid:[4026532309]"
+    },
+    "initial_memory": {
+      "VmRSS": 12468224,
+      "VmHWM": 12468224
+    }
+  },
+  "owned_child_identity_verified": true,
+  "owned_channel_descriptors_closed": true,
+  "entry_completed": true,
+  "source_and_contract_unchanged": true,
+  "elapsed_seconds": 5.129421403995366,
+  "finished_utc": "2026-10-28T16:44:58.420806+00:00",
+  "final_resources": {
+    "disk_available_bytes": 13107179520,
+    "shared_unreclaimable_bytes": 4916463576
+  }
+}

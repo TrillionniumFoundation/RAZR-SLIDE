@@ -1,0 +1,31 @@
+{
+  "schema": "r5-v6-independent-actual-readback-execution-registration-v2",
+  "registered_utc": "2026-10-28T16:54:46.028082+00:00",
+  "audit_source": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r5-integration/independent-primitive-v6-execution-review/audit_actual_v6_local_v2.py",
+    "bytes": 76646,
+    "sha256": "680173357b562aa01dc4077207a1ccdddb3376f8110ffbba27299f8766680148"
+  },
+  "plan": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r5-integration/independent-primitive-v6-execution-review/R5_V6_INDEPENDENT_ACTUAL_READBACK_PLAN.json",
+    "bytes": 3024,
+    "sha256": "f86b7a103f11239cddae5d8cfc86a5859225b27629a7cfae09b78dc15ab35668"
+  },
+  "closed_pipeline": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r5-local-v6/attempt-1/pipeline.json",
+    "bytes": 32485,
+    "sha256": "aa6050aa50824add70511049197344e18928583cdbf1d3a646e3f0ba06b760d1"
+  },
+  "prior_failed_audit_source": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r5-integration/independent-primitive-v6-execution-review/audit_actual_v6_local_v1.py",
+    "bytes": 76115,
+    "sha256": "a3d8ca1dab5401d779d61cac565db9ff6a39f34015f44b13e5d59bc8d16a3583"
+  },
+  "prior_actual_audit_failure": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r5-integration/independent-primitive-v6-execution-review/R5_V6_INDEPENDENT_ACTUAL_LOCAL_READBACK_V1.json",
+    "bytes": 15718,
+    "sha256": "8bbbaeff269dea079f6f2b95ef3e6d1931d2d2f81be4291058567ec60f0b8bba"
+  },
+  "reason_for_new_audit_version": "V1 incorrectly equated inner os.getpid with outer procfs PID. V2 independently checks both NSpid chain endpoints, inner and outer parent bindings, namespaces and starttime, matching original owned_process semantics. No original worker, resource gate, geometry, actual output or source lock was changed.",
+  "new_producer_checker_or_native_execution": false
+}

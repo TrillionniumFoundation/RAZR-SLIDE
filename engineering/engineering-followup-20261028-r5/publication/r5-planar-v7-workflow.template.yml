@@ -1,0 +1,56 @@
+name: R5 planar-exterior-conditioned certificates
+
+on:
+  push:
+    branches: ['evidence/full-sprint-20261028-r5']
+    paths:
+      - 'engineering/engineering-followup-20261028-r5/compute/RUN_REQUEST.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: r5-exterior-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  exact-certificates:
+    if: github.repository == 'TrillionniumFoundation/RAZR-SLIDE' && github.ref == 'refs/heads/evidence/full-sprint-20261028-r5'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - name: Check out this exact evidence source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          sparse-checkout: |
+            engineering/engineering-followup-20261027-r4/envelope
+            engineering/engineering-followup-20261028-r5/compute
+            engineering/engineering-followup-20261028-r5/envelope/actions/run-40645988108
+            engineering/engineering-followup-20261028-r5/envelope/local/attempt-v6-1
+      - name: Verify reviewed source lock and execute sequential original gates
+        env:
+          EXPECTED_HEAD: ${{ github.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          python3 -I -S -B - <<'PY'
+          import hashlib
+          from pathlib import Path
+          p = Path('engineering/engineering-followup-20261028-r5/compute/R5E_PORTABLE_SOURCE_LOCK_V7.json')
+          assert hashlib.sha256(p.read_bytes()).hexdigest() == '__FINAL_V7_LOCK_SHA__'
+          PY
+          python3 -I -S -B engineering/engineering-followup-20261028-r5/compute/run_portable_planar_r5e_v7.py \
+            --r4-root "$GITHUB_WORKSPACE/engineering/engineering-followup-20261027-r4/envelope" \
+            --base-v5-root "$GITHUB_WORKSPACE/engineering/engineering-followup-20261028-r5/envelope/actions/run-40645988108" \
+            --base-v6-root "$GITHUB_WORKSPACE/engineering/engineering-followup-20261028-r5/envelope/local/attempt-v6-1" \
+            --output "$RUNNER_TEMP/razr-r5-planar-exterior-v7"
+      - name: Preserve complete actual outputs including failures
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: R5-planar-exterior-v7-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/razr-r5-planar-exterior-v7
+          if-no-files-found: error
+          retention-days: 14

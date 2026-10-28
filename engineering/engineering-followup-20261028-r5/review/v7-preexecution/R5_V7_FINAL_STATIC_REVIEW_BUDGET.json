@@ -1,0 +1,72 @@
+{
+  "schema": "r5-v7-final-independent-static-review-budget-v1",
+  "registered_utc": "2026-10-28T17:31:08.797128+00:00",
+  "purpose": "Cross-author final static readback of exact V7 source lock, complete immutable original/snapshot inputs, prepared Actions workflow, local non-admission record and independently implemented checker contract.",
+  "inputs": [
+    {
+      "path": "r5-envelope/R5E_PORTABLE_SOURCE_LOCK_V7.json",
+      "bytes": 8074,
+      "sha256": "da61d0c1af1b6ac7ca2013990bf6cda43d1e8309a859b7bbfd7ec51abbf9971f"
+    },
+    {
+      "path": "r5-envelope/R5E_V7_READINESS.json",
+      "bytes": 5826,
+      "sha256": "257c77acc6da8c5814e7f4c68be79e71769c6c844f70296f3aaf8d27e3dfbd6f"
+    },
+    {
+      "path": "r5-local-v7/R5_V7_LOCAL_EXECUTION_READINESS.json",
+      "bytes": 87074,
+      "sha256": "3a230d6a501c4d746e986605fec540d24b3abc4e32a5362da6b01b5d9a55329e"
+    },
+    {
+      "path": "r5-integration/r5-planar-v7-workflow.template.yml",
+      "bytes": 2524,
+      "sha256": "1390d527cee13d80c87eafa5bb01439f77b60435662d1da5844e3d8b2ea7cd05"
+    },
+    {
+      "path": "r5-integration/r5-planar-v7-workflow.yml",
+      "bytes": 2567,
+      "sha256": "9e75b702a819750f24c75ea212ce8e964c1169429d71622d62240ea4ba7e7334"
+    },
+    {
+      "path": "r5-integration/r5-primitive-v6-workflow.yml",
+      "bytes": 2365,
+      "sha256": "223c77df6ce9cc04f11d0110da5bba2ad4d0cb85408155c946158f0c019005be"
+    },
+    {
+      "path": "r5-integration/v7-independent-checker/R5_V7_INDEPENDENT_CHECKER_SOURCE_CONTRACT_V2.json",
+      "bytes": 7992,
+      "sha256": "bf7aeb474dbd6f235b4977e1eacd8b8a567cc145b8178830dac0c272d2857d50"
+    },
+    {
+      "path": "r5-integration/independent-planar-v7-preexecution-review/STATIC_MATHEMATICAL_REVIEW_V7.md",
+      "bytes": 8461,
+      "sha256": "d31000dd19f43aaf40425a05513d40c29f669934f5a9f3d74e63e94140c9f725"
+    }
+  ],
+  "fixed_source_lock_sha256": "da61d0c1af1b6ac7ca2013990bf6cda43d1e8309a859b7bbfd7ec51abbf9971f",
+  "fixed_checker_sha256": "147fbe2ac883428a4669a8659d51e22dd8c4b6f9c76a58064fdea305fd10ba7e",
+  "wall_seconds": 90,
+  "RSS_limit_bytes": 268435456,
+  "maximum_streamed_identity_bytes": 536870912,
+  "maximum_single_metadata_bytes": 4194304,
+  "maximum_report_bytes": 16777216,
+  "source_imports_permitted": false,
+  "V7_model_construction_permitted": false,
+  "V7_channel_or_control_execution_permitted": false,
+  "new_native_operations_permitted": false,
+  "GitHub_mutations_permitted": false,
+  "Library_operations_permitted": false,
+  "complete_snapshot_expected_files": 138,
+  "complete_snapshot_expected_bytes": 43211475,
+  "expected_snapshot_counts": {
+    "R5_including_lock": 38,
+    "R4_sources_and_inputs": 22,
+    "actual_V5": 25,
+    "actual_V6": 53
+  },
+  "local_readiness_is_not_supervisor_admission": true,
+  "prepared_workflow_is_not_run_evidence": true,
+  "scope": "Source identities, AST structure, fixed literals, complete input mapping, workflow policy preservation, immutable ancestry, resource contract and static mathematical reasoning only.",
+  "on_failure": "Append an actual failure report. Do not silently alter frozen lock, source, read-only inputs, original gates, old review files or claimed mathematical outcomes."
+}

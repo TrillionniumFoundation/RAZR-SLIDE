@@ -1,0 +1,161 @@
+{
+  "schema": "razr-r4e-owned-pure-math-supervision-v2-bound-entry",
+  "started_utc": "2026-10-28T16:44:47.880998+00:00",
+  "contract_sha256": "194fa28e5d12e3460734ca1a0ad3e60624bf53d5a3cf6984a6cd96291c57d713",
+  "source_sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-I",
+    "-S",
+    "-B",
+    "/workspace/scratch/34f8fcac2ab1/r5-local-v6/input-snapshot-v1/r4/run_owned_pure_math_r4e_v3.py",
+    "--supervision-contract",
+    "/workspace/scratch/34f8fcac2ab1/r5-local-v6/attempt-1/single-primitive-support-leaf-supervision-contract.json",
+    "--receipt",
+    "/workspace/scratch/34f8fcac2ab1/r5-local-v6/attempt-1/single-primitive-support-leaf-supervision/entry-receipt.json",
+    "--",
+    "--contract",
+    "/workspace/scratch/34f8fcac2ab1/r5-local-v6/attempt-1/single-primitive-support-leaf-contract.json",
+    "--output",
+    "/workspace/scratch/34f8fcac2ab1/r5-local-v6/attempt-1/single-primitive-support-leaf"
+  ],
+  "worker_started": true,
+  "completed": true,
+  "limits": {
+    "wall_seconds": 600,
+    "RSS_limit_bytes": 805306368,
+    "shared_ceiling_bytes": 7301444403,
+    "disk_floor_bytes": 104857600,
+    "expected_output_bytes": 41943040,
+    "maximum_output_bytes": 41943040,
+    "metadata_margin_bytes": 4194304,
+    "zero_RSS_missing_observations_allowed": false,
+    "supervisor_sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900",
+    "worker_entry": "/workspace/scratch/34f8fcac2ab1/r5-local-v6/input-snapshot-v1/r4/run_owned_pure_math_r4e_v3.py",
+    "worker_entry_sha256": "012da59133c15550b1bb4adac969edeb65f335ddb9c22d5ae4c321318f147823",
+    "owned_process": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r5-local-v6/input-snapshot-v1/r4/additional-bspline-v1/source/source-original/owned_process.py",
+      "bytes": 13400,
+      "sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25"
+    },
+    "canonical_worker_options": [
+      "--contract",
+      "--output"
+    ],
+    "schema": "razr-r5e-portable-owned-primitive-support-supervision-v6",
+    "registered_utc": "2026-10-28T16:44:47.627200+00:00",
+    "registered_math_contract_sha256": "1f52b4881f1baf8add83c99c5f32ac1da9790a54dd31d1225aeeac0618810a71",
+    "worker": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r5-local-v6/input-snapshot-v1/source/primitive_refinement_r5e_v6.py",
+      "bytes": 37735,
+      "sha256": "11d0f8f72ba7e1db2936a7d7f2fcb9906f7f3eb426b4ad362e430ec41793bb57"
+    },
+    "worker_output_directory": "/workspace/scratch/34f8fcac2ab1/r5-local-v6/attempt-1/single-primitive-support-leaf",
+    "algorithm_basis": "New primitive-support refinement of immutable actual V5 retained leaves only. Fixed64 closed angular patches, rational Taylor remainder and one exact source slab per targeted piece; full original D and all edges/vertices remain. Actual selected V5 leaf pass plus independent analytic/actual controls precedes measured all16 preflight and bounded refinement. All original and pending thin leaves retain exact volume. Native membership remains open; original gates are unchanged."
+  },
+  "observations": [
+    {
+      "disk_available_bytes": 13109477376,
+      "shared_unreclaimable_bytes": 4919634096
+    },
+    {
+      "disk_available_bytes": 13109297152,
+      "shared_unreclaimable_bytes": 4939247664,
+      "elapsed_seconds": 1.0181863289908506,
+      "owned_worker_memory": {
+        "VmRSS": 24563712,
+        "VmHWM": 24563712
+      },
+      "actual_output_bytes": 0
+    },
+    {
+      "disk_available_bytes": 13109202944,
+      "shared_unreclaimable_bytes": 4956498704,
+      "elapsed_seconds": 2.033438621991081,
+      "owned_worker_memory": {
+        "VmRSS": 34455552,
+        "VmHWM": 40058880
+      },
+      "actual_output_bytes": 0
+    }
+  ],
+  "resource_stop": null,
+  "worker_exit_code": 0,
+  "missing_RSS_zero_substitutions": 0,
+  "owned_child_handshake": {
+    "packet": {
+      "kind": "razr_owned_child_identity_v1",
+      "nonce": "7364c5022d19c7af4db27a5c846f0d4fdd8ae2a303851964b7e5b1c11d73fc2a",
+      "source_sha256": "012da59133c15550b1bb4adac969edeb65f335ddb9c22d5ae4c321318f147823",
+      "os_getpid": 5,
+      "os_getppid": 4,
+      "proc_self_visible_pid": "1490592",
+      "status": {
+        "Pid": 1490592,
+        "PPid": 1490591,
+        "NSpid": [
+          1490592,
+          5
+        ]
+      },
+      "stat": {
+        "pid": 1490592,
+        "ppid": 1490591,
+        "starttime_ticks": 7520991
+      },
+      "pid_namespace": "pid:[4026532309]",
+      "pid_for_children_namespace": "pid:[4026532309]"
+    },
+    "parent_identity": {
+      "os_getpid": 4,
+      "os_getppid": 3,
+      "proc_self_visible_pid": "1490591",
+      "status": {
+        "Pid": 1490591,
+        "PPid": 1490570,
+        "NSpid": [
+          1490591,
+          4
+        ]
+      },
+      "stat": {
+        "pid": 1490591,
+        "ppid": 1490570,
+        "starttime_ticks": 7520965
+      },
+      "pid_namespace": "pid:[4026532309]",
+      "pid_for_children_namespace": "pid:[4026532309]"
+    },
+    "verified_binding": {
+      "status": {
+        "Pid": 1490592,
+        "PPid": 1490591,
+        "NSpid": [
+          1490592,
+          5
+        ]
+      },
+      "stat": {
+        "pid": 1490592,
+        "ppid": 1490591,
+        "starttime_ticks": 7520991
+      },
+      "pid_namespace": "pid:[4026532309]",
+      "pid_for_children_namespace": "pid:[4026532309]"
+    },
+    "initial_memory": {
+      "VmRSS": 12468224,
+      "VmHWM": 12468224
+    }
+  },
+  "owned_child_identity_verified": true,
+  "owned_channel_descriptors_closed": true,
+  "entry_completed": true,
+  "source_and_contract_unchanged": true,
+  "elapsed_seconds": 2.447753684988129,
+  "finished_utc": "2026-10-28T16:44:50.328637+00:00",
+  "final_resources": {
+    "disk_available_bytes": 13107437568,
+    "shared_unreclaimable_bytes": 4932118000
+  }
+}

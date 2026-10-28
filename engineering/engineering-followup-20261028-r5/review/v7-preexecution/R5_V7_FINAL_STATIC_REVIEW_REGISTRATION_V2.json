@@ -1,0 +1,33 @@
+{
+  "schema": "r5-v7-final-static-review-registration-v2",
+  "script": {
+    "path": "r5-integration/independent-planar-v7-preexecution-review/review_final_v7_sources_v2.py",
+    "bytes": 28206,
+    "sha256": "fb736c9778ceed4151a4c0fd0750e6a8a3446112e3b48953f9f5388bb5d5bf76"
+  },
+  "budget": {
+    "path": "r5-integration/independent-planar-v7-preexecution-review/R5_V7_FINAL_STATIC_REVIEW_BUDGET.json",
+    "bytes": 3221,
+    "sha256": "88e6d574271be0edfc805da58c2e7431a24fce699bd06210921559bd1f5a46ec"
+  },
+  "prior_actual_failed_review": {
+    "path": "r5-integration/independent-planar-v7-preexecution-review/R5_V7_FINAL_INDEPENDENT_STATIC_REVIEW_V1.json",
+    "bytes": 93277,
+    "sha256": "68fb395f81281cf95ce564013402921acd1dab86da815bec791ba027f4c22954"
+  },
+  "previous_script": {
+    "path": "r5-integration/independent-planar-v7-preexecution-review/review_final_v7_sources_v1.py",
+    "bytes": 27914,
+    "sha256": "31d402865ebeae49c76dc9f9ec1a86a3c6dcaedbaf89b08765ce70b059c3f081"
+  },
+  "correction": "Only AST Dict attribute access in static audit is corrected. All frozen scientific sources, original gates, input snapshots, prior failures and CI entry remain unchanged.",
+  "AST_only_precheck": true,
+  "V7_mathematical_execution_permitted": false,
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-I",
+    "-S",
+    "-B",
+    "r5-integration/independent-planar-v7-preexecution-review/review_final_v7_sources_v2.py"
+  ]
+}

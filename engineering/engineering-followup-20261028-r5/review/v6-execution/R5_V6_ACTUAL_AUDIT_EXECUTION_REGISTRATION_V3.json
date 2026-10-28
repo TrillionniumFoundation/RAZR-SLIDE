@@ -1,0 +1,32 @@
+{
+  "schema": "r5-v6-independent-actual-readback-execution-registration-v3",
+  "registered_utc": "2026-10-28T16:55:45.180941+00:00",
+  "audit_source": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r5-integration/independent-primitive-v6-execution-review/audit_actual_v6_local_v3.py",
+    "bytes": 77409,
+    "sha256": "1dd78d5be8fb56b20da64d6c603ffbaf352b0a915a5a69b949d58bc5cbd34086"
+  },
+  "plan": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r5-integration/independent-primitive-v6-execution-review/R5_V6_INDEPENDENT_ACTUAL_READBACK_PLAN.json",
+    "bytes": 3024,
+    "sha256": "f86b7a103f11239cddae5d8cfc86a5859225b27629a7cfae09b78dc15ab35668"
+  },
+  "closed_pipeline": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r5-local-v6/attempt-1/pipeline.json",
+    "bytes": 32485,
+    "sha256": "aa6050aa50824add70511049197344e18928583cdbf1d3a646e3f0ba06b760d1"
+  },
+  "prior_failed_audit_source": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r5-integration/independent-primitive-v6-execution-review/audit_actual_v6_local_v2.py",
+    "bytes": 76646,
+    "sha256": "680173357b562aa01dc4077207a1ccdddb3376f8110ffbba27299f8766680148"
+  },
+  "prior_actual_audit_failure": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r5-integration/independent-primitive-v6-execution-review/R5_V6_INDEPENDENT_ACTUAL_LOCAL_READBACK_V2.json",
+    "bytes": 15690,
+    "sha256": "c70deab25dfe2ff0f5ddda15a657be40ce36ed3deb2d2f23048112e0917abf34"
+  },
+  "reason_for_new_audit_version": "V2 extra assumption VmHWM<=reported getrusage peak is false for one actual preflight sample (42,881,024 versus42,868,736 bytes, difference12,288). Original supervisor checks each observation against805,306,368 bytes, and entry checks its own getrusage value against the same cap. V3 checks those actual original gates separately and reports both values, their maximum, and the unexplained discrepancy without altering any actual data.",
+  "original_limits_changed": false,
+  "new_producer_checker_or_native_execution": false
+}
