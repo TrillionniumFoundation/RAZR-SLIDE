@@ -12,6 +12,7 @@ import json
 import os
 import shutil
 import subprocess
+import sys
 import tarfile
 import time
 
@@ -26,9 +27,11 @@ def require(ok, message):
 
 def identity(path):
     path = Path(path)
+    digest = hashlib.sha256()
     with path.open('rb') as stream:
-        digest = hashlib.file_digest(stream, 'sha256').hexdigest()
-    return {'bytes': path.stat().st_size, 'sha256': digest}
+        for chunk in iter(lambda: stream.read(1024 * 1024), b''):
+            digest.update(chunk)
+    return {'bytes': path.stat().st_size, 'sha256': digest.hexdigest()}
 
 
 def bind(path):
@@ -355,6 +358,13 @@ def main():
             'source_lock': bind(assets / 'SOURCE_LOCK.json'), 'run_request': bind(assets / 'RUN_REQUEST.json'),
             'repository': os.environ['GITHUB_REPOSITORY'], 'actual_ref': os.environ['GITHUB_REF'],
             'actual_triggering_commit': os.environ['GITHUB_SHA'],
+            'bootstrap_interpreter_observation': {
+                'executable': sys.executable, 'version': sys.version,
+                'version_info': list(sys.version_info), 'implementation': sys.implementation.name,
+                'hashlib_file_digest_available': hasattr(hashlib, 'file_digest'),
+                'SHA256_method': 'complete stream in 1048576-byte chunks',
+                'scientific_tar_extraction_method': 'individually bounded regular members; exclusive create; exact SHA256/size; no extractall/filter API',
+                'observation_is_not_new_runtime_qualification': True},
             'all_reviewed_assets_and_independent_workflow_verified': True,
             'native_or_runtime_qualification_started': False})
         return 0
