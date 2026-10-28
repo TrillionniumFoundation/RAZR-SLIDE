@@ -1,0 +1,78 @@
+{
+  "schema": "razr-r4e-owned-pure-math-supervision-v2-bound-entry",
+  "started_utc": "2026-10-28T05:32:43.061191+00:00",
+  "contract_sha256": "dba03dd6511adbdc590956837a96cf9702a6adba5cae467c3503c4d45d1fdae2",
+  "source_sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-I",
+    "-S",
+    "-B",
+    "<workspace>/r4-envelope/run_owned_pure_math_r4e_v3.py",
+    "--supervision-contract",
+    "<workspace>/r5-envelope/single-stationary-witness-supervision-contract.json",
+    "--receipt",
+    "r5-envelope/single-stationary-witness-supervision-attempt1/entry-receipt.json",
+    "--",
+    "--contract",
+    "<workspace>/r5-envelope/single-stationary-witness-contract.json",
+    "--output",
+    "<workspace>/r5-envelope/single-stationary-witness"
+  ],
+  "worker_started": false,
+  "completed": false,
+  "limits": {
+    "wall_seconds": 600,
+    "RSS_limit_bytes": 805306368,
+    "shared_ceiling_bytes": 7301444403,
+    "disk_floor_bytes": 104857600,
+    "expected_output_bytes": 41943040,
+    "algorithm_basis": "Finite complete-boundary exterior channels; see the bound pre-execution method document and phase contract. Original R4 process limits unchanged.",
+    "maximum_output_bytes": 41943040,
+    "metadata_margin_bytes": 4194304,
+    "registered_math_contract_sha256": "05aa75e3fe038e9b40a7ffb3f43a17b994292114c10dbba1b30cd9d8f2fcb447",
+    "schema": "razr-r5e-exterior-channel-owned-supervision-v1",
+    "registered_utc": "2026-10-28T05:32:40.055350+00:00",
+    "original_supervisor_retained": "fef9290fc47d5abca0937a9e42f568ffe5b0d68a80c01cfdc1d11a242e1a21db",
+    "supervisor_sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900",
+    "worker_entry": "<workspace>/r4-envelope/run_owned_pure_math_r4e_v3.py",
+    "worker_entry_sha256": "012da59133c15550b1bb4adac969edeb65f335ddb9c22d5ae4c321318f147823",
+    "owned_process": {
+      "path": "<workspace>/r4-envelope/additional-bspline-v1/source/source-original/owned_process.py",
+      "sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25"
+    },
+    "worker": {
+      "path": "<workspace>/r5-envelope/exterior_channels_r5e_v1.py",
+      "bytes": 15851,
+      "sha256": "c81716b9f699934cf6334486dcb04413a8f93d1510479d268efe18e81845ca5f"
+    },
+    "worker_output_directory": "<workspace>/r5-envelope/single-stationary-witness",
+    "zero_RSS_missing_observations_allowed": false,
+    "old_v1_supervision_PID_namespace_not_requalified": true,
+    "canonical_worker_options": [
+      "--contract",
+      "--output"
+    ]
+  },
+  "observations": [
+    {
+      "disk_available_bytes": 0,
+      "shared_unreclaimable_bytes": 5600094032
+    }
+  ],
+  "resource_stop": "startup_disk",
+  "worker_exit_code": null,
+  "missing_RSS_zero_substitutions": 0,
+  "failure": {
+    "type": "RuntimeError",
+    "message": "startup_disk"
+  },
+  "entry_completed": false,
+  "source_and_contract_unchanged": true,
+  "elapsed_seconds": 0.0008291499980259687,
+  "finished_utc": "2026-10-28T05:32:43.061846+00:00",
+  "final_resources": {
+    "disk_available_bytes": 0,
+    "shared_unreclaimable_bytes": 5600094032
+  }
+}

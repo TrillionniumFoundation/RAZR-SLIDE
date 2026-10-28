@@ -1,0 +1,441 @@
+{
+  "schema": "razr-r5e-portable-sequential-pipeline-v3",
+  "started_utc": "2026-10-28T06:00:29.387220+00:00",
+  "completed": true,
+  "stages": [
+    {
+      "label": "single-stationary-witness",
+      "phase": "single_stationary_witness",
+      "worker_started_by_driver": true,
+      "completed": true,
+      "contract": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/single-stationary-witness-contract.json",
+        "bytes": 2123,
+        "sha256": "e22262e0325c4c509cc201269615726299e7bc278dec5c06945e50ee9264562e"
+      },
+      "supervision_contract": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/single-stationary-witness-supervision-contract.json",
+        "bytes": 1722,
+        "sha256": "718076ab48aa0c8d1790a7e452e945712bd8bd6474f0891854f48d99aa369adc"
+      },
+      "command": [
+        "/usr/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/supervise_owned_pure_math_r4e_v2.py",
+        "--contract",
+        "/home/runner/work/_temp/razr-r5-exterior/single-stationary-witness-supervision-contract.json",
+        "--out",
+        "/home/runner/work/_temp/razr-r5-exterior/single-stationary-witness-supervision",
+        "--",
+        "--contract",
+        "/home/runner/work/_temp/razr-r5-exterior/single-stationary-witness-contract.json",
+        "--output",
+        "/home/runner/work/_temp/razr-r5-exterior/single-stationary-witness"
+      ],
+      "supervisor_exit_code": 0,
+      "driver_log": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/single-stationary-witness-driver.log",
+        "bytes": 122,
+        "sha256": "967c362e45cb950bbb6b3b25bdffc53e137e2d3076c13e5404e0a1a263b7bf8f"
+      },
+      "controller": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/single-stationary-witness-supervision/controller.json",
+        "bytes": 4918,
+        "sha256": "d8ce3ac0d174c769ee1bebe53b1a4307c5964b35e36d0be4717d7bf9c1c5684d"
+      },
+      "actual_worker_started": true,
+      "resource_stop": null,
+      "owned_supervisor_completed": true,
+      "report": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/single-stationary-witness/report.json",
+        "bytes": 7710,
+        "sha256": "791a8a5963456e7335c75c8851820d1abba72f9a1bd2eb5ecb3cf586ccf92e19"
+      }
+    },
+    {
+      "label": "verify-single",
+      "phase": "verify_single",
+      "worker_started_by_driver": true,
+      "completed": true,
+      "contract": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/verify-single-contract.json",
+        "bytes": 2755,
+        "sha256": "c028562bad0f282f0d6189d35dba4d65c809c9ae2a7bd71e9851b195b2e98052"
+      },
+      "supervision_contract": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/verify-single-supervision-contract.json",
+        "bytes": 1717,
+        "sha256": "f52595dd51ba02cd62b5f8a7f612f6ab85a251f51be09b956b2964d546881187"
+      },
+      "command": [
+        "/usr/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/supervise_owned_pure_math_r4e_v2.py",
+        "--contract",
+        "/home/runner/work/_temp/razr-r5-exterior/verify-single-supervision-contract.json",
+        "--out",
+        "/home/runner/work/_temp/razr-r5-exterior/verify-single-supervision",
+        "--",
+        "--contract",
+        "/home/runner/work/_temp/razr-r5-exterior/verify-single-contract.json",
+        "--output",
+        "/home/runner/work/_temp/razr-r5-exterior/verify-single"
+      ],
+      "supervisor_exit_code": 0,
+      "driver_log": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/verify-single-driver.log",
+        "bytes": 123,
+        "sha256": "6339d5747ade2408a8a8f6f82389ca4a6362e4da13cc2c10483df9b32393ce52"
+      },
+      "controller": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/verify-single-supervision/controller.json",
+        "bytes": 4866,
+        "sha256": "9c99603f1023d3a7684c6972d8e2a008f0265eee9257f337b7a9f4312078ef5e"
+      },
+      "actual_worker_started": true,
+      "resource_stop": null,
+      "owned_supervisor_completed": true,
+      "report": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/verify-single/report.json",
+        "bytes": 1884,
+        "sha256": "f97a0115f2f84d65fcae3e1cfbd9101c9504f0153fbf88dc81206cbb2baab82b"
+      }
+    },
+    {
+      "label": "preflight",
+      "phase": "preflight",
+      "worker_started_by_driver": true,
+      "completed": true,
+      "contract": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/preflight-contract.json",
+        "bytes": 2615,
+        "sha256": "be954bd991872750797c4fc8a883853f8bff88cad19566a883c4d7162ead1f48"
+      },
+      "supervision_contract": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/preflight-supervision-contract.json",
+        "bytes": 1706,
+        "sha256": "f27523546d52dc6b66f4b267607f715c1b03ffc6049b9e28ae27c1bca0a73300"
+      },
+      "command": [
+        "/usr/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/supervise_owned_pure_math_r4e_v2.py",
+        "--contract",
+        "/home/runner/work/_temp/razr-r5-exterior/preflight-supervision-contract.json",
+        "--out",
+        "/home/runner/work/_temp/razr-r5-exterior/preflight-supervision",
+        "--",
+        "--contract",
+        "/home/runner/work/_temp/razr-r5-exterior/preflight-contract.json",
+        "--output",
+        "/home/runner/work/_temp/razr-r5-exterior/preflight"
+      ],
+      "supervisor_exit_code": 0,
+      "driver_log": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/preflight-driver.log",
+        "bytes": 121,
+        "sha256": "8e1cc7733dd0e01606e21391a8e9f77e1f4f27e1633bcaea392a983d68e154ae"
+      },
+      "controller": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/preflight-supervision/controller.json",
+        "bytes": 5331,
+        "sha256": "3f915cd59c94889eb8c5313c4648b730481a7b282fb792033c2bed98b2f3d8df"
+      },
+      "actual_worker_started": true,
+      "resource_stop": null,
+      "owned_supervisor_completed": true,
+      "report": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/preflight/report.json",
+        "bytes": 23066,
+        "sha256": "4dc2bdedb9615a2d8c755b708a45a87fac04fede247679dfa866a19554925830"
+      }
+    },
+    {
+      "label": "all-raw",
+      "phase": "all_raw",
+      "worker_started_by_driver": true,
+      "completed": true,
+      "contract": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/all-raw-contract.json",
+        "bytes": 3321,
+        "sha256": "2952543ecb3fe793bb368247fbb4b594184d1acf6a2e9b1672b6f58d92940482"
+      },
+      "supervision_contract": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/all-raw-supervision-contract.json",
+        "bytes": 1704,
+        "sha256": "49bf2a25778e6767a012d645cbf41fe13db1d0d46e1fbf03aad50406b2fbcf64"
+      },
+      "command": [
+        "/usr/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/supervise_owned_pure_math_r4e_v2.py",
+        "--contract",
+        "/home/runner/work/_temp/razr-r5-exterior/all-raw-supervision-contract.json",
+        "--out",
+        "/home/runner/work/_temp/razr-r5-exterior/all-raw-supervision",
+        "--",
+        "--contract",
+        "/home/runner/work/_temp/razr-r5-exterior/all-raw-contract.json",
+        "--output",
+        "/home/runner/work/_temp/razr-r5-exterior/all-raw"
+      ],
+      "supervisor_exit_code": 0,
+      "driver_log": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/all-raw-driver.log",
+        "bytes": 121,
+        "sha256": "7b5e6e304da258fe35555bba9add82f050da8247ddf3938ab8566b407ac1640d"
+      },
+      "controller": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/all-raw-supervision/controller.json",
+        "bytes": 5659,
+        "sha256": "c0b011254fe5b5ba07054af63b74d5e009bf972c71d851bfeac4c277b016d5f2"
+      },
+      "actual_worker_started": true,
+      "resource_stop": null,
+      "owned_supervisor_completed": true,
+      "report": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/all-raw/report.json",
+        "bytes": 62922,
+        "sha256": "7a7456e21fdf6af21e09312e0154a7751cd668685801102922bdc2cd0821136f"
+      }
+    },
+    {
+      "label": "verify-all",
+      "phase": "verify_all",
+      "worker_started_by_driver": true,
+      "completed": true,
+      "contract": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/verify-all-contract.json",
+        "bytes": 3284,
+        "sha256": "605d217e975ee57cd15e8491b6456ed1dd93ea019674c8f086eeb242e349316f"
+      },
+      "supervision_contract": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/verify-all-supervision-contract.json",
+        "bytes": 1714,
+        "sha256": "7dce72946847ee565b6098e383ecace4c1c2de6b833d157ebccc9cc2ba377b26"
+      },
+      "command": [
+        "/usr/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/supervise_owned_pure_math_r4e_v2.py",
+        "--contract",
+        "/home/runner/work/_temp/razr-r5-exterior/verify-all-supervision-contract.json",
+        "--out",
+        "/home/runner/work/_temp/razr-r5-exterior/verify-all-supervision",
+        "--",
+        "--contract",
+        "/home/runner/work/_temp/razr-r5-exterior/verify-all-contract.json",
+        "--output",
+        "/home/runner/work/_temp/razr-r5-exterior/verify-all"
+      ],
+      "supervisor_exit_code": 0,
+      "driver_log": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/verify-all-driver.log",
+        "bytes": 122,
+        "sha256": "3574de27a6e54ecbf56435ddfb67e71698beb52118ca4e47d916fe4ecf8f785a"
+      },
+      "controller": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/verify-all-supervision/controller.json",
+        "bytes": 5404,
+        "sha256": "2080728f8472c7b4af9e22cfdd2e12385517c9a630c876b7c3ccfd1d4b6b8bcc"
+      },
+      "actual_worker_started": true,
+      "resource_stop": null,
+      "owned_supervisor_completed": true,
+      "report": {
+        "path": "/home/runner/work/_temp/razr-r5-exterior/verify-all/report.json",
+        "bytes": 12165,
+        "sha256": "cc8009c753457cc62f6bf86940bfe4ca3cc1c199f9b25911ac74b99105c30ebe"
+      }
+    }
+  ],
+  "native_Common_called": false,
+  "native_material_semantics_verified": false,
+  "compiled_transform_error_verified": false,
+  "full_continuous_G2": false,
+  "all_blockers_closed": false,
+  "original_clearance_threshold_changed": false,
+  "original_displacement_boxes_changed": false,
+  "source_root": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute",
+  "public_r4_root": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope",
+  "source_commit": "c5f6606924937d716b007cd3ffa8e54df8ecfa5d",
+  "elapsed_seconds": 9.729525119000002,
+  "source_lock_identity": {
+    "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/R5E_PORTABLE_SOURCE_LOCK.json",
+    "bytes": 1521,
+    "sha256": "0c2c867ac8d644341d5d6f0b5596ae2e346061a23cacdab7be6ab18f75eb0a2c"
+  },
+  "actual_source_identities": [
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/exterior_channels_r5e_v3.py",
+      "bytes": 19321,
+      "sha256": "cd167893a463a5f5d39ce7d64caaac5c07e278ddb96420f790c07f1664e9da8a"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/verify_exterior_channels_r5e_v3.py",
+      "bytes": 16453,
+      "sha256": "ea564a94bf38a54004dc21725a0c18a7bd136d517b4a1b84b3bec7ad3da321ad"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/run_portable_exterior_r5e_v3.py",
+      "bytes": 12786,
+      "sha256": "ea3fda0c0c50bea91b415487a00efc3e1a9fd5cee62a5acfc007a110cf0aef21"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/R5E_EXTERIOR_CHANNEL_METHOD.md",
+      "bytes": 4376,
+      "sha256": "e258a529ea04f99b36850638aab4b7fb92615261334e86c3fc009f7cc3f6f7d2"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/R5E_PUBLIC_INPUT_BRIDGE.json",
+      "bytes": 10493,
+      "sha256": "65f5ccf7a917b92c665b513f6a15b80fda516b037c782ba4cad799e97ed187b2"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/supervise_owned_pure_math_r4e_v2.py",
+      "bytes": 8104,
+      "sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/run_owned_pure_math_r4e_v3.py",
+      "bytes": 5457,
+      "sha256": "012da59133c15550b1bb4adac969edeb65f335ddb9c22d5ae4c321318f147823"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/additional-bspline-v1/source/source-original/owned_process.py",
+      "bytes": 13400,
+      "sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25"
+    }
+  ],
+  "public_inputs": [
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/report.json",
+      "bytes": 251491,
+      "sha256": "286cfad28e08da5426742530a0d7f6901fb54317643507580bd9cddc26ad6887"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/independent-support-v4/report.json",
+      "bytes": 24298,
+      "sha256": "1224b5e72b9635aa84227b2b3e7b7a4091cca8483c916392f6634a49088b7110"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/remaining-spatial-diagnostic/report.json",
+      "bytes": 243761,
+      "sha256": "f1edf0c77a622d30a5623114edb8f6bfa0d3a09bd0009868255552a2c1c2514f"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-001-frame-1-complete-support.json.gz",
+      "bytes": 1114119,
+      "sha256": "224bc618d08ebc5c8f5dbf8aa43fd598631928b523ef49798272dbb17e789d8a"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-001-frame-2-complete-support.json.gz",
+      "bytes": 1944749,
+      "sha256": "455a032c8c462b16a819d743e2a913b1708b3ac074fb201cb2962d4473d5b1fd"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-006-frame-1-complete-support.json.gz",
+      "bytes": 956158,
+      "sha256": "602bb4134a5309b12aa82b980824b3227121926f11fd555eead88153270f57e9"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-006-frame-2-complete-support.json.gz",
+      "bytes": 2455249,
+      "sha256": "cd7f07c60b7fb4933336e1a99ed79914ae3a6140505764cde83fa7eb05b32db2"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-028-frame-1-complete-support.json.gz",
+      "bytes": 1692905,
+      "sha256": "5923e789084831c384f551a245f1996250ef11562a486b7fbc0974ec50246ed9"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-028-frame-2-complete-support.json.gz",
+      "bytes": 1051650,
+      "sha256": "6e1c972d6891a80984b3b86c11bf4ef5bdc6c15537cc54a6d9e9c7e048201232"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-037-frame-1-complete-support.json.gz",
+      "bytes": 1680164,
+      "sha256": "d16809e8c8c04451051e3236168b7d32ba189ac0b2495e6164d61c8eb7d7a088"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-037-frame-2-complete-support.json.gz",
+      "bytes": 873470,
+      "sha256": "58aaf59de246efcddf551578d0da4c7795c505511c23f7975f2c719aa79f01ba"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-054-frame-1-complete-support.json.gz",
+      "bytes": 413538,
+      "sha256": "7395766867c473a1ccb203f5aabbddbba8856b72e6dac8b520343f8f12ae3994"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-054-frame-2-complete-support.json.gz",
+      "bytes": 66398,
+      "sha256": "08a9fc55eff5fcd824791cce62a0cb85057db92c3f0e878a8028eeb472286c2a"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-063-frame-1-complete-support.json.gz",
+      "bytes": 2421520,
+      "sha256": "cdf1cd06b3b18ccb734cf3f6ed29c2b391f0722632bd78944cf9de556c851659"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-063-frame-2-complete-support.json.gz",
+      "bytes": 1215735,
+      "sha256": "0a7e151cfef58ebd5d2016e1e67c6ec561760c0b00413f809278cdca3a76711e"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-072-frame-1-complete-support.json.gz",
+      "bytes": 2432351,
+      "sha256": "18c77d44308261d107516e4cfd794766829dba4e20a0af92cc85bc478090826d"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-072-frame-2-complete-support.json.gz",
+      "bytes": 1324895,
+      "sha256": "5287d209bb896a44c2654542f2409255dd33d85be6e9ab97c52ccfa63b892030"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-089-frame-1-complete-support.json.gz",
+      "bytes": 795669,
+      "sha256": "63af958aefad5d74c61d8dfb79575c1c2e89c68bfcb5dbc9a2b1b0c73f2a002f"
+    },
+    {
+      "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-089-frame-2-complete-support.json.gz",
+      "bytes": 67510,
+      "sha256": "e34f3e351176631348414f961a8aa67c7e1582eea15c952dfd1d1ce5721a3f7b"
+    }
+  ],
+  "unchanged_process_limits": {
+    "wall_seconds": 600,
+    "RSS_limit_bytes": 805306368,
+    "shared_ceiling_bytes": 7301444403,
+    "disk_floor_bytes": 104857600,
+    "maximum_output_bytes": 41943040,
+    "metadata_margin_bytes": 4194304
+  },
+  "environment": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "executable": {
+      "path": "/usr/bin/python3.12",
+      "bytes": 8020928,
+      "sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f"
+    },
+    "platform": "linux",
+    "github_sha": "41333a369cbc44aab6fb5a723b75833a693ac16c",
+    "github_run_id": "40641230212"
+  },
+  "conditional_raw_clearance_passes": 4,
+  "independent_conditional_raw_clearance_passes": 4,
+  "actual_frame_count": 16,
+  "source_and_public_inputs_unchanged": true,
+  "finished_utc": "2026-10-28T06:00:39.116728+00:00"
+}

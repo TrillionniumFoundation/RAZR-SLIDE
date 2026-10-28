@@ -1,0 +1,158 @@
+{
+  "schema": "razr-r5-original-numeric-qualification-scope-readback-v1",
+  "source_zip": {
+    "file_name": "RAZR-SLIDE_N15_H_restore_four_load_science_20261027.zip",
+    "bytes": 40413347,
+    "sha256": "c3cc04b9c577b8cc1d4c884e9e4334a9533148757473d32334db65a886e3f4be"
+  },
+  "source_records": {
+    "panel_five": {
+      "archive_relative_path": "original-probe-qualification/panel/N13-v3-independent-readback.json",
+      "bytes": 7902,
+      "sha256": "6919547177171fac8af7dd17da255a8e4bc90b2333d19f0e18bb77d5ba486e6a"
+    },
+    "frame_five": {
+      "archive_relative_path": "original-probe-qualification/frame/FRAME_INDEPENDENT_READBACK.json",
+      "bytes": 1191,
+      "sha256": "297f84ccf51ab3b6c69d71720d3b9518ba2b9a71e48a817010649944097eea4f"
+    },
+    "H_restore": {
+      "archive_relative_path": "independent-audit/H_EXECUTED_READBACK_SUMMARY.json",
+      "bytes": 9910,
+      "sha256": "ed02860dd6cf88809e899788f02bd8e5e4733b0828c381028c02fd4adf011977"
+    },
+    "linear_seed": {
+      "archive_relative_path": "independent-audit/LINEAR_SEED_EXECUTED_SUMMARY.json",
+      "bytes": 5389,
+      "sha256": "ce06bd8e97a70277f4b5b88d87d9f59c052a3f822687c18dab700a1c582366cc"
+    },
+    "four_loads": {
+      "archive_relative_path": "actual-results/panel-four-loads/FOUR_LOAD_REPORT.json",
+      "bytes": 19825,
+      "sha256": "3387d687c553461ae29fd7fdecbe5ee9085875a27aae384d52bb7d9fea32b861"
+    },
+    "frame_producer": {
+      "archive_relative_path": "original-probe-qualification/frame/N14_REPORT.json",
+      "bytes": 23548,
+      "sha256": "571226abebdca4f992515db4ff2faa7e32c64c0a7e5aba21f5748bb57d1d5ee3"
+    },
+    "panel_H_pilot": {
+      "archive_relative_path": "H-column-records/panel-H-pilot/H_BLOCK_REPORT.json",
+      "bytes": 9821,
+      "sha256": "b9d1bfa71629effda1ee9c5244557345080d5f93bb8c568f0dc9f3995c121fa7"
+    },
+    "frame_H_pilot": {
+      "archive_relative_path": "H-column-records/frame-H-pilot/H_BLOCK_REPORT.json",
+      "bytes": 10000,
+      "sha256": "9a8a7c91ce535066110d0b60fac9b598c269be6e5d5e37acde3b05e37ce9b145"
+    }
+  },
+  "readback_method": "Full original ZIP SHA/CRC and all 384 members were re-read; these eight original JSON records were then cross-compared. No numerical solver, native K product or H action ran in R5.",
+  "original_float64_residual_threshold": 1e-07,
+  "panel_original_five_residuals": [
+    9.983337773558199e-08,
+    1.990477778047551e-09,
+    7.9778400558745e-09,
+    7.799897850960903e-09,
+    8.043638351779749e-09
+  ],
+  "frame_original_five_residuals": [
+    5.659897926075834e-09,
+    1.268995135824172e-10,
+    1.9311867265678982e-10,
+    1.2438483918711836e-10,
+    1.7809635438880483e-10
+  ],
+  "historical_independent_original_five_passes": {
+    "panel": 5,
+    "frame": 5
+  },
+  "historical_H_column_producer_scope": {
+    "panel": {
+      "unique_columns": 3885,
+      "maximum_reported_column_residual": 2.473825588822365e-09,
+      "raw_H_array_sha256": "ddc4ffe80f045cbb06e9e925d97633deba3c8e125ea7860f979494409d862b56",
+      "raw_global_checks": {
+        "absolute_scale": 117106.99309954215,
+        "max_raw_asymmetry": 1.788430381566286e-08,
+        "relative_raw_asymmetry": 1.5271764172495675e-13,
+        "minimum_diagonal": 29.04059240138495,
+        "reciprocity_threshold": 2e-08,
+        "energy_absolute_lower_bound": -0.002342139861990843,
+        "original_reciprocity_and_self_energy_passed": true
+      }
+    },
+    "frame": {
+      "unique_columns": 3885,
+      "maximum_reported_column_residual": 6.17319528828375e-11,
+      "raw_H_array_sha256": "6357043c8cacd0078570d50b54b6a3e4068aa36db90bb2c781d23a84126f8da4",
+      "raw_global_checks": {
+        "absolute_scale": 1354.3431698186398,
+        "max_raw_asymmetry": 2.6062707547680475e-11,
+        "relative_raw_asymmetry": 1.92437988602036e-14,
+        "minimum_diagonal": 147.2526026224933,
+        "reciprocity_threshold": 2e-08,
+        "energy_absolute_lower_bound": -2.7086863396372797e-05,
+        "original_reciprocity_and_self_energy_passed": true
+      }
+    }
+  },
+  "historical_combined_H_checks": {
+    "definition": "Hp_raw + Hf_raw, before either body is symmetrized",
+    "sum_order": "panel value plus frame value, original float64 addition",
+    "row_major_float64_array_sha256": "e9ffb75ced329fbe59b67b1d5b39386b0d807e0d1ddaf54395516ca9a02d5dbf",
+    "additional_full_matrix_allocated_or_saved": false,
+    "streamed_rows_per_block": 128,
+    "absolute_scale": 117258.94702376203,
+    "max_raw_asymmetry": 1.788430381566286e-08,
+    "relative_raw_asymmetry": 1.525197374665038e-13,
+    "minimum_diagonal": 759.492302953647,
+    "reciprocity_threshold": 2e-08,
+    "energy_absolute_lower_bound": -0.0023451789404752405,
+    "original_reciprocity_and_self_energy_passed": true
+  },
+  "historical_restore": {
+    "probes": 5,
+    "largest_relative_error": 1.1659935073707673e-08,
+    "response_calls": 5
+  },
+  "historical_restore_callback_scope": "exactly five ordered SHA-bound saved genuine complete original actions; unknown RHS rejected",
+  "historical_four_load_residuals": [
+    2.1827872842550278e-11,
+    2.4101609596982598e-11,
+    1.6825651982799172e-11,
+    2.1714186004828662e-11
+  ],
+  "historical_four_load_block_residual": 2.4101609596982598e-11,
+  "historical_linear_seed_complete": true,
+  "original_ten_probe_full_fields_and_corrections_preserved": true,
+  "independent_all_7770_column_K_products_executed": false,
+  "all_H_column_full_fields_historically_retained": false,
+  "arbitrary_RHS_inverse_qualified": false,
+  "finite_QP_checkpoint_or_resume_qualified": false,
+  "current_K1_K3_geometry_FE_qualified": false,
+  "original_numeric_inputs_or_threshold_changed": false,
+  "historical_runtime_requalified_by_current_R4_runtime": false,
+  "new_numeric_execution_in_R5": false,
+  "full_field_extension_capacity_lower_bound": {
+    "purpose": "Storage lower bound for any proposed new all-column full-field/residual preservation campaign; not a registered execution strategy or a new acceptance criterion.",
+    "columns_per_body": 3885,
+    "original_full_dofs": {
+      "panel": 344103,
+      "frame": 474726
+    },
+    "original_free_dofs": {
+      "panel": 344097,
+      "frame": 473949
+    },
+    "float64_bytes_per_value": 8,
+    "all_7770_full_field_raw_bytes": 25449205320,
+    "all_7770_free_residual_raw_bytes": 25424869680,
+    "excludes_RHS_corrections_K_factors_headers_and_copies": true,
+    "compressed_size_or_time_guarantee": false,
+    "new_all_column_campaign_started": false,
+    "historical_missing_full_fields_recreated": false,
+    "field_plus_residual_raw_bytes": 50874075000
+  },
+  "all_blockers_closed": false
+}

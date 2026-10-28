@@ -1,0 +1,19 @@
+{"execution_completed": false, "conditional_clearance_passes": null, "total_tree_nodes_verified": null, "seconds": 0.2605022760000004, "peak_RSS_bytes": 94171136, "failure": {"type": "ValueError", "message": "actual geometric and partition controls required", "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/verify_exterior_refinement_r5e_v4.py\", line 217, in main\n    need(report['channel_negative_controls'] and report['partition_negative_controls'],'actual geometric and partition controls required')\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/verify_exterior_refinement_r5e_v4.py\", line 19, in need\n    if not ok:raise ValueError(message)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: actual geometric and partition controls required\n"}}
+Traceback (most recent call last):
+  File "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/run_owned_pure_math_r4e_v3.py", line 87, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/run_owned_pure_math_r4e_v3.py", line 67, in main
+    runpy.run_path(str(worker.resolve()), run_name='__main__')
+  File "<frozen runpy>", line 286, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/verify_exterior_refinement_r5e_v4.py", line 229, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/verify_exterior_refinement_r5e_v4.py", line 217, in main
+    need(report['channel_negative_controls'] and report['partition_negative_controls'],'actual geometric and partition controls required')
+  File "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/verify_exterior_refinement_r5e_v4.py", line 19, in need
+    if not ok:raise ValueError(message)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: actual geometric and partition controls required

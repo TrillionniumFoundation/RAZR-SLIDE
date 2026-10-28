@@ -1,0 +1,112 @@
+{
+  "schema": "r5-v5-publication-actual-v1",
+  "at_utc": "2026-10-28T06:47:32.513Z",
+  "branch": "evidence/full-sprint-20261028-r5",
+  "prepared_commit": "550afd1de8f2fec62e7168b1e9a3ef36c74f0738",
+  "prepared_tree": "a622c2a7c583691a58492dbe590554fd14a3578f",
+  "run_request_commit": "2ce252f25d340b056bfd350bdde8c743f915c9a4",
+  "run_request_tree": "f583c40a2e676cc229d73ee1e997bc1b44029f0c",
+  "workflow_run_id": 40645988108,
+  "first_API_readback_attempts": [
+    {
+      "path": "engineering/engineering-followup-20261028-r5/compute/exterior_trim_r5e_v5.py",
+      "ok": true,
+      "remote_blob_sha": "4706210040d2dd44b8c84823b47e60cdcef33a62"
+    },
+    {
+      "path": "engineering/engineering-followup-20261028-r5/compute/trim_boundary_model_r5e_v5.py",
+      "ok": true,
+      "remote_blob_sha": "355346bf871b5a2ef2f18bb527ac9484c89df49a"
+    },
+    {
+      "path": "engineering/engineering-followup-20261028-r5/compute/verify_exterior_trim_r5e_v5.py",
+      "ok": true,
+      "remote_blob_sha": "de676ad7f8e2f74bf1be71f16f6a8254ad883e2e"
+    },
+    {
+      "path": "engineering/engineering-followup-20261028-r5/compute/run_portable_trim_r5e_v5.py",
+      "ok": true,
+      "remote_blob_sha": "cf01221f834424fa32ee85b562bb306c66f1f560"
+    },
+    {
+      "path": "engineering/engineering-followup-20261028-r5/compute/R5E_TRIM_REALIZATION_MODEL_V5_BASIS.md",
+      "ok": true,
+      "remote_blob_sha": "a003ed8850c294ef2d8fbf5f2666318cd310b046"
+    },
+    {
+      "path": "engineering/engineering-followup-20261028-r5/compute/prepare_trim_source_projection_r5e_v5.py",
+      "ok": true,
+      "remote_blob_sha": "6420e4b055d637fcebceb6e61ff1e03a7f6b512b"
+    },
+    {
+      "path": "engineering/engineering-followup-20261028-r5/compute/R5E_V5_PLANAR_TRIM_SOURCE.json.gz",
+      "ok": false,
+      "error": {
+        "content": [
+          {
+            "type": "text",
+            "text": "HTTPError: 400: GitHub Fetch only accepts UTF-8 text. (Response: None)"
+          }
+        ],
+        "structuredContent": {
+          "error": "HTTPError: 400: GitHub Fetch only accepts UTF-8 text. (Response: None)",
+          "error_code": "INVALID_ARGUMENT"
+        },
+        "isError": true
+      }
+    },
+    {
+      "path": "engineering/engineering-followup-20261028-r5/compute/R5E_V5_PLANAR_TRIM_SOURCE_RECEIPT.json",
+      "ok": true,
+      "remote_blob_sha": "bfa7d25705ee88f181eecb320e6cac2410f8bff8"
+    },
+    {
+      "path": "engineering/engineering-followup-20261028-r5/compute/R5E_V5_STATIC_SOURCE_CAPACITY.json",
+      "ok": true,
+      "remote_blob_sha": "9e7915ee7c95eaff7e0f59304434b20f9c3f4158"
+    },
+    {
+      "path": "engineering/engineering-followup-20261028-r5/compute/R5E_PORTABLE_SOURCE_LOCK_V5.json",
+      "ok": true,
+      "remote_blob_sha": "bdde69107205581e717caca6cdcf6915a995ebf5"
+    },
+    {
+      "path": ".github/workflows/r5-exterior-channel.yml",
+      "ok": true,
+      "remote_blob_sha": "854e6ebc2a52e4f87a15987e7e0c4eb9e0decfcb"
+    }
+  ],
+  "binary_full_Git_readback_record": "R5_V5_BINARY_REMOTE_READBACK.json",
+  "all_11_remote_file_bytes_verified": true,
+  "run_request": {
+    "schema": "razr-r5-trim-realization-model-run-request-v5",
+    "prepared_source_commit": "550afd1de8f2fec62e7168b1e9a3ef36c74f0738",
+    "r4_source_commit": "c5f6606924937d716b007cd3ffa8e54df8ecfa5d",
+    "actual_V3_run_id": 40641230212,
+    "actual_V4_failed_run_id": 40643098035,
+    "source_lock_sha256": "d05a6f6a69ac5eb627d3d1180ff543c4f9b70c7c424c972dfab2b305b8a21211",
+    "sequence": [
+      "single_trim_model_cell",
+      "verify_single",
+      "preflight_trim_model",
+      "all_trim_model_frames",
+      "verify_all"
+    ],
+    "actual_positive_removed_volume_and_applied_hole_certificate_and_independent_original_TOL_pass_required_before_full_run": true,
+    "conditional_trim_model_only": true,
+    "native_trim_class_membership_verified": false,
+    "original_raw_gate_reclassified": false,
+    "maximum_worker_wall_seconds_each": 600,
+    "maximum_worker_RSS_bytes_each": 805306368,
+    "maximum_workflow_minutes": 55,
+    "scope": "Execute the frozen trim-realization-conditioned method, preserving all original source endpoints, closed carriers, full displacement domains, original threshold and resource gates. Preserve every actual failure, original V3/V4 result and unexecuted stage.",
+    "native_geometry_execution_requested": false,
+    "new_numeric_probe_execution_requested": false,
+    "physical_trial_requested": false,
+    "all_blockers_closed": false
+  },
+  "conditional_trim_model_only": true,
+  "native_trim_class_membership_verified": false,
+  "original_raw_gate_reclassified": false,
+  "all_blockers_closed": false
+}

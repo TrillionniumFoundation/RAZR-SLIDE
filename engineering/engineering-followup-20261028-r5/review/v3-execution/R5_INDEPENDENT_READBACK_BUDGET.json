@@ -1,0 +1,40 @@
+{
+  "schema": "razr-r5-independent-actual-readback-budget-v1",
+  "registered_utc": "2026-10-28T06:08:26.672449+00:00",
+  "purpose": "Cross-author post-run record and exact certificate readback; not a native/CAD or new remote math execution",
+  "audit_source_identity": {
+    "bytes": 45913,
+    "sha256": "1efdc3cf4e824a0db2ad0babb1d6ee66eb16a8dc2b6a196c8f94c81e03631309"
+  },
+  "command": [
+    "python3",
+    "-I",
+    "-S",
+    "-B",
+    "<workspace>/r5-integration/independent-envelope-v3-execution-review/audit_actual_r5_v3.py"
+  ],
+  "wall_seconds": 180,
+  "RSS_limit_bytes": 402653184,
+  "address_space_limit_bytes": 402653184,
+  "maximum_output_bytes": 4194304,
+  "maximum_single_source_gzip_decoded_bytes": 33554432,
+  "source_gzip_count": 16,
+  "expected_source_gzip_bytes": 20506080,
+  "maximum_new_certificate_decoded_bytes": 8388608,
+  "actual_artifact_bytes": 395931,
+  "actual_artifact_members": 53,
+  "expected_original_cells": 1474,
+  "expected_single_stationary_cells": 1,
+  "algorithm_basis": "Read each compressed R4 proof once; hash its complete decoded JSON, retain unchanged complete boundary boxes/D and original positive cells, then independently check every recorded closed-box/open-channel separating inequality or 12 blockers, exact directed-volume conservation and original binary64 tolerance. Do not reconstruct the older large geometric enclosure proofs. Audit five actual source/contract/controller/entry chains and seven negative-control types; at most seven additional deliberately corrupt copied inputs for the independent predicates.",
+  "original_remote_gates_unchanged": {
+    "wall_seconds": 600,
+    "RSS_limit_bytes": 805306368,
+    "shared_ceiling_bytes": 7301444403,
+    "disk_floor_bytes": 104857600,
+    "maximum_output_bytes": 41943040,
+    "metadata_margin_bytes": 4194304
+  },
+  "not_a_local_admission_attempt_to_original_native_or_math_gate": true,
+  "outputs_owned_directory": "<workspace>/r5-integration/independent-envelope-v3-execution-review",
+  "parent_persists_deliverables": true
+}

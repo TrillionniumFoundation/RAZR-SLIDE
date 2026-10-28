@@ -1,0 +1,64 @@
+--- unexecuted-static-review/exterior_refinement_r5e_v4.py
++++ final-v4/exterior_refinement_r5e_v4.py
+@@ -150,24 +150,42 @@
+         need(limits['maximum_splits']==4096 and limits['maximum_depth']==24 and limits['maximum_boundary_box_tests']==12000000,'registered finite refinement policy differs')
+         need(F(limits['tiny_retained_volume_exact'])==F(1e-7)/100000,'tiny retained leaf policy differs')
+         phase=contract['phase'];need(phase in ['single_retained_cell','preflight','all_raw_refined'],'registered producer phase')
++        selection=json.loads(bound(contract['real_retained_cell_selection']).read_text())
++        selected_case_frame=(selection['case_id'],selection['frame'])
++        selected_root_index=selection['original_raw_cell_index']
+         expected=[] if phase=='single_retained_cell' else ['single_retained_cell'] if phase=='preflight' else ['single_retained_cell','preflight']
+         need([r['phase'] for r in contract['completed_prerequisites']]==expected,'registered prerequisite phase sequence')
+         for prerequisite in contract['completed_prerequisites']:
+             old=json.loads(bound(prerequisite['report']).read_text());controller=json.loads(bound(prerequisite['supervisor']).read_text())
+             need(old['execution_completed'] and old['phase']==prerequisite['phase'] and controller['completed'] and controller['resource_stop'] is None,'incomplete prerequisite')
+             need(controller['limits']['registered_math_contract_sha256']==old['contract_sha256'],'prerequisite contract differs')
++            need(controller['limits']['worker']['sha256']==contract['producer_sha256'],'prerequisite producer source differs')
+             need(Path(controller['limits']['worker_output_directory']).resolve()==Path(prerequisite['report']['path']).resolve().parent,'prerequisite output differs')
++            need(old['source_report_identity']==contract['r4_report'] and old['public_input_bridge']==contract['public_input_bridge'],
++                 'prerequisite full original input identities differ')
+             if prerequisite['phase']=='single_retained_cell':
+                 need(old['conditional_clearance_passes']==1 and len(old['frames'])==1 and old['frames'][0]['exact_splits_this_frame']>0,
+                      'selected real retained cell did not pass the unchanged original threshold')
++                need((old['frames'][0]['case_id'],old['frames'][0]['frame'])==selected_case_frame and
++                     old['frames'][0]['root_original_cell_indices']==[selected_root_index] and
++                     old['real_retained_cell_selection']==contract['real_retained_cell_selection'],
++                     'prerequisite single case/frame/root or actual selection identity differs')
++            if prerequisite['phase']=='preflight':
++                need(old['all_frame_capacity_observations_completed'] and len(old['frames'])==16 and old['total_original_roots']==1474 and
++                     old['new_predicate_hard_budget']==limits['maximum_boundary_box_tests'] and old['complete_phase_maximum_tree_nodes']==9666,
++                     'actual full16 finite capacity preflight differs')
+         if phase!='single_retained_cell':
+             binding=contract['independent_single_verification']
+             verified=json.loads(bound(binding['report']).read_text());owned=json.loads(bound(binding['supervisor']).read_text())
+             need(verified['execution_completed'] and verified['expected_phase']=='single_retained_cell' and verified['conditional_clearance_passes']==1,
+                  'actual independent single-cell pass required before larger work')
++            need(verified['expected_case_frames']==[list(selected_case_frame)],'independent prerequisite case/frame differs')
+             need(owned['completed'] and owned['worker_started'] and owned['worker_exit_code']==0 and owned['resource_stop'] is None,
+                  'independent prerequisite not completed under original owned gates')
+             need(owned['limits']['registered_math_contract_sha256']==verified['contract_sha256'],'independent prerequisite contract differs')
++            need(owned['limits']['worker']['sha256']==contract['single_verifier_source']['sha256'] and
++                 sha(bound(contract['single_verifier_source']))==contract['single_verifier_source']['sha256'],
++                 'independent prerequisite verifier source differs')
+             need(Path(owned['limits']['worker_output_directory']).resolve()==Path(binding['report']['path']).resolve().parent,
+                  'independent prerequisite output binding differs')
+             need(verified['verified_producer_report']==contract['completed_prerequisites'][0]['report'],
+@@ -179,7 +197,7 @@
+         bridge_json=json.loads(bound(contract['public_input_bridge']).read_text());need(bridge_json['source_commit']=='c5f6606924937d716b007cd3ffa8e54df8ecfa5d','public source anchor differs')
+         need(len(bridge_json['files'])==19 and all(x['decoded_json_equal'] and not x['changed_strings'] for x in bridge_json['files']),'complete unchanged public bridge')
+         bridge={x['path']:x for x in bridge_json['files']};need(len(bridge)==19,'duplicate source bridge')
+-        selection=json.loads(bound(contract['real_retained_cell_selection']).read_text());result['real_retained_cell_selection']=contract['real_retained_cell_selection']
++        result['real_retained_cell_selection']=contract['real_retained_cell_selection']
+         frames=original['frames']
+         if phase=='single_retained_cell':frames=[next(r for r in frames if (r['case_id'],r['frame'])==(selection['case_id'],selection['frame']))]
+         result['base_channel_controls']=base.controlled_examples()
+--- unexecuted-static-review/run_portable_refinement_r5e_v4.py
++++ final-v4/run_portable_refinement_r5e_v4.py
+@@ -112,6 +112,7 @@
+                       'completed_prerequisites':[],'source_commit':run['source_commit'],
+                       'base_producer_source':identity(src/'exterior_channels_r5e_v3.py'),
+                       'base_verifier_source':identity(src/'verify_exterior_channels_r5e_v3.py'),
++                      'single_verifier_source':identity(src/'verify_exterior_refinement_r5e_v4.py'),
+                       'real_retained_cell_selection':identity(src/'R5E_V4_REAL_RETAINED_CELL.json'),
+                       'native_Common_as_acceptance_premise':False,'all_original_D_components_retained':True,
+                       'original_float64_TOL_unchanged':True,'native_boundary_semantics_remains_a_premise':True,'current_factory_G2_qualified':False}

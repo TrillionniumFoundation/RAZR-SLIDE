@@ -1,0 +1,99 @@
+{
+  "schema": "r5-v4-actual-failure-summary-v1",
+  "at_utc": "2026-10-28T06:20:26.607804+00:00",
+  "run_id": 40643098035,
+  "job_id": 122665572124,
+  "commit": "06e4f37690e2d5b9dc2abaf69cab9ba16957f1e2",
+  "pipeline_completed": false,
+  "pipeline_seconds": 1.0159836019999986,
+  "producer_completed": true,
+  "producer_conditional_clearance_passes": 0,
+  "producer_frames": [
+    {
+      "case_id": "case-001",
+      "frame": 1,
+      "pair": [
+        "A_BACK_PANEL",
+        "L_KEY"
+      ],
+      "source_proof": {
+        "bytes": 1114119,
+        "sha256": "224bc618d08ebc5c8f5dbf8aa43fd598631928b523ef49798272dbb17e789d8a",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-001-frame-1-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-001-frame-1-complete-support.json.gz",
+        "bytes": 1114119,
+        "sha256": "943c9f768445495383e6714fd3d610c9a7b079c4cbd4d5faca8af2061fa9ed12"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1/2251799813685248"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        1438,
+        460
+      ],
+      "original_raw_cell_count": 215,
+      "root_original_cell_indices": [
+        202
+      ],
+      "root_count": 1,
+      "retained_leaf_sum_exact": "10961262279981815290884188059995738986490489745/22835963083295358096932575511191922182123945984",
+      "excluded_open_leaf_sum_exact": "0",
+      "original_root_sum_exact": "10961262279981815290884188059995738986490489745/22835963083295358096932575511191922182123945984",
+      "selected_conditional_raw_upper_exact_mm3": "10961262279981815290884188059995738986490489745/22835963083295358096932575511191922182123945984",
+      "selected_conditional_raw_upper_mm3": 0.4800000000000019,
+      "original_clearance_gate_passed": false,
+      "original_min_volume_plus_TOL_gate_passed": null,
+      "all_closed_cut_planes_and_original_cell_boundaries_retained": true,
+      "total_leaf_count": 7,
+      "maximum_depth_reached": 6,
+      "exact_splits_this_frame": 6,
+      "exact_boundary_box_tests_this_frame": 4017,
+      "certificate": {
+        "path": "case-001-frame-1-refinement.json.gz",
+        "bytes": 2036,
+        "sha256": "b0c9dcf9ccf8dd906b682ef5ad2df804059ffd316fb9f7b927012b96e4de7dec"
+      }
+    }
+  ],
+  "verifier_completed": false,
+  "verified_frames_before_failure": [
+    {
+      "case_id": "case-001",
+      "frame": 1,
+      "original_roots_verified": 1,
+      "exact_tree_nodes_verified": 13,
+      "exact_splits_verified": 6,
+      "all_retained_and_excluded_leaves_verified": 7,
+      "complete_boundary_piece_separations_checked": 0,
+      "retained_upper_exact_mm3": "10961262279981815290884188059995738986490489745/22835963083295358096932575511191922182123945984",
+      "original_clearance_gate_passed": false
+    }
+  ],
+  "verifier_failure": {
+    "type": "ValueError",
+    "message": "actual geometric and partition controls required",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/verify_exterior_refinement_r5e_v4.py\", line 217, in main\n    need(report['channel_negative_controls'] and report['partition_negative_controls'],'actual geometric and partition controls required')\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/verify_exterior_refinement_r5e_v4.py\", line 19, in need\n    if not ok:raise ValueError(message)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: actual geometric and partition controls required\n"
+  },
+  "actual_negative_control_count": 12,
+  "channel_negative_controls_executed": 0,
+  "later_stages_unexecuted": [
+    "preflight",
+    "all-refined",
+    "verify-all"
+  ],
+  "resource_stop": false,
+  "all_blockers_closed": false
+}

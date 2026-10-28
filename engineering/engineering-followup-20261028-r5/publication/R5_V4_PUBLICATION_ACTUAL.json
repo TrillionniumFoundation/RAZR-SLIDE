@@ -1,0 +1,72 @@
+{
+  "schema": "r5-v4-publication-actual-v1",
+  "at_utc": "2026-10-28T06:19:10.997Z",
+  "branch": "evidence/full-sprint-20261028-r5",
+  "prepared_commit": "800a9b7ac53c3c3e8473d03f6c9ca3533832e450",
+  "prepared_tree": "3e2474285feae77c2385ba903e99475a43cf2141",
+  "run_request_commit": "06e4f37690e2d5b9dc2abaf69cab9ba16957f1e2",
+  "run_request_tree": "f173f2c41135cef4f72f4a2ffcc313ce91a6efff",
+  "workflow_run_id": 40643098035,
+  "remote_full_bytes": [
+    {
+      "path": "engineering/engineering-followup-20261028-r5/compute/exterior_refinement_r5e_v4.py",
+      "ok": true,
+      "remote_blob_sha": "6503d8b8aec20a9e976f49caba1455dcfa1f774f"
+    },
+    {
+      "path": "engineering/engineering-followup-20261028-r5/compute/verify_exterior_refinement_r5e_v4.py",
+      "ok": true,
+      "remote_blob_sha": "8cbbc6458c3824ab76ad57e8b68baa848a600350"
+    },
+    {
+      "path": "engineering/engineering-followup-20261028-r5/compute/run_portable_refinement_r5e_v4.py",
+      "ok": true,
+      "remote_blob_sha": "0a32be66f4ed566b8f594f1358aac43fd8a5e367"
+    },
+    {
+      "path": "engineering/engineering-followup-20261028-r5/compute/R5E_REFINEMENT_V4_BASIS.md",
+      "ok": true,
+      "remote_blob_sha": "4400e5aee281a216ae0ff60baa4694535e473eec"
+    },
+    {
+      "path": "engineering/engineering-followup-20261028-r5/compute/R5E_V4_REAL_RETAINED_CELL.json",
+      "ok": true,
+      "remote_blob_sha": "fd6d470fb4b86458ce595c6434c3782646ba8bdf"
+    },
+    {
+      "path": "engineering/engineering-followup-20261028-r5/compute/R5E_PORTABLE_SOURCE_LOCK_V4.json",
+      "ok": true,
+      "remote_blob_sha": "11e544f50e78bc0ca80110ad79e962795dc525b9"
+    },
+    {
+      "path": ".github/workflows/r5-exterior-channel.yml",
+      "ok": true,
+      "remote_blob_sha": "2655ca00cbffca7dce9d13e894370c6a5b4fcd84"
+    }
+  ],
+  "run_request": {
+    "schema": "razr-r5-exact-endpoint-refinement-run-request-v4",
+    "prepared_source_commit": "800a9b7ac53c3c3e8473d03f6c9ca3533832e450",
+    "r4_source_commit": "c5f6606924937d716b007cd3ffa8e54df8ecfa5d",
+    "actual_V3_commit": "41333a369cbc44aab6fb5a723b75833a693ac16c",
+    "actual_V3_run_id": 40641230212,
+    "source_lock_sha256": "9068291e6684299604d489fbf175cf781c0d1a1648cf690a2f5c337dec139c20",
+    "sequence": [
+      "single_retained_cell",
+      "verify_single",
+      "preflight",
+      "all_raw_refined",
+      "verify_all"
+    ],
+    "single_cell_requires_actual_split_and_original_clearance_pass_before_full_run": true,
+    "maximum_worker_wall_seconds_each": 600,
+    "maximum_worker_RSS_bytes_each": 805306368,
+    "maximum_workflow_minutes": 55,
+    "scope": "Exact endpoint subdivision of original closed roots; retain all positive thin and unvisited volumes and original full displacement domains, inputs, clearance threshold and resource gates. Preserve failures and every unexecuted stage.",
+    "native_geometry_execution_requested": false,
+    "new_numeric_probe_execution_requested": false,
+    "physical_trial_requested": false,
+    "all_blockers_closed": false
+  },
+  "all_blockers_closed": false
+}

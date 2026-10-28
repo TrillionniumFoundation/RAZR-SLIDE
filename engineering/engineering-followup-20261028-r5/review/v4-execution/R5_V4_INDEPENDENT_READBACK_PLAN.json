@@ -1,0 +1,114 @@
+{
+  "schema": "razr-r5-v4-cross-author-actual-execution-readback-plan-v1",
+  "status": "prepared_from_final_source_waiting_for_actual_V4_run_and_artifact",
+  "actual_V4_run_id": null,
+  "actual_V4_commit": null,
+  "actual_V4_archive_identity": null,
+  "reviewed_source_lock": {
+    "path": "r5-envelope/R5E_PORTABLE_SOURCE_LOCK_V4.json",
+    "bytes": 2313,
+    "sha256": "9068291e6684299604d489fbf175cf781c0d1a1648cf690a2f5c337dec139c20"
+  },
+  "reviewed_V4_sources": [
+    {"path":"exterior_refinement_r5e_v4.py","bytes":22588,"sha256":"d4ae39280819615439ecc040cea64b058b1c8a44105951659b67a941870beb24"},
+    {"path":"verify_exterior_refinement_r5e_v4.py","bytes":19296,"sha256":"8929a96b39cdb8c272f61b0b28affef70d20103299e367e6d1d19363750c0a7e"},
+    {"path":"run_portable_refinement_r5e_v4.py","bytes":13716,"sha256":"9c06f13ed489164263d477221de0f2d76a287e80f69f43e552b138c7890b2944"},
+    {"path":"R5E_REFINEMENT_V4_BASIS.md","bytes":5835,"sha256":"d11eac8ca5ab4b01a251e22be32b455c0b605709e9bbb0576eba49d7b920e0fc"},
+    {"path":"R5E_V4_REAL_RETAINED_CELL.json","bytes":3573,"sha256":"9541b3f61977525c49b0923a6087adbf795e04b05155e7fae828d1db6e7dec44"}
+  ],
+  "independent_method_review_read": "r5-integration/independent-refinement-method-review/R5_FINAL_SOURCE_LOCK_REVIEW_ADDENDUM.json",
+  "own_V3_audit_source_read": {
+    "path": "r5-integration/independent-envelope-v3-execution-review/audit_actual_r5_v3.py",
+    "bytes": 45913,
+    "sha256": "1efdc3cf4e824a0db2ad0babb1d6ee66eb16a8dc2b6a196c8f94c81e03631309"
+  },
+  "existing_V3_precondition": {
+    "run_id":40641230212,
+    "commit":"41333a369cbc44aab6fb5a723b75833a693ac16c",
+    "original_clearance_result":"4 of 16 conditional raw frames pass; 12 unresolved",
+    "selected_case":"case-001",
+    "selected_frame":1,
+    "selected_original_raw_cell_index":202,
+    "selection_is_actual_V3_retained_cell_not_stationary_witness":true,
+    "source_D_is_used_complete_without_stationary_unexpansion":true
+  },
+  "bounded_local_readback_plan": {
+    "wall_seconds":180,
+    "RSS_limit_bytes":402653184,
+    "address_space_limit_bytes":402653184,
+    "maximum_audit_output_bytes":4194304,
+    "maximum_source_proof_decoded_bytes_per_file":33554432,
+    "maximum_new_tree_certificate_decoded_bytes_per_file":67108864,
+    "maximum_original_proofs_decoded":16,
+    "original_proofs_only_for_actual_executed_certificate_frames":true,
+    "one_original_proof_decode_per_case_frame":true,
+    "single_source_case_proof_bytes":1114119,
+    "full_source_case_proof_bytes":20506080,
+    "full_phase_original_roots":1474,
+    "maximum_splits_per_producer_phase":4096,
+    "maximum_depth":24,
+    "maximum_leaves_per_full_producer_phase":5570,
+    "maximum_tree_nodes_per_full_producer_phase":9666,
+    "maximum_remote_boundary_predicates_per_producer_phase":12000000,
+    "audit_operations_basis":"Linear graph traversal over explicit tree nodes, exact interval/endpoint and signed-volume calculations, and one closed-box/open-channel separating inequality per recorded complete boundary piece. No full channel-search replay or original R4 enclosure regeneration. Process source proofs and tree certificates one frame at a time; keep extracted boundary/cell data and release unrelated decoded proof sections before new certificate decoding.",
+    "register_final_audit_source_sha_and_actual_artifact_identity_before_execution":true,
+    "if_budget_exceeded":"Preserve actual audit failure and partial readback; do not reinterpret incomplete audit as pass or silently raise budget."
+  },
+  "original_remote_gates_to_compare_without_change": {
+    "wall_seconds":600,
+    "RSS_limit_bytes":805306368,
+    "shared_ceiling_bytes":7301444403,
+    "disk_floor_bytes":104857600,
+    "maximum_output_bytes":41943040,
+    "metadata_margin_bytes":4194304
+  },
+  "actual_evidence_binding_checks": [
+    "Independently retrieve actual GitHub run/artifact metadata and exact-current-HEAD workflow/source-lock; compare archive size/digest and actual head/branch/run attempt.",
+    "Stream ZIP CRC/member SHA checks and compare existing expanded files; do not duplicate or fully extract large source material archives.",
+    "Bind final lock to 9 R5 files plus 3 R4 supervision files, unchanged 19-input bridge and actual source identities. Distinguish actual V4 HEAD, actual V3 HEAD and older R4 anchor.",
+    "Match every actually started stage's mathematical contract, supervision contract, controller, entry receipt, worker source and exact output directory. Check recorded owned PID/starttime/nonce/source/namespace bindings, real peak RSS and all persisted resources.",
+    "Do not invent missing live samples for subsecond stages or interpret post-exit null RSS as zero. Distinguish runtime postchecks actually present from those absent because pipeline stopped early.",
+    "Rebind saved real selection to the already preserved actual V3 pipeline/report/verifier/certificate and cell 202; re-use existing trusted archive identity, avoiding irrelevant large-input re-proofs."
+  ],
+  "actual_tree_and_measure_checks": [
+    "Single phase must represent exactly selected case-001/frame-1 original root 202. A completed full phase must represent original 16 frames and every one of 1474 original roots once, in order, with complete unchanged D and source piece identities.",
+    "Certificate frame metadata must agree with producer report. Root box and positive directed volume must agree exactly with original raw cell.",
+    "Tree node IDs must be unique contiguous integers; traversal begins at root node 0 and reaches every allocated node exactly once. No duplicate, cycle, missing child, unreachable node, or omitted pending leaf may pass.",
+    "Every split must use an actual endpoint of an original complete boundary box strictly inside the parent; reconstruct both children independently. Check full parent union, positive widths, exact volume conservation and retained closed cut carrier.",
+    "Every excluded leaf requires all complete boundary-piece separations, connected exterior-reaching open channel, and open-interior-only scope. Degenerate boundary boxes remain included.",
+    "Every retained leaf contributes its entire strictly positive exact volume. Check registered stopping reason, tiny threshold and depth where verifiable. Check complete 12 blocked observations where claimed; partial predicate-budget observations must not masquerade as complete certificates.",
+    "Require exact leaf sums, counts, maximum depth, split/node/leaf binary-tree identities and phase-global bounds. If no eligible blocking endpoint is claimed, inspect all recorded blocker endpoints. Global budget labels are checked against final recorded counters but not advertised as independent replay of all search operations.",
+    "Keep original root faces and cut planes as exact zero-volume carriers; finite positive tree boxes are affine box complexes, not new native topology-qualified solids.",
+    "Use Fraction(1e-7), whose exact value is 944473296573929/9444732965739290427392. The tiny-stop value is this fraction divided by 100000; it is a retention threshold, never permission to discard material volume.",
+    "Compare reconstructed frame upper and exact pass decision to actual independent checker. Full refined upper is min(retained, unchanged coarse upper), must not exceed inherited original bound that passed min(volume)+TOL."
+  ],
+  "actual_prerequisite_and_fail_stop_checks": {
+    "registered_sequence":[["single-retained-cell","single_retained_cell"],["verify-single","verify_single"],["preflight","preflight"],["all-refined","all_raw_refined"],["verify-all","verify_all"]],
+    "single_scientific_completion_but_clearance_failure":"Independent verify-single is deliberately still permitted and expected so that the failure certificate is checked. After it completes, driver must record completed=false and the original-threshold withholding failure, and no preflight/all-refined/verify-all contracts, controllers or outputs may exist.",
+    "single_or_verifier_owned_failure":"Later stages must remain unexecuted; retain actual partial reports and resource/failure state without fabricating complete roots or negative-control completion.",
+    "entry_to_preflight":"Require actual single producer clearance=1, exact_splits>0, positive excluded-open volume, and completed independent verification of that exact producer report under the original owned gates.",
+    "entry_to_full":"In addition, bind actual completed 16-frame preflight, 1474 roots, 9666 maximum nodes, 12000000 predicate limit and actual measured process capacity.",
+    "later_contracts":"Verify exact prior producer/source/selection/case/frame/root, original R4 report/bridge, independent verifier source, prerequisite contract SHA and output-directory binding; report execution_completed alone is insufficient.",
+    "all_clearance_not_promised":"A completed full pipeline may still have fewer than 16 clearance passes. Keep scientific completion, bounded conservative refinement, original clearance qualification and full native G2 separate."
+  },
+  "negative_control_readback": {
+    "expected_types_per_completed_verifier":16,
+    "phase": ["missing-frame","duplicate-frame","incorrect-phase"],
+    "root_coverage": ["omitted-original-root","duplicate-original-root"],
+    "partition": ["omitted-partition-child","duplicated-partition-child","cut-on-parent-boundary","discarded-closed-cut-plane","incorrect-positive-directed-volume","omitted-pending-leaf-node","discarded-smallest-nonzero-leaf-volume"],
+    "channel": ["omitted-complete-boundary-piece","overclaim-closed-cell-disjointness","channel-does-not-reach-known-exterior","false-separating-coordinate"],
+    "smallest_leaf_scope":"Record actual smallest leaf kind and exact positive volume. Do not call it a tiny-retained-leaf control unless actual evidence shows that kind/reason.",
+    "independent_mutations":"At most these same 16 finite copied-input mutations, using the independent audit predicates and actual first split/excluded leaf. Keep local audit rejections separate from remote actual verifier rejections.",
+    "if_actual_verifier_not_completed":"Report only observed completed controls; do not manufacture all sixteen passes."
+  },
+  "non_claims": {
+    "actual_V4_result_claimed_at_plan_time":false,
+    "producer_or_verifier_import_or_execution_by_reviewer":false,
+    "native_geometry_or_Common_reexecution":false,
+    "original_full_R4_enclosure_proof_reexecution":false,
+    "full_channel_search_counter_independently_replayed":false,
+    "full_continuous_G2":false,
+    "all_blockers_closed":false,
+    "Git_mutation_by_reviewer":false
+  }
+}

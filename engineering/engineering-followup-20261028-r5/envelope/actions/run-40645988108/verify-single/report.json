@@ -1,0 +1,381 @@
+{
+  "schema": "razr-r5e-independent-trim-model-verification-v5",
+  "execution_completed": true,
+  "producer_code_imported": false,
+  "trim_producer_or_helper_imported": false,
+  "contract_sha256": "15ffbc922c31ed775797380d9f84a541036e6d903a10161ce03003a409109bf5",
+  "verified_producer_report": {
+    "path": "/home/runner/work/_temp/razr-r5-trim-model-v5/single-trim-model-cell/report.json",
+    "bytes": 10177,
+    "sha256": "bc7731167233c8ba62f0d9b071a4d104ee9bcbd6556c73429fec369f038bb708"
+  },
+  "frames": [
+    {
+      "case_id": "case-001",
+      "frame": 1,
+      "original_roots_verified": 1,
+      "exact_tree_nodes_verified": 1,
+      "exact_splits_verified": 0,
+      "all_retained_and_excluded_leaves_verified": 1,
+      "actual_excluded_leaf_count": 1,
+      "complete_boundary_piece_separations_checked": 1590,
+      "trim_model_conditional_upper_exact_mm3": "0",
+      "trim_model_conditional_clearance_gate_passed": true,
+      "original_R4_raw_clearance_gate_passed_unchanged": false,
+      "original_raw_gate_reclassified": false,
+      "native_trim_class_membership_verified": false,
+      "conditional_trim_model_only": true,
+      "independent_boundary_refinement": {
+        "original_edges_vertices_preserved": 1540,
+        "applied_faces": 10,
+        "unapplied_faces_preserved": 0,
+        "hole_core_certificates_verified": 20,
+        "exact_UV_strata_checked": 1694,
+        "new_boundary_pieces": 2050,
+        "conditional_trim_model_only": true,
+        "native_trim_class_membership_verified": false,
+        "inner_wire_hole_semantics_verified_for_native": false,
+        "original_raw_gate_reclassified": false
+      }
+    }
+  ],
+  "phase_negative_controls": [
+    {
+      "name": "missing-frame",
+      "actual_rejected": true,
+      "reason": "missing, extra or reordered frame"
+    },
+    {
+      "name": "duplicate-frame",
+      "actual_rejected": true,
+      "reason": "duplicate frame"
+    },
+    {
+      "name": "incorrect-phase",
+      "actual_rejected": true,
+      "reason": "actual phase differs"
+    }
+  ],
+  "root_coverage_negative_controls": [
+    {
+      "name": "omitted-original-root",
+      "actual_rejected": true,
+      "reason": "missing, extra, duplicate or reordered original root cells"
+    },
+    {
+      "name": "duplicate-original-root",
+      "actual_rejected": true,
+      "reason": "missing, extra, duplicate or reordered original root cells"
+    }
+  ],
+  "channel_negative_controls": [
+    {
+      "name": "omitted-complete-boundary-piece",
+      "actual_rejected": true,
+      "reason": "incomplete per-piece certificate"
+    },
+    {
+      "name": "overclaim-closed-cell-disjointness",
+      "actual_rejected": true,
+      "reason": "open-interior-only scope required"
+    },
+    {
+      "name": "channel-does-not-reach-known-exterior",
+      "actual_rejected": true,
+      "reason": "upper channel misses known exterior"
+    },
+    {
+      "name": "false-separating-coordinate",
+      "actual_rejected": true,
+      "reason": "boundary box is not separated from open channel"
+    }
+  ],
+  "split_negative_controls": [],
+  "leaf_negative_controls": [
+    {
+      "name": "omitted-allocated-leaf-node",
+      "actual_rejected": true,
+      "reason": "contiguous explicit tree identities",
+      "original_leaf_id": 0,
+      "original_leaf_kind": "excluded",
+      "original_leaf_reason": null,
+      "original_positive_volume_exact": "10961262279981815290884188059995738986490489745/22835963083295358096932575511191922182123945984"
+    },
+    {
+      "name": "discarded-smallest-selected-tree-leaf-volume",
+      "actual_rejected": true,
+      "reason": "excluded leaf volume differs",
+      "original_leaf_id": 0,
+      "original_leaf_kind": "excluded",
+      "original_leaf_reason": null,
+      "original_positive_volume_exact": "10961262279981815290884188059995738986490489745/22835963083295358096932575511191922182123945984"
+    }
+  ],
+  "boundary_refinement_negative_controls": [
+    {
+      "name": "expanded-actual-hole-core-endpoint",
+      "status": "executed",
+      "actual_rejected": true,
+      "reason": "source-derived hole certificate differs: hole_core_exact",
+      "actual_certificate_locator": {
+        "material_side": 0,
+        "face_certificate_index": 0,
+        "hole_index": 0
+      },
+      "original_case_id": "case-001",
+      "original_frame": 1,
+      "original_inputs_modified": false
+    },
+    {
+      "name": "omitted-actual-closed-UV-patches",
+      "status": "executed",
+      "actual_rejected": true,
+      "reason": "UV closed coverage or a zero-dimensional carrier omitted",
+      "actual_certificate_locator": {
+        "material_side": 0,
+        "face_certificate_index": 0
+      },
+      "original_case_id": "case-001",
+      "original_frame": 1,
+      "original_inputs_modified": false
+    },
+    {
+      "name": "omitted-actual-original-edge-or-vertex",
+      "status": "executed",
+      "actual_rejected": true,
+      "reason": "complete replacement piece count/capacity differs",
+      "actual_certificate_locator": {
+        "material_side": 0,
+        "piece_index": 430,
+        "kind": "edge"
+      },
+      "original_case_id": "case-001",
+      "original_frame": 1,
+      "original_inputs_modified": false
+    },
+    {
+      "name": "incorrect-actual-swept-patch-endpoint",
+      "status": "executed",
+      "actual_rejected": true,
+      "reason": "patch mapping, original-box intersection, or complete-D sweep differs",
+      "actual_certificate_locator": {
+        "material_side": 0,
+        "face_certificate_index": 0,
+        "retained_patch_list_index": 0,
+        "axis": 1
+      },
+      "original_case_id": "case-001",
+      "original_frame": 1,
+      "original_inputs_modified": false
+    }
+  ],
+  "mandatory_analytic_controls": {
+    "schema": "razr-r5e-mandatory-analytic-checker-controls-v5",
+    "execution_kind": "synthetic_analytic_control",
+    "qualifies_original_or_trim_model_case": false,
+    "real_case_result_changed": false,
+    "source_closed_boxes_exact": [
+      [
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      [
+        [
+          "3777893186296660644253373929/1888946593147858085478400000",
+          "4"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ]
+    ],
+    "source_complete_face_counts": [
+      6,
+      6
+    ],
+    "complete_box_positive": {
+      "verified": true,
+      "root_box_exact": [
+        [
+          "2",
+          "3"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "positive_volume_exact": "1",
+      "excluded_open_volume_exact": "1",
+      "complete_boundary_pieces_verified": 6
+    },
+    "exact_split_positive": {
+      "verified": true,
+      "split_exact": "3777893186296660644253373929/1888946593147858085478400000",
+      "positive_child_volumes_exact": [
+        "944473296573929/1888946593147858085478400000",
+        "1888946593146913612181826071/1888946593147858085478400000"
+      ],
+      "tiny_leaf_retained_in_full": true,
+      "retained_sum_exact": "944473296573929/1888946593147858085478400000",
+      "all_closed_carriers_retained": true
+    },
+    "channel_negative_controls": [
+      {
+        "name": "omitted-complete-boundary-piece",
+        "actual_rejected": true,
+        "reason": "incomplete per-piece certificate"
+      },
+      {
+        "name": "overclaim-closed-cell-disjointness",
+        "actual_rejected": true,
+        "reason": "open-interior-only scope required"
+      },
+      {
+        "name": "channel-does-not-reach-known-exterior",
+        "actual_rejected": true,
+        "reason": "upper channel misses known exterior"
+      },
+      {
+        "name": "false-separating-coordinate",
+        "actual_rejected": true,
+        "reason": "boundary box is not separated from open channel"
+      }
+    ],
+    "split_negative_controls": [
+      {
+        "name": "omitted-partition-child",
+        "actual_rejected": true,
+        "reason": "two distinct forward child indices required"
+      },
+      {
+        "name": "duplicated-partition-child",
+        "actual_rejected": true,
+        "reason": "two distinct forward child indices required"
+      },
+      {
+        "name": "cut-on-parent-boundary",
+        "actual_rejected": true,
+        "reason": "split strictly inside parent required"
+      },
+      {
+        "name": "discarded-closed-cut-plane",
+        "actual_rejected": true,
+        "reason": "closed cut carrier omitted"
+      },
+      {
+        "name": "incorrect-positive-directed-volume",
+        "actual_rejected": true,
+        "reason": "parent directed volume conservation"
+      }
+    ],
+    "leaf_negative_controls": [
+      {
+        "name": "omitted-allocated-leaf-node",
+        "actual_rejected": true,
+        "reason": "contiguous explicit tree identities",
+        "original_leaf_id": 1,
+        "original_leaf_kind": "retained",
+        "original_leaf_reason": "tiny_exact_volume_retained",
+        "original_positive_volume_exact": "944473296573929/1888946593147858085478400000"
+      },
+      {
+        "name": "discarded-smallest-selected-tree-leaf-volume",
+        "actual_rejected": true,
+        "reason": "retained full directed volume/scope differs",
+        "original_leaf_id": 1,
+        "original_leaf_kind": "retained",
+        "original_leaf_reason": "tiny_exact_volume_retained",
+        "original_positive_volume_exact": "944473296573929/1888946593147858085478400000"
+      }
+    ],
+    "mandatory_controls_completed": true
+  },
+  "real_case_control_applicability": {
+    "channel_mutations": {
+      "status": "executed",
+      "actual_eligible_count": 1,
+      "reason": null,
+      "analytic_controls_are_separate": true
+    },
+    "split_mutations": {
+      "status": "not_applicable",
+      "actual_eligible_count": 0,
+      "reason": "No actual split exists in these completed case certificates.",
+      "analytic_controls_are_separate": true
+    },
+    "leaf_mutations": {
+      "status": "executed",
+      "actual_eligible_count": 1,
+      "reason": null,
+      "analytic_controls_are_separate": true
+    },
+    "boundary_refinement_mutations": {
+      "status": "executed",
+      "actual_applied_face_count": 10,
+      "actual_rejected_controls": 4,
+      "individual_missing_targets_recorded_as_not_applicable": true,
+      "reason": null
+    }
+  },
+  "conditional_trim_model_only": true,
+  "native_trim_class_membership_verified": false,
+  "inner_wire_hole_semantics_verified_for_native": false,
+  "original_raw_gate_reclassified": false,
+  "native_Common_called": false,
+  "native_material_semantics_verified": false,
+  "compiled_error_verified": false,
+  "full_continuous_G2": false,
+  "all_blockers_closed": false,
+  "expected_phase": "single_trim_model_cell",
+  "expected_case_frames": [
+    [
+      "case-001",
+      1
+    ]
+  ],
+  "trim_source_bundle": {
+    "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/R5E_V5_PLANAR_TRIM_SOURCE.json.gz",
+    "bytes": 35630,
+    "sha256": "bc778c13f9efbc280bcb93e59edbc821d2a7b751f0b8730231d1b0bd855e2804"
+  },
+  "verified_trim_source_bundle": {
+    "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/R5E_V5_PLANAR_TRIM_SOURCE.json.gz",
+    "bytes": 35630,
+    "sha256": "bc778c13f9efbc280bcb93e59edbc821d2a7b751f0b8730231d1b0bd855e2804"
+  },
+  "registered_trim_model_source_not_imported": {
+    "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/trim_boundary_model_r5e_v5.py",
+    "bytes": 12729,
+    "sha256": "704e5dad9195fbd31edd2a5aff9121bf198baf540a2d9c17bc9f4376ab42b1f6"
+  },
+  "seconds": 0.5164025820000013,
+  "peak_RSS_bytes": 98971648,
+  "total_tree_nodes_verified": 1,
+  "total_splits_verified": 0,
+  "total_leaves_verified": 1,
+  "total_actual_excluded_leaves_verified": 1,
+  "trim_model_conditional_clearance_passes": 1,
+  "applied_face_occurrences_verified": 10,
+  "applied_inner_wire_occurrences_verified": 20,
+  "retained_original_face_occurrences_after_rejection_verified": 0
+}

@@ -1,0 +1,463 @@
+{
+  "schema": "razr-r5-independent-refinement-method-and-source-review-v1",
+  "created_utc": "2026-10-28T06:14:59.655249+00:00",
+  "review_authorship": "cross_author_review_of_V4_method_producer_checker_and_driver",
+  "review_mode": "static_method_and_source_review_plus_readback_of_existing_V3_counterexample",
+  "reviewer_executed_V4_worker": false,
+  "reviewer_executed_V4_checker": false,
+  "reviewer_imported_V4_code": false,
+  "new_V4_execution_result_reviewed": false,
+  "reviewed_source_identities": [
+    {
+      "path": "r5-envelope/R5E_REFINEMENT_V4_BASIS.md",
+      "bytes": 5835,
+      "sha256": "d11eac8ca5ab4b01a251e22be32b455c0b605709e9bbb0576eba49d7b920e0fc"
+    },
+    {
+      "path": "r5-envelope/exterior_refinement_r5e_v4.py",
+      "bytes": 22588,
+      "sha256": "d4ae39280819615439ecc040cea64b058b1c8a44105951659b67a941870beb24"
+    },
+    {
+      "path": "r5-envelope/verify_exterior_refinement_r5e_v4.py",
+      "bytes": 19296,
+      "sha256": "8929a96b39cdb8c272f61b0b28affef70d20103299e367e6d1d19363750c0a7e"
+    },
+    {
+      "path": "r5-envelope/run_portable_refinement_r5e_v4.py",
+      "bytes": 13716,
+      "sha256": "9c06f13ed489164263d477221de0f2d76a287e80f69f43e552b138c7890b2944"
+    },
+    {
+      "path": "r5-envelope/exterior_channels_r5e_v3.py",
+      "bytes": 19321,
+      "sha256": "cd167893a463a5f5d39ce7d64caaac5c07e278ddb96420f790c07f1664e9da8a"
+    },
+    {
+      "path": "r5-envelope/verify_exterior_channels_r5e_v3.py",
+      "bytes": 16453,
+      "sha256": "ea564a94bf38a54004dc21725a0c18a7bd136d517b4a1b84b3bec7ad3da321ad"
+    },
+    {
+      "path": "r5-envelope/R5E_V4_REAL_RETAINED_CELL.json",
+      "bytes": 3573,
+      "sha256": "9541b3f61977525c49b0923a6087adbf795e04b05155e7fae828d1db6e7dec44"
+    }
+  ],
+  "function_anchors": {
+    "r5-envelope/exterior_refinement_r5e_v4.py": {
+      "need": {
+        "first_line": 19,
+        "last_line": 20
+      },
+      "sha": {
+        "first_line": 23,
+        "last_line": 24
+      },
+      "bound": {
+        "first_line": 27,
+        "last_line": 28
+      },
+      "load_base": {
+        "first_line": 31,
+        "last_line": 33
+      },
+      "attempt_channel": {
+        "first_line": 36,
+        "last_line": 57
+      },
+      "choose_original_cut": {
+        "first_line": 60,
+        "last_line": 77
+      },
+      "refine": {
+        "first_line": 80,
+        "last_line": 133
+      },
+      "main": {
+        "first_line": 136,
+        "last_line": 275
+      }
+    },
+    "r5-envelope/verify_exterior_refinement_r5e_v4.py": {
+      "need": {
+        "first_line": 18,
+        "last_line": 19
+      },
+      "digest": {
+        "first_line": 22,
+        "last_line": 23
+      },
+      "bound": {
+        "first_line": 26,
+        "last_line": 28
+      },
+      "load_checker": {
+        "first_line": 31,
+        "last_line": 33
+      },
+      "complete_phase": {
+        "first_line": 36,
+        "last_line": 45
+      },
+      "phase_controls": {
+        "first_line": 48,
+        "last_line": 57
+      },
+      "root_coverage": {
+        "first_line": 60,
+        "last_line": 64
+      },
+      "root_controls": {
+        "first_line": 67,
+        "last_line": 75
+      },
+      "verify_tree": {
+        "first_line": 78,
+        "last_line": 124
+      },
+      "tree_controls": {
+        "first_line": 127,
+        "last_line": 147
+      },
+      "main": {
+        "first_line": 150,
+        "last_line": 226
+      }
+    },
+    "r5-envelope/run_portable_refinement_r5e_v4.py": {
+      "need": {
+        "first_line": 23,
+        "last_line": 24
+      },
+      "identity": {
+        "first_line": 27,
+        "last_line": 30
+      },
+      "matches": {
+        "first_line": 33,
+        "last_line": 36
+      },
+      "write": {
+        "first_line": 39,
+        "last_line": 40
+      },
+      "main": {
+        "first_line": 43,
+        "last_line": 189
+      }
+    },
+    "r5-envelope/exterior_channels_r5e_v3.py": {
+      "require": {
+        "first_line": 19,
+        "last_line": 21
+      },
+      "sha": {
+        "first_line": 24,
+        "last_line": 26
+      },
+      "read_bound": {
+        "first_line": 29,
+        "last_line": 32
+      },
+      "decode": {
+        "first_line": 35,
+        "last_line": 38
+      },
+      "encode": {
+        "first_line": 41,
+        "last_line": 42
+      },
+      "volume": {
+        "first_line": 45,
+        "last_line": 51
+      },
+      "separation": {
+        "first_line": 54,
+        "last_line": 62
+      },
+      "channel_for": {
+        "first_line": 65,
+        "last_line": 73
+      },
+      "try_exterior": {
+        "first_line": 76,
+        "last_line": 103
+      },
+      "source_records": {
+        "first_line": 106,
+        "last_line": 127
+      },
+      "controlled_examples": {
+        "first_line": 130,
+        "last_line": 157
+      },
+      "main": {
+        "first_line": 160,
+        "last_line": 300
+      }
+    },
+    "r5-envelope/verify_exterior_channels_r5e_v3.py": {
+      "need": {
+        "first_line": 17,
+        "last_line": 18
+      },
+      "digest": {
+        "first_line": 21,
+        "last_line": 23
+      },
+      "bound": {
+        "first_line": 26,
+        "last_line": 29
+      },
+      "box": {
+        "first_line": 32,
+        "last_line": 35
+      },
+      "signed_measure": {
+        "first_line": 38,
+        "last_line": 40
+      },
+      "reconstructed_sources": {
+        "first_line": 43,
+        "last_line": 56
+      },
+      "check_exclusion": {
+        "first_line": 59,
+        "last_line": 79
+      },
+      "check_blocked": {
+        "first_line": 82,
+        "last_line": 96
+      },
+      "negative_controls": {
+        "first_line": 99,
+        "last_line": 126
+      },
+      "check_complete_phase": {
+        "first_line": 130,
+        "last_line": 139
+      },
+      "phase_negative_controls": {
+        "first_line": 142,
+        "last_line": 154
+      },
+      "main": {
+        "first_line": 157,
+        "last_line": 247
+      }
+    }
+  },
+  "source_lock_frozen_at_this_review": true,
+  "counterexample_readback": {
+    "source_run_id": 40641230212,
+    "source_commit": "41333a369cbc44aab6fb5a723b75833a693ac16c",
+    "case_id": "case-001",
+    "frame": 1,
+    "original_raw_cell_index": 202,
+    "actual_identity_checks": [
+      {
+        "selection_key": "source_pipeline",
+        "actual_identity": {
+          "path": "r5-ci-results/run-40641230212/pipeline.json",
+          "bytes": 19827,
+          "sha256": "599a8a93d03332b5c5a91851e0fb37b36eb9a1396817b8c2041150ebb89509d3"
+        },
+        "identity_equal": true
+      },
+      {
+        "selection_key": "source_all_raw_report",
+        "actual_identity": {
+          "path": "r5-ci-results/run-40641230212/all-raw/report.json",
+          "bytes": 62922,
+          "sha256": "7a7456e21fdf6af21e09312e0154a7751cd668685801102922bdc2cd0821136f"
+        },
+        "identity_equal": true
+      },
+      {
+        "selection_key": "source_independent_all_report",
+        "actual_identity": {
+          "path": "r5-ci-results/run-40641230212/verify-all/report.json",
+          "bytes": 12165,
+          "sha256": "cc8009c753457cc62f6bf86940bfe4ca3cc1c199f9b25911ac74b99105c30ebe"
+        },
+        "identity_equal": true
+      },
+      {
+        "selection_key": "source_certificate",
+        "actual_identity": {
+          "path": "r5-ci-results/run-40641230212/all-raw/case-001-frame-1-channels.json.gz",
+          "bytes": 43410,
+          "sha256": "b78309b4f572756167b8fadc1171d44eae4961c623eb22b1e0fed82899b234ac"
+        },
+        "identity_equal": true
+      }
+    ],
+    "saved_actual_cell_exactly_equals_actual_V3_record": true,
+    "actual_V3_cell_retained": true,
+    "collision_witness_claimed": false
+  },
+  "method_checks": [
+    {
+      "id": "M01",
+      "subject": "Two closed children exactly cover the parent",
+      "status": "accepted_by_construction_and_separate_reconstruction",
+      "basis": "For a strictly interior exact cut c on one axis, [l,c] union [c,u]=[l,u]; the children intersect only in the reconstructed closed cut rectangle. Other two axes are unchanged.",
+      "producer": "choose_original_cut; refine",
+      "verifier": "verify_tree; base.signed_measure"
+    },
+    {
+      "id": "M02",
+      "subject": "Positive directed volume and conservation",
+      "status": "accepted_exact_rational",
+      "basis": "Every root is positive, each split is strictly interior, and signed_measure rejects nonpositive diagonal lengths. V(left)+V(right)=V(parent) is independently checked without absolute-value repair. Leaf sums equal every root volume.",
+      "producer": "refine; main original positive cell check",
+      "verifier": "verify_tree; base.signed_measure"
+    },
+    {
+      "id": "M03",
+      "subject": "Closed root faces and every cut carrier remain represented",
+      "status": "accepted_as_finite_exact_box_complex",
+      "basis": "Root boxes and split axis/cut recursively determine all closed faces and cut rectangles. Their finite union is retained and has zero three-dimensional volume. The checker requires carrier flags at split, tree, frame, and exclusion levels. This is not a native BREP topology qualification.",
+      "producer": "refine split/tree flags; frame flag",
+      "verifier": "verify_tree; main; base.check_exclusion"
+    },
+    {
+      "id": "M04",
+      "subject": "Thin leaves are retained, never dropped",
+      "status": "accepted_static",
+      "basis": "A positive leaf at most Fraction(1e-7)/100000 is marked retained, added in full to retained_sum_exact, checked against its reconstructed exact volume and threshold, and included in all counts. The threshold is a stopping rule, not a new clearance tolerance.",
+      "producer": "refine tiny branch and retained accumulation",
+      "verifier": "verify_tree retained branch"
+    },
+    {
+      "id": "M05",
+      "subject": "Predicate, split, and depth limits preserve all pending leaves and future roots",
+      "status": "accepted_static",
+      "basis": "The pending loop has no budget early-exit: exhausted predicates retain the current leaf; exhausted depth/splits prohibit further splitting after channel search. All already allocated pending children and all later original roots are still visited and included. Partial channel search returns unresolved, never an exclusion. Nonempty/unreachable/duplicate/cyclic tree nodes and missing original roots are rejected.",
+      "producer": "attempt_channel; refine while pending; main root/frame loops",
+      "verifier": "root_coverage; verify_tree; complete_phase"
+    },
+    {
+      "id": "M06",
+      "subject": "Every discarded open interior has a complete exterior certificate",
+      "status": "accepted_under_unchanged_complete_boundary_semantics_premise",
+      "basis": "The separate V3 checker reconstructs both full source covers with stationary=False, verifies all per-piece separating inequalities, the unmodified transverse footprint, and extension to known exterior. A blocked or budget-stopped search is retained and never asserted to be a material collision.",
+      "producer": "attempt_channel; main source_records(stationary=False)",
+      "verifier": "base.reconstructed_sources(stationary=False); base.check_exclusion; base.check_blocked"
+    },
+    {
+      "id": "M07",
+      "subject": "Original D, original roots, and original float64 tolerance",
+      "status": "accepted_static",
+      "basis": "All full displacement interval strings are matched to the original R4 row and proof. Full phase covers exactly the original 16 frames and every raw positive root in order. The comparison uses Fraction(1e-7), preserving the original binary64 value; no stationary approximation or displacement rounding is selected.",
+      "producer": "main source/cell checks and selected exact comparison",
+      "verifier": "complete_phase; root_coverage; main D/proof/gate checks"
+    },
+    {
+      "id": "M08",
+      "subject": "Combining upper bounds is conservative",
+      "status": "accepted_conditional_measure_bound",
+      "basis": "The intersection is covered by retained closed leaves plus the finite zero-volume carrier set, conditional on the inherited raw-cover/material-boundary premise. Summing retained exact volumes is an upper bound. The minimum with an independently established coarse whole-support upper bound remains an upper bound. It is not an exact material Common volume.",
+      "producer": "main selected=min(retained, coarse)",
+      "verifier": "main exact sums, inherited upper and original sanity gate"
+    },
+    {
+      "id": "M09",
+      "subject": "Finite algorithm size and resource qualification",
+      "status": "algorithm_bound_accepted_actual_resource_qualification_pending",
+      "basis": "For 1474 original roots and at most 4096 splits, leaves are at most 5570 and nodes at most 9666. The global 12000000 predicate and depth24 policies are unchanged across frames. The 36.73-second estimate is explicitly a rough extrapolation, not a runtime certificate. Original owned process gates remain necessary.",
+      "producer": "main limits/counters; refine",
+      "verifier": "main global count/limit checks; verify_tree depth",
+      "driver": "original owned process limits and actual capacity preflight"
+    },
+    {
+      "id": "M10",
+      "subject": "Single actual retained-cell success precedes larger work",
+      "status": "code_gap_corrected_before_source_freeze",
+      "basis": "After feedback, later contracts bind the single independent report and owned receipt; the worker checks single production pass/split, independent single phase/pass, owned completion/exit/resource status, contract/output bindings, and identity of the producer report actually verified. Driver verifies even a failed single result, then withholds preflight/full unless it passes unchanged TOL. These checks have been read, not executed by this reviewer.",
+      "producer": "main completed_prerequisites and independent_single_verification",
+      "verifier": "main contract_sha256 and verified_producer_report, postflight contract hash",
+      "driver": "single -> verify-single -> guarded preflight -> all -> verify-all"
+    }
+  ],
+  "corrected_finding": {
+    "id": "C01",
+    "initial_issue": "Later worker contracts did not bind the single independent verification report and owned receipt; producer prerequisite check accepted completion without requiring the single original-threshold pass.",
+    "author_correction_observed": true,
+    "correction_scope": "source_readback_only",
+    "current_status": "resolved_in_reviewed_code_execution_pending"
+  },
+  "negative_controls": {
+    "implementation_observed": [
+      {
+        "group": "phase",
+        "names": [
+          "missing-frame",
+          "duplicate-frame",
+          "incorrect-phase"
+        ]
+      },
+      {
+        "group": "original_root_coverage",
+        "names": [
+          "omitted-original-root",
+          "duplicate-original-root"
+        ]
+      },
+      {
+        "group": "partition",
+        "names": [
+          "omitted-partition-child",
+          "duplicated-partition-child",
+          "cut-on-parent-boundary",
+          "discarded-closed-cut-plane",
+          "incorrect-positive-directed-volume",
+          "omitted-pending-leaf-node",
+          "discarded-smallest-nonzero-leaf-volume"
+        ]
+      },
+      {
+        "group": "complete_boundary_channel",
+        "names": [
+          "omitted-complete-boundary-piece",
+          "overclaim-closed-cell-disjointness",
+          "channel-does-not-reach-known-exterior",
+          "false-separating-coordinate"
+        ]
+      }
+    ],
+    "negative_control_total": 16,
+    "actual_V4_negative_controls_executed_by_reviewer": false,
+    "actual_V4_negative_control_results_available_in_this_review": false,
+    "minimum_leaf_control_scope": "The control mutates the actual smallest nonzero leaf and records its original kind and exact volume. It does not assume that leaf was retained under the tiny-leaf rule; the actual result must disclose its kind."
+  },
+  "exact_constants": {
+    "original_binary64_TOL_exact": "944473296573929/9444732965739290427392",
+    "tiny_retained_volume_exact": "944473296573929/944473296573929042739200000",
+    "maximum_splits": 4096,
+    "maximum_depth": 24,
+    "maximum_boundary_box_tests": 12000000,
+    "original_root_count_for_full_phase": 1474,
+    "maximum_leaves_full_phase": 5570,
+    "maximum_tree_nodes_full_phase": 9666
+  },
+  "remaining_execution_and_scope_limits": [
+    "No V4 worker/checker has been executed or qualified by this review; source lock and actual owned receipts must bind these reviewed bytes before accepting a run.",
+    "The predicate counter and some retention-reason provenance are not independently replayed by the geometric checker. This limits execution-trace audit; it does not reduce a retained leaf volume or weaken the independently reconstructed upper bound.",
+    "The actual smallest-nonzero-leaf negative control is broader than a guaranteed tiny-retained-leaf example. Read its actual leaf kind/volume before describing it as a tiny-retained-leaf test.",
+    "Existing complete boundary/material semantics, compiled transform/error bounds, and inherited raw cover semantics remain premises. Finite positive affine box topology is not a native BREP validity certificate.",
+    "A successful raw conditional upper gate at these original16 cases is not the full independent left/right domain, current complete-factory G2, the separate L2 diagnostic, FE/tolerance qualification, or a physical G3/G4/G5 result.",
+    "All prior V3 failures/unresolved bounds remain factual historical records; no original source, D component, tolerance, or failure record was edited by the reviewer."
+  ],
+  "review_conclusion": {
+    "static_method_and_reviewed_code_acceptable_under_stated_premises": true,
+    "static_blocking_findings_remaining": [],
+    "formal_V4_clearance_pass_claimed": false,
+    "native_material_semantics_verified": false,
+    "compiled_error_verified": false,
+    "full_continuous_G2": false,
+    "physical_gate_pass": false,
+    "all_blockers_closed": false
+  }
+}

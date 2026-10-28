@@ -1,0 +1,984 @@
+{
+  "schema": "razr-r5-cross-author-actual-v4-failed-execution-readback-v1",
+  "audit_completed": true,
+  "actual_V4_pipeline_completed": false,
+  "actual_V4_single_clearance_passed": false,
+  "actual_V4_checker_execution_completed": false,
+  "producer_or_verifier_code_imported": false,
+  "native_operations_executed": 0,
+  "full_continuous_G2": false,
+  "all_blockers_closed": false,
+  "independent_negative_controls": [
+    {
+      "name": "missing-frame",
+      "actual_rejected": true,
+      "reason": "single selected frame missing/extra"
+    },
+    {
+      "name": "duplicate-frame",
+      "actual_rejected": true,
+      "reason": "duplicate actual frame"
+    },
+    {
+      "name": "incorrect-phase",
+      "actual_rejected": true,
+      "reason": "incorrect phase"
+    },
+    {
+      "name": "omitted-original-root",
+      "actual_rejected": true,
+      "reason": "missing/extra/duplicate original root"
+    },
+    {
+      "name": "duplicate-original-root",
+      "actual_rejected": true,
+      "reason": "missing/extra/duplicate original root"
+    },
+    {
+      "name": "omitted-partition-child",
+      "actual_rejected": true,
+      "reason": "two distinct forward children required"
+    },
+    {
+      "name": "duplicated-partition-child",
+      "actual_rejected": true,
+      "reason": "two distinct forward children required"
+    },
+    {
+      "name": "cut-on-parent-boundary",
+      "actual_rejected": true,
+      "reason": "split must lie strictly inside parent"
+    },
+    {
+      "name": "discarded-closed-cut-plane",
+      "actual_rejected": true,
+      "reason": "closed cut carrier missing"
+    },
+    {
+      "name": "incorrect-positive-directed-volume",
+      "actual_rejected": true,
+      "reason": "exact parent signed volume conservation failed"
+    },
+    {
+      "name": "omitted-pending-leaf-node",
+      "actual_rejected": true,
+      "reason": "two distinct forward children required"
+    },
+    {
+      "name": "discarded-smallest-nonzero-leaf-volume",
+      "actual_rejected": true,
+      "reason": "positive retained volume/scope altered",
+      "actual_original_leaf_kind": "retained",
+      "actual_original_leaf_reason": "tiny_exact_volume_retained",
+      "actual_original_positive_volume_exact": "2433889152438205224689275167049/22835963083295358096932575511191922182123945984"
+    }
+  ],
+  "started_utc": "2026-10-28T06:23:54.926235+00:00",
+  "audit_registration_identity": {
+    "bytes": 1725,
+    "sha256": "4ac7c1b3d98227627791e11667492d581a3dd34ad1b839fa21be55f623ab7661"
+  },
+  "audit_source_identity": {
+    "bytes": 48238,
+    "sha256": "38cf95ec9dd157f414a6efdb658cd45b82343dd559d9a121402d60b58d329984"
+  },
+  "artifact": {
+    "bytes": 21547,
+    "sha256": "bb76de46294c6cc77aed277602aaf11c8548486364ace52ba31250a285757987",
+    "file_count": 16,
+    "members": [
+      {
+        "path": "pipeline.json",
+        "crc32": 1380016205,
+        "bytes": 15186,
+        "sha256": "b531d9859af1d7c0a59dd13538779d68884d446d2526c6dd1a7cc4f16e6a8d21"
+      },
+      {
+        "path": "single-retained-cell/case-001-frame-1-refinement.json.gz",
+        "crc32": 980609999,
+        "bytes": 2036,
+        "sha256": "b0c9dcf9ccf8dd906b682ef5ad2df804059ffd316fb9f7b927012b96e4de7dec"
+      },
+      {
+        "path": "single-retained-cell/report.json",
+        "crc32": 1249385479,
+        "bytes": 8347,
+        "sha256": "88c8b434e6e91df36980b85450ec500e287dbbc3f26f069370af375a76bccf72"
+      },
+      {
+        "path": "single-retained-cell-contract.json",
+        "crc32": 2017852059,
+        "bytes": 3326,
+        "sha256": "f4f3c029d2edfeb0068304eac255a760af94d75d874e758ae600f56c5ea8ab2f"
+      },
+      {
+        "path": "single-retained-cell-driver.log",
+        "crc32": 974072808,
+        "bytes": 122,
+        "sha256": "e358beaa88fd57245200f41e8a8304d7edb7f0ef43a9ca5e44c2b5d4cf3d9030"
+      },
+      {
+        "path": "single-retained-cell-supervision/controller.json",
+        "crc32": 1751341320,
+        "bytes": 5002,
+        "sha256": "e02871cbe9acc99df2a0ed988ab4a21626cf01d991033dfbfbb168b94d46eae1"
+      },
+      {
+        "path": "single-retained-cell-supervision/entry-receipt.json",
+        "crc32": 2797037898,
+        "bytes": 859,
+        "sha256": "ceb77cca0f5fd8754c2857d4dc31f195b32ce4719b0029005753f8d91f9074bc"
+      },
+      {
+        "path": "single-retained-cell-supervision/execution.log",
+        "crc32": 927223094,
+        "bytes": 278,
+        "sha256": "61d358e36abbc375d9811e76dfc7ba15b0572c15610396553ab884b980c4c6cb"
+      },
+      {
+        "path": "single-retained-cell-supervision-contract.json",
+        "crc32": 4019406716,
+        "bytes": 1806,
+        "sha256": "edda4bd4f00329337937c740f5e0b43584cf807a7d4b49d360e6208737d235ab"
+      },
+      {
+        "path": "verify-single/report.json",
+        "crc32": 1188331024,
+        "bytes": 4067,
+        "sha256": "20aa53dff9e044937e30d39f53784db365e92e2627374befa6a3c511cac38131"
+      },
+      {
+        "path": "verify-single-contract.json",
+        "crc32": 2781091852,
+        "bytes": 3955,
+        "sha256": "6b0cbadecb94952c30cd0716620e82f183616038e778a334ed18b3a11bf9c0d2"
+      },
+      {
+        "path": "verify-single-driver.log",
+        "crc32": 2929120882,
+        "bytes": 123,
+        "sha256": "837f58d24e782aaa953e8b4635dc9cfa882fabc761fa1f20f0bbf7511aaaeb68"
+      },
+      {
+        "path": "verify-single-supervision/controller.json",
+        "crc32": 4171556282,
+        "bytes": 4976,
+        "sha256": "7f2ed7f792714e6c61d2d50f23d34761941d98f66fe332f3016b6ebb2910fffb"
+      },
+      {
+        "path": "verify-single-supervision/entry-receipt.json",
+        "crc32": 244967429,
+        "bytes": 835,
+        "sha256": "2a4682f7b45cd648f97c2c55732452416b47f0885b9af322c92a8e545212718e"
+      },
+      {
+        "path": "verify-single-supervision/execution.log",
+        "crc32": 3961059199,
+        "bytes": 2355,
+        "sha256": "67c220f2a30c95c4e0677c195b27824ade35bb949859e275311d5a78ca182ae0"
+      },
+      {
+        "path": "verify-single-supervision-contract.json",
+        "crc32": 3798200603,
+        "bytes": 1806,
+        "sha256": "afcba8f59986b1ec3313c2c7213aef01d6696e63097436fdfa4412d569b1f840"
+      }
+    ]
+  },
+  "actual_run_binding": {
+    "run_id": 40643098035,
+    "actual_commit": "06e4f37690e2d5b9dc2abaf69cab9ba16957f1e2",
+    "actual_branch": "evidence/full-sprint-20261028-r5",
+    "conclusion": "failure",
+    "artifact_id": 12796451605,
+    "source_lock_sha256": "9068291e6684299604d489fbf175cf781c0d1a1648cf690a2f5c337dec139c20",
+    "workflow_sha256": "29445c7313ee93ee36f9f08ae42b29dce3ddbd348221410ab57c03e5b08f62e7",
+    "locked_source_files_rehashed": 12,
+    "public_input_files_rehashed": 19,
+    "job_log": {
+      "bytes": 26526,
+      "sha256": "7cc6851acb1d43e6d7668c139733717d83d1df4fffad786d94c8b3d7569c5620"
+    },
+    "actual_global_postexecution_source_check_record_present": false,
+    "actual_driver_original_threshold_post_verify_guard_reached": false,
+    "later_three_stages_unexecuted": true
+  },
+  "stages": [
+    {
+      "label": "single-retained-cell",
+      "phase": "single_retained_cell",
+      "worker_completed": true,
+      "controller_completed": true,
+      "supervisor_exit_code": 0,
+      "controller_worker_exit_code": 0,
+      "entry_worker_exit_code": 0,
+      "controller_seconds": 0.4408889209999991,
+      "worker_seconds": 0.2957618679999996,
+      "entry_peak_RSS_bytes": 94294016,
+      "entry_receipt_identity": {
+        "bytes": 859,
+        "sha256": "ceb77cca0f5fd8754c2857d4dc31f195b32ce4719b0029005753f8d91f9074bc"
+      },
+      "scientific_report_identity": {
+        "bytes": 8347,
+        "sha256": "88c8b434e6e91df36980b85450ec500e287dbbc3f26f069370af375a76bccf72"
+      },
+      "persisted_resource_rows": 1,
+      "persisted_live_RSS_rows": 0,
+      "handshake_initial_memory": {
+        "VmRSS": 19173376,
+        "VmHWM": 19173376
+      },
+      "admission": {
+        "disk_available_bytes": 91990339584,
+        "shared_unreclaimable_bytes": 498262896
+      },
+      "final_resources": {
+        "disk_available_bytes": 91990323200,
+        "shared_unreclaimable_bytes": 498661216
+      },
+      "actual_output_bytes": 10383,
+      "resource_stop": null,
+      "all_recorded_original_resource_checks_satisfied": true
+    },
+    {
+      "label": "verify-single",
+      "phase": "verify_single",
+      "worker_completed": false,
+      "controller_completed": false,
+      "supervisor_exit_code": 2,
+      "controller_worker_exit_code": 1,
+      "entry_worker_exit_code": null,
+      "controller_seconds": 0.4403040880000013,
+      "worker_seconds": 0.2605022760000004,
+      "entry_peak_RSS_bytes": 94171136,
+      "entry_receipt_identity": {
+        "bytes": 835,
+        "sha256": "2a4682f7b45cd648f97c2c55732452416b47f0885b9af322c92a8e545212718e"
+      },
+      "scientific_report_identity": {
+        "bytes": 4067,
+        "sha256": "20aa53dff9e044937e30d39f53784db365e92e2627374befa6a3c511cac38131"
+      },
+      "persisted_resource_rows": 1,
+      "persisted_live_RSS_rows": 0,
+      "handshake_initial_memory": {
+        "VmRSS": 19169280,
+        "VmHWM": 19169280
+      },
+      "admission": {
+        "disk_available_bytes": 91990302720,
+        "shared_unreclaimable_bytes": 498579648
+      },
+      "final_resources": {
+        "disk_available_bytes": 91990278144,
+        "shared_unreclaimable_bytes": 499719512
+      },
+      "actual_output_bytes": 4067,
+      "resource_stop": null,
+      "all_recorded_original_resource_checks_satisfied": true
+    }
+  ],
+  "original_remote_gates": {
+    "wall_seconds": 600,
+    "RSS_limit_bytes": 805306368,
+    "shared_ceiling_bytes": 7301444403,
+    "disk_floor_bytes": 104857600,
+    "maximum_output_bytes": 41943040,
+    "metadata_margin_bytes": 4194304
+  },
+  "actual_resource_sampling_scope": "Both actual stages were shorter than 1 s; controller persisted admission only, plus handshake initial memory and entry peak RSS. No persisted live sample is invented. Historical identity is checked from receipts, not re-probed in the current OS.",
+  "source_proofs_read": {
+    "count": 1,
+    "compressed_bytes": 1114119,
+    "decoded_bytes": 14793137,
+    "full_R4_enclosure_math_reexecuted": false
+  },
+  "exact_tree_readback": {
+    "retained_sum_exact": "10961262279981815290884188059995738986490489745/22835963083295358096932575511191922182123945984",
+    "excluded_open_sum_exact": "0",
+    "node_count": 13,
+    "split_count": 6,
+    "leaf_count": 7,
+    "excluded_leaf_count": 0,
+    "retained_leaf_count": 7,
+    "maximum_depth": 6,
+    "retention_reasons": {
+      "tiny_exact_volume_retained": 6,
+      "no_original_blocking_endpoint_inside_cell": 1
+    },
+    "leaves": [
+      {
+        "node_id": 1,
+        "depth": 1,
+        "kind": "retained",
+        "reason": "tiny_exact_volume_retained",
+        "box_exact": [
+          [
+            "-6417629469002957/562949953421312",
+            "-24319437987800677/2251799813685248"
+          ],
+          [
+            "973852086111805/17592186044416",
+            "124653067022311041/2251799813685248"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "3602879701896397/2251799813685248"
+          ]
+        ],
+        "positive_directed_volume_exact": "2433889152438205224689275167049/22835963083295358096932575511191922182123945984",
+        "display_mm3": 1.0658141036401523e-16,
+        "blocked_directions_checked": 0
+      },
+      {
+        "node_id": 11,
+        "depth": 6,
+        "kind": "retained",
+        "reason": "tiny_exact_volume_retained",
+        "box_exact": [
+          [
+            "-6417629469002957/562949953421312",
+            "-14451216842601808810049441809711/1267650600228229401496703205376"
+          ],
+          [
+            "124653067022311041/2251799813685248",
+            "1009036458200637/17592186044416"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "3602879701896397/2251799813685248"
+          ]
+        ],
+        "positive_directed_volume_exact": "55309100135435461549972672839975047418048155625/12855504354071922204335696738729300820177623950262342682411008",
+        "display_mm3": 4.302367189344583e-15,
+        "blocked_directions_checked": 0
+      },
+      {
+        "node_id": 12,
+        "depth": 6,
+        "kind": "retained",
+        "reason": "no_original_blocking_endpoint_inside_cell",
+        "box_exact": [
+          [
+            "-14451216842601808810049441809711/1267650600228229401496703205376",
+            "-54762505929859569605958077890651/5070602400912917605986812821504"
+          ],
+          [
+            "124653067022311041/2251799813685248",
+            "1009036458200637/17592186044416"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "3602879701896397/2251799813685248"
+          ]
+        ],
+        "positive_directed_volume_exact": "24682568359817404343875021292219977510155868434087892360521465/51422017416287688817342786954917203280710495801049370729644032",
+        "display_mm3": 0.47999999999998666,
+        "blocked_directions_checked": 12
+      },
+      {
+        "node_id": 10,
+        "depth": 5,
+        "kind": "retained",
+        "reason": "tiny_exact_volume_retained",
+        "box_exact": [
+          [
+            "-54762505929859569605958077890651/5070602400912917605986812821504",
+            "-3039929748475085/281474976710656"
+          ],
+          [
+            "124653067022311041/2251799813685248",
+            "1009036458200637/17592186044416"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "3602879701896397/2251799813685248"
+          ]
+        ],
+        "positive_directed_volume_exact": "453177348171390704421759321923047535391570483555/51422017416287688817342786954917203280710495801049370729644032",
+        "display_mm3": 8.812904878909883e-15,
+        "blocked_directions_checked": 0
+      },
+      {
+        "node_id": 8,
+        "depth": 4,
+        "kind": "retained",
+        "reason": "tiny_exact_volume_retained",
+        "box_exact": [
+          [
+            "-3039929748475085/281474976710656",
+            "-24319437987800677/2251799813685248"
+          ],
+          [
+            "124653067022311041/2251799813685248",
+            "1009036458200637/17592186044416"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "3602879701896397/2251799813685248"
+          ]
+        ],
+        "positive_directed_volume_exact": "24338891524382007210896477965515/22835963083295358096932575511191922182123945984",
+        "display_mm3": 1.0658141036401504e-15,
+        "blocked_directions_checked": 0
+      },
+      {
+        "node_id": 6,
+        "depth": 3,
+        "kind": "retained",
+        "reason": "tiny_exact_volume_retained",
+        "box_exact": [
+          [
+            "-6417629469002957/562949953421312",
+            "-24319437987800677/2251799813685248"
+          ],
+          [
+            "1009036458200637/17592186044416",
+            "129156666649681537/2251799813685248"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "3602879701896397/2251799813685248"
+          ]
+        ],
+        "positive_directed_volume_exact": "2433889152438205224689275167049/22835963083295358096932575511191922182123945984",
+        "display_mm3": 1.0658141036401523e-16,
+        "blocked_directions_checked": 0
+      },
+      {
+        "node_id": 4,
+        "depth": 2,
+        "kind": "retained",
+        "reason": "tiny_exact_volume_retained",
+        "box_exact": [
+          [
+            "-6417629469002957/562949953421312",
+            "-24319437987800677/2251799813685248"
+          ],
+          [
+            "129156666649681537/2251799813685248",
+            "129156666649681545/2251799813685248"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "3602879701896397/2251799813685248"
+          ]
+        ],
+        "positive_directed_volume_exact": "2433889152438205224689275167049/2854495385411919762116571938898990272765493248",
+        "display_mm3": 8.526512829121219e-16,
+        "blocked_directions_checked": 0
+      }
+    ],
+    "splits": [
+      {
+        "node_id": 0,
+        "depth": 0,
+        "parent_box_exact": [
+          [
+            "-6417629469002957/562949953421312",
+            "-24319437987800677/2251799813685248"
+          ],
+          [
+            "973852086111805/17592186044416",
+            "129156666649681545/2251799813685248"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "3602879701896397/2251799813685248"
+          ]
+        ],
+        "cut_source": {
+          "material_side": 0,
+          "piece_index": 95,
+          "axis": 1,
+          "endpoint": 1
+        },
+        "cut_exact": "124653067022311041/2251799813685248",
+        "parent_volume_exact": "10961262279981815290884188059995738986490489745/22835963083295358096932575511191922182123945984",
+        "children_volume_exact": [
+          "2433889152438205224689275167049/22835963083295358096932575511191922182123945984",
+          "1370157784997726607124379452723814287151915337/2854495385411919762116571938898990272765493248"
+        ]
+      },
+      {
+        "node_id": 2,
+        "depth": 1,
+        "parent_box_exact": [
+          [
+            "-6417629469002957/562949953421312",
+            "-24319437987800677/2251799813685248"
+          ],
+          [
+            "124653067022311041/2251799813685248",
+            "129156666649681545/2251799813685248"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "3602879701896397/2251799813685248"
+          ]
+        ],
+        "cut_source": {
+          "material_side": 0,
+          "piece_index": 96,
+          "axis": 1,
+          "endpoint": 1
+        },
+        "cut_exact": "129156666649681537/2251799813685248",
+        "parent_volume_exact": "1370157784997726607124379452723814287151915337/2854495385411919762116571938898990272765493248",
+        "children_volume_exact": [
+          "2433889152438205224689275167049/5070602400912917605986812821504",
+          "2433889152438205224689275167049/2854495385411919762116571938898990272765493248"
+        ]
+      },
+      {
+        "node_id": 3,
+        "depth": 2,
+        "parent_box_exact": [
+          [
+            "-6417629469002957/562949953421312",
+            "-24319437987800677/2251799813685248"
+          ],
+          [
+            "124653067022311041/2251799813685248",
+            "129156666649681537/2251799813685248"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "3602879701896397/2251799813685248"
+          ]
+        ],
+        "cut_source": {
+          "material_side": 0,
+          "piece_index": 96,
+          "axis": 1,
+          "endpoint": 0
+        },
+        "cut_exact": "1009036458200637/17592186044416",
+        "parent_volume_exact": "2433889152438205224689275167049/5070602400912917605986812821504",
+        "children_volume_exact": [
+          "10961262279981790951992663677943492093738819255/22835963083295358096932575511191922182123945984",
+          "2433889152438205224689275167049/22835963083295358096932575511191922182123945984"
+        ]
+      },
+      {
+        "node_id": 5,
+        "depth": 3,
+        "parent_box_exact": [
+          [
+            "-6417629469002957/562949953421312",
+            "-24319437987800677/2251799813685248"
+          ],
+          [
+            "124653067022311041/2251799813685248",
+            "1009036458200637/17592186044416"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "3602879701896397/2251799813685248"
+          ]
+        ],
+        "cut_source": {
+          "material_side": 1,
+          "piece_index": 22,
+          "axis": 0,
+          "endpoint": 0
+        },
+        "cut_exact": "-3039929748475085/281474976710656",
+        "parent_volume_exact": "10961262279981790951992663677943492093738819255/22835963083295358096932575511191922182123945984",
+        "children_volume_exact": [
+          "2740315569995441653275284823984070299315213435/5708990770823839524233143877797980545530986496",
+          "24338891524382007210896477965515/22835963083295358096932575511191922182123945984"
+        ]
+      },
+      {
+        "node_id": 7,
+        "depth": 4,
+        "parent_box_exact": [
+          [
+            "-6417629469002957/562949953421312",
+            "-3039929748475085/281474976710656"
+          ],
+          [
+            "124653067022311041/2251799813685248",
+            "1009036458200637/17592186044416"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "3602879701896397/2251799813685248"
+          ]
+        ],
+        "cut_source": {
+          "material_side": 1,
+          "piece_index": 28,
+          "axis": 0,
+          "endpoint": 0
+        },
+        "cut_exact": "-54762505929859569605958077890651/5070602400912917605986812821504",
+        "parent_volume_exact": "2740315569995441653275284823984070299315213435/5708990770823839524233143877797980545530986496",
+        "children_volume_exact": [
+          "24682568359817625580275563034066177400847228334277564553143965/51422017416287688817342786954917203280710495801049370729644032",
+          "453177348171390704421759321923047535391570483555/51422017416287688817342786954917203280710495801049370729644032"
+        ]
+      },
+      {
+        "node_id": 9,
+        "depth": 5,
+        "parent_box_exact": [
+          [
+            "-6417629469002957/562949953421312",
+            "-54762505929859569605958077890651/5070602400912917605986812821504"
+          ],
+          [
+            "124653067022311041/2251799813685248",
+            "1009036458200637/17592186044416"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "3602879701896397/2251799813685248"
+          ]
+        ],
+        "cut_source": {
+          "material_side": 1,
+          "piece_index": 29,
+          "axis": 0,
+          "endpoint": 1
+        },
+        "cut_exact": "-14451216842601808810049441809711/1267650600228229401496703205376",
+        "parent_volume_exact": "24682568359817625580275563034066177400847228334277564553143965/51422017416287688817342786954917203280710495801049370729644032",
+        "children_volume_exact": [
+          "55309100135435461549972672839975047418048155625/12855504354071922204335696738729300820177623950262342682411008",
+          "24682568359817404343875021292219977510155868434087892360521465/51422017416287688817342786954917203280710495801049370729644032"
+        ]
+      }
+    ]
+  },
+  "actual_large_retained_leaf_blockers": {
+    "node_id": 12,
+    "all_twelve_channels_rechecked": true,
+    "no_recorded_blocker_endpoint_strictly_inside_leaf": true,
+    "records": [
+      {
+        "material_side": 0,
+        "axis": 0,
+        "end": 0,
+        "blocking_piece_index": 97,
+        "source_boundary_piece_kind": "face",
+        "source_boundary_piece_original_index": 97,
+        "source_complete_boundary_box_exact": [
+          [
+            "-3293257227514675/281474976710656",
+            "-3293257227514675/281474976710656"
+          ],
+          [
+            "973852086111805/17592186044416",
+            "129156666649681545/2251799813685248"
+          ],
+          [
+            "5854679515581643/9007199254740992",
+            "17113678584007885/9007199254740992"
+          ]
+        ]
+      },
+      {
+        "material_side": 0,
+        "axis": 0,
+        "end": 1,
+        "blocking_piece_index": 94,
+        "source_boundary_piece_kind": "face",
+        "source_boundary_piece_original_index": 94,
+        "source_complete_boundary_box_exact": [
+          [
+            "-21/2",
+            "-21/2"
+          ],
+          [
+            "973852086111805/17592186044416",
+            "129156666649681545/2251799813685248"
+          ],
+          [
+            "5854679515581643/9007199254740992",
+            "17113678584007885/9007199254740992"
+          ]
+        ]
+      },
+      {
+        "material_side": 0,
+        "axis": 1,
+        "end": 0,
+        "blocking_piece_index": 13,
+        "source_boundary_piece_kind": "face",
+        "source_boundary_piece_original_index": 13,
+        "source_complete_boundary_box_exact": [
+          [
+            "-56520175323499723/4503599627370496",
+            "-47963336031495781/4503599627370496"
+          ],
+          [
+            "58128329862744541/4503599627370496",
+            "66685169154748485/4503599627370496"
+          ],
+          [
+            "0",
+            "8782019273372467/4503599627370496"
+          ]
+        ]
+      },
+      {
+        "material_side": 0,
+        "axis": 1,
+        "end": 1,
+        "blocking_piece_index": 96,
+        "source_boundary_piece_kind": "face",
+        "source_boundary_piece_original_index": 96,
+        "source_complete_boundary_box_exact": [
+          [
+            "-52692115640234803/4503599627370496",
+            "-21/2"
+          ],
+          [
+            "1009036458200637/17592186044416",
+            "129156666649681537/2251799813685248"
+          ],
+          [
+            "5854679515581643/9007199254740992",
+            "17113678584007883/9007199254740992"
+          ]
+        ]
+      },
+      {
+        "material_side": 0,
+        "axis": 2,
+        "end": 0,
+        "blocking_piece_index": 2,
+        "source_boundary_piece_kind": "face",
+        "source_boundary_piece_original_index": 2,
+        "source_complete_boundary_box_exact": [
+          [
+            "-5206583381705359/140737488355328",
+            "5206583381705359/140737488355328"
+          ],
+          [
+            "-723861272031421/1125899906842624",
+            "210784409895771783/2251799813685248"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ]
+      },
+      {
+        "material_side": 0,
+        "axis": 2,
+        "end": 1,
+        "blocking_piece_index": 176,
+        "source_boundary_piece_kind": "face",
+        "source_boundary_piece_original_index": 176,
+        "source_complete_boundary_box_exact": [
+          [
+            "-52692115640234803/4503599627370496",
+            "-47287796087390205/4503599627370496"
+          ],
+          [
+            "973852086111805/17592186044416",
+            "129156666649681537/2251799813685248"
+          ],
+          [
+            "4278419646001971/2251799813685248",
+            "4278419646001971/2251799813685248"
+          ]
+        ]
+      },
+      {
+        "material_side": 1,
+        "axis": 0,
+        "end": 0,
+        "blocking_piece_index": 23,
+        "source_boundary_piece_kind": "face",
+        "source_boundary_piece_original_index": 23,
+        "source_complete_boundary_box_exact": [
+          [
+            "-6417629469002957/562949953421312",
+            "-6417629469002957/562949953421312"
+          ],
+          [
+            "89171272621935823/2251799813685248",
+            "2526039654905059/35184372088832"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "3602879701896397/2251799813685248"
+          ]
+        ]
+      },
+      {
+        "material_side": 1,
+        "axis": 0,
+        "end": 1,
+        "blocking_piece_index": 22,
+        "source_boundary_piece_kind": "face",
+        "source_boundary_piece_original_index": 22,
+        "source_complete_boundary_box_exact": [
+          [
+            "-3039929748475085/281474976710656",
+            "-3039929748475085/281474976710656"
+          ],
+          [
+            "5488762045857791/140737488355328",
+            "10188601112633433/140737488355328"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "3602879701896397/2251799813685248"
+          ]
+        ]
+      },
+      {
+        "material_side": 1,
+        "axis": 1,
+        "end": 0,
+        "blocking_piece_index": 14,
+        "source_boundary_piece_kind": "face",
+        "source_boundary_piece_original_index": 14,
+        "source_complete_boundary_box_exact": [
+          [
+            "-30286707494066587/2251799813685248",
+            "-24319437987800677/2251799813685248"
+          ],
+          [
+            "39",
+            "39"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "18239578490850509/4503599627370496"
+          ]
+        ]
+      },
+      {
+        "material_side": 1,
+        "axis": 1,
+        "end": 1,
+        "blocking_piece_index": 48,
+        "source_boundary_piece_kind": "face",
+        "source_boundary_piece_original_index": 48,
+        "source_complete_boundary_box_exact": [
+          [
+            "-5848435685456193/281474976710656",
+            "-21892133792769243008785634913381/2535301200456458802993406410752"
+          ],
+          [
+            "288194388957157/4398046511104",
+            "196918646022540548672726610807239/2535301200456458802993406410752"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "3602879701896397/2251799813685248"
+          ]
+        ]
+      },
+      {
+        "material_side": 1,
+        "axis": 2,
+        "end": 0,
+        "blocking_piece_index": 17,
+        "source_boundary_piece_kind": "face",
+        "source_boundary_piece_original_index": 17,
+        "source_complete_boundary_box_exact": [
+          [
+            "-5939122008594841/281474976710656",
+            "-3490289711212135/562949953421312"
+          ],
+          [
+            "39",
+            "5527464855155507/70368744177664"
+          ],
+          [
+            "5404319552844595/4503599627370496",
+            "5404319552844595/4503599627370496"
+          ]
+        ]
+      },
+      {
+        "material_side": 1,
+        "axis": 2,
+        "end": 1,
+        "blocking_piece_index": 16,
+        "source_boundary_piece_kind": "face",
+        "source_boundary_piece_original_index": 16,
+        "source_complete_boundary_box_exact": [
+          [
+            "-5939122008594841/281474976710656",
+            "-3490289711212135/562949953421312"
+          ],
+          [
+            "5488762045857791/140737488355328",
+            "5527464855155507/70368744177664"
+          ],
+          [
+            "3602879701896397/2251799813685248",
+            "3602879701896397/2251799813685248"
+          ]
+        ]
+      }
+    ],
+    "material_collision_claimed": false
+  },
+  "scientific_failure": {
+    "selected_original_cell": 202,
+    "root_volume_exact": "10961262279981815290884188059995738986490489745/22835963083295358096932575511191922182123945984",
+    "root_volume_mm3_display": 0.4800000000000019,
+    "retained_volume_exact": "10961262279981815290884188059995738986490489745/22835963083295358096932575511191922182123945984",
+    "excluded_open_volume_exact": "0",
+    "original_TOL_exact": "944473296573929/9444732965739290427392",
+    "original_threshold_passed": false,
+    "retained_over_TOL_ratio_exact": "10961262279981815290884188059995738986490489745/2283596308329535706356212771772073771008",
+    "tiny_retained_leaf_count": 6,
+    "tiny_retained_sum_exact": "784026371512950383068420156186048996160441260295/51422017416287688817342786954917203280710495801049370729644032",
+    "tiny_retained_sum_mm3_display": 1.5246900275534767e-14,
+    "large_retained_leaf_volume_exact": "24682568359817404343875021292219977510155868434087892360521465/51422017416287688817342786954917203280710495801049370729644032",
+    "smallest_retained_leaf_exact": "2433889152438205224689275167049/22835963083295358096932575511191922182123945984",
+    "smallest_retained_leaf_reason": "tiny_exact_volume_retained",
+    "new_clearance_gain_exact": "0",
+    "full16_not_executed": true
+  },
+  "checker_failure": {
+    "execution_completed": false,
+    "actual_message": "actual geometric and partition controls required",
+    "actual_phase_controls_rejected": 3,
+    "actual_root_coverage_controls_rejected": 2,
+    "actual_partition_controls_rejected": 7,
+    "actual_channel_controls_executed": 0,
+    "actual_channel_control_types_unexecuted": 4,
+    "cause": "No excluded leaf existed from which the checker could obtain an actual exclusion-certificate sample. Its final unconditional requirement for nonempty channel_negative_controls raised ValueError.",
+    "partial_tree_summary_matches_independent_readback": true,
+    "partial_checks_do_not_equal_successful_checker_execution": true,
+    "changing_checker_outcome_cannot_make_unchanged_0_48_bound_pass": true
+  },
+  "independent_channel_negative_controls_executed": 0,
+  "independent_channel_negative_controls_reason": "Actual V4 tree has zero excluded leaves; no actual V4 exclusion certificate exists to mutate. No V3 or synthetic substitute is counted as a V4 control.",
+  "scope": {
+    "complete_actual_single_root_coverage_checked": true,
+    "complete_all16_root_coverage_claimed": false,
+    "actual_single_six_cut_endpoint_and_volume_identities_checked": true,
+    "all_positive_thin_leaves_preserved": true,
+    "actual_retention_no_cut_reason_independently_checked": true,
+    "full_channel_search_counter_replayed": false,
+    "actual_counter_records_only_for_4017_predicates": true,
+    "native_material_boundary_and_compiled_error_still_premises": true,
+    "previous_V3_4_of_16_result_unchanged": true
+  },
+  "actual_pipeline_elapsed_seconds": 1.0159836019999986,
+  "outcome": "Actual failed execution evidence is internally bound and the complete single-root conservative tree was independently read back. Mathematical clearance failed; original checker failed; later stages were not executed.",
+  "finished_utc": "2026-10-28T06:23:55.394615+00:00",
+  "audit_seconds": 0.468402607999451,
+  "audit_peak_RSS_bytes": 90677248,
+  "audit_operation_counts_including_negative_checks": {
+    "assertions": 4448,
+    "excluded_cell_separation_inequalities": 0,
+    "blocked_direction_checks": 12,
+    "boundary_box_degeneracies_preserved": 1588
+  },
+  "registered_local_readback_budget_respected": true
+}

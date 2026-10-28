@@ -1,0 +1,843 @@
+{
+  "schema": "razr-r5e-exterior-channel-v3-portable-public-identities",
+  "started_utc": "2026-10-28T06:00:30.521877+00:00",
+  "contract_sha256": "be954bd991872750797c4fc8a883853f8bff88cad19566a883c4d7162ead1f48",
+  "execution_completed": true,
+  "phase": "preflight",
+  "native_Common_called_or_used_as_premise": false,
+  "new_native_operations": 0,
+  "native_material_boundary_semantics_verified": false,
+  "compiled_curve_transform_error_verified": false,
+  "full_continuous_G2": false,
+  "all_blockers_closed": false,
+  "original_TOL_exact": "944473296573929/9444732965739290427392",
+  "controls": [
+    {
+      "name": "genuine-closed-cube-interior-retained",
+      "cell_exact": [
+        [
+          "1/4",
+          "3/4"
+        ],
+        [
+          "1/4",
+          "3/4"
+        ],
+        [
+          "1/4",
+          "3/4"
+        ]
+      ],
+      "expected_exclusion": false,
+      "actual": {
+        "excluded_open_interior": false,
+        "all_registered_channels_blocked": [
+          {
+            "material_side": 0,
+            "axis": 0,
+            "end": 0,
+            "blocking_piece_index": 0
+          },
+          {
+            "material_side": 0,
+            "axis": 0,
+            "end": 1,
+            "blocking_piece_index": 1
+          },
+          {
+            "material_side": 0,
+            "axis": 1,
+            "end": 0,
+            "blocking_piece_index": 2
+          },
+          {
+            "material_side": 0,
+            "axis": 1,
+            "end": 1,
+            "blocking_piece_index": 3
+          },
+          {
+            "material_side": 0,
+            "axis": 2,
+            "end": 0,
+            "blocking_piece_index": 4
+          },
+          {
+            "material_side": 0,
+            "axis": 2,
+            "end": 1,
+            "blocking_piece_index": 5
+          }
+        ],
+        "actual_material_interference_claimed": false
+      },
+      "passed": true
+    },
+    {
+      "name": "exterior-with-closed-contact-face-open-interior-only",
+      "cell_exact": [
+        [
+          "1",
+          "2"
+        ],
+        [
+          "1/4",
+          "3/4"
+        ],
+        [
+          "1/4",
+          "3/4"
+        ]
+      ],
+      "expected_exclusion": true,
+      "actual": {
+        "excluded_open_interior": true,
+        "material_side": 0,
+        "axis": 0,
+        "end": 1,
+        "open_channel_exact": [
+          [
+            "1",
+            "3"
+          ],
+          [
+            "1/4",
+            "3/4"
+          ],
+          [
+            "1/4",
+            "3/4"
+          ]
+        ],
+        "complete_piece_separation_codes": "000000",
+        "boundary_piece_count": 6,
+        "closed_cell_boundary_retained_as_zero_volume_carrier": true,
+        "whole_closed_cell_disjoint_claimed": false
+      },
+      "passed": true
+    },
+    {
+      "name": "nonzero-2pow-51-interior-strip-retained",
+      "cell_exact": [
+        [
+          "2251799813685247/2251799813685248",
+          "2251799813685249/2251799813685248"
+        ],
+        [
+          "1/4",
+          "3/4"
+        ],
+        [
+          "1/4",
+          "3/4"
+        ]
+      ],
+      "expected_exclusion": false,
+      "actual": {
+        "excluded_open_interior": false,
+        "all_registered_channels_blocked": [
+          {
+            "material_side": 0,
+            "axis": 0,
+            "end": 0,
+            "blocking_piece_index": 0
+          },
+          {
+            "material_side": 0,
+            "axis": 0,
+            "end": 1,
+            "blocking_piece_index": 1
+          },
+          {
+            "material_side": 0,
+            "axis": 1,
+            "end": 0,
+            "blocking_piece_index": 1
+          },
+          {
+            "material_side": 0,
+            "axis": 1,
+            "end": 1,
+            "blocking_piece_index": 1
+          },
+          {
+            "material_side": 0,
+            "axis": 2,
+            "end": 0,
+            "blocking_piece_index": 1
+          },
+          {
+            "material_side": 0,
+            "axis": 2,
+            "end": 1,
+            "blocking_piece_index": 1
+          }
+        ],
+        "actual_material_interference_claimed": false
+      },
+      "passed": true
+    },
+    {
+      "name": "zero-volume-boundary-point-still-blocks",
+      "passed": true
+    },
+    {
+      "name": "touching-channel-edge-is-not-open-channel-intersection",
+      "passed": true
+    }
+  ],
+  "frames": [
+    {
+      "case_id": "case-001",
+      "frame": 1,
+      "pair": [
+        "A_BACK_PANEL",
+        "L_KEY"
+      ],
+      "source_proof": {
+        "bytes": 1114119,
+        "sha256": "224bc618d08ebc5c8f5dbf8aa43fd598631928b523ef49798272dbb17e789d8a",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-001-frame-1-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-001-frame-1-complete-support.json.gz",
+        "bytes": 1114119,
+        "sha256": "943c9f768445495383e6714fd3d610c9a7b079c4cbd4d5faca8af2061fa9ed12"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1/2251799813685248"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        1438,
+        460
+      ],
+      "candidate_cell_count": 215,
+      "static_boundary_box_test_upper": 2448420,
+      "mathematical_exclusion_attempted": false
+    },
+    {
+      "case_id": "case-001",
+      "frame": 2,
+      "pair": [
+        "A_BACK_PANEL",
+        "L_KEY"
+      ],
+      "source_proof": {
+        "bytes": 1944749,
+        "sha256": "455a032c8c462b16a819d743e2a913b1708b3ac074fb201cb2962d4473d5b1fd",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-001-frame-2-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-001-frame-2-complete-support.json.gz",
+        "bytes": 1944749,
+        "sha256": "61e8a8ab54328e3a282f791aa5cc62035d5309bc876a51a1919c4c43dc1fd493"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1/2251799813685248"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        460,
+        1438
+      ],
+      "candidate_cell_count": 230,
+      "static_boundary_box_test_upper": 2619240,
+      "mathematical_exclusion_attempted": false
+    },
+    {
+      "case_id": "case-006",
+      "frame": 1,
+      "pair": [
+        "A_BACK_PANEL",
+        "R_KEY"
+      ],
+      "source_proof": {
+        "bytes": 956158,
+        "sha256": "602bb4134a5309b12aa82b980824b3227121926f11fd555eead88153270f57e9",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-006-frame-1-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-006-frame-1-complete-support.json.gz",
+        "bytes": 956158,
+        "sha256": "8dc82bf9f2dbef44276685568d2545f4894c87a91d7f4f35dadda768a8f8cce1"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1/2251799813685248"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        1438,
+        460
+      ],
+      "candidate_cell_count": 177,
+      "static_boundary_box_test_upper": 2015676,
+      "mathematical_exclusion_attempted": false
+    },
+    {
+      "case_id": "case-006",
+      "frame": 2,
+      "pair": [
+        "A_BACK_PANEL",
+        "R_KEY"
+      ],
+      "source_proof": {
+        "bytes": 2455249,
+        "sha256": "cd7f07c60b7fb4933336e1a99ed79914ae3a6140505764cde83fa7eb05b32db2",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-006-frame-2-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-006-frame-2-complete-support.json.gz",
+        "bytes": 2455249,
+        "sha256": "cadc3b9690ef2f996055c0755869724c5e014542c8096d5933b6297142f2ccb8"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1/2251799813685248"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        460,
+        1438
+      ],
+      "candidate_cell_count": 181,
+      "static_boundary_box_test_upper": 2061228,
+      "mathematical_exclusion_attempted": false
+    },
+    {
+      "case_id": "case-028",
+      "frame": 1,
+      "pair": [
+        "L_KEY",
+        "L_STOP_0"
+      ],
+      "source_proof": {
+        "bytes": 1692905,
+        "sha256": "5923e789084831c384f551a245f1996250ef11562a486b7fbc0974ec50246ed9",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-028-frame-1-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-028-frame-1-complete-support.json.gz",
+        "bytes": 1692905,
+        "sha256": "2c24532e65faadc52eccde7145f5e15eadf77c3d91cfbaba57690e1193059e69"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1/2251799813685248"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        460,
+        116
+      ],
+      "candidate_cell_count": 30,
+      "static_boundary_box_test_upper": 103680,
+      "mathematical_exclusion_attempted": false
+    },
+    {
+      "case_id": "case-028",
+      "frame": 2,
+      "pair": [
+        "L_KEY",
+        "L_STOP_0"
+      ],
+      "source_proof": {
+        "bytes": 1051650,
+        "sha256": "6e1c972d6891a80984b3b86c11bf4ef5bdc6c15537cc54a6d9e9c7e048201232",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-028-frame-2-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-028-frame-2-complete-support.json.gz",
+        "bytes": 1051650,
+        "sha256": "47f1c8443e7f1d44fc1c8e7e1af39810d7e8b3cd1a2c56f8e4930edb8523e4c3"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "-1/2251799813685248",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        116,
+        460
+      ],
+      "candidate_cell_count": 30,
+      "static_boundary_box_test_upper": 103680,
+      "mathematical_exclusion_attempted": false
+    },
+    {
+      "case_id": "case-037",
+      "frame": 1,
+      "pair": [
+        "L_KEY",
+        "L_STOP_1"
+      ],
+      "source_proof": {
+        "bytes": 1680164,
+        "sha256": "d16809e8c8c04451051e3236168b7d32ba189ac0b2495e6164d61c8eb7d7a088",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-037-frame-1-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-037-frame-1-complete-support.json.gz",
+        "bytes": 1680164,
+        "sha256": "07814292fb699d5fd12343ac9452e046818776c444584fbc567c89cbef016d72"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "0",
+          "1/1125899906842624"
+        ],
+        [
+          "0",
+          "1/2251799813685248"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        460,
+        116
+      ],
+      "candidate_cell_count": 85,
+      "static_boundary_box_test_upper": 293760,
+      "mathematical_exclusion_attempted": false
+    },
+    {
+      "case_id": "case-037",
+      "frame": 2,
+      "pair": [
+        "L_KEY",
+        "L_STOP_1"
+      ],
+      "source_proof": {
+        "bytes": 873470,
+        "sha256": "58aaf59de246efcddf551578d0da4c7795c505511c23f7975f2c719aa79f01ba",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-037-frame-2-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-037-frame-2-complete-support.json.gz",
+        "bytes": 873470,
+        "sha256": "0b3415e3c87d425942b5a11a46a592135e9bea11c374414e0c05e1da3f251764"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "-1/1125899906842624",
+          "0"
+        ],
+        [
+          "-1/2251799813685248",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        116,
+        460
+      ],
+      "candidate_cell_count": 60,
+      "static_boundary_box_test_upper": 207360,
+      "mathematical_exclusion_attempted": false
+    },
+    {
+      "case_id": "case-054",
+      "frame": 1,
+      "pair": [
+        "L_SPRING_1_OD_TOL_ENVELOPE",
+        "L_STOP_1"
+      ],
+      "source_proof": {
+        "bytes": 413538,
+        "sha256": "7395766867c473a1ccb203f5aabbddbba8856b72e6dac8b520343f8f12ae3994",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-054-frame-1-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-054-frame-1-complete-support.json.gz",
+        "bytes": 413538,
+        "sha256": "9a423aec7ca44ba15460dfb107bf08430d3b6efc7ffd32494612041062184383"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "0",
+          "1/1125899906842624"
+        ],
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        116,
+        8
+      ],
+      "candidate_cell_count": 1,
+      "static_boundary_box_test_upper": 744,
+      "mathematical_exclusion_attempted": false
+    },
+    {
+      "case_id": "case-054",
+      "frame": 2,
+      "pair": [
+        "L_SPRING_1_OD_TOL_ENVELOPE",
+        "L_STOP_1"
+      ],
+      "source_proof": {
+        "bytes": 66398,
+        "sha256": "08a9fc55eff5fcd824791cce62a0cb85057db92c3f0e878a8028eeb472286c2a",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-054-frame-2-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-054-frame-2-complete-support.json.gz",
+        "bytes": 66398,
+        "sha256": "e89aa07989a84351f38ebb5da7445a84d1fd005b67264bcc62ee196db185e7ee"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "0",
+          "1/1125899906842624"
+        ],
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        8,
+        116
+      ],
+      "candidate_cell_count": 1,
+      "static_boundary_box_test_upper": 744,
+      "mathematical_exclusion_attempted": false
+    },
+    {
+      "case_id": "case-063",
+      "frame": 1,
+      "pair": [
+        "R_KEY",
+        "R_STOP_0"
+      ],
+      "source_proof": {
+        "bytes": 2421520,
+        "sha256": "cdf1cd06b3b18ccb734cf3f6ed29c2b391f0722632bd78944cf9de556c851659",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-063-frame-1-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-063-frame-1-complete-support.json.gz",
+        "bytes": 2421520,
+        "sha256": "a65d72bfff00de79d10c8f200c7d46ef6acb2401ce90221bfe40df67b19de0b6"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1/2251799813685248"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        460,
+        116
+      ],
+      "candidate_cell_count": 73,
+      "static_boundary_box_test_upper": 252288,
+      "mathematical_exclusion_attempted": false
+    },
+    {
+      "case_id": "case-063",
+      "frame": 2,
+      "pair": [
+        "R_KEY",
+        "R_STOP_0"
+      ],
+      "source_proof": {
+        "bytes": 1215735,
+        "sha256": "0a7e151cfef58ebd5d2016e1e67c6ec561760c0b00413f809278cdca3a76711e",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-063-frame-2-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-063-frame-2-complete-support.json.gz",
+        "bytes": 1215735,
+        "sha256": "abf3d8c0a0fa1538bc6739cdf9b60b2353313dff1cbd5f4092630fa44df5c62a"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "-1/2251799813685248",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        116,
+        460
+      ],
+      "candidate_cell_count": 64,
+      "static_boundary_box_test_upper": 221184,
+      "mathematical_exclusion_attempted": false
+    },
+    {
+      "case_id": "case-072",
+      "frame": 1,
+      "pair": [
+        "R_KEY",
+        "R_STOP_1"
+      ],
+      "source_proof": {
+        "bytes": 2432351,
+        "sha256": "18c77d44308261d107516e4cfd794766829dba4e20a0af92cc85bc478090826d",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-072-frame-1-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-072-frame-1-complete-support.json.gz",
+        "bytes": 2432351,
+        "sha256": "307624a1726eeb7eac1ff509a1c2594b1142d5dc1b27da53ff9d6f6b9afc7451"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "-1/1125899906842624",
+          "0"
+        ],
+        [
+          "0",
+          "1/2251799813685248"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        460,
+        116
+      ],
+      "candidate_cell_count": 205,
+      "static_boundary_box_test_upper": 708480,
+      "mathematical_exclusion_attempted": false
+    },
+    {
+      "case_id": "case-072",
+      "frame": 2,
+      "pair": [
+        "R_KEY",
+        "R_STOP_1"
+      ],
+      "source_proof": {
+        "bytes": 1324895,
+        "sha256": "5287d209bb896a44c2654542f2409255dd33d85be6e9ab97c52ccfa63b892030",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-072-frame-2-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-072-frame-2-complete-support.json.gz",
+        "bytes": 1324895,
+        "sha256": "07d3c37690751637e31a78dd944f87696066d56ba00c9b90a05d70ebe94e06c8"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "0",
+          "1/1125899906842624"
+        ],
+        [
+          "-1/2251799813685248",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        116,
+        460
+      ],
+      "candidate_cell_count": 120,
+      "static_boundary_box_test_upper": 414720,
+      "mathematical_exclusion_attempted": false
+    },
+    {
+      "case_id": "case-089",
+      "frame": 1,
+      "pair": [
+        "R_SPRING_1_OD_TOL_ENVELOPE",
+        "R_STOP_1"
+      ],
+      "source_proof": {
+        "bytes": 795669,
+        "sha256": "63af958aefad5d74c61d8dfb79575c1c2e89c68bfcb5dbc9a2b1b0c73f2a002f",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-089-frame-1-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-089-frame-1-complete-support.json.gz",
+        "bytes": 795669,
+        "sha256": "01cac728b508e851de8d5868b8ee6602b9003815eb28ec187ce810c78970b2ee"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "0",
+          "1/1125899906842624"
+        ],
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        116,
+        8
+      ],
+      "candidate_cell_count": 1,
+      "static_boundary_box_test_upper": 744,
+      "mathematical_exclusion_attempted": false
+    },
+    {
+      "case_id": "case-089",
+      "frame": 2,
+      "pair": [
+        "R_SPRING_1_OD_TOL_ENVELOPE",
+        "R_STOP_1"
+      ],
+      "source_proof": {
+        "bytes": 67510,
+        "sha256": "e34f3e351176631348414f961a8aa67c7e1582eea15c952dfd1d1ce5721a3f7b",
+        "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-089-frame-2-complete-support.json.gz"
+      },
+      "original_raw_proof_identity": {
+        "path": "case-089-frame-2-complete-support.json.gz",
+        "bytes": 67510,
+        "sha256": "c3e3956e9597fb8ea79b0d8db2570e4a08a873ea0039a72b5eeceb5d2feeb01e"
+      },
+      "original_remaining_displacement_box_exact": [
+        [
+          "0",
+          "1/1125899906842624"
+        ],
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "source_piece_counts": [
+        8,
+        116
+      ],
+      "candidate_cell_count": 1,
+      "static_boundary_box_test_upper": 744,
+      "mathematical_exclusion_attempted": false
+    }
+  ],
+  "counters": {
+    "channels_tested": 0,
+    "boundary_box_tests": 0
+  },
+  "source_report_identity": {
+    "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/support-v4/report.json",
+    "bytes": 251491,
+    "sha256": "286cfad28e08da5426742530a0d7f6901fb54317643507580bd9cddc26ad6887"
+  },
+  "public_input_bridge": {
+    "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/R5E_PUBLIC_INPUT_BRIDGE.json",
+    "bytes": 10493,
+    "sha256": "65f5ccf7a917b92c665b513f6a15b80fda516b037c782ba4cad799e97ed187b2"
+  },
+  "source_independent_verification_identity": {
+    "path": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261027-r4/envelope/independent-support-v4/report.json",
+    "bytes": 24298,
+    "sha256": "1224b5e72b9635aa84227b2b3e7b7a4091cca8483c916392f6634a49088b7110"
+  },
+  "seconds": 1.958776911000001,
+  "peak_RSS_bytes": 132182016,
+  "total_candidate_cells": 1474,
+  "static_boundary_box_test_upper": 11452692,
+  "static_coordinate_comparison_upper": 34358076,
+  "total_original_compressed_proof_bytes": 20506080,
+  "conditional_clearance_passes": 0,
+  "source_and_contract_unchanged": true,
+  "finished_utc": "2026-10-28T06:00:32.480639+00:00"
+}

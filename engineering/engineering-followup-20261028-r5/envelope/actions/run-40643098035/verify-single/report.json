@@ -1,0 +1,111 @@
+{
+  "schema": "razr-r5e-independent-endpoint-tree-verification-v4",
+  "execution_completed": false,
+  "producer_code_imported": false,
+  "contract_sha256": "6b0cbadecb94952c30cd0716620e82f183616038e778a334ed18b3a11bf9c0d2",
+  "verified_producer_report": {
+    "path": "/home/runner/work/_temp/razr-r5-refinement-v4/single-retained-cell/report.json",
+    "bytes": 8347,
+    "sha256": "88c8b434e6e91df36980b85450ec500e287dbbc3f26f069370af375a76bccf72"
+  },
+  "frames": [
+    {
+      "case_id": "case-001",
+      "frame": 1,
+      "original_roots_verified": 1,
+      "exact_tree_nodes_verified": 13,
+      "exact_splits_verified": 6,
+      "all_retained_and_excluded_leaves_verified": 7,
+      "complete_boundary_piece_separations_checked": 0,
+      "retained_upper_exact_mm3": "10961262279981815290884188059995738986490489745/22835963083295358096932575511191922182123945984",
+      "original_clearance_gate_passed": false
+    }
+  ],
+  "phase_negative_controls": [
+    {
+      "name": "missing-frame",
+      "actual_rejected": true,
+      "reason": "missing, extra or reordered frame"
+    },
+    {
+      "name": "duplicate-frame",
+      "actual_rejected": true,
+      "reason": "duplicate frame"
+    },
+    {
+      "name": "incorrect-phase",
+      "actual_rejected": true,
+      "reason": "actual phase differs"
+    }
+  ],
+  "root_coverage_negative_controls": [
+    {
+      "name": "omitted-original-root",
+      "actual_rejected": true,
+      "reason": "missing, extra, duplicate or reordered original root cells"
+    },
+    {
+      "name": "duplicate-original-root",
+      "actual_rejected": true,
+      "reason": "missing, extra, duplicate or reordered original root cells"
+    }
+  ],
+  "channel_negative_controls": [],
+  "partition_negative_controls": [
+    {
+      "name": "omitted-partition-child",
+      "actual_rejected": true,
+      "reason": "two distinct forward child indices required"
+    },
+    {
+      "name": "duplicated-partition-child",
+      "actual_rejected": true,
+      "reason": "two distinct forward child indices required"
+    },
+    {
+      "name": "cut-on-parent-boundary",
+      "actual_rejected": true,
+      "reason": "split strictly inside parent required"
+    },
+    {
+      "name": "discarded-closed-cut-plane",
+      "actual_rejected": true,
+      "reason": "closed cut carrier omitted"
+    },
+    {
+      "name": "incorrect-positive-directed-volume",
+      "actual_rejected": true,
+      "reason": "parent directed volume conservation"
+    },
+    {
+      "name": "omitted-pending-leaf-node",
+      "actual_rejected": true,
+      "reason": "two distinct forward child indices required"
+    },
+    {
+      "name": "discarded-smallest-nonzero-leaf-volume",
+      "actual_rejected": true,
+      "reason": "retained full directed volume/scope differs",
+      "actual_original_leaf_kind": "retained",
+      "actual_original_positive_volume_exact": "2433889152438205224689275167049/22835963083295358096932575511191922182123945984"
+    }
+  ],
+  "native_Common_called": false,
+  "native_material_semantics_verified": false,
+  "compiled_error_verified": false,
+  "full_continuous_G2": false,
+  "expected_phase": "single_retained_cell",
+  "expected_case_frames": [
+    [
+      "case-001",
+      1
+    ]
+  ],
+  "seconds": 0.2605022760000004,
+  "peak_RSS_bytes": 94171136,
+  "failure": {
+    "type": "ValueError",
+    "message": "actual geometric and partition controls required",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/verify_exterior_refinement_r5e_v4.py\", line 217, in main\n    need(report['channel_negative_controls'] and report['partition_negative_controls'],'actual geometric and partition controls required')\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-followup-20261028-r5/compute/verify_exterior_refinement_r5e_v4.py\", line 19, in need\n    if not ok:raise ValueError(message)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: actual geometric and partition controls required\n"
+  }
+}
