@@ -1,0 +1,2329 @@
+{
+  "schema": "razr-r5-source-intake-author-reading-guide-v1",
+  "review_authorship": "same author as receive_evidence_r5.py; not cross-author or independent assurance",
+  "source_and_contract_inputs": {
+    "original_contract": {
+      "bytes": 75616,
+      "sha256": "876ca9a54ba94fe6be7695ab641435cdcd69709ff21bf093898f30a09fd36a5a"
+    },
+    "field_plan": {
+      "bytes": 334749,
+      "sha256": "b9ef7c75eb2220bee23ebb6fa293ba90ff86809009a5d0d76e0b97383069ec77"
+    }
+  },
+  "original_228_requirements_preserved_exactly": true,
+  "all_plan_values_still_unacquired": true,
+  "fact_requirements_count": 228,
+  "fact_requirements_by_category": {
+    "identity": 10,
+    "part": 77,
+    "interface": 120,
+    "supplier": 21
+  },
+  "fact_requirements_by_scope": {
+    "same_specimen": 207,
+    "selected_part_revision": 21
+  },
+  "actual_admission_outputs": {
+    "empty-reception": {
+      "identity": {
+        "bytes": 15231,
+        "sha256": "b67517568819e1bfd027a96bdba5240b105652564cce2a5a816a89805062e48c"
+      },
+      "verified_original_bytes_count": 0,
+      "requirement_count": 228,
+      "structurally_present_requirement_count": 0,
+      "review_ready_structure": false,
+      "missing_count": 256,
+      "invalid_count": 0,
+      "physical_gate_pass": {
+        "G3": false,
+        "G4": false,
+        "G5": false
+      },
+      "original_evidence_authenticity_verified": false,
+      "non_fact_value_missing_items": [
+        "candidate:assembly_revision",
+        "candidate:candidate_id",
+        "candidate:functional_commit",
+        "candidate:geometry_revision",
+        "candidate:native_payloads:evidence_ids",
+        "candidate:source_files:evidence_ids",
+        "no_declared_physical_acquisition",
+        "packet_is_template",
+        "part_binding:COF",
+        "part_binding:USB_port_board",
+        "part_binding:display",
+        "part_binding:mainboard",
+        "part_binding:pack_A",
+        "part_binding:pack_B",
+        "part_binding:touch",
+        "specimen_id",
+        "terminal_map:AUDIO_SENSORS",
+        "terminal_map:A_CHARGE",
+        "terminal_map:A_PROTECTED_PACK",
+        "terminal_map:B_CHARGE",
+        "terminal_map:B_PROTECTED_PACK",
+        "terminal_map:CAMERAS",
+        "terminal_map:MAIN_DISPLAY",
+        "terminal_map:MAIN_TOUCH",
+        "terminal_map:MOTION_STATE",
+        "terminal_map:RF_ANTENNA",
+        "terminal_map:USB_DATA_CROSS",
+        "terminal_map:USB_POWER"
+      ]
+    },
+    "model-literature-reception": {
+      "identity": {
+        "bytes": 15231,
+        "sha256": "46619ef9bd1ea85ddb494f7502dacc900aee6c0e4f01205821e8c24aaae40715"
+      },
+      "verified_original_bytes_count": 1,
+      "requirement_count": 228,
+      "structurally_present_requirement_count": 0,
+      "review_ready_structure": false,
+      "missing_count": 256,
+      "invalid_count": 0,
+      "physical_gate_pass": {
+        "G3": false,
+        "G4": false,
+        "G5": false
+      },
+      "original_evidence_authenticity_verified": false,
+      "non_fact_value_missing_items": [
+        "candidate:assembly_revision",
+        "candidate:candidate_id",
+        "candidate:functional_commit",
+        "candidate:geometry_revision",
+        "candidate:native_payloads:evidence_ids",
+        "candidate:source_files:evidence_ids",
+        "no_declared_physical_acquisition",
+        "packet_is_template",
+        "part_binding:COF",
+        "part_binding:USB_port_board",
+        "part_binding:display",
+        "part_binding:mainboard",
+        "part_binding:pack_A",
+        "part_binding:pack_B",
+        "part_binding:touch",
+        "specimen_id",
+        "terminal_map:AUDIO_SENSORS",
+        "terminal_map:A_CHARGE",
+        "terminal_map:A_PROTECTED_PACK",
+        "terminal_map:B_CHARGE",
+        "terminal_map:B_PROTECTED_PACK",
+        "terminal_map:CAMERAS",
+        "terminal_map:MAIN_DISPLAY",
+        "terminal_map:MAIN_TOUCH",
+        "terminal_map:MOTION_STATE",
+        "terminal_map:RF_ANTENNA",
+        "terminal_map:USB_DATA_CROSS",
+        "terminal_map:USB_POWER"
+      ]
+    }
+  },
+  "AST_literal_scope_check": {
+    "receive_evidence_r5.py": {
+      "identity": {
+        "bytes": 9394,
+        "sha256": "a147a2581ad555c7d6bea81825ffa70e1d3b3559887d511dcac6c4e38831e580"
+      },
+      "physical_qualification_literal_assignments": [
+        {
+          "field": "original_evidence_authenticity_verified",
+          "literal_value": false,
+          "line": 143
+        },
+        {
+          "field": "physical_gate_pass",
+          "literal_value": {
+            "G3": false,
+            "G4": false,
+            "G5": false
+          },
+          "line": 143
+        }
+      ]
+    },
+    "intake/verify_intake_r3_v2.py": {
+      "identity": {
+        "bytes": 20477,
+        "sha256": "7ed1aa270bfb05f543d27f33b31b7ee0bd641b3d7d7d6217314f11d2391cc8d8"
+      },
+      "physical_qualification_literal_assignments": [
+        {
+          "field": "physical_gate_pass",
+          "literal_value": {
+            "G3": false,
+            "G4": false,
+            "G5": false
+          },
+          "line": 338
+        },
+        {
+          "field": "original_evidence_authenticity_verified",
+          "literal_value": false,
+          "line": 338
+        }
+      ]
+    }
+  },
+  "full_missing_fact_requirements": [
+    {
+      "requirement_id": "identity:region",
+      "category": "identity",
+      "scope": "same_specimen",
+      "description": "same-specimen original labels or runtime acquisition, linked to original photo/log and locator; no public model-family inference",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "identity:mainboard_revision",
+      "category": "identity",
+      "scope": "same_specimen",
+      "description": "same-specimen original labels or runtime acquisition, linked to original photo/log and locator; no public model-family inference",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "identity:runtime_panel_id",
+      "category": "identity",
+      "scope": "same_specimen",
+      "description": "same-specimen original labels or runtime acquisition, linked to original photo/log and locator; no public model-family inference",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "identity:display_module_part",
+      "category": "identity",
+      "scope": "same_specimen",
+      "description": "same-specimen original labels or runtime acquisition, linked to original photo/log and locator; no public model-family inference",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "identity:display_module_revision",
+      "category": "identity",
+      "scope": "same_specimen",
+      "description": "same-specimen original labels or runtime acquisition, linked to original photo/log and locator; no public model-family inference",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "identity:touch_revision",
+      "category": "identity",
+      "scope": "same_specimen",
+      "description": "same-specimen original labels or runtime acquisition, linked to original photo/log and locator; no public model-family inference",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "identity:pack_A_label",
+      "category": "identity",
+      "scope": "same_specimen",
+      "description": "same-specimen original labels or runtime acquisition, linked to original photo/log and locator; no public model-family inference",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "identity:pack_B_label",
+      "category": "identity",
+      "scope": "same_specimen",
+      "description": "same-specimen original labels or runtime acquisition, linked to original photo/log and locator; no public model-family inference",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "identity:USB_roles",
+      "category": "identity",
+      "scope": "same_specimen",
+      "description": "same-specimen original labels or runtime acquisition, linked to original photo/log and locator; no public model-family inference",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "identity:USB_version_rate",
+      "category": "identity",
+      "scope": "same_specimen",
+      "description": "same-specimen original labels or runtime acquisition, linked to original photo/log and locator; no public model-family inference",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:mainboard:unedited_overall_and_label_photos",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "unedited_overall_and_label_photos",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:mainboard:manufacturer",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "manufacturer",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:mainboard:PN",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "PN",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:mainboard:revision",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "revision",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:mainboard:lot_or_serial_if_visible",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "lot_or_serial_if_visible",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:mainboard:actual_external_and_keepout_dimensions",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "actual_external_and_keepout_dimensions",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:mainboard:measurement_uncertainty",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "measurement_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:mainboard:orientation_and_pin_1",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "orientation_and_pin_1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:mainboard:assembly_and_removal_direction",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "assembly_and_removal_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:mainboard:mating_or_tail_exit_direction",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "mating_or_tail_exit_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:mainboard:original_device_function_baseline",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "original_device_function_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:display:unedited_overall_and_label_photos",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "unedited_overall_and_label_photos",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:display:manufacturer",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "manufacturer",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:display:PN",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "PN",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:display:revision",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "revision",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:display:lot_or_serial_if_visible",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "lot_or_serial_if_visible",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:display:actual_external_and_keepout_dimensions",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "actual_external_and_keepout_dimensions",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:display:measurement_uncertainty",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "measurement_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:display:orientation_and_pin_1",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "orientation_and_pin_1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:display:assembly_and_removal_direction",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "assembly_and_removal_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:display:mating_or_tail_exit_direction",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "mating_or_tail_exit_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:display:original_device_function_baseline",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "original_device_function_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:touch:unedited_overall_and_label_photos",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "unedited_overall_and_label_photos",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:touch:manufacturer",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "manufacturer",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:touch:PN",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "PN",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:touch:revision",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "revision",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:touch:lot_or_serial_if_visible",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "lot_or_serial_if_visible",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:touch:actual_external_and_keepout_dimensions",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "actual_external_and_keepout_dimensions",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:touch:measurement_uncertainty",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "measurement_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:touch:orientation_and_pin_1",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "orientation_and_pin_1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:touch:assembly_and_removal_direction",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "assembly_and_removal_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:touch:mating_or_tail_exit_direction",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "mating_or_tail_exit_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:touch:original_device_function_baseline",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "original_device_function_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:COF:unedited_overall_and_label_photos",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "unedited_overall_and_label_photos",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:COF:manufacturer",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "manufacturer",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:COF:PN",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "PN",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:COF:revision",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "revision",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:COF:lot_or_serial_if_visible",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "lot_or_serial_if_visible",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:COF:actual_external_and_keepout_dimensions",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "actual_external_and_keepout_dimensions",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:COF:measurement_uncertainty",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "measurement_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:COF:orientation_and_pin_1",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "orientation_and_pin_1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:COF:assembly_and_removal_direction",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "assembly_and_removal_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:COF:mating_or_tail_exit_direction",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "mating_or_tail_exit_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:COF:original_device_function_baseline",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "original_device_function_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_A:unedited_overall_and_label_photos",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "unedited_overall_and_label_photos",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_A:manufacturer",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "manufacturer",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_A:PN",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "PN",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_A:revision",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "revision",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_A:lot_or_serial_if_visible",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "lot_or_serial_if_visible",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_A:actual_external_and_keepout_dimensions",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "actual_external_and_keepout_dimensions",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_A:measurement_uncertainty",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "measurement_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_A:orientation_and_pin_1",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "orientation_and_pin_1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_A:assembly_and_removal_direction",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "assembly_and_removal_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_A:mating_or_tail_exit_direction",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "mating_or_tail_exit_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_A:original_device_function_baseline",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "original_device_function_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_B:unedited_overall_and_label_photos",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "unedited_overall_and_label_photos",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_B:manufacturer",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "manufacturer",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_B:PN",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "PN",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_B:revision",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "revision",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_B:lot_or_serial_if_visible",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "lot_or_serial_if_visible",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_B:actual_external_and_keepout_dimensions",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "actual_external_and_keepout_dimensions",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_B:measurement_uncertainty",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "measurement_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_B:orientation_and_pin_1",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "orientation_and_pin_1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_B:assembly_and_removal_direction",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "assembly_and_removal_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_B:mating_or_tail_exit_direction",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "mating_or_tail_exit_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:pack_B:original_device_function_baseline",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "original_device_function_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:USB_port_board:unedited_overall_and_label_photos",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "unedited_overall_and_label_photos",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:USB_port_board:manufacturer",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "manufacturer",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:USB_port_board:PN",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "PN",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:USB_port_board:revision",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "revision",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:USB_port_board:lot_or_serial_if_visible",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "lot_or_serial_if_visible",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:USB_port_board:actual_external_and_keepout_dimensions",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "actual_external_and_keepout_dimensions",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:USB_port_board:measurement_uncertainty",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "measurement_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:USB_port_board:orientation_and_pin_1",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "orientation_and_pin_1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:USB_port_board:assembly_and_removal_direction",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "assembly_and_removal_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:USB_port_board:mating_or_tail_exit_direction",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "mating_or_tail_exit_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "part:USB_port_board:original_device_function_baseline",
+      "category": "part",
+      "scope": "same_specimen",
+      "description": "original_device_function_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_DISPLAY:source_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_DISPLAY:source_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_DISPLAY:sink_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_DISPLAY:sink_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_DISPLAY:net_or_signal_identity_and_direction",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "net_or_signal_identity_and_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_DISPLAY:actual_same_specimen_terminal_map_source",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "actual_same_specimen_terminal_map_source",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_DISPLAY:return_reference_and_shield",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "return_reference_and_shield",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_DISPLAY:original_function_protocol_and_measured_baseline",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "original_function_protocol_and_measured_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_DISPLAY:sourced_electrical_limits_and_uncertainty",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sourced_electrical_limits_and_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_DISPLAY:observation_ids_and_source_locator",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "observation_ids_and_source_locator",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_TOUCH:source_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_TOUCH:source_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_TOUCH:sink_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_TOUCH:sink_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_TOUCH:net_or_signal_identity_and_direction",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "net_or_signal_identity_and_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_TOUCH:actual_same_specimen_terminal_map_source",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "actual_same_specimen_terminal_map_source",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_TOUCH:return_reference_and_shield",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "return_reference_and_shield",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_TOUCH:original_function_protocol_and_measured_baseline",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "original_function_protocol_and_measured_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_TOUCH:sourced_electrical_limits_and_uncertainty",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sourced_electrical_limits_and_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MAIN_TOUCH:observation_ids_and_source_locator",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "observation_ids_and_source_locator",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_PROTECTED_PACK:source_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_PROTECTED_PACK:source_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_PROTECTED_PACK:sink_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_PROTECTED_PACK:sink_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_PROTECTED_PACK:net_or_signal_identity_and_direction",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "net_or_signal_identity_and_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_PROTECTED_PACK:actual_same_specimen_terminal_map_source",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "actual_same_specimen_terminal_map_source",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_PROTECTED_PACK:return_reference_and_shield",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "return_reference_and_shield",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_PROTECTED_PACK:original_function_protocol_and_measured_baseline",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "original_function_protocol_and_measured_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_PROTECTED_PACK:sourced_electrical_limits_and_uncertainty",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sourced_electrical_limits_and_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_PROTECTED_PACK:observation_ids_and_source_locator",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "observation_ids_and_source_locator",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_PROTECTED_PACK:source_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_PROTECTED_PACK:source_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_PROTECTED_PACK:sink_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_PROTECTED_PACK:sink_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_PROTECTED_PACK:net_or_signal_identity_and_direction",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "net_or_signal_identity_and_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_PROTECTED_PACK:actual_same_specimen_terminal_map_source",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "actual_same_specimen_terminal_map_source",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_PROTECTED_PACK:return_reference_and_shield",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "return_reference_and_shield",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_PROTECTED_PACK:original_function_protocol_and_measured_baseline",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "original_function_protocol_and_measured_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_PROTECTED_PACK:sourced_electrical_limits_and_uncertainty",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sourced_electrical_limits_and_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_PROTECTED_PACK:observation_ids_and_source_locator",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "observation_ids_and_source_locator",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_CHARGE:source_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_CHARGE:source_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_CHARGE:sink_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_CHARGE:sink_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_CHARGE:net_or_signal_identity_and_direction",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "net_or_signal_identity_and_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_CHARGE:actual_same_specimen_terminal_map_source",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "actual_same_specimen_terminal_map_source",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_CHARGE:return_reference_and_shield",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "return_reference_and_shield",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_CHARGE:original_function_protocol_and_measured_baseline",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "original_function_protocol_and_measured_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_CHARGE:sourced_electrical_limits_and_uncertainty",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sourced_electrical_limits_and_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:A_CHARGE:observation_ids_and_source_locator",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "observation_ids_and_source_locator",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_CHARGE:source_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_CHARGE:source_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_CHARGE:sink_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_CHARGE:sink_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_CHARGE:net_or_signal_identity_and_direction",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "net_or_signal_identity_and_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_CHARGE:actual_same_specimen_terminal_map_source",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "actual_same_specimen_terminal_map_source",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_CHARGE:return_reference_and_shield",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "return_reference_and_shield",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_CHARGE:original_function_protocol_and_measured_baseline",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "original_function_protocol_and_measured_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_CHARGE:sourced_electrical_limits_and_uncertainty",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sourced_electrical_limits_and_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:B_CHARGE:observation_ids_and_source_locator",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "observation_ids_and_source_locator",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_DATA_CROSS:source_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_DATA_CROSS:source_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_DATA_CROSS:sink_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_DATA_CROSS:sink_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_DATA_CROSS:net_or_signal_identity_and_direction",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "net_or_signal_identity_and_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_DATA_CROSS:actual_same_specimen_terminal_map_source",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "actual_same_specimen_terminal_map_source",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_DATA_CROSS:return_reference_and_shield",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "return_reference_and_shield",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_DATA_CROSS:original_function_protocol_and_measured_baseline",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "original_function_protocol_and_measured_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_DATA_CROSS:sourced_electrical_limits_and_uncertainty",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sourced_electrical_limits_and_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_DATA_CROSS:observation_ids_and_source_locator",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "observation_ids_and_source_locator",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_POWER:source_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_POWER:source_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_POWER:sink_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_POWER:sink_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_POWER:net_or_signal_identity_and_direction",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "net_or_signal_identity_and_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_POWER:actual_same_specimen_terminal_map_source",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "actual_same_specimen_terminal_map_source",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_POWER:return_reference_and_shield",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "return_reference_and_shield",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_POWER:original_function_protocol_and_measured_baseline",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "original_function_protocol_and_measured_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_POWER:sourced_electrical_limits_and_uncertainty",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sourced_electrical_limits_and_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:USB_POWER:observation_ids_and_source_locator",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "observation_ids_and_source_locator",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:CAMERAS:source_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:CAMERAS:source_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:CAMERAS:sink_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:CAMERAS:sink_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:CAMERAS:net_or_signal_identity_and_direction",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "net_or_signal_identity_and_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:CAMERAS:actual_same_specimen_terminal_map_source",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "actual_same_specimen_terminal_map_source",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:CAMERAS:return_reference_and_shield",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "return_reference_and_shield",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:CAMERAS:original_function_protocol_and_measured_baseline",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "original_function_protocol_and_measured_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:CAMERAS:sourced_electrical_limits_and_uncertainty",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sourced_electrical_limits_and_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:CAMERAS:observation_ids_and_source_locator",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "observation_ids_and_source_locator",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:RF_ANTENNA:source_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:RF_ANTENNA:source_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:RF_ANTENNA:sink_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:RF_ANTENNA:sink_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:RF_ANTENNA:net_or_signal_identity_and_direction",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "net_or_signal_identity_and_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:RF_ANTENNA:actual_same_specimen_terminal_map_source",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "actual_same_specimen_terminal_map_source",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:RF_ANTENNA:return_reference_and_shield",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "return_reference_and_shield",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:RF_ANTENNA:original_function_protocol_and_measured_baseline",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "original_function_protocol_and_measured_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:RF_ANTENNA:sourced_electrical_limits_and_uncertainty",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sourced_electrical_limits_and_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:RF_ANTENNA:observation_ids_and_source_locator",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "observation_ids_and_source_locator",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:AUDIO_SENSORS:source_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:AUDIO_SENSORS:source_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:AUDIO_SENSORS:sink_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:AUDIO_SENSORS:sink_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:AUDIO_SENSORS:net_or_signal_identity_and_direction",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "net_or_signal_identity_and_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:AUDIO_SENSORS:actual_same_specimen_terminal_map_source",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "actual_same_specimen_terminal_map_source",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:AUDIO_SENSORS:return_reference_and_shield",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "return_reference_and_shield",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:AUDIO_SENSORS:original_function_protocol_and_measured_baseline",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "original_function_protocol_and_measured_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:AUDIO_SENSORS:sourced_electrical_limits_and_uncertainty",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sourced_electrical_limits_and_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:AUDIO_SENSORS:observation_ids_and_source_locator",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "observation_ids_and_source_locator",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MOTION_STATE:source_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MOTION_STATE:source_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "source_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MOTION_STATE:sink_connector_PN_revision_and_pin1",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_connector_PN_revision_and_pin1",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MOTION_STATE:sink_pin",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sink_pin",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MOTION_STATE:net_or_signal_identity_and_direction",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "net_or_signal_identity_and_direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MOTION_STATE:actual_same_specimen_terminal_map_source",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "actual_same_specimen_terminal_map_source",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MOTION_STATE:return_reference_and_shield",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "return_reference_and_shield",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MOTION_STATE:original_function_protocol_and_measured_baseline",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "original_function_protocol_and_measured_baseline",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MOTION_STATE:sourced_electrical_limits_and_uncertainty",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "sourced_electrical_limits_and_uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "interface:MOTION_STATE:observation_ids_and_source_locator",
+      "category": "interface",
+      "scope": "same_specimen",
+      "description": "observation_ids_and_source_locator",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:OLED_COF:0",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "same-specimen module PN/revision and original complete module/COF photographs",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:OLED_COF:1",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "complete physical outline including edge, support, COF and tail, thickness and uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:OLED_COF:2",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "AA and module envelope distinguished",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:OLED_COF:3",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "tail exit and connector mating orientation",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:OLED_COF:4",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "layer materials and thicknesses including adhesives",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:OLED_COF:5",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "vendor-sourced bending direction, neutral-axis assumptions, minimum dynamic radius, allowed force and strain, temperature and cycle conditions",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:OLED_COF:6",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "original display/touch terminal map and original baseline functions",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:FPC:0",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "manufacturer PN/revision or controlled fabrication drawing",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:FPC:1",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "finished stackup including PI/copper/adhesive/coverlay/stiffeners and process tolerances",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:FPC:2",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "copper type and thickness, conductor geometry, controlled impedance/reference and shield where applicable",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:FPC:3",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "actual mating ends and pinout, free length, exit/tangent orientations, bend axis",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:FPC:4",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "sourced dynamic radius/cycle/temperature/strain limits",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:FPC:5",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "fabricator process approval, lot traceability and received-part metrology",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:connectors:0",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "both mating PNs/revisions, terminal-source evidence, pin1 and mating direction",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:connectors:1",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "mated height and envelope with uncertainty",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:connectors:2",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "engagement/retention/assembly-tool space",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:connectors:3",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "electrical/current/voltage/temperature and mating-cycle ratings from correct PN documentation",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:structural_material_process:0",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "per-body physical material grade and condition",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:structural_material_process:1",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "elastic/strength/fatigue data and temperature dependence",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:structural_material_process:2",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "manufacturing process, treatments, lot and property traceability",
+      "observed_value": null,
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "supplier:structural_material_process:3",
+      "category": "supplier",
+      "scope": "selected_part_revision",
+      "description": "minimum wall/web rule source and actual measured feature distributions",
+      "observed_value": null,
+      "evidence_ids": []
+    }
+  ],
+  "original_plan_null_and_empty_fields": {
+    "G3-EP5-plan.template.json": {
+      "null_fields_count": 24,
+      "null_fields": [
+        "/declared_at_utc",
+        "/approved_by",
+        "/measurement_requirements/minimum_cycles",
+        "/measurement_requirements/minimum_samples_per_phase",
+        "/measurement_requirements/minimum_hands_off_duration_s",
+        "/measurement_requirements/maximum_sampling_gap_s",
+        "/measurement_requirements/maximum_alignment_error_s",
+        "/criteria/operator_force_max_N/maximum",
+        "/criteria/left_right_y_max_mm/maximum",
+        "/criteria/left_right_z_max_mm/maximum",
+        "/criteria/return_y_max_mm/maximum",
+        "/criteria/return_z_max_mm/maximum",
+        "/criteria/stroke_y_mm/minimum",
+        "/criteria/stroke_y_mm/maximum",
+        "/criteria/stroke_z_mm/minimum",
+        "/criteria/stroke_z_mm/maximum",
+        "/criteria/hands_off_y_drift_max_mm/maximum",
+        "/criteria/hands_off_z_drift_max_mm/maximum",
+        "/criteria/oled_tail_travel_mm/minimum",
+        "/criteria/oled_tail_travel_mm/maximum",
+        "/criteria/oled_pull_force_max_N/maximum",
+        "/criteria/oled_radius_min_mm/minimum",
+        "/criteria/fpc_radius_min_mm/minimum",
+        "/criteria/fpc_resistance_max_ohm/maximum"
+      ],
+      "observed_empty_collection_paths": [
+        "/approval_evidence"
+      ],
+      "empty_collection_observation_is_not_automatically_a_requirement_to_invent_an_event": true
+    },
+    "G3-EP5-as-built.template.json": {
+      "null_fields_count": 30,
+      "null_fields": [
+        "/execution_kind",
+        "/specimen_id",
+        "/role_observations/cad/part_or_lot_id",
+        "/role_observations/cad/method",
+        "/role_observations/cad/locator",
+        "/role_observations/cad/observed_at_utc",
+        "/role_observations/bom/part_or_lot_id",
+        "/role_observations/bom/method",
+        "/role_observations/bom/locator",
+        "/role_observations/bom/observed_at_utc",
+        "/role_observations/drawings/part_or_lot_id",
+        "/role_observations/drawings/method",
+        "/role_observations/drawings/locator",
+        "/role_observations/drawings/observed_at_utc",
+        "/role_observations/material/part_or_lot_id",
+        "/role_observations/material/method",
+        "/role_observations/material/locator",
+        "/role_observations/material/observed_at_utc",
+        "/role_observations/process/part_or_lot_id",
+        "/role_observations/process/method",
+        "/role_observations/process/locator",
+        "/role_observations/process/observed_at_utc",
+        "/role_observations/firmware/part_or_lot_id",
+        "/role_observations/firmware/method",
+        "/role_observations/firmware/locator",
+        "/role_observations/firmware/observed_at_utc",
+        "/role_observations/routing/part_or_lot_id",
+        "/role_observations/routing/method",
+        "/role_observations/routing/locator",
+        "/role_observations/routing/observed_at_utc"
+      ],
+      "observed_empty_collection_paths": [
+        "/role_observations/cad/original_evidence",
+        "/role_observations/bom/design_paths",
+        "/role_observations/bom/original_evidence",
+        "/role_observations/drawings/design_paths",
+        "/role_observations/drawings/original_evidence",
+        "/role_observations/material/design_paths",
+        "/role_observations/material/original_evidence",
+        "/role_observations/process/design_paths",
+        "/role_observations/process/original_evidence",
+        "/role_observations/firmware/design_paths",
+        "/role_observations/firmware/original_evidence",
+        "/role_observations/routing/original_evidence"
+      ],
+      "empty_collection_observation_is_not_automatically_a_requirement_to_invent_an_event": true
+    },
+    "G4-plan.template.json": {
+      "null_fields_count": 118,
+      "null_fields": [
+        "/same_donor_specimen_id",
+        "/declared_at_utc",
+        "/approved_by",
+        "/function_protocols/power/identity",
+        "/function_protocols/power/source",
+        "/function_protocols/power/source_locator",
+        "/function_protocols/pack_A/identity",
+        "/function_protocols/pack_A/source",
+        "/function_protocols/pack_A/source_locator",
+        "/function_protocols/pack_B/identity",
+        "/function_protocols/pack_B/source",
+        "/function_protocols/pack_B/source_locator",
+        "/function_protocols/usb/identity",
+        "/function_protocols/usb/source",
+        "/function_protocols/usb/source_locator",
+        "/function_protocols/display/identity",
+        "/function_protocols/display/source",
+        "/function_protocols/display/source_locator",
+        "/function_protocols/touch/identity",
+        "/function_protocols/touch/source",
+        "/function_protocols/touch/source_locator",
+        "/function_protocols/camera/identity",
+        "/function_protocols/camera/source",
+        "/function_protocols/camera/source_locator",
+        "/function_protocols/rf/identity",
+        "/function_protocols/rf/source",
+        "/function_protocols/rf/source_locator",
+        "/function_protocols/audio_sensors/identity",
+        "/function_protocols/audio_sensors/source",
+        "/function_protocols/audio_sensors/source_locator",
+        "/requirements/minimum_cycles_per_mode/value",
+        "/requirements/minimum_cycles_per_mode/source",
+        "/requirements/minimum_cycles_per_mode/source_locator",
+        "/requirements/minimum_samples_per_phase/value",
+        "/requirements/minimum_samples_per_phase/source",
+        "/requirements/minimum_samples_per_phase/source_locator",
+        "/requirements/maximum_sampling_gap_s/value",
+        "/requirements/maximum_sampling_gap_s/source",
+        "/requirements/maximum_sampling_gap_s/source_locator",
+        "/requirements/maximum_alignment_error_s/value",
+        "/requirements/maximum_alignment_error_s/source",
+        "/requirements/maximum_alignment_error_s/source_locator",
+        "/channels/power_rail_voltage/measured_location",
+        "/channels/power_rail_voltage/identity_source",
+        "/channels/power_rail_voltage/criterion/minimum",
+        "/channels/power_rail_voltage/criterion/maximum",
+        "/channels/power_rail_voltage/criterion/source",
+        "/channels/power_rail_voltage/criterion/source_locator",
+        "/channels/power_current/measured_location",
+        "/channels/power_current/identity_source",
+        "/channels/power_current/criterion/minimum",
+        "/channels/power_current/criterion/maximum",
+        "/channels/power_current/criterion/source",
+        "/channels/power_current/criterion/source_locator",
+        "/channels/unexpected_reset_count/measured_location",
+        "/channels/unexpected_reset_count/identity_source",
+        "/channels/unexpected_reset_count/criterion/maximum",
+        "/channels/unexpected_reset_count/criterion/source",
+        "/channels/unexpected_reset_count/criterion/source_locator",
+        "/channels/pack_A_current/measured_location",
+        "/channels/pack_A_current/identity_source",
+        "/channels/pack_A_current/criterion/minimum",
+        "/channels/pack_A_current/criterion/maximum",
+        "/channels/pack_A_current/criterion/source",
+        "/channels/pack_A_current/criterion/source_locator",
+        "/channels/pack_A_temperature/measured_location",
+        "/channels/pack_A_temperature/identity_source",
+        "/channels/pack_A_temperature/criterion/minimum",
+        "/channels/pack_A_temperature/criterion/maximum",
+        "/channels/pack_A_temperature/criterion/source",
+        "/channels/pack_A_temperature/criterion/source_locator",
+        "/channels/pack_B_current/measured_location",
+        "/channels/pack_B_current/identity_source",
+        "/channels/pack_B_current/criterion/minimum",
+        "/channels/pack_B_current/criterion/maximum",
+        "/channels/pack_B_current/criterion/source",
+        "/channels/pack_B_current/criterion/source_locator",
+        "/channels/pack_B_temperature/measured_location",
+        "/channels/pack_B_temperature/identity_source",
+        "/channels/pack_B_temperature/criterion/minimum",
+        "/channels/pack_B_temperature/criterion/maximum",
+        "/channels/pack_B_temperature/criterion/source",
+        "/channels/pack_B_temperature/criterion/source_locator",
+        "/channels/usb_error_count/measured_location",
+        "/channels/usb_error_count/identity_source",
+        "/channels/usb_error_count/criterion/maximum",
+        "/channels/usb_error_count/criterion/source",
+        "/channels/usb_error_count/criterion/source_locator",
+        "/channels/usb_disconnect_count/measured_location",
+        "/channels/usb_disconnect_count/identity_source",
+        "/channels/usb_disconnect_count/criterion/maximum",
+        "/channels/usb_disconnect_count/criterion/source",
+        "/channels/usb_disconnect_count/criterion/source_locator",
+        "/channels/display_error_count/measured_location",
+        "/channels/display_error_count/identity_source",
+        "/channels/display_error_count/criterion/maximum",
+        "/channels/display_error_count/criterion/source",
+        "/channels/display_error_count/criterion/source_locator",
+        "/channels/touch_position_error/measured_location",
+        "/channels/touch_position_error/identity_source",
+        "/channels/touch_position_error/criterion/maximum",
+        "/channels/touch_position_error/criterion/source",
+        "/channels/touch_position_error/criterion/source_locator",
+        "/channels/camera_error_count/measured_location",
+        "/channels/camera_error_count/identity_source",
+        "/channels/camera_error_count/criterion/maximum",
+        "/channels/camera_error_count/criterion/source",
+        "/channels/camera_error_count/criterion/source_locator",
+        "/channels/rf_error_count/measured_location",
+        "/channels/rf_error_count/identity_source",
+        "/channels/rf_error_count/criterion/maximum",
+        "/channels/rf_error_count/criterion/source",
+        "/channels/rf_error_count/criterion/source_locator",
+        "/channels/audio_sensor_error_count/measured_location",
+        "/channels/audio_sensor_error_count/identity_source",
+        "/channels/audio_sensor_error_count/criterion/maximum",
+        "/channels/audio_sensor_error_count/criterion/source",
+        "/channels/audio_sensor_error_count/criterion/source_locator"
+      ],
+      "observed_empty_collection_paths": [
+        "/specimen_ids",
+        "/approval_evidence",
+        "/prerequisites"
+      ],
+      "empty_collection_observation_is_not_automatically_a_requirement_to_invent_an_event": true
+    },
+    "G5-plan.template.json": {
+      "null_fields_count": 61,
+      "null_fields": [
+        "/same_donor_specimen_id",
+        "/declared_at_utc",
+        "/approved_by",
+        "/requirements/required_cycles/value",
+        "/requirements/required_cycles/source",
+        "/requirements/required_cycles/source_locator",
+        "/requirements/minimum_specimens/value",
+        "/requirements/minimum_specimens/source",
+        "/requirements/minimum_specimens/source_locator",
+        "/requirements/maximum_exposure_sampling_gap_s/value",
+        "/requirements/maximum_exposure_sampling_gap_s/source",
+        "/requirements/maximum_exposure_sampling_gap_s/source_locator",
+        "/requirements/minimum_samples_per_exposure_phase/value",
+        "/requirements/minimum_samples_per_exposure_phase/source",
+        "/requirements/minimum_samples_per_exposure_phase/source_locator",
+        "/requirements/maximum_alignment_error_s/value",
+        "/requirements/maximum_alignment_error_s/source",
+        "/requirements/maximum_alignment_error_s/source_locator",
+        "/cycle_protocol/identity",
+        "/cycle_protocol/source",
+        "/cycle_protocol/source_locator",
+        "/criteria/operating_force/maximum",
+        "/criteria/operating_force/source",
+        "/criteria/operating_force/source_locator",
+        "/criteria/unlock_force/maximum",
+        "/criteria/unlock_force/source",
+        "/criteria/unlock_force/source_locator",
+        "/criteria/left_right_skew/maximum",
+        "/criteria/left_right_skew/source",
+        "/criteria/left_right_skew/source_locator",
+        "/criteria/relock_error/maximum",
+        "/criteria/relock_error/source",
+        "/criteria/relock_error/source_locator",
+        "/criteria/retention_drift/maximum",
+        "/criteria/retention_drift/source",
+        "/criteria/retention_drift/source_locator",
+        "/criteria/fpc_resistance/maximum",
+        "/criteria/fpc_resistance/source",
+        "/criteria/fpc_resistance/source_locator",
+        "/criteria/display_error_count/maximum",
+        "/criteria/display_error_count/source",
+        "/criteria/display_error_count/source_locator",
+        "/criteria/usb_error_count/maximum",
+        "/criteria/usb_error_count/source",
+        "/criteria/usb_error_count/source_locator",
+        "/exposure/temperature/minimum",
+        "/exposure/temperature/maximum",
+        "/exposure/temperature/source",
+        "/exposure/temperature/source_locator",
+        "/exposure/humidity/minimum",
+        "/exposure/humidity/maximum",
+        "/exposure/humidity/source",
+        "/exposure/humidity/source_locator",
+        "/exposure/motion_speed/minimum",
+        "/exposure/motion_speed/maximum",
+        "/exposure/motion_speed/source",
+        "/exposure/motion_speed/source_locator",
+        "/exposure/applied_load/minimum",
+        "/exposure/applied_load/maximum",
+        "/exposure/applied_load/source",
+        "/exposure/applied_load/source_locator"
+      ],
+      "observed_empty_collection_paths": [
+        "/specimen_ids",
+        "/approval_evidence",
+        "/prerequisites",
+        "/checkpoints_cycles",
+        "/critical_dimensions"
+      ],
+      "empty_collection_observation_is_not_automatically_a_requirement_to_invent_an_event": true
+    }
+  },
+  "current_FE_requirements": {
+    "per_body_material_assignment_target_count": 154,
+    "loadcases_requiring_sourced_values": [
+      "unpowered_unlock_left",
+      "unpowered_unlock_right",
+      "slide_out",
+      "normal_seating",
+      "hands_off_OPEN_with_actual_holds_and_support",
+      "support_and_hold_removal",
+      "unseating",
+      "slide_in",
+      "relock_left",
+      "relock_right",
+      "carry_and_drop_service_load",
+      "fastener_assembly_preload",
+      "temperature_and_pack_swelling"
+    ],
+    "placeholder_bodies_to_replace": [
+      "A_BATTERY_ALLOCATION",
+      "A_CAMERA_ALLOCATION",
+      "A_mated_BM28_reservation",
+      "A_static_26wire_transfer_reservation",
+      "B_BATTERY_ALLOCATION",
+      "B_ELECTRONICS_ALLOCATION",
+      "B_mated_BM28_reservation",
+      "B_static_26wire_transfer_reservation",
+      "OLED_GEOMETRIC_TRIAL"
+    ],
+    "current_FE_qualification_passed": false
+  },
+  "not_authenticated_by_either_program": [
+    "photograph authenticity",
+    "operator identity",
+    "physical specimen identity",
+    "supplier PN/revision applicability",
+    "claimed physical acquisition truth",
+    "measurement truth",
+    "reported pass decision authenticity"
+  ],
+  "potential_structural_false_inference": "For the 21 selected_part_revision requirements the original V2 requires verified file references and nonempty source locator/revision but does not authenticate OEM applicability or semantic truth. A declared model_literature or synthetic_fixture may serve as a structurally referenced document in that scope; this must not be counted as qualified supplier evidence. The current empty packets contain none of those claims.",
+  "reported_gate_chain_is_only_structural": "reported_pass_sequence_structurally_valid checks declared schema, bindings and chronology; it does not authenticate physical execution. Both programs keep physical_gate_pass and authenticity false.",
+  "new_generic_tests_executed": false,
+  "original_sources_or_scientific_outputs_modified": false,
+  "original_Git_commit_still_required": "a11b00f71231ef3516d2a79c73fa441c375ac755"
+}

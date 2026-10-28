@@ -1,0 +1,508 @@
+{
+  "schema": "razr-r5-independent-ci-preparation-review-v1",
+  "completed": true,
+  "scope": "Static logic, complete named source/input hashes and original supervision limits; no mathematical or native execution.",
+  "mathematical_workers_executed": false,
+  "native_workers_executed": false,
+  "remote_publication_or_workflow_triggered": false,
+  "source_modified": false,
+  "before_identities": {
+    "<workspace>/r5-integration/r5-exterior-channel.yml": {
+      "bytes": 2052,
+      "sha256": "82b894824c5a8f18cbfa2315d84748c97506c9be1e23530259da941782c8dac3"
+    },
+    "<workspace>/r5-integration/r5-exterior-channel-v2.yml": {
+      "bytes": 2115,
+      "sha256": "467e5d2463d36d75338949767657577a8422a1f1efa9333bd8c8f93dacb83010"
+    },
+    "<workspace>/r5-envelope/R5E_PORTABLE_SOURCE_LOCK.json": {
+      "bytes": 1521,
+      "sha256": "0c2c867ac8d644341d5d6f0b5596ae2e346061a23cacdab7be6ab18f75eb0a2c"
+    },
+    "<workspace>/r5-envelope/exterior_channels_r5e_v3.py": {
+      "bytes": 19321,
+      "sha256": "cd167893a463a5f5d39ce7d64caaac5c07e278ddb96420f790c07f1664e9da8a"
+    },
+    "<workspace>/r5-envelope/verify_exterior_channels_r5e_v3.py": {
+      "bytes": 16453,
+      "sha256": "ea564a94bf38a54004dc21725a0c18a7bd136d517b4a1b84b3bec7ad3da321ad"
+    },
+    "<workspace>/r5-envelope/run_portable_exterior_r5e_v3.py": {
+      "bytes": 12786,
+      "sha256": "ea3fda0c0c50bea91b415487a00efc3e1a9fd5cee62a5acfc007a110cf0aef21"
+    },
+    "<workspace>/r5-envelope/R5E_EXTERIOR_CHANNEL_METHOD.md": {
+      "bytes": 4376,
+      "sha256": "e258a529ea04f99b36850638aab4b7fb92615261334e86c3fc009f7cc3f6f7d2"
+    },
+    "<workspace>/r5-envelope/R5E_PUBLIC_INPUT_BRIDGE.json": {
+      "bytes": 10493,
+      "sha256": "65f5ccf7a917b92c665b513f6a15b80fda516b037c782ba4cad799e97ed187b2"
+    },
+    "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/supervise_owned_pure_math_r4e_v2.py": {
+      "bytes": 8104,
+      "sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900"
+    },
+    "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/run_owned_pure_math_r4e_v3.py": {
+      "bytes": 5457,
+      "sha256": "012da59133c15550b1bb4adac969edeb65f335ddb9c22d5ae4c321318f147823"
+    },
+    "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/additional-bspline-v1/source/source-original/owned_process.py": {
+      "bytes": 13400,
+      "sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25"
+    }
+  },
+  "checks": [
+    {
+      "name": "push_branch_and_request_path",
+      "passed": true,
+      "detail": "Automatic trigger requires the registered branch and request file path."
+    },
+    {
+      "name": "repository_and_exact_ref_job_guard",
+      "passed": true,
+      "detail": "The job guard also constrains manual workflow_dispatch to the same exact branch."
+    },
+    {
+      "name": "read_only_permissions_and_credentials",
+      "passed": true,
+      "detail": "Only contents:read is declared; checkout does not persist the token."
+    },
+    {
+      "name": "pinned_action_commits",
+      "passed": true,
+      "detail": "Both external actions use the reviewed immutable 40-hex commit pins."
+    },
+    {
+      "name": "exact_checked_out_head",
+      "passed": true,
+      "detail": "Checkout resolves to the event SHA and shell verifies actual HEAD."
+    },
+    {
+      "name": "fixed_source_lock_digest",
+      "passed": true,
+      "detail": "Workflow embeds the actual source-lock digest; isolated unoptimized Python executes its assertion."
+    },
+    {
+      "name": "isolated_stdlib_entry",
+      "passed": true,
+      "detail": "Pipeline and all owned workers use isolated, no-site, unoptimized Python."
+    },
+    {
+      "name": "CI_55_minute_outer_budget",
+      "passed": true,
+      "detail": "Five sequential stages each have at most 600 seconds; 55 minutes leaves five nominal minutes for setup and upload. This is a ceiling, not a runtime guarantee."
+    },
+    {
+      "name": "failure_artifact_step",
+      "passed": true,
+      "detail": "The complete runner output directory is offered for upload on failure. Outer job cancellation can still prevent artifact completion."
+    },
+    {
+      "name": "r5_files_unique_paths",
+      "passed": true,
+      "detail": "Source lock contains no duplicate relative path."
+    },
+    {
+      "name": "r5_files:exterior_channels_r5e_v3.py",
+      "passed": true,
+      "detail": "Complete source bytes and size match the locked identity."
+    },
+    {
+      "name": "r5_files:verify_exterior_channels_r5e_v3.py",
+      "passed": true,
+      "detail": "Complete source bytes and size match the locked identity."
+    },
+    {
+      "name": "r5_files:run_portable_exterior_r5e_v3.py",
+      "passed": true,
+      "detail": "Complete source bytes and size match the locked identity."
+    },
+    {
+      "name": "r5_files:R5E_EXTERIOR_CHANNEL_METHOD.md",
+      "passed": true,
+      "detail": "Complete source bytes and size match the locked identity."
+    },
+    {
+      "name": "r5_files:R5E_PUBLIC_INPUT_BRIDGE.json",
+      "passed": true,
+      "detail": "Complete source bytes and size match the locked identity."
+    },
+    {
+      "name": "r4_source_files_unique_paths",
+      "passed": true,
+      "detail": "Source lock contains no duplicate relative path."
+    },
+    {
+      "name": "r4_source_files:supervise_owned_pure_math_r4e_v2.py",
+      "passed": true,
+      "detail": "Complete source bytes and size match the locked identity."
+    },
+    {
+      "name": "r4_source_files:run_owned_pure_math_r4e_v3.py",
+      "passed": true,
+      "detail": "Complete source bytes and size match the locked identity."
+    },
+    {
+      "name": "r4_source_files:additional-bspline-v1/source/source-original/owned_process.py",
+      "passed": true,
+      "detail": "Complete source bytes and size match the locked identity."
+    },
+    {
+      "name": "complete_19_public_inputs",
+      "passed": true,
+      "detail": "The three original reports and all 16 source certificates have distinct locked paths."
+    },
+    {
+      "name": "public_input:support-v4/report.json",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:independent-support-v4/report.json",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:remaining-spatial-diagnostic/report.json",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:support-v4/case-001-frame-1-complete-support.json.gz",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:support-v4/case-001-frame-2-complete-support.json.gz",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:support-v4/case-006-frame-1-complete-support.json.gz",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:support-v4/case-006-frame-2-complete-support.json.gz",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:support-v4/case-028-frame-1-complete-support.json.gz",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:support-v4/case-028-frame-2-complete-support.json.gz",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:support-v4/case-037-frame-1-complete-support.json.gz",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:support-v4/case-037-frame-2-complete-support.json.gz",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:support-v4/case-054-frame-1-complete-support.json.gz",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:support-v4/case-054-frame-2-complete-support.json.gz",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:support-v4/case-063-frame-1-complete-support.json.gz",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:support-v4/case-063-frame-2-complete-support.json.gz",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:support-v4/case-072-frame-1-complete-support.json.gz",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:support-v4/case-072-frame-2-complete-support.json.gz",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:support-v4/case-089-frame-1-complete-support.json.gz",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "public_input:support-v4/case-089-frame-2-complete-support.json.gz",
+      "passed": true,
+      "detail": "All complete public bytes match the already frozen bridge; no missing displacement or changed decoded string is admitted."
+    },
+    {
+      "name": "AST:run_portable_exterior_r5e_v3.py",
+      "passed": true,
+      "detail": "Parsed without importing or executing this source."
+    },
+    {
+      "name": "AST:exterior_channels_r5e_v3.py",
+      "passed": true,
+      "detail": "Parsed without importing or executing this source."
+    },
+    {
+      "name": "AST:verify_exterior_channels_r5e_v3.py",
+      "passed": true,
+      "detail": "Parsed without importing or executing this source."
+    },
+    {
+      "name": "exact_five_stage_order",
+      "passed": true,
+      "detail": "The for-loop executes one owned subprocess at a time. Exceptions leave later stages unexecuted."
+    },
+    {
+      "name": "unchanged_R4_mathematical_gates",
+      "passed": true,
+      "detail": "600 s; 805306368 B RSS; 7301444403 B shared; 104857600 B disk; 41943040 B output; 4194304 B metadata margin."
+    },
+    {
+      "name": "canonical_contract_output_binding",
+      "passed": true,
+      "detail": "R4 v3 entry admits exactly one full --contract and --output, verifies the contract digest and exact supervised output directory; duplicate/abbreviated options are rejected."
+    },
+    {
+      "name": "owned_worker_failure_stops_pipeline",
+      "passed": true,
+      "detail": "Driver requires supervisor exit 0, completed=true and scientific execution_completed=true before accepting each stage. Owned supervisor controls wall/RSS/shared/disk/output and does not substitute zero for missing live-worker RSS."
+    },
+    {
+      "name": "single_cell_before_all_frames",
+      "passed": true,
+      "detail": "One stationary cell must be excluded and then independently verified before preflight; all_raw also requires actual completed preflight, exactly 1474 cells and a static predicate bound <=50000000."
+    },
+    {
+      "name": "full_original_frames_and_displacements",
+      "passed": true,
+      "detail": "Verifier checks unique exact phase/frame sequence, all 16 original frames for all_raw, complete original cell counts/order and every full original D component."
+    },
+    {
+      "name": "exterior_channel_sufficient_predicate",
+      "passed": true,
+      "detail": "Connected open box reaches outside the compact material boundary hull. Every complete closed boundary box is separated by a checked coordinate inequality. Degenerate boundary boxes remain; closed cell faces are retained as zero-volume carriers."
+    },
+    {
+      "name": "independent_certificate_checks",
+      "passed": true,
+      "detail": "Verifier imports neither producer nor CAD; it reconstructs sources, validates all separation codes and all blocked-direction witnesses, recomputes exact positive cell volumes and retained sums, and checks the original float64 TOL."
+    },
+    {
+      "name": "source_payload_postflight",
+      "passed": true,
+      "detail": "Driver rehashes all 5 R5/3 R4 source payloads and all 19 public inputs after the last stage. R4 owned entry also checks worker/entry/owned code after each actual worker."
+    },
+    {
+      "name": "partial_mathematical_results_are_retained",
+      "passed": true,
+      "detail": "Pipeline completed denotes execution completion. It compares producer/verifier clearance-pass counts, without requiring 16; unresolved raw clearance cases remain data and must not be reported as full G2."
+    },
+    {
+      "name": "strict_qualification_boundary",
+      "passed": true,
+      "detail": "Producer, verifier and pipeline explicitly retain native material semantics/compiled error/full G2/all-blocker qualification as false. The raw-case method does not claim an L2 tolerance-diagnostic pass."
+    },
+    {
+      "name": "reviewed_sources_unchanged_during_review",
+      "passed": true,
+      "detail": "No reviewed source was modified by this review."
+    }
+  ],
+  "findings": [
+    {
+      "id": "R5-CI-1",
+      "severity": "scope-blocker-in-first-workflow",
+      "original_workflow_affected": {
+        "bytes": 2052,
+        "sha256": "82b894824c5a8f18cbfa2315d84748c97506c9be1e23530259da941782c8dac3"
+      },
+      "original_problem_observed": true,
+      "description": "First workflow limited push branch/path but workflow_dispatch could run another same-repository ref because job.if only checked the repository.",
+      "status": "fixed-in-new-named-v2-workflow",
+      "reviewed_replacement": {
+        "bytes": 2115,
+        "sha256": "467e5d2463d36d75338949767657577a8422a1f1efa9333bd8c8f93dacb83010"
+      }
+    },
+    {
+      "id": "R5-CI-2",
+      "severity": "nonblocking-provenance-boundary",
+      "status": "documented",
+      "description": "The source-lock JSON itself is checked against a workflow literal at startup and recorded, but not rehashed at pipeline end. All locked source payloads and public inputs are rehashed at the end. Changing only that lock later does not change this already loaded computation or create a clearance false pass. This is not an OS-enforced immutability claim."
+    }
+  ],
+  "actual_complete_public_input_readbacks": [
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/report.json",
+      "bytes": 251491,
+      "sha256": "286cfad28e08da5426742530a0d7f6901fb54317643507580bd9cddc26ad6887"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/independent-support-v4/report.json",
+      "bytes": 24298,
+      "sha256": "1224b5e72b9635aa84227b2b3e7b7a4091cca8483c916392f6634a49088b7110"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/remaining-spatial-diagnostic/report.json",
+      "bytes": 243761,
+      "sha256": "f1edf0c77a622d30a5623114edb8f6bfa0d3a09bd0009868255552a2c1c2514f"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-001-frame-1-complete-support.json.gz",
+      "bytes": 1114119,
+      "sha256": "224bc618d08ebc5c8f5dbf8aa43fd598631928b523ef49798272dbb17e789d8a"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-001-frame-2-complete-support.json.gz",
+      "bytes": 1944749,
+      "sha256": "455a032c8c462b16a819d743e2a913b1708b3ac074fb201cb2962d4473d5b1fd"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-006-frame-1-complete-support.json.gz",
+      "bytes": 956158,
+      "sha256": "602bb4134a5309b12aa82b980824b3227121926f11fd555eead88153270f57e9"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-006-frame-2-complete-support.json.gz",
+      "bytes": 2455249,
+      "sha256": "cd7f07c60b7fb4933336e1a99ed79914ae3a6140505764cde83fa7eb05b32db2"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-028-frame-1-complete-support.json.gz",
+      "bytes": 1692905,
+      "sha256": "5923e789084831c384f551a245f1996250ef11562a486b7fbc0974ec50246ed9"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-028-frame-2-complete-support.json.gz",
+      "bytes": 1051650,
+      "sha256": "6e1c972d6891a80984b3b86c11bf4ef5bdc6c15537cc54a6d9e9c7e048201232"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-037-frame-1-complete-support.json.gz",
+      "bytes": 1680164,
+      "sha256": "d16809e8c8c04451051e3236168b7d32ba189ac0b2495e6164d61c8eb7d7a088"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-037-frame-2-complete-support.json.gz",
+      "bytes": 873470,
+      "sha256": "58aaf59de246efcddf551578d0da4c7795c505511c23f7975f2c719aa79f01ba"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-054-frame-1-complete-support.json.gz",
+      "bytes": 413538,
+      "sha256": "7395766867c473a1ccb203f5aabbddbba8856b72e6dac8b520343f8f12ae3994"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-054-frame-2-complete-support.json.gz",
+      "bytes": 66398,
+      "sha256": "08a9fc55eff5fcd824791cce62a0cb85057db92c3f0e878a8028eeb472286c2a"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-063-frame-1-complete-support.json.gz",
+      "bytes": 2421520,
+      "sha256": "cdf1cd06b3b18ccb734cf3f6ed29c2b391f0722632bd78944cf9de556c851659"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-063-frame-2-complete-support.json.gz",
+      "bytes": 1215735,
+      "sha256": "0a7e151cfef58ebd5d2016e1e67c6ec561760c0b00413f809278cdca3a76711e"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-072-frame-1-complete-support.json.gz",
+      "bytes": 2432351,
+      "sha256": "18c77d44308261d107516e4cfd794766829dba4e20a0af92cc85bc478090826d"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-072-frame-2-complete-support.json.gz",
+      "bytes": 1324895,
+      "sha256": "5287d209bb896a44c2654542f2409255dd33d85be6e9ab97c52ccfa63b892030"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-089-frame-1-complete-support.json.gz",
+      "bytes": 795669,
+      "sha256": "63af958aefad5d74c61d8dfb79575c1c2e89c68bfcb5dbc9a2b1b0c73f2a002f"
+    },
+    {
+      "path": "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/support-v4/case-089-frame-2-complete-support.json.gz",
+      "bytes": 67510,
+      "sha256": "e34f3e351176631348414f961a8aa67c7e1582eea15c952dfd1d1ce5721a3f7b"
+    }
+  ],
+  "exact_math_limits_read_from_AST": {
+    "wall_seconds": 600,
+    "RSS_limit_bytes": 805306368,
+    "shared_ceiling_bytes": 7301444403,
+    "disk_floor_bytes": 104857600,
+    "maximum_output_bytes": 41943040,
+    "metadata_margin_bytes": 4194304
+  },
+  "review_did_not_prove_actual_runtime_or_capacity": true,
+  "final_identities": {
+    "<workspace>/r5-integration/r5-exterior-channel.yml": {
+      "bytes": 2052,
+      "sha256": "82b894824c5a8f18cbfa2315d84748c97506c9be1e23530259da941782c8dac3"
+    },
+    "<workspace>/r5-integration/r5-exterior-channel-v2.yml": {
+      "bytes": 2115,
+      "sha256": "467e5d2463d36d75338949767657577a8422a1f1efa9333bd8c8f93dacb83010"
+    },
+    "<workspace>/r5-envelope/R5E_PORTABLE_SOURCE_LOCK.json": {
+      "bytes": 1521,
+      "sha256": "0c2c867ac8d644341d5d6f0b5596ae2e346061a23cacdab7be6ab18f75eb0a2c"
+    },
+    "<workspace>/r5-envelope/exterior_channels_r5e_v3.py": {
+      "bytes": 19321,
+      "sha256": "cd167893a463a5f5d39ce7d64caaac5c07e278ddb96420f790c07f1664e9da8a"
+    },
+    "<workspace>/r5-envelope/verify_exterior_channels_r5e_v3.py": {
+      "bytes": 16453,
+      "sha256": "ea564a94bf38a54004dc21725a0c18a7bd136d517b4a1b84b3bec7ad3da321ad"
+    },
+    "<workspace>/r5-envelope/run_portable_exterior_r5e_v3.py": {
+      "bytes": 12786,
+      "sha256": "ea3fda0c0c50bea91b415487a00efc3e1a9fd5cee62a5acfc007a110cf0aef21"
+    },
+    "<workspace>/r5-envelope/R5E_EXTERIOR_CHANNEL_METHOD.md": {
+      "bytes": 4376,
+      "sha256": "e258a529ea04f99b36850638aab4b7fb92615261334e86c3fc009f7cc3f6f7d2"
+    },
+    "<workspace>/r5-envelope/R5E_PUBLIC_INPUT_BRIDGE.json": {
+      "bytes": 10493,
+      "sha256": "65f5ccf7a917b92c665b513f6a15b80fda516b037c782ba4cad799e97ed187b2"
+    },
+    "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/supervise_owned_pure_math_r4e_v2.py": {
+      "bytes": 8104,
+      "sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900"
+    },
+    "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/run_owned_pure_math_r4e_v3.py": {
+      "bytes": 5457,
+      "sha256": "012da59133c15550b1bb4adac969edeb65f335ddb9c22d5ae4c321318f147823"
+    },
+    "<workspace>/razr-current/engineering/engineering-followup-20261027-r4/envelope/additional-bspline-v1/source/source-original/owned_process.py": {
+      "bytes": 13400,
+      "sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25"
+    }
+  },
+  "blocking_findings_remaining_for_reviewed_v2_workflow": [],
+  "seconds": 0.040887604001909494,
+  "reviewer_source_identity": {
+    "bytes": 11423,
+    "sha256": "e18feb0591c712608a6ae0f8aa8242cb4fce25416c706502ad7f6b42b9ff8630"
+  }
+}

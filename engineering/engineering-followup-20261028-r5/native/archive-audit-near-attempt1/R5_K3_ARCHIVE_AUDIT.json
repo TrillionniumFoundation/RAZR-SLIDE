@@ -1,0 +1,334 @@
+{
+  "schema": "razr-r5-recovered-current-k3-factory-audit-v1",
+  "pose": "near",
+  "worker_identity": {
+    "bytes": 18939,
+    "sha256": "54c5a6795ee53404967e14ce05ba6acee626012ceff5d075088ab820f4e72346"
+  },
+  "contract_identity": {
+    "bytes": 2377,
+    "sha256": "3d17d74feb42e70f1a1057708523a8ab536dc2556e06056026e942784450cc23"
+  },
+  "completed": false,
+  "issues": [
+    {
+      "type": "KeyError",
+      "message": "'common_mm3'",
+      "traceback": "Traceback (most recent call last):\n  File \"workspace/r5-native/audit_recovered_k3_factory_r5.py\", line 245, in run\n    report['matrices'].append(audit_matrix(z, path, wrapper, observed, rows_out))\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"workspace/r5-native/audit_recovered_k3_factory_r5.py\", line 103, in audit_matrix\n    need(guard_number(direct['common_mm3']) and abs(direct['common_mm3'] - pair['common_mm3']) <= TOL,\n                      ~~~~~~^^^^^^^^^^^^^^\nKeyError: 'common_mm3'\n"
+    }
+  ],
+  "historical_run_id": 40285103942,
+  "historical_diagnostic_commit": "566197a97ee137ce4a58097656eb4fd6bc084b05",
+  "functional_source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "new_native_execution": false,
+  "historical_runtime_requalified": false,
+  "original_raw_runtime_reports_reconstructed": false,
+  "full_continuous_domain_proved": false,
+  "physical_qualification": false,
+  "candidate_go": false,
+  "G2_pass": false,
+  "source_acceptance": {
+    "path": "workspace/r5-native/historical-source/K3FULL_RECOVERED_TEN_STATE_ACCEPTANCE.json",
+    "identity": {
+      "bytes": 62499,
+      "sha256": "25465e739be5b05e642d8841dbd2580d1a67640b05e3e7680ff994b40f72dadf"
+    }
+  },
+  "archive_expected": {
+    "bytes": 62073711,
+    "sha256": "cb4db333a525375928efb59ba4cb4b55afc8d6d3024dd04ebdc438c816b613ff"
+  },
+  "verified_member_count": 4715,
+  "verified_member_bytes": 441440793,
+  "matrices": [
+    {
+      "report_member": "factory/worker/report.engineering.json",
+      "projection_identity": {
+        "bytes": 3350897,
+        "sha256": "076532d3c66128af1c44dd99abfb9ab1600858e1d8dfbd48b398b86ebea0f350"
+      },
+      "historical_original_report_identity": {
+        "sha256": "c4b3b94abe24548575f40fc0f69d6e8b18eab24862b7a414233a12fa98319393",
+        "bytes": 3168535
+      },
+      "omitted_runtime_fields": [
+        "external_source_sha256",
+        "identity_after",
+        "identity_before"
+      ],
+      "participant_count": 154,
+      "pair_count": 11781,
+      "journal_rows": 23562,
+      "method_counts": {
+        "native_common": 777,
+        "positive_axis_gap": 11004
+      },
+      "finite_pose_clear_recorded_and_matrix_consistent": true,
+      "retained_rejected_pairs": [],
+      "panel_KEY_direct_Common": {
+        "L": {
+          "a": "A_BACK_PANEL",
+          "b": "L_KEY",
+          "common_mm3": 0.0,
+          "rejected": false,
+          "strict_common": {
+            "common_mm3": 0.0,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0
+          }
+        },
+        "R": {
+          "a": "A_BACK_PANEL",
+          "b": "R_KEY",
+          "common_mm3": 0.0,
+          "rejected": false,
+          "strict_common": {
+            "common_mm3": 0.0,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0
+          }
+        }
+      },
+      "historical_source_and_43_version_projection_consistent": true,
+      "historical_runtime_requalified": false
+    },
+    {
+      "report_member": "prerequisite-predock/prerequisite-far/factory/worker/report.engineering.json",
+      "projection_identity": {
+        "bytes": 3388720,
+        "sha256": "345bc03e1bb5dc9c21194d764d4eb1fefa1b3f2b380de425fbbb30496be77273"
+      },
+      "historical_original_report_identity": {
+        "sha256": "2fd3a83f613f1c2f756768cd48bfda2504c313da5197b570151062a15e4f9282",
+        "bytes": 3203426
+      },
+      "omitted_runtime_fields": [
+        "external_source_sha256",
+        "identity_after",
+        "identity_before"
+      ],
+      "participant_count": 154,
+      "pair_count": 11781,
+      "journal_rows": 23562,
+      "method_counts": {
+        "native_common": 747,
+        "positive_axis_gap": 11034
+      },
+      "finite_pose_clear_recorded_and_matrix_consistent": true,
+      "retained_rejected_pairs": [],
+      "panel_KEY_direct_Common": {
+        "L": {
+          "a": "A_BACK_PANEL",
+          "b": "L_KEY",
+          "common_mm3": 0.0,
+          "rejected": false,
+          "strict_common": {
+            "common_mm3": 0.0,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0
+          }
+        },
+        "R": {
+          "a": "A_BACK_PANEL",
+          "b": "R_KEY",
+          "common_mm3": 0.0,
+          "rejected": false,
+          "strict_common": {
+            "common_mm3": 0.0,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0
+          }
+        }
+      },
+      "historical_source_and_43_version_projection_consistent": true,
+      "historical_runtime_requalified": false
+    },
+    {
+      "report_member": "prerequisite-predock/prerequisite-far/prerequisite/factory/worker/report.engineering.json",
+      "projection_identity": {
+        "bytes": 3339198,
+        "sha256": "fd7cc4dfbb8f4312b1f110bb7f25c6e18b1fd0c9f9165af74aa6a47f5e102d81"
+      },
+      "historical_original_report_identity": {
+        "sha256": "081442d5ebeee5b3912f06f7a75253df16e630b1da24d5c21c02761b4506a58c",
+        "bytes": 3156385
+      },
+      "omitted_runtime_fields": [
+        "external_source_sha256",
+        "identity_after",
+        "identity_before"
+      ],
+      "participant_count": 154,
+      "pair_count": 11781,
+      "journal_rows": 23562,
+      "method_counts": {
+        "native_common": 739,
+        "positive_axis_gap": 11042
+      },
+      "finite_pose_clear_recorded_and_matrix_consistent": false,
+      "retained_rejected_pairs": [
+        {
+          "a": "A_BACK_PANEL",
+          "b": "L_KEY",
+          "common_mm3": 0.23013738353925134
+        },
+        {
+          "a": "A_BACK_PANEL",
+          "b": "R_KEY",
+          "common_mm3": 0.23013738353925126
+        }
+      ],
+      "panel_KEY_direct_Common": {
+        "L": {
+          "a": "A_BACK_PANEL",
+          "b": "L_KEY",
+          "common_mm3": 0.23013738353925134,
+          "rejected": true,
+          "common_bounds_mm": [
+            -18.43,
+            -17.43,
+            23.160729490168748,
+            23.8,
+            4.02,
+            4.380000000000001
+          ],
+          "strict_common": {
+            "common_mm3": 0.23013738353925134,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0
+          },
+          "export": {
+            "signature_before": {
+              "shape_type": "Compound",
+              "is_valid": true,
+              "signed_volume_mm3": 0.23013738353925134,
+              "solid_count": 1,
+              "solid_signed_volumes_mm3": [
+                0.23013738353925134
+              ],
+              "bounds_mm": [
+                -18.43,
+                -17.43,
+                23.160729490168748,
+                23.8,
+                4.02,
+                4.380000000000001
+              ]
+            },
+            "files": {
+              "brep": {
+                "path": "L-panel-KEY-direct-Common.brep",
+                "sha256": "9167420dda5d3addce0888911e9e2f57e574ec1e896a65b623f94f3933762f55",
+                "bytes": 6368,
+                "native_status": "True"
+              },
+              "step": {
+                "path": "L-panel-KEY-direct-Common.step",
+                "sha256": "82c75eccb98cd185df7f05ae502b8f2b13830f90e65985002786674e0a166338",
+                "bytes": 17841,
+                "native_status": "IFSelect_ReturnStatus.IFSelect_RetDone"
+              }
+            },
+            "signature_after": {
+              "shape_type": "Compound",
+              "is_valid": true,
+              "signed_volume_mm3": 0.23013738353925134,
+              "solid_count": 1,
+              "solid_signed_volumes_mm3": [
+                0.23013738353925134
+              ],
+              "bounds_mm": [
+                -18.43,
+                -17.43,
+                23.160729490168748,
+                23.8,
+                4.02,
+                4.380000000000001
+              ]
+            },
+            "serialization_preserved_in_memory_signature": true
+          }
+        },
+        "R": {
+          "a": "A_BACK_PANEL",
+          "b": "R_KEY",
+          "common_mm3": 0.23013738353925126,
+          "rejected": true,
+          "common_bounds_mm": [
+            17.43,
+            18.43,
+            23.160729490168748,
+            23.8,
+            4.02,
+            4.380000000000001
+          ],
+          "strict_common": {
+            "common_mm3": 0.23013738353925126,
+            "method": "native_common",
+            "axis_gap_lower_mm": 0.0
+          },
+          "export": {
+            "signature_before": {
+              "shape_type": "Compound",
+              "is_valid": true,
+              "signed_volume_mm3": 0.23013738353925126,
+              "solid_count": 1,
+              "solid_signed_volumes_mm3": [
+                0.23013738353925126
+              ],
+              "bounds_mm": [
+                17.43,
+                18.43,
+                23.160729490168748,
+                23.8,
+                4.02,
+                4.380000000000001
+              ]
+            },
+            "files": {
+              "brep": {
+                "path": "R-panel-KEY-direct-Common.brep",
+                "sha256": "05b1fe081b575d18642bf64be1b7dead876235af89f54805a0c102fdc3d9d6cb",
+                "bytes": 6309,
+                "native_status": "True"
+              },
+              "step": {
+                "path": "R-panel-KEY-direct-Common.step",
+                "sha256": "17dad7f315ae7b38a75ba3112cba325126b81ae958a9274799e7e0bf139505f1",
+                "bytes": 17815,
+                "native_status": "IFSelect_ReturnStatus.IFSelect_RetDone"
+              }
+            },
+            "signature_after": {
+              "shape_type": "Compound",
+              "is_valid": true,
+              "signed_volume_mm3": 0.23013738353925126,
+              "solid_count": 1,
+              "solid_signed_volumes_mm3": [
+                0.23013738353925126
+              ],
+              "bounds_mm": [
+                17.43,
+                18.43,
+                23.160729490168748,
+                23.8,
+                4.02,
+                4.380000000000001
+              ]
+            },
+            "serialization_preserved_in_memory_signature": true
+          }
+        }
+      },
+      "historical_source_and_43_version_projection_consistent": true,
+      "historical_runtime_requalified": false
+    }
+  ],
+  "archive_actual": {
+    "bytes": 62073711,
+    "sha256": "cb4db333a525375928efb59ba4cb4b55afc8d6d3024dd04ebdc438c816b613ff"
+  },
+  "seconds": 5.8830283360002795,
+  "peak_RSS_bytes": 68206592,
+  "all_manifest_members_SHA_size_and_ZIP_CRC_verified": true
+}

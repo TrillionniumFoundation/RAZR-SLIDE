@@ -1,0 +1,26 @@
+{
+  "schema": "razr-r5-cross-author-native-archive-review-plan-v1",
+  "scope": "Independent read-only audit of preserved historical records; no CAD, no native resource-gate bypass, no new clearance run.",
+  "input_archives": 2,
+  "expected_manifest_members_each": 4715,
+  "maximum_single_uncompressed_member_bytes": 16777216,
+  "stream_block_bytes": 1048576,
+  "expected_full_uncompressed_manifest_bytes": 882885558,
+  "expected_matrix_copies": 36,
+  "expected_pairs_each": 11781,
+  "expected_journal_lines_each": 23562,
+  "algorithm": [
+    "Compare whole ZIP size and SHA with fixed acceptance records.",
+    "Independently stream every manifest member to EOF and verify actual SHA/size plus ZIP CRC.",
+    "Enumerate the complete unordered pair set from each unique 154-body roster, compare every recorded pair and selected/completed journal line.",
+    "Read current producer/reader raw projected records independently; compare all STEP/BREP identities, 154 body signatures and 11781 pair values.",
+    "Bind exact current R3/R4 whole materials and K1/K3 named sources; retain F1 failures and classify exact duplicate record identities.",
+    "Check every output scope flag and omitted runtime-field record; make no historical-runtime or continuous-G2 claim."
+  ],
+  "capacity_basis": "At most one <=16MiB member plus parsed JSON at a time, 1MiB streaming buffers; two producer/reader current records retained only while compared. Each prior same-size audit completed in about 9s/<78MiB, but this separate implementation must record its own actual resources.",
+  "readonly_review_wall_budget_seconds": 300,
+  "readonly_review_peak_RSS_budget_bytes": 268435456,
+  "original_native_gates_modified": false,
+  "independent_CAD_kernel_used": false,
+  "scientific_values_or_candidate_source_modified": false
+}

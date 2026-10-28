@@ -1,0 +1,11 @@
+--- r5-exterior-channel.yml
++++ r5-exterior-channel-v2.yml
+@@ -16,7 +16,7 @@
+ 
+ jobs:
+   exact-certificates:
+-    if: github.repository == 'TrillionniumFoundation/RAZR-SLIDE'
++    if: github.repository == 'TrillionniumFoundation/RAZR-SLIDE' && github.ref == 'refs/heads/evidence/full-sprint-20261028-r5'
+     runs-on: ubuntu-24.04
+     timeout-minutes: 55
+     steps:

@@ -1,0 +1,160 @@
+{
+  "schema": "razr-r5-receipt-boundary-controls-v1",
+  "execution_kind": "synthetic_fixture",
+  "worker_identity": {
+    "bytes": 9394,
+    "sha256": "a147a2581ad555c7d6bea81825ffa70e1d3b3559887d511dcac6c4e38831e580"
+  },
+  "controller_identity": {
+    "bytes": 5920,
+    "sha256": "067546b4a56f4d404ed02fe16dea0fc86c41b84745762b0491e7ea1d5d974a6c"
+  },
+  "checks": [
+    {
+      "name": "synthetic_byte_receipt_preserves_missing_facts",
+      "expected_rejection": null,
+      "observed": [],
+      "passed": true
+    },
+    {
+      "name": "hash_mismatch",
+      "expected_rejection": "provided_original_identity_mismatch",
+      "observed": [
+        {
+          "file": "SYNTHETIC-ONE",
+          "reason": "provided_original_identity_mismatch"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "symlink",
+      "expected_rejection": "symlink_original_rejected",
+      "observed": [
+        {
+          "file": "SYNTHETIC-ONE",
+          "reason": "symlink_original_rejected"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "parent_escape",
+      "expected_rejection": "canonical_relative_file_path_required",
+      "observed": [
+        {
+          "file": "SYNTHETIC-ONE",
+          "reason": "canonical_relative_file_path_required"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "absolute_path",
+      "expected_rejection": "canonical_relative_file_path_required",
+      "observed": [
+        {
+          "file": "SYNTHETIC-ONE",
+          "reason": "canonical_relative_file_path_required"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "undeclared_kind",
+      "expected_rejection": "evidence_kind_not_explicit_or_unknown",
+      "observed": [
+        {
+          "file": "SYNTHETIC-ONE",
+          "reason": "evidence_kind_not_explicit_or_unknown"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "missing_operator",
+      "expected_rejection": "missing_text:acquirer",
+      "observed": [
+        {
+          "file": "SYNTHETIC-ONE",
+          "reason": "missing_text:acquirer"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "timezone_missing",
+      "expected_rejection": "timezone_missing",
+      "observed": [
+        {
+          "file": "SYNTHETIC-ONE",
+          "reason": "timezone_missing:acquired_at_utc"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "cross_specimen",
+      "expected_rejection": "declared_same_specimen_id_missing_or_different",
+      "observed": [
+        {
+          "file": "SYNTHETIC-ONE",
+          "reason": "declared_same_specimen_id_missing_or_different"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "duplicate_evidence_id",
+      "expected_rejection": "duplicate_evidence_id",
+      "observed": [
+        {
+          "file": "SYNTHETIC-ONE",
+          "reason": "duplicate_evidence_id"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "duplicate_original_path",
+      "expected_rejection": "one_original_path_one_evidence_id",
+      "observed": [
+        {
+          "file": "SYNTHETIC-TWO",
+          "reason": "one_original_path_one_evidence_id"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "duplicate_JSON_key",
+      "expected_rejection": "duplicate_JSON_key",
+      "observed": "duplicate_JSON_key:x",
+      "passed": true
+    },
+    {
+      "name": "nonfinite_JSON",
+      "expected_rejection": "nonfinite_JSON_number",
+      "observed": "nonfinite_JSON_number:NaN",
+      "passed": true
+    },
+    {
+      "name": "duplicate_output_option",
+      "exit": 2,
+      "stderr": "usage: receive_evidence_r5.py [-h] --inventory INVENTORY --packet PACKET\n                              --evidence-root EVIDENCE_ROOT --contract\n                              CONTRACT --validator VALIDATOR --output-dir\n                              OUTPUT_DIR\nreceive_evidence_r5.py: error: duplicate options rejected\n",
+      "passed": true
+    },
+    {
+      "name": "abbreviated_output_option",
+      "exit": 2,
+      "stderr": "usage: receive_evidence_r5.py [-h] --inventory INVENTORY --packet PACKET\n                              --evidence-root EVIDENCE_ROOT --contract\n                              CONTRACT --validator VALIDATOR --output-dir\n                              OUTPUT_DIR\nreceive_evidence_r5.py: error: unrecognized arguments: --output <WORKSPACE>/r5-sources/actual/receipt-controls/other\n",
+      "passed": true
+    }
+  ],
+  "total_checks": 15,
+  "all_passed": true,
+  "seconds": 0.1739569030032726,
+  "physical_originals_created": 0,
+  "physical_qualification_granted": false,
+  "old_R3_37_control_suite_rerun": false
+}
