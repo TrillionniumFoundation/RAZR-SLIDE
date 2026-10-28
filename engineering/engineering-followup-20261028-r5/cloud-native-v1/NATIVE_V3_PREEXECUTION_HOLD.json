@@ -1,0 +1,12 @@
+{
+  "schema": "r5-native-v3-preexecution-serialization-hold-v1",
+  "recorded_utc": "2026-10-28 17:45:40 UTC",
+  "unexecuted_source_checkpoint": "73099f86f815589900aced26f67cc55dd7e99973",
+  "source_lock_sha256": "4b59090d4277aa075aa00e388b8a6f15053dadc0688daf9d952bbc2238bfda5e",
+  "native_RUN_REQUEST_created": false,
+  "issue": "The six original inputs have DBRep_DrawableShape / CASCADE Topology V3 ASCII BREP headers, while the unexecuted native80 reader entry uses BinTools.Read_s. Historical successful source uses ASCII BRepTools through importBrep.",
+  "required_revision": "Preserve v3 and original input bytes. Create a named revision with explicit ASCII read/write, header and non-null validation, updated complete source lock, and independent review before the native run request.",
+  "actual_native_geometry_failure_observed": false,
+  "actual_local_startup_refusal_preserved": true,
+  "V7_pure_math_run_independent": true
+}
