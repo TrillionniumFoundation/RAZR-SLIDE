@@ -10,12 +10,12 @@
     "registered_utc": "2026-10-28T17:00:40.031128+00:00",
     "workspace_root": "/workspace/scratch/34f8fcac2ab1",
     "worker_identity": {
-      "bytes": 17080,
-      "sha256": "c434d9310b1eed06cae9af36288eddf1d9429a45b19008ce103430994b327141"
+      "bytes": 18200,
+      "sha256": "b1c1c90f44a74a06d6b19350536b5dd5bf6d47ed77a2ee41247f7fc6e49bd1a8"
     },
     "independent_reader_source_identity": {
-      "bytes": 16710,
-      "sha256": "dc3279d134adad4d1d90abd897229b8e2169bc179fe99d3416e29253479e302d"
+      "bytes": 17907,
+      "sha256": "dd054cdabd3c1f0a6aa6ff1649127036f2c614edb5f8c5e766f02ebcb4a06891"
     },
     "selection": {
       "path": "/workspace/scratch/34f8fcac2ab1/r5-native/trim-core-witness/R5_NATIVE_TRIM_CORE_SELECTION.json",
@@ -151,6 +151,20 @@
           "bytes": 30935,
           "sha256": "3e395d520d332d91f117636fd1745f3cb7cf08bc73f55dd1013bf91326cf6711"
         }
+      },
+      {
+        "path": "/workspace/scratch/34f8fcac2ab1/r5-native/cloud-native-v1/serialization-v1/R5_NATIVE_ASCII_BREP_REVISION_PREPARATION.json",
+        "identity": {
+          "bytes": 5136,
+          "sha256": "e0d431cde5adbe716cf664f97eb7bcba1003dc3489cbbe52992ed345368b9504"
+        }
+      },
+      {
+        "path": "/workspace/scratch/34f8fcac2ab1/r5-native/cloud-native-v1/serialization-v1/dispatch-controls/R5_ASCII_BREP_DISPATCH_CONTROLS_ACTUAL.json",
+        "identity": {
+          "bytes": 13301,
+          "sha256": "b76c05d0ae8516cb38c33d04380397c9e0046d8ac765eb5eed12477b5d03ccfc"
+        }
       }
     ],
     "bound_sources": [
@@ -244,6 +258,20 @@
           "bytes": 5382,
           "sha256": "5fe5fa2238572123b292a940da9b2e8ec68734ce078a5cdf1c8e84c1e31047bf"
         }
+      },
+      {
+        "path": "/workspace/scratch/34f8fcac2ab1/r5-native/trim-core-witness/native_trim_core_witness_r5_ascii_v2.py",
+        "identity": {
+          "bytes": 18200,
+          "sha256": "b1c1c90f44a74a06d6b19350536b5dd5bf6d47ed77a2ee41247f7fc6e49bd1a8"
+        }
+      },
+      {
+        "path": "/workspace/scratch/34f8fcac2ab1/r5-native/trim-core-witness/read_native_trim_core_witness_r5_ascii_v2.py",
+        "identity": {
+          "bytes": 17907,
+          "sha256": "dd054cdabd3c1f0a6aa6ff1649127036f2c614edb5f8c5e766f02ebcb4a06891"
+        }
       }
     ],
     "expected_43_package_versions": {
@@ -329,7 +357,15 @@
       "current_projection_payloads_existing_bytes": 1226421880,
       "full_original_source_archives_resident_and_not_copied_into_new_campaign": true,
       "new_full_factory_execution": false,
-      "all_original_six_native_resource_limits_unchanged": true
+      "all_original_six_native_resource_limits_unchanged": true,
+      "ASCII_output_capacity_basis": {
+        "all_six_original_ASCII_input_bytes": 1225201,
+        "same_original_20MiB_per_worker_output_cap": 20971520,
+        "same_original_64MiB_campaign_cap": 67108864,
+        "basis": "Six actual complete ASCII input bodies total1,225,201 bytes; four additional full mapped panels and finite face/patch/common exports remain bounded by the original20 MiB per-worker cap. No native output-size success is assumed before actual execution.",
+        "output_format_changes_to_match_the_originals": "OCCT_ASCII_BREP_V3",
+        "any_unknown_format_or_native_null_read_is_unresolved_failure": true
+      }
     },
     "original_3D_material_tolerance_mm3": 1e-07,
     "new_physical_area_threshold": null,
@@ -340,7 +376,19 @@
       "invalid_topology_unresolved",
       "zero_area_face_unresolved",
       "Boolean exception"
-    ]
+    ],
+    "native_brep_serialization": "OCCT_ASCII_BREP_V3",
+    "serialization_revision_changes_native_IO_only": true,
+    "all_original_geometry_operator_call_ASTs_unchanged": true
+  },
+  "science_worker_paths": {
+    "producer": "r5-native/trim-core-witness/native_trim_core_witness_r5_ascii_v2.py",
+    "reader": "r5-native/trim-core-witness/read_native_trim_core_witness_r5_ascii_v2.py"
+  },
+  "native_IO_revision_receipt": {
+    "relative": "r5-native/cloud-native-v1/serialization-v1/R5_NATIVE_ASCII_BREP_REVISION_PREPARATION.json",
+    "bytes": 5136,
+    "sha256": "e0d431cde5adbe716cf664f97eb7bcba1003dc3489cbbe52992ed345368b9504"
   },
   "historical_admission_bindings_replaced": [
     {

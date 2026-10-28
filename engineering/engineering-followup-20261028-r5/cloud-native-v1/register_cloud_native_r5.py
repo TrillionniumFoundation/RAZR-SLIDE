@@ -186,7 +186,7 @@ def register(args):
             cloud['historical_admission_bindings_replaced'] = template['historical_admission_bindings_replaced']
             cloud['new_runtime_and_actual_paths_not_original_environment'] = True
             cp = save(case / 'R5_CLOUD_NATIVE_TRIM_CORE_PRODUCER_CONTRACT.json', cloud)
-            script = science / 'r5-native/trim-core-witness/native_trim_core_witness_r5.py'
+            script = science / template['science_worker_paths']['producer']
             payload_args = ['--contract', str(cp), '--out', str(case / 'core-producer-owned/worker')]
         elif phase == 'core-reader':
             pc = case / 'R5_CLOUD_NATIVE_TRIM_CORE_PRODUCER_CONTRACT.json'
@@ -195,7 +195,7 @@ def register(args):
             runtime_receipt = case / 'core-producer-runtime.json'
             require(json.loads(controller.read_text())['completed'] and json.loads(runtime_receipt.read_text())['completed'] and json.loads(producer.read_text())['completed'],
                     'Original complete finite producer, supervisor and fresh runtime closeout required before reader')
-            script = science / 'r5-native/trim-core-witness/read_native_trim_core_witness_r5.py'
+            script = science / template['science_worker_paths']['reader']
             cp = save(case / 'R5_CLOUD_NATIVE_TRIM_CORE_READER_CONTRACT.json', {
                 'schema': 'r5-finite-native-trim-core-cloud-readback-contract-v1', 'reader_identity': identity(script),
                 'producer_report': bind(producer), 'producer_contract': bind(pc),
