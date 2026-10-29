@@ -1,0 +1,203 @@
+{
+  "case": "second-attempt",
+  "stimulus": "explicit injected sampling exception against a real owned child",
+  "expected_acceptance": false,
+  "injected_exception": "VmRSS",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-I",
+    "-S",
+    "-B",
+    "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+    "--supervision-contract",
+    "r7-supervisor/actual-controls-v1/second-attempt/supervision-contract.json",
+    "--receipt",
+    "r7-supervisor/actual-controls-v1/second-attempt/entry-receipt.json",
+    "--",
+    "--contract",
+    "r7-supervisor/actual-controls-v1/second-attempt/math-contract.json",
+    "--output",
+    "r7-supervisor/actual-controls-v1/second-attempt/worker-output"
+  ],
+  "scientific_worker": false,
+  "kernel_failure_reproduction_claimed": false,
+  "accepted": false,
+  "original_Popen_pid": 22,
+  "actual_handshake": {
+    "packet": {
+      "kind": "razr_owned_child_identity_v1",
+      "nonce": "9e9c6bd7d9f12b23fe859e138e8a157e5c2d7006a142c7cc2c56024210f8d031",
+      "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+      "os_getpid": 22,
+      "os_getppid": 2,
+      "proc_self_visible_pid": "86694",
+      "status": {
+        "Pid": 86694,
+        "PPid": 86622,
+        "NSpid": [
+          86694,
+          22
+        ]
+      },
+      "stat": {
+        "pid": 86694,
+        "ppid": 86622,
+        "starttime_ticks": 1256608
+      },
+      "pid_namespace": "pid:[4026532351]",
+      "pid_for_children_namespace": "pid:[4026532351]"
+    },
+    "parent_identity": {
+      "os_getpid": 2,
+      "os_getppid": 1,
+      "proc_self_visible_pid": "86622",
+      "status": {
+        "Pid": 86622,
+        "PPid": 86621,
+        "NSpid": [
+          86622,
+          2
+        ]
+      },
+      "stat": {
+        "pid": 86622,
+        "ppid": 86621,
+        "starttime_ticks": 1256392
+      },
+      "pid_namespace": "pid:[4026532351]",
+      "pid_for_children_namespace": "pid:[4026532351]"
+    },
+    "verified_binding": {
+      "status": {
+        "Pid": 86694,
+        "PPid": 86622,
+        "NSpid": [
+          86694,
+          22
+        ]
+      },
+      "stat": {
+        "pid": 86694,
+        "ppid": 86622,
+        "starttime_ticks": 1256608
+      },
+      "pid_namespace": "pid:[4026532351]",
+      "pid_for_children_namespace": "pid:[4026532351]"
+    },
+    "initial_memory": {
+      "VmRSS": 12496896,
+      "VmHWM": 12496896
+    }
+  },
+  "original_entry_receipt_before_stimulus": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/second-attempt/entry-receipt.json",
+    "bytes": 1586,
+    "sha256": "b38a4cc0c92b5a912cddd81d8d7c4bf6960e8281ffb6d69e4e25bc94d15f8fce"
+  },
+  "complete_original_entry_receipt_before_stimulus": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/second-attempt/entry-receipt-before-stimulus.original.json",
+    "bytes": 1586,
+    "sha256": "b38a4cc0c92b5a912cddd81d8d7c4bf6960e8281ffb6d69e4e25bc94d15f8fce"
+  },
+  "actual_live_before_injected_missing_sample": true,
+  "rejection": {
+    "type": "ValueError",
+    "message": "at most one completed-entry exit confirmation is allowed"
+  },
+  "actual_original_Popen_final_returncode": -15,
+  "owned_descriptors_closed": true,
+  "confirmation_report": {
+    "contract_sha256": "1c2774a1b0e33683ab31d955e60b01998906cef2da8ef743c5b1aeb271bcd8d6",
+    "owned_child_identity_verified": true,
+    "bounded_exit_confirmation_count": 1,
+    "resource_stop": null,
+    "owned_child_handshake": {
+      "packet": {
+        "kind": "razr_owned_child_identity_v1",
+        "nonce": "9e9c6bd7d9f12b23fe859e138e8a157e5c2d7006a142c7cc2c56024210f8d031",
+        "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+        "os_getpid": 22,
+        "os_getppid": 2,
+        "proc_self_visible_pid": "86694",
+        "status": {
+          "Pid": 86694,
+          "PPid": 86622,
+          "NSpid": [
+            86694,
+            22
+          ]
+        },
+        "stat": {
+          "pid": 86694,
+          "ppid": 86622,
+          "starttime_ticks": 1256608
+        },
+        "pid_namespace": "pid:[4026532351]",
+        "pid_for_children_namespace": "pid:[4026532351]"
+      },
+      "parent_identity": {
+        "os_getpid": 2,
+        "os_getppid": 1,
+        "proc_self_visible_pid": "86622",
+        "status": {
+          "Pid": 86622,
+          "PPid": 86621,
+          "NSpid": [
+            86622,
+            2
+          ]
+        },
+        "stat": {
+          "pid": 86622,
+          "ppid": 86621,
+          "starttime_ticks": 1256392
+        },
+        "pid_namespace": "pid:[4026532351]",
+        "pid_for_children_namespace": "pid:[4026532351]"
+      },
+      "verified_binding": {
+        "status": {
+          "Pid": 86694,
+          "PPid": 86622,
+          "NSpid": [
+            86694,
+            22
+          ]
+        },
+        "stat": {
+          "pid": 86694,
+          "ppid": 86622,
+          "starttime_ticks": 1256608
+        },
+        "pid_namespace": "pid:[4026532351]",
+        "pid_for_children_namespace": "pid:[4026532351]"
+      },
+      "initial_memory": {
+        "VmRSS": 12496896,
+        "VmHWM": 12496896
+      }
+    }
+  },
+  "actual_resource_observations": [
+    {
+      "disk_available_bytes": 4344795136,
+      "shared_unreclaimable_bytes": 1944929096,
+      "elapsed_seconds": 0.000586874999498832,
+      "owned_worker_memory": null,
+      "actual_output_bytes": 0
+    },
+    {
+      "disk_available_bytes": 4344795136,
+      "shared_unreclaimable_bytes": 1952805088,
+      "elapsed_seconds": 0.038083809000454494,
+      "owned_worker_memory": {
+        "VmRSS": 12496896,
+        "VmHWM": 12496896
+      },
+      "actual_output_bytes": 0
+    }
+  ],
+  "elapsed_seconds": 0.047211315999447834,
+  "passed": true,
+  "expected_rejection_message": "at most one completed-entry exit confirmation is allowed"
+}

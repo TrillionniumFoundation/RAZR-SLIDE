@@ -1,0 +1,4107 @@
+{
+  "schema": "razr-r7-owned-exit-confirmation-real-process-controls-v1",
+  "completed": true,
+  "contract": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/R7_ACTUAL_PROCESS_CONTROLS_CONTRACT_V4.json",
+    "bytes": 4275,
+    "sha256": "81ebf3922ce795eb7eb694f7513e14c5de7c9a9ea39231a2ab00b0206a76842b"
+  },
+  "scientific_execution": false,
+  "kernel_exit_gap_reproduction_claimed": false,
+  "cases": [
+    {
+      "case": "completed-exit-VmRSS",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": true,
+      "injected_exception": "VmRSS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/completed-exit-VmRSS/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/completed-exit-VmRSS/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/completed-exit-VmRSS/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/completed-exit-VmRSS/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": true,
+      "original_Popen_pid": 5,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "4b9f369be3e2be5a2fe813b8dc5e96833af5894252c4b1f0a9c606f69fc3eee3",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 5,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86625",
+          "status": {
+            "Pid": 86625,
+            "PPid": 86622,
+            "NSpid": [
+              86625,
+              5
+            ]
+          },
+          "stat": {
+            "pid": 86625,
+            "ppid": 86622,
+            "starttime_ticks": 1256401
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86625,
+            "PPid": 86622,
+            "NSpid": [
+              86625,
+              5
+            ]
+          },
+          "stat": {
+            "pid": 86625,
+            "ppid": 86622,
+            "starttime_ticks": 1256401
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12505088,
+          "VmHWM": 12505088
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/completed-exit-VmRSS/entry-receipt.json",
+        "bytes": 1608,
+        "sha256": "1b7cdb1e438793fe9391fd416483492017038eb4ce13876869fa99ef79789948"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/completed-exit-VmRSS/entry-receipt-before-stimulus.original.json",
+        "bytes": 1608,
+        "sha256": "1b7cdb1e438793fe9391fd416483492017038eb4ce13876869fa99ef79789948"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "returned_exit_code": 0,
+      "actual_original_Popen_final_returncode": 0,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "2a91885132980fbcbb934eb5162dac6c30c88c3bc1bf0238d52dbcae85a7b412",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 1,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "4b9f369be3e2be5a2fe813b8dc5e96833af5894252c4b1f0a9c606f69fc3eee3",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 5,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86625",
+            "status": {
+              "Pid": 86625,
+              "PPid": 86622,
+              "NSpid": [
+                86625,
+                5
+              ]
+            },
+            "stat": {
+              "pid": 86625,
+              "ppid": 86622,
+              "starttime_ticks": 1256401
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86625,
+              "PPid": 86622,
+              "NSpid": [
+                86625,
+                5
+              ]
+            },
+            "stat": {
+              "pid": 86625,
+              "ppid": 86622,
+              "starttime_ticks": 1256401
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12505088,
+            "VmHWM": 12505088
+          }
+        },
+        "bounded_exit_confirmation": {
+          "type": "KeyError",
+          "message": "'VmRSS'",
+          "original_Popen_pid": 5,
+          "memory_observation_fabricated": false,
+          "actual_memory_observation": null,
+          "original_Popen_confirmed_exit_code": 0,
+          "completed": true,
+          "entry_receipt_sha256": "1b7cdb1e438793fe9391fd416483492017038eb4ce13876869fa99ef79789948",
+          "original_entry_peak_RSS_bytes": 14155776,
+          "verified_owned_execution_identity": {
+            "os_getpid": 5,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86625",
+            "status": {
+              "Pid": 86625,
+              "PPid": 86622,
+              "NSpid": [
+                86625,
+                5
+              ]
+            },
+            "stat": {
+              "pid": 86625,
+              "ppid": 86622,
+              "starttime_ticks": 1256401
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "allowed_wait_seconds": 0.19857455200071855,
+          "elapsed_before_wait_seconds": 0.0014281419989856659,
+          "waited_exit_elapsed_seconds": 0.11524864999955753,
+          "actual_elapsed_seconds": 0.11586548000013863
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4345606144,
+          "shared_unreclaimable_bytes": 1912215496,
+          "elapsed_seconds": 0.000735428000552929,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345602048,
+          "shared_unreclaimable_bytes": 1920651808,
+          "elapsed_seconds": 0.03149953499996627,
+          "owned_worker_memory": {
+            "VmRSS": 12505088,
+            "VmHWM": 12505088
+          },
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345585664,
+          "shared_unreclaimable_bytes": 1921490280,
+          "elapsed_seconds": 0.037863657000343665,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        },
+        {
+          "disk_available_bytes": 4345585664,
+          "shared_unreclaimable_bytes": 1921490280,
+          "elapsed_seconds": 0.03900133200113487,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        },
+        {
+          "disk_available_bytes": 4345581568,
+          "shared_unreclaimable_bytes": 1901063872,
+          "elapsed_seconds": 0.15310548700108484,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        },
+        {
+          "disk_available_bytes": 4345581568,
+          "shared_unreclaimable_bytes": 1901063872,
+          "elapsed_seconds": 0.15347765800106572,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        }
+      ],
+      "elapsed_seconds": 0.1535355249998247,
+      "passed": true
+    },
+    {
+      "case": "completed-exit-VmHWM",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": true,
+      "injected_exception": "VmHWM",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/completed-exit-VmHWM/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/completed-exit-VmHWM/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/completed-exit-VmHWM/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/completed-exit-VmHWM/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": true,
+      "original_Popen_pid": 6,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "7424e1c00504d824c2ecd16a2c538184504382797f14030d0abce2f21ca76792",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 6,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86626",
+          "status": {
+            "Pid": 86626,
+            "PPid": 86622,
+            "NSpid": [
+              86626,
+              6
+            ]
+          },
+          "stat": {
+            "pid": 86626,
+            "ppid": 86622,
+            "starttime_ticks": 1256416
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86626,
+            "PPid": 86622,
+            "NSpid": [
+              86626,
+              6
+            ]
+          },
+          "stat": {
+            "pid": 86626,
+            "ppid": 86622,
+            "starttime_ticks": 1256416
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12500992,
+          "VmHWM": 12500992
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/completed-exit-VmHWM/entry-receipt.json",
+        "bytes": 1608,
+        "sha256": "580a7c252d7f6ac9c8f064ed24a31d250adcc642c6e9c3038f58c7ea9b691071"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/completed-exit-VmHWM/entry-receipt-before-stimulus.original.json",
+        "bytes": 1608,
+        "sha256": "580a7c252d7f6ac9c8f064ed24a31d250adcc642c6e9c3038f58c7ea9b691071"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "returned_exit_code": 0,
+      "actual_original_Popen_final_returncode": 0,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "fa0e411e7bac28de0642c09be7fbd7a77ed240d8e4fca9295eb20e2e964acce4",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 1,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "7424e1c00504d824c2ecd16a2c538184504382797f14030d0abce2f21ca76792",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 6,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86626",
+            "status": {
+              "Pid": 86626,
+              "PPid": 86622,
+              "NSpid": [
+                86626,
+                6
+              ]
+            },
+            "stat": {
+              "pid": 86626,
+              "ppid": 86622,
+              "starttime_ticks": 1256416
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86626,
+              "PPid": 86622,
+              "NSpid": [
+                86626,
+                6
+              ]
+            },
+            "stat": {
+              "pid": 86626,
+              "ppid": 86622,
+              "starttime_ticks": 1256416
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12500992,
+            "VmHWM": 12500992
+          }
+        },
+        "bounded_exit_confirmation": {
+          "type": "KeyError",
+          "message": "'VmHWM'",
+          "original_Popen_pid": 6,
+          "memory_observation_fabricated": false,
+          "actual_memory_observation": null,
+          "original_Popen_confirmed_exit_code": 0,
+          "completed": true,
+          "entry_receipt_sha256": "580a7c252d7f6ac9c8f064ed24a31d250adcc642c6e9c3038f58c7ea9b691071",
+          "original_entry_peak_RSS_bytes": 14548992,
+          "verified_owned_execution_identity": {
+            "os_getpid": 6,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86626",
+            "status": {
+              "Pid": 86626,
+              "PPid": 86622,
+              "NSpid": [
+                86626,
+                6
+              ]
+            },
+            "stat": {
+              "pid": 86626,
+              "ppid": 86622,
+              "starttime_ticks": 1256416
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "allowed_wait_seconds": 0.19926584300010292,
+          "elapsed_before_wait_seconds": 0.0007365599994955119,
+          "waited_exit_elapsed_seconds": 0.12296978199992736,
+          "actual_elapsed_seconds": 0.12360341699968558
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4345561088,
+          "shared_unreclaimable_bytes": 1901063872,
+          "elapsed_seconds": 0.0005283059999783291,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345561088,
+          "shared_unreclaimable_bytes": 1909422936,
+          "elapsed_seconds": 0.029207431000031647,
+          "owned_worker_memory": {
+            "VmRSS": 12500992,
+            "VmHWM": 12500992
+          },
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345544704,
+          "shared_unreclaimable_bytes": 1910245976,
+          "elapsed_seconds": 0.03477066599953105,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        },
+        {
+          "disk_available_bytes": 4345544704,
+          "shared_unreclaimable_bytes": 1910245976,
+          "elapsed_seconds": 0.03526473000056285,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        },
+        {
+          "disk_available_bytes": 4343713792,
+          "shared_unreclaimable_bytes": 1903215512,
+          "elapsed_seconds": 0.15787500099941099,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        },
+        {
+          "disk_available_bytes": 4343705600,
+          "shared_unreclaimable_bytes": 1903215512,
+          "elapsed_seconds": 0.1582478229993285,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        }
+      ],
+      "elapsed_seconds": 0.15832040200075426,
+      "passed": true
+    },
+    {
+      "case": "completed-but-stays-live",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": false,
+      "injected_exception": "VmRSS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/completed-but-stays-live/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/completed-but-stays-live/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/completed-but-stays-live/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/completed-but-stays-live/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": false,
+      "original_Popen_pid": 7,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "d211831f6a34ea1ffde7de9dd8c739be757f6f6e6d45d97ebd3055f04abb083d",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 7,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86629",
+          "status": {
+            "Pid": 86629,
+            "PPid": 86622,
+            "NSpid": [
+              86629,
+              7
+            ]
+          },
+          "stat": {
+            "pid": 86629,
+            "ppid": 86622,
+            "starttime_ticks": 1256432
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86629,
+            "PPid": 86622,
+            "NSpid": [
+              86629,
+              7
+            ]
+          },
+          "stat": {
+            "pid": 86629,
+            "ppid": 86622,
+            "starttime_ticks": 1256432
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12492800,
+          "VmHWM": 12492800
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/completed-but-stays-live/entry-receipt.json",
+        "bytes": 1624,
+        "sha256": "6f4b5c1ac26750a1ccf86032f714d60263f2ce299cb61bfcc1fa4794950bb350"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/completed-but-stays-live/entry-receipt-before-stimulus.original.json",
+        "bytes": 1624,
+        "sha256": "6f4b5c1ac26750a1ccf86032f714d60263f2ce299cb61bfcc1fa4794950bb350"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "rejection": {
+        "type": "RuntimeError",
+        "message": "completed entry did not actually exit within the one original sampling interval"
+      },
+      "actual_original_Popen_final_returncode": -15,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "365261aeb1285fadc3841222336714d80a8834122cf27a62d77ae43e29482eab",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 1,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "d211831f6a34ea1ffde7de9dd8c739be757f6f6e6d45d97ebd3055f04abb083d",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 7,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86629",
+            "status": {
+              "Pid": 86629,
+              "PPid": 86622,
+              "NSpid": [
+                86629,
+                7
+              ]
+            },
+            "stat": {
+              "pid": 86629,
+              "ppid": 86622,
+              "starttime_ticks": 1256432
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86629,
+              "PPid": 86622,
+              "NSpid": [
+                86629,
+                7
+              ]
+            },
+            "stat": {
+              "pid": 86629,
+              "ppid": 86622,
+              "starttime_ticks": 1256432
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12492800,
+            "VmHWM": 12492800
+          }
+        },
+        "bounded_exit_confirmation": {
+          "type": "KeyError",
+          "message": "'VmRSS'",
+          "original_Popen_pid": 7,
+          "memory_observation_fabricated": false,
+          "actual_memory_observation": null,
+          "original_Popen_confirmed_exit_code": null,
+          "completed": false,
+          "entry_receipt_sha256": "6f4b5c1ac26750a1ccf86032f714d60263f2ce299cb61bfcc1fa4794950bb350",
+          "original_entry_peak_RSS_bytes": 14548992,
+          "verified_owned_execution_identity": {
+            "os_getpid": 7,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86629",
+            "status": {
+              "Pid": 86629,
+              "PPid": 86622,
+              "NSpid": [
+                86629,
+                7
+              ]
+            },
+            "stat": {
+              "pid": 86629,
+              "ppid": 86622,
+              "starttime_ticks": 1256432
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "allowed_wait_seconds": 0.1994214380003541,
+          "elapsed_before_wait_seconds": 0.0005803149997518631,
+          "actual_elapsed_seconds": 0.2001252399986697,
+          "child_still_running_after_bound": true
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4343623680,
+          "shared_unreclaimable_bytes": 1903215512,
+          "elapsed_seconds": 0.0005686570002580993,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4342398976,
+          "shared_unreclaimable_bytes": 1911643952,
+          "elapsed_seconds": 0.030337353999129846,
+          "owned_worker_memory": {
+            "VmRSS": 12492800,
+            "VmHWM": 12492800
+          },
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345454592,
+          "shared_unreclaimable_bytes": 1912631160,
+          "elapsed_seconds": 0.03639893899890012,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        },
+        {
+          "disk_available_bytes": 4345454592,
+          "shared_unreclaimable_bytes": 1912631160,
+          "elapsed_seconds": 0.03682249699886597,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        }
+      ],
+      "elapsed_seconds": 0.23757752599885862,
+      "passed": true,
+      "expected_rejection_message": "completed entry did not actually exit within the one original sampling interval"
+    },
+    {
+      "case": "incomplete-entry",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": false,
+      "injected_exception": "VmRSS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/incomplete-entry/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/incomplete-entry/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/incomplete-entry/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/incomplete-entry/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": false,
+      "original_Popen_pid": 8,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "a55a6de71b7f65ebc9b20210fc476e6cc6e5b7f06bae8cbcefc6a341cc08711c",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 8,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86630",
+          "status": {
+            "Pid": 86630,
+            "PPid": 86622,
+            "NSpid": [
+              86630,
+              8
+            ]
+          },
+          "stat": {
+            "pid": 86630,
+            "ppid": 86622,
+            "starttime_ticks": 1256456
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86630,
+            "PPid": 86622,
+            "NSpid": [
+              86630,
+              8
+            ]
+          },
+          "stat": {
+            "pid": 86630,
+            "ppid": 86622,
+            "starttime_ticks": 1256456
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12492800,
+          "VmHWM": 12492800
+        }
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "rejection": {
+        "type": "ValueError",
+        "message": "a bounded regular entry receipt must already exist"
+      },
+      "actual_original_Popen_final_returncode": -15,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "499a3f97493ed40d0f4ab0811344e65f7c80ac42cb79298b162dcdffff753d1e",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 1,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "a55a6de71b7f65ebc9b20210fc476e6cc6e5b7f06bae8cbcefc6a341cc08711c",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 8,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86630",
+            "status": {
+              "Pid": 86630,
+              "PPid": 86622,
+              "NSpid": [
+                86630,
+                8
+              ]
+            },
+            "stat": {
+              "pid": 86630,
+              "ppid": 86622,
+              "starttime_ticks": 1256456
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86630,
+              "PPid": 86622,
+              "NSpid": [
+                86630,
+                8
+              ]
+            },
+            "stat": {
+              "pid": 86630,
+              "ppid": 86622,
+              "starttime_ticks": 1256456
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12492800,
+            "VmHWM": 12492800
+          }
+        },
+        "bounded_exit_confirmation": {
+          "type": "KeyError",
+          "message": "'VmRSS'",
+          "original_Popen_pid": 8,
+          "memory_observation_fabricated": false,
+          "actual_memory_observation": null,
+          "original_Popen_confirmed_exit_code": null,
+          "completed": false
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4345430016,
+          "shared_unreclaimable_bytes": 1910721648,
+          "elapsed_seconds": 0.0008126440006890334,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345430016,
+          "shared_unreclaimable_bytes": 1921015584,
+          "elapsed_seconds": 0.07119193899961829,
+          "owned_worker_memory": {
+            "VmRSS": 12492800,
+            "VmHWM": 12492800
+          },
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345430016,
+          "shared_unreclaimable_bytes": 1921015584,
+          "elapsed_seconds": 0.07133108800007903,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        }
+      ],
+      "elapsed_seconds": 0.07251578400064318,
+      "passed": true,
+      "expected_rejection_message": "a bounded regular entry receipt must already exist"
+    },
+    {
+      "case": "different-key",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": false,
+      "injected_exception": "Pid",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/different-key/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/different-key/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/different-key/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/different-key/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": false,
+      "original_Popen_pid": 9,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "d4ec57d7a51888bd6cd9111f5c33d53ee4c70b9f370385b216c2ec57ab6dce1b",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 9,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86631",
+          "status": {
+            "Pid": 86631,
+            "PPid": 86622,
+            "NSpid": [
+              86631,
+              9
+            ]
+          },
+          "stat": {
+            "pid": 86631,
+            "ppid": 86622,
+            "starttime_ticks": 1256464
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86631,
+            "PPid": 86622,
+            "NSpid": [
+              86631,
+              9
+            ]
+          },
+          "stat": {
+            "pid": 86631,
+            "ppid": 86622,
+            "starttime_ticks": 1256464
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12500992,
+          "VmHWM": 12500992
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/different-key/entry-receipt.json",
+        "bytes": 1580,
+        "sha256": "5a9f7f29597c3a0937931912ed116875a1c7d940f2b789efdbeaad4cf7429df0"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/different-key/entry-receipt-before-stimulus.original.json",
+        "bytes": 1580,
+        "sha256": "5a9f7f29597c3a0937931912ed116875a1c7d940f2b789efdbeaad4cf7429df0"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "rejection": {
+        "type": "ValueError",
+        "message": "sampling error is not an eligible missing memory field"
+      },
+      "actual_original_Popen_final_returncode": -15,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "3353d62daa7caa1c29e54c0f25e46c26b967a1505387e72e8ef7ddb7808d9819",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 0,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "d4ec57d7a51888bd6cd9111f5c33d53ee4c70b9f370385b216c2ec57ab6dce1b",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 9,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86631",
+            "status": {
+              "Pid": 86631,
+              "PPid": 86622,
+              "NSpid": [
+                86631,
+                9
+              ]
+            },
+            "stat": {
+              "pid": 86631,
+              "ppid": 86622,
+              "starttime_ticks": 1256464
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86631,
+              "PPid": 86622,
+              "NSpid": [
+                86631,
+                9
+              ]
+            },
+            "stat": {
+              "pid": 86631,
+              "ppid": 86622,
+              "starttime_ticks": 1256464
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12500992,
+            "VmHWM": 12500992
+          }
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4345409536,
+          "shared_unreclaimable_bytes": 1913227896,
+          "elapsed_seconds": 0.0032534929996472783,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345409536,
+          "shared_unreclaimable_bytes": 1923639264,
+          "elapsed_seconds": 0.08349805599937099,
+          "owned_worker_memory": {
+            "VmRSS": 12500992,
+            "VmHWM": 12500992
+          },
+          "actual_output_bytes": 0
+        }
+      ],
+      "elapsed_seconds": 0.0938330129993119,
+      "passed": true,
+      "expected_rejection_message": "sampling error is not an eligible missing memory field"
+    },
+    {
+      "case": "identity-error",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": false,
+      "injected_exception": "ValueError",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/identity-error/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/identity-error/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/identity-error/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/identity-error/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": false,
+      "original_Popen_pid": 10,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "2b888aa1f74b613e51a3283af2dea34e4744ddd915fd0706e3308d75971ccb71",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 10,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86632",
+          "status": {
+            "Pid": 86632,
+            "PPid": 86622,
+            "NSpid": [
+              86632,
+              10
+            ]
+          },
+          "stat": {
+            "pid": 86632,
+            "ppid": 86622,
+            "starttime_ticks": 1256473
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86632,
+            "PPid": 86622,
+            "NSpid": [
+              86632,
+              10
+            ]
+          },
+          "stat": {
+            "pid": 86632,
+            "ppid": 86622,
+            "starttime_ticks": 1256473
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12500992,
+          "VmHWM": 12500992
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/identity-error/entry-receipt.json",
+        "bytes": 1586,
+        "sha256": "491ad9c75a6eeedaa4d953f9c0c0c1b4a32f5e5e5361fafc589aa5fb619b1227"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/identity-error/entry-receipt-before-stimulus.original.json",
+        "bytes": 1586,
+        "sha256": "491ad9c75a6eeedaa4d953f9c0c0c1b4a32f5e5e5361fafc589aa5fb619b1227"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "rejection": {
+        "type": "ValueError",
+        "message": "sampling error is not an eligible missing memory field"
+      },
+      "actual_original_Popen_final_returncode": -15,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "67011e8104bb7cd538b7cc588a47aec48fc32c0485b220888b3ece611509aca1",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 0,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "2b888aa1f74b613e51a3283af2dea34e4744ddd915fd0706e3308d75971ccb71",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 10,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86632",
+            "status": {
+              "Pid": 86632,
+              "PPid": 86622,
+              "NSpid": [
+                86632,
+                10
+              ]
+            },
+            "stat": {
+              "pid": 86632,
+              "ppid": 86622,
+              "starttime_ticks": 1256473
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86632,
+              "PPid": 86622,
+              "NSpid": [
+                86632,
+                10
+              ]
+            },
+            "stat": {
+              "pid": 86632,
+              "ppid": 86622,
+              "starttime_ticks": 1256473
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12500992,
+            "VmHWM": 12500992
+          }
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4345368576,
+          "shared_unreclaimable_bytes": 1916170200,
+          "elapsed_seconds": 0.004095963999134256,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345368576,
+          "shared_unreclaimable_bytes": 1926438880,
+          "elapsed_seconds": 0.07862496199959423,
+          "owned_worker_memory": {
+            "VmRSS": 12500992,
+            "VmHWM": 12500992
+          },
+          "actual_output_bytes": 0
+        }
+      ],
+      "elapsed_seconds": 0.09107926300021063,
+      "passed": true,
+      "expected_rejection_message": "sampling error is not an eligible missing memory field"
+    },
+    {
+      "case": "wrong-nonce",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": false,
+      "injected_exception": "VmRSS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/wrong-nonce/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/wrong-nonce/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/wrong-nonce/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/wrong-nonce/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": false,
+      "original_Popen_pid": 11,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "b1dc828a575d3c40edd36310a428ea2465e0d1b5e4758ad8ff518c44d880e4fa",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 11,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86633",
+          "status": {
+            "Pid": 86633,
+            "PPid": 86622,
+            "NSpid": [
+              86633,
+              11
+            ]
+          },
+          "stat": {
+            "pid": 86633,
+            "ppid": 86622,
+            "starttime_ticks": 1256482
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86633,
+            "PPid": 86622,
+            "NSpid": [
+              86633,
+              11
+            ]
+          },
+          "stat": {
+            "pid": 86633,
+            "ppid": 86622,
+            "starttime_ticks": 1256482
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12488704,
+          "VmHWM": 12488704
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/wrong-nonce/entry-receipt.json",
+        "bytes": 1574,
+        "sha256": "79ff96935a21285078f006480a18b750f3da7c0b52e6a0f568deb9ddd86fdf90"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/wrong-nonce/entry-receipt-before-stimulus.original.json",
+        "bytes": 1574,
+        "sha256": "79ff96935a21285078f006480a18b750f3da7c0b52e6a0f568deb9ddd86fdf90"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "rejection": {
+        "type": "ValueError",
+        "message": "entry receipt is not bound to this Popen PID/starttime/namespace/nonce"
+      },
+      "actual_original_Popen_final_returncode": -15,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "dfba39eb2e740e295ed4f9275f37e58a07cbc3125fcd6e38f4490117b7218338",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 1,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "b1dc828a575d3c40edd36310a428ea2465e0d1b5e4758ad8ff518c44d880e4fa",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 11,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86633",
+            "status": {
+              "Pid": 86633,
+              "PPid": 86622,
+              "NSpid": [
+                86633,
+                11
+              ]
+            },
+            "stat": {
+              "pid": 86633,
+              "ppid": 86622,
+              "starttime_ticks": 1256482
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86633,
+              "PPid": 86622,
+              "NSpid": [
+                86633,
+                11
+              ]
+            },
+            "stat": {
+              "pid": 86633,
+              "ppid": 86622,
+              "starttime_ticks": 1256482
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12488704,
+            "VmHWM": 12488704
+          }
+        },
+        "bounded_exit_confirmation": {
+          "type": "KeyError",
+          "message": "'VmRSS'",
+          "original_Popen_pid": 11,
+          "memory_observation_fabricated": false,
+          "actual_memory_observation": null,
+          "original_Popen_confirmed_exit_code": null,
+          "completed": false
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4345331712,
+          "shared_unreclaimable_bytes": 1921496568,
+          "elapsed_seconds": 0.007803021000654553,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345331712,
+          "shared_unreclaimable_bytes": 1927661544,
+          "elapsed_seconds": 0.07187270999929751,
+          "owned_worker_memory": {
+            "VmRSS": 12488704,
+            "VmHWM": 12488704
+          },
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345311232,
+          "shared_unreclaimable_bytes": 1928869864,
+          "elapsed_seconds": 0.10157207200063567,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        }
+      ],
+      "elapsed_seconds": 0.10294595300001674,
+      "passed": true,
+      "expected_rejection_message": "entry receipt is not bound to this Popen PID/starttime/namespace/nonce"
+    },
+    {
+      "case": "wrong-starttime",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": false,
+      "injected_exception": "VmRSS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/wrong-starttime/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/wrong-starttime/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/wrong-starttime/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/wrong-starttime/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": false,
+      "original_Popen_pid": 12,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "2c575675baf169b669acf45629a73c5740dd9b91eeac376a33d8b08959996b8c",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 12,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86634",
+          "status": {
+            "Pid": 86634,
+            "PPid": 86622,
+            "NSpid": [
+              86634,
+              12
+            ]
+          },
+          "stat": {
+            "pid": 86634,
+            "ppid": 86622,
+            "starttime_ticks": 1256493
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86634,
+            "PPid": 86622,
+            "NSpid": [
+              86634,
+              12
+            ]
+          },
+          "stat": {
+            "pid": 86634,
+            "ppid": 86622,
+            "starttime_ticks": 1256493
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12488704,
+          "VmHWM": 12488704
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/wrong-starttime/entry-receipt.json",
+        "bytes": 1590,
+        "sha256": "03a60d2618d5b4fd28ac031bb442996c46983ba1966060524f76193650242d50"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/wrong-starttime/entry-receipt-before-stimulus.original.json",
+        "bytes": 1590,
+        "sha256": "03a60d2618d5b4fd28ac031bb442996c46983ba1966060524f76193650242d50"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "rejection": {
+        "type": "ValueError",
+        "message": "entry receipt is not bound to this Popen PID/starttime/namespace/nonce"
+      },
+      "actual_original_Popen_final_returncode": -15,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "362340e87c17d610c023bac8f161b1ea468ac776308ddfb2fba49ee216f3b094",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 1,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "2c575675baf169b669acf45629a73c5740dd9b91eeac376a33d8b08959996b8c",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 12,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86634",
+            "status": {
+              "Pid": 86634,
+              "PPid": 86622,
+              "NSpid": [
+                86634,
+                12
+              ]
+            },
+            "stat": {
+              "pid": 86634,
+              "ppid": 86622,
+              "starttime_ticks": 1256493
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86634,
+              "PPid": 86622,
+              "NSpid": [
+                86634,
+                12
+              ]
+            },
+            "stat": {
+              "pid": 86634,
+              "ppid": 86622,
+              "starttime_ticks": 1256493
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12488704,
+            "VmHWM": 12488704
+          }
+        },
+        "bounded_exit_confirmation": {
+          "type": "KeyError",
+          "message": "'VmRSS'",
+          "original_Popen_pid": 12,
+          "memory_observation_fabricated": false,
+          "actual_memory_observation": null,
+          "original_Popen_confirmed_exit_code": null,
+          "completed": false
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4345290752,
+          "shared_unreclaimable_bytes": 1923132736,
+          "elapsed_seconds": 0.0075038190007035155,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345241600,
+          "shared_unreclaimable_bytes": 1929202944,
+          "elapsed_seconds": 0.060067066000556224,
+          "owned_worker_memory": {
+            "VmRSS": 12488704,
+            "VmHWM": 12488704
+          },
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345225216,
+          "shared_unreclaimable_bytes": 1930390288,
+          "elapsed_seconds": 0.08205384500070068,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        }
+      ],
+      "elapsed_seconds": 0.08962932199938223,
+      "passed": true,
+      "expected_rejection_message": "entry receipt is not bound to this Popen PID/starttime/namespace/nonce"
+    },
+    {
+      "case": "wrong-Popen-binding",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": false,
+      "injected_exception": "VmRSS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/wrong-Popen-binding/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/wrong-Popen-binding/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/wrong-Popen-binding/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/wrong-Popen-binding/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": false,
+      "original_Popen_pid": 13,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "9ea46f7c33c557a89592c34e0d8d0528d53f332987608816cb2605e84d4d67b1",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 13,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86635",
+          "status": {
+            "Pid": 86635,
+            "PPid": 86622,
+            "NSpid": [
+              86635,
+              13
+            ]
+          },
+          "stat": {
+            "pid": 86635,
+            "ppid": 86622,
+            "starttime_ticks": 1256502
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86635,
+            "PPid": 86622,
+            "NSpid": [
+              86635,
+              13
+            ]
+          },
+          "stat": {
+            "pid": 86635,
+            "ppid": 86622,
+            "starttime_ticks": 1256502
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12500992,
+          "VmHWM": 12500992
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/wrong-Popen-binding/entry-receipt.json",
+        "bytes": 1606,
+        "sha256": "41e656378b820591f02fa066263fd3061b356f1104abde313756477cb36234bc"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/wrong-Popen-binding/entry-receipt-before-stimulus.original.json",
+        "bytes": 1606,
+        "sha256": "41e656378b820591f02fa066263fd3061b356f1104abde313756477cb36234bc"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "rejection": {
+        "type": "ValueError",
+        "message": "the original verified owned Popen handshake is required"
+      },
+      "actual_original_Popen_final_returncode": -15,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "0b3f4bc3643dad73f5b3319eec2386b0afa6cf4bc02fb8c2dfe19ec93acdd348",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 1,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "9ea46f7c33c557a89592c34e0d8d0528d53f332987608816cb2605e84d4d67b1",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 13,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86635",
+            "status": {
+              "Pid": 86635,
+              "PPid": 86622,
+              "NSpid": [
+                86635,
+                13
+              ]
+            },
+            "stat": {
+              "pid": 86635,
+              "ppid": 86622,
+              "starttime_ticks": 1256502
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86635,
+              "PPid": 86622,
+              "NSpid": [
+                86635,
+                13
+              ]
+            },
+            "stat": {
+              "pid": 86635,
+              "ppid": 86622,
+              "starttime_ticks": 1256502
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12500992,
+            "VmHWM": 12500992
+          }
+        },
+        "bounded_exit_confirmation": {
+          "type": "KeyError",
+          "message": "'VmRSS'",
+          "original_Popen_pid": 13,
+          "memory_observation_fabricated": false,
+          "actual_memory_observation": null,
+          "original_Popen_confirmed_exit_code": null,
+          "completed": false
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4345204736,
+          "shared_unreclaimable_bytes": 1921274824,
+          "elapsed_seconds": 0.0006069650007702876,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345204736,
+          "shared_unreclaimable_bytes": 1929413264,
+          "elapsed_seconds": 0.03253720900102053,
+          "owned_worker_memory": {
+            "VmRSS": 12500992,
+            "VmHWM": 12500992
+          },
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345184256,
+          "shared_unreclaimable_bytes": 1930255776,
+          "elapsed_seconds": 0.04088036400025885,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        }
+      ],
+      "elapsed_seconds": 0.042333893999966676,
+      "passed": true,
+      "expected_rejection_message": "the original verified owned Popen handshake is required"
+    },
+    {
+      "case": "zero-peak",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": false,
+      "injected_exception": "VmRSS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/zero-peak/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/zero-peak/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/zero-peak/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/zero-peak/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": false,
+      "original_Popen_pid": 14,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "444212fb1f422de279a922a735c30c761a0c04f40fcb3563aabbd978e9ba3883",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 14,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86636",
+          "status": {
+            "Pid": 86636,
+            "PPid": 86622,
+            "NSpid": [
+              86636,
+              14
+            ]
+          },
+          "stat": {
+            "pid": 86636,
+            "ppid": 86622,
+            "starttime_ticks": 1256506
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86636,
+            "PPid": 86622,
+            "NSpid": [
+              86636,
+              14
+            ]
+          },
+          "stat": {
+            "pid": 86636,
+            "ppid": 86622,
+            "starttime_ticks": 1256506
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12455936,
+          "VmHWM": 12455936
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/zero-peak/entry-receipt.json",
+        "bytes": 1566,
+        "sha256": "df25e6bcf6191fbe36fa84ae077ec44053515d0116297899e307baf4d52ed2df"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/zero-peak/entry-receipt-before-stimulus.original.json",
+        "bytes": 1566,
+        "sha256": "df25e6bcf6191fbe36fa84ae077ec44053515d0116297899e307baf4d52ed2df"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "rejection": {
+        "type": "ValueError",
+        "message": "a positive in-limit original worker peak RSS is required"
+      },
+      "actual_original_Popen_final_returncode": -15,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "5d596dd913eaf52844380bdf133b2e76857ccc7e99dec297cfc0a025dfbe3d05",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 1,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "444212fb1f422de279a922a735c30c761a0c04f40fcb3563aabbd978e9ba3883",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 14,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86636",
+            "status": {
+              "Pid": 86636,
+              "PPid": 86622,
+              "NSpid": [
+                86636,
+                14
+              ]
+            },
+            "stat": {
+              "pid": 86636,
+              "ppid": 86622,
+              "starttime_ticks": 1256506
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86636,
+              "PPid": 86622,
+              "NSpid": [
+                86636,
+                14
+              ]
+            },
+            "stat": {
+              "pid": 86636,
+              "ppid": 86622,
+              "starttime_ticks": 1256506
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12455936,
+            "VmHWM": 12455936
+          }
+        },
+        "bounded_exit_confirmation": {
+          "type": "KeyError",
+          "message": "'VmRSS'",
+          "original_Popen_pid": 14,
+          "memory_observation_fabricated": false,
+          "actual_memory_observation": null,
+          "original_Popen_confirmed_exit_code": null,
+          "completed": false
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4345163776,
+          "shared_unreclaimable_bytes": 1921641552,
+          "elapsed_seconds": 0.0004898180013697129,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345163776,
+          "shared_unreclaimable_bytes": 1929365968,
+          "elapsed_seconds": 0.03235813000173948,
+          "owned_worker_memory": {
+            "VmRSS": 12455936,
+            "VmHWM": 12455936
+          },
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345147392,
+          "shared_unreclaimable_bytes": 1930198640,
+          "elapsed_seconds": 0.0520845310002187,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        }
+      ],
+      "elapsed_seconds": 0.053395527000247966,
+      "passed": true,
+      "expected_rejection_message": "a positive in-limit original worker peak RSS is required"
+    },
+    {
+      "case": "over-limit-peak",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": false,
+      "injected_exception": "VmRSS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/over-limit-peak/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/over-limit-peak/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/over-limit-peak/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/over-limit-peak/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": false,
+      "original_Popen_pid": 15,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "e4c78cbe1fb0f050066c52e550720bff054cfd4a457fb3a6d275fd07b1c1846f",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 15,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86637",
+          "status": {
+            "Pid": 86637,
+            "PPid": 86622,
+            "NSpid": [
+              86637,
+              15
+            ]
+          },
+          "stat": {
+            "pid": 86637,
+            "ppid": 86622,
+            "starttime_ticks": 1256512
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86637,
+            "PPid": 86622,
+            "NSpid": [
+              86637,
+              15
+            ]
+          },
+          "stat": {
+            "pid": 86637,
+            "ppid": 86622,
+            "starttime_ticks": 1256512
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12492800,
+          "VmHWM": 12492800
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/over-limit-peak/entry-receipt.json",
+        "bytes": 1590,
+        "sha256": "e01e0c08e223bb5f1fe7cbb74d6e2e0019c0276aa65f4ce88d3d24540ad48331"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/over-limit-peak/entry-receipt-before-stimulus.original.json",
+        "bytes": 1590,
+        "sha256": "e01e0c08e223bb5f1fe7cbb74d6e2e0019c0276aa65f4ce88d3d24540ad48331"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "rejection": {
+        "type": "ValueError",
+        "message": "a positive in-limit original worker peak RSS is required"
+      },
+      "actual_original_Popen_final_returncode": -15,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "7913928ead2c23b173d6a551926b955112ee1276059a86be04666a840de937ba",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 1,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "e4c78cbe1fb0f050066c52e550720bff054cfd4a457fb3a6d275fd07b1c1846f",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 15,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86637",
+            "status": {
+              "Pid": 86637,
+              "PPid": 86622,
+              "NSpid": [
+                86637,
+                15
+              ]
+            },
+            "stat": {
+              "pid": 86637,
+              "ppid": 86622,
+              "starttime_ticks": 1256512
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86637,
+              "PPid": 86622,
+              "NSpid": [
+                86637,
+                15
+              ]
+            },
+            "stat": {
+              "pid": 86637,
+              "ppid": 86622,
+              "starttime_ticks": 1256512
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12492800,
+            "VmHWM": 12492800
+          }
+        },
+        "bounded_exit_confirmation": {
+          "type": "KeyError",
+          "message": "'VmRSS'",
+          "original_Popen_pid": 15,
+          "memory_observation_fabricated": false,
+          "actual_memory_observation": null,
+          "original_Popen_confirmed_exit_code": null,
+          "completed": false
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4345126912,
+          "shared_unreclaimable_bytes": 1922029616,
+          "elapsed_seconds": 0.0005190720003156457,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345126912,
+          "shared_unreclaimable_bytes": 1930134848,
+          "elapsed_seconds": 0.030352316000062274,
+          "owned_worker_memory": {
+            "VmRSS": 12492800,
+            "VmHWM": 12492800
+          },
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345110528,
+          "shared_unreclaimable_bytes": 1930696728,
+          "elapsed_seconds": 0.038596952999796486,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        }
+      ],
+      "elapsed_seconds": 0.039930191998792,
+      "passed": true,
+      "expected_rejection_message": "a positive in-limit original worker peak RSS is required"
+    },
+    {
+      "case": "wrong-argv",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": false,
+      "injected_exception": "VmRSS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/wrong-argv/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/wrong-argv/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/wrong-argv/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/wrong-argv/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": false,
+      "original_Popen_pid": 16,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "6a3791685a3871398c64eb304e562d226da0520260873663130aef9def169b94",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 16,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86638",
+          "status": {
+            "Pid": 86638,
+            "PPid": 86622,
+            "NSpid": [
+              86638,
+              16
+            ]
+          },
+          "stat": {
+            "pid": 86638,
+            "ppid": 86622,
+            "starttime_ticks": 1256516
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86638,
+            "PPid": 86622,
+            "NSpid": [
+              86638,
+              16
+            ]
+          },
+          "stat": {
+            "pid": 86638,
+            "ppid": 86622,
+            "starttime_ticks": 1256516
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12496896,
+          "VmHWM": 12496896
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/wrong-argv/entry-receipt.json",
+        "bytes": 1570,
+        "sha256": "41647197a78fb805e327059f1e176838b4c7db8e968221f65e6de4e106417b29"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/wrong-argv/entry-receipt-before-stimulus.original.json",
+        "bytes": 1570,
+        "sha256": "41647197a78fb805e327059f1e176838b4c7db8e968221f65e6de4e106417b29"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "rejection": {
+        "type": "ValueError",
+        "message": "actual same-run mathematical contract, arguments or output binding differs"
+      },
+      "actual_original_Popen_final_returncode": -15,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "49646831d16f9d403611cb71c0a82d6d0ef09340c26507eb74345f72c985ba4a",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 1,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "6a3791685a3871398c64eb304e562d226da0520260873663130aef9def169b94",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 16,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86638",
+            "status": {
+              "Pid": 86638,
+              "PPid": 86622,
+              "NSpid": [
+                86638,
+                16
+              ]
+            },
+            "stat": {
+              "pid": 86638,
+              "ppid": 86622,
+              "starttime_ticks": 1256516
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86638,
+              "PPid": 86622,
+              "NSpid": [
+                86638,
+                16
+              ]
+            },
+            "stat": {
+              "pid": 86638,
+              "ppid": 86622,
+              "starttime_ticks": 1256516
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12496896,
+            "VmHWM": 12496896
+          }
+        },
+        "bounded_exit_confirmation": {
+          "type": "KeyError",
+          "message": "'VmRSS'",
+          "original_Popen_pid": 16,
+          "memory_observation_fabricated": false,
+          "actual_memory_observation": null,
+          "original_Popen_confirmed_exit_code": null,
+          "completed": false
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4345090048,
+          "shared_unreclaimable_bytes": 1922380704,
+          "elapsed_seconds": 0.0005496680005308008,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345090048,
+          "shared_unreclaimable_bytes": 1930487232,
+          "elapsed_seconds": 0.030924208000215003,
+          "owned_worker_memory": {
+            "VmRSS": 12496896,
+            "VmHWM": 12496896
+          },
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345069568,
+          "shared_unreclaimable_bytes": 1931362512,
+          "elapsed_seconds": 0.05138954799986095,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        }
+      ],
+      "elapsed_seconds": 0.05293855300078576,
+      "passed": true,
+      "expected_rejection_message": "actual same-run mathematical contract, arguments or output binding differs"
+    },
+    {
+      "case": "changed-math-contract-before",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": false,
+      "injected_exception": "VmRSS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/changed-math-contract-before/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/changed-math-contract-before/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/changed-math-contract-before/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/changed-math-contract-before/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": false,
+      "original_Popen_pid": 17,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "d24a6dc49ef439c2a9b31ee1e86838af09dba72f4e0a130b09156470e3908baf",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 17,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86639",
+          "status": {
+            "Pid": 86639,
+            "PPid": 86622,
+            "NSpid": [
+              86639,
+              17
+            ]
+          },
+          "stat": {
+            "pid": 86639,
+            "ppid": 86622,
+            "starttime_ticks": 1256521
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86639,
+            "PPid": 86622,
+            "NSpid": [
+              86639,
+              17
+            ]
+          },
+          "stat": {
+            "pid": 86639,
+            "ppid": 86622,
+            "starttime_ticks": 1256521
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12500992,
+          "VmHWM": 12500992
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/changed-math-contract-before/entry-receipt.json",
+        "bytes": 1642,
+        "sha256": "1886dfe9ec60d310caa06105cd347df4e8912e4291390c92c55a92f24e52a98a"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/changed-math-contract-before/entry-receipt-before-stimulus.original.json",
+        "bytes": 1642,
+        "sha256": "1886dfe9ec60d310caa06105cd347df4e8912e4291390c92c55a92f24e52a98a"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "rejection": {
+        "type": "ValueError",
+        "message": "actual same-run mathematical contract, arguments or output binding differs"
+      },
+      "actual_original_Popen_final_returncode": -15,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "267c933a88ed85c9be274ffce80df48981f2b472c81a278c118f7979fd2e73a4",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 1,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "d24a6dc49ef439c2a9b31ee1e86838af09dba72f4e0a130b09156470e3908baf",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 17,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86639",
+            "status": {
+              "Pid": 86639,
+              "PPid": 86622,
+              "NSpid": [
+                86639,
+                17
+              ]
+            },
+            "stat": {
+              "pid": 86639,
+              "ppid": 86622,
+              "starttime_ticks": 1256521
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86639,
+              "PPid": 86622,
+              "NSpid": [
+                86639,
+                17
+              ]
+            },
+            "stat": {
+              "pid": 86639,
+              "ppid": 86622,
+              "starttime_ticks": 1256521
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12500992,
+            "VmHWM": 12500992
+          }
+        },
+        "bounded_exit_confirmation": {
+          "type": "KeyError",
+          "message": "'VmRSS'",
+          "original_Popen_pid": 17,
+          "memory_observation_fabricated": false,
+          "actual_memory_observation": null,
+          "original_Popen_confirmed_exit_code": null,
+          "completed": false
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4345049088,
+          "shared_unreclaimable_bytes": 1922744192,
+          "elapsed_seconds": 0.0005424080009106547,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4345004032,
+          "shared_unreclaimable_bytes": 1930829264,
+          "elapsed_seconds": 0.029170875999625423,
+          "owned_worker_memory": {
+            "VmRSS": 12500992,
+            "VmHWM": 12500992
+          },
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4344987648,
+          "shared_unreclaimable_bytes": 1931692368,
+          "elapsed_seconds": 0.035104398000839865,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        }
+      ],
+      "elapsed_seconds": 0.0366532530006225,
+      "passed": true,
+      "expected_rejection_message": "actual same-run mathematical contract, arguments or output binding differs"
+    },
+    {
+      "case": "changed-math-contract-during",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": false,
+      "injected_exception": "VmRSS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/changed-math-contract-during/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/changed-math-contract-during/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/changed-math-contract-during/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/changed-math-contract-during/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": false,
+      "original_Popen_pid": 18,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "6cb04e91b37b6b38f0b143a25237e13e04ee3aa9f7fb000c4e5ef14fa1136cee",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 18,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86640",
+          "status": {
+            "Pid": 86640,
+            "PPid": 86622,
+            "NSpid": [
+              86640,
+              18
+            ]
+          },
+          "stat": {
+            "pid": 86640,
+            "ppid": 86622,
+            "starttime_ticks": 1256525
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86640,
+            "PPid": 86622,
+            "NSpid": [
+              86640,
+              18
+            ]
+          },
+          "stat": {
+            "pid": 86640,
+            "ppid": 86622,
+            "starttime_ticks": 1256525
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12464128,
+          "VmHWM": 12464128
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/changed-math-contract-during/entry-receipt.json",
+        "bytes": 1642,
+        "sha256": "9a6c0938d4b54f17dbc4509aacd42ae4f2667cab4297f9a888353d71bca7353d"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/changed-math-contract-during/entry-receipt-before-stimulus.original.json",
+        "bytes": 1642,
+        "sha256": "9a6c0938d4b54f17dbc4509aacd42ae4f2667cab4297f9a888353d71bca7353d"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "rejection": {
+        "type": "ValueError",
+        "message": "completed entry receipt, source or contract changed during confirmation"
+      },
+      "actual_original_Popen_final_returncode": 0,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "408d813928e10a49151576b72117087076eedf3350f821fd979ec668b0124fa0",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 1,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "6cb04e91b37b6b38f0b143a25237e13e04ee3aa9f7fb000c4e5ef14fa1136cee",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 18,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86640",
+            "status": {
+              "Pid": 86640,
+              "PPid": 86622,
+              "NSpid": [
+                86640,
+                18
+              ]
+            },
+            "stat": {
+              "pid": 86640,
+              "ppid": 86622,
+              "starttime_ticks": 1256525
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86640,
+              "PPid": 86622,
+              "NSpid": [
+                86640,
+                18
+              ]
+            },
+            "stat": {
+              "pid": 86640,
+              "ppid": 86622,
+              "starttime_ticks": 1256525
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12464128,
+            "VmHWM": 12464128
+          }
+        },
+        "bounded_exit_confirmation": {
+          "type": "KeyError",
+          "message": "'VmRSS'",
+          "original_Popen_pid": 18,
+          "memory_observation_fabricated": false,
+          "actual_memory_observation": null,
+          "original_Popen_confirmed_exit_code": 0,
+          "completed": false,
+          "entry_receipt_sha256": "9a6c0938d4b54f17dbc4509aacd42ae4f2667cab4297f9a888353d71bca7353d",
+          "original_entry_peak_RSS_bytes": 14548992,
+          "verified_owned_execution_identity": {
+            "os_getpid": 18,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86640",
+            "status": {
+              "Pid": 86640,
+              "PPid": 86622,
+              "NSpid": [
+                86640,
+                18
+              ]
+            },
+            "stat": {
+              "pid": 86640,
+              "ppid": 86622,
+              "starttime_ticks": 1256525
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "allowed_wait_seconds": 0.1994184339993808,
+          "elapsed_before_wait_seconds": 0.0005828979992656969,
+          "waited_exit_elapsed_seconds": 0.1142662999991444
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4344967168,
+          "shared_unreclaimable_bytes": 1923082152,
+          "elapsed_seconds": 0.0006008659984217957,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4344967168,
+          "shared_unreclaimable_bytes": 1931321808,
+          "elapsed_seconds": 0.03142913000010594,
+          "owned_worker_memory": {
+            "VmRSS": 12464128,
+            "VmHWM": 12464128
+          },
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4344950784,
+          "shared_unreclaimable_bytes": 1932176304,
+          "elapsed_seconds": 0.03855586099962238,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        },
+        {
+          "disk_available_bytes": 4344950784,
+          "shared_unreclaimable_bytes": 1932176304,
+          "elapsed_seconds": 0.03898483699958888,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        },
+        {
+          "disk_available_bytes": 4344946688,
+          "shared_unreclaimable_bytes": 1941487744,
+          "elapsed_seconds": 0.15294420499958505,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        }
+      ],
+      "elapsed_seconds": 0.15334606999931566,
+      "passed": true,
+      "expected_rejection_message": "completed entry receipt, source or contract changed during confirmation"
+    },
+    {
+      "case": "exit-nonzero-after-receipt",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": false,
+      "injected_exception": "VmRSS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/exit-nonzero-after-receipt/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/exit-nonzero-after-receipt/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/exit-nonzero-after-receipt/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/exit-nonzero-after-receipt/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": false,
+      "original_Popen_pid": 19,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "841166e702819b087a2b85a2953471e958a3f187bda027938fdc1481b2ad0cbe",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 19,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86641",
+          "status": {
+            "Pid": 86641,
+            "PPid": 86622,
+            "NSpid": [
+              86641,
+              19
+            ]
+          },
+          "stat": {
+            "pid": 86641,
+            "ppid": 86622,
+            "starttime_ticks": 1256541
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86641,
+            "PPid": 86622,
+            "NSpid": [
+              86641,
+              19
+            ]
+          },
+          "stat": {
+            "pid": 86641,
+            "ppid": 86622,
+            "starttime_ticks": 1256541
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12492800,
+          "VmHWM": 12492800
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/exit-nonzero-after-receipt/entry-receipt.json",
+        "bytes": 1634,
+        "sha256": "1316171f047e83a77d44730ac7482c0f705d935d6aa90192a15c9ab1c07b72b3"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/exit-nonzero-after-receipt/entry-receipt-before-stimulus.original.json",
+        "bytes": 1634,
+        "sha256": "1316171f047e83a77d44730ac7482c0f705d935d6aa90192a15c9ab1c07b72b3"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "rejection": {
+        "type": "ValueError",
+        "message": "owned completed entry subsequently exited nonzero"
+      },
+      "actual_original_Popen_final_returncode": 7,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "40f360b9ba8d2a444d415f19ac2cbc06e22b572eed5395b2dd3a175d2047cf6e",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 1,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "841166e702819b087a2b85a2953471e958a3f187bda027938fdc1481b2ad0cbe",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 19,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86641",
+            "status": {
+              "Pid": 86641,
+              "PPid": 86622,
+              "NSpid": [
+                86641,
+                19
+              ]
+            },
+            "stat": {
+              "pid": 86641,
+              "ppid": 86622,
+              "starttime_ticks": 1256541
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86641,
+              "PPid": 86622,
+              "NSpid": [
+                86641,
+                19
+              ]
+            },
+            "stat": {
+              "pid": 86641,
+              "ppid": 86622,
+              "starttime_ticks": 1256541
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12492800,
+            "VmHWM": 12492800
+          }
+        },
+        "bounded_exit_confirmation": {
+          "type": "KeyError",
+          "message": "'VmRSS'",
+          "original_Popen_pid": 19,
+          "memory_observation_fabricated": false,
+          "actual_memory_observation": null,
+          "original_Popen_confirmed_exit_code": 7,
+          "completed": false,
+          "entry_receipt_sha256": "1316171f047e83a77d44730ac7482c0f705d935d6aa90192a15c9ab1c07b72b3",
+          "original_entry_peak_RSS_bytes": 14548992,
+          "verified_owned_execution_identity": {
+            "os_getpid": 19,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86641",
+            "status": {
+              "Pid": 86641,
+              "PPid": 86622,
+              "NSpid": [
+                86641,
+                19
+              ]
+            },
+            "stat": {
+              "pid": 86641,
+              "ppid": 86622,
+              "starttime_ticks": 1256541
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "allowed_wait_seconds": 0.19942164800086176,
+          "elapsed_before_wait_seconds": 0.0005799039990961319,
+          "waited_exit_elapsed_seconds": 0.11434208399987256
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4344926208,
+          "shared_unreclaimable_bytes": 1944407680,
+          "elapsed_seconds": 0.0005962180002825335,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4344922112,
+          "shared_unreclaimable_bytes": 1957314504,
+          "elapsed_seconds": 0.03197146599995904,
+          "owned_worker_memory": {
+            "VmRSS": 12492800,
+            "VmHWM": 12492800
+          },
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4344905728,
+          "shared_unreclaimable_bytes": 1958182016,
+          "elapsed_seconds": 0.04006775400011975,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        },
+        {
+          "disk_available_bytes": 4344905728,
+          "shared_unreclaimable_bytes": 1958182016,
+          "elapsed_seconds": 0.04051507800068066,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        },
+        {
+          "disk_available_bytes": 4344901632,
+          "shared_unreclaimable_bytes": 1944796288,
+          "elapsed_seconds": 0.1545144749998144,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        }
+      ],
+      "elapsed_seconds": 0.154984943999807,
+      "passed": true,
+      "expected_rejection_message": "owned completed entry subsequently exited nonzero"
+    },
+    {
+      "case": "original-resource-gate-failure",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": false,
+      "injected_exception": "VmRSS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/original-resource-gate-failure/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/original-resource-gate-failure/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/original-resource-gate-failure/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/original-resource-gate-failure/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": false,
+      "original_Popen_pid": 20,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "e88b2079a259dec9dcaf8c6b28706bdd78c2bd1f5428b20cbdce601b58b9be83",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 20,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86642",
+          "status": {
+            "Pid": 86642,
+            "PPid": 86622,
+            "NSpid": [
+              86642,
+              20
+            ]
+          },
+          "stat": {
+            "pid": 86642,
+            "ppid": 86622,
+            "starttime_ticks": 1256557
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86642,
+            "PPid": 86622,
+            "NSpid": [
+              86642,
+              20
+            ]
+          },
+          "stat": {
+            "pid": 86642,
+            "ppid": 86622,
+            "starttime_ticks": 1256557
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12505088,
+          "VmHWM": 12505088
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/original-resource-gate-failure/entry-receipt.json",
+        "bytes": 1650,
+        "sha256": "d205158c5604f3e4f2d858aa35905b55a62ca01d57b7d10a02db124124cb476c"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/original-resource-gate-failure/entry-receipt-before-stimulus.original.json",
+        "bytes": 1650,
+        "sha256": "d205158c5604f3e4f2d858aa35905b55a62ca01d57b7d10a02db124124cb476c"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "rejection": {
+        "type": "RuntimeError",
+        "message": "explicit original resource-gate rejection control"
+      },
+      "actual_original_Popen_final_returncode": -15,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "20afc67021eed0ffe1308d6f61b17fdec62b38eb47e68cbbb691a818c640b80b",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 1,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "e88b2079a259dec9dcaf8c6b28706bdd78c2bd1f5428b20cbdce601b58b9be83",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 20,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86642",
+            "status": {
+              "Pid": 86642,
+              "PPid": 86622,
+              "NSpid": [
+                86642,
+                20
+              ]
+            },
+            "stat": {
+              "pid": 86642,
+              "ppid": 86622,
+              "starttime_ticks": 1256557
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86642,
+              "PPid": 86622,
+              "NSpid": [
+                86642,
+                20
+              ]
+            },
+            "stat": {
+              "pid": 86642,
+              "ppid": 86622,
+              "starttime_ticks": 1256557
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12505088,
+            "VmHWM": 12505088
+          }
+        },
+        "bounded_exit_confirmation": {
+          "type": "KeyError",
+          "message": "'VmRSS'",
+          "original_Popen_pid": 20,
+          "memory_observation_fabricated": false,
+          "actual_memory_observation": null,
+          "original_Popen_confirmed_exit_code": null,
+          "completed": false
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4344881152,
+          "shared_unreclaimable_bytes": 1944796288,
+          "elapsed_seconds": 0.0005629580009554047,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4344881152,
+          "shared_unreclaimable_bytes": 1952569768,
+          "elapsed_seconds": 0.03461478100143722,
+          "owned_worker_memory": {
+            "VmRSS": 12505088,
+            "VmHWM": 12505088
+          },
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4344864768,
+          "shared_unreclaimable_bytes": 1953425392,
+          "elapsed_seconds": 0.04603330000099959,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        }
+      ],
+      "elapsed_seconds": 0.04726822200063907,
+      "passed": true,
+      "expected_rejection_message": "explicit original resource-gate rejection control"
+    },
+    {
+      "case": "validation-exceeds-one-interval",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": false,
+      "injected_exception": "VmRSS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/validation-exceeds-one-interval/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/validation-exceeds-one-interval/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/validation-exceeds-one-interval/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/validation-exceeds-one-interval/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": false,
+      "original_Popen_pid": 21,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "0bf7f589e1987254971dbeccff841ec130b5972494e13d87b9b0bd869b161f44",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 21,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86643",
+          "status": {
+            "Pid": 86643,
+            "PPid": 86622,
+            "NSpid": [
+              86643,
+              21
+            ]
+          },
+          "stat": {
+            "pid": 86643,
+            "ppid": 86622,
+            "starttime_ticks": 1256561
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86643,
+            "PPid": 86622,
+            "NSpid": [
+              86643,
+              21
+            ]
+          },
+          "stat": {
+            "pid": 86643,
+            "ppid": 86622,
+            "starttime_ticks": 1256561
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12509184,
+          "VmHWM": 12509184
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/validation-exceeds-one-interval/entry-receipt.json",
+        "bytes": 1654,
+        "sha256": "5835e56199094c9ea14f5e0ebd1b14b15cbfdc7b7c85b4780c6946b07656a9bd"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/validation-exceeds-one-interval/entry-receipt-before-stimulus.original.json",
+        "bytes": 1654,
+        "sha256": "5835e56199094c9ea14f5e0ebd1b14b15cbfdc7b7c85b4780c6946b07656a9bd"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "rejection": {
+        "type": "ValueError",
+        "message": "no original sample interval or wall budget remains"
+      },
+      "actual_original_Popen_final_returncode": 0,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "7e09cbccf51e571a8973946d3b4be90e7bbdb8656aaf03aed1304654f319d8e0",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 1,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "0bf7f589e1987254971dbeccff841ec130b5972494e13d87b9b0bd869b161f44",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 21,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86643",
+            "status": {
+              "Pid": 86643,
+              "PPid": 86622,
+              "NSpid": [
+                86643,
+                21
+              ]
+            },
+            "stat": {
+              "pid": 86643,
+              "ppid": 86622,
+              "starttime_ticks": 1256561
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86643,
+              "PPid": 86622,
+              "NSpid": [
+                86643,
+                21
+              ]
+            },
+            "stat": {
+              "pid": 86643,
+              "ppid": 86622,
+              "starttime_ticks": 1256561
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12509184,
+            "VmHWM": 12509184
+          }
+        },
+        "bounded_exit_confirmation": {
+          "type": "KeyError",
+          "message": "'VmRSS'",
+          "original_Popen_pid": 21,
+          "memory_observation_fabricated": false,
+          "actual_memory_observation": null,
+          "original_Popen_confirmed_exit_code": null,
+          "completed": false
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4344844288,
+          "shared_unreclaimable_bytes": 1944785680,
+          "elapsed_seconds": 0.0005664439995598514,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4344844288,
+          "shared_unreclaimable_bytes": 1952138632,
+          "elapsed_seconds": 0.030372136998266797,
+          "owned_worker_memory": {
+            "VmRSS": 12509184,
+            "VmHWM": 12509184
+          },
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4344823808,
+          "shared_unreclaimable_bytes": 1952884104,
+          "elapsed_seconds": 0.03649264099840366,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        },
+        {
+          "disk_available_bytes": 4344778752,
+          "shared_unreclaimable_bytes": 1962405112,
+          "elapsed_seconds": 0.24877976499919896,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 62
+        }
+      ],
+      "elapsed_seconds": 0.4590513419989293,
+      "passed": true,
+      "expected_rejection_message": "no original sample interval or wall budget remains"
+    },
+    {
+      "case": "second-attempt",
+      "stimulus": "explicit injected sampling exception against a real owned child",
+      "expected_acceptance": false,
+      "injected_exception": "VmRSS",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-I",
+        "-S",
+        "-B",
+        "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+        "--supervision-contract",
+        "r7-supervisor/actual-controls-v1/second-attempt/supervision-contract.json",
+        "--receipt",
+        "r7-supervisor/actual-controls-v1/second-attempt/entry-receipt.json",
+        "--",
+        "--contract",
+        "r7-supervisor/actual-controls-v1/second-attempt/math-contract.json",
+        "--output",
+        "r7-supervisor/actual-controls-v1/second-attempt/worker-output"
+      ],
+      "scientific_worker": false,
+      "kernel_failure_reproduction_claimed": false,
+      "accepted": false,
+      "original_Popen_pid": 22,
+      "actual_handshake": {
+        "packet": {
+          "kind": "razr_owned_child_identity_v1",
+          "nonce": "9e9c6bd7d9f12b23fe859e138e8a157e5c2d7006a142c7cc2c56024210f8d031",
+          "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+          "os_getpid": 22,
+          "os_getppid": 2,
+          "proc_self_visible_pid": "86694",
+          "status": {
+            "Pid": 86694,
+            "PPid": 86622,
+            "NSpid": [
+              86694,
+              22
+            ]
+          },
+          "stat": {
+            "pid": 86694,
+            "ppid": 86622,
+            "starttime_ticks": 1256608
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "parent_identity": {
+          "os_getpid": 2,
+          "os_getppid": 1,
+          "proc_self_visible_pid": "86622",
+          "status": {
+            "Pid": 86622,
+            "PPid": 86621,
+            "NSpid": [
+              86622,
+              2
+            ]
+          },
+          "stat": {
+            "pid": 86622,
+            "ppid": 86621,
+            "starttime_ticks": 1256392
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "verified_binding": {
+          "status": {
+            "Pid": 86694,
+            "PPid": 86622,
+            "NSpid": [
+              86694,
+              22
+            ]
+          },
+          "stat": {
+            "pid": 86694,
+            "ppid": 86622,
+            "starttime_ticks": 1256608
+          },
+          "pid_namespace": "pid:[4026532351]",
+          "pid_for_children_namespace": "pid:[4026532351]"
+        },
+        "initial_memory": {
+          "VmRSS": 12496896,
+          "VmHWM": 12496896
+        }
+      },
+      "original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/second-attempt/entry-receipt.json",
+        "bytes": 1586,
+        "sha256": "b38a4cc0c92b5a912cddd81d8d7c4bf6960e8281ffb6d69e4e25bc94d15f8fce"
+      },
+      "complete_original_entry_receipt_before_stimulus": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/second-attempt/entry-receipt-before-stimulus.original.json",
+        "bytes": 1586,
+        "sha256": "b38a4cc0c92b5a912cddd81d8d7c4bf6960e8281ffb6d69e4e25bc94d15f8fce"
+      },
+      "actual_live_before_injected_missing_sample": true,
+      "rejection": {
+        "type": "ValueError",
+        "message": "at most one completed-entry exit confirmation is allowed"
+      },
+      "actual_original_Popen_final_returncode": -15,
+      "owned_descriptors_closed": true,
+      "confirmation_report": {
+        "contract_sha256": "1c2774a1b0e33683ab31d955e60b01998906cef2da8ef743c5b1aeb271bcd8d6",
+        "owned_child_identity_verified": true,
+        "bounded_exit_confirmation_count": 1,
+        "resource_stop": null,
+        "owned_child_handshake": {
+          "packet": {
+            "kind": "razr_owned_child_identity_v1",
+            "nonce": "9e9c6bd7d9f12b23fe859e138e8a157e5c2d7006a142c7cc2c56024210f8d031",
+            "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+            "os_getpid": 22,
+            "os_getppid": 2,
+            "proc_self_visible_pid": "86694",
+            "status": {
+              "Pid": 86694,
+              "PPid": 86622,
+              "NSpid": [
+                86694,
+                22
+              ]
+            },
+            "stat": {
+              "pid": 86694,
+              "ppid": 86622,
+              "starttime_ticks": 1256608
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "parent_identity": {
+            "os_getpid": 2,
+            "os_getppid": 1,
+            "proc_self_visible_pid": "86622",
+            "status": {
+              "Pid": 86622,
+              "PPid": 86621,
+              "NSpid": [
+                86622,
+                2
+              ]
+            },
+            "stat": {
+              "pid": 86622,
+              "ppid": 86621,
+              "starttime_ticks": 1256392
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "verified_binding": {
+            "status": {
+              "Pid": 86694,
+              "PPid": 86622,
+              "NSpid": [
+                86694,
+                22
+              ]
+            },
+            "stat": {
+              "pid": 86694,
+              "ppid": 86622,
+              "starttime_ticks": 1256608
+            },
+            "pid_namespace": "pid:[4026532351]",
+            "pid_for_children_namespace": "pid:[4026532351]"
+          },
+          "initial_memory": {
+            "VmRSS": 12496896,
+            "VmHWM": 12496896
+          }
+        }
+      },
+      "actual_resource_observations": [
+        {
+          "disk_available_bytes": 4344795136,
+          "shared_unreclaimable_bytes": 1944929096,
+          "elapsed_seconds": 0.000586874999498832,
+          "owned_worker_memory": null,
+          "actual_output_bytes": 0
+        },
+        {
+          "disk_available_bytes": 4344795136,
+          "shared_unreclaimable_bytes": 1952805088,
+          "elapsed_seconds": 0.038083809000454494,
+          "owned_worker_memory": {
+            "VmRSS": 12496896,
+            "VmHWM": 12496896
+          },
+          "actual_output_bytes": 0
+        }
+      ],
+      "elapsed_seconds": 0.047211315999447834,
+      "passed": true,
+      "expected_rejection_message": "at most one completed-entry exit confirmation is allowed"
+    }
+  ],
+  "passed_count": 18,
+  "case_count": 18,
+  "sources_unchanged": true,
+  "elapsed_seconds": 2.1308053330012626,
+  "peak_parent_RSS_bytes": 14548992,
+  "control_output_bytes_before_final_report": 213553
+}

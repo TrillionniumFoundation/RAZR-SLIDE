@@ -1,0 +1,12 @@
+{
+  "schema": "razr-r7-controls-independent-readback-attempt1-reviewer-assumption-failure-v1",
+  "recorded_utc": "2026-10-29T00:26:04.138883+00:00",
+  "reviewer_identity": {
+    "bytes": 11356,
+    "sha256": "e29423b2c059a68af9f61d0aa60262e4f45203f31941d4201064830c98435cfa"
+  },
+  "actual_exit_code": 1,
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/34f8fcac2ab1/r7-audit/read_owned_exit_controls_actual_r7_v1.py\", line 86, in <module>\n    assert row['command'][1:] == expected_suffix\nAssertionError\n",
+  "reason": "The independent reviewer assumed every argument path was spelled absolutely; actual harness was invoked with a relative fresh-output path, and its original command and canonical worker argument records correctly retain relative spellings. Actual entry separately binds resolved absolute contract/output paths. V2 verifies original lexical argv and absolute path bindings without modifying any control/source/receipt.",
+  "candidate_control_reclassified": false
+}

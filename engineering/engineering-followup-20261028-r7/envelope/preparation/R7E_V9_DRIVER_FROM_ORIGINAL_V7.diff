@@ -1,0 +1,99 @@
+--- run_portable_planar_r5e_v7.py
++++ run_portable_planar_r7e_v9.py
+@@ -1,4 +1,4 @@
+-"""Five original owned stages for new V7 planar exterior certificates.
++"""Five original owned stages for new V9 original Line-plane source hulls.
+ 
+ No network, package installation, native operation or old producer rerun is
+ performed. Every new source and original V5/V6 artifact remains byte-bound.
+@@ -41,7 +41,7 @@
+     need(sys.flags.isolated==1 and sys.flags.no_site==1 and sys.flags.optimize==0,'isolated unoptimized Python entry required')
+     src=Path(__file__).resolve().parent;r4=args.r4_root.resolve();v5=args.base_v5_root.resolve();v6=args.base_v6_root.resolve();out=args.output.resolve()
+     need(not out.exists(),'new output directory required');out.mkdir(parents=True,exist_ok=False);started=time.monotonic()
+-    run={'schema':'razr-r5e-portable-planar-exterior-pipeline-v7','started_utc':datetime.now(timezone.utc).isoformat(),
++    run={'schema':'razr-r7e-portable-planar-exterior-pipeline-v9','started_utc':datetime.now(timezone.utc).isoformat(),
+          'completed':False,'stages':[],'source_root':str(src),'public_r4_root':str(r4),'base_V5_root':str(v5),'base_V6_root':str(v6),
+          'source_commit':'c5f6606924937d716b007cd3ffa8e54df8ecfa5d','native_Common_called':False,'native_material_semantics_verified':False,
+          'compiled_transform_error_verified':False,'full_continuous_G2':False,'all_blockers_closed':False,
+@@ -50,14 +50,15 @@
+          'inner_wire_hole_semantics_verified_for_native':False,'original_raw_gate_reclassified':False,
+          'original_clearance_threshold_changed':False,'original_displacement_boxes_changed':False,
+          'original_V3_raw_clearance_passes_unchanged':4,'original_V4_selected_cell_bound_and_control_failure_unchanged':True,
++         'original_V7_failure_preserved':True,'missing_V8_archived_bytes_not_reconstructed':True,
+          'actual_V5_conditional_passes_preserved':8,'actual_V6_conditional_passes_preserved':8,
+          'V5_producer_rerun':False,'V6_producer_rerun':False}
+     def save():
+         run['elapsed_seconds']=time.monotonic()-started;write(out/'pipeline.json',run)
+     save()
+     try:
+-        lock_path=src/'R5E_PORTABLE_SOURCE_LOCK_V7.json';lock=json.loads(lock_path.read_text());run['source_lock_identity']=identity(lock_path)
+-        need(lock['schema']=='razr-r5e-portable-source-lock-v7-planar-exterior-conditioned' and lock['source_commit']==run['source_commit'],
++        lock_path=src/'R7E_PORTABLE_SOURCE_LOCK_V9.json';lock=json.loads(lock_path.read_text());run['source_lock_identity']=identity(lock_path)
++        need(lock['schema']=='razr-r7e-portable-source-lock-v9-original-Line-plane-hulls' and lock['source_commit']==run['source_commit'],
+              'registered new source lock or original anchor differs')
+         sources=[]
+         for row in lock['r5_files']:
+@@ -103,25 +104,26 @@
+         sequence=[('single-planar-exterior-leaf','single_planar_exterior_leaf'),('verify-single','verify_single'),
+                   ('preflight-planar-exterior','preflight_planar_exterior'),('all-planar-exterior-frames','all_planar_exterior_frames'),('verify-all','verify_all')]
+         for label,phase in sequence:
+-            verifying=phase.startswith('verify_');worker=src/('verify_planar_exterior_r5e_v7.py' if verifying else 'planar_exterior_refinement_r5e_v7.py')
++            verifying=phase.startswith('verify_');worker=src/('verify_planar_exterior_r7e_v9.py' if verifying else 'planar_exterior_refinement_r7e_v9.py')
+             output=out/label
+-            contract={'schema':'razr-r5e-portable-planar-exterior-contract-v7','registered_utc':datetime.now(timezone.utc).isoformat(),
++            contract={'schema':'razr-r7e-portable-planar-exterior-contract-v9','registered_utc':datetime.now(timezone.utc).isoformat(),
+                       'phase':phase,'producer_sha256':identity(worker)['sha256'],'source_commit':run['source_commit'],
+                       'r4_report':identity(r4/'support-v4/report.json'),'r4_independent_report':identity(r4/'independent-support-v4/report.json'),
+                       'r4_stationary_diagnostic':identity(r4/'remaining-spatial-diagnostic/report.json'),'public_input_bridge':identity(bridge_path),
+-                      'method':identity(src/'R5E_PLANAR_EXTERIOR_V7_BASIS.md'),
++                      'method':identity(src/'R7E_ORIGINAL_LINE_PLANE_V9_BASIS.md'),
+                       'capacity':{'wall_seconds':600,'RSS_limit_bytes':805306368,'maximum_splits':4096,'maximum_depth':24,
+                                   'maximum_boundary_box_tests':12000000,'maximum_support_inequality_tests':12000000,
+                                   'tiny_retained_volume_exact':str(Fraction(1e-7)/100000),'maximum_boundary_pieces_per_material':4096,
+                                   'cylinder_angular_patch_count':64,'circle_angular_patch_count':64,'Taylor_term_count':24,'centre_grid_denominator':65536,
+-                                  'maximum_UV_pieces_per_face':225,'maximum_total_UV_pieces':4064,'maximum_planar_models':48,
++                                  'maximum_UV_pieces_per_face':225,'maximum_total_UV_pieces':4100,'maximum_planar_models':50,
+                                   'maximum_actual_V6_retained_roots':4943,'all_UV_tests_charged_to_original_combined_budgets':True},
+                       'completed_prerequisites':[],
+                       'base_channel_source':identity(src/'exterior_channels_r5e_v3.py'),
+                       'base_verifier_source':identity(src/'verify_exterior_channels_r5e_v3.py'),
+-                      'single_verifier_source':identity(src/'verify_planar_exterior_r5e_v7.py'),
+-                      'planar_producer_source':identity(src/'planar_exterior_refinement_r5e_v7.py'),
+-                      'planar_model_source':identity(src/'planar_exterior_model_r5e_v7.py'),
++                      'single_verifier_source':identity(src/'verify_planar_exterior_r7e_v9.py'),
++                      'planar_producer_source':identity(src/'planar_exterior_refinement_r7e_v9.py'),
++                      'planar_model_source':identity(src/'planar_exterior_model_r7e_v9.py'),
++                      'extra_line_plane_source':identity(src/'R7E_V9_ORIGINAL_LINE_PLANE_PROJECTION.json'),
+                       'primitive_producer_source':identity(src/'primitive_refinement_r5e_v6.py'),
+                       'primitive_model_source':identity(src/'primitive_support_model_r5e_v6.py'),
+                       'primitive_source_bundle':identity(src/'R5E_V6_PRIMITIVE_SOURCE.json.gz'),
+@@ -141,7 +143,7 @@
+                       'base_V5_actual_owned_supervision':identity(v5/'all-trim-model-frames-supervision/controller.json'),
+                       'base_V5_actual_independent_owned_supervision':identity(v5/'verify-all-supervision/controller.json'),
+                       'real_retained_leaf_selection':identity(src/'R5E_V7_REAL_RETAINED_LEAF.json'),
+-                      'static_source_capacity':identity(src/'R5E_V7_STATIC_SOURCE_CAPACITY.json'),
++                      'static_source_capacity':identity(src/'R7E_V9_STATIC_SOURCE_CAPACITY.json'),
+                       'all_original_D_components_retained':True,'original_float64_TOL_unchanged':True,'native_Common_as_acceptance_premise':False,
+                       'conditional_planar_exterior_model_only':True,'conditional_primitive_support_model_only':True,'conditional_trim_model_only':True,
+                       'native_planar_region_semantics_verified':False,'native_primitive_semantics_verified':False,'native_trim_class_membership_verified':False,
+@@ -160,7 +162,7 @@
+                 need(capacity['execution_completed'] and capacity['all_frame_capacity_observations_completed'] and
+                      capacity['total_actual_V6_retained_roots']==4943 and capacity['complete_phase_maximum_tree_nodes']==13135,
+                      'actual finite all16 retained-forest preflight required')
+-                need(capacity['maximum_UV_pieces_per_face']<=225 and capacity['actual_total_UV_boundary_pieces']<=4064 and
++                need(capacity['maximum_UV_pieces_per_face']<=225 and capacity['actual_total_UV_boundary_pieces']<=4100 and
+                      capacity['maximum_complete_spatial_pieces_per_material']<=4096,'actual fixed source census exceeds capacity')
+                 contract['actual_capacity_basis']=identity(finished['preflight_planar_exterior']['report_path'])
+             if verifying:
+@@ -169,9 +171,9 @@
+                 contract['expected_phase']=prior;contract['expected_case_frames']=[['case-028',1]] if prior=='single_planar_exterior_leaf' else expected
+                 contract['producer_owned_supervision']=identity(finished[prior]['controller_path'])
+             cp=out/(label+'-contract.json');write(cp,contract)
+-            supervision=dict(shared_base,schema='razr-r5e-portable-owned-planar-exterior-supervision-v7',registered_utc=contract['registered_utc'],
++            supervision=dict(shared_base,schema='razr-r7e-portable-owned-planar-exterior-supervision-v9',registered_utc=contract['registered_utc'],
+                              registered_math_contract_sha256=identity(cp)['sha256'],worker=identity(worker),worker_output_directory=str(output),
+-                             algorithm_basis='New complete closed-UV exterior paths for immutable actual V6 retained leaves. Exact plane inverse and full original D, complete original Line/Circle covers and explicit bounded closure model, strict closed separation, no winding/sample membership. Fixed64 patches/24 terms/4064 totalUV pieces. All spatial and UV tests share original12M budgets. Actual first retained leaf and independent controls precede all16 measured source preflight and bounded full refinement; source/native membership stays open.')
++                             algorithm_basis='New complete closed-UV exterior paths for immutable actual V6 retained leaves. Exact plane inverse and full original D, complete original Line/Circle covers and explicit bounded closure model, strict closed separation, no winding/sample membership. Fixed64 patches/24 terms/4100 totalUV source pieces, including only the two original Line-plane additions; original48plane census unchanged. All spatial and UV tests share original12M budgets. Actual first retained leaf and independent controls precede all16 measured source preflight and bounded full refinement; source/native membership stays open.')
+             sp=out/(label+'-supervision-contract.json');write(sp,supervision);supervision_dir=out/(label+'-supervision')
+             command=[sys.executable,'-I','-S','-B',str(supervisor),'--contract',str(sp),'--out',str(supervision_dir),
+                      '--','--contract',str(cp),'--output',str(output)]

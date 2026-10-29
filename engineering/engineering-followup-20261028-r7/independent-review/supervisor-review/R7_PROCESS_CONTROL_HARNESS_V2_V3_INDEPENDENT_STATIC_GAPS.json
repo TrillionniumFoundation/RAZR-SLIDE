@@ -1,0 +1,31 @@
+{
+  "schema": "razr-r7-real-process-control-harness-v2-v3-independent-static-gaps-v1",
+  "recorded_utc": "2026-10-29T00:22:43.406802+00:00",
+  "source_identities": {
+    "/workspace/scratch/34f8fcac2ab1/r7-supervisor/exercise_owned_exit_confirmation_r7_v2.py": {
+      "bytes": 15359,
+      "sha256": "6bfc85c42f8e38ce7235916bc98f1946509b8f7e35ab8fe405f3d3dbad7ed866"
+    },
+    "/workspace/scratch/34f8fcac2ab1/r7-supervisor/exercise_owned_exit_confirmation_r7_v3.py": {
+      "bytes": 15638,
+      "sha256": "3d7cfa143e74db8c46edb179d56ac9b534edd8d052723f68d7413b7d1af6af97"
+    },
+    "/workspace/scratch/34f8fcac2ab1/r7-supervisor/R7_ACTUAL_PROCESS_CONTROLS_CONTRACT_V2.json": {
+      "bytes": 4259,
+      "sha256": "55184373c31394379e2a8d53b22441230281f82fa0be69627257a3be1153372d"
+    },
+    "/workspace/scratch/34f8fcac2ab1/r7-supervisor/R7_ACTUAL_PROCESS_CONTROLS_CONTRACT_V3.json": {
+      "bytes": 4275,
+      "sha256": "2763e851cd5d49a29200c4d9efc7c7676668b426b1016feaff7e9e74635bf7a8"
+    }
+  },
+  "V2_unexecuted_static_rejection_reason": "Live-negative expected rejection omits prefix completed entry although comparison is exact equality.",
+  "V3_closed_V2_exact_message_gap": true,
+  "V3_added_original_receipt_byte_snapshot_before_any_control_mutation": true,
+  "V3_remaining_static_rejection_reason": "The global 60-second SIGALRM raises TimeoutError, which either inner except Exception catches as a case rejection/control failure before proceeding to later cases; the one-shot alarm is then spent.",
+  "required_narrow_revision": "Use an explicit global budget exception propagated past both case-level catches, with each current case finally cleanup retained and top-level failure saved.",
+  "actual_control_processes_launched_by_reviewer": 0,
+  "new_scientific_worker_runs": 0,
+  "static_execution_admission": false,
+  "original_V9_failure_reclassified": false
+}

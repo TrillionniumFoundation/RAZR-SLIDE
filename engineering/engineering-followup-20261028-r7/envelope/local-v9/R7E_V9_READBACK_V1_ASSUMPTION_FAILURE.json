@@ -1,0 +1,25 @@
+{
+  "schema": "razr-r7e-v9-post-readback-v1-assumption-failure",
+  "actual_script": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/record_v9_actual_exit_v1.py",
+    "bytes": 7402,
+    "sha256": "029ee0099a77fe82ba5e25def310681a492ac545f567a9d418fa2ab102dbecd0"
+  },
+  "actual_script_exit_code": 1,
+  "actual_failure_type": "AssertionError",
+  "failed_assumption": "Both owned supervisors completed. Actual verify-single scientific worker exited0 and wrote completed reports, but original supervisor failed during missingVmRSS sampling.",
+  "prior_receipt": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/local-v9/R7E_V9_LOCAL_LAUNCH_RECEIPT_V1.json",
+    "bytes": 44907,
+    "sha256": "3c42d664b1ba63c83e9a7e965637c9ac97809b2fb8c085838cae37b5132ea9b7"
+  },
+  "prior_manifest": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/local-v9/R7E_V9_LOCAL_ACTUAL_OUTPUT_MANIFEST_V1.json",
+    "bytes": 3210,
+    "sha256": "e2c53f63662cf5820721b80e27f3de2678770844ec75650fa166d893e9e93e8f"
+  },
+  "both_original_artifacts_preserved": true,
+  "correction": "V2 separates scientific worker completion, owned monitoring failure, first-u predicate false, and actualdriver gate not reached. No original math/source/gate altered.",
+  "actual_science_driver_exit_code": 2,
+  "new_scientific_worker_executions": 0
+}

@@ -1,0 +1,97 @@
+--- planar_exterior_refinement_r5e_v7.py
++++ planar_exterior_refinement_r7e_v9.py
+@@ -16,7 +16,7 @@
+     'primitive_producer_source','primitive_model_source','primitive_source_bundle','base_V6_verifier_source',
+     'base_V6_input_bridge','base_V6_source_lock','base_V6_actual_report','base_V6_actual_independent_report',
+     'base_V5_input_bridge','base_V5_source_lock','base_V5_verifier_source','V5_trim_source_bundle',
+-    'base_V5_actual_report','base_V5_actual_independent_report','real_retained_leaf_selection','static_source_capacity']
++    'base_V5_actual_report','base_V5_actual_independent_report','real_retained_leaf_selection','static_source_capacity','extra_line_plane_source']
+ 
+ 
+ def need(ok,message):
+@@ -268,17 +268,19 @@
+ 
+ def main():
+     parser=argparse.ArgumentParser(allow_abbrev=False);parser.add_argument('--contract',type=Path,required=True);parser.add_argument('--output',type=Path,required=True)
+-    args=parser.parse_args();contract=json.loads(args.contract.read_text());need(identity(__file__)['sha256']==contract['producer_sha256'],'registered V7 producer differs')
++    args=parser.parse_args();contract=json.loads(args.contract.read_text());need(identity(__file__)['sha256']==contract['producer_sha256'],'registered new V9 producer differs')
+     need(not args.output.exists(),'new output directory required');args.output.mkdir(parents=True)
+     started=time.monotonic();phase=contract['phase']
+-    report={'schema':'razr-r5e-planar-exterior-refinement-v7','phase':phase,'started_utc':datetime.now(timezone.utc).isoformat(),
++    report={'schema':'razr-r7e-planar-exterior-refinement-v9','phase':phase,'started_utc':datetime.now(timezone.utc).isoformat(),
+             'source_sha256':identity(__file__)['sha256'],'contract_sha256':identity(args.contract)['sha256'],'execution_completed':False,
+             'conditional_planar_exterior_model_only':True,'conditional_primitive_support_model_only':True,'conditional_trim_model_only':True,
+             'native_planar_region_semantics_verified':False,'native_primitive_semantics_verified':False,'native_trim_class_membership_verified':False,
+             'inner_wire_hole_semantics_verified_for_native':False,'original_raw_gate_reclassified':False,'full_continuous_G2':False,
+             'all_blockers_closed':False,'native_Common_called':False,'compiled_transform_error_verified':False,
+             'original_V3_raw_passes_unchanged':4,'actual_V5_conditional_passes_preserved':8,'actual_V6_conditional_passes_preserved':8,
+-            'original_V4_failure_preserved':True,'V5_producer_rerun':False,'V6_producer_rerun':False,'frames':[],
++            'original_V4_failure_preserved':True,'original_V7_failure_preserved':True,
++            'missing_V8_archived_bytes_not_reconstructed':True,
++            'V5_producer_rerun':False,'V6_producer_rerun':False,'frames':[],
+             'counters':{k:0 for k in ['channels_tested','boundary_box_tests','spatial_boundary_piece_tests','UV_boundary_piece_tests',
+                                       'support_inequality_tests','UV_support_inequality_tests','UV_channels_tested',
+                                       'successful_nonaxis_separations','successful_planar_exterior_separations','splits','tree_nodes_visited']}}
+@@ -286,13 +288,13 @@
+         report['seconds']=time.monotonic()-started;report['peak_RSS_bytes']=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024
+         (args.output/'report.json').write_text(json.dumps(report,indent=2)+'\n')
+     try:
+-        scope(contract);need(phase in ('single_planar_exterior_leaf','preflight_planar_exterior','all_planar_exterior_frames'),'registered V7 phase required')
++        scope(contract);need(phase in ('single_planar_exterior_leaf','preflight_planar_exterior','all_planar_exterior_frames'),'registered new V9 phase required')
+         limits=contract['capacity'];need(limits['maximum_splits']==4096 and limits['maximum_depth']==24 and
+              limits['maximum_boundary_box_tests']==limits['maximum_support_inequality_tests']==12000000 and
+              F(limits['tiny_retained_volume_exact'])==F(1e-7)/100000 and limits['maximum_UV_pieces_per_face']==225 and
+-             limits['maximum_total_UV_pieces']==4064,'original budgets or fixed new source capacity changed')
+-        base=module(contract['base_channel_source'],'r5e_v7_frozen_base_channels')
+-        model=module(contract['planar_model_source'],'r5e_v7_planar_source_helpers')
++             limits['maximum_total_UV_pieces']==4100 and limits['maximum_planar_models']==50,'original budgets or fixed new source capacity changed')
++        base=module(contract['base_channel_source'],'r7e_v9_frozen_base_channels')
++        model=module(contract['planar_model_source'],'r7e_v9_planar_source_helpers')
+         actual,prior,prior_verified,pipeline=actual_v6_inputs(contract)
+         report['actual_V6_report']=actual['all-primitive-support-frames/report.json'];report['actual_V6_independent_report']=actual['verify-all/report.json']
+         report['immutable_V6_input_count']=len(actual);report['capacity']=limits
+@@ -302,6 +304,7 @@
+         require_prerequisites(contract,phase)
+         with gzip.open(bound(contract['primitive_source_bundle']),'rt') as stream:projection=json.load(stream)
+         need(projection['schema']=='razr-r5e-original-primitive-source-projection-v6','complete original V6 primitive projection required')
++        extra_projection=read(contract['extra_line_plane_source'])
+         expected=[(c,f) for c in ['case-001','case-006','case-028','case-037','case-054','case-063','case-072','case-089'] for f in (1,2)]
+         need([(r['case_id'],r['frame']) for r in prior['frames']]==expected,'original full16 actual source order changed')
+         frames=[r for r in prior['frames'] if (r['case_id'],r['frame'])==chosen] if phase=='single_planar_exterior_leaf' else prior['frames']
+@@ -321,7 +324,7 @@
+                      canonical(certificate['roots'][76])==selection['actual_V6_root_record_canonical_sha256'] and
+                      equal(selection['actual_V6_certificate'],actual[name]),'complete selected source leaf binding differs')
+             boundary=certificate['boundary_refinement'];sources=runtime_sources(model,boundary)
+-            planar,models=model.build_models(boundary,old,projection,limits)
++            planar,models=model.build_models(boundary,old,projection,limits,extra_projection)
+             total_roots+=len(leaves);total_uv+=models['total_UV_boundary_piece_count'];total_models+=models['applied_plane_model_count'];rejected+=models['rejected_plane_model_count']
+             max_piece=max(max_piece,max(len(s['pieces']) for s in sources))
+             max_uv=max([max_uv]+[len(m['uv_boundary_pieces']) for s in models['sources'] for m in s['models'] if m['applied']])
+@@ -334,6 +337,9 @@
+                  'source_piece_counts':[len(s['pieces']) for s in sources],
+                  'applied_planar_model_count':models['applied_plane_model_count'],'rejected_planar_model_count':models['rejected_plane_model_count'],
+                  'UV_boundary_piece_count':models['total_UV_boundary_piece_count'],
++                 'additional_original_plane_count':models['additional_original_plane_count'],
++                 'additional_applied_plane_count':models['additional_applied_plane_count'],
++                 'additional_rejected_plane_count':models['additional_rejected_plane_count'],
+                  'conditional_planar_exterior_model_only':True,'conditional_primitive_support_model_only':True,'conditional_trim_model_only':True,
+                  'native_planar_region_semantics_verified':False,'native_primitive_semantics_verified':False,'native_trim_class_membership_verified':False,
+                  'inner_wire_hole_semantics_verified_for_native':False,'original_raw_gate_reclassified':False,'full_continuous_G2':False}
+@@ -362,7 +368,7 @@
+                     exact_splits_this_frame=report['counters']['splits']-before['splits'],
+                     exact_combined_piece_tests_this_frame=report['counters']['boundary_box_tests']-before['boundary_box_tests'],
+                     exact_combined_support_tests_this_frame=report['counters']['support_inequality_tests']-before['support_inequality_tests'])
+-                payload={'schema':'razr-r5e-planar-exterior-tree-v7','frame':row,'planar_models':models,'roots':roots,
++                payload={'schema':'razr-r7e-planar-exterior-tree-v9','frame':row,'planar_models':models,'roots':roots,
+                          'base_V6_boundary_canonical_sha256':canonical(boundary),'actual_V6_excluded_open_sum_preserved_exact':str(old_removed),
+                          'V6_producer_rerun':False}
+                 destination=args.output/(key[0]+'-frame-'+str(key[1])+'-planar-exterior.json.gz')
+@@ -377,7 +383,7 @@
+                       actual_applied_plane_models=total_models,actual_rejected_plane_models=rejected,
+                       all_frame_capacity_observations_completed=len(report['frames'])==(1 if phase=='single_planar_exterior_leaf' else 16),
+                       planar_exterior_model_conditional_clearance_passes=sum(r.get('planar_exterior_model_conditional_clearance_gate_passed',False) for r in report['frames']))
+-        need(total_uv<=4064 and max_uv<=225 and max_piece<=4096 and total_models+rejected<=(6 if phase=='single_planar_exterior_leaf' else 48),'actual source capacity exceeds fixed census')
++        need(total_uv<=4100 and max_uv<=225 and max_piece<=4096 and total_models+rejected<=(8 if phase=='single_planar_exterior_leaf' else 50),'actual source capacity exceeds fixed census')
+         if phase!='single_planar_exterior_leaf':need(total_roots==4943,'full actual V6 retained forest census differs')
+         need(report['counters']['boundary_box_tests']==report['counters']['spatial_boundary_piece_tests']+report['counters']['UV_boundary_piece_tests'],
+              'all spatial and UV boundary tests must share original total budget')

@@ -1,0 +1,936 @@
+{
+  "schema": "razr-r7e-v9-local-launch-and-actual-exit-receipt-v2",
+  "recorded_utc": "2026-10-29T00:09:36.481976+00:00",
+  "source": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/record_v9_actual_exit_v2.py",
+    "bytes": 8185,
+    "sha256": "f665dad78b37829172c5ff52edc4a0cf138000020e3458734ef485738f72b2c9"
+  },
+  "registration": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/local-v9/R7E_V9_LOCAL_EXECUTION_REGISTRATION_V1.json",
+    "bytes": 43053,
+    "sha256": "a5cb6c0a4c630193181546eb1fc7754fcfdba23f5bca8fc264c4fad57f3070eb"
+  },
+  "launch_request": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/local-v9/R7E_V9_LOCAL_LAUNCH_REQUEST_V1.json",
+    "bytes": 1255,
+    "sha256": "f3720177b9688fe2528bfb489e33c31ff9689f305e2e2103ea3c3166b22409f1"
+  },
+  "exact_command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-I",
+    "-S",
+    "-B",
+    "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/run_portable_planar_r7e_v9.py",
+    "--r4-root",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4",
+    "--base-v5-root",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5",
+    "--base-v6-root",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6",
+    "--output",
+    "/workspace/scratch/34f8fcac2ab1/r7-envelope/local-v9/attempt-1"
+  ],
+  "working_directory": "/workspace/scratch/34f8fcac2ab1/razr-current",
+  "actual_driver_exit_code": 2,
+  "exit_observation": "Completed execution tool returned process exit code 2 after original driver ended.",
+  "actual_pipeline_started_utc": "2026-10-29T00:07:19.882852+00:00",
+  "actual_pipeline_finished_utc": "2026-10-29T00:08:11.712946+00:00",
+  "actual_pipeline_elapsed_seconds": 51.83012109400079,
+  "timing_scope": "driver-reported actual monotonic duration; outer API waiting time is not substituted",
+  "pipeline": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/local-v9/attempt-1/pipeline.json",
+    "bytes": 45142,
+    "sha256": "63bd75e9dfcf5aadf2236f43d3739dad5c5dab8438d7243a7ac924063cbb007f"
+  },
+  "stdout": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/local-v9/driver.stdout.log",
+    "bytes": 1035,
+    "sha256": "275ab65d4d9dbf5b85d562cb056926a9e4bfa96171a95a53d677ea89b64a1086"
+  },
+  "stderr": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/local-v9/driver.stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "complete_actual_output_manifest": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/local-v9/R7E_V9_LOCAL_ACTUAL_OUTPUT_MANIFEST_V2.json",
+    "bytes": 3327,
+    "sha256": "c4bc5beac6f9f64fb5cdd62fa845ad8355acbf704c132058bf8b04bbbc487e58"
+  },
+  "input_count_before": 146,
+  "input_count_after": 146,
+  "all146_original_inputs_and_frozen_sources_unchanged": true,
+  "post_execution_input_identities": [
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/planar_exterior_refinement_r5e_v7.py",
+      "bytes": 34205,
+      "sha256": "38c203b0f487617f107db2ac0b3653509083d560bc8c20c188a799bceb4813e3"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/planar_exterior_model_r5e_v7.py",
+      "bytes": 20243,
+      "sha256": "88457e733d2ce0b03974fd5a1d920e5c322bbf3d4f5c3ce2db49cbe880c30d59"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/verify_planar_exterior_r5e_v7.py",
+      "bytes": 121777,
+      "sha256": "147fbe2ac883428a4669a8659d51e22dd8c4b6f9c76a58064fdea305fd10ba7e"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/run_portable_planar_r5e_v7.py",
+      "bytes": 19811,
+      "sha256": "4ab8317623ca452e2a2f98233997c198eaaee0961d8d32d1b3b1485a165f6dca"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/prepare_planar_source_selection_r5e_v7.py",
+      "bytes": 8045,
+      "sha256": "93c44e6e43264617062142a93c0a4f5a939260e7b11be2f8909ebe4bda09a94c"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_PLANAR_EXTERIOR_V7_BASIS.md",
+      "bytes": 10779,
+      "sha256": "557c4dfb08e532eb1e440c1c3f7d74155a6a2fbee5e1c6c6a32a42d657eb69e0"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V7_BASE_V6_INPUT_BRIDGE.json",
+      "bytes": 10827,
+      "sha256": "e14eae0cd6bc3b63694009545ee89af7df51fba222e3d22d8613eea93738d579"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V7_REAL_RETAINED_LEAF.json",
+      "bytes": 10329,
+      "sha256": "c6933ebdf3609f4757ff564e6d51500ab33cc3a889f2da4447696f4f8df29e60"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V7_STATIC_SOURCE_CAPACITY.json",
+      "bytes": 1146,
+      "sha256": "41dfb29677c3af38198c8eddd1eb09e29cfa2c9ed5d1372f8bf7d5b4676cfd21"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V7_SOURCE_PREPARATION_RECEIPT.json",
+      "bytes": 1493,
+      "sha256": "acd237ed3d47a96ee4e4292ad899b69d0227f7bfe23bbda6d53101c1c2267d40"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/freeze_portable_sources_r5e_v7.py",
+      "bytes": 5911,
+      "sha256": "c8ddb413387c513e020e684a58b08d747b4d8f729f8726af39e78c5f82bcdb63"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/primitive_refinement_r5e_v6.py",
+      "bytes": 37735,
+      "sha256": "11d0f8f72ba7e1db2936a7d7f2fcb9906f7f3eb426b4ad362e430ec41793bb57"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/primitive_support_model_r5e_v6.py",
+      "bytes": 13220,
+      "sha256": "c9026014433502ca83434b7296d249c3c889d3a8bcbcf0a0e65807f4704683a5"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/verify_primitive_support_r5e_v6.py",
+      "bytes": 95688,
+      "sha256": "05f7d1d76096e0518943bbdfbf6d5da7ae6a91248f83ef6e98432ae168df29bd"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/run_portable_primitive_r5e_v6.py",
+      "bytes": 18163,
+      "sha256": "df9972a712433c6cb0f2e45589c725daf1c3876fd1888fba4a24522a3594ee1e"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/prepare_primitive_source_projection_r5e_v6.py",
+      "bytes": 11289,
+      "sha256": "31e193db399b01ee4e9376dd150fd851c1522fddbdb3b1cc936d79dd4bc7eb21"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_PRIMITIVE_SUPPORT_V6_BASIS.md",
+      "bytes": 12183,
+      "sha256": "38dde48d8f4ba70f392fb65524a3ceffac6910b7ccdfed9c098de911b0f760db"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V6_PRIMITIVE_SOURCE.json.gz",
+      "bytes": 51349,
+      "sha256": "1dfc953f6ef255ac8fdfe93d147c293049753b38c871ed4f4198bb5d089ba695"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V6_PRIMITIVE_SOURCE_RECEIPT.json",
+      "bytes": 1164,
+      "sha256": "bb8e3ef55cb6dd9263e0aa120467dcdd2d815beabf49ab68453b7ef78531e307"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V6_REAL_RETAINED_LEAF.json",
+      "bytes": 39261,
+      "sha256": "1e52b5f2021674f0e798aa97418ced7ceb0bdedd4fb7a08d1fc20a65ea136d5b"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V6_BASE_V5_INPUT_BRIDGE.json",
+      "bytes": 4997,
+      "sha256": "639dcb2d0d079dfd2e8356b1f096486a8f49c61aaeb2ecfd428988a0ab408335"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/exterior_trim_r5e_v5.py",
+      "bytes": 29496,
+      "sha256": "6d79a7e323747fd6e815993e4d1bbb7b967d91ca69cd33f99e23269570730a73"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/trim_boundary_model_r5e_v5.py",
+      "bytes": 12729,
+      "sha256": "704e5dad9195fbd31edd2a5aff9121bf198baf540a2d9c17bc9f4376ab42b1f6"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/verify_exterior_trim_r5e_v5.py",
+      "bytes": 57459,
+      "sha256": "8d2083717a025601eccfbab8679f18e8839c2def0da4995652280b00f79be2a8"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/run_portable_trim_r5e_v5.py",
+      "bytes": 15485,
+      "sha256": "7a8dc6607e4a0e52330ad6a9bec253981b19205d307894ce11c6ff1d24b21cbe"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_TRIM_REALIZATION_MODEL_V5_BASIS.md",
+      "bytes": 10590,
+      "sha256": "d55d3cb863b27ad1c9cf7ec61fe28855f4c5cb323db9965031470fdcd81f149b"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/prepare_trim_source_projection_r5e_v5.py",
+      "bytes": 5261,
+      "sha256": "e1f9f408b63c6748d20d3b6b03ae9d13e39f47d097f8d0ad2e33f76463fff9d5"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V5_PLANAR_TRIM_SOURCE.json.gz",
+      "bytes": 35630,
+      "sha256": "bc778c13f9efbc280bcb93e59edbc821d2a7b751f0b8730231d1b0bd855e2804"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V5_PLANAR_TRIM_SOURCE_RECEIPT.json",
+      "bytes": 4137,
+      "sha256": "4b396e86db8e6f95fcbdf7138d1dccc9121d59df036a6ad9595af5a768e67aeb"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V5_STATIC_SOURCE_CAPACITY.json",
+      "bytes": 10633,
+      "sha256": "c206e86982658a98b98960ac0a753ae53412aca638c2fa21d913b7d1e7521ab1"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V4_REAL_RETAINED_CELL.json",
+      "bytes": 3573,
+      "sha256": "9541b3f61977525c49b0923a6087adbf795e04b05155e7fae828d1db6e7dec44"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/exterior_channels_r5e_v3.py",
+      "bytes": 19321,
+      "sha256": "cd167893a463a5f5d39ce7d64caaac5c07e278ddb96420f790c07f1664e9da8a"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/verify_exterior_channels_r5e_v3.py",
+      "bytes": 16453,
+      "sha256": "ea564a94bf38a54004dc21725a0c18a7bd136d517b4a1b84b3bec7ad3da321ad"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_EXTERIOR_CHANNEL_METHOD.md",
+      "bytes": 4376,
+      "sha256": "e258a529ea04f99b36850638aab4b7fb92615261334e86c3fc009f7cc3f6f7d2"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_PUBLIC_INPUT_BRIDGE.json",
+      "bytes": 10493,
+      "sha256": "65f5ccf7a917b92c665b513f6a15b80fda516b037c782ba4cad799e97ed187b2"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_PORTABLE_SOURCE_LOCK_V5.json",
+      "bytes": 3396,
+      "sha256": "d05a6f6a69ac5eb627d3d1180ff543c4f9b70c7c424c972dfab2b305b8a21211"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_PORTABLE_SOURCE_LOCK_V6.json",
+      "bytes": 5489,
+      "sha256": "5cf2c18e7971912949e7e7167451cf547e291be421f205d78ef668fd7ab5b499"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_PORTABLE_SOURCE_LOCK_V7.json",
+      "bytes": 8074,
+      "sha256": "da61d0c1af1b6ac7ca2013990bf6cda43d1e8309a859b7bbfd7ec51abbf9971f"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/planar_exterior_model_r7e_v9.py",
+      "bytes": 28566,
+      "sha256": "39d0cfb1184e956a5181cc307a9f00ddf80b7bd1d4ba374c3fb6dc12b1a7056e"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/planar_exterior_refinement_r7e_v9.py",
+      "bytes": 34757,
+      "sha256": "33b4cd62bf49fdb2277f4b7db4194dcd205d7e0dcc2552b93b2702bc3f1e4149"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/verify_planar_exterior_r7e_v9.py",
+      "bytes": 141983,
+      "sha256": "d79fa404ce3311ecb9c8ab0f89791bde7bc33c738d4f791a09d1376081d89435"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/run_portable_planar_r7e_v9.py",
+      "bytes": 20118,
+      "sha256": "bf9881d53fc2e008a15745165509704746479fca2ada01a431c1255904b09b6e"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R7E_ORIGINAL_LINE_PLANE_V9_BASIS.md",
+      "bytes": 7926,
+      "sha256": "6ed7b9bbf223074a48c049da24674269b46d206397505ddc728835e6696ac985"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R7E_V9_STATIC_SOURCE_CAPACITY.json",
+      "bytes": 2251,
+      "sha256": "486582e564b8e1b236760d2bf62a3ceab052048e20581174176aa7d4c2d008dd"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R7E_V9_ORIGINAL_LINE_PLANE_PROJECTION.json",
+      "bytes": 53283,
+      "sha256": "dcd52e91cb5ff7a4f28ba13a4f15e0830dd865aef93fb6178955c499a04e822f"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R7E_PORTABLE_SOURCE_LOCK_V9.json",
+      "bytes": 10443,
+      "sha256": "a797041d09fab9a40ddbc474d9812c06b316e4fb5dcdacbc7947e02a3c4cc9f6"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/supervise_owned_pure_math_r4e_v2.py",
+      "bytes": 8104,
+      "sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/run_owned_pure_math_r4e_v3.py",
+      "bytes": 5457,
+      "sha256": "012da59133c15550b1bb4adac969edeb65f335ddb9c22d5ae4c321318f147823"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/additional-bspline-v1/source/source-original/owned_process.py",
+      "bytes": 13400,
+      "sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/report.json",
+      "bytes": 251491,
+      "sha256": "286cfad28e08da5426742530a0d7f6901fb54317643507580bd9cddc26ad6887"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/independent-support-v4/report.json",
+      "bytes": 24298,
+      "sha256": "1224b5e72b9635aa84227b2b3e7b7a4091cca8483c916392f6634a49088b7110"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/remaining-spatial-diagnostic/report.json",
+      "bytes": 243761,
+      "sha256": "f1edf0c77a622d30a5623114edb8f6bfa0d3a09bd0009868255552a2c1c2514f"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/case-001-frame-1-complete-support.json.gz",
+      "bytes": 1114119,
+      "sha256": "224bc618d08ebc5c8f5dbf8aa43fd598631928b523ef49798272dbb17e789d8a"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/case-001-frame-2-complete-support.json.gz",
+      "bytes": 1944749,
+      "sha256": "455a032c8c462b16a819d743e2a913b1708b3ac074fb201cb2962d4473d5b1fd"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/case-006-frame-1-complete-support.json.gz",
+      "bytes": 956158,
+      "sha256": "602bb4134a5309b12aa82b980824b3227121926f11fd555eead88153270f57e9"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/case-006-frame-2-complete-support.json.gz",
+      "bytes": 2455249,
+      "sha256": "cd7f07c60b7fb4933336e1a99ed79914ae3a6140505764cde83fa7eb05b32db2"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/case-028-frame-1-complete-support.json.gz",
+      "bytes": 1692905,
+      "sha256": "5923e789084831c384f551a245f1996250ef11562a486b7fbc0974ec50246ed9"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/case-028-frame-2-complete-support.json.gz",
+      "bytes": 1051650,
+      "sha256": "6e1c972d6891a80984b3b86c11bf4ef5bdc6c15537cc54a6d9e9c7e048201232"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/case-037-frame-1-complete-support.json.gz",
+      "bytes": 1680164,
+      "sha256": "d16809e8c8c04451051e3236168b7d32ba189ac0b2495e6164d61c8eb7d7a088"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/case-037-frame-2-complete-support.json.gz",
+      "bytes": 873470,
+      "sha256": "58aaf59de246efcddf551578d0da4c7795c505511c23f7975f2c719aa79f01ba"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/case-054-frame-1-complete-support.json.gz",
+      "bytes": 413538,
+      "sha256": "7395766867c473a1ccb203f5aabbddbba8856b72e6dac8b520343f8f12ae3994"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/case-054-frame-2-complete-support.json.gz",
+      "bytes": 66398,
+      "sha256": "08a9fc55eff5fcd824791cce62a0cb85057db92c3f0e878a8028eeb472286c2a"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/case-063-frame-1-complete-support.json.gz",
+      "bytes": 2421520,
+      "sha256": "cdf1cd06b3b18ccb734cf3f6ed29c2b391f0722632bd78944cf9de556c851659"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/case-063-frame-2-complete-support.json.gz",
+      "bytes": 1215735,
+      "sha256": "0a7e151cfef58ebd5d2016e1e67c6ec561760c0b00413f809278cdca3a76711e"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/case-072-frame-1-complete-support.json.gz",
+      "bytes": 2432351,
+      "sha256": "18c77d44308261d107516e4cfd794766829dba4e20a0af92cc85bc478090826d"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/case-072-frame-2-complete-support.json.gz",
+      "bytes": 1324895,
+      "sha256": "5287d209bb896a44c2654542f2409255dd33d85be6e9ab97c52ccfa63b892030"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/case-089-frame-1-complete-support.json.gz",
+      "bytes": 795669,
+      "sha256": "63af958aefad5d74c61d8dfb79575c1c2e89c68bfcb5dbc9a2b1b0c73f2a002f"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/case-089-frame-2-complete-support.json.gz",
+      "bytes": 67510,
+      "sha256": "e34f3e351176631348414f961a8aa67c7e1582eea15c952dfd1d1ce5721a3f7b"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/pipeline.json",
+      "bytes": 23263,
+      "sha256": "abaa67e9d6b31be832b2f93a80b49b269328984d79558c25992e2aa178080f4d"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/report.json",
+      "bytes": 95661,
+      "sha256": "31fb8469e843a4b2831482b0578cc7630e11ccf9fc98d386130587f7b42160b8"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/verify-all/report.json",
+      "bytes": 38136,
+      "sha256": "45c59baaed87d48f9e2408f02cc36efe9e7a568754ee82bb3c704eeaec40ef51"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames-supervision/controller.json",
+      "bytes": 6255,
+      "sha256": "91a1649245856c07e65957f123b116a6ef81a4cc643337644af6108764987c12"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/verify-all-supervision/controller.json",
+      "bytes": 5928,
+      "sha256": "7efefe2ec2908254eed6c381d63484f58d1f4c1ee6bd6a4d4e18c008cdf9d3a4"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames-contract.json",
+      "bytes": 5959,
+      "sha256": "acccea3c16f9bbb44699dab8bf3171e4bd2ae6794092da38a30cc2487a2c5994"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames-supervision-contract.json",
+      "bytes": 1942,
+      "sha256": "dfa75cd78cbe889b71b7faafc952edd1419220ffb5757e87e608702f050994e7"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/verify-all-contract.json",
+      "bytes": 5403,
+      "sha256": "64e57b9707ea564805b34e0311dec70b5ceae3e3388b95c23c0165536f4029bc"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/verify-all-supervision-contract.json",
+      "bytes": 1938,
+      "sha256": "185ce5ef8342970f160f5736fe9acef837fff2e429df218a8b3abc596f7d0b94"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/case-001-frame-1-trim-model.json.gz",
+      "bytes": 106951,
+      "sha256": "f7ff23c4207412a5ad1577ee070a8d63cfb95c5bea5c70f4c5d1cde89fee266c"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/case-001-frame-2-trim-model.json.gz",
+      "bytes": 105337,
+      "sha256": "fe5f16bbd000f8025367a0c9015efa3fabdd4ae82f82cfe90d48ce5b7569e7be"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/case-006-frame-1-trim-model.json.gz",
+      "bytes": 97713,
+      "sha256": "1739bbd5a88ee018bf30244083bc5f1f88e4a06faa2a062395c46c1d6df0c674"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/case-006-frame-2-trim-model.json.gz",
+      "bytes": 94261,
+      "sha256": "1e6510313a3daa4b577f1e890a1edbf55aa65a2c376da856994bce3621c95dbc"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/case-028-frame-1-trim-model.json.gz",
+      "bytes": 97587,
+      "sha256": "bf760e204bc1a63088fe51bb3330594743f69afb780d6e28e3445235b3a75a25"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/case-028-frame-2-trim-model.json.gz",
+      "bytes": 96956,
+      "sha256": "54d738ef004ad40202db3f82f3090474803d4517d861e7e08c2cd41251ea5542"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/case-037-frame-1-trim-model.json.gz",
+      "bytes": 73937,
+      "sha256": "6e6e61ebc026eada02e0310e711724858631feb63328c53f29da9e3815483358"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/case-037-frame-2-trim-model.json.gz",
+      "bytes": 71072,
+      "sha256": "ff832ba14107ec67d22c17d3a6a4fc5c73759836adad032c758fe61c57224d18"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/case-054-frame-1-trim-model.json.gz",
+      "bytes": 13988,
+      "sha256": "cbe09c12ca992b2c7825a004333465028fcb4e026dd2a6b993f516e9322159b9"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/case-054-frame-2-trim-model.json.gz",
+      "bytes": 13982,
+      "sha256": "f6e63d9873278b2ec25b00fea50c71996a0efb7e77a5e0c4aca9494fcd22b40c"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/case-063-frame-1-trim-model.json.gz",
+      "bytes": 108348,
+      "sha256": "b7d0d13de2e39068d18e65830583f90cf18e6a75c6075507e8ea7d49b9161d2d"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/case-063-frame-2-trim-model.json.gz",
+      "bytes": 106007,
+      "sha256": "6b2e63d3bc9f4b894c8c22fed1e38ee109b55bcd552cef30accbb3b79df2ffca"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/case-072-frame-1-trim-model.json.gz",
+      "bytes": 103813,
+      "sha256": "999d69ce6518b0a9e449c359ce06cbaf16ecdfa8e13f805b492ea217b73d4aad"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/case-072-frame-2-trim-model.json.gz",
+      "bytes": 93258,
+      "sha256": "083b802fdb5946415d403de36f588e19823d0c7ab744c7a1ae2422da74df9e6d"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/case-089-frame-1-trim-model.json.gz",
+      "bytes": 14950,
+      "sha256": "d41ef63671ef65fcbfbf0f797f683d3c6363d8be3259386bab367402c0d2627e"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/case-089-frame-2-trim-model.json.gz",
+      "bytes": 14946,
+      "sha256": "4b99e2f79aaf1cd5736edc419aa143ae9297a8942a9e77f229b45a36a8efa192"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/case-001-frame-1-primitive-support.json.gz",
+      "bytes": 90977,
+      "sha256": "d20cc3ca34d0abb1e5f7d3ff7c3ffe54c93c8274725998bd26b515b14a1978ed"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/case-001-frame-2-primitive-support.json.gz",
+      "bytes": 91887,
+      "sha256": "f47e40bb45cc41eab5e6c5d1f50040805ceac19d1524d24ecbbab72ae702f680"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/case-006-frame-1-primitive-support.json.gz",
+      "bytes": 83211,
+      "sha256": "fb69ccdf6056a07133bcb34a031b1e4771b3201a7ec0181074ecc3bdc77b49a2"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/case-006-frame-2-primitive-support.json.gz",
+      "bytes": 82333,
+      "sha256": "1ec6837273bf8ce42dafa0c5b8e2d7729b0e30fd562ca462ed8f179c1cfd3fef"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/case-028-frame-1-primitive-support.json.gz",
+      "bytes": 4686983,
+      "sha256": "f6a0ff0d5e32e0e19835024d009d51e5c42e73aeb412309f7d3f86aba8d02253"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/case-028-frame-2-primitive-support.json.gz",
+      "bytes": 1771092,
+      "sha256": "4e08db3933c6622873fbea121373e6e0d9b7901818d1e666ec385a4333da3786"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/case-037-frame-1-primitive-support.json.gz",
+      "bytes": 1789798,
+      "sha256": "095082fab7e92b3a3c0ef2f33b2ee986a27199b86eeba5b06e806e9a729e8903"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/case-037-frame-2-primitive-support.json.gz",
+      "bytes": 1794468,
+      "sha256": "605bb860efb1c6370de9b94c088eb153ed72d5ce33ed3c7a00e02e8045169e2f"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/case-054-frame-1-primitive-support.json.gz",
+      "bytes": 14269,
+      "sha256": "d99f795bdfb92f4f9589389931edc361790b3ea0933d798f251df29549a43e5b"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/case-054-frame-2-primitive-support.json.gz",
+      "bytes": 14222,
+      "sha256": "e471bdc52cfc8a5ed013d4699c985f9f5b72fe67acd5c6bbd21fc7fe64eb5806"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/case-063-frame-1-primitive-support.json.gz",
+      "bytes": 1785365,
+      "sha256": "3d6782e14ef086119368127f93028588c36454affcd2d85b05884d15294e06d1"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/case-063-frame-2-primitive-support.json.gz",
+      "bytes": 1783160,
+      "sha256": "304f804bc643987f13b7246de55a638fb94d7e0d413b6ed98ed718bfd3f5367b"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/case-072-frame-1-primitive-support.json.gz",
+      "bytes": 1817554,
+      "sha256": "f161d304f1a04d451f6f22181673fc9ea5b10fe8a55f7b7b5b88fcda48c59dc2"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/case-072-frame-2-primitive-support.json.gz",
+      "bytes": 1810910,
+      "sha256": "0bba4059531ea882c911fb6d0ef2a7f847f55513653eec5c4c9175bc7d2c1244"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/case-089-frame-1-primitive-support.json.gz",
+      "bytes": 15151,
+      "sha256": "2e1f18fbddcddf2b063ebabdf3e47b5b67f6738529983d3deaf3a047db317728"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/case-089-frame-2-primitive-support.json.gz",
+      "bytes": 15088,
+      "sha256": "5286affdf6efe34e299ca6424d5a7e06ef480b534872e5c15ad557b20f07b2c9"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/report.json",
+      "bytes": 173959,
+      "sha256": "9b7ecb9f016d1560c3ecafe9f3ea09bf7259c4cce32b5b13c334f7bdae1a861f"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames-contract.json",
+      "bytes": 8439,
+      "sha256": "770486b16e4047c2b731e147b1e1609d2979bf806372190544b00e63f32bd3a2"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames-driver.log",
+      "bytes": 122,
+      "sha256": "bea18b48ed1df98394c1ba6620e7e0e86d5989ca0d98c734f7a94ead81e393c0"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames-supervision/controller.json",
+      "bytes": 22336,
+      "sha256": "8d5d1c623683a5831860f146f819bd3cbab6e3861aa9ddd4a22ea4d755082ac5"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames-supervision/entry-receipt.json",
+      "bytes": 924,
+      "sha256": "67adc461c35523108926363367176ad720dd93568aba33dd3099f1319436216e"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames-supervision/execution.log",
+      "bytes": 397,
+      "sha256": "e8c0d739e3435d98e33b06e066785ab31dd3c21cc02b6c12047a93d953b90b63"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames-supervision-contract.json",
+      "bytes": 2012,
+      "sha256": "c06c9bf61438f354a21733c74407696d6819bf98064dbced27989122784edda7"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/pipeline.json",
+      "bytes": 32485,
+      "sha256": "aa6050aa50824add70511049197344e18928583cdbf1d3a646e3f0ba06b760d1"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/preflight-primitive-support/report.json",
+      "bytes": 147916,
+      "sha256": "c351c2dfeb4f9b75fb07ab773e4c6782607b4484e91515c249bf9c501ac0144d"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/preflight-primitive-support-contract.json",
+      "bytes": 7617,
+      "sha256": "91f5b308a75078c3f63f59b520f4f24dbe13fc730a75fd8508d62311fb368a0a"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/preflight-primitive-support-driver.log",
+      "bytes": 121,
+      "sha256": "19a0f214306fd0f95a1854bd2815e2c21db0b9ee06a2bbe37813f93d4d2ad916"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/preflight-primitive-support-supervision/controller.json",
+      "bytes": 6708,
+      "sha256": "95a5059ac8d159f9d7a8b8a711580073dddc2575250a41938bbd2f108977e726"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/preflight-primitive-support-supervision/entry-receipt.json",
+      "bytes": 919,
+      "sha256": "43835c1c8d95d4718e649cc17df13be767a86922ba9b0c5350a490b89237a5d2"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/preflight-primitive-support-supervision/execution.log",
+      "bytes": 371,
+      "sha256": "10e8cb9f5b8c74a2035b368ed9830b0b7641e70f9b77a53a8cb16b162fb8ca1b"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/preflight-primitive-support-supervision-contract.json",
+      "bytes": 2011,
+      "sha256": "2bbdf288d427473afcf0fc1eaea98ad685cbe047751f335527644299de437f17"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/single-primitive-support-leaf/case-028-frame-1-primitive-support.json.gz",
+      "bytes": 1742819,
+      "sha256": "0f703aded7d9c692b4d69f095c34d35730bc52459b44cee9504844f0d056a901"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/single-primitive-support-leaf/report.json",
+      "bytes": 9915,
+      "sha256": "a77a3fd259a47af6a949219ab7de2e4f313e4d86ccbfcc51372053248ddf8cb1"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/single-primitive-support-leaf-contract.json",
+      "bytes": 6564,
+      "sha256": "1f52b4881f1baf8add83c99c5f32ac1da9790a54dd31d1225aeeac0618810a71"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/single-primitive-support-leaf-driver.log",
+      "bytes": 121,
+      "sha256": "8101773c0e9c31dc87614f4412fb0fe877b847e125252f15f6d44fc83cc00afe"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/single-primitive-support-leaf-supervision/controller.json",
+      "bytes": 5938,
+      "sha256": "844860f377808b15e3a8091d6af83aa02c41ebd91e20e5469e0314021c98342c"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/single-primitive-support-leaf-supervision/entry-receipt.json",
+      "bytes": 927,
+      "sha256": "0c2558865ac49d121f0ec9e9f706f728c4b2113f4af3e0583daa6f4cdb8976e0"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/single-primitive-support-leaf-supervision/execution.log",
+      "bytes": 379,
+      "sha256": "62cff9fb6c592e3e12baef42f51808fad1d952034c5c06f18e5cbaadc7606da4"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/single-primitive-support-leaf-supervision-contract.json",
+      "bytes": 2013,
+      "sha256": "194fa28e5d12e3460734ca1a0ad3e60624bf53d5a3cf6984a6cd96291c57d713"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/verify-all/report.json",
+      "bytes": 86939,
+      "sha256": "b0e6fc959516f2702eab0a2eecb3e10abc79ff4c188838c960188ef5793530d4"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/verify-all-contract.json",
+      "bytes": 7809,
+      "sha256": "576c73ec5bbf0441e3c45c1dfad273fd4a10ef9b2c52dcfecd82f30c8b492cb8"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/verify-all-driver.log",
+      "bytes": 121,
+      "sha256": "7fc992335071d26af9605b3f849478ceefd3c04c62a5f3b9c1c98525942ccc83"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/verify-all-supervision/controller.json",
+      "bytes": 25295,
+      "sha256": "ab318f80bc53e121fc9f760123cb144d3feaf1e19ca6ead5539bbd581c5ab0f2"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/verify-all-supervision/entry-receipt.json",
+      "bytes": 852,
+      "sha256": "d4b9348a5010e904b48077ec346194aa2392f896f7fcd54dd06faeb3f44b8335"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/verify-all-supervision/execution.log",
+      "bytes": 204,
+      "sha256": "64f83532a4bfd70031b948edc23584f0487b14926f7cc92bea133a5313ef8fc8"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/verify-all-supervision-contract.json",
+      "bytes": 1998,
+      "sha256": "75a044b62d4fc76dad74e7420dd824cac6dfc50ed32f921c54c615fddf31e524"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/verify-single/report.json",
+      "bytes": 18102,
+      "sha256": "cfeb380e7e7fefadaff53a2e229bcd4a16e31b5a924d762f949ad24fb7c0b082"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/verify-single-contract.json",
+      "bytes": 7227,
+      "sha256": "d9c6fb8ae7c41e50c1a413f03c630299750c1e30395647db918f2c35af4d74c9"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/verify-single-driver.log",
+      "bytes": 122,
+      "sha256": "7afca0d2e916287b9fbf12575fab2550a63ea8785cb69004c4ecc424e38afdea"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/verify-single-supervision/controller.json",
+      "bytes": 5869,
+      "sha256": "71f6db26bce623d3c17799d2e6705dcd27f512234b453b87c08ff7ad41eca3c2"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/verify-single-supervision/entry-receipt.json",
+      "bytes": 863,
+      "sha256": "74e3ee345ce0330ec9e4e597e0d0544bf7f85ced744b543b812210add905d5b8"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/verify-single-supervision/execution.log",
+      "bytes": 200,
+      "sha256": "4cb7a224a5f4ee0d4323b2789dccf7741c44083f81c3dc5e561ea354ca7f1104"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/verify-single-supervision-contract.json",
+      "bytes": 2001,
+      "sha256": "a34f798f9c8cba76e67ee42e017dfa64e843fcd1d9f8a47f4a9f295207e4e194"
+    }
+  ],
+  "stages": [
+    {
+      "label": "single-planar-exterior-leaf",
+      "phase": "single_planar_exterior_leaf",
+      "stage_completed": true,
+      "worker_started": true,
+      "worker_exit_code": 0,
+      "controller_completed": true,
+      "resource_stop": null,
+      "controller_elapsed_seconds": 5.28027639299944,
+      "entry_peak_RSS_bytes": 132534272,
+      "native_geometry_imported": false,
+      "controller_failure": null
+    },
+    {
+      "label": "verify-single",
+      "phase": "verify_single",
+      "stage_completed": false,
+      "worker_started": true,
+      "worker_exit_code": 0,
+      "controller_completed": false,
+      "resource_stop": null,
+      "controller_elapsed_seconds": 46.307105627000055,
+      "entry_peak_RSS_bytes": 182620160,
+      "native_geometry_imported": false,
+      "controller_failure": {
+        "type": "RuntimeError",
+        "message": "still-running owned child RSS unavailable: KeyError: 'VmRSS'"
+      }
+    }
+  ],
+  "producer": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/local-v9/attempt-1/single-planar-exterior-leaf/report.json",
+    "bytes": 23329,
+    "sha256": "80715392a754a8ef003cd8c82185c8fe4904be77892db4024b75bc2b48181968"
+  },
+  "independent_checker": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/local-v9/attempt-1/verify-single/report.json",
+    "bytes": 45735,
+    "sha256": "84a8ea0b3379852394efb312a9d7b8e52e141f1bcf050e62a9093e280d4e7138"
+  },
+  "producer_execution_completed": true,
+  "independent_execution_completed": true,
+  "actual_first_frame": {
+    "case_id": "case-028",
+    "frame": 1,
+    "source_leaf": [
+      76,
+      47
+    ],
+    "upper_exact": "0",
+    "saved_planar_u": 0,
+    "producer_conditional_upper_pass_count": 1,
+    "independent_conditional_upper_pass_count": 1,
+    "models_applied": 8,
+    "models_rejected": 0,
+    "additional_planes_applied": 2,
+    "additional_planes_rejected": 0,
+    "complete_UV_boundary_pieces": 554
+  },
+  "counters": {
+    "channels_tested": 1438,
+    "boundary_box_tests": 171429,
+    "spatial_boundary_piece_tests": 97930,
+    "UV_boundary_piece_tests": 73499,
+    "support_inequality_tests": 342440,
+    "UV_support_inequality_tests": 133268,
+    "UV_channels_tested": 3630,
+    "successful_nonaxis_separations": 66,
+    "successful_planar_exterior_separations": 413,
+    "splits": 81,
+    "tree_nodes_visited": 163
+  },
+  "actual_independent_controls": {
+    "phase_negative_controls": {
+      "record_count": 3,
+      "actual_rejected_count": 3,
+      "not_applicable_count": 0
+    },
+    "root_coverage_negative_controls": {
+      "record_count": 2,
+      "actual_rejected_count": 2,
+      "not_applicable_count": 0
+    },
+    "channel_negative_controls": {
+      "record_count": 4,
+      "actual_rejected_count": 4,
+      "not_applicable_count": 0
+    },
+    "split_negative_controls": {
+      "record_count": 5,
+      "actual_rejected_count": 5,
+      "not_applicable_count": 0
+    },
+    "leaf_negative_controls": {
+      "record_count": 2,
+      "actual_rejected_count": 2,
+      "not_applicable_count": 0
+    },
+    "planar_source_negative_controls": {
+      "record_count": 8,
+      "actual_rejected_count": 8,
+      "not_applicable_count": 0
+    },
+    "UV_channel_negative_controls": {
+      "record_count": 0,
+      "actual_rejected_count": 0,
+      "not_applicable_count": 0
+    },
+    "supplemental_original_source_negative_controls": {
+      "record_count": 12,
+      "actual_rejected_count": 12,
+      "not_applicable_count": 0
+    }
+  },
+  "actual_independent_saved_planar_u": 0,
+  "original_first_leaf_gate_passed": false,
+  "pipeline_completed": false,
+  "actual_pipeline_failure": {
+    "type": "ValueError",
+    "message": "owned stage failed; later stages unexecuted: verify-single",
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/run_portable_planar_r7e_v9.py\", line 191, in main\n    save();need(completed.returncode==0 and controller.get('completed') is True,'owned stage failed; later stages unexecuted: '+label)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/run_portable_planar_r7e_v9.py\", line 20, in need\n    if not ok:raise ValueError(message)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: owned stage failed; later stages unexecuted: verify-single\n"
+  },
+  "original_first_u_gate_reached_by_driver": false,
+  "first_u_gate_condition_false_from_actual_worker_records": true,
+  "scientific_checker_completed_but_owned_verification_not_qualified": true,
+  "formal_owned_single_verification_passed": false,
+  "prior_readback_assumption_failure_preserved": "R7E_V9_READBACK_V1_ASSUMPTION_FAILURE.json",
+  "unexecuted_later_phases": [
+    "preflight_planar_exterior",
+    "all_planar_exterior_frames",
+    "verify_all"
+  ],
+  "original_resource_gates_relaxed": false,
+  "original_first_leaf_gate_relaxed": false,
+  "original_full16_qualification_claimed": false,
+  "native_qualification_claimed": false,
+  "full_continuous_G2": false,
+  "all_blockers_closed": false,
+  "readback_elapsed_seconds": 0.1329833179988782
+}

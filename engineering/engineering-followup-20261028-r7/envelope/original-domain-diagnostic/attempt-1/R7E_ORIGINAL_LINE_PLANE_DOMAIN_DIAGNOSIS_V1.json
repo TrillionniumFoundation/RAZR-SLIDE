@@ -1,0 +1,33 @@
+{
+  "schema": "razr-r7e-original-Line-plane-domain-diagnostic-v1",
+  "started_utc": "2026-10-28T23:56:04.254175+00:00",
+  "completed": false,
+  "native_operations": 0,
+  "channel_searches": 0,
+  "producer_imports": 0,
+  "missing_V8_artifacts_reconstructed": false,
+  "new_scientific_pass_claimed": false,
+  "full_continuous_G2": false,
+  "all_blockers_closed": false,
+  "source": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/diagnostic-v1/diagnose_original_line_plane_domains_v1.py",
+    "bytes": 15030,
+    "sha256": "cc83d78548449a258a755d9ab6a7dcef75d4d490c2ef215f29fa7d0d832e13b1"
+  },
+  "contract": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/diagnostic-v1/R7E_ORIGINAL_DOMAIN_DIAGNOSTIC_CONTRACT_V1.json",
+    "bytes": 2370,
+    "sha256": "2fcba4fa87e40550897a754a4ace915645404559366e2d60c41dbf54f0149e59"
+  },
+  "rows": [],
+  "failure": {
+    "type": "ValueError",
+    "message": "original R4 proof binding differs",
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/34f8fcac2ab1/r7-envelope/diagnostic-v1/diagnose_original_line_plane_domains_v1.py\", line 181, in main\n    need(same(rows['original_R4_frame_proof'], frame['proof']), 'original R4 proof binding differs')\n  File \"/workspace/scratch/34f8fcac2ab1/r7-envelope/diagnostic-v1/diagnose_original_line_plane_domains_v1.py\", line 26, in need\n    raise ValueError(message)\nValueError: original R4 proof binding differs\n"
+  },
+  "elapsed_seconds": 0.09158354600003804,
+  "peak_RSS_bytes": 14618624,
+  "wall_seconds": 60,
+  "address_space_bytes": 536870912,
+  "finished_utc": "2026-10-28T23:56:04.345675+00:00"
+}

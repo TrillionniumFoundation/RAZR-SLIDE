@@ -1,0 +1,161 @@
+{
+  "schema": "razr-r7e-wire-meaning-diagnostic-result-summary-v2",
+  "actual_report": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/wire-meaning-diagnostic-v1/attempt-1-v2/R7E_SAVED_V9_WIRE_MEANING_DIAGNOSIS_V2.json",
+    "bytes": 6871057,
+    "sha256": "054bd8e4d1337e0e3f8e2e95e48430fa6a31c71ee9bee002f0634dddcc97d1d3"
+  },
+  "targets": [
+    {
+      "face_index": 41,
+      "material_side": 0,
+      "spatial_axis": 0,
+      "spatial_end": 0,
+      "complete_saved_boundary_cover_disjoint": true,
+      "actual_Line_contact_count": 0,
+      "certified_actual_Circle_parameter_contacts": 0,
+      "saved_cover_contact_piece_indices": [],
+      "source_winding_certified": true,
+      "source_winding_integer": -1,
+      "original_inner_wire_count": 0,
+      "uncertain_homotopy_piece_indices": [],
+      "actual_source_boundary_contact_proved": false,
+      "cover_only_uncertainty": false,
+      "simple_wire_filling_or_native_membership_proved": false,
+      "Circle_parameter_outcomes": []
+    },
+    {
+      "face_index": 42,
+      "material_side": 0,
+      "spatial_axis": 0,
+      "spatial_end": 1,
+      "complete_saved_boundary_cover_disjoint": true,
+      "actual_Line_contact_count": 0,
+      "certified_actual_Circle_parameter_contacts": 0,
+      "saved_cover_contact_piece_indices": [],
+      "source_winding_certified": true,
+      "source_winding_integer": -1,
+      "original_inner_wire_count": 0,
+      "uncertain_homotopy_piece_indices": [],
+      "actual_source_boundary_contact_proved": false,
+      "cover_only_uncertainty": false,
+      "simple_wire_filling_or_native_membership_proved": false,
+      "Circle_parameter_outcomes": []
+    },
+    {
+      "face_index": 37,
+      "material_side": 0,
+      "spatial_axis": 2,
+      "spatial_end": 0,
+      "complete_saved_boundary_cover_disjoint": false,
+      "actual_Line_contact_count": 0,
+      "certified_actual_Circle_parameter_contacts": 2,
+      "saved_cover_contact_piece_indices": [
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        223
+      ],
+      "source_winding_certified": true,
+      "source_winding_integer": 0,
+      "original_inner_wire_count": 0,
+      "uncertain_homotopy_piece_indices": [],
+      "actual_source_boundary_contact_proved": true,
+      "cover_only_uncertainty": false,
+      "simple_wire_filling_or_native_membership_proved": false,
+      "Circle_parameter_outcomes": [
+        {
+          "edge_index": 173,
+          "patch_index": 58,
+          "source_piece_index": 200,
+          "tests": [
+            {
+              "exact_parameter": "298674849081976415/72057594037927936",
+              "directed_interval_proves_contact": false,
+              "strict_for_all_nonconstant_target_constraints": false
+            },
+            {
+              "exact_parameter": "1197192473604356231/288230376151711744",
+              "directed_interval_proves_contact": true,
+              "strict_for_all_nonconstant_target_constraints": true
+            },
+            {
+              "exact_parameter": "599842775440403401/144115188075855872",
+              "directed_interval_proves_contact": true,
+              "strict_for_all_nonconstant_target_constraints": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "face_index": 39,
+      "material_side": 0,
+      "spatial_axis": 2,
+      "spatial_end": 1,
+      "complete_saved_boundary_cover_disjoint": false,
+      "actual_Line_contact_count": 0,
+      "certified_actual_Circle_parameter_contacts": 2,
+      "saved_cover_contact_piece_indices": [
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        222
+      ],
+      "source_winding_certified": true,
+      "source_winding_integer": 0,
+      "original_inner_wire_count": 0,
+      "uncertain_homotopy_piece_indices": [],
+      "actual_source_boundary_contact_proved": true,
+      "cover_only_uncertainty": false,
+      "simple_wire_filling_or_native_membership_proved": false,
+      "Circle_parameter_outcomes": [
+        {
+          "edge_index": 190,
+          "patch_index": 58,
+          "source_piece_index": 200,
+          "tests": [
+            {
+              "exact_parameter": "298674849081976415/72057594037927936",
+              "directed_interval_proves_contact": false,
+              "strict_for_all_nonconstant_target_constraints": false
+            },
+            {
+              "exact_parameter": "1197192473604356231/288230376151711744",
+              "directed_interval_proves_contact": true,
+              "strict_for_all_nonconstant_target_constraints": true
+            },
+            {
+              "exact_parameter": "599842775440403401/144115188075855872",
+              "directed_interval_proves_contact": true,
+              "strict_for_all_nonconstant_target_constraints": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "all_original_Line_contacts": 0,
+  "actual_Circle_parameter_contacts": 4,
+  "total_fixed_Circle_parameter_tests": 6,
+  "synthetic_controls_passed": 8,
+  "complete_original_source_piece_count": 466,
+  "complete_original_Line_count": 38,
+  "all_13_inputs_unchanged": true,
+  "counter_sum": 17632,
+  "new_full_material_searches": 0,
+  "new_refinement_nodes": 0,
+  "native_trimmed_region_membership_proved": false,
+  "original_V9_owned_failure_retained": {
+    "type": "RuntimeError",
+    "message": "still-running owned child RSS unavailable: KeyError: 'VmRSS'"
+  },
+  "original_first_u_gate_reached": false,
+  "conclusion": "The node-0 blockers are not explained solely by an excessively wide saved source cover. Faces 41/42 have certified nonzero outer-wire winding at their fixed target points with complete target/cover separation; faces 37/39 have certified actual source-Circle points strictly inside their targets. Native filling and material semantics remain unproved. This result does not determine the other eighty saved failed prefixes."
+}

@@ -1,0 +1,145 @@
+{
+  "schema": "razr-r7-owned-exit-confirmation-actual-controls-contract-v2",
+  "harness": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/exercise_owned_exit_confirmation_r7_v2.py",
+    "bytes": 15359,
+    "sha256": "6bfc85c42f8e38ce7235916bc98f1946509b8f7e35ab8fe405f3d3dbad7ed866"
+  },
+  "bound_sources": [
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/supervise_owned_pure_math_r7_v2.py",
+      "bytes": 16893,
+      "sha256": "9b8638c6fab363a60955b9c40d4ca43931b3dc8cb065744cc68153d3aa41a02e"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+      "bytes": 6105,
+      "sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/additional-bspline-v1/source/source-original/owned_process.py",
+      "bytes": 13400,
+      "sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25"
+    }
+  ],
+  "cases": [
+    [
+      "completed-exit-VmRSS",
+      "VmRSS",
+      true
+    ],
+    [
+      "completed-exit-VmHWM",
+      "VmHWM",
+      true
+    ],
+    [
+      "completed-but-stays-live",
+      "VmRSS",
+      false
+    ],
+    [
+      "incomplete-entry",
+      "VmRSS",
+      false
+    ],
+    [
+      "different-key",
+      "Pid",
+      false
+    ],
+    [
+      "identity-error",
+      "ValueError",
+      false
+    ],
+    [
+      "wrong-nonce",
+      "VmRSS",
+      false
+    ],
+    [
+      "wrong-starttime",
+      "VmRSS",
+      false
+    ],
+    [
+      "wrong-Popen-binding",
+      "VmRSS",
+      false
+    ],
+    [
+      "zero-peak",
+      "VmRSS",
+      false
+    ],
+    [
+      "over-limit-peak",
+      "VmRSS",
+      false
+    ],
+    [
+      "wrong-argv",
+      "VmRSS",
+      false
+    ],
+    [
+      "changed-math-contract-before",
+      "VmRSS",
+      false
+    ],
+    [
+      "changed-math-contract-during",
+      "VmRSS",
+      false
+    ],
+    [
+      "exit-nonzero-after-receipt",
+      "VmRSS",
+      false
+    ],
+    [
+      "original-resource-gate-failure",
+      "VmRSS",
+      false
+    ],
+    [
+      "validation-exceeds-one-interval",
+      "VmRSS",
+      false
+    ],
+    [
+      "second-attempt",
+      "VmRSS",
+      false
+    ]
+  ],
+  "fixture_source_sha256": "cd7a85d15fe76c35972b5eaa837858478ebabf82ef8268bb810ca6488a0d015f",
+  "wall_seconds": 60,
+  "parent_and_inherited_child_address_space_bytes": 536870912,
+  "maximum_owned_child_processes": 18,
+  "maximum_confirmation_attempts_per_process": 1,
+  "maximum_control_directory_bytes": 4194304,
+  "sampling_exception_injection_explicit": true,
+  "kernel_gap_reproduction_claimed": false,
+  "scientific_worker_runs": 0,
+  "execution_authorized": false,
+  "expected_rejections": {
+    "completed-but-stays-live": "did not actually exit within the one original sampling interval",
+    "incomplete-entry": "a bounded regular entry receipt must already exist",
+    "different-key": "sampling error is not an eligible missing memory field",
+    "identity-error": "sampling error is not an eligible missing memory field",
+    "wrong-nonce": "entry receipt is not bound to this Popen PID/starttime/namespace/nonce",
+    "wrong-starttime": "entry receipt is not bound to this Popen PID/starttime/namespace/nonce",
+    "wrong-Popen-binding": "the original verified owned Popen handshake is required",
+    "zero-peak": "a positive in-limit original worker peak RSS is required",
+    "over-limit-peak": "a positive in-limit original worker peak RSS is required",
+    "wrong-argv": "actual same-run mathematical contract, arguments or output binding differs",
+    "changed-math-contract-before": "actual same-run mathematical contract, arguments or output binding differs",
+    "changed-math-contract-during": "completed entry receipt, source or contract changed during confirmation",
+    "exit-nonzero-after-receipt": "owned completed entry subsequently exited nonzero",
+    "original-resource-gate-failure": "explicit original resource-gate rejection control",
+    "validation-exceeds-one-interval": "no original sample interval or wall budget remains",
+    "second-attempt": "at most one completed-entry exit confirmation is allowed"
+  }
+}

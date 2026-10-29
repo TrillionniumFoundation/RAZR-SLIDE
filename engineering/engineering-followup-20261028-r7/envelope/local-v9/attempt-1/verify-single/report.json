@@ -1,0 +1,909 @@
+{
+  "schema": "razr-r7e-independent-planar-exterior-verification-v9",
+  "execution_completed": true,
+  "started_utc": "2026-10-29T00:07:25.496063+00:00",
+  "contract_sha256": "675a2ad0d8bd1a59b4861cabced7905ac38ac917f529106c2fc1e56076925f9e",
+  "source_sha256": "d79fa404ce3311ecb9c8ab0f89791bde7bc33c738d4f791a09d1376081d89435",
+  "capacity": {
+    "wall_seconds": 600,
+    "RSS_limit_bytes": 805306368,
+    "maximum_splits": 4096,
+    "maximum_depth": 24,
+    "maximum_boundary_box_tests": 12000000,
+    "maximum_support_inequality_tests": 12000000,
+    "tiny_retained_volume_exact": "944473296573929/944473296573929042739200000",
+    "maximum_boundary_pieces_per_material": 4096,
+    "cylinder_angular_patch_count": 64,
+    "circle_angular_patch_count": 64,
+    "Taylor_term_count": 24,
+    "centre_grid_denominator": 65536,
+    "maximum_UV_pieces_per_face": 225,
+    "maximum_total_UV_pieces": 4100,
+    "maximum_planar_models": 50,
+    "maximum_actual_V6_retained_roots": 4943,
+    "all_UV_tests_charged_to_original_combined_budgets": true
+  },
+  "original_TOL_exact": "944473296573929/9444732965739290427392",
+  "no_positive_thin_leaf_discarded": true,
+  "verified_producer_report": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/local-v9/attempt-1/single-planar-exterior-leaf/report.json",
+    "bytes": 23329,
+    "sha256": "80715392a754a8ef003cd8c82185c8fe4904be77892db4024b75bc2b48181968"
+  },
+  "registered_input_identities": {
+    "r4_report": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/support-v4/report.json",
+      "bytes": 251491,
+      "sha256": "286cfad28e08da5426742530a0d7f6901fb54317643507580bd9cddc26ad6887"
+    },
+    "r4_independent_report": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/independent-support-v4/report.json",
+      "bytes": 24298,
+      "sha256": "1224b5e72b9635aa84227b2b3e7b7a4091cca8483c916392f6634a49088b7110"
+    },
+    "r4_stationary_diagnostic": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/remaining-spatial-diagnostic/report.json",
+      "bytes": 243761,
+      "sha256": "f1edf0c77a622d30a5623114edb8f6bfa0d3a09bd0009868255552a2c1c2514f"
+    },
+    "public_input_bridge": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_PUBLIC_INPUT_BRIDGE.json",
+      "bytes": 10493,
+      "sha256": "65f5ccf7a917b92c665b513f6a15b80fda516b037c782ba4cad799e97ed187b2"
+    },
+    "method": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R7E_ORIGINAL_LINE_PLANE_V9_BASIS.md",
+      "bytes": 7926,
+      "sha256": "6ed7b9bbf223074a48c049da24674269b46d206397505ddc728835e6696ac985"
+    },
+    "base_channel_source": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/exterior_channels_r5e_v3.py",
+      "bytes": 19321,
+      "sha256": "cd167893a463a5f5d39ce7d64caaac5c07e278ddb96420f790c07f1664e9da8a"
+    },
+    "base_verifier_source": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/verify_exterior_channels_r5e_v3.py",
+      "bytes": 16453,
+      "sha256": "ea564a94bf38a54004dc21725a0c18a7bd136d517b4a1b84b3bec7ad3da321ad"
+    },
+    "single_verifier_source": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/verify_planar_exterior_r7e_v9.py",
+      "bytes": 141983,
+      "sha256": "d79fa404ce3311ecb9c8ab0f89791bde7bc33c738d4f791a09d1376081d89435"
+    },
+    "planar_producer_source": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/planar_exterior_refinement_r7e_v9.py",
+      "bytes": 34757,
+      "sha256": "33b4cd62bf49fdb2277f4b7db4194dcd205d7e0dcc2552b93b2702bc3f1e4149"
+    },
+    "planar_model_source": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/planar_exterior_model_r7e_v9.py",
+      "bytes": 28566,
+      "sha256": "39d0cfb1184e956a5181cc307a9f00ddf80b7bd1d4ba374c3fb6dc12b1a7056e"
+    },
+    "primitive_producer_source": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/primitive_refinement_r5e_v6.py",
+      "bytes": 37735,
+      "sha256": "11d0f8f72ba7e1db2936a7d7f2fcb9906f7f3eb426b4ad362e430ec41793bb57"
+    },
+    "primitive_model_source": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/primitive_support_model_r5e_v6.py",
+      "bytes": 13220,
+      "sha256": "c9026014433502ca83434b7296d249c3c889d3a8bcbcf0a0e65807f4704683a5"
+    },
+    "primitive_source_bundle": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V6_PRIMITIVE_SOURCE.json.gz",
+      "bytes": 51349,
+      "sha256": "1dfc953f6ef255ac8fdfe93d147c293049753b38c871ed4f4198bb5d089ba695"
+    },
+    "base_V6_verifier_source": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/verify_primitive_support_r5e_v6.py",
+      "bytes": 95688,
+      "sha256": "05f7d1d76096e0518943bbdfbf6d5da7ae6a91248f83ef6e98432ae168df29bd"
+    },
+    "base_V6_input_bridge": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V7_BASE_V6_INPUT_BRIDGE.json",
+      "bytes": 10827,
+      "sha256": "e14eae0cd6bc3b63694009545ee89af7df51fba222e3d22d8613eea93738d579"
+    },
+    "base_V6_source_lock": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_PORTABLE_SOURCE_LOCK_V6.json",
+      "bytes": 5489,
+      "sha256": "5cf2c18e7971912949e7e7167451cf547e291be421f205d78ef668fd7ab5b499"
+    },
+    "base_V6_actual_report": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/report.json",
+      "bytes": 173959,
+      "sha256": "9b7ecb9f016d1560c3ecafe9f3ea09bf7259c4cce32b5b13c334f7bdae1a861f"
+    },
+    "base_V6_actual_independent_report": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/verify-all/report.json",
+      "bytes": 86939,
+      "sha256": "b0e6fc959516f2702eab0a2eecb3e10abc79ff4c188838c960188ef5793530d4"
+    },
+    "base_V5_input_bridge": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V6_BASE_V5_INPUT_BRIDGE.json",
+      "bytes": 4997,
+      "sha256": "639dcb2d0d079dfd2e8356b1f096486a8f49c61aaeb2ecfd428988a0ab408335"
+    },
+    "base_V5_source_lock": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_PORTABLE_SOURCE_LOCK_V5.json",
+      "bytes": 3396,
+      "sha256": "d05a6f6a69ac5eb627d3d1180ff543c4f9b70c7c424c972dfab2b305b8a21211"
+    },
+    "base_V5_verifier_source": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/verify_exterior_trim_r5e_v5.py",
+      "bytes": 57459,
+      "sha256": "8d2083717a025601eccfbab8679f18e8839c2def0da4995652280b00f79be2a8"
+    },
+    "V5_trim_source_bundle": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V5_PLANAR_TRIM_SOURCE.json.gz",
+      "bytes": 35630,
+      "sha256": "bc778c13f9efbc280bcb93e59edbc821d2a7b751f0b8730231d1b0bd855e2804"
+    },
+    "base_V5_actual_report": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/report.json",
+      "bytes": 95661,
+      "sha256": "31fb8469e843a4b2831482b0578cc7630e11ccf9fc98d386130587f7b42160b8"
+    },
+    "base_V5_actual_independent_report": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/verify-all/report.json",
+      "bytes": 38136,
+      "sha256": "45c59baaed87d48f9e2408f02cc36efe9e7a568754ee82bb3c704eeaec40ef51"
+    },
+    "real_retained_leaf_selection": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R5E_V7_REAL_RETAINED_LEAF.json",
+      "bytes": 10329,
+      "sha256": "c6933ebdf3609f4757ff564e6d51500ab33cc3a889f2da4447696f4f8df29e60"
+    },
+    "static_source_capacity": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R7E_V9_STATIC_SOURCE_CAPACITY.json",
+      "bytes": 2251,
+      "sha256": "486582e564b8e1b236760d2bf62a3ceab052048e20581174176aa7d4c2d008dd"
+    },
+    "extra_line_plane_source": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/source-v9/R7E_V9_ORIGINAL_LINE_PLANE_PROJECTION.json",
+      "bytes": 53283,
+      "sha256": "dcd52e91cb5ff7a4f28ba13a4f15e0830dd865aef93fb6178955c499a04e822f"
+    }
+  },
+  "producer_code_imported": false,
+  "planar_producer_or_helper_imported": false,
+  "primitive_producer_or_helper_imported": false,
+  "new_exact_planar_arithmetic_implemented_independently": true,
+  "frozen_prior_independent_verifiers_reused_for_inherited_proofs": true,
+  "conditional_planar_exterior_model_only": true,
+  "conditional_primitive_support_model_only": true,
+  "conditional_trim_model_only": true,
+  "native_planar_region_semantics_verified": false,
+  "native_primitive_semantics_verified": false,
+  "native_trim_class_membership_verified": false,
+  "inner_wire_hole_semantics_verified_for_native": false,
+  "original_raw_gate_reclassified": false,
+  "full_continuous_G2": false,
+  "all_blockers_closed": false,
+  "native_Common_called": false,
+  "native_closure_membership_verified": false,
+  "compiled_transform_error_verified": false,
+  "V5_producer_rerun": false,
+  "V6_producer_rerun": false,
+  "original_V3_raw_passes_unchanged": 4,
+  "original_V4_failure_preserved": true,
+  "actual_V5_conditional_passes_preserved": 8,
+  "actual_V6_conditional_passes_preserved": 8,
+  "expected_phase": "single_planar_exterior_leaf",
+  "expected_case_frames": [
+    [
+      "case-028",
+      1
+    ]
+  ],
+  "frames": [
+    {
+      "case_id": "case-028",
+      "frame": 1,
+      "independently_rechecked_actual_V5": {
+        "independent_frozen_V5_boundary": {
+          "original_edges_vertices_preserved": 475,
+          "applied_faces": 0,
+          "unapplied_faces_preserved": 0,
+          "hole_core_certificates_verified": 0,
+          "exact_UV_strata_checked": 0,
+          "new_boundary_pieces": 576,
+          "conditional_trim_model_only": true,
+          "native_trim_class_membership_verified": false,
+          "inner_wire_hole_semantics_verified_for_native": false,
+          "original_raw_gate_reclassified": false
+        },
+        "original_R4_roots_reverified": 30,
+        "prior_V5_tree_nodes_reverified": 194,
+        "prior_V5_splits_reverified": 82,
+        "prior_V5_leaves_reverified": 112,
+        "retained_roots_available": 85,
+        "non_tiny_retained_roots_available": 7,
+        "prior_excluded_open_sum_exact": "782815799780553696029647163860449104505595943329327523849529897441120397707426902553353615771896716194389439086947360658153239841110660979220607866317876067256851938455497721113642303445416220641090364394821186721123671152207485240377103612742275945827210433031230956147261979/553956966280111321359151042308621317197106853745652161186848528428353614047320326248246548509656023453846098404449586961587736474553087989908021159880755329796288475560940755137311819879076531853615938045960455092067922915100261601864210866521544040371494407003426519343169536",
+        "prior_retained_sum_exact": "10715086071868883387019713094989575513327531429003998816572150943601159932614272834288079311722962846116886087706598995150148914823042125724931698237067169839450157542853464571770409074055452492883223809709396248339962520178338236812482270886631039231559830642670886304339510318442958691440130459601/669692879491417075592765655662501131600878007315958504652343992731469406953085076558248986759809911329746670573470716765741965803557696277249036098418660925245910485926514436588817162816398196367372136384565404686473871329212422972447846496629816432160699779855408885478776864478289024177325354254336",
+        "prior_actual_conditional_gate_unchanged": false,
+        "V5_producer_rerun": false
+      },
+      "independently_rechecked_actual_V6": {
+        "splits": 4096,
+        "nodes": 8277,
+        "leaves": 4181,
+        "excluded_count": 670,
+        "pieces_checked": 276794,
+        "nonaxis_checked": 426,
+        "unresolved_piece_records_checked": 87528,
+        "source_reconstruction": {
+          "planes": 6,
+          "cylinders": 2,
+          "fallbacks": 0,
+          "preserved_edges_vertices": 475,
+          "angular_patches_checked": 128,
+          "nonempty_angular_patches": 128,
+          "zero_width_pieces_retained": 328,
+          "complete_boundary_piece_count": 702
+        },
+        "retained_roots": 3511,
+        "retained_sum_exact": "5357905388398022419687596439781198772469427742287632479863868011652329765372910748373783650226066832068354234756589712639463324603332549928341895621044089042496963894916497140039130495473376101319159583758480254174245363583405394600935758943092857766574516276615623502550706688575776326364208688369583187528120274618809575519391625650062863181820868724905846445413706132846329242616926162355921199751480059668304432559594157258334639655090733435517819759404601523084560491020070508267390366953400461200119522361389323083099891939133728635333252050501886830408232130459869285024881102177860743390693945539446625027389860487616871683805353874263833160182671835654205547242716602232912294951508346781060453303610898015493696267396330879919736346769083332898314573903172455969786823598195619792723225850569790362812964093353735122284546409546623332742147632638332213959443932402789460577775135821500257517678044068245064512921609005259791466854832241974214111849033185857442588018872086082543342971075134046433614479/1218693113138781060046325184857905933332054896641439940846339342513938477761857164420923625317156529414528261162036530012092127834448572807043229581747025315912535505416335851795591306901703156386908635508253850278482285948209529116577554439914970670823325809937003403874396204189210173345211562911309256759550685564869104291083853026687389739724303667817432913329843823310256923611305481244195198913194506963713613970617821024362819907571075796886001362389397355489156895639732439533104489649791082665025967343061355907722094545922089921434527315112446770987153990616975977341145576629839143856361022812398765453986277278042680938049525366765257049495605979875556306601092438958084150693219591660006539390925097857267097785323015057588133306279106771668486178171444987878652070751920975746504555141571339395368809872686947322946820388864182477994422677318492784324311119598474003172580789469154952447145795408790606702664191685134822415323688675223765752715008394029167056003426313830400000000000000000000000000000",
+        "excluded_sum_exact": "14141184421833775692410606187504805639461716723201656984156422363835316704003919670965614947982552695901732893765650589393679449262021153264276071503123167203768730458758231064289919813233833081248216651209644553546797323541946666273801126839713850553625915164060813594289975753014597868223420052022326893068769697022830587208063393272400727144993983468731895695205893147901604919373056529541629800313279686684209264545941172331018849906126488489673172148174253806616793589569670149263823052838889671825157322191317370047809370529294784643619880695850660506088928274960544578711562414268020611805231602971012572165163775832279194772776675865983555205935642709785075356551964744970130122570985869177908733894503888824653828081719999817673483989286362524124030748513059274981814732972897692748254335337759853648974755206809150861377938175148975470196553248591260752032137498381436874010823500183406275257731401283334759800315249141337741802138982324220309446292169177152739294528034640317456657028924865953566385521/1218693113138781060046325184857905933332054896641439940846339342513938477761857164420923625317156529414528261162036530012092127834448572807043229581747025315912535505416335851795591306901703156386908635508253850278482285948209529116577554439914970670823325809937003403874396204189210173345211562911309256759550685564869104291083853026687389739724303667817432913329843823310256923611305481244195198913194506963713613970617821024362819907571075796886001362389397355489156895639732439533104489649791082665025967343061355907722094545922089921434527315112446770987153990616975977341145576629839143856361022812398765453986277278042680938049525366765257049495605979875556306601092438958084150693219591660006539390925097857267097785323015057588133306279106771668486178171444987878652070751920975746504555141571339395368809872686947322946820388864182477994422677318492784324311119598474003172580789469154952447145795408790606702664191685134822415323688675223765752715008394029167056003426313830400000000000000000000000000000",
+        "maximum_depth": 24,
+        "original_closed_carriers_retained": true,
+        "V6_producer_rerun": false
+      },
+      "independently_reconstructed_planar_source": {
+        "applied": 8,
+        "UV_pieces": 554,
+        "source_occurrences": 88,
+        "wires": 8,
+        "lines": 82,
+        "circle_patches": 384,
+        "closures": 88,
+        "additional_original_plane_count": 2,
+        "additional_applied_plane_count": 2,
+        "additional_rejected_plane_count": 0,
+        "additional_UV_piece_count": 36
+      },
+      "new_retained_roots_verified": 1,
+      "new_tree_nodes_verified": 163,
+      "new_splits_verified": 81,
+      "new_positive_leaves_verified": 82,
+      "new_excluded_leaves_verified": 82,
+      "complete_saved_spatial_separations_verified": 27750,
+      "saved_spatial_nonaxis_separations_verified": 66,
+      "saved_planar_u_separations_verified": 0,
+      "complete_saved_UV_piece_separations_verified": 0,
+      "saved_UV_nonaxis_separations_verified": 0,
+      "actual_failed_spatial_channel_records_verified": 972,
+      "actual_failed_UV_channel_records_verified": 1296,
+      "new_retained_sum_exact": "0",
+      "newly_excluded_open_sum_exact": "1259268762685441839471558534384273714782439401731299563669691230982079926981867054774501014520358029604523907736021281030676845851836248461211306057970484318720001611579764764522580330550218496388625858544803976558271938926278560053159439143767055870827570756148880658900419259881749110553166972585178450041567064281002288351176056330604424785635328984968267581893951861397303885673108138756401828556205912988405445711844002568197227119099518649463820587456434030611370340665791698862448307875292991827987735454641244739356175556277271707095240394176474219459243092872140640575428460889601176070551882166349527330807334210298030186906743780076000710944412624234906495143343095672673576930954611343312808211074460887038367008644059638657282773708647196375750396536508121851366069514453706249244445480766456201872981491118395587024419215990800848318003375751199341476097891301641186431336205398342578272777175028079751257565304743052052897155265299851461761298447/359027377546916680589965014107547100064108517256946809219536316791013514902369054108614279180509180045948856375064584239116507372498466871675086220323141429564955358185844038271285704086687513212889198413125406577337674918911868088663209776937398849489133474198811610695001303088717610506812290214674518988268905220574783456352702601705182057574696392834280219692865315714697674600219496292881433662395289371472422056427819981193832687739810352912391773675247400322212618938657478540541681468343846657592720547085711368887466390121819992405962485198185088196563663946298975173582457164458179284130873809539576752593188303605202890240277776430181556540759789621972640487590904472833060302009179557519425113072675838898245922351718989915178690330657798618929498201483469264153640421274431806481310391540670242866867655160451555337731148683671887445914743835472090343242689366952186899100461590937555875298509967440339132233158744926476810888151040000000000000000000",
+      "planar_exterior_model_conditional_upper_exact_mm3": "0",
+      "planar_exterior_model_conditional_clearance_gate_passed": true,
+      "conditional_planar_exterior_model_only": true,
+      "native_planar_region_semantics_verified": false,
+      "original_raw_gate_reclassified": false
+    }
+  ],
+  "phase_negative_controls": [
+    {
+      "name": "omitted-actual-frame",
+      "actual_rejected": true,
+      "reason": "new actual phase/frame sequence omitted, duplicated or reordered"
+    },
+    {
+      "name": "duplicated-actual-frame",
+      "actual_rejected": true,
+      "reason": "new actual phase/frame sequence omitted, duplicated or reordered"
+    },
+    {
+      "name": "wrong-actual-phase",
+      "actual_rejected": true,
+      "reason": "new actual phase/frame sequence omitted, duplicated or reordered"
+    }
+  ],
+  "root_coverage_negative_controls": [
+    {
+      "name": "omitted-actual-V6-retained-root",
+      "actual_rejected": true,
+      "reason": "every actual V6 retained root required exactly once in order"
+    },
+    {
+      "name": "duplicated-actual-V6-retained-root",
+      "actual_rejected": true,
+      "reason": "every actual V6 retained root required exactly once in order"
+    }
+  ],
+  "channel_negative_controls": [
+    {
+      "name": "omitted-original-spatial-carrier",
+      "actual_rejected": true,
+      "reason": "all original spatial carriers need a proof"
+    },
+    {
+      "name": "overclaim-closed-cell-disjointness",
+      "actual_rejected": true,
+      "reason": "only open cell interior may be excluded"
+    },
+    {
+      "name": "spatial-path-fails-known-exterior",
+      "actual_rejected": true,
+      "reason": "positive open spatial channel must contain the cell interior and reach known exterior"
+    },
+    {
+      "name": "false-inherited-separating-inequality",
+      "actual_rejected": true,
+      "reason": "inherited spatial coordinate/slab does not separate the open channel"
+    }
+  ],
+  "split_negative_controls": [
+    {
+      "name": "omitted-partition-child",
+      "actual_rejected": true,
+      "reason": "complete distinct forward partition children required"
+    },
+    {
+      "name": "duplicated-partition-child",
+      "actual_rejected": true,
+      "reason": "complete distinct forward partition children required"
+    },
+    {
+      "name": "cut-on-parent-boundary",
+      "actual_rejected": true,
+      "reason": "registered internal cut policy differs"
+    },
+    {
+      "name": "discarded-closed-cut-plane",
+      "actual_rejected": true,
+      "reason": "positive directed partition or closed cut carrier changed"
+    },
+    {
+      "name": "wrong-positive-parent-volume",
+      "actual_rejected": true,
+      "reason": "positive directed partition or closed cut carrier changed"
+    }
+  ],
+  "leaf_negative_controls": [
+    {
+      "name": "omitted-allocated-positive-leaf",
+      "actual_rejected": true,
+      "reason": "complete contiguous explicit new tree required",
+      "original_leaf_id": 95,
+      "original_leaf_kind": "excluded",
+      "original_leaf_reason": null,
+      "original_positive_volume_exact": "7869719227859447293975978344665826752830050788751391295939452279703806198071282625433852540671469884105605174289637714073140487536503723090716481069072567709932827218611671417873532172300338656802515426893194419209299513276767426408344096660914436046645254869275271502785773094143981082946357305273385536856631012249129740791441493868036482621940513288678647075586384408493363942244763429723474926005658404911932337582473380201750700269928743120539485307365477419155492047423629989827734214143002129054841114150971998252625147808405024590387536304480936128433392229645818492918871753916198064952821666876259669869202415749741306803361469117973379570065892941049143971740790512351224169577068953017412111421456348423919393439806599217674966922535649292601058692741833633342871733113065967313869368410482938440311908157932286425090444121212647581848279410946348583526825041488674221549753986074387602843127859530734248828844557920784092687296994946505670791925551575511/3243700376791505912250646014541265624487474077958368122492273250392564103667269981565621409795047351849332436591604727228481548951498184542093909469233333391079703366301997240245904533996963575898850855127497863122593390862790570305039633777604425776441225354728863261504407595196102261543493598268737497713618102592743951038439979821592378770150691683979982808122384185169855948242949319652272533949022660532501178630934978095824944377703807980405164531109408941218135189664784560184752759881891444768564204403202425564385901059890901375776811220085080959126002631405560111236275124566004751057689158201600939510210304712992149633322722463091618566959945410712856128173818974491202114739426954402582086552165036794469000532319638184326206813544923292000574520029036307213723496844200002591779277861360768052042261864518622141421120150639993439098815298988336822322647313137918618611814615957358618490300403372946352764076056705125983537710030127104000000000000000000000000000"
+    },
+    {
+      "name": "discarded-smallest-positive-leaf-volume",
+      "actual_rejected": true,
+      "reason": "explicit positive leaf measure differs",
+      "original_leaf_id": 95,
+      "original_leaf_kind": "excluded",
+      "original_leaf_reason": null,
+      "original_positive_volume_exact": "7869719227859447293975978344665826752830050788751391295939452279703806198071282625433852540671469884105605174289637714073140487536503723090716481069072567709932827218611671417873532172300338656802515426893194419209299513276767426408344096660914436046645254869275271502785773094143981082946357305273385536856631012249129740791441493868036482621940513288678647075586384408493363942244763429723474926005658404911932337582473380201750700269928743120539485307365477419155492047423629989827734214143002129054841114150971998252625147808405024590387536304480936128433392229645818492918871753916198064952821666876259669869202415749741306803361469117973379570065892941049143971740790512351224169577068953017412111421456348423919393439806599217674966922535649292601058692741833633342871733113065967313869368410482938440311908157932286425090444121212647581848279410946348583526825041488674221549753986074387602843127859530734248828844557920784092687296994946505670791925551575511/3243700376791505912250646014541265624487474077958368122492273250392564103667269981565621409795047351849332436591604727228481548951498184542093909469233333391079703366301997240245904533996963575898850855127497863122593390862790570305039633777604425776441225354728863261504407595196102261543493598268737497713618102592743951038439979821592378770150691683979982808122384185169855948242949319652272533949022660532501178630934978095824944377703807980405164531109408941218135189664784560184752759881891444768564204403202425564385901059890901375776811220085080959126002631405560111236275124566004751057689158201600939510210304712992149633322722463091618566959945410712856128173818974491202114739426954402582086552165036794469000532319638184326206813544923292000574520029036307213723496844200002591779277861360768052042261864518622141421120150639993439098815298988336822322647313137918618611814615957358618490300403372946352764076056705125983537710030127104000000000000000000000000000"
+    }
+  ],
+  "planar_source_negative_controls": [
+    {
+      "name": "omitted-original-planar-model",
+      "actual_rejected": true,
+      "reason": "complete old plus supplemental model census differs",
+      "actual_material_side": 0,
+      "actual_model_index": 0,
+      "actual_original_face_index": 18,
+      "actual_source_face_canonical_sha256": "8d1efe55503b51d053e769a4b4ea91204a92994721a11eba5be4e2325c046ad6"
+    },
+    {
+      "name": "omitted-original-UV-boundary-carrier",
+      "actual_rejected": true,
+      "reason": "independently reconstructed complete planar model differs",
+      "actual_material_side": 0,
+      "actual_model_index": 0,
+      "actual_original_face_index": 18,
+      "actual_source_face_canonical_sha256": "8d1efe55503b51d053e769a4b4ea91204a92994721a11eba5be4e2325c046ad6"
+    },
+    {
+      "name": "changed-exact-plane-left-inverse",
+      "actual_rejected": true,
+      "reason": "independently reconstructed complete planar model differs",
+      "actual_material_side": 0,
+      "actual_model_index": 0,
+      "actual_original_face_index": 18,
+      "actual_source_face_canonical_sha256": "8d1efe55503b51d053e769a4b4ea91204a92994721a11eba5be4e2325c046ad6"
+    },
+    {
+      "name": "changed-full-original-D-endpoint",
+      "actual_rejected": true,
+      "reason": "independently reconstructed complete planar model differs",
+      "actual_material_side": 0,
+      "actual_model_index": 0,
+      "actual_original_face_index": 18,
+      "actual_source_face_canonical_sha256": "8d1efe55503b51d053e769a4b4ea91204a92994721a11eba5be4e2325c046ad6"
+    },
+    {
+      "name": "omitted-complete-endpoint-closure-box",
+      "actual_rejected": true,
+      "reason": "independently reconstructed complete planar model differs",
+      "actual_material_side": 0,
+      "actual_model_index": 0,
+      "actual_original_face_index": 18,
+      "actual_source_face_canonical_sha256": "8d1efe55503b51d053e769a4b4ea91204a92994721a11eba5be4e2325c046ad6"
+    },
+    {
+      "name": "wrong-complete-wire-successor",
+      "actual_rejected": true,
+      "reason": "independently reconstructed complete planar model differs",
+      "actual_material_side": 0,
+      "actual_model_index": 0,
+      "actual_original_face_index": 18,
+      "actual_source_face_canonical_sha256": "8d1efe55503b51d053e769a4b4ea91204a92994721a11eba5be4e2325c046ad6"
+    },
+    {
+      "name": "shortened-complete-original-circle-domain",
+      "actual_rejected": true,
+      "reason": "independently reconstructed complete planar model differs",
+      "actual_material_side": 0,
+      "actual_model_index": 2,
+      "actual_UV_piece_index": 11,
+      "actual_original_parameter_interval_exact": [
+        "0",
+        "2493077276450593/144115188075855872"
+      ],
+      "actual_original_Taylor_error_exact": "4850080033530284995173876681658539632306328361476226856457315552004595879517530997240771152222778751063466895001477441/68470841631928636854103232221685440733802987500923918346456094546827916422416449461451341814463838009494406668025062113243449723003843600928633815041377197016450786703712967899282363502613741389784921682377035868207760622060013406199729588319269214914122916191545589760000000000"
+    },
+    {
+      "name": "deleted-positive-certified-Taylor-error",
+      "actual_rejected": true,
+      "reason": "independently reconstructed complete planar model differs",
+      "actual_material_side": 0,
+      "actual_model_index": 2,
+      "actual_UV_piece_index": 11,
+      "actual_original_parameter_interval_exact": [
+        "0",
+        "2493077276450593/144115188075855872"
+      ],
+      "actual_original_Taylor_error_exact": "4850080033530284995173876681658539632306328361476226856457315552004595879517530997240771152222778751063466895001477441/68470841631928636854103232221685440733802987500923918346456094546827916422416449461451341814463838009494406668025062113243449723003843600928633815041377197016450786703712967899282363502613741389784921682377035868207760622060013406199729588319269214914122916191545589760000000000",
+      "deleted_remainder_was_strictly_positive": true
+    }
+  ],
+  "UV_channel_negative_controls": [],
+  "supplemental_original_source_negative_controls": [
+    {
+      "name": "changed-supplemental-full-D",
+      "actual_rejected": true,
+      "reason": "independently reconstructed complete supplemental source model differs",
+      "actual_material_side": 0,
+      "actual_model_index": 6,
+      "actual_original_face_index": 27
+    },
+    {
+      "name": "changed-supplemental-source-domain",
+      "actual_rejected": true,
+      "reason": "independently reconstructed complete supplemental source model differs",
+      "actual_material_side": 0,
+      "actual_model_index": 6,
+      "actual_original_face_index": 27
+    },
+    {
+      "name": "changed-supplemental-stationary-image",
+      "actual_rejected": true,
+      "reason": "independently reconstructed complete supplemental source model differs",
+      "actual_material_side": 0,
+      "actual_model_index": 6,
+      "actual_original_face_index": 27
+    },
+    {
+      "name": "changed-supplemental-inherited-AABB",
+      "actual_rejected": true,
+      "reason": "independently reconstructed complete supplemental source model differs",
+      "actual_material_side": 0,
+      "actual_model_index": 6,
+      "actual_original_face_index": 27
+    },
+    {
+      "name": "omitted-supplemental-UV-carrier",
+      "actual_rejected": true,
+      "reason": "independently reconstructed complete supplemental source model differs",
+      "actual_material_side": 0,
+      "actual_model_index": 6,
+      "actual_original_face_index": 27
+    },
+    {
+      "name": "changed-supplemental-left-inverse",
+      "actual_rejected": true,
+      "reason": "independently reconstructed complete supplemental source model differs",
+      "actual_material_side": 0,
+      "actual_model_index": 6,
+      "actual_original_face_index": 27
+    },
+    {
+      "name": "supplemental-carrier-replacement-claim",
+      "actual_rejected": true,
+      "reason": "independently reconstructed complete supplemental source model differs",
+      "actual_material_side": 0,
+      "actual_model_index": 6,
+      "actual_original_face_index": 27
+    },
+    {
+      "name": "duplicate-supplemental-model-index",
+      "actual_rejected": true,
+      "reason": "independently reconstructed complete supplemental source model differs",
+      "actual_material_side": 0,
+      "actual_model_index": 6,
+      "actual_original_face_index": 27
+    },
+    {
+      "name": "omitted-original-Line-with-rehashed-source",
+      "actual_rejected": true,
+      "reason": "complete original Line occurrence census differs",
+      "mutated_source_digest_recomputed_before_geometric_check": true,
+      "actual_material_side": 0,
+      "actual_model_index": 6,
+      "actual_original_face_index": 27
+    },
+    {
+      "name": "expanded-surface-domain-with-rehashed-source",
+      "actual_rejected": true,
+      "reason": "complete source Line/surface forward image plus whole D differs from inherited AABB",
+      "mutated_source_digest_recomputed_before_geometric_check": true,
+      "actual_material_side": 0,
+      "actual_model_index": 6,
+      "actual_original_face_index": 27
+    },
+    {
+      "name": "translated-Line-origin-with-rehashed-source",
+      "actual_rejected": true,
+      "reason": "complete source Line/surface forward image plus whole D differs from inherited AABB",
+      "mutated_source_digest_recomputed_before_geometric_check": true,
+      "actual_material_side": 0,
+      "actual_model_index": 6,
+      "actual_original_face_index": 27
+    },
+    {
+      "name": "changed-full-D-in-forward-identity",
+      "actual_rejected": true,
+      "reason": "complete source Line/surface forward image plus whole D differs from inherited AABB",
+      "actual_material_side": 0,
+      "actual_model_index": 6,
+      "actual_original_face_index": 27
+    }
+  ],
+  "missing_V8_archived_bytes_not_reconstructed": true,
+  "real_case_control_applicability": {
+    "channel_mutations": {
+      "status": "executed",
+      "actual_eligible_count": 82,
+      "reason": null,
+      "analytic_controls_are_separate": true
+    },
+    "split_mutations": {
+      "status": "executed",
+      "actual_eligible_count": 81,
+      "reason": null,
+      "analytic_controls_are_separate": true
+    },
+    "leaf_mutations": {
+      "status": "executed",
+      "actual_eligible_count": 82,
+      "reason": null,
+      "analytic_controls_are_separate": true
+    },
+    "UV_channel_mutations": {
+      "status": "not_applicable",
+      "actual_eligible_count": 0,
+      "reason": "No actual saved new u proof.",
+      "analytic_controls_are_separate": true
+    },
+    "supplemental_original_source_mutations": {
+      "status": "executed",
+      "actual_eligible_count": 2,
+      "reason": null,
+      "analytic_controls_are_separate": true
+    },
+    "planar_source_mutations": {
+      "status": "executed_with_individual_applicability",
+      "actual_applied_model_count": 8,
+      "actual_rejected_control_count": 8,
+      "individual_absent_targets_are_not_passes": true,
+      "reason": null
+    }
+  },
+  "mandatory_analytic_controls": {
+    "schema": "razr-r5e-mandatory-planar-exterior-checker-controls-v7",
+    "execution_kind": "synthetic_analytic_control",
+    "qualifies_original_or_native_case": false,
+    "real_case_result_changed": false,
+    "original_limits_and_threshold_unchanged": true,
+    "complete_box_exterior_positive": {
+      "verified": true,
+      "root_box_exact": [
+        [
+          "2",
+          "3"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "excluded_open_volume_exact": "1"
+    },
+    "exact_partition_and_tiny_retention_positive": {
+      "verified": true,
+      "root_box_exact": [
+        [
+          "1888946593146913612181826071/1888946593147858085478400000",
+          "2"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "cut_exact": "1",
+      "children_positive_directed_volumes_exact": [
+        "944473296573929/1888946593147858085478400000",
+        "1"
+      ],
+      "positive_tiny_leaf_retained_in_full": true
+    },
+    "all_retained_no_excluded_positive": {
+      "verified": true,
+      "retained_positive_volume_exact": "944473296573929/7555786372591432341913600000",
+      "all_twelve_unresolved_channels_checked": true,
+      "excluded_leaves": 0,
+      "splits": 0,
+      "channel_mutations": {
+        "status": "not_applicable",
+        "actual_eligible_count": 0,
+        "reason": "Synthetic all-retained tree has no excluded leaf.",
+        "analytic_controls_are_separate": true
+      },
+      "split_mutations": {
+        "status": "not_applicable",
+        "actual_eligible_count": 0,
+        "reason": "Synthetic all-retained tree has no split.",
+        "analytic_controls_are_separate": true
+      },
+      "is_actual_V6_or_V7_case_branch_coverage": false
+    },
+    "complete_L_prism_UV_notch_positive": {
+      "verified": true,
+      "explicit_L_boundary_vertices": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "source_UV_piece_count": 12,
+      "complete_spatial_face_count": 8,
+      "root_box_exact": [
+        [
+          "5/4",
+          "7/4"
+        ],
+        [
+          "5/4",
+          "7/4"
+        ],
+        [
+          "1/4",
+          "3/4"
+        ]
+      ],
+      "excluded_open_volume_exact": "1/8",
+      "actual_saved_u_separations": 1,
+      "strict_closed_touch_negative_executed": true,
+      "native_membership_claimed": false
+    },
+    "complete_L_prism_UV_interior_all_retained_positive": {
+      "verified": true,
+      "retained_positive_volume_exact": "944473296573929/7555786372591432341913600000",
+      "all_twelve_unresolved_spatial_channels_checked": true,
+      "all_four_failed_closed_UV_paths_checked": true,
+      "excluded_leaves": 0,
+      "splits": 0,
+      "is_actual_V6_or_V7_case_branch_coverage": false
+    },
+    "channel_negative_controls": [
+      {
+        "name": "omitted-original-spatial-carrier",
+        "actual_rejected": true,
+        "reason": "all original spatial carriers need a proof"
+      },
+      {
+        "name": "overclaim-closed-cell-disjointness",
+        "actual_rejected": true,
+        "reason": "only open cell interior may be excluded"
+      },
+      {
+        "name": "spatial-path-fails-known-exterior",
+        "actual_rejected": true,
+        "reason": "positive open spatial channel must contain the cell interior and reach known exterior"
+      },
+      {
+        "name": "false-inherited-separating-inequality",
+        "actual_rejected": true,
+        "reason": "inherited spatial coordinate/slab does not separate the open channel"
+      }
+    ],
+    "split_negative_controls": [
+      {
+        "name": "omitted-partition-child",
+        "actual_rejected": true,
+        "reason": "complete distinct forward partition children required"
+      },
+      {
+        "name": "duplicated-partition-child",
+        "actual_rejected": true,
+        "reason": "complete distinct forward partition children required"
+      },
+      {
+        "name": "cut-on-parent-boundary",
+        "actual_rejected": true,
+        "reason": "registered internal cut policy differs"
+      },
+      {
+        "name": "discarded-closed-cut-plane",
+        "actual_rejected": true,
+        "reason": "positive directed partition or closed cut carrier changed"
+      },
+      {
+        "name": "wrong-positive-parent-volume",
+        "actual_rejected": true,
+        "reason": "positive directed partition or closed cut carrier changed"
+      }
+    ],
+    "leaf_negative_controls": [
+      {
+        "name": "omitted-allocated-positive-leaf",
+        "actual_rejected": true,
+        "reason": "complete contiguous explicit new tree required",
+        "original_leaf_id": 1,
+        "original_leaf_kind": "retained",
+        "original_leaf_reason": "tiny_exact_volume_retained",
+        "original_positive_volume_exact": "944473296573929/1888946593147858085478400000"
+      },
+      {
+        "name": "discarded-smallest-positive-leaf-volume",
+        "actual_rejected": true,
+        "reason": "explicit positive leaf measure differs",
+        "original_leaf_id": 1,
+        "original_leaf_kind": "retained",
+        "original_leaf_reason": "tiny_exact_volume_retained",
+        "original_positive_volume_exact": "944473296573929/1888946593147858085478400000"
+      }
+    ],
+    "UV_negative_controls": [
+      {
+        "name": "omitted-complete-UV-boundary-piece",
+        "actual_rejected": true,
+        "reason": "complete UV boundary piece code census differs"
+      },
+      {
+        "name": "changed-complete-full-D-stationary-candidate",
+        "actual_rejected": true,
+        "reason": "complete inverse/old face/full-D stationary projection differs"
+      },
+      {
+        "name": "changed-exact-plane-inverse-target",
+        "actual_rejected": true,
+        "reason": "complete inverse/old face/full-D stationary projection differs"
+      },
+      {
+        "name": "UV-path-fails-known-exterior",
+        "actual_rejected": true,
+        "reason": "closed UV path must contain the complete target and reach known exterior"
+      },
+      {
+        "name": "false-strict-closed-UV-separator",
+        "actual_rejected": true,
+        "reason": "strict closed UV boundary separation does not hold"
+      },
+      {
+        "name": "omitted-u-proof-map",
+        "actual_rejected": true,
+        "reason": "UV proof map must cover exactly the unique u positions in order"
+      },
+      {
+        "name": "duplicated-u-proof-map",
+        "actual_rejected": true,
+        "reason": "UV proof map must cover exactly the unique u positions in order"
+      },
+      {
+        "name": "closed-UV-touching-is-not-strict-separation",
+        "actual_rejected": true,
+        "reason": "strict closed UV boundary separation does not hold"
+      },
+      {
+        "name": "omitted-failed-closed-UV-path",
+        "actual_rejected": true,
+        "reason": "complete or budget-prefix UV unresolved path order differs"
+      },
+      {
+        "name": "false-unresolved-closed-UV-blocker",
+        "actual_rejected": true,
+        "reason": "declared UV blocker has an available strict separator"
+      }
+    ],
+    "mandatory_controls_completed": true
+  },
+  "immutable_V6_input_count": 53,
+  "immutable_V5_input_count": 25,
+  "verified_actual_V6_report": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/all-primitive-support-frames/report.json",
+    "bytes": 173959,
+    "sha256": "9b7ecb9f016d1560c3ecafe9f3ea09bf7259c4cce32b5b13c334f7bdae1a861f"
+  },
+  "verified_actual_V6_independent_report": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v6/verify-all/report.json",
+    "bytes": 86939,
+    "sha256": "b0e6fc959516f2702eab0a2eecb3e10abc79ff4c188838c960188ef5793530d4"
+  },
+  "verified_actual_V5_report": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/base-v5/all-trim-model-frames/report.json",
+    "bytes": 95661,
+    "sha256": "31fb8469e843a4b2831482b0578cc7630e11ccf9fc98d386130587f7b42160b8"
+  },
+  "independent_static_source_capacity": {
+    "plane_occurrences": 48,
+    "wire_count": 48,
+    "source_edge_occurrences": 520,
+    "Line_occurrences": 472,
+    "maximum_total_UV_pieces": 4100,
+    "Circle_occurrences": 48,
+    "maximum_UV_pieces_per_face": 225,
+    "all_source_occurrences_included": true,
+    "additional_original_Line_occurrences": 18,
+    "additional_UV_pieces": 36
+  },
+  "seconds": 46.055000877000566,
+  "peak_RSS_bytes": 182620160,
+  "planar_exterior_model_conditional_clearance_passes": 1,
+  "total_new_tree_nodes_verified": 163,
+  "total_new_splits_verified": 81,
+  "total_new_positive_leaves_verified": 82,
+  "total_actual_new_excluded_leaves_verified": 82,
+  "total_actual_retained_roots_verified": 1,
+  "total_saved_planar_u_separations_verified": 0,
+  "total_saved_UV_piece_separations_verified": 0,
+  "total_actual_failed_UV_channel_records_verified": 1296,
+  "actual_retention_reason_counts": {},
+  "total_original_V6_reproof_census": {
+    "splits": 4096,
+    "nodes": 8277,
+    "leaves": 4181,
+    "excluded_count": 670,
+    "retained_roots": 3511
+  },
+  "all_checked_source_contract_and_archived_inputs_unchanged": true,
+  "finished_utc": "2026-10-29T00:08:11.551033+00:00"
+}

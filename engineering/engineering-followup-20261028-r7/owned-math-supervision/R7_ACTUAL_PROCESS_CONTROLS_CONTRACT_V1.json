@@ -1,0 +1,127 @@
+{
+  "schema": "razr-r7-owned-exit-confirmation-actual-controls-contract-v1",
+  "harness": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/exercise_owned_exit_confirmation_r7_v1.py",
+    "bytes": 13323,
+    "sha256": "6317d4f7bd8c7bb811d758519c634703705699cffe108db02ff611ccd6707885"
+  },
+  "bound_sources": [
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/supervise_owned_pure_math_r7_v2.py",
+      "bytes": 16893,
+      "sha256": "9b8638c6fab363a60955b9c40d4ca43931b3dc8cb065744cc68153d3aa41a02e"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+      "bytes": 6105,
+      "sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/additional-bspline-v1/source/source-original/owned_process.py",
+      "bytes": 13400,
+      "sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25"
+    }
+  ],
+  "cases": [
+    [
+      "completed-exit-VmRSS",
+      "VmRSS",
+      true
+    ],
+    [
+      "completed-exit-VmHWM",
+      "VmHWM",
+      true
+    ],
+    [
+      "completed-but-stays-live",
+      "VmRSS",
+      false
+    ],
+    [
+      "incomplete-entry",
+      "VmRSS",
+      false
+    ],
+    [
+      "different-key",
+      "Pid",
+      false
+    ],
+    [
+      "identity-error",
+      "ValueError",
+      false
+    ],
+    [
+      "wrong-nonce",
+      "VmRSS",
+      false
+    ],
+    [
+      "wrong-starttime",
+      "VmRSS",
+      false
+    ],
+    [
+      "wrong-Popen-binding",
+      "VmRSS",
+      false
+    ],
+    [
+      "zero-peak",
+      "VmRSS",
+      false
+    ],
+    [
+      "over-limit-peak",
+      "VmRSS",
+      false
+    ],
+    [
+      "wrong-argv",
+      "VmRSS",
+      false
+    ],
+    [
+      "changed-math-contract-before",
+      "VmRSS",
+      false
+    ],
+    [
+      "changed-math-contract-during",
+      "VmRSS",
+      false
+    ],
+    [
+      "exit-nonzero-after-receipt",
+      "VmRSS",
+      false
+    ],
+    [
+      "original-resource-gate-failure",
+      "VmRSS",
+      false
+    ],
+    [
+      "validation-exceeds-one-interval",
+      "VmRSS",
+      false
+    ],
+    [
+      "second-attempt",
+      "VmRSS",
+      false
+    ]
+  ],
+  "fixture_source_sha256": "cd7a85d15fe76c35972b5eaa837858478ebabf82ef8268bb810ca6488a0d015f",
+  "wall_seconds": 60,
+  "parent_and_inherited_child_address_space_bytes": 536870912,
+  "maximum_owned_child_processes": 18,
+  "maximum_confirmation_attempts_per_process": 1,
+  "maximum_control_directory_bytes": 4194304,
+  "sampling_exception_injection_explicit": true,
+  "kernel_gap_reproduction_claimed": false,
+  "scientific_worker_runs": 0,
+  "execution_authorized": false
+}

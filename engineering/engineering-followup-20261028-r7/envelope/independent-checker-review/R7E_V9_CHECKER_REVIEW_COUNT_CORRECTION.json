@@ -1,0 +1,14 @@
+{
+  "schema": "razr-r7e-checker-review-count-metadata-correction",
+  "original_actual_review": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/independent-checker-review/R7E_V9_CROSS_AUTHOR_CHECKER_STATIC_REVIEW_V1.json",
+    "bytes": 11230,
+    "sha256": "86a16f6aa49095b9d444dbd237287f4f18c9d3e57ba4840d5faac067a50fc1bb"
+  },
+  "original_report_check_count": 79,
+  "original_report_check_list_length": 80,
+  "cause": "The output-path uniqueness check appended to the mutable check list after check_count was captured. All79semantic/static checks had passed; the80th was output-path uniqueness.",
+  "new_version": "review_v9_checker_sources_v2.py",
+  "correction": "Keep output-path uniqueness outside semantic check list; assert exact count/list agreement. Original report and checker source remain unchanged.",
+  "mathematical_worker_reexecutions": 0
+}

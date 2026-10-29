@@ -1,0 +1,157 @@
+{
+  "schema": "razr-r7-owned-pure-math-supervision-v1-completed-entry-exit",
+  "started_utc": "2026-10-29T00:24:53.762875+00:00",
+  "contract_sha256": "dfef4771582560b32f4ad9f86635004ac823b7fc546ce0d948e7f515a3034280",
+  "source_sha256": "9b8638c6fab363a60955b9c40d4ca43931b3dc8cb065744cc68153d3aa41a02e",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-I",
+    "-S",
+    "-B",
+    "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+    "--supervision-contract",
+    "/workspace/scratch/34f8fcac2ab1/r7-supervisor/end-to-end-fixture-v1/supervision-contract.json",
+    "--receipt",
+    "r7-supervisor/end-to-end-fixture-v1/supervision/entry-receipt.json",
+    "--",
+    "--contract",
+    "/workspace/scratch/34f8fcac2ab1/r7-supervisor/end-to-end-fixture-v1/math-contract.json",
+    "--output",
+    "/workspace/scratch/34f8fcac2ab1/r7-supervisor/end-to-end-fixture-v1/worker-output"
+  ],
+  "worker_started": true,
+  "completed": true,
+  "limits": {
+    "supervisor_sha256": "9b8638c6fab363a60955b9c40d4ca43931b3dc8cb065744cc68153d3aa41a02e",
+    "worker_entry": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+    "worker_entry_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+    "owned_process": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/additional-bspline-v1/source/source-original/owned_process.py",
+      "bytes": 13400,
+      "sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25"
+    },
+    "worker": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/registered_fixture_worker.py",
+      "bytes": 766,
+      "sha256": "cd7a85d15fe76c35972b5eaa837858478ebabf82ef8268bb810ca6488a0d015f"
+    },
+    "canonical_worker_options": [
+      "--contract",
+      "--output"
+    ],
+    "registered_math_contract_sha256": "2dd26d411e88d9bec2fbccb807734e47f458f3d819f41c84c77c340ed2fe516f",
+    "worker_output_directory": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/end-to-end-fixture-v1/worker-output",
+    "wall_seconds": 600,
+    "RSS_limit_bytes": 805306368,
+    "shared_ceiling_bytes": 7301444403,
+    "disk_floor_bytes": 104857600,
+    "maximum_output_bytes": 41943040,
+    "metadata_margin_bytes": 4194304,
+    "completed_entry_exit_confirmation_policy": {
+      "schema": "razr-r7-completed-entry-owned-exit-confirmation-v1",
+      "maximum_additional_seconds": 0.2,
+      "maximum_attempts": 1,
+      "allowed_sampling_exception": "exact KeyError VmRSS or VmHWM only",
+      "completed_entry_required_before_wait": true,
+      "same_Popen_and_handshake_identity_required": true,
+      "all_original_resource_gates_rechecked": true,
+      "missing_RSS_zero_substitution_allowed": false
+    }
+  },
+  "observations": [
+    {
+      "disk_available_bytes": 4338581504,
+      "shared_unreclaimable_bytes": 1669430800
+    }
+  ],
+  "resource_stop": null,
+  "worker_exit_code": 0,
+  "missing_RSS_zero_substitutions": 0,
+  "bounded_exit_confirmation_count": 0,
+  "completed_entry_exit_confirmation_policy": {
+    "schema": "razr-r7-completed-entry-owned-exit-confirmation-v1",
+    "maximum_additional_seconds": 0.2,
+    "maximum_attempts": 1,
+    "allowed_sampling_exception": "exact KeyError VmRSS or VmHWM only",
+    "completed_entry_required_before_wait": true,
+    "same_Popen_and_handshake_identity_required": true,
+    "all_original_resource_gates_rechecked": true,
+    "missing_RSS_zero_substitution_allowed": false
+  },
+  "owned_child_handshake": {
+    "packet": {
+      "kind": "razr_owned_child_identity_v1",
+      "nonce": "e900b819fe9b48776ac156c8dc2b3d6ffaccc06ea66a9e643a42e72dccff68e9",
+      "source_sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4",
+      "os_getpid": 5,
+      "os_getppid": 2,
+      "proc_self_visible_pid": "89153",
+      "status": {
+        "Pid": 89153,
+        "PPid": 89150,
+        "NSpid": [
+          89153,
+          5
+        ]
+      },
+      "stat": {
+        "pid": 89153,
+        "ppid": 89150,
+        "starttime_ticks": 1263711
+      },
+      "pid_namespace": "pid:[4026532627]",
+      "pid_for_children_namespace": "pid:[4026532627]"
+    },
+    "parent_identity": {
+      "os_getpid": 2,
+      "os_getppid": 1,
+      "proc_self_visible_pid": "89150",
+      "status": {
+        "Pid": 89150,
+        "PPid": 89149,
+        "NSpid": [
+          89150,
+          2
+        ]
+      },
+      "stat": {
+        "pid": 89150,
+        "ppid": 89149,
+        "starttime_ticks": 1263698
+      },
+      "pid_namespace": "pid:[4026532627]",
+      "pid_for_children_namespace": "pid:[4026532627]"
+    },
+    "verified_binding": {
+      "status": {
+        "Pid": 89153,
+        "PPid": 89150,
+        "NSpid": [
+          89153,
+          5
+        ]
+      },
+      "stat": {
+        "pid": 89153,
+        "ppid": 89150,
+        "starttime_ticks": 1263711
+      },
+      "pid_namespace": "pid:[4026532627]",
+      "pid_for_children_namespace": "pid:[4026532627]"
+    },
+    "initial_memory": {
+      "VmRSS": 12505088,
+      "VmHWM": 12505088
+    }
+  },
+  "owned_child_identity_verified": true,
+  "owned_channel_descriptors_closed": true,
+  "entry_completed": true,
+  "source_and_contract_unchanged": true,
+  "elapsed_seconds": 0.4641756039982283,
+  "finished_utc": "2026-10-29T00:24:54.227007+00:00",
+  "final_resources": {
+    "disk_available_bytes": 4338515968,
+    "shared_unreclaimable_bytes": 1790898072
+  }
+}

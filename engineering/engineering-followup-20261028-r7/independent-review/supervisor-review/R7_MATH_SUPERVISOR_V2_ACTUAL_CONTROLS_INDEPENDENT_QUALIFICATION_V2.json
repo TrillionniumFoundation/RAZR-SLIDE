@@ -1,0 +1,925 @@
+{
+  "schema": "razr-r7-owned-math-v2-actual-process-controls-independent-complete-readback-v1",
+  "recorded_utc": "2026-10-29T00:26:04.671404+00:00",
+  "evidence_readback_pass": true,
+  "reviewer": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-audit/read_owned_exit_controls_actual_r7_v2.py",
+    "bytes": 11971,
+    "sha256": "39cfb239e67278cfc06e7635609039fb688d1694068d653a4607f591fef96b96"
+  },
+  "actual_report": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/report.json",
+    "bytes": 138661,
+    "sha256": "24eeb2c19bb3470b9b9cf749663c9a09474dccc862124360d2715b95181c13e6"
+  },
+  "contract": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/R7_ACTUAL_PROCESS_CONTROLS_CONTRACT_V4.json",
+    "bytes": 4275,
+    "sha256": "81ebf3922ce795eb7eb694f7513e14c5de7c9a9ea39231a2ab00b0206a76842b"
+  },
+  "actual_harness": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/exercise_owned_exit_confirmation_r7_v4.py",
+    "bytes": 15830,
+    "sha256": "099b4f6a9620aa03e27a0fbcf4c640e76b190a899f8ec485ab48c297d5c232f4"
+  },
+  "qualified_supervisor_and_entry_and_original_owned_sources": [
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/supervise_owned_pure_math_r7_v2.py",
+      "bytes": 16893,
+      "sha256": "9b8638c6fab363a60955b9c40d4ca43931b3dc8cb065744cc68153d3aa41a02e"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/source-v2/run_owned_pure_math_r7_v1.py",
+      "bytes": 6105,
+      "sha256": "51e81fa50697348eb8f6663d5e1636b083d3aafa41f77511cd796bd06ff5c3e4"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/additional-bspline-v1/source/source-original/owned_process.py",
+      "bytes": 13400,
+      "sha256": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25"
+    }
+  ],
+  "all_raw_control_members": {
+    "registered_fixture_worker.py": {
+      "bytes": 766,
+      "sha256": "cd7a85d15fe76c35972b5eaa837858478ebabf82ef8268bb810ca6488a0d015f"
+    },
+    "report.json": {
+      "bytes": 138661,
+      "sha256": "24eeb2c19bb3470b9b9cf749663c9a09474dccc862124360d2715b95181c13e6"
+    },
+    "validation-exceeds-one-interval/control.json": {
+      "bytes": 6796,
+      "sha256": "1507e7b6ea04cb924b2472bcf779d811420ea24774614c9b6f2c5e256f42d5ec"
+    },
+    "validation-exceeds-one-interval/math-contract.json": {
+      "bytes": 234,
+      "sha256": "a54ad679273b2699e34297433980d525afb1d5b313a33497130967a4c70416e1"
+    },
+    "validation-exceeds-one-interval/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "validation-exceeds-one-interval/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1654,
+      "sha256": "5835e56199094c9ea14f5e0ebd1b14b15cbfdc7b7c85b4780c6946b07656a9bd"
+    },
+    "validation-exceeds-one-interval/entry-receipt.json": {
+      "bytes": 1654,
+      "sha256": "5835e56199094c9ea14f5e0ebd1b14b15cbfdc7b7c85b4780c6946b07656a9bd"
+    },
+    "validation-exceeds-one-interval/supervision-contract.json": {
+      "bytes": 1755,
+      "sha256": "7e09cbccf51e571a8973946d3b4be90e7bbdb8656aaf03aed1304654f319d8e0"
+    },
+    "validation-exceeds-one-interval/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    },
+    "completed-exit-VmRSS/control.json": {
+      "bytes": 7838,
+      "sha256": "a9274d39671be2b863755344f8566d4de2a551f48ec0c881e1579e6fd4e9b3ce"
+    },
+    "completed-exit-VmRSS/math-contract.json": {
+      "bytes": 223,
+      "sha256": "4be660814e05760e843763e4fd0ecbaf7962c23ed2e239bffae25b4227897b1c"
+    },
+    "completed-exit-VmRSS/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "completed-exit-VmRSS/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1608,
+      "sha256": "1b7cdb1e438793fe9391fd416483492017038eb4ce13876869fa99ef79789948"
+    },
+    "completed-exit-VmRSS/entry-receipt.json": {
+      "bytes": 1608,
+      "sha256": "1b7cdb1e438793fe9391fd416483492017038eb4ce13876869fa99ef79789948"
+    },
+    "completed-exit-VmRSS/supervision-contract.json": {
+      "bytes": 1744,
+      "sha256": "2a91885132980fbcbb934eb5162dac6c30c88c3bc1bf0238d52dbcae85a7b412"
+    },
+    "completed-exit-VmRSS/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    },
+    "completed-exit-VmHWM/control.json": {
+      "bytes": 7839,
+      "sha256": "22119861b0efa31040cbeaee944ec093a6d5c9f1a6f32b6a5c3aa12b2c96bce2"
+    },
+    "completed-exit-VmHWM/math-contract.json": {
+      "bytes": 223,
+      "sha256": "492cec7e415869fe6092a3c15a3c2628aefa86171234a27ee49bb042b41f6b62"
+    },
+    "completed-exit-VmHWM/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "completed-exit-VmHWM/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1608,
+      "sha256": "580a7c252d7f6ac9c8f064ed24a31d250adcc642c6e9c3038f58c7ea9b691071"
+    },
+    "completed-exit-VmHWM/entry-receipt.json": {
+      "bytes": 1608,
+      "sha256": "580a7c252d7f6ac9c8f064ed24a31d250adcc642c6e9c3038f58c7ea9b691071"
+    },
+    "completed-exit-VmHWM/supervision-contract.json": {
+      "bytes": 1744,
+      "sha256": "fa0e411e7bac28de0642c09be7fbd7a77ed240d8e4fca9295eb20e2e964acce4"
+    },
+    "completed-exit-VmHWM/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    },
+    "wrong-starttime/control.json": {
+      "bytes": 6511,
+      "sha256": "e1e782420495b045ebc9ec174c7e0f10a304853f6d8c3694862d3952b408f07f"
+    },
+    "wrong-starttime/math-contract.json": {
+      "bytes": 218,
+      "sha256": "1eab5879f767a7aa6d9ac1f6e442f7fcc7bf6fec7f1c0d7feb988899ed9c46a8"
+    },
+    "wrong-starttime/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "wrong-starttime/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1590,
+      "sha256": "03a60d2618d5b4fd28ac031bb442996c46983ba1966060524f76193650242d50"
+    },
+    "wrong-starttime/entry-receipt.json": {
+      "bytes": 1590,
+      "sha256": "4d583bfffe482b5517395b9c2c257e1ad980de3fdf87b8719ec8b037a728da94"
+    },
+    "wrong-starttime/supervision-contract.json": {
+      "bytes": 1739,
+      "sha256": "362340e87c17d610c023bac8f161b1ea468ac776308ddfb2fba49ee216f3b094"
+    },
+    "wrong-starttime/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    },
+    "original-resource-gate-failure/control.json": {
+      "bytes": 6575,
+      "sha256": "90472b9e6591142189cdd11fe218ca650c2fd2867578956b291a97ad96b956a9"
+    },
+    "original-resource-gate-failure/math-contract.json": {
+      "bytes": 233,
+      "sha256": "75ec2611ca560268651e6dd3a780cf53c93e831d3ad77d9e47fd287eb1063805"
+    },
+    "original-resource-gate-failure/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "original-resource-gate-failure/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1650,
+      "sha256": "d205158c5604f3e4f2d858aa35905b55a62ca01d57b7d10a02db124124cb476c"
+    },
+    "original-resource-gate-failure/entry-receipt.json": {
+      "bytes": 1650,
+      "sha256": "d205158c5604f3e4f2d858aa35905b55a62ca01d57b7d10a02db124124cb476c"
+    },
+    "original-resource-gate-failure/supervision-contract.json": {
+      "bytes": 1754,
+      "sha256": "20afc67021eed0ffe1308d6f61b17fdec62b38eb47e68cbbb691a818c640b80b"
+    },
+    "original-resource-gate-failure/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    },
+    "second-attempt/control.json": {
+      "bytes": 5970,
+      "sha256": "a9c41135e6cecc05179ed0e92528de6e2d707ce9cd6968d80a98be6121279112"
+    },
+    "second-attempt/math-contract.json": {
+      "bytes": 217,
+      "sha256": "fe4360b186b061e17a09e87b8fbde823889c85b2cd7dfa71f21c29c1719d2356"
+    },
+    "second-attempt/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "second-attempt/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1586,
+      "sha256": "b38a4cc0c92b5a912cddd81d8d7c4bf6960e8281ffb6d69e4e25bc94d15f8fce"
+    },
+    "second-attempt/entry-receipt.json": {
+      "bytes": 1586,
+      "sha256": "b38a4cc0c92b5a912cddd81d8d7c4bf6960e8281ffb6d69e4e25bc94d15f8fce"
+    },
+    "second-attempt/supervision-contract.json": {
+      "bytes": 1738,
+      "sha256": "1c2774a1b0e33683ab31d955e60b01998906cef2da8ef743c5b1aeb271bcd8d6"
+    },
+    "second-attempt/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    },
+    "identity-error/control.json": {
+      "bytes": 5969,
+      "sha256": "77f5f486be1a915cfb261516b8025283dc33dc47042b5b0492a47bcbfe2ea72f"
+    },
+    "identity-error/math-contract.json": {
+      "bytes": 217,
+      "sha256": "c9d86850e685cd475dc020f309faff778b3bea0a534101f3f4719b5f9ca3b0e6"
+    },
+    "identity-error/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "identity-error/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1586,
+      "sha256": "491ad9c75a6eeedaa4d953f9c0c0c1b4a32f5e5e5361fafc589aa5fb619b1227"
+    },
+    "identity-error/entry-receipt.json": {
+      "bytes": 1586,
+      "sha256": "491ad9c75a6eeedaa4d953f9c0c0c1b4a32f5e5e5361fafc589aa5fb619b1227"
+    },
+    "identity-error/supervision-contract.json": {
+      "bytes": 1738,
+      "sha256": "67011e8104bb7cd538b7cc588a47aec48fc32c0485b220888b3ece611509aca1"
+    },
+    "identity-error/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    },
+    "exit-nonzero-after-receipt/control.json": {
+      "bytes": 7795,
+      "sha256": "8b002457d9d6e26d4497c7ece75ba46ce8a4f89f2f77dd7120dfd4923faca68f"
+    },
+    "exit-nonzero-after-receipt/math-contract.json": {
+      "bytes": 228,
+      "sha256": "ce5c6fecbb01f653b12b281d4fceeda62477d80245ad5d6458334c226cd81859"
+    },
+    "exit-nonzero-after-receipt/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exit-nonzero-after-receipt/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1634,
+      "sha256": "1316171f047e83a77d44730ac7482c0f705d935d6aa90192a15c9ab1c07b72b3"
+    },
+    "exit-nonzero-after-receipt/entry-receipt.json": {
+      "bytes": 1634,
+      "sha256": "1316171f047e83a77d44730ac7482c0f705d935d6aa90192a15c9ab1c07b72b3"
+    },
+    "exit-nonzero-after-receipt/supervision-contract.json": {
+      "bytes": 1750,
+      "sha256": "40f360b9ba8d2a444d415f19ac2cbc06e22b572eed5395b2dd3a175d2047cf6e"
+    },
+    "exit-nonzero-after-receipt/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    },
+    "wrong-nonce/control.json": {
+      "bytes": 6481,
+      "sha256": "040977e99117d6091081849a658964bf09e87445024a9808c377db145e29fe81"
+    },
+    "wrong-nonce/math-contract.json": {
+      "bytes": 214,
+      "sha256": "ea3f0b5439e1bd886dcc96139f30dfc2fe0cbd5b9f8d13641aba164d1409f8f0"
+    },
+    "wrong-nonce/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "wrong-nonce/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1574,
+      "sha256": "79ff96935a21285078f006480a18b750f3da7c0b52e6a0f568deb9ddd86fdf90"
+    },
+    "wrong-nonce/entry-receipt.json": {
+      "bytes": 1574,
+      "sha256": "7a8660b29574ddbe12ed72dfe6f17d6062754e58e0a2c95c7277d9b1af6b68b4"
+    },
+    "wrong-nonce/supervision-contract.json": {
+      "bytes": 1735,
+      "sha256": "dfba39eb2e740e295ed4f9275f37e58a07cbc3125fcd6e38f4490117b7218338"
+    },
+    "wrong-nonce/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    },
+    "over-limit-peak/control.json": {
+      "bytes": 6482,
+      "sha256": "3252a62544f4b96434a86420096db13f10d8d2ec528d089871770efc55f2ac70"
+    },
+    "over-limit-peak/math-contract.json": {
+      "bytes": 218,
+      "sha256": "ce30b0bd95b90bbadaf4380e1dee374bb17ab91931c2c5039e3481512b4aa97b"
+    },
+    "over-limit-peak/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "over-limit-peak/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1590,
+      "sha256": "e01e0c08e223bb5f1fe7cbb74d6e2e0019c0276aa65f4ce88d3d24540ad48331"
+    },
+    "over-limit-peak/entry-receipt.json": {
+      "bytes": 1591,
+      "sha256": "6f93583e18bd346c6318a2eaf221e961264ba7b307ac475a6a3efc4ecc742a04"
+    },
+    "over-limit-peak/supervision-contract.json": {
+      "bytes": 1739,
+      "sha256": "7913928ead2c23b173d6a551926b955112ee1276059a86be04666a840de937ba"
+    },
+    "over-limit-peak/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    },
+    "zero-peak/control.json": {
+      "bytes": 6440,
+      "sha256": "32bd6b11d55ff3c5733add061b2045dc083af9e23e24013fb4c3a307e2fe8f07"
+    },
+    "zero-peak/math-contract.json": {
+      "bytes": 212,
+      "sha256": "4b3066b81c4bbffda9031529bfd31d5b11717581d73f9a85d3d4cf1919305b10"
+    },
+    "zero-peak/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "zero-peak/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1566,
+      "sha256": "df25e6bcf6191fbe36fa84ae077ec44053515d0116297899e307baf4d52ed2df"
+    },
+    "zero-peak/entry-receipt.json": {
+      "bytes": 1559,
+      "sha256": "5cad411c0366f4fada7c493edcb9eed9777fb725f96cc1250c95e170e71235b4"
+    },
+    "zero-peak/supervision-contract.json": {
+      "bytes": 1733,
+      "sha256": "5d596dd913eaf52844380bdf133b2e76857ccc7e99dec297cfc0a025dfbe3d05"
+    },
+    "zero-peak/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    },
+    "completed-but-stays-live/control.json": {
+      "bytes": 7666,
+      "sha256": "3c6991d5823e7d785f71183d1bfa872b54213f746202aa7514d7d7b6ed75a093"
+    },
+    "completed-but-stays-live/math-contract.json": {
+      "bytes": 227,
+      "sha256": "99cd02958ff9b3bc269ea1764fe28e44eb3e49d13885e32d572312a5aa875fa7"
+    },
+    "completed-but-stays-live/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "completed-but-stays-live/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1624,
+      "sha256": "6f4b5c1ac26750a1ccf86032f714d60263f2ce299cb61bfcc1fa4794950bb350"
+    },
+    "completed-but-stays-live/entry-receipt.json": {
+      "bytes": 1624,
+      "sha256": "6f4b5c1ac26750a1ccf86032f714d60263f2ce299cb61bfcc1fa4794950bb350"
+    },
+    "completed-but-stays-live/supervision-contract.json": {
+      "bytes": 1748,
+      "sha256": "365261aeb1285fadc3841222336714d80a8834122cf27a62d77ae43e29482eab"
+    },
+    "completed-but-stays-live/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    },
+    "different-key/control.json": {
+      "bytes": 5948,
+      "sha256": "02c1822912aaf32e484dd5cd38b37bfa000b7238d45d0f75e12428036e2138da"
+    },
+    "different-key/math-contract.json": {
+      "bytes": 216,
+      "sha256": "286d682d08b255d87c453ae89d169f3af478d98ff3841d134ed112e890f95279"
+    },
+    "different-key/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "different-key/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1580,
+      "sha256": "5a9f7f29597c3a0937931912ed116875a1c7d940f2b789efdbeaad4cf7429df0"
+    },
+    "different-key/entry-receipt.json": {
+      "bytes": 1580,
+      "sha256": "5a9f7f29597c3a0937931912ed116875a1c7d940f2b789efdbeaad4cf7429df0"
+    },
+    "different-key/supervision-contract.json": {
+      "bytes": 1737,
+      "sha256": "3353d62daa7caa1c29e54c0f25e46c26b967a1505387e72e8ef7ddb7808d9819"
+    },
+    "different-key/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    },
+    "changed-math-contract-during/control.json": {
+      "bytes": 7854,
+      "sha256": "f5a6d56ee55f08b901e3f057590ddab779b1ddd6a23f96a57f99deca4adacdcc"
+    },
+    "changed-math-contract-during/math-contract.json": {
+      "bytes": 255,
+      "sha256": "c4f22156c4117feaf1f338e1adc95f2373b4a41de8925646444d12ea61728ceb"
+    },
+    "changed-math-contract-during/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "changed-math-contract-during/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1642,
+      "sha256": "9a6c0938d4b54f17dbc4509aacd42ae4f2667cab4297f9a888353d71bca7353d"
+    },
+    "changed-math-contract-during/entry-receipt.json": {
+      "bytes": 1642,
+      "sha256": "9a6c0938d4b54f17dbc4509aacd42ae4f2667cab4297f9a888353d71bca7353d"
+    },
+    "changed-math-contract-during/supervision-contract.json": {
+      "bytes": 1752,
+      "sha256": "408d813928e10a49151576b72117087076eedf3350f821fd979ec668b0124fa0"
+    },
+    "changed-math-contract-during/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    },
+    "incomplete-entry/control.json": {
+      "bytes": 5900,
+      "sha256": "a63b2ba7b4df09e28c36fb0a9f54b00625261bc5d29b47149650dcdff081e295"
+    },
+    "incomplete-entry/math-contract.json": {
+      "bytes": 219,
+      "sha256": "d0265fb54fa3d3107758d5b3467906046cf190fb81aa023dec6d7cf79cabe1df"
+    },
+    "incomplete-entry/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "incomplete-entry/supervision-contract.json": {
+      "bytes": 1740,
+      "sha256": "499a3f97493ed40d0f4ab0811344e65f7c80ac42cb79298b162dcdffff753d1e"
+    },
+    "wrong-argv/control.json": {
+      "bytes": 6484,
+      "sha256": "4c0015a5fc69d445818f9bcfbe59b562a0a6ec8ab39e36a52f767f338e999d54"
+    },
+    "wrong-argv/math-contract.json": {
+      "bytes": 213,
+      "sha256": "b42dcb821ee25c53c439aadfca46cc27f5f3fe863fffa4d6ac2f453b10927c67"
+    },
+    "wrong-argv/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "wrong-argv/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1570,
+      "sha256": "41647197a78fb805e327059f1e176838b4c7db8e968221f65e6de4e106417b29"
+    },
+    "wrong-argv/entry-receipt.json": {
+      "bytes": 1580,
+      "sha256": "d860e41881dc212f5cca156a6c58e7d652c2f72fdb936413701477f4d8475ecd"
+    },
+    "wrong-argv/supervision-contract.json": {
+      "bytes": 1734,
+      "sha256": "49646831d16f9d403611cb71c0a82d6d0ef09340c26507eb74345f72c985ba4a"
+    },
+    "wrong-argv/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    },
+    "wrong-Popen-binding/control.json": {
+      "bytes": 6509,
+      "sha256": "0b30c20fd3b2d85419e57b92370d5e02d37bf531c89f62b1880cd919a8004ef9"
+    },
+    "wrong-Popen-binding/math-contract.json": {
+      "bytes": 222,
+      "sha256": "95eff12b7100ac1c78953a4ab8789e26746faa239f4ba64aef9ca4227105745f"
+    },
+    "wrong-Popen-binding/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "wrong-Popen-binding/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1606,
+      "sha256": "41e656378b820591f02fa066263fd3061b356f1104abde313756477cb36234bc"
+    },
+    "wrong-Popen-binding/entry-receipt.json": {
+      "bytes": 1606,
+      "sha256": "41e656378b820591f02fa066263fd3061b356f1104abde313756477cb36234bc"
+    },
+    "wrong-Popen-binding/supervision-contract.json": {
+      "bytes": 1743,
+      "sha256": "0b3f4bc3643dad73f5b3319eec2386b0afa6cf4bc02fb8c2dfe19ec93acdd348"
+    },
+    "wrong-Popen-binding/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    },
+    "changed-math-contract-before/control.json": {
+      "bytes": 6610,
+      "sha256": "545d7f56534c9cbac45ec539d7114f3e14f4abb80bfb143d19e13804f1fdf772"
+    },
+    "changed-math-contract-before/math-contract.json": {
+      "bytes": 278,
+      "sha256": "22208408005bbbd191cd570256d985fa303aed720adf7fdbb3b306fc8608c84e"
+    },
+    "changed-math-contract-before/execution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "changed-math-contract-before/entry-receipt-before-stimulus.original.json": {
+      "bytes": 1642,
+      "sha256": "1886dfe9ec60d310caa06105cd347df4e8912e4291390c92c55a92f24e52a98a"
+    },
+    "changed-math-contract-before/entry-receipt.json": {
+      "bytes": 1642,
+      "sha256": "1886dfe9ec60d310caa06105cd347df4e8912e4291390c92c55a92f24e52a98a"
+    },
+    "changed-math-contract-before/supervision-contract.json": {
+      "bytes": 1752,
+      "sha256": "267c933a88ed85c9be274ffce80df48981f2b472c81a278c118f7979fd2e73a4"
+    },
+    "changed-math-contract-before/worker-output/fixture.json": {
+      "bytes": 62,
+      "sha256": "c9eb05b62e251a711f718650b74c02dfc15227fb1cf6cf763ba98939ca503c69"
+    }
+  },
+  "all_raw_control_member_count": 125,
+  "all_raw_control_bytes": 352214,
+  "all_18_expected_outcomes_and_exact_negative_causes_rechecked": true,
+  "all_17_original_completed_receipt_byte_snapshots_verified": true,
+  "actual_argv_relative_paths_preserved_and_resolved_against_actual_absolute_entry_bindings": true,
+  "initial_reviewer_absolute_argv_assumption_failure_preserved": true,
+  "actual_18_unique_owned_Popen_procfs_starttime_namespace_identities_verified": true,
+  "real_positive_exit_confirmation_count": 2,
+  "real_negative_rejection_count": 16,
+  "actual_control_cases": [
+    {
+      "case": "completed-exit-VmRSS",
+      "expected_acceptance": true,
+      "actual_acceptance": true,
+      "real_owned_process_identity": [
+        "86625",
+        1256401,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": 0,
+      "exact_rejection_message": null,
+      "confirmation_total_seconds": 0.11586548000013863,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/completed-exit-VmRSS/control.json",
+        "bytes": 7838,
+        "sha256": "a9274d39671be2b863755344f8566d4de2a551f48ec0c881e1579e6fd4e9b3ce"
+      },
+      "passed": true
+    },
+    {
+      "case": "completed-exit-VmHWM",
+      "expected_acceptance": true,
+      "actual_acceptance": true,
+      "real_owned_process_identity": [
+        "86626",
+        1256416,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": 0,
+      "exact_rejection_message": null,
+      "confirmation_total_seconds": 0.12360341699968558,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/completed-exit-VmHWM/control.json",
+        "bytes": 7839,
+        "sha256": "22119861b0efa31040cbeaee944ec093a6d5c9f1a6f32b6a5c3aa12b2c96bce2"
+      },
+      "passed": true
+    },
+    {
+      "case": "completed-but-stays-live",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "real_owned_process_identity": [
+        "86629",
+        1256432,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": -15,
+      "exact_rejection_message": "completed entry did not actually exit within the one original sampling interval",
+      "confirmation_total_seconds": 0.2001252399986697,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/completed-but-stays-live/control.json",
+        "bytes": 7666,
+        "sha256": "3c6991d5823e7d785f71183d1bfa872b54213f746202aa7514d7d7b6ed75a093"
+      },
+      "passed": true
+    },
+    {
+      "case": "incomplete-entry",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "real_owned_process_identity": [
+        "86630",
+        1256456,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": false,
+      "actual_Popen_final_returncode": -15,
+      "exact_rejection_message": "a bounded regular entry receipt must already exist",
+      "confirmation_total_seconds": null,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/incomplete-entry/control.json",
+        "bytes": 5900,
+        "sha256": "a63b2ba7b4df09e28c36fb0a9f54b00625261bc5d29b47149650dcdff081e295"
+      },
+      "passed": true
+    },
+    {
+      "case": "different-key",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "real_owned_process_identity": [
+        "86631",
+        1256464,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": -15,
+      "exact_rejection_message": "sampling error is not an eligible missing memory field",
+      "confirmation_total_seconds": null,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/different-key/control.json",
+        "bytes": 5948,
+        "sha256": "02c1822912aaf32e484dd5cd38b37bfa000b7238d45d0f75e12428036e2138da"
+      },
+      "passed": true
+    },
+    {
+      "case": "identity-error",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "real_owned_process_identity": [
+        "86632",
+        1256473,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": -15,
+      "exact_rejection_message": "sampling error is not an eligible missing memory field",
+      "confirmation_total_seconds": null,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/identity-error/control.json",
+        "bytes": 5969,
+        "sha256": "77f5f486be1a915cfb261516b8025283dc33dc47042b5b0492a47bcbfe2ea72f"
+      },
+      "passed": true
+    },
+    {
+      "case": "wrong-nonce",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "real_owned_process_identity": [
+        "86633",
+        1256482,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": -15,
+      "exact_rejection_message": "entry receipt is not bound to this Popen PID/starttime/namespace/nonce",
+      "confirmation_total_seconds": null,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/wrong-nonce/control.json",
+        "bytes": 6481,
+        "sha256": "040977e99117d6091081849a658964bf09e87445024a9808c377db145e29fe81"
+      },
+      "passed": true
+    },
+    {
+      "case": "wrong-starttime",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "real_owned_process_identity": [
+        "86634",
+        1256493,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": -15,
+      "exact_rejection_message": "entry receipt is not bound to this Popen PID/starttime/namespace/nonce",
+      "confirmation_total_seconds": null,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/wrong-starttime/control.json",
+        "bytes": 6511,
+        "sha256": "e1e782420495b045ebc9ec174c7e0f10a304853f6d8c3694862d3952b408f07f"
+      },
+      "passed": true
+    },
+    {
+      "case": "wrong-Popen-binding",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "real_owned_process_identity": [
+        "86635",
+        1256502,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": -15,
+      "exact_rejection_message": "the original verified owned Popen handshake is required",
+      "confirmation_total_seconds": null,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/wrong-Popen-binding/control.json",
+        "bytes": 6509,
+        "sha256": "0b30c20fd3b2d85419e57b92370d5e02d37bf531c89f62b1880cd919a8004ef9"
+      },
+      "passed": true
+    },
+    {
+      "case": "zero-peak",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "real_owned_process_identity": [
+        "86636",
+        1256506,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": -15,
+      "exact_rejection_message": "a positive in-limit original worker peak RSS is required",
+      "confirmation_total_seconds": null,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/zero-peak/control.json",
+        "bytes": 6440,
+        "sha256": "32bd6b11d55ff3c5733add061b2045dc083af9e23e24013fb4c3a307e2fe8f07"
+      },
+      "passed": true
+    },
+    {
+      "case": "over-limit-peak",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "real_owned_process_identity": [
+        "86637",
+        1256512,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": -15,
+      "exact_rejection_message": "a positive in-limit original worker peak RSS is required",
+      "confirmation_total_seconds": null,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/over-limit-peak/control.json",
+        "bytes": 6482,
+        "sha256": "3252a62544f4b96434a86420096db13f10d8d2ec528d089871770efc55f2ac70"
+      },
+      "passed": true
+    },
+    {
+      "case": "wrong-argv",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "real_owned_process_identity": [
+        "86638",
+        1256516,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": -15,
+      "exact_rejection_message": "actual same-run mathematical contract, arguments or output binding differs",
+      "confirmation_total_seconds": null,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/wrong-argv/control.json",
+        "bytes": 6484,
+        "sha256": "4c0015a5fc69d445818f9bcfbe59b562a0a6ec8ab39e36a52f767f338e999d54"
+      },
+      "passed": true
+    },
+    {
+      "case": "changed-math-contract-before",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "real_owned_process_identity": [
+        "86639",
+        1256521,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": -15,
+      "exact_rejection_message": "actual same-run mathematical contract, arguments or output binding differs",
+      "confirmation_total_seconds": null,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/changed-math-contract-before/control.json",
+        "bytes": 6610,
+        "sha256": "545d7f56534c9cbac45ec539d7114f3e14f4abb80bfb143d19e13804f1fdf772"
+      },
+      "passed": true
+    },
+    {
+      "case": "changed-math-contract-during",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "real_owned_process_identity": [
+        "86640",
+        1256525,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": 0,
+      "exact_rejection_message": "completed entry receipt, source or contract changed during confirmation",
+      "confirmation_total_seconds": null,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/changed-math-contract-during/control.json",
+        "bytes": 7854,
+        "sha256": "f5a6d56ee55f08b901e3f057590ddab779b1ddd6a23f96a57f99deca4adacdcc"
+      },
+      "passed": true
+    },
+    {
+      "case": "exit-nonzero-after-receipt",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "real_owned_process_identity": [
+        "86641",
+        1256541,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": 7,
+      "exact_rejection_message": "owned completed entry subsequently exited nonzero",
+      "confirmation_total_seconds": null,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/exit-nonzero-after-receipt/control.json",
+        "bytes": 7795,
+        "sha256": "8b002457d9d6e26d4497c7ece75ba46ce8a4f89f2f77dd7120dfd4923faca68f"
+      },
+      "passed": true
+    },
+    {
+      "case": "original-resource-gate-failure",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "real_owned_process_identity": [
+        "86642",
+        1256557,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": -15,
+      "exact_rejection_message": "explicit original resource-gate rejection control",
+      "confirmation_total_seconds": null,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/original-resource-gate-failure/control.json",
+        "bytes": 6575,
+        "sha256": "90472b9e6591142189cdd11fe218ca650c2fd2867578956b291a97ad96b956a9"
+      },
+      "passed": true
+    },
+    {
+      "case": "validation-exceeds-one-interval",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "real_owned_process_identity": [
+        "86643",
+        1256561,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": 0,
+      "exact_rejection_message": "no original sample interval or wall budget remains",
+      "confirmation_total_seconds": null,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/validation-exceeds-one-interval/control.json",
+        "bytes": 6796,
+        "sha256": "1507e7b6ea04cb924b2472bcf779d811420ea24774614c9b6f2c5e256f42d5ec"
+      },
+      "passed": true
+    },
+    {
+      "case": "second-attempt",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "real_owned_process_identity": [
+        "86694",
+        1256608,
+        "pid:[4026532351]"
+      ],
+      "original_completed_entry_present_before_stimulus": true,
+      "actual_Popen_final_returncode": -15,
+      "exact_rejection_message": "at most one completed-entry exit confirmation is allowed",
+      "confirmation_total_seconds": null,
+      "control_record": {
+        "path": "/workspace/scratch/34f8fcac2ab1/r7-supervisor/actual-controls-v1/second-attempt/control.json",
+        "bytes": 5970,
+        "sha256": "a9c41135e6cecc05179ed0e92528de6e2d707ce9cd6968d80a98be6121279112"
+      },
+      "passed": true
+    }
+  ],
+  "parent_seconds": 2.1308053330012626,
+  "parent_peak_RSS_bytes": 14548992,
+  "new_supervisor_v2_qualified_for_a_new_bound_attempt_under_unchanged_original_math_gates": true,
+  "no_missing_RSS_zero_substitution": true,
+  "sampling_exception_stimuli_explicitly_injected": true,
+  "actual_original_kernel_timing_or_V9_cause_reproduced": false,
+  "original_V9_failed_result_reclassified": false,
+  "scientific_worker_execution_by_controls_or_this_audit": false,
+  "new_mathematical_results_pass_claimed": false,
+  "seconds": 0.024187320001146873
+}

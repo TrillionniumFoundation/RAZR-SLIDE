@@ -1,0 +1,214 @@
+def load_extra_projection(contract, original_projection, records, baseline):
+    extra = json.loads(bound(contract['extra_line_plane_source']).read_text())
+    need(extra['schema'] == 'razr-r7e-lossless-original-two-Line-plane-projection-v9' and
+         extra['original_values_changed'] is False and extra['native_semantics_verified'] is False and
+         extra['new_mathematical_qualification'] is False, 'supplemental original projection scope differs')
+    need(content_equal(extra['original_native_producer'], original_projection['original_native_inventory_identity']),
+         'supplemental projection does not bind the same original complete native inventory')
+    need(content_equal(extra['original_R4_report'], contract['r4_report']) and
+         content_equal(extra['original_R4_public_bridge'], contract['public_input_bridge']),
+         'supplemental original R4 source chain differs')
+    upstream = {r['path']:r for r in baseline['input_identities']}
+    need(content_equal(extra['original_native_producer'], upstream['native-and-math/producer/worker/report.json']) and
+         content_equal(extra['original_native_independent_reader'], upstream['native-and-math/reader/worker/report.json']),
+         'supplemental original producer/independent native reader identities differ')
+    binding = next(r for r in baseline['frames'] if (r['case_id'],r['frame']) == ('case-028',1))
+    bridge = json.loads(bound(contract['public_input_bridge']).read_text())
+    row = next(r for r in bridge['files'] if r['path'] == 'support-v4/case-028-frame-1-complete-support.json.gz')
+    need(content_equal(extra['original_R4_frame_raw_identity'], binding['proof']) and
+         content_equal(row['raw_identity'], binding['proof']) and content_equal(extra['original_R4_frame_proof'],row['public_identity']) and
+         extra['original_R4_decoded_canonical_sha256'] == row['public_canonical_json_sha256'] and
+         row['decoded_json_equal'] is True and row['changed_strings'] == [] and
+         extra['complete_original_D_exact'] == binding['full_remaining_displacement_box_exact'],
+         'supplemental exact original frame/raw-public bridge/full D differs')
+    need([(r['input']['case_id'],r['input']['material_id']) for r in extra['records']] == [('case-028',1),('case-028',3)],
+         'complete ordered supplemental whole-material provenance differs')
+    for r in extra['records']:
+        old = records[(r['input']['case_id'],r['input']['material_id'])]
+        need(all(r[k] == old[k] for k in ('input','original_complete_boundary_counts','original_complete_boundary_canonical_sha256')),
+             'supplemental source changes the original whole material')
+    need(extra['records'][0]['candidate_faces'] == [] and
+         [c['face_index'] for c in extra['records'][1]['candidate_faces']] == [27,42], 'exact supplemental original face order differs')
+    expected = {27:'384f8ba42b9a7f4569bc4fa0c6312bec01c19e8d53e35518973319b4847c490c',
+                42:'ec7ed32eec43f6d9ff96f1e80db30528a53b6d2461e62c3f84a888d9631493c8'}
+    for c in extra['records'][1]['candidate_faces']:
+        need(canonical(c['complete_original_face']) == c['complete_original_face_canonical_sha256'] == expected[c['face_index']],
+             'complete original face differs from independently read native originals')
+    return extra
+
+
+def independent_line_domain_and_corners(candidate):
+    """Enumerate exact Line endpoints and four Plane corners; no producer imports."""
+    face = candidate['complete_original_face']; surface = face['local_surface']
+    need(canonical(face) == candidate['complete_original_face_canonical_sha256'] and
+         face['index'] == candidate['face_index'] and face['index'] in (27,42), 'supplemental exact source face identity differs')
+    need(face['location']['matrix_3x4_exact'] == IDENTITY and surface['type'] == 'GeomAbs_SurfaceType.GeomAbs_Plane' and face['wires'],
+         'complete original identity affine plane required')
+    values = [[rat(v) for v in surface[k]] for k in ('U_interval','V_interval')]
+    need(all(len(v) == 2 and v[0] <= v[1] for v in values), 'complete ordered source surface domains required')
+    count = 0
+    for wire in face['wires']:
+        need(wire['location']['matrix_3x4_exact'] == IDENTITY and wire['native_IsClosed'] is True and wire['edge_occurrences'],
+             'complete original closed wire metadata required')
+        for occurrence in wire['edge_occurrences']:
+            need(occurrence['location']['matrix_3x4_exact'] == IDENTITY and occurrence['edge_index'] is not None,
+                 'complete mapped original pcurve occurrence required')
+            curve = occurrence['pcurve']; count += 1
+            need(curve['type'].split('.')[-1] == 'GeomAbs_Line', 'supplemental source class is not exact Line')
+            start, end = rat(curve['first_parameter']), rat(curve['last_parameter'])
+            need(start <= end, 'complete ordered original Line parameter interval required')
+            origin, direction = vector(curve['origin_exact'],2), vector(curve['direction_exact'],2)
+            need(any(direction), 'nonzero original Line direction required')
+            for t in (start,end):
+                for axis in (0,1): values[axis].append(origin[axis]+direction[axis]*t)
+    need(count == {27:14,42:4}[face['index']], 'complete original Line occurrence census differs')
+    domain = tuple((min(v),max(v)) for v in values)
+    origin, x, y = (vector(surface[k],3) for k in ('origin_exact','X_exact','Y_exact'))
+    corners = [tuple(origin[k]+x[k]*u+y[k]*v for k in range(3)) for u in domain[0] for v in domain[1]]
+    stationary = tuple((min(c[k] for c in corners),max(c[k] for c in corners)) for k in range(3))
+    return domain, stationary, count
+
+
+def independent_supplementary_model(candidate, original_swept, shift, limits):
+    domain, stationary, count = independent_line_domain_and_corners(candidate)
+    reconstructed = tuple((stationary[k][0]+shift[k][0],stationary[k][1]+shift[k][1]) for k in range(3))
+    need(reconstructed == original_swept, 'complete source Line/surface forward image plus whole D differs from inherited AABB')
+    record = source_face(candidate,stationary,shift,limits)
+    record.update(complete_source_UV_domains_exact=encbox(domain),
+                  original_source_domain_method='surface_UV_hull_every_complete_original_Line_support',
+                  original_source_domain_occurrence_count=count,
+                  original_unchanged_swept_piece_box_exact=encbox(original_swept),
+                  source_forward_image_plus_full_D_equal_original_AABB=True,
+                  original_spatial_carrier_replaced=False)
+    return record
+
+
+def verify_models(serialized, prior_boundary, frame, projection, limits, extra_projection):
+    need(serialized['schema'] == 'razr-r7e-planar-exterior-models-v9' and
+         serialized['conditional_planar_exterior_model_only'] is True and serialized['native_planar_region_semantics_verified'] is False,
+         'new supplemental model scope differs')
+    need(len(serialized['sources']) == len(prior_boundary['sources']) == 2, 'complete original material pair required')
+    legacy_sources = []; extra_rows = []; legacy_applied = legacy_rejected = legacy_pieces = 0
+    for side,(actual,old) in enumerate(zip(serialized['sources'],prior_boundary['sources'])):
+        n = sum(p['replacement'] == 'plane_slab' for p in old['pieces'])
+        count = 2 if old['material_key'] == ['case-028',3] else 0
+        need(len(actual['models']) == n+count and actual['material_key'] == old['material_key'], 'complete old plus supplemental model census differs')
+        legacy_sources.append({'material_key':actual['material_key'],'models':actual['models'][:n]})
+        extra_rows.append(actual['models'][n:])
+        for r in actual['models'][:n]:
+            need(type(r['applied']) is bool, 'explicit legacy applied status required')
+            legacy_applied += int(r['applied']); legacy_rejected += int(not r['applied'])
+            if r['applied']: legacy_pieces += len(r['uv_boundary_pieces'])
+    legacy = {'schema':'razr-r5e-planar-exterior-models-v7','sources':legacy_sources,
+              'conditional_planar_exterior_model_only':True,'native_planar_region_semantics_verified':False,
+              'applied_plane_model_count':legacy_applied,'rejected_plane_model_count':legacy_rejected,
+              'total_UV_boundary_piece_count':legacy_pieces}
+    models, old_stats = verify_legacy_models(legacy,prior_boundary,frame,projection,dict(limits,maximum_total_UV_pieces=4064))
+    need(canonical(legacy) == serialized['legacy_V7_models_canonical_sha256'], 'original V7 ordered model records changed')
+    need(canonical(extra_projection) == serialized['additional_original_source_canonical_sha256'], 'supplemental original source binding differs')
+    stats = Counter(old_stats); shift = intervals(frame['original_remaining_displacement_box_exact'],3)
+    next_index = sum(len(s['models']) for s in legacy_sources)
+    added = accepted = rejected_count = added_pieces = 0
+    for side,(source,new_rows) in enumerate(zip(prior_boundary['sources'],extra_rows)):
+        if source['material_key'] != ['case-028',3]:
+            need(not new_rows, 'supplemental models outside registered original material'); continue
+        need((frame['case_id'],frame['frame'],side) == ('case-028',1,0) and encbox(shift) == extra_projection['complete_original_D_exact'],
+             'original supplemental frame/side/full D changed')
+        for actual,candidate in zip(new_rows,extra_projection['records'][1]['candidate_faces']):
+            found = [(i,p) for i,p in enumerate(source['pieces']) if p['kind'] == 'face' and p['index'] == candidate['face_index']]
+            need(len(found) == 1, 'one complete original supplemental face carrier required')
+            index,piece = found[0]
+            need(piece['replacement'] == 'unchanged' and piece['additional_slabs'] == [] and (side,index) not in models,
+                 'supplemental source must preserve complete original spatial AABB')
+            prefix = {'piece_index':index,'original_face_index':piece['index'],'model_index':next_index,
+                      'source_face_canonical_sha256':candidate['complete_original_face_canonical_sha256'],'supplemental_original_AABB_face':True}
+            next_index += 1; added += 1
+            need(type(actual['applied']) is bool, 'explicit supplemental applied status required')
+            # Every rejection is independently reproduced, not accepted as a free status flag.
+            try:
+                expected = dict(prefix,**independent_supplementary_model(candidate,intervals(piece['box_exact'],3),shift,limits))
+            except ValueError as exc:
+                need(actual['applied'] is False and all(actual[k] == v for k,v in prefix.items()) and
+                     actual['conditional_planar_exterior_model_only'] is True and actual['native_planar_region_semantics_verified'] is False and
+                     type(actual['retained_original_plane_reason']) is str and actual['retained_original_plane_reason'],
+                     'actual supplemental rejection does not match independent geometric rejection')
+                rejected_count += 1; stats['rejected'] += 1; continue
+            need(actual == expected, 'independently reconstructed complete supplemental source model differs')
+            models[(side,index)] = runtime_planar(expected); accepted += 1; stats['applied'] += 1
+            pieces = expected['uv_boundary_pieces']; added_pieces += len(pieces); stats['UV_pieces'] += len(pieces)
+            stats['source_occurrences'] += expected['source_occurrence_count']; stats['wires'] += len(expected['wire_certificates'])
+            stats['lines'] += sum(p['kind'] == 'line' for p in pieces); stats['circle_patches'] += sum(p['kind'] == 'circle_patch' for p in pieces)
+            stats['closures'] += sum(p['kind'] == 'closure' for p in pieces)
+    expected_counts = {'additional_original_plane_count':added,'additional_applied_plane_count':accepted,
+                       'additional_rejected_plane_count':rejected_count,'additional_UV_piece_count':added_pieces,
+                       'applied_plane_model_count':stats['applied'],'rejected_plane_model_count':stats['rejected'],
+                       'total_UV_boundary_piece_count':stats['UV_pieces']}
+    need(added == (2 if (frame['case_id'],frame['frame']) == ('case-028',1) else 0) and
+         all(type(serialized[k]) is int and serialized[k] == v for k,v in expected_counts.items()) and
+         stats['UV_pieces'] <= 4100, 'complete additional model/source census differs')
+    stats.update(additional_original_plane_count=added,additional_applied_plane_count=accepted,
+                 additional_rejected_plane_count=rejected_count,additional_UV_piece_count=added_pieces)
+    return models,dict(stats)
+
+
+def supplemental_controls(serialized,boundary,frame,projection,limits,extra):
+    targets = [(side,index,r) for side,s in enumerate(serialized['sources']) for index,r in enumerate(s['models'])
+               if r.get('supplemental_original_AABB_face') and r['applied']]
+    need(targets, 'actual applied supplemental source required for applicable controls')
+    side,index,actual = next((t for t in targets if t[2]['original_face_index'] == 27),targets[0])
+    def changed(edit):
+        result = deepcopy(serialized); edit(result['sources'][side]['models'][index]); return result
+    edits = [
+        ('changed-supplemental-full-D',lambda r:r['full_D_exact'][1].__setitem__(1,str(Q(r['full_D_exact'][1][1])+1))),
+        ('changed-supplemental-source-domain',lambda r:r['complete_source_UV_domains_exact'][0].__setitem__(1,str(Q(r['complete_source_UV_domains_exact'][0][1])+1))),
+        ('changed-supplemental-stationary-image',lambda r:r['stationary_face_box_exact'][0].__setitem__(0,str(Q(r['stationary_face_box_exact'][0][0])-1))),
+        ('changed-supplemental-inherited-AABB',lambda r:r['original_unchanged_swept_piece_box_exact'][0].__setitem__(1,str(Q(r['original_unchanged_swept_piece_box_exact'][0][1])+1))),
+        ('omitted-supplemental-UV-carrier',lambda r:r['uv_boundary_pieces'].pop()),
+        ('changed-supplemental-left-inverse',lambda r:r['left_inverse_exact'][0].__setitem__(0,str(Q(r['left_inverse_exact'][0][0])+1))),
+        ('supplemental-carrier-replacement-claim',lambda r:r.__setitem__('original_spatial_carrier_replaced',True)),
+        ('duplicate-supplemental-model-index',lambda r:r.__setitem__('model_index',0))]
+    rows = [rejected(name,lambda record=changed(edit):verify_models(record,boundary,frame,projection,limits,extra)) for name,edit in edits]
+    candidate = next(c for c in extra['records'][1]['candidate_faces'] if c['face_index'] == actual['original_face_index'])
+    original_swept = intervals(boundary['sources'][side]['pieces'][actual['piece_index']]['box_exact'],3)
+    shift = intervals(frame['original_remaining_displacement_box_exact'],3)
+    for name,edit in [
+        ('omitted-original-Line-with-rehashed-source',lambda f:f['wires'][0]['edge_occurrences'].pop()),
+        ('expanded-surface-domain-with-rehashed-source',lambda f:f['local_surface']['U_interval'].__setitem__(1,{'exact':str(rat(f['local_surface']['U_interval'][1])+1)})),
+        ('translated-Line-origin-with-rehashed-source',lambda f:[o['pcurve']['origin_exact'].__setitem__(0,str(rat(o['pcurve']['origin_exact'][0])+1000)) for w in f['wires'] for o in w['edge_occurrences']])]:
+        value = deepcopy(candidate); edit(value['complete_original_face'])
+        value['complete_original_face_canonical_sha256'] = canonical(value['complete_original_face'])
+        row = rejected(name,lambda value=value:independent_supplementary_model(value,original_swept,shift,limits))
+        row['mutated_source_digest_recomputed_before_geometric_check'] = True; rows.append(row)
+    wrong_shift = list(shift); wrong_shift[1] = (shift[1][0],shift[1][1]+1)
+    rows.append(rejected('changed-full-D-in-forward-identity',lambda:independent_supplementary_model(candidate,original_swept,tuple(wrong_shift),limits)))
+    for row in rows:
+        row.update(actual_material_side=side,actual_model_index=actual['model_index'],actual_original_face_index=actual['original_face_index'])
+    need(len(rows) == 12 and all(r['actual_rejected'] is True for r in rows), 'complete actual supplemental source controls required')
+    return rows
+
+
+def validate_static_capacity(contract,records,extra):
+    capacity = json.loads(bound(contract['static_source_capacity']).read_text())
+    need(capacity['schema'] == 'razr-r7e-v9-static-source-capacity' and capacity['source_census_extension_only'] is True and
+         content_equal(capacity['additional_source_projection'],contract['extra_line_plane_source']), 'new complete source census identity differs')
+    path = Path(contract['static_source_capacity']['path']).parent/'R5E_V7_STATIC_SOURCE_CAPACITY.json'
+    original = identity(path)
+    need(content_equal(original,capacity['original_V7_source_capacity_identity']), 'original V7 source census identity differs')
+    base = validate_legacy_static_capacity(dict(contract,static_source_capacity=original),records)
+    n = 0
+    for c in extra['records'][1]['candidate_faces']:
+        unused_domain,unused_box,count = independent_line_domain_and_corners(c); n += count
+    expected = {'maximum_total_UV_pieces':4100,'maximum_planar_models':50,'original_plane_occurrences':48,
+                'plane_occurrences':50,'wire_count':50,'Line_occurrences':490,'Circle_occurrences':48,'source_edge_occurrences':538,
+                'additional_original_plane_occurrences':2,'additional_original_Line_occurrences':18,
+                'additional_closure_pieces':18,'additional_complete_UV_pieces':36}
+    need(n == 18 and base['maximum_total_UV_pieces'] == 4064 and
+         all(type(capacity[k]) is int and capacity[k] == v for k,v in expected.items()), 'full original plus added source census differs')
+    old = json.loads(path.read_text())
+    for k,v in old.items():
+        if k not in ('schema','maximum_total_UV_pieces','plane_occurrences','wire_count','Line_occurrences','source_edge_occurrences','new_primitive_or_planar_enclosures_computed'):
+            need(capacity[k] == v, 'inherited source capacity changed: '+k)
+    need(capacity['new_primitive_or_planar_enclosures_computed'] is True and
+         capacity['new_enclosure_computation_scope'] == 'source-only exact maps of two original Line-plane domains; no new channel search or qualification',
+         'actual bounded source-domain calculation must remain explicit')
+    return dict(base,additional_original_Line_occurrences=n,additional_UV_pieces=2*n,maximum_total_UV_pieces=4064+2*n)

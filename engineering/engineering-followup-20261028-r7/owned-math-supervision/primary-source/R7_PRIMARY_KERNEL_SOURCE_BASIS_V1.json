@@ -1,0 +1,32 @@
+{
+  "schema": "razr-r7-pure-math-supervisor-primary-source-basis-v1",
+  "sources": [
+    {
+      "url": "https://github.com/torvalds/linux/blob/v6.8/fs/proc/array.c",
+      "path": "r7-supervisor/primary-source/linux-v6.8-fs-proc-array.c"
+    },
+    {
+      "url": "https://github.com/torvalds/linux/blob/v6.8/kernel/exit.c",
+      "path": "r7-supervisor/primary-source/linux-v6.8-kernel-exit.c"
+    }
+  ],
+  "files": [
+    {
+      "path": "r7-supervisor/primary-source/linux-v6.8-fs-proc-array.c",
+      "bytes": 23235,
+      "sha256": "a6518b8d6ba194a7461af8522ed498509858d01da9e745d2c52abecb7b27078d"
+    },
+    {
+      "path": "r7-supervisor/primary-source/linux-v6.8-kernel-exit.c",
+      "bytes": 48978,
+      "sha256": "12e3990e0bd1d6349e6690a204736f194653da58a6a1ca478b03ba5b859928ff"
+    }
+  ],
+  "direct_code_observation": [
+    "proc_pid_status emits task_mem only when get_task_mm returns nonnull",
+    "do_exit invokes exit_mm before exit_notify"
+  ],
+  "scope": "These tagged official sources motivate an exit-transition hypothesis; the running kernel version/stack and causal path of the V9 observation have not been established.",
+  "actual_V9_failure_preserved": true,
+  "new_supervisor_execution_completed": false
+}
