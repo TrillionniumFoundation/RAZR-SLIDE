@@ -1,0 +1,167 @@
+{
+  "schema": "RAZR_R7_UV_ROOT_LOCK_ACTUAL_CONTROLS_V1",
+  "completed": true,
+  "source": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-native/qualify_fresh_runtime_r7_v1.py",
+    "bytes": 23785,
+    "sha256": "a1b14b6586893339f245ba04363ea0dd210c2fea8c86fdfeaa82ed10eb19d1fb"
+  },
+  "controls": [
+    {
+      "name": "absent_root_lock",
+      "expected_accept": true,
+      "actual_accept": true,
+      "helper_result": {
+        "present": false,
+        "allowed_relative_files": []
+      },
+      "unowned_files": [],
+      "failure": null
+    },
+    {
+      "name": "empty_regular_root_lock",
+      "expected_accept": true,
+      "actual_accept": true,
+      "helper_result": {
+        "present": true,
+        "allowed_relative_files": [
+          ".lock"
+        ],
+        "identity": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "ownership": "exact-root installer scaffold; no wildcard or payload exemption"
+      },
+      "unowned_files": [],
+      "failure": null
+    },
+    {
+      "name": "nonempty_text_root_lock",
+      "expected_accept": false,
+      "actual_accept": false,
+      "helper_result": null,
+      "unowned_files": null,
+      "failure": {
+        "type": "ValueError",
+        "message": "uv root .lock is not empty"
+      }
+    },
+    {
+      "name": "nul_byte_root_lock",
+      "expected_accept": false,
+      "actual_accept": false,
+      "helper_result": null,
+      "unowned_files": null,
+      "failure": {
+        "type": "ValueError",
+        "message": "uv root .lock is not empty"
+      }
+    },
+    {
+      "name": "newline_root_lock",
+      "expected_accept": false,
+      "actual_accept": false,
+      "helper_result": null,
+      "unowned_files": null,
+      "failure": {
+        "type": "ValueError",
+        "message": "uv root .lock is not empty"
+      }
+    },
+    {
+      "name": "directory_root_lock",
+      "expected_accept": false,
+      "actual_accept": false,
+      "helper_result": null,
+      "unowned_files": null,
+      "failure": {
+        "type": "ValueError",
+        "message": "uv root .lock is not a regular file"
+      }
+    },
+    {
+      "name": "symlink_to_empty_root_lock",
+      "expected_accept": false,
+      "actual_accept": false,
+      "helper_result": null,
+      "unowned_files": null,
+      "failure": {
+        "type": "ValueError",
+        "message": "uv root .lock is not a regular file"
+      }
+    },
+    {
+      "name": "dangling_symlink_root_lock",
+      "expected_accept": false,
+      "actual_accept": false,
+      "helper_result": null,
+      "unowned_files": null,
+      "failure": {
+        "type": "ValueError",
+        "message": "uv root .lock is not a regular file"
+      }
+    },
+    {
+      "name": "fifo_root_lock",
+      "expected_accept": false,
+      "actual_accept": false,
+      "helper_result": null,
+      "unowned_files": null,
+      "failure": {
+        "type": "ValueError",
+        "message": "uv root .lock is not a regular file"
+      }
+    },
+    {
+      "name": "nested_lock_is_not_owned",
+      "expected_accept": false,
+      "actual_accept": false,
+      "helper_result": {
+        "present": false,
+        "allowed_relative_files": []
+      },
+      "unowned_files": [
+        "nested/.lock"
+      ],
+      "failure": null
+    },
+    {
+      "name": "similar_root_filename_is_not_owned",
+      "expected_accept": false,
+      "actual_accept": false,
+      "helper_result": {
+        "present": false,
+        "allowed_relative_files": []
+      },
+      "unowned_files": [
+        ".lock-other"
+      ],
+      "failure": null
+    },
+    {
+      "name": "empty_root_does_not_cover_extra_payload",
+      "expected_accept": false,
+      "actual_accept": false,
+      "helper_result": {
+        "present": true,
+        "allowed_relative_files": [
+          ".lock"
+        ],
+        "identity": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "ownership": "exact-root installer scaffold; no wildcard or payload exemption"
+      },
+      "unowned_files": [
+        "payload.py"
+      ],
+      "failure": null
+    }
+  ],
+  "count": 12,
+  "seconds": 0.0041041839995159535,
+  "actual_runtime_qualification_claimed": false,
+  "actual_CAD_claimed": false
+}

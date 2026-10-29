@@ -1,0 +1,69 @@
+--- read_native_trim_core_witness_r5.py
++++ read_native_trim_core_witness_r5_ascii_v2.py
+@@ -26,6 +26,17 @@
+         raise ValueError(message)
+ 
+ 
++def independent_ascii_brep_v3_header(path, declared_format):
++    """Separate bounded line parser; success identifies format, never validity."""
++    require(declared_format == "OCCT_ASCII_BREP_V3", "Unsupported independent BREP serialization")
++    with Path(path).open("rb") as stream:
++        first, second, third = stream.readline(128), stream.readline(128), stream.readline(128)
++    require((first, second, third) == (b"DBRep_DrawableShape\n", b"\n", b"CASCADE Topology V3, (c) Open Cascade\n"),
++            "Independent BREP header is not registered ASCII V3")
++    return {"declared": declared_format, "header_hex": (first + second + third).hex(),
++            "header_recognition_is_not_native_validity": True}
++
++
+ def main():
+     ap = argparse.ArgumentParser(description=__doc__)
+     ap.add_argument("--contract", type=Path, required=True)
+@@ -38,6 +49,7 @@
+     producer_path = Path(contract["producer_report"]["path"])
+     previous = json.loads(producer_path.read_text())
+     pc = json.loads(Path(contract["producer_contract"]["path"]).read_text())
++    require(pc["native_brep_serialization"] == "OCCT_ASCII_BREP_V3", "Explicit independent ASCII contract required")
+     require(previous["completed"], "Producer did not complete its registered finite experiment")
+     require(previous["contract_identity"] == contract["producer_contract"]["identity"], "Producer contract binding differs")
+     require(not sys.flags.optimize and sys.flags.dont_write_bytecode, "Original interpreter flags required")
+@@ -48,7 +60,7 @@
+     args.out.mkdir(exist_ok=False)
+     (args.out / "geometry").mkdir()
+     start = time.monotonic()
+-    result = {"schema": "r5-independent-native-trim-core-readback-v1", "reader_identity": ident(__file__),
++    result = {"schema": "r5-independent-native-trim-core-readback-ascii-v2", "native_brep_serialization": pc["native_brep_serialization"], "reader_identity": ident(__file__),
+               "contract_identity": ident(args.contract), "producer_report_identity": ident(producer_path),
+               "completed": False, "producer_module_imported": False, "separate_native_process": True,
+               "independent_CAD_kernel": False, "saved_BREP_readbacks": [], "original_core_readbacks": [],
+@@ -72,15 +84,17 @@
+         inventory = importlib.util.module_from_spec(spec)
+         spec.loader.exec_module(inventory)
+         cq = inventory.cq
+-        from OCP.BinTools import BinTools
+-        from OCP.BRep import BRep_Tool
++        from OCP.BRepTools import BRepTools
++        from OCP.BRep import BRep_Tool, BRep_Builder
+         from OCP.BRepAdaptor import BRepAdaptor_Surface
+         from OCP.BRepBuilderAPI import BRepBuilderAPI_MakeFace
+         from OCP.TopoDS import TopoDS_Shape
+ 
+         def read(path):
++            independent_ascii_brep_v3_header(path, pc["native_brep_serialization"])
+             raw = TopoDS_Shape()
+-            require(BinTools.Read_s(raw, str(path)), "Independent BREP read failed")
++            require(BRepTools.Read_s(raw, str(path), BRep_Builder()), "Independent ASCII BREP read failed")
++            require(not raw.IsNull(), "Independent ASCII reader returned a null shape")
+             return cq.Shape.cast(raw)
+ 
+         def describe(shape, whole=False):
+@@ -124,8 +138,9 @@
+ 
+         def write(shape, label, expected=None, whole=False):
+             file = args.out / "geometry" / (label + ".brep")
+-            status = BinTools.Write_s(shape.wrapped, str(file))
++            status = BRepTools.Write_s(shape.wrapped, str(file))
+             require(status is not False and file.is_file(), "Independent native output failed")
++            independent_ascii_brep_v3_header(file, pc["native_brep_serialization"])
+             rec = {"path": str(file.relative_to(args.out)), **ident(file), "native": describe(shape, whole)}
+             if expected is not None:
+                 rec["comparison"] = compare(rec["native"], expected["native"])

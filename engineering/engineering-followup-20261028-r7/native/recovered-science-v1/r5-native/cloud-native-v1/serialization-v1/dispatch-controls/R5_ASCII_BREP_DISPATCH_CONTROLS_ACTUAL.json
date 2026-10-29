@@ -1,0 +1,346 @@
+{
+  "schema": "razr-r5-ASCII-BREP-dispatch-actual-stdlib-controls-v1",
+  "completed": true,
+  "native_execution": false,
+  "native_topology_validity_claimed": false,
+  "header_recognition_never_substitutes_for_native_Read_status_or_nonNull_check": true,
+  "controls": [
+    {
+      "source": "native_trim_core_witness_r5_ascii_v2.py",
+      "case": "recovered-inputs/K3FULL-open_installed-original/factory/worker/bodies/A_BACK_PANEL.brep",
+      "expected": "exact_ASCII_V3_format_only",
+      "observed": {
+        "declared": "OCCT_ASCII_BREP_V3",
+        "header_hex": "44425265705f4472617761626c6553686170650a0a4341534341444520546f706f6c6f67792056332c20286329204f70656e20436173636164650a",
+        "header_recognition_is_not_native_validity": true
+      },
+      "passed": true
+    },
+    {
+      "source": "native_trim_core_witness_r5_ascii_v2.py",
+      "case": "recovered-inputs/K3FULL-open_installed-original/factory/worker/materials/original_panel.brep",
+      "expected": "exact_ASCII_V3_format_only",
+      "observed": {
+        "declared": "OCCT_ASCII_BREP_V3",
+        "header_hex": "44425265705f4472617761626c6553686170650a0a4341534341444520546f706f6c6f67792056332c20286329204f70656e20436173636164650a",
+        "header_recognition_is_not_native_validity": true
+      },
+      "passed": true
+    },
+    {
+      "source": "native_trim_core_witness_r5_ascii_v2.py",
+      "case": "recovered-inputs/RAZR-R3E-COMPLETE-SCIENTIFIC-EVIDENCE-20261027/source-and-inputs/inputs/case-001/material-001.brep",
+      "expected": "exact_ASCII_V3_format_only",
+      "observed": {
+        "declared": "OCCT_ASCII_BREP_V3",
+        "header_hex": "44425265705f4472617761626c6553686170650a0a4341534341444520546f706f6c6f67792056332c20286329204f70656e20436173636164650a",
+        "header_recognition_is_not_native_validity": true
+      },
+      "passed": true
+    },
+    {
+      "source": "native_trim_core_witness_r5_ascii_v2.py",
+      "case": "recovered-inputs/RAZR-R3E-COMPLETE-SCIENTIFIC-EVIDENCE-20261027/source-and-inputs/inputs/case-001/material-003.brep",
+      "expected": "exact_ASCII_V3_format_only",
+      "observed": {
+        "declared": "OCCT_ASCII_BREP_V3",
+        "header_hex": "44425265705f4472617761626c6553686170650a0a4341534341444520546f706f6c6f67792056332c20286329204f70656e20436173636164650a",
+        "header_recognition_is_not_native_validity": true
+      },
+      "passed": true
+    },
+    {
+      "source": "native_trim_core_witness_r5_ascii_v2.py",
+      "case": "recovered-inputs/RAZR-R3E-COMPLETE-SCIENTIFIC-EVIDENCE-20261027/source-and-inputs/inputs/case-006/material-001.brep",
+      "expected": "exact_ASCII_V3_format_only",
+      "observed": {
+        "declared": "OCCT_ASCII_BREP_V3",
+        "header_hex": "44425265705f4472617761626c6553686170650a0a4341534341444520546f706f6c6f67792056332c20286329204f70656e20436173636164650a",
+        "header_recognition_is_not_native_validity": true
+      },
+      "passed": true
+    },
+    {
+      "source": "native_trim_core_witness_r5_ascii_v2.py",
+      "case": "recovered-inputs/RAZR-R3E-COMPLETE-SCIENTIFIC-EVIDENCE-20261027/source-and-inputs/inputs/case-006/material-003.brep",
+      "expected": "exact_ASCII_V3_format_only",
+      "observed": {
+        "declared": "OCCT_ASCII_BREP_V3",
+        "header_hex": "44425265705f4472617761626c6553686170650a0a4341534341444520546f706f6c6f67792056332c20286329204f70656e20436173636164650a",
+        "header_recognition_is_not_native_validity": true
+      },
+      "passed": true
+    },
+    {
+      "source": "native_trim_core_witness_r5_ascii_v2.py",
+      "case": "empty",
+      "expected": "reject_before_native_API",
+      "exception": {
+        "type": "ValueError",
+        "message": "Original/new BREP header is not registered ASCII V3"
+      },
+      "passed": true
+    },
+    {
+      "source": "native_trim_core_witness_r5_ascii_v2.py",
+      "case": "truncated_header",
+      "expected": "reject_before_native_API",
+      "exception": {
+        "type": "ValueError",
+        "message": "Original/new BREP header is not registered ASCII V3"
+      },
+      "passed": true
+    },
+    {
+      "source": "native_trim_core_witness_r5_ascii_v2.py",
+      "case": "binary_format",
+      "expected": "reject_before_native_API",
+      "exception": {
+        "type": "ValueError",
+        "message": "Original/new BREP header is not registered ASCII V3"
+      },
+      "passed": true
+    },
+    {
+      "source": "native_trim_core_witness_r5_ascii_v2.py",
+      "case": "other_ASCII_version",
+      "expected": "reject_before_native_API",
+      "exception": {
+        "type": "ValueError",
+        "message": "Original/new BREP header is not registered ASCII V3"
+      },
+      "passed": true
+    },
+    {
+      "source": "native_trim_core_witness_r5_ascii_v2.py",
+      "case": "unknown_prefix",
+      "expected": "reject_before_native_API",
+      "exception": {
+        "type": "ValueError",
+        "message": "Original/new BREP header is not registered ASCII V3"
+      },
+      "passed": true
+    },
+    {
+      "source": "native_trim_core_witness_r5_ascii_v2.py",
+      "case": "embedded_valid_header",
+      "expected": "reject_before_native_API",
+      "exception": {
+        "type": "ValueError",
+        "message": "Original/new BREP header is not registered ASCII V3"
+      },
+      "passed": true
+    },
+    {
+      "source": "native_trim_core_witness_r5_ascii_v2.py",
+      "case": "wrong_line_endings",
+      "expected": "reject_before_native_API",
+      "exception": {
+        "type": "ValueError",
+        "message": "Original/new BREP header is not registered ASCII V3"
+      },
+      "passed": true
+    },
+    {
+      "source": "native_trim_core_witness_r5_ascii_v2.py",
+      "case": "unsupported_declared_format_before_file_access",
+      "expected": "reject_before_file_or_native_API",
+      "exception": {
+        "type": "ValueError",
+        "message": "Unsupported declared BREP serialization"
+      },
+      "passed": true
+    },
+    {
+      "source": "read_native_trim_core_witness_r5_ascii_v2.py",
+      "case": "recovered-inputs/K3FULL-open_installed-original/factory/worker/bodies/A_BACK_PANEL.brep",
+      "expected": "exact_ASCII_V3_format_only",
+      "observed": {
+        "declared": "OCCT_ASCII_BREP_V3",
+        "header_hex": "44425265705f4472617761626c6553686170650a0a4341534341444520546f706f6c6f67792056332c20286329204f70656e20436173636164650a",
+        "header_recognition_is_not_native_validity": true
+      },
+      "passed": true
+    },
+    {
+      "source": "read_native_trim_core_witness_r5_ascii_v2.py",
+      "case": "recovered-inputs/K3FULL-open_installed-original/factory/worker/materials/original_panel.brep",
+      "expected": "exact_ASCII_V3_format_only",
+      "observed": {
+        "declared": "OCCT_ASCII_BREP_V3",
+        "header_hex": "44425265705f4472617761626c6553686170650a0a4341534341444520546f706f6c6f67792056332c20286329204f70656e20436173636164650a",
+        "header_recognition_is_not_native_validity": true
+      },
+      "passed": true
+    },
+    {
+      "source": "read_native_trim_core_witness_r5_ascii_v2.py",
+      "case": "recovered-inputs/RAZR-R3E-COMPLETE-SCIENTIFIC-EVIDENCE-20261027/source-and-inputs/inputs/case-001/material-001.brep",
+      "expected": "exact_ASCII_V3_format_only",
+      "observed": {
+        "declared": "OCCT_ASCII_BREP_V3",
+        "header_hex": "44425265705f4472617761626c6553686170650a0a4341534341444520546f706f6c6f67792056332c20286329204f70656e20436173636164650a",
+        "header_recognition_is_not_native_validity": true
+      },
+      "passed": true
+    },
+    {
+      "source": "read_native_trim_core_witness_r5_ascii_v2.py",
+      "case": "recovered-inputs/RAZR-R3E-COMPLETE-SCIENTIFIC-EVIDENCE-20261027/source-and-inputs/inputs/case-001/material-003.brep",
+      "expected": "exact_ASCII_V3_format_only",
+      "observed": {
+        "declared": "OCCT_ASCII_BREP_V3",
+        "header_hex": "44425265705f4472617761626c6553686170650a0a4341534341444520546f706f6c6f67792056332c20286329204f70656e20436173636164650a",
+        "header_recognition_is_not_native_validity": true
+      },
+      "passed": true
+    },
+    {
+      "source": "read_native_trim_core_witness_r5_ascii_v2.py",
+      "case": "recovered-inputs/RAZR-R3E-COMPLETE-SCIENTIFIC-EVIDENCE-20261027/source-and-inputs/inputs/case-006/material-001.brep",
+      "expected": "exact_ASCII_V3_format_only",
+      "observed": {
+        "declared": "OCCT_ASCII_BREP_V3",
+        "header_hex": "44425265705f4472617761626c6553686170650a0a4341534341444520546f706f6c6f67792056332c20286329204f70656e20436173636164650a",
+        "header_recognition_is_not_native_validity": true
+      },
+      "passed": true
+    },
+    {
+      "source": "read_native_trim_core_witness_r5_ascii_v2.py",
+      "case": "recovered-inputs/RAZR-R3E-COMPLETE-SCIENTIFIC-EVIDENCE-20261027/source-and-inputs/inputs/case-006/material-003.brep",
+      "expected": "exact_ASCII_V3_format_only",
+      "observed": {
+        "declared": "OCCT_ASCII_BREP_V3",
+        "header_hex": "44425265705f4472617761626c6553686170650a0a4341534341444520546f706f6c6f67792056332c20286329204f70656e20436173636164650a",
+        "header_recognition_is_not_native_validity": true
+      },
+      "passed": true
+    },
+    {
+      "source": "read_native_trim_core_witness_r5_ascii_v2.py",
+      "case": "empty",
+      "expected": "reject_before_native_API",
+      "exception": {
+        "type": "ValueError",
+        "message": "Independent BREP header is not registered ASCII V3"
+      },
+      "passed": true
+    },
+    {
+      "source": "read_native_trim_core_witness_r5_ascii_v2.py",
+      "case": "truncated_header",
+      "expected": "reject_before_native_API",
+      "exception": {
+        "type": "ValueError",
+        "message": "Independent BREP header is not registered ASCII V3"
+      },
+      "passed": true
+    },
+    {
+      "source": "read_native_trim_core_witness_r5_ascii_v2.py",
+      "case": "binary_format",
+      "expected": "reject_before_native_API",
+      "exception": {
+        "type": "ValueError",
+        "message": "Independent BREP header is not registered ASCII V3"
+      },
+      "passed": true
+    },
+    {
+      "source": "read_native_trim_core_witness_r5_ascii_v2.py",
+      "case": "other_ASCII_version",
+      "expected": "reject_before_native_API",
+      "exception": {
+        "type": "ValueError",
+        "message": "Independent BREP header is not registered ASCII V3"
+      },
+      "passed": true
+    },
+    {
+      "source": "read_native_trim_core_witness_r5_ascii_v2.py",
+      "case": "unknown_prefix",
+      "expected": "reject_before_native_API",
+      "exception": {
+        "type": "ValueError",
+        "message": "Independent BREP header is not registered ASCII V3"
+      },
+      "passed": true
+    },
+    {
+      "source": "read_native_trim_core_witness_r5_ascii_v2.py",
+      "case": "embedded_valid_header",
+      "expected": "reject_before_native_API",
+      "exception": {
+        "type": "ValueError",
+        "message": "Independent BREP header is not registered ASCII V3"
+      },
+      "passed": true
+    },
+    {
+      "source": "read_native_trim_core_witness_r5_ascii_v2.py",
+      "case": "wrong_line_endings",
+      "expected": "reject_before_native_API",
+      "exception": {
+        "type": "ValueError",
+        "message": "Independent BREP header is not registered ASCII V3"
+      },
+      "passed": true
+    },
+    {
+      "source": "read_native_trim_core_witness_r5_ascii_v2.py",
+      "case": "unsupported_declared_format_before_file_access",
+      "expected": "reject_before_file_or_native_API",
+      "exception": {
+        "type": "ValueError",
+        "message": "Unsupported independent BREP serialization"
+      },
+      "passed": true
+    }
+  ],
+  "source_comparisons": [
+    {
+      "source": "native_trim_core_witness_r5_ascii_v2.py",
+      "source_identity": {
+        "bytes": 18200,
+        "sha256": "b1c1c90f44a74a06d6b19350536b5dd5bf6d47ed77a2ee41247f7fc6e49bd1a8"
+      },
+      "predecessor_identity": {
+        "bytes": 17080,
+        "sha256": "c434d9310b1eed06cae9af36288eddf1d9429a45b19008ce103430994b327141"
+      },
+      "all_geometry_operator_call_ASTs_equal": true,
+      "geometry_operator_call_count": 14,
+      "BRepTools_Read_calls": 1,
+      "BRepTools_Write_calls": 1,
+      "BinTools_calls": 0,
+      "native_read_status_asserted": true,
+      "native_null_read_rejected": true
+    },
+    {
+      "source": "read_native_trim_core_witness_r5_ascii_v2.py",
+      "source_identity": {
+        "bytes": 17907,
+        "sha256": "dd054cdabd3c1f0a6aa6ff1649127036f2c614edb5f8c5e766f02ebcb4a06891"
+      },
+      "predecessor_identity": {
+        "bytes": 16710,
+        "sha256": "dc3279d134adad4d1d90abd897229b8e2169bc179fe99d3416e29253479e302d"
+      },
+      "all_geometry_operator_call_ASTs_equal": true,
+      "geometry_operator_call_count": 16,
+      "BRepTools_Read_calls": 1,
+      "BRepTools_Write_calls": 1,
+      "BinTools_calls": 0,
+      "native_read_status_asserted": true,
+      "native_null_read_rejected": true
+    }
+  ],
+  "blocked_native_import_attempts": [],
+  "native_numeric_modules_loaded": [],
+  "seconds": 0.10025043600762729,
+  "control_source_identity": {
+    "bytes": 8382,
+    "sha256": "da8a594dc82106ff85e907f0ccdc2783f343aa613125c8d4b6b7d15b87601e28"
+  }
+}

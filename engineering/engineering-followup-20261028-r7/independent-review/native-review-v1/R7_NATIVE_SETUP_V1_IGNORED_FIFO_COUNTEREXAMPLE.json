@@ -1,0 +1,125 @@
+{
+  "schema": "razr-r7-native-setup-v1-real-filesystem-counterexample-v1",
+  "candidate_source": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-native/setup_fresh_s4_runtime_r7_v1.py",
+    "bytes": 15001,
+    "sha256": "923e6a5952df91aa6faa275236963d7b7cc070b5c0c3e920467b8e15f911bf45"
+  },
+  "controls": [
+    {
+      "name": "two-source-real-Git-worktree-baseline",
+      "expected_accept": true,
+      "actual_accept": true,
+      "reported_actual_member_count": 3
+    },
+    {
+      "name": "extra-gitignored-FIFO",
+      "expected_accept": false,
+      "actual_accept": true,
+      "git_status_was_clean": true,
+      "fifo_lstat_mode": 4516,
+      "reported_actual_member_count": 3,
+      "reported_complete_member_set_equal": true,
+      "error": null
+    }
+  ],
+  "synthetic_fixture_commands": [
+    {
+      "argv": [
+        "git",
+        "-c",
+        "user.name=RAZR Synthetic Control",
+        "-c",
+        "user.email=control@example.invalid",
+        "init",
+        "/workspace/scratch/34f8fcac2ab1/r7-audit/explicit-synthetic-git-fixture-_xahufz8/repo"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 128,
+      "stderr": "hint: Using 'master' as the name for the initial branch. This default branch name\nhint: is subject to change. To configure the initial branch name to use in all\nhint: of your new repositories, which will suppress this warning, call:\nhint:\nhint: \tgit config --global init.defaultBranch <name>\nhint:\nhint: Names commonly chosen instead of 'master' are 'main', 'trunk' and\nhint: 'development'. The just-created branch can be renamed via this command:\nhint:\nhint: \tgit branch -m <name>\nhint:\nhint: Disable this message with \"git config set advice.defaultBranchName false\"\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "user.name=RAZR Synthetic Control",
+        "-c",
+        "user.email=control@example.invalid",
+        "add",
+        ".gitignore",
+        "source.py"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "user.name=RAZR Synthetic Control",
+        "-c",
+        "user.email=control@example.invalid",
+        "commit",
+        "-m",
+        "Explicit synthetic member census control, not project evidence"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 189,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "user.name=RAZR Synthetic Control",
+        "-c",
+        "user.email=control@example.invalid",
+        "rev-parse",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 41,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "user.name=RAZR Synthetic Control",
+        "-c",
+        "user.email=control@example.invalid",
+        "worktree",
+        "add",
+        "--detach",
+        "/workspace/scratch/34f8fcac2ab1/r7-audit/explicit-synthetic-git-fixture-_xahufz8/worktree",
+        "912e63323b697cdb6dd2e3d693e54160e0937be0"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 86,
+      "stderr": "Preparing worktree (detached HEAD 912e633)\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "user.name=RAZR Synthetic Control",
+        "-c",
+        "user.email=control@example.invalid",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "returncode": 0,
+      "stdout_bytes": 0,
+      "stderr": ""
+    }
+  ],
+  "candidate_pass": false,
+  "actual_counterexample_reproduced": true,
+  "source_unchanged": true,
+  "scope": "Actual filesystem and actual tiny Git worktree controls using explicitly synthetic source and commit. No project source/Git object identity, scientific result or native geometry execution is substituted by this fixture.",
+  "actual_native_runtime_or_CAD_executed": false,
+  "elapsed_seconds": 0.06597274700106937,
+  "max_rss_bytes": 15163392
+}

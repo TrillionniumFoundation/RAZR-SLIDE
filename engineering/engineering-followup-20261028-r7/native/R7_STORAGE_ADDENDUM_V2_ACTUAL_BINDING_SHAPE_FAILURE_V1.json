@@ -1,0 +1,36 @@
+{
+  "schema": "razr-r7-storage-addendum-v2-actual-binding-shape-failure-v1",
+  "recorded_utc": "2026-10-29T01:06:43.523669+00:00",
+  "actual_command": [
+    "python3",
+    "-I",
+    "-S",
+    "-B",
+    "r7-native/write_native_storage_scope_addendum_r7_v2.py"
+  ],
+  "actual_exit_code": 1,
+  "actual_failure": "ValueError: Original observation bindings differ",
+  "failure_interpretation": "The writer compared a bytes/sha256 identity to a {path,identity} binding object. Existing source evidence and hashes did not differ.",
+  "failed_source": {
+    "path": "r7-native/write_native_storage_scope_addendum_r7_v2.py",
+    "identity": {
+      "bytes": 5273,
+      "sha256": "6838b961512db07dfddb381c4b2a8ce247bf68e4f3309d8c6ccee0e629438fdb"
+    }
+  },
+  "new_source": {
+    "path": "r7-native/write_native_storage_scope_addendum_r7_v3.py",
+    "identity": {
+      "bytes": 5297,
+      "sha256": "b572dbe3d316d6e4ea5d8767ad5e1bb809456f00fc68045e7f35b12f1dfdc603"
+    }
+  },
+  "new_source_delta": "Read identity from the two existing nested identity fields; no original input changes.",
+  "original_V1_scope": {
+    "bytes": 21627,
+    "sha256": "8c88d441b9e3f311b95bac2bec17c543f5e1be376dc9030d2427f8442b9c8ae9"
+  },
+  "failed_writer_output_created": false,
+  "new_scientific_execution": false,
+  "original_evidence_modified": false
+}

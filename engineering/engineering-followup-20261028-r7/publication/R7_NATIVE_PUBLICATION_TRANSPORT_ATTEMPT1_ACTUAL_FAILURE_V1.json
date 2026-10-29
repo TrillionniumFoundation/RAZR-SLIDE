@@ -1,0 +1,21 @@
+{
+  "schema": "razr-r7-native-publication-transport-attempt1-failure-v1",
+  "operation": "github.create_blob",
+  "repository": "TrillionniumFoundation/RAZR-SLIDE",
+  "intended_blob_sha": "60718602f5397af95b1d0dfd3339ad87c8ff947c",
+  "original_zip_bytes": 16468003,
+  "original_zip_sha256": "b5a51bb87abc2d84be10bd24b0f7a1a8f20aa23bcc84666ecc9c9aeeaf97d6e7",
+  "base64_content_characters": 21957340,
+  "tool_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "tool call error: tool call failed for `codex_apps/github.create_blob`\n\nCaused by:\n    Transport send error: Transport [codex_rmcp_client::tool_list_changes::ToolListChanges<codex_rmcp_client::event_notification_transport::EventNotificationTransport<rmcp::transport::worker::WorkerTransport<rmcp::transport::streamable_http_client::StreamableHttpClientWorker<codex_rmcp_client::http_client_adapter::StreamableHttpClientAdapter>>>>] error: unexpected server response: HTTP 400: {\"detail\":\"MCP request body is invalid or exceeds the 16 MiB limit\"}"
+      }
+    ],
+    "isError": true
+  },
+  "branch_ref_mutated": false,
+  "scientific_bytes_or_criteria_changed": false,
+  "next_transport": "Two exact original-byte parts below the observed 16 MiB JSON request limit; preserve the complete original ZIP and verify concatenation."
+}

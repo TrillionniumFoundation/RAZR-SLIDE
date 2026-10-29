@@ -1,0 +1,76 @@
+--- native_trim_core_witness_r5.py
++++ native_trim_core_witness_r5_ascii_v2.py
+@@ -39,6 +39,17 @@
+     return value
+ 
+ 
++def require_ascii_brep_v3(path, declared_format):
++    """Classify only the exact registered header; native topology is checked later."""
++    need(declared_format == "OCCT_ASCII_BREP_V3", "Unsupported declared BREP serialization")
++    expected = b"DBRep_DrawableShape\n\nCASCADE Topology V3, (c) Open Cascade\n"
++    with Path(path).open("rb") as stream:
++        header = stream.read(len(expected))
++    need(header == expected, "Original/new BREP header is not registered ASCII V3")
++    return {"declared": declared_format, "header_hex": header.hex(),
++            "header_recognition_is_not_native_validity": True}
++
++
+ def main():
+     ap = argparse.ArgumentParser(description=__doc__)
+     ap.add_argument("--contract", type=Path, required=True)
+@@ -46,6 +57,7 @@
+     a = ap.parse_args()
+     c = json.loads(a.contract.read_text())
+     need(ident(__file__) == c["worker_identity"], "Producer source changed")
++    need(c["native_brep_serialization"] == "OCCT_ASCII_BREP_V3", "Explicit ASCII BREP contract required")
+     need(not sys.flags.optimize and sys.flags.dont_write_bytecode, "Original Python execution flags required")
+     for row in c["bound_records"] + c["bound_sources"]:
+         need(ident(row["path"]) == row["identity"], "Frozen input differs: " + row["path"])
+@@ -58,7 +70,7 @@
+     geometry = a.out / "geometry"
+     geometry.mkdir()
+     start = time.monotonic()
+-    r = {"schema": "r5-finite-native-trim-core-witness-v1", "worker_identity": ident(__file__),
++    r = {"schema": "r5-finite-native-trim-core-witness-ascii-v2", "native_brep_serialization": c["native_brep_serialization"], "worker_identity": ident(__file__),
+          "contract_identity": ident(a.contract), "selection_identity": ident(c["selection"]["path"]),
+          "mapping_identity": ident(c["mapping"]["path"]), "completed": False,
+          "scope": c["scope"], "whole_inputs": [], "native_face_bindings": [], "original_core_intersections": [],
+@@ -82,8 +94,8 @@
+         sys.path.insert(0, str(Path(c["inventory_source"]).parent))
+         native = load(c["inventory_source"], "r5_original_native_inventory")
+         cq, guard = native.cq, native.p.whole_material
+-        from OCP.BinTools import BinTools
+-        from OCP.BRep import BRep_Tool
++        from OCP.BRepTools import BRepTools
++        from OCP.BRep import BRep_Tool, BRep_Builder
+         from OCP.BRepAdaptor import BRepAdaptor_Surface
+         from OCP.TopoDS import TopoDS_Shape
+ 
+@@ -115,8 +127,9 @@
+         def export(shape, name, whole=False):
+             path = geometry / (name + ".brep")
+             need(not path.exists(), "New exact operand/result path required")
+-            status = BinTools.Write_s(shape.wrapped, str(path))
+-            need(status is not False and path.is_file(), "Native BREP export failed")
++            status = BRepTools.Write_s(shape.wrapped, str(path))
++            need(status is not False and path.is_file(), "Native ASCII BREP export failed")
++            serialization = require_ascii_brep_v3(path, c["native_brep_serialization"])
+             summary = shape_summary(shape)
+             if whole:
+                 solids, volume = guard(shape, empty=True)
+@@ -124,11 +137,13 @@
+                                                             "solid_signed_volumes_mm3": [s.Volume() for s in solids]}
+                 if solids:
+                     summary["classification"] = "complete_positive_3D_material"
+-            return {"path": str(path.relative_to(a.out)), **ident(path), "native": summary}
++            return {"path": str(path.relative_to(a.out)), **ident(path), "native": summary, "serialization": serialization}
+ 
+         def read(path):
++            require_ascii_brep_v3(path, c["native_brep_serialization"])
+             native_shape = TopoDS_Shape()
+-            need(BinTools.Read_s(native_shape, str(path)), "Native BREP read failed")
++            need(BRepTools.Read_s(native_shape, str(path), BRep_Builder()), "Native ASCII BREP read failed")
++            need(not native_shape.IsNull(), "Native ASCII BREP reader returned a null shape")
+             return cq.Shape.cast(native_shape)
+ 
+         parents, faces = {}, {}

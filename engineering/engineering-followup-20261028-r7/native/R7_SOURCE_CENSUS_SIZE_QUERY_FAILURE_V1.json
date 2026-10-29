@@ -1,0 +1,8 @@
+{
+  "schema": "RAZR_R7_NATIVE_PREPARATION_FAILURE_V1",
+  "operation": "git --no-lazy-fetch ls-tree -rlz S4",
+  "failure": "ValueError: invalid literal for int() with base 10: BAD",
+  "reason": "promisor absent blob sizes are BAD, not decimal",
+  "mutations_before_failure": false,
+  "subsequent_strategy": "Tree identities without inventing absent blob sizes; select real tracked source closure then fetch actual bytes as needed."
+}

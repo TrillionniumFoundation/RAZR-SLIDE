@@ -1,0 +1,21 @@
+{
+  "schema": "razr-r7-native80-archive-plan-v1-actual-failure",
+  "recorded_utc": "2026-10-29T00:32:45.983800+00:00",
+  "builder": {
+    "bytes": 16856,
+    "sha256": "e8e7b56c4088ce8f073c7b75ff03d00f261dc84b75c1e49aba7eb1b92025a89b"
+  },
+  "actual_exit_code": 1,
+  "actual_failure_type": "ValueError",
+  "actual_failure_message": "No symlink/special directories allowed",
+  "failure_stage": "Preregistration full setup directory enumeration; before any ZIP creation",
+  "observed_setup_install_v3": {
+    "regular_files": 17,
+    "regular_bytes": 446686,
+    "symbolic_links": 20,
+    "actual_subdirectories": 756,
+    "other_special_entries": 0
+  },
+  "no_qualification_or_scientific_result_reclassified": true,
+  "repair_scope": "Preserve every closed setup directory and symbolic-link target byte as original ZIP entry metadata without following links; compare exact complete entry census before and after."
+}

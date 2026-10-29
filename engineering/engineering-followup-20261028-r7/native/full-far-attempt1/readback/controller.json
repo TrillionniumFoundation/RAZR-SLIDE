@@ -1,0 +1,650 @@
+{
+  "schema": "razr-K3FULL-owned-finite-supervisor-20261026-v1",
+  "started_utc": "2026-10-29T00:42:26.072557+00:00",
+  "mode": "readback",
+  "command": [
+    "/workspace/scratch/34f8fcac2ab1/r7-native/genuine-s4-worktree-v3/.venv/bin/python",
+    "-B",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/read_factory_stops.py",
+    "--pose",
+    "far",
+    "--output",
+    "/workspace/scratch/34f8fcac2ab1/r7-native/full-far-attempt1/readback/worker",
+    "--k3-stow",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/prerequisite-stow_tabs_3",
+    "--k3-predock",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/prerequisite-predock",
+    "--binding",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/K3FULL_K3_BINDING.json",
+    "--contract",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/PANEL_KEY_TRAVEL_STOPS_V1_CONTRACT.json",
+    "--k1-contract",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/KEY_FORWARD_LOOP_V1_CONTRACT.json",
+    "--key-binding",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/K3FULL_K1_BINDING.json",
+    "--factory-report",
+    "/workspace/scratch/34f8fcac2ab1/r7-native/full-far-attempt1/factory/worker/report.json"
+  ],
+  "source_sha256_before": {
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/supervise_k3full.py": "e546a2919ed276331be89ea137de5e8b2121dece92604ea38b80486b3f7d32de",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/read_factory_stops.py": "14fc747d710aaf6782bdc3552a9fcc7d6c41248a5e6960e73a5186ba9d75f054",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/f1_common.py": "d7a58a06e8fdd7c0b727fc114ef2a9c93e60c61b3e3a3acc886ca19af5e88bb3",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/frozen_key_factory_adapter.py": "b112d97a4bb888e17c0a4c4de75abd322c28c89e274ac6f63ef7c734940f70c6",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/full_stop_states.py": "1a3663e163ea4062333127001a9e5973b311f30b384b4966b632cdf08c77c138",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/actual_stop_prerequisite.py": "6b6ba99ae8bcf4fa43b09f0025c4d04d065e51f2f313b6087b000334e3bac3df",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/k3_pilot_common.py": "6082adf64283deab857db00b867f6270792bed337add1237c3868f5e8a5bf801",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/panel_key_travel_stops_v1.py": "59946f42f8bff88b0cdb8bcd2ad7f578e22e6f64e65832a6b6087426e282e5a5",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/independent_stop_checks.py": "be410388ade9a17bcbb95a75236ae9bfbb7737798407dae5828bb29c346943bb",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/PANEL_KEY_TRAVEL_STOPS_V1_CONTRACT.json": "0f3ec4af155a2e92650f49ada7042e6d1fc1f8ad94cb43f6716a77985ecc5b84",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/KEY_FORWARD_LOOP_V1_CONTRACT.json": "17e1532ed82eff1298e9525456d6953df56437082ef2918f3d04839cff200455",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/K3FULL_K3_BINDING.json": "22bc7ec3af6c5299323ded7857939d6e4d4b5fe39bf23ff776e207840b74da69",
+    "/workspace/scratch/34f8fcac2ab1/r7-recovery/k3/source/k3full/K3FULL_K1_BINDING.json": "cffbd88792fee8acb3406a76120069ae5b65ce37cc9cbd81af9d5fa3b8fd38be",
+    "/workspace/scratch/34f8fcac2ab1/r7-native/genuine-s4-worktree-v3/engineering/engineering-integration-20261025/geometry/execution_identity.py": "6c52cbb1e4e5dd3075370847e11f4f9c3c412d4e88504090711f434675da5c39",
+    "/workspace/scratch/34f8fcac2ab1/r7-native/genuine-s4-worktree-v3/engineering/engineering-integration-20261025/geometry/slide/owned_process.py": "db92c8ceb3c39cd5843d96d042f0202915937abdc2a919d5854e71de4a4c0b25"
+  },
+  "original_v4_execution_claimed": false,
+  "original_KEY_90_second_reader_used": false,
+  "new_complete_STEP_readback_budget_justification": "154/161 whole STEP imports, independent panel reconstruction and all 11781/12880 original pairs retain the original full finite guard; actual K2 full workers were 233-485 s and K3 pilot workers 68-139 s. Completion remains subject to unchanged hard gates.",
+  "worker_started": true,
+  "completed": true,
+  "owned_child_identity_verified": true,
+  "procfs_visible_PID_used_for_signals": false,
+  "limits": {
+    "wall_seconds": 1200,
+    "worker_peak_RSS_MiB": 1536,
+    "shared_unreclaimable_GiB": 6.8,
+    "runtime_disk_reserve_MiB": 100,
+    "startup_disk_reserve_MiB": 256,
+    "startup_additional_memory_MiB": 2048
+  },
+  "resource_observations": [
+    {
+      "available_disk_bytes": 1924993024,
+      "shared_unreclaimable_bytes": 228222744
+    },
+    {
+      "available_disk_bytes": 1919066112,
+      "shared_unreclaimable_bytes": 649982776,
+      "elapsed_seconds": 10.071882042999277,
+      "worker_memory": {
+        "VmRSS": 540045312,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1893187584,
+      "shared_unreclaimable_bytes": 419625376,
+      "elapsed_seconds": 20.08164309499989,
+      "worker_memory": {
+        "VmRSS": 542564352,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1893171200,
+      "shared_unreclaimable_bytes": 416855184,
+      "elapsed_seconds": 30.090769578999243,
+      "worker_memory": {
+        "VmRSS": 542564352,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1893126144,
+      "shared_unreclaimable_bytes": 420733992,
+      "elapsed_seconds": 40.09963463399981,
+      "worker_memory": {
+        "VmRSS": 542564352,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1893113856,
+      "shared_unreclaimable_bytes": 418379120,
+      "elapsed_seconds": 50.108935914999165,
+      "worker_memory": {
+        "VmRSS": 542564352,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1892999168,
+      "shared_unreclaimable_bytes": 409661320,
+      "elapsed_seconds": 60.11835196899847,
+      "worker_memory": {
+        "VmRSS": 542564352,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1892593664,
+      "shared_unreclaimable_bytes": 431199976,
+      "elapsed_seconds": 70.12908158799837,
+      "worker_memory": {
+        "VmRSS": 542568448,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1892569088,
+      "shared_unreclaimable_bytes": 421680784,
+      "elapsed_seconds": 80.13909735000016,
+      "worker_memory": {
+        "VmRSS": 542568448,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1892401152,
+      "shared_unreclaimable_bytes": 408106976,
+      "elapsed_seconds": 90.14752791599858,
+      "worker_memory": {
+        "VmRSS": 542568448,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1891680256,
+      "shared_unreclaimable_bytes": 418251080,
+      "elapsed_seconds": 100.15525691699986,
+      "worker_memory": {
+        "VmRSS": 542568448,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1886883840,
+      "shared_unreclaimable_bytes": 562273096,
+      "elapsed_seconds": 110.16926710999905,
+      "worker_memory": {
+        "VmRSS": 542568448,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1859465216,
+      "shared_unreclaimable_bytes": 419229720,
+      "elapsed_seconds": 120.18020771699958,
+      "worker_memory": {
+        "VmRSS": 542568448,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1858949120,
+      "shared_unreclaimable_bytes": 419529808,
+      "elapsed_seconds": 130.18926097199983,
+      "worker_memory": {
+        "VmRSS": 542568448,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1858506752,
+      "shared_unreclaimable_bytes": 433262112,
+      "elapsed_seconds": 140.19870656499916,
+      "worker_memory": {
+        "VmRSS": 542568448,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1724149760,
+      "shared_unreclaimable_bytes": 476891400,
+      "elapsed_seconds": 150.21369129899904,
+      "worker_memory": {
+        "VmRSS": 542568448,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1648652288,
+      "shared_unreclaimable_bytes": 420579064,
+      "elapsed_seconds": 160.2258859049998,
+      "worker_memory": {
+        "VmRSS": 544067584,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1648312320,
+      "shared_unreclaimable_bytes": 412589096,
+      "elapsed_seconds": 170.23370792999958,
+      "worker_memory": {
+        "VmRSS": 544067584,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1647841280,
+      "shared_unreclaimable_bytes": 415861928,
+      "elapsed_seconds": 180.24169037899992,
+      "worker_memory": {
+        "VmRSS": 544067584,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1647689728,
+      "shared_unreclaimable_bytes": 429575344,
+      "elapsed_seconds": 190.2539762870001,
+      "worker_memory": {
+        "VmRSS": 544067584,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1647656960,
+      "shared_unreclaimable_bytes": 410514144,
+      "elapsed_seconds": 200.2648478329993,
+      "worker_memory": {
+        "VmRSS": 544067584,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1647038464,
+      "shared_unreclaimable_bytes": 421952624,
+      "elapsed_seconds": 210.27581767399897,
+      "worker_memory": {
+        "VmRSS": 544067584,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1646698496,
+      "shared_unreclaimable_bytes": 422521560,
+      "elapsed_seconds": 220.28507055599948,
+      "worker_memory": {
+        "VmRSS": 544067584,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1439240192,
+      "shared_unreclaimable_bytes": 418572320,
+      "elapsed_seconds": 230.29722078099985,
+      "worker_memory": {
+        "VmRSS": 544067584,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1438932992,
+      "shared_unreclaimable_bytes": 420109376,
+      "elapsed_seconds": 240.30921441699866,
+      "worker_memory": {
+        "VmRSS": 544067584,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1438838784,
+      "shared_unreclaimable_bytes": 412575944,
+      "elapsed_seconds": 250.32103534299858,
+      "worker_memory": {
+        "VmRSS": 544067584,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1231376384,
+      "shared_unreclaimable_bytes": 405213720,
+      "elapsed_seconds": 260.3331576189994,
+      "worker_memory": {
+        "VmRSS": 544067584,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1230856192,
+      "shared_unreclaimable_bytes": 421772336,
+      "elapsed_seconds": 270.34199201499905,
+      "worker_memory": {
+        "VmRSS": 544067584,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1375948800,
+      "shared_unreclaimable_bytes": 459681416,
+      "elapsed_seconds": 280.3546606009986,
+      "worker_memory": {
+        "VmRSS": 544067584,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1008611328,
+      "shared_unreclaimable_bytes": 432297680,
+      "elapsed_seconds": 290.36415927599955,
+      "worker_memory": {
+        "VmRSS": 544067584,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1008431104,
+      "shared_unreclaimable_bytes": 419654192,
+      "elapsed_seconds": 300.373266007,
+      "worker_memory": {
+        "VmRSS": 544067584,
+        "VmHWM": 561991680
+      }
+    },
+    {
+      "available_disk_bytes": 1008099328,
+      "shared_unreclaimable_bytes": 421514720,
+      "elapsed_seconds": 310.3822498979989,
+      "worker_memory": {
+        "VmRSS": 544067584,
+        "VmHWM": 561991680
+      }
+    }
+  ],
+  "locked_environment": {
+    "schema": "razr-locked-version-check-v1",
+    "passed": true,
+    "python_version": "3.12.14",
+    "checked_packages": {
+      "aiohappyeyeballs": {
+        "expected": "2.7.1",
+        "observed": "2.7.1",
+        "matches": true
+      },
+      "aiohttp": {
+        "expected": "3.14.5",
+        "observed": "3.14.5",
+        "matches": true
+      },
+      "aiosignal": {
+        "expected": "1.4.0",
+        "observed": "1.4.0",
+        "matches": true
+      },
+      "attrs": {
+        "expected": "26.1.0",
+        "observed": "26.1.0",
+        "matches": true
+      },
+      "cadquery": {
+        "expected": "2.7.0",
+        "observed": "2.7.0",
+        "matches": true
+      },
+      "cadquery-ocp": {
+        "expected": "7.8.1.1.post1",
+        "observed": "7.8.1.1.post1",
+        "matches": true
+      },
+      "casadi": {
+        "expected": "3.8.1",
+        "observed": "3.8.1",
+        "matches": true
+      },
+      "contourpy": {
+        "expected": "1.4.0",
+        "observed": "1.4.0",
+        "matches": true
+      },
+      "cycler": {
+        "expected": "0.12.1",
+        "observed": "0.12.1",
+        "matches": true
+      },
+      "ezdxf": {
+        "expected": "1.4.4",
+        "observed": "1.4.4",
+        "matches": true
+      },
+      "fonttools": {
+        "expected": "4.66.1",
+        "observed": "4.66.1",
+        "matches": true
+      },
+      "frozenlist": {
+        "expected": "1.8.0",
+        "observed": "1.8.0",
+        "matches": true
+      },
+      "idna": {
+        "expected": "3.20",
+        "observed": "3.20",
+        "matches": true
+      },
+      "kiwisolver": {
+        "expected": "1.5.1",
+        "observed": "1.5.1",
+        "matches": true
+      },
+      "matplotlib": {
+        "expected": "3.11.2",
+        "observed": "3.11.2",
+        "matches": true
+      },
+      "more-itertools": {
+        "expected": "11.2.0",
+        "observed": "11.2.0",
+        "matches": true
+      },
+      "msgpack": {
+        "expected": "1.2.3",
+        "observed": "1.2.3",
+        "matches": true
+      },
+      "multidict": {
+        "expected": "7.1.0",
+        "observed": "7.1.0",
+        "matches": true
+      },
+      "multimethod": {
+        "expected": "1.12",
+        "observed": "1.12",
+        "matches": true
+      },
+      "nlopt": {
+        "expected": "2.11.0",
+        "observed": "2.11.0",
+        "matches": true
+      },
+      "numpy": {
+        "expected": "2.5.4",
+        "observed": "2.5.4",
+        "matches": true
+      },
+      "packaging": {
+        "expected": "26.3",
+        "observed": "26.3",
+        "matches": true
+      },
+      "path": {
+        "expected": "17.1.1",
+        "observed": "17.1.1",
+        "matches": true
+      },
+      "pillow": {
+        "expected": "12.3.0",
+        "observed": "12.3.0",
+        "matches": true
+      },
+      "propcache": {
+        "expected": "0.5.4",
+        "observed": "0.5.4",
+        "matches": true
+      },
+      "pyparsing": {
+        "expected": "3.3.3",
+        "observed": "3.3.3",
+        "matches": true
+      },
+      "python-dateutil": {
+        "expected": "2.9.0.post0",
+        "observed": "2.9.0.post0",
+        "matches": true
+      },
+      "pyyaml": {
+        "expected": "6.0.3",
+        "observed": "6.0.3",
+        "matches": true
+      },
+      "runtype": {
+        "expected": "0.5.3",
+        "observed": "0.5.3",
+        "matches": true
+      },
+      "scipy": {
+        "expected": "1.18.1",
+        "observed": "1.18.1",
+        "matches": true
+      },
+      "shapely": {
+        "expected": "2.2.0",
+        "observed": "2.2.0",
+        "matches": true
+      },
+      "six": {
+        "expected": "1.17.0",
+        "observed": "1.17.0",
+        "matches": true
+      },
+      "trame": {
+        "expected": "4.0.0",
+        "observed": "4.0.0",
+        "matches": true
+      },
+      "trame-client": {
+        "expected": "4.1.4",
+        "observed": "4.1.4",
+        "matches": true
+      },
+      "trame-common": {
+        "expected": "1.2.9",
+        "observed": "1.2.9",
+        "matches": true
+      },
+      "trame-components": {
+        "expected": "2.5.0",
+        "observed": "2.5.0",
+        "matches": true
+      },
+      "trame-server": {
+        "expected": "4.1.0",
+        "observed": "4.1.0",
+        "matches": true
+      },
+      "trame-vtk": {
+        "expected": "2.11.17",
+        "observed": "2.11.17",
+        "matches": true
+      },
+      "trame-vuetify": {
+        "expected": "3.3.0",
+        "observed": "3.3.0",
+        "matches": true
+      },
+      "typing-extensions": {
+        "expected": "4.16.0",
+        "observed": "4.16.0",
+        "matches": true
+      },
+      "vtk": {
+        "expected": "9.3.1",
+        "observed": "9.3.1",
+        "matches": true
+      },
+      "wslink": {
+        "expected": "2.6.0",
+        "observed": "2.6.0",
+        "matches": true
+      },
+      "yarl": {
+        "expected": "1.25.1",
+        "observed": "1.25.1",
+        "matches": true
+      }
+    },
+    "errors": [],
+    "scope": "interpreter and all registry package versions in the current universal lock",
+    "installation_artifact_provenance_verified": false,
+    "pyproject_sha256": "910226440f950d17dbe702a2c868d5ae2b679f72f044b14d6d5e2a36fd79279b",
+    "uv_lock_sha256": "b1387fbbfa74e39474818a8a6235ba7ddf1d97d00629babb1d0e53971141fe6a",
+    "checked_package_count": 43
+  },
+  "worker_pid": 28,
+  "owned_child_handshake": {
+    "packet": {
+      "kind": "razr_owned_child_identity_v1",
+      "nonce": "2aebbf7904ea266d454d90adba279f689b15967af09cb9f05c181a79fc264b28",
+      "source_sha256": "14fc747d710aaf6782bdc3552a9fcc7d6c41248a5e6960e73a5186ba9d75f054",
+      "os_getpid": 28,
+      "os_getppid": 27,
+      "proc_self_visible_pid": "106994",
+      "status": {
+        "Pid": 106994,
+        "PPid": 106984,
+        "NSpid": [
+          106994,
+          28
+        ]
+      },
+      "stat": {
+        "pid": 106994,
+        "ppid": 106984,
+        "starttime_ticks": 1368944
+      },
+      "pid_namespace": "pid:[4026532347]",
+      "pid_for_children_namespace": "pid:[4026532347]"
+    },
+    "parent_identity": {
+      "os_getpid": 27,
+      "os_getppid": 2,
+      "proc_self_visible_pid": "106984",
+      "status": {
+        "Pid": 106984,
+        "PPid": 106882,
+        "NSpid": [
+          106984,
+          27
+        ]
+      },
+      "stat": {
+        "pid": 106984,
+        "ppid": 106882,
+        "starttime_ticks": 1368763
+      },
+      "pid_namespace": "pid:[4026532347]",
+      "pid_for_children_namespace": "pid:[4026532347]"
+    },
+    "verified_binding": {
+      "status": {
+        "Pid": 106994,
+        "PPid": 106984,
+        "NSpid": [
+          106994,
+          28
+        ]
+      },
+      "stat": {
+        "pid": 106994,
+        "ppid": 106984,
+        "starttime_ticks": 1368944
+      },
+      "pid_namespace": "pid:[4026532347]",
+      "pid_for_children_namespace": "pid:[4026532347]"
+    },
+    "initial_memory": {
+      "VmRSS": 15036416,
+      "VmHWM": 15036416
+    }
+  },
+  "worker_exit_code": 0,
+  "owned_channel_descriptors_closed": true,
+  "result_sha256": "bf64701473698258636c02f09297fd83f1c14bcb7bfbf75908eac0cf16b4f4d1",
+  "reported_execution_completed": true,
+  "finite_trial_clear": true,
+  "pilot_clear": null,
+  "source_bytes_unchanged": true,
+  "elapsed_seconds": 311.40928508199977,
+  "finished_utc": "2026-10-29T00:47:37.514830+00:00",
+  "locked_environment_unchanged": true
+}

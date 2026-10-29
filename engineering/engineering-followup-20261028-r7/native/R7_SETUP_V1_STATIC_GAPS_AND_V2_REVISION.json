@@ -1,0 +1,42 @@
+{
+  "schema": "RAZR_R7_SETUP_V1_STATIC_GAPS_AND_V2_REVISION",
+  "v1_actual_installer_or_native_execution": false,
+  "v1_actual_pure_assessment_retained": true,
+  "independent_review_gaps": [
+    "Complete member census could silently skip FIFO/socket/special entries",
+    "Retained compressed uv wheel was outside expanded-tool reserve bound"
+  ],
+  "v2_fixes": [
+    "lstat every actual non-runtime entry; reject symlinks/specialfiles; prune only real root .venv directory",
+    "retained wheel plus all expanded files bounded by same 201326592-byte tool reserve",
+    "installer transient size sample tolerates genuine deletion races without ignoring persistent entries"
+  ],
+  "source_versions": {
+    "setup_fresh_s4_runtime_r7_v1.py": {
+      "bytes": 15001,
+      "sha256": "923e6a5952df91aa6faa275236963d7b7cc070b5c0c3e920467b8e15f911bf45"
+    },
+    "setup_fresh_s4_runtime_r7_v2.py": {
+      "bytes": 15895,
+      "sha256": "ed4a5179048172ff312f9cf595ed9c86d5176ec7cfaa5d64c21930d0a1f06902"
+    },
+    "register_local_setup_r7_v1.py": {
+      "bytes": 6401,
+      "sha256": "2c3f80468d9bfacf9c9619be70dbd4881d344dd3031cc1b21b44c1e82f75ef60"
+    },
+    "register_local_setup_r7_v2.py": {
+      "bytes": 6401,
+      "sha256": "fc51a248c43d69fa2e4bac933a230ba781ef2124aa94861e3772d2dda00c6a3d"
+    },
+    "register_and_run_native_local_r7_v1.py": {
+      "bytes": 13335,
+      "sha256": "d0600c1fd7cb7dd4c39af8358ba82bcdfd4923f4fb298956000f3233febcd947"
+    },
+    "register_and_run_native_local_r7_v2.py": {
+      "bytes": 13335,
+      "sha256": "6e83c0d9824c81acccd6ac0c8bab56c46f3f4472b67c886975edf8b2051ace64"
+    }
+  },
+  "original_scientific_limits_reduced": false,
+  "actual_new_install_or_native_execution_claimed": false
+}

@@ -1,0 +1,143 @@
+{
+  "schema": "razr-r7-native-setup-v2-independent-review-v2",
+  "recorded_utc": "2026-10-29T00:01:29.216358+00:00",
+  "review_pass": true,
+  "review_scope": "Setup source, exact S4 input closure, original resource gates and actual synthetic member-census controls. Installer/native stage has not been executed by this reviewer.",
+  "reviewed_sources": [
+    {
+      "path": "r7-native/setup_fresh_s4_runtime_r7_v2.py",
+      "bytes": 15895,
+      "sha256": "ed4a5179048172ff312f9cf595ed9c86d5176ec7cfaa5d64c21930d0a1f06902"
+    },
+    {
+      "path": "r7-native/register_local_setup_r7_v2.py",
+      "bytes": 6401,
+      "sha256": "fc51a248c43d69fa2e4bac933a230ba781ef2124aa94861e3772d2dda00c6a3d"
+    },
+    {
+      "path": "r7-native/qualify_fresh_runtime_r7_v1.py",
+      "bytes": 23785,
+      "sha256": "a1b14b6586893339f245ba04363ea0dd210c2fea8c86fdfeaa82ed10eb19d1fb"
+    },
+    {
+      "path": "r7-native/R7_SETUP_ASSESS_ONLY_CONTRACT_V2.json",
+      "bytes": 210482,
+      "sha256": "ce7833dc9df40c062947a2819a27b449c3ab8196ca7566f1b1c3239f7ec910f4"
+    },
+    {
+      "path": "r7-recovery/native-audit/R5_RECOVERED_FUNCTIONAL_SOURCE_MANIFEST.json",
+      "bytes": 207020,
+      "sha256": "9e4bbece9f2d015a678dd004918d85f7b4f452a6da1adf6aba8ad3c751f16cdf"
+    },
+    {
+      "path": "r7-native/R7_EXACT_973_S4_GIT_SOURCE_READBACK_V1.json",
+      "bytes": 281532,
+      "sha256": "4b72f2c5feb1d810b9d00d9eb6d84f77f3cb98b8027522c927f102ee901d4ad6"
+    },
+    {
+      "path": "razr-current/engineering/engineering-followup-20261028-r5/cloud-native-v1/R5_CLOUD_NATIVE_SCIENCE_TEMPLATE.json",
+      "bytes": 20206,
+      "sha256": "7bad461b4b6e5b02808d86a957bc64aa1e3b7ba9ad520e773df0171b6f8ad4ed"
+    },
+    {
+      "path": "r7-native/R7_PINNED_UV_WHEEL_SELECTION_V1.json",
+      "bytes": 1232,
+      "sha256": "c7e008250ebc3107ceb1b68a9f97008ea3b338d3bd304c2e76e6219ba37f5727"
+    },
+    {
+      "path": "r7-native/uv-0.10.10-pypi-original.json",
+      "bytes": 33814,
+      "sha256": "992d93c4c7d724b97a43fb89fa9ea63f7ad42198d06bb83fa5294cc69fe51475"
+    }
+  ],
+  "source_before_after_unchanged": true,
+  "exact_S4_source_count": 973,
+  "exact_S4_source_bytes_independently_read": 11150469,
+  "real_S4_Git_blob_bytes_equal": true,
+  "expected_actual_members_after_new_real_worktree": 974,
+  "actual_new_project_worktree_created_by_reviewer": false,
+  "python_version": "Python 3.12.14",
+  "conservative_preinstall_reserve_bytes": 7968830419,
+  "original_six_resource_limits": {
+    "wall_seconds": 1200,
+    "worker_RSS_limit_bytes": 1610612736,
+    "shared_limit_bytes": 7301444403,
+    "startup_disk_floor_bytes": 268435456,
+    "startup_extra_shared_bytes": 2147483648,
+    "runtime_disk_floor_bytes": 104857600
+  },
+  "original_postinstall_4GiB_gate_preserved": true,
+  "retained_uv_wheel_plus_payload_fits_tool_reserve_required": true,
+  "complete_uv_ZIP_RECORD_member_set_required": true,
+  "actual_synthetic_controls": [
+    {
+      "name": "real-Git-baseline",
+      "expected_accept": true,
+      "actual_accept": true,
+      "error": null
+    },
+    {
+      "name": "original-V1-ignored-FIFO-counterexample",
+      "expected_accept": false,
+      "actual_accept": false,
+      "error": "Special or symlink file in worktree"
+    },
+    {
+      "name": "ignored-extra-regular-file",
+      "expected_accept": false,
+      "actual_accept": false,
+      "error": "Complete actual worktree member set differs"
+    },
+    {
+      "name": "ignored-symlink-file",
+      "expected_accept": false,
+      "actual_accept": false,
+      "error": "Special or symlink file in worktree"
+    },
+    {
+      "name": "ignored-symlink-directory",
+      "expected_accept": false,
+      "actual_accept": false,
+      "error": "Non-directory or symlink directory in worktree"
+    },
+    {
+      "name": "root-runtime-symlink-directory",
+      "expected_accept": false,
+      "actual_accept": false,
+      "error": "Non-directory or symlink directory in worktree"
+    },
+    {
+      "name": "root-runtime-FIFO",
+      "expected_accept": false,
+      "actual_accept": false,
+      "error": "Special or symlink file in worktree"
+    },
+    {
+      "name": "real-root-runtime-directory-pruned",
+      "expected_accept": true,
+      "actual_accept": true,
+      "error": null
+    },
+    {
+      "name": "nested-runtime-name-not-pruned",
+      "expected_accept": false,
+      "actual_accept": false,
+      "error": "Complete actual worktree member set differs"
+    }
+  ],
+  "V1_actual_ignored_FIFO_counterexample_rejected_by_V2": true,
+  "assessment_identity": {
+    "bytes": 1341,
+    "sha256": "3a9c5a557aa8f15b258398bf7fbd17b766c07a2a80ae62fcdb083208c9c9bebb"
+  },
+  "native_registrar_review_included": false,
+  "socket_control": "not executed: original attempt PermissionError; preserved in R7_NATIVE_SETUP_REVIEW_ATTEMPT1_SOCKET_BLOCK.json",
+  "qualification_or_native_or_physical_pass_issued": false,
+  "execution": {
+    "seconds": 0.3040731159999268,
+    "max_rss_bytes": 38141952,
+    "address_limit_bytes": 268435456,
+    "CPU_limit_seconds": 60,
+    "reason_for_256MiB_review_budget": "Keep complete 11.15 MiB original Git source byte batch, source manifests and actual filesystem controls resident; scientific worker gates unchanged."
+  }
+}

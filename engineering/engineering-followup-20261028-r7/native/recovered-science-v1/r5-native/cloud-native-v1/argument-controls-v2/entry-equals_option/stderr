@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/34f8fcac2ab1/r5-native/cloud-native-v1/argument-controls-v2/stdlib_denial_hook.py", line 17, in <module>
+    runpy.run_path(config['script'],run_name='__main__')
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/34f8fcac2ab1/r5-native/cloud-native-v1/run_fresh_runtime_script_r5.py", line 156, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/workspace/scratch/34f8fcac2ab1/r5-native/cloud-native-v1/run_fresh_runtime_script_r5.py", line 48, in main
+    require(actual_entry_argv == expected_entry_argv,
+  File "/workspace/scratch/34f8fcac2ab1/r5-native/cloud-native-v1/run_fresh_runtime_script_r5.py", line 31, in require
+    raise ValueError(message)
+ValueError: Actual entry argv differs from complete registered argv; extras, duplicates, equals and abbreviations are rejected

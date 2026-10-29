@@ -1,0 +1,1387 @@
+{
+  "schema": "razr-r7-existing-cleanup-correspondence-actual-v1",
+  "completed": true,
+  "observed_utc": "2026-10-29T00:45:50.079602+00:00",
+  "plan_identity": {
+    "bytes": 3052,
+    "sha256": "d97215bb7a37f88d727b327d1eb2f33fdfeb9efd17ae4cacfa08ab9ac2550c01"
+  },
+  "reviewer_identity": {
+    "bytes": 16053,
+    "sha256": "0ccb0ce8a5c491d37608ded2bd8064603a466380a2e2c7be91a9b91b87006527"
+  },
+  "new_scientific_gate": false,
+  "qualification_rerun": false,
+  "original_input_or_wheel_mutation": false,
+  "exact_input_identities": {
+    "qualifier_source": {
+      "path": "r7-native/qualify_fresh_runtime_r7_v1.py",
+      "identity": {
+        "bytes": 23785,
+        "sha256": "a1b14b6586893339f245ba04363ea0dd210c2fea8c86fdfeaa82ed10eb19d1fb"
+      }
+    },
+    "qualification_report": {
+      "path": "r7-native/native80-attempt1/qualify-owned/worker/R5_FRESH_RUNTIME_QUALIFICATION.json",
+      "identity": {
+        "bytes": 2076339,
+        "sha256": "2887a833afb4e8742e376ce04db42d534ea7eff43861d84aa7a3f0fe932c472e"
+      }
+    },
+    "qualification_contract": {
+      "path": "r7-native/native80-attempt1/qualify-contract.json",
+      "identity": {
+        "bytes": 4315,
+        "sha256": "a11a4817b4ac0fd7fce08a965a38ba29bb04ef269cebd341cafc1ea9c8f8df59"
+      }
+    },
+    "original_supervision": {
+      "path": "r7-native/native80-attempt1/qualify-owned/controller.json",
+      "identity": {
+        "bytes": 29732,
+        "sha256": "2c7aaf4bbbd9bebc7b29f6f80c14e862d1ccd541b84ce2f76f75a48ba101d894"
+      }
+    },
+    "earlier_scratch_observation": {
+      "path": "r7-native/R7_POSTQUALIFICATION_SCRATCH_REOBSERVATION_V1.json",
+      "identity": {
+        "bytes": 1674,
+        "sha256": "8ff1f0159b1acfc60c1ae9acfb9a089463e76f071c7a578e02f8e2214e674b43"
+      }
+    },
+    "existing_full_payload_readback": {
+      "path": "r7-audit/native-stage-v4-review/R7_ACTUAL_RUNTIME_QUALIFICATION_INDEPENDENT_FULL_READBACK_V2.json",
+      "identity": {
+        "bytes": 14972,
+        "sha256": "ea05d600df7991e85bbb53e78f73c7bb06c4d25ebe031b640c33da5f63be7d78"
+      }
+    },
+    "existing_original_vtk_wheel": {
+      "path": "r7-native/qualification-wheel-scratch-v1/vtk.whl",
+      "identity": {
+        "bytes": 92159868,
+        "sha256": "f728bb61f43fce850d622ced3b3d51b3116f767685ca4e4e0076f624e2d2307d"
+      }
+    }
+  },
+  "original_source_excerpts": [
+    {
+      "start_line": 163,
+      "end_line": 186,
+      "text": "        scratch = Path(c['wheel_scratch']).resolve()\n        require(not scratch.exists() and not scratch.is_relative_to(args.out) and not scratch.is_relative_to(root), 'Fresh external wheel scratch required')\n        scratch.mkdir(parents=True)\n        for distribution in sorted(distributions, key=lambda x: normalized(x.metadata['Name'])):\n            name = normalized(distribution.metadata['Name'])\n            info = Path(distribution._path)\n            require(info.is_relative_to(site) and not info.is_symlink(), 'Distribution metadata escapes new site')\n            dist_info_dirs.add(info)\n            tags = {line[5:].strip() for line in (info / 'WHEEL').read_text().splitlines() if line.startswith('Tag: ')}\n            wheels = [w for w in packages[name]['wheels'] if wheel_tags(w['url']) == tags]\n            require(len(wheels) == 1, 'Installed WHEEL tags do not choose one locked wheel: ' + name)\n            wheel = wheels[0]\n            require(wheel['hash'].startswith('sha256:'), 'Unknown locked wheel hash algorithm')\n            require(urllib.parse.urlsplit(wheel['url']).scheme == 'https', 'Non-HTTPS locked wheel URL')\n            path = scratch / (name + '.whl')\n            observation = {'name': name, 'version': distribution.version, 'locked_wheel': wheel,\n                           'installed_wheel_tags': sorted(tags), 'download_completed': False,\n                           'wheel_payloads_verified_against_install': 0, 'wheel_RECORD_entries_verified': 0}\n            report['wheel_observations'].append(observation)\n            save()\n            try:\n                size = 0\n                with urllib.request.urlopen(wheel['url'], timeout=90) as response, path.open('xb') as output:\n                    while True:\n"
+    },
+    {
+      "start_line": 190,
+      "end_line": 198,
+      "text": "                        size += len(block)\n                        require(size <= c['maximum_single_wheel_bytes'], 'Registered transient wheel disk cap exceeded')\n                        output.write(block)\n                observed = identity(path)\n                observation['actual_download_identity'] = observed\n                require(observed['sha256'] == wheel['hash'].split(':', 1)[1] and observed['bytes'] == wheel['size'], 'Downloaded wheel differs from immutable uv.lock')\n                observation['download_completed'] = True\n                with zipfile.ZipFile(path) as archive:\n                    members = [m for m in archive.infolist() if not m.is_dir()]\n"
+    },
+    {
+      "start_line": 232,
+      "end_line": 246,
+      "text": "            finally:\n                if path.exists():\n                    path.unlink()\n                observation['transient_download_removed_after_verification'] = not path.exists()\n            entry_file = info / 'entry_points.txt'\n            if entry_file.is_file():\n                cfg = configparser.ConfigParser(interpolation=None)\n                cfg.optionxform = str\n                cfg.read(entry_file)\n                for section in ('console_scripts', 'gui_scripts'):\n                    if cfg.has_section(section):\n                        console_scripts.update(cfg[section])\n            save()\n        # Installed RECORDs include genuine installer-generated launchers and\n        # metadata. They are separately hashed; they are not rewritten by us.\n"
+    },
+    {
+      "start_line": 363,
+      "end_line": 379,
+      "text": "        report['new_runtime_from_actual_uv_locked_install'] = True\n        report['completed'] = True\n    except BaseException as exc:\n        report['issues'].append({'type': type(exc).__name__, 'message': str(exc)})\n    finally:\n        try:\n            after = inventory(venv)\n            report['venv_inventory_after_sha256'] = canonical(after)\n            report['changed_or_extra_venv_files'] = sorted(set(before or {}) ^ set(after)) + sorted(k for k in set(before or {}) & set(after) if before[k] != after[k])\n            report['all_new_runtime_files_unchanged'] = before is not None and before == after\n            report['source_and_contract_unchanged'] = identity(__file__) == c['qualifier_identity'] and identity(args.contract) == report['contract_identity']\n            report['completed'] = report['completed'] and report['all_new_runtime_files_unchanged'] and report['source_and_contract_unchanged']\n        except BaseException as exc:\n            report['issues'].append({'postflight_type': type(exc).__name__, 'message': str(exc)})\n            report['completed'] = False\n        save()\n    print(json.dumps({k: report.get(k) for k in ('completed', 'seconds', 'peak_RSS_bytes', 'locked_wheel_payload_file_count', 'issues')}), flush=True)\n"
+    }
+  ],
+  "all_43_original_download_records": [
+    {
+      "order": 1,
+      "original_record": {
+        "name": "aiohappyeyeballs",
+        "version": "2.7.1",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/71/43/1947f06babed6b3f1d7f38b0c767f52df66bfb2bc10b468c4a7de9eceff2/aiohappyeyeballs-2.7.1-py3-none-any.whl",
+          "hash": "sha256:9243213661e29250eb41368e5daa826fc017156c3b8a11440826b2e3ed376472",
+          "size": 15038,
+          "upload-time": "2026-07-01T17:11:54.055Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 9,
+        "wheel_RECORD_entries_verified": 9,
+        "actual_download_identity": {
+          "bytes": 15038,
+          "sha256": "9243213661e29250eb41368e5daa826fc017156c3b8a11440826b2e3ed376472"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/aiohappyeyeballs.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 2,
+      "original_record": {
+        "name": "aiohttp",
+        "version": "3.14.5",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/da/e4/aa172eb534b7f02f1f8ff1c3213347eaf3cf218db91a727c6863c22f1035/aiohttp-3.14.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "hash": "sha256:20f085697d7e911f1f73c43ed03fafbed1e7121797e2eb5428efa80398060584",
+          "size": 1919630,
+          "upload-time": "2026-10-11T01:00:32.548Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux2014_x86_64",
+          "cp312-cp312-manylinux_2_17_x86_64",
+          "cp312-cp312-manylinux_2_28_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 72,
+        "wheel_RECORD_entries_verified": 72,
+        "actual_download_identity": {
+          "bytes": 1919630,
+          "sha256": "20f085697d7e911f1f73c43ed03fafbed1e7121797e2eb5428efa80398060584"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/aiohttp.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 3,
+      "original_record": {
+        "name": "aiosignal",
+        "version": "1.4.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/fb/76/641ae371508676492379f16e2fa48f4e2c11741bd63c48be4b12a6b09cba/aiosignal-1.4.0-py3-none-any.whl",
+          "hash": "sha256:053243f8b92b990551949e63930a839ff0cf0b0ebbe0597b0f3fb19e1a0fe82e",
+          "size": 7490,
+          "upload-time": "2025-07-03T22:54:42.156Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 6,
+        "wheel_RECORD_entries_verified": 6,
+        "actual_download_identity": {
+          "bytes": 7490,
+          "sha256": "053243f8b92b990551949e63930a839ff0cf0b0ebbe0597b0f3fb19e1a0fe82e"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/aiosignal.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 4,
+      "original_record": {
+        "name": "attrs",
+        "version": "26.1.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/64/b4/17d4b0b2a2dc85a6df63d1157e028ed19f90d4cd97c36717afef2bc2f395/attrs-26.1.0-py3-none-any.whl",
+          "hash": "sha256:c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309",
+          "size": 67548,
+          "upload-time": "2026-03-19T14:22:23.645Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 34,
+        "wheel_RECORD_entries_verified": 34,
+        "actual_download_identity": {
+          "bytes": 67548,
+          "sha256": "c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/attrs.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 5,
+      "original_record": {
+        "name": "cadquery",
+        "version": "2.7.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/85/46/2544f1d16a912770ecfed25602a273ab0ad4648838decf974781a8f83b78/cadquery-2.7.0-py3-none-any.whl",
+          "hash": "sha256:13bdffe3a1c9a7b29d86d43313021173b1620f45223929d2631cf8d4c5dbe2c0",
+          "size": 182553,
+          "upload-time": "2026-02-13T16:50:46.085Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 40,
+        "wheel_RECORD_entries_verified": 40,
+        "actual_download_identity": {
+          "bytes": 182553,
+          "sha256": "13bdffe3a1c9a7b29d86d43313021173b1620f45223929d2631cf8d4c5dbe2c0"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/cadquery.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 6,
+      "original_record": {
+        "name": "cadquery-ocp",
+        "version": "7.8.1.1.post1",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/fa/3f/4b28aedbbb7c6cd5f1aa4e1d6e9a0f88d138941096a3d70f1878a406075f/cadquery_ocp-7.8.1.1.post1-cp312-cp312-manylinux_2_31_x86_64.whl",
+          "hash": "sha256:4882074e86722208153579baaee246be4fb10bda22dc20d101c4151f364207b9",
+          "size": 70313551,
+          "upload-time": "2025-01-29T14:34:36.484Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux_2_31_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 392,
+        "wheel_RECORD_entries_verified": 392,
+        "actual_download_identity": {
+          "bytes": 70313551,
+          "sha256": "4882074e86722208153579baaee246be4fb10bda22dc20d101c4151f364207b9"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/cadquery-ocp.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 7,
+      "original_record": {
+        "name": "casadi",
+        "version": "3.8.1",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/63/88/79cdbd539a62e971b881dd5d598c2b65ab5c646e7d58fe5ba22f2cad5e13/casadi-3.8.1-cp311-abi3-manylinux_2_28_x86_64.whl",
+          "hash": "sha256:99c32594513bec827ba51e6b24f6d84bb94abbf95f7fe9c2b924f62bec3e02ea",
+          "size": 89403549,
+          "upload-time": "2026-09-16T06:24:31.399Z"
+        },
+        "installed_wheel_tags": [
+          "cp311-abi3-manylinux_2_28_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 2384,
+        "wheel_RECORD_entries_verified": 2384,
+        "actual_download_identity": {
+          "bytes": 89403549,
+          "sha256": "99c32594513bec827ba51e6b24f6d84bb94abbf95f7fe9c2b924f62bec3e02ea"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/casadi.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 8,
+      "original_record": {
+        "name": "contourpy",
+        "version": "1.4.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/78/f9/b6831508960d559581c448532ba4df312217072975486dbf2b24fcc5b76f/contourpy-1.4.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "hash": "sha256:875f42444c9cf48d56f724f2637e60d0f73b3b12c9041e1484580a233edf9591",
+          "size": 383243,
+          "upload-time": "2026-09-11T19:02:58.638Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux_2_27_x86_64",
+          "cp312-cp312-manylinux_2_28_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 23,
+        "wheel_RECORD_entries_verified": 23,
+        "actual_download_identity": {
+          "bytes": 383243,
+          "sha256": "875f42444c9cf48d56f724f2637e60d0f73b3b12c9041e1484580a233edf9591"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/contourpy.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 9,
+      "original_record": {
+        "name": "cycler",
+        "version": "0.12.1",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/e7/05/c19819d5e3d95294a6f5947fb9b9629efb316b96de511b418c53d245aae6/cycler-0.12.1-py3-none-any.whl",
+          "hash": "sha256:85cef7cff222d8644161529808465972e51340599459b8ac3ccbac5a854e0d30",
+          "size": 8321,
+          "upload-time": "2023-10-07T05:32:16.783Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 6,
+        "wheel_RECORD_entries_verified": 6,
+        "actual_download_identity": {
+          "bytes": 8321,
+          "sha256": "85cef7cff222d8644161529808465972e51340599459b8ac3ccbac5a854e0d30"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/cycler.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 10,
+      "original_record": {
+        "name": "ezdxf",
+        "version": "1.4.4",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/e7/29/2094fd7719146ca7bb236be9751b5929d431f643cbab669aed89cf121883/ezdxf-1.4.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "hash": "sha256:44af248af0860fe8b1a39ca40e1cd2fa8ac37b22142b14b20c6a0caf1b50f932",
+          "size": 5816781,
+          "upload-time": "2026-05-14T09:27:13.96Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux2014_x86_64",
+          "cp312-cp312-manylinux_2_17_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 394,
+        "wheel_RECORD_entries_verified": 394,
+        "actual_download_identity": {
+          "bytes": 5816781,
+          "sha256": "44af248af0860fe8b1a39ca40e1cd2fa8ac37b22142b14b20c6a0caf1b50f932"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/ezdxf.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 11,
+      "original_record": {
+        "name": "fonttools",
+        "version": "4.66.1",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/a6/6e/babde908b879a3b51ffc230919d06a804912559dd4cf8c94f3fa2af69fec/fonttools-4.66.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "hash": "sha256:7b8ff9e0edbcee2fbf7dff0c41b9041c1901c26acf64e23adb67495012df11de",
+          "size": 5397326,
+          "upload-time": "2026-09-29T16:10:14.133Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux2014_x86_64",
+          "cp312-cp312-manylinux_2_17_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 362,
+        "wheel_RECORD_entries_verified": 362,
+        "actual_download_identity": {
+          "bytes": 5397326,
+          "sha256": "7b8ff9e0edbcee2fbf7dff0c41b9041c1901c26acf64e23adb67495012df11de"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/fonttools.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 12,
+      "original_record": {
+        "name": "frozenlist",
+        "version": "1.8.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/6a/bd/d91c5e39f490a49df14320f4e8c80161cfcce09f1e2cde1edd16a551abb3/frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+          "hash": "sha256:494a5952b1c597ba44e0e78113a7266e656b9794eec897b19ead706bd7074383",
+          "size": 242411,
+          "upload-time": "2025-10-06T05:36:09.801Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux1_x86_64",
+          "cp312-cp312-manylinux_2_28_x86_64",
+          "cp312-cp312-manylinux_2_5_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 9,
+        "wheel_RECORD_entries_verified": 9,
+        "actual_download_identity": {
+          "bytes": 242411,
+          "sha256": "494a5952b1c597ba44e0e78113a7266e656b9794eec897b19ead706bd7074383"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/frozenlist.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 13,
+      "original_record": {
+        "name": "idna",
+        "version": "3.20",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/58/a2/bb081bab032533a855d44de1d56f8e8426114ff1ba5d1f07a438a0a654f8/idna-3.20-py3-none-any.whl",
+          "hash": "sha256:ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c",
+          "size": 69583,
+          "upload-time": "2026-09-17T14:11:03.168Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 15,
+        "wheel_RECORD_entries_verified": 15,
+        "actual_download_identity": {
+          "bytes": 69583,
+          "sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/idna.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 14,
+      "original_record": {
+        "name": "kiwisolver",
+        "version": "1.5.1",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/fc/f4/dadfec469313c7f428efa7e84b4aba9732f813c13ea7131a24b7b008ef57/kiwisolver-1.5.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "hash": "sha256:34633ecf50d16187ab8e5528b7a2530f2feb4e23f300db4672538b51cfc5cd38",
+          "size": 1477929,
+          "upload-time": "2026-08-28T10:25:31.495Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux2014_x86_64",
+          "cp312-cp312-manylinux_2_17_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 9,
+        "wheel_RECORD_entries_verified": 9,
+        "actual_download_identity": {
+          "bytes": 1477929,
+          "sha256": "34633ecf50d16187ab8e5528b7a2530f2feb4e23f300db4672538b51cfc5cd38"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/kiwisolver.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 15,
+      "original_record": {
+        "name": "matplotlib",
+        "version": "3.11.2",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/b8/90/2b3fd67ee273163faeda6d514be70b5596eaa0fd77b60ffc294ad0b34f5f/matplotlib-3.11.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "hash": "sha256:df4f7784aca81a94f254c0a2767d592ee25f407e488f5fa7203e51093fb6ca27",
+          "size": 9860353,
+          "upload-time": "2026-09-11T19:03:25.049Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux2014_x86_64",
+          "cp312-cp312-manylinux_2_17_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 600,
+        "wheel_RECORD_entries_verified": 600,
+        "actual_download_identity": {
+          "bytes": 9860353,
+          "sha256": "df4f7784aca81a94f254c0a2767d592ee25f407e488f5fa7203e51093fb6ca27"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/matplotlib.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 16,
+      "original_record": {
+        "name": "more-itertools",
+        "version": "11.2.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/d4/f7/86f27473377a8ebdbdfedec5e62e87fbc24c4c88ed0a2a5ea0a12ee2229b/more_itertools-11.2.0-py3-none-any.whl",
+          "hash": "sha256:e4c522352a24664c974d0be8382944107ae638281a06391a5a538366b5707fe5",
+          "size": 74407,
+          "upload-time": "2026-10-13T16:01:13.424Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 10,
+        "wheel_RECORD_entries_verified": 10,
+        "actual_download_identity": {
+          "bytes": 74407,
+          "sha256": "e4c522352a24664c974d0be8382944107ae638281a06391a5a538366b5707fe5"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/more-itertools.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 17,
+      "original_record": {
+        "name": "msgpack",
+        "version": "1.2.3",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/3a/cf/9c2e4d6c179529d5bf4a64cff76fa581486569e9fbdd35bd98f51cb624bf/msgpack-1.2.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "hash": "sha256:ede33b2892ceb976283e009ad12fa1834cfdf1f9c43ee9c97849fc588d00a618",
+          "size": 472998,
+          "upload-time": "2026-09-29T02:32:06.69Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux2014_x86_64",
+          "cp312-cp312-manylinux_2_17_x86_64",
+          "cp312-cp312-manylinux_2_28_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 9,
+        "wheel_RECORD_entries_verified": 9,
+        "actual_download_identity": {
+          "bytes": 472998,
+          "sha256": "ede33b2892ceb976283e009ad12fa1834cfdf1f9c43ee9c97849fc588d00a618"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/msgpack.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 18,
+      "original_record": {
+        "name": "multidict",
+        "version": "7.1.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/7a/f3/374c0ab122bb98b1a62a8742b1e3f59563e4d609942005a4041861a0df67/multidict-7.1.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "hash": "sha256:fed6b7705d49dd07e5e0dd5f5c873fc44047e92d714299b13245b5fecac49d01",
+          "size": 483000,
+          "upload-time": "2026-10-09T14:08:27.132Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux2014_x86_64",
+          "cp312-cp312-manylinux_2_17_x86_64",
+          "cp312-cp312-manylinux_2_28_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 14,
+        "wheel_RECORD_entries_verified": 14,
+        "actual_download_identity": {
+          "bytes": 483000,
+          "sha256": "fed6b7705d49dd07e5e0dd5f5c873fc44047e92d714299b13245b5fecac49d01"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/multidict.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 19,
+      "original_record": {
+        "name": "multimethod",
+        "version": "1.12",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/af/98/cff14d53a2f2f67d7fe8a4e235a383ee71aba6a1da12aeea24b325d0c72a/multimethod-1.12-py3-none-any.whl",
+          "hash": "sha256:fd0c473c43558908d97cc06e4d68e8f69202f167db46f7b4e4058893e7dbdf60",
+          "size": 10646,
+          "upload-time": "2024-07-04T16:10:06.482Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 6,
+        "wheel_RECORD_entries_verified": 6,
+        "actual_download_identity": {
+          "bytes": 10646,
+          "sha256": "fd0c473c43558908d97cc06e4d68e8f69202f167db46f7b4e4058893e7dbdf60"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/multimethod.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 20,
+      "original_record": {
+        "name": "nlopt",
+        "version": "2.11.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/d0/0d/9f826469fdc6dd21f18c52dbe209b2c7a29b71d2b6bb21f494bcc7260085/nlopt-2.11.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "hash": "sha256:b7ea0d34cb00ed71fb032ff24a1b5599a61ca0101984c3fdfd954eca569e8ad2",
+          "size": 402848,
+          "upload-time": "2026-07-17T06:50:48.233Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux_2_24_x86_64",
+          "cp312-cp312-manylinux_2_28_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 7,
+        "wheel_RECORD_entries_verified": 7,
+        "actual_download_identity": {
+          "bytes": 402848,
+          "sha256": "b7ea0d34cb00ed71fb032ff24a1b5599a61ca0101984c3fdfd954eca569e8ad2"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/nlopt.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 21,
+      "original_record": {
+        "name": "numpy",
+        "version": "2.5.4",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/43/a3/c799c62e19c337e6d3770b08e475887fb30ce8477d3c09efca6b2f0228a6/numpy-2.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "hash": "sha256:fbde6962867ee75b48b0ee29b2b9372ec5d617799dbaf38e82dc0596f2f7738a",
+          "size": 16727283,
+          "upload-time": "2026-10-10T20:02:53.186Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux_2_27_x86_64",
+          "cp312-cp312-manylinux_2_28_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 925,
+        "wheel_RECORD_entries_verified": 925,
+        "actual_download_identity": {
+          "bytes": 16727283,
+          "sha256": "fbde6962867ee75b48b0ee29b2b9372ec5d617799dbaf38e82dc0596f2f7738a"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/numpy.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 22,
+      "original_record": {
+        "name": "packaging",
+        "version": "26.3",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl",
+          "hash": "sha256:d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c",
+          "size": 129956,
+          "upload-time": "2026-08-04T18:15:27.159Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 28,
+        "wheel_RECORD_entries_verified": 28,
+        "actual_download_identity": {
+          "bytes": 129956,
+          "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/packaging.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 23,
+      "original_record": {
+        "name": "path",
+        "version": "17.1.1",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/7c/50/11c9ee1ede64b45d687fd36eb8768dafc57afc78b4d83396920cfd69ed30/path-17.1.1-py3-none-any.whl",
+          "hash": "sha256:ec7e136df29172e5030dd07e037d55f676bdb29d15bfa09b80da29d07d3b9303",
+          "size": 23936,
+          "upload-time": "2025-07-27T20:40:22.453Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 10,
+        "wheel_RECORD_entries_verified": 10,
+        "actual_download_identity": {
+          "bytes": 23936,
+          "sha256": "ec7e136df29172e5030dd07e037d55f676bdb29d15bfa09b80da29d07d3b9303"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/path.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 24,
+      "original_record": {
+        "name": "pillow",
+        "version": "12.3.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/84/21/a35af28dcc61f37ed850a2d64c65c701321dfbf25085e469d5559360cbbf/pillow-12.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "hash": "sha256:78cb2c6865a35ab8ff8b75fd122f6033b92a62c82801110e48ddd6c936a45d91",
+          "size": 6940830,
+          "upload-time": "2026-07-01T11:54:13.732Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux_2_27_x86_64",
+          "cp312-cp312-manylinux_2_28_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 139,
+        "wheel_RECORD_entries_verified": 139,
+        "actual_download_identity": {
+          "bytes": 6940830,
+          "sha256": "78cb2c6865a35ab8ff8b75fd122f6033b92a62c82801110e48ddd6c936a45d91"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/pillow.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 25,
+      "original_record": {
+        "name": "propcache",
+        "version": "0.5.4",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/85/9f/83a07b6ec0e043c050cfdd35fb0cf1b7897b91d554d6eea293740309afe7/propcache-0.5.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "hash": "sha256:2814ecd8e818f487bee4b0f921bc4d1c176cc5fc71ac0f072d0fa67eda4ac14b",
+          "size": 250424,
+          "upload-time": "2026-09-16T00:14:36.894Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux2014_x86_64",
+          "cp312-cp312-manylinux_2_17_x86_64",
+          "cp312-cp312-manylinux_2_28_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 12,
+        "wheel_RECORD_entries_verified": 12,
+        "actual_download_identity": {
+          "bytes": 250424,
+          "sha256": "2814ecd8e818f487bee4b0f921bc4d1c176cc5fc71ac0f072d0fa67eda4ac14b"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/propcache.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 26,
+      "original_record": {
+        "name": "pyparsing",
+        "version": "3.3.3",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/38/bb/d215ee7c73b61497b28a5503f9f53523f294fcc936762b7caf90e0c1c2b5/pyparsing-3.3.3-py3-none-any.whl",
+          "hash": "sha256:ece8c00a69cf01b45d0b1dedabb469c90d8caf996d4fda40f147627a122849a4",
+          "size": 126420,
+          "upload-time": "2026-09-20T20:59:04.025Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 22,
+        "wheel_RECORD_entries_verified": 22,
+        "actual_download_identity": {
+          "bytes": 126420,
+          "sha256": "ece8c00a69cf01b45d0b1dedabb469c90d8caf996d4fda40f147627a122849a4"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/pyparsing.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 27,
+      "original_record": {
+        "name": "python-dateutil",
+        "version": "2.9.0.post0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+          "hash": "sha256:a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427",
+          "size": 229892,
+          "upload-time": "2024-03-01T18:36:18.57Z"
+        },
+        "installed_wheel_tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 24,
+        "wheel_RECORD_entries_verified": 24,
+        "actual_download_identity": {
+          "bytes": 229892,
+          "sha256": "a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/python-dateutil.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 28,
+      "original_record": {
+        "name": "pyyaml",
+        "version": "6.0.3",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/8b/9d/b3589d3877982d4f2329302ef98a8026e7f4443c765c46cfecc8858c6b4b/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "hash": "sha256:ba1cc08a7ccde2d2ec775841541641e4548226580ab850948cbfda66a1befcdc",
+          "size": 807870,
+          "upload-time": "2025-09-25T21:32:16.431Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux2014_x86_64",
+          "cp312-cp312-manylinux_2_17_x86_64",
+          "cp312-cp312-manylinux_2_28_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 23,
+        "wheel_RECORD_entries_verified": 23,
+        "actual_download_identity": {
+          "bytes": 807870,
+          "sha256": "ba1cc08a7ccde2d2ec775841541641e4548226580ab850948cbfda66a1befcdc"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/pyyaml.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 29,
+      "original_record": {
+        "name": "runtype",
+        "version": "0.5.3",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/80/db/879902580d720925092c86eaab2ceee7493e2fadbb5b718f54289b04d277/runtype-0.5.3-py3-none-any.whl",
+          "hash": "sha256:ea8cc6828217ebfda5c159dce969e832efd865a09d6ad1fc993f5bf5e1a627ee",
+          "size": 31944,
+          "upload-time": "2025-03-03T08:38:58.329Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 19,
+        "wheel_RECORD_entries_verified": 19,
+        "actual_download_identity": {
+          "bytes": 31944,
+          "sha256": "ea8cc6828217ebfda5c159dce969e832efd865a09d6ad1fc993f5bf5e1a627ee"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/runtype.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 30,
+      "original_record": {
+        "name": "scipy",
+        "version": "1.18.1",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/df/64/ff35eb9e54894cf471ff4716abd3c81eb0a0626869217ce3e6ba4ccf17d7/scipy-1.18.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "hash": "sha256:f55fa87b6c612ecd6b058f167c53231b1d14e412efe361d3d6e38b3631c73218",
+          "size": 35344199,
+          "upload-time": "2026-08-21T23:24:07.844Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux_2_27_x86_64",
+          "cp312-cp312-manylinux_2_28_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 1431,
+        "wheel_RECORD_entries_verified": 1431,
+        "actual_download_identity": {
+          "bytes": 35344199,
+          "sha256": "f55fa87b6c612ecd6b058f167c53231b1d14e412efe361d3d6e38b3631c73218"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/scipy.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 31,
+      "original_record": {
+        "name": "shapely",
+        "version": "2.2.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/ad/87/6842e4c996914a47b6bfd3ef14a543e67e993f86a9ea5679c34efc9314ab/shapely-2.2.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "hash": "sha256:650a5f4d8a8e3c96982079d8c99b6ddbe6602bbd1e34c75c2b95dbc0d28ac997",
+          "size": 2300970,
+          "upload-time": "2026-10-07T09:16:20.191Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux_2_24_x86_64",
+          "cp312-cp312-manylinux_2_28_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 148,
+        "wheel_RECORD_entries_verified": 148,
+        "actual_download_identity": {
+          "bytes": 2300970,
+          "sha256": "650a5f4d8a8e3c96982079d8c99b6ddbe6602bbd1e34c75c2b95dbc0d28ac997"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/shapely.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 32,
+      "original_record": {
+        "name": "six",
+        "version": "1.17.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl",
+          "hash": "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274",
+          "size": 11050,
+          "upload-time": "2024-12-04T17:35:26.475Z"
+        },
+        "installed_wheel_tags": [
+          "py2-none-any",
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 5,
+        "wheel_RECORD_entries_verified": 5,
+        "actual_download_identity": {
+          "bytes": 11050,
+          "sha256": "4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/six.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 33,
+      "original_record": {
+        "name": "trame",
+        "version": "4.0.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/4c/a8/137edd4bd17081244dbafd3ebcb35612d791b605eaf9a0c57e47200abd24/trame-4.0.0-py3-none-any.whl",
+          "hash": "sha256:e3c8a89f7a209fea7a595bd877301c851cd0db18cc7620f11b08d4d7966e5dcc",
+          "size": 27303,
+          "upload-time": "2026-09-09T16:53:39.12Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 41,
+        "wheel_RECORD_entries_verified": 41,
+        "actual_download_identity": {
+          "bytes": 27303,
+          "sha256": "e3c8a89f7a209fea7a595bd877301c851cd0db18cc7620f11b08d4d7966e5dcc"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/trame.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 34,
+      "original_record": {
+        "name": "trame-client",
+        "version": "4.1.4",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/c4/7f/dc3b12c0cde2523b72cea905e0fc421e50a4f5d0decea73175969c9f60e0/trame_client-4.1.4-py3-none-any.whl",
+          "hash": "sha256:6e1d3e20770f5852ac924d8494515700d9906085ecfcb788f0f504ce998be88f",
+          "size": 568271,
+          "upload-time": "2026-10-06T21:42:13.215Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 62,
+        "wheel_RECORD_entries_verified": 62,
+        "actual_download_identity": {
+          "bytes": 568271,
+          "sha256": "6e1d3e20770f5852ac924d8494515700d9906085ecfcb788f0f504ce998be88f"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/trame-client.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 35,
+      "original_record": {
+        "name": "trame-common",
+        "version": "1.2.9",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/7c/ad/c1cc127e7cf4fd00d2bb7ebd6bec0252d681628626e034a8a8e8ffd13c07/trame_common-1.2.9-py3-none-any.whl",
+          "hash": "sha256:14e9747bf247cc446e59ce3f920e31a409149ca60ae2bfc5d02a22cdf1b676c4",
+          "size": 24041,
+          "upload-time": "2026-10-08T14:42:23.126Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 22,
+        "wheel_RECORD_entries_verified": 22,
+        "actual_download_identity": {
+          "bytes": 24041,
+          "sha256": "14e9747bf247cc446e59ce3f920e31a409149ca60ae2bfc5d02a22cdf1b676c4"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/trame-common.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 36,
+      "original_record": {
+        "name": "trame-components",
+        "version": "2.5.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/02/e9/627ebbf56e00d80300940e8bbf54c6594f98fd214e3565b3abaa5450e0d4/trame_components-2.5.0-py3-none-any.whl",
+          "hash": "sha256:897a6c0ebcc72d95a461bde28d2c2e37c4bc4922013ad07df3a65e64d4884672",
+          "size": 82345,
+          "upload-time": "2025-05-30T14:21:35.526Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 15,
+        "wheel_RECORD_entries_verified": 15,
+        "actual_download_identity": {
+          "bytes": 82345,
+          "sha256": "897a6c0ebcc72d95a461bde28d2c2e37c4bc4922013ad07df3a65e64d4884672"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/trame-components.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 37,
+      "original_record": {
+        "name": "trame-server",
+        "version": "4.1.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/f7/30/d6ee48a182e09ca6d66f2e48e91ac7c3efbc5f323d6a50c591a2b4f27840/trame_server-4.1.0-py3-none-any.whl",
+          "hash": "sha256:7b23147a77d9616d9c787bd60fe77c3c683a38e193d7f9a4d0aac3e601dd453b",
+          "size": 46872,
+          "upload-time": "2026-10-09T15:31:06.642Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 23,
+        "wheel_RECORD_entries_verified": 23,
+        "actual_download_identity": {
+          "bytes": 46872,
+          "sha256": "7b23147a77d9616d9c787bd60fe77c3c683a38e193d7f9a4d0aac3e601dd453b"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/trame-server.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 38,
+      "original_record": {
+        "name": "trame-vtk",
+        "version": "2.11.17",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/c8/f1/d9b1119bad9c3018b2cc801032447e0f5cf942859845a1eaf03aff9c0905/trame_vtk-2.11.17-py3-none-any.whl",
+          "hash": "sha256:8fe2adbe3b6888ad41cb4311421fbd850cece75a801bf8b5f7af5bdc6473bee4",
+          "size": 851988,
+          "upload-time": "2026-09-22T14:40:13.893Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 58,
+        "wheel_RECORD_entries_verified": 58,
+        "actual_download_identity": {
+          "bytes": 851988,
+          "sha256": "8fe2adbe3b6888ad41cb4311421fbd850cece75a801bf8b5f7af5bdc6473bee4"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/trame-vtk.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 39,
+      "original_record": {
+        "name": "trame-vuetify",
+        "version": "3.3.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/db/77/a2479f57944ea1df8dd52cabdf00b1988dfc4c5b609f27573530fbc1cfc1/trame_vuetify-3.3.0-py3-none-any.whl",
+          "hash": "sha256:3a68a8457a439c1f2d456bfa1004091116a4c9988503f594fd44e980222773f2",
+          "size": 6794266,
+          "upload-time": "2026-09-29T17:37:58.449Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 123,
+        "wheel_RECORD_entries_verified": 123,
+        "actual_download_identity": {
+          "bytes": 6794266,
+          "sha256": "3a68a8457a439c1f2d456bfa1004091116a4c9988503f594fd44e980222773f2"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/trame-vuetify.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 40,
+      "original_record": {
+        "name": "typing-extensions",
+        "version": "4.16.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+          "hash": "sha256:481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+          "size": 45571,
+          "upload-time": "2026-07-02T08:40:04.659Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 4,
+        "wheel_RECORD_entries_verified": 4,
+        "actual_download_identity": {
+          "bytes": 45571,
+          "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/typing-extensions.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 41,
+      "original_record": {
+        "name": "vtk",
+        "version": "9.3.1",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/01/ee/730d57c6d7353c1afb919ceedfac387a190ccb92e611c4b14f88e6f39066/vtk-9.3.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "hash": "sha256:f728bb61f43fce850d622ced3b3d51b3116f767685ca4e4e0076f624e2d2307d",
+          "size": 92159868,
+          "upload-time": "2024-06-29T03:15:39.072Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux2014_x86_64",
+          "cp312-cp312-manylinux_2_17_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 550,
+        "wheel_RECORD_entries_verified": 550,
+        "actual_download_identity": {
+          "bytes": 92159868,
+          "sha256": "f728bb61f43fce850d622ced3b3d51b3116f767685ca4e4e0076f624e2d2307d"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/vtk.whl",
+      "current_directory_member_observed": true,
+      "current_metadata": {
+        "relative": "r7-native/qualification-wheel-scratch-v1/vtk.whl",
+        "mode": 33188,
+        "bytes": 92159868,
+        "inode": 1449468,
+        "device": 27,
+        "link_count": 1,
+        "mtime_ns": 1793232353269852868,
+        "ctime_ns": 1793232359299757624,
+        "mtime_utc": "2026-10-29T00:05:53.269852868Z",
+        "ctime_utc": "2026-10-29T00:05:59.299757624Z"
+      }
+    },
+    {
+      "order": 42,
+      "original_record": {
+        "name": "wslink",
+        "version": "2.6.0",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/a5/d1/c0bbb1ee6c46906cac7495a5c4eecbf41ae74b7973c287e19a6ed68abf9a/wslink-2.6.0-py3-none-any.whl",
+          "hash": "sha256:6edc7ea67c744094702f98857c9316f4805a44af91f6cc4aca69b782392e73d0",
+          "size": 37689,
+          "upload-time": "2026-10-08T17:38:47.863Z"
+        },
+        "installed_wheel_tags": [
+          "py3-none-any"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 25,
+        "wheel_RECORD_entries_verified": 25,
+        "actual_download_identity": {
+          "bytes": 37689,
+          "sha256": "6edc7ea67c744094702f98857c9316f4805a44af91f6cc4aca69b782392e73d0"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/wslink.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    },
+    {
+      "order": 43,
+      "original_record": {
+        "name": "yarl",
+        "version": "1.25.1",
+        "locked_wheel": {
+          "url": "https://files.pythonhosted.org/packages/bc/7b/ca212cbe170ac8b96e45317ecbcf9c3c3ecf0cdec98d5b088a9c4088929b/yarl-1.25.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "hash": "sha256:c6f117789d22dce188e5754e8bc65b7e6ebf8cb73963b9fa761f672a5883769d",
+          "size": 117050,
+          "upload-time": "2026-09-15T19:31:17.241Z"
+        },
+        "installed_wheel_tags": [
+          "cp312-cp312-manylinux2014_x86_64",
+          "cp312-cp312-manylinux_2_17_x86_64",
+          "cp312-cp312-manylinux_2_28_x86_64"
+        ],
+        "download_completed": true,
+        "wheel_payloads_verified_against_install": 16,
+        "wheel_RECORD_entries_verified": 16,
+        "actual_download_identity": {
+          "bytes": 117050,
+          "sha256": "c6f117789d22dce188e5754e8bc65b7e6ebf8cb73963b9fa761f672a5883769d"
+        },
+        "all_wheel_members_in_original_RECORD": true,
+        "transient_download_removed_after_verification": true
+      },
+      "source_computed_path": "r7-native/qualification-wheel-scratch-v1/yarl.whl",
+      "current_directory_member_observed": false,
+      "current_metadata": null
+    }
+  ],
+  "current_vtk_identity": {
+    "bytes": 92159868,
+    "sha256": "f728bb61f43fce850d622ced3b3d51b3116f767685ca4e4e0076f624e2d2307d"
+  },
+  "current_vtk_same_inode_size_hash_mode_mtime_ctime_as_previous_observation": true,
+  "original_qualification_report_current_metadata": {
+    "relative": "r7-native/native80-attempt1/qualify-owned/worker/R5_FRESH_RUNTIME_QUALIFICATION.json",
+    "mode": 33188,
+    "bytes": 2076339,
+    "inode": 1443789,
+    "device": 27,
+    "link_count": 1,
+    "mtime_ns": 1793232363051471606,
+    "ctime_ns": 1793232363051471606,
+    "mtime_utc": "2026-10-29T00:06:03.051471606Z",
+    "ctime_utc": "2026-10-29T00:06:03.051471606Z"
+  },
+  "original_supervision_time_interval": {
+    "started_utc": "2026-10-29T00:05:31.726218+00:00",
+    "finished_utc": "2026-10-29T00:06:03.894625+00:00"
+  },
+  "source_semantics": {
+    "exclusive_download_creation": "path.open('xb') inside the selected wheel try block",
+    "each_wheel_path_assignment_count": 1,
+    "each_normalized_distribution_path_is_unique": true,
+    "vtk_record_order_of_43": 41,
+    "later_download_names": [
+      "wslink",
+      "yarl"
+    ],
+    "cleanup_field_is_one_immediate_path_exists_observation_in_finally": true,
+    "cleanup_field_is_not_a_saved_unlink_syscall_or_inode_receipt": true,
+    "per_wheel_cleanup_timestamps_or_deleted_inode_recorded": false,
+    "report_saves_overwrite_one_report_file_without_a_per_wheel_history_journal": true,
+    "final_full_inventory_target_is_venv_not_external_scratch": true,
+    "explicit_scratch_reuse_after_wheel_loop_in_qualifier_source": false
+  },
+  "interpretation": {
+    "concrete_source_path_alias_or_recreation_logic_found": false,
+    "physical_unlink_or_reappearance_cause_proved": false,
+    "timestamp_caveat": "The current mtime and ctime are inode metadata, not a creation time or a deletion/recreation event journal. Neither locates the omitted per-wheel existence observation in time.",
+    "evidence_gap": "The persisted boolean records one existence check. No per-wheel syscall result, event timestamp, or deleted inode was preserved, and there is no final scratch inventory in the original report. Existing artifacts cannot determine the cause of the later visible byte-identical vtk wheel.",
+    "historical_removed_flags_correspondence_to_current_scratch_state": "Unresolved; both original flags and current file retained.",
+    "platform_or_kernel_cause_inferred": false,
+    "original_qualification_or_native_scientific_results_reclassified": false,
+    "new_scientific_gate_introduced": false,
+    "cleanup_discrepancy_closed": false
+  },
+  "source_report_contract_wheel_and_previous_receipts_unchanged": true,
+  "full_continuous_G2": false,
+  "physical_qualification": false,
+  "all_blockers_closed": false,
+  "seconds": 0.14457040100023733,
+  "peak_RSS_bytes": 21938176
+}

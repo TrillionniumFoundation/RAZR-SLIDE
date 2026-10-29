@@ -1,0 +1,123 @@
+{
+  "schema": "razr-r7-official-uv-01010-lock-source-review-v1",
+  "recorded_utc": "2026-10-28T23:56:27.923469+00:00",
+  "official_repository": "astral-sh/uv",
+  "tag": "0.10.10",
+  "commit": "8c730aaad652bf0c4bda1f94ce6506ecf0b68fbd",
+  "review_kind": "Cross-author source-provenance and semantic review. No producer code imported or scientific/native worker executed.",
+  "source_identity_checks": [
+    {
+      "path": "originals/LICENSE-APACHE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "git_blob_sha1": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "full_byte_identity_pass": true,
+      "official_url": "https://github.com/astral-sh/uv/blob/8c730aaad652bf0c4bda1f94ce6506ecf0b68fbd/LICENSE-APACHE"
+    },
+    {
+      "path": "originals/LICENSE-MIT",
+      "bytes": 1077,
+      "sha256": "860e3d7a86b84e6a7012c7a635fc64df475cebc6cce34dfeb73a5982ec58176c",
+      "git_blob_sha1": "014835144877ea9c926d027ece3e1a26290cf481",
+      "full_byte_identity_pass": true,
+      "official_url": "https://github.com/astral-sh/uv/blob/8c730aaad652bf0c4bda1f94ce6506ecf0b68fbd/LICENSE-MIT"
+    },
+    {
+      "path": "originals/crates/uv-fs/src/locked_file.rs",
+      "bytes": 12665,
+      "sha256": "36bf463b04ffb4e6061aff8e35cbb24ef834cebd7f25e317d7cde82a06ada3d0",
+      "git_blob_sha1": "548692e1061e2830f5c2ac19ae5e9a1a67aa77a1",
+      "full_byte_identity_pass": true,
+      "official_url": "https://github.com/astral-sh/uv/blob/8c730aaad652bf0c4bda1f94ce6506ecf0b68fbd/crates/uv-fs/src/locked_file.rs"
+    },
+    {
+      "path": "originals/crates/uv-python/src/environment.rs",
+      "bytes": 13513,
+      "sha256": "94575af293568716fd09abc6855d65dcc0d269422b9293c84cbe6e0bc9e1b076",
+      "git_blob_sha1": "59c22bd7b7f39cdaec4466a56ceb09a82285553a",
+      "full_byte_identity_pass": true,
+      "official_url": "https://github.com/astral-sh/uv/blob/8c730aaad652bf0c4bda1f94ce6506ecf0b68fbd/crates/uv-python/src/environment.rs"
+    },
+    {
+      "path": "originals/crates/uv-python/src/interpreter.rs",
+      "bytes": 54163,
+      "sha256": "7dce7f9a643db861fc689d58dc43177cf7679279280e81c0de2e8754a155765f",
+      "git_blob_sha1": "7d1b53599e8781c8242e1ae8a31904970d1c4504",
+      "full_byte_identity_pass": true,
+      "official_url": "https://github.com/astral-sh/uv/blob/8c730aaad652bf0c4bda1f94ce6506ecf0b68fbd/crates/uv-python/src/interpreter.rs"
+    },
+    {
+      "path": "originals/crates/uv/src/commands/project/sync.rs",
+      "bytes": 48570,
+      "sha256": "3413c3fb66e7780b00315fd16a6fa304e7423b2571e0b51db63e0d53b6c9e803",
+      "git_blob_sha1": "5777a9dc837f09dcb4a67d421c25c3df280b96d2",
+      "full_byte_identity_pass": true,
+      "official_url": "https://github.com/astral-sh/uv/blob/8c730aaad652bf0c4bda1f94ce6506ecf0b68fbd/crates/uv/src/commands/project/sync.rs"
+    }
+  ],
+  "read_sources_unchanged": true,
+  "source_findings": [
+    {
+      "path": "crates/uv/src/commands/project/sync.rs",
+      "lines": [
+        193,
+        199
+      ],
+      "finding": "Sync requests the environment lock; lock errors are warned and converted to an optional lock, so a successful sync alone does not prove lock acquisition."
+    },
+    {
+      "path": "crates/uv-python/src/environment.rs",
+      "lines": [
+        314,
+        317
+      ],
+      "finding": "Environment lock delegates to interpreter lock."
+    },
+    {
+      "path": "crates/uv-python/src/interpreter.rs",
+      "lines": [
+        671,
+        705
+      ],
+      "finding": "A normal virtual environment uses exactly sys_prefix/.lock. Target and prefix installs use their own roots; non-venv fallback uses a temporary global file."
+    },
+    {
+      "path": "crates/uv-fs/src/locked_file.rs",
+      "lines": [
+        209,
+        337
+      ],
+      "finding": "A missing Unix lock is normally created as a fresh temporary file and persisted without clobbering. Existing files are opened unchanged. Creation fallback and non-Unix branch use create(true) without truncation. None of these paths establish that every pre-existing lock is empty."
+    },
+    {
+      "path": "crates/uv-fs/src/locked_file.rs",
+      "lines": [
+        340,
+        353
+      ],
+      "finding": "Dropping the lock unlocks its file; the path is not removed by this Drop implementation."
+    }
+  ],
+  "supported_qualifier_scope": "For a registered fresh uv 0.10.10 virtual environment, an actually observed empty regular nonsymlink file at the exact environment root/.lock may be classified as uv runtime metadata. All other files, nonempty locks, symlinks and nested lock names remain subject to original ownership rejection.",
+  "required_actual_followup": [
+    "actual pinned uv binary/version and wheel identity",
+    "fresh-environment installation receipt",
+    "lstat and byte identity of the actual root .lock",
+    "unchanged original wheel/RECORD/import and scientific gates"
+  ],
+  "not_proven_by_this_review": [
+    "actual runtime qualification",
+    "actual CAD or Common result",
+    "presence of a lock after every successful uv invocation",
+    "empty content of any pre-existing .lock"
+  ],
+  "actual_native_worker_executed": false,
+  "G2": false,
+  "execution": {
+    "elapsed_seconds": 0.0069601659997715615,
+    "max_rss_bytes": 11505664,
+    "source_bytes_read_twice": 282690,
+    "cpu_cap_seconds": 30,
+    "address_cap_bytes": 134217728
+  }
+}
