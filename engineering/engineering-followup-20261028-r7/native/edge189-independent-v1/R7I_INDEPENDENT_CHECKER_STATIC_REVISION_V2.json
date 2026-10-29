@@ -1,0 +1,29 @@
+{
+  "schema": "razr-r7i-edge189-checker-static-revision-v2",
+  "original_v1": {
+    "path": "r7-native/edge189-independent-v1/verify_edge189_line_support_r7i_v1.py",
+    "bytes": 13353,
+    "sha256": "8f0a2cce07c78f6d1957362dae3d202cf6c31f7be4d3eddd33164c51b9efaf4f"
+  },
+  "new_v2": {
+    "path": "r7-native/edge189-independent-v1/verify_edge189_line_support_r7i_v2.py",
+    "bytes": 13329,
+    "sha256": "77c0bc50906f2f073589f50e8260cca4d54d37ecd606dfe9bb9c204afe452c49"
+  },
+  "changed_only_three_arithmetic_debit_constants": true,
+  "reason": "The V1 nominal-point arithmetic accounting did not explicitly include addition of zero error and Python sum initial additions; V2 reserves 24 operations per corner plus 32 initialization operations. Scientific formulas, claim guards and negative-control phases are identical. V1 was never executed.",
+  "static_bound": {
+    "vertices_per_call": 144,
+    "initial_arithmetic_debits": 32,
+    "per_vertex_arithmetic_debits": 24,
+    "all_vertex_arithmetic_debits": 3456,
+    "conservative_geometric_comparison_upper_bound": 2500,
+    "computed_upper_bound": 5988,
+    "enforced_limit_per_call": 6144,
+    "six_call_limit": 36864,
+    "source_hash_debits_separate": true
+  },
+  "ast_parsed_without_import_or_execution": true,
+  "new_support_or_channel_executed": false,
+  "v1_bytes_unchanged": true
+}

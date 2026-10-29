@@ -1,0 +1,50 @@
+{
+  "schema": "razr-r7e-original-resource-formula-correction-and-observation-v1",
+  "observed_utc": "2026-10-29T00:49:34.537087+00:00",
+  "original_resource_source": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery/v7/r5-local-v7/input-snapshot-v1/r4/supervise_owned_pure_math_r4e_v2.py",
+    "bytes": 8104,
+    "sha256": "12f9ec55671a625263ba4fc39a0b2ee01a397b50635108114329431b71c71900"
+  },
+  "original_resources_AST_sha256": "ffdee051a79e034a2ec1c3b0e9eeaea31d9ab587b05b9dea771cc9baf3f331a3",
+  "original_formula": "anon + shmem + max(kernel - slab_reclaimable, 0) + unevictable",
+  "original_formula_unevictable_default_when_missing": 0,
+  "original_formula_input_bytes": {
+    "anon": 118050816,
+    "shmem": 0,
+    "kernel": 933785600,
+    "slab_reclaimable": 927938200,
+    "unevictable": 0
+  },
+  "original_shared_unreclaimable_bytes": 123898216,
+  "separate_cgroup_memory_current_bytes": 8231399424,
+  "reclaimable_file_cache_observation_bytes": 7178379264,
+  "disk_available_bytes": 1007828992,
+  "original_shared_ceiling_bytes": 7301444403,
+  "correction": "The earlier message incorrectly compared cgroup memory.current, including reclaimable file cache, with the original shared_unreclaimable gate. That blocked-state interpretation is retracted. The previous raw observation is preserved; the registered original formula is authoritative.",
+  "superseded_raw_observation_file": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-envelope/spatial-pilot-v1/STATIC_CAPACITY_V1.json",
+    "bytes": 1900,
+    "sha256": "950eb99ba1908dfc866be31b20c66020d65acf199afc8a24acfc15a48e3a7a31"
+  },
+  "no_new_memory_current_gate_added": true,
+  "original_V9_profile_startup_gate": {
+    "disk_required_bytes": 150994944,
+    "RSS_reserve_bytes": 805306368,
+    "shared_plus_registered_RSS_bytes": 929204584,
+    "disk_passed": true,
+    "original_shared_formula_passed": true
+  },
+  "finite_cost_probe_same_startup_formula": {
+    "disk_floor_bytes": 104857600,
+    "registered_maximum_output_bytes": 4194304,
+    "original_metadata_margin_bytes": 4194304,
+    "disk_required_bytes": 113246208,
+    "diagnostic_address_space_and_RSS_reserve_bytes": 536870912,
+    "shared_plus_registered_reserve_bytes": 660769128,
+    "disk_passed": true,
+    "original_shared_formula_passed": true
+  },
+  "observation_is_not_execution_or_qualification": true,
+  "scientific_probe_has_not_run": true
+}

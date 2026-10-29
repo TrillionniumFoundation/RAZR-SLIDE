@@ -1,0 +1,84 @@
+{
+  "schema": "razr-r7-positive-q-independent-source-scope-review-v1",
+  "recorded_utc": "2026-10-29T01:23:45.751125+00:00",
+  "bound_actual_read_inputs": {
+    "source_mapping_appendix": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-audit/blocker-ledger/positive-q-source-readback/R7_POSITIVE_Q_SOURCE_AND_FACTORY_MAPPING_READBACK_V1.json",
+      "bytes": 66682,
+      "sha256": "43ff51e7e7523276b1bfc58372166c282d8d7b3855e34f86252011da39f58801"
+    },
+    "cam_contact_profile.py": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-native/genuine-s4-worktree-v3/integration/cam_contact_profile.py",
+      "bytes": 3208,
+      "sha256": "c894d07e737ffeb927a092235845cf936418c19969b19107f5a6c2675e58ce9d"
+    },
+    "product_assembly.py": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-native/genuine-s4-worktree-v3/integration/product_assembly.py",
+      "bytes": 31504,
+      "sha256": "fc5391d3be98810ada06ca27e65de9a77d2f599c4d1890bb31a4d87ef14791b4"
+    },
+    "verify_cam_coupling.py": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-native/genuine-s4-worktree-v3/integration/verify_cam_coupling.py",
+      "bytes": 14560,
+      "sha256": "ffe16f403b104bfdf58897ed3ece1313b9bb82863569ba68f60617467b2841f1"
+    },
+    "verify_pawl_actuator.py": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-native/genuine-s4-worktree-v3/integration/verify_pawl_actuator.py",
+      "bytes": 11608,
+      "sha256": "3ee98e636f1ea796aa3e07c3aff7283f23a113e35052d5b9e59718c7a4b771b9"
+    },
+    "verify_serviceable_pawl.py": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-native/genuine-s4-worktree-v3/integration/verify_serviceable_pawl.py",
+      "bytes": 14201,
+      "sha256": "f27691a7468fbb9ccb0602c1bc1af698953cbc2af58dce3e2ce467768f3d2cac"
+    },
+    "verify_endpoint_joint_pawl.py": {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-native/genuine-s4-worktree-v3/integration/verify_endpoint_joint_pawl.py",
+      "bytes": 15013,
+      "sha256": "d1f727c5c82633305ee17914dd0e6283654eb0f249a18a0aa5ecd77444d3e049"
+    }
+  },
+  "scope": "Read-only review of branch endpoint inclusion, factory q versus profile x variables, and nominal versus explicit-override source call paths. No CAD or ContactProfile import/evaluation, actual pose q recomputation, motion/force experiment or new allowed-domain computation.",
+  "positive_q_branch_endpoint_review": {
+    "source_conditional_order": [
+      "q >= c -> lower_stop",
+      "q >= b -> ramp",
+      "q <= a -> plateau",
+      "otherwise -> rounded_corner"
+    ],
+    "positive_q_domains": [
+      "(0,a]",
+      "(a,b)",
+      "[b,c)",
+      "[c,12]"
+    ],
+    "zero_endpoint": "q=0 belongs to plateau in the full source domain; it is excluded from the positive-q notation only.",
+    "appendix_endpoint_conventions_match_source": true
+  },
+  "coordinate_review": {
+    "factory_argument": "q_side = cam.K * slide_mm + dq_side",
+    "profile_internal_coordinate": "x = pin_q - q_side",
+    "same_q_is_passed_to_evaluate": true,
+    "q_and_x_not_interchanged": true,
+    "four_original_pin_q_values": "The appendix retains four original pin_q values equal to 0; this review did not rerun profile construction."
+  },
+  "call_path_review": {
+    "zero_dq_dx_and_unspecified_telescope": "native_scene first obtains the endpoint scene; endpoint -> serviceable -> pawl -> cam.scene supplies the nominal STOP/SPRING mapping. The per-side override does not execute for allocation None and zero dq and dx.",
+    "override_condition": "allocations[side] is not None or dq or dx",
+    "override_reuses_same_q": "The per-side override uses q=K*slide+dq for each ContactProfile and computes the same source height difference relative to q=0.",
+    "STOP_source_mapping": "delta = profile.evaluate(q)[0] - profile.evaluate(0)[0]; translation X = sign*delta, with sign -1 for L and +1 for R.",
+    "SPRING_source_mapping": "Original X bounds are expanded using min(0,sign*delta) and max(0,sign*delta), then a radius 0.43 cylinder is constructed along +X at the original Y/Z centre. This is the named OD tolerance envelope.",
+    "appendix_variable_and_call_path_mapping_match_reviewed_source": true
+  },
+  "not_certified_by_this_review": [
+    "physical restoring force or preload",
+    "contact stability or loss of contact",
+    "true left/right reachable independent domain",
+    "current native collision or strength",
+    "manufacturing or G3/G4/G5 qualification"
+  ],
+  "original_sources_or_appendix_modified": false,
+  "new_CAD_ContactProfile_or_actual_q_execution": false,
+  "new_acceptance_gate_added": false,
+  "all_bound_source_bytes_unchanged_before_after": true
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "razr-r7-method-archive-v2-source-revision-v1",
+  "previous_source": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery-tools/package_method_diagnostics_complete_r7_v1.py",
+    "bytes": 7671,
+    "sha256": "bfc521bbcde2cd7536b9e2364abf775e291ddefd79d008fcdaae619cc9a27652"
+  },
+  "new_source": {
+    "path": "/workspace/scratch/34f8fcac2ab1/r7-recovery-tools/package_method_diagnostics_complete_r7_v2.py",
+    "bytes": 8062,
+    "sha256": "b000d0856a5b27fd8e95763b8b9b64748ab8f73fc1edbe1569a5a094dbdaea98"
+  },
+  "previous_actual_admission_failure_preserved": true,
+  "original_archive_capacity_gates_unchanged": true,
+  "required_ordinary_free_bytes": 234881024,
+  "change": "New output plan/seal identity and include the actual original capacity failure, both packager sources, and verified cache-migration originals. No scientific source/result changes.",
+  "diff": "--- package_method_diagnostics_complete_r7_v1.py\n+++ package_method_diagnostics_complete_r7_v2.py\n@@ -10,8 +10,8 @@\n \n ROOT=Path(__file__).resolve().parents[1]\n OUT=ROOT/'r7-deliverables/RAZR-R7-method-diagnostics-and-supervision-complete-originals-20261028.zip'\n-PLAN=ROOT/'r7-deliverables/R7_METHOD_COMPLETE_ARCHIVE_PLAN_V1.json'\n-SEAL=ROOT/'r7-deliverables/R7_METHOD_COMPLETE_ARCHIVE_SEAL_V1.json'\n+PLAN=ROOT/'r7-deliverables/R7_METHOD_COMPLETE_ARCHIVE_PLAN_V2.json'\n+SEAL=ROOT/'r7-deliverables/R7_METHOD_COMPLETE_ARCHIVE_SEAL_V2.json'\n \n def ident(p):\n     with p.open('rb') as f:\n@@ -79,6 +79,11 @@\n             include(p)\n     for p in sorted((ROOT/'r7-audit').glob('R7_REAL_SPECIMEN*.json')):include(p)\n     for relative in (\n+        'r7-recovery-tools/package_method_diagnostics_complete_r7_v1.py',\n+        'r7-deliverables/R7_METHOD_ARCHIVE_ATTEMPT1_ACTUAL_CAPACITY_FAILURE_V1.json',\n+        'r7-deliverables/R7_METHOD_ARCHIVE_V2_SOURCE_REVISION_V1.json',\n+        'r7-publication/reclaim_complete_archived_factory_expansions_v1.py',\n+        'r7-publication/R7_COMPLETE_FACTORY_ARCHIVE_EXPANSION_MIGRATION_V1.json',\n         'r7-publication/R7_ORIGINAL_V6_ALL16_STATUS_READBACK_V1.json',\n         'r7-publication/R7_ENVELOPE_RUNTIME_REMOTE_PUBLICATION_VERIFIED_V1.json',\n         'r7-publication/R7_NATIVE_FINITE_REMOTE_PUBLICATION_VERIFIED_V1.json',\n@@ -95,7 +100,7 @@\n     total=sum(r['identity']['bytes'] for r in rows)\n     assert total<=320*1024*1024\n     assert shutil.disk_usage(ROOT).free>=96*1024*1024+128*1024*1024\n-    plan={'schema':'razr-r7-complete-method-originals-archive-plan-v1',\n+    plan={'schema':'razr-r7-complete-method-originals-archive-plan-v2',\n           'complete_V9_bound_originals_inherited_without_reclassification':True,\n           'complete_new_method_contract_inputs_included_and_hash_verified':True,\n           'registered_input_binding_rows_including_duplicates':bound,\n@@ -126,7 +131,7 @@\n             assert {'bytes':n,'sha256':h.hexdigest()}==row['identity']\n         assert json.loads(z.read('ARCHIVE_MANIFEST.json'))==plan\n     assert all(ident(entries[row['member']])==row['identity'] for row in rows)\n-    seal={'schema':'razr-r7-complete-method-originals-archive-seal-v1','archive_name':OUT.name,\n+    seal={'schema':'razr-r7-complete-method-originals-archive-seal-v2','archive_name':OUT.name,\n           'identity':ident(OUT),'members':len(rows)+1,\n           'all_registered_inputs_and_actual_results_unchanged':True,\n           'full_member_set_CRC_SHA_verified':True,'minimum_observed_disk_free_bytes':minimum_free,\n",
+  "all_blockers_closed": false
+}

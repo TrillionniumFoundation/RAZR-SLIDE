@@ -1,0 +1,52 @@
+{
+  "schema": "razr-r7e-edge189-independent-checker-interface-v1",
+  "status": "pre-execution source contract",
+  "entrypoint": "verify_claim(claim, reader_edge, original_carrier, full_D, counter)",
+  "independent_author": "/root/r7_native_recovery",
+  "standard_library_only": true,
+  "producer_or_primitive_helper_imports_allowed": false,
+  "callback": {
+    "signature": "counter(label, count=1)",
+    "all_events_preserved_including_before_rejection": true,
+    "labels_ending_with__vertices": "separate sampling counts charged to piece-like budget",
+    "all_other_labels": "conservative validation upper debits charged to support-like budget; arithmetic and source_* labels remain separately visible",
+    "source_serialization_bytes_are_not_literal_comparison_counts": true,
+    "source_serialization_bytes_also_conservatively_overcharged_in_total": true,
+    "maximum_calls": 6,
+    "maximum_total_vertices": 864,
+    "maximum_total_validation_comparisons_including_producer_fixed_charges": 50000
+  },
+  "claim_schema": "razr-r7e-edge189-line-support-claim-v1",
+  "claim_required_fields": [
+    "schema", "material_key", "piece_index", "complete_original_edge", "complete_original_edge_canonical_sha256",
+    "full_D_exact", "complete_original_carrier", "normal_exact", "normal_dot_direction_exact", "line_dot_constant_exact",
+    "forward_source_box_exact", "exact_slab_bounds_exact", "tau_exact", "tau_L1_expansion_exact",
+    "tau_expanded_slab_bounds_exact", "hypothetical_tube_box_exact", "native_BREP_error_bound_certified"
+  ],
+  "fixed_material_key": ["case-028", 3],
+  "fixed_piece_index": 332,
+  "fixed_source_edge_index": 189,
+  "fixed_normal_exact": ["1", "2", "0"],
+  "full_D_exact": [["0", "0"], ["0", "1/2251799813685248"], ["0", "0"]],
+  "return_required_fields": [
+    "claim_verified", "normal_exact", "forward_source_box_exact", "exact_slab_bounds_exact",
+    "tau_expanded_slab_bounds_exact", "hypothetical_tube_box_exact", "source_box_equals_original_carrier",
+    "hypothetical_tube_contained_in_original_carrier", "exact_vertices", "hypothetical_tube_vertices",
+    "native_BREP_error_bound_certified"
+  ],
+  "exact_vertices": "2 complete original parameter endpoints times all 8 original D binary corner indices, duplicates retained",
+  "hypothetical_tube_vertices": "2 complete original parameter endpoints times 8 D corner indices times 8 assumed error-cube corner indices",
+  "complete_source_or_formula_mismatch": "raise a stable-stage ValueError; no partial claim pass",
+  "strict_source_bbox_differs_from_original_B": "return actual false and all computed endpoints; caller must not execute whole material channel",
+  "hypothetical_tube_not_contained_in_original_B": "return actual false without weakening B or falsely rejecting valid exact-source formula",
+  "negative_control_expected_rejection_stages": {
+    "shortened_complete_parameter_domain": "source_edge_identity",
+    "nonzero_Vz_replaced_with_zero": "source_edge_identity",
+    "wrong_fixed_normal": "fixed_normal",
+    "full_D_omitted_from_scalar_support_only": "exact_support_16_vertices",
+    "tau_omitted_from_expanded_slab_only": "tau_support_128_vertices"
+  },
+  "native_BREP_error_bound_certified": false,
+  "whole_B_intersection_with_tau_slab_claimed_to_cover_entire_hypothetical_tube": false,
+  "new_scientific_or_full_frame_execution_authorized": false
+}

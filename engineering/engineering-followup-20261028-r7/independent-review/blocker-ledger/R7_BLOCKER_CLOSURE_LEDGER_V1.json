@@ -1,0 +1,1191 @@
+{
+  "schema": "razr-r7-user-seven-row-blocker-closure-ledger-v1",
+  "recorded_utc": "2026-10-29T01:15:48.933137+00:00",
+  "read_only_accounting_derivative_not_a_replacement_report": true,
+  "source_writer": {
+    "workspace_relative_path": "r7-audit/build_blocker_closure_ledger_r7_v1.py",
+    "bytes": 46975,
+    "sha256": "c3c12fc97b89ca219923af151e881fa5be698ebd34ec70f452f92af795465e6d"
+  },
+  "resource_limits": {
+    "wall_seconds": 30,
+    "address_space_bytes": 268435456
+  },
+  "original_user_acceptance_controls": true,
+  "new_mandatory_gates_added": [],
+  "new_CAD_solver_K_product_or_H_action_executed": false,
+  "original_reports_or_criteria_modified": false,
+  "functional_source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "current_named_KEY_candidate": "key_forward_loop_v1",
+  "current_named_panel_candidate": "panel_key_travel_stops_v1",
+  "rows": [
+    {
+      "user_row": "1．复现中途几何见证",
+      "owner_role": "机械/CAD、独立几何验证",
+      "original_acceptance": "factory 与原 whole-endpoint 材料身份可对应；直接 Common、独立读回和全对记录一致",
+      "status": "closed_for_two_finite_current_candidate_poses",
+      "status_zh": "两指定姿态限域闭合",
+      "closed_scope": "真实 S4 来源闭包与冻结 K1/KEY、K3/panel 候选下，near/far 都重新完成完整 factory、独立 STEP reader、原完整验证器、原工程导出与逐成员保存。",
+      "actual_evidence": [
+        "每姿态154体；每个 producer/reader 各11781完整体对；每个 reader 154个STEP及12个早期门。",
+        "Near 每进程777次 native_common＋11004条 positive_axis_gap；Far 为747＋11034。11781不是直接Common调用次数。",
+        "两姿态左右 panel/KEY 显式direct Common均为0；positive/evaluation/mismatch均为0。原whole输入和4个有限材料/姿态映射另有native80独立读回。"
+      ],
+      "limits_or_remaining": [
+        "这是当前修复候选的两个有限姿态；不是未修改S4所有材料不变、第二种独立CAD内核、完整连续G2或实物通过。",
+        "旧F1真实干涉和V5失败不由新候选结果重判；其恢复原件和后续修复身份分别保留。"
+      ],
+      "evidence_ids": [
+        "native_scope",
+        "native80_audit",
+        "near_audit",
+        "far_audit",
+        "native80_saved",
+        "near_saved",
+        "far_saved"
+      ]
+    },
+    {
+      "user_row": "2．完成结构与允许域定义",
+      "owner_role": "机构、接触/运动学",
+      "original_acceptance": "新命名源码、切除材料、剩余壁厚、功能接触面和完整域证据；行程限制有实际机构支持",
+      "status": "finite_repair_evidence_closed_whole_domain_and_physical_limits_open",
+      "status_zh": "有限修复证据成立；完整域与实物限位未闭合",
+      "closed_scope": "K1 key_forward_loop_v1 的切除/加料合同及K3 panel_key_travel_stops_v1的加料合同原样保留，连接、原功能面和两中途姿态已取得本轮实际native证据。",
+      "actual_evidence": [
+        "K3当前新增材料4.624559999999989 mm³；native80的80原核心、8控制、4有限映射、80新增材料核心及396保存BREP完成独立读回。",
+        "S4源码保留每侧q=cam.K*slide+dq、独立tab/flank、耦合crosshead/KEY间隙约束和左右独立telescope allocation。",
+        "ContactProfile的正q定义保留plateau、rounded_corner、ramp、lower_stop四支；STOP随height差平移，SPRING OD tolerance envelope按同一差值改变范围。此为源码定义，不是实物恢复力证明。"
+      ],
+      "limits_or_remaining": [
+        "冻结K1合同的[0,12] mm只是声明的ContactProfile域，原slot未被候选裁短；模型允许输入不能冒充真实全独立运动域。",
+        "0.38×0.36 mm的声明局部腿截面不是整个KEY最小剩余壁厚、强度或制造放行；真实载荷、预紧、材料/工艺、公差、行程限位和装配/维修路径仍须原验收证据。",
+        "两姿态不覆盖全部STOW/OPEN、左右独立offset、STOP/SPRING、telescope、返回与重锁域；不靠缩行程替代实际机构。"
+      ],
+      "evidence_ids": [
+        "k1_contract",
+        "k3_contract",
+        "k3_source",
+        "full_factory_states",
+        "s4_motion_source",
+        "s4_contact_profile_source",
+        "native80_audit",
+        "near_audit",
+        "far_audit"
+      ]
+    },
+    {
+      "user_row": "3．修复连续包络方法",
+      "owner_role": "几何算法、验证",
+      "original_acceptance": "保守包含、有效拓扑、有向体积和原判据同时满足；逐项保留真实失败和未决",
+      "status": "continuous_method_unresolved",
+      "status_zh": "连续方法未决",
+      "closed_scope": "原反例/原D/原判据继续保留，恢复V6全16记录；本轮V9和相关性、wire含义、一次split成本诊断都有新命名原件与实际读回。新owned监督器另有真实控制资格。",
+      "actual_evidence": [
+        "原完整边界模型V3仍4/16；原V6条件primitive/trim模型8/16，8个nonpass不被本轮局部诊断销项。",
+        "V9选中旧叶的最终上界为0，但最终新UV贡献u=0；原owned checker阶段因VmRSS KeyError失败，driver未到达first-u门，后续全16阶段未执行。",
+        "相关性诊断读取81个保存prefix/972通道；wire诊断不提供native filling证明。单次原空间split的两子仍pending、excluded=0，累计depth25超过原V6 depth24，明确仅为成本诊断。"
+      ],
+      "limits_or_remaining": [
+        "需要在原语义及完整D下建立仍缺的保守包含/native材料成员与连续域证明；条件模型、单叶上界或源码例点不能替代完整16帧验收。",
+        "原V6在case-028 frame1耗尽全局4096 split，另外7个nonpass当次0新split；不能把修某个case局部写为全16闭合。",
+        "edge189在V1仅纳入原件metadata读取，未纳入新的support/channel实际结果；不声称已验证。"
+      ],
+      "evidence_ids": [
+        "original_raw_and_conditional_method_scope",
+        "original_V6_all16_readback",
+        "V9_actual",
+        "V9_source_lock",
+        "V9_meaning",
+        "correlation_diagnosis",
+        "wire_diagnosis",
+        "spatial_cost_probe",
+        "edge189_metadata_only",
+        "new_supervisor_control_audit",
+        "new_supervisor_entry_appendix"
+      ]
+    },
+    {
+      "user_row": "并行：恢复原数值资格",
+      "owner_role": "数值、计算资源",
+      "original_acceptance": "五个原 float64 残差均满足1e-7，保留全场和修正过程；随后验证frame/H/restore",
+      "status": "closed_for_original_historical_numeric_contract",
+      "status_zh": "原数值资格范围可闭合",
+      "closed_scope": "恢复并按精确身份读回原N15科学证据：panel与frame各原五探针5/5、原H、五个有序已保存动作的restore及四载荷/linear seed原资格。此轮是原件恢复与读回，不是再跑求解器。",
+      "actual_evidence": [
+        "原panel最大float64残差9.983337773558199e-8，frame最大5.659897926075834e-9，十项均不超过原1e-7。原K/b/C/固定自由DOF/方向身份及全场、残差和修正记录保留。",
+        "原两体各3885列H生产记录与全局检查保留；原combined ExactResponseCache restore的5次response调用通过，最大相对误差1.1659935073707673e-8。"
+      ],
+      "limits_or_remaining": [
+        "不授予任意RHS逆算子、有限QP checkpoint/resume、当前K1/K3 FE或当前真实结构资格；restore只接收五个有序SHA绑定的真实已保存完整动作，未知RHS被拒绝。",
+        "未执行独立全部7770列K乘积，也未保留每个成功H列的全部全场。这些是原证据范围限制，不新增为本表数值行必须重算的blocker。当前K1/K3 FE另归第6行。"
+      ],
+      "evidence_ids": [
+        "numeric_scope",
+        "numeric_scope_independent_review",
+        "numeric_panel_five",
+        "numeric_frame_five",
+        "numeric_H_restore",
+        "numeric_restore_call_chain",
+        "numeric_original_method_review",
+        "numeric_four_loads",
+        "numeric_linear_seed"
+      ]
+    },
+    {
+      "user_row": "并行：取得真实器件资料",
+      "owner_role": "现场计量、显示、柔性互连、电气",
+      "original_acceptance": "同一specimen的10/7/12原件；原照片/标签、PN/revision、尺寸和不确定度、方向、端子来源及原机功能可追溯",
+      "status": "external_original_facts_missing",
+      "status_zh": "仍缺外部原始事实",
+      "closed_scope": "原接收合同、现场收集计划和缺项定义已恢复并核对，不以通用型号资料替代指定样件。",
+      "actual_evidence": [
+        "原228个事实要求保持10身份＋77部件字段＋120接口字段＋21供应商/所选revision字段；其中207项要求同一样件，21项要求所选PN/revision。",
+        "本轮新增可接纳的真实测量/器件事实为0；G3/G4/G5新增实物pass为0。228是原事实要求计数，不是新增的全局blocker总数。"
+      ],
+      "limits_or_remaining": [
+        "仍需同一样件10身份、7部件、12接口对应的照片/标签、原始尺寸与不确定度、方向、terminal来源和原机功能；真实OLED/COF/FPC、连接器、材料/工艺revision来源不能从通用资料推定。"
+      ],
+      "evidence_ids": [
+        "external_original_contract_readback",
+        "external_intake_contract",
+        "external_field_plan"
+      ]
+    },
+    {
+      "user_row": "随后：冻结当前结构、电气和试验合同",
+      "owner_role": "结构、工艺、电气、测试/质量",
+      "original_acceptance": "当前几何FE/公差、OEM互连、完整叠层及有来源G3–G5阈值；全域最坏工况、原生电气、采样校准、计划与版本绑定",
+      "status": "current_candidate_qualification_contract_not_complete",
+      "status_zh": "当前资格合同尚不可完整冻结",
+      "closed_scope": "原S4绑定空模板和工程合同原件已恢复；本轮finite几何与原数值资格的来源清楚，尚未把空字段写成测量或批准。",
+      "actual_evidence": [
+        "原合同列154个名义材料赋值与13类需来源的载荷；新K1/K3几何需要新的网格/材料/接触/公差绑定。",
+        "G3仍有14项无来源阈值与5项采样要求；G4有9功能协议、14通道待真实身份/限值；G5有8指标、4暴露范围待来源。"
+      ],
+      "limits_or_remaining": [
+        "真实材料、工艺、预紧、摩擦/接触、相关公差、完整OEM pin/stackup/原生电气和同候选版本绑定的阈值、校准、采样/相位计划仍不完整。",
+        "原五探针/旧H通过不能转移为当前K1/K3强度、最坏工况或产品FE pass；仍需原合同规定的全域和最坏情况证据。"
+      ],
+      "evidence_ids": [
+        "external_original_contract_readback",
+        "external_intake_contract",
+        "numeric_scope",
+        "k1_contract",
+        "k3_contract"
+      ]
+    },
+    {
+      "user_row": "最后：逐级实物验收",
+      "owner_role": "样机、系统测试、质量",
+      "original_acceptance": "同候选同样件依次G3→G4→G5；每一级真实pass支持下一阶段；缺测、失效、维修和换件分别保留",
+      "status": "physical_gates_not_passed",
+      "status_zh": "真实G3/G4/G5均未通过",
+      "closed_scope": "原顺序和同样件/同候选/revision约束保留，尚没有本轮真实实物pass。",
+      "actual_evidence": [
+        "G3=false、G4=false、G5=false；前级真实pass完成后才允许进入后级，换件/维修及assembly revision变化不继承旧pass。"
+      ],
+      "limits_or_remaining": [
+        "需要真实样件、完整原始采样/校准/相位记录和原合同阈值逐级执行；缺测、失效、维修与换件不能相互覆盖。有限CAD、条件包络或数值残差不能代替实物验收。"
+      ],
+      "evidence_ids": [
+        "external_original_contract_readback",
+        "external_intake_contract",
+        "external_field_plan"
+      ]
+    }
+  ],
+  "numerical_original_scope_detail": {
+    "original_float64_residual_threshold": 1e-07,
+    "panel_five_ratios": [
+      9.983337773558199e-08,
+      1.990477778047551e-09,
+      7.9778400558745e-09,
+      7.799897850960903e-09,
+      8.043638351779749e-09
+    ],
+    "frame_five_ratios": [
+      5.659897926075834e-09,
+      1.268995135824172e-10,
+      1.9311867265678982e-10,
+      1.2438483918711836e-10,
+      1.7809635438880483e-10
+    ],
+    "all_original_ten_reported_float64_residuals_within_original_gate": true,
+    "same_original_input_identity_and_fields_are_historical_verified_evidence_not_reexecuted_here": true,
+    "full_original_eight_report_bytes_rechecked": {
+      "panel_five": {
+        "workspace_relative_path": "r7-recovery/numeric/original-probe-qualification/panel/N13-v3-independent-readback.json",
+        "bytes": 7902,
+        "sha256": "6919547177171fac8af7dd17da255a8e4bc90b2333d19f0e18bb77d5ba486e6a"
+      },
+      "frame_five": {
+        "workspace_relative_path": "r7-recovery/numeric/original-probe-qualification/frame/FRAME_INDEPENDENT_READBACK.json",
+        "bytes": 1191,
+        "sha256": "297f84ccf51ab3b6c69d71720d3b9518ba2b9a71e48a817010649944097eea4f"
+      },
+      "H_restore": {
+        "workspace_relative_path": "r7-recovery/numeric/independent-audit/H_EXECUTED_READBACK_SUMMARY.json",
+        "bytes": 9910,
+        "sha256": "ed02860dd6cf88809e899788f02bd8e5e4733b0828c381028c02fd4adf011977"
+      },
+      "linear_seed": {
+        "workspace_relative_path": "r7-recovery/numeric/independent-audit/LINEAR_SEED_EXECUTED_SUMMARY.json",
+        "bytes": 5389,
+        "sha256": "ce06bd8e97a70277f4b5b88d87d9f59c052a3f822687c18dab700a1c582366cc"
+      },
+      "four_loads": {
+        "workspace_relative_path": "r7-recovery/numeric/actual-results/panel-four-loads/FOUR_LOAD_REPORT.json",
+        "bytes": 19825,
+        "sha256": "3387d687c553461ae29fd7fdecbe5ee9085875a27aae384d52bb7d9fea32b861"
+      },
+      "frame_producer": {
+        "workspace_relative_path": "r7-recovery/numeric/original-probe-qualification/frame/N14_REPORT.json",
+        "bytes": 23548,
+        "sha256": "571226abebdca4f992515db4ff2faa7e32c64c0a7e5aba21f5748bb57d1d5ee3"
+      },
+      "panel_H_pilot": {
+        "workspace_relative_path": "r7-recovery/numeric/H-column-records/panel-H-pilot/H_BLOCK_REPORT.json",
+        "bytes": 9821,
+        "sha256": "b9d1bfa71629effda1ee9c5244557345080d5f93bb8c568f0dc9f3995c121fa7"
+      },
+      "frame_H_pilot": {
+        "workspace_relative_path": "r7-recovery/numeric/H-column-records/frame-H-pilot/H_BLOCK_REPORT.json",
+        "bytes": 10000,
+        "sha256": "9a8a7c91ce535066110d0b60fac9b598c269be6e5d5e37acde3b05e37ce9b145"
+      }
+    },
+    "H_column_producer_scope": {
+      "panel": {
+        "unique_columns": 3885,
+        "maximum_reported_column_residual": 2.473825588822365e-09,
+        "raw_H_array_sha256": "ddc4ffe80f045cbb06e9e925d97633deba3c8e125ea7860f979494409d862b56",
+        "raw_global_checks": {
+          "absolute_scale": 117106.99309954215,
+          "max_raw_asymmetry": 1.788430381566286e-08,
+          "relative_raw_asymmetry": 1.5271764172495675e-13,
+          "minimum_diagonal": 29.04059240138495,
+          "reciprocity_threshold": 2e-08,
+          "energy_absolute_lower_bound": -0.002342139861990843,
+          "original_reciprocity_and_self_energy_passed": true
+        }
+      },
+      "frame": {
+        "unique_columns": 3885,
+        "maximum_reported_column_residual": 6.17319528828375e-11,
+        "raw_H_array_sha256": "6357043c8cacd0078570d50b54b6a3e4068aa36db90bb2c781d23a84126f8da4",
+        "raw_global_checks": {
+          "absolute_scale": 1354.3431698186398,
+          "max_raw_asymmetry": 2.6062707547680475e-11,
+          "relative_raw_asymmetry": 1.92437988602036e-14,
+          "minimum_diagonal": 147.2526026224933,
+          "reciprocity_threshold": 2e-08,
+          "energy_absolute_lower_bound": -2.7086863396372797e-05,
+          "original_reciprocity_and_self_energy_passed": true
+        }
+      }
+    },
+    "original_combined_H_checks": {
+      "definition": "Hp_raw + Hf_raw, before either body is symmetrized",
+      "sum_order": "panel value plus frame value, original float64 addition",
+      "row_major_float64_array_sha256": "e9ffb75ced329fbe59b67b1d5b39386b0d807e0d1ddaf54395516ca9a02d5dbf",
+      "additional_full_matrix_allocated_or_saved": false,
+      "streamed_rows_per_block": 128,
+      "absolute_scale": 117258.94702376203,
+      "max_raw_asymmetry": 1.788430381566286e-08,
+      "relative_raw_asymmetry": 1.525197374665038e-13,
+      "minimum_diagonal": 759.492302953647,
+      "reciprocity_threshold": 2e-08,
+      "energy_absolute_lower_bound": -0.0023451789404752405,
+      "original_reciprocity_and_self_energy_passed": true
+    },
+    "restore": {
+      "probes": 5,
+      "largest_relative_error": 1.1659935073707673e-08,
+      "response_calls": 5
+    },
+    "restore_callback_scope": "exactly five ordered SHA-bound saved genuine complete original actions; unknown RHS rejected",
+    "four_load_residuals": [
+      2.1827872842550278e-11,
+      2.4101609596982598e-11,
+      1.6825651982799172e-11,
+      2.1714186004828662e-11
+    ],
+    "original_ten_probe_fields_and_corrections_preserved": true,
+    "independent_all_7770_column_K_products_executed": false,
+    "all_successful_H_column_full_fields_historically_retained": false,
+    "independent_all_7770_recomputation_added_as_a_new_required_gate": false,
+    "arbitrary_RHS_inverse_or_finite_QP_resume_qualified": false,
+    "current_K1_K3_FE_qualified": false
+  },
+  "native80_detail": {
+    "original_core_Common_count": 80,
+    "saved_BREP_readback_count": 396,
+    "reader_comparison_count": 728,
+    "native_area_binary64_inequality_count": 80,
+    "maximum_native_area_difference_mm2": 2.842170943040401e-14,
+    "all_native_areas_binary64_equal": false,
+    "new_physical_area_threshold_introduced": false,
+    "reader_is_same_kernel_separate_process": true,
+    "whole_current_exact_native_trim_membership_verified": false
+  },
+  "finite_pose_scope": {
+    "near": {
+      "pose": "near",
+      "slide_mm": 23.142044210239405,
+      "actual_q_by_side_mm": {
+        "L": 3.482188470506243,
+        "R": 3.482188470506243
+      },
+      "candidate": "panel_key_travel_stops_v1",
+      "functional_source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+      "final_seal": {
+        "path": "r7-native/R7_NEAR_COMPLETE_FINITE_POSE_FINAL_SEAL_V1.json",
+        "bytes": 1949818,
+        "sha256": "23d80b5e8e7e027633f5550a9cfc16efd1ff30502ce596473345ed84157c2bad"
+      },
+      "independent_full_evidence_readback": {
+        "path": "r7-audit/full-factory-review/R7_NEAR_ACTUAL_FULL_FACTORY_INDEPENDENT_EVIDENCE_READBACK.json",
+        "bytes": 12851,
+        "sha256": "1cb0e28d73871a2e4f2be088799ed4d42d4c648bb15de7c5bf5232a6d4ce92b8"
+      },
+      "raw_member_count": 4722,
+      "raw_bytes": 441154916,
+      "engineering_member_count": 4689,
+      "engineering_bytes": 441035711,
+      "factory_and_reader": {
+        "factory": {
+          "raw_report": {
+            "bytes": 3193949,
+            "sha256": "4efc10b9b790b4cbde4da04c71b3b651242a85bca18775afc23cce87af995032"
+          },
+          "raw_journal": {
+            "bytes": 3154459,
+            "sha256": "e9821a597e0f14d70b0c69728aa27a6bfed8f6570168cb56600e39f5c4eee651"
+          },
+          "owned_controller": {
+            "bytes": 24696,
+            "sha256": "c0715e3ab6aa5785e373a3a5a61cb6cd993de270d65e685e5e91015dd14a6768"
+          },
+          "qualified_runtime": {
+            "bytes": 31165,
+            "sha256": "66b210a20fd4c1d5c3e5c326e7bd0be6092054222bea827cae4843b941e7564f"
+          },
+          "participant_count": 154,
+          "pair_count": 11781,
+          "journal_event_count": 23562,
+          "method_counts": {
+            "native_common": 777,
+            "positive_axis_gap": 11004
+          },
+          "positive_pairs": [],
+          "direct_panel_KEY_Common": {
+            "L": {
+              "a": "A_BACK_PANEL",
+              "b": "L_KEY",
+              "common_mm3": 0.0,
+              "rejected": false,
+              "strict_common": {
+                "common_mm3": 0.0,
+                "method": "native_common",
+                "axis_gap_lower_mm": 0.0
+              }
+            },
+            "R": {
+              "a": "A_BACK_PANEL",
+              "b": "R_KEY",
+              "common_mm3": 0.0,
+              "rejected": false,
+              "strict_common": {
+                "common_mm3": 0.0,
+                "method": "native_common",
+                "axis_gap_lower_mm": 0.0
+              }
+            }
+          },
+          "actual_q_by_side_mm": {
+            "L": 3.482188470506243,
+            "R": 3.482188470506243
+          },
+          "finite_pose_clear": true,
+          "native_early_conditions_rechecked": true,
+          "seconds": 546.9660729299994,
+          "resources": {
+            "seconds": 546.4755892289995,
+            "ordinary_available_disk_bytes": 4344549376,
+            "finite_worker_shared_unreclaimable_bytes": 1905593376,
+            "worker_peak_RSS_bytes": 576364544
+          },
+          "saved_geometry_file_count": 318,
+          "saved_geometry_bytes": 15452955
+        },
+        "readback": {
+          "raw_report": {
+            "bytes": 3983574,
+            "sha256": "94c32aaec443b26e691336a357924e2305c35b0b5e1784e898a01ea1f4f5fcde"
+          },
+          "raw_journal": {
+            "bytes": 4151526,
+            "sha256": "380f229155c40ddffc98a699835160ae63c6620a6ef7aef8e4899b484b5358d2"
+          },
+          "owned_controller": {
+            "bytes": 21326,
+            "sha256": "3cde83304ecdca44ac0b8ff3a76987ed842ada1c6bda23d29f0be82262346c00"
+          },
+          "qualified_runtime": {
+            "bytes": 31622,
+            "sha256": "a09c8c98db5ca58e732b1b53ca09811ae5b3adf43099cd8efc47a52419b79ee9"
+          },
+          "participant_count": 154,
+          "pair_count": 11781,
+          "journal_event_count": 23562,
+          "method_counts": {
+            "native_common": 777,
+            "positive_axis_gap": 11004
+          },
+          "positive_pairs": [],
+          "direct_panel_KEY_Common": {
+            "L": {
+              "a": "A_BACK_PANEL",
+              "b": "L_KEY",
+              "common_mm3": 0.0,
+              "rejected": false,
+              "strict_common": {
+                "common_mm3": 0.0,
+                "method": "native_common",
+                "axis_gap_lower_mm": 0.0
+              },
+              "factory_volume_delta_mm3": 0.0
+            },
+            "R": {
+              "a": "A_BACK_PANEL",
+              "b": "R_KEY",
+              "common_mm3": 0.0,
+              "rejected": false,
+              "strict_common": {
+                "common_mm3": 0.0,
+                "method": "native_common",
+                "axis_gap_lower_mm": 0.0
+              },
+              "factory_volume_delta_mm3": 0.0
+            }
+          },
+          "actual_q_by_side_mm": {
+            "L": 3.482188470506243,
+            "R": 3.482188470506243
+          },
+          "finite_pose_clear": true,
+          "native_early_conditions_rechecked": true,
+          "seconds": 395.2849143409985,
+          "resources": {
+            "seconds": 394.0239635649996,
+            "ordinary_available_disk_bytes": 2997723136,
+            "finite_worker_shared_unreclaimable_bytes": 2122221672,
+            "worker_peak_RSS_bytes": 555712512
+          },
+          "saved_geometry_file_count": 8,
+          "saved_geometry_bytes": 76966
+        }
+      },
+      "method_count_interpretation": "All-pair records include both native_common and positive_axis_gap. The pair count is not a count of direct Common calls. Explicit two-side panel/KEY direct Common records are listed separately inside each worker.",
+      "complete_full_pair_execution": true,
+      "finite_state_clear": true,
+      "maximum_factory_reader_all_pair_volume_difference_mm3": 0.0,
+      "independent_STEP_body_readback_count": 154,
+      "independent_early_gate_count": 12,
+      "all_original_STEP_signature_criteria_passed": true,
+      "same_kernel_separate_process_reader": true,
+      "phases": {
+        "factory": {
+          "actual_receipt": {
+            "path": "r7-native/full-near-attempt1/factory-command-actual.json",
+            "bytes": 1432,
+            "sha256": "46fcdb88e555a60369566d9bb214639e232c03f334423737f5a082d7b8496b94"
+          },
+          "seconds": 555.2408044170006,
+          "exit_code": 0,
+          "completed": true
+        },
+        "readback": {
+          "actual_receipt": {
+            "path": "r7-native/full-near-attempt1/readback-command-actual.json",
+            "bytes": 1437,
+            "sha256": "8487475088bf749e56a711d45e085cd71f29e343c77d551b08599f4013aedd80"
+          },
+          "seconds": 406.8850335770003,
+          "exit_code": 0,
+          "completed": true
+        },
+        "verify-complete": {
+          "actual_receipt": {
+            "path": "r7-native/full-near-attempt1/verify-complete-command-actual.json",
+            "bytes": 1506,
+            "sha256": "6d8af4382659a29f9bde74a4b143af35c5cb88c378c0e047108c78b9abe040bd"
+          },
+          "seconds": 8.767641545000515,
+          "exit_code": 0,
+          "completed": true
+        },
+        "export-engineering": {
+          "actual_receipt": {
+            "path": "r7-native/full-near-attempt1/export-engineering-command-actual.json",
+            "bytes": 1519,
+            "sha256": "425bde419e2d163e624397fb6ccd4b30903d8f983771df0bfdec98f1ebd7ab2b"
+          },
+          "seconds": 9.2895334370005,
+          "exit_code": 0,
+          "completed": true
+        }
+      },
+      "remaining_unproved_domains": [
+        "all continuous independent source controls and floating-point tolerance shells",
+        "out-of-profile physical slot states and unqualified mechanical force/preload branches",
+        "complete material/process/tolerance and FE qualification",
+        "real specimen travel limits, assembly, repair, electrical and G3-G5 tests"
+      ],
+      "full_continuous_G2": false,
+      "physical_qualification": false,
+      "manufacturing_go": false
+    },
+    "far": {
+      "pose": "far",
+      "slide_mm": 60.880681403413135,
+      "actual_q_by_side_mm": {
+        "L": 9.160729490168748,
+        "R": 9.160729490168748
+      },
+      "candidate": "panel_key_travel_stops_v1",
+      "functional_source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+      "final_seal": {
+        "path": "r7-native/R7_FAR_COMPLETE_FINITE_POSE_FINAL_SEAL_V1.json",
+        "bytes": 1949817,
+        "sha256": "ce025da0b2218a34ce0ea59e135dbe6ac08321d23d45803dc477f99a44b73ae9"
+      },
+      "independent_full_evidence_readback": {
+        "path": "r7-audit/full-factory-review/R7_FAR_ACTUAL_FULL_FACTORY_INDEPENDENT_EVIDENCE_READBACK.json",
+        "bytes": 12844,
+        "sha256": "59b5af7b96b3106eeeb21e44f26ad0dd961a806d3be3112a50804c7a513260c4"
+      },
+      "raw_member_count": 4722,
+      "raw_bytes": 441146541,
+      "engineering_member_count": 4689,
+      "engineering_bytes": 441030731,
+      "factory_and_reader": {
+        "factory": {
+          "raw_report": {
+            "bytes": 3197231,
+            "sha256": "a4592bfcc412a2b373df18b6f4dbb0d2e7598af5eb15e108fc1c7038049098c0"
+          },
+          "raw_journal": {
+            "bytes": 3157651,
+            "sha256": "1ae9c1a77288c4594bea3f2efe7ec916197e266db2b2d94d55cf1ffad22e85a0"
+          },
+          "owned_controller": {
+            "bytes": 21653,
+            "sha256": "aa9a48cbd604ef3e794a11e29bbe1fe34d1c319363d7a3f2750f46cb755d8a01"
+          },
+          "qualified_runtime": {
+            "bytes": 31153,
+            "sha256": "adcaf292e592faca3d5d6691cd7473abc454d969b53cd377a2d10031aa054b60"
+          },
+          "participant_count": 154,
+          "pair_count": 11781,
+          "journal_event_count": 23562,
+          "method_counts": {
+            "native_common": 747,
+            "positive_axis_gap": 11034
+          },
+          "positive_pairs": [],
+          "direct_panel_KEY_Common": {
+            "L": {
+              "a": "A_BACK_PANEL",
+              "b": "L_KEY",
+              "common_mm3": 0.0,
+              "rejected": false,
+              "strict_common": {
+                "common_mm3": 0.0,
+                "method": "native_common",
+                "axis_gap_lower_mm": 0.0
+              }
+            },
+            "R": {
+              "a": "A_BACK_PANEL",
+              "b": "R_KEY",
+              "common_mm3": 0.0,
+              "rejected": false,
+              "strict_common": {
+                "common_mm3": 0.0,
+                "method": "native_common",
+                "axis_gap_lower_mm": 0.0
+              }
+            }
+          },
+          "actual_q_by_side_mm": {
+            "L": 9.160729490168748,
+            "R": 9.160729490168748
+          },
+          "finite_pose_clear": true,
+          "native_early_conditions_rechecked": true,
+          "seconds": 418.9778244140016,
+          "resources": {
+            "seconds": 418.4361925000012,
+            "ordinary_available_disk_bytes": 2022019072,
+            "finite_worker_shared_unreclaimable_bytes": 665446824,
+            "worker_peak_RSS_bytes": 574652416
+          },
+          "saved_geometry_file_count": 318,
+          "saved_geometry_bytes": 15442703
+        },
+        "readback": {
+          "raw_report": {
+            "bytes": 3985675,
+            "sha256": "bf64701473698258636c02f09297fd83f1c14bcb7bfbf75908eac0cf16b4f4d1"
+          },
+          "raw_journal": {
+            "bytes": 4153610,
+            "sha256": "f614c195153b5a701f3031c4f98ef39e1f1b812e5747c9213213277810524019"
+          },
+          "owned_controller": {
+            "bytes": 19422,
+            "sha256": "84f78ae7ac84a9f78beca31000717cbfeb0a76d23883d9541ccc7e52b4cb114d"
+          },
+          "qualified_runtime": {
+            "bytes": 31606,
+            "sha256": "9f3182e5e4634a25852280fdac5d3270c62f07a9432b528f81a441a5e41099d8"
+          },
+          "participant_count": 154,
+          "pair_count": 11781,
+          "journal_event_count": 23562,
+          "method_counts": {
+            "native_common": 747,
+            "positive_axis_gap": 11034
+          },
+          "positive_pairs": [],
+          "direct_panel_KEY_Common": {
+            "L": {
+              "a": "A_BACK_PANEL",
+              "b": "L_KEY",
+              "common_mm3": 0.0,
+              "rejected": false,
+              "strict_common": {
+                "common_mm3": 0.0,
+                "method": "native_common",
+                "axis_gap_lower_mm": 0.0
+              },
+              "factory_volume_delta_mm3": 0.0
+            },
+            "R": {
+              "a": "A_BACK_PANEL",
+              "b": "R_KEY",
+              "common_mm3": 0.0,
+              "rejected": false,
+              "strict_common": {
+                "common_mm3": 0.0,
+                "method": "native_common",
+                "axis_gap_lower_mm": 0.0
+              },
+              "factory_volume_delta_mm3": 0.0
+            }
+          },
+          "actual_q_by_side_mm": {
+            "L": 9.160729490168748,
+            "R": 9.160729490168748
+          },
+          "finite_pose_clear": true,
+          "native_early_conditions_rechecked": true,
+          "seconds": 310.35585326,
+          "resources": {
+            "seconds": 309.1620992240005,
+            "ordinary_available_disk_bytes": 1008103424,
+            "finite_worker_shared_unreclaimable_bytes": 407891848,
+            "worker_peak_RSS_bytes": 561991680
+          },
+          "saved_geometry_file_count": 8,
+          "saved_geometry_bytes": 76966
+        }
+      },
+      "method_count_interpretation": "All-pair records include both native_common and positive_axis_gap. The pair count is not a count of direct Common calls. Explicit two-side panel/KEY direct Common records are listed separately inside each worker.",
+      "complete_full_pair_execution": true,
+      "finite_state_clear": true,
+      "maximum_factory_reader_all_pair_volume_difference_mm3": 0.0,
+      "independent_STEP_body_readback_count": 154,
+      "independent_early_gate_count": 12,
+      "all_original_STEP_signature_criteria_passed": true,
+      "same_kernel_separate_process_reader": true,
+      "phases": {
+        "factory": {
+          "actual_receipt": {
+            "path": "r7-native/full-far-attempt1/factory-command-actual.json",
+            "bytes": 1427,
+            "sha256": "cc3f4fd1ff6f0035ed9da0e6eb37f3e24a52dcd67345f22cc5255e06c30e85da"
+          },
+          "seconds": 424.9741664360008,
+          "exit_code": 0,
+          "completed": true
+        },
+        "readback": {
+          "actual_receipt": {
+            "path": "r7-native/full-far-attempt1/readback-command-actual.json",
+            "bytes": 1432,
+            "sha256": "086b009fffa1f69436af8d1b845de46254dfda87ae670e593d5a68b29b545b55"
+          },
+          "seconds": 315.4842846950014,
+          "exit_code": 0,
+          "completed": true
+        },
+        "verify-complete": {
+          "actual_receipt": {
+            "path": "r7-native/full-far-attempt1/verify-complete-command-actual.json",
+            "bytes": 1501,
+            "sha256": "a6dd254c1fe124c04ca8c39b49fbea95d4bfda7e412e7cc075d64ef0856481dd"
+          },
+          "seconds": 4.065342394000254,
+          "exit_code": 0,
+          "completed": true
+        },
+        "export-engineering": {
+          "actual_receipt": {
+            "path": "r7-native/full-far-attempt1/export-engineering-command-actual.json",
+            "bytes": 1517,
+            "sha256": "3a24f07067afa5ae7bb26b656a8ec990553e7768b3d24b2d954028db5d6746cb"
+          },
+          "seconds": 9.694949313001416,
+          "exit_code": 0,
+          "completed": true
+        }
+      },
+      "remaining_unproved_domains": [
+        "all continuous independent source controls and floating-point tolerance shells",
+        "out-of-profile physical slot states and unqualified mechanical force/preload branches",
+        "complete material/process/tolerance and FE qualification",
+        "real specimen travel limits, assembly, repair, electrical and G3-G5 tests"
+      ],
+      "full_continuous_G2": false,
+      "physical_qualification": false,
+      "manufacturing_go": false
+    }
+  },
+  "continuous_method_scope": {
+    "original_V3_complete_boundary_raw_pass_count_of_16": 4,
+    "original_V6_conditional_pass_count_of_16": 8,
+    "original_V6_nonpass_count_of_16": 8,
+    "original_V6_global_split_limit": 4096,
+    "V9_pipeline_completed": false,
+    "V9_owned_verification_passed": false,
+    "V9_final_saved_planar_u": 0,
+    "V9_first_u_gate_reached": false,
+    "V9_new_full16_qualification_claimed": false,
+    "V9_selected_leaf_zero_is_not_full_frame_zero": true,
+    "correlation_saved_prefix_count": 81,
+    "wire_native_filling_membership_proved": false,
+    "one_spatial_split_cumulative_original_depth": 25,
+    "one_spatial_split_original_depth24_gate_passed": false,
+    "one_spatial_split_excluded_positive_volume_exact": "0",
+    "one_spatial_split_pending_is_not_native_interference": true,
+    "edge189_revision_V1_scope": "Original source metadata only; new support/channel actual result is not admitted in this ledger version.",
+    "edge189_new_support_or_channel_verified_in_this_ledger": false
+  },
+  "external_original_fact_scope": {
+    "original_requirement_count": 228,
+    "categories": {
+      "identity": 10,
+      "part": 77,
+      "interface": 120,
+      "supplier": 21
+    },
+    "scope_counts": {
+      "same_specimen": 207,
+      "selected_part_revision": 21
+    },
+    "admitted_facts": 0,
+    "new_physical_measurements": 0,
+    "required_original_identity_part_interface_counts": [
+      10,
+      7,
+      12
+    ],
+    "this_is_not_a_new_global_blocker_count": true
+  },
+  "publication_separate_obligation": {
+    "requested_commit": "a11b00f71231ef3516d2a79c73fa441c375ac755",
+    "requested_branch": "evidence/full-sprint-20261027-n13-l6",
+    "successful_exact_authorized_push_completed": false,
+    "dated_original_query_observations": [
+      {
+        "name": "exact_commit",
+        "observed_at": "2026-10-28T23:51:40.120Z",
+        "status": "404"
+      },
+      {
+        "name": "original_branch",
+        "observed_at": "2026-10-28T23:51:40.124Z",
+        "status": "404"
+      }
+    ],
+    "404_is_proof_of_global_absence": false,
+    "separately_verified_R7_evidence_publication_in_this_ledger": {
+      "branch": "evidence/full-sprint-20261028-r5",
+      "commit": "8bb6f52b624cd40a0570f8710f140bb5a0abf96f",
+      "parent": "2a529c098f2cd049457354a3b960264aa584c3f1",
+      "new_files_checked": 304,
+      "all_remote_Git_blob_hashes_and_byte_counts_match": true
+    },
+    "new_commit_may_substitute_for_a11": false,
+    "existing_user_push_authorization_needs_to_be_requested_again": false,
+    "remaining": "Need the exact original Git object/history to be accessible and verified, then a successful push/readback of that exact object at the authorized ref; no successful receipt is present in this ledger."
+  },
+  "storage_observations": {
+    "classification": "Two families: qualification scratch correspondence and archived-storage/path correspondence. Three dated observations are retained.",
+    "vtk": {
+      "evidence_ids": [
+        "runtime_audit",
+        "vtk_cleanup_correspondence"
+      ],
+      "original_43_per_wheel_removed_flags_recorded_true": true,
+      "later_byte_identical_vtk_wheel_present": true,
+      "field_is_an_instantaneous_exists_check_not_a_final_scratch_inventory": true,
+      "cause_proved": false,
+      "historical_to_current_correspondence_resolved": false
+    },
+    "near_expansion": {
+      "evidence_ids": [
+        "near_storage_migration",
+        "near_storage_failed_read",
+        "near_storage_later_read",
+        "native_storage_addendum"
+      ],
+      "historical_migration_end_state_retained_members": 2,
+      "later_observed_members": 2359,
+      "later_observed_bytes": 210541721,
+      "historically_removed_but_later_observed": 2357,
+      "all_later_observed_hashes_match_original_seal": true,
+      "current_expansion_complete_at_later_observation": false,
+      "complete_archive_bytes_still_match_original_verified_archive": true,
+      "cause_proved": false,
+      "historical_end_state_correspondence_resolved": false
+    },
+    "far_final_and_partial": {
+      "evidence_ids": [
+        "far_two_paths_observation"
+      ],
+      "two_current_regular_paths_with_equal_historical_archive_hash": true,
+      "distinct_inodes_and_one_link_each": true,
+      "original_builder_uses_partial_rename_TARGET": true,
+      "original_success_receipt_recorded_post_rename_partial_absence": false,
+      "deletion_then_reappearance_proved": false,
+      "cause_proved": false
+    },
+    "finite_scientific_pass_or_original_archive_content_pass_reclassified": false,
+    "no_unresolved_discrepancies_claimed": false,
+    "new_scientific_gate_added": false
+  },
+  "complete_evidence_archives_saved": {
+    "native80": {
+      "filename": "RAZR-R7-native80-runtime-and-original-evidence-20261028.zip",
+      "bytes": 130335275,
+      "sha256": "99eca1ecc39c8f2a9334734535b5fb46da92204d13f577ffe733081801997ef7",
+      "library_file_id": "libfile_0565f7df7c1c8191a5406441e7dcf317",
+      "version": 0,
+      "complete_ZIP_members": 2862,
+      "all_member_CRC_SHA_verified": true,
+      "save_receipt_evidence": "native80_saved",
+      "archive_completion_evidence": "native80_archive_actual"
+    },
+    "near": {
+      "filename": "RAZR-R7-near-full-factory-and-independent-originals-20261028.zip",
+      "bytes": 126771580,
+      "sha256": "711db7175ea364735f337ecc575b7d7ee479df9287d78c7cec08a147120533ae",
+      "library_file_id": "libfile_03369f15bb2c819189c055031babf4ad",
+      "version": 0,
+      "complete_ZIP_members": 9433,
+      "all_member_CRC_SHA_verified": true,
+      "save_receipt_evidence": "near_saved",
+      "archive_completion_evidence": "near_archive_actual"
+    },
+    "far": {
+      "filename": "RAZR-R7-far-full-factory-and-independent-originals-20261028.zip",
+      "bytes": 127370781,
+      "sha256": "7bc806653be9c7e70dea0ad195bcf992d899a06d73e170af499d8f7b10804130",
+      "library_file_id": "libfile_ffffa1050c0881919fc5608d9acfae2d",
+      "version": 0,
+      "complete_ZIP_members": 9448,
+      "all_member_CRC_SHA_verified": true,
+      "save_receipt_evidence": "far_saved",
+      "archive_completion_evidence": "far_archive_actual"
+    }
+  },
+  "all_seven_user_rows_fully_closed": false,
+  "full_continuous_G2": false,
+  "current_K1_K3_FE_qualified": false,
+  "physical_gate_pass": {
+    "G3": false,
+    "G4": false,
+    "G5": false
+  },
+  "all_blockers_closed": false,
+  "evidence_catalog": {
+    "native_scope": {
+      "workspace_relative_path": "r7-native/R7_ACTUAL_NATIVE80_AND_TWO_FINITE_POSES_SCOPE_V1.json",
+      "bytes": 21627,
+      "sha256": "8c88d441b9e3f311b95bac2bec17c543f5e1be376dc9030d2427f8442b9c8ae9"
+    },
+    "native80_audit": {
+      "workspace_relative_path": "r7-audit/native-stage-v4-review/R7_NATIVE80_ACTUAL_PRODUCER_READER_INDEPENDENT_EVIDENCE_READBACK.json",
+      "bytes": 166131,
+      "sha256": "0c777c7e380e5b8f17dfb761356e1219ec1fec7593cc2ba0e56b69413b22ad74"
+    },
+    "runtime_audit": {
+      "workspace_relative_path": "r7-audit/native-stage-v4-review/R7_ACTUAL_RUNTIME_QUALIFICATION_INDEPENDENT_FULL_READBACK_V2.json",
+      "bytes": 14972,
+      "sha256": "ea05d600df7991e85bbb53e78f73c7bb06c4d25ebe031b640c33da5f63be7d78"
+    },
+    "near_audit": {
+      "workspace_relative_path": "r7-audit/full-factory-review/R7_NEAR_ACTUAL_FULL_FACTORY_INDEPENDENT_EVIDENCE_READBACK.json",
+      "bytes": 12851,
+      "sha256": "1cb0e28d73871a2e4f2be088799ed4d42d4c648bb15de7c5bf5232a6d4ce92b8"
+    },
+    "far_audit": {
+      "workspace_relative_path": "r7-audit/full-factory-review/R7_FAR_ACTUAL_FULL_FACTORY_INDEPENDENT_EVIDENCE_READBACK.json",
+      "bytes": 12844,
+      "sha256": "59b5af7b96b3106eeeb21e44f26ad0dd961a806d3be3112a50804c7a513260c4"
+    },
+    "k1_contract": {
+      "workspace_relative_path": "r7-recovery/k3/source/k3full/KEY_FORWARD_LOOP_V1_CONTRACT.json",
+      "bytes": 11988,
+      "sha256": "17e1532ed82eff1298e9525456d6953df56437082ef2918f3d04839cff200455"
+    },
+    "k3_contract": {
+      "workspace_relative_path": "r7-recovery/k3/source/k3full/PANEL_KEY_TRAVEL_STOPS_V1_CONTRACT.json",
+      "bytes": 3402,
+      "sha256": "0f3ec4af155a2e92650f49ada7042e6d1fc1f8ad94cb43f6716a77985ecc5b84"
+    },
+    "k3_source": {
+      "workspace_relative_path": "r7-recovery/k3/source/k3full/panel_key_travel_stops_v1.py",
+      "bytes": 12856,
+      "sha256": "59946f42f8bff88b0cdb8bcd2ad7f578e22e6f64e65832a6b6087426e282e5a5"
+    },
+    "full_factory_states": {
+      "workspace_relative_path": "r7-recovery/k3/source/k3full/full_stop_states.py",
+      "bytes": 4411,
+      "sha256": "1a3663e163ea4062333127001a9e5973b311f30b384b4966b632cdf08c77c138"
+    },
+    "s4_motion_source": {
+      "workspace_relative_path": "r7-native/genuine-s4-worktree-v3/integration/product_assembly.py",
+      "bytes": 31504,
+      "sha256": "fc5391d3be98810ada06ca27e65de9a77d2f599c4d1890bb31a4d87ef14791b4"
+    },
+    "s4_contact_profile_source": {
+      "workspace_relative_path": "r7-native/genuine-s4-worktree-v3/integration/cam_contact_profile.py",
+      "bytes": 3208,
+      "sha256": "c894d07e737ffeb927a092235845cf936418c19969b19107f5a6c2675e58ce9d"
+    },
+    "s4_source_contract": {
+      "workspace_relative_path": "r7-native/R7_SETUP_INSTALL_ONLY_CONTRACT_V3.json",
+      "bytes": 210757,
+      "sha256": "04676b43197d18ba42b0cf554e88af5f03a7ea6a69346611fdd7d4113605ab67"
+    },
+    "numeric_scope": {
+      "workspace_relative_path": "razr-current/engineering/engineering-followup-20261028-r5/numerics/R5_ORIGINAL_NUMERIC_QUALIFICATION_SCOPE.json",
+      "bytes": 6649,
+      "sha256": "5a1035f7641ccde5334fe5f8307a665aa0cf146928825311771cc20b6640b0c7"
+    },
+    "numeric_scope_independent_review": {
+      "workspace_relative_path": "razr-current/engineering/engineering-followup-20261028-r5/review/numeric-scope/R5_INDEPENDENT_NUMERIC_SCOPE_REVIEW.json",
+      "bytes": 9753,
+      "sha256": "b90ef8fa34a258bd73fd411cf134c67a8ffcd535862d1ca8ebbeca855ee3b79e"
+    },
+    "numeric_panel_five": {
+      "workspace_relative_path": "r7-recovery/numeric/original-probe-qualification/panel/N13-v3-independent-readback.json",
+      "bytes": 7902,
+      "sha256": "6919547177171fac8af7dd17da255a8e4bc90b2333d19f0e18bb77d5ba486e6a"
+    },
+    "numeric_frame_five": {
+      "workspace_relative_path": "r7-recovery/numeric/original-probe-qualification/frame/FRAME_INDEPENDENT_READBACK.json",
+      "bytes": 1191,
+      "sha256": "297f84ccf51ab3b6c69d71720d3b9518ba2b9a71e48a817010649944097eea4f"
+    },
+    "numeric_H_restore": {
+      "workspace_relative_path": "r7-recovery/numeric/independent-audit/H_EXECUTED_READBACK_SUMMARY.json",
+      "bytes": 9910,
+      "sha256": "ed02860dd6cf88809e899788f02bd8e5e4733b0828c381028c02fd4adf011977"
+    },
+    "numeric_restore_call_chain": {
+      "workspace_relative_path": "r7-recovery/numeric/independent-audit/ORIGINAL_H_RESTORE_CALL_CHAIN.json",
+      "bytes": 4202,
+      "sha256": "35ebcaaecc1a432a5406f00a0e66bdb13ac41440cf51c86a5b5852da29192858"
+    },
+    "numeric_original_method_review": {
+      "workspace_relative_path": "r7-recovery/numeric/independent-audit/NUMERIC_METHOD_REVIEW_V2.json",
+      "bytes": 4233,
+      "sha256": "eb98fd1117a431bfff0e1e4464f87ffd49bbf95ae82ea79b9ae4b94d86d2df80"
+    },
+    "numeric_four_loads": {
+      "workspace_relative_path": "r7-recovery/numeric/actual-results/panel-four-loads/FOUR_LOAD_REPORT.json",
+      "bytes": 19825,
+      "sha256": "3387d687c553461ae29fd7fdecbe5ee9085875a27aae384d52bb7d9fea32b861"
+    },
+    "numeric_linear_seed": {
+      "workspace_relative_path": "r7-recovery/numeric/independent-audit/LINEAR_SEED_EXECUTED_SUMMARY.json",
+      "bytes": 5389,
+      "sha256": "ce06bd8e97a70277f4b5b88d87d9f59c052a3f822687c18dab700a1c582366cc"
+    },
+    "external_original_contract_readback": {
+      "workspace_relative_path": "r7-audit/external-status/R7_EXTERNAL_DEPENDENCIES_FROM_RECOVERED_ORIGINALS_V2.json",
+      "bytes": 80523,
+      "sha256": "364216fb6c26391574e00979f3fc2946c2036d897424a99f7090144873866346"
+    },
+    "external_intake_contract": {
+      "workspace_relative_path": "razr-current/engineering/engineering-followup-20261028-r5/real-sources/intake/R3_SAME_SPECIMEN_INTAKE_CONTRACT.json",
+      "bytes": 75616,
+      "sha256": "876ca9a54ba94fe6be7695ab641435cdcd69709ff21bf093898f30a09fd36a5a"
+    },
+    "external_field_plan": {
+      "workspace_relative_path": "razr-current/engineering/engineering-followup-20261028-r5/real-sources/intake/R5_FIELD_COLLECTION_PLAN.json",
+      "bytes": 334749,
+      "sha256": "b9ef7c75eb2220bee23ebb6fa293ba90ff86809009a5d0d76e0b97383069ec77"
+    },
+    "original_V6_all16_readback": {
+      "workspace_relative_path": "r7-publication/R7_ORIGINAL_V6_ALL16_STATUS_READBACK_V1.json",
+      "bytes": 8989,
+      "sha256": "9c05689ad0ae38774f4fecd9b974b5e5239f3837abac9f8db640ff3ede833101"
+    },
+    "original_raw_and_conditional_method_scope": {
+      "workspace_relative_path": "razr-current/engineering/engineering-followup-20261028-r5/README.md",
+      "bytes": 6116,
+      "sha256": "0bd856303d5bf52940a4b4fc7197735979f604eb1cc6fbf992b589f12901e4f4"
+    },
+    "V9_actual": {
+      "workspace_relative_path": "r7-envelope/local-v9/R7E_V9_LOCAL_LAUNCH_RECEIPT_V2.json",
+      "bytes": 45436,
+      "sha256": "9d03a2ef1eefd5f077ba04180afa24ad43d83a29e83e1c87fffa40f7c86de6b2"
+    },
+    "V9_source_lock": {
+      "workspace_relative_path": "r7-envelope/source-v9/R7E_PORTABLE_SOURCE_LOCK_V9.json",
+      "bytes": 10443,
+      "sha256": "a797041d09fab9a40ddbc474d9812c06b316e4fb5dcdacbc7947e02a3c4cc9f6"
+    },
+    "V9_meaning": {
+      "workspace_relative_path": "r7-envelope/v9-meaning-review-v1/R7E_V9_PROOF_AND_SPATIAL_CONTINUATION_READBACK_V1.json",
+      "bytes": 107187,
+      "sha256": "6a6cc9000041ac24fb91771f1d604730a9b121980b9a8273bbc9a313681c8680"
+    },
+    "correlation_diagnosis": {
+      "workspace_relative_path": "r7-envelope/correlation-diagnostic-v1/attempt-1/R7E_V9_SAVED_PREFIX_PLANE_PREIMAGE_DIAGNOSIS_V1.json",
+      "bytes": 804263,
+      "sha256": "a27cdebf7c848eefdc03b6534abf7603cd1a4e68357d84d3279587804453109b"
+    },
+    "wire_diagnosis": {
+      "workspace_relative_path": "r7-envelope/wire-meaning-diagnostic-v1/attempt-1-v2/R7E_SAVED_V9_WIRE_MEANING_DIAGNOSIS_V2.json",
+      "bytes": 6871057,
+      "sha256": "054bd8e4d1337e0e3f8e2e95e48430fa6a31c71ee9bee002f0634dddcc97d1d3"
+    },
+    "spatial_cost_probe": {
+      "workspace_relative_path": "r7-envelope/spatial-pilot-v1/attempt-1/R7E_ONE_SPLIT_ORIGINAL_SPATIAL_COST_PROBE_V1.json",
+      "bytes": 124442,
+      "sha256": "9cbf5dd4426e7f43f0de4e234986436f12045889fc0d000fb78a54d5890d8937"
+    },
+    "edge189_metadata_only": {
+      "workspace_relative_path": "r7-envelope/edge189-source-diagnostic-v1/SOURCE_METADATA_READBACK_V1.json",
+      "bytes": 6920,
+      "sha256": "cbed974e46f2ac7da1767c6d2242a057cfd59ee757a312646e334a3ad789d31a"
+    },
+    "new_supervisor_control_audit": {
+      "workspace_relative_path": "r7-audit/supervisor-review/R7_MATH_SUPERVISOR_V2_ACTUAL_CONTROLS_INDEPENDENT_QUALIFICATION_V2.json",
+      "bytes": 36830,
+      "sha256": "26b2a713357150970be3b09fe3ec74befa17af822bc9dc682dda961a377b4314"
+    },
+    "new_supervisor_entry_appendix": {
+      "workspace_relative_path": "r7-audit/supervisor-review/R7_SUPERVISOR_V2_COMPLETE_ENTRY_FIXTURE_INDEPENDENT_APPENDIX.json",
+      "bytes": 2453,
+      "sha256": "c95c96b8b823a40041f8a14addb9b863659cb0aad6384881ee35c48ffdeca378"
+    },
+    "vtk_cleanup_correspondence": {
+      "workspace_relative_path": "r7-audit/runtime-cleanup-correspondence/R7_EXISTING_CLEANUP_CORRESPONDENCE_ACTUAL_V1.json",
+      "bytes": 62380,
+      "sha256": "7587d7cc241a87e359c4f4c65033c7727a96547049eb11fc37218995ab5d0fa1"
+    },
+    "near_storage_migration": {
+      "workspace_relative_path": "r7-publication/R7_NEAR_ENGINEERING_ARCHIVE_MIGRATION_V1.json",
+      "bytes": 3468084,
+      "sha256": "1fc260f09c05df7705bc5a736cc8fc3e0c45a826095f2856e67e9b5e2eb77d1f"
+    },
+    "near_storage_failed_read": {
+      "workspace_relative_path": "r7-audit/full-factory-review/R7_NEAR_MIGRATION_CURRENT_READ_ATTEMPT1_ACTUAL_FAILURE.json",
+      "bytes": 661457,
+      "sha256": "bdbe5ef422331b0cb6db8c9cf1f48bc596f9dd8056f4ed4bf3037a6c0c94259e"
+    },
+    "near_storage_later_read": {
+      "workspace_relative_path": "r7-audit/full-factory-review/R7_NEAR_ENGINEERING_MIGRATION_CURRENT_STATE_READBACK_V2.json",
+      "bytes": 693362,
+      "sha256": "0d42997dd6138dfce2d733bb84e2536e6027efd1f92d2068ed892c280e083282"
+    },
+    "native_storage_addendum": {
+      "workspace_relative_path": "r7-native/R7_NATIVE_SCOPE_STORAGE_OBSERVATION_ADDENDUM_V2.json",
+      "bytes": 4346,
+      "sha256": "698e79bf2c764d918d8e5754949de38300193c7ff6912c19c5f3bd8ec1fb3021"
+    },
+    "far_two_paths_observation": {
+      "workspace_relative_path": "r7-audit/storage-observation/R7_FAR_ARCHIVE_TWO_PATHS_CURRENT_READBACK_V1.json",
+      "bytes": 8529,
+      "sha256": "241594726919567c8d50aa0014075d56a1d3c845c01ce2e120171851f3f571c6"
+    },
+    "native80_saved": {
+      "workspace_relative_path": "r7-deliverables/R7_NATIVE80_COMPLETE_PRESERVATION_V1.json",
+      "bytes": 997,
+      "sha256": "6760e44aac9c10ce9aeabc935c166735f8e25ab4b71bb16169c8cd6b565b54b2"
+    },
+    "near_saved": {
+      "workspace_relative_path": "r7-deliverables/R7_NEAR_COMPLETE_PRESERVATION_V1.json",
+      "bytes": 1066,
+      "sha256": "55ec233ef57702f0ed56e88c6840485c0966db6990c81781573965efac464d33"
+    },
+    "far_saved": {
+      "workspace_relative_path": "r7-deliverables/R7_FAR_COMPLETE_PRESERVATION_V1.json",
+      "bytes": 987,
+      "sha256": "92fddeb26ecaf0f7f6f013f80349f366ebcf8321ff3b1ea5837c6c7841cfc04b"
+    },
+    "native80_archive_actual": {
+      "workspace_relative_path": "r7-audit/native80-archive/R7_NATIVE80_COMPLETE_ARCHIVE_ACTUAL_V3.json",
+      "bytes": 2691,
+      "sha256": "e21cc6abd944bbb429fc56c93553cbb2674a5ec451d4013d1a9c9a51b0f9ea1f"
+    },
+    "near_archive_actual": {
+      "workspace_relative_path": "r7-audit/near-full-archive/R7_NEAR_FULL_ORIGINAL_ARCHIVE_ACTUAL_V1.json",
+      "bytes": 2287,
+      "sha256": "3670a1dc47ba3c051109d6b6545b41a63c34f4b16b6fd1733afa24a4348f369f"
+    },
+    "far_archive_actual": {
+      "workspace_relative_path": "r7-audit/far-full-archive/R7_FAR_FULL_ORIGINAL_ARCHIVE_ACTUAL_V3.json",
+      "bytes": 3663,
+      "sha256": "87f4928074c442aa0ea827fb81e12eb35e599782921ddbd261494774fba9edab"
+    },
+    "native80_zip_cache_migration": {
+      "workspace_relative_path": "r7-publication/R7_SAVED_NATIVE80_ZIP_CACHE_RECLAIM_V1.json",
+      "bytes": 1256,
+      "sha256": "21a121156136030408192eeadc7ce92bf6f6d835515000cc4082531f48a5e312"
+    },
+    "original_resource_gate_scope": {
+      "workspace_relative_path": "r7-audit/full-factory-review/R7_ORIGINAL_CLOSEOUT_DISK_GATE_SCOPE_READBACK_V1.json",
+      "bytes": 1797,
+      "sha256": "bd636b707c5260d2e61c090911ff1482fc20ff5bfd6f2b40584bbc09f8c4df69"
+    },
+    "exact_authorized_push_original_reads": {
+      "workspace_relative_path": "r7-audit/blocker-ledger/R7_EXACT_AUTHORIZED_PUSH_ORIGINAL_READ_OBSERVATIONS_V1.json",
+      "bytes": 2985,
+      "sha256": "ce5d7c3b10e383180f19bf76905a20a23661e9fd6cbc8eadb2a14dad7e3b961a"
+    },
+    "restoration_publication": {
+      "workspace_relative_path": "r7-publication/R7_RECOVERY_REMOTE_PUBLICATION_VERIFIED_V1.json",
+      "bytes": 485,
+      "sha256": "47eee7aa9d90b62247fcf1e326ab35bd17dd72056927ac101ffdd5d5239486f7"
+    },
+    "envelope_runtime_publication": {
+      "workspace_relative_path": "r7-publication/R7_ENVELOPE_RUNTIME_REMOTE_PUBLICATION_VERIFIED_V1.json",
+      "bytes": 517,
+      "sha256": "03a7b36bbcf0c8e980c4de6b65b0c5e91c6d7eabd140bb014d371761a8e0884f"
+    }
+  },
+  "all_bound_original_source_and_report_bytes_unchanged_before_after": true,
+  "actual_reader_seconds": 0.059436662999360124,
+  "actual_reader_peak_RSS_bytes": 28725248
+}

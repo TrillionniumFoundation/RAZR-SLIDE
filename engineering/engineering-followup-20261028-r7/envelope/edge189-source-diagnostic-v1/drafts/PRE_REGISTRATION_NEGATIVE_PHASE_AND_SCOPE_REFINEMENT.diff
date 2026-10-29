@@ -1,0 +1,124 @@
+--- diagnose_edge189_line_support_before_phase_fix_v1.py.txt
++++ diagnose_edge189_line_support_r7e_v1.py
+@@ -253,11 +253,11 @@
+     d['exact_slab_bounds_exact']=[str(constant),str(constant)]
+     d['tau_expanded_slab_bounds_exact']=[str(constant-margin),str(constant+margin)]
+     e=copy.deepcopy(claim);e['tau_expanded_slab_bounds_exact']=copy.deepcopy(claim['exact_slab_bounds_exact'])
+-    return [('shortened_complete_parameter_domain',a,'independent_original_reader_source_equality'),
+-            ('nonzero_Vz_replaced_with_zero',b,'independent_original_reader_source_equality'),
+-            ('wrong_fixed_normal',c,'registered_fixed_normal'),
+-            ('full_D_omitted_from_scalar_support_only',d,'independent_16_endpoint_D_corner_support'),
+-            ('tau_omitted_from_expanded_slab_only',e,'independent_128_hypothetical_tube_corner_support')]
++    return [('shortened_complete_parameter_domain',a,'source_edge_identity'),
++            ('nonzero_Vz_replaced_with_zero',b,'source_edge_identity'),
++            ('wrong_fixed_normal',c,'fixed_normal'),
++            ('full_D_omitted_from_scalar_support_only',d,'exact_support_16_vertices'),
++            ('tau_omitted_from_expanded_slab_only',e,'tau_support_128_vertices')]
+ 
+ 
+ def main():
+@@ -276,7 +276,7 @@
+         'full_continuous_G2':False,'all_blockers_closed':False,'producer_or_primitive_helper_imported':False,
+         'actual_fixed_whole_channel_attempts':0,'new_full_frame_execution_authorized_by_this_diagnostic':False,
+         'source_support_claim':None,'independent_source_support_readback':None,'actual_negative_controls':[]}
+-    validation={};before={};independent_calls=0
++    validation={};before={};independent_calls=0;independent_claim_calls=0
+     counters={'channels_tested':0,'boundary_box_tests':0,'support_inequality_tests':0,'successful_nonaxis_separations':0}
+     baseline={'splits':82,'piece_like_tests':174854,'support_like_tests':366314}
+     def totals():
+@@ -320,6 +320,9 @@
+         inputs=contract['inputs'];bound_all=dict(inputs)
+         bound_all.update({'V6_archive/'+k:v for k,v in contract['original_V6_archive_files'].items()})
+         bound_all.update({k:contract[k] for k in ('source','basis','static_capacity','source_function_mapping','checker_interface','independent_line_checker')})
++        need(len(bound_all)==contract['registered_input_and_artifact_count'] and
++             sum(row['bytes'] for row in bound_all.values())==contract['registered_input_and_artifact_bytes'],
++             'complete registered finite member/byte census differs')
+         before={k:identity(v['path']) for k,v in bound_all.items()}
+         need(all(same(before[k],row) for k,row in bound_all.items()),'complete registered source/artifact identity differs')
+         report['original_function_copy_checks']=original_function_copies(contract)
+@@ -383,21 +386,32 @@
+         claim_path.write_text(json.dumps(claim,indent=2)+'\n');report['source_support_claim']=identity(claim_path)
+         readback=json.loads(claim_path.read_text());need(readback==claim,'actual producer support payload readback differs')
+         line_check=imported(contract['independent_line_checker'],'r7e_edge189_independent_corner_reader')
++        independent_claim_calls+=1
+         verified=line_check.verify_claim(readback,reader_edge,copy.deepcopy(carrier),copy.deepcopy(full_D),charge)
+         need(verified['claim_verified'] is True and verified['native_BREP_error_bound_certified'] is False,
+              'independent source model readback must preserve native uncertainty')
++        need(len(verified['exact_vertices'])==16 and len(verified['hypothetical_tube_vertices'])==128,
++             'independent actual full endpoint/corner records must preserve duplicate-index vertices')
+         report['independent_source_support_readback']=verified
+         report['source_interval_and_independent_corner_methods_agree']=True
+         controls=negative_claims(claim,charge)
++        need(len(controls)==5,'five registered actual source/domain/tolerance controls required')
+         for name,mutant,mechanism in controls:
+-            counts_before=dict(validation);rejected=False;failure=None
++            counts_before=dict(validation);rejected=False;failure=None;caught=None;stage=None;matched=False
++            independent_claim_calls+=1
+             try:line_check.verify_claim(mutant,reader_edge,copy.deepcopy(carrier),copy.deepcopy(full_D),charge)
+-            except ValueError as exc:rejected=True;failure={'type':type(exc).__name__,'message':str(exc)}
++            except BaseException as exc:
++                caught=exc;rejected=True;stage=getattr(exc,'code',None)
++                if stage is None:stage=str(exc).split(':',1)[0]
++                failure={'type':type(exc).__name__,'message':str(exc),'actual_rejection_stage':stage}
++                matched=isinstance(exc,ValueError) and stage==mechanism
+             row={'name':name,'executed':True,'rejected':rejected,'expected_rejection_mechanism':mechanism,
++                 'expected_rejection_confirmed':matched,
+                  'actual_exception':failure,'mutated_claim':mutant,'mutated_claim_canonical_sha256':canonical(mutant),
+                  'validation_counter_cost':{k:v-counts_before.get(k,0) for k,v in validation.items() if v-counts_before.get(k,0)}}
+             report['actual_negative_controls'].append(row)
+-            need(rejected,'independent reader accepted actual negative control: '+name)
++            if caught is not None and not matched:raise caught
++            need(matched,'independent reader did not reject actual negative control at the registered stage: '+name)
+         limits=contract['original_capacity']
+         need(limits==prior_contract['original_capacity'] and limits['maximum_depth']==24 and limits['maximum_splits']==4096 and
+              limits['maximum_boundary_box_tests']==limits['maximum_support_inequality_tests']==12000000,
+@@ -456,6 +470,7 @@
+                 'original_source_box_strict_equality':verified['source_box_equals_original_carrier'],
+                 'tau_expanded_local_separation_code':local[2]['separation_code'],
+                 'whole_material_or_frame_result_claimed':False}
++            report['conditional_complete_channel_omitted_code_control']={'executed':False,'status':'complete_fixed_channel_not_executed'}
+         else:
+             sources[0]['pieces'][332]['additional_slabs']=[(normal,tau_bounds)]
+             sources[0]['pieces'][332]['slab_source']='exact_original_Line_full_D_with_hypothetical_tau_margin'
+@@ -469,6 +484,9 @@
+                     else:need(piece['box']==original_sources[side]['pieces'][i]['box'] and len(piece['additional_slabs'])==1,
+                               'the new slab must retain the complete original AABB')
+             report['all_702_original_carriers_and_order_preserved_except_one_added_slab']=True
++            report['original_total_piece_count']=702
++            report['completely_unchanged_piece_count']=701
++            report['carrier_with_one_added_slab_count']=1
+             counters['channels_tested']+=1;report['actual_fixed_whole_channel_attempts']=1
+             codes=[];blocker=None
+             for i,piece in enumerate(sources[0]['pieces']):
+@@ -506,8 +524,9 @@
+                 report['conditional_complete_channel_omitted_code_control']={'executed':False,'status':'no_complete_channel_exclusion_to_mutate'}
+             report['fixed_whole_channel_result']=result
+         need(counters['channels_tested']<=1 and counters['boundary_box_tests']<=526 and counters['support_inequality_tests']<=4208 and
+-             independent_calls<=553,'finite one-target/one-channel scope exceeded')
++             independent_calls<=553 and independent_claim_calls==6,'finite one-target/one-channel/claim scope differs')
+         vertices,comparisons=totals()
++        need(vertices<=864 and comparisons<=50000,'final registered endpoint/tube validation capacity exceeded')
+         cumulative={'splits':82,'piece_like_tests':baseline['piece_like_tests']+counters['boundary_box_tests']+independent_calls+vertices,
+                     'support_like_tests':baseline['support_like_tests']+counters['support_inequality_tests']+independent_calls+comparisons}
+         need(cumulative['piece_like_tests']<=12000000 and cumulative['support_like_tests']<=12000000,
+@@ -518,7 +537,7 @@
+         report['source_support_applies_to_exact_exported_curve_only']=True
+         report['tau_cube_is_a_separate_hypothesis_not_native_error_certification']=True
+         report['whole_hypothetical_tube_containment_in_original_AABB']=verified['hypothetical_tube_contained_in_original_carrier']
+-        report['all_registered_inputs_unchanged']=all(same(identity(row['path']),row) for row in bound_all.values())
++        report['all_registered_inputs_unchanged']=all(same(identity(row['path']),row) for row in bound_all.values()) and same(identity(args.contract),report['contract'])
+         need(report['all_registered_inputs_unchanged'],'registered source/input changed during the finite diagnostic')
+         report['completed']=True
+     except BaseException as exc:
+@@ -527,8 +546,11 @@
+         signal.alarm(0)
+         report['actual_partial_or_complete_producer_counters']=counters
+         report['actual_independent_original_separator_calls']=independent_calls
++        report['actual_independent_claim_calls']=independent_claim_calls
+         report['actual_source_validation_counters']=validation
+         report['validation_comparisons_include_explicit_conservative_fixed_charges']=True
++        report['source_serialization_bytes_are_separate_labeled_counts_and_also_conservative_extra_debits']=True
++        report['comparison_total_is_an_upper_debit_including_arithmetic_and_source_bytes_not_literal_comparison_count']=True
+         report['source_validation_vertices_and_comparisons']=dict(zip(('vertices','comparisons'),totals()))
+         report['previous_actual_additional_stage_debit']=baseline
+         report['partial_or_complete_registered_input_identities']=before

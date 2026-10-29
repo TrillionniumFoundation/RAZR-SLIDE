@@ -1,0 +1,579 @@
+"""One saved low child, one original Line, one fixed original material channel.
+
+This is a finite conditional source-model diagnostic, not native or V9 qualification.
+It adds one closed slab to the old AABB; it never removes an old carrier or splits.
+The independent Line reader is separately authored and separately hash-bound.
+"""
+import argparse
+import ast
+import copy
+from datetime import datetime, timezone
+from fractions import Fraction as F
+import gc
+import gzip
+import hashlib
+import importlib.util
+import json
+import os
+from pathlib import Path
+import resource
+import signal
+import sys
+import time
+import traceback
+from types import SimpleNamespace
+
+
+def need(ok,message):
+    if not ok:raise ValueError(message)
+
+def separated(model,piece,channel,counters,limits):
+    if counters['boundary_box_tests']>=limits['maximum_boundary_box_tests']:return 'budget'
+    counters['boundary_box_tests']+=1
+    for axis in range(3):
+        for end in (0,1):
+            if counters['support_inequality_tests']>=limits['maximum_support_inequality_tests']:return 'budget'
+            counters['support_inequality_tests']+=1
+            holds=piece['box'][axis][1]<=channel[axis][0] if end==0 else piece['box'][axis][0]>=channel[axis][1]
+            if holds:return str(2*axis+end)
+    need(len(piece['additional_slabs'])<=1,'at most one registered nonaxis slab per piece')
+    for normal,interval in piece['additional_slabs']:
+        need(any(normal),'nonzero registered slab normal required');target=model.project(normal,channel)
+        for end in (0,1):
+            if counters['support_inequality_tests']>=limits['maximum_support_inequality_tests']:return 'budget'
+            counters['support_inequality_tests']+=1
+            if (interval[1]<=target[0] if end==0 else interval[0]>=target[1]):
+                counters['successful_nonaxis_separations']+=1;return str(6+end)
+    return None
+
+def require(ok, message):
+    if not ok:
+        raise ValueError(message)
+
+def decode(box):
+    result = [tuple(map(F, interval)) for interval in box]
+    require(len(result) == 3 and all(len(i) == 2 and i[0] <= i[1] for i in result), 'ordered finite 3D box required')
+    return result
+
+def encode(box):
+    return [[str(v) for v in interval] for interval in box]
+
+def volume(box):
+    if any(lo >= hi for lo, hi in box):
+        return F(0)
+    value = F(1)
+    for lo, hi in box:
+        value *= hi-lo
+    return value
+
+def channel_for(cell, whole, axis, end):
+    result = list(cell)
+    # Exactly 1 mm beyond the complete support box, with no floating operation.
+    if end == 0:
+        result[axis] = (min(whole[axis][0]-1, cell[axis][0]-1), cell[axis][1])
+    else:
+        result[axis] = (cell[axis][0], max(whole[axis][1]+1, cell[axis][1]+1))
+    require(all(lo < hi for lo, hi in result), 'open channel must be positive and connected')
+    return result
+
+def add(a,b):return (a[0]+b[0],a[1]+b[1])
+
+def scale(c,a):return (min(c*a[0],c*a[1]),max(c*a[0],c*a[1]))
+
+def project(normal,ranges):
+    result=(F(0),F(0))
+    for value,part in zip(normal,ranges):result=add(result,scale(value,part))
+    return result
+
+def resources(path):
+    stats = {k: int(v) for k, v in (line.split() for line in
+             Path('/sys/fs/cgroup/memory.stat').read_text().splitlines())}
+    disk = os.statvfs(path)
+    return {'disk_available_bytes': disk.f_bavail * disk.f_frsize,
+            'shared_unreclaimable_bytes': stats['anon'] + stats['shmem'] +
+                max(stats['kernel'] - stats['slab_reclaimable'], 0) + stats.get('unevictable', 0)}
+
+
+def identity(path):
+    p=Path(path).resolve();h=hashlib.sha256()
+    with p.open('rb') as stream:
+        for data in iter(lambda:stream.read(1048576),b''):h.update(data)
+    return {'path':str(p),'bytes':p.stat().st_size,'sha256':h.hexdigest()}
+
+
+def same(a,b):return all(a[k]==b[k] for k in ('bytes','sha256'))
+
+
+def canonical(x):return hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+
+
+def load(row,compressed=False):
+    need(same(identity(row['path']),row),'registered source input differs: '+row['path'])
+    if compressed:
+        with gzip.open(row['path'],'rb') as stream:raw=stream.read(67108865)
+    else:
+        need(row['bytes']<=67108864,'registered finite input byte cap exceeded')
+        raw=Path(row['path']).read_bytes()
+    need(len(raw)<=67108864,'registered finite decoded input byte cap exceeded')
+    return json.loads(raw)
+
+
+def load_selected_native(row):
+    doc=load(row)
+    need(doc['execution_completed'] is True and len(doc['operands'])==53,'complete original native inventory required')
+    selected=[v for v in doc['operands'] if (v['input']['case_id'],v['input']['material_id'])==('case-028',3)]
+    need(len(selected)==1,'unique complete original material record required')
+    result=selected[0]
+    need(result['boundary']['incomplete_inventory']==[] and
+         result['boundary']['counts']=={'solids':1,'shells':1,'faces':80,'edges':228,'vertices':152},
+         'complete original material boundary census differs')
+    del selected,doc
+    gc.collect()
+    return result
+
+
+def imported(row,name):
+    need(same(identity(row['path']),row),'registered independent reader source differs')
+    spec=importlib.util.spec_from_file_location(name,row['path'])
+    out=importlib.util.module_from_spec(spec);spec.loader.exec_module(out)
+    need(not any(v.split('.')[0] in ('FreeCAD','Part','OCC','OCP','cadquery') for v in sys.modules),
+         'native operation or unexpected native module import')
+    return out
+
+
+def original_function_copies(contract):
+    own={n.name:n for n in ast.parse(Path(__file__).read_text()).body if isinstance(n,ast.FunctionDef)}
+    trees={};rows=[]
+    for row in contract['original_function_bindings']:
+        label=row['original_source_input']
+        if label not in trees:
+            trees[label]={n.name:n for n in ast.parse(Path(contract['inputs'][label]['path']).read_text()).body if isinstance(n,ast.FunctionDef)}
+        source=trees[label][row['original_function']];actual=own[row['copied_function']]
+        need(ast.dump(source)==ast.dump(actual),'complete original function AST differs')
+        need(hashlib.sha256(ast.dump(source).encode()).hexdigest()==row['original_AST_sha256']==row['copied_AST_sha256'],
+             'registered original function AST identity differs')
+        rows.append(dict(row,actual_AST_equality=True))
+    need(len(rows)==11,'eleven original spatial/helper/resource functions required')
+    return rows
+
+
+def runtime_sources(boundary):
+    out=[]
+    for source in boundary['sources']:
+        pieces=[]
+        for piece in source['pieces']:
+            need(len(piece['additional_slabs'])<=1,'original at-most-one slab required')
+            slabs=[(tuple(map(F,v['normal_exact'])),tuple(map(F,v['bounds_exact']))) for v in piece['additional_slabs']]
+            pieces.append({'box':decode(piece['box_exact']),'additional_slabs':slabs,
+                           'slab_source':piece['additional_slabs'][0]['source'] if slabs else None})
+        out.append({'whole':decode(source['known_whole_exact']),'pieces':pieces})
+    need([s['material_key'] for s in boundary['sources']]==[['case-028',3],['case-028',2]] and
+         [len(s['pieces']) for s in out]==[523,179],'complete original carrier/order/census differs')
+    return out
+
+
+def independent_runtime_sources(boundary,check):
+    return [{'whole':check.intervals(s['known_whole_exact']),
+             'pieces':[{'box':check.intervals(p['box_exact']),
+                        'additional_slabs':[(check.vector(v['normal_exact']),check.intervals([v['bounds_exact']],1)[0])
+                                            for v in p['additional_slabs']],
+                        'slab_source':p['additional_slabs'][0]['source'] if p['additional_slabs'] else None}
+                       for p in s['pieces']]} for s in boundary['sources']]
+
+
+def verify_saved_child(old,probe,charge):
+    need(probe['completed'] and probe['source_locator']==[78,375] and probe['actual_new_splits']==1 and
+         probe['actual_new_child_channel_attempts']==2 and probe['local_excluded_open_volume_exact']=='0',
+         'the exact actual failed one-split diagnostic must be retained')
+    need(probe['source_original_depth']==24 and probe['diagnostic_local_depth']==1 and
+         probe['cumulative_depth_from_original_V6_root']==25 and probe['original_V6_depth_gate_passed'] is False and
+         probe['actual_new_split_exceeds_original_V6_depth_cap'] is True,'original cumulative depth-25 scope differs')
+    root=old['roots'][78];nodes={n['id']:n for n in root['tree']['nodes']}
+    need(nodes[375]==probe['original_complete_parent_leaf'],'complete original source leaf differs')
+    cell=decode(root['root_box_exact']);current=0;path=probe['original_complete_path']
+    need(len(path)==24,'complete original inherited path required')
+    for step in path:
+        charge('producer_saved_path_comparisons',16)
+        need(step['original_parent_node']==current,'original path parent differs')
+        node=nodes[current];axis=node['axis'];cut=F(node['cut_exact']);branch=step['branch']
+        need(node['kind']=='split' and step['axis']==axis and step['cut_exact']==node['cut_exact'] and
+             step['original_cut_source']==node['cut_source'] and node['children'][branch]==step['original_child_node'],
+             'original path cut/order/source differs')
+        lo,hi=cell[axis];need(lo<cut<hi and branch in (0,1),'original strict partition differs')
+        cell=list(cell);cell[axis]=(lo,cut) if branch==0 else (cut,hi);current=step['original_child_node']
+    charge('producer_saved_child_comparisons',64)
+    need(current==375 and encode(cell)==probe['original_parent_box_exact'] and
+         volume(cell)==F(probe['original_parent_positive_directed_volume_exact']), 'saved original parent box/volume differs')
+    cut=probe['actual_cut'];need(cut['axis']==0 and cut['cut_source']=={
+        'kind':'registered_midpoint','axis':0,'selection_rule':'largest_registered_radial_slab_variation'},
+        'the one previously executed original cut differs')
+    position=F(cut['cut_exact']);need(position==(cell[0][0]+cell[0][1])/2,'saved original midpoint differs')
+    low=list(cell);low[0]=(cell[0][0],position)
+    child=probe['child_observations'][0]
+    need(child['child_index']==0 and encode(low)==child['box_exact'] and
+         volume(low)==F(child['positive_directed_volume_exact']) and volume(low)*2==volume(cell),
+         'the fixed original failed low child differs')
+    observations=child['complete_actual_original_channel_observation']['all_registered_channels_unresolved']
+    need(len(observations)==12 and observations[2]=={'material_side':0,'axis':1,'end':0,'unresolved_piece_index':332} and
+         child['status']=='pending_after_fixed_one_split_cost_probe','the fixed actual low-child channel failure differs')
+    return low
+
+
+def make_claim(edge,carrier,full_D,charge):
+    # A conservative fixed charge covers all comparisons in this finite formula construction.
+    charge('producer_complete_claim_formula_comparisons',128)
+    curve=edge['native_global_curve'];origin=tuple(map(F,curve['origin_exact']));direction=tuple(map(F,curve['direction_exact']))
+    interval=(F(curve['first_parameter']['exact']),F(curve['last_parameter']['exact']));D=decode(full_D)
+    normal=(F(1),F(2),F(0));tau=F(edge['tolerance']['exact'])
+    need(len(origin)==len(direction)==3 and interval[0]<interval[1] and tau>0,'full original ordered Line/tolerance required')
+    constant=sum(n*v for n,v in zip(normal,origin));slope=sum(n*v for n,v in zip(normal,direction))
+    forward=[add((origin[k],origin[k]),add(scale(direction[k],interval),D[k])) for k in range(3)]
+    exact=add((constant,constant),add(scale(slope,interval),project(normal,D)))
+    margin=tau*sum(abs(n) for n in normal);expanded=(exact[0]-margin,exact[1]+margin)
+    tube=[(lo-tau,hi+tau) for lo,hi in forward]
+    return {'schema':'razr-r7e-edge189-line-support-claim-v1','material_key':['case-028',3],'piece_index':332,
+        'complete_original_edge':copy.deepcopy(edge),'complete_original_edge_canonical_sha256':canonical(edge),
+        'full_D_exact':copy.deepcopy(full_D),'complete_original_carrier':copy.deepcopy(carrier),
+        'normal_exact':[str(v) for v in normal],'normal_dot_direction_exact':str(slope),'line_dot_constant_exact':str(constant),
+        'forward_source_box_exact':encode(forward),'exact_slab_bounds_exact':[str(v) for v in exact],
+        'tau_exact':str(tau),'tau_L1_expansion_exact':str(margin),'tau_expanded_slab_bounds_exact':[str(v) for v in expanded],
+        'hypothetical_tube_box_exact':encode(tube),'native_BREP_error_bound_certified':False}
+
+
+def negative_claims(claim,charge):
+    first=copy.deepcopy(claim['complete_original_edge'])
+    for name in ('local_curve','native_global_curve'):
+        first[name]['first_parameter']={'float':0.0,'hex':'0x0.0p+0','exact':'0'}
+    a=make_claim(first,claim['complete_original_carrier'],claim['full_D_exact'],charge)
+    direction=copy.deepcopy(claim['complete_original_edge'])
+    for name in ('local_curve','native_global_curve'):direction[name]['direction_exact'][2]='0'
+    b=make_claim(direction,claim['complete_original_carrier'],claim['full_D_exact'],charge)
+    c=copy.deepcopy(claim);c['normal_exact']=['1','1','0']
+    d=copy.deepcopy(claim);constant=F(claim['line_dot_constant_exact']);margin=F(claim['tau_L1_expansion_exact'])
+    d['exact_slab_bounds_exact']=[str(constant),str(constant)]
+    d['tau_expanded_slab_bounds_exact']=[str(constant-margin),str(constant+margin)]
+    e=copy.deepcopy(claim);e['tau_expanded_slab_bounds_exact']=copy.deepcopy(claim['exact_slab_bounds_exact'])
+    return [('shortened_complete_parameter_domain',a,'source_edge_identity'),
+            ('nonzero_Vz_replaced_with_zero',b,'source_edge_identity'),
+            ('wrong_fixed_normal',c,'fixed_normal'),
+            ('full_D_omitted_from_scalar_support_only',d,'exact_support_16_vertices'),
+            ('tau_omitted_from_expanded_slab_only',e,'tau_support_128_vertices')]
+
+
+def main():
+    parser=argparse.ArgumentParser(allow_abbrev=False)
+    parser.add_argument('--contract',type=Path,required=True);parser.add_argument('--output',type=Path,required=True)
+    args=parser.parse_args();contract=json.loads(args.contract.read_text())
+    need(not args.output.exists(),'new diagnostic output directory required');args.output.mkdir(parents=True)
+    started=time.monotonic();resource.setrlimit(resource.RLIMIT_AS,(536870912,536870912))
+    signal.signal(signal.SIGALRM,lambda *_:(_ for _ in ()).throw(TimeoutError('registered 60-second edge189 diagnostic cap')))
+    signal.alarm(60)
+    report={'schema':'razr-r7e-edge189-exact-line-support-diagnostic-v1','started_utc':datetime.now(timezone.utc).isoformat(),
+        'completed':False,'source':identity(__file__),'contract':identity(args.contract),'finite_source_model_diagnostic_only':True,
+        'original_V6_depth_gate_passed':False,'source_child_cumulative_depth':25,'new_splits':0,
+        'V9_first_u_qualification':False,'original_V9_owned_failure_reclassified':False,'new_full_frame_execution':False,
+        'native_operations':0,'native_BREP_error_bound_certified':False,'native_trim_membership_verified':False,
+        'full_continuous_G2':False,'all_blockers_closed':False,'producer_or_primitive_helper_imported':False,
+        'actual_fixed_whole_channel_attempts':0,'new_full_frame_execution_authorized_by_this_diagnostic':False,
+        'source_support_claim':None,'independent_source_support_readback':None,'actual_negative_controls':[]}
+    validation={};before={};independent_calls=0;independent_claim_calls=0
+    counters={'channels_tested':0,'boundary_box_tests':0,'support_inequality_tests':0,'successful_nonaxis_separations':0}
+    baseline={'splits':82,'piece_like_tests':174854,'support_like_tests':366314}
+    def totals():
+        vertices=sum(v for k,v in validation.items() if k.endswith('_vertices'))
+        comparisons=sum(v for k,v in validation.items() if not k.endswith('_vertices'))
+        return vertices,comparisons
+    def charge(label,count=1):
+        need(type(label) is str and type(count) is int and count>=0,'finite explicit validation counter required')
+        validation[label]=validation.get(label,0)+count
+        vertices,comparisons=totals()
+        need(vertices<=864 and comparisons<=50000,'registered endpoint/tube validation capacity exceeded')
+        need(baseline['piece_like_tests']+counters['boundary_box_tests']+independent_calls+vertices<=12000000 and
+             baseline['support_like_tests']+counters['support_inequality_tests']+independent_calls+comparisons<=12000000,
+             'complete conservative additional-stage budget including source validation exceeded')
+    try:
+        need(sys.flags.isolated==1 and sys.flags.no_site==1 and sys.flags.optimize==0 and sys.dont_write_bytecode,
+             'isolated unoptimized bytecode-disabled standard Python required')
+        need(contract['schema']=='razr-r7e-edge189-line-support-diagnostic-contract-v1' and same(identity(__file__),contract['source']),
+             'registered edge189 source identity differs')
+        need(contract['wall_seconds']==60 and contract['address_space_bytes']==536870912 and contract['maximum_output_bytes']==4194304 and
+             contract['maximum_new_splits']==0 and contract['maximum_fixed_whole_channel_attempts']==1 and
+             contract['maximum_single_piece_comparisons']==3 and contract['maximum_independent_claim_calls']==6 and
+             contract['maximum_new_validation_comparisons']==50000 and contract['maximum_new_validation_vertices']==864 and
+             contract['maximum_new_producer_piece_tests']==526 and contract['maximum_new_producer_support_tests']==4208 and
+             contract['maximum_independent_separator_calls']==553,'registered finite diagnostic capacity differs')
+        need(contract['fixed_channel']=={'material_side':0,'axis':1,'end':0} and contract['fixed_piece_index']==332 and
+             contract['fixed_original_source_locator']==[78,375] and contract['fixed_source_child_index']==0 and
+             contract['fixed_normal_exact']==['1','2','0'] and contract['cumulative_source_depth']==25 and
+             contract['original_V6_depth_gate_passed'] is False and contract['qualification_claimed'] is False,
+             'registered single original target/normal/scope differs')
+        need(contract['argv'][1:]==['-I','-S','-B',str(Path(__file__).resolve()),'--contract',str(args.contract.resolve()),
+                                    '--output',str(args.output.resolve())],'registered exact argv differs')
+        startup=resources(args.output);startup['memory_current_bytes_observed_not_gated']=int(Path('/sys/fs/cgroup/memory.current').read_text())
+        startup['shared_plus_registered_RSS_bytes']=startup['shared_unreclaimable_bytes']+536870912
+        startup['required_startup_disk_bytes']=contract['disk_floor_bytes']+4194304+contract['metadata_margin_bytes']
+        report['actual_startup_original_formula_resources']=startup
+        need(contract['disk_floor_bytes']==104857600 and contract['metadata_margin_bytes']==4194304 and
+             contract['shared_ceiling_bytes']==7301444403,'original resource gate definitions differ')
+        need(startup['disk_available_bytes']>=startup['required_startup_disk_bytes'] and
+             startup['shared_plus_registered_RSS_bytes']<=contract['shared_ceiling_bytes'],'original-formula finite diagnostic startup gate failed')
+        inputs=contract['inputs'];bound_all=dict(inputs)
+        bound_all.update({'V6_archive/'+k:v for k,v in contract['original_V6_archive_files'].items()})
+        bound_all.update({k:contract[k] for k in ('source','basis','static_capacity','source_function_mapping','checker_interface','independent_line_checker')})
+        need(len(bound_all)==contract['registered_input_and_artifact_count'] and
+             sum(row['bytes'] for row in bound_all.values())==contract['registered_input_and_artifact_bytes'],
+             'complete registered finite member/byte census differs')
+        before={k:identity(v['path']) for k,v in bound_all.items()}
+        need(all(same(before[k],row) for k,row in bound_all.items()),'complete registered source/artifact identity differs')
+        report['original_function_copy_checks']=original_function_copies(contract)
+        prior_contract=load(inputs['actual_cost_probe_contract']);probe=load(inputs['actual_cost_probe_report'])
+        need(contract['original_V6_archive_files']==prior_contract['original_V6_archive_files'] and
+             all(inputs[k]==v for k,v in prior_contract['inputs'].items()),'complete prior76 input bindings must remain unchanged')
+        need(same(probe['contract'],inputs['actual_cost_probe_contract']) and same(probe['source'],inputs['actual_cost_probe_source']) and
+             probe['all_registered_inputs_unchanged'] and probe['cumulative_conservative_additional_stage_debit']==baseline,
+             'actual prior cost-probe/source/cumulative ledger binding differs')
+        report['complete_prior_cost_ledger']=copy.deepcopy(probe['earlier_diagnostic_cost_ledger'])
+        report['historical_V6_counter_ledger']=probe['original_V6_producer_historical_counters']
+        report['historical_V9_counter_ledger']=probe['original_V9_producer_historical_counters']
+        report['prior_spatial_probe_actual_counters']=probe['actual_this_probe_producer_counter_cost']
+        report['prior_spatial_probe_independent_calls']=probe['actual_this_probe_independent_separator_calls']
+        need(probe['original_V9_owned_failure_retained']=={'type':'RuntimeError','message':"still-running owned child RSS unavailable: KeyError: 'VmRSS'"} and
+             probe['original_first_u_gate_reached'] is False,
+             'actual failed V9 ownership/first-u distinction must remain unchanged')
+        archive=contract['original_V6_archive_files'];old_report=load(archive['all-primitive-support-frames/report.json'])
+        frame=next(v for v in old_report['frames'] if (v['case_id'],v['frame'])==('case-028',1))
+        old_row=archive['all-primitive-support-frames/'+frame['certificate']['path']]
+        need(same(frame['certificate'],old_row),'original selected V6 frame identity differs')
+        old=load(old_row,True);need(old['frame']=={k:v for k,v in frame.items() if k!='certificate'},'complete old frame header differs')
+        boundary=old['boundary_refinement'];need(canonical(boundary)==probe['complete_original_boundary_canonical_sha256'],
+             'complete original two-material boundary/order/census differs')
+        full_D=frame['original_remaining_displacement_box_exact']
+        need(full_D==probe['original_full_remaining_D']==[['0','0'],['0','1/2251799813685248'],['0','0']],
+             'whole original D must remain exact and complete')
+        child=verify_saved_child(old,probe,charge)
+        carrier=boundary['sources'][0]['pieces'][332]
+        metadata=load(inputs['source_metadata_readback'])
+        need(same(metadata['original_V6_certificate'],old_row) and carrier==metadata['complete_original_inherited_carrier'] and
+             carrier['kind']=='edge' and carrier['index']==189 and carrier['additional_slabs']==[],
+             'the unchanged original edge189 carrier must remain exact')
+        report.update(original_source_locator=[78,375],fixed_low_child_index=0,fixed_material_channel=contract['fixed_channel'],
+            fixed_original_piece_index=332,complete_original_edge_carrier=copy.deepcopy(carrier),full_original_D_exact=copy.deepcopy(full_D),
+            fixed_low_child_box_exact=encode(child),fixed_low_child_positive_directed_volume_exact=probe['child_observations'][0]['positive_directed_volume_exact'],
+            complete_original_boundary_canonical_sha256=canonical(boundary),original_material_piece_counts=[523,179])
+        producer=load_selected_native(inputs['native_original_producer']);reader=load_selected_native(inputs['native_original_reader'])
+        need(producer==reader and producer['input']==metadata['selected_original_record']['input'] and
+             canonical(producer['boundary'])==metadata['selected_original_record']['complete_boundary_canonical_sha256'],
+             'complete original producer/independent-reader material records differ')
+        edge=producer['boundary']['edges'][189];reader_edge=reader['boundary']['edges'][189]
+        need(edge==metadata['selected_original_record']['complete_original_edge'] and
+             canonical(edge)==metadata['selected_original_record']['complete_original_edge_canonical_sha256'],
+             'complete original source edge identity differs')
+        need(edge['location']['identity'] is True and edge['location']['matrix_3x4_exact']==[
+            ['1','0','0','0'],['0','1','0','0'],['0','0','1','0']] and edge['local_curve']==edge['native_global_curve'] and
+            edge['native_global_curve']['type']=='GeomAbs_CurveType.GeomAbs_Line' and edge['degenerated'] is False,
+            'original identity-placed complete nondegenerate Line required')
+        need(F(edge['native_global_curve']['direction_exact'][2])!=0,'the original nonzero z direction may not be rounded away')
+        need(same(identity(inputs['original_material_BREP']['path']),producer['input']),'original selected BREP bytes differ')
+        report['complete_original_native_material_records_equal']=True
+        report['complete_original_native_boundary_canonical_sha256']=canonical(producer['boundary'])
+        report['original_nonzero_Vz_exact']=edge['native_global_curve']['direction_exact'][2]
+        edge=copy.deepcopy(edge);reader_edge=copy.deepcopy(reader_edge)
+        del producer,reader,old,old_report
+        gc.collect()
+        claim=make_claim(edge,carrier,full_D,charge)
+        need(claim['normal_dot_direction_exact']=='0','registered fixed normal is not exactly orthogonal to full original V')
+        claim_path=args.output/'PRODUCER_LINE_SUPPORT_CLAIM_V1.json'
+        claim_path.write_text(json.dumps(claim,indent=2)+'\n');report['source_support_claim']=identity(claim_path)
+        readback=json.loads(claim_path.read_text());need(readback==claim,'actual producer support payload readback differs')
+        line_check=imported(contract['independent_line_checker'],'r7e_edge189_independent_corner_reader')
+        independent_claim_calls+=1
+        verified=line_check.verify_claim(readback,reader_edge,copy.deepcopy(carrier),copy.deepcopy(full_D),charge)
+        need(verified['claim_verified'] is True and verified['native_BREP_error_bound_certified'] is False,
+             'independent source model readback must preserve native uncertainty')
+        need(len(verified['exact_vertices'])==16 and len(verified['hypothetical_tube_vertices'])==128,
+             'independent actual full endpoint/corner records must preserve duplicate-index vertices')
+        report['independent_source_support_readback']=verified
+        report['source_interval_and_independent_corner_methods_agree']=True
+        controls=negative_claims(claim,charge)
+        need(len(controls)==5,'five registered actual source/domain/tolerance controls required')
+        for name,mutant,mechanism in controls:
+            counts_before=dict(validation);rejected=False;failure=None;caught=None;stage=None;matched=False
+            independent_claim_calls+=1
+            try:line_check.verify_claim(mutant,reader_edge,copy.deepcopy(carrier),copy.deepcopy(full_D),charge)
+            except BaseException as exc:
+                caught=exc;rejected=True;stage=getattr(exc,'code',None)
+                if stage is None:stage=str(exc).split(':',1)[0]
+                failure={'type':type(exc).__name__,'message':str(exc),'actual_rejection_stage':stage}
+                matched=isinstance(exc,ValueError) and stage==mechanism
+            row={'name':name,'executed':True,'rejected':rejected,'expected_rejection_mechanism':mechanism,
+                 'expected_rejection_confirmed':matched,
+                 'actual_exception':failure,'mutated_claim':mutant,'mutated_claim_canonical_sha256':canonical(mutant),
+                 'validation_counter_cost':{k:v-counts_before.get(k,0) for k,v in validation.items() if v-counts_before.get(k,0)}}
+            report['actual_negative_controls'].append(row)
+            if caught is not None and not matched:raise caught
+            need(matched,'independent reader did not reject actual negative control at the registered stage: '+name)
+        limits=contract['original_capacity']
+        need(limits==prior_contract['original_capacity'] and limits['maximum_depth']==24 and limits['maximum_splits']==4096 and
+             limits['maximum_boundary_box_tests']==limits['maximum_support_inequality_tests']==12000000,
+             'original registered scientific limits may not change')
+        sources=runtime_sources(boundary);original_sources=copy.deepcopy(sources)
+        original_check=imported(inputs['original_independent_checker_source'],'r7e_edge189_original_primitive_checker')
+        check_sources=independent_runtime_sources(boundary,original_check)
+        original_separator=original_check.separator_holds
+        def counted_original_separator(piece,channel,code):
+            nonlocal independent_calls
+            independent_calls+=1
+            need(independent_calls<=553,'registered finite original independent separator cap exceeded')
+            charge('independent_separator_wrapper_guard_comparisons',1)
+            return original_separator(piece,channel,code)
+        original_check.separator_holds=counted_original_separator
+        channel=channel_for(child,sources[0]['whole'],1,0)
+        need(tuple(channel)==original_check.channel_for(tuple(child),check_sources[0]['whole'],1,0),
+             'independent original fixed-channel construction differs')
+        report['fixed_original_open_channel_exact']=encode(channel)
+        exact_bounds=tuple(map(F,claim['exact_slab_bounds_exact']));tau_bounds=tuple(map(F,claim['tau_expanded_slab_bounds_exact']))
+        normal=tuple(map(F,claim['normal_exact']));target=project(normal,channel)
+        report['fixed_normal_channel_projection_exact']=[str(v) for v in target]
+        report['local_signed_support_gaps']={
+            'exact_upper_below_channel_lower':str(target[0]-exact_bounds[1]),
+            'exact_lower_above_channel_upper':str(exact_bounds[0]-target[1]),
+            'tau_upper_below_channel_lower':str(target[0]-tau_bounds[1]),
+            'tau_lower_above_channel_upper':str(tau_bounds[0]-target[1])}
+        model=SimpleNamespace(project=project);local=[]
+        original_piece=original_sources[0]['pieces'][332]
+        for name,bounds in [('original_AABB_only',None),('original_AABB_plus_exact_Line_slab',exact_bounds),
+                            ('original_AABB_plus_tau_expanded_Line_slab',tau_bounds)]:
+            piece=copy.deepcopy(original_piece)
+            if bounds is not None:piece['additional_slabs']=[(normal,bounds)]
+            counts_before=dict(counters);calls_before=independent_calls
+            code=separated(model,piece,channel,counters,limits)
+            need(code!='budget','original budget was unexpectedly exhausted in finite local comparison')
+            cp=copy.deepcopy(check_sources[0]['pieces'][332])
+            if bounds is not None:
+                key='exact_slab_bounds_exact' if name=='original_AABB_plus_exact_Line_slab' else 'tau_expanded_slab_bounds_exact'
+                cp['additional_slabs']=[(original_check.vector(verified['normal_exact']),
+                                          original_check.intervals([verified[key]],1)[0])]
+            if code is None:
+                possible='01234567' if bounds is not None else '012345'
+                need(not any(counted_original_separator(cp,tuple(channel),v) for v in possible),
+                     'independent original reader found an unreported local separator')
+            else:need(counted_original_separator(cp,tuple(channel),code),'independent original local support inequality differs')
+            local.append({'model':name,'separation_code':code,'source_box_gate_satisfied':verified['source_box_equals_original_carrier'],
+                          'producer_counter_cost':{k:counters[k]-counts_before[k] for k in counters},
+                          'independent_original_separator_calls':independent_calls-calls_before})
+        report['actual_three_fixed_piece_comparisons']=local
+        need(local[0]['separation_code'] is None,'the actual saved original AABB blocker did not reproduce')
+        eligible=verified['source_box_equals_original_carrier'] is True and local[2]['separation_code'] is not None
+        report['fixed_whole_channel_eligible']=eligible
+        if not eligible:
+            report['fixed_whole_channel_result']={'executed':False,'status':'unexecuted_source_box_or_tau_local_separator_condition_false',
+                'original_source_box_strict_equality':verified['source_box_equals_original_carrier'],
+                'tau_expanded_local_separation_code':local[2]['separation_code'],
+                'whole_material_or_frame_result_claimed':False}
+            report['conditional_complete_channel_omitted_code_control']={'executed':False,'status':'complete_fixed_channel_not_executed'}
+        else:
+            sources[0]['pieces'][332]['additional_slabs']=[(normal,tau_bounds)]
+            sources[0]['pieces'][332]['slab_source']='exact_original_Line_full_D_with_hypothetical_tau_margin'
+            check_sources[0]['pieces'][332]['additional_slabs']=[(original_check.vector(verified['normal_exact']),
+                original_check.intervals([verified['tau_expanded_slab_bounds_exact']],1)[0])]
+            check_sources[0]['pieces'][332]['slab_source']='exact_original_Line_full_D_with_hypothetical_tau_margin'
+            for side in range(2):
+                need(sources[side]['whole']==original_sources[side]['whole'],'original whole material carrier changed')
+                for i,piece in enumerate(sources[side]['pieces']):
+                    if (side,i)!=(0,332):need(piece==original_sources[side]['pieces'][i],'another original carrier or its source order changed')
+                    else:need(piece['box']==original_sources[side]['pieces'][i]['box'] and len(piece['additional_slabs'])==1,
+                              'the new slab must retain the complete original AABB')
+            report['all_702_original_carriers_and_order_preserved_except_one_added_slab']=True
+            report['original_total_piece_count']=702
+            report['completely_unchanged_piece_count']=701
+            report['carrier_with_one_added_slab_count']=1
+            counters['channels_tested']+=1;report['actual_fixed_whole_channel_attempts']=1
+            codes=[];blocker=None
+            for i,piece in enumerate(sources[0]['pieces']):
+                code=separated(model,piece,channel,counters,limits)
+                need(code!='budget','registered original predicate cap exhausted in the one fixed channel')
+                if code is None:blocker=i;break
+                codes.append(code)
+            result={'executed':True,'material_side':0,'axis':1,'end':0,'open_channel_exact':encode(channel),
+                'tested_original_piece_prefix_count':len(codes)+(blocker is not None),'separated_original_piece_prefix_codes':''.join(codes),
+                'original_complete_material_piece_count':523,'first_unresolved_original_piece_index':blocker,
+                'whole_closed_cell_disjoint_claimed':False,'closed_cell_boundary_retained_as_zero_volume_carrier':True,
+                'actual_material_interference_claimed':False,'native_qualification_claimed':False}
+            if blocker is None:
+                certificate={'excluded_open_interior':True,'material_side':0,'axis':1,'end':0,'open_channel_exact':encode(channel),
+                    'complete_piece_separation_codes':''.join(codes),'boundary_piece_count':523,
+                    'closed_cell_boundary_retained_as_zero_volume_carrier':True,'whole_closed_cell_disjoint_claimed':False,
+                    'nonaxis_separation_code_count':sum(c in '67' for c in codes)}
+                result['conditional_source_model_open_interior_excluded']=True
+                result['complete_new_conditional_certificate']=certificate
+                result['original_independent_certificate_readback']=original_check.check_exclusion(certificate,tuple(child),check_sources)
+                bad=copy.deepcopy(certificate);bad['complete_piece_separation_codes']=bad['complete_piece_separation_codes'][:-1]
+                rejected=False;error=None
+                try:original_check.check_exclusion(bad,tuple(child),check_sources)
+                except ValueError as exc:rejected=True;error={'type':type(exc).__name__,'message':str(exc)}
+                report['conditional_complete_channel_omitted_code_control']={'executed':True,'rejected':rejected,'actual_exception':error}
+                need(rejected,'original independent reader accepted omitted whole-channel source proof')
+            else:
+                for i,code in enumerate(codes):need(counted_original_separator(check_sources[0]['pieces'][i],tuple(channel),code),
+                                                  'original independent separated prefix differs')
+                piece=check_sources[0]['pieces'][blocker];possible='01234567' if piece['additional_slabs'] else '012345'
+                need(not any(counted_original_separator(piece,tuple(channel),code) for code in possible),
+                     'original independent fixed-channel blocker has an omitted separator')
+                result['conditional_source_model_open_interior_excluded']=False
+                result['first_unresolved_original_carrier']=copy.deepcopy(boundary['sources'][0]['pieces'][blocker])
+                report['conditional_complete_channel_omitted_code_control']={'executed':False,'status':'no_complete_channel_exclusion_to_mutate'}
+            report['fixed_whole_channel_result']=result
+        need(counters['channels_tested']<=1 and counters['boundary_box_tests']<=526 and counters['support_inequality_tests']<=4208 and
+             independent_calls<=553 and independent_claim_calls==6,'finite one-target/one-channel/claim scope differs')
+        vertices,comparisons=totals()
+        need(vertices<=864 and comparisons<=50000,'final registered endpoint/tube validation capacity exceeded')
+        cumulative={'splits':82,'piece_like_tests':baseline['piece_like_tests']+counters['boundary_box_tests']+independent_calls+vertices,
+                    'support_like_tests':baseline['support_like_tests']+counters['support_inequality_tests']+independent_calls+comparisons}
+        need(cumulative['piece_like_tests']<=12000000 and cumulative['support_like_tests']<=12000000,
+             'all actual finite diagnostic work must remain within cumulative debit')
+        report['cumulative_conservative_additional_stage_debit']=cumulative
+        report['remaining_conservative_additional_stage_budget']={'splits':4096-cumulative['splits'],
+            'piece_like_tests':12000000-cumulative['piece_like_tests'],'support_like_tests':12000000-cumulative['support_like_tests']}
+        report['source_support_applies_to_exact_exported_curve_only']=True
+        report['tau_cube_is_a_separate_hypothesis_not_native_error_certification']=True
+        report['whole_hypothetical_tube_containment_in_original_AABB']=verified['hypothetical_tube_contained_in_original_carrier']
+        report['all_registered_inputs_unchanged']=all(same(identity(row['path']),row) for row in bound_all.values()) and same(identity(args.contract),report['contract'])
+        need(report['all_registered_inputs_unchanged'],'registered source/input changed during the finite diagnostic')
+        report['completed']=True
+    except BaseException as exc:
+        report['failure']={'type':type(exc).__name__,'message':str(exc),'traceback':traceback.format_exc()}
+    finally:
+        signal.alarm(0)
+        report['actual_partial_or_complete_producer_counters']=counters
+        report['actual_independent_original_separator_calls']=independent_calls
+        report['actual_independent_claim_calls']=independent_claim_calls
+        report['actual_source_validation_counters']=validation
+        report['validation_comparisons_include_explicit_conservative_fixed_charges']=True
+        report['source_serialization_bytes_are_separate_labeled_counts_and_also_conservative_extra_debits']=True
+        report['comparison_total_is_an_upper_debit_including_arithmetic_and_source_bytes_not_literal_comparison_count']=True
+        report['source_validation_vertices_and_comparisons']=dict(zip(('vertices','comparisons'),totals()))
+        report['previous_actual_additional_stage_debit']=baseline
+        report['partial_or_complete_registered_input_identities']=before
+        report['elapsed_seconds']=time.monotonic()-started;report['peak_RSS_bytes']=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024
+        report['wall_seconds']=60;report['address_space_bytes']=536870912;report['finished_utc']=datetime.now(timezone.utc).isoformat()
+        try:
+            report['actual_final_original_formula_resources']=resources(args.output)
+            if report['elapsed_seconds']>60 or report['peak_RSS_bytes']>536870912:
+                report['completed']=False;report['final_resource_failure']='registered_wall_or_peak_RSS'
+            if report['actual_final_original_formula_resources']['disk_available_bytes']<104857600 or report['actual_final_original_formula_resources']['shared_unreclaimable_bytes']>7301444403:
+                report['completed']=False;report['final_resource_failure']='original_runtime_disk_or_shared_formula'
+        except BaseException as exc:
+            report['completed']=False;report['resource_readback_failure']={'type':type(exc).__name__,'message':str(exc)}
+        raw=(json.dumps(report,indent=2)+'\n').encode()
+        existing=sum(p.stat().st_size for p in args.output.rglob('*') if p.is_file())
+        if len(raw)+existing>4194304:
+            report['completed']=False;report['output_byte_cap_exceeded']=True
+            raw=(json.dumps(report,indent=2)+'\n').encode()
+        (args.output/'R7E_EDGE189_LINE_SUPPORT_DIAGNOSTIC_V1.json').write_bytes(raw)
+    print(json.dumps({'completed':report['completed'],'failure':report.get('failure'),'fixed_whole_channel_attempts':report['actual_fixed_whole_channel_attempts'],
+        'source_validation':report['source_validation_vertices_and_comparisons'],'producer_counters':counters,
+        'elapsed_seconds':report['elapsed_seconds'],'peak_RSS_bytes':report['peak_RSS_bytes']}))
+    return 0 if report['completed'] else 2
+
+
+if __name__=='__main__':raise SystemExit(main())

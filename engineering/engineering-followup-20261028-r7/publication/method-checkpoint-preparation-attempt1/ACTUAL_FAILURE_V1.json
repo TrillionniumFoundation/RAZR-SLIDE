@@ -1,0 +1,33 @@
+{
+  "schema": "razr-r7-method-publication-preparation-attempt1-actual-failure-v1",
+  "source_sha256": "23b76bee3d4ce9dad4884f21545ebcea9f84bb607ee5031d145e00e6f92a6127",
+  "exit_code": 1,
+  "failure": "AssertionError: duplicate repository destinations after adding .gz to a decoded JSON original whose original gzip also exists",
+  "source_line": 120,
+  "manifest_written": false,
+  "remote_mutation": false,
+  "scientific_geometry_executed": false,
+  "partial_transport_files": [
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-publication/method-checkpoint-v1/lossless-gzip/1b6df509797eb6938e12-R7_METHOD_COMPLETE_ARCHIVE_PLAN_V2.json.gz",
+      "bytes": 52688,
+      "sha256": "075a057bb19d6d153892fb015fe4380893f4b300bfee7419eb26e64b402f6ab7"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-publication/method-checkpoint-v1/lossless-gzip/7994fc77018520e2489a-R7_ARCHIVED_EXPANSION_MIGRATION_INDEPENDENT_READBACK_V1.json.gz",
+      "bytes": 815458,
+      "sha256": "d1b4c4bf121b8eaa4bb25331f9557220e6b0878d58a3935649621ed4cbacf49a"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-publication/method-checkpoint-v1/lossless-gzip/7f31196cb6147bc6d005-R7_COMPLETE_FACTORY_ARCHIVE_EXPANSION_MIGRATION_V1.json.gz",
+      "bytes": 796940,
+      "sha256": "2eae02c185c5f8aac02051338b5f71184a748b47ed8b80002595eb55afd77ae9"
+    },
+    {
+      "path": "/workspace/scratch/34f8fcac2ab1/r7-publication/method-checkpoint-v1/lossless-gzip/8505c42a7c02248c8cac-native-verification.original.json.gz",
+      "bytes": 17118,
+      "sha256": "22289ff4f28108f972b585f3343050b653bdc0d5c0a18595b0b30513dc0ce66f"
+    }
+  ],
+  "actual_traceback": "Traceback (most recent call last):\n  File \"r7-publication/prepare_method_checkpoint_publication_v1.py\", line 154, in <module>\n    main()\n  File \"r7-publication/prepare_method_checkpoint_publication_v1.py\", line 120, in main\n    assert len({row['repository_path'] for row in rows}) == len(rows)\nAssertionError\n"
+}

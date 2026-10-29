@@ -1,0 +1,226 @@
+{
+  "schema": "razr-r7-far-archive-current-two-path-readback-v1",
+  "recorded_utc": "2026-10-29T01:08:20.129298+00:00",
+  "completed": true,
+  "limits": {
+    "wall_seconds": 30,
+    "address_space_bytes": 134217728
+  },
+  "new_scientific_execution": false,
+  "no_explicit_original_write_rename_deletion_or_archive_creation": true,
+  "source_and_historical_records": {
+    "r7-audit/storage-observation/observe_far_archive_two_paths_r7_v1.py": {
+      "bytes": 8654,
+      "sha256": "767fb71ec7b5b82012acddc778a925e5edfc5684a432394d50ae4c2038c4a715"
+    },
+    "r7-audit/build_far_full_factory_archive_r7_v3.py": {
+      "bytes": 23933,
+      "sha256": "30e2a6305d23255d6252a544c42670ced9897dfb71b3b80344b208c4fb2e4db0"
+    },
+    "r7-audit/far-full-archive/R7_FAR_FULL_ORIGINAL_ARCHIVE_ACTUAL_V3.json": {
+      "bytes": 3663,
+      "sha256": "87f4928074c442aa0ea827fb81e12eb35e599782921ddbd261494774fba9edab"
+    },
+    "r7-audit/far-full-archive/R7_FAR_FULL_ORIGINAL_ARCHIVE_INPUT_PLAN_V3.json": {
+      "bytes": 5183740,
+      "sha256": "59951461516523367aa3310e9f11bddbd50aad6a62cfe36642355efabc471068"
+    },
+    "r7-deliverables/R7_FAR_COMPLETE_PRESERVATION_V1.json": {
+      "bytes": 987,
+      "sha256": "92fddeb26ecaf0f7f6f013f80349f366ebcf8321ff3b1ea5837c6c7841cfc04b"
+    }
+  },
+  "current_paths": {
+    "final": {
+      "path": "r7-deliverables/RAZR-R7-far-full-factory-and-independent-originals-20261028.zip",
+      "observed_utc": "2026-10-29T01:08:20.144602+00:00",
+      "exists": true,
+      "lstat_before": {
+        "device": 27,
+        "inode": 1320867,
+        "mode": 33188,
+        "regular": true,
+        "nlink": 1,
+        "bytes": 127370781,
+        "allocated_blocks_512": 248792,
+        "mtime_ns": 1793235685838615955,
+        "ctime_ns": 1793235720647453627,
+        "atime_ns": 1793235748812113244
+      },
+      "lstat_after": {
+        "device": 27,
+        "inode": 1320867,
+        "mode": 33188,
+        "regular": true,
+        "nlink": 1,
+        "bytes": 127370781,
+        "allocated_blocks_512": 248792,
+        "mtime_ns": 1793235685838615955,
+        "ctime_ns": 1793235720647453627,
+        "atime_ns": 1793235748812113244
+      },
+      "identity": {
+        "bytes": 127370781,
+        "sha256": "7bc806653be9c7e70dea0ad195bcf992d899a06d73e170af499d8f7b10804130"
+      },
+      "non_access_metadata_stable_while_read": true
+    },
+    "partial": {
+      "path": "r7-deliverables/RAZR-R7-far-full-factory-and-independent-originals-20261028.zip.partial",
+      "observed_utc": "2026-10-29T01:08:20.254426+00:00",
+      "exists": true,
+      "lstat_before": {
+        "device": 27,
+        "inode": 1320868,
+        "mode": 33188,
+        "regular": true,
+        "nlink": 1,
+        "bytes": 127370781,
+        "allocated_blocks_512": 248784,
+        "mtime_ns": 1793235685838615955,
+        "ctime_ns": 1793235693780549588,
+        "atime_ns": 1793235771608652902
+      },
+      "lstat_after": {
+        "device": 27,
+        "inode": 1320868,
+        "mode": 33188,
+        "regular": true,
+        "nlink": 1,
+        "bytes": 127370781,
+        "allocated_blocks_512": 248784,
+        "mtime_ns": 1793235685838615955,
+        "ctime_ns": 1793235693780549588,
+        "atime_ns": 1793235771608652902
+      },
+      "identity": {
+        "bytes": 127370781,
+        "sha256": "7bc806653be9c7e70dea0ad195bcf992d899a06d73e170af499d8f7b10804130"
+      },
+      "non_access_metadata_stable_while_read": true
+    }
+  },
+  "original_source_semantics": {
+    "single_partial_rename_target_call_line": 368,
+    "source_excerpt": [
+      {
+        "line": 364,
+        "text": "        need(identity(PLAN) == actual['plan_identity'] and identity(__file__) == actual['builder_identity'], 'Plan or builder changed')"
+      },
+      {
+        "line": 365,
+        "text": "        archive_identity = identity(partial)"
+      },
+      {
+        "line": 366,
+        "text": "        disk_check()"
+      },
+      {
+        "line": 367,
+        "text": "        need(time.monotonic() - started <= MAX_WALL, 'Whole archive exceeded registered wall limit')"
+      },
+      {
+        "line": 368,
+        "text": "        partial.rename(TARGET)"
+      },
+      {
+        "line": 369,
+        "text": "        actual.update(completed=True, archive={'path': TARGET.relative_to(BASE).as_posix(), 'identity': archive_identity},"
+      },
+      {
+        "line": 370,
+        "text": "                      input_groups=c['input_groups'], original_input_members=c['input_members'],"
+      },
+      {
+        "line": 371,
+        "text": "                      original_input_bytes=c['input_bytes'], exact_archive_members=len(expected),"
+      },
+      {
+        "line": 372,
+        "text": "                      archived_uncompressed_bytes=sum(v['bytes'] for v in expected.values()),"
+      },
+      {
+        "line": 373,
+        "text": "                      member_manifest_identity=expected['META/ARCHIVE_MEMBER_MANIFEST.json'],"
+      },
+      {
+        "line": 374,
+        "text": "                      complete_member_set_CRC_SHA256_verified=True,"
+      },
+      {
+        "line": 375,
+        "text": "                      full_raw_and_engineering_source_sets_before_after_equal=True,"
+      },
+      {
+        "line": 376,
+        "text": "                      all_original_source_bytes_unchanged=True,"
+      },
+      {
+        "line": 377,
+        "text": "                      original_four_phase_scientific_and_resource_gates_preserved=True,"
+      },
+      {
+        "line": 378,
+        "text": "                      near_case_data_included=False,"
+      },
+      {
+        "line": 379,
+        "text": "                      companion_complete_runtime_and_selected_S4_source_archive=c['companion_complete_source_and_runtime_archive'],"
+      },
+      {
+        "line": 380,
+        "text": "                      companion_complete_near_archive=c['companion_complete_near_archive'],"
+      },
+      {
+        "line": 381,
+        "text": "                      latest_bound_near_storage_observation=c['latest_bound_near_storage_observation'],"
+      },
+      {
+        "line": 382,
+        "text": "                      finite_pose_clear=c['finite_pose_clear'], full_continuous_G2=False,"
+      },
+      {
+        "line": 383,
+        "text": "                      physical_qualification=False, all_blockers_closed=False)"
+      },
+      {
+        "line": 384,
+        "text": "    except BaseException as exc:"
+      }
+    ],
+    "initial_freshness_check": [
+      291
+    ],
+    "success_sequence": "The builder verified ZIP members and original inputs, computed the partial-file hash, called partial.rename(TARGET), then updated completed=True. The completed actual receipt does not record an observed post-rename partial absence or source/target inode transition.",
+    "failure_branch_partial_exists_check_is_not_success_branch_absence_evidence": true
+  },
+  "historical_archive_evidence": {
+    "completed": true,
+    "archive": {
+      "path": "r7-deliverables/RAZR-R7-far-full-factory-and-independent-originals-20261028.zip",
+      "identity": {
+        "bytes": 127370781,
+        "sha256": "7bc806653be9c7e70dea0ad195bcf992d899a06d73e170af499d8f7b10804130"
+      }
+    },
+    "exact_archive_members": 9448,
+    "complete_member_set_CRC_SHA256_verified": true,
+    "all_original_source_bytes_unchanged": true,
+    "saved_library_file_id": "libfile_ffffa1050c0881919fc5608d9acfae2d",
+    "saved_status": "succeeded",
+    "post_rename_partial_absence_event_recorded_in_original_actual": false,
+    "historical_CRC_decompression_repeated_by_this_observation": false
+  },
+  "both_paths_currently_observed": true,
+  "both_current_hashes_match_historical_complete_and_saved_archive": true,
+  "current_paths_have_distinct_device_inode_identity": true,
+  "prior_successful_partial_absence_proved": false,
+  "deletion_then_reappearance_proved": false,
+  "physical_reappearance_or_platform_cause_proved": false,
+  "correspondence_between_successful_rename_source_path_and_later_two_paths_unresolved": true,
+  "historical_scientific_or_complete_archive_results_reclassified": false,
+  "interpretation": "This is a dated observation of current path membership and byte identity. The original success receipt lacks a post-rename partial-absence observation; current two-path membership does not prove deletion followed by reappearance or identify a cause.",
+  "source_and_historical_record_bytes_unchanged": true,
+  "seconds": 0.3745391379998182,
+  "peak_RSS_bytes": 14151680
+}
