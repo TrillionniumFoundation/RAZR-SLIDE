@@ -1,0 +1,1030 @@
+{
+  "current_evaluation_error_records": [
+    {
+      "error": "ValueError: unsupported advancing surface EXTRUSION",
+      "frame": "initial_reference_frame_result"
+    }
+  ],
+  "current_original_aggregate_disposition": "unresolved_evaluation",
+  "current_original_aggregate_failure": {
+    "message": "raw evaluation failure or unknown disposition",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/_temp/razr-c2-slide-l1-bec1c8d7/replay_slide_targets.py\", line 422, in run_native\n    case['current_original_aggregate'] = evidence.aggregate([{'specification': spec, 'raw': case['native_raw']}])\n                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-integration-20261025/geometry/slide/slide_evidence.py\", line 245, in aggregate\n    postguard.validate_frame(raw)\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/tools/validate_product_nominal_report.py\", line 129, in validate_frame\n    validate_frame(row[key], depth+1)\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/tools/validate_product_nominal_report.py\", line 107, in validate_frame\n    require(disposition in ('clear', 'unresolved_enclosure_overlap'), 'raw evaluation failure or unknown disposition')\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/tools/verify_product_native.py\", line 55, in require\n    raise ValueError(message)\nValueError: raw evaluation failure or unknown disposition\n",
+    "type": "ValueError"
+  },
+  "diagnostic_evidence_completed": true,
+  "elapsed_seconds": 5.238468080000075,
+  "material_exports": [
+    {
+      "after_export_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Compound",
+        "signed_volume_mm3": 13891.385568361538,
+        "solid_signed_volumes_mm3": [
+          13891.385568361538
+        ],
+        "top_level_children_types": [
+          "Solid"
+        ]
+      },
+      "exports": {
+        "brep": {
+          "bytes": 94195,
+          "native_export_status": "True",
+          "path": "material-001.brep",
+          "sha256": "be86fa8a099fea7078ebf6ecad4d9cbde252f6914d7b67ddb19856f88b0c33b9"
+        },
+        "step": {
+          "bytes": 349398,
+          "native_export_status": "IFSelect_ReturnStatus.IFSelect_RetDone",
+          "path": "material-001.step",
+          "sha256": "4d04d8e09d5caba036bb5325d4dbc0537bdd4f6ef87deff233fc7e0dd33ace49"
+        }
+      },
+      "id": 1,
+      "invalid_or_nonpositive_topology_is_preserved_as_diagnostic_evidence": true,
+      "original_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Compound",
+        "signed_volume_mm3": 13891.385568361538,
+        "solid_signed_volumes_mm3": [
+          13891.385568361538
+        ],
+        "top_level_children_types": [
+          "Solid"
+        ]
+      },
+      "references": [
+        {
+          "role": "original-moving-input",
+          "specification_sha256": "29c237e45a11f5fd774f796cfb6d6997f901475fe05ca7f2c83931a4aebc026e"
+        },
+        {
+          "function": "enclosure_regions",
+          "line": 240,
+          "native_reference_frame_index": 1,
+          "role": "exception-local-body",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+        },
+        {
+          "function": "_continuous_pair_in_frame",
+          "line": 261,
+          "native_reference_frame_index": 1,
+          "role": "exception-local-a",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+        }
+      ],
+      "signature_unchanged_by_serialization": true
+    },
+    {
+      "after_export_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Compound",
+        "signed_volume_mm3": 2.168484329140337,
+        "solid_signed_volumes_mm3": [
+          2.168484329140337
+        ],
+        "top_level_children_types": [
+          "Solid"
+        ]
+      },
+      "exports": {
+        "brep": {
+          "bytes": 4570,
+          "native_export_status": "True",
+          "path": "material-002.brep",
+          "sha256": "8cf0b220bb8ec81c05e5abdcab2508e6f80d1c24acbd58dc3560d4bc4c238013"
+        },
+        "step": {
+          "bytes": 17317,
+          "native_export_status": "IFSelect_ReturnStatus.IFSelect_RetDone",
+          "path": "material-002.step",
+          "sha256": "7f4282d03853ec868a4bc603c4a907a196f6c53642f0050fe5dc6742a5cfc093"
+        }
+      },
+      "id": 2,
+      "invalid_or_nonpositive_topology_is_preserved_as_diagnostic_evidence": true,
+      "original_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Compound",
+        "signed_volume_mm3": 2.168484329140337,
+        "solid_signed_volumes_mm3": [
+          2.168484329140337
+        ],
+        "top_level_children_types": [
+          "Solid"
+        ]
+      },
+      "references": [
+        {
+          "role": "original-fixed-input",
+          "specification_sha256": "29c237e45a11f5fd774f796cfb6d6997f901475fe05ca7f2c83931a4aebc026e"
+        },
+        {
+          "function": "_continuous_pair_in_frame",
+          "line": 261,
+          "native_reference_frame_index": 1,
+          "role": "exception-local-b",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+        }
+      ],
+      "signature_unchanged_by_serialization": true
+    },
+    {
+      "after_export_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Solid",
+        "signed_volume_mm3": 4.453265107558662e-10,
+        "solid_signed_volumes_mm3": [
+          4.453265107558662e-10
+        ],
+        "top_level_children_types": []
+      },
+      "exports": {
+        "brep": {
+          "bytes": 9378,
+          "native_export_status": "True",
+          "path": "material-003.brep",
+          "sha256": "f48d4f4a188fc7b85e0d5a89082134de47bfa83b5e4169c75de639ee1eb0d5a8"
+        },
+        "step": {
+          "bytes": 31982,
+          "native_export_status": "IFSelect_ReturnStatus.IFSelect_RetDone",
+          "path": "material-003.step",
+          "sha256": "b2315f536a5146ec6ad14d9ee296c6d8a28f3d0da21d0d6af147d956efcbc1ce"
+        }
+      },
+      "id": 3,
+      "invalid_or_nonpositive_topology_is_preserved_as_diagnostic_evidence": true,
+      "original_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Solid",
+        "signed_volume_mm3": 4.453265107558662e-10,
+        "solid_signed_volumes_mm3": [
+          4.453265107558662e-10
+        ],
+        "top_level_children_types": []
+      },
+      "references": [
+        {
+          "function": "regions",
+          "line": 37,
+          "native_reference_frame_index": 1,
+          "role": "exception-local-shape",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py"
+        },
+        {
+          "function": "enclosure_regions",
+          "line": 240,
+          "native_reference_frame_index": 1,
+          "role": "exception-local-piece",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+        }
+      ],
+      "signature_unchanged_by_serialization": true
+    },
+    {
+      "after_export_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Face",
+        "signed_volume_mm3": 1.6845166287455192e-10,
+        "solid_signed_volumes_mm3": [],
+        "top_level_children_types": []
+      },
+      "exports": {
+        "brep": {
+          "bytes": 2086,
+          "native_export_status": "True",
+          "path": "material-004.brep",
+          "sha256": "ad4c3a9dce88d8f4fc37f507461907edbc0e97468639f1ce973f0ec9f738e36e"
+        },
+        "step": {
+          "bytes": 5089,
+          "native_export_status": "IFSelect_ReturnStatus.IFSelect_RetDone",
+          "path": "material-004.step",
+          "sha256": "2757f836bf065837e34062563d12c1b8bb84e2ed57453536373c95b7c022eb4a"
+        }
+      },
+      "id": 4,
+      "invalid_or_nonpositive_topology_is_preserved_as_diagnostic_evidence": true,
+      "original_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Face",
+        "signed_volume_mm3": 1.6845166287455192e-10,
+        "solid_signed_volumes_mm3": [],
+        "top_level_children_types": []
+      },
+      "references": [
+        {
+          "function": "regions",
+          "line": 37,
+          "native_reference_frame_index": 1,
+          "role": "exception-local-face",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py"
+        }
+      ],
+      "signature_unchanged_by_serialization": true
+    }
+  ],
+  "native_call_completed": true,
+  "native_raw": {
+    "common_upper_bound_is_sum_not_union_volume": true,
+    "common_upper_bound_mm3": 0.0,
+    "disposition": "clear",
+    "initial_reference_frame_result": {
+      "collision_proved": false,
+      "disposition": "unresolved_evaluation",
+      "error": "ValueError: unsupported advancing surface EXTRUSION"
+    },
+    "maximum_region_common_mm3": 0.0,
+    "method": "continuous_relative_affine_box_translation_enclosure",
+    "region_count": 20,
+    "relative_reference_frame_reversed": true
+  },
+  "original_aggregate_classification_changed": false,
+  "original_record_replaced": false,
+  "raw_classification_change": false,
+  "raw_equal_to_original": true,
+  "schema": "razr-L1-observed-C2-slide-target-replay-v1-case",
+  "started_monotonic": 1303.101298874,
+  "target": {
+    "a": "B_SHELL",
+    "b": "R_TELESCOPE_2",
+    "case_id": "case-016",
+    "original_attempt_disposition": "unresolved_evaluation",
+    "original_attempt_error": "ValueError: raw evaluation failure or unknown disposition",
+    "original_node_disposition": "unresolved_evaluation",
+    "original_node_path": "pairs[5333]",
+    "original_node_sha256": "b8c8d44b4d338dae403a992b850bf55f2138941bbb59a7b415a025892932fb35",
+    "original_parent_intervals": [],
+    "original_raw": {
+      "common_upper_bound_is_sum_not_union_volume": true,
+      "common_upper_bound_mm3": 0.0,
+      "disposition": "clear",
+      "initial_reference_frame_result": {
+        "collision_proved": false,
+        "disposition": "unresolved_evaluation",
+        "error": "ValueError: unsupported advancing surface EXTRUSION"
+      },
+      "maximum_region_common_mm3": 0.0,
+      "method": "continuous_relative_affine_box_translation_enclosure",
+      "region_count": 20,
+      "relative_reference_frame_reversed": true
+    },
+    "original_recursive_error_records": [
+      {
+        "error": "native evaluation failure",
+        "path": "pairs[5333]"
+      },
+      {
+        "error": "ValueError: raw evaluation failure or unknown disposition",
+        "path": "pairs[5333].attempts[0]"
+      },
+      {
+        "error": "ValueError: unsupported advancing surface EXTRUSION",
+        "path": "pairs[5333].attempts[0].records[0].raw.initial_reference_frame_result"
+      }
+    ],
+    "original_specification_sha256": "29c237e45a11f5fd774f796cfb6d6997f901475fe05ca7f2c83931a4aebc026e",
+    "pair_class": "rigid_rigid",
+    "q_endpoints_binary64": [
+      {
+        "hex": "0x0.0p+0",
+        "value": 0.0
+      },
+      {
+        "hex": "0x1.8000000000000p+3",
+        "value": 12.0
+      }
+    ],
+    "q_interval_exact": [
+      "0",
+      "12"
+    ],
+    "q_width_binary64": {
+      "hex": "0x1.8000000000000p+3",
+      "value": 12.0
+    },
+    "q_width_exact": "12",
+    "raw_pair_index": 5333,
+    "shard": "E17",
+    "specification": {
+      "coefficients": [
+        [
+          -1.0,
+          6.645833333333333,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "fixed": {
+        "kind": "complete_rigid_material",
+        "material": "R_TELESCOPE_2"
+      },
+      "moving": {
+        "kind": "complete_rigid_material",
+        "material": "B_SHELL"
+      },
+      "parameter_intervals": [
+        [
+          0.0,
+          12.0
+        ],
+        [
+          -0.13333333333333333,
+          0.06666666666666667
+        ]
+      ],
+      "relative_law": {
+        "flank_z": [
+          "0",
+          "0"
+        ],
+        "height_x": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "joint_z": [
+          "0",
+          "0",
+          "-1",
+          "-1"
+        ],
+        "q_xyz": [
+          "-1",
+          "319/48",
+          "0"
+        ]
+      }
+    }
+  },
+  "trace": {
+    "actual_strict_Common_calls": [
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 1
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 2
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 3
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.549999999999998,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 4
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 5
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 6
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 7
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.549999999999998,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 8
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 9
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 10
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.34999999999999787,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 11
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 12
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 13
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 14
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.34999999999999787,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 15
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.549999999999998,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 16
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.549999999999998,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 17
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 18
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 19
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.549999999999998,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 20
+      }
+    ],
+    "captured_materials": [
+      {
+        "id": 1,
+        "references": [
+          {
+            "role": "original-moving-input",
+            "specification_sha256": "29c237e45a11f5fd774f796cfb6d6997f901475fe05ca7f2c83931a4aebc026e"
+          },
+          {
+            "function": "enclosure_regions",
+            "line": 240,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-body",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-a",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "references": [
+          {
+            "role": "original-fixed-input",
+            "specification_sha256": "29c237e45a11f5fd774f796cfb6d6997f901475fe05ca7f2c83931a4aebc026e"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-b",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "references": [
+          {
+            "function": "regions",
+            "line": 37,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-shape",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py"
+          },
+          {
+            "function": "enclosure_regions",
+            "line": 240,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-piece",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "references": [
+          {
+            "function": "regions",
+            "line": 37,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-face",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py"
+          }
+        ]
+      }
+    ],
+    "distinct_native_exception_count": 7,
+    "exception_events": [
+      {
+        "function": "<genexpr>",
+        "line": 221,
+        "locals": {
+          "axis": 0
+        },
+        "material_ids": {},
+        "message": "",
+        "native_exception_index": 1,
+        "native_reference_frame_index": 1,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 221, in <genexpr>\n    active = [axis for axis in range(3) if any(c[axis] for c in coefficients)]\n                                               ~^^^^^^\nGeneratorExit\n",
+        "type": "GeneratorExit"
+      },
+      {
+        "function": "<genexpr>",
+        "line": 221,
+        "locals": {
+          "axis": 1
+        },
+        "material_ids": {},
+        "message": "",
+        "native_exception_index": 2,
+        "native_reference_frame_index": 1,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 221, in <genexpr>\n    active = [axis for axis in range(3) if any(c[axis] for c in coefficients)]\n                                               ~^^^^^^\nGeneratorExit\n",
+        "type": "GeneratorExit"
+      },
+      {
+        "function": "<genexpr>",
+        "line": 221,
+        "locals": {
+          "axis": 2
+        },
+        "material_ids": {},
+        "message": "",
+        "native_exception_index": 3,
+        "native_reference_frame_index": 1,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 221, in <genexpr>\n    active = [axis for axis in range(3) if any(c[axis] for c in coefficients)]\n                                               ~^^^^^^\nGeneratorExit\n",
+        "type": "GeneratorExit"
+      },
+      {
+        "function": "regions",
+        "line": 37,
+        "locals": {
+          "i": 0,
+          "kind": "EXTRUSION",
+          "move": {
+            "length": 0.2,
+            "vector_xyz": [
+              0.0,
+              0.0,
+              0.2
+            ]
+          },
+          "vector": [
+            0.0,
+            0.0,
+            0.2
+          ]
+        },
+        "material_ids": {
+          "face": 4,
+          "shape": 3
+        },
+        "message": "unsupported advancing surface EXTRUSION",
+        "native_exception_index": 4,
+        "native_reference_frame_index": 1,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py\", line 37, in regions\n    else:raise ValueError('unsupported advancing surface '+kind)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: unsupported advancing surface EXTRUSION\n",
+        "type": "ValueError"
+      },
+      {
+        "function": "enclosure_regions",
+        "line": 240,
+        "locals": {
+          "bounds": [
+            -12.0,
+            0.0,
+            0.0,
+            79.75,
+            -0.13333333333333333,
+            0.06666666666666667
+          ],
+          "coefficients": [
+            [
+              -1.0,
+              6.645833333333333,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "domain": [
+            [
+              0.0,
+              12.0
+            ],
+            [
+              -0.13333333333333333,
+              0.06666666666666667
+            ]
+          ],
+          "hi": 0.06666666666666667,
+          "lo": -0.13333333333333333,
+          "vector": [
+            0.0,
+            0.0,
+            0.2
+          ]
+        },
+        "material_ids": {
+          "body": 1,
+          "piece": 3
+        },
+        "message": "unsupported advancing surface EXTRUSION",
+        "native_exception_index": 4,
+        "native_reference_frame_index": 1,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 240, in enclosure_regions\n    expanded.extend(regions(piece, vector)[0])\n                    ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py\", line 37, in regions\n    else:raise ValueError('unsupported advancing surface '+kind)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: unsupported advancing surface EXTRUSION\n",
+        "type": "ValueError"
+      },
+      {
+        "function": "_continuous_pair_in_frame",
+        "line": 261,
+        "locals": {
+          "aa": [
+            -36.995,
+            36.995000000000005,
+            0.0,
+            94.25,
+            7.049999999999999,
+            16.2
+          ],
+          "bb": [
+            6.5,
+            8.0,
+            80.75,
+            82.25,
+            6.366666666666667,
+            9.566666666666666
+          ],
+          "coefficients": [
+            [
+              -1.0,
+              6.645833333333333,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "domain": [
+            [
+              0.0,
+              12.0
+            ],
+            [
+              -0.13333333333333333,
+              0.06666666666666667
+            ]
+          ],
+          "high": [
+            36.995000000000005,
+            174.0,
+            16.266666666666666
+          ],
+          "shift": [
+            -12.0,
+            0.0,
+            0.0,
+            79.75,
+            -0.13333333333333333,
+            0.06666666666666667
+          ],
+          "swept": [
+            -48.995,
+            0.0,
+            6.916666666666665
+          ]
+        },
+        "material_ids": {
+          "a": 1,
+          "b": 2
+        },
+        "message": "unsupported advancing surface EXTRUSION",
+        "native_exception_index": 4,
+        "native_reference_frame_index": 1,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 261, in _continuous_pair_in_frame\n    value = enclosure_regions(a, coefficients, domain)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 240, in enclosure_regions\n    expanded.extend(regions(piece, vector)[0])\n                    ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py\", line 37, in regions\n    else:raise ValueError('unsupported advancing surface '+kind)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: unsupported advancing surface EXTRUSION\n",
+        "type": "ValueError"
+      },
+      {
+        "function": "<genexpr>",
+        "line": 221,
+        "locals": {
+          "axis": 0
+        },
+        "material_ids": {},
+        "message": "",
+        "native_exception_index": 5,
+        "native_reference_frame_index": 2,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 221, in <genexpr>\n    active = [axis for axis in range(3) if any(c[axis] for c in coefficients)]\n                                               ~^^^^^^\nGeneratorExit\n",
+        "type": "GeneratorExit"
+      },
+      {
+        "function": "<genexpr>",
+        "line": 221,
+        "locals": {
+          "axis": 1
+        },
+        "material_ids": {},
+        "message": "",
+        "native_exception_index": 6,
+        "native_reference_frame_index": 2,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 221, in <genexpr>\n    active = [axis for axis in range(3) if any(c[axis] for c in coefficients)]\n                                               ~^^^^^^\nGeneratorExit\n",
+        "type": "GeneratorExit"
+      },
+      {
+        "function": "<genexpr>",
+        "line": 221,
+        "locals": {
+          "axis": 2
+        },
+        "material_ids": {},
+        "message": "",
+        "native_exception_index": 7,
+        "native_reference_frame_index": 2,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 221, in <genexpr>\n    active = [axis for axis in range(3) if any(c[axis] for c in coefficients)]\n                                               ~^^^^^^\nGeneratorExit\n",
+        "type": "GeneratorExit"
+      }
+    ],
+    "native_frame_results": [
+      {
+        "coefficients": [
+          [
+            -1.0,
+            6.645833333333333,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "domain": [
+          [
+            0.0,
+            12.0
+          ],
+          [
+            -0.13333333333333333,
+            0.06666666666666667
+          ]
+        ],
+        "native_reference_frame_index": 1,
+        "observed_region_values_mm3": null,
+        "original_return": {
+          "collision_proved": false,
+          "disposition": "unresolved_evaluation",
+          "error": "ValueError: unsupported advancing surface EXTRUSION"
+        }
+      },
+      {
+        "coefficients": [
+          [
+            1.0,
+            -6.645833333333333,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -1.0
+          ]
+        ],
+        "domain": [
+          [
+            0.0,
+            12.0
+          ],
+          [
+            -0.13333333333333333,
+            0.06666666666666667
+          ]
+        ],
+        "native_reference_frame_index": 2,
+        "observed_region_values_mm3": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "original_return": {
+          "common_upper_bound_is_sum_not_union_volume": true,
+          "common_upper_bound_mm3": 0.0,
+          "disposition": "clear",
+          "maximum_region_common_mm3": 0.0,
+          "method": "continuous_relative_affine_box_translation_enclosure",
+          "region_count": 20
+        }
+      }
+    ],
+    "observer_failures": [],
+    "original_functions_replaced": false,
+    "source_functions_mutated": false,
+    "sys_settrace_observation_only": true
+  }
+}
