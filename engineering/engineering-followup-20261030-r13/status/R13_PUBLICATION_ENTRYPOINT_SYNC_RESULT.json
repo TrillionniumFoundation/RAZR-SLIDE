@@ -1,0 +1,64 @@
+{
+  "schema": "razr-r13-actual-publication-entrypoint-sync-v1",
+  "runs": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "tools/sync_current_design.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\"mode\": \"write\", \"changed\": []}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.03760247400350636
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "tools/sync_current_design.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "stdout": "{\"mode\": \"check\", \"changed\": []}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.03365074999965145
+    }
+  ],
+  "source_and_outputs": [
+    {
+      "path": "design/current_product.json",
+      "bytes": 461984,
+      "sha256": "54554f6c1e828c6725b36e527083770fe5cef199357a69c20587c194f66ac186"
+    },
+    {
+      "path": "CURRENT_DESIGN.md",
+      "bytes": 21688,
+      "sha256": "0fe5c217060d6f914f372dc9e27f7e639a62d259d4bceca50e9933cdeb113362"
+    },
+    {
+      "path": "docs/RESEARCH_OVERVIEW.md",
+      "bytes": 3188,
+      "sha256": "856ee329d5abb22f009575cb7f24f77435cfe4a4b59a0ca0a8cd292957a146a2"
+    },
+    {
+      "path": "status.json",
+      "bytes": 45626,
+      "sha256": "c5a21f8505820bbe3988bf70b2ea1722beef0f1db195583cb654d8606617a2f1"
+    }
+  ],
+  "science_ledger_identity": {
+    "path": "engineering/engineering-followup-20261030-r13/R13_COMPLETED_WORK_LEDGER.json",
+    "bytes": 22542,
+    "sha256": "cc58444f1b70f34c52b49b2e0faed377a775296fa590121650bdac9b750ae6ec"
+  },
+  "all_31_bound_science_records_unchanged": true,
+  "source_reports_and_native_or_physical_release_changed": false,
+  "new_test_or_science_execution": false,
+  "published_science_receipt": {
+    "path": "engineering/engineering-followup-20261030-r13/publication/R13_SCIENCE_PUBLICATION_READBACK.json",
+    "bytes": 9315,
+    "sha256": "748608483ab36807e93adf857ad8c9b17e9753f07d38b03d0dd1da0deb37a59e"
+  },
+  "containing_followup_commit_identity": "Recorded by Git after commit; not self-referential."
+}
