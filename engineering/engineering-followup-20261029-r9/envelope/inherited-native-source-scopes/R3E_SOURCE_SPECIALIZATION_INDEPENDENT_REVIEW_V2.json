@@ -1,0 +1,1485 @@
+{
+  "schema": "RAZR-R3E-independent-source-specialization-review-v2",
+  "review_passed": true,
+  "completed_utc": "2026-10-27T18:04:11.063605+00:00",
+  "reviewer_source": {
+    "bytes": 19519,
+    "sha256": "d83848050889e7fcd4d04b355a3c62e9ec32fc139f55d3149ad320bfff1f1083"
+  },
+  "certificate": {
+    "bytes": 64963,
+    "sha256": "f1071a4a46d4e3f78a68bc30925edfd2ec4e1f7f5b014f28b1e210059e07de89"
+  },
+  "controlling_math_report": {
+    "bytes": 159081,
+    "sha256": "a554c97d137b022f854199bb83973b919e8c3180a0d96ae8d9c7473dcf871c22"
+  },
+  "official_source_and_license_checks": [
+    {
+      "source_path": "src/Geom2d/Geom2d_BSplineCurve.cxx",
+      "bytes": 38986,
+      "sha256": "b823088549cbd72b2330b7ee885aa9094e8db71c7ed7f85e39ac4810bcd6ea53",
+      "git_blob_sha1": "9a16ecda5eff8b6b8c5a6d1fade42cd721380340",
+      "verified_against_retrieved_official_identity": true,
+      "upstream_url": "https://github.com/Open-Cascade-SAS/OCCT/blob/V7_8_1/src/Geom2d/Geom2d_BSplineCurve.cxx"
+    },
+    {
+      "source_path": "src/BSplCLib/BSplCLib.cxx",
+      "bytes": 124441,
+      "sha256": "42a1a614fecef84db7846e4f3d20d64e36b12e38b5bedb190dcd4f986b33f25b",
+      "git_blob_sha1": "1414f5008b3b2a79583a0af67e0a05fcd52569cb",
+      "verified_against_retrieved_official_identity": true,
+      "upstream_url": "https://github.com/Open-Cascade-SAS/OCCT/blob/V7_8_1/src/BSplCLib/BSplCLib.cxx"
+    },
+    {
+      "source_path": "src/BSplCLib/BSplCLib_CurveComputation.gxx",
+      "bytes": 49894,
+      "sha256": "567aa106f66e44061a5002f5704cf91c37adea3425d0ca5aed581d1ab9b880ea",
+      "git_blob_sha1": "e56b5df13c219251f4b82d7771c3f194c8abb652",
+      "verified_against_retrieved_official_identity": true,
+      "upstream_url": "https://github.com/Open-Cascade-SAS/OCCT/blob/V7_8_1/src/BSplCLib/BSplCLib_CurveComputation.gxx"
+    },
+    {
+      "source_path": "LICENSE_LGPL_21.txt",
+      "bytes": 26434,
+      "sha256": "e237fa56668030e928551ddd60f05df5fe957f75eab874bbd017e085ed722e7c",
+      "git_blob_sha1": "732811e4f1faf71870b7350f211b26e00d7bfbe9",
+      "verified_against_retrieved_official_identity": true,
+      "upstream_url": "https://github.com/Open-Cascade-SAS/OCCT/blob/V7_8_1/LICENSE_LGPL_21.txt"
+    },
+    {
+      "source_path": "OCCT_LGPL_EXCEPTION.txt",
+      "bytes": 663,
+      "sha256": "04580a884ea6cea294402649ff7b5cbb167d47462d1340a4ed33e550db10a81b",
+      "git_blob_sha1": "263d14ef75d9172e59213d880605729eed3041fc",
+      "verified_against_retrieved_official_identity": true,
+      "upstream_url": "https://github.com/Open-Cascade-SAS/OCCT/blob/V7_8_1/OCCT_LGPL_EXCEPTION.txt"
+    },
+    {
+      "source_path": "src/Geom2d/Geom2d_BSplineCurve_1.cxx",
+      "bytes": 24959,
+      "sha256": "582a35b701a8be066c1f565db44c4427c0fb02dd877be6b59b2cb4b8043bf304",
+      "git_blob_sha1": "0f2dffc95c4ed92fb436d4b87925a6462fe97324",
+      "verified_against_retrieved_official_identity": true,
+      "upstream_url": "https://github.com/Open-Cascade-SAS/OCCT/blob/V7_8_1/src/Geom2d/Geom2d_BSplineCurve_1.cxx"
+    }
+  ],
+  "source_semantic_branch_reviews": [
+    {
+      "source_path": "src/Geom2d/Geom2d_BSplineCurve.cxx",
+      "first_line": 1205,
+      "last_line": 1220,
+      "checked_anchor_count": 2,
+      "source_excerpt_sha256": "5c75b382a9bdadd426b7f67116d1c4f8247e166d4424ff5fb6738bc9b58058c5",
+      "independent_source_semantic_inference": "For the recorded nonperiodic subclass this branch leaves the parameter unchanged.",
+      "anchor_checks_are_not_a_formal_CPP_verifier": true
+    },
+    {
+      "source_path": "src/Geom2d/Geom2d_BSplineCurve_1.cxx",
+      "first_line": 181,
+      "last_line": 196,
+      "checked_anchor_count": 2,
+      "source_excerpt_sha256": "4ae3e3b50e6c6066bfd7752db1d346711d899506bef0d55b5898bd840c4cbdaa",
+      "independent_source_semantic_inference": "Geom2d D0 forwards the located parameter and uses unweighted poles for the recorded nonrational curves.",
+      "anchor_checks_are_not_a_formal_CPP_verifier": true
+    },
+    {
+      "source_path": "src/BSplCLib/BSplCLib.cxx",
+      "first_line": 234,
+      "last_line": 308,
+      "checked_anchor_count": 3,
+      "source_excerpt_sha256": "ffd136491606412cd487dc4cfef538886f8aeaeb59aac2f71712775e9b7480a0",
+      "independent_source_semantic_inference": "The nonperiodic path retains U; range restriction clamps the span index rather than the parameter.",
+      "anchor_checks_are_not_a_formal_CPP_verifier": true
+    },
+    {
+      "source_path": "src/BSplCLib/BSplCLib.cxx",
+      "first_line": 317,
+      "last_line": 345,
+      "checked_anchor_count": 3,
+      "source_excerpt_sha256": "1c862e7bf1a699be47494d91beb1f3927c6cef35af9beea824db7c77604facfe",
+      "independent_source_semantic_inference": "The degree/multiplicity overload either finds the terminal span or retains the supplied U.",
+      "anchor_checks_are_not_a_formal_CPP_verifier": true
+    },
+    {
+      "source_path": "src/BSplCLib/BSplCLib_CurveComputation.gxx",
+      "first_line": 331,
+      "last_line": 351,
+      "checked_anchor_count": 3,
+      "source_excerpt_sha256": "951dcc25bff1e3eb6de6e9bebfaf33ea973ece6bec950665f92ab6a017dd816f",
+      "independent_source_semantic_inference": "Degree one and pole index zero copy the two recorded poles in order.",
+      "anchor_checks_are_not_a_formal_CPP_verifier": true
+    },
+    {
+      "source_path": "src/BSplCLib/BSplCLib_CurveComputation.gxx",
+      "first_line": 370,
+      "last_line": 410,
+      "checked_anchor_count": 3,
+      "source_excerpt_sha256": "f867a44e23394bc8508d7bb108e355705fee610feab11d1a870393630b2b796a",
+      "independent_source_semantic_inference": "PrepareEval uses the selected span, its two local knots and the unweighted two-pole branch.",
+      "anchor_checks_are_not_a_formal_CPP_verifier": true
+    },
+    {
+      "source_path": "src/BSplCLib/BSplCLib_CurveComputation.gxx",
+      "first_line": 416,
+      "last_line": 442,
+      "checked_anchor_count": 2,
+      "source_excerpt_sha256": "8c47ac218292e6e848de53d094a368a419b4329c25f73ef8e78375489489bad0",
+      "independent_source_semantic_inference": "D0 evaluates those same local knots and poles.",
+      "anchor_checks_are_not_a_formal_CPP_verifier": true
+    },
+    {
+      "source_path": "src/BSplCLib/BSplCLib.cxx",
+      "first_line": 875,
+      "last_line": 928,
+      "checked_anchor_count": 4,
+      "source_excerpt_sha256": "16f765a5587db5fa5dad9c3a38d78da673d9e4f841d985b40548e0957ad7a246",
+      "independent_source_semantic_inference": "The degree-one two-dimensional loop has one stage: P(U)=P0+(U-a)/(b-a)*(P1-P0), including finite terminal extrapolation.",
+      "anchor_checks_are_not_a_formal_CPP_verifier": true
+    },
+    {
+      "source_path": "src/BSplCLib/BSplCLib.cxx",
+      "first_line": 1553,
+      "last_line": 1603,
+      "checked_anchor_count": 4,
+      "source_excerpt_sha256": "db17115bd16a6868e2bfc4e9cbabfafa99b82b9e57167b3c1d9aa7c337b49d98",
+      "independent_source_semantic_inference": "With degree one, multiplicities [2,2], nonperiodic sole span, the two local knots are the recorded a and b.",
+      "anchor_checks_are_not_a_formal_CPP_verifier": true
+    },
+    {
+      "source_path": "src/BSplCLib/BSplCLib.cxx",
+      "first_line": 1610,
+      "last_line": 1628,
+      "checked_anchor_count": 2,
+      "source_excerpt_sha256": "c3b41280782b784cdd22edce8cccaef4d40532375b46fd05efba0ab0f0a44259",
+      "independent_source_semantic_inference": "At the first and only span, the pole offset is 2-(1+1)=0.",
+      "anchor_checks_are_not_a_formal_CPP_verifier": true
+    }
+  ],
+  "actual_curve_reviews": [
+    {
+      "case_id": "case-001",
+      "material_id": 3,
+      "face_index": 220,
+      "wire_index": 0,
+      "occurrence_index": 0,
+      "original_complete_curve_canonical_sha256": "6dd1240a5ba17699884f57cc0785c7d37a6b832c1a7de8ae554c72311ad7d9f8",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "5738470606616205/1125899906842624",
+          "1/4"
+        ],
+        [
+          "5738470606616205/1125899906842624",
+          "4953959590107555/9007199254740992"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-001",
+      "material_id": 3,
+      "face_index": 224,
+      "wire_index": 0,
+      "occurrence_index": 0,
+      "original_complete_curve_canonical_sha256": "265bf8c59c393ef6e85605e70b782ad101c6078a45e8c75d7c7c1807d1f9ba4a",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "5738470606616205/1125899906842624",
+          "3715469692580659/2251799813685248"
+        ],
+        [
+          "5738470606616205/1125899906842624",
+          "8782019273372467/4503599627370496"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-001",
+      "material_id": 3,
+      "face_index": 231,
+      "wire_index": 0,
+      "occurrence_index": 0,
+      "original_complete_curve_canonical_sha256": "7ed73a60a829aabeb79c77d5e9cbf81366758a32f2f651a600a899b2e4d3e294",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "5343068581650803/4503599627370496",
+          "3715469692580659/2251799813685248"
+        ],
+        [
+          "5343068581650803/4503599627370496",
+          "8782019273372467/4503599627370496"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-001",
+      "material_id": 3,
+      "face_index": 240,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "bcbaff9c3a315e5ccdb1767b7a6323ba06ade2644eb78ecf1f5b46d0b7d3fd8e",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "5343068581650803/4503599627370496",
+          "1/4"
+        ],
+        [
+          "5343068581650803/4503599627370496",
+          "4953959590107555/9007199254740992"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-001",
+      "material_id": 3,
+      "face_index": 245,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "2de5f43620cb9ad09faee5b9058b4691ebd411d233eb3ca9b1cc812afd38ec86",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "3537118876012201/2251799813685248",
+          "1/4"
+        ],
+        [
+          "3537118876012201/2251799813685248",
+          "4953959590107555/9007199254740992"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-001",
+      "material_id": 3,
+      "face_index": 245,
+      "wire_index": 0,
+      "occurrence_index": 3,
+      "original_complete_curve_canonical_sha256": "1d61d077394bbcafb53d7f8c96b0dc12907434e94d4f6410047bf03929eb4fce",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "1335767145411575/1125899906842624",
+          "1/4"
+        ],
+        [
+          "1335767145411575/1125899906842624",
+          "4953959590107555/9007199254740992"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-001",
+      "material_id": 3,
+      "face_index": 246,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "6e70ed45a8a50c46c59d527d67fab44ea45b45ccdaf05e6787060dec157e6076",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "3537118876012201/2251799813685248",
+          "3715469692580659/2251799813685248"
+        ],
+        [
+          "3537118876012201/2251799813685248",
+          "8782019273372467/4503599627370496"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-001",
+      "material_id": 3,
+      "face_index": 246,
+      "wire_index": 0,
+      "occurrence_index": 3,
+      "original_complete_curve_canonical_sha256": "c32fc340548575eb23f44d714febcd2be09470ea2fbe3c5b663d2d2d0861a252",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "1335767145411575/1125899906842624",
+          "3715469692580659/2251799813685248"
+        ],
+        [
+          "1335767145411575/1125899906842624",
+          "8782019273372467/4503599627370496"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-001",
+      "material_id": 3,
+      "face_index": 249,
+      "wire_index": 0,
+      "occurrence_index": 0,
+      "original_complete_curve_canonical_sha256": "6a65cf0bd36398c24b83452b0a54bd22be87b8e61bf71d4bc4a6a1df4f2d5f77",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "5305678314021679/1125899906842624",
+          "1/4"
+        ],
+        [
+          "5305678314021679/1125899906842624",
+          "4953959590107555/9007199254740992"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-001",
+      "material_id": 3,
+      "face_index": 249,
+      "wire_index": 0,
+      "occurrence_index": 2,
+      "original_complete_curve_canonical_sha256": "6dd1240a5ba17699884f57cc0785c7d37a6b832c1a7de8ae554c72311ad7d9f8",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "5738470606616205/1125899906842624",
+          "1/4"
+        ],
+        [
+          "5738470606616205/1125899906842624",
+          "4953959590107555/9007199254740992"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-001",
+      "material_id": 3,
+      "face_index": 251,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "067d894d60e7d245c21dccfd160d337547de0eeb8e0057db039cec92bfec82fb",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "1002905096565503/281474976710656",
+          "1/4"
+        ],
+        [
+          "1002905096565503/281474976710656",
+          "4953959590107555/9007199254740992"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-001",
+      "material_id": 3,
+      "face_index": 253,
+      "wire_index": 0,
+      "occurrence_index": 3,
+      "original_complete_curve_canonical_sha256": "119ee71cc8631efa12d50eea3bceab5f84778ca237dcf25ebb69340d0047437e",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "6125234731531535/2251799813685248",
+          "1/4"
+        ],
+        [
+          "6125234731531535/2251799813685248",
+          "4953959590107555/9007199254740992"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-001",
+      "material_id": 3,
+      "face_index": 258,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "1c41ce8a38da9149a307909007280c4b4bba1af9af5f4df692e05e9dca771cf1",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "5305678314021679/1125899906842624",
+          "3715469692580659/2251799813685248"
+        ],
+        [
+          "5305678314021679/1125899906842624",
+          "8782019273372467/4503599627370496"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-001",
+      "material_id": 3,
+      "face_index": 258,
+      "wire_index": 0,
+      "occurrence_index": 3,
+      "original_complete_curve_canonical_sha256": "265bf8c59c393ef6e85605e70b782ad101c6078a45e8c75d7c7c1807d1f9ba4a",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "5738470606616205/1125899906842624",
+          "3715469692580659/2251799813685248"
+        ],
+        [
+          "5738470606616205/1125899906842624",
+          "8782019273372467/4503599627370496"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-001",
+      "material_id": 3,
+      "face_index": 260,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "60a3fba37f36f675abf38552d272ad692bd469db91b49594b65181a734d19409",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "1002905096565503/281474976710656",
+          "3715469692580659/2251799813685248"
+        ],
+        [
+          "1002905096565503/281474976710656",
+          "8782019273372467/4503599627370496"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-001",
+      "material_id": 3,
+      "face_index": 262,
+      "wire_index": 0,
+      "occurrence_index": 3,
+      "original_complete_curve_canonical_sha256": "6cebb82cccd7bf38476094dfa983024e2d09e2d5f77251a8bd266171083f470f",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "6125234731531535/2251799813685248",
+          "3715469692580659/2251799813685248"
+        ],
+        [
+          "6125234731531535/2251799813685248",
+          "8782019273372467/4503599627370496"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-006",
+      "material_id": 3,
+      "face_index": 220,
+      "wire_index": 0,
+      "occurrence_index": 0,
+      "original_complete_curve_canonical_sha256": "6dd1240a5ba17699884f57cc0785c7d37a6b832c1a7de8ae554c72311ad7d9f8",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "5738470606616205/1125899906842624",
+          "1/4"
+        ],
+        [
+          "5738470606616205/1125899906842624",
+          "4953959590107555/9007199254740992"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-006",
+      "material_id": 3,
+      "face_index": 224,
+      "wire_index": 0,
+      "occurrence_index": 0,
+      "original_complete_curve_canonical_sha256": "265bf8c59c393ef6e85605e70b782ad101c6078a45e8c75d7c7c1807d1f9ba4a",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "5738470606616205/1125899906842624",
+          "3715469692580659/2251799813685248"
+        ],
+        [
+          "5738470606616205/1125899906842624",
+          "8782019273372467/4503599627370496"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-006",
+      "material_id": 3,
+      "face_index": 231,
+      "wire_index": 0,
+      "occurrence_index": 0,
+      "original_complete_curve_canonical_sha256": "7ed73a60a829aabeb79c77d5e9cbf81366758a32f2f651a600a899b2e4d3e294",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "5343068581650803/4503599627370496",
+          "3715469692580659/2251799813685248"
+        ],
+        [
+          "5343068581650803/4503599627370496",
+          "8782019273372467/4503599627370496"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-006",
+      "material_id": 3,
+      "face_index": 240,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "bcbaff9c3a315e5ccdb1767b7a6323ba06ade2644eb78ecf1f5b46d0b7d3fd8e",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "5343068581650803/4503599627370496",
+          "1/4"
+        ],
+        [
+          "5343068581650803/4503599627370496",
+          "4953959590107555/9007199254740992"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-006",
+      "material_id": 3,
+      "face_index": 245,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "2de5f43620cb9ad09faee5b9058b4691ebd411d233eb3ca9b1cc812afd38ec86",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "3537118876012201/2251799813685248",
+          "1/4"
+        ],
+        [
+          "3537118876012201/2251799813685248",
+          "4953959590107555/9007199254740992"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-006",
+      "material_id": 3,
+      "face_index": 245,
+      "wire_index": 0,
+      "occurrence_index": 3,
+      "original_complete_curve_canonical_sha256": "1d61d077394bbcafb53d7f8c96b0dc12907434e94d4f6410047bf03929eb4fce",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "1335767145411575/1125899906842624",
+          "1/4"
+        ],
+        [
+          "1335767145411575/1125899906842624",
+          "4953959590107555/9007199254740992"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-006",
+      "material_id": 3,
+      "face_index": 246,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "6e70ed45a8a50c46c59d527d67fab44ea45b45ccdaf05e6787060dec157e6076",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "3537118876012201/2251799813685248",
+          "3715469692580659/2251799813685248"
+        ],
+        [
+          "3537118876012201/2251799813685248",
+          "8782019273372467/4503599627370496"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-006",
+      "material_id": 3,
+      "face_index": 246,
+      "wire_index": 0,
+      "occurrence_index": 3,
+      "original_complete_curve_canonical_sha256": "c32fc340548575eb23f44d714febcd2be09470ea2fbe3c5b663d2d2d0861a252",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "1335767145411575/1125899906842624",
+          "3715469692580659/2251799813685248"
+        ],
+        [
+          "1335767145411575/1125899906842624",
+          "8782019273372467/4503599627370496"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-006",
+      "material_id": 3,
+      "face_index": 249,
+      "wire_index": 0,
+      "occurrence_index": 0,
+      "original_complete_curve_canonical_sha256": "6a65cf0bd36398c24b83452b0a54bd22be87b8e61bf71d4bc4a6a1df4f2d5f77",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "5305678314021679/1125899906842624",
+          "1/4"
+        ],
+        [
+          "5305678314021679/1125899906842624",
+          "4953959590107555/9007199254740992"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-006",
+      "material_id": 3,
+      "face_index": 249,
+      "wire_index": 0,
+      "occurrence_index": 2,
+      "original_complete_curve_canonical_sha256": "6dd1240a5ba17699884f57cc0785c7d37a6b832c1a7de8ae554c72311ad7d9f8",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "5738470606616205/1125899906842624",
+          "1/4"
+        ],
+        [
+          "5738470606616205/1125899906842624",
+          "4953959590107555/9007199254740992"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-006",
+      "material_id": 3,
+      "face_index": 251,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "067d894d60e7d245c21dccfd160d337547de0eeb8e0057db039cec92bfec82fb",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "1002905096565503/281474976710656",
+          "1/4"
+        ],
+        [
+          "1002905096565503/281474976710656",
+          "4953959590107555/9007199254740992"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-006",
+      "material_id": 3,
+      "face_index": 253,
+      "wire_index": 0,
+      "occurrence_index": 3,
+      "original_complete_curve_canonical_sha256": "119ee71cc8631efa12d50eea3bceab5f84778ca237dcf25ebb69340d0047437e",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "6125234731531535/2251799813685248",
+          "1/4"
+        ],
+        [
+          "6125234731531535/2251799813685248",
+          "4953959590107555/9007199254740992"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-006",
+      "material_id": 3,
+      "face_index": 258,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "1c41ce8a38da9149a307909007280c4b4bba1af9af5f4df692e05e9dca771cf1",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "5305678314021679/1125899906842624",
+          "3715469692580659/2251799813685248"
+        ],
+        [
+          "5305678314021679/1125899906842624",
+          "8782019273372467/4503599627370496"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-006",
+      "material_id": 3,
+      "face_index": 258,
+      "wire_index": 0,
+      "occurrence_index": 3,
+      "original_complete_curve_canonical_sha256": "265bf8c59c393ef6e85605e70b782ad101c6078a45e8c75d7c7c1807d1f9ba4a",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "5738470606616205/1125899906842624",
+          "3715469692580659/2251799813685248"
+        ],
+        [
+          "5738470606616205/1125899906842624",
+          "8782019273372467/4503599627370496"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-006",
+      "material_id": 3,
+      "face_index": 260,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "60a3fba37f36f675abf38552d272ad692bd469db91b49594b65181a734d19409",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "1002905096565503/281474976710656",
+          "3715469692580659/2251799813685248"
+        ],
+        [
+          "1002905096565503/281474976710656",
+          "8782019273372467/4503599627370496"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-006",
+      "material_id": 3,
+      "face_index": 262,
+      "wire_index": 0,
+      "occurrence_index": 3,
+      "original_complete_curve_canonical_sha256": "6cebb82cccd7bf38476094dfa983024e2d09e2d5f77251a8bd266171083f470f",
+      "outside_defined_knot_domain": false,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "0",
+      "actual_affine_endpoints_exact": [
+        [
+          "6125234731531535/2251799813685248",
+          "3715469692580659/2251799813685248"
+        ],
+        [
+          "6125234731531535/2251799813685248",
+          "8782019273372467/4503599627370496"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-028",
+      "material_id": 4,
+      "face_index": 19,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "25c8558e3058651fca15653806fd64ce83af395bd6d9dac8f30a60baaa9874da",
+      "outside_defined_knot_domain": true,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "9/9007199254740992",
+      "actual_affine_endpoints_exact": [
+        [
+          "4421398595017503/562949953421312",
+          "0"
+        ],
+        [
+          "4421398595017503/562949953421312",
+          "5404319552844613/18014398509481984"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-028",
+      "material_id": 4,
+      "face_index": 19,
+      "wire_index": 0,
+      "occurrence_index": 3,
+      "original_complete_curve_canonical_sha256": "e4857f377594d0a817345e1b3010c4c4ac5758f074edf53d5adb05ff58185db6",
+      "outside_defined_knot_domain": true,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "9/9007199254740992",
+      "actual_affine_endpoints_exact": [
+        [
+          "4836252771726057/2251799813685248",
+          "0"
+        ],
+        [
+          "4836252771726057/2251799813685248",
+          "5404319552844613/18014398509481984"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-037",
+      "material_id": 4,
+      "face_index": 19,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "25c8558e3058651fca15653806fd64ce83af395bd6d9dac8f30a60baaa9874da",
+      "outside_defined_knot_domain": true,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "9/9007199254740992",
+      "actual_affine_endpoints_exact": [
+        [
+          "4421398595017503/562949953421312",
+          "0"
+        ],
+        [
+          "4421398595017503/562949953421312",
+          "5404319552844613/18014398509481984"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-037",
+      "material_id": 4,
+      "face_index": 19,
+      "wire_index": 0,
+      "occurrence_index": 3,
+      "original_complete_curve_canonical_sha256": "e4857f377594d0a817345e1b3010c4c4ac5758f074edf53d5adb05ff58185db6",
+      "outside_defined_knot_domain": true,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "9/9007199254740992",
+      "actual_affine_endpoints_exact": [
+        [
+          "4836252771726057/2251799813685248",
+          "0"
+        ],
+        [
+          "4836252771726057/2251799813685248",
+          "5404319552844613/18014398509481984"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-054",
+      "material_id": 3,
+      "face_index": 19,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "25c8558e3058651fca15653806fd64ce83af395bd6d9dac8f30a60baaa9874da",
+      "outside_defined_knot_domain": true,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "9/9007199254740992",
+      "actual_affine_endpoints_exact": [
+        [
+          "4421398595017503/562949953421312",
+          "0"
+        ],
+        [
+          "4421398595017503/562949953421312",
+          "5404319552844613/18014398509481984"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-054",
+      "material_id": 3,
+      "face_index": 19,
+      "wire_index": 0,
+      "occurrence_index": 3,
+      "original_complete_curve_canonical_sha256": "e4857f377594d0a817345e1b3010c4c4ac5758f074edf53d5adb05ff58185db6",
+      "outside_defined_knot_domain": true,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "9/9007199254740992",
+      "actual_affine_endpoints_exact": [
+        [
+          "4836252771726057/2251799813685248",
+          "0"
+        ],
+        [
+          "4836252771726057/2251799813685248",
+          "5404319552844613/18014398509481984"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-063",
+      "material_id": 4,
+      "face_index": 19,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "a4d7aaf5f0e9b7d8adce475bb464aee1b46f20a5a1da217696e484de4b45a750",
+      "outside_defined_knot_domain": true,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "9/9007199254740992",
+      "actual_affine_endpoints_exact": [
+        [
+          "2048307560544801/281474976710656",
+          "0"
+        ],
+        [
+          "2048307560544801/281474976710656",
+          "5404319552844613/18014398509481984"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-063",
+      "material_id": 4,
+      "face_index": 19,
+      "wire_index": 0,
+      "occurrence_index": 3,
+      "original_complete_curve_canonical_sha256": "2a7cdb1786eac105a5effb3107f46edd79852de3cf1897fa08e5753ed1c413bb",
+      "outside_defined_knot_domain": true,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "9/9007199254740992",
+      "actual_affine_endpoints_exact": [
+        [
+          "3537118876014453/2251799813685248",
+          "0"
+        ],
+        [
+          "3537118876014453/2251799813685248",
+          "5404319552844613/18014398509481984"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-072",
+      "material_id": 4,
+      "face_index": 19,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "a4d7aaf5f0e9b7d8adce475bb464aee1b46f20a5a1da217696e484de4b45a750",
+      "outside_defined_knot_domain": true,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "9/9007199254740992",
+      "actual_affine_endpoints_exact": [
+        [
+          "2048307560544801/281474976710656",
+          "0"
+        ],
+        [
+          "2048307560544801/281474976710656",
+          "5404319552844613/18014398509481984"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-072",
+      "material_id": 4,
+      "face_index": 19,
+      "wire_index": 0,
+      "occurrence_index": 3,
+      "original_complete_curve_canonical_sha256": "2a7cdb1786eac105a5effb3107f46edd79852de3cf1897fa08e5753ed1c413bb",
+      "outside_defined_knot_domain": true,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "9/9007199254740992",
+      "actual_affine_endpoints_exact": [
+        [
+          "3537118876014453/2251799813685248",
+          "0"
+        ],
+        [
+          "3537118876014453/2251799813685248",
+          "5404319552844613/18014398509481984"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-089",
+      "material_id": 3,
+      "face_index": 19,
+      "wire_index": 0,
+      "occurrence_index": 1,
+      "original_complete_curve_canonical_sha256": "a4d7aaf5f0e9b7d8adce475bb464aee1b46f20a5a1da217696e484de4b45a750",
+      "outside_defined_knot_domain": true,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "9/9007199254740992",
+      "actual_affine_endpoints_exact": [
+        [
+          "2048307560544801/281474976710656",
+          "0"
+        ],
+        [
+          "2048307560544801/281474976710656",
+          "5404319552844613/18014398509481984"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    },
+    {
+      "case_id": "case-089",
+      "material_id": 3,
+      "face_index": 19,
+      "wire_index": 0,
+      "occurrence_index": 3,
+      "original_complete_curve_canonical_sha256": "2a7cdb1786eac105a5effb3107f46edd79852de3cf1897fa08e5753ed1c413bb",
+      "outside_defined_knot_domain": true,
+      "lower_extrapolation_exact": "0",
+      "upper_extrapolation_exact": "9/9007199254740992",
+      "actual_affine_endpoints_exact": [
+        [
+          "3537118876014453/2251799813685248",
+          "0"
+        ],
+        [
+          "3537118876014453/2251799813685248",
+          "5404319552844613/18014398509481984"
+        ]
+      ],
+      "both_scalar_supports_independently_verified": true
+    }
+  ],
+  "actual_curve_count": 44,
+  "actual_outside_knot_domain_count": 12,
+  "two_axis_scalar_support_count": 88,
+  "case_specific_bases": {
+    "case-011": [
+      [
+        "12",
+        "319/4",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ],
+      [
+        "-319/4",
+        "12",
+        "0"
+      ]
+    ],
+    "case-012": [
+      [
+        "12",
+        "319/4",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ],
+      [
+        "-319/4",
+        "12",
+        "0"
+      ]
+    ],
+    "case-013": [
+      [
+        "12",
+        "319/4",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ],
+      [
+        "-319/4",
+        "12",
+        "0"
+      ]
+    ],
+    "case-014": [
+      [
+        "12",
+        "319/4",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ],
+      [
+        "-319/4",
+        "12",
+        "0"
+      ]
+    ],
+    "case-015": [
+      [
+        "12",
+        "319/4",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ],
+      [
+        "-319/4",
+        "12",
+        "0"
+      ]
+    ],
+    "case-016": [
+      [
+        "-12",
+        "319/4",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ],
+      [
+        "-319/4",
+        "-12",
+        "0"
+      ]
+    ],
+    "case-017": [
+      [
+        "-12",
+        "319/4",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ],
+      [
+        "-319/4",
+        "-12",
+        "0"
+      ]
+    ],
+    "case-018": [
+      [
+        "-12",
+        "319/4",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ],
+      [
+        "-319/4",
+        "-12",
+        "0"
+      ]
+    ],
+    "case-019": [
+      [
+        "-12",
+        "319/4",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ],
+      [
+        "-319/4",
+        "-12",
+        "0"
+      ]
+    ]
+  },
+  "case_specific_basis_proof_count": 12,
+  "native_complete_record_counts": {
+    "material": 53,
+    "finite": 16
+  },
+  "native_complete_records_independently_digest_equal": true,
+  "native_curve_records_independently_equal": true,
+  "v3_actual_finalization_failure_preserved": {
+    "type": "AttributeError",
+    "message": "'Fraction' object has no attribute 'producer'",
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/34f8fcac2ab1/r3-envelope/run_exact_method_r3e_v3.py\", line 185, in main\n    report['input_and_source_hashes_unchanged']=all(sha(HERE/n)==h for n,h in contract['source_sha256'].items()) and all(sha(path)==contract['native_reports'][key]['sha256'] for key,path in [('producer',a.producer),('reader',a.reader)])\n                                                                                                                                                                                                           ^^^^^^^^^^\nAttributeError: 'Fraction' object has no attribute 'producer'\n"
+  },
+  "controlling_28_proofs_identical_to_v3": [
+    {
+      "relative_path": "case-001-frame-1-full-carriers.json.gz",
+      "bytes": 110892,
+      "sha256": "4653ec66e3affe6b04e2b66138e87b1f866d061fb4accbb13c7a9f044080715c",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-001-frame-2-full-carriers.json.gz",
+      "bytes": 129043,
+      "sha256": "4f2ead8d2bab569587c52999e7e104d8c333c24137389c281d99f5fb663d4f02",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-006-frame-1-full-carriers.json.gz",
+      "bytes": 110893,
+      "sha256": "fbb0ba389271846ae24ca22bd3075968d85ecc2cb8c21893611c515c737da4ab",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-006-frame-2-full-carriers.json.gz",
+      "bytes": 134152,
+      "sha256": "dc20311a0766b77d9561b65637abee22c83bb7e0eb8e24ec19d56a675e083b8d",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-011-negative-prism-complete-proof.json.gz",
+      "bytes": 10769,
+      "sha256": "778c34b15c0d0b23555a58136fe6dc5ef4538542806195406fcdd5b4c68b71ac",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-012-negative-prism-complete-proof.json.gz",
+      "bytes": 10723,
+      "sha256": "a87d074453d9b2d44529709494e182cce8b743d3f56b941bc6a262e7b39d30e7",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-013-negative-prism-complete-proof.json.gz",
+      "bytes": 10723,
+      "sha256": "c0374c79335847ed85b20a7da98ff4e2c5beb31eab6d7964ad93ea18be1e482c",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-014-negative-prism-complete-proof.json.gz",
+      "bytes": 10723,
+      "sha256": "c54160137c3113db75500caecbb04fe47c47ec390373d73fb2790d4e1998fee6",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-015-negative-prism-complete-proof.json.gz",
+      "bytes": 10723,
+      "sha256": "c6a2b2b18319b7ecdca8ea700b25926b718e686ab9a66c988c65a4ed601adec8",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-017-impossible-Common-full-proof.json.gz",
+      "bytes": 8713,
+      "sha256": "24308ce557d550032acbf8724d5fc14276c9abbbc51898902328d6fc61a54021",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-018-impossible-Common-full-proof.json.gz",
+      "bytes": 4095,
+      "sha256": "c8161e5c02881e9bb8c99271331ecfeaa6312aec6b49e2be826e39de3a2e4d8e",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-019-impossible-Common-full-proof.json.gz",
+      "bytes": 8717,
+      "sha256": "4c376eadbcdcad8112a049c77c0dd696c057ecf716313208894ff7ac40ff29e7",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-028-frame-1-full-carriers.json.gz",
+      "bytes": 129215,
+      "sha256": "0936fa314df8936312eca5f93b2c23728df2beaade41d5fe3c33cd7d9954f36f",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-028-frame-2-full-carriers.json.gz",
+      "bytes": 51970,
+      "sha256": "4dfdb5d1e3e0b9b7387ddda9fd10ead560f83ddf81f483a6b4fb4e74bd47cf89",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-037-frame-1-full-carriers.json.gz",
+      "bytes": 171733,
+      "sha256": "be12ac84cb555ed9d3779efd3b2bc981cb8aac8427cef2aaf918be27242cbe58",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-037-frame-2-full-carriers.json.gz",
+      "bytes": 63053,
+      "sha256": "5d4a338ff7b64ead17bb912715830151270b85fa71744872e0dca2f5ca8d20d1",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-054-frame-1-full-carriers.json.gz",
+      "bytes": 51716,
+      "sha256": "0599f1fa2c9bab54c883d2a5410bbba36c08dbdda38a011cccd1e4260873ea26",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-054-frame-2-full-carriers.json.gz",
+      "bytes": 3362,
+      "sha256": "7a9d3801c07490bda5b89b7aa13218c09ae7e3f138af9d446a3c0143e2ff7a77",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-063-frame-1-full-carriers.json.gz",
+      "bytes": 134359,
+      "sha256": "819e9568a50cb6025e84b93581577af32c487057f6624c88b573b489c70afa94",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-063-frame-2-full-carriers.json.gz",
+      "bytes": 53927,
+      "sha256": "ba05a451e6e869434514cc0727984316d69cfddae41157833f2079f3329439d3",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-072-frame-1-full-carriers.json.gz",
+      "bytes": 177217,
+      "sha256": "c33d5d3bf8f075a7d2517de221f80dd9c78cf532a6b520946e952eb0529773ca",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-072-frame-2-full-carriers.json.gz",
+      "bytes": 67406,
+      "sha256": "742826c355dbf4c816f69086bb6ce7b2c5c9fd8e15c24d3777eaacecf963efc5",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-089-frame-1-full-carriers.json.gz",
+      "bytes": 54277,
+      "sha256": "8bef2ed1d74fbd4d0660898755d86b8f5c2f88f010758babf237b066b9cb1980",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "case-089-frame-2-full-carriers.json.gz",
+      "bytes": 3358,
+      "sha256": "d6a072357a4ed912ed9862cb131cc65b28fff858a4d295f7a0c5c6e693feb789",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "original-EXTRUSION-negative-Z-full-proof.json.gz",
+      "bytes": 8464,
+      "sha256": "c98f88b0428952aa9c4f0c850f01ac3277f3a327ead0196d083511f795ec77a7",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "original-EXTRUSION-nonzero-2pow-51-X-full-proof.json.gz",
+      "bytes": 8435,
+      "sha256": "cd5423bf90b1fe9285eea4bbf21db418f602774be090b183861dfd945248da3c",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "original-EXTRUSION-original-positive-Z-full-proof.json.gz",
+      "bytes": 8459,
+      "sha256": "40004c0df7083701744ec138065d8ac952b5030b6601cbe64e194dd5730d1367",
+      "same_as_actual_failed_v3": true
+    },
+    {
+      "relative_path": "original-EXTRUSION-strict-zero-full-proof.json.gz",
+      "bytes": 8426,
+      "sha256": "e5c837b2d0ad704b8fc521e7e460ac77e8e386ebd0edc5e5ce64f79fdf6f2ec9",
+      "same_as_actual_failed_v3": true
+    }
+  ],
+  "independent_theorem_review": {
+    "bounded_trim_hull": "A nonempty bounded coherent affine trimmed face lies in the convex hull of its complete boundary. Every finite line boundary segment lies in the convex hull of its two endpoints. Applying the same injective affine surface map preserves convex hull inclusion. This is conditional on exact bounded trim/material coherence, which is not supplied by native validity alone.",
+    "whole_bounded_material": "Every compact material lies in the convex hull of its boundary. An invertible oblique-coordinate box containing every complete coherent boundary generator therefore contains that material; its continuous translation segment is covered by including both endpoint generators.",
+    "added_boundary": "For a closed bounded material S and a convex displacement set D containing zero, every x in (S+D) outside S has a last crossing of boundary(S) along its defining segment. Its remaining displacement lies in D. Thus S+D is contained in S union (boundary(S)+D). Summing nonnegative carrier volumes gives an upper bound, provided S and its complete boundary have the stated exact semantics.",
+    "terminal_affine_source": "For the strict degree-one, two-pole, two-knot, [2,2], nonperiodic nonrational subclass, the independently read source path leaves the actual parameter unchanged and performs a single affine blend. Every scalar affine extremum on a finite interval occurs at an endpoint, including the 12 actual terminal overshoots.",
+    "support_basis": "Choosing a nonsingular support coordinate basis from each original q-law changes the enclosing set calculation, not the original displacement or any original acceptance threshold.",
+    "native_material_coherence_certified": false,
+    "formal_CPP_translation_or_compiled_binary_proof": false,
+    "uniform_binary64_rounding_bound": false,
+    "base_native_Common_soundness_certified": false,
+    "whole_continuous_G2_or_physical_qualification": false
+  },
+  "new_native_CAD_calls": 0,
+  "imports_producer_algorithm": false,
+  "elapsed_seconds": 1.4504078290046891,
+  "peak_RSS_bytes": 179703808
+}

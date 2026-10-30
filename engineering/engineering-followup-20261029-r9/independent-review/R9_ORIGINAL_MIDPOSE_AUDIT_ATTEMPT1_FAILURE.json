@@ -1,0 +1,17 @@
+{
+  "schema": "razr-r9-independent-midpose-audit-attempt1-failure-v1",
+  "completed": false,
+  "audit_source": {
+    "bytes": 17584,
+    "sha256": "1c259a687a3c3b76da23f6f3e396b12bbeea03c64aef6b1189af1b2d7e1e3568"
+  },
+  "failure_log": {
+    "bytes": 903,
+    "sha256": "b10c61d07b8566ad153a9e773f685f595fc7e05dec79f9678fc5336cabac576a"
+  },
+  "failure": "KeyError: common_mm3 in F1a independent reader projection",
+  "cause": "The audit incorrectly assumed both archived role schemas use common_mm3. The original reader uses direct_Common_mm3 and preserves its actual nonzero STEP roundtrip volume difference.",
+  "engineering_source_or_threshold_changed": false,
+  "original_failure_reclassified": false,
+  "corrected_attempt": "audit_original_midpose_pairs_v2.py"
+}

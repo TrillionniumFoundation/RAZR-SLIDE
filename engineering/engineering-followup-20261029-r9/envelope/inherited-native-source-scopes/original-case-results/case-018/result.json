@@ -1,0 +1,1310 @@
+{
+  "current_evaluation_error_records": [
+    {
+      "error": "ValueError: invalid signed common volume",
+      "frame": "initial_reference_frame_result"
+    }
+  ],
+  "current_original_aggregate_disposition": "unresolved_evaluation",
+  "current_original_aggregate_failure": {
+    "message": "raw evaluation failure or unknown disposition",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/_temp/razr-c2-slide-l1-bec1c8d7/replay_slide_targets.py\", line 422, in run_native\n    case['current_original_aggregate'] = evidence.aggregate([{'specification': spec, 'raw': case['native_raw']}])\n                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-integration-20261025/geometry/slide/slide_evidence.py\", line 245, in aggregate\n    postguard.validate_frame(raw)\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/tools/validate_product_nominal_report.py\", line 129, in validate_frame\n    validate_frame(row[key], depth+1)\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/tools/validate_product_nominal_report.py\", line 107, in validate_frame\n    require(disposition in ('clear', 'unresolved_enclosure_overlap'), 'raw evaluation failure or unknown disposition')\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/tools/verify_product_native.py\", line 55, in require\n    raise ValueError(message)\nValueError: raw evaluation failure or unknown disposition\n",
+    "type": "ValueError"
+  },
+  "diagnostic_evidence_completed": true,
+  "elapsed_seconds": 2.967149961999894,
+  "material_exports": [
+    {
+      "after_export_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Compound",
+        "signed_volume_mm3": 13891.385568361538,
+        "solid_signed_volumes_mm3": [
+          13891.385568361538
+        ],
+        "top_level_children_types": [
+          "Solid"
+        ]
+      },
+      "exports": {
+        "brep": {
+          "bytes": 99448,
+          "native_export_status": "True",
+          "path": "material-001.brep",
+          "sha256": "816c720d279d9d952e8d90114554843ea6e3b0ad868dc4157ee9b05208e3ffb1"
+        },
+        "step": {
+          "bytes": 349398,
+          "native_export_status": "IFSelect_ReturnStatus.IFSelect_RetDone",
+          "path": "material-001.step",
+          "sha256": "f39b2a1a64299bfc2271585d859af8bc5c30721461c91ccb80465ad2e3226782"
+        }
+      },
+      "id": 1,
+      "invalid_or_nonpositive_topology_is_preserved_as_diagnostic_evidence": true,
+      "original_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Compound",
+        "signed_volume_mm3": 13891.385568361538,
+        "solid_signed_volumes_mm3": [
+          13891.385568361538
+        ],
+        "top_level_children_types": [
+          "Solid"
+        ]
+      },
+      "references": [
+        {
+          "role": "original-moving-input",
+          "specification_sha256": "5b2e1a6a07a5b04c265b5ee8ab19a2d6087067254d131f6e5e74fb64b2db4cd5"
+        },
+        {
+          "function": "_continuous_pair_in_frame",
+          "line": 269,
+          "native_reference_frame_index": 1,
+          "role": "exception-local-a",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+        }
+      ],
+      "signature_unchanged_by_serialization": true
+    },
+    {
+      "after_export_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Compound",
+        "signed_volume_mm3": 0.16493361431346365,
+        "solid_signed_volumes_mm3": [
+          0.16493361431346365
+        ],
+        "top_level_children_types": [
+          "Solid"
+        ]
+      },
+      "exports": {
+        "brep": {
+          "bytes": 2595,
+          "native_export_status": "True",
+          "path": "material-002.brep",
+          "sha256": "5d7cfa8d32d3375b92da33ec7121f7b6d85c0079dc4f7e4471f7aee53729d058"
+        },
+        "step": {
+          "bytes": 9284,
+          "native_export_status": "IFSelect_ReturnStatus.IFSelect_RetDone",
+          "path": "material-002.step",
+          "sha256": "2041c39f1a501e60c99e2a28d478f1538a9cbd89c6b8cc89e3f7ffe8d325bc55"
+        }
+      },
+      "id": 2,
+      "invalid_or_nonpositive_topology_is_preserved_as_diagnostic_evidence": true,
+      "original_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Compound",
+        "signed_volume_mm3": 0.16493361431346365,
+        "solid_signed_volumes_mm3": [
+          0.16493361431346365
+        ],
+        "top_level_children_types": [
+          "Solid"
+        ]
+      },
+      "references": [
+        {
+          "role": "original-fixed-input",
+          "specification_sha256": "5b2e1a6a07a5b04c265b5ee8ab19a2d6087067254d131f6e5e74fb64b2db4cd5"
+        },
+        {
+          "function": "strict_common",
+          "line": 124,
+          "native_reference_frame_index": 1,
+          "role": "exception-local-b",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py"
+        },
+        {
+          "function": "_continuous_pair_in_frame",
+          "line": 269,
+          "native_reference_frame_index": 1,
+          "role": "exception-local-b",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+        }
+      ],
+      "signature_unchanged_by_serialization": true
+    },
+    {
+      "after_export_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Compound",
+        "signed_volume_mm3": 0.16493361431346365,
+        "solid_signed_volumes_mm3": [
+          0.16493361431346365
+        ],
+        "top_level_children_types": [
+          "Solid"
+        ]
+      },
+      "exports": {
+        "brep": {
+          "bytes": 2595,
+          "native_export_status": "True",
+          "path": "material-003.brep",
+          "sha256": "d2ee52da7511bb790d78e3297de7c7f23ec83c6f543cee10e1809a9c29052d8d"
+        },
+        "step": {
+          "bytes": 9284,
+          "native_export_status": "IFSelect_ReturnStatus.IFSelect_RetDone",
+          "path": "material-003.step",
+          "sha256": "e9858b4ddac53cb4a59cf20d8914a58f86b97feae4d765ce945112bb5b671186"
+        }
+      },
+      "id": 3,
+      "invalid_or_nonpositive_topology_is_preserved_as_diagnostic_evidence": true,
+      "original_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Compound",
+        "signed_volume_mm3": 0.16493361431346365,
+        "solid_signed_volumes_mm3": [
+          0.16493361431346365
+        ],
+        "top_level_children_types": [
+          "Solid"
+        ]
+      },
+      "references": [
+        {
+          "function": "volume",
+          "line": 103,
+          "native_reference_frame_index": 1,
+          "role": "actual-nonzero-Common",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py"
+        }
+      ],
+      "signature_unchanged_by_serialization": true
+    },
+    {
+      "after_export_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Solid",
+        "signed_volume_mm3": 3.068851058695632e-11,
+        "solid_signed_volumes_mm3": [
+          3.068851058695632e-11
+        ],
+        "top_level_children_types": []
+      },
+      "exports": {
+        "brep": {
+          "bytes": 4546,
+          "native_export_status": "True",
+          "path": "material-004.brep",
+          "sha256": "884362e52cdc5fb61fc80f861cb2c2a9a27d1e59933d6e2ecb3e69a1c0e914a4"
+        },
+        "step": {
+          "bytes": 16704,
+          "native_export_status": "IFSelect_ReturnStatus.IFSelect_RetDone",
+          "path": "material-004.step",
+          "sha256": "2a78f8e4ce21cfbd337fc56aaae8a3d676b48454069845488e5c44c114a10cc2"
+        }
+      },
+      "id": 4,
+      "invalid_or_nonpositive_topology_is_preserved_as_diagnostic_evidence": true,
+      "original_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Solid",
+        "signed_volume_mm3": 3.068851058695632e-11,
+        "solid_signed_volumes_mm3": [
+          3.068851058695632e-11
+        ],
+        "top_level_children_types": []
+      },
+      "references": [
+        {
+          "function": "strict_common",
+          "line": 124,
+          "native_reference_frame_index": 1,
+          "role": "exception-local-a",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py"
+        },
+        {
+          "function": "_continuous_pair_in_frame",
+          "line": 269,
+          "native_reference_frame_index": 1,
+          "role": "exception-local-region",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+        },
+        {
+          "function": "_continuous_pair_in_frame",
+          "line": 281,
+          "native_reference_frame_index": 1,
+          "role": "last-examined-enclosure-region",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+        }
+      ],
+      "signature_unchanged_by_serialization": true
+    }
+  ],
+  "native_call_completed": true,
+  "native_raw": {
+    "common_upper_bound_is_sum_not_union_volume": true,
+    "common_upper_bound_mm3": 0.0,
+    "disposition": "clear",
+    "initial_reference_frame_result": {
+      "collision_proved": false,
+      "disposition": "unresolved_evaluation",
+      "error": "ValueError: invalid signed common volume"
+    },
+    "maximum_region_common_mm3": 0.0,
+    "method": "continuous_relative_affine_box_translation_enclosure",
+    "region_count": 4,
+    "relative_reference_frame_reversed": true
+  },
+  "original_aggregate_classification_changed": false,
+  "original_record_replaced": false,
+  "raw_classification_change": false,
+  "raw_equal_to_original": true,
+  "schema": "razr-L1-observed-C2-slide-target-replay-v1-case",
+  "started_monotonic": 1311.250384717,
+  "target": {
+    "a": "B_SHELL",
+    "b": "R_TELESCOPE_3_CAM_UPPER_FLANGE",
+    "case_id": "case-018",
+    "original_attempt_disposition": "unresolved_evaluation",
+    "original_attempt_error": "ValueError: raw evaluation failure or unknown disposition",
+    "original_node_disposition": "unresolved_evaluation",
+    "original_node_path": "pairs[5337]",
+    "original_node_sha256": "bf134f198d6d81644c93a6fd99b38694d3fe5ca440028e208dc73b938d42a158",
+    "original_parent_intervals": [],
+    "original_raw": {
+      "common_upper_bound_is_sum_not_union_volume": true,
+      "common_upper_bound_mm3": 0.0,
+      "disposition": "clear",
+      "initial_reference_frame_result": {
+        "collision_proved": false,
+        "disposition": "unresolved_evaluation",
+        "error": "ValueError: invalid signed common volume"
+      },
+      "maximum_region_common_mm3": 0.0,
+      "method": "continuous_relative_affine_box_translation_enclosure",
+      "region_count": 4,
+      "relative_reference_frame_reversed": true
+    },
+    "original_recursive_error_records": [
+      {
+        "error": "native evaluation failure",
+        "path": "pairs[5337]"
+      },
+      {
+        "error": "ValueError: raw evaluation failure or unknown disposition",
+        "path": "pairs[5337].attempts[0]"
+      },
+      {
+        "error": "ValueError: invalid signed common volume",
+        "path": "pairs[5337].attempts[0].records[0].raw.initial_reference_frame_result"
+      }
+    ],
+    "original_specification_sha256": "5b2e1a6a07a5b04c265b5ee8ab19a2d6087067254d131f6e5e74fb64b2db4cd5",
+    "pair_class": "rigid_rigid",
+    "q_endpoints_binary64": [
+      {
+        "hex": "0x0.0p+0",
+        "value": 0.0
+      },
+      {
+        "hex": "0x1.8000000000000p+3",
+        "value": 12.0
+      }
+    ],
+    "q_interval_exact": [
+      "0",
+      "12"
+    ],
+    "q_width_binary64": {
+      "hex": "0x1.8000000000000p+3",
+      "value": 12.0
+    },
+    "q_width_exact": "12",
+    "raw_pair_index": 5337,
+    "shard": "E17",
+    "specification": {
+      "coefficients": [
+        [
+          -1.0,
+          6.645833333333333,
+          0.0
+        ]
+      ],
+      "fixed": {
+        "kind": "complete_rigid_material",
+        "material": "R_TELESCOPE_3_CAM_UPPER_FLANGE"
+      },
+      "moving": {
+        "kind": "complete_rigid_material",
+        "material": "B_SHELL"
+      },
+      "parameter_intervals": [
+        [
+          0.0,
+          12.0
+        ]
+      ],
+      "relative_law": {
+        "flank_z": [
+          "0",
+          "0"
+        ],
+        "height_x": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "joint_z": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "q_xyz": [
+          "-1",
+          "319/48",
+          "0"
+        ]
+      }
+    }
+  },
+  "trace": {
+    "actual_strict_Common_calls": [
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 1
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 2
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 43.595,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 3
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 12.099999999999994,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 4
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 15.899999999999997,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 5
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 40.15,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 6
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 13.65,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 7
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 0.9999999999999982,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 8
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 25.287852664569996,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 9
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 13.069661411557,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 10
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 40.550000000000004,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 11
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 12
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 13.062147335422999,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 13
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 0.3000000000000007,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 14
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 4.15,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 15
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 40.6,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 16
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 14.1,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 17
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 40.6,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 18
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 5.949999999999989,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 19
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 13.800000000000002,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 20
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 14.1,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 21
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 0.3000000000000025,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 22
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 14.049999999999999,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 23
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 14.676571969012999,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 24
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 12.787147335423,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 25
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 13.316878420396,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 26
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 13.312147335422999,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 27
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 25.537852664569996,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 28
+      },
+      {
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 23.121006351468807,
+          "common_mm3": 0.0,
+          "method": "positive_axis_gap"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 29
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 30
+      },
+      {
+        "actual_Common_material_id": 3,
+        "actual_Common_signed_volume_mm3": 0.16493361431346365,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 1,
+        "original_return": null,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 31
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 32
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 33
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 34
+      },
+      {
+        "actual_Common_signed_volume_mm3": 0.0,
+        "function": "strict_common",
+        "line": 115,
+        "native_reference_frame_index": 2,
+        "original_return": {
+          "axis_gap_lower_mm": 0.0,
+          "common_mm3": 0.0,
+          "method": "native_common"
+        },
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "strict_common_index": 35
+      }
+    ],
+    "captured_materials": [
+      {
+        "id": 1,
+        "references": [
+          {
+            "role": "original-moving-input",
+            "specification_sha256": "5b2e1a6a07a5b04c265b5ee8ab19a2d6087067254d131f6e5e74fb64b2db4cd5"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 269,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-a",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "references": [
+          {
+            "role": "original-fixed-input",
+            "specification_sha256": "5b2e1a6a07a5b04c265b5ee8ab19a2d6087067254d131f6e5e74fb64b2db4cd5"
+          },
+          {
+            "function": "strict_common",
+            "line": 124,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-b",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 269,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-b",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "references": [
+          {
+            "function": "volume",
+            "line": 103,
+            "native_reference_frame_index": 1,
+            "role": "actual-nonzero-Common",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "references": [
+          {
+            "function": "strict_common",
+            "line": 124,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-a",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 269,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-region",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 281,
+            "native_reference_frame_index": 1,
+            "role": "last-examined-enclosure-region",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      }
+    ],
+    "distinct_native_exception_count": 5,
+    "exception_events": [
+      {
+        "function": "<genexpr>",
+        "line": 221,
+        "locals": {
+          "axis": 0
+        },
+        "material_ids": {},
+        "message": "",
+        "native_exception_index": 1,
+        "native_reference_frame_index": 1,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 221, in <genexpr>\n    active = [axis for axis in range(3) if any(c[axis] for c in coefficients)]\n                                               ~^^^^^^\nGeneratorExit\n",
+        "type": "GeneratorExit"
+      },
+      {
+        "function": "<genexpr>",
+        "line": 221,
+        "locals": {
+          "axis": 1
+        },
+        "material_ids": {},
+        "message": "",
+        "native_exception_index": 2,
+        "native_reference_frame_index": 1,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 221, in <genexpr>\n    active = [axis for axis in range(3) if any(c[axis] for c in coefficients)]\n                                               ~^^^^^^\nGeneratorExit\n",
+        "type": "GeneratorExit"
+      },
+      {
+        "function": "strict_common",
+        "line": 124,
+        "locals": {
+          "aa": [
+            5.8862036798689985,
+            20.030338588443,
+            1.100436753434,
+            95.10000000000029,
+            12.999999999999998,
+            13.25
+          ],
+          "bb": [
+            6.6,
+            7.9,
+            80.85,
+            82.15,
+            13.0,
+            13.2
+          ],
+          "value": 0.16493361431346365
+        },
+        "material_ids": {
+          "a": 4,
+          "b": 2
+        },
+        "message": "invalid signed common volume",
+        "native_exception_index": 3,
+        "native_reference_frame_index": 1,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py\", line 124, in strict_common\n    raise ValueError('invalid signed common volume')\nValueError: invalid signed common volume\n",
+        "type": "ValueError"
+      },
+      {
+        "function": "_continuous_pair_in_frame",
+        "line": 269,
+        "locals": {
+          "aa": [
+            -36.995,
+            36.995000000000005,
+            0.0,
+            94.25,
+            7.049999999999999,
+            16.2
+          ],
+          "bb": [
+            6.6,
+            7.9,
+            80.85,
+            82.15,
+            13.0,
+            13.2
+          ],
+          "coefficients": [
+            [
+              -1.0,
+              6.645833333333333,
+              0.0
+            ]
+          ],
+          "domain": [
+            [
+              0.0,
+              12.0
+            ]
+          ],
+          "high": [
+            36.995000000000005,
+            174.0,
+            16.2
+          ],
+          "maximum": 0.0,
+          "shift": [
+            -12.0,
+            0.0,
+            0.0,
+            79.75,
+            0.0,
+            0.0
+          ],
+          "swept": [
+            -48.995,
+            0.0,
+            7.049999999999999
+          ],
+          "upper": 0.0,
+          "value": [
+            [
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Compound"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              },
+              {
+                "observed_python_type": "cadquery.occ_impl.shapes.Solid"
+              }
+            ],
+            "continuous_relative_affine_box_translation_enclosure"
+          ],
+          "values": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "material_ids": {
+          "a": 1,
+          "b": 2,
+          "region": 4
+        },
+        "message": "invalid signed common volume",
+        "native_exception_index": 3,
+        "native_reference_frame_index": 1,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 269, in _continuous_pair_in_frame\n    common=p.strict_common(region,b)['common_mm3']\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_assembly.py\", line 124, in strict_common\n    raise ValueError('invalid signed common volume')\nValueError: invalid signed common volume\n",
+        "type": "ValueError"
+      },
+      {
+        "function": "<genexpr>",
+        "line": 221,
+        "locals": {
+          "axis": 0
+        },
+        "material_ids": {},
+        "message": "",
+        "native_exception_index": 4,
+        "native_reference_frame_index": 2,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 221, in <genexpr>\n    active = [axis for axis in range(3) if any(c[axis] for c in coefficients)]\n                                               ~^^^^^^\nGeneratorExit\n",
+        "type": "GeneratorExit"
+      },
+      {
+        "function": "<genexpr>",
+        "line": 221,
+        "locals": {
+          "axis": 1
+        },
+        "material_ids": {},
+        "message": "",
+        "native_exception_index": 5,
+        "native_reference_frame_index": 2,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 221, in <genexpr>\n    active = [axis for axis in range(3) if any(c[axis] for c in coefficients)]\n                                               ~^^^^^^\nGeneratorExit\n",
+        "type": "GeneratorExit"
+      }
+    ],
+    "native_frame_results": [
+      {
+        "coefficients": [
+          [
+            -1.0,
+            6.645833333333333,
+            0.0
+          ]
+        ],
+        "domain": [
+          [
+            0.0,
+            12.0
+          ]
+        ],
+        "last_examined_region_material_id": 4,
+        "native_reference_frame_index": 1,
+        "observed_region_values_mm3": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "original_return": {
+          "collision_proved": false,
+          "disposition": "unresolved_evaluation",
+          "error": "ValueError: invalid signed common volume"
+        }
+      },
+      {
+        "coefficients": [
+          [
+            1.0,
+            -6.645833333333333,
+            -0.0
+          ]
+        ],
+        "domain": [
+          [
+            0.0,
+            12.0
+          ]
+        ],
+        "native_reference_frame_index": 2,
+        "observed_region_values_mm3": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "original_return": {
+          "common_upper_bound_is_sum_not_union_volume": true,
+          "common_upper_bound_mm3": 0.0,
+          "disposition": "clear",
+          "maximum_region_common_mm3": 0.0,
+          "method": "continuous_relative_affine_box_translation_enclosure",
+          "region_count": 4
+        }
+      }
+    ],
+    "observer_failures": [],
+    "original_functions_replaced": false,
+    "source_functions_mutated": false,
+    "sys_settrace_observation_only": true
+  }
+}

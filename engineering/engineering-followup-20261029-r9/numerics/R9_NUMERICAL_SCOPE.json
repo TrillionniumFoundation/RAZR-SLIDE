@@ -1,0 +1,169 @@
+{
+  "schema": "razr-r9-original-numeric-executed-scope-v1",
+  "controlling_original_source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "historical_N15_scope_retained": true,
+  "new_solver_executed": false,
+  "new_native_K_products_executed": true,
+  "runtime": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "historical_dependency_versions_reproduced": false,
+  "original_K_b_C_and_threshold_unchanged": true,
+  "original_float64_threshold": 1e-07,
+  "panel_original_five_residuals": [
+    9.983337773558199e-08,
+    1.990477778047551e-09,
+    7.9778400558745e-09,
+    7.799897850960903e-09,
+    8.043638351779749e-09
+  ],
+  "frame_original_five_residuals": [
+    5.659897926075834e-09,
+    1.268995135824172e-10,
+    1.9311867265678982e-10,
+    1.2438483918711836e-10,
+    1.7809635438880483e-10
+  ],
+  "original_all_ten_full_fields_native_readback_passed": true,
+  "panel_correction_history": {
+    "native_original_float64_gate_evaluations": 45,
+    "complete_native_candidate_sets_checked": 7,
+    "direct_exact_equations_checked": 1262,
+    "unchanged_exact_anchors_checked": 7,
+    "all_target_pairs_independently_reconstructed_and_accumulated": 36180
+  },
+  "four_original_load_scalar_residuals": [
+    2.1827872842550278e-11,
+    2.4101609596982598e-11,
+    1.6825651982799172e-11,
+    2.1714186004828662e-11
+  ],
+  "four_original_load_native_2D_block_residual": 2.4101609596982598e-11,
+  "H_columns_per_body": {
+    "panel": 3885,
+    "frame": 3885
+  },
+  "all_7770_H_basis_RHS_and_saved_projections_SHA_recomputed": true,
+  "independent_all_7770_K_products_executed": false,
+  "all_7770_successful_full_fields_retained": false,
+  "original_ExactResponseCache_restore": {
+    "probes": 5,
+    "largest_relative_error": 1.1659935073707673e-08,
+    "response_calls": 5
+  },
+  "restore_scope": "Exactly five original ordered SHA-bound saved full-field actions; unknown RHS rejected.",
+  "raw_H_and_seed_H_bitwise_reconstructed": true,
+  "current_seed_full_bitwise_reproduction": false,
+  "seed_auxiliary_comparison": {
+    "G": {
+      "shape": [
+        3885,
+        6
+      ],
+      "bitwise_equal": true,
+      "numeric_unequal_entries": 0,
+      "max_abs_difference": 0.0,
+      "historical_array_sha256": "2caecf1d1f7185dd13e58d944a4df09b67691e1fb2330c42bbafb91200dae0cf",
+      "current_array_sha256": "2caecf1d1f7185dd13e58d944a4df09b67691e1fb2330c42bbafb91200dae0cf"
+    },
+    "qfree": {
+      "shape": [
+        3885,
+        4
+      ],
+      "bitwise_equal": true,
+      "numeric_unequal_entries": 0,
+      "max_abs_difference": 0.0,
+      "historical_array_sha256": "da53721b76946e26ea5fe003966d219188f4fca7168acdadf129b1f475e70935",
+      "current_array_sha256": "da53721b76946e26ea5fe003966d219188f4fca7168acdadf129b1f475e70935"
+    },
+    "initialgap": {
+      "shape": [
+        3885
+      ],
+      "bitwise_equal": true,
+      "numeric_unequal_entries": 0,
+      "max_abs_difference": 0.0,
+      "historical_array_sha256": "7fc9a8292c0da7fc5e4fdfd0f65d00ac6cfb999a3d7fe53aab6e8b1f4d0ca235",
+      "current_array_sha256": "7fc9a8292c0da7fc5e4fdfd0f65d00ac6cfb999a3d7fe53aab6e8b1f4d0ca235"
+    },
+    "loadG": {
+      "shape": [
+        6,
+        4
+      ],
+      "bitwise_equal": false,
+      "numeric_unequal_entries": 9,
+      "max_abs_difference": 2.220446049250313e-16,
+      "historical_array_sha256": "f16af4e39366e71bc45533a26f6905257f1d72251c7faa05d46790d3a6e8196d",
+      "current_array_sha256": "c706cfc3e4ca179b668619e9610884e0ea2c9ad25edffb5a4435747f437a8993"
+    }
+  },
+  "seed_discrepancy_exact_rational_reference_completed": true,
+  "seed_discrepancy_changes_original_qualification": false,
+  "retained_current_failures": [
+    {
+      "report": "R9_FOUR_LOAD_NATIVE_READBACK.json",
+      "reason": "New reader v1 used a nonexistent block-report field; corrected schema mapping recorded in v2."
+    },
+    {
+      "report": "R9_H_RESTORE_READBACK.json",
+      "reason": "Directory enumeration encountered the retained failed frame 8:520 block; v2 selects the immutable qualified SHA roster and keeps the failed block excluded."
+    },
+    {
+      "report": "R9_LINEAR_SEED_READBACK.json",
+      "reason": "Current dense R.T@F differs in 9 of 24 loadG values, max 2.220446049250313e-16; original arrays, threshold and mismatch retained."
+    }
+  ],
+  "scope_exclusions": {
+    "arbitrary_RHS_inverse_qualified": false,
+    "finite_QP_checkpoint_or_resume_qualified": false,
+    "current_K1_K3_geometry_FE_qualified": false,
+    "physical_G3_G5_qualified": false
+  },
+  "report_identities": {
+    "R9_PANEL_UNCHANGED_READER.json": {
+      "bytes": 7900,
+      "sha256": "17b2eaef7687e5708cc115c33906e2905f1c266c1251bb847c9d488491b9e259"
+    },
+    "R9_FRAME_NATIVE_READBACK.json": {
+      "bytes": 3253,
+      "sha256": "dd6c3022c315cdfc6e1bba6b834ea52b52415854b461f965dd3fa2ee598765b8"
+    },
+    "R9_FOUR_LOAD_NATIVE_READBACK_V2.json": {
+      "bytes": 3145,
+      "sha256": "72edc4233d31b1912eda6624fdb204ccd8963c98f4d7d1e426e504957ea2ff24"
+    },
+    "R9_H_RESTORE_READBACK_V2.json": {
+      "bytes": 9703,
+      "sha256": "8537b8a8c8adab187f2590c56babe220cb44fd6ccdb8b0149907a3e3f763f2d6"
+    },
+    "R9_SEED_ROUNDING_DIAGNOSTIC.json": {
+      "bytes": 15087,
+      "sha256": "43b2d386e53d80df038e66c798bb2a54220a6ca07ed6259c254f2f30d7782149"
+    },
+    "R9_RESTORED_MEMBER_INTEGRITY.json": {
+      "bytes": 1710,
+      "sha256": "85773c6049b95eb8b039a52aee8027b1b0de985ccf775d8997256e27d51ad6e6"
+    },
+    "R9_ORIGINAL_ARCHIVE_IDENTITIES.json": {
+      "bytes": 2200,
+      "sha256": "b102d29bde38bb483af818e4fc0cdbc0bc392b99c2985195a4ae7669d2880046"
+    }
+  },
+  "worker_self_peak_RSS_KiB": {
+    "panel": 909960,
+    "frame": 1204456,
+    "four_load": 894212,
+    "H_restore": 581396
+  },
+  "worker_times_seconds": {
+    "panel": 7.24101067599986,
+    "frame": 5.914448201000141,
+    "four_load": 2.773996893000003,
+    "H_restore": 77.3416191350002
+  },
+  "supervisor_RSS_measurement_note": "Original supervisor reports sampled launcher/leader RSS in this nested runtime; those low values are not attributed to the numerical worker. The worker self-reported getrusage peaks are recorded separately."
+}

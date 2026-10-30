@@ -1,0 +1,944 @@
+{
+  "current_evaluation_error_records": [
+    {
+      "error": "ValueError: finite nonzero displacement required",
+      "frame": "initial"
+    },
+    {
+      "error": "ValueError: finite nonzero displacement required",
+      "frame": "opposite_reference_frame_result"
+    }
+  ],
+  "current_original_aggregate_disposition": "unresolved_evaluation",
+  "current_original_aggregate_failure": {
+    "message": "raw evaluation failure or unknown disposition",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/_temp/razr-c2-slide-l1-bec1c8d7/replay_slide_targets.py\", line 422, in run_native\n    case['current_original_aggregate'] = evidence.aggregate([{'specification': spec, 'raw': case['native_raw']}])\n                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/engineering/engineering-integration-20261025/geometry/slide/slide_evidence.py\", line 245, in aggregate\n    postguard.validate_frame(raw)\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/tools/validate_product_nominal_report.py\", line 107, in validate_frame\n    require(disposition in ('clear', 'unresolved_enclosure_overlap'), 'raw evaluation failure or unknown disposition')\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/tools/verify_product_native.py\", line 55, in require\n    raise ValueError(message)\nValueError: raw evaluation failure or unknown disposition\n",
+    "type": "ValueError"
+  },
+  "diagnostic_evidence_completed": true,
+  "elapsed_seconds": 0.39636121799981083,
+  "material_exports": [
+    {
+      "after_export_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Compound",
+        "signed_volume_mm3": 29.38109608689855,
+        "solid_signed_volumes_mm3": [
+          29.38109608689855
+        ],
+        "top_level_children_types": [
+          "Solid"
+        ]
+      },
+      "exports": {
+        "brep": {
+          "bytes": 81829,
+          "native_export_status": "True",
+          "path": "material-001.brep",
+          "sha256": "e75cef12f4ef2e97c5ab27e00316e27c0bedab5a97db84d22cf311e3d4146c09"
+        },
+        "step": {
+          "bytes": 293271,
+          "native_export_status": "IFSelect_ReturnStatus.IFSelect_RetDone",
+          "path": "material-001.step",
+          "sha256": "d8d934024da35bf2a06dac7e0dac1cefb241e3f3ff1295776a1bee4f02e01671"
+        }
+      },
+      "id": 1,
+      "invalid_or_nonpositive_topology_is_preserved_as_diagnostic_evidence": true,
+      "original_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Compound",
+        "signed_volume_mm3": 29.38109608689855,
+        "solid_signed_volumes_mm3": [
+          29.38109608689855
+        ],
+        "top_level_children_types": [
+          "Solid"
+        ]
+      },
+      "references": [
+        {
+          "role": "original-moving-input",
+          "specification_sha256": "3f7de694d2b868b12f4fcfa525476289da0edc5b0d87c02def7fc434130983a0"
+        },
+        {
+          "function": "enclosure_regions",
+          "line": 240,
+          "native_reference_frame_index": 1,
+          "role": "exception-local-body",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+        },
+        {
+          "function": "_continuous_pair_in_frame",
+          "line": 261,
+          "native_reference_frame_index": 1,
+          "role": "exception-local-a",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+        },
+        {
+          "function": "_continuous_pair_in_frame",
+          "line": 261,
+          "native_reference_frame_index": 2,
+          "role": "exception-local-b",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+        }
+      ],
+      "signature_unchanged_by_serialization": true
+    },
+    {
+      "after_export_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Solid",
+        "signed_volume_mm3": 1.7243127463175836,
+        "solid_signed_volumes_mm3": [
+          1.7243127463175836
+        ],
+        "top_level_children_types": []
+      },
+      "exports": {
+        "brep": {
+          "bytes": 18497,
+          "native_export_status": "True",
+          "path": "material-002.brep",
+          "sha256": "e3c46027ff8b2269bd281041d2a48baf627517e88f93941c38f1397239798234"
+        },
+        "step": {
+          "bytes": 73605,
+          "native_export_status": "IFSelect_ReturnStatus.IFSelect_RetDone",
+          "path": "material-002.step",
+          "sha256": "6abe2c67a03be6b7ed6e77b12aa2523719b5f1f84369b7ff60255a917b72042e"
+        }
+      },
+      "id": 2,
+      "invalid_or_nonpositive_topology_is_preserved_as_diagnostic_evidence": true,
+      "original_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Solid",
+        "signed_volume_mm3": 1.7243127463175836,
+        "solid_signed_volumes_mm3": [
+          1.7243127463175836
+        ],
+        "top_level_children_types": []
+      },
+      "references": [
+        {
+          "role": "original-fixed-input",
+          "specification_sha256": "3f7de694d2b868b12f4fcfa525476289da0edc5b0d87c02def7fc434130983a0"
+        },
+        {
+          "function": "_continuous_pair_in_frame",
+          "line": 261,
+          "native_reference_frame_index": 1,
+          "role": "exception-local-b",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+        },
+        {
+          "function": "enclosure_regions",
+          "line": 240,
+          "native_reference_frame_index": 2,
+          "role": "exception-local-body",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+        },
+        {
+          "function": "_continuous_pair_in_frame",
+          "line": 261,
+          "native_reference_frame_index": 2,
+          "role": "exception-local-a",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+        }
+      ],
+      "signature_unchanged_by_serialization": true
+    },
+    {
+      "after_export_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Compound",
+        "signed_volume_mm3": 29.381096086898456,
+        "solid_signed_volumes_mm3": [
+          29.381096086898456
+        ],
+        "top_level_children_types": [
+          "Solid"
+        ]
+      },
+      "exports": {
+        "brep": {
+          "bytes": 70886,
+          "native_export_status": "True",
+          "path": "material-003.brep",
+          "sha256": "63cea9273faa391e6e136494faaf1de9fbc43afe4f7217455755220a64738399"
+        },
+        "step": {
+          "bytes": 297157,
+          "native_export_status": "IFSelect_ReturnStatus.IFSelect_RetDone",
+          "path": "material-003.step",
+          "sha256": "d4453ffe21f63fca6d91e58c2f76dc30ef0eaee8dad7e39e5de2d37d41afe86c"
+        }
+      },
+      "id": 3,
+      "invalid_or_nonpositive_topology_is_preserved_as_diagnostic_evidence": true,
+      "original_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Compound",
+        "signed_volume_mm3": 29.381096086898456,
+        "solid_signed_volumes_mm3": [
+          29.381096086898456
+        ],
+        "top_level_children_types": [
+          "Solid"
+        ]
+      },
+      "references": [
+        {
+          "function": "regions",
+          "line": 18,
+          "native_reference_frame_index": 1,
+          "role": "exception-local-shape",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py"
+        },
+        {
+          "function": "enclosure_regions",
+          "line": 240,
+          "native_reference_frame_index": 1,
+          "role": "exception-local-piece",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+        }
+      ],
+      "signature_unchanged_by_serialization": true
+    },
+    {
+      "after_export_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Solid",
+        "signed_volume_mm3": 1.7243127463175827,
+        "solid_signed_volumes_mm3": [
+          1.7243127463175827
+        ],
+        "top_level_children_types": []
+      },
+      "exports": {
+        "brep": {
+          "bytes": 19135,
+          "native_export_status": "True",
+          "path": "material-004.brep",
+          "sha256": "77ea1badfad9c61cce45f3d8e84f96ec927f97d207d1295c3ac8c80a11092918"
+        },
+        "step": {
+          "bytes": 74746,
+          "native_export_status": "IFSelect_ReturnStatus.IFSelect_RetDone",
+          "path": "material-004.step",
+          "sha256": "22e65c333f2c7d4ebf67e33f7654eb46419000986c5dfa0af83219f8da0efc9e"
+        }
+      },
+      "id": 4,
+      "invalid_or_nonpositive_topology_is_preserved_as_diagnostic_evidence": true,
+      "original_in_memory_signature": {
+        "is_valid": true,
+        "shape_type": "Solid",
+        "signed_volume_mm3": 1.7243127463175827,
+        "solid_signed_volumes_mm3": [
+          1.7243127463175827
+        ],
+        "top_level_children_types": []
+      },
+      "references": [
+        {
+          "function": "regions",
+          "line": 18,
+          "native_reference_frame_index": 2,
+          "role": "exception-local-shape",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py"
+        },
+        {
+          "function": "enclosure_regions",
+          "line": 240,
+          "native_reference_frame_index": 2,
+          "role": "exception-local-piece",
+          "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+        }
+      ],
+      "signature_unchanged_by_serialization": true
+    }
+  ],
+  "native_call_completed": true,
+  "native_raw": {
+    "collision_proved": false,
+    "disposition": "unresolved_evaluation",
+    "error": "ValueError: finite nonzero displacement required",
+    "opposite_reference_frame_result": {
+      "collision_proved": false,
+      "disposition": "unresolved_evaluation",
+      "error": "ValueError: finite nonzero displacement required"
+    }
+  },
+  "original_aggregate_classification_changed": false,
+  "original_record_replaced": false,
+  "raw_classification_change": false,
+  "raw_equal_to_original": true,
+  "schema": "razr-L1-observed-C2-slide-target-replay-v1-case",
+  "started_monotonic": 1317.435270587,
+  "target": {
+    "a": "L_KEY",
+    "b": "L_STOP_1",
+    "case_id": "case-037",
+    "original_attempt_disposition": "unresolved_evaluation",
+    "original_attempt_error": "ValueError: raw evaluation failure or unknown disposition",
+    "original_node_disposition": "unresolved_evaluation",
+    "original_node_path": "pairs[8068].children[3]",
+    "original_node_sha256": "724b0f2da5b333609e27624065996992d7f190a73decf0aa4220bbcb17a772ab",
+    "original_parent_intervals": [
+      {
+        "disposition": "unresolved_enclosure_overlap",
+        "path": "pairs[8068]",
+        "q_interval_exact": [
+          "0",
+          "12"
+        ],
+        "split": "all_actual_profile_breakpoints"
+      }
+    ],
+    "original_raw": {
+      "collision_proved": false,
+      "disposition": "unresolved_evaluation",
+      "error": "ValueError: finite nonzero displacement required",
+      "opposite_reference_frame_result": {
+        "collision_proved": false,
+        "disposition": "unresolved_evaluation",
+        "error": "ValueError: finite nonzero displacement required"
+      }
+    },
+    "original_recursive_error_records": [
+      {
+        "error": "native evaluation failure",
+        "path": "pairs[8068].children[3]"
+      },
+      {
+        "error": "ValueError: raw evaluation failure or unknown disposition",
+        "path": "pairs[8068].children[3].attempts[0]"
+      },
+      {
+        "error": "ValueError: finite nonzero displacement required",
+        "path": "pairs[8068].children[3].attempts[0].records[0].raw"
+      },
+      {
+        "error": "ValueError: finite nonzero displacement required",
+        "path": "pairs[8068].children[3].attempts[0].records[0].raw.opposite_reference_frame_result"
+      }
+    ],
+    "original_specification_sha256": "3f7de694d2b868b12f4fcfa525476289da0edc5b0d87c02def7fc434130983a0",
+    "pair_class": "rigid_rigid",
+    "q_endpoints_binary64": [
+      {
+        "hex": "0x1.492c8afe385e4p-1",
+        "value": 0.6429179606749895
+      },
+      {
+        "hex": "0x1.492c8afe385e8p-1",
+        "value": 0.64291796067499
+      }
+    ],
+    "q_interval_exact": [
+      "1285835921349979/2000000000000000",
+      "64291796067499/100000000000000"
+    ],
+    "q_width_binary64": {
+      "hex": "0x1.0000000000000p-51",
+      "value": 4.440892098500626e-16
+    },
+    "q_width_exact": "1/2000000000000000",
+    "raw_pair_index": 8068,
+    "shard": "E17",
+    "specification": {
+      "coefficients": [
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "fixed": {
+        "kind": "complete_rigid_material",
+        "material": "L_STOP_1"
+      },
+      "moving": {
+        "kind": "complete_rigid_material",
+        "material": "L_KEY"
+      },
+      "parameter_intervals": [
+        [
+          0.6429179606749895,
+          0.64291796067499
+        ],
+        [
+          -1.1600000000000001,
+          -1.1599999999999993
+        ]
+      ],
+      "relative_law": {
+        "flank_z": [
+          "0",
+          "0"
+        ],
+        "height_x": [
+          "0",
+          "1",
+          "0",
+          "0"
+        ],
+        "joint_z": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "q_xyz": [
+          "0",
+          "1",
+          "0"
+        ]
+      }
+    }
+  },
+  "trace": {
+    "actual_strict_Common_calls": [],
+    "captured_materials": [
+      {
+        "id": 1,
+        "references": [
+          {
+            "role": "original-moving-input",
+            "specification_sha256": "3f7de694d2b868b12f4fcfa525476289da0edc5b0d87c02def7fc434130983a0"
+          },
+          {
+            "function": "enclosure_regions",
+            "line": 240,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-body",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-a",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-b",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "references": [
+          {
+            "role": "original-fixed-input",
+            "specification_sha256": "3f7de694d2b868b12f4fcfa525476289da0edc5b0d87c02def7fc434130983a0"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-b",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "enclosure_regions",
+            "line": 240,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-body",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          },
+          {
+            "function": "_continuous_pair_in_frame",
+            "line": 261,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-a",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "references": [
+          {
+            "function": "regions",
+            "line": 18,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-shape",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py"
+          },
+          {
+            "function": "enclosure_regions",
+            "line": 240,
+            "native_reference_frame_index": 1,
+            "role": "exception-local-piece",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "references": [
+          {
+            "function": "regions",
+            "line": 18,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-shape",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py"
+          },
+          {
+            "function": "enclosure_regions",
+            "line": 240,
+            "native_reference_frame_index": 2,
+            "role": "exception-local-piece",
+            "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+          }
+        ]
+      }
+    ],
+    "distinct_native_exception_count": 6,
+    "exception_events": [
+      {
+        "function": "<genexpr>",
+        "line": 221,
+        "locals": {
+          "axis": 0
+        },
+        "material_ids": {},
+        "message": "",
+        "native_exception_index": 1,
+        "native_reference_frame_index": 1,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 221, in <genexpr>\n    active = [axis for axis in range(3) if any(c[axis] for c in coefficients)]\n                                               ~^^^^^^\nGeneratorExit\n",
+        "type": "GeneratorExit"
+      },
+      {
+        "function": "<genexpr>",
+        "line": 221,
+        "locals": {
+          "axis": 1
+        },
+        "material_ids": {},
+        "message": "",
+        "native_exception_index": 2,
+        "native_reference_frame_index": 1,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 221, in <genexpr>\n    active = [axis for axis in range(3) if any(c[axis] for c in coefficients)]\n                                               ~^^^^^^\nGeneratorExit\n",
+        "type": "GeneratorExit"
+      },
+      {
+        "function": "regions",
+        "line": 18,
+        "locals": {
+          "move": {
+            "length": 4.440892098500626e-16,
+            "vector_xyz": [
+              0.0,
+              4.440892098500626e-16,
+              0.0
+            ]
+          },
+          "vector": [
+            0.0,
+            4.440892098500626e-16,
+            0.0
+          ]
+        },
+        "material_ids": {
+          "shape": 3
+        },
+        "message": "finite nonzero displacement required",
+        "native_exception_index": 3,
+        "native_reference_frame_index": 1,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py\", line 18, in regions\n    if not all(math.isfinite(x) for x in move.toTuple()) or move.Length<=1e-12:raise ValueError('finite nonzero displacement required')\n                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: finite nonzero displacement required\n",
+        "type": "ValueError"
+      },
+      {
+        "function": "enclosure_regions",
+        "line": 240,
+        "locals": {
+          "bounds": [
+            -1.1600000000000001,
+            -1.1599999999999993,
+            0.6429179606749895,
+            0.64291796067499,
+            0.0,
+            0.0
+          ],
+          "coefficients": [
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "domain": [
+            [
+              0.6429179606749895,
+              0.64291796067499
+            ],
+            [
+              -1.1600000000000001,
+              -1.1599999999999993
+            ]
+          ],
+          "hi": 0.64291796067499,
+          "lo": 0.6429179606749895,
+          "vector": [
+            0.0,
+            4.440892098500626e-16,
+            0.0
+          ]
+        },
+        "material_ids": {
+          "body": 1,
+          "piece": 3
+        },
+        "message": "finite nonzero displacement required",
+        "native_exception_index": 3,
+        "native_reference_frame_index": 1,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 240, in enclosure_regions\n    expanded.extend(regions(piece, vector)[0])\n                    ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py\", line 18, in regions\n    if not all(math.isfinite(x) for x in move.toTuple()) or move.Length<=1e-12:raise ValueError('finite nonzero displacement required')\n                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: finite nonzero displacement required\n",
+        "type": "ValueError"
+      },
+      {
+        "function": "_continuous_pair_in_frame",
+        "line": 261,
+        "locals": {
+          "aa": [
+            -30.33,
+            -6.2,
+            13.535,
+            78.55,
+            1.2,
+            4.4
+          ],
+          "bb": [
+            -31.790000000000003,
+            -29.889999999999997,
+            14.700000000000001,
+            25.85,
+            3.35,
+            6.95
+          ],
+          "coefficients": [
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "domain": [
+            [
+              0.6429179606749895,
+              0.64291796067499
+            ],
+            [
+              -1.1600000000000001,
+              -1.1599999999999993
+            ]
+          ],
+          "high": [
+            -7.359999999999999,
+            79.19291796067499,
+            4.4
+          ],
+          "shift": [
+            -1.1600000000000001,
+            -1.1599999999999993,
+            0.6429179606749895,
+            0.64291796067499,
+            0.0,
+            0.0
+          ],
+          "swept": [
+            -31.49,
+            14.17791796067499,
+            1.2
+          ]
+        },
+        "material_ids": {
+          "a": 1,
+          "b": 2
+        },
+        "message": "finite nonzero displacement required",
+        "native_exception_index": 3,
+        "native_reference_frame_index": 1,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 261, in _continuous_pair_in_frame\n    value = enclosure_regions(a, coefficients, domain)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 240, in enclosure_regions\n    expanded.extend(regions(piece, vector)[0])\n                    ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py\", line 18, in regions\n    if not all(math.isfinite(x) for x in move.toTuple()) or move.Length<=1e-12:raise ValueError('finite nonzero displacement required')\n                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: finite nonzero displacement required\n",
+        "type": "ValueError"
+      },
+      {
+        "function": "<genexpr>",
+        "line": 221,
+        "locals": {
+          "axis": 0
+        },
+        "material_ids": {},
+        "message": "",
+        "native_exception_index": 4,
+        "native_reference_frame_index": 2,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 221, in <genexpr>\n    active = [axis for axis in range(3) if any(c[axis] for c in coefficients)]\n                                               ~^^^^^^\nGeneratorExit\n",
+        "type": "GeneratorExit"
+      },
+      {
+        "function": "<genexpr>",
+        "line": 221,
+        "locals": {
+          "axis": 1
+        },
+        "material_ids": {},
+        "message": "",
+        "native_exception_index": 5,
+        "native_reference_frame_index": 2,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 221, in <genexpr>\n    active = [axis for axis in range(3) if any(c[axis] for c in coefficients)]\n                                               ~^^^^^^\nGeneratorExit\n",
+        "type": "GeneratorExit"
+      },
+      {
+        "function": "regions",
+        "line": 18,
+        "locals": {
+          "move": {
+            "length": 4.440892098500626e-16,
+            "vector_xyz": [
+              -0.0,
+              -4.440892098500626e-16,
+              -0.0
+            ]
+          },
+          "vector": [
+            -0.0,
+            -4.440892098500626e-16,
+            -0.0
+          ]
+        },
+        "material_ids": {
+          "shape": 4
+        },
+        "message": "finite nonzero displacement required",
+        "native_exception_index": 6,
+        "native_reference_frame_index": 2,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py\", line 18, in regions\n    if not all(math.isfinite(x) for x in move.toTuple()) or move.Length<=1e-12:raise ValueError('finite nonzero displacement required')\n                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: finite nonzero displacement required\n",
+        "type": "ValueError"
+      },
+      {
+        "function": "enclosure_regions",
+        "line": 240,
+        "locals": {
+          "bounds": [
+            1.1599999999999993,
+            1.1600000000000001,
+            -0.64291796067499,
+            -0.6429179606749895,
+            0.0,
+            0.0
+          ],
+          "coefficients": [
+            [
+              -0.0,
+              -1.0,
+              -0.0
+            ],
+            [
+              -1.0,
+              -0.0,
+              -0.0
+            ]
+          ],
+          "domain": [
+            [
+              0.6429179606749895,
+              0.64291796067499
+            ],
+            [
+              -1.1600000000000001,
+              -1.1599999999999993
+            ]
+          ],
+          "hi": 0.64291796067499,
+          "lo": 0.6429179606749895,
+          "vector": [
+            -0.0,
+            -4.440892098500626e-16,
+            -0.0
+          ]
+        },
+        "material_ids": {
+          "body": 2,
+          "piece": 4
+        },
+        "message": "finite nonzero displacement required",
+        "native_exception_index": 6,
+        "native_reference_frame_index": 2,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 240, in enclosure_regions\n    expanded.extend(regions(piece, vector)[0])\n                    ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py\", line 18, in regions\n    if not all(math.isfinite(x) for x in move.toTuple()) or move.Length<=1e-12:raise ValueError('finite nonzero displacement required')\n                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: finite nonzero displacement required\n",
+        "type": "ValueError"
+      },
+      {
+        "function": "_continuous_pair_in_frame",
+        "line": 261,
+        "locals": {
+          "aa": [
+            -31.790000000000003,
+            -29.889999999999997,
+            14.700000000000001,
+            25.85,
+            3.35,
+            6.95
+          ],
+          "bb": [
+            -30.33,
+            -6.2,
+            13.535,
+            78.55,
+            1.2,
+            4.4
+          ],
+          "coefficients": [
+            [
+              -0.0,
+              -1.0,
+              -0.0
+            ],
+            [
+              -1.0,
+              -0.0,
+              -0.0
+            ]
+          ],
+          "domain": [
+            [
+              0.6429179606749895,
+              0.64291796067499
+            ],
+            [
+              -1.1600000000000001,
+              -1.1599999999999993
+            ]
+          ],
+          "high": [
+            -28.729999999999997,
+            25.207082039325012,
+            6.95
+          ],
+          "shift": [
+            1.1599999999999993,
+            1.1600000000000001,
+            -0.64291796067499,
+            -0.6429179606749895,
+            0.0,
+            0.0
+          ],
+          "swept": [
+            -30.630000000000003,
+            14.05708203932501,
+            3.35
+          ]
+        },
+        "material_ids": {
+          "a": 2,
+          "b": 1
+        },
+        "message": "finite nonzero displacement required",
+        "native_exception_index": 6,
+        "native_reference_frame_index": 2,
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 261, in _continuous_pair_in_frame\n    value = enclosure_regions(a, coefficients, domain)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py\", line 240, in enclosure_regions\n    expanded.extend(regions(piece, vector)[0])\n                    ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py\", line 18, in regions\n    if not all(math.isfinite(x) for x in move.toTuple()) or move.Length<=1e-12:raise ValueError('finite nonzero displacement required')\n                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: finite nonzero displacement required\n",
+        "type": "ValueError"
+      }
+    ],
+    "native_frame_results": [
+      {
+        "coefficients": [
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "domain": [
+          [
+            0.6429179606749895,
+            0.64291796067499
+          ],
+          [
+            -1.1600000000000001,
+            -1.1599999999999993
+          ]
+        ],
+        "native_reference_frame_index": 1,
+        "observed_region_values_mm3": null,
+        "original_return": {
+          "collision_proved": false,
+          "disposition": "unresolved_evaluation",
+          "error": "ValueError: finite nonzero displacement required"
+        }
+      },
+      {
+        "coefficients": [
+          [
+            -0.0,
+            -1.0,
+            -0.0
+          ],
+          [
+            -1.0,
+            -0.0,
+            -0.0
+          ]
+        ],
+        "domain": [
+          [
+            0.6429179606749895,
+            0.64291796067499
+          ],
+          [
+            -1.1600000000000001,
+            -1.1599999999999993
+          ]
+        ],
+        "native_reference_frame_index": 2,
+        "observed_region_values_mm3": null,
+        "original_return": {
+          "collision_proved": false,
+          "disposition": "unresolved_evaluation",
+          "error": "ValueError: finite nonzero displacement required"
+        }
+      }
+    ],
+    "observer_failures": [],
+    "original_functions_replaced": false,
+    "source_functions_mutated": false,
+    "sys_settrace_observation_only": true
+  }
+}

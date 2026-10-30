@@ -1,0 +1,117 @@
+{
+  "schema": "razr-r9-public-oem-discovery-applicability-v1",
+  "recorded_utc": "2026-10-30T01:25:14.490808+00:00",
+  "functional_source_commit": "dd7def6e6a4de9f47dc91ca2ab336fb1a8828560",
+  "remote_evidence_baseline": "e51de63915a1abeed29e2f95be3044a5d5965045",
+  "historical_runtime_model": "XT2551-3",
+  "discovery_scope": "Actual public-source retrieval. Public previews are not received complete PDF originals, same-specimen observations, or selected-part approval.",
+  "official_distribution_route": {
+    "manufacturer_url": "https://en-us.support.motorola.com/app/right-to-repair",
+    "observed_partner_manuals_url": "https://motorola.mobilesentrix.com/motorola-repair-manual",
+    "manufacturer_states_parts_manuals_and_schematics_available_via_distributor": true,
+    "manuals_directory_web_read": "visible, series selector requires JavaScript",
+    "direct_directory_byte_retrieval": "HTTP 403; no bypass or alternative credentials attempted"
+  },
+  "document_discoveries": [
+    {
+      "id": "L2",
+      "author": "Motorola Mobility / Lenovo",
+      "kind": "model_literature",
+      "url": "https://www.ifixit.com/Document/IxsugLCmhuNaPpYx/XT2551-X_%28Moto_razr_60_ultra_%26_razr_ultra%29_Service_and_Repair_Manual_V1.0r.pdf",
+      "title": "XT2551-X service and repair manual, Level 2",
+      "revision": "1.0r",
+      "document_revision_date": "2025-03-07",
+      "listed_page_count": 283,
+      "observed_content": "Public preview and contents list include display, FPC, PCB and battery disassembly/assembly sections.",
+      "complete_pdf_obtained": false,
+      "complete_pdf_sha256": null,
+      "same_specimen_applicability_proven": false
+    },
+    {
+      "id": "L3_NA",
+      "author": "Motorola Mobility / Lenovo",
+      "kind": "model_literature",
+      "url": "https://nl.ifixit.com/Document/6RFZBdGVwWbhvVhh/XT2551-X_Moto-razr-60-ultra-razr-ultra_Level-3-Service-Manual-for-NA_V1.0r.pdf",
+      "title": "XT2551-X Level 3 service manual for NA",
+      "revision": "1.0r",
+      "document_revision_date": "2025-03-19",
+      "listed_page_count": 87,
+      "observed_content": "Public preview lists connector service identifiers and a schematic/board-layout contents index.",
+      "complete_pdf_obtained": false,
+      "complete_pdf_sha256": null,
+      "download_observation": "Published download link redirects to login. No account session accessed.",
+      "same_specimen_applicability_proven": false
+    },
+    {
+      "id": "SERVICE_BOM_NA",
+      "author": "Motorola Mobility / Lenovo",
+      "kind": "model_literature",
+      "url": "https://zh.ifixit.com/Document/ZKsjbwghQxtwgNBa/Phone_Global_SBOM_Moto-razr-60-ultra-razr-ultra_V1.9.pdf",
+      "title": "XT2551-X service BOM for USA",
+      "revision": "1.9",
+      "document_revision_date": "2025-03-11",
+      "listed_page_count": 2,
+      "explicit_model_scope": [
+        "XT2551-1",
+        "XT2551-2"
+      ],
+      "observed_content": "Public preview contains region-specific display, battery and USB board service identifiers.",
+      "complete_pdf_obtained": false,
+      "complete_pdf_sha256": null,
+      "download_observation": "Published download link redirects to login. No account session accessed.",
+      "same_specimen_applicability_proven": false
+    },
+    {
+      "id": "CN_SUPPORT_INDEX",
+      "author": "Lenovo",
+      "kind": "model_literature",
+      "url": "https://m.lenovocare.com.cn/ProductDownloadList.aspx?productid=1047",
+      "explicit_model_scope": [
+        "XT2551-3"
+      ],
+      "observed_content": "Official index lists quick guide, user guide and installed-application list; no displayed controlled engineering stack or connector pinmap.",
+      "same_specimen_applicability_proven": false
+    }
+  ],
+  "bounded_preview_identifiers_for_future_label_comparison": {
+    "SERVICE_BOM_NA": {
+      "main_display_examples": [
+        "5D68C29812",
+        "5D68C29813"
+      ],
+      "USB_board": "5P68C29822"
+    },
+    "L3_NA": {
+      "J550": "SCA8C71314",
+      "J3150": "SCA8C44152",
+      "J3100_and_J3200": "SCA8D57591"
+    },
+    "interpretation": "Reference identifiers only. No selected PN, mating-terminal map, dimensions or electrical ratings are assigned to XT2551-3."
+  },
+  "applicability_conclusion": "The explicit USA BOM scope does not identify the historical XT2551-3 specimen. Model-family similarity alone cannot bind a board revision, paired connector, OLED/COF or FPC stack.",
+  "actual_input_result": {
+    "new_same_specimen_originals_received": 0,
+    "new_measurements": 0,
+    "newly_bound_original_requirement_ids": [],
+    "original_unique_requirement_count": 228,
+    "original_same_specimen_required_count": 207,
+    "original_selected_PN_revision_count": 21,
+    "complete_oem_interconnect_contract_received": false,
+    "new_physical_passes": {
+      "G3": false,
+      "G4": false,
+      "G5": false
+    }
+  },
+  "library_search_observation": {
+    "queries": [
+      "RAZR / XT2551 with uploaded-source filter",
+      "RAZR-SLIDE specimen original photos labels OLED COF connector measurements",
+      "XT2551-3 specimen pinmap original measurement"
+    ],
+    "uploaded_title_results": 0,
+    "scope": "Bounded queries did not locate a new original specimen packet; this does not prove no such material exists elsewhere."
+  },
+  "unchanged_original_contract": "engineering/engineering-followup-20261028-r5/real-sources/intake/R3_SAME_SPECIMEN_INTAKE_CONTRACT.json",
+  "all_blockers_closed": false
+}

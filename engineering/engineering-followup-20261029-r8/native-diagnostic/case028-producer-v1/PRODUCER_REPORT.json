@@ -1,0 +1,542 @@
+{
+  "schema": "razr-r8-original-l1-case028-finite-native-common-producer-v1",
+  "recorded_utc": "2026-10-30T01:11:03.440302+00:00",
+  "pid": 5,
+  "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+  "versions": {
+    "cadquery": "2.7.0",
+    "cadquery-ocp": "7.8.1.1.post1"
+  },
+  "source_result_identity": {
+    "name": "result.json",
+    "bytes": 33059,
+    "sha256": "dcf14ea93d4aea94e0e87d0247179bebfa5ca86ed1af14771621d2bac59a70b4"
+  },
+  "source_material_identities": {
+    "1": {
+      "name": "material-001.brep",
+      "bytes": 74634,
+      "sha256": "cb5695d4edee52d0eb19db87c2f81ffeb005c853e3ca64c2c08befc32acd30e7"
+    },
+    "2": {
+      "name": "material-002.brep",
+      "bytes": 18499,
+      "sha256": "d9cbe53d70780ebed46c0956b818ceb28f46956cacfdd524b7f24054ba862768"
+    },
+    "3": {
+      "name": "material-003.brep",
+      "bytes": 70886,
+      "sha256": "08a459486ca41aa8c0d0855279f5f85bc86a1f2cf74e77a6d0ed1304c4884d63"
+    },
+    "4": {
+      "name": "material-004.brep",
+      "bytes": 19135,
+      "sha256": "ccaa49511322ebf33ed03e44972d4d19a335b041a5e33e352b1d3f146053bb59"
+    }
+  },
+  "original_target": {
+    "a": "L_KEY",
+    "b": "L_STOP_0",
+    "case_id": "case-028",
+    "original_attempt_disposition": "unresolved_evaluation",
+    "original_attempt_error": "ValueError: raw evaluation failure or unknown disposition",
+    "original_node_disposition": "unresolved_evaluation",
+    "original_node_path": "pairs[8067].children[3]",
+    "original_node_sha256": "3e16c79a4ca6d4a31f68f243cf12ce9b8fdfa0d456a8a86772f47be132344274",
+    "original_parent_intervals": [
+      {
+        "disposition": "unresolved_enclosure_overlap",
+        "path": "pairs[8067]",
+        "q_interval_exact": [
+          "0",
+          "12"
+        ],
+        "split": "all_actual_profile_breakpoints"
+      }
+    ],
+    "original_raw": {
+      "collision_proved": false,
+      "disposition": "unresolved_evaluation",
+      "error": "ValueError: finite nonzero displacement required",
+      "opposite_reference_frame_result": {
+        "collision_proved": false,
+        "disposition": "unresolved_evaluation",
+        "error": "ValueError: finite nonzero displacement required"
+      }
+    },
+    "original_recursive_error_records": [
+      {
+        "error": "native evaluation failure",
+        "path": "pairs[8067].children[3]"
+      },
+      {
+        "error": "ValueError: raw evaluation failure or unknown disposition",
+        "path": "pairs[8067].children[3].attempts[0]"
+      },
+      {
+        "error": "ValueError: finite nonzero displacement required",
+        "path": "pairs[8067].children[3].attempts[0].records[0].raw"
+      },
+      {
+        "error": "ValueError: finite nonzero displacement required",
+        "path": "pairs[8067].children[3].attempts[0].records[0].raw.opposite_reference_frame_result"
+      }
+    ],
+    "original_specification_sha256": "3c3a6aef7c7c3afafe05f6fddc2604e81716db24ddbb183dbbaf19f8a105ce6f",
+    "pair_class": "rigid_rigid",
+    "q_endpoints_binary64": [
+      {
+        "hex": "0x1.492c8afe385e4p-1",
+        "value": 0.6429179606749895
+      },
+      {
+        "hex": "0x1.492c8afe385e8p-1",
+        "value": 0.64291796067499
+      }
+    ],
+    "q_interval_exact": [
+      "1285835921349979/2000000000000000",
+      "64291796067499/100000000000000"
+    ],
+    "q_width_binary64": {
+      "hex": "0x1.0000000000000p-51",
+      "value": 4.440892098500626e-16
+    },
+    "q_width_exact": "1/2000000000000000",
+    "raw_pair_index": 8067,
+    "shard": "E17",
+    "specification": {
+      "coefficients": [
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "fixed": {
+        "kind": "complete_rigid_material",
+        "material": "L_STOP_0"
+      },
+      "moving": {
+        "kind": "complete_rigid_material",
+        "material": "L_KEY"
+      },
+      "parameter_intervals": [
+        [
+          0.6429179606749895,
+          0.64291796067499
+        ],
+        [
+          -1.16,
+          -1.16
+        ]
+      ],
+      "relative_law": {
+        "flank_z": [
+          "0",
+          "0"
+        ],
+        "height_x": [
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        "joint_z": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "q_xyz": [
+          "0",
+          "1",
+          "0"
+        ]
+      }
+    }
+  },
+  "source_material_roles": {
+    "1": [
+      {
+        "role": "original-moving-input",
+        "specification_sha256": "3c3a6aef7c7c3afafe05f6fddc2604e81716db24ddbb183dbbaf19f8a105ce6f"
+      },
+      {
+        "function": "enclosure_regions",
+        "line": 240,
+        "native_reference_frame_index": 1,
+        "role": "exception-local-body",
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+      },
+      {
+        "function": "_continuous_pair_in_frame",
+        "line": 261,
+        "native_reference_frame_index": 1,
+        "role": "exception-local-a",
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+      },
+      {
+        "function": "_continuous_pair_in_frame",
+        "line": 261,
+        "native_reference_frame_index": 2,
+        "role": "exception-local-b",
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+      }
+    ],
+    "2": [
+      {
+        "role": "original-fixed-input",
+        "specification_sha256": "3c3a6aef7c7c3afafe05f6fddc2604e81716db24ddbb183dbbaf19f8a105ce6f"
+      },
+      {
+        "function": "_continuous_pair_in_frame",
+        "line": 261,
+        "native_reference_frame_index": 1,
+        "role": "exception-local-b",
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+      },
+      {
+        "function": "enclosure_regions",
+        "line": 240,
+        "native_reference_frame_index": 2,
+        "role": "exception-local-body",
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+      },
+      {
+        "function": "_continuous_pair_in_frame",
+        "line": 261,
+        "native_reference_frame_index": 2,
+        "role": "exception-local-a",
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+      }
+    ],
+    "3": [
+      {
+        "function": "regions",
+        "line": 18,
+        "native_reference_frame_index": 1,
+        "role": "exception-local-shape",
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py"
+      },
+      {
+        "function": "enclosure_regions",
+        "line": 240,
+        "native_reference_frame_index": 1,
+        "role": "exception-local-piece",
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+      }
+    ],
+    "4": [
+      {
+        "function": "regions",
+        "line": 18,
+        "native_reference_frame_index": 2,
+        "role": "exception-local-shape",
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/translation_regions.py"
+      },
+      {
+        "function": "enclosure_regions",
+        "line": 240,
+        "native_reference_frame_index": 2,
+        "role": "exception-local-piece",
+        "source": "/home/runner/work/RAZR-SLIDE/RAZR-SLIDE/integration/product_nominal_motion.py"
+      }
+    ]
+  },
+  "original_frame_traces": [
+    {
+      "coefficients": [
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "domain": [
+        [
+          0.6429179606749895,
+          0.64291796067499
+        ],
+        [
+          -1.16,
+          -1.16
+        ]
+      ],
+      "native_reference_frame_index": 1,
+      "observed_region_values_mm3": null,
+      "original_return": {
+        "collision_proved": false,
+        "disposition": "unresolved_evaluation",
+        "error": "ValueError: finite nonzero displacement required"
+      }
+    },
+    {
+      "coefficients": [
+        [
+          -0.0,
+          -1.0,
+          -0.0
+        ],
+        [
+          -1.0,
+          -0.0,
+          -0.0
+        ]
+      ],
+      "domain": [
+        [
+          0.6429179606749895,
+          0.64291796067499
+        ],
+        [
+          -1.16,
+          -1.16
+        ]
+      ],
+      "native_reference_frame_index": 2,
+      "observed_region_values_mm3": null,
+      "original_return": {
+        "collision_proved": false,
+        "disposition": "unresolved_evaluation",
+        "error": "ValueError: finite nonzero displacement required"
+      }
+    }
+  ],
+  "original_failure_preserved": {
+    "collision_proved": false,
+    "disposition": "unresolved_evaluation",
+    "error": "ValueError: finite nonzero displacement required",
+    "opposite_reference_frame_result": {
+      "collision_proved": false,
+      "disposition": "unresolved_evaluation",
+      "error": "ValueError: finite nonzero displacement required"
+    }
+  },
+  "input_signatures": {
+    "1": {
+      "shape_type": "Compound",
+      "is_valid": true,
+      "signed_volume_mm3": 29.381096086898566,
+      "solid_count": 1,
+      "solid_signed_volumes_mm3": [
+        29.381096086898566
+      ],
+      "top_level_children_types": [
+        "Solid"
+      ],
+      "face_count": 80,
+      "edge_count": 228,
+      "vertex_count": 152
+    },
+    "2": {
+      "shape_type": "Solid",
+      "is_valid": true,
+      "signed_volume_mm3": 2.264312746314065,
+      "solid_count": 1,
+      "solid_signed_volumes_mm3": [
+        2.264312746314065
+      ],
+      "top_level_children_types": [
+        "Shell"
+      ],
+      "face_count": 21,
+      "edge_count": 57,
+      "vertex_count": 38
+    },
+    "3": {
+      "shape_type": "Compound",
+      "is_valid": true,
+      "signed_volume_mm3": 29.381096086898452,
+      "solid_count": 1,
+      "solid_signed_volumes_mm3": [
+        29.381096086898452
+      ],
+      "top_level_children_types": [
+        "Solid"
+      ],
+      "face_count": 80,
+      "edge_count": 228,
+      "vertex_count": 152
+    },
+    "4": {
+      "shape_type": "Solid",
+      "is_valid": true,
+      "signed_volume_mm3": 2.264312746314064,
+      "solid_count": 1,
+      "solid_signed_volumes_mm3": [
+        2.264312746314064
+      ],
+      "top_level_children_types": [
+        "Shell"
+      ],
+      "face_count": 21,
+      "edge_count": 57,
+      "vertex_count": 38
+    }
+  },
+  "scope": "Two original saved exception-local finite reference-frame pairs only, each in both operand orders; no continuous envelope or current K1/K3 factory claim",
+  "original_volume_gate_mm3": 1e-07,
+  "capacity_basis": {
+    "native_common_calls": 4,
+    "source_BREP_bytes": 183154,
+    "algorithm": "Direct BRepAlgoAPI_Common on four original small rigid BREP shapes; no mesh, refinement tree or full factory",
+    "caller_wall_timeout_seconds": 60
+  },
+  "evaluations": [
+    {
+      "label": "frame-1-forward",
+      "frame": 1,
+      "a_material_id": 3,
+      "b_material_id": 2,
+      "is_done": true,
+      "fuzzy_value_mm": 1e-07,
+      "run_parallel": false,
+      "non_destructive": false,
+      "common": {
+        "shape_type": "Compound",
+        "is_valid": true,
+        "signed_volume_mm3": 0.0,
+        "solid_count": 0,
+        "solid_signed_volumes_mm3": [],
+        "top_level_children_types": [],
+        "face_count": 0,
+        "edge_count": 0,
+        "vertex_count": 0
+      },
+      "min_input_signed_volume_mm3": 2.264312746314065,
+      "signed_volume_within_input_upper_bound": true,
+      "strictly_above_original_1e_minus7_volume_gate": false,
+      "topologically_empty": true,
+      "common_export_status": true,
+      "common_artifact": {
+        "name": "frame-1-forward-common.brep",
+        "bytes": 188,
+        "sha256": "fdc75bfe05a54932b6580d63f4b6c2252e66e24302a5c754eeeb1b59d04840bc"
+      },
+      "common_solid_centroid_classification": [],
+      "seconds": 0.042576266999958534,
+      "evaluation_failed": false
+    },
+    {
+      "label": "frame-1-reverse",
+      "frame": 1,
+      "a_material_id": 2,
+      "b_material_id": 3,
+      "is_done": true,
+      "fuzzy_value_mm": 1e-07,
+      "run_parallel": false,
+      "non_destructive": false,
+      "common": {
+        "shape_type": "Compound",
+        "is_valid": true,
+        "signed_volume_mm3": 0.0,
+        "solid_count": 0,
+        "solid_signed_volumes_mm3": [],
+        "top_level_children_types": [],
+        "face_count": 0,
+        "edge_count": 0,
+        "vertex_count": 0
+      },
+      "min_input_signed_volume_mm3": 2.264312746314065,
+      "signed_volume_within_input_upper_bound": true,
+      "strictly_above_original_1e_minus7_volume_gate": false,
+      "topologically_empty": true,
+      "common_export_status": true,
+      "common_artifact": {
+        "name": "frame-1-reverse-common.brep",
+        "bytes": 188,
+        "sha256": "fdc75bfe05a54932b6580d63f4b6c2252e66e24302a5c754eeeb1b59d04840bc"
+      },
+      "common_solid_centroid_classification": [],
+      "seconds": 0.02878850499996588,
+      "evaluation_failed": false
+    },
+    {
+      "label": "frame-2-forward",
+      "frame": 2,
+      "a_material_id": 4,
+      "b_material_id": 1,
+      "is_done": true,
+      "fuzzy_value_mm": 1e-07,
+      "run_parallel": false,
+      "non_destructive": false,
+      "common": {
+        "shape_type": "Compound",
+        "is_valid": true,
+        "signed_volume_mm3": 0.0,
+        "solid_count": 0,
+        "solid_signed_volumes_mm3": [],
+        "top_level_children_types": [],
+        "face_count": 0,
+        "edge_count": 0,
+        "vertex_count": 0
+      },
+      "min_input_signed_volume_mm3": 2.264312746314064,
+      "signed_volume_within_input_upper_bound": true,
+      "strictly_above_original_1e_minus7_volume_gate": false,
+      "topologically_empty": true,
+      "common_export_status": true,
+      "common_artifact": {
+        "name": "frame-2-forward-common.brep",
+        "bytes": 188,
+        "sha256": "fdc75bfe05a54932b6580d63f4b6c2252e66e24302a5c754eeeb1b59d04840bc"
+      },
+      "common_solid_centroid_classification": [],
+      "seconds": 0.029905523000024914,
+      "evaluation_failed": false
+    },
+    {
+      "label": "frame-2-reverse",
+      "frame": 2,
+      "a_material_id": 1,
+      "b_material_id": 4,
+      "is_done": true,
+      "fuzzy_value_mm": 1e-07,
+      "run_parallel": false,
+      "non_destructive": false,
+      "common": {
+        "shape_type": "Compound",
+        "is_valid": true,
+        "signed_volume_mm3": 0.0,
+        "solid_count": 0,
+        "solid_signed_volumes_mm3": [],
+        "top_level_children_types": [],
+        "face_count": 0,
+        "edge_count": 0,
+        "vertex_count": 0
+      },
+      "min_input_signed_volume_mm3": 2.264312746314064,
+      "signed_volume_within_input_upper_bound": true,
+      "strictly_above_original_1e_minus7_volume_gate": false,
+      "topologically_empty": true,
+      "common_export_status": true,
+      "common_artifact": {
+        "name": "frame-2-reverse-common.brep",
+        "bytes": 188,
+        "sha256": "fdc75bfe05a54932b6580d63f4b6c2252e66e24302a5c754eeeb1b59d04840bc"
+      },
+      "common_solid_centroid_classification": [],
+      "seconds": 0.028022664999980407,
+      "evaluation_failed": false
+    }
+  ],
+  "source_bytes_unchanged": true,
+  "result_bytes_unchanged": true,
+  "seconds": 0.2627233100001831,
+  "peak_rss_bytes": 364310528,
+  "full_continuous_G2": false,
+  "physical_qualification": false,
+  "original_result_rewritten": false,
+  "new_K1_K3_factory_execution": false
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "razr-r8-original-depth24-primitive-correlation",
+  "execution_completed": false,
+  "counts": {},
+  "scope": {
+    "new_conditional_serialized_source_model": true,
+    "native_error_bound_verified": false,
+    "native_filling_verified": false,
+    "full_continuous_G2": false,
+    "all_blockers_closed": false
+  },
+  "new_splits": 0,
+  "original_depth_limit": 24,
+  "source": {
+    "path": "/workspace/scratch/36649508b53f/RAZR-SLIDE/engineering/engineering-followup-20261029-r8/envelope/run_original_depth24_r8.py",
+    "bytes": 9024,
+    "sha256": "25bf50b6c47afe718048d53c961782e88fb6fb0e9d6eb65fc87f7f16112f754d"
+  },
+  "math_source": {
+    "path": "/workspace/scratch/36649508b53f/RAZR-SLIDE/engineering/engineering-followup-20261029-r8/envelope/source_quadric_r8.py",
+    "bytes": 7789,
+    "sha256": "aa2046b3cc14166a327494e5fbbcffed43b805f1e4bc56b0e2d4f94a98075248"
+  },
+  "error": {
+    "type": "ValueError",
+    "message": "certificate/report frame differs",
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/36649508b53f/RAZR-SLIDE/engineering/engineering-followup-20261029-r8/envelope/run_original_depth24_r8.py\", line 122, in main\n    row,certificate,models,ids,native=load_inputs(args.originals,'case-028',1);r['inputs']=ids\n                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/36649508b53f/RAZR-SLIDE/engineering/engineering-followup-20261029-r8/envelope/run_original_depth24_r8.py\", line 75, in load_inputs\n    certificate=json.loads(gzip.decompress(p.read_bytes()));need(certificate['frame']==row,'certificate/report frame differs')\n                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/36649508b53f/RAZR-SLIDE/engineering/engineering-followup-20261029-r8/envelope/run_original_depth24_r8.py\", line 22, in need\n    if not v: raise ValueError(message)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: certificate/report frame differs\n"
+  },
+  "seconds": 1.3972585090000393,
+  "peak_RSS_bytes": 185081856
+}

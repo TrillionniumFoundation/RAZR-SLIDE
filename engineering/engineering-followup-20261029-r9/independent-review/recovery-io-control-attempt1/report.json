@@ -1,0 +1,80 @@
+{
+  "schema": "razr-r9-independent-persisted-recovery-control-v1",
+  "control_completed": true,
+  "source": {
+    "path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/engineering/engineering-followup-20261029-r9/independent-review/audit_recovery_serialization.py",
+    "bytes": 5759,
+    "sha256": "9458975aaa05b4a575a5d01a8f19795c69090732cbc6d77a7ca68a793d2670fd"
+  },
+  "recovery_source": {
+    "path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/engineering/engineering-followup-20261029-r9/envelope/recovery_serialization_r9.py",
+    "bytes": 4031,
+    "sha256": "39a6ab29f99b1a9d79e9af3c43437d5323732d012c59076f17bf99f4092c9e03"
+  },
+  "atomic_source": {
+    "path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/engineering/engineering-followup-20261029-r9/envelope/atomic_refinement_r9.py",
+    "bytes": 3012,
+    "sha256": "0442bd297dce53bf656be845eaefa6be8303e9d24a6009534fd93618a828b165"
+  },
+  "reviewed_driver_v1": {
+    "path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/engineering/engineering-followup-20261029-r9/envelope/cylinder_slab_all16_r9.py",
+    "bytes": 11815,
+    "sha256": "b0f0a300e227bd8ac4a00ae001043c354eea59db8014f3bc127673a8770ab3d2"
+  },
+  "reviewed_driver_v2": {
+    "path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/engineering/engineering-followup-20261029-r9/envelope/cylinder_slab_all16_r9_v2.py",
+    "bytes": 13045,
+    "sha256": "54dfa10ff1c614f02258195139332a71cc345641e8e00346959624725588692d"
+  },
+  "scope": {
+    "synthetic_IO_control_only": true,
+    "full_driver_executed": false,
+    "production_v1_restored_by_this_control": false,
+    "production_v1_retroactively_qualified": false,
+    "geometry_or_native_qualification": false
+  },
+  "original_write_failure": {
+    "type": "TimeoutError",
+    "message": "independent injected deadline during second gzip payload",
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/engineering/engineering-followup-20261029-r9/independent-review/audit_recovery_serialization.py\", line 51, in main\n    raise TimeoutError(\"independent injected deadline during second gzip payload\")\nTimeoutError: independent injected deadline during second gzip payload\n"
+  },
+  "original_partial": {
+    "path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/engineering/engineering-followup-20261029-r9/independent-review/recovery-io-control-attempt1/interrupted-original-write/frame-2.json.gz",
+    "bytes": 69,
+    "sha256": "4bf53f58c60b13ae02ccf6636a410111d9e8a979893797762d814dee7facbc34"
+  },
+  "original_partial_parse_failure": {
+    "type": "JSONDecodeError",
+    "message": "Expecting value: line 1 column 31 (char 30)"
+  },
+  "original_partial_unchanged": true,
+  "independently_reopened_payload_count": 2,
+  "independently_reopened_payloads": [
+    {
+      "path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/engineering/engineering-followup-20261029-r9/independent-review/recovery-io-control-attempt1/disqualified-recovery/frame-1.json.gz",
+      "bytes": 74,
+      "sha256": "da15bacffdfff62e49907c4fa4f43900ba3f405b8bc0a5539a4bcc8be5913538"
+    },
+    {
+      "path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/engineering/engineering-followup-20261029-r9/independent-review/recovery-io-control-attempt1/disqualified-recovery/frame-2.json.gz",
+      "bytes": 74,
+      "sha256": "9d5f977d6e44401ee60aad963abf4f93dea76c118ec0b90568be0663b7be2b9b"
+    }
+  ],
+  "independently_reopened_pending": {
+    "path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/engineering/engineering-followup-20261029-r9/independent-review/recovery-io-control-attempt1/disqualified-recovery/pending-attempt-evidence.json.gz",
+    "bytes": 209,
+    "sha256": "bb715815aba1f17ceb0f5fbf29f0779067d58eb8c77af11f402ce9aba941847e"
+  },
+  "recovery_manifest": {
+    "path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/engineering/engineering-followup-20261029-r9/independent-review/recovery-io-control-attempt1/disqualified-recovery/recovery-manifest.json",
+    "bytes": 1159,
+    "sha256": "fb98f3dd6df77dd4cae8fa72cc6ec35bae3a186f94fe36caa934258517f4a7fe"
+  },
+  "pending_labels": {
+    "before_commit": "uncommitted",
+    "after_commit": "committed_before_interruption"
+  },
+  "qualified_execution_after_failure": false,
+  "seconds": 0.03573869299998478
+}
