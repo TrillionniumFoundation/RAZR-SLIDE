@@ -1,0 +1,2373 @@
+{
+  "schema": "razr-r13-current-K1-K3-nominal-load-route-and-local-section-inputs-v1",
+  "completed": true,
+  "source_sha256": "06d88776df6bf7842e8005e9b007aa3c5c6d666dc29507395d13e9222769bf19",
+  "current_geometry_binding": {
+    "path": "/workspace/scratch/1b842ca762be/r13_geometry_work/INPUT_MANIFEST.json",
+    "bytes": 11813,
+    "sha256": "17a92208dbde3ca243fcb35347bf32af809c942e52aa813249d9bd5ef87a65a6"
+  },
+  "whole_factory_original_report": {
+    "path": "/workspace/scratch/1b842ca762be/r13_geometry_work/inputs/report.json",
+    "bytes": 216669,
+    "sha256": "474ff0feb14877a002fa09b6840af9f1cee3d81395bc484c056505afcc9c94e1"
+  },
+  "complete_region_declarations": {
+    "path": "/workspace/scratch/1b842ca762be/r13_geometry_work/MODIFIED_REGION_DECLARATIONS.json",
+    "bytes": 8371,
+    "sha256": "243580e6a690055e2b8978b0042eb77490bfa56e8e53f08021a2c4af964f56f6"
+  },
+  "complete_section_ledger": {
+    "path": "/workspace/scratch/1b842ca762be/r13_geometry_work/exact-sections-attempt1/report.json",
+    "bytes": 10808,
+    "sha256": "daa366878936c2a26c1aad71f5dc775ff0fb7a7484785e9264f6ffb694c747c4"
+  },
+  "independent_section_review": {
+    "path": "/workspace/scratch/1b842ca762be/r13_geometry_work/MODIFIED_SECTIONS_INDEPENDENT_REVIEW.json",
+    "bytes": 7461,
+    "sha256": "7aecf5954c9e645c836eb2d846944d4717b1fe2332f6a5c3c6da2f9f026a4ccc"
+  },
+  "native_region_readbacks": [
+    {
+      "path": "/workspace/scratch/1b842ca762be/r13_geometry_work/native-brep-attempt1/report.json",
+      "bytes": 138857,
+      "sha256": "7e2bd94ba1b7598438867ca0fca95082d133c23b91cc4bf60dcae926e24b785f"
+    },
+    {
+      "path": "/workspace/scratch/1b842ca762be/r13_geometry_work/native-step-attempt1/report.json",
+      "bytes": 139013,
+      "sha256": "637318c98ff00bb65309e3ad312adc22f1714029f937caab8610885be15a7ca1"
+    }
+  ],
+  "nominal_material_and_contact_routes": [
+    {
+      "id": "KEY_modified_material_route",
+      "nodes": [
+        "old inboard transverse web",
+        "inboard U leg",
+        "front crossbar",
+        "outboard U leg",
+        "old outboard transverse web"
+      ],
+      "all_four_adjacent_links_have_positive_volume_overlap_in_complete_region_model": true,
+      "route_is_part_of_the_current_whole_KEY": true,
+      "actual_force_sharing_between_legs_known": false
+    },
+    {
+      "id": "lower_travel_stop_nominal_reaction_route",
+      "nodes": [
+        "KEY front crossbar at q=0",
+        "Y=5 coplanar contact patch",
+        "K3 lower post",
+        "positive embedded post/base overlap",
+        "local panel base"
+      ],
+      "contact_is_unilateral_and_force_requires_external_boundary_conditions": true,
+      "crossbar_contact_and_panel_material_routes_are_distinct": true,
+      "through_panel_to_actual_frame_fastener_reactions_qualified": false
+    },
+    {
+      "id": "upper_travel_stop_nominal_reaction_route",
+      "nodes": [
+        "KEY front crossbar near q=12",
+        "Y=17.38 coplanar contact patch",
+        "K3 upper toe",
+        "positive overlap with old front post",
+        "front post and local panel base"
+      ],
+      "contact_is_unilateral_and_force_requires_external_boundary_conditions": true,
+      "source_binary64_q12_plane_gap_is_not_silently_snapped": true,
+      "through_panel_to_actual_frame_fastener_reactions_qualified": false
+    },
+    {
+      "id": "inherited_input_transmission_context",
+      "nodes": [
+        "B cam groove",
+        "captured telescope/crosshead follower",
+        "KEY diagonal yoke",
+        "0.25 x 0.30 neck",
+        "original KEY contact features"
+      ],
+      "inherited_neck_complete_native_ROI_is_bound_to_same_KEY_bytes": true,
+      "complete_functional_force_path_or_actuator_relocking_proved": false
+    }
+  ],
+  "all_current_named_K1_K3_cut_add_regions": {
+    "K1_entire_source_cutter": {
+      "R_bounds_mm": [
+        [
+          {
+            "exact": "869/50",
+            "display": 17.38
+          },
+          {
+            "exact": "1399/100",
+            "display": 13.99
+          },
+          {
+            "exact": "401/100",
+            "display": 4.01
+          }
+        ],
+        [
+          {
+            "exact": "462/25",
+            "display": 18.48
+          },
+          {
+            "exact": "1551/100",
+            "display": 15.51
+          },
+          {
+            "exact": "439/100",
+            "display": 4.39
+          }
+        ]
+      ],
+      "source_cutter_volume_mm3": {
+        "exact": "3971/6250",
+        "display": 0.63536
+      },
+      "actual_original_web_target_removed_mm3": {
+        "exact": "297/500",
+        "display": 0.594
+      },
+      "entire_cutter_empty_in_declared_current_window_model": true,
+      "current_new_native_actual_removed_volume_recomputed": false
+    },
+    "K1_three_new_prisms": {
+      "all_covered_in_full_modified_windows": true,
+      "each_leg_to_old_web_positive_overlap_dimensions_mm": [
+        {
+          "exact": "19/50",
+          "display": 0.38
+        },
+        {
+          "exact": "3/2",
+          "display": 1.5
+        },
+        {
+          "exact": "9/25",
+          "display": 0.36
+        }
+      ],
+      "each_leg_to_old_web_positive_overlap_mm3": {
+        "exact": "513/2500",
+        "display": 0.2052
+      },
+      "each_front_crossbar_to_leg_overlap_mm3": {
+        "exact": "3249/62500",
+        "display": 0.051984
+      },
+      "open_leg_span_between_crossbar_end_and_old_web_start_mm": {
+        "exact": "431/50",
+        "display": 8.62
+      },
+      "span_is_geometric_not_qualified_beam_end_condition": true
+    },
+    "K3_lower_post": {
+      "entire_added_prism_and_local_original_panel_thickness_covered": true,
+      "declared_panel_local_thickness_mm": {
+        "exact": "13/20",
+        "display": 0.65
+      },
+      "post_embed_into_original_panel_mm": {
+        "exact": "3/20",
+        "display": 0.15
+      },
+      "positive_join_to_panel_mm3": {
+        "exact": "81/1000",
+        "display": 0.081
+      },
+      "contact_Z_interval_mm": [
+        {
+          "exact": "201/50",
+          "display": 4.02
+        },
+        {
+          "exact": "219/50",
+          "display": 4.38
+        }
+      ],
+      "geometric_contact_to_panel_top_lever_interval_mm": [
+        {
+          "exact": "337/100",
+          "display": 3.37
+        },
+        {
+          "exact": "373/100",
+          "display": 3.73
+        }
+      ],
+      "native_original_join_readback_mm3": {
+        "L": 0.08099999999999982,
+        "R": 0.08099999999999974
+      }
+    },
+    "K3_upper_toe": {
+      "entire_added_prism_and_entire_original_front_post_overlap_covered": true,
+      "post_overlap_Y_mm": {
+        "exact": "1/5",
+        "display": 0.2
+      },
+      "positive_join_mm3": {
+        "exact": "81/1250",
+        "display": 0.0648
+      },
+      "toe_geometric_length_outside_original_front_post_mm": {
+        "exact": "23/25",
+        "display": 0.92
+      },
+      "native_original_join_readback_mm3": {
+        "L": 0.06479999999999972,
+        "R": 0.06479999999999972
+      },
+      "not_a_joint_strength_or_bond_life_result": true
+    }
+  },
+  "exact_declared_decimal_rectangle_section_properties": {
+    "each_new_U_leg_normal_Y": {
+      "rectangle_dimensions_mm": [
+        {
+          "exact": "19/50",
+          "display": 0.38
+        },
+        {
+          "exact": "9/25",
+          "display": 0.36
+        }
+      ],
+      "area_mm2": {
+        "exact": "171/1250",
+        "display": 0.1368
+      },
+      "central_second_moments_mm4": [
+        {
+          "exact": "4617/3125000",
+          "display": 0.00147744
+        },
+        {
+          "exact": "20577/12500000",
+          "display": 0.00164616
+        }
+      ],
+      "elastic_rectangle_section_moduli_mm3": [
+        {
+          "exact": "513/62500",
+          "display": 0.008208
+        },
+        {
+          "exact": "1083/125000",
+          "display": 0.008664
+        }
+      ],
+      "axial_average_stress_per_applied_force_per_mm2": {
+        "exact": "1250/171",
+        "display": 7.309941520467836
+      },
+      "no_force_value_or_material_allowable_assigned": true
+    },
+    "front_crossbar_normal_X": {
+      "rectangle_dimensions_mm": [
+        {
+          "exact": "19/50",
+          "display": 0.38
+        },
+        {
+          "exact": "9/25",
+          "display": 0.36
+        }
+      ],
+      "area_mm2": {
+        "exact": "171/1250",
+        "display": 0.1368
+      },
+      "central_second_moments_mm4": [
+        {
+          "exact": "4617/3125000",
+          "display": 0.00147744
+        },
+        {
+          "exact": "20577/12500000",
+          "display": 0.00164616
+        }
+      ],
+      "elastic_rectangle_section_moduli_mm3": [
+        {
+          "exact": "513/62500",
+          "display": 0.008208
+        },
+        {
+          "exact": "1083/125000",
+          "display": 0.008664
+        }
+      ],
+      "axial_average_stress_per_applied_force_per_mm2": {
+        "exact": "1250/171",
+        "display": 7.309941520467836
+      },
+      "no_force_value_or_material_allowable_assigned": true
+    },
+    "old_transverse_web_normal_X_before_K1_cut": {
+      "rectangle_dimensions_mm": [
+        {
+          "exact": "3/2",
+          "display": 1.5
+        },
+        {
+          "exact": "9/25",
+          "display": 0.36
+        }
+      ],
+      "area_mm2": {
+        "exact": "27/50",
+        "display": 0.54
+      },
+      "central_second_moments_mm4": [
+        {
+          "exact": "729/125000",
+          "display": 0.005832
+        },
+        {
+          "exact": "81/800",
+          "display": 0.10125
+        }
+      ],
+      "elastic_rectangle_section_moduli_mm3": [
+        {
+          "exact": "81/2500",
+          "display": 0.0324
+        },
+        {
+          "exact": "27/200",
+          "display": 0.135
+        }
+      ],
+      "axial_average_stress_per_applied_force_per_mm2": {
+        "exact": "50/27",
+        "display": 1.8518518518518519
+      },
+      "no_force_value_or_material_allowable_assigned": true
+    },
+    "inherited_yoke_neck_normal_Y": {
+      "rectangle_dimensions_mm": [
+        {
+          "exact": "1/4",
+          "display": 0.25
+        },
+        {
+          "exact": "3/10",
+          "display": 0.3
+        }
+      ],
+      "area_mm2": {
+        "exact": "3/40",
+        "display": 0.075
+      },
+      "central_second_moments_mm4": [
+        {
+          "exact": "9/16000",
+          "display": 0.0005625
+        },
+        {
+          "exact": "1/2560",
+          "display": 0.000390625
+        }
+      ],
+      "elastic_rectangle_section_moduli_mm3": [
+        {
+          "exact": "3/800",
+          "display": 0.00375
+        },
+        {
+          "exact": "1/320",
+          "display": 0.003125
+        }
+      ],
+      "axial_average_stress_per_applied_force_per_mm2": {
+        "exact": "40/3",
+        "display": 13.333333333333334
+      },
+      "no_force_value_or_material_allowable_assigned": true
+    },
+    "K3_lower_post_normal_Z": {
+      "rectangle_dimensions_mm": [
+        {
+          "exact": "9/10",
+          "display": 0.9
+        },
+        {
+          "exact": "3/5",
+          "display": 0.6
+        }
+      ],
+      "area_mm2": {
+        "exact": "27/50",
+        "display": 0.54
+      },
+      "central_second_moments_mm4": [
+        {
+          "exact": "81/5000",
+          "display": 0.0162
+        },
+        {
+          "exact": "729/20000",
+          "display": 0.03645
+        }
+      ],
+      "elastic_rectangle_section_moduli_mm3": [
+        {
+          "exact": "27/500",
+          "display": 0.054
+        },
+        {
+          "exact": "81/1000",
+          "display": 0.081
+        }
+      ],
+      "axial_average_stress_per_applied_force_per_mm2": {
+        "exact": "50/27",
+        "display": 1.8518518518518519
+      },
+      "no_force_value_or_material_allowable_assigned": true
+    },
+    "K3_upper_toe_normal_Y_and_each_contact_patch_XZ": {
+      "rectangle_dimensions_mm": [
+        {
+          "exact": "9/10",
+          "display": 0.9
+        },
+        {
+          "exact": "9/25",
+          "display": 0.36
+        }
+      ],
+      "area_mm2": {
+        "exact": "81/250",
+        "display": 0.324
+      },
+      "central_second_moments_mm4": [
+        {
+          "exact": "2187/625000",
+          "display": 0.0034992
+        },
+        {
+          "exact": "2187/100000",
+          "display": 0.02187
+        }
+      ],
+      "elastic_rectangle_section_moduli_mm3": [
+        {
+          "exact": "243/12500",
+          "display": 0.01944
+        },
+        {
+          "exact": "243/5000",
+          "display": 0.0486
+        }
+      ],
+      "axial_average_stress_per_applied_force_per_mm2": {
+        "exact": "250/81",
+        "display": 3.0864197530864197
+      },
+      "no_force_value_or_material_allowable_assigned": true
+    },
+    "original_front_post_normal_Z": {
+      "rectangle_dimensions_mm": [
+        {
+          "exact": "1",
+          "display": 1.0
+        },
+        {
+          "exact": "6/5",
+          "display": 1.2
+        }
+      ],
+      "area_mm2": {
+        "exact": "6/5",
+        "display": 1.2
+      },
+      "central_second_moments_mm4": [
+        {
+          "exact": "18/125",
+          "display": 0.144
+        },
+        {
+          "exact": "1/10",
+          "display": 0.1
+        }
+      ],
+      "elastic_rectangle_section_moduli_mm3": [
+        {
+          "exact": "6/25",
+          "display": 0.24
+        },
+        {
+          "exact": "1/5",
+          "display": 0.2
+        }
+      ],
+      "axial_average_stress_per_applied_force_per_mm2": {
+        "exact": "5/6",
+        "display": 0.8333333333333334
+      },
+      "no_force_value_or_material_allowable_assigned": true
+    }
+  },
+  "each_new_leg_section_area_ratio_to_inherited_neck": {
+    "exact": "228/125",
+    "display": 1.824
+  },
+  "ratio_is_not_strength_or_global_minimum_ratio": true,
+  "complete_local_directional_chords": [
+    {
+      "region": "L_K1_entire_cut_loop_and_two_old_web_junctions",
+      "coordinate_interpretation": "declared_decimal",
+      "directional_chord_minima_mm": {
+        "X": 0.38,
+        "Y": 0.38,
+        "Z": 0.36
+      },
+      "directional_chord_minima_without_window_planes_mm": {
+        "X": 0.38,
+        "Y": 0.38,
+        "Z": 0.36
+      }
+    },
+    {
+      "region": "L_K3_lower_post_and_full_local_panel_thickness",
+      "coordinate_interpretation": "declared_decimal",
+      "directional_chord_minima_mm": {
+        "X": 0.9,
+        "Y": 0.6,
+        "Z": 0.65
+      },
+      "directional_chord_minima_without_window_planes_mm": {
+        "X": 0.9,
+        "Y": 0.6,
+        "Z": null
+      }
+    },
+    {
+      "region": "L_K3_upper_toe_entire_overlap_front_post_and_panel",
+      "coordinate_interpretation": "declared_decimal",
+      "directional_chord_minima_mm": {
+        "X": 0.9,
+        "Y": 1.2,
+        "Z": 0.36
+      },
+      "directional_chord_minima_without_window_planes_mm": {
+        "X": 0.9,
+        "Y": 1.2,
+        "Z": 0.36
+      }
+    },
+    {
+      "region": "R_K1_entire_cut_loop_and_two_old_web_junctions",
+      "coordinate_interpretation": "declared_decimal",
+      "directional_chord_minima_mm": {
+        "X": 0.38,
+        "Y": 0.38,
+        "Z": 0.36
+      },
+      "directional_chord_minima_without_window_planes_mm": {
+        "X": 0.38,
+        "Y": 0.38,
+        "Z": 0.36
+      }
+    },
+    {
+      "region": "R_K3_lower_post_and_full_local_panel_thickness",
+      "coordinate_interpretation": "declared_decimal",
+      "directional_chord_minima_mm": {
+        "X": 0.9,
+        "Y": 0.6,
+        "Z": 0.65
+      },
+      "directional_chord_minima_without_window_planes_mm": {
+        "X": 0.9,
+        "Y": 0.6,
+        "Z": null
+      }
+    },
+    {
+      "region": "R_K3_upper_toe_entire_overlap_front_post_and_panel",
+      "coordinate_interpretation": "declared_decimal",
+      "directional_chord_minima_mm": {
+        "X": 0.9,
+        "Y": 1.2,
+        "Z": 0.36
+      },
+      "directional_chord_minima_without_window_planes_mm": {
+        "X": 0.9,
+        "Y": 1.2,
+        "Z": 0.36
+      }
+    },
+    {
+      "region": "L_K1_entire_cut_loop_and_two_old_web_junctions",
+      "coordinate_interpretation": "exact_serialized_binary64_coordinates",
+      "directional_chord_minima_mm": {
+        "X": 0.379999999999999,
+        "Y": 0.3799999999999999,
+        "Z": 0.3600000000000003
+      },
+      "directional_chord_minima_without_window_planes_mm": {
+        "X": 0.379999999999999,
+        "Y": 0.3799999999999999,
+        "Z": 0.3600000000000003
+      }
+    },
+    {
+      "region": "L_K3_lower_post_and_full_local_panel_thickness",
+      "coordinate_interpretation": "exact_serialized_binary64_coordinates",
+      "directional_chord_minima_mm": {
+        "X": 0.8999999999999986,
+        "Y": 0.5999999999999996,
+        "Z": 0.65
+      },
+      "directional_chord_minima_without_window_planes_mm": {
+        "X": 0.8999999999999986,
+        "Y": 0.5999999999999996,
+        "Z": null
+      }
+    },
+    {
+      "region": "L_K3_upper_toe_entire_overlap_front_post_and_panel",
+      "coordinate_interpretation": "exact_serialized_binary64_coordinates",
+      "directional_chord_minima_mm": {
+        "X": 0.8999999999999986,
+        "Y": 1.1999999999999993,
+        "Z": 0.3600000000000003
+      },
+      "directional_chord_minima_without_window_planes_mm": {
+        "X": 0.8999999999999986,
+        "Y": 1.1999999999999993,
+        "Z": 0.3600000000000003
+      }
+    },
+    {
+      "region": "R_K1_entire_cut_loop_and_two_old_web_junctions",
+      "coordinate_interpretation": "exact_serialized_binary64_coordinates",
+      "directional_chord_minima_mm": {
+        "X": 0.379999999999999,
+        "Y": 0.3799999999999999,
+        "Z": 0.3600000000000003
+      },
+      "directional_chord_minima_without_window_planes_mm": {
+        "X": 0.379999999999999,
+        "Y": 0.3799999999999999,
+        "Z": 0.3600000000000003
+      }
+    },
+    {
+      "region": "R_K3_lower_post_and_full_local_panel_thickness",
+      "coordinate_interpretation": "exact_serialized_binary64_coordinates",
+      "directional_chord_minima_mm": {
+        "X": 0.8999999999999986,
+        "Y": 0.5999999999999996,
+        "Z": 0.65
+      },
+      "directional_chord_minima_without_window_planes_mm": {
+        "X": 0.8999999999999986,
+        "Y": 0.5999999999999996,
+        "Z": null
+      }
+    },
+    {
+      "region": "R_K3_upper_toe_entire_overlap_front_post_and_panel",
+      "coordinate_interpretation": "exact_serialized_binary64_coordinates",
+      "directional_chord_minima_mm": {
+        "X": 0.8999999999999986,
+        "Y": 1.1999999999999993,
+        "Z": 0.3600000000000003
+      },
+      "directional_chord_minima_without_window_planes_mm": {
+        "X": 0.8999999999999986,
+        "Y": 1.1999999999999993,
+        "Z": 0.3600000000000003
+      }
+    }
+  ],
+  "inherited_neck_evidence": {
+    "lineage": {
+      "reports": [
+        {
+          "path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/engineering/engineering-followup-20261030-r11/geometry-proof/roi-producer-v2/report.json",
+          "bytes": 91568,
+          "sha256": "6364eac059af54df2cc947bd75f6baa05a38fe4fb6c1f6951beed1d335dbf8c5"
+        },
+        {
+          "path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/engineering/engineering-followup-20261030-r11/geometry-proof/roi-reader-v2/report.json",
+          "bytes": 57774,
+          "sha256": "22d11a5538671d1f0709630814a25d29ef3fccf3533fb3998e5c9a11fd5a73a3"
+        }
+      ],
+      "same_complete_input_BREP_bytes": {
+        "L": {
+          "old": {
+            "path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/engineering/engineering-followup-20261030-r11/geometry-proof/roi-inputs-v1/L_KEY.brep",
+            "bytes": 74119,
+            "sha256": "d2156fa7478607255765915c2417afdfcd9f6956f269ff30457540e4d2b10095"
+          },
+          "current": {
+            "path": "/workspace/scratch/1b842ca762be/r13_geometry_work/inputs/L_KEY.brep",
+            "bytes": 74119,
+            "sha256": "d2156fa7478607255765915c2417afdfcd9f6956f269ff30457540e4d2b10095"
+          }
+        },
+        "R": {
+          "old": {
+            "path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/engineering/engineering-followup-20261030-r11/geometry-proof/roi-inputs-v1/R_KEY.brep",
+            "bytes": 73269,
+            "sha256": "c5e33a435b6a33e1b5a347a656a29f0263a4a6c1568f4a2b385f7a08e43bcc98"
+          },
+          "current": {
+            "path": "/workspace/scratch/1b842ca762be/r13_geometry_work/inputs/R_KEY.brep",
+            "bytes": 73269,
+            "sha256": "c5e33a435b6a33e1b5a347a656a29f0263a4a6c1568f4a2b385f7a08e43bcc98"
+          }
+        }
+      }
+    },
+    "old_actual_native_ROI_records": {
+      "L": {
+        "Y_interval_mm": [
+          15.945,
+          39.0
+        ],
+        "actual_whole_body_crop": {
+          "shape_type": "Compound",
+          "strict_whole_material_passed": true,
+          "positive_solid_count": 1,
+          "signed_volume_mm3": 1.7291249999999942,
+          "bounds_mm": [
+            -13.450000000000001,
+            -13.199999999999996,
+            15.945,
+            39.0,
+            4.049999999999997,
+            4.350000000000001
+          ],
+          "centroid_mm": [
+            -13.325,
+            27.472499999999997,
+            4.199999999999997
+          ],
+          "file": {
+            "path": "roi-producer-v2/L/neck/actual-crop.brep",
+            "bytes": 4988,
+            "sha256": "f14df16b7936c4a8e1fa67b59eab2b4875e47ae1ec6968e2606db33e1640741c"
+          }
+        },
+        "declared_expected_geometry": {
+          "shape_type": "Solid",
+          "strict_whole_material_passed": true,
+          "positive_solid_count": 1,
+          "signed_volume_mm3": 1.729124999999999,
+          "bounds_mm": [
+            -13.45,
+            -13.2,
+            15.945,
+            39.0,
+            4.05,
+            4.35
+          ],
+          "centroid_mm": [
+            -13.324999999999998,
+            27.4725,
+            4.2
+          ],
+          "file": {
+            "path": "roi-producer-v2/L/neck/expected.brep",
+            "bytes": 3498,
+            "sha256": "fd0d54bae44c24ad8cbb1aad240e157cb0260d9208d726e3a371f6dd000e91f8"
+          }
+        },
+        "complete_actual_ROI_planar_faces": [
+          {
+            "index": 0,
+            "orientation": "TopAbs_Orientation.TopAbs_REVERSED",
+            "area_mm2": 5.76375,
+            "center_mm": [
+              -13.325000000000001,
+              27.4725,
+              4.05
+            ],
+            "bounds_mm": [
+              -13.45,
+              -13.2,
+              15.945,
+              39.0,
+              4.05,
+              4.05
+            ],
+            "normal": [
+              -0.0,
+              0.0,
+              -1.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                -13.2,
+                15.945,
+                4.05
+              ],
+              [
+                -13.2,
+                39.0,
+                4.05
+              ],
+              [
+                -13.45,
+                15.945,
+                4.05
+              ],
+              [
+                -13.45,
+                39.0,
+                4.05
+              ]
+            ]
+          },
+          {
+            "index": 1,
+            "orientation": "TopAbs_Orientation.TopAbs_REVERSED",
+            "area_mm2": 6.916499999999996,
+            "center_mm": [
+              -13.2,
+              27.4725,
+              4.199999999999999
+            ],
+            "bounds_mm": [
+              -13.200000000000001,
+              -13.2,
+              15.945,
+              39.0,
+              4.049999999999997,
+              4.350000000000001
+            ],
+            "normal": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                -13.2,
+                39.0,
+                4.35
+              ],
+              [
+                -13.2,
+                39.0,
+                4.05
+              ],
+              [
+                -13.2,
+                15.945,
+                4.35
+              ],
+              [
+                -13.2,
+                15.945,
+                4.05
+              ]
+            ]
+          },
+          {
+            "index": 2,
+            "orientation": "TopAbs_Orientation.TopAbs_REVERSED",
+            "area_mm2": 0.07499999999999943,
+            "center_mm": [
+              -13.324999999999996,
+              15.945,
+              4.199999999999989
+            ],
+            "bounds_mm": [
+              -13.45,
+              -13.2,
+              15.945,
+              15.945,
+              4.05,
+              4.35
+            ],
+            "normal": [
+              0.0,
+              -1.0,
+              -0.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                -13.45,
+                15.945,
+                4.05
+              ],
+              [
+                -13.2,
+                15.945,
+                4.05
+              ],
+              [
+                -13.2,
+                15.945,
+                4.35
+              ],
+              [
+                -13.45,
+                15.945,
+                4.35
+              ]
+            ]
+          },
+          {
+            "index": 3,
+            "orientation": "TopAbs_Orientation.TopAbs_FORWARD",
+            "area_mm2": 6.916499999999996,
+            "center_mm": [
+              -13.45,
+              27.4725,
+              4.199999999999999
+            ],
+            "bounds_mm": [
+              -13.450000000000001,
+              -13.45,
+              15.945,
+              39.0,
+              4.049999999999997,
+              4.350000000000001
+            ],
+            "normal": [
+              -1.0,
+              -0.0,
+              -0.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                -13.45,
+                39.0,
+                4.35
+              ],
+              [
+                -13.45,
+                39.0,
+                4.05
+              ],
+              [
+                -13.45,
+                15.945,
+                4.35
+              ],
+              [
+                -13.45,
+                15.945,
+                4.05
+              ]
+            ]
+          },
+          {
+            "index": 4,
+            "orientation": "TopAbs_Orientation.TopAbs_FORWARD",
+            "area_mm2": 0.07499999999999929,
+            "center_mm": [
+              -13.325000000000003,
+              39.0,
+              4.199999999999989
+            ],
+            "bounds_mm": [
+              -13.450000000000001,
+              -13.199999999999996,
+              39.0,
+              39.0,
+              4.049999999999997,
+              4.350000000000001
+            ],
+            "normal": [
+              -0.0,
+              1.0,
+              0.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                -13.2,
+                39.0,
+                4.35
+              ],
+              [
+                -13.2,
+                39.0,
+                4.05
+              ],
+              [
+                -13.45,
+                39.0,
+                4.35
+              ],
+              [
+                -13.45,
+                39.0,
+                4.05
+              ]
+            ]
+          },
+          {
+            "index": 5,
+            "orientation": "TopAbs_Orientation.TopAbs_FORWARD",
+            "area_mm2": 5.76375,
+            "center_mm": [
+              -13.325000000000001,
+              27.4725,
+              4.35
+            ],
+            "bounds_mm": [
+              -13.45,
+              -13.199999999999996,
+              15.945,
+              39.0,
+              4.349999999999997,
+              4.35
+            ],
+            "normal": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                -13.45,
+                15.945,
+                4.35
+              ],
+              [
+                -13.2,
+                15.945,
+                4.35
+              ],
+              [
+                -13.45,
+                39.0,
+                4.35
+              ],
+              [
+                -13.2,
+                39.0,
+                4.35
+              ]
+            ]
+          }
+        ],
+        "complete_expected_planar_faces": [
+          {
+            "index": 0,
+            "orientation": "TopAbs_Orientation.TopAbs_REVERSED",
+            "area_mm2": 6.916499999999996,
+            "center_mm": [
+              -13.45,
+              27.4725,
+              4.199999999999999
+            ],
+            "bounds_mm": [
+              -13.45,
+              -13.45,
+              15.945,
+              39.0,
+              4.05,
+              4.35
+            ],
+            "normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                -13.45,
+                15.945,
+                4.35
+              ],
+              [
+                -13.45,
+                15.945,
+                4.05
+              ],
+              [
+                -13.45,
+                39.0,
+                4.35
+              ],
+              [
+                -13.45,
+                39.0,
+                4.05
+              ]
+            ]
+          },
+          {
+            "index": 1,
+            "orientation": "TopAbs_Orientation.TopAbs_FORWARD",
+            "area_mm2": 6.916499999999996,
+            "center_mm": [
+              -13.2,
+              27.4725,
+              4.199999999999999
+            ],
+            "bounds_mm": [
+              -13.2,
+              -13.2,
+              15.945,
+              39.0,
+              4.05,
+              4.35
+            ],
+            "normal": [
+              1.0,
+              0.0,
+              -0.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                -13.2,
+                15.945,
+                4.35
+              ],
+              [
+                -13.2,
+                15.945,
+                4.05
+              ],
+              [
+                -13.2,
+                39.0,
+                4.35
+              ],
+              [
+                -13.2,
+                39.0,
+                4.05
+              ]
+            ]
+          },
+          {
+            "index": 2,
+            "orientation": "TopAbs_Orientation.TopAbs_REVERSED",
+            "area_mm2": 0.07499999999999996,
+            "center_mm": [
+              -13.325,
+              15.945,
+              4.2
+            ],
+            "bounds_mm": [
+              -13.45,
+              -13.2,
+              15.945,
+              15.945,
+              4.05,
+              4.35
+            ],
+            "normal": [
+              0.0,
+              -1.0,
+              -0.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                -13.2,
+                15.945,
+                4.05
+              ],
+              [
+                -13.45,
+                15.945,
+                4.05
+              ],
+              [
+                -13.2,
+                15.945,
+                4.35
+              ],
+              [
+                -13.45,
+                15.945,
+                4.35
+              ]
+            ]
+          },
+          {
+            "index": 3,
+            "orientation": "TopAbs_Orientation.TopAbs_FORWARD",
+            "area_mm2": 0.07499999999999996,
+            "center_mm": [
+              -13.325,
+              39.0,
+              4.2
+            ],
+            "bounds_mm": [
+              -13.45,
+              -13.2,
+              39.0,
+              39.0,
+              4.05,
+              4.35
+            ],
+            "normal": [
+              -0.0,
+              1.0,
+              0.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                -13.2,
+                39.0,
+                4.05
+              ],
+              [
+                -13.45,
+                39.0,
+                4.05
+              ],
+              [
+                -13.2,
+                39.0,
+                4.35
+              ],
+              [
+                -13.45,
+                39.0,
+                4.35
+              ]
+            ]
+          },
+          {
+            "index": 4,
+            "orientation": "TopAbs_Orientation.TopAbs_REVERSED",
+            "area_mm2": 5.76375,
+            "center_mm": [
+              -13.325000000000001,
+              27.4725,
+              4.05
+            ],
+            "bounds_mm": [
+              -13.45,
+              -13.2,
+              15.945,
+              39.0,
+              4.05,
+              4.05
+            ],
+            "normal": [
+              -0.0,
+              -0.0,
+              -1.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                -13.45,
+                39.0,
+                4.05
+              ],
+              [
+                -13.45,
+                15.945,
+                4.05
+              ],
+              [
+                -13.2,
+                39.0,
+                4.05
+              ],
+              [
+                -13.2,
+                15.945,
+                4.05
+              ]
+            ]
+          },
+          {
+            "index": 5,
+            "orientation": "TopAbs_Orientation.TopAbs_FORWARD",
+            "area_mm2": 5.76375,
+            "center_mm": [
+              -13.325000000000001,
+              27.4725,
+              4.35
+            ],
+            "bounds_mm": [
+              -13.45,
+              -13.2,
+              15.945,
+              39.0,
+              4.35,
+              4.35
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                -13.45,
+                39.0,
+                4.35
+              ],
+              [
+                -13.45,
+                15.945,
+                4.35
+              ],
+              [
+                -13.2,
+                39.0,
+                4.35
+              ],
+              [
+                -13.2,
+                15.945,
+                4.35
+              ]
+            ]
+          }
+        ],
+        "actual_minus_expected": {
+          "shape_type": "Compound",
+          "strict_whole_material_passed": true,
+          "positive_solid_count": 0,
+          "signed_volume_mm3": 0.0,
+          "bounds_mm": null,
+          "centroid_mm": null,
+          "file": {
+            "path": "roi-producer-v2/L/neck/actual_minus_expected.brep",
+            "bytes": 188,
+            "sha256": "fdc75bfe05a54932b6580d63f4b6c2252e66e24302a5c754eeeb1b59d04840bc"
+          }
+        },
+        "expected_minus_actual": {
+          "shape_type": "Compound",
+          "strict_whole_material_passed": true,
+          "positive_solid_count": 0,
+          "signed_volume_mm3": 0.0,
+          "bounds_mm": null,
+          "centroid_mm": null,
+          "file": {
+            "path": "roi-producer-v2/L/neck/expected_minus_actual.brep",
+            "bytes": 188,
+            "sha256": "fdc75bfe05a54932b6580d63f4b6c2252e66e24302a5c754eeeb1b59d04840bc"
+          }
+        },
+        "directed_difference_volumes_exactly_zero": true,
+        "original_material_gate_passed": true
+      },
+      "R": {
+        "Y_interval_mm": [
+          15.945,
+          39.0
+        ],
+        "actual_whole_body_crop": {
+          "shape_type": "Compound",
+          "strict_whole_material_passed": true,
+          "positive_solid_count": 1,
+          "signed_volume_mm3": 1.7291249999999942,
+          "bounds_mm": [
+            13.199999999999996,
+            13.450000000000001,
+            15.945,
+            39.0,
+            4.049999999999997,
+            4.350000000000001
+          ],
+          "centroid_mm": [
+            13.325,
+            27.4725,
+            4.1999999999999975
+          ],
+          "file": {
+            "path": "roi-producer-v2/R/neck/actual-crop.brep",
+            "bytes": 4857,
+            "sha256": "58ec9cf4382e64973e6cc0781dc31f64843a3123a3b99bd7507df30a2cb3f2d2"
+          }
+        },
+        "declared_expected_geometry": {
+          "shape_type": "Solid",
+          "strict_whole_material_passed": true,
+          "positive_solid_count": 1,
+          "signed_volume_mm3": 1.729124999999999,
+          "bounds_mm": [
+            13.2,
+            13.45,
+            15.945,
+            39.0,
+            4.05,
+            4.35
+          ],
+          "centroid_mm": [
+            13.324999999999998,
+            27.4725,
+            4.2
+          ],
+          "file": {
+            "path": "roi-producer-v2/R/neck/expected.brep",
+            "bytes": 3472,
+            "sha256": "5a7410543b24f62119759ef6eba97171b132168558bc45eb4db9369eb833da0a"
+          }
+        },
+        "complete_actual_ROI_planar_faces": [
+          {
+            "index": 0,
+            "orientation": "TopAbs_Orientation.TopAbs_FORWARD",
+            "area_mm2": 6.916499999999995,
+            "center_mm": [
+              13.45,
+              27.4725,
+              4.199999999999999
+            ],
+            "bounds_mm": [
+              13.45,
+              13.450000000000001,
+              15.945,
+              39.0,
+              4.049999999999997,
+              4.350000000000001
+            ],
+            "normal": [
+              1.0,
+              0.0,
+              -0.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                13.45,
+                15.945,
+                4.05
+              ],
+              [
+                13.45,
+                39.0,
+                4.05
+              ],
+              [
+                13.45,
+                15.945,
+                4.35
+              ],
+              [
+                13.45,
+                39.0,
+                4.35
+              ]
+            ]
+          },
+          {
+            "index": 1,
+            "orientation": "TopAbs_Orientation.TopAbs_REVERSED",
+            "area_mm2": 5.76375,
+            "center_mm": [
+              13.325000000000001,
+              27.4725,
+              4.05
+            ],
+            "bounds_mm": [
+              13.2,
+              13.45,
+              15.945,
+              39.0,
+              4.05,
+              4.05
+            ],
+            "normal": [
+              -0.0,
+              -0.0,
+              -1.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                13.2,
+                15.945,
+                4.05
+              ],
+              [
+                13.2,
+                39.0,
+                4.05
+              ],
+              [
+                13.45,
+                15.945,
+                4.05
+              ],
+              [
+                13.45,
+                39.0,
+                4.05
+              ]
+            ]
+          },
+          {
+            "index": 2,
+            "orientation": "TopAbs_Orientation.TopAbs_REVERSED",
+            "area_mm2": 0.07499999999999943,
+            "center_mm": [
+              13.324999999999996,
+              15.945,
+              4.199999999999989
+            ],
+            "bounds_mm": [
+              13.2,
+              13.45,
+              15.945,
+              15.945,
+              4.05,
+              4.35
+            ],
+            "normal": [
+              0.0,
+              -1.0,
+              -0.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                13.45,
+                15.945,
+                4.05
+              ],
+              [
+                13.45,
+                15.945,
+                4.35
+              ],
+              [
+                13.2,
+                15.945,
+                4.35
+              ],
+              [
+                13.2,
+                15.945,
+                4.05
+              ]
+            ]
+          },
+          {
+            "index": 3,
+            "orientation": "TopAbs_Orientation.TopAbs_FORWARD",
+            "area_mm2": 5.76375,
+            "center_mm": [
+              13.325000000000001,
+              27.4725,
+              4.35
+            ],
+            "bounds_mm": [
+              13.199999999999996,
+              13.45,
+              15.945,
+              39.0,
+              4.349999999999997,
+              4.35
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                13.2,
+                15.945,
+                4.35
+              ],
+              [
+                13.2,
+                39.0,
+                4.35
+              ],
+              [
+                13.45,
+                39.0,
+                4.35
+              ],
+              [
+                13.45,
+                15.945,
+                4.35
+              ]
+            ]
+          },
+          {
+            "index": 4,
+            "orientation": "TopAbs_Orientation.TopAbs_FORWARD",
+            "area_mm2": 0.07499999999999929,
+            "center_mm": [
+              13.325000000000003,
+              39.0,
+              4.199999999999989
+            ],
+            "bounds_mm": [
+              13.199999999999996,
+              13.450000000000001,
+              39.0,
+              39.0,
+              4.049999999999997,
+              4.350000000000001
+            ],
+            "normal": [
+              -0.0,
+              1.0,
+              0.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                13.45,
+                39.0,
+                4.05
+              ],
+              [
+                13.45,
+                39.0,
+                4.35
+              ],
+              [
+                13.2,
+                39.0,
+                4.35
+              ],
+              [
+                13.2,
+                39.0,
+                4.05
+              ]
+            ]
+          },
+          {
+            "index": 5,
+            "orientation": "TopAbs_Orientation.TopAbs_REVERSED",
+            "area_mm2": 6.916499999999995,
+            "center_mm": [
+              13.2,
+              27.4725,
+              4.199999999999999
+            ],
+            "bounds_mm": [
+              13.2,
+              13.200000000000001,
+              15.945,
+              39.0,
+              4.049999999999997,
+              4.350000000000001
+            ],
+            "normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                13.2,
+                15.945,
+                4.05
+              ],
+              [
+                13.2,
+                39.0,
+                4.05
+              ],
+              [
+                13.2,
+                15.945,
+                4.35
+              ],
+              [
+                13.2,
+                39.0,
+                4.35
+              ]
+            ]
+          }
+        ],
+        "complete_expected_planar_faces": [
+          {
+            "index": 0,
+            "orientation": "TopAbs_Orientation.TopAbs_REVERSED",
+            "area_mm2": 6.916499999999996,
+            "center_mm": [
+              13.2,
+              27.4725,
+              4.199999999999999
+            ],
+            "bounds_mm": [
+              13.2,
+              13.2,
+              15.945,
+              39.0,
+              4.05,
+              4.35
+            ],
+            "normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                13.2,
+                15.945,
+                4.35
+              ],
+              [
+                13.2,
+                15.945,
+                4.05
+              ],
+              [
+                13.2,
+                39.0,
+                4.35
+              ],
+              [
+                13.2,
+                39.0,
+                4.05
+              ]
+            ]
+          },
+          {
+            "index": 1,
+            "orientation": "TopAbs_Orientation.TopAbs_FORWARD",
+            "area_mm2": 6.916499999999996,
+            "center_mm": [
+              13.45,
+              27.4725,
+              4.199999999999999
+            ],
+            "bounds_mm": [
+              13.45,
+              13.45,
+              15.945,
+              39.0,
+              4.05,
+              4.35
+            ],
+            "normal": [
+              1.0,
+              0.0,
+              -0.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                13.45,
+                15.945,
+                4.35
+              ],
+              [
+                13.45,
+                15.945,
+                4.05
+              ],
+              [
+                13.45,
+                39.0,
+                4.35
+              ],
+              [
+                13.45,
+                39.0,
+                4.05
+              ]
+            ]
+          },
+          {
+            "index": 2,
+            "orientation": "TopAbs_Orientation.TopAbs_REVERSED",
+            "area_mm2": 0.07499999999999996,
+            "center_mm": [
+              13.325,
+              15.945,
+              4.2
+            ],
+            "bounds_mm": [
+              13.2,
+              13.45,
+              15.945,
+              15.945,
+              4.05,
+              4.35
+            ],
+            "normal": [
+              0.0,
+              -1.0,
+              -0.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                13.45,
+                15.945,
+                4.05
+              ],
+              [
+                13.2,
+                15.945,
+                4.05
+              ],
+              [
+                13.45,
+                15.945,
+                4.35
+              ],
+              [
+                13.2,
+                15.945,
+                4.35
+              ]
+            ]
+          },
+          {
+            "index": 3,
+            "orientation": "TopAbs_Orientation.TopAbs_FORWARD",
+            "area_mm2": 0.07499999999999996,
+            "center_mm": [
+              13.325,
+              39.0,
+              4.2
+            ],
+            "bounds_mm": [
+              13.2,
+              13.45,
+              39.0,
+              39.0,
+              4.05,
+              4.35
+            ],
+            "normal": [
+              -0.0,
+              1.0,
+              0.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                13.45,
+                39.0,
+                4.05
+              ],
+              [
+                13.2,
+                39.0,
+                4.05
+              ],
+              [
+                13.45,
+                39.0,
+                4.35
+              ],
+              [
+                13.2,
+                39.0,
+                4.35
+              ]
+            ]
+          },
+          {
+            "index": 4,
+            "orientation": "TopAbs_Orientation.TopAbs_REVERSED",
+            "area_mm2": 5.76375,
+            "center_mm": [
+              13.325000000000001,
+              27.4725,
+              4.05
+            ],
+            "bounds_mm": [
+              13.2,
+              13.45,
+              15.945,
+              39.0,
+              4.05,
+              4.05
+            ],
+            "normal": [
+              -0.0,
+              -0.0,
+              -1.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                13.2,
+                39.0,
+                4.05
+              ],
+              [
+                13.2,
+                15.945,
+                4.05
+              ],
+              [
+                13.45,
+                39.0,
+                4.05
+              ],
+              [
+                13.45,
+                15.945,
+                4.05
+              ]
+            ]
+          },
+          {
+            "index": 5,
+            "orientation": "TopAbs_Orientation.TopAbs_FORWARD",
+            "area_mm2": 5.76375,
+            "center_mm": [
+              13.325000000000001,
+              27.4725,
+              4.35
+            ],
+            "bounds_mm": [
+              13.2,
+              13.45,
+              15.945,
+              39.0,
+              4.35,
+              4.35
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "outer_wire_edge_count": 4,
+            "inner_wire_count": 0,
+            "vertices_mm": [
+              [
+                13.2,
+                39.0,
+                4.35
+              ],
+              [
+                13.2,
+                15.945,
+                4.35
+              ],
+              [
+                13.45,
+                39.0,
+                4.35
+              ],
+              [
+                13.45,
+                15.945,
+                4.35
+              ]
+            ]
+          }
+        ],
+        "actual_minus_expected": {
+          "shape_type": "Compound",
+          "strict_whole_material_passed": true,
+          "positive_solid_count": 0,
+          "signed_volume_mm3": 0.0,
+          "bounds_mm": null,
+          "centroid_mm": null,
+          "file": {
+            "path": "roi-producer-v2/R/neck/actual_minus_expected.brep",
+            "bytes": 188,
+            "sha256": "fdc75bfe05a54932b6580d63f4b6c2252e66e24302a5c754eeeb1b59d04840bc"
+          }
+        },
+        "expected_minus_actual": {
+          "shape_type": "Compound",
+          "strict_whole_material_passed": true,
+          "positive_solid_count": 0,
+          "signed_volume_mm3": 0.0,
+          "bounds_mm": null,
+          "centroid_mm": null,
+          "file": {
+            "path": "roi-producer-v2/R/neck/expected_minus_actual.brep",
+            "bytes": 188,
+            "sha256": "fdc75bfe05a54932b6580d63f4b6c2252e66e24302a5c754eeeb1b59d04840bc"
+          }
+        },
+        "directed_difference_volumes_exactly_zero": true,
+        "original_material_gate_passed": true
+      }
+    },
+    "prior_execution_relabelled_as_R13": false,
+    "full_Y_interval_mm": [
+      15.945,
+      39.0
+    ],
+    "native_boolean_identity_is_not_exact_mathematical_filling": true
+  },
+  "original_K3_additive_material_account": {
+    "original_mm3": 4522.156813063013,
+    "removed_mm3": 0.0,
+    "added_mm3": 4.624559999999989,
+    "new_mm3": 4526.781373063022,
+    "signed_balance_error_mm3": -9.094947017729282e-12
+  },
+  "original_cover_face_material_evidence": {
+    "L_front": {
+      "before": {
+        "plane_axis": 0,
+        "plane_coordinate_mm": -17.43,
+        "outward_normal_component": 1,
+        "patch_other_coordinate_intervals_mm": [
+          [
+            18.3,
+            19.5
+          ],
+          [
+            0.5,
+            7.0
+          ]
+        ],
+        "observed_native_faces": [
+          {
+            "native_face_index": 52,
+            "outward_unit_normal": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "clipped_native_area_mm2": 7.619999999999994,
+            "maximum_vertex_plane_error_mm": 0.0
+          }
+        ],
+        "total_actual_patch_area_mm2": 7.619999999999994
+      },
+      "after": {
+        "plane_axis": 0,
+        "plane_coordinate_mm": -17.43,
+        "outward_normal_component": 1,
+        "patch_other_coordinate_intervals_mm": [
+          [
+            18.3,
+            19.5
+          ],
+          [
+            0.5,
+            7.0
+          ]
+        ],
+        "observed_native_faces": [
+          {
+            "native_face_index": 56,
+            "outward_unit_normal": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "clipped_native_area_mm2": 7.619999999999994,
+            "maximum_vertex_plane_error_mm": 0.0
+          }
+        ],
+        "total_actual_patch_area_mm2": 7.619999999999994
+      },
+      "whole_planar_material_difference": {
+        "a_minus_b_area_mm2": 0.0,
+        "b_minus_a_area_mm2": 0.0
+      }
+    },
+    "L_rear": {
+      "before": {
+        "plane_axis": 0,
+        "plane_coordinate_mm": -17.43,
+        "outward_normal_component": 1,
+        "patch_other_coordinate_intervals_mm": [
+          [
+            22.35,
+            23.8
+          ],
+          [
+            0.5,
+            7.0
+          ]
+        ],
+        "observed_native_faces": [
+          {
+            "native_face_index": 58,
+            "outward_unit_normal": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "clipped_native_area_mm2": 9.207499999999994,
+            "maximum_vertex_plane_error_mm": 0.0
+          }
+        ],
+        "total_actual_patch_area_mm2": 9.207499999999994
+      },
+      "after": {
+        "plane_axis": 0,
+        "plane_coordinate_mm": -17.43,
+        "outward_normal_component": 1,
+        "patch_other_coordinate_intervals_mm": [
+          [
+            22.35,
+            23.8
+          ],
+          [
+            0.5,
+            7.0
+          ]
+        ],
+        "observed_native_faces": [
+          {
+            "native_face_index": 62,
+            "outward_unit_normal": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "clipped_native_area_mm2": 9.207499999999994,
+            "maximum_vertex_plane_error_mm": 0.0
+          }
+        ],
+        "total_actual_patch_area_mm2": 9.207499999999994
+      },
+      "whole_planar_material_difference": {
+        "a_minus_b_area_mm2": 0.0,
+        "b_minus_a_area_mm2": 0.0
+      }
+    },
+    "R_front": {
+      "before": {
+        "plane_axis": 0,
+        "plane_coordinate_mm": 17.43,
+        "outward_normal_component": -1,
+        "patch_other_coordinate_intervals_mm": [
+          [
+            18.3,
+            19.5
+          ],
+          [
+            0.5,
+            7.0
+          ]
+        ],
+        "observed_native_faces": [
+          {
+            "native_face_index": 76,
+            "outward_unit_normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ],
+            "clipped_native_area_mm2": 7.619999999999994,
+            "maximum_vertex_plane_error_mm": 0.0
+          }
+        ],
+        "total_actual_patch_area_mm2": 7.619999999999994
+      },
+      "after": {
+        "plane_axis": 0,
+        "plane_coordinate_mm": 17.43,
+        "outward_normal_component": -1,
+        "patch_other_coordinate_intervals_mm": [
+          [
+            18.3,
+            19.5
+          ],
+          [
+            0.5,
+            7.0
+          ]
+        ],
+        "observed_native_faces": [
+          {
+            "native_face_index": 84,
+            "outward_unit_normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ],
+            "clipped_native_area_mm2": 7.619999999999994,
+            "maximum_vertex_plane_error_mm": 0.0
+          }
+        ],
+        "total_actual_patch_area_mm2": 7.619999999999994
+      },
+      "whole_planar_material_difference": {
+        "a_minus_b_area_mm2": 0.0,
+        "b_minus_a_area_mm2": 0.0
+      }
+    },
+    "R_rear": {
+      "before": {
+        "plane_axis": 0,
+        "plane_coordinate_mm": 17.43,
+        "outward_normal_component": -1,
+        "patch_other_coordinate_intervals_mm": [
+          [
+            22.35,
+            23.8
+          ],
+          [
+            0.5,
+            7.0
+          ]
+        ],
+        "observed_native_faces": [
+          {
+            "native_face_index": 85,
+            "outward_unit_normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ],
+            "clipped_native_area_mm2": 9.207499999999994,
+            "maximum_vertex_plane_error_mm": 0.0
+          }
+        ],
+        "total_actual_patch_area_mm2": 9.207499999999994
+      },
+      "after": {
+        "plane_axis": 0,
+        "plane_coordinate_mm": 17.43,
+        "outward_normal_component": -1,
+        "patch_other_coordinate_intervals_mm": [
+          [
+            22.35,
+            23.8
+          ],
+          [
+            0.5,
+            7.0
+          ]
+        ],
+        "observed_native_faces": [
+          {
+            "native_face_index": 93,
+            "outward_unit_normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ],
+            "clipped_native_area_mm2": 9.207499999999994,
+            "maximum_vertex_plane_error_mm": 0.0
+          }
+        ],
+        "total_actual_patch_area_mm2": 9.207499999999994
+      },
+      "whole_planar_material_difference": {
+        "a_minus_b_area_mm2": 0.0,
+        "b_minus_a_area_mm2": 0.0
+      }
+    }
+  },
+  "functional_surface_scope": {
+    "new_stop_contact_rectangle_XZ_R_mm": [
+      [
+        17.48,
+        4.02
+      ],
+      [
+        18.38,
+        4.38
+      ]
+    ],
+    "nominal_area_mm2": {
+      "exact": "81/250",
+      "display": 0.324
+    },
+    "contact_normals_panel_lower_upper": [
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        -1,
+        0
+      ]
+    ],
+    "contact_normals_KEY_lower_upper": [
+      [
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ]
+    ],
+    "cover_support_planes_abs_X_mm": {
+      "exact": "1743/100",
+      "display": 17.43
+    },
+    "source_masks_are_not_a_complete_all_functional_face_catalogue": true
+  },
+  "required_actual_inputs_not_filled": {
+    "material_PN_grade_revision_lot": null,
+    "elastic_plastic_fatigue_and_creep_properties": null,
+    "process_build_direction_heat_treatment_and_surface_finish": null,
+    "actual_joint_method_and_residual_stress": null,
+    "slide_and_stop_force_time_histories": null,
+    "impact_mass_velocity_and_energy": null,
+    "left_right_asymmetric_and_simultaneous_loads": null,
+    "contact_pressure_distribution_friction_and_wear": null,
+    "spring_PN_free_solid_lengths_wire_diameter_active_coils_stiffness_preload_end_fixity": null,
+    "manufacturing_tolerances_datums_and_correlations": null,
+    "minimum_wall_definition_and_acceptance_limit": null,
+    "full_current_FE_mesh_contact_BCs_solver_and_validation": null
+  },
+  "scope": {
+    "complete_current_named_modified_window_models": true,
+    "complete_axis_sections_and_directional_chords_of_those_models": true,
+    "all_inherited_part_cuts_and_full_parent_CSG_reconstructed": false,
+    "actual_native_material_filling_identity_bridge_proved": false,
+    "whole_KEY_or_panel_global_minimum_wall": false,
+    "whole_structure_weakest_effective_load_section": false,
+    "material_strength_stiffness_fatigue_or_current_FE_qualified": false,
+    "physical_allowed_domain": false,
+    "full_15D_G2": false,
+    "G3": false,
+    "G4": false,
+    "G5": false,
+    "manufacturing_go": false
+  }
+}

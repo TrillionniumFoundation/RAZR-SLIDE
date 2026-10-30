@@ -1,0 +1,49 @@
+{
+  "schema": "razr-r13-current-entrypoint-sync-v1",
+  "runs": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "tools/sync_current_design.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\"mode\": \"write\", \"changed\": [\"docs/RESEARCH_OVERVIEW.md\", \"CURRENT_DESIGN.md\", \"status.json\"]}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.04736881400094717
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "tools/sync_current_design.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "stdout": "{\"mode\": \"check\", \"changed\": []}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.04159308200178202
+    }
+  ],
+  "source_and_outputs": {
+    "design/current_product.json": {
+      "bytes": 459348,
+      "sha256": "cd0cd1ebb98b31e804e8da3f0e3426ce6b71b890ba7976dec180f920eb153dbe"
+    },
+    "CURRENT_DESIGN.md": {
+      "bytes": 21560,
+      "sha256": "72e5d2e6d112c1a1a390495de7d4637bc1bebbfc7577ee3fc391e524141531d2"
+    },
+    "docs/RESEARCH_OVERVIEW.md": {
+      "bytes": 3171,
+      "sha256": "022a2f56169228ce1c4bef80992f642c4f94855ec96681d0fa022778f52b2776"
+    },
+    "status.json": {
+      "bytes": 45502,
+      "sha256": "63e2a3209ca71ca3b0482a8708cbfc7844ae947eb8d74164c9bb95bf3e23c700"
+    }
+  },
+  "science_results_changed_by_metadata_sync": false,
+  "new_unit_tests_claimed": false,
+  "publication_scope_at_this_sync": "R12 actual publication verified; R13 science seal not yet published."
+}

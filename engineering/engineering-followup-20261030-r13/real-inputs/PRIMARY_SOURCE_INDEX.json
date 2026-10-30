@@ -1,0 +1,61 @@
+{
+  "schema": "r13.primary_oem_source_index.v1",
+  "recorded_utc": "2026-10-30T15:35:09.246367+00:00",
+  "research_method": "Web search/open for source discovery and facts; one observed public BOM URL and one manufacturer page fetched for byte verification through inherited proxy after supported escalation.",
+  "sources": [
+    {
+      "id": "motorola_uk_route",
+      "url": "https://en-gb.support.motorola.com/app/right-to-repair",
+      "publisher": "Motorola",
+      "observed": "Official page links ReplaceBase repair documents, and lists ReplaceBase, Spares Nordics, Mobiparts and Sifar Group as parts partners.",
+      "linked_repair_documents": "https://www.replacebase.co.uk/motorola-guide",
+      "linked_parts_site": "https://motorola.replacebase.co.uk/",
+      "access": "Readable official web page; no login used."
+    },
+    {
+      "id": "motorola_us_route",
+      "url": "https://en-us.support.motorola.com/app/right-to-repair",
+      "publisher": "Motorola",
+      "observed": "Official page identifies iFixit and MobileSentrix partnerships; repair documents linked to MobileSentrix.",
+      "linked_manual_directory": "https://motorola.mobilesentrix.com/motorola-repair-manual",
+      "access": "Readable official web page. Manual directory shows a JavaScript-dependent series selector; no exact full document obtained there."
+    },
+    {
+      "id": "replacebase_oem_route",
+      "url": "https://www.replacebase.co.uk/genuine-motorola-parts",
+      "publisher": "ReplaceBase, manufacturer-linked distributor",
+      "observed": "Public search index identifies its Motorola-authorized parts and repair-manual directory.",
+      "access": "Current direct page fetch via web returns 405; direct BOM response separately confirms Human Verification."
+    },
+    {
+      "id": "spares_display",
+      "url": "https://www.spares.se/product/motorola-razr-60-ultra-5g-lcd-display-original-scarab",
+      "publisher": "Spares Nordics, manufacturer-linked distributor",
+      "observed": "Scarab display listing names XT2551-6 and SKU 5D68C30085.",
+      "access": "Readable product page; no purchase or login."
+    },
+    {
+      "id": "mobiparts_display",
+      "url": "https://www.mobiparts.ro/spare-parts-motorola/lcd-display-module-for-motorola-razr-60-ultra-sub-inner-pantone-scarab",
+      "publisher": "MobiParts, manufacturer-linked distributor",
+      "observed": "Scarab service assembly listing supplies PN 5D68C30088 and 5D68C29813. It identifies a combined display/touch/frame service assembly.",
+      "access": "Readable product information; ordering requires sign-in, which was not attempted."
+    },
+    {
+      "id": "replacebase_display",
+      "url": "https://www.replacebase.co.uk/motorola-razr-60-ultra-replacement-screen-assembly-5d68c29813",
+      "publisher": "ReplaceBase, manufacturer-linked distributor",
+      "observed": "Indexed authorized screen assembly listing identifies 5D68C29813 and XT2551 family compatibility.",
+      "access": "Search-index metadata only; no direct verified part or technical drawing."
+    },
+    {
+      "id": "lsmtron_official_components",
+      "url": "https://www.lsmtron.com/us/en/business/components",
+      "publisher": "LS Mtron",
+      "observed": "Indexed official page advertises connector families and downloads. Current downloaded HTML is a client-rendered shell, without an identified GB35R PDF link.",
+      "access": "HTTP 200 HTML, SHA bound in receipt; no selected connector datasheet acquired."
+    }
+  ],
+  "third_party_marketplaces_or_trade_data_adopted_as_technical_sources": false,
+  "all_listings_remain_model_literature_not_specimen_evidence": true
+}

@@ -1,0 +1,117 @@
+{
+  "schema": "razr-r13-independent-completed-trim-corridor-review-v1",
+  "completed": true,
+  "source_sha256": "8886facb39b413fb2203c9e978bb089a2753f9338ca1dc17e8b03cd3c8a29933",
+  "inputs": {
+    "native_report": {
+      "path": "/workspace/scratch/1b842ca762be/r13_envelope_work/native-attempt1/report.json",
+      "sha256": "690c48e8c963a2d3ba03bc0e7e072d3a2ec7428bd3562b90ebfcf5723a756fe9"
+    },
+    "complete_corridors": {
+      "path": "/workspace/scratch/1b842ca762be/r13_envelope_work/producer-attempt1/complete_trim_corridors.json",
+      "sha256": "7682928b0fc981a8fb1b423ddaf1daf8014b79e23f0428c88a02a55571b02712"
+    },
+    "complete_R12_projections": {
+      "path": "/workspace/scratch/1b842ca762be/r13_envelope_work/inputs/R12_complete_projections.json.gz",
+      "sha256": "98c853b0ee5fe73b06b8fab8b3218fbee2a34a4154887b6f6ba676e5e6c49f9e"
+    }
+  },
+  "producer_or_model_helpers_imported": false,
+  "sqrt_helper_imported": false,
+  "complete_native_faces_reconstructed": 6,
+  "complete_ordered_wires": 12,
+  "complete_affine_edges": 48,
+  "complete_joins": 48,
+  "oriented_vertex_endpoint_checks": 96,
+  "pairs": [
+    {
+      "key": "L_KEY",
+      "ledger_sha256": "d8e15e9148a13fd2d6caba8b9ff346ca2fa912f392ba3a7cd70926a9e8d1cb5a",
+      "positive_boxes": 73,
+      "counts": {
+        "retained_positive_full_box": 67,
+        "inherited_KEY_exterior": 2,
+        "new_panel_completed_trim_exterior": 4
+      },
+      "trim_query_face_certificates": 6,
+      "unchanged_R12_B0_only_exact": "2926639265921251565094101354869365966162126046501029966793917589621027737158436252472934622362472807208670671113523623704820123570752614040409/3048582568667961163458591044719888970457615373696260889510895468384152088691177363398736428772941378085768487423248655171335913749304966119424",
+      "conditional_B0_and_T_exact": "9606325723438099162898320586261631155790015687685514934352936136016612086527670369139929346758458936439411589934386666146890585/3048582568667961163458591044719888970457615373696260889510895468384152088691177363398736428772941378085768487423248655171335913749304966119424",
+      "unchanged_R12_B0_only_mm3": 0.9600000000000029,
+      "conditional_B0_and_T_mm3": 3.1510793974117154e-15
+    },
+    {
+      "key": "R_KEY",
+      "ledger_sha256": "f61bc608877d4e41078c12bcacb1f441cc55e7a989f6bfdb82a606dbd4d2adaa",
+      "positive_boxes": 96,
+      "counts": {
+        "new_panel_completed_trim_exterior": 4,
+        "inherited_KEY_exterior": 2,
+        "retained_positive_full_box": 90
+      },
+      "trim_query_face_certificates": 6,
+      "unchanged_R12_B0_only_exact": "205943929803918914084339392211719770304133142347796656423810342569090358736387505856895790595950908392461349971798390521301426260593186984535629136554553215/214524926879081553593184399971293538039669853129478294043576983099548224481176751628829988770670454843040509730983776813660062124991145119142938384097345536",
+      "conditional_B0_and_T_exact": "675985077319928638949590115838815474082826771011930776686858849846453993402293692790712843523125615580906225712634554189172603716335792222079/214524926879081553593184399971293538039669853129478294043576983099548224481176751628829988770670454843040509730983776813660062124991145119142938384097345536",
+      "unchanged_R12_B0_only_mm3": 0.9600000000000029,
+      "conditional_B0_and_T_mm3": 3.1510793974117154e-15
+    }
+  ],
+  "negative_controls": [
+    {
+      "control": "omit_complete_edge",
+      "rejected": true,
+      "reason": ""
+    },
+    {
+      "control": "omit_vertex_join",
+      "rejected": true,
+      "reason": ""
+    },
+    {
+      "control": "shrink_join_below_full_vertex_tolerance_sphere_projection",
+      "rejected": true,
+      "reason": "join rectangle must enclose the full recorded vertex sphere projection"
+    },
+    {
+      "control": "reverse_only_inner_oriented_reference_loop",
+      "rejected": true,
+      "reason": "oriented inner and outer windings must cancel"
+    },
+    {
+      "control": "omit_one_complete_panel_face",
+      "rejected": true,
+      "reason": "incomplete panel face census"
+    },
+    {
+      "control": "omit_original_positive_cell",
+      "rejected": true,
+      "reason": "missing original positive box"
+    },
+    {
+      "control": "understate_still_positive_residual_by_2^-80",
+      "rejected": true,
+      "reason": "understated or unsupported contribution"
+    },
+    {
+      "control": "promote_conditional_model_to_native_identity",
+      "rejected": true,
+      "reason": "native qualification cannot be promoted by this conditional proof"
+    }
+  ],
+  "seconds": 0.1440208989988605,
+  "scope": {
+    "arithmetic_and_query_wide_conditional_implication_verified": true,
+    "arbitrary_continuous_paths_in_convex_corridors_have_reference_winding": true,
+    "requires_R12_complete_boundary_premise_B0_and_new_oriented_fill_premise_T": true,
+    "old_R12_bound_replaced": false,
+    "native_material_belongs_to_B0_and_T_proved": false,
+    "existence_of_full_global_native_material_realizing_B0_and_T_proved": false,
+    "native_tolerance_is_compiled_error_bound": false,
+    "uniform_compiled_error_proved": false,
+    "actual_collision_proved": false,
+    "full_15D_G2": false,
+    "physical_allowed_domain": false,
+    "G3": false,
+    "G4": false,
+    "G5": false
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "schema": "razr-r13-complete-trim-negative-control-variants-and-replay-v1",
+  "source_sha256": "3e085ab68009e0919aafdc366e0677493f19ae4bc6cca7c7d27feb308d235c65",
+  "checker_sha256": "8886facb39b413fb2203c9e978bb089a2753f9338ca1dc17e8b03cd3c8a29933",
+  "original_independent_review_sha256": "a1ebe4ebff0b94e8d0ddcfc950f51b656d199f12de8aef8f9a851fc6a687c40e",
+  "seed_native_report_sha256": "690c48e8c963a2d3ba03bc0e7e072d3a2ec7428bd3562b90ebfcf5723a756fe9",
+  "seed_corridors_sha256": "7682928b0fc981a8fb1b423ddaf1daf8014b79e23f0428c88a02a55571b02712",
+  "seed_L_ledger_sha256": "d8e15e9148a13fd2d6caba8b9ff346ca2fa912f392ba3a7cd70926a9e8d1cb5a",
+  "complete_variants": [
+    {
+      "control": "omit_complete_edge",
+      "checker_entry_point": "reconstruct(raw_face_104,variant)",
+      "complete_variant_file": "trim-negative-controls/omit_complete_edge.json.gz",
+      "bytes": 1907,
+      "sha256": "d3a5ddfab60b03e5f532b470e0cbade30bfbae38b751d7c6a2b3fe19dddabbcc",
+      "replay": {
+        "control": "omit_complete_edge",
+        "rejected": true,
+        "reason": ""
+      }
+    },
+    {
+      "control": "omit_vertex_join",
+      "checker_entry_point": "reconstruct(raw_face_104,variant)",
+      "complete_variant_file": "trim-negative-controls/omit_vertex_join.json.gz",
+      "bytes": 1938,
+      "sha256": "e86e3624bb69d51519ff6785322014604478ddfdf5dc5be7c0759df99c0fd65e",
+      "replay": {
+        "control": "omit_vertex_join",
+        "rejected": true,
+        "reason": ""
+      }
+    },
+    {
+      "control": "shrink_join_below_full_vertex_tolerance_sphere_projection",
+      "checker_entry_point": "reconstruct(raw_face_104,variant)",
+      "complete_variant_file": "trim-negative-controls/shrink_join_below_full_vertex_tolerance_sphere_projection.json.gz",
+      "bytes": 2003,
+      "sha256": "3b76e9e9b91b4fd8f734ab61f08d1515834abcca7211d0eff7e285e9c9103067",
+      "replay": {
+        "control": "shrink_join_below_full_vertex_tolerance_sphere_projection",
+        "rejected": true,
+        "reason": "join rectangle must enclose the full recorded vertex sphere projection"
+      }
+    },
+    {
+      "control": "reverse_only_inner_oriented_reference_loop",
+      "checker_entry_point": "check_trim_query(variant.tube,variant.model)",
+      "complete_variant_file": "trim-negative-controls/reverse_only_inner_oriented_reference_loop.json.gz",
+      "bytes": 929,
+      "sha256": "332309507c63bf67717c7596aa3ef428285a142214154ce373658965c7c54762",
+      "replay": {
+        "control": "reverse_only_inner_oriented_reference_loop",
+        "rejected": true,
+        "reason": "oriented inner and outer windings must cancel"
+      }
+    },
+    {
+      "control": "omit_one_complete_panel_face",
+      "checker_entry_point": "check_ledger(prior_L,variant,models,projections)",
+      "complete_variant_file": "trim-negative-controls/omit_one_complete_panel_face.json.gz",
+      "bytes": 16141,
+      "sha256": "3bba8adf903b2ee6ae1696c0d37dd0f2900922f941e90583762afca1cfe21604",
+      "replay": {
+        "control": "omit_one_complete_panel_face",
+        "rejected": true,
+        "reason": "incomplete panel face census"
+      }
+    },
+    {
+      "control": "omit_original_positive_cell",
+      "checker_entry_point": "check_ledger(prior_L,variant,models,projections)",
+      "complete_variant_file": "trim-negative-controls/omit_original_positive_cell.json.gz",
+      "bytes": 13856,
+      "sha256": "2547febe2e084d5f6c9061380b596c3f94ef51496ce9697f66ac2accfdc274c8",
+      "replay": {
+        "control": "omit_original_positive_cell",
+        "rejected": true,
+        "reason": "missing original positive box"
+      }
+    },
+    {
+      "control": "understate_still_positive_residual_by_2^-80",
+      "checker_entry_point": "check_ledger(prior_L,variant,models,projections)",
+      "complete_variant_file": "trim-negative-controls/understate_still_positive_residual_by_2^-80.json.gz",
+      "bytes": 16204,
+      "sha256": "623c78e1327a02260e4b3591283ca26172f9b957e178061e49db043002d0a35e",
+      "replay": {
+        "control": "understate_still_positive_residual_by_2^-80",
+        "rejected": true,
+        "reason": "understated or unsupported contribution"
+      }
+    },
+    {
+      "control": "promote_conditional_model_to_native_identity",
+      "checker_entry_point": "check_ledger(prior_L,variant,models,projections)",
+      "complete_variant_file": "trim-negative-controls/promote_conditional_model_to_native_identity.json.gz",
+      "bytes": 16161,
+      "sha256": "491b2280bf1634b9ae1a6e4e51b9ae65d3bb04ab30057bc56d26e940b6cdc2d6",
+      "replay": {
+        "control": "promote_conditional_model_to_native_identity",
+        "rejected": true,
+        "reason": "native qualification cannot be promoted by this conditional proof"
+      }
+    }
+  ],
+  "all_replayed_rejections": true
+}

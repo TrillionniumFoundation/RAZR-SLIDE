@@ -1,0 +1,164 @@
+{
+  "schema": "razr-r13-independent-envelope-and-motion-closeout-review-v1",
+  "reviewed_at_utc": "2026-10-30T15:57:57.484635+00:00",
+  "review_source": {
+    "path": "/workspace/scratch/1b842ca762be/r13_final_review_work/audit_envelope_and_motion_scope.py",
+    "bytes": 14666,
+    "sha256": "9e1b1b36ef1a8a7e820c83358f911143dbcc89bf43c25b377caa317ab17d6ce3"
+  },
+  "scope": "Read-only file inventory, SHA/length identity, exact saved-ledger accounting, and documentary model-boundary review. No CAD, scientific producer, numerical solve, tests, or negative-control replay executed in this review.",
+  "completed": true,
+  "concrete_consistency_defects_found": [],
+  "envelope_manifest": {
+    "manifest": {
+      "path": "/workspace/scratch/1b842ca762be/r13_envelope_work/R13_ENVELOPE_DELIVERY_MANIFEST.json",
+      "bytes": 9308,
+      "sha256": "e353e31ace5916ddf8a96688403df7c137cdd02910510f93857d8f142ab7192d"
+    },
+    "members_excluding_manifest": 51,
+    "bytes_excluding_manifest": 8256338,
+    "actual_inventory_matches_exactly": true,
+    "all_imported_envelope_files_identical": true
+  },
+  "original_inputs": {
+    "members": 14,
+    "bytes": 7675316,
+    "each_input_matches_manifest_and_retained_original_source": true
+  },
+  "bound_documents": [
+    {
+      "path": "/workspace/scratch/1b842ca762be/r13_envelope_work/README_R13_ENVELOPE.md",
+      "bytes": 11160,
+      "sha256": "b66a61a66970279a8d5be0fae116e1873f653b29270a967253dac7739643ddaa"
+    },
+    {
+      "path": "/workspace/scratch/1b842ca762be/r13_envelope_work/R13_ENVELOPE_SCOPE.json",
+      "bytes": 6583,
+      "sha256": "ea03e78c911421a5f1f31ac40de23d8d3ebddd892968d6917a0640f80a18cf9b"
+    },
+    {
+      "path": "/workspace/scratch/1b842ca762be/r13_envelope_work/COMPLETION_MODEL_DEFINITION.md",
+      "bytes": 3898,
+      "sha256": "3b0e05884d8fa72e1d8287ae4ace2fcc5608f7094f6bdf1b2e447c3e401711c8"
+    },
+    {
+      "path": "/workspace/scratch/1b842ca762be/r13_envelope_work/MODEL_MEMBERSHIP_FRONTIER.md",
+      "bytes": 1827,
+      "sha256": "101296ef6364ec5c4a2140ac493bde707aa593f4502e7dd9e61d7d78325bcd3c"
+    }
+  ],
+  "native_saved_census": {
+    "faces_wires_edges_joins_vertex_ends": [
+      6,
+      12,
+      48,
+      48,
+      96
+    ],
+    "exact_nonzero_pcurve_joins_preserved": 44,
+    "re_read_with_native_kernel_in_this_review": false
+  },
+  "exact_saved_ledger_readback": {
+    "pairs": [
+      {
+        "key": "L_KEY",
+        "original_positive_boxes": 73,
+        "counts": {
+          "retained_positive_full_box": 67,
+          "inherited_KEY_exterior": 2,
+          "new_panel_completed_trim_exterior": 4
+        },
+        "old_B0_only_exact": "2926639265921251565094101354869365966162126046501029966793917589621027737158436252472934622362472807208670671113523623704820123570752614040409/3048582568667961163458591044719888970457615373696260889510895468384152088691177363398736428772941378085768487423248655171335913749304966119424",
+        "new_B0_and_T_exact": "9606325723438099162898320586261631155790015687685514934352936136016612086527670369139929346758458936439411589934386666146890585/3048582568667961163458591044719888970457615373696260889510895468384152088691177363398736428772941378085768487423248655171335913749304966119424",
+        "new_bound_strictly_positive": true,
+        "old_B0_threshold_passes": false,
+        "new_conditional_threshold_passes": true,
+        "trim_query_face_certificates": 6
+      },
+      {
+        "key": "R_KEY",
+        "original_positive_boxes": 96,
+        "counts": {
+          "new_panel_completed_trim_exterior": 4,
+          "inherited_KEY_exterior": 2,
+          "retained_positive_full_box": 90
+        },
+        "old_B0_only_exact": "205943929803918914084339392211719770304133142347796656423810342569090358736387505856895790595950908392461349971798390521301426260593186984535629136554553215/214524926879081553593184399971293538039669853129478294043576983099548224481176751628829988770670454843040509730983776813660062124991145119142938384097345536",
+        "new_B0_and_T_exact": "675985077319928638949590115838815474082826771011930776686858849846453993402293692790712843523125615580906225712634554189172603716335792222079/214524926879081553593184399971293538039669853129478294043576983099548224481176751628829988770670454843040509730983776813660062124991145119142938384097345536",
+        "new_bound_strictly_positive": true,
+        "old_B0_threshold_passes": false,
+        "new_conditional_threshold_passes": true,
+        "trim_query_face_certificates": 6
+      }
+    ],
+    "original_threshold_exact": "944473296573929/9444732965739290427392",
+    "minimum_recorded_positive_corridor_gap_exact_mm": "236117379670180653591/4722366482869645213696",
+    "all_remaining_157_positive_contributions_kept_at_full_box_volume": true
+  },
+  "saved_negative_control_evidence": {
+    "complete_variant_hashes_checked": 8,
+    "all_saved_replay_results_reject": true,
+    "replayed_by_this_review": false
+  },
+  "manual_scope_conclusions": [
+    "The README, scope, model definition and membership frontier retain the old B0-only bound; the new bound requires B0 AND T.",
+    "The 3.1510793974117154e-15 mm3 display is a positive conditional upper bound on each nominal q in [0,12] pair, not measured collision, actual clearance, or native release.",
+    "The local reference-loop existence is not promoted into existence or membership of a globally consistent actual native whole material realizing B0 AND T.",
+    "Native validity, signed volume, tolerance metadata and source construction context are not promoted into a uniform compiled-error or material-filling proof.",
+    "The theorem discussion uses query-wide corridor separation and homotopy; this closeout review is not a replacement independent proof of every geometric predicate."
+  ],
+  "all_envelope_release_and_unproved_membership_flags_remain_false": {
+    "native_original_BREP_mutated": false,
+    "native_endpoints_snapped_or_healed": false,
+    "old_B0_only_bound_replaced": false,
+    "actual_native_B0_membership_proved": false,
+    "actual_native_T_membership_proved": false,
+    "existence_of_full_global_actual_native_material_realizing_B0_and_T_proved": false,
+    "recorded_native_tolerance_is_uniform_compiled_error_bound": false,
+    "uniform_compiled_error_proved": false,
+    "fixed_version_OCCT_source_binary_equivalence_proved": false,
+    "current_native_aperture_proved_by_literal_source_context": false,
+    "actual_collision_proved": false,
+    "physical_allowed_domain_proved": false,
+    "continuous_G2": false,
+    "whole_15D_G2": false,
+    "G3": false,
+    "G4": false,
+    "G5": false,
+    "manufacturing_go": false
+  },
+  "geometry_motion_projection_review": {
+    "bound_documents": [
+      {
+        "path": "/workspace/scratch/1b842ca762be/r13_geometry_work/README.md",
+        "bytes": 9577,
+        "sha256": "f16ebab0e5879814b5f0786f7fd6582cdde8a55a3c7dd5bd08d2e6a95d28009b"
+      },
+      {
+        "path": "/workspace/scratch/1b842ca762be/r13_geometry_work/COMPLETE_SOURCE_MOTION_DOMAIN.json",
+        "bytes": 83682,
+        "sha256": "1bda4e3fc7d42eaff00bdb9eab060d259e8fe7e93d2155407028c02f30faabc2"
+      },
+      {
+        "path": "/workspace/scratch/1b842ca762be/r13_geometry_work/R13_GEOMETRY_SCOPE.json",
+        "bytes": 5672,
+        "sha256": "fea19ee1ad11f7d841ea4a5896185fb0159ed44631d8efcbfc35270f2777492c"
+      },
+      {
+        "path": "/workspace/scratch/1b842ca762be/r13_geometry_work/analyze_complete_source_motion.py",
+        "bytes": 10409,
+        "sha256": "0ae02b4dc82966a63d45cd543759a41c83fc70a4805bfc5da6dd702d7bb87a1c"
+      }
+    ],
+    "interpretation": "Exact real model of the listed shared-slide plus independent side-deviation q subsystem, using frozen binary64 coefficients and thresholds.",
+    "projection": "0 <= qL,qR <= 12 AND abs(qL-qR) <= 2*(A+B)",
+    "valid_saved_subsystem_lifts": 17,
+    "saved_pairs_with_separation_strictly_above_2W": 8,
+    "claim_not_extended_to_full_15D_source_acceptance": true,
+    "claim_not_extended_to_all_float64_execution_acceptance": true,
+    "claim_not_extended_to_mechanically_supported_physical_domain": true,
+    "integration_wording_requirement": "Use the explicit shared-slide/side-deviation q-subsystem qualifier; do not shorten it to a proof of the full 15D allowed domain."
+  },
+  "integrated_root_readme_ledger_current_entrypoints_reviewed": false,
+  "reason_integration_not_yet_reviewed": "Root integration documents were still being written when this bounded first-stage review was made."
+}

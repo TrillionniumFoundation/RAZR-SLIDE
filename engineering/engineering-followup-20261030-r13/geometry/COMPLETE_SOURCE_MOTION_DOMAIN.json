@@ -1,0 +1,2954 @@
+{
+  "schema": "razr-r13-complete-source-motion-real-projection-and-branches-v1",
+  "completed": true,
+  "source_sha256": "0ae02b4dc82966a63d45cd543759a41c83fc70a4805bfc5da6dd702d7bb87a1c",
+  "bound_motion_source_files": {
+    "cam_coupling.py": {
+      "source_path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/integration/cam_coupling.py",
+      "copy_path": "inputs/cam_coupling.py",
+      "bytes": 14806,
+      "sha256": "4a3bf1d2b86d31fa8e3d60d3412e15548bf42287ed95d756798f3d88c6c4e631"
+    },
+    "cam_contact_profile.py": {
+      "source_path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/integration/cam_contact_profile.py",
+      "copy_path": "inputs/cam_contact_profile.py",
+      "bytes": 3208,
+      "sha256": "c894d07e737ffeb927a092235845cf936418c19969b19107f5a6c2675e58ce9d"
+    },
+    "product_assembly.py": {
+      "source_path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/integration/product_assembly.py",
+      "copy_path": "inputs/product_assembly.py",
+      "bytes": 31504,
+      "sha256": "fc5391d3be98810ada06ca27e65de9a77d2f599c4d1890bb31a4d87ef14791b4"
+    },
+    "verify_cam_coupling.py": {
+      "source_path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/integration/verify_cam_coupling.py",
+      "copy_path": "inputs/verify_cam_coupling.py",
+      "bytes": 14560,
+      "sha256": "ffe16f403b104bfdf58897ed3ece1313b9bb82863569ba68f60617467b2841f1"
+    },
+    "product_split_assembly.py": {
+      "source_path": "/workspace/scratch/f11ac2a81fe4/RAZR-SLIDE/integration/product_split_assembly.py",
+      "copy_path": "inputs/product_split_assembly.py",
+      "bytes": 10911,
+      "sha256": "0f5ed0e9f64e0733f1608dfb9a23418ddf965240ac69ded654a65c0175d5acbb"
+    }
+  },
+  "coordinate_model": "exact real arithmetic on frozen binary64 thresholds/coefficients; separate from all binary64 execution acceptance",
+  "coefficient_K": {
+    "exact": "1355315248362281/9007199254740992",
+    "display": 0.15047021943573669
+  },
+  "crosshead_absolute_bound_A_mm": {
+    "exact": "3643452740066165/144115188075855872",
+    "display": 0.0252815320072192
+  },
+  "crosshead_minus_KEY_bound_B_mm": {
+    "exact": "1273813937384855/36028797018963968",
+    "display": 0.03535543905932734
+  },
+  "output_offset_bound_W_mm": {
+    "exact": "8738708489605585/144115188075855872",
+    "display": 0.06063697106654654
+  },
+  "exact_center_at_full_slide_minus_12_mm": {
+    "exact": "23/36028797018963968",
+    "display": 6.38378239159465e-16
+  },
+  "complete_qL_qR_projection": {
+    "domain": "0<=qL,qR<=12 AND |qL-qR|<=2*(A+B)",
+    "necessity": "qL-qR=dqL-dqR, with |dqs|<=A+B from the two inequalities",
+    "sufficiency": "center=(qL+qR)/2; slide=center/K; dqs=qs-center; dxs=clamp(dqs,-A,A)",
+    "lift_clamp_applies_to_auxiliary_dx_not_to_profile_q": true,
+    "independent_qL_qR_full_square_is_only_an_overapproximation": true
+  },
+  "fixed_slide_q_interval": "[max(0,K*s-W), min(12,K*s+W)] independently for each side, with each side own feasible dx",
+  "complete_profile_branches": {
+    "L_contact_0": {
+      "original_profile_values": {
+        "pin_radius": 0.1,
+        "floor_height": 1.0400000000000005,
+        "floor_corner_q": -0.0011145618000001356,
+        "ramp_slope": 2.0,
+        "pin_q": 0.0,
+        "lower_stop_height": -0.01999999999999935,
+        "q_max": 12.0,
+        "breakpoints_q_mm": [
+          0.0011145618000001356,
+          0.09055728089999172,
+          0.6429179606749895
+        ],
+        "ramp_intercept": 1.2658359213499797,
+        "height_range_mm": [
+          -0.01999999999999935,
+          1.1400000000000006
+        ],
+        "maximum_height_slope_magnitude": 2.0,
+        "selected_branch_requires_lower_restoring_force": true,
+        "lower_stop_engagement_is_C0_not_C1": true,
+        "rounded_corner_and_plateau_joins_are_C1": true,
+        "dynamic_force_friction_and_material_qualification": false,
+        "manufacturing_go": false
+      },
+      "frozen_source_intercept_exact": {
+        "exact": "5700818183703957/4503599627370496",
+        "display": 1.2658359213499797
+      },
+      "exact_home_height_from_parameter_sum_mm": {
+        "exact": "41072828601618941/36028797018963968",
+        "display": 1.1400000000000006
+      },
+      "original_binary64_home_height_mm": {
+        "exact": "80220368362537/70368744177664",
+        "display": 1.1400000000000006
+      },
+      "binary64_home_rounding_difference_mm": {
+        "exact": "3/36028797018963968",
+        "display": 8.326672684688674e-17
+      },
+      "branches": [
+        {
+          "branch": "plateau",
+          "q_interval": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "2509770053581/2251799813685248",
+              "display": 0.0011145618000001356
+            },
+            true,
+            true
+          ],
+          "height_delta_from_exact_home_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "STOP_X_translation_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_lower_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_upper_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "branch_open_endpoint_limits_enclosed": true
+        },
+        {
+          "branch": "rounded_corner",
+          "q_interval": [
+            {
+              "exact": "2509770053581/2251799813685248",
+              "display": 0.0011145618000001356
+            },
+            {
+              "exact": "6525339784270209/72057594037927936",
+              "display": 0.09055728089999172
+            },
+            false,
+            false
+          ],
+          "height_delta_from_exact_home_interval_mm": [
+            {
+              "exact": "-300965545799983362057179498061874086491/5444517870735015415413993718908291383296",
+              "display": -0.0552786404500042
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "STOP_X_translation_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "300965545799983362057179498061874086491/5444517870735015415413993718908291383296",
+              "display": 0.0552786404500042
+            }
+          ],
+          "SPRING_lower_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_upper_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "300965545799983362057179498061874086491/5444517870735015415413993718908291383296",
+              "display": 0.0552786404500042
+            }
+          ],
+          "branch_open_endpoint_limits_enclosed": true
+        },
+        {
+          "branch": "ramp",
+          "q_interval": [
+            {
+              "exact": "6525339784270209/72057594037927936",
+              "display": 0.09055728089999172
+            },
+            {
+              "exact": "1447722544062841/2251799813685248",
+              "display": 0.6429179606749895
+            },
+            true,
+            false
+          ],
+          "height_delta_from_exact_home_interval_mm": [
+            {
+              "exact": "-41793404541998197/36028797018963968",
+              "display": -1.16
+            },
+            {
+              "exact": "-995811458128747/18014398509481984",
+              "display": -0.055278640450004246
+            }
+          ],
+          "STOP_X_translation_interval_mm": [
+            {
+              "exact": "995811458128747/18014398509481984",
+              "display": 0.055278640450004246
+            },
+            {
+              "exact": "41793404541998197/36028797018963968",
+              "display": 1.16
+            }
+          ],
+          "SPRING_lower_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_upper_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "995811458128747/18014398509481984",
+              "display": 0.055278640450004246
+            },
+            {
+              "exact": "41793404541998197/36028797018963968",
+              "display": 1.16
+            }
+          ],
+          "branch_open_endpoint_limits_enclosed": true
+        },
+        {
+          "branch": "lower_stop",
+          "q_interval": [
+            {
+              "exact": "1447722544062841/2251799813685248",
+              "display": 0.6429179606749895
+            },
+            {
+              "exact": "12",
+              "display": 12.0
+            },
+            true,
+            true
+          ],
+          "height_delta_from_exact_home_interval_mm": [
+            {
+              "exact": "-41793404541998197/36028797018963968",
+              "display": -1.16
+            },
+            {
+              "exact": "-41793404541998197/36028797018963968",
+              "display": -1.16
+            }
+          ],
+          "STOP_X_translation_interval_mm": [
+            {
+              "exact": "41793404541998197/36028797018963968",
+              "display": 1.16
+            },
+            {
+              "exact": "41793404541998197/36028797018963968",
+              "display": 1.16
+            }
+          ],
+          "SPRING_lower_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_upper_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "41793404541998197/36028797018963968",
+              "display": 1.16
+            },
+            {
+              "exact": "41793404541998197/36028797018963968",
+              "display": 1.16
+            }
+          ],
+          "branch_open_endpoint_limits_enclosed": true
+        }
+      ],
+      "full_q_delta_height_interval_mm": [
+        {
+          "exact": "-41793404541998197/36028797018963968",
+          "display": -1.16
+        },
+        {
+          "exact": "0",
+          "display": 0.0
+        }
+      ],
+      "corner_derivative_magnitude_upper": {
+        "exact": "486972482547036296772699100824482086912/243486241273518209707365364194684419493",
+        "display": 1.9999999999999996
+      },
+      "ramp_derivative_exact": {
+        "exact": "-2",
+        "display": -2.0
+      },
+      "plateau_to_corner_limit_delta_exact": {
+        "exact": "0",
+        "display": 0.0
+      },
+      "corner_to_ramp_jump_interval_mm": [
+        {
+          "exact": "-500431350257136503847755/10889035741470030830827987437816582766592",
+          "display": -4.5957361343877615e-17
+        },
+        {
+          "exact": "-250215675128568251923877/5444517870735015415413993718908291383296",
+          "display": -4.5957361343877615e-17
+        }
+      ],
+      "ramp_to_lower_stop_jump_exact_mm": {
+        "exact": "0",
+        "display": 0.0
+      },
+      "frozen_coefficient_real_model_exact_join_continuity_assumed": false,
+      "actual_float64_full_evaluation_error_enclosed": false
+    },
+    "L_contact_1": {
+      "original_profile_values": {
+        "pin_radius": 0.1,
+        "floor_height": 6.040000000000001,
+        "floor_corner_q": -0.0011145618000001356,
+        "ramp_slope": 2.0,
+        "pin_q": 0.0,
+        "lower_stop_height": 4.98,
+        "q_max": 12.0,
+        "breakpoints_q_mm": [
+          0.0011145618000001356,
+          0.09055728089999172,
+          0.64291796067499
+        ],
+        "ramp_intercept": 6.26583592134998,
+        "height_range_mm": [
+          4.98,
+          6.140000000000001
+        ],
+        "maximum_height_slope_magnitude": 2.0,
+        "selected_branch_requires_lower_restoring_force": true,
+        "lower_stop_engagement_is_C0_not_C1": true,
+        "rounded_corner_and_plateau_joins_are_C1": true,
+        "dynamic_force_friction_and_material_qualification": false,
+        "manufacturing_go": false
+      },
+      "frozen_source_intercept_exact": {
+        "exact": "3527352040069555/562949953421312",
+        "display": 6.26583592134998
+      },
+      "exact_home_height_from_parameter_sum_mm": {
+        "exact": "221216813696438797/36028797018963968",
+        "display": 6.140000000000001
+      },
+      "original_binary64_home_height_mm": {
+        "exact": "432064089250857/70368744177664",
+        "display": 6.140000000000001
+      },
+      "binary64_home_rounding_difference_mm": {
+        "exact": "-13/36028797018963968",
+        "display": -3.608224830031759e-16
+      },
+      "branches": [
+        {
+          "branch": "plateau",
+          "q_interval": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "2509770053581/2251799813685248",
+              "display": 0.0011145618000001356
+            },
+            true,
+            true
+          ],
+          "height_delta_from_exact_home_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "STOP_X_translation_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_lower_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_upper_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "branch_open_endpoint_limits_enclosed": true
+        },
+        {
+          "branch": "rounded_corner",
+          "q_interval": [
+            {
+              "exact": "2509770053581/2251799813685248",
+              "display": 0.0011145618000001356
+            },
+            {
+              "exact": "6525339784270209/72057594037927936",
+              "display": 0.09055728089999172
+            },
+            false,
+            false
+          ],
+          "height_delta_from_exact_home_interval_mm": [
+            {
+              "exact": "-300965545799983362057179498061874086491/5444517870735015415413993718908291383296",
+              "display": -0.0552786404500042
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "STOP_X_translation_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "300965545799983362057179498061874086491/5444517870735015415413993718908291383296",
+              "display": 0.0552786404500042
+            }
+          ],
+          "SPRING_lower_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_upper_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "300965545799983362057179498061874086491/5444517870735015415413993718908291383296",
+              "display": 0.0552786404500042
+            }
+          ],
+          "branch_open_endpoint_limits_enclosed": true
+        },
+        {
+          "branch": "ramp",
+          "q_interval": [
+            {
+              "exact": "6525339784270209/72057594037927936",
+              "display": 0.09055728089999172
+            },
+            {
+              "exact": "723861272031421/1125899906842624",
+              "display": 0.64291796067499
+            },
+            true,
+            false
+          ],
+          "height_delta_from_exact_home_interval_mm": [
+            {
+              "exact": "-41793404541998221/36028797018963968",
+              "display": -1.1600000000000006
+            },
+            {
+              "exact": "-995811458128743/18014398509481984",
+              "display": -0.055278640450004024
+            }
+          ],
+          "STOP_X_translation_interval_mm": [
+            {
+              "exact": "995811458128743/18014398509481984",
+              "display": 0.055278640450004024
+            },
+            {
+              "exact": "41793404541998221/36028797018963968",
+              "display": 1.1600000000000006
+            }
+          ],
+          "SPRING_lower_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_upper_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "995811458128743/18014398509481984",
+              "display": 0.055278640450004024
+            },
+            {
+              "exact": "41793404541998221/36028797018963968",
+              "display": 1.1600000000000006
+            }
+          ],
+          "branch_open_endpoint_limits_enclosed": true
+        },
+        {
+          "branch": "lower_stop",
+          "q_interval": [
+            {
+              "exact": "723861272031421/1125899906842624",
+              "display": 0.64291796067499
+            },
+            {
+              "exact": "12",
+              "display": 12.0
+            },
+            true,
+            true
+          ],
+          "height_delta_from_exact_home_interval_mm": [
+            {
+              "exact": "-41793404541998221/36028797018963968",
+              "display": -1.1600000000000006
+            },
+            {
+              "exact": "-41793404541998221/36028797018963968",
+              "display": -1.1600000000000006
+            }
+          ],
+          "STOP_X_translation_interval_mm": [
+            {
+              "exact": "41793404541998221/36028797018963968",
+              "display": 1.1600000000000006
+            },
+            {
+              "exact": "41793404541998221/36028797018963968",
+              "display": 1.1600000000000006
+            }
+          ],
+          "SPRING_lower_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_upper_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "41793404541998221/36028797018963968",
+              "display": 1.1600000000000006
+            },
+            {
+              "exact": "41793404541998221/36028797018963968",
+              "display": 1.1600000000000006
+            }
+          ],
+          "branch_open_endpoint_limits_enclosed": true
+        }
+      ],
+      "full_q_delta_height_interval_mm": [
+        {
+          "exact": "-41793404541998221/36028797018963968",
+          "display": -1.1600000000000006
+        },
+        {
+          "exact": "0",
+          "display": 0.0
+        }
+      ],
+      "corner_derivative_magnitude_upper": {
+        "exact": "486972482547036296772699100824482086912/243486241273518209707365364194684419493",
+        "display": 1.9999999999999996
+      },
+      "ramp_derivative_exact": {
+        "exact": "-2",
+        "display": -2.0
+      },
+      "plateau_to_corner_limit_delta_exact": {
+        "exact": "0",
+        "display": 0.0
+      },
+      "corner_to_ramp_jump_interval_mm": [
+        {
+          "exact": "1917420288972121845564597/10889035741470030830827987437816582766592",
+          "display": 1.7608724358115369e-16
+        },
+        {
+          "exact": "958710144486060922782299/5444517870735015415413993718908291383296",
+          "display": 1.7608724358115369e-16
+        }
+      ],
+      "ramp_to_lower_stop_jump_exact_mm": {
+        "exact": "0",
+        "display": 0.0
+      },
+      "frozen_coefficient_real_model_exact_join_continuity_assumed": false,
+      "actual_float64_full_evaluation_error_enclosed": false
+    },
+    "R_contact_0": {
+      "original_profile_values": {
+        "pin_radius": 0.1,
+        "floor_height": 1.0400000000000005,
+        "floor_corner_q": -0.0011145618000001356,
+        "ramp_slope": 2.0,
+        "pin_q": 0.0,
+        "lower_stop_height": -0.01999999999999935,
+        "q_max": 12.0,
+        "breakpoints_q_mm": [
+          0.0011145618000001356,
+          0.09055728089999172,
+          0.6429179606749895
+        ],
+        "ramp_intercept": 1.2658359213499797,
+        "height_range_mm": [
+          -0.01999999999999935,
+          1.1400000000000006
+        ],
+        "maximum_height_slope_magnitude": 2.0,
+        "selected_branch_requires_lower_restoring_force": true,
+        "lower_stop_engagement_is_C0_not_C1": true,
+        "rounded_corner_and_plateau_joins_are_C1": true,
+        "dynamic_force_friction_and_material_qualification": false,
+        "manufacturing_go": false
+      },
+      "frozen_source_intercept_exact": {
+        "exact": "5700818183703957/4503599627370496",
+        "display": 1.2658359213499797
+      },
+      "exact_home_height_from_parameter_sum_mm": {
+        "exact": "41072828601618941/36028797018963968",
+        "display": 1.1400000000000006
+      },
+      "original_binary64_home_height_mm": {
+        "exact": "80220368362537/70368744177664",
+        "display": 1.1400000000000006
+      },
+      "binary64_home_rounding_difference_mm": {
+        "exact": "3/36028797018963968",
+        "display": 8.326672684688674e-17
+      },
+      "branches": [
+        {
+          "branch": "plateau",
+          "q_interval": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "2509770053581/2251799813685248",
+              "display": 0.0011145618000001356
+            },
+            true,
+            true
+          ],
+          "height_delta_from_exact_home_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "STOP_X_translation_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_lower_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_upper_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "branch_open_endpoint_limits_enclosed": true
+        },
+        {
+          "branch": "rounded_corner",
+          "q_interval": [
+            {
+              "exact": "2509770053581/2251799813685248",
+              "display": 0.0011145618000001356
+            },
+            {
+              "exact": "6525339784270209/72057594037927936",
+              "display": 0.09055728089999172
+            },
+            false,
+            false
+          ],
+          "height_delta_from_exact_home_interval_mm": [
+            {
+              "exact": "-300965545799983362057179498061874086491/5444517870735015415413993718908291383296",
+              "display": -0.0552786404500042
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "STOP_X_translation_interval_mm": [
+            {
+              "exact": "-300965545799983362057179498061874086491/5444517870735015415413993718908291383296",
+              "display": -0.0552786404500042
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_lower_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "-300965545799983362057179498061874086491/5444517870735015415413993718908291383296",
+              "display": -0.0552786404500042
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_upper_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "branch_open_endpoint_limits_enclosed": true
+        },
+        {
+          "branch": "ramp",
+          "q_interval": [
+            {
+              "exact": "6525339784270209/72057594037927936",
+              "display": 0.09055728089999172
+            },
+            {
+              "exact": "1447722544062841/2251799813685248",
+              "display": 0.6429179606749895
+            },
+            true,
+            false
+          ],
+          "height_delta_from_exact_home_interval_mm": [
+            {
+              "exact": "-41793404541998197/36028797018963968",
+              "display": -1.16
+            },
+            {
+              "exact": "-995811458128747/18014398509481984",
+              "display": -0.055278640450004246
+            }
+          ],
+          "STOP_X_translation_interval_mm": [
+            {
+              "exact": "-41793404541998197/36028797018963968",
+              "display": -1.16
+            },
+            {
+              "exact": "-995811458128747/18014398509481984",
+              "display": -0.055278640450004246
+            }
+          ],
+          "SPRING_lower_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "-41793404541998197/36028797018963968",
+              "display": -1.16
+            },
+            {
+              "exact": "-995811458128747/18014398509481984",
+              "display": -0.055278640450004246
+            }
+          ],
+          "SPRING_upper_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "branch_open_endpoint_limits_enclosed": true
+        },
+        {
+          "branch": "lower_stop",
+          "q_interval": [
+            {
+              "exact": "1447722544062841/2251799813685248",
+              "display": 0.6429179606749895
+            },
+            {
+              "exact": "12",
+              "display": 12.0
+            },
+            true,
+            true
+          ],
+          "height_delta_from_exact_home_interval_mm": [
+            {
+              "exact": "-41793404541998197/36028797018963968",
+              "display": -1.16
+            },
+            {
+              "exact": "-41793404541998197/36028797018963968",
+              "display": -1.16
+            }
+          ],
+          "STOP_X_translation_interval_mm": [
+            {
+              "exact": "-41793404541998197/36028797018963968",
+              "display": -1.16
+            },
+            {
+              "exact": "-41793404541998197/36028797018963968",
+              "display": -1.16
+            }
+          ],
+          "SPRING_lower_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "-41793404541998197/36028797018963968",
+              "display": -1.16
+            },
+            {
+              "exact": "-41793404541998197/36028797018963968",
+              "display": -1.16
+            }
+          ],
+          "SPRING_upper_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "branch_open_endpoint_limits_enclosed": true
+        }
+      ],
+      "full_q_delta_height_interval_mm": [
+        {
+          "exact": "-41793404541998197/36028797018963968",
+          "display": -1.16
+        },
+        {
+          "exact": "0",
+          "display": 0.0
+        }
+      ],
+      "corner_derivative_magnitude_upper": {
+        "exact": "486972482547036296772699100824482086912/243486241273518209707365364194684419493",
+        "display": 1.9999999999999996
+      },
+      "ramp_derivative_exact": {
+        "exact": "-2",
+        "display": -2.0
+      },
+      "plateau_to_corner_limit_delta_exact": {
+        "exact": "0",
+        "display": 0.0
+      },
+      "corner_to_ramp_jump_interval_mm": [
+        {
+          "exact": "-500431350257136503847755/10889035741470030830827987437816582766592",
+          "display": -4.5957361343877615e-17
+        },
+        {
+          "exact": "-250215675128568251923877/5444517870735015415413993718908291383296",
+          "display": -4.5957361343877615e-17
+        }
+      ],
+      "ramp_to_lower_stop_jump_exact_mm": {
+        "exact": "0",
+        "display": 0.0
+      },
+      "frozen_coefficient_real_model_exact_join_continuity_assumed": false,
+      "actual_float64_full_evaluation_error_enclosed": false
+    },
+    "R_contact_1": {
+      "original_profile_values": {
+        "pin_radius": 0.1,
+        "floor_height": 6.040000000000001,
+        "floor_corner_q": -0.0011145618000001356,
+        "ramp_slope": 2.0,
+        "pin_q": 0.0,
+        "lower_stop_height": 4.98,
+        "q_max": 12.0,
+        "breakpoints_q_mm": [
+          0.0011145618000001356,
+          0.09055728089999172,
+          0.64291796067499
+        ],
+        "ramp_intercept": 6.26583592134998,
+        "height_range_mm": [
+          4.98,
+          6.140000000000001
+        ],
+        "maximum_height_slope_magnitude": 2.0,
+        "selected_branch_requires_lower_restoring_force": true,
+        "lower_stop_engagement_is_C0_not_C1": true,
+        "rounded_corner_and_plateau_joins_are_C1": true,
+        "dynamic_force_friction_and_material_qualification": false,
+        "manufacturing_go": false
+      },
+      "frozen_source_intercept_exact": {
+        "exact": "3527352040069555/562949953421312",
+        "display": 6.26583592134998
+      },
+      "exact_home_height_from_parameter_sum_mm": {
+        "exact": "221216813696438797/36028797018963968",
+        "display": 6.140000000000001
+      },
+      "original_binary64_home_height_mm": {
+        "exact": "432064089250857/70368744177664",
+        "display": 6.140000000000001
+      },
+      "binary64_home_rounding_difference_mm": {
+        "exact": "-13/36028797018963968",
+        "display": -3.608224830031759e-16
+      },
+      "branches": [
+        {
+          "branch": "plateau",
+          "q_interval": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "2509770053581/2251799813685248",
+              "display": 0.0011145618000001356
+            },
+            true,
+            true
+          ],
+          "height_delta_from_exact_home_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "STOP_X_translation_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_lower_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_upper_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "branch_open_endpoint_limits_enclosed": true
+        },
+        {
+          "branch": "rounded_corner",
+          "q_interval": [
+            {
+              "exact": "2509770053581/2251799813685248",
+              "display": 0.0011145618000001356
+            },
+            {
+              "exact": "6525339784270209/72057594037927936",
+              "display": 0.09055728089999172
+            },
+            false,
+            false
+          ],
+          "height_delta_from_exact_home_interval_mm": [
+            {
+              "exact": "-300965545799983362057179498061874086491/5444517870735015415413993718908291383296",
+              "display": -0.0552786404500042
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "STOP_X_translation_interval_mm": [
+            {
+              "exact": "-300965545799983362057179498061874086491/5444517870735015415413993718908291383296",
+              "display": -0.0552786404500042
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_lower_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "-300965545799983362057179498061874086491/5444517870735015415413993718908291383296",
+              "display": -0.0552786404500042
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "SPRING_upper_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "branch_open_endpoint_limits_enclosed": true
+        },
+        {
+          "branch": "ramp",
+          "q_interval": [
+            {
+              "exact": "6525339784270209/72057594037927936",
+              "display": 0.09055728089999172
+            },
+            {
+              "exact": "723861272031421/1125899906842624",
+              "display": 0.64291796067499
+            },
+            true,
+            false
+          ],
+          "height_delta_from_exact_home_interval_mm": [
+            {
+              "exact": "-41793404541998221/36028797018963968",
+              "display": -1.1600000000000006
+            },
+            {
+              "exact": "-995811458128743/18014398509481984",
+              "display": -0.055278640450004024
+            }
+          ],
+          "STOP_X_translation_interval_mm": [
+            {
+              "exact": "-41793404541998221/36028797018963968",
+              "display": -1.1600000000000006
+            },
+            {
+              "exact": "-995811458128743/18014398509481984",
+              "display": -0.055278640450004024
+            }
+          ],
+          "SPRING_lower_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "-41793404541998221/36028797018963968",
+              "display": -1.1600000000000006
+            },
+            {
+              "exact": "-995811458128743/18014398509481984",
+              "display": -0.055278640450004024
+            }
+          ],
+          "SPRING_upper_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "branch_open_endpoint_limits_enclosed": true
+        },
+        {
+          "branch": "lower_stop",
+          "q_interval": [
+            {
+              "exact": "723861272031421/1125899906842624",
+              "display": 0.64291796067499
+            },
+            {
+              "exact": "12",
+              "display": 12.0
+            },
+            true,
+            true
+          ],
+          "height_delta_from_exact_home_interval_mm": [
+            {
+              "exact": "-41793404541998221/36028797018963968",
+              "display": -1.1600000000000006
+            },
+            {
+              "exact": "-41793404541998221/36028797018963968",
+              "display": -1.1600000000000006
+            }
+          ],
+          "STOP_X_translation_interval_mm": [
+            {
+              "exact": "-41793404541998221/36028797018963968",
+              "display": -1.1600000000000006
+            },
+            {
+              "exact": "-41793404541998221/36028797018963968",
+              "display": -1.1600000000000006
+            }
+          ],
+          "SPRING_lower_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "-41793404541998221/36028797018963968",
+              "display": -1.1600000000000006
+            },
+            {
+              "exact": "-41793404541998221/36028797018963968",
+              "display": -1.1600000000000006
+            }
+          ],
+          "SPRING_upper_X_endpoint_delta_interval_mm": [
+            {
+              "exact": "0",
+              "display": 0.0
+            },
+            {
+              "exact": "0",
+              "display": 0.0
+            }
+          ],
+          "branch_open_endpoint_limits_enclosed": true
+        }
+      ],
+      "full_q_delta_height_interval_mm": [
+        {
+          "exact": "-41793404541998221/36028797018963968",
+          "display": -1.1600000000000006
+        },
+        {
+          "exact": "0",
+          "display": 0.0
+        }
+      ],
+      "corner_derivative_magnitude_upper": {
+        "exact": "486972482547036296772699100824482086912/243486241273518209707365364194684419493",
+        "display": 1.9999999999999996
+      },
+      "ramp_derivative_exact": {
+        "exact": "-2",
+        "display": -2.0
+      },
+      "plateau_to_corner_limit_delta_exact": {
+        "exact": "0",
+        "display": 0.0
+      },
+      "corner_to_ramp_jump_interval_mm": [
+        {
+          "exact": "1917420288972121845564597/10889035741470030830827987437816582766592",
+          "display": 1.7608724358115369e-16
+        },
+        {
+          "exact": "958710144486060922782299/5444517870735015415413993718908291383296",
+          "display": 1.7608724358115369e-16
+        }
+      ],
+      "ramp_to_lower_stop_jump_exact_mm": {
+        "exact": "0",
+        "display": 0.0
+      },
+      "frozen_coefficient_real_model_exact_join_continuity_assumed": false,
+      "actual_float64_full_evaluation_error_enclosed": false
+    }
+  },
+  "two_contact_merged_intervals": [
+    [
+      "both_plateau",
+      [
+        {
+          "exact": "0",
+          "display": 0.0
+        },
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        true,
+        true
+      ]
+    ],
+    [
+      "both_rounded",
+      [
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        false,
+        false
+      ]
+    ],
+    [
+      "both_ramp",
+      [
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        true,
+        false
+      ]
+    ],
+    [
+      "STOP0_lower_STOP1_ramp",
+      [
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        true,
+        false
+      ]
+    ],
+    [
+      "both_lower_stop",
+      [
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        {
+          "exact": "12",
+          "display": 12.0
+        },
+        true,
+        true
+      ]
+    ]
+  ],
+  "lower_stop_breakpoint_difference_mm": {
+    "exact": "1/2251799813685248",
+    "display": 4.440892098500626e-16
+  },
+  "all_25_left_right_merged_branch_pairs": [
+    {
+      "L_branch": "both_plateau",
+      "R_branch": "both_plateau",
+      "L_interval": [
+        {
+          "exact": "0",
+          "display": 0.0
+        },
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        true,
+        true
+      ],
+      "R_interval": [
+        {
+          "exact": "0",
+          "display": 0.0
+        },
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        true,
+        true
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "5019540107162/1355315248362281",
+          "display": 0.0037035959812504503
+        },
+        "center_q_mm": {
+          "exact": "2509770053581/4503599627370496",
+          "display": 0.0005572809000000678
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "2509770053581/4503599627370496",
+              "display": 0.0005572809000000678
+            },
+            "dq_mm": {
+              "exact": "0",
+              "display": 0.0
+            },
+            "dx_mm": {
+              "exact": "0",
+              "display": 0.0
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "2509770053581/4503599627370496",
+              "display": 0.0005572809000000678
+            },
+            "dq_mm": {
+              "exact": "0",
+              "display": 0.0
+            },
+            "dx_mm": {
+              "exact": "0",
+              "display": 0.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "L_branch": "both_plateau",
+      "R_branch": "both_rounded",
+      "L_interval": [
+        {
+          "exact": "0",
+          "display": 0.0
+        },
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        true,
+        true
+      ],
+      "R_interval": [
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        false,
+        false
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "22587930482229/2710630496724562",
+          "display": 0.008333090957813514
+        },
+        "center_q_mm": {
+          "exact": "22587930482229/18014398509481984",
+          "display": 0.0012538820250001526
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "2509770053581/2251799813685248",
+              "display": 0.0011145618000001356
+            },
+            "dq_mm": {
+              "exact": "-2509770053581/18014398509481984",
+              "display": -0.00013932022500001695
+            },
+            "dx_mm": {
+              "exact": "-2509770053581/18014398509481984",
+              "display": -0.00013932022500001695
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "12548850267905/9007199254740992",
+              "display": 0.0013932022500001695
+            },
+            "dq_mm": {
+              "exact": "2509770053581/18014398509481984",
+              "display": 0.00013932022500001695
+            },
+            "dx_mm": {
+              "exact": "2509770053581/18014398509481984",
+              "display": 0.00013932022500001695
+            }
+          }
+        }
+      }
+    },
+    {
+      "L_branch": "both_plateau",
+      "R_branch": "both_ramp",
+      "L_interval": [
+        {
+          "exact": "0",
+          "display": 0.0
+        },
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        true,
+        true
+      ],
+      "R_interval": [
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        true,
+        false
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "6605652425984801/21685043973796496",
+          "display": 0.3046178939718479
+        },
+        "center_q_mm": {
+          "exact": "6605652425984801/144115188075855872",
+          "display": 0.04583592134999593
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "2509770053581/2251799813685248",
+              "display": 0.0011145618000001356
+            },
+            "dq_mm": {
+              "exact": "-6445027142555617/144115188075855872",
+              "display": -0.044721359549995794
+            },
+            "dx_mm": {
+              "exact": "-3643452740066165/144115188075855872",
+              "display": -0.0252815320072192
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "6525339784270209/72057594037927936",
+              "display": 0.09055728089999172
+            },
+            "dq_mm": {
+              "exact": "6445027142555617/144115188075855872",
+              "display": 0.044721359549995794
+            },
+            "dx_mm": {
+              "exact": "3643452740066165/144115188075855872",
+              "display": 0.0252815320072192
+            }
+          }
+        }
+      }
+    },
+    {
+      "L_branch": "both_plateau",
+      "R_branch": "STOP0_lower_STOP1_ramp",
+      "L_interval": [
+        {
+          "exact": "0",
+          "display": 0.0
+        },
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        true,
+        true
+      ],
+      "R_interval": [
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        true,
+        false
+      ],
+      "feasible_under_shared_slide_real_projection": false,
+      "separation_distance_infimum_mm": {
+        "exact": "361303193502315/562949953421312",
+        "display": 0.6418033988749894
+      }
+    },
+    {
+      "L_branch": "both_plateau",
+      "R_branch": "both_lower_stop",
+      "L_interval": [
+        {
+          "exact": "0",
+          "display": 0.0
+        },
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        true,
+        true
+      ],
+      "R_interval": [
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        {
+          "exact": "12",
+          "display": 12.0
+        },
+        true,
+        true
+      ],
+      "feasible_under_shared_slide_real_projection": false,
+      "separation_distance_infimum_mm": {
+        "exact": "1445212774009261/2251799813685248",
+        "display": 0.6418033988749898
+      }
+    },
+    {
+      "L_branch": "both_rounded",
+      "R_branch": "both_plateau",
+      "L_interval": [
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        false,
+        false
+      ],
+      "R_interval": [
+        {
+          "exact": "0",
+          "display": 0.0
+        },
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        true,
+        true
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "22587930482229/2710630496724562",
+          "display": 0.008333090957813514
+        },
+        "center_q_mm": {
+          "exact": "22587930482229/18014398509481984",
+          "display": 0.0012538820250001526
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "12548850267905/9007199254740992",
+              "display": 0.0013932022500001695
+            },
+            "dq_mm": {
+              "exact": "2509770053581/18014398509481984",
+              "display": 0.00013932022500001695
+            },
+            "dx_mm": {
+              "exact": "2509770053581/18014398509481984",
+              "display": 0.00013932022500001695
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "2509770053581/2251799813685248",
+              "display": 0.0011145618000001356
+            },
+            "dq_mm": {
+              "exact": "-2509770053581/18014398509481984",
+              "display": -0.00013932022500001695
+            },
+            "dx_mm": {
+              "exact": "-2509770053581/18014398509481984",
+              "display": -0.00013932022500001695
+            }
+          }
+        }
+      }
+    },
+    {
+      "L_branch": "both_rounded",
+      "R_branch": "both_rounded",
+      "L_interval": [
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        false,
+        false
+      ],
+      "R_interval": [
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        false,
+        false
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "6605652425984801/21685043973796496",
+          "display": 0.3046178939718479
+        },
+        "center_q_mm": {
+          "exact": "6605652425984801/144115188075855872",
+          "display": 0.04583592134999593
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "6605652425984801/144115188075855872",
+              "display": 0.04583592134999593
+            },
+            "dq_mm": {
+              "exact": "0",
+              "display": 0.0
+            },
+            "dx_mm": {
+              "exact": "0",
+              "display": 0.0
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "6605652425984801/144115188075855872",
+              "display": 0.04583592134999593
+            },
+            "dq_mm": {
+              "exact": "0",
+              "display": 0.0
+            },
+            "dx_mm": {
+              "exact": "0",
+              "display": 0.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "L_branch": "both_rounded",
+      "R_branch": "both_ramp",
+      "L_interval": [
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        false,
+        false
+      ],
+      "R_interval": [
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        true,
+        false
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "45757691131606055/86740175895185984",
+          "display": 0.5275259204788582
+        },
+        "center_q_mm": {
+          "exact": "45757691131606055/576460752303423488",
+          "display": 0.07937694101249278
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "19656331994525219/288230376151711744",
+              "display": 0.06819660112499383
+            },
+            "dq_mm": {
+              "exact": "-6445027142555617/576460752303423488",
+              "display": -0.011180339887498949
+            },
+            "dx_mm": {
+              "exact": "-6445027142555617/576460752303423488",
+              "display": -0.011180339887498949
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "6525339784270209/72057594037927936",
+              "display": 0.09055728089999172
+            },
+            "dq_mm": {
+              "exact": "6445027142555617/576460752303423488",
+              "display": 0.011180339887498949
+            },
+            "dx_mm": {
+              "exact": "6445027142555617/576460752303423488",
+              "display": 0.011180339887498949
+            }
+          }
+        }
+      }
+    },
+    {
+      "L_branch": "both_rounded",
+      "R_branch": "STOP0_lower_STOP1_ramp",
+      "L_interval": [
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        false,
+        false
+      ],
+      "R_interval": [
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        true,
+        false
+      ],
+      "feasible_under_shared_slide_real_projection": false,
+      "separation_distance_infimum_mm": {
+        "exact": "39801781625740703/72057594037927936",
+        "display": 0.5523606797749978
+      }
+    },
+    {
+      "L_branch": "both_rounded",
+      "R_branch": "both_lower_stop",
+      "L_interval": [
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        false,
+        false
+      ],
+      "R_interval": [
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        {
+          "exact": "12",
+          "display": 12.0
+        },
+        true,
+        true
+      ],
+      "feasible_under_shared_slide_real_projection": false,
+      "separation_distance_infimum_mm": {
+        "exact": "39801781625740735/72057594037927936",
+        "display": 0.5523606797749983
+      }
+    },
+    {
+      "L_branch": "both_ramp",
+      "R_branch": "both_plateau",
+      "L_interval": [
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        true,
+        false
+      ],
+      "R_interval": [
+        {
+          "exact": "0",
+          "display": 0.0
+        },
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        true,
+        true
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "6605652425984801/21685043973796496",
+          "display": 0.3046178939718479
+        },
+        "center_q_mm": {
+          "exact": "6605652425984801/144115188075855872",
+          "display": 0.04583592134999593
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "6525339784270209/72057594037927936",
+              "display": 0.09055728089999172
+            },
+            "dq_mm": {
+              "exact": "6445027142555617/144115188075855872",
+              "display": 0.044721359549995794
+            },
+            "dx_mm": {
+              "exact": "3643452740066165/144115188075855872",
+              "display": 0.0252815320072192
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "2509770053581/2251799813685248",
+              "display": 0.0011145618000001356
+            },
+            "dq_mm": {
+              "exact": "-6445027142555617/144115188075855872",
+              "display": -0.044721359549995794
+            },
+            "dx_mm": {
+              "exact": "-3643452740066165/144115188075855872",
+              "display": -0.0252815320072192
+            }
+          }
+        }
+      }
+    },
+    {
+      "L_branch": "both_ramp",
+      "R_branch": "both_rounded",
+      "L_interval": [
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        true,
+        false
+      ],
+      "R_interval": [
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        false,
+        false
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "45757691131606055/86740175895185984",
+          "display": 0.5275259204788582
+        },
+        "center_q_mm": {
+          "exact": "45757691131606055/576460752303423488",
+          "display": 0.07937694101249278
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "6525339784270209/72057594037927936",
+              "display": 0.09055728089999172
+            },
+            "dq_mm": {
+              "exact": "6445027142555617/576460752303423488",
+              "display": 0.011180339887498949
+            },
+            "dx_mm": {
+              "exact": "6445027142555617/576460752303423488",
+              "display": 0.011180339887498949
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "19656331994525219/288230376151711744",
+              "display": 0.06819660112499383
+            },
+            "dq_mm": {
+              "exact": "-6445027142555617/576460752303423488",
+              "display": -0.011180339887498949
+            },
+            "dx_mm": {
+              "exact": "-6445027142555617/576460752303423488",
+              "display": -0.011180339887498949
+            }
+          }
+        }
+      }
+    },
+    {
+      "L_branch": "both_ramp",
+      "R_branch": "both_ramp",
+      "L_interval": [
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        true,
+        false
+      ],
+      "R_interval": [
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        true,
+        false
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "52852461194281121/21685043973796496",
+          "display": 2.4372771048168644
+        },
+        "center_q_mm": {
+          "exact": "52852461194281121/144115188075855872",
+          "display": 0.3667376207874906
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "52852461194281121/144115188075855872",
+              "display": 0.3667376207874906
+            },
+            "dq_mm": {
+              "exact": "0",
+              "display": 0.0
+            },
+            "dx_mm": {
+              "exact": "0",
+              "display": 0.0
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "52852461194281121/144115188075855872",
+              "display": 0.3667376207874906
+            },
+            "dq_mm": {
+              "exact": "0",
+              "display": 0.0
+            },
+            "dx_mm": {
+              "exact": "0",
+              "display": 0.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "L_branch": "both_ramp",
+      "R_branch": "STOP0_lower_STOP1_ramp",
+      "L_interval": [
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        true,
+        false
+      ],
+      "R_interval": [
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        true,
+        false
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "11581780352502727/2710630496724562",
+          "display": 4.272725613652534
+        },
+        "center_q_mm": {
+          "exact": "11581780352502727/18014398509481984",
+          "display": 0.6429179606749895
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "5790890176251363/9007199254740992",
+              "display": 0.6429179606749894
+            },
+            "dq_mm": {
+              "exact": "-1/18014398509481984",
+              "display": -5.551115123125783e-17
+            },
+            "dx_mm": {
+              "exact": "-1/18014398509481984",
+              "display": -5.551115123125783e-17
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "1447722544062841/2251799813685248",
+              "display": 0.6429179606749895
+            },
+            "dq_mm": {
+              "exact": "1/18014398509481984",
+              "display": 5.551115123125783e-17
+            },
+            "dx_mm": {
+              "exact": "1/18014398509481984",
+              "display": 5.551115123125783e-17
+            }
+          }
+        }
+      }
+    },
+    {
+      "L_branch": "both_ramp",
+      "R_branch": "both_lower_stop",
+      "L_interval": [
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        true,
+        false
+      ],
+      "R_interval": [
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        {
+          "exact": "12",
+          "display": 12.0
+        },
+        true,
+        true
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "361878262790481871/86740175895185984",
+          "display": 4.17197981276593
+        },
+        "center_q_mm": {
+          "exact": "361878262790481871/576460752303423488",
+          "display": 0.6277587179083531
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "176569777150438095/288230376151711744",
+              "display": 0.6125994751417163
+            },
+            "dq_mm": {
+              "exact": "-8738708489605681/576460752303423488",
+              "display": -0.0151592427666368
+            },
+            "dx_mm": {
+              "exact": "-8738708489605681/576460752303423488",
+              "display": -0.0151592427666368
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "723861272031421/1125899906842624",
+              "display": 0.64291796067499
+            },
+            "dq_mm": {
+              "exact": "8738708489605681/576460752303423488",
+              "display": 0.0151592427666368
+            },
+            "dx_mm": {
+              "exact": "8738708489605681/576460752303423488",
+              "display": 0.0151592427666368
+            }
+          }
+        }
+      }
+    },
+    {
+      "L_branch": "STOP0_lower_STOP1_ramp",
+      "R_branch": "both_plateau",
+      "L_interval": [
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        true,
+        false
+      ],
+      "R_interval": [
+        {
+          "exact": "0",
+          "display": 0.0
+        },
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        true,
+        true
+      ],
+      "feasible_under_shared_slide_real_projection": false,
+      "separation_distance_infimum_mm": {
+        "exact": "361303193502315/562949953421312",
+        "display": 0.6418033988749894
+      }
+    },
+    {
+      "L_branch": "STOP0_lower_STOP1_ramp",
+      "R_branch": "both_rounded",
+      "L_interval": [
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        true,
+        false
+      ],
+      "R_interval": [
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        false,
+        false
+      ],
+      "feasible_under_shared_slide_real_projection": false,
+      "separation_distance_infimum_mm": {
+        "exact": "39801781625740703/72057594037927936",
+        "display": 0.5523606797749978
+      }
+    },
+    {
+      "L_branch": "STOP0_lower_STOP1_ramp",
+      "R_branch": "both_ramp",
+      "L_interval": [
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        true,
+        false
+      ],
+      "R_interval": [
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        true,
+        false
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "11581780352502727/2710630496724562",
+          "display": 4.272725613652534
+        },
+        "center_q_mm": {
+          "exact": "11581780352502727/18014398509481984",
+          "display": 0.6429179606749895
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "1447722544062841/2251799813685248",
+              "display": 0.6429179606749895
+            },
+            "dq_mm": {
+              "exact": "1/18014398509481984",
+              "display": 5.551115123125783e-17
+            },
+            "dx_mm": {
+              "exact": "1/18014398509481984",
+              "display": 5.551115123125783e-17
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "5790890176251363/9007199254740992",
+              "display": 0.6429179606749894
+            },
+            "dq_mm": {
+              "exact": "-1/18014398509481984",
+              "display": -5.551115123125783e-17
+            },
+            "dx_mm": {
+              "exact": "-1/18014398509481984",
+              "display": -5.551115123125783e-17
+            }
+          }
+        }
+      }
+    },
+    {
+      "L_branch": "STOP0_lower_STOP1_ramp",
+      "R_branch": "STOP0_lower_STOP1_ramp",
+      "L_interval": [
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        true,
+        false
+      ],
+      "R_interval": [
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        true,
+        false
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "5790890176251366/1355315248362281",
+          "display": 4.272725613652535
+        },
+        "center_q_mm": {
+          "exact": "2895445088125683/4503599627370496",
+          "display": 0.6429179606749897
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "2895445088125683/4503599627370496",
+              "display": 0.6429179606749897
+            },
+            "dq_mm": {
+              "exact": "0",
+              "display": 0.0
+            },
+            "dx_mm": {
+              "exact": "0",
+              "display": 0.0
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "2895445088125683/4503599627370496",
+              "display": 0.6429179606749897
+            },
+            "dq_mm": {
+              "exact": "0",
+              "display": 0.0
+            },
+            "dx_mm": {
+              "exact": "0",
+              "display": 0.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "L_branch": "STOP0_lower_STOP1_ramp",
+      "R_branch": "both_lower_stop",
+      "L_interval": [
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        true,
+        false
+      ],
+      "R_interval": [
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        {
+          "exact": "12",
+          "display": 12.0
+        },
+        true,
+        true
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "11581780352502735/2710630496724562",
+          "display": 4.272725613652537
+        },
+        "center_q_mm": {
+          "exact": "11581780352502735/18014398509481984",
+          "display": 0.64291796067499
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "5790890176251367/9007199254740992",
+              "display": 0.6429179606749899
+            },
+            "dq_mm": {
+              "exact": "-1/18014398509481984",
+              "display": -5.551115123125783e-17
+            },
+            "dx_mm": {
+              "exact": "-1/18014398509481984",
+              "display": -5.551115123125783e-17
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "723861272031421/1125899906842624",
+              "display": 0.64291796067499
+            },
+            "dq_mm": {
+              "exact": "1/18014398509481984",
+              "display": 5.551115123125783e-17
+            },
+            "dx_mm": {
+              "exact": "1/18014398509481984",
+              "display": 5.551115123125783e-17
+            }
+          }
+        }
+      }
+    },
+    {
+      "L_branch": "both_lower_stop",
+      "R_branch": "both_plateau",
+      "L_interval": [
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        {
+          "exact": "12",
+          "display": 12.0
+        },
+        true,
+        true
+      ],
+      "R_interval": [
+        {
+          "exact": "0",
+          "display": 0.0
+        },
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        true,
+        true
+      ],
+      "feasible_under_shared_slide_real_projection": false,
+      "separation_distance_infimum_mm": {
+        "exact": "1445212774009261/2251799813685248",
+        "display": 0.6418033988749898
+      }
+    },
+    {
+      "L_branch": "both_lower_stop",
+      "R_branch": "both_rounded",
+      "L_interval": [
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        {
+          "exact": "12",
+          "display": 12.0
+        },
+        true,
+        true
+      ],
+      "R_interval": [
+        {
+          "exact": "2509770053581/2251799813685248",
+          "display": 0.0011145618000001356
+        },
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        false,
+        false
+      ],
+      "feasible_under_shared_slide_real_projection": false,
+      "separation_distance_infimum_mm": {
+        "exact": "39801781625740735/72057594037927936",
+        "display": 0.5523606797749983
+      }
+    },
+    {
+      "L_branch": "both_lower_stop",
+      "R_branch": "both_ramp",
+      "L_interval": [
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        {
+          "exact": "12",
+          "display": 12.0
+        },
+        true,
+        true
+      ],
+      "R_interval": [
+        {
+          "exact": "6525339784270209/72057594037927936",
+          "display": 0.09055728089999172
+        },
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        true,
+        false
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "361878262790481871/86740175895185984",
+          "display": 4.17197981276593
+        },
+        "center_q_mm": {
+          "exact": "361878262790481871/576460752303423488",
+          "display": 0.6277587179083531
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "723861272031421/1125899906842624",
+              "display": 0.64291796067499
+            },
+            "dq_mm": {
+              "exact": "8738708489605681/576460752303423488",
+              "display": 0.0151592427666368
+            },
+            "dx_mm": {
+              "exact": "8738708489605681/576460752303423488",
+              "display": 0.0151592427666368
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "176569777150438095/288230376151711744",
+              "display": 0.6125994751417163
+            },
+            "dq_mm": {
+              "exact": "-8738708489605681/576460752303423488",
+              "display": -0.0151592427666368
+            },
+            "dx_mm": {
+              "exact": "-8738708489605681/576460752303423488",
+              "display": -0.0151592427666368
+            }
+          }
+        }
+      }
+    },
+    {
+      "L_branch": "both_lower_stop",
+      "R_branch": "STOP0_lower_STOP1_ramp",
+      "L_interval": [
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        {
+          "exact": "12",
+          "display": 12.0
+        },
+        true,
+        true
+      ],
+      "R_interval": [
+        {
+          "exact": "1447722544062841/2251799813685248",
+          "display": 0.6429179606749895
+        },
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        true,
+        false
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "11581780352502735/2710630496724562",
+          "display": 4.272725613652537
+        },
+        "center_q_mm": {
+          "exact": "11581780352502735/18014398509481984",
+          "display": 0.64291796067499
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "723861272031421/1125899906842624",
+              "display": 0.64291796067499
+            },
+            "dq_mm": {
+              "exact": "1/18014398509481984",
+              "display": 5.551115123125783e-17
+            },
+            "dx_mm": {
+              "exact": "1/18014398509481984",
+              "display": 5.551115123125783e-17
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "5790890176251367/9007199254740992",
+              "display": 0.6429179606749899
+            },
+            "dq_mm": {
+              "exact": "-1/18014398509481984",
+              "display": -5.551115123125783e-17
+            },
+            "dx_mm": {
+              "exact": "-1/18014398509481984",
+              "display": -5.551115123125783e-17
+            }
+          }
+        }
+      }
+    },
+    {
+      "L_branch": "both_lower_stop",
+      "R_branch": "both_lower_stop",
+      "L_interval": [
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        {
+          "exact": "12",
+          "display": 12.0
+        },
+        true,
+        true
+      ],
+      "R_interval": [
+        {
+          "exact": "723861272031421/1125899906842624",
+          "display": 0.64291796067499
+        },
+        {
+          "exact": "12",
+          "display": 12.0
+        },
+        true,
+        true
+      ],
+      "feasible_under_shared_slide_real_projection": true,
+      "exact_feasible_lift": {
+        "slide_mm": {
+          "exact": "56938640616571636/1355315248362281",
+          "display": 42.01136280682627
+        },
+        "center_q_mm": {
+          "exact": "14234660154142909/2251799813685248",
+          "display": 6.3214589803374945
+        },
+        "sides": {
+          "L": {
+            "q_mm": {
+              "exact": "14234660154142909/2251799813685248",
+              "display": 6.3214589803374945
+            },
+            "dq_mm": {
+              "exact": "0",
+              "display": 0.0
+            },
+            "dx_mm": {
+              "exact": "0",
+              "display": 0.0
+            }
+          },
+          "R": {
+            "q_mm": {
+              "exact": "14234660154142909/2251799813685248",
+              "display": 6.3214589803374945
+            },
+            "dq_mm": {
+              "exact": "0",
+              "display": 0.0
+            },
+            "dx_mm": {
+              "exact": "0",
+              "display": 0.0
+            }
+          }
+        }
+      }
+    }
+  ],
+  "feasible_pairs": 17,
+  "infeasible_pairs": 8,
+  "original_input_domain_constraints": {
+    "slide_mm": [
+      0.0,
+      79.75
+    ],
+    "descent_mm": [
+      0.0,
+      8.2
+    ],
+    "positive_descent_requires_full_slide": true,
+    "independent_manual_tab_mm_per_side": [
+      0.0,
+      3.0
+    ],
+    "independent_flank_per_side": [
+      -1.0,
+      1.0
+    ],
+    "q_per_side": "q=K*slide+dq, K=12/79.75; each original profile requires 0<=q<=12 without clamping",
+    "crosshead_KEY_constraints": "abs(dx)<=(.425-.4)*hypot(1,K)+1e-7; abs(dx-dq)<=(.425-.4)*sqrt(2)+1e-7 independently per side",
+    "telescope_per_side": "Three independent side-specific joints, .1-1e-7<=j<=2.9+1e-7; abs(sum(j)-8.5+descent)<=1e-7",
+    "equal_telescope_allocation_is_physical_constraint": false,
+    "OPEN_accessory_condition": "hold/support flags require slide=79.75 and descent=8.2",
+    "these_binary64_source_constraints_prove_real_allowed_domain": false
+  },
+  "telescope_constraints": {
+    "three_joints_per_side": true,
+    "independent_sides": true,
+    "real_threshold_lower": {
+      "exact": "3602876099016695/36028797018963968",
+      "display": 0.0999999
+    },
+    "real_threshold_upper": {
+      "exact": "51017341288025/17592186044416",
+      "display": 2.9000000999999997
+    },
+    "sum_rule": "|j1+j2+j3-8.5+descent|<=binary64(1e-7), subject to actual source evaluation order",
+    "equal_allocation_physically_enforced": false,
+    "seating_requires_full_slide": true
+  },
+  "negative_controls": [
+    {
+      "side": "L",
+      "contact": 0,
+      "q": -0.001,
+      "rejected": true,
+      "reason": "q is outside the finite declared cam travel"
+    },
+    {
+      "side": "L",
+      "contact": 0,
+      "q": 12.001,
+      "rejected": true,
+      "reason": "q is outside the finite declared cam travel"
+    },
+    {
+      "side": "L",
+      "contact": 1,
+      "q": -0.001,
+      "rejected": true,
+      "reason": "q is outside the finite declared cam travel"
+    },
+    {
+      "side": "L",
+      "contact": 1,
+      "q": 12.001,
+      "rejected": true,
+      "reason": "q is outside the finite declared cam travel"
+    },
+    {
+      "side": "R",
+      "contact": 0,
+      "q": -0.001,
+      "rejected": true,
+      "reason": "q is outside the finite declared cam travel"
+    },
+    {
+      "side": "R",
+      "contact": 0,
+      "q": 12.001,
+      "rejected": true,
+      "reason": "q is outside the finite declared cam travel"
+    },
+    {
+      "side": "R",
+      "contact": 1,
+      "q": -0.001,
+      "rejected": true,
+      "reason": "q is outside the finite declared cam travel"
+    },
+    {
+      "side": "R",
+      "contact": 1,
+      "q": 12.001,
+      "rejected": true,
+      "reason": "q is outside the finite declared cam travel"
+    },
+    {
+      "control": "independent_full_square_corner_qL0_qR12",
+      "rejected_by_complete_shared_slide_projection": true,
+      "required_q_difference": {
+        "exact": "12",
+        "display": 12.0
+      },
+      "maximum_permitted_q_difference": {
+        "exact": "8738708489605585/72057594037927936",
+        "display": 0.12127394213309307
+      }
+    }
+  ],
+  "spring_representation": {
+    "role_suffix": "SPRING_i_OD_TOL_ENVELOPE",
+    "declared_radius_mm": {
+      "exact": "7746191359077253/18014398509481984",
+      "display": 0.43
+    },
+    "shape": "cylinder whose X endpoints extend by min/max of STOP translation; geometric maximum-material envelope",
+    "actual_coil_geometry_known": false,
+    "stiffness_free_length_solid_height_wire_diameter_coils_preload_material_and_end_fixity_known": false,
+    "restoring_force_is_a_required_unverified_contact_branch_condition": true
+  },
+  "seconds": 0.008736110001336783,
+  "scope": {
+    "all_real_source_branch_intervals_covered": true,
+    "profile_q_clamped_or_extended": false,
+    "exact_float64_acceptance_set_equivalence_proved": false,
+    "uniform_float64_profile_error_bound_proved": false,
+    "actual_physical_allowed_domain_proved": false,
+    "spring_force_preload_or_stop_strength_proved": false,
+    "current_full_15D_collision_clear": false,
+    "full_G2": false,
+    "G3": false,
+    "G4": false,
+    "G5": false,
+    "manufacturing_go": false
+  }
+}
