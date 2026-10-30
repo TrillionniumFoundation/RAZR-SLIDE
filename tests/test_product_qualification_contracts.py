@@ -8,6 +8,7 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'integration'))
@@ -184,6 +185,239 @@ class Contracts(unittest.TestCase):
         out = self.run4(p,r)
         self.assertEqual(out['status'],'fail')
         self.assertEqual(out['function_failure_witnesses'][0]['function'],'usb')
+
+    def test_g4_categorical_failure_survives_missing_raw_samples(self):
+        p,r,_ = self.g4(); r['raw_observations'] = None
+        r['failures'] = [{'specimen_id':'SYNTHETIC-S1','description':'synthetic damaged display tail','source':self.source}]
+        out = self.run4(p,r)
+        self.assertEqual(out['status'],'fail')
+        self.assertEqual(out['retained_failure_records'],r['failures'])
+
+    def test_g4_unsourced_categorical_failure_is_not_erased(self):
+        p,r,_ = self.g4()
+        r['failures'] = [{'specimen_id':'SYNTHETIC-S1','description':'synthetic reported failure','source':None}]
+        out = self.run4(p,r)
+        self.assertEqual(out['status'],'fail')
+        self.assertIn('failure_original_missing',out['blockers'])
+
+    def test_g4_missing_event_history_is_unknown(self):
+        p,r,_ = self.g4(); out = self.run4(p,r)
+        self.assertIn('maintenance_history_undeclared',out['blockers'])
+        self.assertIn('failure_history_undeclared',out['blockers'])
+
+    def test_g4_repair_and_replacement_are_retained_separately(self):
+        p,r,_ = self.g4(); r['failures'] = []
+        r['maintenance_or_replacement_events'] = [
+            {'specimen_id':'SYNTHETIC-S1','event_type':kind,'description':'synthetic '+kind,'source':self.source}
+            for kind in ('repair','replacement')]
+        out = self.run4(p,r)
+        self.assertEqual(out['retained_maintenance_records'],r['maintenance_or_replacement_events'])
+        self.assertIn('uninterrupted_specimen_identity_broken_by_maintenance_or_replacement',out['blockers'])
+        self.assertEqual(out['status'],'unknown')
+
+    def prerequisite_fixture(self, end='2026-10-02T20:00:00Z'):
+        # Deliberately fabricated physical-schema records, only in TemporaryDirectory.
+        # These exercise record validation; they are not measured evidence.
+        p,r,_ = self.g4()
+        original = {'schema':'synthetic-as-built-record','specimen_id':'SYNTHETIC-S1',
+            'is_template':False,'execution_kind':'synthetic_fixture',
+            'design_binding':p['design_binding'],'assembly_revision':'SYNTHETIC-REV-1',
+            'qualification_assembly':{role:r['as_built']['SYNTHETIC-S1'][role]
+                for role in ('parts','material_lots','process','firmware','assembly')}}
+        ref = self.save('as-built-synthetic.json',original)
+        r['as_built']['SYNTHETIC-S1']['specimen_record'] = ref
+        prior = {'schema':'razr-unpowered-motion-qualification-decision-v1',
+            'current_EP5_candidate_bound':True,'execution_kind':'physical',
+            'specimen_id':'SYNTHETIC-S1','design_binding':p['design_binding'],'status':'pass',
+            'acquisition_started_at_utc':'2026-10-02T10:00:00Z','acquisition_ended_at_utc':end,
+            'qualification_reviewed_at_utc':end,'sampled_criteria_status':'pass',
+            'criteria':[{'metric':'synthetic_test_only','status':'pass'}],
+            'as_built_specimen_record':ref}
+        p['prerequisites']['G3'] = {'SYNTHETIC-S1':self.save('prior-g3-temporal.json',prior)}
+        return p,r,prior,original
+
+    def test_prerequisite_cannot_finish_after_next_stage_starts(self):
+        p,r,_,_ = self.prerequisite_fixture('2026-10-04T00:00:00Z')
+        with self.assertRaisesRegex(ValueError,'prerequisite.*chronology'):
+            self.run4(p,r)
+
+    def test_prerequisite_without_time_does_not_qualify_next_stage(self):
+        p,r,prior,_ = self.prerequisite_fixture(); del prior['acquisition_ended_at_utc']
+        p['prerequisites']['G3']['SYNTHETIC-S1'] = self.save('prior-g3-temporal.json',prior)
+        self.assertIn('prerequisite_chronology_missing:G3:SYNTHETIC-S1',self.run4(p,r)['blockers'])
+
+    def test_same_specimen_with_changed_as_built_record_is_rejected(self):
+        p,r,_,original = self.prerequisite_fixture()
+        original['assembly_revision'] = 'SYNTHETIC-REV-2-AFTER-REPAIR'
+        r['as_built']['SYNTHETIC-S1']['specimen_record'] = self.save('as-built-repaired.json',original)
+        with self.assertRaisesRegex(ValueError,'prerequisite.*as-built'):
+            self.run4(p,r)
+
+    def test_prerequisite_without_as_built_binding_remains_unknown(self):
+        p,r,prior,_ = self.prerequisite_fixture(); del prior['as_built_specimen_record']
+        p['prerequisites']['G3']['SYNTHETIC-S1'] = self.save('prior-g3-temporal.json',prior)
+        self.assertIn('prerequisite_as_built_missing:G3:SYNTHETIC-S1',self.run4(p,r)['blockers'])
+
+    def test_prerequisite_pass_cannot_hide_retained_failure(self):
+        p,r,prior,_ = self.prerequisite_fixture()
+        prior['retained_failure_records'] = [{'description':'synthetic retained failure'}]
+        p['prerequisites']['G3']['SYNTHETIC-S1'] = self.save('prior-g3-temporal.json',prior)
+        with self.assertRaisesRegex(ValueError,'prerequisite pass contradicts'):
+            self.run4(p,r)
+
+    def test_prerequisite_native_payload_binding_cannot_change(self):
+        p,r,prior,_ = self.prerequisite_fixture()
+        prior['design_binding'] = copy.deepcopy(prior['design_binding'])
+        prior['design_binding']['native_payload_sha256']['synthetic-native-path'] = '0'*64
+        p['prerequisites']['G3']['SYNTHETIC-S1'] = self.save('prior-g3-temporal.json',prior)
+        with self.assertRaisesRegex(ValueError,'prerequisite.*design binding'):
+            self.run4(p,r)
+
+    def test_same_raw_as_built_cannot_mask_changed_firmware_wrapper(self):
+        p,r,_,_ = self.prerequisite_fixture()
+        r['as_built']['SYNTHETIC-S1']['firmware'] = {'identity':'SYNTHETIC-CHANGED','source':self.source}
+        with self.assertRaisesRegex(ValueError,'as-built.*firmware'):
+            self.run4(p,r)
+
+    def test_missing_as_built_role_mapping_stays_unknown(self):
+        p,r,prior,original = self.prerequisite_fixture(); del original['qualification_assembly']
+        ref = self.save('as-built-synthetic.json',original)
+        r['as_built']['SYNTHETIC-S1']['specimen_record'] = prior['as_built_specimen_record'] = ref
+        p['prerequisites']['G3']['SYNTHETIC-S1'] = self.save('prior-g3-temporal.json',prior)
+        self.assertIn('as_built_role_binding_missing:SYNTHETIC-S1',self.run4(p,r)['blockers'])
+
+    def test_matching_earlier_prerequisite_and_raw_assembly_are_accepted_as_records(self):
+        p,r,_,_ = self.prerequisite_fixture(); out = self.run4(p,r)
+        self.assertFalse(any(x.startswith(('prerequisite_chronology_missing:',
+            'prerequisite_as_built_missing:','as_built_role_binding_missing:')) for x in out['blockers']))
+        self.assertEqual(out['as_built_specimen_records']['SYNTHETIC-S1'],r['as_built']['SYNTHETIC-S1']['specimen_record'])
+        self.assertEqual(out['status'],'unknown')  # synthetic input is never a hardware pass
+        self.assertEqual(out['prerequisite_decisions'][0]['status'],'pass')
+
+    def donor_bound_fixture(self, raw_donor='SYNTHETIC-DONOR-A', declared_donor='SYNTHETIC-DONOR-A', *, nested=False):
+        p,r,prior,original = self.prerequisite_fixture()
+        p['same_donor_specimen_id'] = declared_donor
+        r['as_built']['SYNTHETIC-S1']['same_donor_specimen_id'] = declared_donor
+        if raw_donor is not None:
+            target = original['qualification_assembly'] if nested else original
+            target['same_donor_specimen_id'] = raw_donor
+        self.rebind_synthetic_original(p,r,prior,original)
+        readiness = q.product_inputs(ROOT)
+        readiness['observed_donor_specimen_id'] = declared_donor
+        return p,r,prior,original,readiness
+
+    def rebind_synthetic_original(self,p,r,prior,original):
+        ref = self.save('as-built-synthetic.json',original)
+        r['as_built']['SYNTHETIC-S1']['specimen_record'] = prior['as_built_specimen_record'] = ref
+        p['prerequisites']['G3']['SYNTHETIC-S1'] = self.save('prior-g3-temporal.json',prior)
+
+    def test_raw_donor_cannot_be_relabelled_by_matching_wrappers(self):
+        p,r,_,_,readiness = self.donor_bound_fixture(declared_donor='SYNTHETIC-DONOR-B')
+        with patch.object(q,'product_inputs',return_value=readiness):
+            with self.assertRaisesRegex(ValueError,'as-built original.*donor'):
+                self.run4(p,r)
+
+    def test_missing_raw_donor_binding_stays_unknown(self):
+        p,r,_,_,readiness = self.donor_bound_fixture(raw_donor=None)
+        with patch.object(q,'product_inputs',return_value=readiness): out = self.run4(p,r)
+        self.assertIn('as_built_original_donor_missing:SYNTHETIC-S1',out['blockers'])
+        self.assertEqual(out['status'],'unknown')
+
+    def test_matching_raw_donor_is_admitted_only_as_synthetic_record(self):
+        p,r,_,_,readiness = self.donor_bound_fixture()
+        with patch.object(q,'product_inputs',return_value=readiness): out = self.run4(p,r)
+        self.assertNotIn('as_built_original_donor_missing:SYNTHETIC-S1',out['blockers'])
+        self.assertNotIn('as_built_donor_unbound:SYNTHETIC-S1',out['blockers'])
+        self.assertEqual(out['status'],'unknown')
+
+    def test_donor_bound_inside_original_assembly_is_admitted(self):
+        p,r,_,_,readiness = self.donor_bound_fixture(nested=True)
+        with patch.object(q,'product_inputs',return_value=readiness): out = self.run4(p,r)
+        self.assertNotIn('as_built_original_donor_missing:SYNTHETIC-S1',out['blockers'])
+        self.assertEqual(out['status'],'unknown')
+
+    def test_conflicting_donor_declarations_within_original_are_rejected(self):
+        p,r,prior,original,readiness = self.donor_bound_fixture()
+        original['qualification_assembly']['same_donor_specimen_id'] = 'SYNTHETIC-DONOR-B'
+        self.rebind_synthetic_original(p,r,prior,original)
+        with patch.object(q,'product_inputs',return_value=readiness):
+            with self.assertRaisesRegex(ValueError,'as-built original.*donor'):
+                self.run4(p,r)
+
+    def test_wrapper_donor_cannot_contradict_original_and_plan(self):
+        p,r,_,_,readiness = self.donor_bound_fixture()
+        r['as_built']['SYNTHETIC-S1']['same_donor_specimen_id'] = 'SYNTHETIC-DONOR-B'
+        with patch.object(q,'product_inputs',return_value=readiness):
+            with self.assertRaisesRegex(ValueError,'as-built original.*donor'):
+                self.run4(p,r)
+
+    def test_prerequisite_review_must_precede_next_stage_and_follow_raw_run(self):
+        for when in ('2026-10-04T00:00:00Z','2026-10-02T12:00:00Z'):
+            with self.subTest(reviewed_at_utc=when):
+                p,r,prior,_ = self.prerequisite_fixture(); prior['qualification_reviewed_at_utc'] = when
+                p['prerequisites']['G3']['SYNTHETIC-S1'] = self.save('prior-g3-temporal.json',prior)
+                with self.assertRaisesRegex(ValueError,'prerequisite review chronology'):
+                    self.run4(p,r)
+
+    def test_missing_prerequisite_decision_time_is_unknown(self):
+        p,r,prior,_ = self.prerequisite_fixture(); del prior['qualification_reviewed_at_utc']
+        p['prerequisites']['G3']['SYNTHETIC-S1'] = self.save('prior-g3-temporal.json',prior)
+        out = self.run4(p,r)
+        self.assertIn('prerequisite_decision_time_missing:G3:SYNTHETIC-S1',out['blockers'])
+        self.assertEqual(out['prerequisite_decisions'][0]['reported_status'],'pass')
+        self.assertEqual(out['prerequisite_decisions'][0]['status'],'unknown')
+
+    def test_prerequisite_report_cannot_contradict_sampled_criteria(self):
+        for status in ('fail','unknown'):
+            p,r,prior,_ = self.prerequisite_fixture()
+            prior['sampled_criteria_status'] = status
+            prior['criteria'][0]['status'] = status
+            p['prerequisites']['G3']['SYNTHETIC-S1'] = self.save('prior-g3-temporal.json',prior)
+            with self.assertRaisesRegex(ValueError,'prerequisite pass contradicts its sampled'):
+                self.run4(p,r)
+
+    def test_g5_requires_g3_then_g4_order_even_when_both_predate_g5(self):
+        p,r,prior,_ = self.prerequisite_fixture('2026-10-02T20:00:00Z')
+        p['gate'] = 'G5'
+        earlier = dict(prior,schema='razr-product-qualification-decision-v1',gate='G4',
+            specimen_ids=['SYNTHETIC-S1'],execution_binding={'physical_commit_bytes_verified':True},
+            acquisition_started_at_utc='2026-10-02T08:00:00Z',acquisition_ended_at_utc='2026-10-02T09:00:00Z',
+            qualification_reviewed_at_utc='2026-10-02T09:00:00Z',
+            as_built_specimen_records={'SYNTHETIC-S1':prior['as_built_specimen_record']})
+        p['prerequisites']['G4'] = {'SYNTHETIC-S1':self.save('prior-g4-too-early.json',earlier)}
+        with self.assertRaisesRegex(ValueError,'G3/G4 chronology'):
+            q.prerequisite_decisions(p,q.Evidence(self.folder),[],r)
+
+    def test_g5_requires_g3_pass_review_before_g4_started(self):
+        p,r,prior,_ = self.prerequisite_fixture('2026-10-02T12:00:00Z'); p['gate'] = 'G5'
+        prior['qualification_reviewed_at_utc'] = '2026-10-02T20:00:00Z'
+        p['prerequisites']['G3']['SYNTHETIC-S1'] = self.save('prior-g3-temporal.json',prior)
+        g4 = dict(prior,schema='razr-product-qualification-decision-v1',gate='G4',
+            specimen_ids=['SYNTHETIC-S1'],execution_binding={'physical_commit_bytes_verified':True},
+            acquisition_started_at_utc='2026-10-02T13:00:00Z',acquisition_ended_at_utc='2026-10-02T14:00:00Z',
+            qualification_reviewed_at_utc='2026-10-02T14:30:00Z',
+            as_built_specimen_records={'SYNTHETIC-S1':prior['as_built_specimen_record']})
+        p['prerequisites']['G4'] = {'SYNTHETIC-S1':self.save('prior-g4-premature.json',g4)}
+        with self.assertRaisesRegex(ValueError,'G3 review/G4 chronology'):
+            q.prerequisite_decisions(p,q.Evidence(self.folder),[],r)
+
+    def test_g4_empty_exception_list_with_actual_coverage_supports_record_chain(self):
+        p,r,prior,_ = self.prerequisite_fixture('2026-10-02T12:00:00Z'); p['gate'] = 'G5'
+        g4 = dict(prior,schema='razr-product-qualification-decision-v1',gate='G4',
+            specimen_ids=['SYNTHETIC-S1'],execution_binding={'physical_commit_bytes_verified':True},
+            acquisition_started_at_utc='2026-10-02T13:00:00Z',acquisition_ended_at_utc='2026-10-02T14:00:00Z',
+            qualification_reviewed_at_utc='2026-10-02T14:30:00Z',criteria=[],
+            coverage=[{'specimen_id':'SYNTHETIC-S1','complete':True}],observations=2,
+            as_built_specimen_records={'SYNTHETIC-S1':prior['as_built_specimen_record']})
+        p['prerequisites']['G4'] = {'SYNTHETIC-S1':self.save('prior-g4-empty-exceptions.json',g4)}
+        blockers=[]; decisions=q.prerequisite_decisions(p,q.Evidence(self.folder),blockers,r)
+        self.assertEqual(blockers,[])
+        self.assertEqual([d['status'] for d in decisions],['pass','pass'])
+        del g4['coverage']
+        p['prerequisites']['G4']['SYNTHETIC-S1'] = self.save('prior-g4-empty-exceptions.json',g4)
+        blockers=[]; decisions=q.prerequisite_decisions(p,q.Evidence(self.folder),blockers,r)
+        self.assertIn('prerequisite_observation_coverage_missing:G4:SYNTHETIC-S1',blockers)
+        self.assertEqual(decisions[-1]['status'],'unknown')
 
     def test_g4_missing_limit_source_is_unknown(self):
         p,r,_ = self.g4(); p['channels']['power_rail_voltage']['criterion']['source'] = None

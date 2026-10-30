@@ -1,0 +1,101 @@
+{
+  "schema": "razr-r12-whole-current-KEY-independent-q-X-separation-v1",
+  "completed_utc": "2026-10-30T14:17:38.523109+00:00",
+  "source_sha256": "a3df64fda0ed19a44c3ea900d849744b9a488fb039ea66fe099ffd4c94b51a5f",
+  "roles": {
+    "producer": {
+      "input_report": "producer-v6/report.json",
+      "input_sha256": "4cbf0efb172e576cd94f1846efe9764b14a328e98d4a599e6784984cf8c888cf",
+      "complete_X_carriers_exact_mm": {
+        "L": [
+          "-24954076611776090053115582479444088404313494740405621337520741065/822752278660603021077484591278675252491367932816789931674304512",
+          "-27922317689697077/4503599627370496"
+        ],
+        "R": [
+          "27922317689697077/4503599627370496",
+          "86576845039543527780964804965372596563760148235/2854495385411919762116571938898990272765493248"
+        ]
+      },
+      "counts": {
+        "L": {
+          "complete_faces": 92,
+          "complete_edge_occurrences": 528
+        },
+        "R": {
+          "complete_faces": 92,
+          "complete_edge_occurrences": 528
+        }
+      },
+      "positive_exact_X_gap_mm": "27922317689697077/2251799813685248",
+      "positive_gap_approx_mm": 12.4,
+      "independent_q_L_q_R_box_mm": [
+        [
+          0,
+          12
+        ],
+        [
+          0,
+          12
+        ]
+      ],
+      "exact_represented_boundary_halfspace_separation": true,
+      "actual_native_compact_fill_bridge_fully_proved": false
+    },
+    "reader": {
+      "input_report": "reader-v2/report.json",
+      "input_sha256": "1e18b3dc19bf4036dcccc6b6b1b8ae7af67d3beb5144645923e12c4932a7e61a",
+      "complete_X_carriers_exact_mm": {
+        "L": [
+          "-22163672330123141670666911268997325989463108942071/730750818665451459101842416358141509827966271488",
+          "-27922317689697077/4503599627370496"
+        ],
+        "R": [
+          "27922317689697077/4503599627370496",
+          "2770459041265392706449187326026891758393863179415/91343852333181432387730302044767688728495783936"
+        ]
+      },
+      "counts": {
+        "L": {
+          "complete_faces": 92,
+          "complete_edge_occurrences": 528
+        },
+        "R": {
+          "complete_faces": 92,
+          "complete_edge_occurrences": 528
+        }
+      },
+      "positive_exact_X_gap_mm": "27922317689697077/2251799813685248",
+      "positive_gap_approx_mm": 12.4,
+      "independent_q_L_q_R_box_mm": [
+        [
+          0,
+          12
+        ],
+        [
+          0,
+          12
+        ]
+      ],
+      "exact_represented_boundary_halfspace_separation": true,
+      "actual_native_compact_fill_bridge_fully_proved": false
+    }
+  },
+  "mathematical_proof": [
+    "Every serialized analytic face, full trim pcurve, 3-D edge and vertex over every q in its admitted interval is enclosed in the recorded boxes.",
+    "The union of those boxes is enclosed in the recorded X halfspaces.",
+    "For any compact material K, if its complete boundary is inside x<=a then K is inside x<=a: a point with x>a would have a boundary point at least as far in +X along its finite exit ray. The analogous lower halfspace follows using -X.",
+    "Under that complete-boundary/material premise, each independent KEY stays in its halfspace for all q. The positive rational gap makes the two whole materials disjoint for every independent q_L,q_R in [0,12]."
+  ],
+  "scope": {
+    "uses_native_Common_zero_as_upper_bound": false,
+    "uses_AddOptimal_numeric_bounds_as_exact_support": false,
+    "full_source_analytic_representations_used": true,
+    "formal_native_BREP_filling_or_uniform_compiled_error_bridge_complete": false,
+    "physical_allowed_domain_proved": false,
+    "all_15D_G2_qualified": false,
+    "G3": false,
+    "G4": false,
+    "G5": false,
+    "manufacturing_go": false
+  }
+}

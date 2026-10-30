@@ -1,0 +1,41 @@
+{
+  "schema": "razr-r12-qualification-source-and-results-root-readback-v1",
+  "source_identities": [
+    {
+      "path": "integration/product_qualification.py",
+      "bytes": 60693,
+      "sha256": "4db012ceee0a67d41c9db2ce812085b232bdac3786b50b72128e265e383527f2"
+    },
+    {
+      "path": "engineering/product-integration-20261018/physical-test-followon-20261019/qualification_contract.py",
+      "bytes": 32127,
+      "sha256": "deb027c4e47fbcfa0a6db6463cdd383fd9ed0010850f3d8532d34be0ca608d05"
+    },
+    {
+      "path": "tests/test_product_qualification_contracts.py",
+      "bytes": 34340,
+      "sha256": "7ed8114334d6eb6d143638fd009c8a48fec53eb001e89bae0886270781345b2d"
+    }
+  ],
+  "independent_review_source_identities_match": true,
+  "final_disjoint_test_executions": [
+    {
+      "module": "tests.test_product_qualification_contracts + tests.test_g3_current_candidate",
+      "tests": 70,
+      "log": "final_gate_specific.stderr.log",
+      "log_sha256": "c6f4cbe7dac7f8ba03d5955e402d1d72dc6b84f3ec19b53c285dcc88438cc157",
+      "passed": true
+    },
+    {
+      "module": "integration/product-study-tests/test_qualification_contract.py",
+      "tests": 57,
+      "log": "g3_receipt.stderr.log",
+      "log_sha256": "4f8019613860d9d542102b0f2c9bb0297b9ee8d3b9c1538f2ebcd702341ad311",
+      "passed": true
+    }
+  ],
+  "tests_total": 127,
+  "independent_record_admission_controls": 7,
+  "physical_executions": 0,
+  "physical_G3_G4_G5_pass": false
+}

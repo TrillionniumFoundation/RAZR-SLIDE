@@ -280,6 +280,9 @@ def evaluate(manifest, analysis, rows, calibrations, evidence_root, repository,
     # Missing dates produce UNKNOWN. Dates contradicting a predeclaration
     # claim reject the record instead of retrospectively accepting limits.
     started, ended = manifest.get('acquisition_started_at_utc'), manifest.get('acquisition_ended_at_utc')
+    # Retain verified acquisition chronology for the G3 -> G4 -> G5 chain.
+    result['acquisition_started_at_utc'] = started
+    result['acquisition_ended_at_utc'] = ended
     declared = plan.get('declared_at_utc')
     if None in (started, ended, declared):
         result['blockers'].append('predeclaration_or_acquisition_time_missing')
@@ -388,6 +391,7 @@ def evaluate(manifest, analysis, rows, calibrations, evidence_root, repository,
         elif specimen.get('design_binding') != binding:
             raise ValueError('as-built specimen differs from the tested design identity')
         else:
+            result['as_built_specimen_record'] = specimen_ref
             observed = specimen.get('role_observations', {})
             if not isinstance(observed, dict) or set(observed) - set(required_roles):
                 raise ValueError('invalid as-built role inventory')

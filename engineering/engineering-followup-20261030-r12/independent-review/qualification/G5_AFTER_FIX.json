@@ -1,0 +1,45 @@
+{
+  "schema": "r12.independent_g5_chain_controls.v1",
+  "cases": [
+    {
+      "case": "valid_g4_empty_exception_criteria",
+      "rejected": false,
+      "decisions": [
+        {
+          "gate": "G3",
+          "specimen_id": "SYNTHETIC-S1",
+          "status": "pass",
+          "reported_status": "pass",
+          "validation_blockers": [],
+          "source": {
+            "path": "prior-g3-temporal.json",
+            "sha256": "8c37535a0f544793ffd1a72ed8b88d30c14e8c02e034faf85225ba4f5ce82157"
+          }
+        },
+        {
+          "gate": "G4",
+          "specimen_id": "SYNTHETIC-S1",
+          "status": "pass",
+          "reported_status": "pass",
+          "validation_blockers": [],
+          "source": {
+            "path": "g4-schema-fixture.json",
+            "sha256": "2cef167b5e0d4f799679550dd0aab08b81762dc87a124a20934b70786583bfbd"
+          }
+        }
+      ],
+      "blockers": [],
+      "synthetic_fixture": true,
+      "actual_synthetic_evaluator_criteria": [],
+      "physical_measurements_or_overall_physical_pass_claimed": false
+    },
+    {
+      "case": "g3_review_after_g4_start",
+      "rejected": true,
+      "message": "prerequisite G3 review/G4 chronology contradicts stage order",
+      "blockers": [],
+      "synthetic_fixture": true,
+      "physical_measurements_or_overall_physical_pass_claimed": false
+    }
+  ]
+}

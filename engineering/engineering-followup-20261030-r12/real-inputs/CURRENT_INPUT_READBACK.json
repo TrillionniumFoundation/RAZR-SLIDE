@@ -1,0 +1,350 @@
+{
+  "schema": "razr-r12-current-input-readback-v1",
+  "created_utc": "2026-10-30T14:20:01.216261+00:00",
+  "source": {
+    "path": "/workspace/scratch/1b842ca762be/RAZR-SLIDE/engineering/engineering-followup-20261030-r12/real-inputs/audit_current_inputs.py",
+    "bytes": 4176,
+    "sha256": "0555e6a6f20d0e5cfd16184fd84a6bce6c5cbcbabfe3ebde30b51ad6b75b993e"
+  },
+  "input_identities": [
+    {
+      "path": "engineering/engineering-followup-20261030-r12/real-inputs/source/CURRENT_K3_STRUCTURAL_INPUT_CONTRACT.json",
+      "bytes": 132995,
+      "sha256": "479720dae430fc29d987203d14241863abb2cb328730d9685c44e2711f67328f"
+    },
+    {
+      "path": "engineering/engineering-followup-20261030-r12/real-inputs/source/CURRENT_K3_PHYSICAL_AND_GATE_INPUT_CONTRACT.json",
+      "bytes": 42099,
+      "sha256": "d15404301b5d82c1f1d73b83d33fc2e6c94fe17a0aaa9149ebe71ee96aad254a"
+    }
+  ],
+  "current_candidate_bindings_equal": true,
+  "material_roles": 161,
+  "material_slots": 1449,
+  "unassigned_material_slots": 1449,
+  "original_loadcases": 13,
+  "load_slots": 78,
+  "unassigned_load_slots": 78,
+  "additional_stop_loadcases": 5,
+  "additional_stop_load_slots": 25,
+  "unassigned_stop_load_slots": 25,
+  "same_specimen_identity_fields": 10,
+  "part_roles": 7,
+  "interfaces": 12,
+  "physical_gates": {
+    "G3": {
+      "records": 19,
+      "numeric_limit_slots": 22,
+      "unassigned_numeric_limits": 22,
+      "source_status": "unknown_missing_same_candidate_physical_inputs_and_execution",
+      "source_actual_execution": false,
+      "new_physical_measurements": 0,
+      "real_pass_obtained": false,
+      "limits": [
+        {
+          "path": "/requirements/minimum_cycles/value",
+          "value": null
+        },
+        {
+          "path": "/requirements/minimum_samples_per_phase/value",
+          "value": null
+        },
+        {
+          "path": "/requirements/minimum_hands_off_duration_s/value",
+          "value": null
+        },
+        {
+          "path": "/requirements/maximum_sampling_gap_s/value",
+          "value": null
+        },
+        {
+          "path": "/requirements/maximum_alignment_error_s/value",
+          "value": null
+        },
+        {
+          "path": "/criteria/operator_force_max_N/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/left_right_y_max_mm/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/left_right_z_max_mm/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/return_y_max_mm/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/return_z_max_mm/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/stroke_y_mm/minimum",
+          "value": null
+        },
+        {
+          "path": "/criteria/stroke_y_mm/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/stroke_z_mm/minimum",
+          "value": null
+        },
+        {
+          "path": "/criteria/stroke_z_mm/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/hands_off_y_drift_max_mm/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/hands_off_z_drift_max_mm/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/oled_tail_travel_mm/minimum",
+          "value": null
+        },
+        {
+          "path": "/criteria/oled_tail_travel_mm/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/oled_pull_force_max_N/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/oled_radius_min_mm/minimum",
+          "value": null
+        },
+        {
+          "path": "/criteria/fpc_radius_min_mm/minimum",
+          "value": null
+        },
+        {
+          "path": "/criteria/fpc_resistance_max_ohm/maximum",
+          "value": null
+        }
+      ]
+    },
+    "G4": {
+      "records": 18,
+      "numeric_limit_slots": 24,
+      "unassigned_numeric_limits": 24,
+      "source_status": "blocked_missing_real_G3_and_OEM_inputs",
+      "source_actual_execution": false,
+      "new_physical_measurements": 0,
+      "real_pass_obtained": false,
+      "limits": [
+        {
+          "path": "/requirements/minimum_cycles_per_mode/value",
+          "value": null
+        },
+        {
+          "path": "/requirements/minimum_samples_per_phase/value",
+          "value": null
+        },
+        {
+          "path": "/requirements/maximum_sampling_gap_s/value",
+          "value": null
+        },
+        {
+          "path": "/requirements/maximum_alignment_error_s/value",
+          "value": null
+        },
+        {
+          "path": "/criteria/power_rail_voltage/minimum",
+          "value": null
+        },
+        {
+          "path": "/criteria/power_rail_voltage/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/power_current/minimum",
+          "value": null
+        },
+        {
+          "path": "/criteria/power_current/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/unexpected_reset_count/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/pack_A_current/minimum",
+          "value": null
+        },
+        {
+          "path": "/criteria/pack_A_current/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/pack_A_temperature/minimum",
+          "value": null
+        },
+        {
+          "path": "/criteria/pack_A_temperature/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/pack_B_current/minimum",
+          "value": null
+        },
+        {
+          "path": "/criteria/pack_B_current/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/pack_B_temperature/minimum",
+          "value": null
+        },
+        {
+          "path": "/criteria/pack_B_temperature/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/usb_error_count/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/usb_disconnect_count/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/display_error_count/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/touch_position_error/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/camera_error_count/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/rf_error_count/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/audio_sensor_error_count/maximum",
+          "value": null
+        }
+      ]
+    },
+    "G5": {
+      "records": 17,
+      "numeric_limit_slots": 21,
+      "unassigned_numeric_limits": 21,
+      "source_status": "blocked_missing_real_G3_G4_life_and_process_inputs",
+      "source_actual_execution": false,
+      "new_physical_measurements": 0,
+      "real_pass_obtained": false,
+      "limits": [
+        {
+          "path": "/requirements/required_cycles/value",
+          "value": null
+        },
+        {
+          "path": "/requirements/minimum_specimens/value",
+          "value": null
+        },
+        {
+          "path": "/requirements/maximum_exposure_sampling_gap_s/value",
+          "value": null
+        },
+        {
+          "path": "/requirements/minimum_samples_per_exposure_phase/value",
+          "value": null
+        },
+        {
+          "path": "/requirements/maximum_alignment_error_s/value",
+          "value": null
+        },
+        {
+          "path": "/criteria/operating_force/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/unlock_force/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/left_right_skew/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/relock_error/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/retention_drift/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/fpc_resistance/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/display_error_count/maximum",
+          "value": null
+        },
+        {
+          "path": "/criteria/usb_error_count/maximum",
+          "value": null
+        },
+        {
+          "path": "/exposure/temperature/minimum",
+          "value": null
+        },
+        {
+          "path": "/exposure/temperature/maximum",
+          "value": null
+        },
+        {
+          "path": "/exposure/humidity/minimum",
+          "value": null
+        },
+        {
+          "path": "/exposure/humidity/maximum",
+          "value": null
+        },
+        {
+          "path": "/exposure/motion_speed/minimum",
+          "value": null
+        },
+        {
+          "path": "/exposure/motion_speed/maximum",
+          "value": null
+        },
+        {
+          "path": "/exposure/applied_load/minimum",
+          "value": null
+        },
+        {
+          "path": "/exposure/applied_load/maximum",
+          "value": null
+        }
+      ]
+    }
+  },
+  "gate_records": 54,
+  "unassigned_gate_limit_slots": 67,
+  "new_actual_specimen_originals": 0,
+  "complete_OEM_PDF_bytes_acquired": false,
+  "current_absolute_FE_qualified": false,
+  "OEM_electrical_qualified": false,
+  "complete_current_physical_contract_frozen": false,
+  "G3_pass": false,
+  "G4_pass": false,
+  "G5_pass": false,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "razr-r12-staged-whitespace-preservation-v1",
+  "checked_utc": "2026-10-30T14:51:17.655756+00:00",
+  "full_staged_check_exit_code": 2,
+  "full_staged_check_stdout": "engineering/engineering-followup-20261030-r12/geometry/produce_current_key_stroke_v4.py:70: trailing whitespace.\n+                entry['action']='complete_native_face_prism' \nengineering/engineering-followup-20261030-r12/geometry/produce_current_key_stroke_v5.py:79: trailing whitespace.\n+                entry['action']='complete_native_face_prism' \nengineering/engineering-followup-20261030-r12/geometry/read_current_key_stroke_v1.py:79: trailing whitespace.\n+                entry['action']='complete_native_face_prism' \n",
+  "full_staged_check_stderr": "",
+  "archived_source_exceptions": [
+    {
+      "path": "engineering/engineering-followup-20261030-r12/geometry/produce_current_key_stroke_v4.py",
+      "bytes": 10702,
+      "sha256": "8b83e668c5ec43320c0cc2df85a482173b469fd159722242b6f04f5590700984",
+      "reason_preserved": "Executed historical native geometry source, already SHA-bound by sealed component manifest; whitespace is retained byte-identically."
+    },
+    {
+      "path": "engineering/engineering-followup-20261030-r12/geometry/produce_current_key_stroke_v5.py",
+      "bytes": 11556,
+      "sha256": "ac53469e9e09fdedd9388fb9b28f26b60d8caf6b791b67026812c7413e152875",
+      "reason_preserved": "Executed historical native geometry source, already SHA-bound by sealed component manifest; whitespace is retained byte-identically."
+    },
+    {
+      "path": "engineering/engineering-followup-20261030-r12/geometry/read_current_key_stroke_v1.py",
+      "bytes": 12647,
+      "sha256": "29fa13787bd748facf0079e649f5658e74880f27c7cb3bddcb9a580375ea652b",
+      "reason_preserved": "Executed historical native geometry source, already SHA-bound by sealed component manifest; whitespace is retained byte-identically."
+    }
+  ],
+  "check_excluding_only_those_three_archived_sources": {
+    "command": [
+      "git",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      ".",
+      ":(exclude)engineering/engineering-followup-20261030-r12/geometry/produce_current_key_stroke_v4.py",
+      ":(exclude)engineering/engineering-followup-20261030-r12/geometry/produce_current_key_stroke_v5.py",
+      ":(exclude)engineering/engineering-followup-20261030-r12/geometry/read_current_key_stroke_v1.py"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "scientific_originals_edited_to_hide_warnings": false
+}

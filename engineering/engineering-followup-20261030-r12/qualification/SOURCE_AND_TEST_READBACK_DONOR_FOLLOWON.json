@@ -1,0 +1,54 @@
+{
+  "schema": "razr-r12-final-qualification-source-and-results-after-donor-followon-v1",
+  "checked_utc": "2026-10-30T14:43:56.211414+00:00",
+  "source_identities": [
+    {
+      "path": "integration/product_qualification.py",
+      "bytes": 62093,
+      "sha256": "975b3dc3cb43cc9093108bf661dd6a89d2a4211a3587221004edd963a54b411c"
+    },
+    {
+      "path": "engineering/product-integration-20261018/physical-test-followon-20261019/qualification_contract.py",
+      "bytes": 32127,
+      "sha256": "deb027c4e47fbcfa0a6db6463cdd383fd9ed0010850f3d8532d34be0ca608d05"
+    },
+    {
+      "path": "tests/test_product_qualification_contracts.py",
+      "bytes": 37757,
+      "sha256": "ce057837a5893f18badead5cfa3f5bd1ada6b26ee768a60f2883b40a4d6de589"
+    }
+  ],
+  "previous_127_test_receipt_preserved": "SOURCE_AND_TEST_READBACK.json",
+  "final_disjoint_test_executions": [
+    {
+      "module": "tests.test_product_qualification_contracts + tests.test_g3_current_candidate",
+      "tests": 76,
+      "log": "donor-followon/final_targeted.stderr.log",
+      "log_sha256": "45dea4f554d85f287611e5118670882fda44a55b9a43ba702728a7d97de64981",
+      "passed": true
+    },
+    {
+      "module": "integration/product-study-tests/test_qualification_contract.py",
+      "tests": 57,
+      "log": "donor-followon/final_g3.stderr.log",
+      "log_sha256": "89111d10ec19e2d00a0ead20bb7257b32539d2f223f2ecd46d84457e5254dc8f",
+      "passed": true
+    }
+  ],
+  "tests_total": 133,
+  "new_donor_regression_tests": 6,
+  "donor_regression_failures_before_fix": 4,
+  "independent_prior_admission_controls": 7,
+  "independent_donor_configurations": 12,
+  "three_after_controls_already_included_in_twelve": true,
+  "independent_donor_adapter_scope": "verify_binding and product_inputs isolated; real Evidence/SHA, original records, common admission, prerequisite and finish paths executed; synthetic only",
+  "independent_followon_report": {
+    "path": "../independent-review/qualification-donor-followon/FOLLOWON_REVIEW.json",
+    "bytes": 7682,
+    "sha256": "e51a8a5ed9869bff0d79a6db9fac3e9274bab2544284436e682af349414528e1"
+  },
+  "independent_followon_files_copied_byte_identically": 162,
+  "physical_executions": 0,
+  "physical_G3_G4_G5_pass": false,
+  "new_full_tree_test_execution": false
+}

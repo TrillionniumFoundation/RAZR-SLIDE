@@ -1,0 +1,86 @@
+test_g4_categorical_failure_survives_missing_raw_samples (tests.test_product_qualification_contracts.Contracts.test_g4_categorical_failure_survives_missing_raw_samples) ... FAIL
+test_g4_unsourced_categorical_failure_is_not_erased (tests.test_product_qualification_contracts.Contracts.test_g4_unsourced_categorical_failure_is_not_erased) ... FAIL
+test_g4_missing_event_history_is_unknown (tests.test_product_qualification_contracts.Contracts.test_g4_missing_event_history_is_unknown) ... FAIL
+test_g4_repair_and_replacement_are_retained_separately (tests.test_product_qualification_contracts.Contracts.test_g4_repair_and_replacement_are_retained_separately) ... ERROR
+test_prerequisite_cannot_finish_after_next_stage_starts (tests.test_product_qualification_contracts.Contracts.test_prerequisite_cannot_finish_after_next_stage_starts) ... FAIL
+test_prerequisite_without_time_does_not_qualify_next_stage (tests.test_product_qualification_contracts.Contracts.test_prerequisite_without_time_does_not_qualify_next_stage) ... FAIL
+test_same_specimen_with_changed_as_built_record_is_rejected (tests.test_product_qualification_contracts.Contracts.test_same_specimen_with_changed_as_built_record_is_rejected) ... FAIL
+test_prerequisite_without_as_built_binding_remains_unknown (tests.test_product_qualification_contracts.Contracts.test_prerequisite_without_as_built_binding_remains_unknown) ... FAIL
+
+======================================================================
+ERROR: test_g4_repair_and_replacement_are_retained_separately (tests.test_product_qualification_contracts.Contracts.test_g4_repair_and_replacement_are_retained_separately)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py", line 213, in test_g4_repair_and_replacement_are_retained_separately
+    self.assertEqual(out['retained_maintenance_records'],r['maintenance_or_replacement_events'])
+                     ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'retained_maintenance_records'
+
+======================================================================
+FAIL: test_g4_categorical_failure_survives_missing_raw_samples (tests.test_product_qualification_contracts.Contracts.test_g4_categorical_failure_survives_missing_raw_samples)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py", line 192, in test_g4_categorical_failure_survives_missing_raw_samples
+    self.assertEqual(out['status'],'fail')
+AssertionError: 'unknown' != 'fail'
+- unknown
++ fail
+
+
+======================================================================
+FAIL: test_g4_unsourced_categorical_failure_is_not_erased (tests.test_product_qualification_contracts.Contracts.test_g4_unsourced_categorical_failure_is_not_erased)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py", line 199, in test_g4_unsourced_categorical_failure_is_not_erased
+    self.assertEqual(out['status'],'fail')
+AssertionError: 'unknown' != 'fail'
+- unknown
++ fail
+
+
+======================================================================
+FAIL: test_g4_missing_event_history_is_unknown (tests.test_product_qualification_contracts.Contracts.test_g4_missing_event_history_is_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py", line 204, in test_g4_missing_event_history_is_unknown
+    self.assertIn('maintenance_history_undeclared',out['blockers'])
+AssertionError: 'maintenance_history_undeclared' not found in ['as_built_donor_unbound:SYNTHETIC-S1', 'current_native_payload_closure_incomplete', 'independent_preregistration_attestation_missing', 'prerequisite_missing:G3:SYNTHETIC-S1', 'same_donor_specimen_identity_missing', 'same_specimen_physical_inputs_incomplete', 'synthetic_fixture_is_not_physical_qualification']
+
+======================================================================
+FAIL: test_prerequisite_cannot_finish_after_next_stage_starts (tests.test_product_qualification_contracts.Contracts.test_prerequisite_cannot_finish_after_next_stage_starts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py", line 236, in test_prerequisite_cannot_finish_after_next_stage_starts
+    with self.assertRaisesRegex(ValueError,'prerequisite.*chronology'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_prerequisite_without_time_does_not_qualify_next_stage (tests.test_product_qualification_contracts.Contracts.test_prerequisite_without_time_does_not_qualify_next_stage)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py", line 242, in test_prerequisite_without_time_does_not_qualify_next_stage
+    self.assertIn('prerequisite_chronology_missing:G3:SYNTHETIC-S1',self.run4(p,r)['blockers'])
+AssertionError: 'prerequisite_chronology_missing:G3:SYNTHETIC-S1' not found in ['as_built_donor_unbound:SYNTHETIC-S1', 'current_native_payload_closure_incomplete', 'independent_preregistration_attestation_missing', 'same_donor_specimen_identity_missing', 'same_specimen_physical_inputs_incomplete', 'synthetic_fixture_is_not_physical_qualification']
+
+======================================================================
+FAIL: test_same_specimen_with_changed_as_built_record_is_rejected (tests.test_product_qualification_contracts.Contracts.test_same_specimen_with_changed_as_built_record_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py", line 248, in test_same_specimen_with_changed_as_built_record_is_rejected
+    with self.assertRaisesRegex(ValueError,'prerequisite.*as-built'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_prerequisite_without_as_built_binding_remains_unknown (tests.test_product_qualification_contracts.Contracts.test_prerequisite_without_as_built_binding_remains_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py", line 254, in test_prerequisite_without_as_built_binding_remains_unknown
+    self.assertIn('prerequisite_as_built_missing:G3:SYNTHETIC-S1',self.run4(p,r)['blockers'])
+AssertionError: 'prerequisite_as_built_missing:G3:SYNTHETIC-S1' not found in ['as_built_donor_unbound:SYNTHETIC-S1', 'current_native_payload_closure_incomplete', 'independent_preregistration_attestation_missing', 'same_donor_specimen_identity_missing', 'same_specimen_physical_inputs_incomplete', 'synthetic_fixture_is_not_physical_qualification']
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.356s
+
+FAILED (failures=7, errors=1)

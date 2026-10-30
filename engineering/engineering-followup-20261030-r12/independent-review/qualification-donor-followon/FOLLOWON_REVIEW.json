@@ -1,0 +1,159 @@
+{
+  "schema": "r12.independent_original_donor_followon_review.v1",
+  "created_utc": "2026-10-30T14:43:19.441109+00:00",
+  "current_source_identities": [
+    {
+      "repository_path": "integration/product_qualification.py",
+      "path": "/workspace/scratch/1b842ca762be/RAZR-SLIDE/integration/product_qualification.py",
+      "bytes": 62093,
+      "sha256": "975b3dc3cb43cc9093108bf661dd6a89d2a4211a3587221004edd963a54b411c"
+    },
+    {
+      "repository_path": "tests/test_product_qualification_contracts.py",
+      "path": "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py",
+      "bytes": 37757,
+      "sha256": "ce057837a5893f18badead5cfa3f5bd1ada6b26ee768a60f2883b40a4d6de589"
+    },
+    {
+      "repository_path": "engineering/product-integration-20261018/physical-test-followon-20261019/qualification_contract.py",
+      "path": "/workspace/scratch/1b842ca762be/RAZR-SLIDE/engineering/product-integration-20261018/physical-test-followon-20261019/qualification_contract.py",
+      "bytes": 32127,
+      "sha256": "deb027c4e47fbcfa0a6db6463cdd383fd9ed0010850f3d8532d34be0ca608d05"
+    }
+  ],
+  "old_source_preserved": {
+    "path": "/workspace/scratch/1b842ca762be/qualification_independent_review/donor_followon/before_source/product_qualification.py",
+    "bytes": 60693,
+    "sha256": "4db012ceee0a67d41c9db2ce812085b232bdac3786b50b72128e265e383527f2"
+  },
+  "finding": "SHA-bound original donor was not compared with a mutually consistent plan, wrapper and observed-input donor.",
+  "before_reproduction": {
+    "actual_admission_controls": 3,
+    "missing_original_donor_admitted": true,
+    "contradictory_original_donor_admitted": true,
+    "matching_control_admitted": true,
+    "report": {
+      "path": "/workspace/scratch/1b842ca762be/qualification_independent_review/donor_followon/BEFORE/REPORT.json",
+      "bytes": 12750,
+      "sha256": "4e6d987ff46c386a26ca278e3f53ec3587041f1cb89bf576a403b4b905886900"
+    }
+  },
+  "after_direct_replay": {
+    "actual_admission_controls": 3,
+    "all_expected_semantics_met": true,
+    "report": {
+      "path": "/workspace/scratch/1b842ca762be/qualification_independent_review/donor_followon/AFTER/REPORT.json",
+      "bytes": 9886,
+      "sha256": "9f6fc9c0405e1d88e964f2ec20f0eba81f6e60646adc6748f9e97c5df2d656f6"
+    }
+  },
+  "shared_G4_G5_scope": {
+    "actual_admission_controls": 12,
+    "all_expected_semantics_met": true,
+    "entrypoints": [
+      {
+        "function": "evaluate_g4",
+        "first_statement": "result, evidence, design, start = _common(plan, record, repository, evidence_root, review)"
+      },
+      {
+        "function": "evaluate_g5",
+        "first_statement": "result, evidence, design, start = _common(plan, record, repository, evidence_root, review)"
+      }
+    ],
+    "report": {
+      "path": "/workspace/scratch/1b842ca762be/qualification_independent_review/donor_followon/SHARED_GATES_AFTER/REPORT.json",
+      "bytes": 46067,
+      "sha256": "a0315edcfbfe7e5c8ade6dcb3170ef58d0ecf555f2672259faddf3455868ba8d"
+    }
+  },
+  "verified_semantics": {
+    "missing_original_donor": "unknown; explicit as_built_original_donor_missing blocker; not a categorical failure",
+    "contradictory_original_donor": "ValueError rejection, including original A versus plan/wrapper/observed B",
+    "matching_top_level_original": "admitted at donor identity layer",
+    "matching_nested_original": "admitted at donor identity layer",
+    "top_level_null_with_matching_nested_original": "admitted at donor identity layer",
+    "two_consistent_original_declarations": "admitted at donor identity layer",
+    "synthetic_execution": "all completed decisions retain unknown, never physical pass"
+  },
+  "source_review": {
+    "nonempty_original_donor_validation": true,
+    "conflicting_duplicate_original_donors_rejected": true,
+    "known_plan_and_wrapper_donors_each_compared": true,
+    "resolved_original_donor_retained_in_result": true,
+    "additional_unnecessary_rejection_found": false,
+    "remaining_finding_in_this_bounded_issue": null
+  },
+  "producer_regressions_read_back_not_rerun_by_this_review": [
+    {
+      "path": "/workspace/scratch/1b842ca762be/RAZR-SLIDE/engineering/engineering-followup-20261030-r12/qualification/donor-followon/before_fix.stderr.log",
+      "bytes": 4196,
+      "sha256": "03f6c72b8a9c0e96e30825a8e103d387418048ea0523613e48df2c39f850bc6f",
+      "tests": 6,
+      "seconds": 0.231,
+      "last_result_line": "FAILED (failures=4)"
+    },
+    {
+      "path": "/workspace/scratch/1b842ca762be/RAZR-SLIDE/engineering/engineering-followup-20261030-r12/qualification/donor-followon/final_targeted.stderr.log",
+      "bytes": 12111,
+      "sha256": "45dea4f554d85f287611e5118670882fda44a55b9a43ba702728a7d97de64981",
+      "tests": 76,
+      "seconds": 2.067,
+      "last_result_line": "OK"
+    },
+    {
+      "path": "/workspace/scratch/1b842ca762be/RAZR-SLIDE/engineering/engineering-followup-20261030-r12/qualification/donor-followon/final_g3.stderr.log",
+      "bytes": 9594,
+      "sha256": "89111d10ec19e2d00a0ead20bb7257b32539d2f223f2ecd46d84457e5254dc8f",
+      "tests": 57,
+      "seconds": 4.665,
+      "last_result_line": "OK"
+    }
+  ],
+  "producer_final_disjoint_tests": 133,
+  "old_127_test_report_and_old_independent_review_not_rewritten": true,
+  "probe_manifests_independently_verified": [
+    {
+      "directory": "BEFORE",
+      "manifest": {
+        "path": "/workspace/scratch/1b842ca762be/qualification_independent_review/donor_followon/BEFORE/MANIFEST.json",
+        "bytes": 4586,
+        "sha256": "f820ae61193a8ee4832c1ef3260945601c9ae7a0a4627ee8875d87f826389e7f"
+      },
+      "files_verified": 25
+    },
+    {
+      "directory": "AFTER",
+      "manifest": {
+        "path": "/workspace/scratch/1b842ca762be/qualification_independent_review/donor_followon/AFTER/MANIFEST.json",
+        "bytes": 4584,
+        "sha256": "9e08668ef3b4536ef1726f1269bbc8b3a7135c5c4cff534fc9d0a52fd2b6c04f"
+      },
+      "files_verified": 25
+    },
+    {
+      "directory": "SHARED_GATES_AFTER",
+      "manifest": {
+        "path": "/workspace/scratch/1b842ca762be/qualification_independent_review/donor_followon/SHARED_GATES_AFTER/MANIFEST.json",
+        "bytes": 19802,
+        "sha256": "ae7e5d54dfd3c105be8f8639f707750483d10dbc1aded740b67ccdc2fddaa448"
+      },
+      "files_verified": 103
+    }
+  ],
+  "limitations": [
+    "The independent probes isolate verify_binding and product_inputs external-world adapters explicitly; both original and synthetic observed-donor bytes are SHA bound and rechecked.",
+    "The actual _common, Evidence, prerequisite_decisions and _finish production implementations execute unchanged. Common admission is tested; the complete G4/G5 metric pipelines are not independently re-executed here.",
+    "A fabricated physical-schema prerequisite exists only as a synthetic parser fixture; the current execution_kind is always synthetic_fixture.",
+    "No actual device, independently authenticated attachment, sourced physical threshold, measured G3/G4/G5 pass or manufacturing qualification is claimed.",
+    "The initial three post-fix controls are repeated inside the twelve shared-gate controls; these are twelve distinct configurations, not fifteen distinct tests.",
+    "This bounded review is not a new full-tree test qualification or a statement that every possible malformed record path has been explored."
+  ],
+  "network_mutations": 0,
+  "production_source_mutations_by_reviewer": 0,
+  "physical_executions": 0,
+  "candidate_go": false,
+  "fixture_fabrication_go": false,
+  "manufacturing_go": false,
+  "full_domain_qualification": false,
+  "physical_G3_G4_G5_pass": false
+}

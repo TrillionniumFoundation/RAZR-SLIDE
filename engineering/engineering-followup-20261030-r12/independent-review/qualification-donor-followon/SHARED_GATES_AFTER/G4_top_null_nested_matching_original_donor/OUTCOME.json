@@ -1,0 +1,97 @@
+{
+  "case": "matching_original_donor",
+  "decision": {
+    "acquisition_ended_at_utc": "2026-10-03T00:10:00Z",
+    "acquisition_semantic_sha256": "ad188c22a7f0c42476900a23368d63dd743e8c1e167ab11a77067f8c541e70cd",
+    "acquisition_started_at_utc": "2026-10-03T00:00:00Z",
+    "as_built_donor_specimen_ids": {
+      "SYNTHETIC-ASSEMBLY-1": "SYNTHETIC-DONOR-B"
+    },
+    "as_built_specimen_records": {
+      "SYNTHETIC-ASSEMBLY-1": {
+        "path": "original-as-built.json",
+        "sha256": "d08edf29c9139c0e6d7f00b78e508b0e80898dba438d0d0dee173b476b3a95c8"
+      }
+    },
+    "blockers": [
+      "synthetic_fixture_is_not_physical_qualification"
+    ],
+    "candidate_go": false,
+    "criteria": [],
+    "design_binding": {
+      "candidate_id": "SYNTHETIC-CANDIDATE",
+      "files_sha256": {},
+      "git_commit": "0000000000000000000000000000000000000000",
+      "native_payload_sha256": {}
+    },
+    "evaluator_sha256": "975b3dc3cb43cc9093108bf661dd6a89d2a4211a3587221004edd963a54b411c",
+    "execution_binding": {
+      "bound_commit": "0000000000000000000000000000000000000000",
+      "bound_commit_is_current_HEAD": true,
+      "current_HEAD": "0000000000000000000000000000000000000000",
+      "physical_commit_bytes_verified": false,
+      "unbound_current_source_paths": [],
+      "unbound_native_payload_paths": []
+    },
+    "execution_kind": "synthetic_fixture",
+    "fixture_fabrication_go": false,
+    "gate": "G4",
+    "manufacturing_go": false,
+    "physical_phone_verified": false,
+    "plan_semantic_sha256": "85b10803839ce346b49d263cbbb6b16fd5e246f2e61dc0010403941fe681c5ab",
+    "prerequisite_decisions": [
+      {
+        "gate": "G3",
+        "reported_status": "pass",
+        "source": {
+          "path": "synthetic-g3-schema-record.json",
+          "sha256": "1c68f9c220f8ffa604337a63641b16ee707b486f5f3db1304c992fc80cc42d03"
+        },
+        "specimen_id": "SYNTHETIC-ASSEMBLY-1",
+        "status": "pass",
+        "validation_blockers": []
+      }
+    ],
+    "product_inputs": {
+      "missing_physical_interfaces": [],
+      "observed_donor_specimen_id": "SYNTHETIC-DONOR-B",
+      "physical_donor_identity_bound": true,
+      "physically_bound_interfaces": [],
+      "schema": "synthetic-product-inputs-observation",
+      "scope": "Test adapter return only; does not prove physical interface completeness.",
+      "synthetic_fixture": true,
+      "unknown_donor_identity_fields": []
+    },
+    "qualification_reviewed_at_utc": "2026-10-03T00:11:00Z",
+    "retained_failure_records": [],
+    "retained_maintenance_records": [],
+    "reviewer_identity_authenticated_by_program": false,
+    "sampled_criteria_status": "pass",
+    "schema": "razr-product-qualification-decision-v1",
+    "scope": "declared sampled protocol only; no independent attachment authenticity or manufacturing release",
+    "specimen_ids": [
+      "SYNTHETIC-ASSEMBLY-1"
+    ],
+    "status": "unknown",
+    "unsampled_failure_absence_proved": false,
+    "verified_original_evidence_files": 3
+  },
+  "donor_blockers": [],
+  "donor_identity_admitted": true,
+  "execution_kind": "synthetic_fixture",
+  "expected_semantics_met": true,
+  "gate": "G4",
+  "original_donor": null,
+  "original_donor_field_present": true,
+  "original_donor_location": "top_null_nested",
+  "original_nested_donor": "SYNTHETIC-DONOR-B",
+  "original_record_checked": true,
+  "original_record_sha256": "d08edf29c9139c0e6d7f00b78e508b0e80898dba438d0d0dee173b476b3a95c8",
+  "physical_measurement_or_physical_pass_claimed": false,
+  "plan_donor": "SYNTHETIC-DONOR-B",
+  "rejected": false,
+  "same_qualification_assembly_roles": true,
+  "synthetic_fixture": true,
+  "synthetic_observed_donor": "SYNTHETIC-DONOR-B",
+  "wrapper_donor": "SYNTHETIC-DONOR-B"
+}

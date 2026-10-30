@@ -1,0 +1,90 @@
+{
+  "schema": "razr-r12-independent-full-cell-fibre-audit-v1",
+  "started_utc": "2026-10-30T14:26:35.796719+00:00",
+  "source": {
+    "path": "/workspace/scratch/1b842ca762be/geometry_review/audit_fibre_covers_independently.py",
+    "bytes": 7465,
+    "sha256": "7952270cd91840358d9bc5e121f6069d6f7df21daf6ffa639525798710f64a48"
+  },
+  "producer_source": {
+    "path": "/workspace/scratch/1b842ca762be/panel_fill_work/compute_fibre_intersection_r12.py",
+    "bytes": 7085,
+    "sha256": "860180004f74f8ae8614f6a53aba203940d55b7d6a56fde824bcab8c3f6db8e1"
+  },
+  "input_report": {
+    "path": "/workspace/scratch/1b842ca762be/panel_fill_work/fibre-intersection-attempt1/report.json",
+    "bytes": 5468,
+    "sha256": "a4382a88ecc4f9e6e5238eea33307e515d43672371b64a4169abeba87af41fda"
+  },
+  "native_boundary_source": {
+    "path": "/workspace/scratch/1b842ca762be/panel_fill_work/native-boundaries-attempt4/report.json",
+    "bytes": 7177733,
+    "sha256": "47a48bd130b35a8251907a3ab9116c4a7d60c5dc04ed5a2ab0f3d474a9683502"
+  },
+  "completed": true,
+  "pairs": [
+    {
+      "key": "L_KEY",
+      "positive_width_cells_verified": 7577504,
+      "modes": {
+        "Z_only": {
+          "all_open_cells_match_independent_monotone_extension_construction": true,
+          "exact_volume": "77362782355362236056837322197547906353998642362181933433518272163859511359090250393613469600846175417421893293109323423576332407270760036445107/24388660549343689307668728357759111763660922989570087116087163747073216709529418907189891430183531024686147899385989241370687309994439728955392",
+          "volume_approx_mm3": 3.1720800000000042,
+          "original_gate_passes": false,
+          "positive_tiny_cells_preserved": true,
+          "packed_mask_sha256": "e02a46eb99f5593cd444affcf5c1d8f436166d3cbeee951cea6ab454e4d8c9f3"
+        },
+        "XYZ_intersection": {
+          "all_open_cells_match_independent_monotone_extension_construction": true,
+          "exact_volume": "3054679733805305581714681917402815653084421589996028288035522207443430927408197354930950226880130115620219352401017461212311519675709741073241/3048582568667961163458591044719888970457615373696260889510895468384152088691177363398736428772941378085768487423248655171335913749304966119424",
+          "volume_approx_mm3": 1.0020000000000029,
+          "original_gate_passes": false,
+          "positive_tiny_cells_preserved": true,
+          "packed_mask_sha256": "c4e348f5bff46f8fcbbffbbcc6d49b4bfb4c419088214dd6d300b8ec0845061b"
+        }
+      },
+      "all_native_boundary_boxes_bound_exactly_to_grid": true
+    },
+    {
+      "key": "R_KEY",
+      "positive_width_cells_verified": 7885899,
+      "modes": {
+        "Z_only": {
+          "all_open_cells_match_independent_monotone_extension_construction": true,
+          "exact_volume": "10887843680873567382208673249306994094372752238455347207422261619539919005995968541446306236319082000313968449961966424313082320398065919211854048763392205893/3432398830065304857490950399540696608634717650071652704697231729592771591698828026061279820330727277488648155695740429018560993999858321906287014145557528576",
+          "volume_approx_mm3": 3.1720800000000042,
+          "original_gate_passes": false,
+          "positive_tiny_cells_preserved": true,
+          "packed_mask_sha256": "1e3c089abe4939036108d64745d1db9f9c2549a5450cdd1b14b34ccf519a6cad"
+        },
+        "XYZ_intersection": {
+          "all_open_cells_match_independent_monotone_extension_construction": true,
+          "exact_volume": "214953976732840314548237343756890907821991110517699774011185961814921329116655681329455217925360063368827733810485019686704991542236463585275566756723617663/214524926879081553593184399971293538039669853129478294043576983099548224481176751628829988770670454843040509730983776813660062124991145119142938384097345536",
+          "volume_approx_mm3": 1.0020000000000029,
+          "original_gate_passes": false,
+          "positive_tiny_cells_preserved": true,
+          "packed_mask_sha256": "e4c1dd1efe680b8907b0fb80e8e6d9330370529343446bdde2effadfae1495ec"
+        }
+      },
+      "all_native_boundary_boxes_bound_exactly_to_grid": true
+    }
+  ],
+  "failures": [],
+  "scientific_scope": {
+    "numeric_ledger_and_entire_cell_masks_independently_verified": true,
+    "conditional_fibre_cover_proof_valid": true,
+    "fibre_proof": "For each material point and fixed transverse coordinates, compactness supplies boundary exits in both axis directions. If every boundary point is covered by recorded boxes, the point lies between the lowest and highest covered boundary ordinates. Intersecting the X/Y/Z fibre covers preserves inclusion. Grid endpoints partition the closed boxes exactly; omitted grid-plane cells have zero 3-D volume.",
+    "complete_source_boundary_to_actual_native_filling_bridge_fully_proved": false,
+    "uniform_compiled_evaluator_error_fully_bounded": false,
+    "positive_upper_bound_proves_actual_collision": false,
+    "current_key_panel_conservative_1e_7_gate_passes": false,
+    "whole_15D_G2": false,
+    "G3": false,
+    "G4": false,
+    "G5": false,
+    "manufacturing_go": false
+  },
+  "seconds": 0.22959444600201095,
+  "peak_RSS_bytes": 106332160
+}

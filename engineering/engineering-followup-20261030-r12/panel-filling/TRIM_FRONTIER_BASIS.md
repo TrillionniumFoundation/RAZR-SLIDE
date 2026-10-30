@@ -1,0 +1,9 @@
+# Bounded final trim-frontier investigation
+
+The completed whole-boundary grid uses 3.480 s / 276,586,496 bytes for the native census and 0.841 s / 41,906,176 bytes for all grid cells. The first exact exterior-channel refinement uses 0.936 s / 34,381,824 bytes. Its remaining positive upper bound is approximately 0.9600000000000029 mm3 on each side; it is not a collision witness.
+
+The right-hand large residual is the guide channel X=(10.8,11.4), Z=(1.2,1.6), at Y=56..64. A complete +Y exterior tube is blocked only by full-UV carriers of guide end faces 115,118,121 at Y=58,62,64. Each has eight LINE pcurve occurrences; source shape suggests one outer rectangle and one inner rectangle. That source suggestion is not a proof of the trimmed face's filled domain.
+
+The final admitted investigation reads the saved original panel BREP, enumerates the complete ordered native wires of every face blocking any residual box larger than the unchanged float64 1e-7 threshold, and checks exact rational pcurve endpoint closure. The threshold selects diagnostic targets only; every positive residual remains in the authoritative upper bound. No original cell or tiny volume is removed. Expected size is six mirrored guide end faces / 48 edge occurrences. The hard cap is 64 faces, 512 occurrences, 60 seconds, one CPU and 768 MiB address space. No spatial split is added (0 of original 4096, depth 0 of original 24).
+
+An exact rectangle-hole deduction is admissible only after a complete ordered-wire inventory and exact endpoint closure, or a separately proved containment of every possible endpoint-connection path. Native `Closed()` and vertex tolerance do not establish that latter premise. If exact closure fails, the investigation stops and records the gaps; it does not snap endpoints, infer a polygon from approximate coordinates, run extra sampled void checks, or declare a pass. The previous conservative residual bound remains authoritative.

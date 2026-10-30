@@ -199,12 +199,15 @@ def verify_binding(value, repository, physical=False):
     return reader
 
 
-def prerequisite_decisions(plan, evidence, blockers):
+def prerequisite_decisions(plan, evidence, blockers, acquisition=None):
     expected_gates = ('G3',) if plan['gate'] == 'G4' else ('G3','G4')
     decisions = []
+    intervals = {}
+    decision_times = {}
     for gate in expected_gates:
         references = plan.get('prerequisites',{}).get(gate,{})
         for specimen in plan.get('specimen_ids',[]):
+            initial_blockers = len(blockers)
             reference = references.get(specimen) if isinstance(references,dict) else None
             if reference is None:
                 blockers.append('prerequisite_missing:'+gate+':'+specimen); continue
@@ -226,11 +229,115 @@ def prerequisite_decisions(plan, evidence, blockers):
                 raise ValueError('prerequisite and tested design commits differ')
             if any(prior_binding.get('files_sha256',{}).get(p) != h for p,h in plan['design_binding']['files_sha256'].items()):
                 raise ValueError('prerequisite source bytes differ from current test')
+            # Predeclare a shared superset binding, including G3 artifact roles
+            # and G4/G5 native payloads, before acquiring any of the stages.
+            # Partial legacy bindings do not qualify an upgraded assembly.
+            if prior_binding != plan['design_binding']:
+                raise ValueError('prerequisite and current complete design bindings differ')
             status = prior.get('status')
             if status not in ('pass','fail','unknown'): raise ValueError('invalid prerequisite status')
+            if status == 'pass' and any(prior.get(k) for k in
+                    ('blockers','retained_failure_records','retained_maintenance_records','function_failure_witnesses')):
+                raise ValueError('prerequisite pass contradicts its retained evidence')
+            if status == 'pass':
+                sampled = prior.get('sampled_criteria_status')
+                criteria = prior.get('criteria')
+                if sampled is None or not isinstance(criteria,list):
+                    blockers.append('prerequisite_sampled_results_missing:'+gate+':'+specimen)
+                elif sampled != 'pass' or any(not isinstance(c,dict) or c.get('status') != 'pass' for c in criteria):
+                    raise ValueError('prerequisite pass contradicts its sampled criteria')
+                elif gate == 'G3' and not criteria:
+                    blockers.append('prerequisite_sampled_results_missing:'+gate+':'+specimen)
+                # G3 retains all metric decisions; G4's criteria is an exception
+                # list, so its successful empty list is meaningful only with
+                # the actual nonempty, fully sampled observation coverage.
+                if gate == 'G4':
+                    coverage = prior.get('coverage')
+                    observations = prior.get('observations')
+                    if not isinstance(coverage,list) or not coverage or type(observations) is not int or observations <= 0:
+                        blockers.append('prerequisite_observation_coverage_missing:'+gate+':'+specimen)
+                    elif any(not isinstance(c,dict) or c.get('complete') is not True for c in coverage):
+                        raise ValueError('prerequisite pass contradicts its observation coverage')
+                for c in prior.get('process_decisions',[]):
+                    if not isinstance(c,dict) or c.get('status') != 'pass':
+                        raise ValueError('prerequisite pass contradicts its process decisions')
             if status != 'pass': blockers.append('prerequisite_not_passed:'+gate+':'+specimen)
-            decisions.append({'gate':gate,'specimen_id':specimen,'status':status,'source':reference})
+            # A shared specimen name and source commit do not identify a repaired
+            # or replaced assembly. Bind the retained as-built record itself.
+            prior_specimen = (prior.get('as_built_specimen_record') if gate == 'G3'
+                              else prior.get('as_built_specimen_records',{}).get(specimen))
+            current_specimen = (acquisition or {}).get('as_built',{}).get(specimen,{}).get('specimen_record')
+            if prior_specimen is None or current_specimen is None:
+                blockers.append('prerequisite_as_built_missing:'+gate+':'+specimen)
+            elif evidence.read(prior_specimen) != evidence.read(current_specimen):
+                raise ValueError('prerequisite and current as-built specimen records differ')
+            previous_start = prior.get('acquisition_started_at_utc')
+            previous_end = prior.get('acquisition_ended_at_utc')
+            current_start = (acquisition or {}).get('started_at_utc')
+            if any(t is None for t in (previous_start,previous_end,current_start)):
+                blockers.append('prerequisite_chronology_missing:'+gate+':'+specimen)
+            else:
+                a,b,c = stamp(previous_start),stamp(previous_end),stamp(current_start)
+                if not a < b <= c:
+                    raise ValueError('prerequisite acquisition chronology contradicts stage order')
+                intervals[specimen,gate] = (a,b)
+            # Finishing acquisition is insufficient: its qualifying review/pass
+            # must exist before the next physical stage starts.
+            reviewed = prior.get('qualification_reviewed_at_utc')
+            legacy_reviewed = prior.get('preregistration_verification',{}).get('reviewed_at_utc')
+            if reviewed is not None and legacy_reviewed is not None and stamp(reviewed) != stamp(legacy_reviewed):
+                raise ValueError('prerequisite review chronology has conflicting declarations')
+            reviewed = reviewed if reviewed is not None else legacy_reviewed
+            if any(t is None for t in (previous_end,reviewed,current_start)):
+                blockers.append('prerequisite_decision_time_missing:'+gate+':'+specimen)
+            elif not stamp(previous_end) <= stamp(reviewed) <= stamp(current_start):
+                raise ValueError('prerequisite review chronology contradicts stage order')
+            else:
+                decision_times[specimen,gate] = stamp(reviewed)
+            local_blockers = blockers[initial_blockers:]
+            admitted_status = 'unknown' if status == 'pass' and local_blockers else status
+            decisions.append({'gate':gate,'specimen_id':specimen,'status':admitted_status,
+                'reported_status':status,'validation_blockers':list(local_blockers),'source':reference})
+    for specimen in plan.get('specimen_ids',[]):
+        if (specimen,'G3') in intervals and (specimen,'G4') in intervals:
+            if intervals[specimen,'G3'][1] > intervals[specimen,'G4'][0]:
+                raise ValueError('prerequisite G3/G4 chronology contradicts stage order')
+            if (specimen,'G3') in decision_times and decision_times[specimen,'G3'] > intervals[specimen,'G4'][0]:
+                raise ValueError('prerequisite G3 review/G4 chronology contradicts stage order')
     return decisions
+
+
+def retained_events(plan, record, evidence, blockers):
+    """Retain reported failures separately from missing data and maintenance.
+
+    The program checks attachment bytes, not the authenticity of an event.
+    A reported failure remains a failure even if samples or its attachment
+    are absent. Maintenance invalidates uninterrupted identity, not itself
+    an observed failure. The same rules apply to both G4 and G5.
+    """
+    events = record.get('maintenance_or_replacement_events')
+    if events is None:
+        blockers.append('maintenance_history_undeclared'); events = []
+    elif not isinstance(events,list):
+        raise ValueError('maintenance/replacement event list required')
+    if events:
+        blockers.append('uninterrupted_specimen_identity_broken_by_maintenance_or_replacement')
+    for event in events:
+        if not isinstance(event,dict) or event.get('specimen_id') not in plan.get('specimen_ids',[]) or not text(event.get('description')):
+            raise ValueError('identified maintenance/replacement event required')
+        if event.get('source') is None: blockers.append('maintenance_original_missing')
+        else: evidence.read(event['source'])
+    failures = record.get('failures')
+    if failures is None:
+        blockers.append('failure_history_undeclared'); failures = []
+    elif not isinstance(failures,list):
+        raise ValueError('failure record list required')
+    for failure in failures:
+        if not isinstance(failure,dict) or failure.get('specimen_id') not in plan.get('specimen_ids',[]) or not text(failure.get('description')):
+            raise ValueError('identified failure record required')
+        if failure.get('source') is None: blockers.append('failure_original_missing')
+        else: evidence.read(failure['source'])
+    return list(events),list(failures)
 
 
 def product_inputs(repository=ROOT):
@@ -319,12 +426,15 @@ def _common(plan, record, repository, evidence_root, review):
     if record.get('specimen_ids') != planned_ids:
         raise ValueError('acquisition specimen inventory differs from plan')
     result['specimen_ids'] = planned_ids
-    result['prerequisite_decisions'] = prerequisite_decisions(plan,evidence,blockers)
+    result['retained_maintenance_records'],result['retained_failure_records'] = retained_events(plan,record,evidence,blockers)
+    result['prerequisite_decisions'] = prerequisite_decisions(plan,evidence,blockers,record)
     if plan.get('same_donor_specimen_id') is None:
         blockers.append('same_donor_specimen_identity_missing')
     elif plan['same_donor_specimen_id'] != readiness['observed_donor_specimen_id']:
         raise ValueError('plan does not identify the observed donor specimen')
     starts,ends = record.get('started_at_utc'),record.get('ended_at_utc')
+    result['acquisition_started_at_utc'] = starts
+    result['acquisition_ended_at_utc'] = ends
     declared = plan.get('declared_at_utc')
     if any(x is None for x in (starts,ends,declared)):
         blockers.append('acquisition_or_predeclaration_time_missing'); start = None
@@ -353,10 +463,55 @@ def _common(plan, record, repository, evidence_root, review):
             blockers.append('review_completion_time_missing')
         elif ends is not None and stamp(review['reviewed_at_utc']) < stamp(ends):
             raise ValueError('exact-acquisition review predates acquisition completion')
+        else:
+            result['qualification_reviewed_at_utc'] = review['reviewed_at_utc']
         for ref in review.get('original_evidence',[]): evidence.read(ref)
     specimens = record.get('as_built',{})
+    result['as_built_specimen_records'] = {}
+    result['as_built_donor_specimen_ids'] = {}
     for specimen in planned_ids:
         item = specimens.get(specimen,{})
+        specimen_ref = item.get('specimen_record')
+        if specimen_ref is None:
+            blockers.append('as_built_specimen_record_missing:'+specimen)
+        else:
+            original = strict_json(evidence.read(specimen_ref))
+            if not isinstance(original,dict) or original.get('specimen_id') != specimen:
+                raise ValueError('as-built original names another specimen')
+            if original.get('design_binding') != plan['design_binding']:
+                raise ValueError('as-built original design binding differs')
+            if original.get('execution_kind') != record['execution_kind']:
+                raise ValueError('as-built original execution kind differs')
+            if original.get('is_template') is not False:
+                blockers.append('as_built_specimen_record_is_template:'+specimen)
+            original_roles = original.get('qualification_assembly')
+            if not isinstance(original_roles,dict) or any(role not in original_roles for role in
+                    ('parts','material_lots','process','firmware','assembly')):
+                blockers.append('as_built_role_binding_missing:'+specimen)
+            else:
+                for role in ('parts','material_lots','process','firmware','assembly'):
+                    if original_roles[role] != item.get(role):
+                        raise ValueError('as-built original and current '+role+' records differ')
+            # A consistent mutable wrapper cannot relabel the donor recorded
+            # in the SHA-bound original. Accept either explicit original
+            # location, but require multiple declarations to agree.
+            original_donors = [original.get('same_donor_specimen_id')]
+            if isinstance(original_roles,dict):
+                original_donors.append(original_roles.get('same_donor_specimen_id'))
+            original_donors = [value for value in original_donors if value is not None]
+            if not original_donors:
+                blockers.append('as_built_original_donor_missing:'+specimen)
+            elif any(not text(value) for value in original_donors):
+                raise ValueError('as-built original donor identity must be nonempty text')
+            elif any(value != original_donors[0] for value in original_donors):
+                raise ValueError('as-built original has conflicting donor identities')
+            else:
+                donor = original_donors[0]
+                for value in (plan.get('same_donor_specimen_id'),item.get('same_donor_specimen_id')):
+                    if value is not None and value != donor:
+                        raise ValueError('as-built original donor differs from the plan or current record')
+                result['as_built_donor_specimen_ids'][specimen] = donor
+            result['as_built_specimen_records'][specimen] = specimen_ref
         if item.get('design_binding') != plan['design_binding']:
             blockers.append('as_built_design_unbound:'+specimen)
         if item.get('same_donor_specimen_id') != plan.get('same_donor_specimen_id') or item.get('same_donor_specimen_id') is None:
@@ -383,6 +538,7 @@ def _calibration(item, unit, evidence, blockers, label, start):
 
 def _finish(result, evidence, design, states):
     states = list(states)+[x['status'] for x in result.get('prerequisite_decisions',[]) if x['status'] != 'pass']
+    if result.get('retained_failure_records'): states.append('fail')
     result['sampled_criteria_status'] = combine(states)
     result['blockers'] = sorted(set(result['blockers']))
     result['status'] = combine(states+(['unknown'] if result['blockers'] else []))
@@ -631,23 +787,6 @@ def evaluate_g5(plan, record, repository=ROOT, evidence_root='.', review=None):
     if not isinstance(dimensions,dict) or not dimensions: blockers.append('critical_dimension_inventory_missing'); dimensions = {}
     dimension_limits = {name:_criterion(item,'mm','range',evidence,blockers,'dimension:'+name) for name,item in dimensions.items()}
     if record is None: return _finish(result,evidence,design,['unknown'])
-    events = record.get('maintenance_or_replacement_events')
-    if not isinstance(events,list): blockers.append('maintenance_history_undeclared')
-    elif events:
-        blockers.append('uninterrupted_specimen_identity_broken_by_maintenance_or_replacement')
-        for event in events:
-            if event.get('specimen_id') not in plan.get('specimen_ids',[]) or not text(event.get('description')):
-                raise ValueError('identified maintenance/replacement event required')
-            if event.get('source') is None: blockers.append('maintenance_original_missing')
-            else: evidence.read(event['source'])
-    # Retain every categorical observed failure, including early termination.
-    result['retained_failure_records'] = list(record.get('failures',[]))
-    for failure in record.get('failures',[]):
-        if failure.get('specimen_id') not in plan.get('specimen_ids',[]) or not text(failure.get('description')):
-            raise ValueError('identified failure record required')
-        if failure.get('source') is None: blockers.append('failure_original_missing')
-        else: evidence.read(failure['source'])
-        states.append('fail')
     if record.get('cycle_csv') is None:
         blockers.append('raw_cycle_log_missing'); cycle_rows = []
     else:

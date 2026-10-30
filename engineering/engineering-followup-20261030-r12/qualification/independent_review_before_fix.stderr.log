@@ -1,0 +1,44 @@
+test_prerequisite_pass_cannot_hide_retained_failure (tests.test_product_qualification_contracts.Contracts.test_prerequisite_pass_cannot_hide_retained_failure) ... FAIL
+test_prerequisite_native_payload_binding_cannot_change (tests.test_product_qualification_contracts.Contracts.test_prerequisite_native_payload_binding_cannot_change) ... FAIL
+test_same_raw_as_built_cannot_mask_changed_firmware_wrapper (tests.test_product_qualification_contracts.Contracts.test_same_raw_as_built_cannot_mask_changed_firmware_wrapper) ... FAIL
+test_missing_as_built_role_mapping_stays_unknown (tests.test_product_qualification_contracts.Contracts.test_missing_as_built_role_mapping_stays_unknown) ... FAIL
+
+======================================================================
+FAIL: test_prerequisite_pass_cannot_hide_retained_failure (tests.test_product_qualification_contracts.Contracts.test_prerequisite_pass_cannot_hide_retained_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py", line 262, in test_prerequisite_pass_cannot_hide_retained_failure
+    with self.assertRaisesRegex(ValueError,'prerequisite pass contradicts'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_prerequisite_native_payload_binding_cannot_change (tests.test_product_qualification_contracts.Contracts.test_prerequisite_native_payload_binding_cannot_change)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py", line 270, in test_prerequisite_native_payload_binding_cannot_change
+    with self.assertRaisesRegex(ValueError,'prerequisite.*design binding'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_same_raw_as_built_cannot_mask_changed_firmware_wrapper (tests.test_product_qualification_contracts.Contracts.test_same_raw_as_built_cannot_mask_changed_firmware_wrapper)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py", line 276, in test_same_raw_as_built_cannot_mask_changed_firmware_wrapper
+    with self.assertRaisesRegex(ValueError,'as-built.*firmware'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_as_built_role_mapping_stays_unknown (tests.test_product_qualification_contracts.Contracts.test_missing_as_built_role_mapping_stays_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py", line 284, in test_missing_as_built_role_mapping_stays_unknown
+    self.assertIn('as_built_role_binding_missing:SYNTHETIC-S1',self.run4(p,r)['blockers'])
+AssertionError: 'as_built_role_binding_missing:SYNTHETIC-S1' not found in ['as_built_donor_unbound:SYNTHETIC-S1', 'current_native_payload_closure_incomplete', 'failure_history_undeclared', 'independent_preregistration_attestation_missing', 'maintenance_history_undeclared', 'same_donor_specimen_identity_missing', 'same_specimen_physical_inputs_incomplete', 'synthetic_fixture_is_not_physical_qualification']
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.178s
+
+FAILED (failures=4)

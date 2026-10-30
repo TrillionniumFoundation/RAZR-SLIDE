@@ -1,0 +1,83 @@
+{
+  "schema": "razr-r12-current-K1K3-forward-whole-key-v1",
+  "started_utc": "2026-10-30T14:04:12.157706+00:00",
+  "source_sha256": "fbb43488d317a4c74635a5caba143202efe6a6081b13606068044fab5c2eb0ce",
+  "helper_sha256": "c1a70bbbf9da59c82f942c4a9281253ca147128b73b2b3ceae8fadca56578368",
+  "input_manifest_sha256": "2210fee8cc85ef88178328304b4b5cabba212b1bbb7a2d98335db9acd5b771d7",
+  "completed": false,
+  "failures": [
+    {
+      "type": "ValueError",
+      "message": "nonpositive signed solid",
+      "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/1b842ca762be/geometry_work/produce_current_key_stroke_v1.py\", line 75, in <module>\n    parts,regions,faces=construct(key,OUT/side/'regions');row['complete_face_inventory']=faces\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/1b842ca762be/geometry_work/produce_current_key_stroke_v1.py\", line 38, in construct\n    assert op.IsDone();add('planar_face_'+str(i),cq.Shape.cast(op.Shape()),i)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/1b842ca762be/geometry_work/produce_current_key_stroke_v1.py\", line 26, in add\n    sig=signature(part)\n        ^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/1b842ca762be/geometry_work/current_key_common.py\", line 56, in signature\n    solids, volume = strict.whole_material(shape,empty=empty)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/1b842ca762be/geometry_work/inputs/straight_envelope.py\", line 36, in whole_material\n    visit(shape)\n  File \"/workspace/scratch/1b842ca762be/geometry_work/inputs/straight_envelope.py\", line 26, in visit\n    raise ValueError('nonpositive signed solid')\nValueError: nonpositive signed solid\n"
+    }
+  ],
+  "sides": {
+    "L": {
+      "original": {
+        "source_format": "brep",
+        "signature": {
+          "valid_original_topology_and_signed_volume_gate": true,
+          "positive_solids": 1,
+          "signed_volume_mm3": 31.41092008688562,
+          "bounds_mm": [
+            -30.330000000000002,
+            -6.2,
+            5.0,
+            78.55,
+            1.2,
+            4.4
+          ],
+          "faces": 92,
+          "edges": 264
+        },
+        "fingerprint_before": {
+          "sha256": "1e2bef0e0b51aa2437f7698032818546ac14d94bded0edd2a5f14842cb5578e3",
+          "bytes": 74093
+        }
+      },
+      "q_interval_mm": [
+        0.0,
+        12.0
+      ],
+      "complete_face_inventory": [],
+      "region_results": []
+    }
+  },
+  "all_15D_body_pairs_qualified": false,
+  "panel": {
+    "source_format": "brep",
+    "signature": {
+      "valid_original_topology_and_signed_volume_gate": true,
+      "positive_solids": 1,
+      "signed_volume_mm3": 4526.78137306303,
+      "bounds_mm": [
+        -36.995000000000005,
+        36.995000000000005,
+        0.0,
+        94.25,
+        0.0,
+        7.0
+      ],
+      "faces": 298,
+      "edges": 744
+    },
+    "fingerprint_before": {
+      "sha256": "6a1ae1be25ed0b2a04846969b7c9f77277f418e3afc9a9ac0baf368d9bcb7315",
+      "bytes": 258703
+    }
+  },
+  "seconds": 2.3805487350000476,
+  "peak_RSS_bytes": 368082944,
+  "scope": {
+    "motion_is_continuous_region_construction": true,
+    "finite_samples_used_as_domain_proof": false,
+    "native_filling_and_all_compiled_geometry_errors_formally_bounded": false,
+    "physical_allowed_domain_proved": false,
+    "whole_15D_G2": false,
+    "strength": false,
+    "G3": false,
+    "G4": false,
+    "G5": false
+  }
+}

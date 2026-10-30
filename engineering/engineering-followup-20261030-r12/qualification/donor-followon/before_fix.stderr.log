@@ -1,0 +1,46 @@
+test_raw_donor_cannot_be_relabelled_by_matching_wrappers (tests.test_product_qualification_contracts.Contracts.test_raw_donor_cannot_be_relabelled_by_matching_wrappers) ... FAIL
+test_missing_raw_donor_binding_stays_unknown (tests.test_product_qualification_contracts.Contracts.test_missing_raw_donor_binding_stays_unknown) ... FAIL
+test_matching_raw_donor_is_admitted_only_as_synthetic_record (tests.test_product_qualification_contracts.Contracts.test_matching_raw_donor_is_admitted_only_as_synthetic_record) ... ok
+test_donor_bound_inside_original_assembly_is_admitted (tests.test_product_qualification_contracts.Contracts.test_donor_bound_inside_original_assembly_is_admitted) ... ok
+test_conflicting_donor_declarations_within_original_are_rejected (tests.test_product_qualification_contracts.Contracts.test_conflicting_donor_declarations_within_original_are_rejected) ... FAIL
+test_wrapper_donor_cannot_contradict_original_and_plan (tests.test_product_qualification_contracts.Contracts.test_wrapper_donor_cannot_contradict_original_and_plan) ... FAIL
+
+======================================================================
+FAIL: test_raw_donor_cannot_be_relabelled_by_matching_wrappers (tests.test_product_qualification_contracts.Contracts.test_raw_donor_cannot_be_relabelled_by_matching_wrappers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py", line 317, in test_raw_donor_cannot_be_relabelled_by_matching_wrappers
+    with self.assertRaisesRegex(ValueError,'as-built original.*donor'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_raw_donor_binding_stays_unknown (tests.test_product_qualification_contracts.Contracts.test_missing_raw_donor_binding_stays_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py", line 323, in test_missing_raw_donor_binding_stays_unknown
+    self.assertIn('as_built_original_donor_missing:SYNTHETIC-S1',out['blockers'])
+AssertionError: 'as_built_original_donor_missing:SYNTHETIC-S1' not found in ['current_native_payload_closure_incomplete', 'failure_history_undeclared', 'independent_preregistration_attestation_missing', 'maintenance_history_undeclared', 'same_specimen_physical_inputs_incomplete', 'synthetic_fixture_is_not_physical_qualification']
+
+======================================================================
+FAIL: test_conflicting_donor_declarations_within_original_are_rejected (tests.test_product_qualification_contracts.Contracts.test_conflicting_donor_declarations_within_original_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py", line 344, in test_conflicting_donor_declarations_within_original_are_rejected
+    with self.assertRaisesRegex(ValueError,'as-built original.*donor'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_wrapper_donor_cannot_contradict_original_and_plan (tests.test_product_qualification_contracts.Contracts.test_wrapper_donor_cannot_contradict_original_and_plan)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1b842ca762be/RAZR-SLIDE/tests/test_product_qualification_contracts.py", line 351, in test_wrapper_donor_cannot_contradict_original_and_plan
+    with self.assertRaisesRegex(ValueError,'as-built original.*donor'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.231s
+
+FAILED (failures=4)
